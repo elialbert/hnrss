@@ -2,8 +2,13 @@
 """Generate an RSS feed of aged, high-score HN stories with top comments inline.
 
 For each story above SCORE_THRESHOLD and at least MIN_AGE_HOURS old, we capture
-the title, the HN comments URL (as the item link), the article URL, and four
+the title, the article URL (as the item link), the HN comments URL, and four
 comments: the top-level #1, its top reply, the top-level #2, and its top reply.
+
+Story discovery uses Algolia's search API. Comment selection uses HN's official
+Firebase API, whose `kids` array is in HN display order (HN's ranking) —
+Algolia's children array is in creation-time order, which gives wrong "top"
+comments.
 """
 
 import html
@@ -25,7 +30,7 @@ STATE_FILE = Path("state.json")
 FEED_FILE = Path("feed.xml")
 
 ALGOLIA_SEARCH = "https://hn.algolia.com/api/v1/search"
-ALGOLIA_ITEM = "https://hn.algolia.com/api/v1/items/{id}"
+HN_FIREBASE_ITEM = "https://hacker-news.firebaseio.com/v0/item/{id}.json"
 HN_ITEM_URL = "https://news.ycombinator.com/item?id={id}"
 
 
@@ -51,34 +56,55 @@ def find_candidate_stories():
     return fetch_json(f"{ALGOLIA_SEARCH}?{urllib.parse.urlencode(params)}").get("hits", [])
 
 
+def fetch_hn_item(item_id):
+    return fetch_json(HN_FIREBASE_ITEM.format(id=item_id))
+
+
+def is_live_comment(item):
+    return bool(item and not item.get("deleted") and not item.get("dead") and item.get("text"))
+
+
+def first_live_kid(parent):
+    """Walk parent's kids in HN display order, return the first live comment."""
+    for kid_id in parent.get("kids") or []:
+        kid = fetch_hn_item(kid_id)
+        if is_live_comment(kid):
+            return kid
+    return None
+
+
 def pick_comments(story_id):
-    """Return [top1, top1-reply, top2, top2-reply], any of which may be None.
+    """Return [top1, top1-reply, top2, top2-reply], any slot may be None.
 
-    Algolia's `children` array preserves HN's display order, which is HN's
-    ranking — so children[0] is the top comment.
+    HN's Firebase API returns `kids` in HN's display order, so kids[0] is the
+    actual top comment as it appears on the story page.
     """
-    data = fetch_json(ALGOLIA_ITEM.format(id=story_id))
-    top_level = [c for c in (data.get("children") or []) if c.get("text") and c.get("author")]
+    story = fetch_hn_item(story_id)
+    kid_ids = (story.get("kids") if story else None) or []
 
-    def top_reply(comment):
-        replies = [r for r in (comment.get("children") or []) if r.get("text") and r.get("author")]
-        return replies[0] if replies else None
+    live_top = []
+    for kid_id in kid_ids:
+        if len(live_top) >= 2:
+            break
+        kid = fetch_hn_item(kid_id)
+        if is_live_comment(kid):
+            live_top.append(kid)
 
     out = [None, None, None, None]
-    if len(top_level) >= 1:
-        out[0] = top_level[0]
-        out[1] = top_reply(top_level[0])
-    if len(top_level) >= 2:
-        out[2] = top_level[1]
-        out[3] = top_reply(top_level[1])
+    if len(live_top) >= 1:
+        out[0] = live_top[0]
+        out[1] = first_live_kid(live_top[0])
+    if len(live_top) >= 2:
+        out[2] = live_top[1]
+        out[3] = first_live_kid(live_top[1])
     return out
 
 
 def render_comment(comment, label):
     if comment is None:
         return f"<p><em>{label}: (none)</em></p>"
-    author = html.escape(comment.get("author") or "?")
-    # Algolia returns comment .text as HTML already
+    author = html.escape(comment.get("by") or "?")
+    # HN Firebase API returns .text as HTML already
     body = comment.get("text") or ""
     return (
         f'<p><strong>{label}</strong> — <em>{author}</em>:</p>\n'
@@ -87,11 +113,14 @@ def render_comment(comment, label):
 
 
 def build_html(story, comments):
-    article_url = story.get("url") or HN_ITEM_URL.format(id=story["objectID"])
+    sid = story["objectID"]
+    article_url = story.get("url") or HN_ITEM_URL.format(id=sid)
+    hn_url = HN_ITEM_URL.format(id=sid)
     points = story.get("points", 0)
     num_comments = story.get("num_comments", 0)
     parts = [
-        f'<p><a href="{html.escape(article_url, quote=True)}"><strong>→ Read the article</strong></a> '
+        f'<p><a href="{html.escape(article_url, quote=True)}"><strong>→ Article</strong></a></p>',
+        f'<p><a href="{html.escape(hn_url, quote=True)}">→ HN comments</a> '
         f"&nbsp;·&nbsp; {points} points &nbsp;·&nbsp; {num_comments} comments</p>",
         "<hr>",
     ]
@@ -128,11 +157,11 @@ def write_feed(items):
     rendered_items = []
     for it in items:
         pub = format_datetime(datetime.fromtimestamp(it["created_at_i"], tz=timezone.utc))
-        hn_url = HN_ITEM_URL.format(id=it["id"])
+        link = it.get("article_url") or HN_ITEM_URL.format(id=it["id"])
         rendered_items.append(
             "    <item>\n"
             f"      <title>{xml_escape(it['title'])}</title>\n"
-            f"      <link>{xml_escape(hn_url)}</link>\n"
+            f"      <link>{xml_escape(link)}</link>\n"
             f'      <guid isPermaLink="false">hn-{it["id"]}</guid>\n'
             f"      <pubDate>{pub}</pubDate>\n"
             f"      <description>{xml_escape(it['summary'])}</description>\n"
@@ -170,6 +199,7 @@ def main():
             "id": sid,
             "title": story.get("title") or "(no title)",
             "created_at_i": story["created_at_i"],
+            "article_url": story.get("url") or HN_ITEM_URL.format(id=sid),
             "summary": short_summary(story),
             "html": build_html(story, comments),
         })
