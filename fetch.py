@@ -25,6 +25,7 @@ SCORE_THRESHOLD = 125
 MIN_AGE_HOURS = 8
 LOOKBACK_HOURS = 72  # how far back to scan for candidate stories
 MAX_ITEMS = 100  # retained in feed
+GUID_PREFIX = "hn2"  # bump when item rendering changes to force readers to re-ingest
 
 STATE_FILE = Path("state.json")
 FEED_FILE = Path("feed.xml")
@@ -162,7 +163,7 @@ def write_feed(items):
             "    <item>\n"
             f"      <title>{xml_escape(it['title'])}</title>\n"
             f"      <link>{xml_escape(link)}</link>\n"
-            f'      <guid isPermaLink="false">hn-{it["id"]}</guid>\n'
+            f'      <guid isPermaLink="false">{GUID_PREFIX}-{it["id"]}</guid>\n'
             f"      <pubDate>{pub}</pubDate>\n"
             f"      <description>{xml_escape(it['summary'])}</description>\n"
             f"      <content:encoded>{cdata(it['html'])}</content:encoded>\n"
