@@ -1,0 +1,37 @@
+name: Update feed
+
+on:
+  schedule:
+    - cron: '7 * * * *'  # hourly, at :07
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-feed
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: python fetch.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feed.xml state.json
+          if git diff --quiet --cached; then
+            echo "No changes."
+          else
+            git commit -m "Update feed"
+            git push
+          fi
