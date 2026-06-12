@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 12 Jun 2026 01:24:31 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 03:23:28 +0000</lastBuildDate>
     <item>
       <title>Software is made between commits</title>
       <link>https://zed.dev/blog/introducing-deltadb</link>
@@ -1539,6 +1539,23 @@ Since the light map is &quot;only&quot; 8x8 you can afford to do some math on ea
 <blockquote>I say this every time: the average person never wants to hear the letters A and I. Not because it has a negative connotation, but because they don’t care how their phone gets them an answer to “when is my dentist appointment” they just want it to do it.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Linux latency measurements and compositor tuning</title>
+      <link>https://farnoy.dev/posts/linux-latency</link>
+      <guid isPermaLink="false">hn2-48458895</guid>
+      <pubDate>Tue, 09 Jun 2026 09:50:50 +0000</pubDate>
+      <description>125 points, 38 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://farnoy.dev/posts/linux-latency"><strong>→ Article</strong></a></p>
+<p><a href="https://news.ycombinator.com/item?id=48458895">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 38 comments</p>
+<hr>
+<p><strong>Top comment</strong> — <em>nickjj</em>:</p>
+<blockquote>When I switched to Linux from Windows last year I noticed I had a lot of keyboard input latency only when gaming. It was like I had ~100ms of input latency and it felt exactly the same as playing old school Quake I on a dial up connection without client side prediction turned on. It&#x27;s like you&#x27;re skating on ice with a delay when seeing the output vs when you performed the input. This was despite having a solid 60 FPS.<p>Turns out it was due to a combination of things.<p>I was using niri (Wayland window compositor) and this input latency was present with or without v-sync turned on. It happened when I was using a 60hz 4k monitor with an NVIDIA GPU.<p>Then I tried playing the same game on a laptop (same distro and dotfiles) with an AMD GPU and no external monitor. The delay disappeared.<p>Then I played the same game on that laptop but hooked it up to the 4k monitor and I had the same keyboard input latency only when v-sync was enabled. When I turned off v-sync and capped my FPS then the input latency was reduced by an amount that I could no longer perceive the delay.<p>Then I put an AMD GPU in the original desktop I was testing and reproduced the same results as the laptop.<p>However, when I switched to using KDE Plasma with X or Wayland, the keyboard input latency disappeared. This was with the 4k monitor and both NVIDIA and AMD GPUs.<p>I reported it to niri but it hasn&#x27;t gotten traction, I just know I can reproduce it on 2 completely different systems with different GPU vendors and hardware when the common ground is having a 4k 60hz monitor hooked up.</blockquote>
+<p><strong>Reply to top comment</strong> — <em>fasterik</em>:</p>
+<blockquote>I abandoned Windows for a variety of reasons and while I find Linux better in many ways, the graphics and compositing situation is a bummer. To add another example, I was trying to do a screen recording the other day and it was dropping frames like crazy. I don&#x27;t know who to blame, whether it&#x27;s Gnome, or Wayland, or OBS, or Nvidia. But the point is my confidence in the entire ecosystem is low. I have plenty of bad things to say about Microsoft, but I think their track record is quite good when it comes to making low latency input and graphics &quot;just work.&quot;</blockquote>
+<p><strong>Second comment</strong> — <em>audidude</em>:</p>
+<blockquote>&gt; I found it hard to believe we couldn’t get a wakeup timer more granular than 1 ms, so I looked at what KWin was using. Indeed, it was passing the sleep duration in milliseconds to a QBasicTimer.<p>I fixed the same thing in GNOME a few years ago across GLib, GTK, and Mutter&#x2F;GNOME Shell. It required getting glib onto ppoll() finally.</blockquote>
+<p><em>Reply to second comment: (none)</em></p>]]></content:encoded>
+    </item>
+    <item>
       <title>GentleOS – Classic operating system with a lovely retro GUI</title>
       <link>https://github.com/luke8086/gentleos32</link>
       <guid isPermaLink="false">hn2-48458890</guid>
@@ -1804,24 +1821,6 @@ Seems any meaningful Open Projects will have to choose what path they want to ta
 <p><strong>Second comment</strong> — <em>wglb</em>:</p>
 <blockquote>Arxiv reprint: <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.16487" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.16487</a></blockquote>
 <p><em>Reply to second comment: (none)</em></p>]]></content:encoded>
-    </item>
-    <item>
-      <title>FrontierCode</title>
-      <link>https://cognition.ai/blog/frontier-code</link>
-      <guid isPermaLink="false">hn2-48451723</guid>
-      <pubDate>Mon, 08 Jun 2026 20:45:03 +0000</pubDate>
-      <description>136 points, 25 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://cognition.ai/blog/frontier-code"><strong>→ Article</strong></a></p>
-<p><a href="https://news.ycombinator.com/item?id=48451723">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 25 comments</p>
-<hr>
-<p><strong>Top comment</strong> — <em>swyx</em>:</p>
-<blockquote>:wave: i was on the team! AMA.<p>some headlines<p>- 3000 rubrics on code quality. First benchmark to measure: &quot;would this code get actually merged?&quot;<p>- 20+ expert open-source maintainer created tasks on their own repos to capture their opinion &amp; taste.<p>- total 1000+ hours of real life software maintainer work captured in dataset. ON TOP of that, 40+ hours of real human work to turn that real life work into well validated and structured tasks with rubrics (even more work to turn tasks&#x2F;prompts from devin-infra-specific to pluggable coding agent)<p>- results in 81% lower false positive rate than SWE-Bench Pro<p>- High quality bar: many QA stages &amp; each task manually reviewed by Cognition researchers (examples in post)<p>Opus 4.8 scores 13% on FrontierCode Diamond.<p>one of my goals was also to datamine interesting stuff even on the easy tasks. for example, if you squint you can see the answer to &quot;WTF Happened in late 2025&quot; with coding models: <a href="https:&#x2F;&#x2F;x.com&#x2F;swyx&#x2F;status&#x2F;2064081945567580323" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;swyx&#x2F;status&#x2F;2064081945567580323</a></blockquote>
-<p><strong>Reply to top comment</strong> — <em>tedsanders</em>:</p>
-<blockquote>Very cool! So glad to see people building and sharing evals that are better than SWE bench.<p>I&#x27;m curious - any particular reason you didn&#x27;t put error bars on the graphs? Seems like it could be helpful when there are only 50 unique problems in the diamond set.</blockquote>
-<p><strong>Second comment</strong> — <em>vessenes</em>:</p>
-<blockquote>This looks great. Well reasoned, tons of work put into eval, thanks for building it.<p>It strikes me as kind of wild that good evals can drive tens to hundreds of millions of dollars of compute deployment in the wild — there’s something new and collaborative and competitive about the eval &#x2F; frontier model race that’s quite interesting..<p>In this case “shorter actually mergable patches that open source maintainers would accept” feels like a great thing to deliver to the world.<p>I didn’t deep dive into good and bad patches, but I wonder if swyx or others on the team have predictions on saturation. Both when, and how useful will it be? That is, do you guys think this test is broad enough as written to get better behavior out of models, and if there is saturation on this test, will we see generalized better patch &#x2F; coding behavior?</blockquote>
-<p><strong>Reply to second comment</strong> — <em>swyx</em>:</p>
-<blockquote>thanks - credit to silas, eric, ben, and team for the depth of the evals, and the rest of the research team for doing the transcript reading parties lol<p>by nature of being based on open source, frontiercode public will saturate very very quickly. frontiercode main will be &gt;80% in less than a year. hopefully diamond will last a bit longer. we can do annual refreshes, thats not my strategy for staying relevant - what i&#x27;m more excited to get funding for is private held out version of frontiercode based on repros of real enterprise customer problems. in an ideal agent lab (<a href="https:&#x2F;&#x2F;latent.space&#x2F;p&#x2F;agent-labs" rel="nofollow">https:&#x2F;&#x2F;latent.space&#x2F;p&#x2F;agent-labs</a>) you meticulously build up this domain understanding and that is essentially why both model labs and serious customers come to you.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
