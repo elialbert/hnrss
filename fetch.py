@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-"""Generate an RSS feed of aged, high-score HN stories with top comments inline.
+"""Generate an RSS feed of aged, high-score HN stories with a comment tree inline.
 
-For each story above SCORE_THRESHOLD and at least MIN_AGE_HOURS old, we capture
-the title, the article URL (as the item link), the HN comments URL, and four
-comments: the top-level #1, its top reply, the top-level #2, and its top reply.
+For each story above SCORE_THRESHOLD and at least MIN_AGE_HOURS old, we fetch
+a small tree of top comments shaped by TREE_SHAPE: a few top-level comments,
+each with its direct replies and a deeper spine off the first reply.
 
-Story discovery uses Algolia's search API. Comment selection uses HN's official
-Firebase API, whose `kids` array is in HN display order (HN's ranking) —
-Algolia's children array is in creation-time order, which gives wrong "top"
-comments.
+Commenters whose HN accounts are younger than MIN_ACCOUNT_AGE_DAYS are skipped
+— we keep walking kids[] until enough qualifying authors are found, capped by
+MAX_KIDS_TO_SCAN so a story full of new accounts doesn't blow up the request
+budget. Account-age lookups are cached in state.json across runs.
+
+Story discovery uses Algolia's search API. Comment selection and account-age
+lookups use HN's Firebase API. Algolia's children[] is creation-time order;
+Firebase's kids[] is HN display order (HN's ranking), which is what we want
+for "top".
 """
 
 import html
@@ -23,15 +28,27 @@ from xml.sax.saxutils import escape as xml_escape
 
 SCORE_THRESHOLD = 125
 MIN_AGE_HOURS = 8
-LOOKBACK_HOURS = 72  # how far back to scan for candidate stories
-MAX_ITEMS = 100  # retained in feed
-GUID_PREFIX = "hn2"  # bump when item rendering changes to force readers to re-ingest
+LOOKBACK_HOURS = 72
+MAX_ITEMS = 100
+GUID_PREFIX = "hn3"  # bump when item rendering changes to force readers to re-ingest
+
+MIN_ACCOUNT_AGE_DAYS = 3 * 365  # filter out commenters with accounts younger than this
+MAX_KIDS_TO_SCAN = 30  # per parent, cap how deep we look for qualifying kids
+
+# Per top-level slot: how many direct replies + how many extra spine levels off
+# the first reply. spine_extra=2 means first_reply → its_top_reply → its_top_reply.
+TREE_SHAPE = [
+    {"direct": 3, "spine_extra": 2},
+    {"direct": 2, "spine_extra": 2},
+    {"direct": 2, "spine_extra": 2},
+]
 
 STATE_FILE = Path("state.json")
 FEED_FILE = Path("feed.xml")
 
 ALGOLIA_SEARCH = "https://hn.algolia.com/api/v1/search"
 HN_FIREBASE_ITEM = "https://hacker-news.firebaseio.com/v0/item/{id}.json"
+HN_FIREBASE_USER = "https://hacker-news.firebaseio.com/v0/user/{name}.json"
 HN_ITEM_URL = "https://news.ycombinator.com/item?id={id}"
 
 
@@ -61,73 +78,141 @@ def fetch_hn_item(item_id):
     return fetch_json(HN_FIREBASE_ITEM.format(id=item_id))
 
 
+def fetch_user_created(username, cache):
+    """Return account creation Unix timestamp (or None on miss/error).
+    Mutates `cache` in place — misses cache as None too, so we don't refetch."""
+    if username in cache:
+        return cache[username]
+    try:
+        user = fetch_json(HN_FIREBASE_USER.format(name=urllib.parse.quote(username, safe="")))
+    except Exception:
+        cache[username] = None
+        return None
+    created = user.get("created") if user else None
+    cache[username] = created
+    return created
+
+
 def is_live_comment(item):
     return bool(item and not item.get("deleted") and not item.get("dead") and item.get("text"))
 
 
-def first_live_kid(parent):
-    """Walk parent's kids in HN display order, return the first live comment."""
+def passes_age_filter(comment, cache, threshold_ts):
+    by = comment.get("by")
+    if not by:
+        return False
+    created = fetch_user_created(by, cache)
+    return created is not None and created <= threshold_ts
+
+
+def collect_filtered_kids(parent, target, cache, threshold_ts):
+    """Walk parent.kids in HN display order, return up to `target` comments that
+    are live and whose authors pass the age filter. Bounded by MAX_KIDS_TO_SCAN."""
+    out = []
+    scanned = 0
     for kid_id in parent.get("kids") or []:
-        kid = fetch_hn_item(kid_id)
-        if is_live_comment(kid):
-            return kid
-    return None
-
-
-def pick_comments(story_id):
-    """Return [top1, top1-reply, top2, top2-reply], any slot may be None.
-
-    HN's Firebase API returns `kids` in HN's display order, so kids[0] is the
-    actual top comment as it appears on the story page.
-    """
-    story = fetch_hn_item(story_id)
-    kid_ids = (story.get("kids") if story else None) or []
-
-    live_top = []
-    for kid_id in kid_ids:
-        if len(live_top) >= 2:
+        if len(out) >= target or scanned >= MAX_KIDS_TO_SCAN:
             break
+        scanned += 1
         kid = fetch_hn_item(kid_id)
-        if is_live_comment(kid):
-            live_top.append(kid)
-
-    out = [None, None, None, None]
-    if len(live_top) >= 1:
-        out[0] = live_top[0]
-        out[1] = first_live_kid(live_top[0])
-    if len(live_top) >= 2:
-        out[2] = live_top[1]
-        out[3] = first_live_kid(live_top[1])
+        if not is_live_comment(kid):
+            continue
+        if not passes_age_filter(kid, cache, threshold_ts):
+            continue
+        out.append(kid)
     return out
 
 
-def render_comment(comment, label):
-    if comment is None:
-        return f"<p><em>{label}: (none)</em></p>"
+def build_branch(parent, direct, spine_extra, cache, threshold_ts):
+    """Return [{comment, replies}, ...] for `parent`'s direct replies. The first
+    reply gets a recursive spine of length `spine_extra` (siblings stay shallow)."""
+    if direct <= 0 or parent is None:
+        return []
+    replies = collect_filtered_kids(parent, direct, cache, threshold_ts)
+    out = []
+    for i, reply in enumerate(replies):
+        children = (
+            build_branch(reply, 1, spine_extra - 1, cache, threshold_ts)
+            if i == 0 and spine_extra > 0
+            else []
+        )
+        out.append({"comment": reply, "replies": children})
+    return out
+
+
+def build_tree(story_id, cache, threshold_ts):
+    """Build the per-story comment tree per TREE_SHAPE."""
+    story = fetch_hn_item(story_id)
+    if not story:
+        return []
+    top_levels = collect_filtered_kids(story, len(TREE_SHAPE), cache, threshold_ts)
+    tree = []
+    for spec, top in zip(TREE_SHAPE, top_levels):
+        replies = build_branch(top, spec["direct"], spec["spine_extra"], cache, threshold_ts)
+        tree.append({"comment": top, "replies": replies})
+    return tree
+
+
+def article_host(url):
+    """e.g. 'https://www.foo.com/x' → 'foo.com'; empty string for unparseable / non-http."""
+    if not url:
+        return ""
+    try:
+        host = urllib.parse.urlparse(url).hostname or ""
+    except ValueError:
+        return ""
+    return host.removeprefix("www.")
+
+
+def render_comment_html(comment, label):
     author = html.escape(comment.get("by") or "?")
-    # HN Firebase API returns .text as HTML already
-    body = comment.get("text") or ""
+    body = comment.get("text") or ""  # already HTML from Firebase
     return (
-        f'<p><strong>{label}</strong> — <em>{author}</em>:</p>\n'
+        f'<p>{label} — <em>{author}</em>:</p>\n'
         f"<blockquote>{body}</blockquote>"
     )
 
 
-def build_html(story, comments):
+def render_replies(replies, depth):
+    arrow = "↳" * depth
+    parts = []
+    multiple = len(replies) > 1
+    for j, node in enumerate(replies, start=1):
+        label = f"{arrow} reply {j}" if multiple else f"{arrow} reply"
+        parts.append(render_comment_html(node["comment"], label))
+        if node["replies"]:
+            parts.append("<blockquote>")
+            parts.append(render_replies(node["replies"], depth + 1))
+            parts.append("</blockquote>")
+    return "\n".join(parts)
+
+
+def render_tree(tree):
+    parts = []
+    for i, node in enumerate(tree, start=1):
+        parts.append(render_comment_html(node["comment"], f"<strong>Top #{i}</strong>"))
+        if node["replies"]:
+            parts.append("<blockquote>")
+            parts.append(render_replies(node["replies"], 1))
+            parts.append("</blockquote>")
+    return "\n".join(parts)
+
+
+def build_html(story, tree):
     sid = story["objectID"]
     article_url = story.get("url") or HN_ITEM_URL.format(id=sid)
     hn_url = HN_ITEM_URL.format(id=sid)
     points = story.get("points", 0)
     num_comments = story.get("num_comments", 0)
+    host = article_host(story.get("url"))
+    host_tag = f' <small>({html.escape(host)})</small>' if host else ""
     parts = [
-        f'<p><a href="{html.escape(article_url, quote=True)}"><strong>→ Article</strong></a></p>',
+        f'<p><a href="{html.escape(article_url, quote=True)}"><strong>→ Article</strong></a>{host_tag}</p>',
         f'<p><a href="{html.escape(hn_url, quote=True)}">→ HN comments</a> '
         f"&nbsp;·&nbsp; {points} points &nbsp;·&nbsp; {num_comments} comments</p>",
         "<hr>",
+        render_tree(tree),
     ]
-    labels = ["Top comment", "Reply to top comment", "Second comment", "Reply to second comment"]
-    for label, c in zip(labels, comments):
-        parts.append(render_comment(c, label))
     return "\n".join(parts)
 
 
@@ -140,8 +225,10 @@ def short_summary(story):
 
 def load_state():
     if STATE_FILE.exists():
-        return json.loads(STATE_FILE.read_text())
-    return {"items": []}
+        s = json.loads(STATE_FILE.read_text())
+        s.setdefault("authors", {})
+        return s
+    return {"items": [], "authors": {}}
 
 
 def save_state(state):
@@ -188,6 +275,8 @@ def write_feed(items):
 def main():
     state = load_state()
     seen = {it["id"] for it in state["items"]}
+    cache = state["authors"]
+    threshold_ts = int(time.time()) - MIN_ACCOUNT_AGE_DAYS * 86400
 
     candidates = find_candidate_stories()
     added = 0
@@ -195,14 +284,14 @@ def main():
         sid = story["objectID"]
         if sid in seen:
             continue
-        comments = pick_comments(sid)
+        tree = build_tree(sid, cache, threshold_ts)
         state["items"].append({
             "id": sid,
             "title": story.get("title") or "(no title)",
             "created_at_i": story["created_at_i"],
             "article_url": story.get("url") or HN_ITEM_URL.format(id=sid),
             "summary": short_summary(story),
-            "html": build_html(story, comments),
+            "html": build_html(story, tree),
         })
         added += 1
 
@@ -211,7 +300,10 @@ def main():
 
     save_state(state)
     write_feed(state["items"])
-    print(f"Added {added} new items; feed has {len(state['items'])} total")
+    print(
+        f"Added {added} new items; feed has {len(state['items'])} total; "
+        f"author cache: {len(cache)} entries"
+    )
 
 
 if __name__ == "__main__":
