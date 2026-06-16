@@ -4,7 +4,121 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 16 Jun 2026 16:41:17 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2026 18:38:08 +0000</lastBuildDate>
+    <item>
+      <title>Correlated randomness in Slay the Spire 2</title>
+      <link>https://tck.mn/blog/correlated-randomness-sts2/</link>
+      <guid isPermaLink="false">hn3-48552844</guid>
+      <pubDate>Tue, 16 Jun 2026 09:46:49 +0000</pubDate>
+      <description>219 points, 65 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://tck.mn/blog/correlated-randomness-sts2/"><strong>→ Article</strong></a> <small>(tck.mn)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48552844">→ HN comments</a> &nbsp;·&nbsp; 219 points &nbsp;·&nbsp; 65 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>account42</em>:</p>
+<blockquote>&gt; Implementing a PRNG within the codebase instead of calling the C# standard library has an additional advantage: seeds are guaranteed to be the same on all platforms. In Spire 1, seeds on the desktop version of the game were different from seeds on the mobile version of the game, because the standard library implementation of PRNG differed between platforms. It is also worth mentioning that the standard library implementation might change over time, which would break all past seeds.<p>This is the correct conclusion - game developers should consider gameplay-relevant random generators part of their gameplay code rather than platform code.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tveita</em>:</p>
+<blockquote>It also gives you the option of serialising the RNG states directly instead of using the counter hack.</blockquote>
+<p>↳ reply 2 — <em>bilekas</em>:</p>
+<blockquote>&gt; It is also worth mentioning that the standard library implementation might change over time, which would break all past seeds.<p>If the stdLib changes and you need to use the same, then you&#x27;re unfortunately going to be suck with porting the previous version into your own library. It&#x27;s pretty forward thinking from the devs here, I would love to see my boss&#x27; face if I told him we need time to port some of the stdLib incase they update it in the future.<p>I had to check for my own curiosity, but it looks like the Random class has not been updated in 12 or so years. At least in the inital subset of framework to core.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;referencesource&#x2F;commits&#x2F;main&#x2F;mscorlib&#x2F;system&#x2F;random.cs" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;referencesource&#x2F;commits&#x2F;main&#x2F;ms...</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jcalx</em>:</p>
+<blockquote>Combining this article and discovery of an unwinnable seed in the original Slay the Spire [0] — I&#x27;ve always pondered the existence of some kind of &quot;RNG hell&quot;, where a game uses the time as its random seed and, due to some quirk of the hashing function and the game mechanics, the game is rendered completely unwinnable for (say) four days straight. (Sometimes it feels like I&#x27;m in it!)<p>[0] <a href="https:&#x2F;&#x2F;oohbleh.github.io&#x2F;losing-seed&#x2F;" rel="nofollow">https:&#x2F;&#x2F;oohbleh.github.io&#x2F;losing-seed&#x2F;</a></blockquote>
+<p><strong>Top #3</strong> — <em>darepublic</em>:</p>
+<blockquote>&gt; (By the way, floor 2 Corpse Slugs will both be attacking on turn 1 less than 3% of the time. How nice of them!)<p>I assumed that was just deterministic.  Didn&#x27;t realize the game permitted such a challenge on floor 2 :(</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Feds freaked over Fable 5 after 'fix this code', not jailbreak, say researchers</title>
+      <link>https://www.theregister.com/security/2026/06/15/feds-freaked-over-fable-5-after-simple-fix-this-code-prompt-not-jailbreak-says-researcher/5255827</link>
+      <guid isPermaLink="false">hn3-48552687</guid>
+      <pubDate>Tue, 16 Jun 2026 09:26:09 +0000</pubDate>
+      <description>474 points, 286 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theregister.com/security/2026/06/15/feds-freaked-over-fable-5-after-simple-fix-this-code-prompt-not-jailbreak-says-researcher/5255827"><strong>→ Article</strong></a> <small>(theregister.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48552687">→ HN comments</a> &nbsp;·&nbsp; 474 points &nbsp;·&nbsp; 286 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dathinab</em>:</p>
+<blockquote>Lol &quot;fix this code&quot; is beautiful.<p>Like it basically jail broke the &quot;no security vul guard rails&quot; not in any clever way but just by fixing them, producing exploit code just by writing test cases making sure it&#x27;s fixed. So you just need to look at the code &amp; tests as a human to get vulnerabilities and exploits(components).<p>What makes this so beautiful IMHO is that it&#x27;s a trivial jail break, but also a close to unfixable. At least not without making the model close to useless for normal development (it refuses to fix bugs&#x2F;write code) or making it a major liability (it silently pretends it didn&#x27;t see bugs and silently avoids fixing it, which for a human would count as intentional sabotage and might involve criminal liability).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>HarHarVeryFunny</em>:</p>
+<blockquote>Exactly - it effectively is a &quot;jail break&quot; since it accomplishes something the model&#x27;s security filter was trying to prevent, and the ridiculous simplicity of it shows just how broken that type of security is.<p>I wonder if Dario is now regretting hyping up how dangerous the model is? How does he walk this back? Do the feds let him just put a band-aid on it?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bitexploder</em>:</p>
+<blockquote>I also have a 100% success rate jail breaking them by breaking the work down into small pieces and stripping all security related language. Smaller tasks, test engineering and normal programming language. Fable found a few bugs in my harness for me before they pulled it. I was testing it vs ChatGPT, Gemini, and Opus. It was doing well at bug hunting.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>pixl97</em>:</p>
+<blockquote>&gt;by breaking the work down into small pieces and stripping all security related language<p>Compartmentalization in practice, nice. It&#x27;s also very hard to do anything about because the agents that have been divided rarely realize they are working on something larger, hence why militaries and businesses with security risks commonly do this with their employees.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>neuronexmachina</em>:</p>
+<blockquote>Also worth noting that the main touted difference with Claude Mythos isn&#x27;t it&#x27;s ability to find vulnerabilities, but rather chaining them together to create full useable exploits. I haven&#x27;t heard of any evidence that the Claude Fable &quot;fix this code&quot; jailbreak could have been used to do exploit-chaining.</blockquote>
+<p>↳ reply 3 — <em>giancarlostoro</em>:</p>
+<blockquote>This is the weird distinction with AI that I&#x27;ve complained about for ages, how can we make it do lawful good, its nearly impossible. Ask an AI to give you regex to filed our racial slurs, and things fall apart really quickly, it scolds you about not saying slurs. Even though regex implies it looks nearly nothing like a slur.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>martinald</em>:</p>
+<blockquote>If you set aside political menace, this is a huge problem with Anthropic&#x27;s strategy.<p>You _cannot_ say that Mythos is super dangerous and can only be rolled out to certain people, but then release Fable with anything other than bulletproof cyber denials.<p>Clearly with LLMs, bulletproof denials are ~impossible due to the way LLMs work.<p>So you&#x27;ve ended up in a situation where Anthropic are simultaneously claiming it&#x27;s a incredibly dangerous model _and_ there are (minor, potentially) problems with the security &quot;protections&quot;.<p>As technical people we understand that nothing can be perfect, esp in LLM world. But all my non technical friends were really confused how they had managed to make the model &quot;safe&quot; so quickly when it was released and the general sentiment was it shouldn&#x27;t have been released - and now to an outsider I think it looks like it was never safe at all to release, so I can totally see how the current US administration have got themselves very upset with it.<p>_Even if_ there was no political bad will, it&#x27;s a bit of a silly scenario to end up in, and really quite easily foreseen.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pjc50</em>:</p>
+<blockquote>&gt; Clearly with LLMs, bulletproof denials are ~impossible due to the way LLMs work<p>Exactly. AI safety is nonsensical. You cannot define the set of &quot;bad strings&quot;. The billion monkeys with typewriters are eventually going to be able to produce them. Any &quot;safety&quot; system for constraining LLM output is going to have a nonzero leak rate.<p>But on the other hand, this is also irrelevant, unless you&#x27;re irresponsible enough to connect an LLM to something that actually matters.<p>Yes, it&#x27;s going to alarmingly accelerate vulnerability finding. But, as we know from decades of security research, that&#x27;s a three way problem already between the devs, the black hats, and the white hats.<p>Let&#x27;s not pretend the strategy of &quot;the US will always have a technological advantage and veto over China&quot; will work either.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>camel-cdr</em>:</p>
+<blockquote>&gt; unless you&#x27;re irresponsible enough to connect an LLM to something that actually matters<p>Remember when people said Artifical Intelligence woun&#x27;t be dangerous, because nobody will be stupid enough to give it free access to the internet...</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>amalcon</em>:</p>
+<blockquote>I do find it hilarious that Asimov wrote many stories about how simple bright-line rule-based systems are ineffective for restricting agency.  Those stories were first published in the 1940s.<p>80 years later, we have something approximating AI, and we&#x27;re trying to restrict it with simple bright-line rules.  Not because we never learned that lesson, but because we simply <i>haven&#x27;t come up with a better way to do it</i>.  Probably because a better way to do it just doesn&#x27;t exist.<p>The hilarious part, though, is that it&#x27;s not the AI that&#x27;s working around the rules.  That&#x27;s the scenario that&#x27;s been in science fiction, but it&#x27;s not what&#x27;s happening.  It&#x27;s the human users making use of <i>our</i> agency to get the AI agents to work around the rules.  Despite calling them &quot;agents&quot;, current AI agents don&#x27;t seem to be able to that particular something.  Yet, at least.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>peter422</em>:</p>
+<blockquote>Also for all the people saying Amazon&#x27;s part in this couldn&#x27;t be fabricated, remember that Amazon is a &quot;friend of the administration&quot;. During Andy Jassy&#x27;s tenure, they paid $75MM (wildly outbidding everybody else) for a Melania documentary that grossed ~16MM, a move publicly defended by Jeff Bezos. Any neutral observer could see this was a wild overpay, and after the fact, a terrible business move. But that is not what Amazon said or continues to say. This was just a bribe with more steps to it.<p>When the government comes out and says this is due to something Amazon pointed out, even if that is a complete lie, they know that Amazon won&#x27;t say anything publicly about it. Amazon wants to maintain their &quot;friend of the administration&quot; status that they paid a lot of money to get.<p>It is frustrating for all of us to have to think about our government like this, but if you just look at the reality of what is happening it is very difficult to trust not only anything the government is saying, but also anything companies aligned with the government are saying.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Commodore Releases Flip Phone</title>
+      <link>https://commodore.net/why-a-flip-phone/</link>
+      <guid isPermaLink="false">hn3-48552614</guid>
+      <pubDate>Tue, 16 Jun 2026 09:15:31 +0000</pubDate>
+      <description>150 points, 94 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://commodore.net/why-a-flip-phone/"><strong>→ Article</strong></a> <small>(commodore.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48552614">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 94 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>pimterry</em>:</p>
+<blockquote>Some scepticism here I see, but personally I think this is spot-on. I&#x27;ve been keen on a dumber phone for a while, but losing whatsapp &amp; maps makes it a non-starter for any real use. This is an excellent middle ground. The aesthetic is cool, and building this on Sailfish but with Android compatibility is awesome. Big fan of the concept.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>erickhill</em>:</p>
+<blockquote>The skepticism isn&#x27;t around the concept (for some) - it&#x27;s the bonkers $500 price tag when you can go get a 5G military grade waterproof flip phone with a very robust removable battery and much more impressive tech&#x2F;stats for $200.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>acupofnope</em>:</p>
+<blockquote>I’d be interested in this military grade phone, where can one acquire it?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>kamma4434</em>:</p>
+<blockquote>For me, Id say that whatsapp <i>is</i> the phone. It’s so much better than pstn…</blockquote>
+<p>↳ reply 3 — <em>SirFatty</em>:</p>
+<blockquote>maps exist, you must have missed that... as for whatsapp, I have never used it once, and yet my phone provides &quot;real use&quot; (whatever that means).</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Gracana</em>:</p>
+<blockquote>Retrocomputing Roundtable has talked about the new Commodore company over the course of a couple episodes, and I thought they brought up a good point about “what is it that people actually want from Commodore,” and the best answer they came up with is “to be 12 again.”<p>A new C64 with modern video output, a disk emulator, a SID chip replacement so you don’t need an original… that’s all good, but beyond that, it’s hard to say. This phone, though? I don’t think anyone saw that coming, and I don’t see how this could possibly be the right move.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nkmnz</em>:</p>
+<blockquote>I had my first flip phone at the age of ... 12! And I can definitely see myself replacing my iPhone 12 with something like that once its battery has died. I don&#x27;t need 99% of functionality of a smartphone, because I own (and carry along with me) a computer with a physical keyboard at all times - except those where this phone would do 99.9% of the jobs a smartphone would do.<p>Edit: just saw the price point. Nevermind, not going to spend more than 50 bucks on that.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Gracana</em>:</p>
+<blockquote>I&#x27;m at my computer now and I took a second look, and honestly that beige edition is damn good nostalgia bait. I still find it to be an odd direction to go, but it does look very good for what it is.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>kamma4434</em>:</p>
+<blockquote>At 50&#x2F;100$ it would be great but for 500$ I’m not sure</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jonhohle</em>:</p>
+<blockquote>Not only that, but this is exactly the kind of phone I get for my 12 yo. I love that it doesn’t even have a browser that I’d need to try to disable via ADB or some other hack. If it’s nicer than KaiOS, and compatible with the right networks, it could be a win for the parents and tweens.<p>Edit: then I saw the price. Holy crap, I’ll stick with a $25 Blu.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>rickdeckard</em>:</p>
+<blockquote>Nice, but a little bit too thin on details to read this as more than &quot;we ordered a Commodore-branded Sailfish-OS phone from an ODM&quot;.<p>If it would be more &quot;considerate&quot; from hardware (or even software) perspective it could be compelling, but from the infos on that page it sounds more like a &quot;memberberry&quot; product<p>(like e.g. a phone from Kodak, Sega, Atari,... built on the business decision of [product-cost] + [branding] = [potential price-premium of xxx USD])</blockquote>
+<blockquote>
+<p>↳ reply — <em>branon</em>:</p>
+<blockquote>&gt; we ordered a Commodore-branded Sailfish-OS phone from an ODM<p>Is this true? I did some research on flip phones the other week and I didn&#x27;t turn up anything running Sailfish. Options seemed limited to<p>* custom AOSP derivatives (Punkt, Sunbeam, Kyocera, others - most common)<p>* older KaiOS devices (Nokia 2780 and friends)<p>* Nokia S30+ devices (traditional proprietary feature-phone firmware, somehow Nokia is still producing these)<p>Are there any other examples of Sailfish phones being vendored similar to how Commodore is doing theirs?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>philistine</em>:</p>
+<blockquote>Not in North America, no but that&#x27;s what people are saying; they simply imported the structure of SailfishOS that&#x27;s used in other parts of the world.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>I Could've Rickrolled the FIFA World Cup. All I Needed Was My ID</title>
       <link>https://bobdahacker.com/blog/fifa-hack</link>
@@ -131,6 +245,22 @@ Which basically expanded back in the day to 65k reads of 1 byte for several MB f
 </blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: Garden of Flowers – an archive of pictorial typography before ASCII art</title>
+      <link>https://garden-of-flowers.heikkilotvonen.com/</link>
+      <guid isPermaLink="false">hn3-48550569</guid>
+      <pubDate>Tue, 16 Jun 2026 04:25:57 +0000</pubDate>
+      <description>126 points, 19 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://garden-of-flowers.heikkilotvonen.com/"><strong>→ Article</strong></a> <small>(garden-of-flowers.heikkilotvonen.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48550569">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 19 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>quakeguy</em>:</p>
+<blockquote>Very nice, i have a book in my library which you’ll find interesting.<p>Jeremy Adler and Ulrich Ernst<p>Text als Figur<p><a href="https:&#x2F;&#x2F;www.amazon.de&#x2F;Text-als-Figur-Visuelle-Moderne&#x2F;dp&#x2F;3527178163" rel="nofollow">https:&#x2F;&#x2F;www.amazon.de&#x2F;Text-als-Figur-Visuelle-Moderne&#x2F;dp&#x2F;352...</a><p>It is full of pictures like you have collected.<p>Example:<p><a href="https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;mWL4kSs" rel="nofollow">https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;mWL4kSs</a><p>Sadly it seems this book is rather rare.</blockquote>
+<p><strong>Top #2</strong> — <em>contingencies</em>:</p>
+<blockquote>I noticed Asia is severely underrepresented. This is normal in western collections, but there are exceptions. You should find great examples from China, Iran, pre-colonial India, Japan, and Vietnam. Some potential leads on works you haven&#x27;t catalogued: (1) The collection search site for the Dutch &#x27;Wereldmuseum&#x27; in Rotterdam, which houses the state collection (they were the first to Japan). (2) The same for Lisbon&#x27;s Asian Art museum. (3) International Dunhuang Project, affiliated with the British Library, which has some of the earliest printed works in Asia catalogued, some of which have graphic elements. (4) Musee Guimet, Paris. (5) The Print Museum in Lyon (excellent). (6) The Technical Museum in Prague (great printing and photography holdings). (7) Asian art auction records.</blockquote>
+<p><strong>Top #3</strong> — <em>BugsJustFindMe</em>:</p>
+<blockquote>Hey, this archive you&#x27;ve put together is extremely impressive. How did you find all of these? Literally keyword search on digital collections?</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Microsoft turns to AWS as GitHub faces AI capacity crunch</title>
@@ -2683,6 +2813,29 @@ LLMs have obviously progressed since, but the principle still stands that they w
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>The Manhoff Archives: Color photos of Stalin-era USSR taken by a US diplomat</title>
+      <link>https://www.rferl.org/a/the-manhoff-archive/28359558.html</link>
+      <guid isPermaLink="false">hn3-48523126</guid>
+      <pubDate>Sun, 14 Jun 2026 00:59:08 +0000</pubDate>
+      <description>146 points, 50 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.rferl.org/a/the-manhoff-archive/28359558.html"><strong>→ Article</strong></a> <small>(rferl.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48523126">→ HN comments</a> &nbsp;·&nbsp; 146 points &nbsp;·&nbsp; 50 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>0xDEAFBEAD</em>:</p>
+<blockquote>&quot;According to Smith, after Manhoff’s wife died he was asked to check the home of a former official for valuable memorabilia.&quot;<p>I wonder how much valuable memorabilia is just getting thrown away because no one thought to check for it.<p>Here&#x27;s your nudge to ask your older relatives about their memorabilia, and record conversations with them while they are still alive.<p>If you want to put the info online somewhere to increase the chance that it&#x27;s useful to someone someday, you could try a free genealogy website like familysearch.org or wikitree.com</blockquote>
+<p><strong>Top #2</strong> — <em>dctoedt</em>:</p>
+<blockquote>More information about the origins of the collection and the photographer (a U.S. Army officer, assistant military attaché): <a href="https:&#x2F;&#x2F;manhoffarchive.org&#x2F;narratives&#x2F;intro" rel="nofollow">https:&#x2F;&#x2F;manhoffarchive.org&#x2F;narratives&#x2F;intro</a></blockquote>
+<p><strong>Top #3</strong> — <em>usrnm</em>:</p>
+<blockquote>Interesting and sad to see the ratio of women to men doing hard manual work in these photos, even road repairs are done by women. It&#x27;s mind boggling how devastating the war was for the country.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>robotnikman</em>:</p>
+<blockquote>The Soviets were one of the few countries where Women were employed on the front lines during the war. They were tank drivers, anti aircraft gunners, pilots, snipers.<p>A famous unit of all women pilots known as the &#x27;Night Witches&#x27; made a name for themselves during the war
+<a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Night_Witches" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Night_Witches</a></blockquote>
+<p>↳ reply 2 — <em>readthenotes1</em>:</p>
+<blockquote>That&#x27;s a funny take these days, that women are too dainty to do &quot;men&#x27;s work&quot;. Should they be kept barefoot in the kitchen? Or just allowed in women&#x27;s jobs?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Honda Civics and the Evil Valet</title>
       <link>https://juniperspring.org/posts/honda-evil-valet/</link>
       <guid isPermaLink="false">hn3-48523080</guid>
@@ -2768,6 +2921,32 @@ with some games.</blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>pjmlp</em>:</p>
 <blockquote>Only if it keeps being relevant for the computing model.<p>Case in point, ReactOS is far behind what Windows 11 is capable of, and this not taking into account the ARM and CoPilot+ PC hardware changes in modern motherboards.<p>It is nonetheless relevant, especially in the presence of escape mechanisms to oppressive governments, and digital sovereignty.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Getting Creative with Perlin Noise Fields</title>
+      <link>https://sighack.com/post/getting-creative-with-perlin-noise-fields</link>
+      <guid isPermaLink="false">hn3-48522316</guid>
+      <pubDate>Sat, 13 Jun 2026 22:55:39 +0000</pubDate>
+      <description>128 points, 20 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://sighack.com/post/getting-creative-with-perlin-noise-fields"><strong>→ Article</strong></a> <small>(sighack.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48522316">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 20 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>smcameron</em>:</p>
+<blockquote>Curl Noise[1] is also cool.  I&#x27;ve used it to create some gas giant planets for video games [2] though I used opensimplex noise [3] rather than perlin as the base noise, but either will work.<p>[1] <a href="https:&#x2F;&#x2F;www.cs.ubc.ca&#x2F;~rbridson&#x2F;docs&#x2F;bridson-siggraph2007-curlnoise.pdf" rel="nofollow">https:&#x2F;&#x2F;www.cs.ubc.ca&#x2F;~rbridson&#x2F;docs&#x2F;bridson-siggraph2007-cu...</a>
+[2] <a href="https:&#x2F;&#x2F;github.com&#x2F;smcameron&#x2F;gaseous-giganticus" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;smcameron&#x2F;gaseous-giganticus</a>
+[3] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenSimplex_noise" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenSimplex_noise</a></blockquote>
+<p><strong>Top #2</strong> — <em>thomascountz</em>:</p>
+<blockquote>If you&#x27;re into exploring this sort of thing yourself, I can extremely highly recommend Daniel Shiffman&#x27;s Nature of Code[1]. It&#x27;s among my top-5 recommended books about computing in general, let alone for algorithmic art.<p>[1]: <a href="https:&#x2F;&#x2F;natureofcode.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;natureofcode.com&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>FeteCommuniste</em>:</p>
+<blockquote>Also his &quot;Coding Train&quot; videos on YouTube: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;@TheCodingTrain" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;@TheCodingTrain</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mvanga</em>:</p>
+<blockquote>Author here. I wrote this many years ago (2017?) while exploring techniques to create art that I could put up on my walls :-) If you enjoyed this article there are more similar ones linked on the main page: <a href="https:&#x2F;&#x2F;sighack.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;sighack.com&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>liendolucas</em>:</p>
+<blockquote>Iteration 19 is particularly beautiful if you look at it with polarized glasses, it almost looks like a 3d effect.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3655,240 +3834,6 @@ I had to told it to fix two bugs then.<p>Overall, the graphics and games seems g
 <blockquote>
 <p>↳ reply — <em>foltik</em>:</p>
 <blockquote>&gt; &#x27;Security&#x27; is clearly a pretense, as otherwise the demand would not have been restricted to &#x27;foreign nationals&#x27;.<p>Given everything else this administration has done, you now decide to accept their stated intentions <i>at face value</i>?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Open source AI must win</title>
-      <link>https://opensourceaimustwin.com/?share=v2</link>
-      <guid isPermaLink="false">hn3-48511908</guid>
-      <pubDate>Sat, 13 Jun 2026 02:14:24 +0000</pubDate>
-      <description>1577 points, 471 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://opensourceaimustwin.com/?share=v2"><strong>→ Article</strong></a> <small>(opensourceaimustwin.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48511908">→ HN comments</a> &nbsp;·&nbsp; 1577 points &nbsp;·&nbsp; 471 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>palisade</em>:</p>
-<blockquote>I&#x27;ve been contemplating a decentralized model training system for some time using volunteer machines that we all contribute. But, it is astronomically difficult. The communication speeds are untenable.<p>And, there is the issue of data poisoning from untrusted nodes. I&#x27;ve almost cracked that last issue with a self-healing checkpointed rollback system that doesn&#x27;t have to throw out anything that follows the corrupt datum.<p>But, I&#x27;m just one person with an idea and I don&#x27;t have infinite funds to make this happen. This isn&#x27;t a small project.<p>Maybe there would be interest in something like this, now that entire frontier labs are being banned from making further progress.<p>The total power of all GPUs on the planet dwarf their capabilities, if we had a way to harness them in a distributed way efficiently. We wouldn&#x27;t be able to train a Fable as fast as them, but eventually having access is better than never having access.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>sho</em>:</p>
-<blockquote>As I replied to a child comment - this is a nice idea that just isn&#x27;t tenable in reality. AI hardware isn&#x27;t just hilariously faster than consumer GPUs, it&#x27;s also hilariously more power-efficient and has hilariously better connectivity. Every one of these dimensions kills the idea.<p>The far, FAR superior power efficiency means that even if you did harness every public GPU or GPU-like device on earth, you&#x27;d end up consuming so much excess electricity it would be cheaper on net to simply take the money that would have gone to the power bill and spend it on your own datacenter.<p>And even if electricity was free, having those GPUs spread over the world with internet-level latency will slow everything down by factors of thousands to millions - if it&#x27;s feasible at all. Regardless, you&#x27;re not getting fable-oss this decade, maybe even not this century.<p>It would be better for governments to buy and own their own datacenters, maybe as a coalition, and dedicate their operation to the public good. I believe that is what we actually have to do.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>incrudible</em>:</p>
-<blockquote>&gt; As I replied to a child comment - this is a nice idea that just isn&#x27;t tenable in reality. AI hardware isn&#x27;t just hilariously faster than consumer GPUs, it&#x27;s also hilariously more power-efficient and has hilariously better connectivity. Every one of these dimensions kills the idea.<p>The first part is not really true though, the chips are not that much faster, the DRAM is not that much faster, and in aggregate it does not matter because there is just so much more consumer hardware out there (although perhaps that is changing as supply shifts toward datacenters).<p>The interconnect and data locality <i>is</i> the problem. If you could train it like e.g. you can render a scene with monte carlo ray tracing, any result from any node could be merged with any other and the combined result would have converged closer to the limit. I am sure research in that direction exists, it just has not proven effective within the scales it has been attempted.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>trenchgun</em>:</p>
-<blockquote>&gt;But when people think of decentralized training, they don’t first think of gigantic datacenters, owned by the same company, training models across large distances. Instead, they imagine thousands of small datacenters, or individual consumers, pooling their spare compute over the internet to orchestrate a training run larger than any single actor could manage alone.
-Many companies are pursuing this vision: Pluralis Research, Prime Intellect and Nous Research have already successfully decentrally trained models at scale. But in practice, training decentrally over the internet has lagged far behind more centralized training. Even their largest models (Pluralis’ 8B Protocol Model, Prime Intellect’s INTELLECT-1, and Nous’ Consilience 40B) have been trained with 1,000x less compute than today’s frontier models (such as xAI’s Grok 4).
-<a href="https:&#x2F;&#x2F;epoch.ai&#x2F;gradient-updates&#x2F;how-far-can-decentralized-training-over-the-internet-scale" rel="nofollow">https:&#x2F;&#x2F;epoch.ai&#x2F;gradient-updates&#x2F;how-far-can-decentralized-...</a></blockquote>
-<p>↳ reply 3 — <em>girvo</em>:</p>
-<blockquote>&gt; The total power of all GPUs on the planet dwarf their capabilities<p>That just isn&#x27;t true. It misunderstands exactly how much silicon has gone directly to those companies, and exactly how much more powerful said silicon is compared to consumer grade gear.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>xtracto</em>:</p>
-<blockquote>This, and distributed LLM inference. We are at a point where no single person can setup a rig to run a SOTA model, it is just too expensive.<p>So we must build and adopt frameworks that allow individuals to share resources to run SOTA models in a distributed manner. That way they will also be non-censorable by governments.<p>Also The only way to prevent that one entity weaponizes it, is by giving EVERYONE access to it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mythern</em>:</p>
-<blockquote>I propose the TokenTorrent protocol. Hoist yer pirate, erhm, clanker flags!</blockquote>
-<p>↳ reply 2 — <em>taylorhou</em>:</p>
-<blockquote>I built Teale.com and opensourced it. My domain contribution to society. It powers fully distributed inference on Mac, windows, Linux, android, iOS, hell even harmonyOS.<p>Opensource&#x2F;weight models will get better and better and eventually we will have mythos level running on smartphone&#x2F;eyeglass hardware.<p>It is stupidly tedious currently to match supply with demand though because physical hardware like a 16gb ram MacBook doesn&#x27;t mean there&#x27;s truly 16gb available let alone matching models and all of their settings (kvcache, context limit, temperature, etc) to demand.<p>Would appreciate any help cus we need ai inference by the people for the people.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>edg5000</em>:</p>
-<blockquote>When &quot;open source&quot; means freeware, it&#x27;s like saying &quot;we want free copies&quot;.<p>What we should be saying is: We want a public, community-ran project that does pretraining and training collectively. This means working on a training corpus in public and somehow coordinating the training work.<p>This is a complete change of what the term means, It&#x27;s like how people conflate piracy with theft. Two different things, use different words. Free weights, inference code and chat template is very different from a community-ran LLM project.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Ifkaluva</em>:</p>
-<blockquote>You might be describing EleutherAI</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>We've suspended access to Claude Mythos 5 and Claude Fable 5</title>
-      <link>https://status.claude.com/incidents/s9w82lp9dcn9</link>
-      <guid isPermaLink="false">hn3-48511121</guid>
-      <pubDate>Sat, 13 Jun 2026 00:58:06 +0000</pubDate>
-      <description>253 points, 5 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://status.claude.com/incidents/s9w82lp9dcn9"><strong>→ Article</strong></a> <small>(status.claude.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48511121">→ HN comments</a> &nbsp;·&nbsp; 253 points &nbsp;·&nbsp; 5 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>taspeotis</em>:</p>
-<blockquote>Did they suspend it again??<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48511072">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48511072</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>jesterson</em>:</p>
-<blockquote>There is no harm to suspend something twice. Especially is the something doesn&#x27;t exist :)</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Statement on US government directive to suspend access to Fable 5 and Mythos 5</title>
-      <link>https://www.anthropic.com/news/fable-mythos-access</link>
-      <guid isPermaLink="false">hn3-48511072</guid>
-      <pubDate>Sat, 13 Jun 2026 00:51:30 +0000</pubDate>
-      <description>3130 points, 2295 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/news/fable-mythos-access"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48511072">→ HN comments</a> &nbsp;·&nbsp; 3130 points &nbsp;·&nbsp; 2295 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ivraatiems</em>:</p>
-<blockquote>When you spend a lot of time telling people how dangerous your products are, people who have the power to keep dangerous products off the market might listen.<p>Especially if those people aren&#x27;t presently very bright, and are already mad at you for not helping them achieve their unrelated authoritarian goals.<p>I do not think this is somehow a 3D chess move by Anthropic. They are not masterminds, even if they&#x27;d really like to be. People who actually interact with their products know that Fable and Mythos are incremental improvements, not doomsday devices. I think this is a punitive move by an administration that loves being punitive, which they have unknowingly bolstered with their own dumb rhetoric.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>replwoacause</em>:</p>
-<blockquote>&gt; Especially if those people aren&#x27;t presently very bright, and are already mad at you for not helping them achieve their unrelated authoritarian goals.<p>Just more corrupt behavior from the contemptible kakistocracy that&#x27;s busy running things into the ground and enriching themselves while they&#x27;re at it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sh34r</em>:</p>
-<blockquote>Sometimes, the enemy of my enemy is my friend.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>MattDamonSpace</em>:</p>
-<blockquote>The driving force behind most presidential votes</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>resonious</em>:</p>
-<blockquote>My gut reaction was that it does look like a PR stunt. But indeed it might also be a blunder caused by all of their other PR stunts. &quot;Our new stuff is soooo dangerous!!&quot;, followed by &quot;The US government believed us and acted accordingly&quot;.</blockquote>
-<p>↳ reply 3 — <em>espeed</em>:</p>
-<blockquote>What&#x27;s dangerous is Opus 4.8&#x27;s proclivity to create backdoors and no-op critical security code. Claude Web counted 27 instances of this I had cataloged over the last few months, and Fable 5 found more. Fable 5 may do this too, but I didn&#x27;t get a long enough chance to test it since it kept downgrading to Opus 4.8 on every prompt saying, &quot;This model has safety measures that flagged something in this session&quot;, even when asking Fable 5 to fix the security issues it found that Opus 4.8 created. You have a model that presumably can write secure code and identify security vulnerabilities, but as a security measure, they say we&#x27;re going to force you to use a model that creates security holes. This is backwards. Considering the scale, Opus 4.8 is creating more issues than Mythos or Fable 5 is patching.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>holmesworcester</em>:</p>
-<blockquote>I think we should see this as simply silly behavior by a government.<p>Export control is not an effective tool for controlling a consumer facing technology developers everywhere want to use (see:VPNs) so there was no good faith policy justification for imposing an export control.<p>This is an administration that seems to be keeping track of who its friends are and aren&#x27;t, and likes to be the center of every story. They also seem to like extracting concessions and reciprocal favors. We saw some of this behavior in the last administration too. US voters deserve better.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>libraryofbabel</em>:</p>
-<blockquote>I am saying this probably is &quot;silly behavior by a government&quot; <i>and</i> it is a milestone that points towards what the future may look like. Why can&#x27;t it be both?<p>It&#x27;s easy to wave this aside as the current administration playing political games. But I don&#x27;t think there is any reason to assume that the current era of open availability of models is going to continue indefinitely. Do you think that Chinese labs will continue to release open models forever, even why they get to the level that Mythos is at now, and beyond? And do you think that a <i>competent</i> US government would have no interest in regulating and restricting model access in 2 years time, assuming that model capabilities continue to improve? I think we bias towards thinking the status quo is the norm and will continue, but this news invites us to question that assumption and think about different ways the future could go.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>gpm</em>:</p>
-<blockquote>&gt; Do you think that Chinese labs will continue to release open models forever<p>Yes.<p>I think the Chinese government either already has, or will soon, grasp that if they train the models that people use they dictate what people believe (at least around the margins where that&#x27;s malleable), and they will happily throw resources at that.<p>And simultaneously that the only way they can actually get everyone to use their models is if it&#x27;s possible for us to run them on our own hardware.<p>(This isn&#x27;t exactly a utopian view of the future)</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jychang</em>:</p>
-<blockquote>This is going to age very poorly when the best Chinese labs ALREADY just started not open sourcing their models.<p>Qwen 3.7 is not open source; previous Qwen versions would have open source releases, but Qwen 3.7 plus does not. The second best Chinese model, Minimax M3, is testing the waters by taking longer and longer between “model release” and open sourcing it. This time, they spent 2 weeks after release before open sourcing it. There’s also a lot of rumors of GLM and Deepseek not open sourcing future models.<p>It’s pretty obvious that you cannot take Chinese models as open source for granted, they’ll be closed source soon.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>geuis</em>:</p>
-<blockquote>I still remember when Netscape had outdated ssl for a few years because more advanced cryptography was classified by the US gov as armaments or something. Basically used export restrictions to prevent better security technology from being adopted into commercial products.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>stingraycharles</em>:</p>
-<blockquote>So isn’t the only logical conclusion that we have reached the max of model capabilities that the US allows to be made available to the public? Why invest in smarter models with this precedent?<p>And potentially more importantly: if a model like Mythos, which at best is an incremental improvement over Opus, is getting this treatment, how are all the AI investments that are based on the expectation of ASI &#x2F; AGI &#x2F; significantly better models going to be recouped?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ncallaway</em>:</p>
-<blockquote>It seems more likely that the logical conclusion is the executive branch is mad at Anthropic, and lashing out at them with any convenient tool that they have.<p>I suspect if OpenAI or Grok was operating at the same level they wouldn’t find themselves on the sharp end of the government stick</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rw2</em>:</p>
-<blockquote>Anthropic&#x27;s own marketing and urban legends spawned by them is to blame too. They built up too much BS around mythos and project glasswing</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>kccqzy</em>:</p>
-<blockquote>Marketing is never ever to blame. Remember a few months ago when the U.S. government labelled them a supply chain risk? What eventually happened was that a federal judge issued a temporary injunction while calling it a &quot;classic First Amendment retaliation.&quot; The Constitution protects such marketing; the government is not allowed to be maddened by such marketing.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>madrox</em>:</p>
-<blockquote>I wouldn&#x27;t say so. Once upon a time, a PlayStation 2 was too powerful to export: <a href="https:&#x2F;&#x2F;www.pcmag.com&#x2F;news&#x2F;20-years-later-how-concerns-about-weaponized-consoles-almost-sunk-the-ps2" rel="nofollow">https:&#x2F;&#x2F;www.pcmag.com&#x2F;news&#x2F;20-years-later-how-concerns-about...</a><p>ChatGPT 2 was once too powerful to release.<p>AI has been moving faster than culture and thinking around it. Once we&#x27;ve adapted to what these models can do we&#x27;ll relax a little, and then a new stepwise improvement will start it all over again. It always goes this way.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Putt.day a daily mini golf game</title>
-      <link>https://putt.day/</link>
-      <guid isPermaLink="false">hn3-48510341</guid>
-      <pubDate>Fri, 12 Jun 2026 22:56:06 +0000</pubDate>
-      <description>312 points, 110 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://putt.day/"><strong>→ Article</strong></a> <small>(putt.day)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48510341">→ HN comments</a> &nbsp;·&nbsp; 312 points &nbsp;·&nbsp; 110 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Retr0id</em>:</p>
-<blockquote>Feels like there&#x27;s too much rolling resistance, even with a perfectly lined up shot there&#x27;s not so far you can go. And definitely not enough to make it in 6!<p>Also if the camera angle is too high, you can&#x27;t pull back far enough to reach maximum speed.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>munro</em>:</p>
-<blockquote>If you bounce off the wall at the start, and RNG gods look down on you, you&#x27;re lined up to go through castle on first shot.  Then knock it through castle, and lined up for 3rd final putt into hole.<p>But I agree with those points.  I feel like real putt putt glides more, then more resistance at slower speeds then slow speeds have more resistance. And then yeah, default camera angles are troublesome--it makes it impossible to do full power shot at some angles too.</blockquote>
-<p>↳ reply 2 — <em>shakna</em>:</p>
-<blockquote>Don&#x27;t aim forward. Jump the wall to the side, and you&#x27;ll be in within shout of the hole.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>naet</em>:</p>
-<blockquote>I made my own daily golf game a couple years ago; honestly it isn&#x27;t even really finished but it gets a couple thousand plays every day somehow.<p>It&#x27;s more like a 2d platform golf:
-<a href="https:&#x2F;&#x2F;squigglegolf.com&#x2F;game&#x2F;" rel="nofollow">https:&#x2F;&#x2F;squigglegolf.com&#x2F;game&#x2F;</a><p>I had built out a custom level editor and some other fun features, but never really polished off the UI enough to release those.  Someday I should really finish &#x2F; update it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rkudeshi</em>:</p>
-<blockquote>I really enjoyed this!<p>It was also a pleasant surprise when I learned I could hit the ball again while it was in mid-air.</blockquote>
-<p>↳ reply 2 — <em>rendx</em>:</p>
-<blockquote>Like it a lot!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>hankbond</em>:</p>
-<blockquote>It&#x27;s cute but the physics feel off.  Something about the bouncing feels like it dampens the momentum too much, and the rolling resistance also feels like it&#x27;s too aggressive.  I really did not like the ramp that pushes for you.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Twenty One Zero-Days in FFmpeg</title>
-      <link>https://depthfirst.com/research/21-zero-days-in-ffmpeg</link>
-      <guid isPermaLink="false">hn3-48510046</guid>
-      <pubDate>Fri, 12 Jun 2026 22:13:29 +0000</pubDate>
-      <description>287 points, 197 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://depthfirst.com/research/21-zero-days-in-ffmpeg"><strong>→ Article</strong></a> <small>(depthfirst.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48510046">→ HN comments</a> &nbsp;·&nbsp; 287 points &nbsp;·&nbsp; 197 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>guessmyname</em>:</p>
-<blockquote>I think the industry is optimizing for the wrong thing. Generating thousands of AI-written bug reports is easy, at least with Mythos (preview 1) or GPT-5.5. Getting bugs fixed is the hard part.<p>A few months ago I started working on a system that finds critical security issues and opens PRs instead of just filing reports. The acceptance rate is sitting at roughly 94% so far. Most of the failures were due to project-specific kill switches or other internal mechanisms that weren’t documented, not because the vulnerability itself was misidentified.<p>Developers generally seem to prefer this approach. A bug report creates work. A good PR removes work. That sounds obvious, but a lot of security products still stop at the report and call it a day.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Rygian</em>:</p>
-<blockquote>&gt; I think the industry is optimizing for the wrong thing.<p>Indeed: The industry optimizes for speed, time to market, and features, and applies the ostrich model to everything that doesn&#x27;t bring short-time revenue (security considerations, accessibility, vendor lock-in, interoperability, …)<p>This has been going on for as long as the industry exists, and now we start to have the proper tools to assess the damage and understand the brittleness of it all.</blockquote>
-<p>↳ reply 2 — <em>rcbdev</em>:</p>
-<blockquote>I think I&#x27;m missing something here. Apple software has no open source code, how are you suggesting fixes?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nemothekid</em>:</p>
-<blockquote>&gt;<i>The reach of this bug is what makes it serious. Any deployment that points FFmpeg at an attacker-influenced RTSP URL is exposed: media ingest pipelines fetching user-supplied stream URLs, surveillance and CCTV systems pulling RTSP feeds, and transcoding services processing remote AV1-over-RTP sources</i><p>Wow this is actually pretty serious - I&#x27;m even surprised its being published. There are several services where I can imagine this is exploitable today.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>akerl_</em>:</p>
-<blockquote>Some people might suggest it’s crucial to publish if you’re aware of a serious vulnerability, so that people using the software in a vulnerable way can take steps to mitigate the risk.</blockquote>
-<p>↳ reply 2 — <em>skupig</em>:</p>
-<blockquote>You would also need some sort of ASLR leak to make this exploitable</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>0xbadcafebee</em>:</p>
-<blockquote>Even if this isn&#x27;t as big a deal as this [advertisement for a security company] seems, it is a reminder that every application you release does have a security hole somewhere, and a script kiddie can now find it 5 minutes after release for $2 in credit. If you&#x27;re not red-teaming your code before release, hackers are doing it after.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Electric motors with no rare earths</title>
-      <link>https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/</link>
-      <guid isPermaLink="false">hn3-48510010</guid>
-      <pubDate>Fri, 12 Jun 2026 22:08:03 +0000</pubDate>
-      <description>704 points, 215 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.renaultgroup.com/en/magazine/energy-and-powertrains/all-about-electric-motors-with-no-rare-earths/"><strong>→ Article</strong></a> <small>(renaultgroup.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48510010">→ HN comments</a> &nbsp;·&nbsp; 704 points &nbsp;·&nbsp; 215 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>adrian_b</em>:</p>
-<blockquote>Unfortunately, their Web page does not say a single word about the important problems of their motors.<p>The electrically excited synchronous motors have been known forever, but they had not been used in EVs because of 2 disadvantages.<p>The first is that traditional EESMs require brushes, i.e. sliding electrical contacts, which are worn out by friction, so such motors require frequent maintenance for changing the brushes.<p>It is possible to make brushless EESMs, but they require a rotating transformer and a semiconductor rectifier inside the rotor.<p>The second disadvantage is a lower efficiency than with permanent magnets, which cannot be improved so much as to match PM motors, because the electrical currents that circulate through the rotor windings must generate heat. The lower efficiency also makes cooling more difficult.<p>Renault says that their EESMs have an efficiency of 92%. This is a good efficiency, even if not as good as attainable with permanent magnets. Losing a few percents in efficiency is an acceptable compromise for avoiding the use of expensive and supply-constrained chemical elements.<p>What I wonder is whether Renault reaches this 92% efficiency with EESMs having brushes, or with brushless EESMs, and this is what I would have liked to read on the parent Web page.<p>Brushless EESMs usually had a lower efficiency, so 92% would be impressive for them, while it would look normal for EESMs with brushes.<p>If Renault has succeeded to make a brushless EESM (i.e. maintenance-free) with an efficiency of 92%, that is something worth to brag about. Otherwise, making a traditional EESM would not be great news, because everybody has avoided those because of the maintenance problem.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>adev_</em>:</p>
-<blockquote>&gt; such motors require frequent maintenance for changing the brushes.<p>&quot;Frequent&quot; is all relative.<p>The Renault Zoe, 10y ago, was already using a synchronous engine with wired rotor. And most were going over 150kkm without any issues nor brush changes.<p>&gt; because the electrical currents that circulate through the rotor windings must generate heat<p>Currently stator heat in wired synchronous engine is less a problem than in SynRMs with permanent magnets.<p>Most neodymium based permanent magnets start to be irreversibly damaged id they heat up beyond 100°C. That&#x27;s currently why Tesla has such a good cooling system in their engine.<p>Wired rotor are bunch of copper coil, as such they are much more resistant to temperature gradients.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>wolfi1</em>:</p>
-<blockquote>150kkm - wouldn&#x27;t that be 150 Mm?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>halper</em>:</p>
-<blockquote>Yes, you are correct. As the SI brochure states: &quot;Compound prefix symbols, i.e. prefix symbols formed by the juxtaposition of two or more
-prefix symbols, are not permitted.&quot;<p>Unfortunately, almost no one uses SI units and&#x2F;or prefixes correctly.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>torginus</em>:</p>
-<blockquote>Munro took apart a Nissan Ariya which has this exact kind of motor. The maintenance is basically removing a tiny cover and replacing the tiny and cheap carbon brushes every 100k km or more. It&#x27;s basically cabin filter level maintenance.<p>And they said that PMSM motors are more efficient at low RPM, but their coils get saturated at higher RPMs meaning they lose efficiency at highway speeds (which actually affect the range number people car about).<p>So overall not such a bad tradeoff, if it makes cars less expensive.</blockquote>
-<p>↳ reply 3 — <em>bornfreddy</em>:</p>
-<blockquote>Interesting question, it looks like they are &#x2F; will be brushelss:<p>&gt; Group will gradually embed new technological improvements from 2024 on its EESM: stator hairpin, glued motor stack, *brushless* and hollow rotor shafts.<p>[0] <a href="https:&#x2F;&#x2F;www.evspecifications.com&#x2F;en&#x2F;news&#x2F;6ec9484" rel="nofollow">https:&#x2F;&#x2F;www.evspecifications.com&#x2F;en&#x2F;news&#x2F;6ec9484</a><p>That said, what sibling says about the maintenance problems is very true. :-&#x2F;</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>userbinator</em>:</p>
-<blockquote><i>A historical pioneer in the complex technology of electric motors without magnets</i><p>Those who know the history of electric machines will find the title and verbiage very amusing. Motors with no permanent magnets were the first practical ones, and at this point wound-rotor motors are over a century old.<p>It&#x27;s worth noting that some of the biggest motors have always been designed this way, because the size of magnets required would make them both too expensive and dangerous, and still not powerful enough for their size; a field coil can generate a field that&#x27;s only limited by the current and resistive heating of the winding, but rare earth magnets have fixed limits on field strength.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>WalterBright</em>:</p>
-<blockquote>Long ago, when I was in Cub Scouts, one of the projects was to build an electric motor. The parts list was:<p>1. a plank to form the base<p>2. several 6 inch nails<p>3. wire<p>4. a tin can (as a source of sheet metal)<p>5. tape<p>No magnets. But it worked perfectly fine when connected to a dry cell. Adventurous science lad that I was, I decided it would work better when connected to AC. So I attached a power cord and plugged it in.<p>A loud vibration ensued, and then it burst into flames. My mom wasn&#x27;t happy.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>WalterBright</em>:</p>
-<blockquote>P.S. I still use tin cans as a source of sheet metal. There was a big storm a while ago, with tree branches whistling by at high speed. (Not a good time to be outside.)<p>Three holes were punched in the house by the branches, 1-2 inches in diameter. What to do, what to do. I took a coke can, slit it and unrolled it into sheet metal. Then cut a disk bigger than the hole, and epoxied it into place. Worked like a charm, and cost nothing.<p>I&#x27;ve used coke can metal for shingles and flashing, too. They don&#x27;t rust.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>psd1</em>:</p>
-<blockquote>I like that story. I fixed a microwave door latch with a beer-can shim and some decorative ribbon; we used it another 11 years.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>anonymousiam</em>:</p>
-<blockquote>You&#x27;re right about the verbiage being amusing.<p>All big generators have an exciter coil that is used to generate the magnetic field.  It has the advantage of allowing voltage regulation through adjustment of the field, rather than after the fact, which would be far less efficient.<p>In both motors and generators, there is an efficiency hit related to the need to supply power in order to generate the field, but when you scale up the system, it actually becomes more efficient to use the electromagnet.  With the rare-earth mineral shortage, it makes even more sense.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bgarbiak</em>:</p>
-<blockquote>BMW also makes rare-earths-free motors for their EVs and - at this very moment - theirs are far more advanced. They offer almost twice the power (up to 300kW vs 160kW) and are on a 800v architecture.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>PedroBatista</em>:</p>
-<blockquote>The cheapest EV model Renault sells is around €20K, the cheapest BMW EV is around €65K.<p>It&#x27;s safe to say the companies are not in the market bracket, no?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>lostlogin</em>:</p>
-<blockquote>The bit the gets me more than the sale price is servicing.<p>BMWs have a terrible record for needing expensive repairs.<p>I know you shouldn’t rely on anecdote, but it seems I do.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>seanmcdirmid</em>:</p>
-<blockquote>The only way I would buy a BMW is if it were an EV. I’m just not brave (or rich) enough to buy their ICEs.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Quarrel</em>:</p>
-<blockquote>Which is quite the contrast to Mercedes new axial flux electric motor, which goes all in on rare earths- the design relies on the highest end high-grade permanent magnets.<p>Still, presumably Mercedes ambitions are for few motors than BMW or Renault.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
