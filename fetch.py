@@ -59,19 +59,21 @@ def fetch_json(url):
 
 
 def find_candidate_stories():
+    # Algolia removed `points` from its filterable attributes — filter age server-side
+    # and points client-side. /search is popularity-sorted, so top 1000 covers our window.
     now = int(time.time())
     older_than = now - MIN_AGE_HOURS * 3600
     newer_than = now - LOOKBACK_HOURS * 3600
     params = {
         "tags": "story",
         "numericFilters": ",".join([
-            f"points>={SCORE_THRESHOLD}",
             f"created_at_i<={older_than}",
             f"created_at_i>={newer_than}",
         ]),
-        "hitsPerPage": 100,
+        "hitsPerPage": 1000,
     }
-    return fetch_json(f"{ALGOLIA_SEARCH}?{urllib.parse.urlencode(params)}").get("hits", [])
+    hits = fetch_json(f"{ALGOLIA_SEARCH}?{urllib.parse.urlencode(params)}").get("hits", [])
+    return [h for h in hits if (h.get("points") or 0) >= SCORE_THRESHOLD]
 
 
 def fetch_hn_item(item_id):
