@@ -4,7 +4,232 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 23 Jun 2026 03:20:32 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 05:32:13 +0000</lastBuildDate>
+    <item>
+      <title>GLM-5.2 – How to Run Locally</title>
+      <link>https://unsloth.ai/docs/models/glm-5.2</link>
+      <guid isPermaLink="false">hn3-48636377</guid>
+      <pubDate>Mon, 22 Jun 2026 21:21:01 +0000</pubDate>
+      <description>285 points, 133 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://unsloth.ai/docs/models/glm-5.2"><strong>→ Article</strong></a> <small>(unsloth.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48636377">→ HN comments</a> &nbsp;·&nbsp; 285 points &nbsp;·&nbsp; 133 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>segmondy</em>:</p>
+<blockquote>I run Q4_K_XL.   All it takes to run to get about 6tk&#x2F;sec is 512gb of ram and 2 3090 GPUs with llama.cpp -cmoe.   I also have crappy DDR4, 2400mhz, 3200mhz will bring that speed up to about 9tk&#x2F;sec.  I also have ok 32core epyc CPU, a better 64core would bring it up to about 11tk&#x2F;sec.  I did a budget build before the crazy hardware cost and I regret it everyday.   Nevertheless, it&#x27;s fantastic being able to run this model at home.   It&#x27;s great for planning, one shot prompting once you have a plan or all the context you need.  This entire hardware cost $2400 when it was built.   If you&#x27;re willing to be resourceful, you can find ways to run these models at home.  I often get the silly question of why, and suggestions about how much I can save using cloud API, but the Fable drama has opened up eyes on why it&#x27;s good for us to be independent. Thanks team unsloth, Q4_K_XL is solid, if you are going to grab a quant, make sure to get the K_XL variant if it can fit.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zozbot234</em>:</p>
+<blockquote>AIUI the llama.cpp implementation for this model is still quite half-baked due to missing the support for DSA sparse attention mechanism.  This leads to running the model with a different mechanism that it has not been trained for, which has been shown to lead to lower quality and performance.<p>Anyway, I think GLM 5.2 in many ways is not as interesting as DeepSeek V4 series, which uses an even more advanced attention mechanism and can save a lot of memory capacity for KV cache, especially at larger contexts.  Which in turn opens up wide batching especially on consumer platforms.  GLM doesn&#x27;t have that, in some ways it feels broadly similar to Kimi 2.6 wrt. the underlying performance architecture. Both are a bit too heavy to run reasonably at full quality on ordinary hardware.</blockquote>
+<p>↳ reply 2 — <em>dxuh</em>:</p>
+<blockquote>&quot;All it takes to run&quot; might be fair if you paid $2400, but right now the total price is way closer to $10k (almost 5k for the RAM and 2k each for the GPUs). Today that is a lot of expensive hardware.</blockquote>
+<p>↳ reply 3 — <em>nextaccountic</em>:</p>
+<blockquote>How can you combine CPU cores and multiple GPU? Are you running some layers in cpu, others in gpu #1, and others in gpu #2? What about the bandwidth and latency between them?<p>Or maybe the model itself only runs at gpus, and the cpu memory only store the weights for experts not corrently activated? If so, then what&#x27;s the 32 or 64 cpu cores for?<p>I&#x27;m a big fan of fully utilizing one&#x27;s hardware and it&#x27;s kinda sad that it&#x27;s not the norm to run things on either gpu, cpu or both, dynamically choosing at runtime, for everyday software</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>xrd</em>:</p>
+<blockquote>So close! My machine with 192GB RAM + RTX 3090 24GB can almost run this. It says it needs 24GB of VRAM and 256GB of RAM for MoE offloading.<p><a href="https:&#x2F;&#x2F;unsloth.ai&#x2F;docs&#x2F;models&#x2F;glm-5.2#usage-guide">https:&#x2F;&#x2F;unsloth.ai&#x2F;docs&#x2F;models&#x2F;glm-5.2#usage-guide</a><p>In a prior thread, someone said it would take $500k in hardware:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48629970">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48629970</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>elliotbnvl</em>:</p>
+<blockquote>$500k is a vast overestimation. For massive concurrency at FP8 or even BF16 maybe.<p>NVFP4 at reasonable speeds (~120 tok&#x2F;s) and concurrency is possible at a $80&#x2F;90k figure with today&#x27;s prices, maybe even less. That buys you 6 RTX 6000 PRO Blackwells, a decent CPU and motherboard, power supply. 576gb of VRAM.<p>You could do it for under $50k if you&#x27;re OK with 40 tok&#x2F;s decode, ~1200 tok&#x2F;s prefill.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hbbio</em>:</p>
+<blockquote>Yes, a single GB300 workstation also does it, probably even more than 120tok&#x2F;s.<p>Official price 85k...</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>cheema33</em>:</p>
+<blockquote>I have the RAM, but not the VRAM. What kind of speed&#x2F;tps could you expect from a 3090 with 24GBs of RAM? I am somewhat tempted to pick a GPU with 24GBs of RAM.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>numlock86</em>:</p>
+<blockquote>Is this really worth it, though? Throughout the years my experience with quantized models has been that they feel like a lobotomized version of the original. Doesn&#x27;t matter if it&#x27;s an LLM, dedicated diffusion model or some other dedicated task. Sure, they get the job done. But a lot worse. The only ones that can somewhat hold up are the ones provided by the vendor directly. Gemma4 comes to mind. However I suspect they have some secret sauce other than just &quot;let&#x27;s quantize this&quot; since they have the original model and its data at hand.<p>There should be more native 4bit, 1.25bit and likewise models. Those actually work great while making them smaller in comparison. But I guess there is some reason for them being pretty niche.</blockquote>
+<blockquote>
+<p>↳ reply — <em>nicman23</em>:</p>
+<blockquote>it is not a flat quant but a dynamic</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Nearly half of LG smart TV apps contain residential proxy SDKs</title>
+      <link>https://spur.us/blog/smart-tv-apps-residential-proxy-sdks</link>
+      <guid isPermaLink="false">hn3-48635954</guid>
+      <pubDate>Mon, 22 Jun 2026 20:48:30 +0000</pubDate>
+      <description>215 points, 144 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://spur.us/blog/smart-tv-apps-residential-proxy-sdks"><strong>→ Article</strong></a> <small>(spur.us)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48635954">→ HN comments</a> &nbsp;·&nbsp; 215 points &nbsp;·&nbsp; 144 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>lbotos</em>:</p>
+<blockquote>I&#x27;ll get on my high horse and say you can get solid &quot;DID&#x2F;Commercial&quot; TVs for not that much more: <a href="https:&#x2F;&#x2F;www.bhphotovideo.com&#x2F;c&#x2F;product&#x2F;1788343-REG&#x2F;samsung_qm43c_qmc_43_4k_smart.html" rel="nofollow">https:&#x2F;&#x2F;www.bhphotovideo.com&#x2F;c&#x2F;product&#x2F;1788343-REG&#x2F;samsung_q...</a><p>I got this a few months ago -- 4k, solid brightness, and ok color.<p>Is it the OMG BEST? no. But I <i>Disabled</i> wifi, and even the channel display.<p>I use it with an apple TV with CEC on the TV -- I turn on the apple tv, TV turns on straight to apple interface. I turn off from the apple remote, TV turns off.<p>It&#x27;s effectively &quot;an apple TV&quot; -- I&#x27;m happy.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gruez</em>:</p>
+<blockquote>&gt;Is it the OMG BEST? no. But I Disabled wifi, and even the channel display.<p>Why not just get a (presumably subsidized) smart TV instead, and skipping the premium? It&#x27;d also be not disconnected from the internet, and despite vague HN&#x2F;reddit speculation that TVs have cell modems in them, that has yet to be confirmed.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>lbotos</em>:</p>
+<blockquote>I wanted more control and no UI. The commercial ones do that -- I think this was like $150 more than the &quot;samsung smart ui&quot; one... Never seeing a smart TV interface was worth that for me. YMMV.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>hoherd</em>:</p>
+<blockquote>That looks like The Frame from Samsung. Does it have a matte surface? What version of Tizen is it running? Does it have API access?</blockquote>
+<p>↳ reply 3 — <em>p0wn</em>:</p>
+<blockquote>Begs the question - why has apple never come out with a TV.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>andai</em>:</p>
+<blockquote>I&#x27;ve always have a deep, instinctive revulsion for smart TVs, but every year I read of some new mandmade horrors beyond comprehension, and it escalates by a few more points.</blockquote>
+<blockquote>
+<p>↳ reply — <em>layoric</em>:</p>
+<blockquote>Coming for PC monitors as well, LG again leading the charge.. see &quot;smart gaming monitor&quot;, same BS.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>cube2222</em>:</p>
+<blockquote>I think it’s worth emphasizing that based on the article, those are third party apps, not first party LG apps.<p>Based on the headline I thought it’s the built-in apps.</blockquote>
+<blockquote>
+<p>↳ reply — <em>mycall</em>:</p>
+<blockquote>This does raise the question if other Smart TVs with the same third party apps have the same issue.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>OkGoDoIt</em>:</p>
+<blockquote>In the article they mentioned that Amazon and Roku block apps from using these SDK’s, and specifically after Roku recently made a change to disallow this kind of thing, many of the affected apps were withdrawn from the Roku app store. The implication is that those other smart TVs don’t have the same third-party apps because these apps were specifically created to act as a foothold for these residential proxy networks.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Jobs and Software Is Fucked</title>
+      <link>https://urflow.bearblog.dev/jobs-and-software-is-fucked/</link>
+      <guid isPermaLink="false">hn3-48635112</guid>
+      <pubDate>Mon, 22 Jun 2026 19:47:52 +0000</pubDate>
+      <description>290 points, 250 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://urflow.bearblog.dev/jobs-and-software-is-fucked/"><strong>→ Article</strong></a> <small>(urflow.bearblog.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48635112">→ HN comments</a> &nbsp;·&nbsp; 290 points &nbsp;·&nbsp; 250 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Ralo</em>:</p>
+<blockquote>After 5+ years of actively trying to get into the field (pre AI), I left.<p>I threw my degree in the toilet, I closed my linkedin, and I went to go work in the trades as a diesel mechanic.<p>Greatest choice I&#x27;ve ever made. The pay is great, the work is steady, the coworkers are relaxed and not trying to one up each other. I&#x27;m now being paid to go to school, and get raises every year until I&#x27;m fully ticketed (way more than I ever made in the entry tech positions).<p>I&#x27;ve heard non-stop my whole life that if I join a trade it&#x27;s going to be grunt labor and I&#x27;ll be paralyzed in 5 years. Maybe some are, but this isn&#x27;t hard at all. I lay on a creeper and turn wrenches. Anything over 50lbs we have lifts for.<p>Tech has become fun again, I&#x27;m just making projects because its what I wanted. I come home and relax by writing on my projects.<p>Now, I&#x27;m watching my tech friends from a distance and my only regret is not doing this sooner.<p>&quot;Sometimes you gotta give in to win&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jonathanlydall</em>:</p>
+<blockquote>Reading this and some of your other comments in this thread, I think it’s awesome you’ve landed up doing what you really enjoy and are well compensated for it.<p>It makes me wonder if I would be happier doing something else, but (because of my personality) I’m very doubtful.<p>Since you see yourself as also being a computer guy I’m assuming that lack skill or intuition was not why you left the industry, so don’t read the rest of my comment as talking about you.<p>But I’ve definitely seen plenty of people in the software development industry where they may get by “okay” at their job, but things don’t tend to “click” as easily (in terms of intuitive understanding) for them the same way they do for me.<p>So I feel lucky and deeply happy to be at a company I enjoy working at and doing what has always been my passion.<p>It’s not that the computer industry is completely terrible (although plenty of parts of it certainly are), it’s just that for some people it’s not their true passion (which is fine).</blockquote>
+<p>↳ reply 2 — <em>pixelatedindex</em>:</p>
+<blockquote>&gt; I closed my linkedin, and I went to go work in the trades as a diesel mechanic.<p>Love it! A score of years ago, I considered being an auto mechanic after graduating HS but then ended up back in CompSci.<p>Did you have to go back to school? Did you find a shop that would take you in as an apprentice? And if they did, how did you convince them you can&#x2F;will be good at the job?</blockquote>
+<p>↳ reply 3 — <em>hintymad</em>:</p>
+<blockquote>&gt; I&#x27;m now being paid to go to school, and get raises every year until I&#x27;m fully ticketed (way more than I ever made in the entry tech positions).<p>This. People tend to underestimate the joy that steady progress brings. A quick peak usually just leads to a long, depressing decline. Many people would rather take a career that grows a few percent every year for four decades over one that spikes and crashes any day. It’s better to be a slow grower who stays valuable than a flash-in-the-pan who burns out by 35[1].<p>[1]  Honestly, I think there is a reason for this decline that has nothing to do with AI: the IT industry has just matured. Aside from the classic GoF patterns and Enterprise patterns and their variations, what new popular and deep design patterns have we actually adopted lately? Or look at all those must-know data structures and algorithms that are all over the web. How many of those were invented in the last ten years? Even in open source, where are the new platform-level projects invented in the last 5 years that every major company is pouring resources into? There are not many.<p>In other words, we are just eating our own tail at this point. It is just CRUD to death. When things get this stagnant, tech departments inevitably turn into cost centers. Even without AI, we were already heading toward a dead end. AI just happens to be the tool that makes it easy to automate everything because, at the end of the day, most of our work is just rearranging the same old code patterns anyway.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>themgt</em>:</p>
+<blockquote><i>It&#x27;s not like the job market was that much better before AI infested every single corner of the market, but it supercharged all of the worst aspects of everything. I&#x27;ve seen people supposedly smarter than I advocate for just giving in, conceding to AI coding as it&#x27;s the future. But doing so means tossing out my friends who make art or the people who work their asses off to properly test and review code or the writers pouring all of their energy into even mundane dialogue. It means throwing out my dignity as a software engineer, as someone that truly gives a shit about security and code.</i><p>Don&#x27;t let yourself get attached to any tech stack you are not willing to walk out on in 30 seconds flat if you feel the heat around the corner. That&#x27;s the discipline.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>atleastoptimal</em>:</p>
+<blockquote>Yes, sadly the most principled will have to contend with the world passing them by when it turns out those principles are dead weight to capital momentum. You could have made the same point during the dawn of the industrial revolution: that purchasing any product of a machine would be betraying your friends who have spent years honing their craft, but either way, people will still opt for the machine because it&#x27;s 10x cheaper and faster.<p>AI is good enough now that you can&#x27;t claim that you aren&#x27;t using it because you&#x27;re upholding some higher standard of quality. It is simply a matter of it offending your sensibilities.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>archagon</em>:</p>
+<blockquote>&gt; <i>AI is good enough now that you can&#x27;t claim that you aren&#x27;t using it because you&#x27;re upholding some higher standard of quality. It is simply a matter of it offending your sensibilities.</i><p>AI is also great at the mechanics of writing. Should people stop writing? Obviously not.<p>Is there value to coding other than compiling without errors and producing a plausible program as output? Obviously yes.<p>LLMs can’t think and the decisions they make are stochastic. Ignoring this basic fact means you’re probably not cut out for engineering to begin with — much like content creators churning out LLM blogspam are not cut out for writing. It’s a dead version of the discipline.<p>Perhaps some form of the world will pass us by. I’m not sure I want to be part of that world.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>lenerdenator</em>:</p>
+<blockquote>Also, never, ever give more of a shit about things than the people leading the effort. Doesn&#x27;t matter if that&#x27;s a for-profit enterprise, a FLOSS project, or just a way to pass the time.<p>You cannot and will not force them to care more. Don&#x27;t waste your time on Earth trying to do so.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>semiquaver</em>:</p>
+<blockquote><p><pre><code>  &gt; I&#x27;ve seen people supposedly smarter than I advocate for just giving in, conceding to AI coding as it&#x27;s the future. But doing so means tossing out my friends who make art or the people who work their asses off to properly test and review code or the writers pouring all of their energy into even mundane dialogue. It means throwing out my dignity
+</code></pre>
+Conflating things in this inflammatory way is a big mistake. Using a technology employers want you to use is not betraying your friends. Not everything <i>has</i> to be a culture war front.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>VonGuard</em>:</p>
+<blockquote>The author is coming from the games industry. As an arts based industry, AI is EXTREMELY divisive.  The author really will lose friends over even so much as touching AI in certain ways, because the artists that built the games industry were already badly abused, and now, they&#x27;re being squeezed out entirely. For business developers, AI is somewhat less existentially terrifying, as it can be seen to be really empowering to an experienced user.<p>In the games industry, AI usage immediately eliminates a human job. Why pay a pixel artist if AI can generate 100&#x27;s of unique little people pixels in seconds, and output them in the right format? Hollywood is going through the same thing: the companies that are building AI for Hollywood have to do so in the bushes, hiding. You don&#x27;t see them advertising or flashing cash. That&#x27;s because no one involved in using their wares wants anyone to know they&#x27;re using them, lest they alienate the highly-talented people they still need to fill the gap between concept AI and full theatrical release AI.<p>In the software world, we are worried about AI. In the creative industries, they are absolutely pants on fire, screaming at the sky, burning down the village terrified of AI.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>drdaeman</em>:</p>
+<blockquote>&gt; Why pay a pixel artist if AI can generate 100&#x27;s of unique little people pixels in seconds<p>Because someone who knows something about pixels needs to make a judgement. It is rare to see a machine-generated artifact (picture, video, text or code) that&#x27;s good on the first try. And not always a non-specialist can see the issue.<p>Same thing why we still need human software engineers, even though a machine can generate code. Someone with actual understanding of the problem needs to make a management decision. Just like engineers see code slop (design or implementation) that laypeople vibe-coding don&#x27;t recognize, artists see the visual slop where layman eye glances over.<p>Honestly, IMHO, this whole panic is artists&#x27; own creation. Instead of educating others on how to spot the issues (and thus reaffirming that expertise still matters - nothing had changed, and probably nothing ever will), a notable fraction went all-in on neo-luddite ideas, as if they don&#x27;t know the history of their own craft and adjacent creative industries (I guess many really don&#x27;t, or at least it doesn&#x27;t click). Evaluate new tools, make use of them when they provide value, skip them where they fall short, and most importantly reaffirm that fancier brushes don&#x27;t replace the artist in a human society - this is an already well-tested and proven strategy. Ring the existential bells when we&#x27;ll get to the question of machine cognition rather than just intelligence.<p>Same for the engineering. Don&#x27;t shy away from new tools, use them where they&#x27;re a good fit, don&#x27;t waste time when they are&#x27;t (but periodically check out if something changes), explain everyone why you still matter - just to push back on unfortunate misconceptions.<p>The fact that a lot of companies&#x27; upper management went delusional and decided they want to replace humans witch machines (as if don&#x27;t need responsibility anymore) doesn&#x27;t help. But - hey - already plenty of stories how it bites them back, so while this period sucks, it&#x27;s not exactly fucked, just in a state of (a pretty much expected) confusion.<p>Dishing out pixels or lines of code got somewhat cheaper. Expertise cost remains the same, though.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>coldtea</em>:</p>
+<blockquote>&gt;<i>Because someone who knows something about pixels needs to make a judgement. It is rare to see a machine-generated artifact (picture, video, text or code) that&#x27;s good on the first try.</i><p>Not if nobody cares for the end product that finely.<p>And even if it was true, one person can make the judgement, while automation erasing 5 others that would have worked in both the judgement and the graphics wrok.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>braden-lk</em>:</p>
+<blockquote>Just to +1 the sentiment here; AI in the gaming industry is absolutely a culture war front. Especially in the indie space, you will lose advertising deals with many sponsors &amp; influencers, for example, if you appear to endorse AI. Probably won&#x27;t be that way forever, but it&#x27;s a hotbed right now.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Japanese symbols that speak without words</title>
+      <link>https://arun.is/blog/japan-symbols/</link>
+      <guid isPermaLink="false">hn3-48634803</guid>
+      <pubDate>Mon, 22 Jun 2026 19:22:37 +0000</pubDate>
+      <description>146 points, 65 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arun.is/blog/japan-symbols/"><strong>→ Article</strong></a> <small>(arun.is)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48634803">→ HN comments</a> &nbsp;·&nbsp; 146 points &nbsp;·&nbsp; 65 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>wetwater</em>:</p>
+<blockquote>This is a classic case of &quot;Thing in japan&quot;. Yes &#x27;wakaba&#x27; mark is cool. But the exact same point can be made about a big red L . Far more ubiquitous. Also there are beautiful medieval crests on British Fire engines. 
+I doubt that purely wordless, symbolic system was truly the ultimate pinnacle of operational clarity.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Symbiote</em>:</p>
+<blockquote>Yeah, these are not good symbols, except the help mark. None of them have any meaning, they must simply be learned.<p>I recognize some of them, from seeing them in Japan, but I thought they meant some kind of taxi.<p>A symbolic ear would be better to designate deafness, a walking stick age.</blockquote>
+<p>↳ reply 2 — <em>quadrifoliate</em>:</p>
+<blockquote>I would love to read your article about the beautiful medieval crests on British fire engines, too! No joke, feel free to link something in reply to my comment as well if you have existing articles.<p>I feel like there has been a lot of unnecessary pushback about &#x27;Thing in Japan&#x27; articles on the internet. Guess what, there are cool things everywhere; including Japan. Write about the ones you know about!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>robocat</em>:</p>
+<blockquote>The common theme for the discussed symbols is consideration for others.<p>In New Zealand we require a yellow [L] sign on cars with learner drivers (with learners drivers licenses). However I get the impression that other drivers are less considerate around a car displaying the [L] sign.<p>I suspect New Zealanders are generally far less considerate than Japanese. Politeness avoids a trillion sharp edges.<p>We also seem to be copying some of the US predilection of arsehole Ute (pickup) drivers.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>freetime2</em>:</p>
+<blockquote>&gt; However I get the impression that other drivers are less considerate around a car displaying the [L] sign.<p>On a related theme - I have found when driving in the North Eastern US, when people put on their turn signal, other drivers will often speed up and close the gap rather than giving them space to merge.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hunter2_</em>:</p>
+<blockquote>As a northeasterner, I can explain:<p>In some other places, a turn signal before a lane change is an ask, to which others respond by creating more of a gap than there originally was. Here, it&#x27;s not an ask but a statement that you&#x27;ve got enough of a gap already so you&#x27;re going for it. As such, others don&#x27;t find a need to react at all, which could mean the gap continues shrinking if it was already shrinking prior.<p>The signaler needs to have anticipated it and not signaled until this problem doesn&#x27;t exist, in fact it&#x27;s scary when someone signals despite this problem because the other driver is led to believe they&#x27;re unseen. When there&#x27;s already a lot of momentum toward closing the gap, continuing to do so is a more fuel-efficient way out of the blind spot than using the brake pedal.<p>Aside: turn signals that automatically flash 3 times with no reasonable way to cancel the remaining flashes when you discover a need to abort a lane change exacerbates the aforementioned scare, so I recommend disabling it.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>JimTheMan</em>:</p>
+<blockquote>I didn&#x27;t find that to the case in Australia, as someone who had L&#x27;s for far longer than is standard.<p>Mostly it meant that people gave you a wide berth, as learner drivers are unpredictable at times. So basically, what the sign intends.<p>It surprises me to hear that about NZ? As I think of NZ, as our friendlier cousin.<p>Just goes to show that our experiences are always hyperlocalised, and it&#x27;s hard to actually make generalisations without actual data.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>1-6</em>:</p>
+<blockquote>I don&#x27;t see anything particularly special about these symbols. Don&#x27;t get me wrong, I like Japan but while these icons look nice, don&#x27;t most symbols already speak without words?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mitthrowaway2</em>:</p>
+<blockquote>Due to a favorable exchange rate a lot of people are traveling to Japan these days, and encountering these unfamiliar symbols for the first time and perhaps wondered what they mean.</blockquote>
+<p>↳ reply 2 — <em>xp84</em>:</p>
+<blockquote>My reading of it is that it isn&#x27;t the use of symbols that is notable, but rather here are a few handfuls of roles that symbolic decals and signs have been given in Japan, most of which we don&#x27;t have in North America at least. A lot of them are quite smart. Sure, the special badge for the front of a police or fire vehicle is pretty redundant, but it would be nice if we had a universal understanding of a couple of these just as we understand what the blue handicap icon means. I would nominate the best as:<p>1. The cross + heart one for people with hidden disabilities. This is probably top of mind for me because I have a family member who could use some extra understanding due to a condition.<p>2. The new driver, elderly driver, and deaf driver. The first one is obviously so useful that we&#x27;ve just created dozens of one-off text decals (clearly inferior, as they have to be noticed, read, and interpreted, rather than just recognized). It should be handed to you along with your permit and made compulsory like Japan describes.<p>As for the elderly one, it would be useful to tip us off to give them more space, and also to inspire us to think of our grandmas when we see such a car making a mistake on the road, instead of defaulting to assuming the driver is a deliberately uncourteous prick as we sometimes do.<p>(As for the &quot;if people are too old to drive correctly, we should take their licenses away&quot; argument, let&#x27;s assume it&#x27;s been made, and that someone has pointed out the tradeoffs of that policy in the real world that we live in.)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>British Columbia, Time Zones, and Postgres</title>
+      <link>https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes</link>
+      <guid isPermaLink="false">hn3-48634787</guid>
+      <pubDate>Mon, 22 Jun 2026 19:21:00 +0000</pubDate>
+      <description>127 points, 88 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes"><strong>→ Article</strong></a> <small>(crunchydata.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48634787">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 88 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jagged-chisel</em>:</p>
+<blockquote>Future events: store the local (at the event) date and time and timezone. You’ll keep the right context even if lawmakers decide to switch things up. You want to see your doctor at 8:30 AM on Monday September 14, 2026 whether it’s daylight saving time, or standard time or “they” decide on a fractional hour offset between the time you set the appointment and the time you attend the appointment.<p>Past events: UTC timestamp.<p>What format should you use? Human readable strings for longterm storage, because when things go wonky, it’s easier to debug.<p>Note: nothing stops you from optimizing for queries by adding a field to store (or using a calculated index for) the integer epoch offset (e.g. unix timestamps), just make sure you know which field is authoritative.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Ndymium</em>:</p>
+<blockquote>Copying what I posted under the original[0] that no one noticed because it&#x27;s quite relevant to your mention of UTC for past events:<p>The naming of &quot;timestamp with time zone&quot; is one of my favorite pet peeves. It&#x27;s one of those things that you can say &quot;well technically it&#x27;s true&quot; about.<p>The article suggests that for past events, UTC and this timestamptz would be acceptable as a general rule, but even there it depends on what you will be doing with the data. If you intend to interpret it as a series of local occurrences and try to visualize&#x2F;summarize that data later, you may be in for a surprise as your user has moved to another timezone and now all the past events are translated to the wrong local hours [1]. For example, your system might end up showing that the user&#x27;s best time for jogging based on historical data is at 2 in the night.<p>[0] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48558005">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48558005</a><p>[1] <a href="https:&#x2F;&#x2F;blog.nytsoi.net&#x2F;2022&#x2F;03&#x2F;13&#x2F;utc&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.nytsoi.net&#x2F;2022&#x2F;03&#x2F;13&#x2F;utc&#x2F;</a></blockquote>
+<p>↳ reply 2 — <em>miki123211</em>:</p>
+<blockquote>However, keep in mind that there is *no way* to store the time of a future event in a way that won&#x27;t someday break unexpectedly. It just physically can&#x27;t be done.<p>Your approach assumes that we know what timezone the doctor&#x27;s office will be in when the event happens. However, unless you know the exact lat&#x2F;lon of that office — and maybe not even then — that&#x27;s not something you can rely on.<p>Countries sometimes split themselves up. Provinces get annexed. Border towns may end up on the other side due to a treaty, even in times of peace. Multi-timezone countries may change which parts belong to which timezone. A town may get occupied, and the answer to the question of &quot;what time is it&quot; may depend on the loyalties of the person you ask.<p>Unless the doctor&#x27;s office is physically located in Berlin, Germany, there is no guarantee that europe&#x2F;berlin will always be its correct timezone. Even then, you may get the east&#x2F;west Berlin split and one side deciding to abandon DST.<p>When an event happened in the past, we know exactly when it happened, and we can express that timestamp as &quot;number of seconds after some reference point.&quot; When an event is planned for the future, we usually plan it for a specific hh:mm in a specific location, but we don&#x27;t know when that is actually going to be.</blockquote>
+<p>↳ reply 3 — <em>infamia</em>:</p>
+<blockquote>Great advice! The really tricky part to me is when you have an event your recorded before it happened, but want to look it up after the event has passed (e.g., you want to look up the doctor&#x27;s appointment a year after it occurred). The simplest and <i>mostly</i> solid answer I&#x27;ve been able to come up with is:<p>1. If you want to know when something happened and a particular place is important (like the previously mentioned doctor&#x27;s appointment), store the local date&#x2F;time with timezone data. That covers you in case the timezone changes before your recorded event happens. Personally, I would not store reflexively store dates&#x2F;times in a string. For the cases I encounter, that feels like primitive obsession since you can always use EXTRACT in a query to simplify output.<p>2. If will you need to lookup the date and time after an event occurred, write a separate field that includes timezone offset field (e.g. -1, +1, -8, etc.) in case you want to look up exactly when an event previously happened. This (mostly) covers you from timezone shifts that occur at that particular location between when you wrote the data vs some later date. This falls apart if the timezone you&#x27;re converting to also changed their timezone between now and the event. Also, if your timezone shifts between when you wrote the record and the actual event.<p>I wonder if someone has a temporal record of timezone shifts. You could solve a lot of edge cases with something like that. Then you could write a query that asks for the timezone&#x27;s offset as of a specific date. That would make life much easier. Then you could skip the timezone offset field I mentioned in #2.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>munk-a</em>:</p>
+<blockquote>This problem is not new and is a relatively minor exposure to the sort of issues that TZ conversion constantly needs to deal with.  Different parts of the world have different dates that they adopt (or don&#x27;t adopt) DST and some nations have changed this date in the past.<p>Use a library, do not roll it yourself, do not try to outsmart tzdata... if you think you could then please volunteer for this project and either become a new Chronomancer[1] or get disabused of that misconception.<p>1. It&#x27;s a legal title, people actually have to call you a Chronomancer if you&#x27;ve contributed to tzdata, it&#x27;s the law.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Terr_</em>:</p>
+<blockquote>Indeed, recognizing Chronomancy will once have soon always been the case.</blockquote>
+<p>↳ reply 2 — <em>mulmen</em>:</p>
+<blockquote>What happens if I booked an appointment before the rules changed and TZDATA could be updated and deployed?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>kelseydh</em>:</p>
+<blockquote>Lesser known is that western parts of British Columbia are <i>still</i>  debating what timezone to adopt.  E.g. the East Kootenays which used to align with Alberta&#x27;s mountain time w&#x2F; daylight savings is now debating whether to align with B.C. or Alberta now that Alberta is also switching to permanent Mountain Daylight Time (which they call &quot;Alberta Time&quot;).</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Optocam Zero: a Pi Zero based digital camera made using off the shelf components</title>
+      <link>https://github.com/dorukkumkumoglu/optocamzero</link>
+      <guid isPermaLink="false">hn3-48634778</guid>
+      <pubDate>Mon, 22 Jun 2026 19:19:55 +0000</pubDate>
+      <description>137 points, 32 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/dorukkumkumoglu/optocamzero"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48634778">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 32 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Fwirt</em>:</p>
+<blockquote>It&#x27;s a shame that, being based on a full-blown Linux SBPC, it has an absolutely unacceptable boot time for a camera. 22 seconds. I can have my iPhone camera out and ready to capture an ephemeral moment of child&#x27;s play in under 3 seconds, most commercial cameras boot in seconds as well. A film camera can be ready to go the second the lens cap is off. 22 seconds is an eternity in the world of photography. It&#x27;s a shame that the SoC the Raspberry Pi line is based on has no kernel support (or IIRC hardware support) for S3 or anything similar.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ktpsns</em>:</p>
+<blockquote>It&#x27;s unfair to compare an idling deep sleep device with a cold boot.<p>However, there is a shortcut: Just don&#x27;t boot a full OS (thinking of custom firmware which boots in fractions of seconds, standard in the Microcontroller world). Or boot an optimized Linux user space. I am confident with a bit fiddling one can bring down a standard SBC Linux to a few seconds from cold to ready.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>DrewADesign</em>:</p>
+<blockquote>Functional comparisons among devices within a category are always fair. Pointing out a device’s perceived shortcomings is not an attack on the people that made it. One crucial role designers play (ideally) in product development is seeking out honest feedback, filtering it, and figuring out if that feedback can help make the product better for end users. The FOSS landscape needs a lot more of that.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>luqtas</em>:</p>
+<blockquote>i built my own camera out of a Zero 2W [0] and by disabling Picam2 and letting the OS (Debian Bullseye) idle, i can get 2 days of shots and some videos while i walk around the city&#x2F;hiking out of 3 18650 batteries... bringing 3 spare batteries in my backpack never put me needing battery in any situation! starting Picam2 takes a fraction of a second<p>[0] <a href="https:&#x2F;&#x2F;happort.org&#x2F;camera" rel="nofollow">https:&#x2F;&#x2F;happort.org&#x2F;camera</a></blockquote>
+<p>↳ reply 3 — <em>iamnothere</em>:</p>
+<blockquote>I bet this could be changed to seconds if a unikernel type approach were used. There’s no need to boot a full OS. I understand the developer starting with Linux, though, as I’m sure it’s easier for debugging.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Shalomboy</em>:</p>
+<blockquote>I loved this project the first time it came around. As much as I wanted to build it out myself, I was shocked at how much the components actually cost to put together. It definitely seems like an improvement on the charmera though, so it all comes out in the wash.</blockquote>
+<p><strong>Top #3</strong> — <em>kristianp</em>:</p>
+<blockquote>I wonder why this doesn&#x27;t use the 4608x2592 resolution the sensor is capable of.  It produces cropped 2592x2592 images.  Stylistic choice, hopefully not too hard to reconfigure?<p>Edit s&#x2F;camera&#x2F;sensor&#x2F;</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Flock-Powered Police Chiefs Stalking Women Shows Why Warrants Are Needed</title>
       <link>https://ipvm.com/reports/police-chiefs-track</link>
@@ -68,6 +293,56 @@
 <blockquote>
 <p>↳↳ reply — <em>credit_guy</em>:</p>
 <blockquote>&gt; Unfortunately its just a small boiling water reactor.<p>It is not just a small boiling water reactor. It is a 300 MW-electric boiling water reactor, and if successful, it will be followed by 3 more of the same type for a total of 1.2 GW-electric. That is more than an AP-1000 reactor, and much less risky.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Memory crisis is getting so bad that even retro RAM prices are going to the Moon</title>
+      <link>https://www.theregister.com/personal-tech/2026/06/22/the-memory-crisis-is-getting-so-bad-that-even-retro-ram-prices-are-going-to-the-moon/5259627</link>
+      <guid isPermaLink="false">hn3-48634559</guid>
+      <pubDate>Mon, 22 Jun 2026 19:04:49 +0000</pubDate>
+      <description>127 points, 40 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theregister.com/personal-tech/2026/06/22/the-memory-crisis-is-getting-so-bad-that-even-retro-ram-prices-are-going-to-the-moon/5259627"><strong>→ Article</strong></a> <small>(theregister.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48634559">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 40 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>theandrewbailey</em>:</p>
+<blockquote>I work in e-waste recycling. Ever since the TurboQuant paper in March, I haven&#x27;t been able to sell any DDR3. I&#x27;m guessing that the DDR2 and 3 this article is referring to is the actual memory chips, not modules&#x2F;sticks that servers, desktops, laptops, etc. use, because the latter aren&#x27;t moving.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Felger</em>:</p>
+<blockquote>Yep. Don&#x27;t expect to sell those sticks on ebay at great price. Those new chips will be likely soldered to appliances like low end routers&#x2F;APs, set top boxes, various adapters, low end systems, PLCs, IPBX, NVRs and various embedded devices.<p>I sold 7,2 Kg of DDR1&#x2F;2&#x2F;3 sticks two month ago, for gold recovery. As well as expansion cards, hdd PCBs and a few other things. Got about $600 from this.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jollymonATX</em>:</p>
+<blockquote>Did you cut the gold fingers off or &quot;as-is&quot;</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>kjs3</em>:</p>
+<blockquote>Wild guess, but maybe China has something to do with that?  They&#x27;ve got a huge &quot;recover-&gt;break down&#x2F;strip-&gt;recondition-&gt;sell refurbs to manufacturers&quot; industry pipeline that doesn&#x27;t seem to much exist outside of China.</blockquote>
+<p>↳ reply 3 — <em>analog31</em>:</p>
+<blockquote>Indeed, I was lucky that my PC is old enough to use DDR3 sticks, when I decided to upgrade a couple months ago. I think it&#x27;s still cheaper to max out your RAM than to buy a new PC.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ggm</em>:</p>
+<blockquote>Worldwide chip pricing and it&#x27;s effects on the overall economy are fascinating. I expected by now somebody with a gen -2 class VLSI plant would swing into action and make &lt;thing&gt; for 2&#x2F;3 the cost of the majors, and clean up in volume as the market absorbs the price shock. But no, instead it suits everyone in the pipeline to whine about it, but mark up prices instead.<p>I am guessing the other side of this, the price drops will happen but slowly, and just like gas pricing, the profit is in rapid reaction to shortage and slow reaction to competition returning.<p>Chip pricing a sawtooth would make a LOT of money for somebody.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>brennanpeterson</em>:</p>
+<blockquote>Well, you are working from all sorts of misguided assumptions about how you convert, the yield, the efficiency, the shared capital, and history.<p>Old gen logic barely exists, and won&#x27;t convert. The tools are wrong so it wouldn&#x27;t yield. And there isnt the expertise (on tool recipes and integration) to do it.<p>Historically, memory is a sawtooth business. But history isn&#x27;t a great guide here: 10 years ago, a new plant added meaningful capacity, as it came with a shrink of about 30%. Today....it doesn&#x27;t. So it take huge capital to add a very small amount of capacity.<p>You can dream that things like 3d dram and 4f cells will help, but they are unlikely to offer enough with demand.<p>And finally, everyone running a dram plant has lived through these capacity boom bust cycles and the consequently layoffs and pay cuts. I suspect they are happy to take money this time. I would be in their place.<p>I do hope we see a new dram or dram-like designs. And that there are more efficient dedicated ai processors. And that models themselves become more memory efficient. But I don&#x27;t really believe any of these come soon.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ggm</em>:</p>
+<blockquote>I think a lot of what you say is true, but we&#x27;re facing shortages for DDR3&#x2F;DDR4 RAM and this isn&#x27;t about increasing density or speed, it&#x27;s about the pricing of what is a high yield functional commodity in todays manufacturing.<p>So the questions about 3D and 4D ram, they just aren&#x27;t applicable.<p>Somebody should be making Samsung&#x2F;Hynix ram chips and assembling them onto carriers 24&#x2F;7 to sell to ordinary people. Instead, the entire production capacity is selling to Hyperscalers and going to AI.<p>(I could of course be wrong about even this)</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>rwmj</em>:</p>
+<blockquote>Even on previous gen nodes it takes a year or two to bring a chip to full production.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>michalpleban</em>:</p>
+<blockquote>The headline made me fear that I will need to shell out a few more bucks for 4164 DRAM chips, but fortunately this does not seem to be the case.<p>DDR3 is not &quot;retro&quot;, for chrissakes.</blockquote>
+<blockquote>
+<p>↳ reply — <em>lexicality</em>:</p>
+<blockquote>It was introduced barely 20 years ago. By that rationale the PS3 is a retro console</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>wlesieutre</em>:</p>
+<blockquote>In 2000 when the PS2 came out was the NES a retro console?<p>It was 17 years old, or 14 years since wide distribution in the USA.<p>What counts as &quot;retro&quot; basically comes down to when the person you ask was born.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>holycrapwhodat</em>:</p>
+<blockquote>New NES were still available in the US through at least Christmas 1992, and in Europe deep into 1995, both selling alongside the SNES since 1991.<p>The final new international games were released in 1994, but Europe still got new games into 1995.<p>Japanese Famicoms were still being sold in Japan when the PS2 released. They sold <i>more</i> in Japan in 2001 than in 2000.<p>So no, calling the NES &quot;retro&quot; in 2000 wouldn&#x27;t have made all too much sense.</blockquote>
+</blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
     </item>
@@ -1991,6 +2266,44 @@ is rare. Curves are wrong. Switches are hopeless.<p>There may be something about
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Polymarket has flooded social media with deceptive videos by paid creators</title>
+      <link>https://www.wsj.com/business/media/polymarket-social-media-bets-prediction-market-441cdeb5?st=HhTZY2</link>
+      <guid isPermaLink="false">hn3-48614715</guid>
+      <pubDate>Sun, 21 Jun 2026 01:12:21 +0000</pubDate>
+      <description>130 points, 122 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.wsj.com/business/media/polymarket-social-media-bets-prediction-market-441cdeb5?st=HhTZY2"><strong>→ Article</strong></a> <small>(wsj.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48614715">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 122 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>cj</em>:</p>
+<blockquote>I finally gave in to my curiosity and downloaded Kalshi last week to place a few bets on the World Cup.<p>I was blown away how easy it was. I placed a bet with real money within 5 minutes of downloading the app.<p>They allow instant deposits with credit card, and ID verification was real time.<p>I can’t imagine that the extreme accessibility and the typical dark patterns deployed by every popular app won’t eventually end badly.<p>(I was also shocked that when looking at my credit card bill online, next to the Kalshi deposit line item it showed a promo “would you like to split this payment over 12 month?” and seemingly was only available for that one transaction. So I could have deposited $1000 via CC into Kalshi and paid it back $83&#x2F;mo over 12 months.)<p>This industry is wild.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tills13</em>:</p>
+<blockquote>Instant deposit via credit card? Is that not considered a cash advance?</blockquote>
+<p>↳ reply 2 — <em>owlninja</em>:</p>
+<blockquote>I read a book this year about sports gambling in the US [1], and it points out how nasty and predatory it is. I think &quot;prediction markets&quot; have even less regulation? I would talk to my sports fan buddies at work and they would say &quot;oh, just how sportsbooks in Vegas operate already&quot;, but this is on-demand, in your face, constantly nudging you to bet with dark patterns and &quot;comps&quot;. I used to want sports gambling legal in the US, but the way it has gone is incredibly disgusting and is starting to make watching sports almost annoying. The crawl on the bottom is no longer scores, but moneylines...<p>[1] &quot;Everybody Loses: The Tumultuous Rise of American Sports Gambling&quot; (2026) by Danny Funt</blockquote>
+<p>↳ reply 3 — <em>JoeMattie</em>:</p>
+<blockquote>You think that&#x27;s wild, look into prop firms some time</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>WalterBright</em>:</p>
+<blockquote>The WSJ ran an earlier article stating that unless you have access to a lot of data, computing power, and statisticians, you&#x27;re going to lose on those bets.</blockquote>
+<p><strong>Top #3</strong> — <em>cogman10</em>:</p>
+<blockquote>All these gambling apps need regulation.  And I fear they are buying politicians precisely so that doesn&#x27;t happen.<p>If I were to have my way, I&#x27;d put a law in place that limits bets to $5 max and monthly bets to $150 per month.  Letting them go higher encourages some of the worst aspects of society.<p>We will see crazy things like athletes being injured or murdered in order to win bets.  We are already seeing crazy things like white house insiders placing bets on when wars will start.<p>One of the few ways to really solve this problem is reducing the possible amount of award so the individuals placing these bets don&#x27;t feel like they have to take matters into their own hands to win.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ok_dad</em>:</p>
+<blockquote>We should just make gambling illegal online again, things were fine back when you couldn’t gamble online then, at least in the USA, the fucking supreme corpo guzzlers (formerly the Supreme Court) interpreted the laws according to their owners will and now we have gambling online.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dang</em>:</p>
+<blockquote>Could you please stop posting unsubstantive comments and flamebait? You&#x27;ve unfortunately been doing it repeatedly, and we&#x27;ve had to ask you many times not to. It&#x27;s not what this site is for, and destroys what it is for.<p>If you wouldn&#x27;t mind reviewing <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;newsguidelines.html">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;newsguidelines.html</a> and taking the intended spirit of the site more to heart, we&#x27;d be grateful.<p>(p.s. Just to pre-empt the usual: no, this is not a defense of Big Gambling, just an attempted defense of HN thread quality.)</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>p1necone</em>:</p>
+<blockquote>Usually I agree with your calls on things being unsubstantive, but this one kinda seems fine? I don&#x27;t think it&#x27;s flame bait, just emotive language? And the substantive point being made is that online gambling should be illegal.<p>(apologies if arguing about mod decisions is frowned upon, I didn&#x27;t see anything in the rules about it)</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>parpfish</em>:</p>
+<blockquote>for a while i was using the sports gambling apps to make lots of little bets.<p>it was fun to put $0.50 on a game I normally wouldn&#x27;t watch and tune in with a real rooting interest. i never bet more that $1 on a game because I knew that I would really dislike losing &#x27;real money&#x27;.<p>the fact was that the stakes were completely irrelevant to me. the value came from definitively and publicly taking a side. if you&#x27;re the fan of a team, you do this in every game. but with these little bets it&#x27;s a way to sign-on for a little slice of being a fan in every game.<p>and that got me thinking that there&#x27;s potentially a different type of gambling app that ignores the money and is more of a social&#x2F;prediction-making platform. people love chasing worthless internet points (reddit upvotes, HN karma, etc), so why not build a platform that gives you points for betting?<p>you could let a chunk of the population scratch the itch they get to gamble without creating financial risk. they can still brag about their wins.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>When I reject AI code even if it works</title>
       <link>https://vinibrasil.com/when-i-reject-ai-code-even-if-it-works/</link>
       <guid isPermaLink="false">hn3-48614631</guid>
@@ -3660,272 +3973,6 @@ Also missing is discussion of how the variance in processing times affects you w
 </blockquote>
 <p><strong>Top #3</strong> — <em>juergn</em>:</p>
 <blockquote>M&#x2F;M&#x2F;c is not the right model for a typical loadbalancer, since a loadbalancer typically does not manage a shared queue but simply passes the jobs to one of the servers. The models are:<p>- M&#x2F;M&#x2F;1 (vertical scaling, one queue and one fast server): fastest response time<p>- M&#x2F;M&#x2F;c (thread-pool, one shared queue, c slow servers): c-times slower for low loads, asymptotically  similar to M&#x2F;M&#x2F;1 for high loads<p>- c-times M&#x2F;M&#x2F;1 (loadbalancer, c slow servers each which its own queue): always c-times slower than M&#x2F;M&#x2F;1.<p>Only the response times are different. Throughtput is the same in the ideal case.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Think of the children: How to force real ID for all internet traffic (2023)</title>
-      <link>https://nochan.net/b/Internet-Crap/20230829-Think-Of-The-Children/</link>
-      <guid isPermaLink="false">hn3-48602817</guid>
-      <pubDate>Fri, 19 Jun 2026 20:19:57 +0000</pubDate>
-      <description>258 points, 181 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://nochan.net/b/Internet-Crap/20230829-Think-Of-The-Children/"><strong>→ Article</strong></a> <small>(nochan.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48602817">→ HN comments</a> &nbsp;·&nbsp; 258 points &nbsp;·&nbsp; 181 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>asdff</em>:</p>
-<blockquote>What is the final defense? I suppose we create underground relay networks of radio networks within cities that allow for computers to connect directly to eachother, and from there we seed all our pirated content and discuss whatever the hell we&#x27;d like.<p>Maybe we&#x27;d have to contend with low bandwidth when we connect outside our own city network, using larger wavelength radio to bounce off the ionosphere across the planet.<p>As for the FCC, I don&#x27;t really care. I will set up nodes on top of abandoned buildings. I will set up nodes in front of the local FCC field office. I will set up nodes in the middle of the forest. I will set up nodes on buoys out at sea. They may capture me or worse, so be it. I will not be around forever anyhow.<p>I pray there are still actual hackers out there on hacker news who might consider this idea and help further the technical side. This is a little out of my wheelhouse. I just can&#x27;t accept this inevitable incoming future where all our communications will be IDed and censored. That is the end game for them. We can&#x27;t allow for that to happen. This might be the biggest battle yet, bigger than all the other wars where power used us like pawns against the pawns of some other power, because for once in the history of civilization, we&#x27;d be fighting for our own right and not some elite group&#x27;s right. I hope I am not alone in this line of thinking.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>raincole</em>:</p>
-<blockquote>The final defense is always to change the government (one way or another). When we need to resort to technical mean we have lost.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>verisimi</em>:</p>
-<blockquote>Change the governance.  Both red, blue and the corporate sides are supportive of this.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ibarrajo</em>:</p>
-<blockquote>You can already do this, it’s called reticulum.<p>Essentially it’s encrypted internet&#x2F;networking over any type of network including LoRa.<p>Issue is the size of the community and linking up to actually serve internet or surface public services there.</blockquote>
-<p>↳ reply 3 — <em>emodendroket</em>:</p>
-<blockquote>I don&#x27;t think there&#x27;s some magical technical trick that lets you do an end run around politics.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>orbital-decay</em>:</p>
-<blockquote>To add to the list: KYC&#x2F;AML-like regulations and practices (not necessarily financial) that shift the responsibility down the chain, outside the accountability zone, and result in preventive overly broad risk avoidance, self-censorship, and manipulation of your Overton window. See for example DMCA vs YouTube practices vs what actual channels choose to do to dodge both. Or algospeak. Or the PayPal situation which is mentioned in the article.<p>But it&#x27;s all talk. Political pressure is like gas pressure. Gas expands to fill the available volume. What do you actually do to push back, besides talking about it on the web? This defines the available volume, if you don&#x27;t do anything it&#x27;s infinite.</blockquote>
-<blockquote>
-<p>↳ reply — <em>econ</em>:</p>
-<blockquote>Create a government from scratch.<p>Version control the laws.<p>Compare the laws with all other countries.<p>Hoard data.<p>Write code to replace government employees and to make laws easy to implement. (If done well consider selling a product or service)<p>Make everything modular so that the establishment can steal it.<p>Get people involved. Doesn&#x27;t matter if you need to write a sim and convince them it is a game.<p>Pretend the whole exercise is writing code so that you can imagine you are perfect for the job.<p>I learn that people from all political angles like the idea of voluntary taxes (but no one believes it can work)<p>If the whole thing can run on donations and volunteers with a few &quot;state&quot; owned companies a hot swap becomes inevitable.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>post-it</em>:</p>
-<blockquote>I&#x27;m not sure you can code your way into having a monopoly on violence.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>dredmorbius</em>:</p>
-<blockquote>NB:  Weber&#x27;s definition of government (which your quote misstates, so to speak, as is often the case), is that the state is that entity which has the monopoly on <i>the legitimate claim</i> to violence.  It&#x27;s <i>legitimacy</i>, not <i>violence</i>, which is key.<p>For the longer explanation, see:  &lt;<a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=37366751">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=37366751</a>&gt;.<p>That said, <i>legitimacy</i> is a <i>political</i> property, and one which cannot be attained through purely technical means.  To that extent I agree with your critique.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>teddyh</em>:</p>
-<blockquote>20 years before that, there was “<i>The Digital Imprimatur</i>”: &lt;<a href="https:&#x2F;&#x2F;www.fourmilab.ch&#x2F;documents&#x2F;digital-imprimatur&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.fourmilab.ch&#x2F;documents&#x2F;digital-imprimatur&#x2F;</a>&gt;</blockquote>
-<blockquote>
-<p>↳ reply — <em>nezuzen</em>:</p>
-<blockquote>ahhh fourmilab. I still run John&#x27;s earth screensaver.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Amazon drops Sam Altman movie after announcing OpenAI partnership</title>
-      <link>https://www.the-independent.com/arts-entertainment/films/news/sam-altman-biopic-amazon-openai-deal-b2999321.html</link>
-      <guid isPermaLink="false">hn3-48602639</guid>
-      <pubDate>Fri, 19 Jun 2026 20:03:16 +0000</pubDate>
-      <description>205 points, 70 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.the-independent.com/arts-entertainment/films/news/sam-altman-biopic-amazon-openai-deal-b2999321.html"><strong>→ Article</strong></a> <small>(the-independent.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48602639">→ HN comments</a> &nbsp;·&nbsp; 205 points &nbsp;·&nbsp; 70 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>n2d4</em>:</p>
-<blockquote>Amazon is actually much more reasonable than the headline makes it seem:<p><pre><code>    &gt; “We have the utmost respect and admiration for Luca Guadagnino as an award-winning filmmaker — not to mention a longstanding relationship that we hope to continue,” a spokesperson for Amazon said to Variety in a statement. “We believe that Artificial will be better served if it were released by a different studio and are working closely with the filmmaking team to find the film a new home.”
-</code></pre>
-Well, yeah, I kind of agree. Amazon probably shouldn&#x27;t be the one producing the film, and it sounds like they&#x27;re working to get the rights sold to someone else.<p>The headline also sucks because &quot;after&quot; means &quot;months after with no evidence that it&#x27;s related&quot;. It&#x27;s just clickbait all around.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>schmichael</em>:</p>
-<blockquote>Amazon dropped the movie after announcing a partnership with OpenAI. The headline clearly communicates the only demonstrable action Amazon has taken.<p>Whether they&#x27;re actually going to sell it is TBD. Until they do, they&#x27;ve taken no concrete action except cancel it. I don&#x27;t think this article is clickbait.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>testbjjl</em>:</p>
-<blockquote>Watching what is done versus what is said is an increasingly important executive level function when words can be generated for just a few tokens.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ulfw</em>:</p>
-<blockquote>You don&#x27;t need &quot;tokens&quot; to lie<p>See Trump</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Fraterkes</em>:</p>
-<blockquote>Why do you agree that Amazon shouldn&#x27;t be the one producing the film if you don&#x27;t believe there&#x27;s any evidence them dropping it is related to the partnership?</blockquote>
-<p>↳ reply 3 — <em>Lerc</em>:</p>
-<blockquote>&gt;The headline also sucks because &quot;after&quot; means &quot;months after with no evidence that it&#x27;s related&quot;. It&#x27;s just clickbait all around.<p><i>post hoc ergo propter hoc</i>  is how print media imply a unstated fact without falling foul of Betteridge&#x27;s law of headlines.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>JumpCrisscross</em>:</p>
-<blockquote>There is clearly a church-and-state issue with tech platforms owning studios. On the other hand, they have the cash. Not sure how we solve this without directly plumbing the cash to independent studios through a tax on tech funding a subsidy on independent studios.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>humodz</em>:</p>
-<blockquote>In the 1940s it was common for studios to own movie theaters, but the Supreme Court ruled that this violated antitrust laws and forced them to sell off their theaters.<p>To me it&#x27;s the same situation again, but now the theaters (streaming platforms) owning the studios.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;United_States_v._Paramount_Pictures,_Inc" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;United_States_v._Paramount_Pic...</a>.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>runevault</em>:</p>
-<blockquote>Sadly the era of government that split up studios and theaters is long gone. Hollywood is built on a different time between things like this and its flavor of unions that cover the biggest players in the industry.<p>Closest thing we have to a Hollywood today is games, but game makers can also make consoles and industry wide unions would never happen. Is there some unionization in games? Yeah, but I haven&#x27;t heard of any single one that cover a significant number of different studios</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>vovavili</em>:</p>
-<blockquote>&gt;a tax on tech funding a subsidy on independent studios<p>Forcing consumers to subsidize an expensive taste sounds like a peculiar idea.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>baq</em>:</p>
-<blockquote>I want a movie about Jassy ratting out Amodei to the feds</blockquote>
-<blockquote>
-<p>↳ reply — <em>downrightmike</em>:</p>
-<blockquote>&quot;I was told to say X&quot; roll credits</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Bobby Prince, composer for Doom, Wolfenstein 3D, and Duke Nukem 3D, has died</title>
-      <link>https://www.legacy.com/legacy/robert-bobby-prince-lll</link>
-      <guid isPermaLink="false">hn3-48602352</guid>
-      <pubDate>Fri, 19 Jun 2026 19:35:15 +0000</pubDate>
-      <description>471 points, 53 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.legacy.com/legacy/robert-bobby-prince-lll"><strong>→ Article</strong></a> <small>(legacy.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48602352">→ HN comments</a> &nbsp;·&nbsp; 471 points &nbsp;·&nbsp; 53 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>andai</em>:</p>
-<blockquote>Many moons ago, I emailed Mr. Prince, and he replied!<p>&gt; What is the sound card the DOOM sound track was composed on? It sounds different on each one. So we wanna know, how was it &quot;meant&quot; to sound like :D<p>It was a Sound Blaster 1.0, which first came out in 1989. Creative Labs released almost a version of that card each year, but so many people had bought the 1.0 that the bulk of gamers had that model for several years. And the newer Sound Blasters used the same music synthesizer chip (Yamaha OPL 2 -- an FM type synth chip). A big plus of the Sound Blaster was that Sequencer Plus (MIDI sequencing software) supported making my own sound libraries, and I was able to tweak or &quot;invent&quot; sounds within the limitations of the synth chip. Some time later, I &quot;translated&quot; the sequencer files into General MIDI (GM) files, using the sound set of the GM file spec. Generally, they worked ok, but some of the original FM synth sounds could not be emulated.<p>As sound cards got fancier, they didn&#x27;t use the OPL2 FM synth chip, but emulated it. What they didn&#x27;t figure in all this was that you could bastardize the sound of an FM instrument by playing it well out of normal music range, and you&#x27;d end up with a usable percussive instrument sound. I had done just that to create my own drum sets for the OPL2. When those sounds were emulated by the fancier sound cards, they actually sounded a musical tone rather than the bastardized sound. So my snare drum would sound like two little tin drums being played (I used two adjacent musical notes as left and right drum sticks.<p>As for emulation of the OPL2 FM synth chip, I don&#x27;t think you can get much better than the synth in DOSBOX (<a href="http:&#x2F;&#x2F;www.dosbox.com&#x2F;" rel="nofollow">http:&#x2F;&#x2F;www.dosbox.com&#x2F;</a>).<p>As for the real thing, you will be able to get the sounds as they were &quot;meant&quot; to be on any sound card that has the OPL2 FM synth chip.<p>I hope this answers your question.<p>Best regards,<p>Bobby</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mock-possum</em>:</p>
-<blockquote>Brilliant - I’m sure some enterprising person has rendered a version of the soundtrack ‘as it was originally written,’ I should track that down…</blockquote>
-<p>↳ reply 2 — <em>amatecha</em>:</p>
-<blockquote>That&#x27;s awesome, thanks for sharing this!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ChrisArchitect</em>:</p>
-<blockquote>RIP Legend.<p>Neat that just last month the Library of Congress added the Doom soundtrack to its registry too<p><a href="https:&#x2F;&#x2F;newsroom.loc.gov&#x2F;news&#x2F;national-recording-registry-inducts-sounds-of-taylor-swift--beyonc---the-go-go-s--vince-gill--weezer&#x2F;s&#x2F;bc258688-e655-4ffb-9f91-f32b94956f36#:~:text=these%20streets%20tonight.%E2%80%9D-,%E2%80%9CDoom%E2%80%9D%20Soundtrack%20%E2%80%93%20Bobby%20Prince%2C%20composer%20(1993),-Originally%20released%20in" rel="nofollow">https:&#x2F;&#x2F;newsroom.loc.gov&#x2F;news&#x2F;national-recording-registry-in...</a></blockquote>
-<p><strong>Top #3</strong> — <em>PaulCarrack</em>:</p>
-<blockquote>Loss of an absolute legend.<p>One of my favorite videos (and songs) sang by Bobby: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=9w3yoIOK-9U" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=9w3yoIOK-9U</a> (Eat Your Vegetables)<p>RIP. You will be missed Bobby.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Big Banana Car</title>
-      <link>https://bigbananacar.com/</link>
-      <guid isPermaLink="false">hn3-48601420</guid>
-      <pubDate>Fri, 19 Jun 2026 18:14:11 +0000</pubDate>
-      <description>179 points, 96 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://bigbananacar.com/"><strong>→ Article</strong></a> <small>(bigbananacar.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48601420">→ HN comments</a> &nbsp;·&nbsp; 179 points &nbsp;·&nbsp; 96 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>harwoodr</em>:</p>
-<blockquote>I used to drive a 1991 Suzuki Cappuccino - a tiny right-hand drive kei sports car.  The first couple of years I drove it, the police pulled me over on a regular basis - no tickets issued but lots of questions asked.<p>One time while I was waiting for a light, an officer knocked on my window (which is somewhat startling)... I rolled it down and he excitedly asked &quot;What kind of car is this?!&quot;<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Suzuki_Cappuccino" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Suzuki_Cappuccino</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>n4r9</em>:</p>
-<blockquote>It&#x27;s pleasantly surprising how much positive vibes you can get driving an unusual car. On a business trip last year, I arrived late at night to the hotel and there was a rank of the smallest cars I&#x27;d ever seen:<p><a href="https:&#x2F;&#x2F;www.drive.com.au&#x2F;news&#x2F;microlino-battery-electric-bubble-car-to-go-into-production&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.drive.com.au&#x2F;news&#x2F;microlino-battery-electric-bub...</a><p>The next morning I was able to hire one out to travel to the venue. At a pitstop on the way, another driver followed me into the carpark and excitedly asked me where I found the car so that he could go get one too.<p>To be honest, it wasn&#x27;t a comfortable or easy drive. The speed topped out at 90kph and the steering felt gravelly. But it was fun getting in and out of the front of the car.</blockquote>
-<p>↳ reply 2 — <em>forinti</em>:</p>
-<blockquote>That&#x27;s just not enough motive to waste someone&#x27;s time.<p>And, no offense intended, that car is not that interesting. I guess policing must be boring.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>alentred</em>:</p>
-<blockquote>&gt; World Needs More Whimsy<p><i>100% that!</i> When did everything get serious and look-alike? Anyway, I am taking off, shopping cart racing in the mall...</blockquote>
-<p><strong>Top #3</strong> — <em>0xbadcafebee</em>:</p>
-<blockquote>I hosted Steve on my couch (remember Couchsurfing?) when he was taking his Big Banana Car to a local art festival. Awesome guy, awesome car. I got to ride along for a bit. It was thrilling to see every single person&#x27;s face light up as soon as they saw it, like a moving happiness machine. I hope somebody sees this and decides to make their own bit of whimsy</blockquote>
-<blockquote>
-<p>↳ reply — <em>lproven</em>:</p>
-<blockquote>The movement is still alive. I hosted a couchsurfer last week.<p><a href="https:&#x2F;&#x2F;www.bewelcome.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.bewelcome.org&#x2F;</a><p><a href="https:&#x2F;&#x2F;www.warmshowers.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.warmshowers.org&#x2F;</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Is AI ruining our skills? Early results are in – and they're not good</title>
-      <link>https://www.nature.com/articles/d41586-026-01947-1</link>
-      <guid isPermaLink="false">hn3-48601286</guid>
-      <pubDate>Fri, 19 Jun 2026 18:00:48 +0000</pubDate>
-      <description>247 points, 315 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.nature.com/articles/d41586-026-01947-1"><strong>→ Article</strong></a> <small>(nature.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48601286">→ HN comments</a> &nbsp;·&nbsp; 247 points &nbsp;·&nbsp; 315 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>u8</em>:</p>
-<blockquote>We were so spoiled. We got fat salaries to sit in air conditioned Herman Millers all day learning about computers. Now we discover a way to synthesis intelligence and the only thing we can think to do with it is ruin the most fun career most of us could have ever hoped for.<p>Sure, we&#x27;re all more productive now, but how much of that is because we leverage AI on top of the intelligence we gained from all of that manual work? Who is to say that in 36 months you&#x27;re not a worse developer over all because that systems knowledge starts to atrophy too?<p>This isn&#x27;t me saying you shouldn&#x27;t use AI. I use it all of the time to do useful side tasks like to setup GitHub Workflows while I write a feature, or with my agent on a VPS to do internet tasks for me. It&#x27;s nice to have a little synthesized intelligence.<p>What isn&#x27;t nice is to supplement your own intelligence. I think the gains are in the work there--similar to how you can be absolutely ripped from taking steroids while destroying your body. Often it&#x27;s the shortcuts that are the most treacherous path.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>davidcelis</em>:</p>
-<blockquote>&gt; Sure, we&#x27;re all more productive now, but…<p>I’ve been trying to ask people a different question: sure, we’re more productive now but to me, the AI era is only serving to plunge us deeper than ever into producing more, more, more, faster, faster, faster. And for what? What’s it all for? I became a software engineer because I have a lot of fun writing code, thinking through and solving complicated problems, and experiencing the reward of seeing what I’ve built by hand working for the first time.<p>Do people really have fun managing a fleet of agents that generate the code instead? Or is it just the rush of producing something extremely quickly, much more quickly than you might be able to alone, regardless of how well (or poorly) it might work? For me, being able to move quickly was never the fun part.<p>It’s one thing to utilize AI to lessen the drudgework, the boilerplate, but I look at people who have gone all in on agentic development and it just really makes me wonder.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>theturtletalks</em>:</p>
-<blockquote>2 types of people:<p>People who use coding as a means to an end, producing a product<p>People who enjoy process over product and coding is the enjoyable part, not the end product<p>Company executives fall into bucket 1. Even if you love your cushy air-conditioned job, doesn’t mean the people above you don’t see you as a means to an end, a better product.<p>Solo founders and small startups are in bucket 1 as well but that doesn’t mean that don’t enjoy coding, just the product being made is much more satisfying.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>DrewADesign</em>:</p>
-<blockquote>I think that’s a false dichotomy. I enjoyed coding but was more interested in the problems code could solve. Both were really important facets of the job. When I was a chef, I loved being creative with flavors and techniques, and giving people a new favorite aesthetic memory to file away. Losing one of those things would make the job not worth it to me even though I enjoyed both.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>DrewADesign</em>:</p>
-<blockquote>&gt; We were so spoiled. We got fat salaries to sit in air conditioned Herman Millers all day learning about computers. Now we discover a way to synthesis intelligence and the only thing we can think to do with it is ruin the most fun career most of us could have ever hoped for.<p>True.<p>&gt; Who is to say that in 36 months you&#x27;re not a worse developer over all because that systems knowledge starts to atrophy too?<p>I think that would be the best case scenario for a lot of developers. It’s not going to make anybody’s life easier. The labor market and job expectations are morphing to absorb any increase in productivity already, and we will all be forced to produce more and more and more to keep our jobs. Demand can’t instantly dramatically increase to meet the productivity, so it’s not like companies can just sell more— people will get laid off. More and more people will be fighting over fewer and fewer jobs, so the people who are still employed will get paid shit. It’s a basic supply and demand equation.<p>I wonder how many fewer people that told me “well <i>my</i> job isn’t going to be affected because it’s too complex&#x2F;specialized&#x2F;etc” in 2024 would say that today?<p>Companies must either double down on increasingly exorbitant per-token pricing and reduce payroll to compensate, or decide the tradeoffs aren’t worth it, and double down on human intelligence. I think the economics of the industry are going to decide for us in the coming months.</blockquote>
-<p>↳ reply 3 — <em>BobbyJo</em>:</p>
-<blockquote>You&#x27;re either using it wrong, or work somewhere that sucks. I&#x27;m having a ton of fun coding with AI.<p>I feel like I am learning a whole new branch of the programming skill tree. LLMs and their harnesses are like a mew set of constraints to work around when designing systems, but if you get them right you can build bigger, better things than ever before.<p>I say all of this as someone who spent the last two days rebuilding RBAC for my application after Claude royally messed it up.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>cortesoft</em>:</p>
-<blockquote>I wonder if this same effect happens for very wealthy and&#x2F;or very senior executives? Those sorts of people have always had numerous people they could &#x27;outsource&#x27; their thinking to; delegating work, asking for research&#x2F;summaries, assigning tasks.<p>Does handing off that sort of work to people also ruin your skills in the same way? Or are AIs fundamentally different, and if so, why? Because we have no moral or social pressure to not delegate everything?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>phil21</em>:</p>
-<blockquote>Yes. The moment you move from daily IC work to management your skills begin to atrophy. Even if you are magical and somehow they do not - you are not keeping up&#x2F;practicing on the newer developments.<p>If you are doing your job as a manager it’s the scariest career possible. There is no realistic fallback to lower paid IC work after a certain amount of years. Your job is to enable others, not do things yourself.<p>There are shades of grey and you try to keep skills at least honed a little here and there doing R&amp;D and side projects - but it’s just not the same as day to day production line work.<p>And of course some people start at a much higher baseline of skill than others. The impact is largely the same though over time.<p>This is by far the single largest caution I give to skilled engineers who talk to me about moving into a management track. It’s a decision not to be taken lightly.</blockquote>
-<p>↳ reply 2 — <em>ilaksh</em>:</p>
-<blockquote>The ownership class does not really do work. What they delegate (high level plans) is generally easier to do for AI agents than things like software engineering because it does not need to be as precise or executable. However, there the work has very broad scope scope and the roles are very high risk, so it might need a Fable 5 or Fable 6 level vision language model to remove the jaggedness to make it &#x27;safe&#x27; enough to drop the humans  But what is going to blow up in 2027 are Automated AI Companies. Human CEOs and owners will not be able to compete with these AI-run companies.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>mellosouls</em>:</p>
-<blockquote>This is new, the scope of it, its not just about individual &quot;skills&quot; because its <i>all of them</i>; we are being challenged at the very fundamentals of our ability to think deeply and widely and persistently. That has never happened before like this.<p>It is quite extraordinary and breath-taking at times to see the agents in action; the flipside is that very power renders us both vulnerable to its seduction and enfeeblement on an equal scope - its almost hard-drug like in its potential long-term psychological effects.</blockquote>
-<blockquote>
-<p>↳ reply — <em>hombre_fatal</em>:</p>
-<blockquote>&gt; we are being challenged at the very fundamentals of our ability to think deeply and widely and persistently. That has never happened before like this.<p>Social media and content algorithms come to mind as an early wave that changed the landscape here that defines the horrible status quo leading into the AI era.<p>These days it&#x27;s trivial to slide into an echo chamber and very hard to break out of the silo.<p>There might be a double-edged sword here where AI, trusted by most people as an omniscient oracle, can offer the only pushback we encounter on positions we picked up passively by scrolling social media, Youtube, TikTok.<p>For example, ask Claude, ChatGPT, and even Grok about the &quot;space lasers&quot; that started wildfires in Hawaii in 2018, something people like Marjorie Taylor Greene floated on social media. It quickly debunks it as bullshit.<p>Now, maybe it will pan out such that everyone will have their own AI that tells them what they want to hear. But so far I&#x27;ve watched people abandon arguments on Twitter because Grok rejected their claim. So it feels like there&#x27;s a glimmer of hope.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Google Chrome update will close the door on ad blockers</title>
-      <link>https://9to5google.com/2026/06/15/google-chromes-next-update-will-mark-the-end-of-popular-ad-blockers/</link>
-      <guid isPermaLink="false">hn3-48555244</guid>
-      <pubDate>Tue, 16 Jun 2026 13:46:19 +0000</pubDate>
-      <description>255 points, 332 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://9to5google.com/2026/06/15/google-chromes-next-update-will-mark-the-end-of-popular-ad-blockers/"><strong>→ Article</strong></a> <small>(9to5google.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48555244">→ HN comments</a> &nbsp;·&nbsp; 255 points &nbsp;·&nbsp; 332 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>abtinf</em>:</p>
-<blockquote>Someone ought to build a browser that is designed from the ground up to treat the web for what it is: the most hostile ecosystem on the planet.<p>uBlock&#x2F;uMatrix functionality should be built into the core. Every domain and PSF should be sandboxed to its own profile. User agents and many js queries should return standard responses. Forcing display of video controls should be trivial. Manipulating pages to show&#x2F;hide elements and customize feeds should be trivial. Right clicking to download any asset should just work.<p>And so, so much more.<p>The browser is my agent, not your mole.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>xnx</em>:</p>
-<blockquote>This should be Firefox, but they&#x27;ve expended a lot of time and energy reimplementing code from Chromium instead of focusing on where they can add unique value.</blockquote>
-<p>↳ reply 2 — <em>tbeseda</em>:</p>
-<blockquote>Vivaldi (not affiliated) kinda aims to do this. At least they build the blocker in. It uses the Blink engine, too. I don&#x27;t think this move by Google will adversely affect Vivaldi in the same way it does Chrome.</blockquote>
-<p>↳ reply 3 — <em>gsanderson</em>:</p>
-<blockquote>Helium has been the closest I&#x27;ve found. It comes with uBlock Origin. It is based on Chromium though, so not sure if the manifest v2 removal will break that.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>whitepoplar</em>:</p>
-<blockquote>A lot of people have been very vocal about this. I use uBlock Origin Lite and haven&#x27;t noticed a difference between it and uBlock Origin. Am I missing something?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>GeekyBear</em>:</p>
-<blockquote>&gt; For uBlock Origin users on Chrome, there’s uBlock Origin Lite. However, the Lite version “allows some tracking, its blocklist is a fraction of what the original blocked, and it can&#x27;t perform the dynamic filtering that made the original effective,”<p><a href="https:&#x2F;&#x2F;www.pcmag.com&#x2F;news&#x2F;googles-next-chrome-update-will-finally-kill-support-for-ad-blockers" rel="nofollow">https:&#x2F;&#x2F;www.pcmag.com&#x2F;news&#x2F;googles-next-chrome-update-will-f...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bastawhiz</em>:</p>
-<blockquote>I guess that&#x27;s what the GP and I are both saying we didn&#x27;t feel. I have no idea what benefit &quot;dynamic filtering&quot; provides. It sounds good on paper but having tried both versions, I can&#x27;t tell the experiences apart. I don&#x27;t see ads, pages load fast, and that seems like enough?<p>Actually, I&#x27;ll take that back. I used to see far more stuff get blocked (e.g., when clicking links) than with Lite. Which is to say, Lite <i>feels</i> like it has fewer false positives.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>GeekyBear</em>:</p>
-<blockquote>When sites attempt to block users who use ad blocking extensions, dynamic  filtering allows well written ad blockers to continue to work.<p>For instance:<p>&gt; Last year, Google&#x2F;YouTube ramped up its efforts against ad-blockers, preventing playback for users with the software installed on their devices, coercing them to disable it.<p>Users continued to exploit loopholes in browsers and third-party extensions, such as Firefox, that allowed them to bypass YouTube&#x27;s ads while watching videos. However, the tech giant has seemingly doubled down on its efforts against ad-blockers, closing the few remaining loopholes<p><a href="https:&#x2F;&#x2F;www.windowscentral.com&#x2F;software-apps&#x2F;streaming-video&#x2F;ad-blockers-are-not-allowed-google-escalates-its-battle-against-ad-blockers-to-push-youtube-premiums-usd14-month-subscriptions" rel="nofollow">https:&#x2F;&#x2F;www.windowscentral.com&#x2F;software-apps&#x2F;streaming-video...</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>flohofwoe</em>:</p>
-<blockquote>+1, Lite is mostly fine. The main difference seems to be that YouTube videos sometimes start a couple seconds late. Not quite annoying enough yet to switch browsers (tbh though, Firefox is totally fine these days, main downside for me is that the WebGPU implementation lags quite a bit behind Chrome and Safari).</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>rschiavone</em>:</p>
-<blockquote>I remember when they first announced it years ago and they pretended to care by walking back the change. As always, the strategy is to wait for the dust to settle and then push the changes again.</blockquote>
-<blockquote>
-<p>↳ reply — <em>archerx</em>:</p>
-<blockquote>Well it got me to uninstall chrome so that’s something.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>SpaceX Is Buying Cursor</title>
-      <link>https://www.bbc.com/news/articles/cvgd5g7d7gyo</link>
-      <guid isPermaLink="false">hn3-48554215</guid>
-      <pubDate>Tue, 16 Jun 2026 12:31:37 +0000</pubDate>
-      <description>286 points, 3 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/cvgd5g7d7gyo"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48554215">→ HN comments</a> &nbsp;·&nbsp; 286 points &nbsp;·&nbsp; 3 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jsnell</em>:</p>
-<blockquote>Dupe: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48553224">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48553224</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>dang</em>:</p>
-<blockquote>Comments moved thither. Thanks!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ChrisArchitect</em>:</p>
-<blockquote>Some more discussion: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48553224">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48553224</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Russian artist and Putin critic shot dead in Poland</title>
-      <link>https://www.bbc.com/news/articles/clyrzd5g6k2o</link>
-      <guid isPermaLink="false">hn3-48554208</guid>
-      <pubDate>Tue, 16 Jun 2026 12:31:18 +0000</pubDate>
-      <description>136 points, 68 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/clyrzd5g6k2o"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48554208">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 68 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tartoran</em>:</p>
-<blockquote>That&#x27;s so sad. I just looked up his artwork and it&#x27;s hilarious. RIP Semyon Skrepetsky</blockquote>
-<p><strong>Top #2</strong> — <em>red-iron-pine</em>:</p>
-<blockquote>as Russia unravels further expect to see more of this</blockquote>
-<p><strong>Top #3</strong> — <em>everdrive</em>:</p>
-<blockquote>Putin is uncowed, clearly. It&#x27;s hard to know what the truth of things is. It&#x27;s clear he&#x27;s on his back heels in Ukraine and at home, but perhaps he still holds a strong position.</blockquote>
-<blockquote>
-<p>↳ reply — <em>INTPenis</em>:</p>
-<blockquote>Who knows how these hits happen? Maybe the artist had a green light for a while but they hadn&#x27;t been able to get a good opportunity. Do they operate like military or gangsters? I have a hard time telling the difference sometimes.<p>Are there mercenaries all over the world willing to kill for money from the various superpowers?<p>Or is it a more direct operation planned and executed in one sequence by intelligence members?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>everdrive</em>:</p>
-<blockquote>I agree with your points, but I would prefer a world where Putin would say &quot;call this off, it&#x27;s too risky given the enmity we&#x27;ve fostered.&quot;</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
