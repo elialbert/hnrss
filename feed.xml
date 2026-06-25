@@ -4,7 +4,84 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 25 Jun 2026 03:20:28 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2026 05:32:06 +0000</lastBuildDate>
+    <item>
+      <title>Anthropic says Alibaba illicitly extracted Claude AI model capabilities</title>
+      <link>https://www.reuters.com/world/china/anthropic-says-alibaba-illicitly-extracted-claude-ai-model-capabilities-2026-06-24/</link>
+      <guid isPermaLink="false">hn3-48664814</guid>
+      <pubDate>Wed, 24 Jun 2026 19:48:01 +0000</pubDate>
+      <description>249 points, 415 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.reuters.com/world/china/anthropic-says-alibaba-illicitly-extracted-claude-ai-model-capabilities-2026-06-24/"><strong>→ Article</strong></a> <small>(reuters.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48664814">→ HN comments</a> &nbsp;·&nbsp; 249 points &nbsp;·&nbsp; 415 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>0xbadcafebee</em>:</p>
+<blockquote>There&#x27;s two basic kinds of distillation: 1) the massive [and dumb] method where you ask a question and use the answer as reinforcement (Black Box), and 2) more targeted distillation where you use one model to directly inform&#x2F;train&#x2F;guide another model (RLAIF).<p>The latter is basically fine-tuning the model with direction from another model. Thousands of businesses do this every day to fine-tune. This is almost certainly what the Chinese labs are doing, since it has a much better effect on the end result than just getting simple answers to simple questions.<p>These complaints of distillation are inflating the problem to make it sound worse than it is, because they want the USG to block&#x2F;ban Chinese model providers as protectionism. They have already called for more export controls on chips (which is funny because DeepSeek v4 was designed to run on Huawei chips and now the other Chinese providers are following suit). But they can&#x27;t come right out and say that, so their claim is that they&#x27;re asking for more export controls because distilled models might not be as safe as their own. But if you show them a jailbreak of their model that bypasses their safety, they&#x27;ll tell you that any model can eventually be jailbroken so don&#x27;t worry about safety.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gmerc</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;research.nvidia.com&#x2F;labs&#x2F;lpr&#x2F;slm-agents&#x2F;" rel="nofollow">https:&#x2F;&#x2F;research.nvidia.com&#x2F;labs&#x2F;lpr&#x2F;slm-agents&#x2F;</a></blockquote>
+<p>↳ reply 2 — <em>dannyw</em>:</p>
+<blockquote>If you’re doing evals, you’re basically doing RLAIF without training a model; just looking at the results.<p>Fundamentally it is very difficult to stop this while still making your AI models useful.</blockquote>
+<p>↳ reply 3 — <em>janalsncm</em>:</p>
+<blockquote>Yeah I think the technical term is something more like “pseudo-labeling”. The OG distillation requires logits which Anthropic doesn’t provide.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tristanj</em>:</p>
+<blockquote>Here&#x27;s what is happening:<p>Chinese resellers are offering Claude tokens at 70-90% below official Anthropic API prices. They achieve this by reselling capacity from pooled Claude Max accounts, payments fraud, and also reselling the model output &amp; reasoning chains to various Chinese labs. They are subsidizing model access in exchange for user logs and reasoning traces, which they then sell as training data, allowing them to operate below cost.<p>Claude and ChatGPT are both blocked in China. You need to use a VPN to access either, and you can&#x27;t pay with a Chinese bank card. So most people who want access to Claude buy access via a reseller. It&#x27;s the easiest and cheapest way to access Anthropic models in China.<p>These resellers operate tens of thousands of bot accounts, which is also why Anthropic introduced identity verification, to slow down the onslaught of bots.<p>Here&#x27;s one token reseller, they&#x27;re offering Opus 4.8 at a 93% discount below official API rates: <a href="https:&#x2F;&#x2F;yunwu.ai&#x2F;pricing?provider=Anthropic" rel="nofollow">https:&#x2F;&#x2F;yunwu.ai&#x2F;pricing?provider=Anthropic</a><p>This is one reason why DeepSeek &amp; GLM are priced so cheaply, they are competing with impossibly low token prices in China. They have to keep prices low, in order for people to use them.<p>I shared this story a few months back, but it never got any traction. It explains the token resale economy in China, it&#x27;s an excellent read <a href="https:&#x2F;&#x2F;www.chinatalk.media&#x2F;p&#x2F;how-to-buy-cheap-claude-tokens-in" rel="nofollow">https:&#x2F;&#x2F;www.chinatalk.media&#x2F;p&#x2F;how-to-buy-cheap-claude-tokens...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>xgstation</em>:</p>
+<blockquote>&gt; This is one reason why Deepseek &amp; GLM are priced so cheaply, they are competing with impossibly low token prices in China. They have to keep prices low, in order for people to use them.<p>This one does not make sense to me at all.<p>Deepseek and GLM are openweights, even US inference provider are selling them at much cheaper price. The price is cheap because the model is more efficient.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tristanj</em>:</p>
+<blockquote>DeepSeek permanently cut its V4-pro API prices by 75% because they were too expensive. Without the price cut, Deepseek V4-pro tokens would have cost more than resold Opus 4.8 tokens.<p>Opus 4.8 is a more capable model, so almost nobody was going to pay for V4-pro at the original price.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ssivark</em>:</p>
+<blockquote>&gt; Without the price cut, Deepseek V4-pro tokens would have cost more than resold Opus 4.8 tokens.<p>You mean it&#x27;s functionally as if American tokens are being price dumped in China and Chinese model providers are being forced to compete with that and innovate? So many delicious layers of irony, lol :-P</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>yokisan</em>:</p>
+<blockquote>One would think Anthropic could point Mythos at this to solve the reseller problem outright:<p>- Purchase multiple accounts via resellers<p>- Send messages that contain a UID<p>- Capture these in Anthropic&#x27;s logs<p>- Shut down account. Use any metadata to identify related accounts<p>&#x2F;loop</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>walrus01</em>:</p>
+<blockquote>Reminds me a bit of the anecdote of Steve Jobs complaining about people ripping off the Mac GUI, in the mid to late 1980s, when he gave no public acknowledgement to the work done by Xerox on the Alto and Star operating system.<p>&quot;you&#x27;re trying to rip off what I&#x27;ve already ripped off!&quot;<p>Crawl the whole Internet to build a gargantuan sized LLM and then complain you&#x27;re being copied...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>breput</em>:</p>
+<blockquote>I think you meant a quote attributed to Bill Gates:<p>&quot;Well, Steve, I think there&#x27;s more than one way of looking at it. I think it&#x27;s more like we both had this rich neighbor named Xerox and I broke into his house to steal the TV set and found out that you had already stolen it.&quot;</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>walrus01</em>:</p>
+<blockquote>Yes, I think the Gates quote was a response to repeated and aggressive complaints originating from Jobs (to anyone who would listen) that he had been ripped off.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>seanmcdirmid</em>:</p>
+<blockquote>Apple gave Xerox the right to buy $1 million of pre-IPO stock before the meeting took place.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>GitHub shouldn't be a dependency for publishing Rust on crates.io</title>
+      <link>https://infosec.exchange/@mttaggart/116806641273303255</link>
+      <guid isPermaLink="false">hn3-48664733</guid>
+      <pubDate>Wed, 24 Jun 2026 19:40:11 +0000</pubDate>
+      <description>163 points, 60 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://infosec.exchange/@mttaggart/116806641273303255"><strong>→ Article</strong></a> <small>(infosec.exchange)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48664733">→ HN comments</a> &nbsp;·&nbsp; 163 points &nbsp;·&nbsp; 60 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>epage</em>:</p>
+<blockquote>An RFC was recently merged to unblock this: <a href="https:&#x2F;&#x2F;github.com&#x2F;rust-lang&#x2F;rfcs&#x2F;pull&#x2F;3963" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;rust-lang&#x2F;rfcs&#x2F;pull&#x2F;3963</a><p>The implementation on this has started.<p>Something to keep in mind is <a href="https:&#x2F;&#x2F;blog.m-ou.se&#x2F;rust-is-not-a-company&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.m-ou.se&#x2F;rust-is-not-a-company&#x2F;</a>. Rust is mostly driven by volunteers working on what they find interesting. Boring&#x2F;uninteresting tasks depend on funding, a warm body to accept the funding, and a reviewer.</blockquote>
+<blockquote>
+<p>↳ reply — <em>echelon</em>:</p>
+<blockquote>It&#x27;s not just that this is boring work, but there&#x27;s disagreement about Cargo and crates.io&#x27;s direction. There are a lot of changes people would like to make that get turned down.<p>Crates.io and Cargo need namespaces, but the leadership flatly says no.<p>There&#x27;s a big problem with name squatting, and nothing is being done about this either.<p>I get that there are more technically important issues around builds and reproducibility and the like, but this is pretty foundational stuff.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>stymaar</em>:</p>
+<blockquote>&gt; Crates.io and Cargo need namespaces, but the leadership flatly says no.<p>They are favorable to crate-name-as-namespace (so that once you have the <i>tokio</i> crate you can use <i>tokio</i> as a namespace) and there&#x27;s ongoing work on that. But as said above, it takes work to implement.<p>There&#x27;s no desire for other meaning of the word &quot;namespace&quot; because famously nobody ever made a well-reasoned proposal (despite the amount of social media outrage over the lack of namespace).</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>vsgherzi</em>:</p>
+<blockquote>I agree and so does the rust project. The main problem is that it&#x27;s alot of work and it&#x27;s hard.<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=zGS-HqcAvA4" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=zGS-HqcAvA4</a>
+Here&#x27;s a long video from jon gjengset that shows how it works and some of the effort already done to de-couple from github.<p>Crates is widely used so it&#x27;s a rebuilding the track while the train is driving kind of problem.<p>It&#x27;s just not a priority for the project right now, but I would also definitely like to see the issue done. It might be good for the rust project to vote on things like this during surveys so they know where to focus work!</blockquote>
+<p><strong>Top #3</strong> — <em>ameliaquining</em>:</p>
+<blockquote>See the official project issue on this: <a href="https:&#x2F;&#x2F;github.com&#x2F;rust-lang&#x2F;crates.io&#x2F;issues&#x2F;326" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;rust-lang&#x2F;crates.io&#x2F;issues&#x2F;326</a><p>TL;DR: They want to fix this, it&#x27;s a lot of work that no one&#x27;s being paid to do, there&#x27;s a roadmap with specific tasks that need doing, volunteer contributions are welcome.</blockquote>
+<blockquote>
+<p>↳ reply — <em>DyslexicAtheist</em>:</p>
+<blockquote>&gt; it&#x27;s a lot of work that no one&#x27;s being paid to do,<p>aren&#x27;t they like some kind of non-profit (in the legal sense) that is still able to take a lot of money (from players like Google and Co, to justify fixing this), as opposed to ... say the Zig foundation, ... that is is also &quot;non-profit&quot; but can&#x27;t get money the same way?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Thomann takes legal action against Fender</title>
       <link>https://www.thomann.de/blog/en/inside/thomann-takes-legal-action-against-fender/</link>
@@ -3543,82 +3620,6 @@ And I think this is the misconception. No, they don&#x27;t. The amount of people
 <blockquote>They&#x27;re pretty bad about fixing issues it seems. My favorite is #2472 which they demonstrated &quot;fixing&quot; on stage on the release of GPT 5, but the ticket is still open and the &quot;fix&quot; hasn&#x27;t been merged. The original blog that flagged this fact <a href="https:&#x2F;&#x2F;blog.tymscar.com&#x2F;posts&#x2F;openaiunmergeddemo&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.tymscar.com&#x2F;posts&#x2F;openaiunmergeddemo&#x2F;</a> and the issue: <a href="https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;openai-python&#x2F;issues&#x2F;2472" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;openai-python&#x2F;issues&#x2F;2472</a></blockquote>
 <p>↳ reply 2 — <em>cl3misch</em>:</p>
 <blockquote>There have been Issues on Github about the same problem since April. I&#x27;m using Codex a lot and I&#x27;m very happy with its performance (UX and output), but it&#x27;s baffling they haven&#x27;t fixed this problem.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>GLM 5.2 vs. Opus</title>
-      <link>https://techstackups.com/comparisons/glm-5.2-vs-opus/</link>
-      <guid isPermaLink="false">hn3-48626866</guid>
-      <pubDate>Mon, 22 Jun 2026 07:22:03 +0000</pubDate>
-      <description>384 points, 266 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://techstackups.com/comparisons/glm-5.2-vs-opus/"><strong>→ Article</strong></a> <small>(techstackups.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48626866">→ HN comments</a> &nbsp;·&nbsp; 384 points &nbsp;·&nbsp; 266 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cultofmetatron</em>:</p>
-<blockquote>I seriously dont&#x27; know all this big hullabaloo about one shot prompting.<p>by definition, a single prompt wont&#x27; constitute the complexity of a software project. ergo, what you&#x27;ll get is a series of assumptions made by the model based on preexisting code in its training corpus.<p>I&#x27;d rather see a coding agent that can follow steps in a plan file to a T while following guardrails and adhering to the proper coding conventions in the human reviewed spec.<p>Id rather see performance in agent loops against human defined objectives where it can be verified to stick to defined guardrails and continue without drift till its objectives are complete.<p>I&#x27;d also like to see it identify bugs and potential performance increases by identifying existing code and suggesting refactors based on context it can pickup about the particular use case you are trying to create.<p>These are way more valuable metrics than &quot;hey build X&quot;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>post-it</em>:</p>
-<blockquote>The streetlight effect:<p>&gt; A policeman sees a drunk man searching for something under a streetlight and asks what the drunk has lost. He says he lost his keys and they both look under the streetlight together. After a few minutes the policeman asks if he is sure he lost them here, and the drunk replies, no, and that he lost them in the park. The policeman asks why he is searching here, and the drunk replies, &quot;this is where the light is&quot;<p>All of your suggestions are better but they&#x27;re hard, so someone casually evaluating an AI isn&#x27;t going to do them.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sanderjd</em>:</p>
-<blockquote>Sure, for casual evaluation, I agree. But are there <i>serious</i> analyses that are evaluating this kind of thing? I mean, these are the kinds of things I evaluate in my own work when a new model comes out, or when I&#x27;m evaluating a harness. But this is all very ad hoc and intuitional. I&#x27;d love to start bringing rigor to it, but I haven&#x27;t found much prior art on this. In another thread someone said that&#x27;s because it&#x27;s probably impossible to do this rigorously because too much of it is subjective. And that does match my intuition. But I continue to suspect that intuition is wrong.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jerf</em>:</p>
-<blockquote>It&#x27;s hard to bring much rigor to it. I&#x27;m not saying <i>impossible</i>, but it&#x27;s not like it&#x27;s completely obvious how to do it and people are just too lazy. Intrinsically, if I&#x27;m going to test a back-and-forth with a model I have a human in the loop making frequent decisions. Did the model fail or succeed at whatever rate it did that because of the model or the human? Did the testing protocols capture the actual problem, e.g., maybe if the model was given some particular bit of information that a normal human would have given it it would have done much better or worse, but the testing protocol in the interests of &quot;rigor&quot; excluded the human in the loop from doing it. Is the human going to be willing to sit down and do the same task 25 times, refreshing the model from scratch each time for a &quot;valid&quot; test? Can you get the same human to analyze every model in the test? Is their 10th pass of the problem an invalid test because you can&#x27;t as easily erase the human&#x27;s knowledge of the previous 9 tests? What do you do with a model that succeeds wildly 75% of the time and spins off into a loop the other 25%? Is that loop real or, again, did your &quot;rigorous&quot; testing protocol prevent the human from saving the model from the loop like any developer would?<p>And so on and so forth. Again, I&#x27;m not saying this is <i>impossible</i> but I am saying that if you tried to do it, and you got the money, and you built the test, and got the human subjects clearance, and you ignored that during the process of all that at least one more frontier model would come out, you can count on HN anklebiting your &quot;rigorous&quot; study even so, and probably being correct about a lot of the issues it could have because it would take several iterations of this to build a reasonable protocol... at which point it would quite possibly also be obsoleted by progress again.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>hintymad</em>:</p>
-<blockquote>&gt; I&#x27;d rather see a coding agent that can follow steps in a plan file to a T while following guardrails and adhering to the proper coding conventions in the human reviewed spec.<p>In fact, I&#x27;d rather see Anthropic publish a convincing project that does this using Claude. The project should be complex enough and novel enough to show the world how reliable and powerful Claude is. That is, Anthropic does not need Amodei or its employees to tell us that whatever percent of engineers will lose their jobs. They can just show us. Easily.</blockquote>
-<p>↳ reply 3 — <em>rdsubhas</em>:</p>
-<blockquote>IMHO, It&#x27;s not the oneshotting.<p>It&#x27;s the &quot;starting from empty slate&quot; greenfield that&#x27;s the real problem.<p>We used to make fun of Engineers who follow a README on a framework, test it on an empty project, and say &quot;this framework is the best for our 10 year running production app&quot;. Greenfield mentality is always the solution to all problems and problem to all solutions.<p>One should still measure oneshotting, it&#x27;s an important self-measurement metric - but against an established, large codebase.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>faxmeyourcode</em>:</p>
-<blockquote>I feel like another comparison worth looking at is purely cost.<p>Capability per dollar is something I care about:<p><pre><code>    Opus API    $5&#x2F;$25
-    Sonnet API  $5&#x2F;$15
-    Haiku API   $1&#x2F;$5
-
-    GLM 5.2 API $1.4&#x2F;$4.4
-</code></pre>
-So you&#x27;re really getting near opus level capability for the price of <i>haiku</i>.</blockquote>
-<p><strong>Top #3</strong> — <em>lukaslalinsky</em>:</p>
-<blockquote>I was never able to get these models to collaborate with me the way Opus does. I&#x27;m probably an outliner, I don&#x27;t one-shot projects, I don&#x27;t vibe code. I basically use LLMs are if I was working with a coworker, fairly smart one, but with short memory and often missing the big picture. Sometimes I can delegate more, sometimes less, but I know I always have to stay on top of what&#x27;s happening, because it WILL create mess when it hits something hard. With the Antropic models, this kind of cooperation is easy (with the exception of Opus 4.6, which was bad for some reason).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Terretta</em>:</p>
-<blockquote>&gt; <i>Opus 4.6 which was bad for some reason</i><p>If I recall, that model had a couple issues. One was the issue of being monkeyed with, for which they gave everyone credits.<p>The other feature&#x2F;bug, depending on your POV, was being Anthropic&#x27;s least personable release, not papering over everything with self help guru therapy language.<p>Opus 4.6 didn&#x27;t LARP. It was more direct, less fussy, less discussy, and very much less &quot;wait, one more thing&quot; within a couple edits after embarking on what should have been the spec, than 4.7 or 4.8 are.<p>When in engineer brain mode, working as as you describe (good old fashioned XP-style staff engineer pair programming with a language-savvy mentee not yet full-stack or system wise), I found the clearer I was about my goal and the better I could express it, the more often I&#x27;d get an expanded clarified response I could then iterate to steer for ever tighter cleaner more specified responses, then let it go build the whole thing without it agonizing and waffling.<p>The next two releases regressed on that dimension, wanting to figuratively &quot;sit with&quot; every decision and re-validate spiritual alignment along the way, no matter how clearly expressed.<p>Curiously to me, Fable seemed to hit the best of both worlds, I had the highest commit per turn with Fable, approaching 73%, where I&#x27;m usually under 17% of LOC written being good enough to commit, usually taking 9 - 11 turns to get the code where I&#x27;m comfortable with it.<p>Thanks to this, Fable cost more, but actually cost less, if that makes sense.<p>Arguably, Fable, and 4.6, played more outcome-correctness oriented than journey-experience oriented. It&#x27;s easy to see how this could happen with human reinforced learning if not all judges are staff or principal engineer level, or constitution values are more Portlandia than Finlandia.<p>ANTHROP\C needs to balance these at the constitution level:<p><i>“We will work in a humane and thoughtful way, but production is the final judge. We will listen to people, but we will not let discussion replace decision. We will value craft, but not at the expense of usefulness. We will move fast, but not by hiding risk. We will measure outcomes, but not pretend that everything important is easy to measure.”</i></blockquote>
-<p>↳ reply 2 — <em>therealdrag0</em>:</p>
-<blockquote>What do they do instead of collaborating?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Deno Desktop</title>
-      <link>https://docs.deno.com/runtime/desktop/</link>
-      <guid isPermaLink="false">hn3-48626137</guid>
-      <pubDate>Mon, 22 Jun 2026 05:38:40 +0000</pubDate>
-      <description>864 points, 330 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://docs.deno.com/runtime/desktop/"><strong>→ Article</strong></a> <small>(docs.deno.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48626137">→ HN comments</a> &nbsp;·&nbsp; 864 points &nbsp;·&nbsp; 330 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bobajeff</em>:</p>
-<blockquote>I&#x27;m happy to see this I see that this provides CEF, Webview and Raw * backbends but it would be nice if there was also a launch in browser option (like WebUI has). To me that has the best tradeoffs if you want to avoid the mess that is webkitgtk but still not ship (and be in charge of updating) a chromium engine with your app.<p>* <a href="https:&#x2F;&#x2F;docs.deno.com&#x2F;runtime&#x2F;desktop&#x2F;backends&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.deno.com&#x2F;runtime&#x2F;desktop&#x2F;backends&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>zamadatix</em>:</p>
-<blockquote>Wouldn&#x27;t that just be &quot;Raw&quot;? I.e. start a webserver and ask the system to open the URL. There is no &quot;special stuff&quot; to do in this case like avoid sockets in favor of IPC to a well known webview or package CEF and no real integration to make with dev tools etc after - it&#x27;s just open socket and serve from prebuilt binary.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bobajeff</em>:</p>
-<blockquote>No. As I understand it, the Raw backed just gives you a Window with input handling and you have to embed something like Skia, WebGPU for the graphics. So basically you have make your widget library yourself.<p>Now you can just start a server with deno pretty easily and serve a website. But WebUI will actually also manage opening the browser window for you as well a make the communication between backend and frontend just like using a Webview or electron.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>echelon</em>:</p>
-<blockquote>&gt; I&#x27;m happy to see this I see that this provides CEF, Webview and Raw<p>They beat Tauri at their CEF support.<p>Webviews are a mistake in most cases. They&#x27;re too platform-specific, and certain Webviews (Safari&#x2F;Webkit) are buggy as hell, making platform support a nightmare. (Linux, ironically, is even worse due to how underbaked webviews are on the major desktop Linuces - Tauri is barely functional on Linux.)<p>Deno Desktop could be a real contender in this space. It&#x27;s good to see more Electron alternatives.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>40four</em>:</p>
-<blockquote>Deno continues to impress me. It’s honestly been quite a while since I started a new project without it. It has fully won my support over Node.js, the ecosystem has really matured nicely. I don’t know how often I’ll use this feature, but it’s really nice to have the option!</blockquote>
-<p><strong>Top #3</strong> — <em>qudat</em>:</p>
-<blockquote>&gt; Bindings are not IPC. The Deno runtime and the rendering backend run as threads &#x2F; processes inside the same address space (CEF) or coordinated process group (WebView). Calls go through in-process channels, and the backend dispatches them from its run loop. -- <a href="https:&#x2F;&#x2F;docs.deno.com&#x2F;runtime&#x2F;desktop&#x2F;bindings&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.deno.com&#x2F;runtime&#x2F;desktop&#x2F;bindings&#x2F;</a><p>I don&#x27;t understand how the coordinated process group works.  Doesn&#x27;t that mean in this multi-process mode it <i>must</i> be IPC?  Maybe the claim &quot;shared memory space&quot; is more an architectural description than an OS-level claim?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>whilenot-dev</em>:</p>
-<blockquote>My guess is that it&#x27;s not using IPC on OS level, like D-Bus on Linux, but rather a supervisior process starts and orchestrates child processes as needed. And all these processes use a shared memory model.<p>Here&#x27;s the CEF docs on processes: <a href="https:&#x2F;&#x2F;chromiumembedded.github.io&#x2F;cef&#x2F;general_usage.html#processes" rel="nofollow">https:&#x2F;&#x2F;chromiumembedded.github.io&#x2F;cef&#x2F;general_usage.html#pr...</a><p>EDIT: ...and the CEF docs on IPC: <a href="https:&#x2F;&#x2F;chromiumembedded.github.io&#x2F;cef&#x2F;general_usage.html#inter-process-communication-ipc" rel="nofollow">https:&#x2F;&#x2F;chromiumembedded.github.io&#x2F;cef&#x2F;general_usage.html#in...</a></blockquote>
-<p>↳ reply 2 — <em>jankiel</em>:</p>
-<blockquote>this is what I wonder as well.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
