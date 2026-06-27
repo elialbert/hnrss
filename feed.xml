@@ -4,7 +4,58 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 27 Jun 2026 17:31:14 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 27 Jun 2026 18:35:58 +0000</lastBuildDate>
+    <item>
+      <title>Fintech Engineering Handbook</title>
+      <link>https://w.pitula.me/fintech-engineering-handbook/</link>
+      <guid isPermaLink="false">hn3-48696982</guid>
+      <pubDate>Sat, 27 Jun 2026 10:28:53 +0000</pubDate>
+      <description>353 points, 114 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://w.pitula.me/fintech-engineering-handbook/"><strong>→ Article</strong></a> <small>(w.pitula.me)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48696982">→ HN comments</a> &nbsp;·&nbsp; 353 points &nbsp;·&nbsp; 114 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>penguin_booze</em>:</p>
+<blockquote>&gt; For whom?<p>It&#x27;s refreshing to see someone using the correct phrasing.<p>The often-seen, stupid way is &#x27;who is this book for&#x27;.</blockquote>
+<p><strong>Top #2</strong> — <em>xlii</em>:</p>
+<blockquote>I glanced, and I found this handbook shallow and - in some areas - even bad advice.<p>E.g. If I ever see a monetary value stored in something else than integers I&#x27;m going to run away screaming (thank you Rust decimals represented as JSON floats). It&#x27;s always integers unless you have a VERY good reason to do otherwise (though exported view can be in anything, even in weird bitcoded formats).<p>FX exchange. Resolution of FX isn&#x27;t a point-in-time thing, things like buyer rate-in-time, seller rate-in-time, agreement, agreement tolerance, agreed upon resolution timestamp come in the effect.<p>Immutability - that&#x27;s why you want to have event sourcing everywhere that touches money:<p><pre><code>    # Resolved stream
+    A -&gt; B -&gt; E
+
+    # Actual stream
+    A0 -&gt; Edit(A0, A) -&gt; B -&gt; C -&gt; D -&gt; Rollback(B) -&gt; E
+
+</code></pre>
+Though in the end Fintech != Fintech. I worked at Fintech where money was treated like a baggage, and in other where money was a central point of everything.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dahart</em>:</p>
+<blockquote>What are you referring to with the integers&#x2F;floats comment? The article says clearly that the rule of thumb is not to use floats and that they’re “almost never” a good idea, that they cause unpredictable precision loss, and recommends integer or BigDecimal types in multiple places. Are you also talking about rationals? So what is the bad advice here, exactly?<p>For FX, it seems like you’re reinforcing what the handbook says, that there’s no canonical rate. Aside from that, it’s talking about post-resolution records and you’re talking about how to resolve, no? That’s valid nuance of a separate goal, and it’s a fine goal of yours, but doesn’t seem like a demonstration of something missing or wrong.<p>The article appears to make the very same point about immutability? What are you saying that’s different?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>solumos</em>:</p>
+<blockquote>With integers&#x2F;floats, he&#x27;s saying it&#x27;s not opinionated enough. Anything other than integers with minor-unit precision, unless you have a very good reason, is a bad idea. So &quot;floating point is almost a bad idea&quot; doesn&#x27;t go far enough, and the other alternatives are presented somewhat equally.<p>The FX critique is saying that it&#x27;s glossing over a lot of the complexity. I&#x27;d say the same is true for the treatment of DE ledgers, and it borders on bad advice (e.g. &quot;Balance is never stored. It’s derived from the movements of money.&quot;)</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>dahart</em>:</p>
+<blockquote>&gt; Anything other that integers with minor-unit precision, unless you have a very good reason, is a bad idea.<p>The article clearly communicates this sentiment, no? What else needs to be said? How much further does it need to go, and why?<p>It might be a mistake for either us or the handbook to be absolute or dogmatic about floats. It’s not a sin to mention that they exist, and it’s a fact that some people in fintech use them for some reasons that have a defensible engineering position and well considered tradeoffs. I’ve been on the side of assuming people don’t use floats for money and then been surprised when I bumped into people here on HN who report using floats in finance routinely.<p>BTW, is your quote “almost a bad idea” a typo? There’s a world of difference between ‘almost a bad idea’ and ‘almost always a bad idea’. The actual words in the article, if we’re quoting the article, are: “almost never a good idea” in reference to using floating point types.<p>&gt; it’s glossing over a lot of the complexity.<p>Of course it is, that’s a good thing. It’s not pretending to be a spec or rules, it’s an introduction and general principles. The article is already introducing new complexities that people outside of fintech might not be aware of. But do we really have to mention ALL complexity? The biggest problem with Wikipedia is that it’s overrun by nuance and complexity, so much that you often can’t read an article on a topic without already being an expert on that topic. This is why experts are often bad teachers. Being unable to gloss over some complexity is not good for learning and doesn’t make a good environment for newcomers. Let’s allow people to write for non-experts and make room for learning. We don’t have to avoid glossing over some of the complexity; it’s useful to get the general direction and gist correct while leaving out some of the detail.<p>&gt; it borders on bad advice<p>Be specific. What’s wrong? Note that contributions are invited.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>skipants</em>:</p>
+<blockquote>That was the first thing that popped out and made me distrust the whole wiki; there&#x27;s only One Right Way to store money (as integers[1], as you said) and it should have been explicit about that.<p>You can also use fixed-point if whatever you&#x27;re using supports it but it&#x27;s still technically integers.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>lxgr</em>:</p>
+<blockquote>Word of advice to anyone considering the &quot;minor-units precision&quot; strategy for representing monetary amounts: Don&#x27;t (or at least, don&#x27;t use it as an interchange&#x2F;API data format).<p>It seems like a clever idea (fast integer math, no rounding problems for addition and subtraction), but it&#x27;ll bite you incredibly hard if you ever stumble upon an edge case such as working with a partner that has a different implied number of digits for a given currency. This is especially relevant for stablecoins, which often have a different number of implied decimal digits than the &quot;fiat&quot; currency they represent.<p>Also, consider representing amounts as a string type in JSON-based APIs. JSON does not specify decimal precision, so you (and all your users&#x2F;vendors) will always have to make sure your parser&#x2F;serializer doesn&#x27;t internally lose precision by going via floating point. This can get ugly fast, and while a string seems conceptually less neat, it completely bypasses that problem. (Some will call this an anti-pattern [1], but I&#x27;d rather not fight this particular battle for ideological purity on the shoulders of my users or shareholders.)<p>[1] <a href="https:&#x2F;&#x2F;blog.json-everything.net&#x2F;posts&#x2F;numbers-are-numbers-not-strings&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.json-everything.net&#x2F;posts&#x2F;numbers-are-numbers-n...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>noitpmeder</em>:</p>
+<blockquote>The only real correct solution here is to send mantissa and exponent as two separate integers. It&#x27;s trivial to convert between exponents for whatever math you want, it can be as correct as you want, and is unambiguous.<p>In the HFT space you save some wire space if you can commit to a consistent exponent for some {slice} up front (think instrument&#x2F;tick-size&#x2F;asset-class&#x2F;exchange&#x2F;feed&#x2F;server&#x2F;whatever&#x2F;...) such that you only need to send the mantissa and your clients can have a hard coded exponent. However, in similar spaces it&#x27;s often worth the extra uint32 to send a on-the-wire exponent such that things _can_ change and you aren&#x27;t hamstrung later by earlier &quot;we only need cents now!&quot; design choices when, e.g., you suddenly need to support bitcoin&#x2F;... prices to full precision. (your users will thank you when they don&#x27;t have to coordinate a breaking change when you want to adjust your fixed exponent)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>lxgr</em>:</p>
+<blockquote>&gt; The only real correct solution here is to send mantissa and exponent as two separate integers.<p>That’s essentially the same thing as a String-serialized big decimal, just less readable, no?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>gmm1990</em>:</p>
+<blockquote>That’s quite a bit slower to process. At least if you’re converting to integers to do the calculations and the calculations would be quite a bit slower if you kept the big decimal type</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dahart</em>:</p>
+<blockquote>I think I’m agreeing with you whole-heartedly if I say that article’s conclusion is at best extreme and unrealistic when it says “the parsers need to be fixed. They should support extracting any numeric type we want from JSON numbers and at any precision.”<p>This sounds like an unreasonable position to take. “Any” is an unachievable standard that could require an unlimited engineering budget with no demonstrable value in practice.<p>It is good to identify the lack of a standard, and to talk about what parsers do in practice, and good to discuss the gaps and unmet use-cases. It would be a good idea to suggest that there should be a more reasonable standard, perhaps. It’s just not a good idea to demand that everyone support “any” possibility when no one really needs that, no one knows what it means, and it’s not actually possible to achieve.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>DSpark: Speculative decoding accelerates LLM inference [pdf]</title>
       <link>https://github.com/deepseek-ai/DeepSpec/blob/main/DSpark_paper.pdf</link>
@@ -102,6 +153,38 @@ of the practice of periodically saving one&#x27;s work. Around three in the
 morning it crashed and took all of her work with it. I was told she
 burst into tears and had left when I woke up the next morning to find
 my housemate busily trying to retype it from her handwritten notes.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Anatomy of a Failed (Nation-State?) Attack</title>
+      <link>https://grack.com/blog/2026/06/25/dissecting-a-failed-nation-state-attack/</link>
+      <guid isPermaLink="false">hn3-48694631</guid>
+      <pubDate>Sat, 27 Jun 2026 02:41:53 +0000</pubDate>
+      <description>130 points, 26 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://grack.com/blog/2026/06/25/dissecting-a-failed-nation-state-attack/"><strong>→ Article</strong></a> <small>(grack.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48694631">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 26 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sneakerblack</em>:</p>
+<blockquote>This all stinks of Lazarus:<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lazarus_Group" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lazarus_Group</a><p>I&#x27;ve done incident responses for this exact type of attack multiple times. They&#x27;ve gotten much better organized lately and will often contact developers directly (over LinkedIn or WhatsApp) to run this type of attack. (Although, usually pretending to run a test for a job interview -- which is maybe why the author was confused about the code)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nullbio</em>:</p>
+<blockquote>Why assume it is Lazarus?<p>This sort of an attack is comically simple to pull off with a 12b obliterated LLM model and some basic scripts and proxies.<p>Security has to evolve, or the world will be cooked by script kiddies running email loops.<p>There&#x27;s really nothing sophisticated about this these days, and it&#x27;s only a short matter of time before it becomes commonplace.</blockquote>
+<p>↳ reply 2 — <em>krisbolton</em>:</p>
+<blockquote>100%. I can&#x27;t find it now, but someone last month posted a similar story on HN. The threat actor had stolen someone&#x27;s GitHub account and altered their otherwise legitimate looking repo. They&#x27;ll expend a lot of effort in order to masquerade and trick you. TraderTraitor is another good DPRK example.<p>Anyone reading - if you&#x27;re ever a victim, worth reporting to your national CERT and your org. The CERT can provide advice, it&#x27;s useful for their threat intel, and your org can check their systems. You might not be the end target.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mmastrac</em>:</p>
+<blockquote>Author here - if anyone has any contacts at Cloudflare to get the proxied domains (at least roadpay[.]cc) taken down, that would be great. I wasn&#x27;t able to get an abuse report to stick. Ditto for the related LinkedIn profile and Twitter accounts.<p>The C2 IP (89.124.107.161) and malware-serving git repo (144.124.244.92) are both hosted on VDSINA in Russia, so not sure if there&#x27;s anything to do there.</blockquote>
+<blockquote>
+<p>↳ reply — <em>crossroadsguy</em>:</p>
+<blockquote>Business establishments don&#x27;t like to ban troublemakers. Bad for business. (Unless it gets enough bad press, then it becomes good for business).</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tptacek</em>:</p>
+<blockquote>I snagged right away at &quot;the kind of low-level reliability judgment that most teams only notice when something breaks.&quot; Real people don&#x27;t talk like the J. Peterman catalog.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>insanitybit</em>:</p>
+<blockquote>For sure, but I also expect real people who do cold-reaches like this to be using LLMs. I wouldn&#x27;t have assumed it was indicative of malicious intent, just laziness.</blockquote>
+<p>↳ reply 2 — <em>close04</em>:</p>
+<blockquote>At this point it’s safe to assume most articles get the AI touch-up because the authors think that polish is worth it.<p>But what’s worse is the millionth “haw haw, it was made with AI” comment. Use your expertise to tell us if the article’s analysis is any good, not if the author used a “fancy narration” filter. “AI detectors” are a dime a dozen.</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Om</title>
@@ -1160,6 +1243,28 @@ These variants can be combined to best meet the needs of teachers and students.&
 <blockquote>Aside re: restaurant technology:<p>In a restaurant a year ago with &quot;pay via your phone&quot; service. Server gave us a receipt w&#x2F; a QR code. I scanned the code, copied the URL to my clipboard, and looked it over. There was a base64 blob on the URL. I decoded it (because Termux and I&#x27;m a nerd) and saw obvious parameters I could fuzz. I changed the check ID (incremented it), left the store ID alone, re-encoded it, and found I could access somebody else&#x27;s check. Not a super exciting vulnerability (since all I could do was see what they ordered and pay their check) but I thought it was still pretty rotten that I could even do that.</blockquote>
 <p><strong>Top #3</strong> — <em>wodenokoto</em>:</p>
 <blockquote>I live in Dubai and in my experience the main reason why they want you to pay with QR is because the QR company pushes a service fee on guests and some times even a default tip (tipping is not common here, but I’m sure staff is underpaid because every service company that uses an app pushes you to leave a tip) that they can’t charge if you pay directly to the restaurant.<p>Just ask the staff to bring the CC machine.<p>As for the parking. Sure technology got in the way of the conversation. It also got in the way of a $100 fine. I’d say that’s a win, not a loss.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Long Wave radio era set to end with switch-off</title>
+      <link>https://www.economist.com/britain/2026/06/25/the-bbc-switches-off-its-oldest-service</link>
+      <guid isPermaLink="false">hn3-48677564</guid>
+      <pubDate>Thu, 25 Jun 2026 18:42:17 +0000</pubDate>
+      <description>137 points, 120 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.economist.com/britain/2026/06/25/the-bbc-switches-off-its-oldest-service"><strong>→ Article</strong></a> <small>(economist.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48677564">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 120 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ChrisArchitect</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;archive.ph&#x2F;pNwm9" rel="nofollow">https:&#x2F;&#x2F;archive.ph&#x2F;pNwm9</a></blockquote>
+<p><strong>Top #2</strong> — <em>amiga386</em>:</p>
+<blockquote>That&#x27;s the end of the world, then. The British nuclear deterrent will launch when Radio 4 on long wave stops.<p><a href="https:&#x2F;&#x2F;www.forcesnews.com&#x2F;services&#x2F;navy&#x2F;nuclear-promise-letters-last-resort" rel="nofollow">https:&#x2F;&#x2F;www.forcesnews.com&#x2F;services&#x2F;navy&#x2F;nuclear-promise-let...</a><p>&gt; The process by which a Trident submarine commander would determine if the British government continues to function includes, among other checks, establishing whether BBC Radio 4 continues broadcasting [on long wave]<p>&gt; Submarines on patrol were reported to have briefly gone on nuclear alert in 2004 when Radio 4 went off the air for 15 minutes due to a power cut.</blockquote>
+<p><strong>Top #3</strong> — <em>alentred</em>:</p>
+<blockquote>That&#x27;s such a pity. Building a simple AM radio receiver was a simplest and coolest electronics project to do with kids.<p>You need two transistors, a ferrite coil and a small set of simpler elements. And it is so simple you can actually explain what every part of the circuit does.<p>And then the reward... Once built you could listen to BBC regardless of where you are in Europe. My kids just LOVED IT, no Netflix K-Drama replaces this experience.  My daughter was listening to BBC on her radio every night going to sleep.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mpweiher</em>:</p>
+<blockquote>We did that in my physics high school class.<p>Then we took away components until we had virtually nothing left, a diode I think(?), and still we had some signal.<p>Turns out there was a transmitter on the top of the hill the school was also on.<p>Fun times.</blockquote>
+<p>↳ reply 2 — <em>8bitsrule</em>:</p>
+<blockquote>Hmmm, fancy indeed. With 150kW feeding a dipole at 700 feet, I imagine that a cat&#x27;s-whisker [0] would have done well-enough in London...<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Crystal_detector" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Crystal_detector</a></blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Apple to skip high-end M6 Mac chips in favor of AI-focused M7 line</title>
@@ -3433,140 +3538,6 @@ You can see our program rules here: <a href="https:&#x2F;&#x2F;docs.scanii.com&#
 </blockquote>
 <p><strong>Top #3</strong> — <em>aetherspawn</em>:</p>
 <blockquote>LLMs find more vulnerabilities than people because people time is heaps more expensive than LLM time, that’s it.<p>We’ve always been able to find heaps, we’ve just never had the right structures to put in the effort and renumerate people for looking (even if they don’t find anything).</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Extreme Heat conference cancelled due to extreme heat warning</title>
-      <link>https://www.lse.ac.uk/granthaminstitute/events/extreme-heat-improving-governance-and-strengthening-action-around-the-world/</link>
-      <guid isPermaLink="false">hn3-48653060</guid>
-      <pubDate>Tue, 23 Jun 2026 23:26:43 +0000</pubDate>
-      <description>330 points, 331 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.lse.ac.uk/granthaminstitute/events/extreme-heat-improving-governance-and-strengthening-action-around-the-world/"><strong>→ Article</strong></a> <small>(lse.ac.uk)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48653060">→ HN comments</a> &nbsp;·&nbsp; 330 points &nbsp;·&nbsp; 331 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>lwansbrough</em>:</p>
-<blockquote>Europeans don’t get scolded enough for their resistance to air conditioning. In terms of accounting for preventable deaths, Greece has 2x more heat-related deaths per capita annually than Mississippi has gun deaths.<p>By comparison, the worst US state for heat related deaths, Nevada - a literal desert - has &gt;10x fewer deaths per capita than Greece.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>crote</em>:</p>
-<blockquote>Well yeah, because it requires re-engineering the <i>entire built environment!</i><p>Heat waves only became a serious problem in Europe in the last decade. The vast majority of buildings predate the need for air conditioning by several decades - and in plenty of cases by several centuries. The buildings are designed around being livable in a pre-climate-catastrophe climate <i>without</i> needing air conditioning - which is perfectly achievable if you aren&#x27;t stupid enough to build a city in the middle of a desert.<p>Adapting all those buildings and streets will take time. Blindly putting AC everywhere and forcing everyone to drive from building to building in an ACed car isn&#x27;t going to work, that kind of wasteful behavior is how we got into this situation in the first place. You need to <i>redesign</i> the heat management, and you need to start with things like mandating shades to prevent heat from entering buildings in the first place, and planting trees to avoid the heat island effect.<p>AC <i>will</i> indeed be needed to deal with the final heat peak when outside night temperature is in excess of 30C, but it isn&#x27;t the one-size-fits-all solution for every heat-related problem it might seem at first glance. If your AC needs to run for more than a few days per year, you&#x27;ve seriously screwed up.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>zarzavat</em>:</p>
-<blockquote>An AC unit essentially requires just a small hole in the wall and a bracket to hold the compressor unit. Europeans have walls don&#x27;t they? I&#x27;m European and I have a wall that could host an AC unit. The barrier is regulatory not engineering.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>crote</em>:</p>
-<blockquote>By all means install an AC unit to deal with the worst of it. Just install shades as well when you&#x27;ve got the scaffolding out so you can install a smaller, cheaper, and less energy-hungry one.<p>Unfortunately I personally live in a highrise, and in a rental unit, so that &quot;small hole and a bracket&quot; definitely isn&#x27;t an option for everyone.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sph</em>:</p>
-<blockquote>You know what is worse than sweltering under a heatwave?<p>To hear Americans jump at the chance to comment about Europeans and their AC usage. Jesus it’s like they have found their little pet peeve to vent all their frustration towards. Perhaps because we grumble every week there’s a school shooting and you feel you have to take petty revenge somehow. Every thread on social media is Americans whining about ACs in Europe, or lack thereof.<p>Don’t you guys have anything better to do than feel superior because most of us simply <i>cannot</i> have AC, for one reason or another? Meanwhile you have voted for a president that says climate change is a hoax and is investing in coal, for Heaven’s sake, and still here you are, gloating.<p>If I could have installed an AC unit where I live, I bloody would have.<p>Now if you’ll excuse me, I haven’t had a good nights sleep in a week, and won’t for another week.</blockquote>
-<p>↳ reply 3 — <em>CalRobert</em>:</p>
-<blockquote>The most bizarre thing to me is that here in the Netherlands I can get a subsidy for a heat pump if it heats radiators, but not if it’s a multi split air to air heat pump. Because the latter also happens to be an air conditioner. It makes no sense.<p>And then the same people who moralise air conditioning will burn tons of gas all winter for heat.<p>Oh, and sensible design choices like eaves that block light from windows in summer are blocked by planners in many cases, bizarrely. The houses are brick ovens.<p>Anyway I got AC installed here in Utrecht last week, really enjoying it</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>shitloadofbooks</em>:</p>
-<blockquote>&quot;Extreme Heat&quot; seems to be 37-40 degrees Celsius which is bafflingly mundane to me as an Australian who grew up in rural New South Wales. We&#x27;d pack 30 kids and a teacher into an un-airconditioned classroom with just a ceiling fan and the windows open in that temperature.<p>I imagine the buildings there just aren&#x27;t built to support that heat plus the body height of hundreds or thousands of attendees?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jcranmer</em>:</p>
-<blockquote>People tend to rely on air temperatures when in reality the lethality of heat is probably more linked to the wet-bulb temperature.<p>The human body has a natural resting temperature of about 37°C, and metabolism of course generates more heat constantly, so we constantly have to shed that heat. When the temperature is low, we can rely purely on conducting the heat into the atmosphere to shed the heat (which is probably why internal body temperature is higher than the atmosphere!). At higher temperatures, conduction is less efficient, or sometimes even adds heat load into the system (at above 37°C, obviously), so we start relying on evaporative cooling (i.e., sweat) to cool us down.<p>The wet-bulb temperature is the minimum temperature that can be reached by evaporative cooling. So when the wet-bulb temperature is in the mid-30s °C… people start to become literally unable to regulate their core body temperature, and the heat is lethal. Wet-bulb is largely a combination of the temperature and humidity, but unfortunately, it&#x27;s not typically reported in most weather reports, so people go off of the air temperature (and the humidity) that is reported.<p>Which is a long-winded way of saying &quot;the humidity matters <i>a lot</i> for how much a given temperature is bearable.&quot; I don&#x27;t know what environment you come from purely by rural New South Wales, but my first guess is the semi-arid and thus low-humidity bush regions of the state, which means the apparent wet-bulb temperature of 37-40°C would be a lot lower than the equivalent 37-40°C for most of the humid continental climates of Europe.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>fulafel</em>:</p>
-<blockquote>Theory primer (from <a href="https:&#x2F;&#x2F;derangedphysiology.com&#x2F;main&#x2F;cicm-primary-exam&#x2F;thermoregulation&#x2F;Chapter-111&#x2F;mechanisms-heat-transfer" rel="nofollow">https:&#x2F;&#x2F;derangedphysiology.com&#x2F;main&#x2F;cicm-primary-exam&#x2F;thermo...</a>):<p>&gt; The total heat transfer of a human is the same as the metabolic heat production, and is approximately 100 watts, or 400 kJ&#x2F;hr, or 60-70 kcal&#x2F;hr at rest.
-It occurs by:<p><pre><code>  &gt;  Radiation (50%)
-  &gt;  Convection (30%)
-  &gt;  Evaporation (20%)
-  &gt;  Conduction (usually 0%)
-</code></pre>
-(Radiation and convection can either cool or heat you depending on the environment)</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>strogonoff</em>:</p>
-<blockquote>Looking just at ambient air temperature is an easy mistake to make. I used to be like that, always surprised why people whine so much near the coast in winter with their comfortable numbers and thinking I’m superhuman compared to them. I stopped when I learned first-hand that their negative 17 degrees feel as bad as our negative 30.<p>If you live in a town in New South Wales where the average humidity is less than 50% in the wettest (or, should I say, <i>least dry</i>) season, you might not understand what it feels like in London where the average doesn’t dip below 65% any time of year.<p>Today London will feel at least 4 degrees Celsius hotter than Hong Kong. The latter is already an extremely unpleasant place to be in these conditions (and had in fact its own very hot weather warning issued), and unlike London it has a very strong culture of air conditioning.<p>4 degrees might seem like not a lot, but heat extremes are a tricky beast. Once your body cannot evaporate heat fast enough, you’re literally toast.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>PeterStuer</em>:</p>
-<blockquote>The dowside of hosting your conference in exquisitly beautifull old locations is that they have no airco.<p>While well managed traditional cooling management can keep them pleasant enough, this would require light programme adaptations, basically shifting to starting early morning - noon, covering the glass dome, and night ventilation, but that seems to be more insurmountable than cancelling.<p>Apparently the LSE does have airco spaces, but these aren&#x27;t as inspirationally nice it seems.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>California AB 2047 makes 3D printers off-limits to students, educators, business</title>
-      <link>https://www.the3dprintingnerd.com/ab2047</link>
-      <guid isPermaLink="false">hn3-48652184</guid>
-      <pubDate>Tue, 23 Jun 2026 22:12:18 +0000</pubDate>
-      <description>257 points, 180 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.the3dprintingnerd.com/ab2047"><strong>→ Article</strong></a> <small>(the3dprintingnerd.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48652184">→ HN comments</a> &nbsp;·&nbsp; 257 points &nbsp;·&nbsp; 180 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>umvi</em>:</p>
-<blockquote>&gt; The required technology is not possible - 3D printers read code, not intent; they cannot tell what a shape is for.<p>&quot;Anthropic announces Project Disarm, a new model designed for 3d printer manufacturers to quickly infer whether the intent of an stl file is a weapon. The printer first submits the job to the cloud, and only after it&#x27;s approved will it print.&quot;<p>Not that I want this future, just that I can imagine it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jchw</em>:</p>
-<blockquote>Based on the fact that Claude Opus 4.8 decided I needed a cybersecurity exemption to debug a stupid pure virtual call bug (basically virtual method called inside of destructor) that I had already found, oh boy, I sure would <i>love</i> to have my 3D prints analyzed by Anthropic safe guards. We should also ensure that nothing shaped like a dildo can be printed without scanning our face and genitalia and keeping it on file with Persona while we&#x27;re at it.<p>I&#x27;m not mad at you for suggesting this, you&#x27;re right, I&#x27;m just generally aimlessly angry and ready for this world to burn.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>caturopath</em>:</p>
-<blockquote>I&#x27;m getting a lot of refusals these days from multiple LLMs on multiple fronts for silly stuff, a lot more than I had for a while. If this is where things are really going, I think open weight models have a big future.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jojobas</em>:</p>
-<blockquote>&quot;H.R. 148867 makes all large language models subject to safety certification, introduces penalties for unlicensed training and use of uncertified models&quot;</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ryandrake</em>:</p>
-<blockquote>The future is almost certainly the terrible path: &quot;applications phoning home to judge whether a use case is approved by the company.&quot; All writing is on the wall, and directionally that&#x27;s the way software and hardware has been moving. We have unfortunately normalized the idea that users must have this ongoing tethered relationship to the product manufacturers and software developers, who measure, change, and control the user&#x27;s usage at their whim.<p>You can no longer just buy a tool and use it.</blockquote>
-<p>↳ reply 3 — <em>mrandish</em>:</p>
-<blockquote>Yes, I can imagine it too. And, if such a &#x27;safety nanny&#x27; is enacted into law, I&#x27;m confident it will A. Refuse to print a significant number of innocent projects, or B. Be trivially circumvented by bad actors. The odds are high that it will manage to do both.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dgellow</em>:</p>
-<blockquote>If that becomes current law I don’t want to ever hear about Europe being over-regulated compared to the US…</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>vor_</em>:</p>
-<blockquote>There are several snarky knee-jerk reactions in the comments here, but state assemblies pass things all the time that ultimately fail to pass or get vetoed. Now the public will debate it, contact their state senators to give their opinions...it&#x27;s all part of the process.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>harshreality</em>:</p>
-<blockquote>A law like this just passed in New York State.<p>If this fails it&#x27;ll be because the tech industry expresses disapproval too loudly to ignore.<p>The legislators don&#x27;t care about the underlying criticism.  Almost no legislators have ever used a 3d printer or written any software, beyond <i>maybe</i> simple assigned programs if they had a required intro-to-programming course.  Few are &quot;tech&quot; people.  The rest don&#x27;t understand this technology, or any technology really, beyond it being a black box for specific purposes.  They see 3d printing and plastic guns and think something must be done, because the 3d printing black boxes are producing dangerous weapons.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jasonfarnon</em>:</p>
-<blockquote>Are these laws already on the books places like Europe, Japan with strict gun control laws?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>WheatMillington</em>:</p>
-<blockquote>Americans are not allowed to buy Kinder eggs.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>deckar01</em>:</p>
-<blockquote>I tried to photo copy a dollar bill when I was a kid on a dinky inkjet printer. It printed half way then spit out something about counterfeit prevention. I scanned the bill, printed the top half, fed the paper back in, and printed the bottom half. This can only actually stop the completely unmotivated.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Trains halted across Germany because of communication system problem</title>
-      <link>https://apnews.com/article/germany-trains-halted-communications-radio-problem-deutsche-bahn-e8fd970b2d889f3ae7ce03322d5c726b</link>
-      <guid isPermaLink="false">hn3-48651613</guid>
-      <pubDate>Tue, 23 Jun 2026 21:19:44 +0000</pubDate>
-      <description>151 points, 146 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://apnews.com/article/germany-trains-halted-communications-radio-problem-deutsche-bahn-e8fd970b2d889f3ae7ce03322d5c726b"><strong>→ Article</strong></a> <small>(apnews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48651613">→ HN comments</a> &nbsp;·&nbsp; 151 points &nbsp;·&nbsp; 146 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mmoll</em>:</p>
-<blockquote>If this weren’t Deutsche Bahn, I’d say it’s a cyber attack. Given that this is Deutsche Bahn, though, it may just as well be a maintenance issue.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>fnordian_slip</em>:</p>
-<blockquote>That&#x27;s what happens when you ignore critical infrastructure for three decades.<p>Of course, if the government were to correct the mistakes of the past, it would get worse for another decade. The necessary repairs would cause a lot more delays, and voters would then say &quot;Were giving them so much extra money, and it gets worse? Unacceptable!&quot;. So  I fear we&#x27;ll continue to have these problems forever.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>JumpCrisscross</em>:</p>
-<blockquote>&gt; <i>when you ignore critical infrastructure for three decades</i><p>To be fair, Deutsche Bahn is currently spending “€107bn between 2025 and 2029” on infrastructure upgrades [1].<p>[1] <a href="https:&#x2F;&#x2F;www.ft.com&#x2F;content&#x2F;db75e347-b13b-4753-8130-6301bb55c040?syn-25a6b1a6=1" rel="nofollow">https:&#x2F;&#x2F;www.ft.com&#x2F;content&#x2F;db75e347-b13b-4753-8130-6301bb55c...</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>wil421</em>:</p>
-<blockquote>NYC is spending around $68 billion to modernize their subway. Not sure what that’s says about Deutsche Bahn vs NYC&#x2F;MTA but I’m sure both are not upgrading that much.<p>Not sure what I was expecting quality wise in Germany when I rode the DB rail between states and the Munich subway but it wasn’t much different than the US, except it much more expansive. Nothing fancy and it was late but I’d rather not pay for fancy here or there. Just make it work.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>dfltr</em>:</p>
-<blockquote>For DB, this type of outage is referred to as &quot;Tuesday&quot;.</blockquote>
-<p>↳ reply 3 — <em>eqvinox</em>:</p>
-<blockquote>For context, in case people are less familiar with German politics:<p>DB is in a misbegotten state of privatization, started in the 90ies.  The government spun it out into a private company but still owns 100% of it.  They were trying to pump it up so they could sell it for good money.  They did that by skimping on everything including maintenance, to try and make the numbers look good.<p>Except they never got to whatever magic numbers they wanted before the maintenance debt came rearing its ugly head and now everything is royally screwed.  And because it&#x27;s a private company, there&#x27;s a whole bunch of barriers limiting how much they can even subsidize the thing at this point.<p>Not sure if this is better or worse than the UK&#x27;s Network Rail story, but at the end of the day the only thing that will solve this is if they re-nationalize the tracks &amp; infrastructure.  What kind of an idiot thought including that in the privatization is a good idea is beyond me.  It&#x27;s not like you can build a 2nd railway network in order to get free market &amp; competition. (For comparison, imagine privatizing the entire road network, village street to Autobahn.)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>modinfo</em>:</p>
-<blockquote>&quot;IT Outage: No train service nationwide. Due to a nationwide outage of the GSMR digital rail radio system, all trains are being held at stations. We are working around the clock to resolve the issue.<p>Our technicians are working around the clock to resolve the outage.<p>Please continue to check your travel connection immediately before departure using the travel information service at bahn.de, the DB Navigator app, or by calling the travel information hotline at 030&#x2F;2970.&quot;<p><a href="https:&#x2F;&#x2F;www.bahn.de&#x2F;service&#x2F;fahrplaene&#x2F;aktuell" rel="nofollow">https:&#x2F;&#x2F;www.bahn.de&#x2F;service&#x2F;fahrplaene&#x2F;aktuell</a></blockquote>
-<p><strong>Top #3</strong> — <em>ripbozo</em>:</p>
-<blockquote>Word on the german bahn reddit seems to be that a buggy software update is the cause. Remains to be seen if this is the real cause</blockquote>
-<blockquote>
-<p>↳ reply — <em>segmondy</em>:</p>
-<blockquote>AI vibes all the place!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tormeh</em>:</p>
-<blockquote>Everything I&#x27;ve ever heard about railway and train software suggests AI cannot possibly make things any worse than they already are. Conservatism causes no changes to be possible, which means many changes have to be made via workarounds and virtualization wrappers which cause a giant mess over time which create breakage which creates a conservative culture&#x2F;laws.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
