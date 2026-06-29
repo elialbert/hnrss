@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 29 Jun 2026 13:44:40 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 15:19:08 +0000</lastBuildDate>
     <item>
       <title>Age verification is just a precursor to automated attribution of speech</title>
       <link>https://nonogra.ph/age-verification-is-just-a-precursor-to-attribution-of-speech-06-29-2026</link>
@@ -518,6 +518,57 @@ They were supposed to ship electric motorcycles with it in Q1 2026, and we&#x27;
 </blockquote>
 <p>↳ reply 2 — <em>BobbyJo</em>:</p>
 <blockquote>Yeah, the rationalization after the fact is kind if absurd. IME, the reasoning underlying tokenmaxxing at the corporate level was &quot;we need to leverage AI as much as possible as fast as possible because we&#x27;re scared our competitors will find some leverage before us&quot;.<p>Definitely not some measured, long term, rational out of the gate.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Dissecting Apple's Sparse Image Format (ASIF)</title>
+      <link>https://schamper.dev/dissecting-apples-sparse-image-format-asif/</link>
+      <guid isPermaLink="false">hn3-48708644</guid>
+      <pubDate>Sun, 28 Jun 2026 16:10:50 +0000</pubDate>
+      <description>125 points, 19 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://schamper.dev/dissecting-apples-sparse-image-format-asif/"><strong>→ Article</strong></a> <small>(schamper.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48708644">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 19 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ComputerGuru</em>:</p>
+<blockquote>Image as in “filesystem snapshot” not as in “media file”.</blockquote>
+<p><strong>Top #2</strong> — <em>albertzeyer</em>:</p>
+<blockquote>Small self-advertisement: as an alternative to dissect.cstruct, a fun side-project of mine (C parser + C interpreter in Python) can do a very similar thing:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;albertz&#x2F;PyCParser&#x2F;blob&#x2F;master&#x2F;demos&#x2F;dissect_cstruct.py" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;albertz&#x2F;PyCParser&#x2F;blob&#x2F;master&#x2F;demos&#x2F;disse...</a></blockquote>
+<p><strong>Top #3</strong> — <em>saagarjha</em>:</p>
+<blockquote>I have to admit that using C syntax as a string to parse something from Python is definitely a choice. I&#x27;m not even sure I would use C structs to lay things out in C…</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>quietbritishjim</em>:</p>
+<blockquote>I asked an LLM to rewrite it for me using the Python built-in struct module, and it gave me this:<p><pre><code>   import sys
+   import struct
+   from collections import namedtuple
+   
+   # Bake the layout once into a reusable, precompiled object.
+   HEADER = struct.Struct(&quot;&gt;4sIIIQQ16sQQIIII&quot;)
+   
+   # struct only knows positions, not names — pair it with a namedtuple
+   # to recover the named-field access that cstruct gives you for free.
+   Header = namedtuple(&quot;Header&quot;, [
+       &quot;magic&quot;, &quot;field4&quot;, &quot;field8&quot;, &quot;fieldC&quot;,
+       &quot;field10&quot;, &quot;field18&quot;, &quot;field20&quot;,
+       &quot;field30&quot;, &quot;field38&quot;,
+       &quot;field40&quot;, &quot;field44&quot;, &quot;field48&quot;, &quot;field4C&quot;,
+   ])
+   
+   with open(sys.argv[1], &quot;rb&quot;) as fh:
+       header = Header._make(HEADER.unpack(fh.read(HEADER.size)))
+   
+   print(header)
+</code></pre>
+To me, this seems significantly less readable... less Pythonic, even. The printed output is also less readable.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>saagarjha</em>:</p>
+<blockquote>No I think Python&#x27;s struct module is also really bad. My point is if you are making a new DSL for laying out arbitrary formats why not do something better than what we have</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>toast0</em>:</p>
+<blockquote>I would assume dissect.cstruct was written for interopt with c programs using C structs, or to use formats documented as C structs. Not as a greenfield tool for arbitrary formats.<p>C structs seem less bad than python structs, so why not use them? Especially why write a struct parser and create a DSL for it, when there&#x27;s already one that you can use that uses a well known DSL you might already understand.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>goeiedaggoeie</em>:</p>
+<blockquote>in video&#x2F;image space most code we deal with day to day is still C, lots more rust plugins in gstreamer ecosystem, but 90%+ still C</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3526,44 +3577,6 @@ About the emoji support: is it something that could work system-wide?</blockquot
 </blockquote>
 <p>↳ reply 2 — <em>jjordan</em>:</p>
 <blockquote>back in my day we called this a good ole&#x27; fashioned slashdotting.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Political bias in AI: Where the AI models stand</title>
-      <link>https://trakkr.ai/bias</link>
-      <guid isPermaLink="false">hn3-48672779</guid>
-      <pubDate>Thu, 25 Jun 2026 13:08:31 +0000</pubDate>
-      <description>126 points, 241 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://trakkr.ai/bias"><strong>→ Article</strong></a> <small>(trakkr.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48672779">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 241 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>giancarlostoro</em>:</p>
-<blockquote>The political compass always felt like the wrong tool to convey something as nuanced as personal politics, I can have views on all four quadrants but you&#x27;d never know that if I end up in any of all four. I do think Grok being where it is sort of makes sense, I&#x27;ve tested &quot;MAGA&quot; views against Grok, it does not agree as much as people blindly assume it does, heck I don&#x27;t even know of a question I&#x27;ve given it where it did agree with &quot;MAGA&quot; offhand, most of them it went with whatever the researched facts seemed to be. One thing I like the most about Grok is that its makes its sources of data easy to look through, so you can review it all. Sometimes models goof even when they give you their sources, I&#x27;ve seen I think GPT do this, and even Claude, though its more rare these days, I think in those cases, it&#x27;s going by dated internal model logic.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>strken</em>:</p>
-<blockquote>The political compass always seems to me like it should be a heatmap, or a polygon of 90th percentile political views, or something that more clearly shows the standard deviation and the presence of outlier positions.<p>Some simplification is necessary, but not so much that it obscures the difference between a normal centrist versus someone who wants to nationalise half the economy and deregulate the other half.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nonethewiser</em>:</p>
-<blockquote>Isnt nationalizing half the economy the limiting factor? Obviously thats not libertarian regardless of anything you deregulate.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>strken</em>:</p>
-<blockquote>A socialist might object that deregulating private enterprise (and let&#x27;s add lowering taxes, moving to a flat tax rate, cutting programs, etc.) is obviously not socialist regardless of anything you nationalise. And they would be right!<p>But this person, who is neither socialist nor libertarian, is obviously not a normal centrist either.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bee_rider</em>:</p>
-<blockquote>The space (if it really is useful to think of as a space) of political opinions seems like it is probably many, many dimensional. The 1D thing is an obvious over-simplification, but the 2D compass seems to be a not-obvious-simplification which is… much worse.</blockquote>
-<p>↳ reply 3 — <em>yodsanklai</em>:</p>
-<blockquote>&gt; can have views on all four quadrants but you&#x27;d never know that if I end up in any of all four<p>Curious of examples of views falling on all four quadrants (not close to the center) without too much cognitive dissonance.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>0xbadcafebee</em>:</p>
-<blockquote>[delayed]</blockquote>
-<p><strong>Top #3</strong> — <em>Cakez0r</em>:</p>
-<blockquote>The overall chart on their page seems politically biased, or at the very least a chart crime. The logos have faint grey lines pointing to their actual data points, conspicuously making Grok look very far right. You wouldn&#x27;t know it from glancing at the chart, but they measured Chatgpt being further to the left than Grok is to the right.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Terr_</em>:</p>
-<blockquote>I think it&#x27;s purely chart-crime, because it <i>strongly</i> depends on window&#x2F;display size and cascading layout quirks. It&#x27;s chaotic, and at certain sizes Grok is the <i>least</i> affected.<p>The logos have a constant-size even when the graph is scaled down, but their positions are dynamic as they seek to avoid overlap. This mean they are can be unpredictably shifted around from their statistically-ideal locations.<p>It gets worse because of the low contrast and z-index layering. From each logo, a line (grey) leads to a dot (grey), which is some cases may be hidden beneath its parent logo or be hard to see on top of another logo. Try hovering over logos with a mouse, and you&#x27;ll also see green ellipsoid zones.</blockquote>
-<p>↳ reply 2 — <em>rconti</em>:</p>
-<blockquote>On desktop, there are no dots. The logos are centered precisely where (I think) they are meant to be.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
