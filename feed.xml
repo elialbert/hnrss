@@ -4,7 +4,49 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 30 Jun 2026 21:39:29 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 22:35:24 +0000</lastBuildDate>
+    <item>
+      <title>Looking Ahead to Postgres 19</title>
+      <link>https://www.snowflake.com/en/blog/engineering/postgresql-19-features-beta/</link>
+      <guid isPermaLink="false">hn3-48733031</guid>
+      <pubDate>Tue, 30 Jun 2026 14:14:29 +0000</pubDate>
+      <description>200 points, 118 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.snowflake.com/en/blog/engineering/postgresql-19-features-beta/"><strong>→ Article</strong></a> <small>(snowflake.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48733031">→ HN comments</a> &nbsp;·&nbsp; 200 points &nbsp;·&nbsp; 118 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>aljgz</em>:</p>
+<blockquote>I&#x27;ve used Postgres, Oracle, MsSql Server, and MySql in serious projects, no extensive experience with Sqlite, which I know is an amazing player.<p>These days, I do myself a favor and always avoid Oracle and MySql&#x2F;MariaDB.<p>Postgres is amazing, and the two big things I wished it had:<p>1. lightweight connection; connection bouncers improve the situation, but you still have an unreasonably high memory footprint per concurrent connection.<p>2. Synchronously updated materialized views (Sql Server calls them indexed views). These are incredible tools in complex data situations. I saw a project struggle with complex technical implementations that would be elegant, trivial and always correct with indexed views.<p>Sql Server can be costly, but in many cases the benefits it provides are totally worth the cost.<p>Choosing the data store carefully prevents lots of future trouble.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bob1029</em>:</p>
+<blockquote>SQLite and MSSQL are my two solutions for relational storage problems.<p>If I am going to use a &quot;free&quot; provider, SQLite is impossible to beat. They cover a majority of use cases today. SQLite starts to fall apart with backup, replication and tooling. If I am on the hook for things like system availability and disaster recovery, I don&#x27;t have a problem spending money to cover my ass.<p>If I am going to pay any amount of money at all, I am going all the way. The developer experience around MSSQL is untouchable. SSMS and VS with sql projects runs circles around contemporary entity framework crap. Sprinkle in 3rd party tools from vendors like RedGate and you can replace multi-million dollar consulting packages.<p>I wouldn&#x27;t ever advocate for standing up a <i>new</i> Oracle or DB2 machine, but if one was already in place I&#x27;d probably die on the hill of not trying to refactor it away. These databases typically come with multi-volume ghost stories attached. Reinventing all those weird effects on a new engine will typically kill the business if there are no other options available.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>skeeter2020</em>:</p>
+<blockquote>&gt;&gt; The developer experience around MSSQL is untouchable.<p>This may be the case for MS-centric, application &amp; human developers, but I&#x27;m not convinced moving forward. Microsoft&#x27;s BI story is pretty thin and out of date. Postgres has some solid columnar support&#x2F;functions (which probably why Snowflake is writing about it) which means you can potentially use it for both you transactional and analytical workflows. As more development shifts to agentic workflows I&#x27;d bet Postgres shines when the overall ecosystem is more important than the human tools that were essential for the past 20 years. I loved Redgate&#x27;s value-add but I don&#x27;t think agents care about the UI which was the big win. SQL Server will continue to live in the enterprise andf where MS can sell lucrative support contracts or build for their clients, but I&#x27;m not seeing any net-new projects where the builders have any choice to not use SQL Server.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>joinjune</em>:</p>
+<blockquote>Oracle = Pain, Suffering, High Costs, Litigation, and Human Misery. If it wasn&#x27;t for non-technical middle management that likes the perks of buying high cost software from vendors that throw nice parties they&#x27;d be out of business.</blockquote>
+<p>↳ reply 3 — <em>timacles</em>:</p>
+<blockquote>I think even Microsoft has abandoned SQL Server and spends more time improving their various Postgres Azure offerings. Their last major version release since 2022 added some AI features and thats it.<p>As a DBA, who does a lot of very heavy DBA like stuff, Postgres is in another league from SQL Server. Because Postgres is linux native and open source, its flexibility, introspection and operability, just doesnt have a comparison in SQL Server.<p>IMO, in the current tech landscape. SQL Server is essentially dead. Only companies using it are legacy windows shops which there are fewer and fewer of.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>sega_sai</em>:</p>
+<blockquote>Speaking as long-term (&gt;15 years) user of Postgres in science, I am getting worried about the lack of columnar type of storage in Postgresql. As the datasets become bigger and bigger, the limitations of PG&#x27;s storage are becoming more and more significant. I know there are various extensions (i.e. cetus) that may offer such functionality, but then you depend on that extension being supported in the future, as well additional complexity.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tudorg</em>:</p>
+<blockquote>A bit of a shameless plug, but I&#x27;ve been working on this for a few months in the form of an extension: <a href="https:&#x2F;&#x2F;github.com&#x2F;xataio&#x2F;deltax" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;xataio&#x2F;deltax</a><p>When I started I thought there&#x27;s too much inherent overhead in using Postgres tables for storage and using the Postgres executor, so figured it would be pretty cool to match Timescale in performance. I didn&#x27;t think it would be possible to get close to dedicated analytical DBs. But as the project progressed and the performance got better and better, I&#x27;m now firmly in the camp of doing analytics with Postgres + an extension.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jhoechtl</em>:</p>
+<blockquote>Thanks for sharing. That looks promising, good luck!</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tyre</em>:</p>
+<blockquote>You might be using the wrong database if that’s what you’re hoping for. Columnar databases are a separate category.<p>It’s like saying that you’re getting worried Apple doesn’t sell washing machines.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mkurz</em>:</p>
+<blockquote>No word that PostgreSQL 19 introduces native application-time temporal data support based on the SQL:2011 standard? <a href="https:&#x2F;&#x2F;www.depesz.com&#x2F;2026&#x2F;04&#x2F;02&#x2F;waiting-for-postgresql-19-add-update-delete-for-portion-of&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.depesz.com&#x2F;2026&#x2F;04&#x2F;02&#x2F;waiting-for-postgresql-19-...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>mickeyp</em>:</p>
+<blockquote>They&#x27;re a cool feature but honestly a bit tricky to use well, IMHO. And be careful with PII lingering in a temporal void somewhere for a long time :-)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Knoppix</title>
       <link>https://www.knopper.net/knoppix/index-en.html</link>
@@ -3607,34 +3649,6 @@ Though in the end Fintech != Fintech. I worked at Fintech where money was treate
 <blockquote>Deploying and building OpenTTD if my favourite exercise when i am trying to learn new CI tool or orchestrator or packaging format. Simple enough, yet fun.</blockquote>
 <p><strong>Top #3</strong> — <em>verytrivial</em>:</p>
 <blockquote>Drive-by questions for any OpenTTD aficionados: Can anyone recommend a how-to to get the original MIDI music files working on the Android release?<p>The music is uncommonly good in the original releases.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>WordStar: A Writer's Word Processor (1996)</title>
-      <link>https://www.sfwriter.com/wordstar.htm</link>
-      <guid isPermaLink="false">hn3-48694853</guid>
-      <pubDate>Sat, 27 Jun 2026 03:30:01 +0000</pubDate>
-      <description>129 points, 63 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.sfwriter.com/wordstar.htm"><strong>→ Article</strong></a> <small>(sfwriter.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48694853">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 63 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>EvanAnderson</em>:</p>
-<blockquote>If you&#x27;re like me and grew up using pseudo-Wordstar keybindings (me by way of Turbo Pascal and Turbo C) you may appreciate JOE: <a href="https:&#x2F;&#x2F;github.com&#x2F;joe-editor&#x2F;joe" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;joe-editor&#x2F;joe</a></blockquote>
-<p><strong>Top #2</strong> — <em>nylonstrung</em>:</p>
-<blockquote>In the same way as WordStar, there&#x27;s a community of DOS WordPerfect 6.0 users who claim with some validity that it&#x27;s still the best for writing prose</blockquote>
-<blockquote>
-<p>↳ reply — <em>nottorp</em>:</p>
-<blockquote>That would be 5.1. The 6.0 graphic mode just gets in the way.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>gradschool</em>:</p>
-<blockquote>Story time. In college 40+ years ago my housemate wanted to impress
-this girl by inviting her to write an important paper of hers with a
-looming deadline on his computer with WordStar instead of her usual
-methodology involving a typewriter. She was using WordStar comfortably
-in less than five minutes but being completely new to it was unaware
-of the practice of periodically saving one&#x27;s work. Around three in the
-morning it crashed and took all of her work with it. I was told she
-burst into tears and had left when I woke up the next morning to find
-my housemate busily trying to retype it from her handwritten notes.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
