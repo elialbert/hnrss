@@ -4,7 +4,126 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 30 Jun 2026 17:43:37 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 18:49:34 +0000</lastBuildDate>
+    <item>
+      <title>European digital ID wallets rely on safety services of Google and Apple</title>
+      <link>https://waag.org/en/article/european-digital-id-wallets-are-gift-google-and-apple/</link>
+      <guid isPermaLink="false">hn3-48730729</guid>
+      <pubDate>Tue, 30 Jun 2026 10:36:23 +0000</pubDate>
+      <description>628 points, 275 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://waag.org/en/article/european-digital-id-wallets-are-gift-google-and-apple/"><strong>→ Article</strong></a> <small>(waag.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48730729">→ HN comments</a> &nbsp;·&nbsp; 628 points &nbsp;·&nbsp; 275 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Luker88</em>:</p>
+<blockquote>The EU reference for wallets strictly required google play services
+<a href="https:&#x2F;&#x2F;github.com&#x2F;eu-digital-identity-wallet&#x2F;eudi-app-android-wallet-ui&#x2F;issues&#x2F;287" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;eu-digital-identity-wallet&#x2F;eudi-app-andro...</a><p>So Italy&#x27;s IO app <a href="https:&#x2F;&#x2F;github.com&#x2F;pagopa&#x2F;io-app" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;pagopa&#x2F;io-app</a> (wallet, documents, age verification) continuously refuses the users&#x27; request for GrapheneOS support and requires google.<p>Nothing will change until the lawsuits start coming in.<p>The only hope is the motorola&#x2F;grapheneOS collaboration and consumer associations, that might sue for anticompetitive behavior.<p>Make noise on any channel for the apps that require play services, it will help in the future if the lawsuits start, since it will show user support for the initiative.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>WhyNotHugo</em>:</p>
+<blockquote>The issue isn&#x27;t just the technical dependency.<p>It&#x27;s also the fact that it forces each citizen to pay a few hundred Euros to companies which then campaign against their very rights.<p>Citizens get no support of any kind in case of issues, and has to enter a contractual agreement which is ridiculously asymmetrical, where the company has little to no responsibility of any kind, but has very ample rights to track the other party in extremely creepy ways.</blockquote>
+<p>↳ reply 2 — <em>Retr0id</em>:</p>
+<blockquote>Special-casing support for GrapheneOS would be a band-aid, they should find a way to avoid requiring remote attestation in the first place, so anyone can use whatever OS they like on whatever hardware they like.</blockquote>
+<p>↳ reply 3 — <em>71bw</em>:</p>
+<blockquote>The lawsuits, sadly, won&#x27;t matter. &quot;Security&quot; (or, rather, totalitarian control!) is more important than the 1% of nerds who care enough to tinker with their phone.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ulrikrasmussen</em>:</p>
+<blockquote>Even relying on Android&#x27;s hardware attestation API instead of Play Integrity is an attack on digital autonomy in my opinion. Any security feature which relies on remote attestation of the users <i>entire platform</i> is government overreach as it ultimately gives the government the power to choose what operating systems are acceptable. It is only a matter of time before this power will be misused to put pressure on OS developers to install backdoors for the intelligence agencies. And no, asking people to own two smartphones is not a solution to this problem.<p>Anonymous digital age verification based on a suitable ZKP scheme and&#x2F;or blind signatures does not require a general purpose operating system, it just requires a few cryptographic primitives and a set of device-bound keys. It is not too much to ask that the EU develops a specialized hardware token with these exact capabilities and offer them for free to all citizens as an alternative to the app. This also gives the citizens of EU the freedom to choose not to own a smartphone without having their access to digital services severely restricted.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>whazor</em>:</p>
+<blockquote>I&#x27;m ok with enforcing hardware security. Both for banks and governments.<p>But it must not limit the ability of running custom software on a phone. And especially not enforcing every person to get a Google&#x2F;Apple signed phone.<p>Like if I get GrapheneOS on my phone. Banking&#x2F;gov apps should work. But I believe this could be possible with enforcing hardware security as well.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>TingPing</em>:</p>
+<blockquote>The chain of trust always has a software layer. I don’t believe what you want is possible.<p>I find the bank talking point strange, why are they special, are they even targeted more. It just feels like a boogeyman “think of your money!”</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>microtonal</em>:</p>
+<blockquote>For all practical purposes it&#x27;s possible to do this. The boot ROM only boots a vendor-signed bootloader, the bootloader verifies the OS kernel, etc., until you have a fully verified boot chain. A secure enclave, which is completely separated from the main CPU and OS performs the attestation using a private key in its tamper-resistant storage and embeds the results of verification by the bootloader. There may be some vulnerabilities, but most of them can be fixed in updates, with exception of the boot ROM.<p>The reason why the system gets broken in Android occasionally is that most Android phones have terrible security and do not use a secure enclave&#x2F;processor, etc. (which the iPhone had since 5s + Google&#x2F;Samsung for quite some years through Titan M&#x2F;Knox Vault). Instead they use TrustZone, which set up a TEE on the same CPU&#x2F;RAM as the main OS. Of course, it uses memory protection for separation, but is often vulnerable to side-channel attacks. This is also the reason many Android phones will be cracked by Cellebrite in seconds (recently such a Mediatek TEE vulnerability was made public [1]).<p>[1] <a href="https:&#x2F;&#x2F;www.malwarebytes.com&#x2F;blog&#x2F;news&#x2F;2026&#x2F;03&#x2F;this-android-vulnerability-can-break-your-lock-screen-in-under-60-seconds" rel="nofollow">https:&#x2F;&#x2F;www.malwarebytes.com&#x2F;blog&#x2F;news&#x2F;2026&#x2F;03&#x2F;this-android-...</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ralferoo</em>:</p>
+<blockquote>Exactly, I&#x27;m not sure what benefits hardware attestation offers to the government. Sure, it&#x27;s potentially useful for the customer that they can trust their keys are secure on their device, but it kind of misses the point.<p>It should really be an open-source specification that defines a standard protocol, but where the device just signs a request that it knows has come from a trusted source (so maybe signed by the government&#x27;s key) with a key that the government&#x27;s API knows that represents you.<p>So, I&#x27;d envisage something like government portal lets you add a bunch of public keys, one for each device, and shares a public key of its own that can be used to verify any requests. Something that wants to verify your identity can request your public key, and ask the government API for a challenge token which it passed back to you. You can verify the challenge token is signed by the key you trust, you can sign the challenge and return it to the app, which can pass it back to the government API which can then grant access to whatever subset of information they requested (and the challenge key can include enough information for the signing app to present a meaningful request).<p>Very simple in terms of protocol. Only the government needs to store any of your private data. If an application just needs to know if you are of a sufficient age or not, that&#x27;s all the information it gets. If you lose your device you can easily revoke your keys and add new ones.<p>Sure, a specific implementation on a phone might want to use hardware attestation in order to keep its keys safe, but there&#x27;s no reason that it has to be mandated. A well designed public key system should be sufficient leaving the implementation to safeguard its keys, while providing a simple way to replace keys if needed.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>petcat</em>:</p>
+<blockquote>A European digital ID system that is entirely dependent on 2 US companies.<p>Wasn&#x27;t there some talk about the pressing need for European digital sovereignty recently?  Or was that just performative nonsense?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>modin</em>:</p>
+<blockquote>&gt; Wasn&#x27;t there some talk about the pressing need for European digital sovereignty recently?<p>At FOSDEM, we discuss this at great length. There has been some movement, and I am optimistic that it is improving year on year.</blockquote>
+<p>↳ reply 2 — <em>chatmasta</em>:</p>
+<blockquote>Yes, and there is an open source spec [0] that doesn’t <i>require</i> Google&#x2F;iOS Attestation but “preferably” providers will make their wallet app available on App Stores [1]:<p>&gt; To ensure that the User can trust the Wallet Solution, Wallet Providers preferably make their certified Wallet Solutions available for installation via the official app store of the relevant operating system (e.g., Android, iOS). This allows the operating system of the device to perform relevant checks regarding the authenticity of the app.<p>Of course the chances of any important business implementing a side channel option is effectively zero. Maybe some government agencies will offer the option though.<p>[0] <a href="https:&#x2F;&#x2F;github.com&#x2F;eu-digital-identity-wallet" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;eu-digital-identity-wallet</a><p>[1] <a href="https:&#x2F;&#x2F;eudi.dev&#x2F;latest&#x2F;architecture-and-reference-framework-main&#x2F;#65-trust-throughout-a-wallet-unit-lifecycle" rel="nofollow">https:&#x2F;&#x2F;eudi.dev&#x2F;latest&#x2F;architecture-and-reference-framework...</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Exercise intensity influences body composition in healthy older adults (2025)</title>
+      <link>https://www.maturitas.org/article/S0378-5122(25)00571-7/fulltext</link>
+      <guid isPermaLink="false">hn3-48730694</guid>
+      <pubDate>Tue, 30 Jun 2026 10:31:02 +0000</pubDate>
+      <description>173 points, 146 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.maturitas.org/article/S0378-5122(25)00571-7/fulltext"><strong>→ Article</strong></a> <small>(maturitas.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48730694">→ HN comments</a> &nbsp;·&nbsp; 173 points &nbsp;·&nbsp; 146 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>yawnxyz</em>:</p>
+<blockquote>&gt; 
+Healthy older adults (n = 123, average age 72.0 years, body mass index 25.8 kg&#x2F;m2) completed three 45-min supervised exercise sessions per week for 6 months. Participants were randomised to treadmill-based moderate-intensity training (n = 45), or high-intensity interval training (n = 41) or a low-intensity active control condition (n = 37), with individualised heart-rate prescription. Dual-energy x-ray absorptiometry was used to quantify body composition at baseline, and at 3 and 6 months.<p>ok they didn&#x27;t even include light&#x2F;moderate weight lifting as another control, so this is a fairly poorly executed study<p>basically it comapres hiit with treadmill walking in which case yes, it&#x27;s slightly more useful, but hiit also causes a lot of damage in a lot of ways</blockquote>
+<blockquote>
+<p>↳ reply — <em>fsloth</em>:</p>
+<blockquote>&quot;hiit also causes a lot of damage in a lot of ways&quot;<p>Oh! I didn&#x27;t know about this. Are there any references you could quote?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>proee</em>:</p>
+<blockquote>So warning about super-high intensity workouts. For a good while I would sprint hard as possible up 8 flights of stairs everyday instead of taking the elevator. I would do this multiple times per day (3,4 sometimes 5) with no warm-up&#x2F;cool-down . Each time I would try to push for a PR, figuring might as well go for it! One day, after about a year of doing this, I noticed my heart rate at the top felt a little off. I tested with my watch and it said I was in AFIB. I was able to get back to normal sinus rhythm via getting zapped at the ER, but ever since then if I push too hard (usually on longer runs, going all out) I end up back in AFIB. Though it will reset the next morning.<p>This could be pure coincidence, but I would recommend doing proper warm-up and cool-down before going all out with HIIT. FYI I&#x27;m in my 40&#x27;s.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Bogdanp</em>:</p>
+<blockquote>Regardless of the sport you practice, you probably need to be doing some form of periodization. You can’t go for PRs every session because at some point your body stops being able to recover =&gt; you get hurt.</blockquote>
+<p>↳ reply 2 — <em>JumpCrisscross</em>:</p>
+<blockquote>You may want to talk to your doctor about potential exercise-induced cardiac remodeling. Not an expert on this at all. But it’s an injury mode that’s been recently characterized due to sudden deaths among young, seemingly-healthy sprinters.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>fiveg</em>:</p>
+<blockquote>One thing that I think gets looked past in studies like this is the “noob gains” effect. These participants are healthy adults but not highly trained. It’s pretty well known, in cycling at least, that hard interval training is super effective for untrained people or people coming back from a break, but the gains plateau relatively quickly, and the stress of doing this kind of work is hard to sustain for long periods. Another notable thing is that they are doing 45 minute sessions regardless of intensity, in the real world it’s common for lower intensity sessions to be longer, and for those sessions to be a foundation on which higher intensity sessions are carefully added.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jcdavis</em>:</p>
+<blockquote>I&#x27;ve read a looot of physiology studies about running, and the same dynamics hold true there. This is a flaw (IMO) of of the whole &quot;Norwegian 4x4 protocol&quot; you hear parroted around by biohacker&#x2F;longevity influencer online, of course with 0 nuance or context of the underlying study and its limitations</blockquote>
+<p>↳ reply 2 — <em>bluGill</em>:</p>
+<blockquote>This study followed everyone for 6 months so they probably got past that factor.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The US ambassador had Belgian police stop our reporting</title>
+      <link>https://europeancorrespondent.com/en/r/the-us-ambassador-had-belgian-police-stop-our-reporting</link>
+      <guid isPermaLink="false">hn3-48730608</guid>
+      <pubDate>Tue, 30 Jun 2026 10:15:15 +0000</pubDate>
+      <description>639 points, 274 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://europeancorrespondent.com/en/r/the-us-ambassador-had-belgian-police-stop-our-reporting"><strong>→ Article</strong></a> <small>(europeancorrespondent.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48730608">→ HN comments</a> &nbsp;·&nbsp; 639 points &nbsp;·&nbsp; 274 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>elil17</em>:</p>
+<blockquote>For additional context, tensions are already high surrounding the US ambassador after he directly insulted multiple Belgian politicians and also attempted to interfere with local criminal judicial proceedings.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>elric</em>:</p>
+<blockquote>For context: he&#x27;s accused Belgium of being anti-semitic because a couple of Orthodox Jewish mohels are being prosecuted for practicing illicit medicine (i.e. performing ritual circumcision without a medical license). The investigation started after a complaint was filed by a rabbi, so it&#x27;s hard to chalk this up to anti-semitisim, but that&#x27;s modern day US diplomacy for you.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hector124</em>:</p>
+<blockquote>It&#x27;s considered very anti-semitic in America to be against male genital mutilation.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Anti-Defamation_League#Circumcision" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Anti-Defamation_League#Circumc...</a><p>When Iceland tried to ban it, the ADL had some very choice words about the potential consequences.<p>&gt; Greenblatt sent Iceland&#x27;s Parliament a letter regarding a proposed infant circumcision ban in that country, arguing that the ban should be rejected due to circumcision&#x27;s religious significance and health benefits. Greenblatt also said that if the ban passed, the ADL would report on any celebration by antisemites and other extremists, asserting that this would deter tourism and harm Iceland&#x27;s economy<p>It&#x27;s scary stuff.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>elric</em>:</p>
+<blockquote>That isn&#x27;t even the point though. The circumcision itself is perfectly legal in Belgium. The legal issue is with the lack of qualifications of the ones performing them in this case.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Waterluvian</em>:</p>
+<blockquote>The American ambassador to Canada is also a complete clown. It’s pretty obvious he has an audience of one and absolutely loves the flavour of boot black.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>MetaWhirledPeas</em>:</p>
+<blockquote>&quot;The US ambassador had Belgian police stop our reporting&quot;<p>Or reworded:
+&quot;Belgian police stop our reporting simply because some foreign ambassador asked for it&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mcherm</em>:</p>
+<blockquote>Yes, BUT...<p>If, indeed, the park was rented out for a private affair and the person managing that affair asked that someone be removed from the property, then like any case of trespass, it is within the purview of the police to remove that person.<p>It doesn&#x27;t make the US look good, but I don&#x27;t think it reflects poorly on the behavior of the Belgian police.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cassepipe</em>:</p>
+<blockquote>Could be but I am not sure belgian law is as trigger-happy with the whole trespassing thing. I wouldn&#x27;t be surprised that lying to the police about someone being a threat in order to remove them form the private event you have invited them to would be a clear cut case</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>baq</em>:</p>
+<blockquote>yeah this is called &#x27;soft power&#x27;</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>trwhite</em>:</p>
+<blockquote>So much for the &quot;free speech&quot; Vance hounded us Europeans with. All lies, of course.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>US Supreme Court Just Blew Up EU-US Data Transfers</title>
       <link>https://noyb.eu/en/us-supreme-court-just-blew-eu-us-data-transfers</link>
@@ -621,6 +740,46 @@ HN Guidelines Police :-)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;
 <p>↳ reply — <em>Creamsicle47</em>:</p>
 <blockquote>Ah yes, just what everyone needs: more data centers!</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>What can you confidently guarantee about your software?</title>
+      <link>https://queue.acm.org/detail.cfm?id=3819084</link>
+      <guid isPermaLink="false">hn3-48719521</guid>
+      <pubDate>Mon, 29 Jun 2026 14:12:05 +0000</pubDate>
+      <description>125 points, 65 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://queue.acm.org/detail.cfm?id=3819084"><strong>→ Article</strong></a> <small>(queue.acm.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48719521">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 65 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dfabulich</em>:</p>
+<blockquote>Formal verification is still too limited to be useful for most app developers. The article gives an example of an e-commerce platform using it to prove the correctness of managing refunds, but then acknowledges:<p>&gt; <i>As of today, the formally verified core can handle most effect-free logic—invariants, transitions, conflict resolution. But the UI, network calls, and database interactions typically sit outside the verification boundary. Verification makes the core airtight but doesn’t guarantee end-to-end correctness.</i><p>So you can formally prove that your e-commerce refund management logic is correct, except for proving that you <i>processed the refund.</i> You can&#x27;t even prove anything about recording the refund in your database, say nothing of proving anything about your interactions with your payment processor.<p>If your app is mostly tricky logic with just a bit of I&#x2F;O, your app is <i>very</i> unusual, and it&#x27;s almost certainly not an e-commerce app. E-commerce apps are mostly CRUD apps; I&#x2F;O with the database, the UI, and third-party APIs (e.g. payment processors) is 99% of the code.<p>Even property-based testing is mostly unhelpful for e-commerce apps like these.<p>Instead, think of formal verification as a runtime performance improvement of property-based testing. If property-based testing is useful for your app (it probably isn&#x27;t), then you may be able to convert some of your property-based tests into formal verifications.<p>But, honestly, you probably can&#x27;t do it, not even with a high budget of tokens.<p>I&#x27;d love to be proven wrong, but the way to do it would be to formally prove the correctness of non-trivial open-source code <i>with property tests.</i> Perhaps you could formally verify significant chunks of Postgres! (But I doubt it.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>teach</em>:</p>
+<blockquote>So much this.<p>I actually did take a formal verification course in college. Our final project was to use the techniques we&#x27;d been learning to verify some classic critical-section locking algorithm. I chose to verify an implementation of Lamport&#x27;s bakery algorithm[0] in C (this was the 90s -- a lot of code was still being written in C).<p>The problem is that Lamport&#x27;s algorithm makes an assumption that the &quot;ticket number&quot; is unbounded and any finite implementation in C will almost certainly use a value which is limited to 32 bits or so.<p>So I was able to formally verify that the algorithm fails to protect the critical section if enough processes are kept waiting to overflow the counter. :)<p>This probably just means that Lamport&#x27;s algorithm isn&#x27;t a great choice for such environments, but I&#x27;m still bummed that the professor gave me a B.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lamport%27s_bakery_algorithm" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lamport%27s_bakery_algorithm</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>codebje</em>:</p>
+<blockquote>You shouldn&#x27;t have been able to formally verify the algorithm fails to protect the critical section. Wrapping ticket numbers can lead to starvation (literally, if we follow the baker analogy), but the algorithm protects the critical section so long as thread IDs are unique.<p>The sort of environments in which this is a problem would be extremely uncommon. For a start, you need continuous contention. If you ever get a break in contention you no longer have starvation, and you &#x27;reset&#x27; the ticket number monotonicity - to zero, if you actually take a maximum of entering thread ticket numbers instead of a cheap global counter.<p>If you do actually have an environment in which you expect to have continuous contention over a critical section, some quick napkin math can tell you if it&#x27;s something to worry about based on the running time of your critical section. If it&#x27;s over, say, 10ms, you&#x27;ve got a few years of runtime before it&#x27;s a problem. If it&#x27;s under 1ms, maybe you want to use 64-bit arithmetic for your ticket number so you can run your system until long after the human species is extinct.<p>You probably got a &#x27;B&#x27; because you didn&#x27;t give the professor the answer they expected, though, not because of any technical reasons.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>teach</em>:</p>
+<blockquote>I&#x27;m quite certain I formally verified that two processes were both able to get into the critical section WITH THE ALGORITHM I WAS VERIFYING, but this was 35 years ago, so details are fuzzy.<p>Remember that this is long before Wikipedia and even before Google, so I have no idea where I&#x27;d have gotten the alleged Baker&#x27;s algorithm from.<p>Also you&#x27;re right that this isn&#x27;t much of an issue <i>in practice</i>, but that&#x27;s not what formal verification is about, now is it? :)</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>agentultra</em>:</p>
+<blockquote>If you are willing to relax the restrictions, and you probably should, <i>model checking</i> is probably worth its weight in gold for these scenarios.<p>You won’t get <i>proofs</i> but you will spell out your logic in a formal language[0] and each run of the checker will exhaustively check your invariants[1].<p>[0] Useful because often you will learn something you hadn’t considered.<p>[1] A proof will guarantee your statements hold over quantifiers that are much too large for a model checker to check exhaustively. But, you can say that for a model of size N, property Y is guaranteed to hold. The “small model theorem,” posits that if there is an error in your specification, it is more likely to show up in a small model. You sacrifice the completeness of proofs but this trade-off has been worth it to me.</blockquote>
+<p>↳ reply 3 — <em>toast0</em>:</p>
+<blockquote>The first part of formal verification is getting a formal specification. I don&#x27;t know about most developers, but I rarely get a written specification for <i>anything</i> I work on, and when I do, it&#x27;s no where near what would be needed to turn it into a formal specification.<p>Anyway, the specification is subject to change at the whim of a hat, so putting a lot of effort into verifying it is foolish.<p>I do see value in formal verification of IPC&#x2F;threading communication primitives (locks, semaphores, queues, whatevs), but then formal verification usually require assumptions for hardware behavior and those aren&#x27;t always correct, so. But I&#x27;ve never used formal methods outside exposure in an undergrad survey class, so I dunno.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>taeric</em>:</p>
+<blockquote>I&#x27;m not entirely sure what this is showing people don&#x27;t understand?  Especially when going with such silly ill defined concepts as &quot;financial conservation&quot;.  Just what?<p>Now model in that it was shipped, but an earthquake caused the delivery truck to be destroyed.  Or it was shipped, but the person that ordered passed away before delivery and the estate is refusing to accept packages.<p>People will want to somehow transfer the model of an online order as similar to an in store purchase.  Does that mean that as soon as a customer takes an item through the door that the store is free of any and all obligations on the item?<p>The answers in all of these will have to be that there are processes in place to be executed.  Some may require overrides on state of execution that have to be applied to get things back to a resolved status.<p>Now, do we want to make sure that normal execution of some code does not leave us in an unresolved status?  Of course we do.  And many people want to think they can find a way to model the world such that no contested states can exist.  I have my doubts.  But I welcome efforts to make it so that we surprise ourselves fewer times with some outcomes.</blockquote>
+<blockquote>
+<p>↳ reply — <em>AnimalMuppet</em>:</p>
+<blockquote>What I think I hear you saying is, do formal verification as much as you can.  But also remember that that&#x27;s never 100%, and therefore you need to leave some kind of escape hatch or alternate process or something.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>taeric</em>:</p>
+<blockquote>Absolutely!  I always have worries when posting on my personal doubts on any technique, as I genuinely look forward to people making progress in spite of my doubts.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>GregDavidson</em>:</p>
+<blockquote>I use formal verification as part of my development process.  The needs of the proof guide the development of the code as much as vice-versa.  The result is usually cleaner, simpler, smaller and usually more efficient programs developed much faster as debugging effort is minimal.  I still create complete test cases.  Proof maintenance as code changes is a pain and I would like LLMs and&#x2F;or other tools to help with that.  I would never try to formally verify code written with regular processes!</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Rocketlab acquires Iridium</title>
@@ -3478,168 +3637,6 @@ We estimate price elasticities of housing supply for U.S. cities by examining th
 <blockquote>
 <p>↳ reply — <em>p-e-w</em>:</p>
 <blockquote>It wasn’t “prescient”, StackExchange sites have always been among the most hostile communities on the Internet.<p>Today they are additionally weighed down by increasingly erratic management decisions desperately trying to extract as much monetary value as possible before AI completely obsoletes SE, but the amount of aggression and hostility on the network was unbearable from the start.<p>I remember dozens of occasions where I looked up something on StackOverflow, intending to be in and out in 10 seconds, and ending up spending several minutes just staring in disbelief at the comments showing how people treat each other on that site.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>AI in mathematics is forcing big questions</title>
-      <link>https://spectrum.ieee.org/ai-in-mathematics</link>
-      <guid isPermaLink="false">hn3-48692883</guid>
-      <pubDate>Fri, 26 Jun 2026 22:36:51 +0000</pubDate>
-      <description>125 points, 93 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://spectrum.ieee.org/ai-in-mathematics"><strong>→ Article</strong></a> <small>(spectrum.ieee.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48692883">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 93 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>skybrian</em>:</p>
-<blockquote>Here’s one way to think about the difference between coming up with a formal proof and having something other mathematicians can use:<p>&gt; A clear explanation can be found in Alex Kontorovich’s account of his own learning curve with formalized mathematics. In a nutshell: Mathlib, the dominant Lean library, is a human-curated formalization of an ever-growing fraction of existing human mathematics. It exposes clean APIs and abstractions, without which no autoformalization could take place. By contrast, Math Inc’s autoformalized proof of Viazovska’s results exposes no intelligible interface. Who in their right mind would merge a 200,000-line unaudited vibe-coded blob into the master branch of global human science?<p><a href="https:&#x2F;&#x2F;davidbessis.substack.com&#x2F;p&#x2F;the-fall-of-the-theorem-economy" rel="nofollow">https:&#x2F;&#x2F;davidbessis.substack.com&#x2F;p&#x2F;the-fall-of-the-theorem-e...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>hiAndrewQuinn</em>:</p>
-<blockquote>Imo, the proved theorem <i>is</i> the API. And that&#x27;s really all it has to be.<p>If there are other lemmas, etc buried inside that 200k blob that can be factored out and proved and used themselves, so much the better. But denying a machine-valid proof just because it&#x27;s incomprehensible with what a human being considers a reasonable effort made to unpack it just seems odd to me. I see no reason not to accept the vibe coded blob if Lean says it&#x27;s kosher except anthropocentrism.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>TheOtherHobbes</em>:</p>
-<blockquote>You can&#x27;t deny it if it&#x27;s true, but the point is to find new techniques and abstractions. A proof you can&#x27;t extrapolate and learn from is just a checkmark, and about as useful.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>hiAndrewQuinn</em>:</p>
-<blockquote>I don&#x27;t think that&#x27;s the point. I think the point is to prove the statement. The techniques and abstractions are a means to an end; making them the point is being seduced by the beauty of the weapon.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>galaxyLogic</em>:</p>
-<blockquote>&gt; Mathlib, the dominant Lean library, is a human-curated formalization of an ever-growing fraction of existing human mathematics.<p>So why don;t they use AI to write Lean programs?  That should make the AI-proofs  more readily human undersrndable.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>fiforpg</em>:</p>
-<blockquote>The use of computers in mathematics has been somewhat controversial from the very start.<p>There are of course all the computer-assisted proofs (see 4 color theorem), as well as the partially-assisted ones (see Viazovska et al on packing problems in dimensions 8, 24). But even finding a solution numerically, then rigorously verifying its properties can leave a lingering sense of incompleteness, of a gap in understanding. I like this one quote by (allegedly) Wigner that illustrates it well:<p>&quot;It is nice to know that the computer understands the problem, but I would like to understand the problem, too.&quot;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rdedev</em>:</p>
-<blockquote>Reminded me of this quote: the problem with machine learning is that it&#x27;s the machine that does the learning</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>smitty1e</em>:</p>
-<blockquote>A montage is a fantastic device in a movie.<p>But a montage about weight lifting does not a body builder make.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jackyinger</em>:</p>
-<blockquote>To bluntly put it in a nutshell, and state the obvious:<p>If you don’t understand the problem you can’t be sure that the computer does.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>glouwbug</em>:</p>
-<blockquote>Turns out you have to be Terence Tao to know when an LLM is right or wrong</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>gerdesj</em>:</p>
-<blockquote>&quot;I imagine my work could be completed with AI assistance in a matter of days—maybe hours.&quot;<p>Would some one with tokens to burn mind checking that statement out and post back.  Be sure to use long dashes too.</blockquote>
-<p>↳ reply 2 — <em>esafak</em>:</p>
-<blockquote>You don&#x27;t have to be as good as the model you are overseeing, but it sure helps, otherwise you will only be able to evaluate partial claims, missing mistakes, and potentially the big picture.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The National Parks Were Reportedly Told to Stay Silent on Deaths</title>
-      <link>https://www.outsideonline.com/outdoor-adventure/environment/nps-internal-memo-deaths/?link_source=ta_first_comment&amp;taid=6a3dae4f4d2dce00016deef8&amp;utm_content=trueanthem&amp;utm_medium=social&amp;utm_source=facebook</link>
-      <guid isPermaLink="false">hn3-48692098</guid>
-      <pubDate>Fri, 26 Jun 2026 21:19:20 +0000</pubDate>
-      <description>125 points, 56 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.outsideonline.com/outdoor-adventure/environment/nps-internal-memo-deaths/?link_source=ta_first_comment&amp;taid=6a3dae4f4d2dce00016deef8&amp;utm_content=trueanthem&amp;utm_medium=social&amp;utm_source=facebook"><strong>→ Article</strong></a> <small>(outsideonline.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48692098">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 56 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>slg</em>:</p>
-<blockquote>One thing that I can&#x27;t get over about this administration is its cartoon villainy.  There are all sorts of substantive and important issues in which people can have viable disagreements. Even when I disagree with people on those issues, I can usually at least understand their motivation. But this administration has so many policies like this which both seem completely unimportant to be worthy of focus and yet are also seemingly only motivated to make things worse. I truly can&#x27;t imagine why anyone would put their energy into enacting a policy like this that is so transparently wrong.  And I also don&#x27;t know why people don&#x27;t see policies like this as a canary in the coal mine for the administration&#x27;s other positions.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kevin_thibedeau</em>:</p>
-<blockquote>There is nobody with competence left running the federal government. They all saw what happened five years ago and kept themselves sidelined when appointments were being handed out. That leaves callow apparatchiks who are busy declaring the emperor is fully clothed as the only ones willing to play act at governance.</blockquote>
-<p>↳ reply 2 — <em>BLKNSLVR</em>:</p>
-<blockquote>It&#x27;s a classic trait of authoritarianism to not just censor what could be considered &#x27;bad&#x27; news, but to actively limit the ability for potential sources of &#x27;bad news&#x27; to be known &#x2F; gathered in the first place.<p>Refer: DOGE.</blockquote>
-<p>↳ reply 3 — <em>jasonfarnon</em>:</p>
-<blockquote>According to the article Interior is just centralizing the release of the information. That sounds reasonable to me rather than letting any NPS employee discuss it with the press, and is consistent with many other agencies and employers policies (family privacy etc). As far as I can tell the only &quot;cartoon villainy&quot; is based on speculation in the article that the administration has some other motive. The only evidence I can see the article providing is that two deaths last week are not yet listed on the NPS website.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>s1artibartfast</em>:</p>
-<blockquote>&gt; Interior shall not confirm the severity of injuries,” the memo reportedly said, according to The Washington Post. “Interior may state only that an individual was transported and the method of transport&quot;<p>The visitor took a hearse home...</blockquote>
-<p><strong>Top #3</strong> — <em>galleywest200</em>:</p>
-<blockquote>&gt; According to The Washington Post, the internal policy states “Interior shall not confirm a death,” and that this policy applies to “all Interior bureaus and offices” plus “all Interior communications involving fatalities, suspected fatalities, serious injuries or emotionally sensitive incidents.”<p>So now I cannot learn about known bear attacks when I plan a backpacking trip?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jandrewrogers</em>:</p>
-<blockquote>If you are going into an area with bears, you should be prepared for bears. Appropriate behavior isn&#x27;t conditional on someone dying recently. The risks in an area are widely published and posted by the National Park Service. This is basic safety.<p>It is common to see people in National Parks flagrantly ignore the many warnings. Honestly, I am surprised it is only 350 deaths per year.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bix6</em>:</p>
-<blockquote>If there is heightened animal activity in an area it helps to know, especially if they are aggressive. We adjust where we go to avoid especially dangerous situations.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jandrewrogers</em>:</p>
-<blockquote>The National Park Service continuously posts updated guidance based on animal activity and will temporarily close areas of the park if there is an aggressive animal. This isn&#x27;t being changed by the policy in the article.<p>Allowing arbitrary NPS employees talk to the public about people that may have died isn&#x27;t required for any of this. To be honest, I am surprised that this new policy didn&#x27;t already exist. It is very common practice to manage incident comms this way.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jasonfarnon</em>:</p>
-<blockquote>Of course you can: <a href="https:&#x2F;&#x2F;www.nps.gov&#x2F;aboutus&#x2F;mortality-data.htm" rel="nofollow">https:&#x2F;&#x2F;www.nps.gov&#x2F;aboutus&#x2F;mortality-data.htm</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The gap between open weights LLMs and closed source LLMs</title>
-      <link>https://blog.doubleword.ai/frontier-os-llm</link>
-      <guid isPermaLink="false">hn3-48692058</guid>
-      <pubDate>Fri, 26 Jun 2026 21:14:47 +0000</pubDate>
-      <description>169 points, 131 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.doubleword.ai/frontier-os-llm"><strong>→ Article</strong></a> <small>(blog.doubleword.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48692058">→ HN comments</a> &nbsp;·&nbsp; 169 points &nbsp;·&nbsp; 131 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>profsummergig</em>:</p>
-<blockquote>IMHO, the biggest problem with the future of open weights models is that currently, open weights models are the result of philanthropy by some private org. (e.g. DeepSeek).<p>The spigot can be turned off at any time.<p>Until there&#x27;s some sort of &quot;community owned hardware&quot;, open weights models are always at risk of being discontinued.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Eridrus</em>:</p>
-<blockquote>I think the bigger issue is the ever increasing capital requirements, which may cause even the closed weight companies to fall away from the frontier, e.g. Google &amp; Meta are barely hanging on. For Google it feels a bit existential to remain at the frontier, but even then they&#x27;re barely there.<p>I hope that we find ways of continuing to improve these models besides continuing to exponentially increase capex spend until all but one of your competitors falls away.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Onavo</em>:</p>
-<blockquote>Google and Meta&#x27;s failures are more due to mismanagement no?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>throwawayffffas</em>:</p>
-<blockquote>I don&#x27;t think that&#x27;s the case, it&#x27;s not philanthropy, they are getting something out of it. The labs are learning from one another from the shared models.<p>Plus I am certain it makes financial sense. I am guessing here but fully utilizing a subscriptions limits probably costs the operator more money than the subscription revenue, that is why anthropic is making such a big stink about the chinese data harvesting. By releasing the weights, you are relieving yourself from that burden because the competition does not need to hammer your subscription service they can just download your model and analyze it and run it all day.<p>Also for the largest models it makes no sense to run it yourself unless you are a major player. Renting the hardware is ludicrously more expensive than their subscription tens of thousands of dollars. And buying the hardware to run them is in the hundreds of thousands of dollars.</blockquote>
-<p>↳ reply 3 — <em>fridder</em>:</p>
-<blockquote>We need a SETI@Home but for model training</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>cedws</em>:</p>
-<blockquote>I haven’t seen it discussed anywhere that closed models can essentially cheat benchmarks right? What Anthropic or OpenAI brand as a model doesn’t necessarily have to be just weights, it can be a whole backend system that augments the model itself. With this they can score better benchmarks than an open source model that is weights alone.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jstanley</em>:</p>
-<blockquote>Sure, I think that&#x27;s fine, that all counts. It counts for open source too, it&#x27;s not like they&#x27;re somehow running these benchmarks without any harness.<p>Nobody cares if your AGI is 100% made out of neural networks or if it&#x27;s like 50% neural networks and 50% perl scripts.</blockquote>
-<p>↳ reply 2 — <em>snthpy</em>:</p>
-<blockquote>Good point</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jacobgold</em>:</p>
-<blockquote>It would be interesting to know how much of a boost the closed models companies are giving the open models.<p>If the closed models stop improving will the progress of open models slow?</blockquote>
-<blockquote>
-<p>↳ reply — <em>amluto</em>:</p>
-<blockquote>&gt; It would be interesting to know how much of the &quot;distillation&quot; boost is helping the open weight models keep up.<p>Some people in China surely know.<p>&gt; Like if the closed models stop improving will all the closed models also stop improving?<p>Seems extremely unlikely, unless the models all hit some kind of wall soon.  The Chinese companies may be behind the US in compute capacity, but they have excellent researchers [0] who are probably approximately as good as their US counterparts at the kind of problem generation and RL that is currently working so well.<p>I would be very surprised, though, if the models cannot continue to be improved rapidly in any area that allows a tight feedback loop like programming, at least up to the point where we puny humans lose the ability to define objective functions.<p>(And, conversely, I don’t expect magic in fields where the feedback is slow or expensive.  A model is not about to reliably invent a wonderful medicine for the same reason that a large and extremely competent pharma company cannot: the evaluation process is extremely slow and it’s so expensive that the kind of utterly enormous corpus that is driving the current progress in coding is simply not available.  Running RL on m iterations of n medication-development trajectories each is going to cost n*m times $10-100 million and take m years if it’s even possible at all.)<p>[0] The US advantage in this space will likely decline, since the brain drain from the rest of the world via the US university system to US labs is drying up.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>We can still stop California's 3D printer surveillance scheme</title>
-      <link>https://www.eff.org/deeplinks/2026/06/we-can-still-stop-californias-3d-printer-surveillance-scheme</link>
-      <guid isPermaLink="false">hn3-48692051</guid>
-      <pubDate>Fri, 26 Jun 2026 21:13:50 +0000</pubDate>
-      <description>309 points, 112 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.eff.org/deeplinks/2026/06/we-can-still-stop-californias-3d-printer-surveillance-scheme"><strong>→ Article</strong></a> <small>(eff.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48692051">→ HN comments</a> &nbsp;·&nbsp; 309 points &nbsp;·&nbsp; 112 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>gdiamos</em>:</p>
-<blockquote>My kindergartner has a 3D printer.<p>I got a call from the school principal. She said “another parent called and said your son 3D printed a gun and brought it to school”.<p>I looked at the print history. It was a tiny toy mandalorian figurine holding a blaster pistol in his hand.<p>I bought my son a bigger 3D printer and told him to stop playing with that boy.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>paradoxyl</em>:</p>
-<blockquote>If you have the resources, you could also serve her with papers. IANAL, but that arguably is libel, defamation, harassment and so incredibly insane that it deserves a severe legal smackdown.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>derwiki</em>:</p>
-<blockquote>Not sure I’d want to rope my kindergartener into something like that? I like GP’s approach</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>qwerpy</em>:</p>
-<blockquote>&gt; I bought my son a bigger 3D printer and told him to stop playing with that boy.<p>I can&#x27;t think of a better response to that situation. I&#x27;m going to use it when appropriate for my own kids when the time comes.<p>Also - your kindergartner is autonomously searching for 3d printer models and executing prints at that age? That&#x27;s awesome. Curious what 3d printer and what mechanism he uses to search and initiate prints.</blockquote>
-<p>↳ reply 3 — <em>gorgoiler</em>:</p>
-<blockquote>Good for you.  Over-enforcement absolutely <i>needs</i> to be penalized.    One of my biggest weaknesses is refusing to let people get away with the kind of lazy thinking you encountered.<p>Hands up if you’ve ever been told you can’t do something because of potential SOC2 audit non-compliance.  Or it’s against GDPR.  Or legal won’t allow it.  Or it’s against IT security policy.  Or just against “policy”.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>asveikau</em>:</p>
-<blockquote>California voters, write to your state senator. I&#x27;m in San Francisco, and I wrote to Scott Wiener, who recently voted to pass this out of committee.<p>Before that when it was still in the assembly, I wrote to Matt Haney, which didn&#x27;t do much good because he voted for it both in committee and for passage.<p>But, I feel like bay area legislators need to know many of their constituents know this bill is misguided and are paying attention. The tech capital of the world shouldn&#x27;t have artificially impaired tools.</blockquote>
-<p><strong>Top #3</strong> — <em>WillPostForFood</em>:</p>
-<blockquote>Looks even more draconian than the New York law. For example, it seems to mandate proprietary, locked down slicers from the printer manufacturer.<p>--<p>For integrated preprint software [slicer] design, guidance for how vendors shall demonstrate that printers will accept print jobs exclusively through authorized and validated software systems and will not accept print jobs from unauthorized software pathways, including attempts by users seeking to evade a detection algorithm.</blockquote>
-<blockquote>
-<p>↳ reply — <em>__natty__</em>:</p>
-<blockquote>Over the last few years, I’ve felt as though I’ve been living in a feverish dream all the time. Laws, regulations and general changes in the world are so detached from reality and so far removed from the reality they are meant to serve. And this is yet another example.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Mountain_Skies</em>:</p>
-<blockquote>Five years ago, the masses told the authoritarians that they could have as much power as they wanted. The authoritarians loved it and now know the uprising against their excesses will never happen. This is just the beginning.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jfr6fgjk</em>:</p>
-<blockquote>So lockdowns are still happening? If not why?</blockquote>
-</blockquote>
-</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
