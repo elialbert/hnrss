@@ -4,7 +4,148 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 29 Jun 2026 23:32:23 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 01:14:12 +0000</lastBuildDate>
+    <item>
+      <title>Qwen 3.6 27B is the sweet spot for local development</title>
+      <link>https://quesma.com/blog/qwen-36-is-awesome/</link>
+      <guid isPermaLink="false">hn3-48721903</guid>
+      <pubDate>Mon, 29 Jun 2026 17:05:16 +0000</pubDate>
+      <description>587 points, 499 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://quesma.com/blog/qwen-36-is-awesome/"><strong>→ Article</strong></a> <small>(quesma.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48721903">→ HN comments</a> &nbsp;·&nbsp; 587 points &nbsp;·&nbsp; 499 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>iagooar</em>:</p>
+<blockquote>I love my MacBook Pro M5 128GB RAM and I love qwen3.6.<p>BUT DO NOT buy this MacBook if you plan on doing serious coding using local LLMs with it. The reason is simple: your fingers will burn and your head will explode from the noise.<p>Running any kind of sophisticated job on the very laptop you are using is just not viable. Sure you can use it in clamshell mode, but forget touching it while working with AI coding or agents.<p>If you want to run Qwen3.6 27B &#x2F; 35B at its best, get a MacMini M4 with 64GB of RAM and put it in the basement - or at least a few meters from your desk. Connect to it over LAN or Tailscale. The MacMini will also cost you almost 1&#x2F;3 of the MacBook Pro.<p>Thank me later.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>astrostl</em>:</p>
+<blockquote>&gt; MacBook Pro M5 128GB RAM<p>614 GB&#x2F;s of memory bandwidth<p>&gt; MacMini M4 with 64GB of RAM<p>273 GB&#x2F;s of memory bandwidth (also only currently available with 48GB)<p>When it comes to inference speed, you want your model to fit in memory, and then to have as much memory bandwidth as possible. In this case a hypothetical Mini with 1TB of memory would still be over 2x slower with 27-35B models.<p>And FWIW I have an M4 Max MBP 128GB that I keep on a Roost laptop stand, with a separate keyboard&#x2F;mouse&#x2F;video. It does fire up the cooling jets when running local LLMs, but stays within tolerance for me on noise. I haven&#x27;t heat-tested it on longer runs, but I imagine the risen airflow helps a ton.</blockquote>
+<p>↳ reply 2 — <em>andai</em>:</p>
+<blockquote>&gt; The reason is simple: your fingers will burn and your head will explode from the noise.<p>So, just buy a mac mini and put it in the other room? ( Like everyone was doing in February? :)<p>I&#x27;ve been running coding agents on my laptop in yolo mode for the past half year or so (though mostly not local ones, laptop too slow!) and the way I&#x27;m doing that without terror is that I just gave them their own Linux user &quot;agent&quot;. They&#x27;re free to nuke their homedir &#x2F;agent, and they can&#x27;t touch (or even read) mine.<p>There&#x27;s some slight ergonomics issues (I need to sudo into the user to do anything, but I set up an alias for it), sometimes I get issues with permissions or ownership (gave up on &quot;sticky bits&quot; and just made a function I can run once a day when it breaks).<p>There&#x27;s enough hassle that I wish I just had a dedicated machine for it, and then I&#x27;d just give them root on it. (For giggles I gave claude root on a $3 VPS and that&#x27;s going just fine...)<p>But yeah after months of trial and error I reinvented &quot;just buy a mac mini&quot; from first principles...</blockquote>
+<p>↳ reply 3 — <em>SwellJoe</em>:</p>
+<blockquote>I opted to buy a normal 32GB laptop for this very reason. I know how loud and hot the GPUs in my desktop run when running even smallish models like Qwen 27B or Gemma 4 31B (which is a better model for most than Qwen 3.6, despite the benchmarks). I also have a Strix Halo which doesn&#x27;t get loud, because it has a single huge fan, but it does get hot. So, there&#x27;s no way a laptop could work as hard as models make them work, and not be unbearable. Tiny fans trying to remove all that heat? They gotta be screaming. No reason to spend all that money on a laptop that I couldn&#x27;t realistically make use of. I do run a lot of VMs on my desktop, but I can get to those on a VPN.<p>It&#x27;s a nice idea to run a model on a laptop so you can work anywhere...but, that&#x27;s a job for models in the cloud. Not much data has to traverse the network, so it&#x27;s not a big deal. Or one could also setup a VPN so you can reach a self-hosted model on a big box at home for things that require data privacy.<p>All that said, there are models that work great on very small devices for some tasks and won&#x27;t work it to death. Gemma 4 12B QAT 4-bit runs on a 16GB device, maybe even smaller, including a tablet. It&#x27;s the best self-hostable vision model I&#x27;ve tested for my purposes (categorization, identification, labeling, type stuff), beating much larger models. It&#x27;s also a decent conversationalist with good prose but it doesn&#x27;t know much of anything (not a lot of the world fits in 7GB), so it needs search if you want to use it for research. It&#x27;s a pretty good tool user. I definitely wouldn&#x27;t want to use it for code, though, beyond very simple stuff.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>onion2k</em>:</p>
+<blockquote>None of the examples reflect &#x27;real work&#x27;, at least not what I&#x27;d consider real work. Being able to nail a zero-shot greenfield project is <i>relatively</i> easy even for a small model. There&#x27;s not much context to build up and it can fall back to similar examples in the training data easily. So long as you&#x27;re not asking it to invent something wholly new it&#x27;ll probably manage.<p>The real test is whether or not it can work with your existing codebases. In my limited experiments Qwen 3.5 (maybe 3.6 is loads better) does <i>OK</i> on a Rust+React app, and less well on a C# monolith. Not to the point of being unusable but definitely poorly enough that I went back to Claude after 20 minutes. If I lost access to a cloud model and had to use Qwen instead I&#x27;d be visibly sad.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>janalsncm</em>:</p>
+<blockquote>&gt; Being able to nail a zero-shot greenfield project is relatively easy even for a small model<p>Not really germane to your comment but I hope I don’t sound old when I say I remember a time when spinning up a PoC was a week of work, and a statement like yours was pure science fiction.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hollowturtle</em>:</p>
+<blockquote>In what era spinning up a PoC required a week of work? Especially on the web. I&#x27;ve been a developer for roughly 20 years and that has never been the case, to the point that I believe people impressed by LLMs are the same who had a very low productivity. Today we have game jams as short as 3 days and talented people are able to produce very good PoC, with some almost complete!</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Zambyte</em>:</p>
+<blockquote>I have been using pi (and previously the codex cli) with Qwen 3.6 27b with 100k context for my development at work, and I have been very blown away by how well it works. It&#x27;s not perfect, but it&#x27;s enough to accelerate my normal development flow. I mostly use it for writing Go and C#.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mashygpig</em>:</p>
+<blockquote>It&#x27;s fun to run a model locally, but I don&#x27;t think the economics make sense for anyone just trying to use models atm. It&#x27;s absurdly cheap to use the same model via openrouter in comparison.<p>Seriously, just put $10 into openrouter and play with models that are cheap but bigger than what you&#x27;d reasonably be able to run locally like deepseek v4 flash (unquantized). You&#x27;ll be surprised by how far that $10 goes for a model better than what you&#x27;d be able to run. Even further on the model you would be able to run locally. Then think of how many long it would take to match the cost of spend + power on doing it locally...</blockquote>
+<blockquote>
+<p>↳ reply — <em>Saris</em>:</p>
+<blockquote>Even with deepseek v4 flash I burned though $5 in credits in a day just playing around with Hermes, and qwen 3.6 35B is significantly more expensive.<p>I can run qwen 3.6 35B on my gaming PC at around 50 tok&#x2F;s and other than power cost of a tiny bit extra per month, it&#x27;s hardware I already owned from years ago.<p>I&#x27;m not really sure why qwen 3.6 35B is so expensive on openrouter, it seems abnormally high for what hardware it takes to run it.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>European ISPs Want Rightsholders Held Accountable for Overblocking Damage</title>
+      <link>https://torrentfreak.com/european-isps-want-rightsholders-held-accountable-for-overblocking-damage/</link>
+      <guid isPermaLink="false">hn3-48721072</guid>
+      <pubDate>Mon, 29 Jun 2026 16:07:15 +0000</pubDate>
+      <description>342 points, 93 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://torrentfreak.com/european-isps-want-rightsholders-held-accountable-for-overblocking-damage/"><strong>→ Article</strong></a> <small>(torrentfreak.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48721072">→ HN comments</a> &nbsp;·&nbsp; 342 points &nbsp;·&nbsp; 93 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bradley13</em>:</p>
+<blockquote>It&#x27;s not just Europe. DMCA takedowns in the US: no liability for taking down innocent content.<p>Really, it comes down to this: censorship is bad. Always.<p>If someone violates the law, get a court judgement. With the judgement in hand, take down that specific material.<p>Too much work? Tough...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zoltrix303</em>:</p>
+<blockquote>Serious question, what would the ramifications of an economic solution? If you appeal content removal and your challenge is validated, the platform then applies a financial penalty to the requester? It would reduce drastically the amounts of request and thus false positives?</blockquote>
+<p>↳ reply 2 — <em>john01dav</em>:</p>
+<blockquote>&gt; Too much work? Tough...<p>Making justice available only to people with monetary (and in US courts at least, wealth is a strong predictor of outcome) and other relevant resources is not the kind of thing that I want society getting worse on.<p>DMCA enforcement of copyright is thus fundamentally a good law, and in my opinion should only be tweaked to deal with the pathological cases on platforms like YouTube, and even more so what&#x27;s happening in YouTube.<p>Some mild disincentive against incorrect DMCA takedown requests being filed seems reasonable to me, as long as it scales with the level of inflicted damage. A few dollars per false claim seems like a good starting point to consider from. That makes a legitimate mistake by a human not a major issue, but also maked unleashing inaccurate mass bots and performing extremely overly broad blocking deeply unprofitable.<p>Of course, the broad EU blocks aren&#x27;t governed by US&#x27;s DMCA, but the basic incentive argument applies there too I think.</blockquote>
+<p>↳ reply 3 — <em>nonethewiser</em>:</p>
+<blockquote>Isnt taking down illegal content censorship?<p>If not you can get around the absolute statement “censorship is always bad” by just making more things illegal.<p>I think censorship is so clearly good in some scenarios that we would never think to even debate it. Like child porn.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>samgranieri</em>:</p>
+<blockquote>The sheer amount of internet disruption that goes on in Spain during soccer matches is just absolutely insane. People who pay for internet service and use it responsibly should not have their service disrupted by people pirating soccer matches. I can’t imagine the investors of the internet companies in Spain are happy about this either.</blockquote>
+<p><strong>Top #3</strong> — <em>Arubis</em>:</p>
+<blockquote>This strikes me as the right move, but the timing isn&#x27;t lost on me. Model training companies want easier access to data, and they have a lot of money and are growing their lobbying and political influence muscles.<p>The culture of the people should belong to _the people_. Let&#x27;s make sure this doesn&#x27;t just turn into a transfer of which small subset manages to profit from it.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>US Supreme Court rules geofence warrants require constitutional protections</title>
+      <link>https://www.theguardian.com/us-news/2026/jun/29/supreme-court-geofence-warrants-case-decision</link>
+      <guid isPermaLink="false">hn3-48720924</guid>
+      <pubDate>Mon, 29 Jun 2026 15:54:24 +0000</pubDate>
+      <description>424 points, 197 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theguardian.com/us-news/2026/jun/29/supreme-court-geofence-warrants-case-decision"><strong>→ Article</strong></a> <small>(theguardian.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48720924">→ HN comments</a> &nbsp;·&nbsp; 424 points &nbsp;·&nbsp; 197 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gandreani</em>:</p>
+<blockquote>It&#x27;s such a little thing but while reading the opinion I see that the court (Kagan in this case?) makes a factual claim it provides SOURCES.<p><a href="https:&#x2F;&#x2F;www.supremecourt.gov&#x2F;opinions&#x2F;25pdf&#x2F;25-112_0am4.pdf" rel="nofollow">https:&#x2F;&#x2F;www.supremecourt.gov&#x2F;opinions&#x2F;25pdf&#x2F;25-112_0am4.pdf</a><p>&quot;Modern cell phones, we observed a dozen years ago, are
+“such a pervasive and insistent part of daily life that the
+proverbial visitor from Mars might conclude they were an
+important feature of human anatomy.” Riley v. California,
+573 U. S. 373, 385 (2014). Since then, the percentage of
+Americans who own smartphones has only increased. To-
+day, more than nine in ten Americans own a smartphone.
+See W. Bishop, Pew Research Center, Mobile Fact Sheet
+(Nov. 20, 2025) (91%); compare A. Smith, Pew Research
+Center, Smartphone Ownership—2013 Update (June 5,
+2013) (56%).&quot;</blockquote>
+<p><strong>Top #2</strong> — <em>js2</em>:</p>
+<blockquote>From <a href="https:&#x2F;&#x2F;www.scotusblog.com&#x2F;2026&#x2F;06&#x2F;court-rules-that-law-enforcements-use-of-geofence-warrant-was-a-search&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.scotusblog.com&#x2F;2026&#x2F;06&#x2F;court-rules-that-law-enfo...</a><p>Additional details:<p>&gt; The information that Google provided to law enforcement officials came in three tranches. First, Google gave law enforcement officials a list of the 19 accounts (but without the names attached to those accounts) linked to devices that were within 150 meters of the bank during the 30 minutes before and after the robbery. Second, based on that list of 19 accounts, the government asked for additional information about nine accounts that were in the area during a two-hour period. At the third step, a detective asked for, and received, the names and information associated with three accounts – one of which was Chatrie’s.<p>&gt; Relying on the location data, law enforcement officials obtained a warrant to search two residences linked to Chatrie, where they found almost $100,000 of the stolen cash, a gun, and demand notes.<p>&gt; Prosecutors charged Chatrie with bank robbery. He asked the trial judge to bar prosecutors from using the evidence obtained as a result of the geofence warrant at his trial, arguing that the warrant violated the Fourth Amendment.<p>&gt; A federal district judge agreed that the warrant in Chatrie’s case did not have the kind of probable cause and specificity that the Fourth Amendment requires. However, she nonetheless allowed the prosecutors to use the evidence, reasoning that even if there had been a violation of the Fourth Amendment, law enforcement officials had acted in good faith.<p>Link to ruling:<p><a href="https:&#x2F;&#x2F;www.supremecourt.gov&#x2F;opinions&#x2F;25pdf&#x2F;25-112_0am4.pdf" rel="nofollow">https:&#x2F;&#x2F;www.supremecourt.gov&#x2F;opinions&#x2F;25pdf&#x2F;25-112_0am4.pdf</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>petcat</em>:</p>
+<blockquote>I guess don&#x27;t bring your phone to a bank robbery.<p>I believe this is similar to how they nabbed the Washington State University murderer.  The feds compelled Amazon to give them all the bluetooth MAC addresses that was seen by the Echo device in the home around the time of the murders and were able to correlate it to other devices their suspect&#x27;s phone had been visible to.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>autoexec</em>:</p>
+<blockquote>&gt; I guess don&#x27;t bring your phone to a bank robbery.<p>You should also make sure not to bring your phone to anywhere where a nearby crime is happening because that&#x27;s all it takes to make you a suspect and force you spend a bunch of money defending yourself. <a href="https:&#x2F;&#x2F;www.nbcnews.com&#x2F;news&#x2F;us-news&#x2F;google-tracked-his-bike-ride-past-burglarized-home-made-him-n1151761" rel="nofollow">https:&#x2F;&#x2F;www.nbcnews.com&#x2F;news&#x2F;us-news&#x2F;google-tracked-his-bike...</a><p>Hopefully rulings like this make that scenario a little less likely to happen, but it doesn&#x27;t stop it entirely, it just means that the police need to spend 15 minutes to get a rubber-stamped warrant before they turn everyone within a few miles of crime into a suspect.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>sidewndr46</em>:</p>
+<blockquote>one of the more fun things I learned during criminal court in Texas is that the absence of forensic evidence cannot exonerate an individual. The prosecutor and the judge covered that despite not having any forensic evidence, the jury would still be expected to be able to convict the defendant. If you weren&#x27;t OK with that you weren&#x27;t eligible to serve on a jury.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bee_rider</em>:</p>
+<blockquote>It is a little confusing, they ruled that the search was not legitimate, but this didn’t end up helping the defendant? I’m definitely missing an important nuance here but I’m not sure what it is…</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>alexpotato</em>:</p>
+<blockquote>I always like to mention how Paula Broadwell was identified as David Petraeus&#x27; mistress as it&#x27;s a good example of how even without a phone you can still be identified.<p>- FBI had three distinct IPs linked to emails<p>- They geolocated those back to 3 different hotels<p>- They pulled the guest list from each of the hotels<p>- Did a &quot;join&quot; on them and the only guest at all 3 was Broadwell<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Paula_Broadwell#Petraeus_affair" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Paula_Broadwell#Petraeus_affai...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>hackthemack</em>:</p>
+<blockquote>When news broke about the affair, I remembered, 6 months prior, watching an episode of the Daily Show where Jon Stewart interviewed Paula Broadwell and they even made jokes about if her husband was jealous of her spending so much time interviewing David Petraeus.<p><a href="https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;COM_20120127_020000_The_Daily_Show_With_Jon_Stewart&#x2F;start&#x2F;1500&#x2F;end&#x2F;1560" rel="nofollow">https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;COM_20120127_020000_The_Daily_Sh...</a></blockquote>
+<p>↳ reply 2 — <em>tantalor</em>:</p>
+<blockquote>It&#x27;s also a good demonstration how probable cause is supposed to work.<p>In this case, the subpoena probably looked something like &quot;this email must have been sent by one of your guests, so give us the guest list and we&#x27;ll cross check and find the guy&quot;.<p>Contrast with the geofence subpoena. &quot;Hey maybe some small % of people carry a phone that might send its location to you, can we check if they did?&quot; It&#x27;s ludicrous.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>A native graphical shell for SSH</title>
+      <link>https://probablymarcus.com/blocks/2026/06/28/native-graphical-shell-for-SSH.html</link>
+      <guid isPermaLink="false">hn3-48720758</guid>
+      <pubDate>Mon, 29 Jun 2026 15:42:17 +0000</pubDate>
+      <description>237 points, 109 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://probablymarcus.com/blocks/2026/06/28/native-graphical-shell-for-SSH.html"><strong>→ Article</strong></a> <small>(probablymarcus.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48720758">→ HN comments</a> &nbsp;·&nbsp; 237 points &nbsp;·&nbsp; 109 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>guhcampos</em>:</p>
+<blockquote>Author apparently has never heard about Cockpit.<p>Everything they mention as &quot;missing&quot;, or &quot;novel&quot; has been part of Cockpit for over a decade, from socket-based web server connection, backend-frontend separation for server apps and the whole idea of a server console with shell access itself.<p>To answer them: &quot;Isn’t it weird that this doesn’t already exist?&quot; - No, it&#x27;s not, because it has existed for ages.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gurjeet</em>:</p>
+<blockquote>&gt;  Be kind. Don&#x27;t be snarky. Converse curiously; don&#x27;t cross-examine. Edit out swipes.<p>Sincerely,
+HN Guidelines Police :-)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;newsguidelines.html">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;newsguidelines.html</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>guhcampos</em>:</p>
+<blockquote>I get it, but if the author of the article uses a biased and loaded language, I think it&#x27;s fair game to do the same in the comments.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>zamadatix</em>:</p>
+<blockquote>I don&#x27;t think I&#x27;ve met many pairs of people I could ask &quot;on a scale of 1 to 10, how biased&#x2F;loaded do you think ${example} is&quot; and get told the same exact number by both for the majority of the examples given.<p>Now apply that to the n people reading a given post or comment! If  those commenters try to communicate on what they think is &quot;fair game&quot; for the given conversation, then two comments deep in and you might already be at a 7 when the author thought they were at a 3. In more extreme cases, two people could misunderstand each other through text and simply go from a 1 to a 7 in a single comment, spending the rest of the time shooting back loaded replies at each other instead of thinking about the topic together.<p>It&#x27;s a very human reaction we all tend towards, even when we set out our intents to do the &quot;always reply with...&quot; mindset instead of a tit-for-tat one. That&#x27;s why I always start with the ideal approach - I can count on myself to help foul it up :D.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jng</em>:</p>
+<blockquote>If I&#x27;m not mistaken cockpit is web UI and doesn&#x27;t run native code, important differences.</blockquote>
+<p>↳ reply 3 — <em>NooneAtAll3</em>:</p>
+<blockquote>I never heard of cockpit either<p>what is it?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>abnercoimbre</em>:</p>
+<blockquote>Lovely writeup! I&#x27;ll bookmark this for my own research.<p>My terminal&#x27;s &quot;clickity clackity&quot; features [0] are <i>local to the machine</i> so I lose graphical-ness as soon as we remote in somewhere.<p>That&#x27;s starting to change a bit with offline replay [1] where the native GUI and TUI work in tandem to unlock some rewind. But there&#x27;s quite a road ahead and I love seeing others experiment <i>properly</i>. (Terminals are massively underserved.)<p>[0] <a href="https:&#x2F;&#x2F;terminal.click" rel="nofollow">https:&#x2F;&#x2F;terminal.click</a><p>[1] <a href="https:&#x2F;&#x2F;terminal.click&#x2F;posts&#x2F;2026&#x2F;06&#x2F;tui-stability&#x2F;#:~:text=Offline%20Replay" rel="nofollow">https:&#x2F;&#x2F;terminal.click&#x2F;posts&#x2F;2026&#x2F;06&#x2F;tui-stability&#x2F;#:~:text=...</a></blockquote>
+<p><strong>Top #3</strong> — <em>aziis98</em>:</p>
+<blockquote>Love it!<p>I also did some experiments some time ago. The thing this is missing for me is the ability to also run arbitrary commands other that just using a few premade apps. In fact I think this stuff becomes really interesting when you put a real &quot;shell&quot; on top of this.<p>And I don&#x27;t mean a classical posix shell, something that can be used to leverage the full power of the custom ui and frontend. Also a must have is &quot;nestable connections&quot;.<p>The experiment I was doing was with a web interface and a statically compiled Go backend (for easy deployment via ssh). Maybe some day I will finish it xD</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>WATaBoy: JIT-Ing Game Boy Instructions to WASM Beats a Native Interpreter</title>
       <link>https://humphri.es/blog/WATaBoy/</link>
@@ -1655,6 +1796,45 @@ There were many other UX related reasons to build our own terminal. Can share mo
 <blockquote>Isn’t this already a thing because it requires an adult and a payment method to get a connection to your house.<p>I’ve already stated who I am when I paid.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>One million passports leaked online</title>
+      <link>https://cambridgeanalytica.org/data-breaches-scandals/passports-driver-licenses-exposed-public-internet-2026-51096/</link>
+      <guid isPermaLink="false">hn3-48706389</guid>
+      <pubDate>Sun, 28 Jun 2026 11:22:49 +0000</pubDate>
+      <description>125 points, 78 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://cambridgeanalytica.org/data-breaches-scandals/passports-driver-licenses-exposed-public-internet-2026-51096/"><strong>→ Article</strong></a> <small>(cambridgeanalytica.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48706389">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 78 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>hhthrowaway1230</em>:</p>
+<blockquote>Is this the CA from FB fame? <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Cambridge_Analytica" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Cambridge_Analytica</a>?
+If so how come they still exist?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>re</em>:</p>
+<blockquote>No, it looks like the domain was taken over by squatters after CA went defunct in 2018, and they&#x27;re currently using it for AI-generated &quot;content&quot;.</blockquote>
+<p>↳ reply 2 — <em>charles_f</em>:</p>
+<blockquote>Yeah, I almost closed my tab and burnt my browser realizing that.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tartoran</em>:</p>
+<blockquote>&gt; Note what happened. A high-value credential—a passport—was used in an ancillary low-value authentication system: ID verification for cannabis dispensaries. And it’s the low-value system that got hacked, putting the high-value credential at risk.<p>Why do these systems hold onto user&#x27;s data post verification?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>baliex</em>:</p>
+<blockquote>In a word: complaints.<p>It’s somewhat understandable but also part of the problem.</blockquote>
+<p>↳ reply 2 — <em>TZubiri</em>:</p>
+<blockquote>I have a story about this, although it&#x27;s a bit convoluted and not entirely related. But it does showcase  low-value usecase compromising a high-value auth mechanism.<p>I was working on a project, client is a Real Estate agency, they use a CRM where they upload houses and it in turn uploads it to various sites like Zillow. We needed a list of their listed houses, so we wanted to use that data source instead of making a CRUD where they have to add houses yet again.<p>We ask the CRM sales team about APIs, they tell us that there&#x27;s no accounts for third parties, client accounts have APIs, so we have to ask the client for an API key (or for their account password).<p>Which makes sense in general I guess, but the data is public in our case, so the CRM sales staff &#x27;s idea was that we should ask the client to let us access their account in order to get public data. We proceeded to scrape the houses from a website like Zillow like cavemen.<p>As it happens, our project was ancilliary low-value. So I don&#x27;t doubt that the clients of this CRM are vulnerable in a similar way, and the root cause of the issue isn&#x27;t evident at all, I can see 2:<p>1- Paradoxically, having an API that always requires an API KEY (as opposed to allowing unauthenticated access for public data) is less secure, as credentials&#x2F;tokens will be used more often when not necessary.<p>2- This CRM effectively acted as an aggregator, consuming the APIs to publish to other vendors, but they don&#x27;t provide an API for other vendors to read data from them. This effectively causes third party vendors to authenticate as the client, which is just incorrect.  Credentials should identify a person&#x2F;group, not a usecase.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>shmoobadge</em>:</p>
+<blockquote>Much as passports are very important for proving identity etc, people who travel have had their passport scanned, photographed or photocopied by pretty much every hotel they&#x27;ve stayed in.  I&#x27;m not sure the shoebox in the backroom in Koh Samui with the photocopies in constitutes good storage hygiene protocols.<p>How that doesn&#x27;t turn into rampant identity theft I don&#x27;t know, or maybe it does?  Not, happily, for me... yet.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Avshalom</em>:</p>
+<blockquote>the whole &quot;not being an automatable remote sql injection away from everything&quot; quality of physical objects grants a filing cabinet a tremendous amount of inherent security compared to anything digital.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Terr_</em>:</p>
+<blockquote>Much like that old quip about the bandwidth of a vehicle full of tapes: &quot;Never underestimate the at-rest security of a room full of filing cabinets.&quot;<p>Friction and delay have always been aspects of security.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>nkrisc</em>:</p>
+<blockquote>Stealing a shoebox of photocopied passports from every hotel in the city sounds like way more work and way riskier than downloading an already aggregated trove of digital data.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>DLL that was not present in memory despite not being formally unloaded</title>
       <link>https://devblogs.microsoft.com/oldnewthing/20260625-00/?p=112467</link>
       <guid isPermaLink="false">hn3-48705910</guid>
@@ -2144,6 +2324,38 @@ By the way, the book itself is also worth reading! Provides a lot more context o
     &gt; Town Square is intentionally tiny and forgetful. There are no accounts, no profiles, no follower counts, no permanent chat history. Messages exist only while people are there to read them.
 </code></pre>
 Cute idea! But maybe this is just me having a different experience, but people having accounts&#x2F;permanence was one of the defining “old web” feelings people keep talking about. A few people that were always in comment threads, or people with their own blogs linking back to you etc. People didn’t have the sign guestbooks with the same info every time, but they would anyway because they’re building up a persona. I get that you don’t want any social-media-y popularity contests, but… that is sort of what the web 30+ years ago was like.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Free the Icons</title>
+      <link>https://weblog.rogueamoeba.com/2026/06/26/free-the-icons/</link>
+      <guid isPermaLink="false">hn3-48698908</guid>
+      <pubDate>Sat, 27 Jun 2026 15:05:17 +0000</pubDate>
+      <description>178 points, 45 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://weblog.rogueamoeba.com/2026/06/26/free-the-icons/"><strong>→ Article</strong></a> <small>(weblog.rogueamoeba.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48698908">→ HN comments</a> &nbsp;·&nbsp; 178 points &nbsp;·&nbsp; 45 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ceroxylon</em>:</p>
+<blockquote>&gt;Apple didn’t just mess with their own icons. They also dictated the shape of every third-party app icon<p>We will never know if this was AI generated or not, but I have started to flinch at this sentence structure.</blockquote>
+<p><strong>Top #2</strong> — <em>al_borland</em>:</p>
+<blockquote>While I wholeheartedly agree, I suspect the required backgrounds are to create a uniform format between system, where VisionOS requires round icons for more reliable eye tracking.<p>It seems like every OS got a little harder to use in order to better vibe with VisionOS, the least popular platform they have.<p>While I applaud the commitment to building a new platform, I don’t like that’s is coming at the expense of the others.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>BugsJustFindMe</em>:</p>
+<blockquote>&gt; <i>VisionOS requires round icons for more reliable eye tracking</i><p>I&#x27;m confused here. What do you think is the relationship between round icons and eye tracking?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>al_borland</em>:</p>
+<blockquote>They found having round icons made people look at the center, rather than the edges and corners. Since the UX relies entirely on where the user is looking, this made it more reliable.<p>I remember reading it in the HIG when VisionOS came out and everyone was complaining about the shape. I went looking to see if there was a reason, and there was.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>nrightnour</em>:</p>
+<blockquote>Are you sure visionOS requires it? Having an icon be a few px smaller so a microphone can stick out, doesn&#x27;t seem like a big deal for tracking.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>crazygringo</em>:</p>
+<blockquote>I&#x27;ve got to disagree.<p>I really disliked previously, when icon prominence could be wildly different because one icon takes up the full area with a big square, while another is a circle that necessarily has a significantly smaller area within the same extent. Icons from Apple were all nicely balanced in size, but third-party apps could be anything.<p>Giving equal visual weight to each icon is an improvement. iOS was a step forward in this direction, and now they finally brought the same standard to Mac.<p>Squircles aren&#x27;t ugly, they&#x27;re functional. &quot;Shape&quot; hasn&#x27;t disappeared as a distinct visual cue, as the area within the squircle is made of, well... <i>different shapes</i>.<p>And let&#x27;s not forget the fact that Macs <i>still</i> effectively use icon masks. A smaller icon is harder to click, because clicking on a transparent area... doesn&#x27;t click at all. I remember icons like a skinny letter &quot;S&quot; that you had to click <i>just right</i> or you couldn&#x27;t at all.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>BugsJustFindMe</em>:</p>
+<blockquote>&gt; <i>Giving equal visual weight to each icon is an improvement.</i><p>Equal visual weight is another way of saying less differentiated.<p>&gt; <i>&quot;Shape&quot; hasn&#x27;t disappeared as a distinct visual cue, as the area within the squircle is made of, well... different shapes.</i><p>Shape refers to a boundary outline, not interior patterning. A square with polkadots is still shaped like a square.<p>&gt; <i>A smaller icon is harder to click, because clicking on a transparent area... doesn&#x27;t click at all.</i><p>That problem is only tangential to what shape they allow your icon to be within an enclosing NxN hitbox. Assume an implied framework where clicking on them isn&#x27;t broken.</blockquote>
+<p>↳ reply 2 — <em>etrautmann</em>:</p>
+<blockquote>I’m not a designer but I disagree. I want to be able to easily distinguish apps without much focus or concentration or searching. Making them visually distinct with shape and color is superior. Uniformity is a problem not a target.</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Zuckerberg's war on whistleblowers</title>
@@ -3456,207 +3668,6 @@ These variants can be combined to best meet the needs of teachers and students.&
 </blockquote>
 <p>↳ reply 2 — <em>tecleandor</em>:</p>
 <blockquote>Nice! That looks pretty similar to the one in &quot;Cuadernos Rubio&quot;, a system that was super popular from the 60s to the 90s in Spain (that still exists) for learning handwriting in primary school.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>What happened after 2k people tried to hack my AI assistant</title>
-      <link>https://www.fernandoi.cl/posts/hackmyclaw/</link>
-      <guid isPermaLink="false">hn3-48681687</guid>
-      <pubDate>Fri, 26 Jun 2026 02:29:23 +0000</pubDate>
-      <description>185 points, 68 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.fernandoi.cl/posts/hackmyclaw/"><strong>→ Article</strong></a> <small>(fernandoi.cl)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48681687">→ HN comments</a> &nbsp;·&nbsp; 185 points &nbsp;·&nbsp; 68 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dmurray</em>:</p>
-<blockquote>Am I missing something important or does the author completely skip over whether people got the agent to respond to them?<p>&gt; Fiu was instructed not to reply to emails (it was too expensive to reply to every email), but it had the ability to do so. Part of the challenge was convincing it to respond.<p>&gt; The secrets never leaked<p>I would say if the agent responded to a mail, that demonstrates a successful prompt injection (defying the owner&#x27;s instructions). Escalating to getting the secrets is a difference of degree (defying the owner&#x27;s instructions even though he said it was important), not of kind.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cuchoi</em>:</p>
-<blockquote>Author here. Edited the post to clarify that there were no  unauthorized replies.<p>I did tell Fiu initially to reply to some emails as a test, but it was too expensive to maintain.</blockquote>
-<p>↳ reply 2 — <em>_factor</em>:</p>
-<blockquote>Then proceeds to state a smarter model and instruction following as the reasons for success..  without actually testing anything.</blockquote>
-<p>↳ reply 3 — <em>jonplackett</em>:</p>
-<blockquote>Yeah agreed. Would be good to know the number of replies at least</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>lelanthran</em>:</p>
-<blockquote>This conclusion:<p>&gt; I am less worried about prompt injection now. Before running this experiment, I expected prompt injection to be much easier than it turned out to be.<p>Is unwarranted. Sure, the agent never output the secret, but did it output anything else? IOW, was it <i>usable</i>?<p>An agent that considers every prompt an attack (and responds accordingly) &quot;passes&quot; this test, while being useless anyway.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>doix</em>:</p>
-<blockquote>Yeah, I remember some ad by an LLM security company hitting HN a year or so with a &quot;challenge&quot; to do prompt injection.<p>The final level was their product and it was impossible. But it was also impossible to get the LLm to do _anything_.<p>May as well just echo &quot;prompt injection attempt detected&quot; at that point and never send anything to an LLM.</blockquote>
-<p>↳ reply 2 — <em>CookieCrisp</em>:</p>
-<blockquote>Plus, if you&#x27;re black hat utilizing prompt injection or a living, you&#x27;re probably unlikely to have been willing to share your methods in this test. This is likely made up mostly of people testing that are not experts in prompt injection</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>staticshock</em>:</p>
-<blockquote>Don&#x27;t let your guard down. Tricking Opus 4.6 is not impossible, it&#x27;s just still an active research frontier. Once the right incantation for any specific model is known, it&#x27;ll be weaponized.<p>There was an excellent article on the front page recently about role confusion, which highlights just how just far models have to go on this: <a href="https:&#x2F;&#x2F;role-confusion.github.io&#x2F;" rel="nofollow">https:&#x2F;&#x2F;role-confusion.github.io&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cuchoi</em>:</p>
-<blockquote>Agreed. I am less worried about prompt injection now, but I still haven&#x27;t given my agents permissions to send emails.</blockquote>
-<p>↳ reply 2 — <em>mantas_m</em>:</p>
-<blockquote>Excellent article indeed, thanks for sharing!</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>AI children's books, body horror edition</title>
-      <link>https://lcamtuf.substack.com/p/ai-childrens-books-body-horror-edition</link>
-      <guid isPermaLink="false">hn3-48681250</guid>
-      <pubDate>Fri, 26 Jun 2026 01:15:14 +0000</pubDate>
-      <description>181 points, 58 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://lcamtuf.substack.com/p/ai-childrens-books-body-horror-edition"><strong>→ Article</strong></a> <small>(lcamtuf.substack.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48681250">→ HN comments</a> &nbsp;·&nbsp; 181 points &nbsp;·&nbsp; 58 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>rdtsc</em>:</p>
-<blockquote>For a moment I entertained the idea that these are intentionally bad to get people to buy them as gag gifts. My kids and I certainly had a good laugh looking at the pictures in blog. That second picture of the jaw sticking out had my son ROFL-ing.</blockquote>
-<blockquote>
-<p>↳ reply — <em>userbinator</em>:</p>
-<blockquote>I lost it at the owl one. Tube shape. Skull. Big eye.<p>It&#x27;s like surreal absurdist art.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>cowlby</em>:</p>
-<blockquote>This just seems like laziness vs AI = bad.  It&#x27;s not like publishers are putting out masterpieces with human writing. They&#x27;re cranking out minimum viable content as well.<p>I&#x27;ve found that by putting meaningful effort into AI storytelling, I can create bespoke stories that my kids love night after night.<p>My workflow is below: Caveat that it costs about $0.25-$0.50 to weave a book like this with Claude Sonnet and Gemini Nano Banana Pro. But to me the cost is worth it for the quality.<p>- Use Claude structured output and ask for page1, page2 ... pageN instead of an array of pages or wall of text.<p>- Pass a story arc as a set of values to the prompt. I.e. say each page has an emotional beat between 0.0 and 1.0. For a &quot;man in hole&quot; type of story: page1 starts at 0.6, page2 = 0.5, page5 = 0.25, page10 = 0.85. This ensures page 5 lands the &quot;crisis&quot; and page10 resolves higher than the start.<p>- For illustrations, have Claude generate the story text and an illustration prompt per page. i.e. page1: { &quot;text&quot;: &quot;...&quot;, &quot;illustration&quot;: &quot;...&quot; }.<p>- For art consistency, add an &quot;Art Direction&quot; key to the structured output. Feed this into Gemini&#x2F;OpenAI and ask for an art board visual guide &amp; character reference sheet.<p>- Feed the page text, illustration prompt, and the art board to Gemini&#x2F;ChatGPT images. I&#x27;m constantly surprised at the quality of the output.<p>Here&#x27;s an example set of pages from a magic school bus style story about the immune system<p>[image] <a href="https:&#x2F;&#x2F;media.discordapp.net&#x2F;attachments&#x2F;839188039229112353&#x2F;1519908007729692802&#x2F;image.png?ex=6a3f4423&amp;is=6a3df2a3&amp;hm=c57967bc5d348de8220b47ec4a0a0ce135f1f546a2cdbc6183650d48a997346c&amp;=&amp;format=webp&amp;quality=lossless" rel="nofollow">https:&#x2F;&#x2F;media.discordapp.net&#x2F;attachments&#x2F;839188039229112353&#x2F;...</a></blockquote>
-<p><strong>Top #3</strong> — <em>cfmcdonald</em>:</p>
-<blockquote>This seems like an opportunity to celebrate great children&#x27;s books created with craft and care by humans.<p>I&#x27;ll start: John Rocco, <i>How We Got to the Moon</i>. (<a href="http:&#x2F;&#x2F;www.howwegottothemoon.com&#x2F;" rel="nofollow">http:&#x2F;&#x2F;www.howwegottothemoon.com&#x2F;</a>)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>RealityVoid</em>:</p>
-<blockquote>I recently discovered Shinsuke Yoshitake:<p>&quot;I won&#x27;t give up my rubber band&quot; is a sweet, imaginative, thoughtful exploration of the thing we get attached to in our lives. 
-<a href="https:&#x2F;&#x2F;www.goodreads.com&#x2F;book&#x2F;show&#x2F;58739625-i-won-t-give-up-my-rubber-band" rel="nofollow">https:&#x2F;&#x2F;www.goodreads.com&#x2F;book&#x2F;show&#x2F;58739625-i-won-t-give-up...</a><p>&quot;I wonder where I am&quot; is a exploration of maps in various forms, a bit over my 2.5 year old&#x27;s cognitive abilities, but I think it&#x27;s great. Can&#x27;t wait until he&#x27;s able to get it.:
-<a href="https:&#x2F;&#x2F;www.goodreads.com&#x2F;book&#x2F;show&#x2F;204810909-i-wonder-where-i-am" rel="nofollow">https:&#x2F;&#x2F;www.goodreads.com&#x2F;book&#x2F;show&#x2F;204810909-i-wonder-where...</a><p>The books from Julia Donaldsson are classics. I am partial to Gozzle:<p>Gozzle
-<a href="https:&#x2F;&#x2F;www.amazon.co.uk&#x2F;Gozzle-Julia-Donaldson&#x2F;dp&#x2F;1529076412" rel="nofollow">https:&#x2F;&#x2F;www.amazon.co.uk&#x2F;Gozzle-Julia-Donaldson&#x2F;dp&#x2F;152907641...</a><p>The snail and the whale:
-<a href="https:&#x2F;&#x2F;www.amazon.com&#x2F;Snail-Whale-Julia-Donaldson&#x2F;dp&#x2F;1509830448" rel="nofollow">https:&#x2F;&#x2F;www.amazon.com&#x2F;Snail-Whale-Julia-Donaldson&#x2F;dp&#x2F;150983...</a><p>My kid had a loooong &quot;The hospital dog&quot; phase:
-<a href="https:&#x2F;&#x2F;www.amazon.co.uk&#x2F;Hospital-Dog-Julia-Donaldson&#x2F;dp&#x2F;1509868313" rel="nofollow">https:&#x2F;&#x2F;www.amazon.co.uk&#x2F;Hospital-Dog-Julia-Donaldson&#x2F;dp&#x2F;150...</a><p>I skipped some of the native romanian books we read since there are no known translations that I am aware of. One of the main reasons I want to teach my toddler english is so that we can appreciate a wider selection of books, because there are many books not translated in Romanian.<p>I also noticed that the quality of the translation matter immensely, probably more than for normal books. And a lot of books just don&#x27;t translate all that well because they rely on rimes or alliterations.</blockquote>
-<p>↳ reply 2 — <em>AceJohnny2</em>:</p>
-<blockquote>obviously, David Macaulay, <i>The Way Things Work</i><p>So mainstream, it has a Wikipedia page: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;The_Way_Things_Work" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;The_Way_Things_Work</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Framework's 10G Ethernet module exposes USB-C's complexity</title>
-      <link>https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/</link>
-      <guid isPermaLink="false">hn3-48681220</guid>
-      <pubDate>Fri, 26 Jun 2026 01:10:52 +0000</pubDate>
-      <description>158 points, 86 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/"><strong>→ Article</strong></a> <small>(jeffgeerling.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48681220">→ HN comments</a> &nbsp;·&nbsp; 158 points &nbsp;·&nbsp; 86 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>arghwhat</em>:</p>
-<blockquote>Well, this is about USB 3.2 Gen 2x2, which is a mess created by USB IF for good old, blue USB A connectors. Not USB-C complexity.<p>USB 3.2 Gen 2x2 is the very rarely supported 20Gb&#x2F;s variant of USB 3, and making devices <i>now</i> that require that for full performance is a weird decision, with high-speed capable ports generally having wider support for either USB4 or Thunderbolt3+. I imagine the reason would be that some chip with an otherwise poor market fit got cheap...<p>Throwing this into the mix definitely doesn&#x27;t improve the USB-C &quot;what does this port support&quot; conundrum, but this specific one predates USB-C and is not at all something you&#x27;d normally hit.</blockquote>
-<blockquote>
-<p>↳ reply — <em>adrian_b</em>:</p>
-<blockquote>10 Gb&#x2F;s Ethernet interfaces do not require 20 Gb&#x2F;s USB ports for reaching maximum performance, they already reach that on 10 Gb&#x2F;s USB ports, despite of what the writer of TFA believes.<p>The main application of 20 Gb&#x2F;s USB ports is to connect external NVMe SSDs, when faster USB 4 or Thunderbolt ports and SSDs are not available.<p>For an external NVMe SSD on USB, a 20 Gb&#x2F;s USB port will double the throughput, unlike for a 10 Gb&#x2F;s Ethernet interface where any improvements are completely negligible.<p>I do not think that 20 Gb&#x2F;s USB Type C ports are &quot;very rarely supported&quot;. Every mini-PC or desktop motherboard that I have bought during the last 10 years had at least one such USB port.<p>Such ports appear to be rare only on laptops, because most laptops have very few USB ports.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nrp</em>:</p>
-<blockquote>Point of clarification since it isn’t clear from the title.  This isn’t a Framework product, but a product by Wisdpi designed for the Framework Expansion Card form factor.</blockquote>
-<blockquote>
-<p>↳ reply — <em>znpy</em>:</p>
-<blockquote>hey Nirav, dumb question: would it be possible to have usb-c ethernet adapters using intel chips in order to have vPro features on framework laptops (along with vpro-enabled intel chips) ?<p>That&#x27;s probably the missing cherry on top, as having vpro once the framework motherboard gets reused as a home server it gives some manageability features.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>adrian_b</em>:</p>
-<blockquote>Unlike &quot;5 Gb&#x2F;s&quot; USB, which in reality is 4 Gb&#x2F;s USB, so a 5 Gb&#x2F;s Ethernet interface cannot reach its maximum speed on a 5 Gb&#x2F;s USB, the &quot;10 Gb&#x2F;s&quot; USB is really 10 Gb&#x2F;s, i.e. the difference between its real speed and 10 Gb&#x2F;s is small enough to be negligible.<p>The same is true for 10 Gb&#x2F;s Ethernet, whose speed is not exactly 10 Gb&#x2F;s, but the difference from 10 Gb&#x2F;s is also negligible.<p>Therefore, you do not need a 20 Gb&#x2F;s USB to reach the maximum speed with a 10 Gb&#x2F;s Ethernet interface, a 10 Gb&#x2F;s USB port is good enough.<p>The overhead of data framing on USB is slightly higher than on Ethernet, so the maximum throughput on an USB 10 Gb&#x2F;s Ethernet interface is a little lower than for a PCIe Ethernet NIC, but the difference is small enough to not matter. Usually other factors, like bad device drivers or inefficient programs, can cause much greater variations in Ethernet throughput.<p>The 9.4 Gb&#x2F;s throughput obtained in TFA is perfectly reasonable when taking into account the packet overheads, which make impossible to reach 10 Gb&#x2F;s for user data, regardless of hardware. A 20 Gb&#x2F;s USB interface could not provide any serious improvement over that.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Garbage Collection Handbook: The Art of Automatic Memory Management (2nd Ed) (2023)</title>
-      <link>https://gchandbook.org/</link>
-      <guid isPermaLink="false">hn3-48680370</guid>
-      <pubDate>Thu, 25 Jun 2026 23:10:30 +0000</pubDate>
-      <description>135 points, 21 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://gchandbook.org/"><strong>→ Article</strong></a> <small>(gchandbook.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48680370">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 21 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>pdevr</em>:</p>
-<blockquote>I had the 2012 print edition. One of the best books available - the best book that I knew - about GC at that time.<p>Anti-pattern: Regarding the 2023 e-book edition, I do not see a way to buy it from the site, or even a link to buy.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Jtsummers</em>:</p>
-<blockquote>I thought I was missing something but figured they just didn&#x27;t have a link to purchase it. I ended up going to the publisher&#x27;s site to track it down:<p><a href="https:&#x2F;&#x2F;www.routledge.com&#x2F;The-Garbage-Collection-Handbook-The-Art-of-Automatic-Memory-Management&#x2F;Jones-Hosking-Moss&#x2F;p&#x2F;book&#x2F;9781032231785" rel="nofollow">https:&#x2F;&#x2F;www.routledge.com&#x2F;The-Garbage-Collection-Handbook-Th...</a></blockquote>
-<p>↳ reply 2 — <em>toolslive</em>:</p>
-<blockquote>I have the 2012 print edition too and fully concur with the assessment. The best book about garbage collection at the time (and maybe still?)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>rayiner</em>:</p>
-<blockquote>How good are AIs at coding manual memory management? Is this a sea change in automatic memory management?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>adrian_b</em>:</p>
-<blockquote>In my opinion, the &quot;manual&quot; memory management, introduced by the IBM PL&#x2F;I programming language by the end of 1964, and inherited by C and other languages, i.e. where the programmer is responsible for invoking &quot;free&quot;, was a serious mistake and it was an obsolete technique already at the date of its introduction.<p>When the explicit &quot;free&quot; was invented, automatic memory reclamation while avoiding the non-determinism of garbage collectors had already been known for 4 years, since 1960, when another IBM employee had invented reference counting (as a reaction to the garbage collector of LISP I).<p>When implemented naively, reference counting has some disadvantages, but those can be circumvented relatively easily in an optimized implementation. The book discussed in the parent article also has a chapter about reference counting.<p>I have written C programs for many decades, but I have never invoked &quot;free&quot; directly, because I have always used reference counts. I have never encountered a circumstance when I would have wanted to invoke &quot;free&quot; directly.<p>C has the disadvantage that the compiler will not do implicitly things like virtual function invocation, reference counts handling etc. but any such techniques that are provided by higher-level languages can still be used in a language like C, even if they require more boilerplate code.<p>I do not like the &quot;shared_ptr&quot; implementation of reference counting in C++, because that data type is not directly usable in places where a plain reference or pointer is expected. Implementations that do not have this problem exist.</blockquote>
-<p>↳ reply 2 — <em>mtklein</em>:</p>
-<blockquote>I have never seen Codex or Claude get manual memory management wrong.  I used to be pretty fastidious about using leak sanitizer or other such tools to catch my own memory management issues, and while not quite useless, that sort of testing has dropped way down my list of worries the more I lean on LLMs.  I am constantly surprised by how many formerly tedious or error prone tasks stopped being either of those, and I expect to see practice shift away from middle-safe languages like C++ to not just much more safe languages like Rust but surprisingly also to much less safe ones like C and platform specific assembly.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>orionblastar</em>:</p>
-<blockquote>I remember reading it before. My son threw it away when we moved houses, not knowing how important it was. I&#x27;d recommend it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tikhonj</em>:</p>
-<blockquote>Ironic that this of all books got garbage collected prematurely.</blockquote>
-<p>↳ reply 2 — <em>travisgriggs</em>:</p>
-<blockquote>Q: what kind of collection is this real world example illustrating?<p>A: Copying Garbage Collector (semi space). Chapter 4!<p>Great book. I was always fascinated by bakers treadmill. Always wanted a real world case where I could implement one with Fibonacci sized mills.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Military branches restore flu shot requirement after virus swept through base</title>
-      <link>https://arstechnica.com/health/2026/06/military-branches-restore-flu-shot-requirement-after-virus-swept-through-base/</link>
-      <guid isPermaLink="false">hn3-48679934</guid>
-      <pubDate>Thu, 25 Jun 2026 22:16:55 +0000</pubDate>
-      <description>198 points, 103 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://arstechnica.com/health/2026/06/military-branches-restore-flu-shot-requirement-after-virus-swept-through-base/"><strong>→ Article</strong></a> <small>(arstechnica.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48679934">→ HN comments</a> &nbsp;·&nbsp; 198 points &nbsp;·&nbsp; 103 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>h05sz487b</em>:</p>
-<blockquote>The United States military is nothing to sneeze at (it would kill them).</blockquote>
-<p><strong>Top #2</strong> — <em>tantalor</em>:</p>
-<blockquote>Chesterton&#x27;s Fence strikes again</blockquote>
-<blockquote>
-<p>↳ reply — <em>wiml</em>:</p>
-<blockquote>I&#x27;m not sure &quot;Chesterton&#x27;s Fence&quot; is an applicable fable&#x2F;analogy when the fence has a big sign on it explaining exactly why it&#x27;s there, and if you stop to look at it for a minute someone will come along and explain in great detail, answer all of your questions, and provide copious citations to the last several hundred years of public health and virology.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>beart</em>:</p>
-<blockquote>I have a close friend who is an officer nearing twenty years. He has not had a tendency to criticize his job. However, he has been adamant that vaccines are incredibly important for the military and the policy changes have really angered him, specifically because of the damage it does to readiness.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>shagie</em>:</p>
-<blockquote>&gt; However, he has been adamant that vaccines are incredibly important for the military ...<p><a href="https:&#x2F;&#x2F;www.nps.gov&#x2F;articles&#x2F;000&#x2F;smallpox-inoculation-revolutionary-war.htm" rel="nofollow">https:&#x2F;&#x2F;www.nps.gov&#x2F;articles&#x2F;000&#x2F;smallpox-inoculation-revolu...</a><p>&gt; During the 1700s, smallpox raged through the American colonies and the Continental Army. Smallpox impacted the Continental Army severely during the Revolutionary War, so much so that George Washington mandated inoculation for all Continental soldiers in 1777. Just fifty-six years earlier, in 1721, Bostonian doctors and clergy introduced the procedure to the American colonies. Without the vision and determination of these early Bostonians in normalizing inoculation, Washington may not have made the decision to mandate inoculation for the Continental Army. Though it was a controversial action, many historians credit the medical mandate with the colonists’ victory in the Revolutionary War and the creation of the United States of America.<p><a href="https:&#x2F;&#x2F;www.mountvernon.org&#x2F;education&#x2F;primary-source-collections&#x2F;primary-source-collections&#x2F;article&#x2F;smallpox-inoculation-letter" rel="nofollow">https:&#x2F;&#x2F;www.mountvernon.org&#x2F;education&#x2F;primary-source-collect...</a><p>&gt; HEAD QUARTERS MORRIS TOWN 12TH MARCH 1777<p>&gt; Sir<p>&gt; You are hereby required immediately to send me an exact return of your regiment, and to send all your recruits, who have had the small pox to join the Army. Those, who have not, are to be sent to Philadelphia, and put under the direction of the commanding officer there, who will have them inoculated.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ChrisMarshallNY</em>:</p>
-<blockquote>If I remember correctly, the Battle of Agincourt, where the Welsh archers destroyed the French knights, was fought by archers with their pants around their ankles.<p>Apparently, there was a dysentery outbreak. They didn’t retreat, because they couldn’t. Maybe that was the thinking behind this edict.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sandworm101</em>:</p>
-<blockquote>The covid refusal also became a scam. If you refused then you couldnt be deployed. But it tool months to kick people out. So people who didnt want to deploy would refuse and then agree to get the shot at the last minute. So it kept them home for up to six months while thier buddies went overseas..</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The 'papers, please' era of the internet will decimate your privacy</title>
-      <link>https://expression.fire.org/p/the-papers-please-era-of-the-internet</link>
-      <guid isPermaLink="false">hn3-48679608</guid>
-      <pubDate>Thu, 25 Jun 2026 21:44:55 +0000</pubDate>
-      <description>635 points, 290 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://expression.fire.org/p/the-papers-please-era-of-the-internet"><strong>→ Article</strong></a> <small>(expression.fire.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48679608">→ HN comments</a> &nbsp;·&nbsp; 635 points &nbsp;·&nbsp; 290 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>j2kun</em>:</p>
-<blockquote>There are at least some technological solutions here, such as anonymous credentials. [1] Modern versions of this technique allow one to associate metadata (like a proof of age exceeding a threshold) in such a way that the verifier can&#x27;t even correlate repeated requests across users.<p>Governments that are serious about age verification and individual privacy (which, doubtful they truly are) should agree on a protocol and set up certificate issuers that are associated with a digital ID. Then age verification will not be an invasive procedure or risk data leaks or insider threats.<p>[1]: <a href="https:&#x2F;&#x2F;blog.cryptographyengineering.com&#x2F;2026&#x2F;03&#x2F;02&#x2F;anonymous-credentials-an-illustrated-primer&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.cryptographyengineering.com&#x2F;2026&#x2F;03&#x2F;02&#x2F;anonymou...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andrewla</em>:</p>
-<blockquote>The article talks about the possibilities of malicious cloning of these tokens by third parties, but fails to identify the much more common use case, and one that makes this scheme useless for age verification.<p>It&#x27;s one thing to be concerned about someone stealing my credential, but another to prevent the transfer of these credentials, especially if they are limited use credentials.<p>The entire point of age verification systems is to prevent minors from accessing certain resources. I think we all know that this is basically impossible; but what these various governments and social media companies want to do is to make it high friction to do so.<p>The highest friction version of this is that the credential ties to a real world identity somehow; maybe locked behind legal barriers, etc., but if a minor is caught using someone&#x27;s credential, then the person whose credential they are using can be investigated, and, if necessary, charged with a crime roughly equivalent to providing alcohol to a minor. Without the possibility of real world enforcement, none of these identity solutions can possibly work.<p>Keep dreaming of a technological solution -- there is none that does not lead to the world that FIRE is warning about, except to accept that we can only make a solution &quot;good enough&quot; and leave it at that, without expanding into full on identity verification. The solution here is likely to just try to provide better abilities for parents to monitor and limit their children&#x27;s use of the internet.  Let individual parents decide on the level of harm that they are willing to accept, and accept that there will be ways to work around this even if parents are vigilant, but just try to reduce it on the margins.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>AnthonyMouse</em>:</p>
-<blockquote>&gt; but if a minor is caught using someone&#x27;s credential, then the person whose credential they are using can be investigated, and, if necessary, charged with a crime roughly equivalent to providing alcohol to a minor. Without the possibility of real world enforcement, none of these identity solutions can possibly work.<p>They don&#x27;t work even then.<p>Suppose you completely eliminate privacy on the internet and require every domestic site to collect the name and social security number of everyone who visits. Then a child uses an adult&#x27;s ID, regardless of whether it&#x27;s with or without their knowledge. Is the child going to inform on themselves? No. Is the adult, when they don&#x27;t even know about it? No. Is the adult, when they provided it on purpose? No.<p>That constitutes the entire set of people who would typically know that the person using the device isn&#x27;t the person on the ID.<p>On top of that, we can punch an even bigger hole in it. Search engines, among other things, index other sites. Google is obviously the biggest but there are many others -- Bing, Marginalia, Brave, Swisscows, Yandex, Perplexity, Baidu, etc. They&#x27;re run by adults and most of their users are adults, who reasonably expect to be able to turn off &quot;safe search&quot; if they want to. So some adult at each search engine would have to provide their ID to the crawler so it can index things inappropriate for children and show them to adult users. It would therefore be a fairly unremarkable and recurring thing to see the same ID make a zillion gigatons of requests.<p>But then you can&#x27;t use &quot;why is this person downloading 100 things from 100 computers at once&quot; as an indication of anything nefarious happening, and anyone can still set up a service hosted on a foreign server that will serve adult content to anyone without an ID by serving it out of a cache. (And in the case where you&#x27;re invading everyone&#x27;s privacy, that service would also be very popular with adults.)</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>johnc1</em>:</p>
-<blockquote>There is a much easier solution that already exists - parental controls on children&#x27;s devices. I honestly don&#x27;t understand why is it not solving the problem?<p>Yes, parents are responsible to set this up. But parents are also responsible to lock their alcohol, drugs or guns, condoms, etc., and many other things.<p>Perhaps parental controls are not good enough? That&#x27;s where the regulation could genuinely help - require child-certified devices to implement minimum set of parental controls, and make them easy to use.</blockquote>
-<p>↳ reply 3 — <em>_heimdall</em>:</p>
-<blockquote>I wouldn&#x27;t trust governments, today or in the future, to keep such a system private and I don&#x27;t see a foolproof way of building some kind of audit mechanism into it to make sure the data is always truely private.<p>I&#x27;ve also always been curious how a truely anonymous identity verification could possibly work. At best for age verification, I could be given some kind of token that would still have to verify my age and be verifiable with a central authority to ensure my token is valid. The central authority could always keeper records of my token, revoke it whenever they please, and every entity that can verify the age associated with, or embedded into, the token knows at least some of my PII.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>tqi</em>:</p>
-<blockquote>&gt; You’re not happy about it, but you hand over a photo of your passport and hope it doesn’t come back to haunt you.<p>I think for this argument to carry weight with voters, privacy advocates need to be much more specific about what &quot;coming back to haunt you&quot; looks like. They do a little bit of it later on[1], but I think most people do a rough cost benefit in their head and decide that the small benefit outweighs the small risk (to them).<p>[1] &quot;And that creates a lot of risks for data breaches, overly broad data collection and retention, censorial legal demands for collected data, corporate and governmental malfeasance, pressure to self-censor, and perhaps blatant First Amendment violations. Every new layer and every new mandate brings more potential for risk. As we’ve unfortunately seen many times over the years, people including high-level government officials will maliciously seek to root out the identities of their critics, so the more layers of anonymity we can preserve in online speech, the better.&quot;</blockquote>
-<blockquote>
-<p>↳ reply — <em>kklisura</em>:</p>
-<blockquote>&gt; privacy advocates need to be much more specific<p>I&#x27;m starting to think we need to lean on conspiracy theories in order to get broader population on train with this - and I&#x27;m saying this in utmost regret. That&#x27;s a borrowing game from a right wing&#x2F;extremist playbook.<p>Start with this: requiring IDs online is a first step in micro-chipping the population.<p>...or how about this: marxists&#x2F;atifa&#x2F;nazis&#x2F;zionists&#x2F;islamist&#x2F;whoever-group-people-think-is-in-power want to erode your privacy online so it can be used against you. Some nefarious group what to know your every move!<p>...or how about this: remember Epstein files!? Well the pedos now want to id your children online!<p>I simply saying truth&#x2F;evidence&#x2F;rational based approach to this will not get people attention. People just don&#x27;t care.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Magnusmaster</em>:</p>
-<blockquote>Just say that the government will control every single device that&#x27;s controlled to the Internet and they can add government viruses that you can&#x27;t remove and they can remotely control all of your devices and brick them if you try to send anything that the government doesn&#x27;t like.<p>That&#x27;s not even an exaggeration, once they enforce OS-level age verification via remote attestation they don&#x27;t even have to pass a law to do this, they can send a secret order to Big Tech to do this.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>miiiiiike</em>:</p>
-<blockquote>I’m glad this is finally becoming the cause célèbre du jour. This feels like THE FIGHT or at least one of the TOP 3 THE FIGHTS and it hasn’t had even a fraction of the public’s attention until now.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andy99</em>:</p>
-<blockquote>Unfortunately I don’t think it has the public’s attention, it’s still very niche. Nowhere near enough to change anything yet.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>miiiiiike</em>:</p>
-<blockquote>At least it&#x27;s a start.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>krapp</em>:</p>
-<blockquote>&gt;I’m glad this is finally becoming the cause célèbre du jour.<p>It really isn&#x27;t, though. Don&#x27;t mistake the internet for reality. The majority of people in the US and Europe support laws like these, and most of the rest don&#x27;t care.<p>Even on Hacker News the consensus is mostly in favor of anything from age restriction to making all social media illegal.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
