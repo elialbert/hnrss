@@ -4,7 +4,53 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 30 Jun 2026 03:20:42 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 05:33:57 +0000</lastBuildDate>
+    <item>
+      <title>.self: A new top-level domain designed to support self-hosting</title>
+      <link>https://hccf.onmy.cloud/2026/06/21/reclaiming-our-digital-selves-hccfs-vision-for-a-human-centered-top-level-domain/</link>
+      <guid isPermaLink="false">hn3-48724230</guid>
+      <pubDate>Mon, 29 Jun 2026 19:49:28 +0000</pubDate>
+      <description>412 points, 234 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://hccf.onmy.cloud/2026/06/21/reclaiming-our-digital-selves-hccfs-vision-for-a-human-centered-top-level-domain/"><strong>→ Article</strong></a> <small>(hccf.onmy.cloud)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48724230">→ HN comments</a> &nbsp;·&nbsp; 412 points &nbsp;·&nbsp; 234 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>anilgulecha</em>:</p>
+<blockquote>The &quot;one free domain per person&quot; isn&#x27;t the interesting part really - that will be hard to police unless domain name is a function of ID proof (avoids squatting).<p>0) The actual intersting part of a new TLD can be growing reputation by post-facto taking away a domain without recourse in case of squatting. Instead of adversarial takedowns (which produce false positives as noted), let anyone challenge an inactive domain in the first year or two.<p>1) If they can figure out a mechanism for moving a domain from &quot;assigned&quot; -&gt; &quot;squatted&quot;.<p>2) Domain must match (or derive from) a verified identity - e.g. your domain is a hash&#x2F;slug of your government ID. Makes squatting structurally impossible because you can&#x27;t claim someone else&#x27;s name &#x2F; gov (Sign in with passkeys linked to a national ID).<p>3) Proof of human effort, reduced with time - require periodic renewal with proof-of-use (DNS TXt updates, through a flow hard to automate).<p>4) Kill speculative market - domains are non-sellable and non-transferable - always go back to the free pool, and stay there for 30 days mandatorily.<p>Some mix of these could be the right structure for a trule high-reputation, free domain.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>qq66</em>:</p>
+<blockquote>The much simpler way to avoid squatting is to make .com domains cost $200 a year. This will instantly end the vast majority of domain squatting on the .com TLD and if people can easily get the .com they need for their business then the other TLDs are not going to have much squatting activity.</blockquote>
+<p>↳ reply 2 — <em>ipaddr</em>:</p>
+<blockquote>Sounds like a bad domain for self hosting.  You have to update txt records randomly and your domain can be taken for whatever reason.  Whatever value you build goes away if you are inactive.  You cannot transfer ownership killing any value you added.</blockquote>
+<p>↳ reply 3 — <em>jurgenaut23</em>:</p>
+<blockquote>I am probably missing something, but how DNS TXT updates can be made difficult to automate?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>vessenes</em>:</p>
+<blockquote>Hi there. I&#x27;ve done a bit of work on specifying human-centric identity goals for the internet over the last 10 years. May I suggest you look at Microsoft Vega? <a href="https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;research&#x2F;blog&#x2F;vega-zero-knowledge-proofs-for-digital-identity-in-the-age-of-ai&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;research&#x2F;blog&#x2F;vega-zero-know...</a> (I have no affiliation).<p>In brief, I think they aim to solve the most important needs for online identity-gated services in a maximally private way.<p>For instance, I&#x27;d like to see .self offer the following: a single domain to any person in the world with identity blinded. I can imagine two &#x27;tranches&#x27;: say xxx.v.self for &#x27;verified&#x27; and xxx.u.self for &#x27;unverified&#x27;.<p>Both would use a Zero Knowledge proof to confirm they had not already registered a domain; verified would register with you guys or a data broker some PII in case it was needed for verification &#x2F; checks &#x2F; etc, while unverified would maintain the promise of one domain = one person, but not allow the TLD or registrars to be able to unblind <i>which</i> person it is.<p>Use cases like this would be really fantastic. And, obviously could be tested out and tried on a normal domain name while you make your pitch, and put in for the auction &#x2F; however ICANN is currently managing TLD launches.</blockquote>
+<blockquote>
+<p>↳ reply — <em>quotemstr</em>:</p>
+<blockquote>It is good that Microsoft Vega is popularizing zero-knowledge identity-based attestations. It&#x27;s unfortunate that they&#x27;re doing so in a relatively inflexible way.<p>I wish the Vega people had oriented their work around general-purpose zkVMs instead of application-specific ZK circuits. The latter is a fleeting efficiency win; the former is a permanent flexibility advantage. ZK-based privacy advocates shouldn&#x27;t over-index on proof performance on today&#x27;s systems when zkVM systems have been making multiple-OOM performance improvements over the past couple of years.<p>IOW, with Nova, the Vega people are trying to do something very clever (just as the BBS+ people are trying to do something very cleaver) that general-purpose compute wins have made unnecessary.<p>Something like RISC Zero will let you run arbitrary Rust code under zero knowledge in a few hundred milliseconds with little fuss. Nobody appreciates that identity verification is <i>one special case</i> of a vast set of useful applications enabled by widespread adoption of a ZK compute platform.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>nl</em>:</p>
+<blockquote>Disagree with this.<p>RISC Zero is useful for crypto use-cases: Other people need to verify an exact program was run.<p>The identity use case is about connecting sources of trust (document issuers) with consumers of that trust (&quot;this is a real person&quot;) in ways that don&#x27;t release more than the minimum information required (&quot;the passport office has signed that this is a real person so we can trust that&quot;).<p>Single purpose circuits make a lot of sense for this - there is just no need to a full ZK RISC-V VM for this use case.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>quotemstr</em>:</p>
+<blockquote>RISC Zero verifies that an exact computation was performed. What would be the point of the system otherwise? If you&#x27;re starting from this incorrect premise, you&#x27;re going to arrive at an incorrect conclusion.<p>&gt; Single purpose circuits make a lot of sense for this<p>No, they don&#x27;t. They lock your system into a single set of trade-offs without an advantage to offset it. They&#x27;re premature optimization. How do you think ZK systems can be made resilient to cloning attacks without hardware locking if your ZK vocabulary is limited to stupid BBS-style selective disclosure and nothing else?</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>greyface-</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;hccf.onmy.cloud&#x2F;wp-content&#x2F;uploads&#x2F;2026&#x2F;06&#x2F;dot-self.pdf" rel="nofollow">https:&#x2F;&#x2F;hccf.onmy.cloud&#x2F;wp-content&#x2F;uploads&#x2F;2026&#x2F;06&#x2F;dot-self....</a><p>&gt; Everyone entitled to a subdomain at no cost<p>How are you going to pay for the (substantial) cost of running a TLD without registration fee revenue?  Is this a loss leader for other services?  Are you operating on a 100% donation model?<p>&gt; No parking, squatting, or reselling<p>How do you plan to tell the difference between a parked&#x2F;squatted domain and one in legitimate use but offering no public-facing services?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>AnthonyMouse</em>:</p>
+<blockquote>&gt; How are you going to pay for the (substantial) cost of running a TLD without registration fee revenue?<p>Is it actually a substantial expense? The TLD itself only has to publish the nameserver records, which generally have a TTL of about a day. A DNS response is a few hundred bytes. Big DNS providers like Google and Cloudflare would make requests for every actively used domain every day, but then cache them. Smaller providers wouldn&#x27;t cache as well but also wouldn&#x27;t each request every domain every day. For e.g. a million personal domains, ballpark estimate is somewhere in the few TB a month of traffic. Maybe a little over personal hobby project money but definitely not outrageous for a small non-profit organization.<p>&gt; How do you plan to tell the difference between a parked&#x2F;squatted domain and one in legitimate use but offering no public-facing services?<p>This is the easy one. Squatters buy domains because they want to sell them. To sell them they have to make it publicly known to prospective buyers that the domain is available for sale. So then if anyone lists the domain for sale anywhere, you make them prove that they own it (which any actual buyer would also have to do in order to not get scammed) and when they do the domain is forfeit.<p>It&#x27;s kind of sad that we don&#x27;t do that for <i>all</i> domains. Domain squatters can go to hell.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>greyface-</em>:</p>
+<blockquote>Much of the cost here comes from compliance with the ICANN gTLD program structure, not from running the underlying technical infrastructure (which is not limited to DNS - you also need EPP&#x2F;RDAP&#x2F;etc).  See <a href="https:&#x2F;&#x2F;www.icann.org&#x2F;en&#x2F;registry-agreements" rel="nofollow">https:&#x2F;&#x2F;www.icann.org&#x2F;en&#x2F;registry-agreements</a> for (hundred+ page) documents outlining registry responsibilities.  Registries can outsource some of this to an ICANN-accredited &quot;registry service provider&quot;, but should expect to pay upwards of hundreds of thousands of dollars yearly for the privilege.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pavel_lishin</em>:</p>
+<blockquote>It&#x27;s not clear whether they&#x27;re actually talking about domains or subdomains there, which is a worrying sign from a potential registrar.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Ornith-1.0: self-improving open-source models for agentic coding</title>
       <link>https://github.com/deepreinforce-ai/Ornith-1</link>
@@ -3610,40 +3656,6 @@ In 2022 There was an open-access book deal allowing Plank Institute members to m
 <blockquote>I’m a complete layman to this field, but what the article did say was they’re hopeful that AI&#x2F;ML can help develop a model that can pull out information such as the scattering caused by RBCs (which is present in the large volume of data gathered by the probe but is too weak to be used for manual techniques) and turn that into meaningful visuals. That’s gonna require a ton of data and that is exactly what they are trying to gather now with what they have built so far.</blockquote>
 <p>↳ reply 2 — <em>malfist</em>:</p>
 <blockquote>I believe this is also used for regular astronomy with dithering</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>US Govt to individually approve who gets GPT 5.6</title>
-      <link>https://old.reddit.com/r/LocalLLaMA/comments/1ufo0un/us_govt_to_individually_approve_who_gets_gpt_56/</link>
-      <guid isPermaLink="false">hn3-48683021</guid>
-      <pubDate>Fri, 26 Jun 2026 06:24:39 +0000</pubDate>
-      <description>128 points, 143 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://old.reddit.com/r/LocalLLaMA/comments/1ufo0un/us_govt_to_individually_approve_who_gets_gpt_56/"><strong>→ Article</strong></a> <small>(old.reddit.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48683021">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 143 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>RickS</em>:</p>
-<blockquote>US citizens to remain nonviolent at any cost, issue strongly worded internet comments, and find themselves a little less free every day.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>apexalpha</em>:</p>
-<blockquote>Hey some of them take an entire Saturday off to go to a family friendly demonstration holding witty signs in front of their state capitol!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>xtracto</em>:</p>
-<blockquote>Watch out, ive read that the US government has incarcerated people for about 50 years for doing that.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>zigman1</em>:</p>
-<blockquote>While laughing at the stereotype of French being on the street all the time</blockquote>
-<p>↳ reply 3 — <em>baq</em>:</p>
-<blockquote>The onion finds itself in a peculiar spot today</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>duxup</em>:</p>
-<blockquote>Just seems like gatekeeping for graft and favors &#x2F; corruption.</blockquote>
-<p><strong>Top #3</strong> — <em>NooneAtAll3</em>:</p>
-<blockquote>&quot;government needs to step in and regulate ai&quot;<p>&quot;wait, not like that&quot;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>soraminazuki</em>:</p>
-<blockquote>Yes, to the surprise of some HNers, regulations can be good or bad. Just because there are people unhappy with current regulation doesn&#x27;t automatically mean regulation shouldn&#x27;t exist at all.<p>BTW this isn&#x27;t an opinion on the availability of GPT 5.6. I couldn&#x27;t care less about that.</blockquote>
-<p>↳ reply 2 — <em>margorczynski</em>:</p>
-<blockquote>Anth&#x2F;OpenAI simply wanted the government to pull the ladder after them and ban models from China.<p>Seems it blew in their faces and probably the new frontier models will be available only to a select few. Many people predicted this, only a naive person would believe that access to something with these capabilities would be decided by some dude in California.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
