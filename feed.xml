@@ -4,7 +4,69 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 30 Jun 2026 07:34:41 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 09:20:30 +0000</lastBuildDate>
+    <item>
+      <title>Memory Safe Context Switching</title>
+      <link>https://fil-c.org/context_switches</link>
+      <guid isPermaLink="false">hn3-48727177</guid>
+      <pubDate>Tue, 30 Jun 2026 00:38:19 +0000</pubDate>
+      <description>125 points, 24 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://fil-c.org/context_switches"><strong>→ Article</strong></a> <small>(fil-c.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48727177">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 24 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>matheusmoreira</em>:</p>
+<blockquote>This is an article I wish I could have read many months ago.<p>&gt; Hence, the most basic safety issue with setjmp is that if we call it and then return from the function that had called it, the context saved by setjmp is not valid to longjmp to.<p>&gt; longjmp is only safe if it&#x27;s called at a time when the stack frame used by setjmp could not have possibly been overwritten, since that is the only way to guarantee that the register state restored by longjmp matches the stack frame that the stack pointer points to.<p>That limitation could be lifted by simply copying the stack frames somewhere else prior to long jumping, and then spilling that entire thing on top of the current stack instead of just restoring the registers from the jump buffer. This is how delimited continuations work! What ruins this for C is the existence of pointers. Stacks aren&#x27;t freely relocatable since pointers into the stack could exist. Other languages don&#x27;t have this problem.<p>So much fun stuff in this article! The &quot;fibers with ucontext&quot;, essentially swapping stack pointers back and forth, are how I implemented generators! I too reached for musl source code in order to understand setjmp, but for a different reason: its ability to spill the registers onto the stack was instrumental for my garbage collector.<p>Blogged about all of these things too, in case anyone is curious:<p><a href="https:&#x2F;&#x2F;www.matheusmoreira.com&#x2F;articles&#x2F;delimited-continuations-in-lone-lisp" rel="nofollow">https:&#x2F;&#x2F;www.matheusmoreira.com&#x2F;articles&#x2F;delimited-continuati...</a><p><a href="https:&#x2F;&#x2F;www.matheusmoreira.com&#x2F;articles&#x2F;generators-in-lone-lisp" rel="nofollow">https:&#x2F;&#x2F;www.matheusmoreira.com&#x2F;articles&#x2F;generators-in-lone-l...</a><p><a href="https:&#x2F;&#x2F;www.matheusmoreira.com&#x2F;articles&#x2F;babys-second-garbage-collector" rel="nofollow">https:&#x2F;&#x2F;www.matheusmoreira.com&#x2F;articles&#x2F;babys-second-garbage...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pizlonator</em>:</p>
+<blockquote>I’ve used the copy-stack trick before! It’s really great!<p>You can work around the pointer relocation issue by always coping the stack back onto the main stack. So you’re always running on the same range of stack in memory and saved stacks are always elsewhere</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>matheusmoreira</em>:</p>
+<blockquote>Is this the technique you are describing?<p><a href="https:&#x2F;&#x2F;langdev.stackexchange.com&#x2F;a&#x2F;4242" rel="nofollow">https:&#x2F;&#x2F;langdev.stackexchange.com&#x2F;a&#x2F;4242</a><p><a href="https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;research&#x2F;wp-content&#x2F;uploads&#x2F;2019&#x2F;03&#x2F;algeff-in-c-aplas.pdf" rel="nofollow">https:&#x2F;&#x2F;www.microsoft.com&#x2F;en-us&#x2F;research&#x2F;wp-content&#x2F;uploads&#x2F;...</a><p>&gt; How does he do it? By simply always restoring the continuation to exactly the place it was captured from, of course!<p>Pretty awesome. Gets around the problem by not relocating at all. I haven&#x27;t read the full paper, to be honest. I just assumed it&#x27;d require defensive copying in case the stacks overlapped in memory.<p>Alexis King does outline the safety constraints that Fil-C would care about:<p>&gt; references to stack-allocated data must not be shared across continuation chunk boundaries, as both capture and restore may relocate portions of the stack, making all references to stack-allocated memory in the relocated portions temporarily dangling</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>quotemstr</em>:</p>
+<blockquote>&gt; What ruins this for C is the existence of pointers. Stacks aren&#x27;t freely relocatable since pointers into the stack could exist.<p>I sometimes wonder what computing would be like if the 80286 hadn&#x27;t sucked, if segmentation had won over flat address spaces, and if we&#x27;d been able to do relocation pain-free by changing a segment base register in one spot instead of rewriting linear pointers everywhere. We could have done paging <i>within</i> segments.<p>Oh well.</blockquote>
+<p>↳ reply 3 — <em>Onavo</em>:</p>
+<blockquote>&gt; <i>What ruins this for C is the existence of pointers. Stacks aren&#x27;t freely relocatable since pointers into the stack could exist. Other languages don&#x27;t have this problem</i><p>What about languages with pass by reference?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>anitil</em>:</p>
+<blockquote>How interesting! I thought that setjmp and longjmp were probably incompatible with Fil-C. And I&#x27;d somehow never heard of ucontext at all.<p>I suppose managing the stack is still managing memory after all, even if we typically don&#x27;t think of it that way, so Fil-C has something to add here.<p>It&#x27;s really worth reading the section here about the complexity of setjmp&#x2F;longjmp and how they interact with register allocation and stack spilling. I knew they&#x27;re tricky, but going in to the specifics is delicious.</blockquote>
+<p><strong>Top #3</strong> — <em>nanolith</em>:</p>
+<blockquote>&gt; For example, Boost uses ucontext as part of its fiber implementation.<p>Maybe for the incredibly slow fallback, it does. Boost context and Boost fiber has ABI support for *nix &#x2F; MacOS &#x2F; Windows for x86_64 and ARM&#x2F;ARM64. The overhead for a fiber switch using this support is about as heavy as a virtual function call. In comparison, ucontext is very heavy.<p>I wrote my own fiber library for C. I got the idea from an old implementation I saw that used setjmp and longjmp, which took me down the rabbit hole of figuring out how to do this more efficiently and with an improved margin of safety. I chose to follow Boost&#x27;s example, and in fact, used some of their fiber switch assembler with attribution in my library.</blockquote>
+<blockquote>
+<p>↳ reply — <em>pizlonator</em>:</p>
+<blockquote>&gt; In comparison, ucontext is very heavy<p>It&#x27;s heavy because it switches the signal masks.<p>Indeed, Fil-C&#x27;s ucontext logic does this today, because I&#x27;m relying on glibc, and that&#x27;s what glibc does.<p>But it would be straightforward to teach the internal Fil-C zfiber_context API to not save the sigmasks. It would just mean using some other backend for setcontext&#x2F;swapcontext. Considering that there are multiple open source projects (including Boost!) that have code that does this, it would be easy to set that up.<p>But I&#x27;m taking baby steps here. And the first step is just to provide a memory safe wrapper around these quite dangerous APIs. Probably the next step is to just write a lot more tests to try to break it. Then, later, I can worry about adding alternative backends to expose the sigmask-free version of this that Boost (and most others) want.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>nanolith</em>:</p>
+<blockquote>Fair enough. I use my fiber library for cooperative multitasking, as an alternative to async I&#x2F;O. It&#x27;s still non-blocking, but as far as user code knows, it behaves as if it is blocking.<p>To do this, I disable signals on threads that are fiber threads, and instead rely on a signal thread to intercept signals and alert the appropriate fibers.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>LongCat-2.0, a large-scale MoE model with 1.6T total and 48B Active</title>
+      <link>https://longcat.chat/blog/longcat-2.0/</link>
+      <guid isPermaLink="false">hn3-48727116</guid>
+      <pubDate>Tue, 30 Jun 2026 00:30:11 +0000</pubDate>
+      <description>140 points, 39 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://longcat.chat/blog/longcat-2.0/"><strong>→ Article</strong></a> <small>(longcat.chat)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48727116">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 39 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gardnr</em>:</p>
+<blockquote>&gt; The training and deployment of LongCat-2.0 are built on large-scale clusters of tens of thousands of AI ASIC superpods. Compared to the mature Nvidia GPU ecosystem, the supporting software community is still less developed. We have therefore put significant effort into building a stable, secure, and scalable infrastructure.<p>This is the real news story. It looks like they may have used Huawei Ascend 910C chips: <a href="https:&#x2F;&#x2F;nitter.net&#x2F;teortaxesTex&#x2F;status&#x2F;2071708141037781407#m" rel="nofollow">https:&#x2F;&#x2F;nitter.net&#x2F;teortaxesTex&#x2F;status&#x2F;2071708141037781407#m</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>BoorishBears</em>:</p>
+<blockquote>If they really managed this from pre-training a 1.6 T parameter model through to post-training without NVIDIA, Dwarkesh Patel got what he wanted.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>chvid</em>:</p>
+<blockquote>It is interesting how much people doubt Huawei’s capabilities in this area - Jensen does not (in the dp interview) - of course you can dismiss this as him talking his own book.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>rvz</em>:</p>
+<blockquote>&gt; Both the full training run and the large-scale deployment are built entirely on AI ASIC superpods. Pretraining spans millions of accelerator-days across more than 35 trillion tokens,<p>To think that Nvidia would not have any competition is quite laughable and Jensen knew that China would catch up.<p>This is the reason why restricting GPUs as a temporary blockade does not work and they would just make all the Chinese AI labs find clever workarounds to serve AI compute as cheap as possible, including building their own hardware.<p>Like Bitcoin has done with ASICs, AI will soon need them for training and inference (TPUs are also ASICs) and Jensen knew this by buying Groq.<p>Today is not a good day if you are Anthropic or OpenAI.</blockquote>
+<p><strong>Top #3</strong> — <em>credit_guy</em>:</p>
+<blockquote>I just tested it with a slightly tricky question<p><pre><code>  &gt; If you could run a nuclear reactor with U-235 as fuel or Pu-241 (both mixed with 95% U-238), which one would you choose and why? 
+</code></pre>
+For a human this would not be tricky at all. For an LLM it could be, because this question certainly does not exist in any sort of training, because Pu-241 does not exist in pure form, it only exist as a minor component of reactor-grade plutonium, where Pu-239 would dominate, with Pu-240 coming second and Pu-241 coming third.<p>In any case, LongCat-2.0. gave a very well reason but incorrect answer that Pu-241 is preferable.<p>I then tested on Qwen 3.7 Plus, and it correctly answered that U-235 is preferable because of its much higher delayed neutron fraction. I then went to Gemini Flash, which answered the same, with much more confidence, and with much stronger arguments, and the speed of the answer was much higher.<p>Overall I rate Gemini Flash the best, Qwen 3.7 Plus an acceptable second, and LongCat-2.0 an ok&#x27;ish third, if you have nothing better.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>South Korea to spend $1T on more memory chip production and humanoid robots</title>
       <link>https://arstechnica.com/ai/2026/06/south-korea-to-spend-1t-on-more-memory-chip-production-and-humanoid-robots/</link>
@@ -3609,76 +3671,6 @@ And now, they see a wave of building datacenters. Not only do these data centers
 <blockquote>This is a key point. I don&#x27;t know if you can still edit your submission, but I think this would be helpful to mention up front. I&#x27;m looking forward to testing this.</blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Jolla Phone (October 2026)</title>
-      <link>https://commerce.jolla.com/products/jolla-phone-october-2026</link>
-      <guid isPermaLink="false">hn3-48687272</guid>
-      <pubDate>Fri, 26 Jun 2026 14:46:00 +0000</pubDate>
-      <description>274 points, 148 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://commerce.jolla.com/products/jolla-phone-october-2026"><strong>→ Article</strong></a> <small>(commerce.jolla.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48687272">→ HN comments</a> &nbsp;·&nbsp; 274 points &nbsp;·&nbsp; 148 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Tiberium</em>:</p>
-<blockquote>Wanted to mention that Sailfish has a lot of closed-source components, especially UI-related, despite the overall marketing&#x2F;&quot;vibe&quot; making it look very open. If anything, AOSP (Android) is more open than Sailfish. I don&#x27;t think this has changed with Sailfish 5, see e.g.:<p>- <a href="https:&#x2F;&#x2F;forum.sailfishos.org&#x2F;t&#x2F;sailfish-os-clarifying-claims-about-open-closed-source-security-and-privacy&#x2F;25933" rel="nofollow">https:&#x2F;&#x2F;forum.sailfishos.org&#x2F;t&#x2F;sailfish-os-clarifying-claims...</a><p>- <a href="https:&#x2F;&#x2F;docs.sailfishos.org&#x2F;Develop&#x2F;Open_Source&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.sailfishos.org&#x2F;Develop&#x2F;Open_Source&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Retr0id</em>:</p>
-<blockquote>Huh. I really don&#x27;t see the point of this, vs something like GrapheneOS.<p>Edit: I&#x27;m well aware of the differences between typical Linux and Android (especially the security architecture!), and I&#x27;m willing to make some sacrifices in the name of FOSS... but only if it&#x27;s actually FOSS.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ttkari</em>:</p>
-<blockquote>If what you want is android and you have privacy concerns, GrapheneOS is probably the best you can get.<p>Then again, SailfishOS is a linux with much of the usual linux stuff like userland with bash, coreutils, glibc, systemd, wayland, pulseaudio etc.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>microtonal</em>:</p>
-<blockquote>And way less security, sandboxing is far more limited and the default profile looks pretty much YOLO:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;sailfishos&#x2F;sailjail-permissions&#x2F;blob&#x2F;master&#x2F;config&#x2F;50-default-profile.conf" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;sailfishos&#x2F;sailjail-permissions&#x2F;blob&#x2F;mast...</a><p>Given how sensitive information most people have on their phones (banking, chats, and whatnot), it&#x27;s a disaster in the making.<p>The typical answer is &quot;but I&#x27;ll only use open source apps that I trust&quot;. Sandboxing doesn&#x27;t only protect you against rogue apps, it primarily protects you against 0-days in apps that you do trust.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mrbn100ful</em>:</p>
-<blockquote>They are (slowly) releasing more and more components<p><a href="https:&#x2F;&#x2F;forum.sailfishos.org&#x2F;t&#x2F;open-sourcing-proceeding&#x2F;24689" rel="nofollow">https:&#x2F;&#x2F;forum.sailfishos.org&#x2F;t&#x2F;open-sourcing-proceeding&#x2F;2468...</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;sailfishos&#x2F;sailfish-weather&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;sailfishos&#x2F;sailfish-weather&#x2F;</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;sailfishos&#x2F;jolla-camera" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;sailfishos&#x2F;jolla-camera</a><p>It&#x27;s still more open than AOSP</blockquote>
-<p>↳ reply 3 — <em>fsflover</em>:</p>
-<blockquote>If the openness is important to you, you may want to have a look at other GNU&#x2F;Linux phones, Librem 5 and Pinephone. The former runs an FSF-endorsed Debian derivative.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>CiTyBear</em>:</p>
-<blockquote>Personal experience with Jolla:
-I bought their first mobile (still have it somewhere) that would be a &quot;Linux Phone that run android app&quot;.
-Wanted to support it and was ready to expect some bugs but it did not work all.
-No support at all, most of android app did not work. The OS was not finished that it was already obsolete. And now there are doing it again like the first one never existed.
-I have zero trust in this company</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>poetaster</em>:</p>
-<blockquote>I still have my first Jolla from 2016. Still works and got updates till 2 years ago. The android stuff I used was minimal but worked fine except for bluetooth and nfc. I build my own mostly.</blockquote>
-<p>↳ reply 2 — <em>alcasa</em>:</p>
-<blockquote>I used it as a daily driver back in 2014&#x2F;15 and it worked ok from what I remember.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>boesboes</em>:</p>
-<blockquote>Careful with preordering, they seem to ignore requests to cancel &amp; the community is rather hostile to any form of criticism</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Springer Nature has removed two studies by Max Planck</title>
-      <link>https://www.science.org/content/article/why-have-papers-one-history-s-most-famous-physicists-been-retracted</link>
-      <guid isPermaLink="false">hn3-48686834</guid>
-      <pubDate>Fri, 26 Jun 2026 14:10:26 +0000</pubDate>
-      <description>325 points, 157 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.science.org/content/article/why-have-papers-one-history-s-most-famous-physicists-been-retracted"><strong>→ Article</strong></a> <small>(science.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48686834">→ HN comments</a> &nbsp;·&nbsp; 325 points &nbsp;·&nbsp; 157 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>hn_throwaway_99</em>:</p>
-<blockquote>While it seems pretty obvious to me that this was an algorithm run amok, I think it&#x27;s absolutely ghastly that they would retract papers algorithmically without human intervention in the first place.<p>Retraction is a <i>major</i> deal, and would&#x2F;could do significant harm to an author (obviously in this particular case I think Max&#x27;s reputation will be fine). The article states:<p>&gt; Representatives from Springer Nature declined to comment, beyond saying that “detailed information about specific retractions is usually confidential and can only be shared with the relevant authors.”<p>but I&#x27;m pretty sure they didn&#x27;t contact Max Planck, nor his estate, before retracting the articles. I would be absolutely incensed if I were a living author and had one of my papers retracted without the chance to defend myself.<p>I think this article encapsulates an ever growing frustration that is only exploding with the rise of AI - we&#x27;re turning more and more decisions over to black boxes that have no accountability and no easy path for rectification when things go wrong.</blockquote>
-<p><strong>Top #2</strong> — <em>ashenke</em>:</p>
-<blockquote>&gt; Springer Nature deviated from the normal practice of merely slapping the word RETRACTED across the digital version of the paper while still allowing scholars to read the text. Instead, the publisher posted a blank white page with the cryptic phrase, “This article has been withdrawn due to article violation.” Springer Nature is nevertheless still selling the empty PDF for $39.95.<p>The system is broken</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kurthr</em>:</p>
-<blockquote>I am still suspicious that this has something to do with the relationship between Springer-Verlag and the Max Plank Digital Library (MPDL) which supports open access.<p>In 2014 MPDL purchase 110k out-of-print and historically significant titles.
-In 2015 Springer acquired open-access journals from Max Plank Society. 
-In 2022 There was an open-access book deal allowing Plank Institute members to more easily publish books.<p>Things were more not always so intertwined and in 2007 the Society canceled a licensing agreement with Springer due to subscription prices and usage restrictions.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kergonath</em>:</p>
-<blockquote>&gt; I am still suspicious that this has something to do with the relationship between Springer-Verlag and the Max Plank Digital Library (MPDL) which supports open access.<p>Why? Max Plank (the dead Physicist) has nothing to do with whatever the Institute is doing these days. Or the library. Or anything that was named after him.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Quarrel</em>:</p>
-<blockquote>and, as the articles points out, it is literally out of copyright.<p>For profit journals need to die.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Sweepi</em>:</p>
-<blockquote>&gt; In November 1940, philosopher Aloys Müller criticized Planck’s views in a Naturwissenschaften piece titled “Naturwissenschaft und reale Außenwelt” (“Natural Science and the Real External World”). A month later, Planck responded in print—and used the exact same title. This, Gingras and Khelfaoui suspect, caused Springer Nature’s copyright bot to retract the paper as plagiarism decades later, even though the contents of the two essays differ markedly.<p>&gt; The debate over the Copenhagen interpretation remains active today, which explains why Gingras and Khelfaoui find the retractions so troubling: A key scientist’s views on an important controversy have been memory holed.<p>&gt; Both Scarlata and Gingras are concerned that papers by less prominent scientists have disappeared as well without anyone realizing. At a minimum, Gingras wants Planck’s papers restored. “Whoever did it, I don’t care,” he says, “just put them [back] in the database. Intellectually, it’s not acceptable.”<p>Thanks, copyright bots.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
