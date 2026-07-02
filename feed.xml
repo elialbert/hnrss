@@ -4,7 +4,146 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 02 Jul 2026 17:58:03 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 19:42:38 +0000</lastBuildDate>
+    <item>
+      <title>The primary purpose of code review is to find code that will be hard to maintain</title>
+      <link>https://mathstodon.xyz/@mjd/115096720350507897</link>
+      <guid isPermaLink="false">hn3-48759870</guid>
+      <pubDate>Thu, 02 Jul 2026 11:41:27 +0000</pubDate>
+      <description>265 points, 148 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mathstodon.xyz/@mjd/115096720350507897"><strong>→ Article</strong></a> <small>(mathstodon.xyz)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48759870">→ HN comments</a> &nbsp;·&nbsp; 265 points &nbsp;·&nbsp; 148 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>thayne</em>:</p>
+<blockquote>Code review doesn&#x27;t have a single purpose. Finding code that is hard to maintain is one of those, and and an important one, but certainly not the only one, and I&#x27;m not sure it is even the most important one. Other purposes include:<p>- a safety check to ensure that if a developer (or AI) goes rogue, it is more difficult to merge malicious code<p>- a second perspective from someone who isn&#x27;t as close to the problem and might see a better way to do things, or problems that the original developer missed<p>- in some cases having someone more familiar with other parts of the system look at it who can tell if it won&#x27;t interact well with something else<p>- ensuring there is at least one other person familiar with the code<p>- a learning opportunity. The author can learn from feedback from the review, and the reviewer can learn from the code in the change. Especially important when the author and reviwer have differing seniority. When I mentor a new employee, I add them as a reviewer to all my PRs so they can see how I do things, and review all their PRs so I can provide guidance. And sometimes I even learn things from them!<p>- yes, catching bugs, although this should not be the primary mechanism for that, and I agree is not the most important reason. It is especially important for security and performance bugs though, as those are harder to catch with automated testing.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>a4isms</em>:</p>
+<blockquote>Another—very old—rationale:<p><i>People write code differently when they know that it will be reviewed by people who will not only comment on it, but also form long-term impressions of the submitter&#x27;s competence and fit based on the code that is reviewed.</i></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dotancohen</em>:</p>
+<blockquote>I&#x27;ve always felt that this is and advantage to open source software. The vast majority of open source software that I&#x27;ve bothered to look at the code for used best practices, was reasonably secure, and was above all maintainable. The bespoke projects that I&#x27;ve worked on at various companies? Complete spaghetti messes almost all of them.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>skydhash</em>:</p>
+<blockquote>Pretty much. I use OpenBSD and the basic stance is that you need to look at the code of the system and the various software in ports. Because the only way to get timely support is you helping yourself and then the community will help you. And if you find some hackish code, there’s generally a good reason it’s that way.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>urig</em>:</p>
+<blockquote>100% agree. It&#x27;s as if you read the first sentence out of my mind. Thanks.</blockquote>
+<p>↳ reply 3 — <em>ivanjermakov</em>:</p>
+<blockquote>Similar to #3:<p>- having someone more experienced in that subdomain catch problematic parts and inconsistencies with existing code.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>donatj</em>:</p>
+<blockquote>What I find to be maybe the single most important part of code review is knowledge transfer.<p>Our entire small team thumbs up a PR before it&#x27;s merged unless there&#x27;s a big rush on it, and this gives everyone on the team a rough idea of the state of the codebase at any given time. There&#x27;s no being blindsided like &quot;this whole system I depend on is gone&quot; like I had happen at far more siloed places I&#x27;ve worked.<p>Beyond that, it gives a forum to ask questions about how things work to further build understanding. On a high functioning team, every developer should have at least a modest understanding of the entire system, including parts they never touch.<p>Another <i>important</i> feature is just the institutional knowledge check. For instance recently I made a small change to a table and a coworker pointed out that there was a microservice I wasn&#x27;t considering that wrote to that table that would break (yes, sharing tables is bad design, unrelated). I had no idea this microservice existed let alone had access to this table. The institutional knowledge check here though prevented a larger issue and potential data cleanup situation.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>thomascgalvin</em>:</p>
+<blockquote>&gt; Our entire small team thumbs up a PR before it&#x27;s merged unless there&#x27;s a big rush on it, and this gives everyone on the team a rough idea of the state of the codebase at any given time. There&#x27;s no being blindsided like &quot;this whole system I depend on is gone&quot; like I had happen at far more siloed places I&#x27;ve worked.<p>How large is your team? Because I don&#x27;t think that would scale beyond maybe five engineers<p>I&#x27;m a huge proponent of automated testing, because that catches things like &quot;this whole system I depend on is gone&quot; even if the guy who depends on it isn&#x27;t in the room<p>I&#x27;m also a huge proponent of shared ownership of ... everything, really. It&#x27;s natural for people to kind of own different pieces of a codebase, especially if it&#x27;s a component they created, but that leads to silos and low bus counts. There shouldn&#x27;t be one guy who owns one system that depends on one other component</blockquote>
+<p>↳ reply 2 — <em>6LLvveMx2koXfwn</em>:</p>
+<blockquote>&gt; For instance recently I made a small change to a table and a coworker pointed out that there was a microservice I wasn&#x27;t considering that wrote to that table that would break<p>If code reviews are important, where does testing sit? Presumably if the coworker had not been part of the code review <i>something</i> would have stopped the breaking change making its way to prod?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sjburt</em>:</p>
+<blockquote>My attitude has always been that code review is best thought of as the gate where code goes from being owned by the author to being owned by the team or project. The code I&#x27;m reviewing is not your code, it is code that is about to become our code.<p>Maintainability is a major factor in that, of course.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Vite+ Beta</title>
+      <link>https://voidzero.dev/posts/announcing-vite-plus-beta</link>
+      <guid isPermaLink="false">hn3-48759761</guid>
+      <pubDate>Thu, 02 Jul 2026 11:30:01 +0000</pubDate>
+      <description>203 points, 129 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://voidzero.dev/posts/announcing-vite-plus-beta"><strong>→ Article</strong></a> <small>(voidzero.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48759761">→ HN comments</a> &nbsp;·&nbsp; 203 points &nbsp;·&nbsp; 129 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sailorganymede</em>:</p>
+<blockquote>I am a big fan of Vite. But I have zero clue what those other tools are. I swear to God, I just put my head down to do some work and all the sudden, frontend tooling has evolved. I wonder if there is a push towards a &quot;boring but works&quot; stack.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bhouston</em>:</p>
+<blockquote>&gt; But I have zero clue what those other tools are.<p>The incorporated tools are actually really amazing:<p>- vitest, an ultra fast test runner.  After using a lot of others, including jest and node&#x27;s built in one, I love vitest.<p>- oxlint, replaces eslint but is compatible with its file format and ultra fast, since it isn&#x27;t written JavaScript.  I tried biome, but I found oxlint to have more rules and the eslint compatibility was nice.<p>- oxfmt, replaces prettier and is faster since it isn&#x27;t written in JavaScript.<p>- rolldown, replaces rollup and is compatible with it but it is much faster since it isn&#x27;t written in JavaScript.<p>The above are my go-tos in new projects anyhow since they are killer good and fast.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mort96</em>:</p>
+<blockquote>I don&#x27;t get how a test runner can be &quot;ultra fast&quot;. Surely all the time is taken by the tests, not calling the test functions?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>andrewingram</em>:</p>
+<blockquote>At work we&#x27;ve tried switching to vitest, and it&#x27;s 1.5-2x slower than Jest (I think it&#x27;s related to our very large and circular module graph), so performance is very much a your-mileage-may-vary thing.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>preommr</em>:</p>
+<blockquote>&gt; I wonder if there is a push towards a &quot;boring but works&quot; stack.<p>Yea, this.<p>eslint -&gt; oxlint (but in rust, and fast)<p>prettier -&gt; oxfmt (but in rust, and fast)<p>webpack -&gt; vite (...I have thoughts; but vite is popular enough so w&#x2F;e)<p>rolldown -&gt; tsdown (ts support, but in rast and fast)<p>jest -&gt; vitest (works with vite)<p>It&#x27;s basically taking the last decade of established conventions and supporting ts, rewriting in rust for speed, and making it all interoperable.</blockquote>
+<p>↳ reply 3 — <em>skybrian</em>:</p>
+<blockquote>I’ve bounced off Vite because I don’t see a big advantage over esbuild. (I also use Deno.) What do you find useful?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>pier25</em>:</p>
+<blockquote>I think they should find a better name for this project. I find it very confusing since it&#x27;s not really a better Vite.<p>At the time Void Zero was probably looking to monetize the Vite brand but now that they&#x27;ve been acquired by Cloudflare they don&#x27;t need to do that anymore.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ericyd</em>:</p>
+<blockquote>Its vite... plus a bunch of stuff. Plus can mean different things</blockquote>
+<p>↳ reply 2 — <em>re-thc</em>:</p>
+<blockquote>&gt; I think they should find a better name for this project.<p>Need another plus? Vite++</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>KronisLV</em>:</p>
+<blockquote>I love Vite, Vitest, Oxlint and Oxfmt and look in their direction for most of my new projects! I hope these folks manage to get a bunch of money and can fund the continued development for at least the next decade.<p>Sure beats opening some ancient project and seeing some mix of Gulp, Grunt, webpack and a bunch of other disjointed stuff (I migrated that one over to also use the newer stack).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>snorremd</em>:</p>
+<blockquote>&gt; I hope these folks manage to get a bunch of money and can fund the continued development for at least the next decade.<p>I believe VoidZero has been acquired by Cloudflare [1], so money should not be an issue. Question is if Cloudflare will be willing to continue letting these people work on Vite and Vite+ features that benefit all cloud platforms, not just Cloudflare.<p>1. <a href="https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;voidzero-joins-cloudflare&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;voidzero-joins-cloudflare&#x2F;</a></blockquote>
+<p>↳ reply 2 — <em>dominicrose</em>:</p>
+<blockquote>Making all this (for example) work nicely together can be tricky: Vite, ESLint, Prettier, Typescript and React, especially if it&#x27;s full stack with SSR.<p>If you only focus on the front-end and remove Typescript from the equation it becomes easy enough. We&#x27;ll have to see if Vite+ helps for the more complex cases.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>PeerTube is a free, decentralized and federated video platform</title>
+      <link>https://github.com/Chocobozzz/PeerTube</link>
+      <guid isPermaLink="false">hn3-48759634</guid>
+      <pubDate>Thu, 02 Jul 2026 11:17:45 +0000</pubDate>
+      <description>315 points, 121 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/Chocobozzz/PeerTube"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48759634">→ HN comments</a> &nbsp;·&nbsp; 315 points &nbsp;·&nbsp; 121 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>CM30</em>:</p>
+<blockquote>It&#x27;s a promising system, and I&#x27;d probably use it over a non-federated video hosting system if I wanted to run a video hosting site of some kind.<p>Yet it&#x27;s currently hard to find a real usecase for it, since neither the content you want nor audience is there on PeerTube at the moment. If you&#x27;re interested in open source software or data privacy you might find something here or there, but topics like gaming, music, sports or movies are very much underserved on the platform at the moment, and get almost no attention from viewers.<p>For example, I recently did a test search and found a let&#x27;s play for the Legend of Zelda: The Wind Waker. The videos had something like 3-5 views on PeerTube, and about 10-15 times that on the creator&#x27;s YouTube channel.<p>It&#x27;s the same issue as on Mastodon and Lemmy to be honest, except exaggerated. If the majority of topics aren&#x27;t well represented on these platforms, then the general public won&#x27;t use them. And if the general public won&#x27;t use them, then the creators that would bring the general public over won&#x27;t use them either.<p>They need to figure out a way to encourage people outside of the &#x27;hardcore tech nerd raised on Usenet&#x27; audience to use these platforms.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>karmakurtisaani</em>:</p>
+<blockquote>Lemmy is pretty ok actually. The lack of big user base is more of a feature than a bug.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>organsnyder</em>:</p>
+<blockquote>I&#x27;ve found the same with Mastadon. It has a pre-eternal-September feel to it.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bobbob1921</em>:</p>
+<blockquote>I agree this is a real issue, however hopefully a solution is that creators will upload their videos to both sites (ie YouTube is their primary but also upload to peertube at the same time) which is pretty easy to do and eventually a site like peer tube might reach that critical mass with enough content</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>raphinou</em>:</p>
+<blockquote>I am currently recording tutorial videos for an open source project. It&#x27;s produced fully with Foss software (on Linux, obs, kdenlive) and about an open source project, so I wanted to host it with peertube (though YouTube might be used later on for its network effect, it was easier to publish with peertube as yt required an video of me and my ID).
+It&#x27;s going fine until now. I don&#x27;t host peertube myself though, I use an existing instance, and embed the videos in the website.<p>It was a really good experience, so I&#x27;ll continue that way.<p>If you want to check out the videos: <a href="https:&#x2F;&#x2F;www.asfaload.com&#x2F;videos&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.asfaload.com&#x2F;videos&#x2F;</a></blockquote>
+<p><strong>Top #3</strong> — <em>butz</em>:</p>
+<blockquote>Personally, I find the lack of videos to watch on PeerTube a huge plus. I tremendously reduced my weekly video watching time and I don&#x27;t feel like missing out on something important. My favorite instance is makertube.net, but I visit few others too.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Why I'm Forced to Say Farewell: Google Management Has Lost Its Moral Compass</title>
+      <link>https://docs.google.com/document/d/1SH9QRTAlL02THgAN2AGmWe9El0_2ZJF6hhgDBx8k97c/edit?tab=t.0</link>
+      <guid isPermaLink="false">hn3-48758970</guid>
+      <pubDate>Thu, 02 Jul 2026 10:00:27 +0000</pubDate>
+      <description>318 points, 251 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://docs.google.com/document/d/1SH9QRTAlL02THgAN2AGmWe9El0_2ZJF6hhgDBx8k97c/edit?tab=t.0"><strong>→ Article</strong></a> <small>(docs.google.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48758970">→ HN comments</a> &nbsp;·&nbsp; 318 points &nbsp;·&nbsp; 251 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dang</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48496396">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48496396</a></blockquote>
+<p><strong>Top #2</strong> — <em>jnaina</em>:</p>
+<blockquote>moral clarity usually sharpens the moment the last RSU hits the brokerage account</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>DannyBee</em>:</p>
+<blockquote>Sometimes.<p>Sometimes not.<p>I left with more than 4 million in RSU&#x27;s left.<p>Pretty much any Googler who leaves will be leaving lots of money on the table.<p>This is because they are usually 3&#x2F;4 year grants, so it&#x27;s pretty much impossible to leave without lots of unvested RSU.<p>There are some 1 year grants, but those are much more uncommon (~1%)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>colordrops</em>:</p>
+<blockquote>This must have been a long time ago? Because that&#x27;s leaving over a billion dollars &quot;on the table&quot; at the current price.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>lulzury</em>:</p>
+<blockquote>Alphabet dropped “don’t be evil” from its moto in 2015. This guy went in knowing how the sausage was being made.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>BLKNSLVR</em>:</p>
+<blockquote>Whilst I appreciate the commitment to their values, I wonder where they stand on the &#x27;safety&#x27; of their users as it relates to the Android Developer Verification update (currently top of HN, here: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48755965">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48755965</a>).<p>&quot;Security&quot; vs Openness<p>&gt; “make things so secure that we ourselves can’t break them, whether the device costs $1000 or $100, or the user is a celebrity or a refugee“<p>That can mean different things to different people in different contexts. Could easily mean building a software platform with security features that banks will build their apps to require.</blockquote>
+<blockquote>
+<p>↳ reply — <em>jasonvorhe</em>:</p>
+<blockquote>That is wasn&#x27;t even covered says enough for me.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Google loses fight over record $4.7B EU antitrust fine</title>
       <link>https://www.cnbc.com/2026/07/02/alphabet-google-android-eu-antitrust-fine-4-1-billion-euro-appeal.html</link>
@@ -3518,154 +3657,6 @@ HN Guidelines Police :-)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;
 </blockquote>
 <p><strong>Top #3</strong> — <em>Centigonal</em>:</p>
 <blockquote>&quot;Rocket Lab acquires Iridium&quot; sounds like a notification out of Sid Meier&#x27;s Alpha Centauri or Anno 2205.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>CachyOS June 2026 Release</title>
-      <link>https://cachyos.org/blog/2606-june-release/</link>
-      <guid isPermaLink="false">hn3-48719361</guid>
-      <pubDate>Mon, 29 Jun 2026 13:56:46 +0000</pubDate>
-      <description>126 points, 61 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://cachyos.org/blog/2606-june-release/"><strong>→ Article</strong></a> <small>(cachyos.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48719361">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 61 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>nickjj</em>:</p>
-<blockquote>If anyone is looking for a niri based opinionated set of configuration on top of CachyOS (or vanilla Arch) I put together: <a href="https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;dotfriedrice" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;dotfriedrice</a><p>The goal is after installing the official ISO, you can get a developer focused desktop environment up and running in ~10 minutes with 1 command. It&#x27;s quite configurable so you can change around anything you want ahead of time or after you install it. I use it with vanilla Arch but I know of quite a few people using it successfully with CachyOS.<p>For CachyOS, the only manual adjustment you have to make before running the repo&#x27;s install script is uninstalling `jack` since it conflicts with `pipewire-jack`. I could easily roll this into the script but so far no one has complained loud enough to automate this. I also wonder if CachyOS will eventually drop that AUR dependency in its official ISO.<p>If it matters to you, 99.9% of the code is hand coded. The only time I use AI is when I&#x27;m 100% stone walled on something and it&#x27;s a last resort move. Even then it&#x27;s copy &#x2F; pasting small snippets into web based AIs where I fully review and refactor its output so you could say the 0.1% is still human vetted.<p>Moving away from Windows last year was so worth it. I&#x27;ve been wanting to switch since 2017 but always ran into hardware issues. The same hardware I had back then works beautifully with Arch today.</blockquote>
-<p><strong>Top #2</strong> — <em>goodburb</em>:</p>
-<blockquote>It&#x27;s not just a gaming and performance distro, it includes QoL fixes on modern hardware.<p>On my Lenovo laptop, fixes that would take over a day to enable and patch on most distros:<p><pre><code>  - Wake from sleep
-
-  - Nvidia GSP firmware workarounds and correct version OOTB (proprietary)
-
-    - Mouse lag&#x2F;jitter
-    - External display hotplug
-    - DDC&#x2F;CI over type-c
-
- - Embedded controller power profiles from taskbar with correct TDP limits for CPU&#x2F;GPU
-
- - Battery charge limiter support right from KDE settings
-
- - Working `switcherooctl` in hybrid graphics mode on AMD
-
- - Firefox with video decode acceleration (YouTube) on almost all GPU models
-</code></pre>
-Another gaming feature that is otherwise useful in workstations is the external scheduler support.<p>Currently using BPFland which makes multitasking as responsive as idle while compiling Yocto&#x2F;Chromium in the background.<p>Windows, Mac (mini M1), and kernel built-in scheduler Linux jank and become almost unusable (Ryzen 5800H).</blockquote>
-<blockquote>
-<p>↳ reply — <em>rudedogg</em>:</p>
-<blockquote>I tried CachyOS and Niri this weekend, and was pleasantly surprised hibernate&#x2F;suspend actually worked with no customizations on my Desktop.<p>I’ve tried like 5 other distros and usually when it goes into sleep&#x2F;hibernate the monitor never wakes up so I have to force shutdown using the power button.<p>I’m going to install this on an older machine and see how it goes. So far it’s been great!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>mrinterweb</em>:</p>
-<blockquote>I few months ago, I backed up my windows gaming machine and overwrote the partition with CachyOS. Haven&#x27;t looked back. Gaming performance and compatibility has exceeded my expectations. Just a much better experience overall. I feel sorry anytime I see someone using Windows.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>folkrav</em>:</p>
-<blockquote>I feel sorry every time I&#x27;m stuck going back to Windows. And admittedly, the situation is not even comparable to how it was ~25 years ago when I first started playing around with Linux, most things I want to do with a computer just work on Linux nowadays. There are still such things that just are not there yet - but for most of them, it&#x27;s not necessarily Linux&#x27;s fault.<p>If we limit the conversation to gaming specifically, one area where I don&#x27;t see Linux taking over any time soon is competitive&#x2F;esports oriented titles and their invasive ~rootkits~ anti-cheats. Another place I kind of have to live with Windows is simulation (in my case Elite: Dangerous and iRacing&#x2F;Le Mans Ultimate) - the overlays and other third-party utilities either don&#x27;t exist on Linux, or I couldn&#x27;t get them to work and kind of abandoned the idea.<p>Audio production is also kind of a no-go. The DAWs and hardware support are absolutely getting there - Bitwig studio is apparently very good for something Ableton-like, and my DAW of choice, Reaper, has native Linux support. But the plugins and virtual instruments for the most part just don&#x27;t exist. Some work through a Wine bridge, if you&#x27;re lucky.<p>However, if you&#x27;re not too deep in a niche with very specific pieces of software, or don&#x27;t care about esports offerings, there isn&#x27;t much tying one to Windows nowadays.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>JasonSage</em>:</p>
-<blockquote>I think the situation with anti-cheat on Linux is changing. Studios are putting resources into anti-cheat that will work on Linux. If I&#x27;m being a bit cynical, I could say this is &quot;just&quot; because of Steam Deck and Steam Machine, but I think the number of potential players switching to Linux right now outside of the Steam ecosystem is starting to be worth considering.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>therein</em>:</p>
-<blockquote>The only way they could even consider making it work would involve blessing certain kernel builds, and their integrity would need to be verified. If I am able to swap out the kernel, anti-cheat cannot be effective.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bigmattystyles</em>:</p>
-<blockquote>Same, games aside, it’s just so snappy. I knew windows was slow at a lot of things but I hadn’t quite realized how slow things as banal as locking&#x2F;unlocking had become. The first week with cachyos was mind blowing on just that front.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Instagram is incorporating users' photos in ads for Meta Glasses</title>
-      <link>https://twitter.com/i/status/2071277885646868536</link>
-      <guid isPermaLink="false">hn3-48719027</guid>
-      <pubDate>Mon, 29 Jun 2026 13:26:35 +0000</pubDate>
-      <description>290 points, 130 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://twitter.com/i/status/2071277885646868536"><strong>→ Article</strong></a> <small>(twitter.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48719027">→ HN comments</a> &nbsp;·&nbsp; 290 points &nbsp;·&nbsp; 130 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Cthulhu_</em>:</p>
-<blockquote>Didn&#x27;t Facebook do this years and years ago?<p>Yes, 2013: <a href="https:&#x2F;&#x2F;mashable.com&#x2F;archive&#x2F;facebook-ads-photo#ggcKnNfAUaqy" rel="nofollow">https:&#x2F;&#x2F;mashable.com&#x2F;archive&#x2F;facebook-ads-photo#ggcKnNfAUaqy</a><p>&gt; According to Facebook&#x27;s Statement of Rights and Responsibilities:<p>&gt; You give us permission to use your name, profile picture, content, and information in connection with commercial, sponsored, or related content (such as a brand you like) served or enhanced by us. This means, for example, that you permit a business or other entity to pay us to display your name and&#x2F;or profile picture with your content or information, without any compensation to you. If you have selected a specific audience for your content or information, we will respect your choice when we use it.<p>So it&#x27;s not new. If you don&#x27;t want this, delete your facebook account: <a href="https:&#x2F;&#x2F;www.facebook.com&#x2F;privacy&#x2F;dialog&#x2F;delete-your-information&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.facebook.com&#x2F;privacy&#x2F;dialog&#x2F;delete-your-informat...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>PakG1</em>:</p>
-<blockquote>I understand that I give them permission. That&#x27;s partly why I&#x27;m not a producer of content on those platforms, though I&#x27;ll consume now and then. But I&#x27;ll rarely produce text (other than usually a happy birthday now and then), and I&#x27;ll never produce photos.<p>But what about the people in my photographs, whether on purpose or not? Did they give permission? That&#x27;s the part that Meta doesn&#x27;t really want to address.</blockquote>
-<p>↳ reply 2 — <em>rootusrootus</em>:</p>
-<blockquote>&gt; If you have selected a specific audience for your content or information, we will respect your choice when we use it.<p>To be fair, if they actually honor this promise, and if it means what it sounds like in plain English -- i.e. that if you only posted your photo for friends, only friends can ever see it even if FB uses it for advertising -- that is a halfway decent mitigation of the issue.  Not ideal, but then again, you&#x27;re not paying for FB, so what did you really expect?</blockquote>
-<p>↳ reply 3 — <em>bryanrasmussen</em>:</p>
-<blockquote>I wonder if terms and conditions vary between jurisdictions. I would guess so.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>RattlesnakeJake</em>:</p>
-<blockquote>Many years ago (back when Facebook still had sidebar ads), my sister was presented with a dating ad for &quot;Hot Christian Singles&quot; accompanied by a photo of our brother.<p>It was hilarious, but also mind-boggling. In what scenario <i>would</i> pulling in a friend&#x27;s profile photo create a useful ad?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dewey</em>:</p>
-<blockquote>&gt; In what scenario would pulling in a friend&#x27;s profile photo create a useful ad?<p>Exactly in the scenario you just described. You still remember it and you are actively talking about it years after the fact.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>fumblebee</em>:</p>
-<blockquote>wouldn&#x27;t &quot;useful ad&quot; imply either 1) clicking through and buying the product or service, or else 2) building up a positive brand association to help increase sales later?<p>remembering an advert correlates but is different to it being valuable.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>svachalek</em>:</p>
-<blockquote>Yeah I remember some studies showed this with overly sexy ads. They were very memorable to the audience but all they remembered was hot chicks, they couldn&#x27;t recall the product.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>themaninthedark</em>:</p>
-<blockquote>I could see people clicking through to see if their friend had a dating profile, if not for the romantic interest the gossip interest.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>srmatto</em>:</p>
-<blockquote>Is Meta abusing its users a problem? Yes. Does the TOS allow for it? Yes. Can people decide to just create a shell account and not actually participate? Sure.<p>One of the real insidious problems with Instagram and to some extent Facebook is that they provide a free, low friction way for business to communicate with current or potential customers. As a result many small businesses use Instagram as replacement for a public facing website and perhaps a blog or email newsletter. Many small business in my region depend on Instagram for this purpose, its nearly universal. It helps keep you stuck in Instagram so that you can see a business&#x27; hours, menu, or special events. I guess a shell account is the answer but you&#x27;re still going to have to navigate the skinner box feed.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>haliskerbas</em>:</p>
-<blockquote>Every time I try to create a shell account, it gets banned with no reason given. Even if it&#x27;s just to follow a few influencer accounts.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>srmatto</em>:</p>
-<blockquote>Well there you go, there is no reasonable way to be a non-participant while also staying up to date on businesses that choose to use the platform.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>plagiarist</em>:</p>
-<blockquote>If the only way to interact with a business is via Facebook or Instagram, I don&#x27;t interact with the business.<p>Unfortunately this is more of a problem for me than it is for them. I hope my position on this becomes more popular over time so that everyone can stop using spy- and adware.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Studio Canal Movies purchased on PlayStation Store removed without refund</title>
-      <link>https://www.playstation.com/en-gb/legal/psvideocontent/</link>
-      <guid isPermaLink="false">hn3-48718967</guid>
-      <pubDate>Mon, 29 Jun 2026 13:20:14 +0000</pubDate>
-      <description>188 points, 113 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.playstation.com/en-gb/legal/psvideocontent/"><strong>→ Article</strong></a> <small>(playstation.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48718967">→ HN comments</a> &nbsp;·&nbsp; 188 points &nbsp;·&nbsp; 113 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Wowfunhappy</em>:</p>
-<blockquote>&gt; due to our content licensing agreements<p>Aka, due to <i>their mistake</i>. When Sony originally signed an agreement, they should have insisted on a perpetual license for anything already in the customer&#x27;s library.<p>I was initially inclined toward some minimal sympathy for Sony here, but I see no good faith reason why they&#x27;d sign a licensing agreement which allows the other party to do this.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>TheCondor</em>:</p>
-<blockquote>A friend and I were talking about this.   What would you pay for it?<p>When iTunes + came out,  you had 2 options,  you could buy a song for $0.99 or you could be the plus version for more,  I don&#x27;t remember but it was like $1.35 or something.   Plus had a higher bit rate and it wasn&#x27;t encrypted.<p>Suppose you could buy a movie for $12.00, how much would you pay for the forever version?  $30?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jerf</em>:</p>
-<blockquote>I feel like you&#x27;re kind of making this more complicated than it actually is, either because you&#x27;re overcomplicating it or because you&#x27;re trying to tee up some rhetorical point, but the answer to your question is really quite simple and objective: <a href="https:&#x2F;&#x2F;www.amazon.com&#x2F;s?k=movie&amp;rh=p_n_format_browse-bin%3A2650304011%257C2650305011%257C6259461011%257C9397930011&amp;dc&amp;ds=v1%3AdwgsNDE3qfgq6s5PL%2FpAO7h2O02yNqZR%2Be4LEZ%2F6C8U" rel="nofollow">https:&#x2F;&#x2F;www.amazon.com&#x2F;s?k=movie&amp;rh=p_n_format_browse-bin%3A...</a><p>You don&#x27;t need to ask a hypothetical, the market has an answer.<p>To the extent your reply is &quot;but that&#x27;s not exactly what my question is&quot;, my point is that the market is already pricing all sorts of situations and the market would have no problem pricing just one more possibility into the already complicated market. Including &quot;piracy&quot;, and people like me who are treating the vast majority of DVDs and BluRays as just a delivery mechanism for streams rather than &quot;discs&quot;.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ajsnigrutin</em>:</p>
-<blockquote>They could still refund all those purchases and come out good here, but we all know they won&#x27;t.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>yardie</em>:</p>
-<blockquote>I don&#x27;t consider anything digital as being bought unless I own it free and clear, unencumbered of any encryption. Not interested in anyone&#x27;s &quot;digital locker&quot; or storage scheme. I have 20 years of music bought digitally through iTunes and Amazon. I can still play them to this day without needing to check-in with a licensing server. That is ownership. That is why I don&#x27;t buy encrypted movies.</blockquote>
-<blockquote>
-<p>↳ reply — <em>pavel_lishin</em>:</p>
-<blockquote>I think Heinlein said, &quot;You do not truly own anything that you can&#x27;t carry in both arms at a dead run.&quot;<p>I think something similar applies to digital media - you don&#x27;t truly own anything that&#x27;s not stored in bits on a hard drive that you can pick up and put in your pocket.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jimmydddd</em>:</p>
-<blockquote>Why do you guys &quot;buy&quot; movies? Like, you plan to watch the movie many, many times in the future? How many times do you watch a movie? Just curious, because I&#x27;ve never had a desire to watch a movie more than once.</blockquote>
-<blockquote>
-<p>↳ reply — <em>taurath</em>:</p>
-<blockquote>Either you have a perfect memory, or you’ve never been touched or moved sufficiently by a movie or show.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>What happens when you run a CUDA kernel?</title>
-      <link>https://fergusfinn.com/blog/what-happens-when-you-run-a-gpu-kernel/</link>
-      <guid isPermaLink="false">hn3-48718863</guid>
-      <pubDate>Mon, 29 Jun 2026 13:11:08 +0000</pubDate>
-      <description>180 points, 16 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://fergusfinn.com/blog/what-happens-when-you-run-a-gpu-kernel/"><strong>→ Article</strong></a> <small>(fergusfinn.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48718863">→ HN comments</a> &nbsp;·&nbsp; 180 points &nbsp;·&nbsp; 16 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mschuetz</em>:</p>
-<blockquote>That was an interesting read. Also enjoyed reading about the semaphores in the default stream. It&#x27;s great that cuda implicitly handles syncing of commands for users and makes parallel commands optional and opt-in via streams, unlike Vulkan which completely unloads the full complexity of syncing to users right from the start.</blockquote>
-<p><strong>Top #2</strong> — <em>fooblaster</em>:</p>
-<blockquote>The hardware has some open documentation. You don&#x27;t actually need to read the kernel source to find some of the method documentation or qmd formats. See <a href="https:&#x2F;&#x2F;github.com&#x2F;NVIDIA&#x2F;open-gpu-doc&#x2F;blob&#x2F;master&#x2F;classes&#x2F;compute&#x2F;clcdc0qmd.h" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;NVIDIA&#x2F;open-gpu-doc&#x2F;blob&#x2F;master&#x2F;classes&#x2F;c...</a></blockquote>
-<p><strong>Top #3</strong> — <em>kinow</em>:</p>
-<blockquote>I just finished a master&#x27;s on HPC where I had to take some classes on CUDA, MPI+CUDA, OpenCL. Reading an article like this before the classes would have been a lot helpful! Especially the part just before and after &quot;What does it mean for a warp to be eligible?&quot;.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
