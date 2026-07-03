@@ -4,7 +4,43 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 03 Jul 2026 21:16:02 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 23:12:32 +0000</lastBuildDate>
+    <item>
+      <title>Jamesob's guide to running SOTA LLMs locally</title>
+      <link>https://github.com/jamesob/local-llm</link>
+      <guid isPermaLink="false">hn3-48775921</guid>
+      <pubDate>Fri, 03 Jul 2026 15:03:43 +0000</pubDate>
+      <description>245 points, 118 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/jamesob/local-llm"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48775921">→ HN comments</a> &nbsp;·&nbsp; 245 points &nbsp;·&nbsp; 118 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>GTP</em>:</p>
+<blockquote>There also exists an in-between possibility, that is, if you get 128GB of vram (there are now multiple options in the market to get that amount with a unified memory architecture) you can run DeepSeek V4 flash at good speed via DwarfStar. I&#x27;m not going to spend money on this, but my gut feeling is that this would be the right compromise for a lot of people.</blockquote>
+<blockquote>
+<p>↳ reply — <em>jonaustin</em>:</p>
+<blockquote>I just started using it on an m4 max 128 and it&#x27;s the first time since buying the machine a year ago that it feels like local llm &quot;just works&quot; for reasonably decent coding.<p>Use pi though; claude code has way too much bootstrap context; slows everything way down.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jacobgold</em>:</p>
+<blockquote>&gt; <i>&quot;~$40k At this price level, you get the next step up in model intelligence. Something pretty close to Claude Opus.&quot;</i><p>That is equivalent to 16.8 years of Claude Opus 4.8 or Codex GPT 5.5 at $200&#x2F;mo.<p>I&#x27;m a huge fan of running local models, but they&#x27;re still wildly expensive, lower quality, and possibly dangerous (if backdoored). I sincerely wish this wasn&#x27;t the case.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>simonw</em>:</p>
+<blockquote>That $200&#x2F;month is already more like $4,000&#x2F;month if you have to pay full API pricing - &quot;enterprise&quot; companies for example. That drops the equivalent to 10 months.<p>(I&#x27;d be surprised if that local rig really can drive the equivalent of $4,000&#x2F;month of API spend though, given that a local rig can run prompts in parallel a lot less effectively than Anthropic&#x27;s many data centers.)</blockquote>
+<p>↳ reply 2 — <em>verdverm</em>:</p>
+<blockquote>You can use a lot more tokens on hardware than you can spend on a $200&#x2F;m plan.<p>Inwrnt through 1B tokens my first month with an OEM spark. That&#x27;s more than $1k of opus. Not a fair comparison, because token patterns are different, but since that time I have also seen a 2-3x improvement in then speeds.from improvements in vllm (mainly MTP). DiffusionGemma is around 4x regular gemma.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>datadrivenangel</em>:</p>
+<blockquote>&quot;A great way to go is 2x RTX 3090s for a total of 48GB VRAM total. You can then run Qwen3.6-27B, which is an awesome model.&quot;<p>Just want to note that for $3k you can get an M5 macbook pro with 48gb of shared memory, and it will not be a giant box. Also, consider committing to spending that money on a cloud hosting provider, which will be at least somewhat cheaper if not significantly cheaper.  It is awesome being able to run models locally though.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>LeBit</em>:</p>
+<blockquote>I’m an idiot who is unable to project itself in situations I’ve never experienced before.<p>So, I always thought local LLMs were toys not worth pursuing.<p>Only once have I tried something decent like Gemma 4 31B and Qwen 3.6 27B did I realize how incredibly useful they are.<p>You stop fearing you are sharing sensitive information.<p>You stop fearing you will run out of tokens.<p>You stop fearing about the availability of the remote AI.<p>Local LLMs are extremely valuable.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bityard</em>:</p>
+<blockquote>*for many tasks</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mips_avatar</em>:</p>
+<blockquote>The cool thing about the 3090s is the RAM bandwidth. Token generation is mostly bottlenecked on memory bandwidth.  Dual 3090s have 1.87 TB&#x2F;s memory bandwidth (0.936 TB&#x2F;s each), vs the M5 Macbook pro with only 0.3 TB&#x2F;s (max chip has up to 0.63 TB&#x2F;s but it&#x27;s a $10k machine at that config).<p>This translates to qwen 27b actually working fast enough for useful work on dual 3090s and being painfully slow on Macbook Pros.  Also if you&#x27;re running a big model on a macbook pro the UI gets laggy and the keyboard gets hot.  Much better to run dual 3090s in your basement and connect to them from your Macbook.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Valve open-source the Steam Machine e-ink screen so you can make your own</title>
       <link>https://www.gamingonlinux.com/2026/07/valve-open-source-the-steam-machine-e-ink-screen-so-you-can-make-your-own/</link>
@@ -70,6 +106,38 @@
 <blockquote>
 <p>↳ reply — <em>Bender</em>:</p>
 <blockquote>Correcting a <i>rather significant</i> typo:  <i>setting the oom_score_adj for programs as high as 1000</i> should be -1000 to be left alone.  1000 would make it a prime candidate for an OOM kill.  Positive integers should be used on sacrificial superfluous programs. [1]  As an example OpenSSH sets the sshd to -1000 by default.<p>[1] - <a href="https:&#x2F;&#x2F;man7.org&#x2F;linux&#x2F;man-pages&#x2F;man5&#x2F;proc_pid_oom_score_adj.5.html" rel="nofollow">https:&#x2F;&#x2F;man7.org&#x2F;linux&#x2F;man-pages&#x2F;man5&#x2F;proc_pid_oom_score_adj...</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The Fall and Rise of Screwworm</title>
+      <link>https://www.construction-physics.com/p/the-fall-and-rise-of-screwworm</link>
+      <guid isPermaLink="false">hn3-48774492</guid>
+      <pubDate>Fri, 03 Jul 2026 12:58:47 +0000</pubDate>
+      <description>130 points, 54 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.construction-physics.com/p/the-fall-and-rise-of-screwworm"><strong>→ Article</strong></a> <small>(construction-physics.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48774492">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 54 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dang</em>:</p>
+<blockquote>Recent and related:<p><i>Oh good, screwworms are back (2025)</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48475898">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48475898</a> - June 2026 (79 comments)<p><i>First U.S. screwworm case confirmed in South Texas</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48397036">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48397036</a> - June 2026 (34 comments)</blockquote>
+<p><strong>Top #2</strong> — <em>goda90</em>:</p>
+<blockquote>I wonder if anyone ever did the math on whether trying to maintain a barrier at the Darian Gap with occasional failures was really a better financial choice than teaming up with South American countries to drive screwworms to extinction.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>AlotOfReading</em>:</p>
+<blockquote>Yes, they did because various countries have talked to the US about expanding it. The problem is that South America is an enormous place, whereas Panama is a narrow isthmus. It could have been done with some amount of money, but that opportunity ended in 2010 at the latest.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>moffkalast</em>:</p>
+<blockquote>In the end though, history will see it as a half measure where they really shouldn&#x27;t have half assed it. It only took one moron to defund the project and all of it will come streaming back.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>praptak</em>:</p>
+<blockquote>Releasing the steriles blindly is not enough, you gotta monitor the pest too. This is prohibitively expensive in rainforests and other areas with poor infrastructure.<p>Okay, maybe you could release the flies in large enough numbers not to need monitoring but I guess it would also be prohibitively expensive.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>SoftTalker</em>:</p>
+<blockquote>It&#x27;s a bit odd that the screwworm exists. Normally a parasite that kills its host is at an evolutionary disadvantage.<p>I wonder if the human practice of keeping large groups of livestock together in close proximity creates an unnatural &quot;target rich environment&quot; for the flies that they don&#x27;t otherwise experience, making them much more of a problem.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nine_k</em>:</p>
+<blockquote>Ungulates very often gather in large, close groups in nature, in order to defend themselves from predators, and to conserve heat during night time.</blockquote>
+<p>↳ reply 2 — <em>edoceo</em>:</p>
+<blockquote>Can&#x27;t we just compare this to &quot;wild&quot; population?</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3618,76 +3686,6 @@ This structure doesn&#x27;t make any sense to me.  It&#x27;s like adding a half 
 <blockquote>
 <p>↳ reply — <em>eichin</em>:</p>
 <blockquote>At least in the US (and this probably <i>is</i> different from Europe) it matters a huge amount how the asbestos is exposed to the environment. Asbestos that&#x27;s sealed up generally gets (a) labelled so noone cuts into it (b) sealed up even further - but if it&#x27;s exposed, the evaluation is more about &quot;can it get into the air&quot; (sealing is again the preferred step, epoxy over tile, that sort of thing) - actually removing it is a last resort.   So &quot;mere detection&quot; is a really small part of the problem.<p>(Of course, the place I&#x27;ve dealt with this the most was a former post office building from the late 1930s - we didn&#x27;t really need tests, a historian would probably have just said &quot;of course you have asbestos&quot; :-) It does expose an interesting problem with the labeling part, though: USPS as an ancient federal agency has its <i>own rules</i> for things and had a distinct asbestos markers - an A in a point-down triangle - which we fortunately found documentation for, it isn&#x27;t public record.)</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Claude Science</title>
-      <link>https://claude.com/product/claude-science</link>
-      <guid isPermaLink="false">hn3-48735770</guid>
-      <pubDate>Tue, 30 Jun 2026 17:07:41 +0000</pubDate>
-      <description>364 points, 121 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://claude.com/product/claude-science"><strong>→ Article</strong></a> <small>(claude.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48735770">→ HN comments</a> &nbsp;·&nbsp; 364 points &nbsp;·&nbsp; 121 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>lebovic</em>:</p>
-<blockquote>I built one of the connected tools included in this launch (the Biomni HPC [1]), and I have spent an inordinate amount of my life working on this problem. (I also worked at Anthropic, but not on this product.)<p>As other comments have pointed out, this is for data science – but it&#x27;s capable of more than making plots and writing papers [2]. It has integrations with many databases and computational tools, including a researcher&#x27;s institutional cluster.<p>That alone is valuable. I founded a startup after struggling with this problem at a bio startup; integrating these tools and databases is hard and time consuming. If the only outcome of this product is that great APIs are built for LLMs, it will be a massive positive impact. Many databases used in computational genomics are still only accessible through FTP!<p>LLMs are particularly good at navigating these tools and databases. It&#x27;s often very specialized, but straightforward, work that benefits from in-context skills. Seeing an early glimpse of my former customers – bioinformaticians – using LLMs to solve this problem is what led me to join Anthropic in 2024.<p>Also, this pattern isn&#x27;t fundamentally constrained to data science: you can also integrate with a wet lab or a CRO for some kinds of science. This is what I&#x27;m spending my time on now.<p>This type of science doesn&#x27;t solve everything, but it&#x27;s useful in some niches. For example, progress on many rare diseases is bottlenecked by researcher attention rather than a fundamental breakthrough.<p>[1] <a href="https:&#x2F;&#x2F;x.com&#x2F;phylo_bio&#x2F;article&#x2F;2029233694775624096" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;phylo_bio&#x2F;article&#x2F;2029233694775624096</a><p>[2] In comparison, OpenAI&#x27;s science product – Prism – was effectively a LaTeX editor they acquired with Crixet.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>aabhay</em>:</p>
-<blockquote>Can you speak to what makes this different from simply including or configuring various agent skills? Or is it simply the combination of lots of helpful defaults that makes this product useful?</blockquote>
-<p>↳ reply 2 — <em>SubiculumCode</em>:</p>
-<blockquote>Connecting AI directly to the data sources (instead of just asking it to provide code that I run locally for myself) can get quite complicated in terms of meeting institutional policy, applicable law, data access-storage requirements (e.g. NIH data repositories), and can require legal agreements between institutions and the AI provider.<p>I cannot touch. At least not yet.</blockquote>
-<p>↳ reply 3 — <em>Edmond</em>:</p>
-<blockquote>Previously integrated Biomni into our intelligent workspace:<p><a href="https:&#x2F;&#x2F;blog.codesolvent.com&#x2F;2025&#x2F;07&#x2F;ai-assistant-with-biomedical-research.html" rel="nofollow">https:&#x2F;&#x2F;blog.codesolvent.com&#x2F;2025&#x2F;07&#x2F;ai-assistant-with-biome...</a><p>Happy to chat if intrigued.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>gjuggler</em>:</p>
-<blockquote>The most interesting thing here is that Claude Science runs a local server and a web-based UI that connects to that server from your browser. This is very different from Claude Code and Cowork, where the UI is more tightly coupled to the host machine (which makes things like computer use possible).<p>I think I recognize the strategy: most pharma environments connected to interesting data are tightly locked down, to the point where you can&#x27;t just connect your Macbook to the source data.<p>Similarly, access to large genomic biobank datasets like UK Biobank or NIH&#x27;s All of Us program is granted only through a Trusted Research Environment (TRE), a remote data analysis platform usually quite restricted on internet access, etc. You can&#x27;t easily run desktop apps, but these environments <i>do</i> usually support running JupyterLab or VS Code, tunneling the user interface through to the end user. (Source: I previously ran the team that built the All of Us TRE.)<p>Claude Science looks a lot more like something one could imagine spinning up in one of those highly-constrained data environments (with the &quot;server&quot; running within the TRE and the UI proxied to the end user&#x27;s browser) than the does-everything Claude mega-app. That will be critical for traction within pharma R&amp;D environments.<p>I will say that for moderately-computational scientists, who are daily driving RStudio, JupyterLab, or <i>maybe</i> VS Code, Claude Science will be quite an unfamiliar shaped product. I&#x27;ll be curious to see whether something like this gains adoption (1) in place of, (2) alongside, or (3) eventually wrapping around the more traditional data science workbench tools out there.</blockquote>
-<p><strong>Top #3</strong> — <em>gravelc</em>:</p>
-<blockquote>Tried this to see how it goes in my particular field - computational design of RNAi-based biopesticides.  One-shotted a design for targeting the DvSnf7 transcript of western corn rootworm.  It took a fairly naive approach (maybe how a 1st year PhD student would go about it), but got the job done.  Also noted caveats with its approach (e.g. using mammalian design rules, limited off-target screening).  Not bad really.  But also not great.  When its flaws were pointed out, the AI determined that it could have taken a more informed approach.  Then Opus 4.8&#x27;s safety system flagged the session.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>We Are the Last People Who Know How It Works</title>
-      <link>https://unix.foo/posts/last-people-who-know-how-it-works/</link>
-      <guid isPermaLink="false">hn3-48735633</guid>
-      <pubDate>Tue, 30 Jun 2026 16:59:00 +0000</pubDate>
-      <description>286 points, 236 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://unix.foo/posts/last-people-who-know-how-it-works/"><strong>→ Article</strong></a> <small>(unix.foo)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48735633">→ HN comments</a> &nbsp;·&nbsp; 286 points &nbsp;·&nbsp; 236 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>CommieBobDole</em>:</p>
-<blockquote>The issue with this is that we don&#x27;t know how it works. Generally speaking, we know how the level of abstraction that we were born with works. We might have some understanding of one or two previous levels, but that decreases the farther down you go. We might understand the next level, and some of the next after that, but eventually people will be making things that we don&#x27;t have the context to understand without having to unlearn a lot of what we know now.<p>I&#x27;m old enough to see this process in action; I used to be young and in possession of esoteric knowledge that made me infinitely in demand and now most of the things that young people have esoteric knowledge about is things that I don&#x27;t particularly care about, and I&#x27;m left with a lot of finely honed skills to solve problems that have mostly been abstracted away.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>staindk</em>:</p>
-<blockquote>I do think there&#x27;s something to be said for the big difference in the current abstraction layer jump - the loss of determinism. It is meaningfully different.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>JumpCrisscross</em>:</p>
-<blockquote>Plenty of physical (and biological) processes are subjectively non-deterministic outside clean rooms. Doesn’t mean our ancestors couldn’t forge and selectively breed.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>mrob</em>:</p>
-<blockquote>There&#x27;s a big difference between &quot;deterministic + noise&quot; non-determinism and &quot;intelligent agent&quot; non-determinism. Only the former can be statistically modeled to characterize and work around the noise with any reliability. If you measure hallucination rate for one prompt it tells you nothing about hallucination rate for another prompt.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Melatonic</em>:</p>
-<blockquote>I&#x27;m not sure that&#x27;s true - you may be over generalizing<p>Probably not many here know the processes needed to turn sand into silicon and the expertise needed for hand grinding fancy lenses used in lithography. But we do know those things are needed and the approximate philosophical concepts behind these needs.<p>I think the danger comes when or if we fully automate a lot of the low level infrastructure tasks to the point where future generations do not even have the conceptual framework for how the tech they use is created</blockquote>
-<p>↳ reply 3 — <em>ryandrake</em>:</p>
-<blockquote>In 50 years, Gen Z will be retired, and they&#x27;re going to be complaining: &quot;The new generations don&#x27;t know how anything works! They don&#x27;t know how to enter in a prompt or optimize token usage. They don&#x27;t even remember what keyboards are! They just Neropath into the UltraMind and synthesize facts into their neurons without even putting them to words or reading anything. We have lost something critical!&quot;</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Stefan-H</em>:</p>
-<blockquote>There was a sweet spot with computer technologies for some decades where hobbyists could afford to experiment and even push the envelope in the nascent field of computing - similar to genetic radiation, many niches were formed and rapidly filled. The computing biome has evolved to the point where most entities are not operating at the low-level abstractions that were once the only means of interacting with the computing environment, instead they operate now at the highest levels of abstraction we are capable, so called &quot;natural language&quot;.<p>&quot;The difficulty was the knowledge. You came to know that machine the way you come to know anything that pushes back. The resistance was the whole medium. You only ever know the things that you can lose to.&quot;<p>We who grew up in this era formed a hands-on engineer&#x27;s knowledge of these systems, built from experience and practice, learning these layers of abstraction as the bleeding edge developed. Many these days have entered into a world where there are easy answers abound, they just might not be right, and one has to gauge how much they care about correctness.</blockquote>
-<p><strong>Top #3</strong> — <em>steelframe</em>:</p>
-<blockquote>I&#x27;m one of the greybeards who has the 2400 BAUD modem negotiation tone sequences emblazened in my neurons.<p>For a while I&#x27;ve been meaning to set up some Wireguard connections among some of my systems. Being as busy as I am with work and family, I&#x27;ve relinquished that to Tailscale for now.<p>Sure, I could have sat down and jumped through the hoops to get everything set up and working across my various hosts, including network routes, firewall rules, key pairs, systemd units, and so forth. But the &quot;cheap and easy&quot; alternative was right there and worked (except when it forces re-authentication).<p>With LLM agents, I was able to effortlessly analyze my existing network and produce tailored scripts to do precisely what I wanted. All I had to do was review the scripts for potential security issues and what not. Looking at the script, there are 3 or 4 specific tweaks that needed to be made to my network routing rules given my network topology. I could have read a few man pages and iterated on the script by hand to eventually get there after maybe an hour or two of futzing.<p>The availability and effectiveness of the agents is simply too tempting for me. I&#x27;m not sure what this means about my skillset, or if that even matters any more. I am fairly confident that, so long as my brain still works well enough, I&#x27;ll always be able to RTFM and figure things like this out myself. At this rate I wonder whether my kids will have the same ability. And I also wonder how much that will matter.<p>Regardless, I&#x27;m still helping them figure things out the &quot;old way&quot; without over-reliance on LLMs. One thing I&#x27;m fairly certain about is that failure to develop problem-solving skills can only put them in a worse position in life, no matter how capable AI becomes.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>switchbak</em>:</p>
-<blockquote>The thing is - everyone complains about AI stealing our attention and understanding. But you can just as easily use an LLM as a tool to gain a deeper understanding. It&#x27;s just the default path for most folks is &quot;Hey clanker, do the thing&quot; rather than &quot;Hello clanker, please tell me about how that thing works&quot;.<p>I&#x27;ve done at least a little of the latter, and it&#x27;s amazing how underrated it is as an educational tool - especially for the solo individual.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tines</em>:</p>
-<blockquote>And you can use a TV to read books, but nobody does.<p>Every technology has ways it can be used, and ways it wants to be used. This one wants to be used in a way that produces outcomes we won&#x27;t like.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>hexasquid</em>:</p>
-<blockquote>I think what you are describing is covered by either an E reader or the giant collection of how-to explantions on YouTube?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>StanislavPetrov</em>:</p>
-<blockquote>&gt;I&#x27;m one of the greybeards who has the 2400 BAUD modem negotiation tone sequences emblazened in my neurons.<p>Making the jump from 300 baud to 2400 felt like magic!</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
