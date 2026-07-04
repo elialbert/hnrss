@@ -4,7 +4,45 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 04 Jul 2026 19:24:51 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 21:06:38 +0000</lastBuildDate>
+    <item>
+      <title>Explanation of everything you can see in htop/top on Linux (2019)</title>
+      <link>https://peteris.rocks/blog/htop/</link>
+      <guid isPermaLink="false">hn3-48784777</guid>
+      <pubDate>Sat, 04 Jul 2026 12:00:57 +0000</pubDate>
+      <description>338 points, 43 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://peteris.rocks/blog/htop/"><strong>→ Article</strong></a> <small>(peteris.rocks)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48784777">→ HN comments</a> &nbsp;·&nbsp; 338 points &nbsp;·&nbsp; 43 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>imrehg</em>:</p>
+<blockquote>I&#x27;ve relatively recently migrated over to using btop[0], and it&#x27;s the kind of modern interface,  useful and informative, that I needed.<p>As others mention it - it seems to shows the Watts used as well :) (and network, and GPU, and disks,....)<p>[0]: <a href="https:&#x2F;&#x2F;github.com&#x2F;aristocratos&#x2F;btop" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;aristocratos&#x2F;btop</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>zackify</em>:</p>
+<blockquote>Same. Btop is the best</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>JdeBP</em>:</p>
+<blockquote>Well, unless one is using FreeBSD or OpenBSD, where the btop code is still using 32-bit integers to calculate 64-bit sizes, and falling prey to unsigned integer wraparound.  htop&#x27;s code calculates using size_t, which ends up as a 64-bit integer on 64-bit architectures.<p>* <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48778757">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48778757</a> (<a href="https:&#x2F;&#x2F;crocidb.com&#x2F;post&#x2F;freebsd-ate-my-ram&#x2F;" rel="nofollow">https:&#x2F;&#x2F;crocidb.com&#x2F;post&#x2F;freebsd-ate-my-ram&#x2F;</a>)<p>* <a href="https:&#x2F;&#x2F;github.com&#x2F;aristocratos&#x2F;btop&#x2F;pull&#x2F;1728" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;aristocratos&#x2F;btop&#x2F;pull&#x2F;1728</a></blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>cogman10</em>:</p>
+<blockquote>2 Settings I change on every htop which makes a HUGE difference.<p>1. I disable user threads.  Those mostly just clutter up the htop view while providing no useful information.<p>2. I enable the process tree view.  Very frequently, where a process comes from is much more important than other information.  It also lets you see and track things like a compiler process which is eating through a bunch of files.<p>IMO, both these things should be the default behavior of htop.</blockquote>
+<blockquote>
+<p>↳ reply — <em>zekrioca</em>:</p>
+<blockquote>I like the process tree view, but it stops the dynamic updates and reordering of process list.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>AnotherGoodName</em>:</p>
+<blockquote>I appreciate the note on virtual memory not being reliable. This is what Windows task manager reports by default and it&#x27;s terrible. Resident size is the most reliable metric. Anything else can be wrongfully inflated by things like harmless memory mapped files that won&#x27;t actually hurt anything. eg. memory map 2GB of logfiles, it&#x27;ll only be paged in if reading that portion of the logfile so isn&#x27;t really using memory but users look at the processes and claim &quot;OMG why does this app use so much memory&quot;. It doesn&#x27;t. It uses very little. You&#x27;re reading the memory usage wrong. Chrome actually had this problem for a while and they moved away from using memory mapped files. Not because memory mapped files are a bad thing but because users will read the memory usage and go crazy over what they see even though it&#x27;s not really using that much actual physical memory.<p>There&#x27;s actually guides out there on the web that tell people judge usage by virtual memory allocated too :(. At least this article gets it right :).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>d3Xt3r</em>:</p>
+<blockquote>&gt; Resident size is the most reliable metric<p>Actually, Proportional Set Size is more accurate than RSS. See:  <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Proportional_set_size" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Proportional_set_size</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cb321</em>:</p>
+<blockquote>`procs display` (mentioned elsethread <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48788167">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48788167</a> ) supports PSS via its %M format code.<p>One issue with that relative to RSS is permissions.  Historically, all procs could see the RSS used by procs of all other users (at least if they could see the PIDs at all).  So, RSS requires no special permissions, but the Linux kernel team decided PSS should not be as promiscuous for whatever reasons (I didn&#x27;t do a deep dive).  So, I&#x27;m always having to do (the equivalent of) `sudo pu`.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jltsiren</em>:</p>
+<blockquote>If you use memory-mapped files, cached pages count towards the resident set size of your process. If you use ordinary file I&#x2F;O, they don&#x27;t. That behavior has amusing consequences in HPC clusters that monitor the memory usage of each job and kill them if they use more memory than they requested.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Astrophysicists Puzzle over Webb’s New Universe</title>
       <link>https://www.quantamagazine.org/astrophysicists-puzzle-over-webbs-new-universe-20260702/</link>
@@ -456,6 +494,32 @@ You might be also able to have conversations that help you write the Lean to ver
 <blockquote>
 <p>↳ reply — <em>throwdbaaway</em>:</p>
 <blockquote>And somehow they claimed that it is &quot;lossless&quot;.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Software, from First Principles</title>
+      <link>https://fazamhd.com/mental-models/software/</link>
+      <guid isPermaLink="false">hn3-48780224</guid>
+      <pubDate>Fri, 03 Jul 2026 21:28:55 +0000</pubDate>
+      <description>129 points, 19 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://fazamhd.com/mental-models/software/"><strong>→ Article</strong></a> <small>(fazamhd.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48780224">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 19 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>whobre</em>:</p>
+<blockquote>This is the book to read if you are interested in the topic: <a href="https:&#x2F;&#x2F;www.goodreads.com&#x2F;en&#x2F;book&#x2F;show&#x2F;44882.Code" rel="nofollow">https:&#x2F;&#x2F;www.goodreads.com&#x2F;en&#x2F;book&#x2F;show&#x2F;44882.Code</a></blockquote>
+<p><strong>Top #2</strong> — <em>accurrent</em>:</p>
+<blockquote>I really like the diagrams! This is a great way to show what happens deep down. A lot of engineers I know have very poor understanding of how software actually works. However a couple of things:
+- Theres a lot of text and not all of it is valuable
+- Hijacking the browsers &quot;back&quot; button is kind of annoying.</blockquote>
+<blockquote>
+<p>↳ reply — <em>faza</em>:</p>
+<blockquote>Hi, thanks for your feedback. Regarding the back button issue, that was an oversight from my part. I&#x27;ll fix that.<p>I am glad you liked the diagrams and simulations. I understand that it would have been better if the article was much shorter. I actually didn&#x27;t want to leave any gaps in understanding or leave any important historical context. But i&#x27;ll try to improve it.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>lioeters</em>:</p>
+<blockquote>I liked this article. Richly illustrated and kept things interesting, even for a reader who is familiar with most of the material. Maybe too long for a single reading though, you might have better response by publishing in more digestable chunks. And I&#x27;d remove the AI messaging, it distracts from the main ideas.</blockquote>
+<blockquote>
+<p>↳ reply — <em>faza</em>:</p>
+<blockquote>Glad you enjoyed it and thanks for your feedback. I&#x27;ll keep this in mind for my next articles and also improve this.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3605,89 +3669,6 @@ I personally like playing music &#x2F; programming audio more, which is a good g
 <blockquote>Column (<a href="https:&#x2F;&#x2F;column.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;column.com&#x2F;</a>) | San Francisco, CA (ONSITE) | Full Time | Software Eng (Infrastructure), Software Eng (Backend), Software Eng (Product)<p>Column is building the infrastructure that powers the US dollar globally. We&#x27;re a software first company, but also own a nationally chartered bank that we&#x27;ve built from the ground up. We&#x27;re currently processing trillions of dollars annually (yes, that&#x27;s with a T), supporting some of the largest and most sophisticated companies out there like Wise, Bilt, Brex, Ramp, Mercury and dozens of others.<p>Started by the founder of Plaid (plaid.com), Column is focused on keeping an extremely lean and experienced team: currently 10 engineers that all report to the CEO (many of whom we hired through HN). We are looking for an ambitious infrastructure, product, and backend engineer (one of each) that want to build incredible software from first principles.<p>Profitable and 100% owned by employees and founders.<p>Apply here: <a href="https:&#x2F;&#x2F;column.com&#x2F;careers" rel="nofollow">https:&#x2F;&#x2F;column.com&#x2F;careers</a><p>Feel free to email me with any questions: praful@</blockquote>
 <p><strong>Top #3</strong> — <em>david-venegas</em>:</p>
 <blockquote>Robotics startup (STEALTH + YC S26) | Principal Mechanical + Firmware + SWE | SF Bay Area | ONSITE | $200–250k + 1–2% equity + benefits<p>We are a new robotics company based in Palo Alto, California, building wearable robotic devices that improve the endurance of humans on foot.<p>Our first product is a lightweight, bilateral hip product that reduces the physical cost of carrying heavy loads over distance, allowing personnel to move farther, carry more, and arrive at the objective less fatigued and more effective. The company is early but already operating in the field, with a direct feedback loop in the most demanding conditions imaginable.<p>We are backed by Y Combinator and a group of leading deep-technology investors.<p>We&#x27;ve recently moved to the Bay area to grow the team, and are hiring three lead engineers who will own product&#x2F; their domains, and have full authority with no inherited design decisions and no one between them and the problem. What you build will be worn in weeks by real users:<p>- Mechanical: structures, joints, actuator integration, ruggedness<p>- Firmware: real-time motor control, sensor fusion, embedded systems<p>- Software: device-to-cloud telemetry, test infrastructure, user apps<p>Shoot me (founder) a text (+1 857-327-3414) and I&#x27;ll tell you exactly what we&#x27;re building :)</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Ask HN: Who wants to be hired? (July 2026)</title>
-      <link>https://news.ycombinator.com/item?id=48747975</link>
-      <guid isPermaLink="false">hn3-48747975</guid>
-      <pubDate>Wed, 01 Jul 2026 15:01:21 +0000</pubDate>
-      <description>132 points, 322 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=48747975"><strong>→ Article</strong></a></p>
-<p><a href="https://news.ycombinator.com/item?id=48747975">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 322 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>revengerwizard</em>:</p>
-<blockquote>Location: Italy<p>Remote: Yes<p>Willing to relocate: Yes - US (need US sponsorship)<p>Technologies: C, C++, Java, x86-64 Assembly, Python, Lua, SQL, Git, Linux<p>Résumé&#x2F;CV: Available on request<p>Email: rredwizzard@proton.me<p>Linkedin: <a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;valentin-voina" rel="nofollow">https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;valentin-voina</a><p>I&#x27;m a software engineer with around two years of professional experience using Java, SQL and JavaScript.<p>Outside of work, I focus on systems programming and language implementation. I&#x27;m currently building a compiler in C from scratch, and I&#x27;m particularly interested in compilers, interpreters, runtimes, developer tools and low-level software in general.<p>I&#x27;m open to systems software, compiler or backend roles, and I&#x27;m also especially interested in startup environments.<p>Website: <a href="https:&#x2F;&#x2F;theredwizardtower.com" rel="nofollow">https:&#x2F;&#x2F;theredwizardtower.com</a></blockquote>
-<p><strong>Top #2</strong> — <em>nottorp</em>:</p>
-<blockquote>Location: Romania<p>Remote: Yes<p>Willing to relocate: Not on the first date. Willing to travel now and then if really needed.<p>Technologies: Arm Linux, Yocto or not, BSP, hardware bringup, data streaming, architecture and leading for full industrial solutions based on the keywords before, general use programmer, software archaeology, Android, native Windows&#x2F;C++ or a little .net...<p>Résumé&#x2F;CV: Linkedin link in profile.<p>Email: Described in profile.<p>I&#x27;m a general use senior engineer that happened to do mostly custom arm linuxes used in industry. Can architecturize the project from the start or optimize those buffers until your data moves just fine(tm) to where it belongs. Can also do other things, atm I&#x27;m modernizing the storage for a legacy native c++&#x2F;windows app.<p>I can also translate customer &lt;-&gt; developer and talk to a well leashed LLM.<p>I do better in teams where i can &quot;take ownership&quot; instead of churning out tickets. I can handle small orgs where everyone is forced to do everything.<p>Not necessarily looking for full time, part time or contract is also fine.</blockquote>
-<p><strong>Top #3</strong> — <em>dvvalia</em>:</p>
-<blockquote><p><pre><code>  Location: Mumbai, India
-  Remote: Preferred
-  Willing to relocate: No
-  Technologies:
-  - Python&#x2F;Pandas
-  - Java&#x2F;Spring Boot
-  - Data Engineering (ETL&#x2F;ELT, data pipelines)
-  - Product Development
-  - AI&#x2F;LLM based development (MCP, agents, ADK, CrewAI, etc)
-  - Other (SQL, Redis, Docker, AWS, GCP, Azure, DBT)
-  Résumé&#x2F;CV&#x2F;Email: https:&#x2F;&#x2F;dvalia.in
-</code></pre>
-Data&#x2F;Backend&#x2F;Agentic AI engineer for the past ten years (Java, Python, SQL). Experience building data platforms (from scratch!) and ELT pipelines for financial data. Currently working on agentic AI projects, but happy to work at any level for any problem that needs solving.<p>Happy to work on product management, solutions architecture, agentic AI or customer engineering. Remote is preferred for time zones spanning Europe to India, or early hours of EST&#x2F;PST; onsite&#x2F;hybrid in Mumbai is also great. Unfortunately cannot relocate.<p>Open primarily to freelance&#x2F;consulting roles, but full-time roles will also be considered if we&#x27;re a good fit.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Sony Deletes 551 Movies PlayStation Owners Paid For</title>
-      <link>https://reclaimthenet.org/sony-deletes-551-studiocanal-movies-playstation-owners-paid-for</link>
-      <guid isPermaLink="false">hn3-48747389</guid>
-      <pubDate>Wed, 01 Jul 2026 14:26:07 +0000</pubDate>
-      <description>475 points, 206 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://reclaimthenet.org/sony-deletes-551-studiocanal-movies-playstation-owners-paid-for"><strong>→ Article</strong></a> <small>(reclaimthenet.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48747389">→ HN comments</a> &nbsp;·&nbsp; 475 points &nbsp;·&nbsp; 206 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>nullsmack</em>:</p>
-<blockquote>We need some kind of modern equivalent to the old proposed Digital Media Consumer&#x27;s Rights Act but which protects people&#x27;s rights to digital media they buy. These should never be sold and then taken away with no compensation like this. We need a law that forces companies to treat digital files the same as a physical purchase. They can&#x27;t take it away and have to allow people to resell and loan out as well. And in cases of online games where you can buy something, and then later they can ban you which deprives you of being able to use what you bought, that should come with requirements that the company must provide full compensation of the purchase price. It should also ban EULA&#x27;s and TOS from defining these things as only licenses even though they are structured as a purchase in a store.<p>I know it&#x27;ll never happen with the people we have in government these days, and the anti-consumer organizations, like the ESA, that are out there now claiming things like running private servers for Minecraft is illegal and piracy. (Yes, they really said that. Despite the fact that Minecraft has always provided the server and allowed this for 15+ years)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>acdha</em>:</p>
-<blockquote>I’d go with a simple proposal: if you use the word “buy” the seller is required to refund buyers if the seller’s action removes access (unlike, say, losing access to a CD or DVD after the disc is scratched).<p>The most likely outcome is that they’d change their storefronts to use the word “rent” but that’s a good outcome (it encourages buyers to accurately understand what they’re paying for) and it would allow other options like releasing an old game without DRM prior to killing servers.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>TheGRS</em>:</p>
-<blockquote>I agree, the &quot;buy&quot; on a streamable product implies that as long as the company is solvent and they have the same overall streamable products available, then your &quot;purchase&quot; should always be upheld.<p>In a an ideal world, if you bought the title then you&#x27;d have the ability to download it locally. I understand the licensing is a main driver of taking titles down, but these agreements are completely opaque to the customer at the time of purchase.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>standardUser</em>:</p>
-<blockquote>The list of legislation we need is getting very big very fast, but our Congress is dysfunctional and the president only cares about the SAVE act. Even when we&#x27;ve had a functional Congress, most protections like these are written in favor of corporations and&#x2F;or weakened by the next administration.</blockquote>
-<p>↳ reply 3 — <em>nradov</em>:</p>
-<blockquote>We need consumer boycotts, not legislation. I find it hilarious that people would continue to buy (or license) content from a trash company like Sony after they were caught literally installing rootkits on customer computers. Fool me once, shame on you; fool me twice, shame on me.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Sony_BMG_copy_protection_rootkit_scandal?wprov=sfla1" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Sony_BMG_copy_protection_rootk...</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>eska</em>:</p>
-<blockquote>It should be illegal to have others purchase what you as a company only licensed and therefore aren’t legally allowed to sell.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mmh0000</em>:</p>
-<blockquote>What&#x27;s funny is that Sony has done this before![0] I&#x27;ve had a personal boycott against Sony products due to this.<p><pre><code>  &quot;The feature was controversially removed by Sony since system firmware update 3.21, released on April 1, 2010.[2] A class action lawsuit was filed against Sony on behalf of users, but was dismissed with prejudice in 2011 by a federal judge. The judge stated: &quot;As a legal matter, ... plaintiffs have failed to allege facts or articulate a theory on which Sony may be held liable.&quot;[3] However, this decision was overturned in a 2014 appellate court decision[4] finding that plaintiffs had indeed made clear and sufficiently substantial claims. Ultimately, in 2016, Sony settled with users who had installed Linux or had purchased a PlayStation 3 based upon the availability of OtherOS.&quot;
-
-</code></pre>
-[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OtherOS" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OtherOS</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>garciansmith</em>:</p>
-<blockquote>Yep. I had tons of Sony games across the first three Playstation consoles. I was a grad student with a PS3 at the time and I actually used Yellow Dog Linux on it as a computer to write papers when my laptop broke. Then the update came and I chose to ignore it, but that meant I couldn&#x27;t play online games. Soon new games required a firmware update (still remember putting in the Dark Souls disc and being stunned I wasn&#x27;t allowed to play it!).<p>And with games it&#x27;s just getting worse (Sony announced they won&#x27;t make discs starting 2028; the Switch 2 takes carts but very, very few games release on a cart). If you care about control over the games you purchased, if you care about going back and playing older games, then the only choice is to use platforms that are DRM free. (Or, well, non-legal means.)</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Fire-Dragon-DoL</em>:</p>
-<blockquote>Kinda. On Steam I can still play games I bought 18 years ago.<p>Still walled garden, but they act way better.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>xtracto</em>:</p>
-<blockquote>If buying is not owning, piracy is not theft.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>NoSalt</em>:</p>
-<blockquote>Ever since Apple, Microsoft, Google, etc. started offering &quot;free&quot; online storage for photos, ever since streaming started to be popular, I have ALWAYS extolled the virtues of µSD card slots in phones and owning your own media (i.e., purchasing CDs and DVDs). Many people would give me a hard time about this, calling me a Luddite, but I will never lose access to my photos, music, or movies ... unless it is the end of the world as we know it, which I happily have on R.E.M.&#x27;s Eponymous album.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tartoran</em>:</p>
-<blockquote>Why would anyone call you a luddite for advocating for MicroSDs? Of course the reason SD were pushed away (at least for Apple) was to offer cloud backup as the only option with no alternatives.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mikestew</em>:</p>
-<blockquote><i>Of course the reason SD were pushed away (at least for Apple) was to offer cloud backup as the only option with no alternatives.</i><p>Except that no part of what you claim is true:<p><a href="https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;iphone&#x2F;back-up-iphone-iph3ecf67d29&#x2F;ios" rel="nofollow">https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;iphone&#x2F;back-up-iphone-iph3ec...</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mort96</em>:</p>
-<blockquote>I just wish it was possible to buy decent ųSD cards. Even really expensive ones sold in reputable stores die all the time. Sure they work just fine if your goal is to write photos into it, never delete anything and get a new one once it fills up, but anything more write heavy typically kills my SD cards within months. SSDs last decades.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
