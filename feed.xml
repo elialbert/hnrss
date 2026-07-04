@@ -4,7 +4,35 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 04 Jul 2026 21:06:38 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 22:07:33 +0000</lastBuildDate>
+    <item>
+      <title>Potential session/cache leakage between workspace instances or consumer accounts</title>
+      <link>https://github.com/anthropics/claude-code/issues/74066</link>
+      <guid isPermaLink="false">hn3-48785485</guid>
+      <pubDate>Sat, 04 Jul 2026 14:03:40 +0000</pubDate>
+      <description>254 points, 118 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/anthropics/claude-code/issues/74066"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48785485">→ HN comments</a> &nbsp;·&nbsp; 254 points &nbsp;·&nbsp; 118 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jonhohle</em>:</p>
+<blockquote>I’ve been seeing this in Gemini in the past few days. Often during a prompt with a reasonably large input set, I’ll get answers that appear to belong to someone else. It may be trigger hallucination, but it seems like it may be cache collisions or something else. I’ve not seen anything to suggest private information is leaking, but it’s disconcerting to be researching something and then get what appears to be a math tutoring response.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>weitendorf</em>:</p>
+<blockquote>I’ve also had problems with Gemini when accessed through their UI in the past few weeks. That’s concerning that you are also seeing it several days later in a different context.<p>I wonder if there could be a large security situation playing out behind the scenes right now.<p>I’ve been working on using AI to assist me in writing meta parsing grammars. Fortunately I have not launched most of them yet. I know for a fact that the next generation of models represent a major step change in basic vulnerability identification and exploitation, especially if you know where to point them. They’ve found several bugs and at least one exploit in my parsing tools so far, I can’t imagine how many there still are waiting to be discovered across the entire modern tech ecosystem.</blockquote>
+<p>↳ reply 2 — <em>malfist</em>:</p>
+<blockquote>My whole company is doing mid year reviews and Gemini is the only allowed tool and its been flumoxing people with seemingly random unrelated responses. Often in different languages.<p>That is when it bothers to respond instead of just sending back an 1099 error code</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>trq_</em>:</p>
+<blockquote>Hi, it&#x27;s Thariq from the Claude Code Team here.<p>Thanks for the detailed report. We’re confident this is a hallucination but of course take these reports seriously and the team is looking into it. We’ll report back if anything turns up.</blockquote>
+<p><strong>Top #3</strong> — <em>Tiberium</em>:</p>
+<blockquote>Sounds like a hallucination unless proven otherwise, even the leading LLMs can do those from time to time, and they will always appear plausible like that. Also could be the session having a lot previous context, like 800K+, which (I think) makes hallucinations more likely.<p>Relevant comment from the OP which makes a hallucination more likely:<p>&gt; There is one tool call result that includes a string that printed a pathname including minecraft.py because it was listing the files in a Python virtual environment and the Pygments package has a lexer called minecraft.py</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>andy99</em>:</p>
+<blockquote>I realize hallucination has no precise definition but this doesn’t sound at all like anything I’ve ever heard called hallucination. Hallucination is usually plausible wrong answers or made up info that ends up fitting the most likely response (like a manufactured citation) and comes from the way LLMs work at predicting tokens. This example demonstrates completely implausible output, it’s not something that fits with hallucination.<p>All that said, it doesn’t require cross session leakage, it could just be training data or like those nightingale (probably the wrong bird*) data generations where they just prompt an LLM with nothing and it starts spitting out conversations.<p>I see a bunch of downstream comments about caching, sounds like maybe there’s an error where it loads nothing instead of the cache and so starts spitting out random generations.<p>* edit: it’s magpie. Worth looking at the concept, I’m not sure people realize they LLMs generate random conversations when prompted with nothing, this seems at least as likely as sessions leaking: <a href="https:&#x2F;&#x2F;github.com&#x2F;magpie-align&#x2F;magpie" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;magpie-align&#x2F;magpie</a></blockquote>
+<p>↳ reply 2 — <em>macNchz</em>:</p>
+<blockquote>The person posting this claims to have reproduced in a separate context down the thread:<p>&gt; Same thing just happened on a Claude Mobile session in same Enterprise account. Common theme in both is Sonnet 5, first response after more than 5 minutes (cache miss).</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Explanation of everything you can see in htop/top on Linux (2019)</title>
       <link>https://peteris.rocks/blog/htop/</link>
@@ -3653,22 +3681,6 @@ I personally like playing music &#x2F; programming audio more, which is a good g
 </blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Ask HN: Who is hiring? (July 2026)</title>
-      <link>https://news.ycombinator.com/item?id=48747976</link>
-      <guid isPermaLink="false">hn3-48747976</guid>
-      <pubDate>Wed, 01 Jul 2026 15:01:21 +0000</pubDate>
-      <description>147 points, 156 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=48747976"><strong>→ Article</strong></a></p>
-<p><a href="https://news.ycombinator.com/item?id=48747976">→ HN comments</a> &nbsp;·&nbsp; 147 points &nbsp;·&nbsp; 156 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jbott</em>:</p>
-<blockquote>Complement AI (<a href="https:&#x2F;&#x2F;complement.ai" rel="nofollow">https:&#x2F;&#x2F;complement.ai</a>) | Member of Technical Staff | San Francisco or New York City | ONSITE | Full-time | $150K – $300K + Equity<p>Complement builds AI that autonomously operates factories. We connect the fragmented systems inside a factory (ERP, MES, PLCs, spreadsheets, etc) into a unified data layer, then deploy AI agents that optimize decisions across the whole operation for profit.<p>As a Member of Technical Staff, you&#x27;ll work across the stack — connecting factory data sources, building simulations to optimize scheduling, embedding with factory operators, and designing interfaces that surface recommendations. We care about what you&#x27;ve shipped under ambiguity more than which of those you specialize in.<p>Apply: <a href="https:&#x2F;&#x2F;jobs.ashbyhq.com&#x2F;complement&#x2F;7d410785-31db-4aa4-85f6-63a9d4aa79d0" rel="nofollow">https:&#x2F;&#x2F;jobs.ashbyhq.com&#x2F;complement&#x2F;7d410785-31db-4aa4-85f6-...</a></blockquote>
-<p><strong>Top #2</strong> — <em>_praf</em>:</p>
-<blockquote>Column (<a href="https:&#x2F;&#x2F;column.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;column.com&#x2F;</a>) | San Francisco, CA (ONSITE) | Full Time | Software Eng (Infrastructure), Software Eng (Backend), Software Eng (Product)<p>Column is building the infrastructure that powers the US dollar globally. We&#x27;re a software first company, but also own a nationally chartered bank that we&#x27;ve built from the ground up. We&#x27;re currently processing trillions of dollars annually (yes, that&#x27;s with a T), supporting some of the largest and most sophisticated companies out there like Wise, Bilt, Brex, Ramp, Mercury and dozens of others.<p>Started by the founder of Plaid (plaid.com), Column is focused on keeping an extremely lean and experienced team: currently 10 engineers that all report to the CEO (many of whom we hired through HN). We are looking for an ambitious infrastructure, product, and backend engineer (one of each) that want to build incredible software from first principles.<p>Profitable and 100% owned by employees and founders.<p>Apply here: <a href="https:&#x2F;&#x2F;column.com&#x2F;careers" rel="nofollow">https:&#x2F;&#x2F;column.com&#x2F;careers</a><p>Feel free to email me with any questions: praful@</blockquote>
-<p><strong>Top #3</strong> — <em>david-venegas</em>:</p>
-<blockquote>Robotics startup (STEALTH + YC S26) | Principal Mechanical + Firmware + SWE | SF Bay Area | ONSITE | $200–250k + 1–2% equity + benefits<p>We are a new robotics company based in Palo Alto, California, building wearable robotic devices that improve the endurance of humans on foot.<p>Our first product is a lightweight, bilateral hip product that reduces the physical cost of carrying heavy loads over distance, allowing personnel to move farther, carry more, and arrive at the objective less fatigued and more effective. The company is early but already operating in the field, with a direct feedback loop in the most demanding conditions imaginable.<p>We are backed by Y Combinator and a group of leading deep-technology investors.<p>We&#x27;ve recently moved to the Bay area to grow the team, and are hiring three lead engineers who will own product&#x2F; their domains, and have full authority with no inherited design decisions and no one between them and the problem. What you build will be worn in weeks by real users:<p>- Mechanical: structures, joints, actuator integration, ruggedness<p>- Firmware: real-time motor control, sensor fusion, embedded systems<p>- Software: device-to-cloud telemetry, test infrastructure, user apps<p>Shoot me (founder) a text (+1 857-327-3414) and I&#x27;ll tell you exactly what we&#x27;re building :)</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
