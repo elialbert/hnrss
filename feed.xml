@@ -4,7 +4,344 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 05 Jul 2026 00:07:22 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 05:02:42 +0000</lastBuildDate>
+    <item>
+      <title>Better Models: Worse Tools</title>
+      <link>https://lucumr.pocoo.org/2026/7/4/better-models-worse-tools/</link>
+      <guid isPermaLink="false">hn3-48788599</guid>
+      <pubDate>Sat, 04 Jul 2026 20:16:22 +0000</pubDate>
+      <description>131 points, 41 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://lucumr.pocoo.org/2026/7/4/better-models-worse-tools/"><strong>→ Article</strong></a> <small>(lucumr.pocoo.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48788599">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 41 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>cadamsdotcom</em>:</p>
+<blockquote>This is easily solved with good error messages.<p>Claude always gets the syntax wrong on my tool calls.<p>So I did a revolutionary thing and <i>made the error output print helpful guidance on how to correctly call the tool</i>.<p>The agent tries again and always gets it right. Total time “wasted”: 1-2 seconds. It happens every session, but it only happens once per context window. After that the agent holds on to the lesson.<p>To do this for your own tool calls, imagine what you’d do in the agent’s place - what info you’d need so you can correct your mistake. Assume the agent wants to achieve the goal so it’ll try again. These are probabilistic systems, so we need to give them an extra loop to get the deterministic bits right.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>klntsky</em>:</p>
+<blockquote>I&#x27;ve built a library that makes creating rich feedback systems easier, check this out:<p><a href="https:&#x2F;&#x2F;tool2agent.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;tool2agent.org&#x2F;</a></blockquote>
+<p>↳ reply 2 — <em>joshka</em>:</p>
+<blockquote>I&#x27;ve been trying to push for this perspective about the error messages of jj vcs. There&#x27;s some push back from people that don&#x27;t perceive that making tools work well with LLMs is also making tools work well with humans. (Obviously there&#x27;s more nuance to the arguments than this one sided perspective).</blockquote>
+<p>↳ reply 3 — <em>psadri</em>:</p>
+<blockquote>This will cause an extra round trip to the LLM. Which means more $ spent.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>lukasco</em>:</p>
+<blockquote>It sounds like harnesses might have to start to have model by model system prompts, though retrying works, I guess. It reminds me of the ancient times when browsers all read HTML and CSS differently, and differently on different devices.  In that sense, this is nothing new. I was going to say, at least we don&#x27;t have different device types, but then, the model still has to output the right variant of `grep` as well.</blockquote>
+<blockquote>
+<p>↳ reply — <em>the_mitsuhiko</em>:</p>
+<blockquote>The problem with hyper targeting harnesses to models is that you end up locking yourself quite quickly into special behaviors of models, and you make your sessions non transferrable.  That can be an acceptable trade-off and I know people who do that.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>aetherspawn</em>:</p>
+<blockquote>Surprised models still output tools as text when for ages we’ve been able to constrain the output at the inference engine level and constrain the model what tools, parameters etc are available<p>Edit: found it, it’s called Grammar-Constrained Decoding (GCD)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jdiff</em>:</p>
+<blockquote>I imagine the challenge comes from recognizing that your model is trying to call a tool before it actually has and only constraining output then. Running a separate pass for an optionally-empty list of tools afterwards may work, but maybe constraining its output like that causes many spurious tool calls.</blockquote>
+<p>↳ reply 2 — <em>miketery</em>:</p>
+<blockquote>Some model providers when using json_schema: true (eg. with_structured_output), it does constrain the output.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Command and Conquer Generals natively ported to macOS, iPhone, iPad using Fable</title>
+      <link>https://github.com/ammaarreshi/Generals-Mac-iOS-iPad/tree/main</link>
+      <guid isPermaLink="false">hn3-48788283</guid>
+      <pubDate>Sat, 04 Jul 2026 19:41:10 +0000</pubDate>
+      <description>434 points, 170 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/ammaarreshi/Generals-Mac-iOS-iPad/tree/main"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48788283">→ HN comments</a> &nbsp;·&nbsp; 434 points &nbsp;·&nbsp; 170 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>didibus</em>:</p>
+<blockquote>Diff of the changes Fable added to the parent fork (which does not appear to have used AI): <a href="https:&#x2F;&#x2F;github.com&#x2F;ammaarreshi&#x2F;Generals-Mac-iOS-iPad&#x2F;compare&#x2F;ee18a5e..d799298" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ammaarreshi&#x2F;Generals-Mac-iOS-iPad&#x2F;compare...</a> for those curious.</blockquote>
+<p><strong>Top #2</strong> — <em>Eufrat</em>:</p>
+<blockquote>IMHO, this is an actual good use of what sounds like a person guiding a model to do a mass conversion. Although, I wish the porting docs were a little wordsmithed by a human, the AI generated text style is grating.<p>The stakes are low, it’s mostly for fun and you can iterate on it. Compare this with Bun which was just like, “hey we converted everything to Bun to Rust from Zig, of course it works, what could possibly go wrong, I’ll totally write up a blogpost (that still doesn’t exist) explaining what we did, you can put this into your production environment soon!”</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>johnfn</em>:</p>
+<blockquote>I don&#x27;t really get the Bun thing. Bun is running Claude Code which is probably the single most actively used development app there is. You say this was a bad use of LLMs, but it&#x27;s been in production for a while and I haven&#x27;t heard of any evidence that Claude Code has increased a significantly larger quantity of errors, segfaults, etc, than before.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Eufrat</em>:</p>
+<blockquote>Some people, myself included, think that announcing a conversion from Rust to Zig as an experiment then jumping to putting it in the alpha train for public testing&#x2F;consumption without any real explanation in the span of around 2 weeks is irresponsible and reckless.<p>Blogposts were promised, details were hinted, but no, it’s just full steam ahead because the AI worked so well. The converted unit tests all worked, all the synthetic tests are okay, so what are you complaining about?<p>At some point, it’s less about the technical questions and more about getting that pesky human buy-in.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>nine_k</em>:</p>
+<blockquote>They are looking for a different human buy-in.<p>&quot;Yes, the AI rewrote the code. No, we do not pretend that we&#x27;ve scrutinized the code, or that we understand it. It works, tests pass, so we don&#x27;t care, <i>and so shouldn&#x27;t you.</i>&quot;<p>The &quot;recklessness&quot; is offered as the new normal. Because it kinda, well, works for them.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pathartl</em>:</p>
+<blockquote>I have a port of BuildGDX in the project backlog that was basically just throwing Claude at it to go from Java to .NET. The only thing it really got hung up on was Java&#x27;s byte being signed.<p>What I ended up with was a port of Duke 3D that uses half the allocated RAM as DukeGDX.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>xg15</em>:</p>
+<blockquote>&gt; <i>(tap-select, drag-box, long-press deselect, two-finger scroll, pinch zoom)</i><p>This is another &quot;AI-ism&quot; I noticed, mostly in coding agents - they seem to be very fond of making up new &quot;compound nouns&quot; (and occasionally verbs) to sum up relatively complex and specific concepts into single noun phrases. I wasn&#x27;t sure if it&#x27;s to save tokens or if the AI uses this to get a concise &quot;identifier&quot; for a concept that it can refer back to later, but I found it very noticeable.<p>I find the resulting sentences hard to read, though it does get better if you&#x27;re aware of that tendency and make a conscious effort to parse the noun phrases. But I guess since it&#x27;s just intermediate output from coding agents and not text for essays or blog posts, it&#x27;s fine.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>marginalia_nu</em>:</p>
+<blockquote>Haha, I do that too sometimes.<p>It&#x27;s a thing in some Germanic languages.  Instinct is to merge nouns into word, e.g. &#x27;lawnchair&#x27;, but that gives you a red squiggly line, but &#x27;lawn chair&#x27; also looks wrong, so &#x27;lawn-chair&#x27; is the middle ground.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ben_w</em>:</p>
+<blockquote>First time I realised this was GCSE History lessons, looking at first world war posters like this one and going &quot;huh, to-day with a hyphen…&quot;<p><a href="https:&#x2F;&#x2F;www.iwm.org.uk&#x2F;collections&#x2F;item&#x2F;object&#x2F;27774" rel="nofollow">https:&#x2F;&#x2F;www.iwm.org.uk&#x2F;collections&#x2F;item&#x2F;object&#x2F;27774</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>brador</em>:</p>
+<blockquote>Badnami is Persian and literally means bad-name (like defamation of character).<p>English word origins are a fascinating rabbit hole.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>shibel</em>:</p>
+<blockquote>I’m (sorry for the lack of humbleness) a <i>very</i> fluent non-native speaker and writer, and this is by far my biggest challenge with Claude. It stitches together 2-4 advanced concepts into one or two words and I always have to ask it to “unpack”.<p>I don’t think it’s easy on native speakers when it happens, but it’s even harder when you’re not.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Verizon is about to break our Gizmo watches</title>
+      <link>https://www.jefftk.com/p/verizon-is-about-to-break-our-watches</link>
+      <guid isPermaLink="false">hn3-48787329</guid>
+      <pubDate>Sat, 04 Jul 2026 17:52:36 +0000</pubDate>
+      <description>149 points, 96 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.jefftk.com/p/verizon-is-about-to-break-our-watches"><strong>→ Article</strong></a> <small>(jefftk.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48787329">→ HN comments</a> &nbsp;·&nbsp; 149 points &nbsp;·&nbsp; 96 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>anonymousiam</em>:</p>
+<blockquote>So the author probably could have migrated if he hadn&#x27;t used a Google Fi phone number for 2FA.  Some banks and businesses (such as Uber) will detect a Google Fi or Google Voice number and not let you use them.  Other businesses don&#x27;t do the detection, but the 2FA texts will never arrive.  Like the author, I&#x27;ve got some accounts that I was able to set up for 2FA using a Google account, but 2FA no longer works on them.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zdw</em>:</p>
+<blockquote>Blocking specific service providers in this way should be made illegal.<p>It&#x27;s an abuse of market power primarily used to eliminate competition.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jitix</em>:</p>
+<blockquote>How is it eliminating market competition? Uber, etc don’t compete with google voice and similar services.<p>And its a valid reason for preventing scammers. I am literally tired of scammers on every single app. I still want an open internet but I think ALL phone numbers should be tied to real human identity and geolocation. Yes, it seems dystopian but it’s no different than the time when we only had landlines with verified callers. Democracy is as fine back then, maybe even better.<p>Some structure and verification around telecommunications will go a long way towards improving the experience for everyone even if it hurts the libertarian part of my brain.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>MobiusHorizons</em>:</p>
+<blockquote>&gt; How is it eliminating market competition?<p>Verizon is the company powering the service for these watches, and is the company not sending 2fa to non-Verizon customers.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>snowwrestler</em>:</p>
+<blockquote>Nah, this is not correct. The Gizmo watches work fine with the GizmoHub app, but not the new Verizon Family app. You have to authenticate in both apps.<p>I have Verizon service and use a Google Voice number as my MFA and it has worked fine for many years: in the GizmoHub app, in the Verizon website, and in the My Verizon app. The only place I can’t properly authenticate is the new Verizon Family app. They just screwed up that new app.</blockquote>
+<p>↳ reply 3 — <em>bastawhiz</em>:</p>
+<blockquote>I&#x27;ve used Google Voice since it was Grand Central and switched to Fi the month it came out, and I have <i>never</i> experienced what you&#x27;re describing.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>cwyers</em>:</p>
+<blockquote>```The associate agreed with me that they should not deprecate the old app until the new app can handle this configuration. I asked them to raise this up the chain: they need to push back the deprecation date.```<p>There&#x27;s no way a CSR has any power over this.</blockquote>
+<blockquote>
+<p>↳ reply — <em>DrewADesign</em>:</p>
+<blockquote>But they can, and do. escalate problems. It’s not like there’s a side entrance for people with  problems that a CSR can’t solve.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cactacea</em>:</p>
+<blockquote>Yes, they solve the problem that you called the company.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>refulgentis</em>:</p>
+<blockquote>Yes, support agents never escalate anything, they are mendacious slaves.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>bombcar</em>:</p>
+<blockquote>Cell phone enabled watches are a pile of hacks sitting on top of hacks on top of a system pretending to be a telephone switch board from the 1940s. It’s surprising any of it works.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>derefr</em>:</p>
+<blockquote>In what way are watches with SIMs (or eSIMs) not just tiny cell phones? Or is you meaning that the modern smartphone is itself a “pile of hacks sitting on top of hacks”?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sulam</em>:</p>
+<blockquote>The main way is that literally zero of these watches actually meet the standards that the cell networks require of a cell phone. Every single one of them has a carrier exemption or a lower standard to adhere to, because it turns out that putting a cell phone&#x27;s RF package into a watch is super hard, both because of size and the various negative effects of the human body on radio signals. This affects cell phones too of course, but less so (remember the iPhone 4 and how we were &quot;holding it wrong&quot;?).<p>Another way is that watch chipsets are distinct from cell phone chipsets in that they make a variety of compromises unique to wearable requirements. Apple may be an exception here, you can&#x27;t get a spec sheet for their chip, but for the other providers their wearable chipsets are generations behind anything they sell for a cell phone and are compromised in terms of power. Interestingly even watches (Apple, Samsung soon) that support 5G are running a dumbed down version of 5G that was created specifically to support the wearables and IoT market.<p>It gets even stranger in software. A text showing up on your watch might have arrived two completely different ways depending on whether it&#x27;s an iMessage or a regular text and you can&#x27;t tell which. The watch often doesn&#x27;t even have its own number -- it&#x27;s borrowing your phone&#x27;s. IOW, it&#x27;s not a tiny phone doing phone things, it&#x27;s a companion device trying to fake it.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>TazeTSchnitzel</em>:</p>
+<blockquote>A few years ago, I signed up for an Apple Watch eSIM plan (which is a special type of eSIM plan that Apple make cell carriers agree to offer as an add-on to a normal cell subscription for your iPhone, and there is <i>no other way</i> go get an eSIM for it).<p>I then started regularly receiving phone calls (to my iPhone) intended for someone else. At first I thought it was a wrong number or an old number and kept telling them to remove this number. Buy the calls kept coming and I eventually I dared to ask <i>what</i> number they had dialed. And it wasn&#x27;t a cell number I recognised.<p>After contacting support for my carrier, what I figured out was that the Apple Watch eSIM has its own phone number, for some reason, but it&#x27;s not one you&#x27;re supposed to know about; as an extension of your phone&#x27;s subscription, the Apple Watch eSIM notionally has the same number as it. But they were calling the secret number associated with the eSIM, somehow. And I think there was a problem in the number routing table somewhere, because I think this number may have been in use with another cell carrier, and the calls only went to me when calling from my network?<p>Absurd nightmare situation.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>acdha</em>:</p>
+<blockquote>I just went through this yesterday. My wife and I both have Apple Watches with LTE and I was rolling them over: both phones and my watch ported easily but the second watch wouldn’t show up on the account at all with no explanation. The first support person couldn’t see a problem with the details they were able to see, the second level one could see a fraud hold for non-specific reasons and forwarded us to a fraud team who verified my identity and back to a third person who solved the problem by deleting and recreating the line on our account. Every one of the people I talked to was clearly trying to help but their billing system sounds like it’s someone’s old house primarily consisting of duct tape and stucco.<p>This is a disappointing contrast to their actual network which is clearly run by people who take running a reliable network seriously with good coverage and latency.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Google Books (or similar) all book scans – $200k bounty (2025)</title>
+      <link>https://software.annas-archive.gl/AnnaArchivist/annas-archive/-/work_items/234</link>
+      <guid isPermaLink="false">hn3-48786838</guid>
+      <pubDate>Sat, 04 Jul 2026 16:51:26 +0000</pubDate>
+      <description>388 points, 209 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://software.annas-archive.gl/AnnaArchivist/annas-archive/-/work_items/234"><strong>→ Article</strong></a> <small>(software.annas-archive.gl)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48786838">→ HN comments</a> &nbsp;·&nbsp; 388 points &nbsp;·&nbsp; 209 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ahmedfromtunis</em>:</p>
+<blockquote>I live in a country where the selection of available books, especially in English, is very limited. Buying online from foreign markets comes with a long list of administrative hurdles and limits.<p>If it were not for Anna&#x27;s Archive and Z-Library, I would&#x27;ve never been able to read the books that shaped who I am today, or keep my passion for learning alive.<p>Thanks, AA and ZLib! (Also, thank you to the authors whose books and knowledge I consumed without being able to pay them back.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>whycome</em>:</p>
+<blockquote>So you’re saying your entire current life is because of the proceeds of crime?!<p>I’m kidding. Knowledge should be free. It was never created in a vacuum. It belongs to us all</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>john-titor</em>:</p>
+<blockquote>&gt; Knowledge should be free. It was never created in a vacuum. It belongs to us all<p>Imagine you&#x27;re a professional writer and it&#x27;s your main source of income. How would you feel if someone said this to you? Would you still want to write books?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bigiain</em>:</p>
+<blockquote>Keep in mind &quot;copyright&quot; explicitly does not cover &quot;knowledge&quot; or &quot;ideas&quot;.<p>The reason I buy books is rarely for knowledge or ideas, its either for a good story in the case of fiction (which the author definitely should have the right to exclusively commercialise), or for the authors explanation of and idea or some knowledge which goes beyond the raw information I could find in the scientific papers or higher level descriptions.<p>Good storytelling and teaching are valuable and should come with some sort of exclusive rights to control and profit from by the author. And even bad storytelling and teaching should have that same protection from other people distributing it in ways that restrict the authors rights.<p>Clearly 130 years of protection is insane, and all it does is keeps Micky Mouses lawyers able to buy new yachts. But as others in this discussion have pointed out, after 20 year almost all of the authors who are still earning money off their works are already rich beyond most authors realistic hopes. I&#x27;m not sure 20 years is &quot;the right length&quot; for protection, you sometimes hear stories of works being rediscovered and becoming wildly popular more that 20 years past the original publication date (Kate Bush&#x27;s Running Up That Hill getting back into the charts on the back of it being used in Stranger Things - for example).</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pipes</em>:</p>
+<blockquote>Look, fair enough from your perspective. But a lot of those books probably wouldn&#x27;t exist if the author couldn&#x27;t make some money from their work.<p>I can&#x27;t find the post but years ago on Reddit an author posted stats showing when her book turned up pirates online, real sales for it collapsed.<p>Because of this I make a point of buying books, programming books especially. Yes I download pdfs, I use them as previews. This has led to buying way more than I would have.<p>Anyway, I appreciate this doesn&#x27;t apply if you live somewhere that these books can&#x27;t be purchased. But everyone praising these sorts of sites tends to look at them from only a  positive perspective.</blockquote>
+<p>↳ reply 3 — <em>Dusseldorf</em>:</p>
+<blockquote>I&#x27;m glad your username specifies your location. My biggest pet peeve online these days is someone telling a story about &quot;my country&quot; but never specifying which country that is.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dr_dshiv</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;SourceLibrary.org" rel="nofollow">https:&#x2F;&#x2F;SourceLibrary.org</a> has about 16,000 rare books translated — most for the first time. 50,000 books archived (will be translated when we have $$ for it). More tokens than English Wikipedia and about .75 petabytes.<p>Not sure if we will qualify for a bounty, but happy to share! Btw, we are looking for funding from small or large donors who want to help us translate the Renaissance…</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>wrsh07</em>:</p>
+<blockquote>Hey, this looks fascinating!<p>I can&#x27;t quickly tell what all you have archived^, but I have some friends who are academic historians who might be interested in certain categories of work (and could help verify some esoteric languages) - is it possible to search by region or language?<p>Have you reached out to any types of historians WRT the project? It seems like some PhD students might be able to find some projects in this work etc<p>^ when I looked at the timeline <a href="https:&#x2F;&#x2F;sourcelibrary.org&#x2F;timeline" rel="nofollow">https:&#x2F;&#x2F;sourcelibrary.org&#x2F;timeline</a>, I got an error</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dr_dshiv</em>:</p>
+<blockquote>Yes, this is designed with historians and librarians from the Embassy of the Free Mind (<a href="https:&#x2F;&#x2F;embassyofthefreemind.com" rel="nofollow">https:&#x2F;&#x2F;embassyofthefreemind.com</a>) in Amsterdam, stewards of the collection of the <i>Biblioteca Philosophica Hermetica</i><p>Please share with historian friends. I’m not great at socials or fundraising but this was really designed to support humanists. It can give DOIs for the versions of the translated books, which means they can be quoted and cited in academic papers.<p>Tip: Try it in Claude or Claude code (even better)! Just point it towards the source library. It can find quotes and evidence on any topic of interest. Or try the librarian — our source-grounded research agent <a href="https:&#x2F;&#x2F;sourcelibrary.org&#x2F;librarian" rel="nofollow">https:&#x2F;&#x2F;sourcelibrary.org&#x2F;librarian</a><p>Thanks for the feedback, I’ll fix the timeline.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>therealpygon</em>:</p>
+<blockquote>Interesting site. I picked a random topic to listen to — flying chariots or something like that — and the conversation of one person talking and the other whispering was definitely not to my preference. I’ll have to take another look when I have more time.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>edkennedy</em>:</p>
+<blockquote>beautiful work! the answers are relevant and poignant. thank you for building this. For funding, paid research api maybe?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>hedora</em>:</p>
+<blockquote>I wonder how long it will be before they offer bounties for internet scrapes.<p>Cloudflare captchas have made the internet unusable for me, and I&#x27;m sure it will only get worse over time.  I&#x27;d much rather just browse (or even torrent) a copy of archive.is or similar.  The latter would be much better for privacy, and hey, I run ad blockers anyway.</blockquote>
+<blockquote>
+<p>↳ reply — <em>rvnx</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;x.com&#x2F;CloudflareDev&#x2F;status&#x2F;2031488099725754821" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;CloudflareDev&#x2F;status&#x2F;2031488099725754821</a><p>Well, there is this little conflict of interest</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Meta data center water discharges suspended for contaminating water supply</title>
+      <link>https://www.tomshardware.com/tech-industry/data-centers/cheyenne-suspends-data-center-fill-and-flush-and-closed-loop-discharges-after-meta-contractor-contaminated-its-reuse-water-system</link>
+      <guid isPermaLink="false">hn3-48786782</guid>
+      <pubDate>Sat, 04 Jul 2026 16:45:23 +0000</pubDate>
+      <description>220 points, 77 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.tomshardware.com/tech-industry/data-centers/cheyenne-suspends-data-center-fill-and-flush-and-closed-loop-discharges-after-meta-contractor-contaminated-its-reuse-water-system"><strong>→ Article</strong></a> <small>(tomshardware.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48786782">→ HN comments</a> &nbsp;·&nbsp; 220 points &nbsp;·&nbsp; 77 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jmyeet</em>:</p>
+<blockquote>Since the article doesn&#x27;t make this clear, let me explain.<p>The cheapest (and worst) option is to take in water, use it for cooling and then dixcharge it. Why is this bad? Because DCs don&#x27;t want to corrode their pipes with untreated water so they add coolant and additives to it, which pollute the water. This is bad. But nobody really does this because you don&#x27;t want to keep adding additives to water you&#x27;re constantly discharging.<p>The next step up are varying degrees of what&#x27;s called &quot;closed loop&quot; cooling. That is, the DC has treated water in a closed loop that isn&#x27;t discharged. There&#x27;s a heat exchange system with external water. This btw is the system that&#x27;s used in nuclear reactors although nuclear reactors will be <i>far</i> more stringent than DCs are. Best practice for this is one of Google&#x27;s DCs in Scandanavia that uses ocean water for heat exchange. There are limits to this but there&#x27;s only so much Arctic Ocean water a DC can meaningfully heat. It is potentially disruptive though and that needs to be considered.<p>Even so pipes will need to be cleaned. There is debris that builds up and in cases like this you can still get bacterial outbreaks. This is another reason to use additives like chlorine. But again, you don&#x27;t want to discharge chlorine into bodies of water.<p>I&#x27;m reminded of water management in the Yukon. The Yukon for over a century have been gold fields. If you look at the tech required to extract a tiny amount of gold from a large amount of earth, it&#x27;s kind of fascinating but it boils down to using a lot of water and having the denser gold sink and get trapped.<p>So gold miners take in water from rivers, wash rocks with it and then have historically just discharged it back into the rivers. This tended to be heavy in silt that would go into waterways and could create problems. The water was also dirty. So the Yukon authorities have gotten increasingly stricter with water management. Now water has to go through a series of settling ponds so the discharged water is clean&#x2F;clear.<p>I kinda think we need similar levels of strict water management for DCs. No discharged coolants and clean water. Figure out how to get that. If that makes your DC more expensive then that&#x27;s a &quot;you&quot; problem.</blockquote>
+<p><strong>Top #2</strong> — <em>bentt</em>:</p>
+<blockquote>Move fast and break things is back.</blockquote>
+<p><strong>Top #3</strong> — <em>latchkey</em>:</p>
+<blockquote>Omen AI just got $31m to solve this problem...<p><a href="https:&#x2F;&#x2F;techcrunch.com&#x2F;2026&#x2F;06&#x2F;29&#x2F;omen-ais-plan-to-optimize-data-centers-is-all-wet&#x2F;" rel="nofollow">https:&#x2F;&#x2F;techcrunch.com&#x2F;2026&#x2F;06&#x2F;29&#x2F;omen-ais-plan-to-optimize-...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bix6</em>:</p>
+<blockquote>Interesting I’ve been waiting for something like this on our rivers. Hopefully.</blockquote>
+<p>↳ reply 2 — <em>bl4kers</em>:</p>
+<blockquote>Oh, great. A group of men in black shirts and jeans are here to fix the issue</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Leaking YouTube creators' private videos</title>
+      <link>https://javoriuski.com/post/youtube</link>
+      <guid isPermaLink="false">hn3-48786781</guid>
+      <pubDate>Sat, 04 Jul 2026 16:45:10 +0000</pubDate>
+      <description>537 points, 303 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://javoriuski.com/post/youtube"><strong>→ Article</strong></a> <small>(javoriuski.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48786781">→ HN comments</a> &nbsp;·&nbsp; 537 points &nbsp;·&nbsp; 303 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Mg6yDfjp5U</em>:</p>
+<blockquote>I recently left Google having worked on a number of projects with various YouTube teams. I think I can explain why it&#x27;s being handled this way by YouTube.<p>This is a fairly nuanced&#x2F;involved issue, so the task of classifying the bug likely made it&#x27;s way to one of the engineers responsible for the implementation of this feature.<p>That engineer has already launched this project, and filed it away under their GRAD (performance) artifacts for when promo&#x2F;annual review talks roll around. There&#x27;s no motivation for this engineer to waste time fixing this bug because it won&#x27;t benefit their promo packet, and they are already being put under pressure to launch other projects which _will_ benefit their promo packet.<p>So they do what they can to sweep it under the rug because that&#x27;s what the promo&#x2F;annual review framework (GRAD) incentivizes and rewards.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>NamTaf</em>:</p>
+<blockquote>I design and build trains.<p>If I ignored a safety issue that I discovered - not one I caused by design but even one I discovered in an existing design - 
+because of a performance review my engineering licence would be revoked and I would be kicked out of the industry.<p>This is a prime example of why programmers are not seriously considered engineers.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>brailsafe</em>:</p>
+<blockquote>&gt; This is a prime example of why programmers are not seriously considered engineers.<p>Seems to me like your comment is simply an example of prejudice.<p>You&#x27;re just describing another standardized incentive structure that you&#x27;re operating in, and using that as a basis to extrapolate that programmers of all kinds—whether they work on a video platform or on machinery that could cause catastrophe if it fails—are implicitly careless careerists who refuse responsibility by nature.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>digdugdirk</em>:</p>
+<blockquote>Other fields of engineering usually have a regulated licensure, upon which they can call themselves a Professional Engineer. This gives them the ability to make final approval&#x2F;sign-off on designs and technical reports. It&#x27;s most common in civil engineering, where a PE license is required for all publicly funded projects (and most privately funded ones as well, due to local&#x2F;regional&#x2F;national regulations) to be approved.<p>This license requires the holder to uphold code of professional ethics, and makes the engineer themselves be personally responsible for the safety and viability of the design itself. Losing a PE license is rare, but it does happen. The industry board (usually a regional board) can also discipline&#x2F;reprimand engineers who fail to meet the professional standard - rubber stamping projects, personal misconduct, etc. Losing a license is a huge deal, but even reprimands can have a serious negative impact on someone&#x27;s career.<p>In the industry the previous commenter works in their hypothetical would absolutely meet the bar for discipline or reprimand.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mlmonkey</em>:</p>
+<blockquote>This is what you get when the MBAs are in charge. They just go with P&amp;L, Spreadsheets, etc. and care only about the current quarter and meeting the goals.</blockquote>
+<p>↳ reply 3 — <em>BrenBarn</em>:</p>
+<blockquote>Those are many words to say &quot;no one feels an obligation to do the right thing&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>wxw</em>:</p>
+<blockquote>&gt; Attacker leaves the comment on a creator&#x27;s video.<p>&gt; Creator opens YouTube studio&#x27;s comment tab.<p>&gt; Creator clicks a suggested AI prompt (Designed by YouTube)<p>&gt; Injection fires, attacker-controlled content appears in the response.<p>It&#x27;s insane that YouTube doesn&#x27;t see prompt injection as a bug.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jdiff</em>:</p>
+<blockquote>It opens a can of worms for them if they do consider prompt injection a bug because there&#x27;s ultimately no defense. If they accept this, there are instantly hundreds of other moles they now have to whack or pay out for.<p>Or dismiss them all as social engineering and keep it moving.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>orbital-decay</em>:</p>
+<blockquote><i>&gt;because there&#x27;s ultimately no defense</i><p>Kind of? It&#x27;s not fixable as a spherical class of attacks in vacuum, but you can do a lot to mitigate particular cases, and in most cases you can patch unnecessary side channels for the injection to reach the context in an unintended way.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>keepamovin</em>:</p>
+<blockquote>Isn’t it trivially fixable by having a monitor LLM? The monitor just reviews each turn pair and asks, “Is this conversation being manipulated via prompt injection?”</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Dylan16807</em>:</p>
+<blockquote>Yeah, if going to site and just clicking a link given to me by the site itself is getting socially engineered, then something is very wrong with that site.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>wrs</em>:</p>
+<blockquote>&gt;Comments should be passed to the model with clear role boundaries that prevent them from being interpreted as system-level directives.<p>Well, such clear boundaries would solve <i>lots</i> of problems. But those don’t exist, do they?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mattalex</em>:</p>
+<blockquote>You can get rid of 99.9% of those attacks by simply dispatching the data consumption to a different instance of the LLM, see, for instance, some of the later patterns in <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2506.08837" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2506.08837</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>iqihs</em>:</p>
+<blockquote>Thanks for the article link! Do you happen to know where to follow&#x2F;read more articles like this for someone interested in getting more into AI security? Ty</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>chias</em>:</p>
+<blockquote>Ah yes - the cure for world hunger: eating food.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Zig: All Package Management Functionality Moved from Compiler to Build System</title>
+      <link>https://ziglang.org/devlog/2026/#2026-06-30</link>
+      <guid isPermaLink="false">hn3-48786638</guid>
+      <pubDate>Sat, 04 Jul 2026 16:30:10 +0000</pubDate>
+      <description>164 points, 34 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://ziglang.org/devlog/2026/#2026-06-30"><strong>→ Article</strong></a> <small>(ziglang.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48786638">→ HN comments</a> &nbsp;·&nbsp; 164 points &nbsp;·&nbsp; 34 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>goranmoomin</em>:</p>
+<blockquote>So this is the change that forced Zig to remove @cImport (and into the build system), right?<p>I know that it’s purely a UX concern, and that the changes (to decouple the build system and the compiler) are pretty critical for the maintainers, but it’s still a bit sad that development sanity comes first than the UX. (It’s the right call, just that it’s sad.) @cImport was a big killing feature imho to the language…</blockquote>
+<p><strong>Top #2</strong> — <em>vitaminCPP</em>:</p>
+<blockquote>I&#x27;ve read somewhere that the longer-term goal is to move the build system into a WebAssembly VM. If so, this is incredible.</blockquote>
+<blockquote>
+<p>↳ reply — <em>jswny</em>:</p>
+<blockquote>What’s the advantage of that for building?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pdpi</em>:</p>
+<blockquote>Zig build scripts are arbitrary zig programs, so sandboxing those scripts is a Good Thing. Wasm might be overkill, but using something off-the-shelf that&#x27;s specifically designed for sandboxing untrusted code is definitely the right approach.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>nesarkvechnep</em>:</p>
+<blockquote>Development of Zig feels so wholesome.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>SwellJoe</em>:</p>
+<blockquote>The thing about Zig in these times is that it proves that software development as a craft is not dead or replaced by LLMs.<p>Even though I use LLMs every day, and have to admit they&#x27;re remarkably good at many classes of problem, I don&#x27;t want a programming language built by an LLM. Every line of code in a programming language, every decision, every trade off, matters. A vibe-designed&#x2F;vibe-coded programming language would be a disaster. I don&#x27;t know how else to put it, and I&#x27;ve never seen any model produce code that would convince me otherwise (even Fable, which is, in fact, a notable improvement over the prior best models). The models don&#x27;t want anything. They don&#x27;t have meaningful opinions. They don&#x27;t know what comfortable vs. uncomfortable feels like in a language (or in a GUI or CLI interface at sufficient levels of complexity).<p>You can&#x27;t get a language like Zig out of an LLM without simply copying Zig, and even then it would be a copy that is worse. (I mean, I&#x27;m assuming &quot;copy with an LLM&quot; means, &quot;have an LLM write the spec and another build the language to the spec&quot;, not literally `cp` the source tree.)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ashikns</em>:</p>
+<blockquote>&gt; They don&#x27;t know what comfortable vs. uncomfortable feels like in a language<p>This is mostly about human preferences right. If software is just taken as the end product, does it matter what &quot;feels&quot; good and doesn&#x27;t?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>edoceo</em>:</p>
+<blockquote>It&#x27;s kinda fun to build with too. Making a bootloader, doing some UEFI things. Much easier (for me) than when trying with C. But also, new&amp;shiny and learning is fun - increases my bias.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Fable created novel 4D splat format</title>
+      <link>https://adamraudonis.github.io/splats4D/</link>
+      <guid isPermaLink="false">hn3-48786245</guid>
+      <pubDate>Sat, 04 Jul 2026 15:49:08 +0000</pubDate>
+      <description>139 points, 51 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://adamraudonis.github.io/splats4D/"><strong>→ Article</strong></a> <small>(adamraudonis.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48786245">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 51 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>chmod775</em>:</p>
+<blockquote>The application is cool, but there is little novelty here. All of the employed techniques are well-established.<p>I suggest removing &quot;novel&quot; from the title unless you wish to seriously disappoint some people.</blockquote>
+<blockquote>
+<p>↳ reply — <em>adamraudonis</em>:</p>
+<blockquote>I tried to apply existing mp4 H265 like compression to 3D splats. Do you have any links to other 4D splat formats?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Lucasoato</em>:</p>
+<blockquote>Doesn’t with for me, iOS Safari :&#x2F;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>adamraudonis</em>:</p>
+<blockquote>The viewer uses WebGPU... I could support WebGL for greater compatibility.</blockquote>
+<p>↳ reply 2 — <em>nomel</em>:</p>
+<blockquote>Works on my old iPhone. The video is a splat. Click the interact button to change perspective.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>adamraudonis</em>:</p>
+<blockquote>See repo for prompt. Feel free to contribute to format or benchmarking. MIT Open Source.</blockquote>
+<blockquote>
+<p>↳ reply — <em>diimdeep</em>:</p>
+<blockquote>Publish full session md, you can export them with `uvx claude-code-log@latest --tui`</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tjuene</em>:</p>
+<blockquote>warning: don&#x27;t just run random commands in your terminal</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>thehamkercat</em>:</p>
+<blockquote>specially not npm&#x2F;python related packages with @latest<p>Yes please give me the latest supply-chain attacks.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Potential session/cache leakage between workspace instances or consumer accounts</title>
       <link>https://github.com/anthropics/claude-code/issues/74066</link>
@@ -3400,286 +3737,6 @@ We used to meet our needs by moving our bodies. Understandably, there are percei
 <blockquote>GLM 5.2 is in an uncanny valley where it&#x27;s too big to run at home, too expensive and slow in comparison to similarly capable model (a good chart here - <a href="https:&#x2F;&#x2F;deepswe.datacurve.ai&#x2F;">https:&#x2F;&#x2F;deepswe.datacurve.ai&#x2F;</a>), and that&#x27;s just comparing API prices.<p>When looking at subscription offering by Anthropic and OpenAI, it&#x27;s not even comparable, as a Codex $200 subscription can easily use a billion tokens per week on GPT 5.5 high&#x2F;xhigh.<p>It&#x27;s an interesting model from the perspective of being the most capable open weight model. But it doesn&#x27;t have a solid place in this marketplace right now.</blockquote>
 <p>↳ reply 2 — <em>ramon156</em>:</p>
 <blockquote>TLDR GLM will take a lot longer to do a task, and maybe spend more tokens depending how complex it is<p>Its a hell of a lot cheaper though, so for me its worth it. I have more claude experience though, and I would say its almost  en par with Opus 4.1</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Qualcomm Linux 2.0</title>
-      <link>https://www.qualcomm.com/developer/blog/2026/06/qualcomm-linux-2-now-available</link>
-      <guid isPermaLink="false">hn3-48753069</guid>
-      <pubDate>Wed, 01 Jul 2026 21:01:42 +0000</pubDate>
-      <description>130 points, 66 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.qualcomm.com/developer/blog/2026/06/qualcomm-linux-2-now-available"><strong>→ Article</strong></a> <small>(qualcomm.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48753069">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 66 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>LorenDB</em>:</p>
-<blockquote>And here I was hoping they&#x27;d decided to support Linux on the Snapdragon X2 chips.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>_fzslm</em>:</p>
-<blockquote>I have a gorgeous Surface Pro 11 X1 Elite that can run <i>just enough</i> Linux to tease me with how beautiful it could be, but it&#x27;s still unstable enough that I can&#x27;t daily it.<p><i>Torture</i>.</blockquote>
-<p>↳ reply 2 — <em>wmf</em>:</p>
-<blockquote>It&#x27;s happening: <a href="https:&#x2F;&#x2F;www.phoronix.com&#x2F;news&#x2F;HP-EliteBook-X-G2q-Linux" rel="nofollow">https:&#x2F;&#x2F;www.phoronix.com&#x2F;news&#x2F;HP-EliteBook-X-G2q-Linux</a></blockquote>
-<p>↳ reply 3 — <em>bfrog</em>:</p>
-<blockquote>Nah they&#x27;d rather try to continue to force snapdragon on windows where no one actually cares about this and the experience is trash.<p>AArch64 is dead for Windows and client Linux, and the knife is in Qualcomm&#x27;s hands.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bfrog</em>:</p>
-<blockquote>Ah yes, the qualcomm way. Rather than upstreaming things so it just works make a Qualcomm Linux, perhaps with NDA and laywer speak to sign off on to get access to anything at all, all to use their mediocre hardware.<p>Qualcomm you suck, upstream your drivers, make it open. Stop faffing about with closed proprietary junk. Somehow Intel, Tenstorrent, and AMD understand this but you don&#x27;t. You aren&#x27;t NVIDIA! Even if you were NVIDIA know that people absolutely despise that model.</blockquote>
-<blockquote>
-<p>↳ reply — <em>panny</em>:</p>
-<blockquote>I was just about to complain about being locked into one kernel version, being at the mercy of a single vendor, but you said it so much better than I would have :) Thanks.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>coredog64</em>:</p>
-<blockquote>Recently bought an SBC with a QCS6490 (<a href="https:&#x2F;&#x2F;radxa.com&#x2F;products&#x2F;dragon&#x2F;q6a&#x2F;" rel="nofollow">https:&#x2F;&#x2F;radxa.com&#x2F;products&#x2F;dragon&#x2F;q6a&#x2F;</a>).  Curious to see if the vendor winds up using this as a base.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Skinney</em>:</p>
-<blockquote>MNT just started offering the QCS6490 for their laptops.<p><a href="https:&#x2F;&#x2F;mnt.re&#x2F;media&#x2F;reform_md&#x2F;2026-06-30-june-update.html" rel="nofollow">https:&#x2F;&#x2F;mnt.re&#x2F;media&#x2F;reform_md&#x2F;2026-06-30-june-update.html</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Searchable directory of 22k+ products from worker-owned co-ops</title>
-      <link>https://www.workerowned.info/</link>
-      <guid isPermaLink="false">hn3-48752905</guid>
-      <pubDate>Wed, 01 Jul 2026 20:47:41 +0000</pubDate>
-      <description>331 points, 65 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.workerowned.info/"><strong>→ Article</strong></a> <small>(workerowned.info)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48752905">→ HN comments</a> &nbsp;·&nbsp; 331 points &nbsp;·&nbsp; 65 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jancsika</em>:</p>
-<blockquote>Curious that you include REI. It&#x27;s a retail coop model, not a worker-owned coop.<p>Apropos: the way they ended the REI Adventures program is behavior consistent with a normal big-box chain. That is, announce the end simultaneously to their customers and REI&#x27;s partner adventure companies, provide refunds to customers, but don&#x27;t forward the relevant same customer info to the partners for rebooking because that&#x27;s REI&#x27;s proprietary data.<p>If that&#x27;s also behavior consistent with a worker-owned coop, I have to ask: what is the social benefit of worker-owned over a normal corporate structure? And if it&#x27;s not, why point the user to REI for a pair of hiking shorts?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dendrite9</em>:</p>
-<blockquote>REI changed about 25 years ago and it took a while for people to notice&#x2F;the changes to filter through enough. Was talking recently about similar changes with MEC in Canada with a family friend who joined MEC as member 200-250. He had a chance to be in the first ~25 members but wasn&#x27;t sure they&#x27;d still exist in a year.<p>I think there still is value in a retail coop model but I think REI strayed from the area where it could work well. They may not have been able to run forever without changing but the way it has changed is a bit sad to see. I suspect there has to be a strong mission statement and way to hold to it for a retail coop to thrive long term. Or maybe just to keep the size small enough to avoid some of the harder questions.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>PaulDavisThe1st</em>:</p>
-<blockquote>&gt; REI changed about 25 years ago<p>Changed how? It was always a consumer co-op, never a worker owned co-op. I joined in 1981.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>DANmode</em>:</p>
-<blockquote>&gt; what is the social benefit of worker-owned<p>No capital-risking, and then rent-seeking, middleman, if I’m following.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>daheza</em>:</p>
-<blockquote>Very nice and appreciate the effort you put into making this.<p>Some Improvements that could help: 
-the location search could be an actual map with pins which would be easier to use
-some kind of tags for the different appareal items would help clarify which one, currently i have to click and search each vendor for things im looking for. Specifically autistic friendly &#x2F; sensory clothing items.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>MintTea</em>:</p>
-<blockquote>Maybe a little leaflet.js w&#x2F; open street maps would fit the spirit of the site</blockquote>
-<p>↳ reply 2 — <em>johnjreiser</em>:</p>
-<blockquote>Seconding location based lookups. I might not be looking for something specific, but if I know of businesses nearby worth patronizing, when I need that good&#x2F;service, I&#x27;ll visit them then.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>eleventen</em>:</p>
-<blockquote>I read this post while sitting at Broken Clock Brewing here in Minneapolis, one of the 13 listed and my favorite brewery. There are actually 2 in my city. I actually picked up an ownership card and anyone can buy in for $200, but dividends don&#x27;t start to pay out until some indefinite point where the voting owners decide the business can sustain it.<p><a href="https:&#x2F;&#x2F;www.brokenclockbrew.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.brokenclockbrew.com&#x2F;</a><p><a href="https:&#x2F;&#x2F;www.workerowned.info&#x2F;marketplace&#x2F;beer-brewing" rel="nofollow">https:&#x2F;&#x2F;www.workerowned.info&#x2F;marketplace&#x2F;beer-brewing</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Fable 5 is Back</title>
-      <link>https://twitter.com/claudeai/status/2072402636813607381</link>
-      <guid isPermaLink="false">hn3-48752030</guid>
-      <pubDate>Wed, 01 Jul 2026 19:35:57 +0000</pubDate>
-      <description>370 points, 356 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://twitter.com/claudeai/status/2072402636813607381"><strong>→ Article</strong></a> <small>(twitter.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48752030">→ HN comments</a> &nbsp;·&nbsp; 370 points &nbsp;·&nbsp; 356 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cranium</em>:</p>
-<blockquote>With this Fable release my goodwill for Anthropic went down.<p>&quot;Generous and exciting&quot; were my thoughts when I bought the $100, then upgraded to the $200 sub last year. Now I get big FOMO because I won&#x27;t be able to pay for Fable once off the sub, and I got the global limit reset at the same time as my weekly reset (Codex coupon for limit reset feels way better btw). The all-you-can-eat buffet put the nice items into a separate menu and it won&#x27;t feel like the spot to take your family anymore.<p>Anthropic can find ways to integrate Fable into subscriptions so you&#x27;d still be part of the same tribe, even if you only get a sip of it for a while. A complete shut off tells you: sorry, the policy is changing and this place will be about showing off your access to the best.<p>That&#x27;s weird but what would have been a Fable-ulous (sorry) addition to the offer just made other subscriptions from OpenAI&#x2F;ZAi&#x2F;... more appealing, because they don&#x27;t segregate people.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>espeed</em>:</p>
-<blockquote>Fable worked great on credits yesterday. Upgraded to 20x Max last night, but not the same performance. And it keeps downgrading to Opus 4.8.</blockquote>
-<p>↳ reply 2 — <em>cornholio</em>:</p>
-<blockquote>You are still getting the models you signed up for. The all you can eat added a French wines selection - which requires separate payment.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>pkoird</em>:</p>
-<blockquote>I gave it a book on human consciousness I was writing and it flagged it. This model is hilariously bad. Anthropic has defanged this model to the point of malice. No way am I paying to use something that is basically useless.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>madamelic</em>:</p>
-<blockquote>Today I told Sonnet (!) to use a browser MCP to enter a username and password for the project it is working on, it told me that it can&#x27;t do that because it violates its security protocol.<p>This worked fine before. I love Claude, I have stuck with it even through people saying Codex is better but this is definitely getting to be the last straw.<p>It&#x27;s completely absurd I am paying them $200+ per month along with pushing them when I do contracts and they can&#x27;t even deliver a baseline respectful service.<p>In 6 months I am sure they&#x27;ll only allow me to talk about Easybake recipes and after someone gets burned on the lightbulb, they&#x27;ll downgrade it to discussing wildflower meadows.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>replwoacause</em>:</p>
-<blockquote>I think the 5 series of models suck kinda. I&#x27;m sticking with 4.6 for as long as I can. But GPT 5.5 fixes me up nice like too.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>tekacs</em>:</p>
-<blockquote>It makes for a particularly awkward time because the claim to fame is that it&#x27;s good at long horizon and tenacity and autonomously driving big things. But you can&#x27;t very well rely on that when it may fall back to Opus 4.8 or cut out at any time in that process.<p>Having tried using it to run these kinds of longer processes, it&#x27;s pretty solid... right up until something gets classified a failure and your &#x27;long-horizon&#x27; process... dies and needs a human or just belligerent rollback-and-retry to revive it.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bushido</em>:</p>
-<blockquote>The loss of trust in using US based model&#x27;s is unlikely to come back though.<p>Anthropic with it&#x27;s hyped doomsday messaging, and the administration falling for it (at best), has eroded a lot of trust and has triggered an arms race of sorts.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dghlsakjg</em>:</p>
-<blockquote>OTOH: “our product is so good it was banned for being too good” is the best advertising possible. OpenAI would kill to get that.<p>I’m not falling over myself to test out Sonnet 5, but I am very interested in Fable.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>usef-</em>:</p>
-<blockquote>I really don&#x27;t think this is effective advertising, reactions have been negative virtually everywhere.<p>The security bugs were real (see the Open Source projects struggling to keep up) so I think gradual rollout was sensible originally before the ban. But people have always resented safety steps.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>matheusmoreira</em>:</p>
-<blockquote>Here&#x27;s to OpenAI and a chinese firms bringing some much needed competition.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>ZCode: Claude Code from the Makers of GLM</title>
-      <link>https://zcode.z.ai/cn</link>
-      <guid isPermaLink="false">hn3-48751752</guid>
-      <pubDate>Wed, 01 Jul 2026 19:11:38 +0000</pubDate>
-      <description>268 points, 12 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://zcode.z.ai/cn"><strong>→ Article</strong></a> <small>(zcode.z.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48751752">→ HN comments</a> &nbsp;·&nbsp; 268 points &nbsp;·&nbsp; 12 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>JSR_FDED</em>:</p>
-<blockquote>The English language version is:<p><a href="https:&#x2F;&#x2F;zcode.z.ai&#x2F;en&#x2F;docs&#x2F;welcome" rel="nofollow">https:&#x2F;&#x2F;zcode.z.ai&#x2F;en&#x2F;docs&#x2F;welcome</a></blockquote>
-<p><strong>Top #2</strong> — <em>rsyring</em>:</p>
-<blockquote>The site is in Chinese (?) and there is no obvious way to switch to English on mobile?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>esafak</em>:</p>
-<blockquote>Dang, can you change the submission url to <a href="https:&#x2F;&#x2F;zcode.z.ai&#x2F;en" rel="nofollow">https:&#x2F;&#x2F;zcode.z.ai&#x2F;en</a> ?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dang</em>:</p>
-<blockquote>Comments moved to <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48753715">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48753715</a>, which is by the original submitter of <a href="https:&#x2F;&#x2F;zcode.z.ai&#x2F;en" rel="nofollow">https:&#x2F;&#x2F;zcode.z.ai&#x2F;en</a>. (I made a fresh copy of their post since the earlier one was too old to re-up.)</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>012673</em>:</p>
-<blockquote>I don&#x27;t know about on mobile, but on desktop there is an EN &#x2F; CN button on top.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Weave Robotics launches Isaac 1, a $7,999 home robot with Fall 2026 deliveries</title>
-      <link>https://www.weaverobotics.com/isaac-1</link>
-      <guid isPermaLink="false">hn3-48750989</guid>
-      <pubDate>Wed, 01 Jul 2026 18:12:18 +0000</pubDate>
-      <description>150 points, 212 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.weaverobotics.com/isaac-1"><strong>→ Article</strong></a> <small>(weaverobotics.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48750989">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 212 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ceejayoz</em>:</p>
-<blockquote>&gt; The company says the robot completes Laundry Flow and Daily Reset tasks autonomously by default, but uses teleoperation assistance when needed to guarantee task completion.<p>Suspiciously absent: a rough idea of what percentage of tasks need the assistance.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>coffeebeqn</em>:</p>
-<blockquote>Tele-operation through a video feed(?) inside my home. Yeah that sounds pretty creepy</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>arcticbull</em>:</p>
-<blockquote>If I wanted someone taking a look at all the stuff in my home, I&#x27;d just pay a cleaner here instead of one behind a desk in what I assume is a low-labor-cost locale. For $50&#x2F;hr I can have them come in every day for 160 days, and they can manage stairs.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>bobbylarrybobby</em>:</p>
-<blockquote>Paying for someone to clean your house? Thats so last year.<p>Why an AI company cleaned my New York City apartment for free<p><a href="https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;articles&#x2F;cpwerjy20kyo" rel="nofollow">https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;articles&#x2F;cpwerjy20kyo</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>greggsy</em>:</p>
-<blockquote>The clothes folding is almost certainly a person.<p>This sort of menial task would likely be given to someone in a poorer part of the world, who ironically will be some of the first to master the first generation of remotely operated high tech robots.<p>The revolution against the rich will be led by poor precariats armed with robots.</blockquote>
-<p>↳ reply 3 — <em>conductr</em>:</p>
-<blockquote>Given how incapable my robotic vacuums and lawnmowers have proven to be, even after several years of iterations, I’d almost prefer if it was all teleoperation and it would hopefully unlock a huge amount of additional tasks it could preform. This would essentially let me hire a human housekeeper at a global vs local wage which is very appealing.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>akssri</em>:</p>
-<blockquote>This seems to be a redux of the 1x play (which was panned across the internet after the WSJ review).<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=f3c4mQty_so" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=f3c4mQty_so</a><p>The hardware for these machines have been capable of household tasks for atleast 2 decades.<p>Here&#x27;s PR1 cleaning up a room,<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=o7JH3UWO6I0" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=o7JH3UWO6I0</a><p>The issue is not even teleop as a product. The issue none of these companies talk about is one of state-reset. Even a teleop-ed robot comes nowhere near the dexterity of a human - as the Joanna Stern review of 1x shows: 10 mins to load a dishwasher, 5 mins to get a glass of water, body coming the way of a fridge door, irrecoverable breakdowns every 30 mins...<p>Consider what happens if it drops some glassware or spills liquids on a carpet in addition (or worse does something stupid with the kitchen appliances). The teleop guy in Phillipines or India can&#x27;t hop on a plane to fix this.<p>This &#x27;environment reset&#x27; problem is at the core of RL - there are no solutions for this yet, only workarounds.</blockquote>
-<p><strong>Top #3</strong> — <em>danpalmer</em>:</p>
-<blockquote>&gt; Handles loaded hampers<p>What does it mean &quot;handles&quot;? It doesn&#x27;t say it puts on a wash, but that&#x27;s what I&#x27;d want. I can only assume they&#x27;re vague because it doesn&#x27;t do anything useful.<p>&gt; Makes beds<p>A robot the height of a child makes a double bed with sheet, duvet, and pillows? I highly doubt it could reach.<p>&gt; Isaac 1 is autonomous for Laundry Flow and Daily Reset by default, with teleoperation assistance when needed to guarantee we complete tasks.<p>That&#x27;s a lot of words to say &quot;a person will drive it around your home&quot;. What sort of insurance do they have for that person breaking something in your home? What audit trail do they have for the operators?</blockquote>
-<blockquote>
-<p>↳ reply — <em>Dig1t</em>:</p>
-<blockquote>&gt;What sort of insurance do they have for that person breaking something in your home?<p>Probably just make the user accept a license agreement saying they accept the risk? I suspect most people would accept the risk something might get broken if it means they no longer need to clean their house.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>What to learn to be a graphics programmer</title>
-      <link>https://blog.demofox.org/2026/07/01/what-to-learn-to-be-a-graphics-programmer/</link>
-      <guid isPermaLink="false">hn3-48750710</guid>
-      <pubDate>Wed, 01 Jul 2026 17:53:44 +0000</pubDate>
-      <description>258 points, 139 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.demofox.org/2026/07/01/what-to-learn-to-be-a-graphics-programmer/"><strong>→ Article</strong></a> <small>(blog.demofox.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48750710">→ HN comments</a> &nbsp;·&nbsp; 258 points &nbsp;·&nbsp; 139 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Animats</em>:</p>
-<blockquote>Do you want to make games, or do 3D engine programming?<p>If you want to make games, use an existing engine. Unreal Engine, Unity, Godot, and Bevy are good choices. You&#x27;ll learn the higher level issues of graphics, not how to push pixels around. The real problem is making it fun.<p>If you want to do 3D engine programming, be aware that there are too many bad game engines. In Rust land, where I am, there are three failed renderers, one unfinished one, and the one inside the Bevy engine. Those are the major projects. There are many other &quot;I&#x27;m going to build a game engine&quot; projects. Building a game engine takes about two years to get to the My First Renderer point. Getting to big, highly detailed, dynamic scenes is a much bigger job. Be aware of the scale difference between the first demo and a useful engine.<p>If you want a job, be aware that the game industry sucks. Pay is lousy, hours are lousy, jobs end when the project is completed, and, like Hollywood, there&#x27;s an army of wannabees wanting in. Also, right now, because of the collapse of the Metaverse thing, there&#x27;s a glut of experienced people.<p>Then there&#x27;s mobile. Everything is a cram job. Not enough screen, not enough compute, not enough GPU, not enough battery.<p>This is why most indy games now are 2D. That&#x27;s do-able. Often in HTML&#x2F;JavaScript.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>opan</em>:</p>
-<blockquote>The amount of otherwise decent games that run poorly due to Unity or UE is very unfortunate. I wish people would stop recommending this stuff. I do hope Godot and  Bevy are better, but I&#x27;m not sure if they are.<p>To name some games with very bad perf issues that I&#x27;ve played in the last couple years: Core Keeper (Unity), WORMHOLE (Unity, mostly see the lag in endless mode), Crab Champions (UE4, have to use nonsense upscaling stuff that makes the game hideous just to maintain 60fps at 1920x1200).<p>Meanwhile Terraria, Necesse, and Barony use their own engines and run great, they have aged like wine.<p>Out of fairness, I&#x27;ll say Tiny Rogues (Unity) usually ran pretty well from what I recall, though the dev is actually working to move off Unity in the future, so he has clearly found issues with it himself.<p>I know there is the argument of making a game vs making an engine, and actually getting a game done and shipping it, but when you put out garbage you aren&#x27;t gonna have a very positive legacy. I think it would be better to take the long way and ensure some level of quality. Games are often played for decades after release and if they are buggy or laggy, people will continue to run into that forever.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Waterluvian</em>:</p>
-<blockquote>Today I discovered, fell in love with, and returned Tainted Grail because it is horribly, terribly optimized.  Apparently the PS5 version is so bad that it’s an offense to nature. Which is sad because it’s apparently a phenomenal game.<p>Though maybe it wouldn’t have even existed if it wasn’t for Unity.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>qingcharles</em>:</p>
-<blockquote>Agree with almost all of that. Unless you are targeting some obscure or old platform, I don&#x27;t even know how you&#x27;d justify trying to write a 3D engine from scratch in 2026, except as a fun learning experience.<p>Also, think about tooling. Last time I wrote an engine from scratch, the tooling to support it probably took way more time than the engine did.</blockquote>
-<p>↳ reply 3 — <em>andai</em>:</p>
-<blockquote>Two years? Why does it take two years?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ivansavz</em>:</p>
-<blockquote>If anyone needs a quick tutorial on linear algebra, you can check out this printabale four pager that I wrote:
-<a href="https:&#x2F;&#x2F;minireference.com&#x2F;static&#x2F;tutorials&#x2F;linear_algebra_in_4_pages.pdf" rel="nofollow">https:&#x2F;&#x2F;minireference.com&#x2F;static&#x2F;tutorials&#x2F;linear_algebra_in...</a><p>I also have some notebooks with SymPy code examples here: <a href="https:&#x2F;&#x2F;github.com&#x2F;minireference&#x2F;noBSLAnotebooks" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;minireference&#x2F;noBSLAnotebooks</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Rendello</em>:</p>
-<blockquote>That is extraordinarily beautiful aesthetically! It&#x27;s always a shame when beautiful mathematics is presented with bad typography and ugly spacing.</blockquote>
-<p>↳ reply 2 — <em>SilentM68</em>:</p>
-<blockquote>Good Books :)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>SoleilAbsolu</em>:</p>
-<blockquote>Somewhat surprising there is no mention of basic design principles, or understanding the quirks of human perception. My brother was a production artist for some well-known computer games in the &#x27;90s-&#x27;00s, and continually complained about programmers and managers with zero visual sense, or curiosity about understanding the artists&#x27; side.<p>Graphics aren&#x27;t my specialty, but as a musician, sound designer and producer, by far the most effective&#x2F;influential audio DSP coders I&#x27;m aware of understand the basics of music, the physics&#x2F;acoustics of sounds, and the gotchas at the interface between discrete digital processes and how we perceive and interpret stimuli.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>shikshake</em>:</p>
-<blockquote>There’s a separate role that is more along the lines of what you’re saying, called a Technical Artist (that’s what I do)<p>I think graphics programmers benefit from having an artistic mindset, but they usually work so low level that it isn’t necessary to be successful.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bsenftner</em>:</p>
-<blockquote>I was a technical artist for a series of feature films during the early &#x27;00s. At a good studio they&#x27;ll have art and design classes for the tech origin staff and scripting and bash classes for the art origin staff. I was both, and that was a ton of fun.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Atrix256</em>:</p>
-<blockquote>(author of the article)
-100% agree. As others have said, a good graphics programmer works with tech artists and artists. Frankly, graphics programming is largely a role of service to enable those people to do what they want to do, or help create what they envision.
-People mentioned Inigo Quilez as an example of a graphics programmer who is also an artist.  He is a power house and a unicorn.
-I personally like playing music &#x2F; programming audio more, which is a good ground for learning DSP things - useful when for instance, you want to push your rendering noise into the high frequencies, so a low pass filter is more effective at denoising.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Meta loses bid to dismiss US states' claims that FB, Instagram addict children</title>
-      <link>https://www.reuters.com/legal/government/meta-loses-bid-dismiss-us-states-claims-that-facebook-instagram-addict-children-2026-06-30/</link>
-      <guid isPermaLink="false">hn3-48748679</guid>
-      <pubDate>Wed, 01 Jul 2026 15:40:56 +0000</pubDate>
-      <description>163 points, 76 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.reuters.com/legal/government/meta-loses-bid-dismiss-us-states-claims-that-facebook-instagram-addict-children-2026-06-30/"><strong>→ Article</strong></a> <small>(reuters.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48748679">→ HN comments</a> &nbsp;·&nbsp; 163 points &nbsp;·&nbsp; 76 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>everdrive</em>:</p>
-<blockquote>Large groups of people just don&#x27;t know how to solve these sorts of problems. A government will never say &quot;facebook should either not exist or should radically modify its product so that it is no longer successful&quot; At best, they will push for identity verification or age verification.<p>These are not the only two possible courses, but these will be the choices put in front of us. Get used to reading books and going on walks. The internet is almost dead.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>atmavatar</em>:</p>
-<blockquote>It seems a relatively simple first step should be to declare that algorithmic feeds which cater content to individuals render the platform a publisher and thus no longer subject to section 230 protections.</blockquote>
-<p>↳ reply 2 — <em>Zigurd</em>:</p>
-<blockquote>The government regulates plenty of complex products and markets. Software isn&#x27;t that special.</blockquote>
-<p>↳ reply 3 — <em>Towaway69</em>:</p>
-<blockquote>Third option: Facebook changes it&#x27;s business model from data gathering and selling to pay-to-use. Make Insta and FB both be gate communities where folks have to pay to post.<p>Fourth option: product becomes less addictive and the algorithms stop optimising on &quot;angry users click more&quot;. Less advertising profits, perhaps less engagement but probably still profits on advertising.<p>Fifth option: don&#x27;t aim to continually increase profits and instead change the rules of capitalism to be less focused on making &quot;profit at any price&quot; to perhaps a more gentler form. After all, Monopoly(TM) is restarted once one player has all the money, it&#x27;s about time that we do that in real life too or how many more trillionaires do we need?<p>So there are also grey choices here and not only b&#x2F;w.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>1vuio0pswjnm7</em>:</p>
-<blockquote>Sometimes there are HN comment complaining about articles reporting on legal proceedings that fail to include URLs pointing to the documents referenced.  No complaints in this thread so far<p>Here is the order denying Meta&#x27;s motion to dismiss<p><a href="https:&#x2F;&#x2F;ia803204.us.archive.org&#x2F;15&#x2F;items&#x2F;gov.uscourts.cand.472927&#x2F;gov.uscourts.cand.472927.1.0.pdf" rel="nofollow">https:&#x2F;&#x2F;ia803204.us.archive.org&#x2F;15&#x2F;items&#x2F;gov.uscourts.cand.4...</a></blockquote>
-<p><strong>Top #3</strong> — <em>mullingitover</em>:</p>
-<blockquote>The obvious answer to this mess is probably a simple engagement tax.<p>Companies like Facebook and Tiktok are incentivized to behaviorally modify their users in a way that&#x27;s harmful to society: they make more money the longer everyone in society has their face glued to a phone. They&#x27;d be thrilled and printing money as society collapsed into every person staring into a slab of glass 20 plus hours per day.<p>Tax that time directly so it&#x27;s no longer profitable to glue everyone to their phone.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How We Made IPFS Content Publishing 10x Faster</title>
-      <link>https://probelab.io/blog/optimistic-provide/</link>
-      <guid isPermaLink="false">hn3-48748518</guid>
-      <pubDate>Wed, 01 Jul 2026 15:30:35 +0000</pubDate>
-      <description>137 points, 45 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://probelab.io/blog/optimistic-provide/"><strong>→ Article</strong></a> <small>(probelab.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48748518">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 45 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>boramalper</em>:</p>
-<blockquote>Is anyone still (or has anyone ever) used IPFS in production?<p>I’m not talking about technology demos such as Wikipedia-on-IPFS (which indeed worked and was impressive) but where IPFS is actually being relied on for some functionality.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ValdikSS</em>:</p>
-<blockquote>I use it for about 5 years, to publish javascript file (proxy auto-configuration) and serve the contents over different gateways.<p>It is a huge server traffic saver.<p>Used to use it to host different static websites on custom domains while Cloudflare&#x27;s gateway was working, stopped using it for this purpose since its sunset in 2024.<p>Neocities used to publish their websites over IPFS, this feature got broken (for years) and finally got removed: <a href="https:&#x2F;&#x2F;github.com&#x2F;neocities&#x2F;neocities&#x2F;issues&#x2F;352" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;neocities&#x2F;neocities&#x2F;issues&#x2F;352</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ValdikSS</em>:</p>
-<blockquote>Also used it several times for almost-live video broadcasts, served over cloudflare ipfs gateway while it was working.<p>It used HLS with .ts files, in a special way which circumvented cloudflare protection against .mp4 and .ts files, or something along the lines. Don&#x27;t remember the details, but it was a cheap way to deliver your stream to any video player using standard protocols only.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ydj</em>:</p>
-<blockquote>At meta, there was a project for delivering binaries of internally built libraries &#x2F; binaries to dev laptops using a private ipfs network. This was live for at least some period of time.</blockquote>
-<p>↳ reply 3 — <em>errpunktjose</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;swap.cow.fi" rel="nofollow">https:&#x2F;&#x2F;swap.cow.fi</a> uses it for order metadata registering iirc</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>davidwritesbugs</em>:</p>
-<blockquote>Slightly tangential to the article, which seems interesting, but the main issue with IPFS was the horrendous performance of clients which I seem to recall related to having a refresh storms, sparse routing tables, unreachable peers as well as lookup speeds. Mostly the reputation was so bad that people didn&#x27;t bother with it, I dismissed it for my own project. If your only users are crypto-grift projects you&#x27;re in a bad place.</blockquote>
-<p><strong>Top #3</strong> — <em>catapart</em>:</p>
-<blockquote>I&#x27;ll add to the &quot;is it still...?&quot; questions.<p>Last I was told about it, there was no way to delete stuff from IPFS. Nothing enforceable, at least. Setting aside that public stuff is &quot;impossible&quot; to delete on the internet, there&#x27;s something appealing to me about being able to shut off my server. Feels like that is less possible with IPFS hosted content.<p>Does anyone have some perspective for me about removing content?</blockquote>
-<blockquote>
-<p>↳ reply — <em>deno</em>:</p>
-<blockquote>Imagine you created a torrent (and&#x2F;or magnet link) with a file and then stopped seeding after some time. If it was popular it will probably live on, if not then eventually it disappears.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>catapart</em>:</p>
-<blockquote>Thanks! Yeah, I kind of figured that was still the case. Not really any use cases I have that I would feel comfortable with that paradigm, but I&#x27;m glad it&#x27;s available!</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>somat</em>:</p>
-<blockquote>Is that not the same with anything published to the internet. For example I could keep your comment published and available for as long as I had interest in doing so despite any effort you may take to remove it from HN. I mean I guess tech like ipfs and bittorrent try to automate this process(keeping something on the internet as long as there is interest) but you let something out on the internet it could stay there a long while. Or it could go poof and disappear, it depends on how much interest there is in the subject.</blockquote>
-</blockquote>
-</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
