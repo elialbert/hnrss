@@ -4,7 +4,175 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 08 Jul 2026 20:24:51 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 22:13:30 +0000</lastBuildDate>
+    <item>
+      <title>Mistral's Robostral Navigate: a state of the art robotics navigation model</title>
+      <link>https://mistral.ai/news/robostral-navigate/</link>
+      <guid isPermaLink="false">hn3-48832212</guid>
+      <pubDate>Wed, 08 Jul 2026 14:09:17 +0000</pubDate>
+      <description>368 points, 88 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mistral.ai/news/robostral-navigate/"><strong>→ Article</strong></a> <small>(mistral.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48832212">→ HN comments</a> &nbsp;·&nbsp; 368 points &nbsp;·&nbsp; 88 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>HanClinto</em>:</p>
+<blockquote>What is the realistic path to getting to play with this? I would love to hook this up to OpenClaw for hobbyist exploration. My dream has been to embody OpenClaw into a farm robot (been looking at adapting one of those RC lawnmowers that is tracked and built for mowing steep hills) so that I can assign it various tasks around our acreage -- &quot;Explore the fenceline take pictures of the plants. Find all of the poison ivy and invasive honeysuckle and spray it with your Roundup sprayer. Repeat this every week and report the species map after every pass. Come back to the barn and charge yourself whenever you get low.&quot;<p>It&#x27;s not hard to put OpenClaw into a robot body (numerous YouTube videos showing people doing this sort of thing), but when you dig in and see what people have done, the actual movement portion is always the clunkiest part (and this matches my own experiments as-such as well). It feels like an 8B model like this would be perfect for solving pathing and navigation issues.<p>Anyone who may be more experienced with Mistral (or companies like them) -- are they interested in hobbyist builders who would be experimenting with things like this? Or are they primarily looking for commercial partners? I would be willing to pay a license fee to use the model in my experiments, but if I&#x27;m just one guy, I&#x27;m not sure they&#x27;d want to work with me unless I were building a business out of it (which I&#x27;m not).</blockquote>
+<blockquote>
+<p>↳ reply — <em>HanClinto</em>:</p>
+<blockquote>In case anyone else is interested in following along with what I&#x27;ve discovered so far, I went on the Mistral Discord and asked their Miscord bot. Here is what it answered me:<p>Hey there, fellow robot enthusiast! (ﾉ◕ヮ◕)ﾉ:･ﾟ<p>So, you’re itching to get your hands on Robostral Navigate for your OpenClaw hobby project—awesome! Right now, Mistral AI’s official announcement and documentation are primarily* focused on enterprise and industrial partnerships (think Airbus, BMW, etc.). Their blog post and press releases highlight deals with big players, and the call-to-action is to &quot;talk with our team&quot;—which usually means they’re targeting commercial customers for now¹²³⁴.<p>But here’s the good news:
+Robostral Navigate is hardware-agnostic—it’s designed to work with any robot platform, not just industrial ones. That means theoretically, it could fit into your OpenClaw setup like a charm⁵⁶.
+The model only needs a single RGB camera (no LiDAR or depth sensors), which is perfect for hobbyist setups where fancy hardware isn’t always an option⁷⁸.
+The not-so-good news (for now):
+There’s no public hobbyist&#x2F;non-commercial license or open-source release mentioned yet. Mistral’s current messaging is all about &quot;talk with our team&quot;, which implies a commercial-first approach⁹¹⁰¹¹.
+No pricing or licensing tiers for individuals have been announced.<p>---
+What You Can Do:
+Reach Out to Mistral AI
+Hit up their contact page or reply to their Robostral Navigate announcement and explicitly ask about hobbyist&#x2F;non-commercial access. Frame it as:
+&quot;I’m a hobbyist working on OpenClaw + Robostral Navigate for personal experimentation. Would love to discuss licensing options for non-commercial use!&quot;
+Mistral might be open to pilot programs or early access for passionate builders—especially if you’re willing to pay a fee.<p>Join the Community
+Mistral’s Discord (where I live! :smile_cat:) or forums might have updates or workarounds. Sometimes, companies soft-launch access to engaged communities first.<p>Watch for Open-Source Alternatives
+If Mistral doesn’t bite, keep an eye on open-source robotics projects (like ROS or Habitat) that might replicate similar functionality.<p>---
+TL;DR:
+Mistral’s current focus is commercial, but Robostral Navigate’s hardware-agnostic design makes it a perfect fit for hobbyists—so pester them politely! If enough people ask, they might just open the doors. (ﾉ◕ヮ◕)ﾉ*:･ﾟ</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>iandanforth</em>:</p>
+<blockquote>It&#x27;s implied, and I&#x27;m hoping it&#x27;s true, that this is a <i>map-less</i> navigation. Which is impressive. This kind of task is much easier if you have a pre-captured map of the environment, but if they are doing this without a map it&#x27;s great. Historically you were always faced with &quot;The Kidnapped Robot&quot; problem where robots that didn&#x27;t know where they were couldn&#x27;t navigate even a little bit. Here the robot appears to be able to follow directions as long as they are interpretable from its current vision (or via dead reckoning).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>duchenne</em>:</p>
+<blockquote>I am working in Mistral robotics team. I confirm this is map-less. The only inputs are the text prompt and the front camera rgb image.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>iandanforth</em>:</p>
+<blockquote>Nice! Thanks for confirming. If the last instruction is &#x27;go back to where you started&#x27; does it work?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>duchenne</em>:</p>
+<blockquote>Yes, it would work.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pj_mukh</em>:</p>
+<blockquote>Would be extremely interesting to build an &quot;Exploration&quot; node of sorts. Solve a sort of Semantic SLAM problem as you go.<p>So if you can give it an instruction to &quot;Find the elevator on this floor&quot;, could it walk around and build a map as it goes so it starts doing what a human would do to find the elevator.<p>As of now, the way these navigation models are setup, it assumes the instruction writer was intimately aware of useful visual navigational landmarks to give, which is not realistic for most use cases.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>BrandiATMuhkuh</em>:</p>
+<blockquote>That is so awesome. I wish I had that 11 years ago during my Microsoft Research Internship. I had a NAO robot (from another great French company) and it walked to employees to motivate them to do some movements. To prevent long term injuries from being in the same position for too long. 
+It had a visual compass but it didn&#x27;t work. And just telling to &quot;walk straight&quot; clearly didn&#x27;t work :D 
+Here is the video in case someone is curious: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=aZkmNqpJCcM&amp;t=190s" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=aZkmNqpJCcM&amp;t=190s</a> (and the paper: <a href="https:&#x2F;&#x2F;brandstetter.io&#x2F;papers&#x2F;Fidgebot_Working_Out_while_Working.pdf" rel="nofollow">https:&#x2F;&#x2F;brandstetter.io&#x2F;papers&#x2F;Fidgebot_Working_Out_while_Wo...</a>)</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>FDA rejects petition to set PFAS limits in food</title>
+      <link>https://www.theguardian.com/us-news/2026/jul/08/us-food-and-drug-administration-rejects-petition-to-set-pfas-limits-in-food</link>
+      <guid isPermaLink="false">hn3-48831785</guid>
+      <pubDate>Wed, 08 Jul 2026 13:35:59 +0000</pubDate>
+      <description>196 points, 136 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theguardian.com/us-news/2026/jul/08/us-food-and-drug-administration-rejects-petition-to-set-pfas-limits-in-food"><strong>→ Article</strong></a> <small>(theguardian.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48831785">→ HN comments</a> &nbsp;·&nbsp; 196 points &nbsp;·&nbsp; 136 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>seethishat</em>:</p>
+<blockquote>Doing whole blood donations seems to significantly reduce PFAS in the blood. Here&#x27;s one paper:<p><a href="https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamanetworkopen&#x2F;fullarticle&#x2F;2790905" rel="nofollow">https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamanetworkopen&#x2F;fullarticle...</a><p>Edit: This also helps others who are in accidents, car wrecks, have Cancer, etc. Yes, we pass on the PFAS to others, but the immediate need for blood is more urgent than the potential long term impacts of PFAS.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>SoftTalker</em>:</p>
+<blockquote>Bloodletting making a comeback? And having actual benefits this time?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>lesuorac</em>:</p>
+<blockquote>There&#x27;s kinda a significant difference between bloodletting and blood donation.<p>For starters, you&#x27;re not supposed to donate blood when you&#x27;re sick.<p>The other being the quantity. A donation is 1-2 pints. Wikipedia lists bloodletting as easily 3 pints [1].<p>[1]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Bloodletting#Use_in_the_1600s_through_the_19th_century" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Bloodletting#Use_in_the_1600s_...</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>lelandfe</em>:</p>
+<blockquote>Although PFAS is helping bloodletting make a comeback <a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;uk-news&#x2F;2025&#x2F;jan&#x2F;16&#x2F;bloodletting-recommended-for-jersey-residents-after-pfas-contamination" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;uk-news&#x2F;2025&#x2F;jan&#x2F;16&#x2F;bloodletting...</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>JCharante</em>:</p>
+<blockquote>I used to donate blood regularly but now that I&#x27;m in Japan they require me to be decently fluent in Japanese to &quot;understand&quot; the risks, despite having done it a bunch of times in other countries (and other medical procedures not requiring Japanese knowledge).</blockquote>
+<p>↳ reply 3 — <em>hombre_fatal</em>:</p>
+<blockquote>My girlfriend accidentally told the donation center she went to Mexico, and they banned her from donating for four years.<p>Apparently you&#x27;d only go to Mexico to eat brain tacos and share needles with cows. Surely there&#x27;s a better way to filter out risky blood.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>rayiner</em>:</p>
+<blockquote>The EPA first issued health advisories around PFASs in 2009. Why didn’t these folks file this petition sometime during the 12 years since then where it likely would’ve gotten a more favorable reception?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>John23832</em>:</p>
+<blockquote>Because we learned more, gathered more public concern, and then acted?<p>If there’s not a eureka moment of knowledge, should we do nothing?</blockquote>
+<p>↳ reply 2 — <em>abracadaniel</em>:</p>
+<blockquote>I feel like most people hadn’t heard about them until a couple of years ago.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>feverzsj</em>:</p>
+<blockquote>EPA already set a Maximum Contaminant Level of 4.0 ppt. That&#x27;s why they moved most PFAS production to China.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>fcarraldo</em>:</p>
+<blockquote>In drinking water, yes. And the EPA coordinated a &quot;voluntary&quot; phase-out of PFAS in packaging, but it is not enforced.<p>Is there a limit in food, which is what this petition was about?</blockquote>
+<p>↳ reply 2 — <em>toomuchtodo</em>:</p>
+<blockquote>Another issue is that sewage sludge and &quot;biosolids&quot;, unknowingly containing PFAS, is&#x2F;was being used as farm fertilizer, causing some farms to have to be written off for food production. I would expect many more farms in the future to be found with PFAS soil levels exceeding what is safe to produce food with. The only way to find out is to test.<p><i>Maine listened to farmers and confronted the PFAS crisis</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47509448">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47509448</a> - February 2026 (0 comments)<p><i>Maine Is a Warning for America&#x27;s PFAS Future</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40007582">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40007582</a> - April 2024 (0 comments)<p><i>Toxic Chemical Contaminant PFAS Found on Maine Farms</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=20142212">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=20142212</a> - June 2019 (1 comment)<p>&gt; The practice of spreading sludge as a soil amendment has been a common practice in Maine and across the nation for decades. Land application of sludge material occurred long before there was knowledge that it may contain PFAS or the health implications of PFAS.<p><i>EPA Fact Sheet: Draft Sewage Sludge Risk Assessment for PFOA and PFOS: Information for Farmers</i> - <a href="https:&#x2F;&#x2F;www.epa.gov&#x2F;system&#x2F;files&#x2F;documents&#x2F;2025-01&#x2F;fact-sheet-farmers-draft-sewage-sludge-risk-assessment-pfoa-pfos.pdf" rel="nofollow">https:&#x2F;&#x2F;www.epa.gov&#x2F;system&#x2F;files&#x2F;documents&#x2F;2025-01&#x2F;fact-shee...</a> - January 2025<p><i>EPA Basic Information about Biosolids</i>: <a href="https:&#x2F;&#x2F;19january2021snapshot.epa.gov&#x2F;biosolids&#x2F;basic-information-about-biosolids_.html" rel="nofollow">https:&#x2F;&#x2F;19january2021snapshot.epa.gov&#x2F;biosolids&#x2F;basic-inform...</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OpenBSD has a use-after-free allowing local privilege escalation to root</title>
+      <link>https://nvd.nist.gov/vuln/detail/cve-2026-57589</link>
+      <guid isPermaLink="false">hn3-48831658</guid>
+      <pubDate>Wed, 08 Jul 2026 13:24:52 +0000</pubDate>
+      <description>230 points, 106 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://nvd.nist.gov/vuln/detail/cve-2026-57589"><strong>→ Article</strong></a> <small>(nvd.nist.gov)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48831658">→ HN comments</a> &nbsp;·&nbsp; 230 points &nbsp;·&nbsp; 106 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Tiberium</em>:</p>
+<blockquote>Seems to be found as a part of Patch The Planet [0] which is basically OpenAI giving model access and Trail of Bits using them to find vulnerabilities in OSS projects.<p>[0] <a href="https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;patch-the-planet&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;patch-the-planet&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>TacticalCoder</em>:</p>
+<blockquote>Sidenote but... I read this on that link:<p>dnsmasq: Codex Security independently identified vulnerable patterns corresponding to four of the six dnsmasq CVEs later fixed in 2.92rel2: CVE-2026-4890 (opens in a new window), CVE-2026-4891 (opens in a new window), CVE-2026-4892 (opens in a new window), and CVE-2026-517<p>dnsmasq has had so many freaking security holes in 2025 and 2026 that atm I decided to just remove that thing from all my machines.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>nubinetwork</em>:</p>
+<blockquote>I would love to, but apparently its needed for libvirt.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Arubis</em>:</p>
+<blockquote>OpenBSD&#x27;s security stance being the stuff of legend, I&#x27;m curious how many vulns have been found over the last couple months while the big model companies are flaunting their ability to find exploits. It&#x27;d be super cool to see it remain tiny.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>wahern</em>:</p>
+<blockquote>According to <a href="https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;patch-the-planet&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;patch-the-planet&#x2F;</a><p>Linux: 24 LPEs, plus many additional vulnerabilities.<p>OpenBSD: 1 LPE.<p>FreeBSD: 7 LPEs, plus many additional vulnerabilities.<p>Not sure what that says, though. Perhaps the models are more likely to find Linux issues because of the training.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>_flux</em>:</p>
+<blockquote>I wonder how many of the Linux the LPEs are related to drivers, which I understand there are more of..</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ectospheno</em>:</p>
+<blockquote>The commit logs over the last few months have highlighted when an issue was found by a program. They usually name the submitter and the tool.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>uticus</em>:</p>
+<blockquote>&gt; Only two remote holes in the default install, in a heck of a long time!<p><a href="https:&#x2F;&#x2F;www.openbsd.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.openbsd.org&#x2F;</a><p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenBSD#Security_record" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenBSD#Security_record</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>anonym29</em>:</p>
+<blockquote>LPE (to root) is serious, but it&#x27;s not a remote hole.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ptx</em>:</p>
+<blockquote>Is this functionality accessible from sandboxed processes? That would make a remote hole much more dangerous when one is found, anyway. The CVE seems to concern SysV semaphores and the pledge(2) man page doesn&#x27;t seem to mention those.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>brynet</em>:</p>
+<blockquote>No.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;openbsd&#x2F;src&#x2F;blob&#x2F;d5b0ed23b6fe61f0278c37a42144770d19494ee7&#x2F;sys&#x2F;kern&#x2F;kern_pledge.c#L91" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;openbsd&#x2F;src&#x2F;blob&#x2F;d5b0ed23b6fe61f0278c37a4...</a><p>Perhaps relevant, Students from the University of Southern Denmark released a paper earlier this month, which once again noted the fact that over ~90% of the OpenBSD base system uses pledge(2). Almost certainly all of the network speaking daemons in base do.<p><a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2607.03056" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2607.03056</a></blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Cloudflare Meerkat - Globally distributed consensus</title>
+      <link>https://blog.cloudflare.com/meerkat-introduction/</link>
+      <guid isPermaLink="false">hn3-48831565</guid>
+      <pubDate>Wed, 08 Jul 2026 13:18:03 +0000</pubDate>
+      <description>191 points, 41 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/meerkat-introduction/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48831565">→ HN comments</a> &nbsp;·&nbsp; 191 points &nbsp;·&nbsp; 41 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>m11a</em>:</p>
+<blockquote>This article is a bit hard for me to grasp the main ideas of because, given Cloudflare&#x27;s requirements (e.g. no strong leaders), it immediately seems like they should be comparing to leaderless protocols like Paxos-class algorithms. Comparing to Raft and saying it&#x27;s better because Meerkat is leaderless is confusing, because Raft is an adjustment to Paxos to specifically have strong leaders. So I&#x27;m 3&#x2F;4 the way into the article and I don&#x27;t see what&#x27;s unique here.<p>I think the unique idea here is supposed to be QuePaxa&#x27;s idea of avoiding timeouts for ensuring liveness. The actual discussion of QuePaxa is limited to one paragraph at the end, and tbh only a couple sentences of that paragraph.<p>I feel like the article could&#x27;ve been titled &quot;Consensus protocols and linearizability: a brief explainer&quot;, or &quot;Paxos vs Raft&quot;, or similar. It just doesn&#x27;t feel like it communicates what it claims to communicate, and is a bit confused on who its audience is, just IMO.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>michaelmior</em>:</p>
+<blockquote>Worth noting if it wasn&#x27;t obvious from the article that Cloudflare did not develop QuePaxa. It&#x27;s from an SOSP paper back in 2023[0]. The article is discussing what is the first known large-scale public deployment of the protocol.<p>[0] <a href="https:&#x2F;&#x2F;dl.acm.org&#x2F;doi&#x2F;10.1145&#x2F;3600006.3613150" rel="nofollow">https:&#x2F;&#x2F;dl.acm.org&#x2F;doi&#x2F;10.1145&#x2F;3600006.3613150</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>m11a</em>:</p>
+<blockquote>Right. But given that the entire point revolves around QuePaxa, it&#x27;s strange to see no discussion on it. If that weren&#x27;t the point, the article would be &quot;Why Cloudflare implemented and deployed Paxos&quot;.<p>Which would also be a good read, but this article also isn&#x27;t that. It doesn&#x27;t discuss their experience deploying the protocol, aside from the following statement:<p>&gt; Meerkat is not deployed to production, but we have run multiple proofs-of-concept with up to 50 replicas distributed around the world, to great success. Leaders in our proof-of-concept clusters constantly fail, and the cluster keeps operating with no increase in error-rate.<p>I think it would&#x27;ve been more interesting to read why Cloudflare chose the specific algorithm they did, see an example of a pathological but common situation Cloudflare sees at their scale that makes other protocols unsuitable for them, therefore they made X choice and this led to Y gains in production (or on dummy workloads, or whatever). As it stands, there&#x27;s nothing here actually specific to Cloudflare&#x27;s workload or deployment. It doesn&#x27;t even state their use-case beyond &quot;small pieces of control plane state (e.g., leadership for replicated databases)&quot;</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>buremba</em>:</p>
+<blockquote>It feels like somebody prompted an AI agent at CF &quot;why Meerkat is better than Raft&quot; when drafting this blog post.</blockquote>
+<p>↳ reply 3 — <em>pstoll</em>:</p>
+<blockquote>Agreed on - it took a long time to get to the “so what is new here” vs the broader topic of distributed consensus. Stylistically would prefer more upfront “here is what is novel here”</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>advisedwang</em>:</p>
+<blockquote>This sounds like a very direct approach to linearizability - just put everything in a linear order.<p>But this includes READ operations too! You have to get global consensus for every read! Most distributed systems have additional complexity and latency on write paths so that reads can be completely local. If you can accept slow read operations this seems like a great trade off, but I think that is going to relegate this to niece usage.</blockquote>
+<p><strong>Top #3</strong> — <em>nano_o</em>:</p>
+<blockquote>What&#x27;s interesting here is that this would be the first production implementation of an asynchronous consensus algorithm (QuePaxa). Paxos, Raft, etc. are all partially synchronous, meaning they rely on timeouts and only make progress if message delay is sufficiently small compared to timeout durations. QuePaxa doesn&#x27;t rely on timeouts and makes progress even under wild fluctuations in message delay. The question is whether performance is competitive enough in the normal case, when message delay is small and doesn&#x27;t vary much, and historically the answer has been &quot;no&quot; and that&#x27;s why asynchronous protocols weren&#x27;t used.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>It seems that the age of reading might be a short anomaly in human history</title>
       <link>https://www.theatlantic.com/magazine/2026/08/reading-crisis-postliterate-age/687618/</link>
@@ -3529,122 +3697,6 @@ Its really amazing what can be pressed into a single html these days.</blockquot
 <p>↳ reply 2 — <em>toast0</em>:</p>
 <blockquote>&gt; failing to install Windows 2000 RC3 on a DEC Alphastation 600. My friends and I were scratching our heads when somebody figured out that RC2 (the build referenced in this blog post) was the last Windows build to support Alpha.<p>If you had seen the RC2 disks, it would have been obvious. RC2 had different disks for Intel and Alpha, RC3 only had Intel disk(s). NT4 had all archs on the same disk, so it would have made some sense to be confused.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Phosh 0.56.0</title>
-      <link>https://phosh.mobi/releases/rel-0.56.0/</link>
-      <guid isPermaLink="false">hn3-48794179</guid>
-      <pubDate>Sun, 05 Jul 2026 13:28:11 +0000</pubDate>
-      <description>136 points, 59 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://phosh.mobi/releases/rel-0.56.0/"><strong>→ Article</strong></a> <small>(phosh.mobi)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48794179">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 59 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>vzaliva</em>:</p>
-<blockquote>This is a good example of a poor web site design. If you, like me, do not know what Phosh is and go to their website, it will tell you not much beyond &quot;A user interface for your mobile phone,&quot; which could mean pretty much anything. Is it a UI level on top of Android? Is it an idependent mobile OS? How it is better that competition? What are key features and design goals?</blockquote>
-<blockquote>
-<p>↳ reply — <em>afavour</em>:</p>
-<blockquote>I think it’s more a failing of a link aggregator site like this one dropping you into a release announcement page without context. If you don’t already know what Phosh is, why would you read their 0.56.0 announcement? Normally you wouldn’t. But here we are. Putting “The Phosh project aims to provide a daily-usable, robust and easy to use graphical user environment for mobile devices running mainline Linux” on every release page feels like a waste of time.<p>As it is I didn’t find it at all difficult to find the answers to your questions by going to the “about page”.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jarbus</em>:</p>
-<blockquote>Linux has long been the most practical laptop OS for me, but I can&#x27;t see it ever being competitive with mobile OSes, and that&#x27;s coming from someone who wants it to succeed (I&#x27;ve installed postmarketOS on a OP6T). I just don&#x27;t see how it will overcome the various issues (app support, tap-to-pay, camera quality, etc).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ryukafalz</em>:</p>
-<blockquote>I&#x27;ve never understood tap-to-pay being a dealbreaker issue. It takes me just as long to pull out my credit card as it does to pull out my phone, and you can use them on the exact same terminals.<p>App support and camera quality I can understand more. I&#x27;m on a Linux phone using Phosh (FLX1s), and there&#x27;s Android app compatibility, but it is a little rough (and of course things that rely on Play Integrity won&#x27;t work). I&#x27;ve managed to avoid tying myself to anything that requires Google for now, but I acknowledge that I&#x27;m lucky there.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>chompychop</em>:</p>
-<blockquote>With tap-to-pay, you can store multiple cards in your digital wallet, and you don&#x27;t have to remember any of their PINs. You can use your fingerprint to sign transactions. I believe this makes it faster.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>KoolKat23</em>:</p>
-<blockquote>There&#x27;s also thresholds where a simple tap of a card won&#x27;t work and you need to insert the chip, not the case with the phone. Phone is much much easier, don&#x27;t even have to open the wallet app, just unlock the phone with your fingerprint and tap.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>not_your_vase</em>:</p>
-<blockquote>As long as every phone distro is just a desktop distro shoehorned on a small screen, that&#x27;s not gonna happen.<p>IMO it&#x27;s not a matter of tap to pay and camera quality, rather a matter of whole system paradigm. Having millions of disconnected services in the &quot;do one thing and do it right&quot; spirit and using text based communication and hundreds of python and shell scripts is relatively maintainable and relatively easy to use, but very inefficient when it comes to CPU cycles - and on a handheld every cycle counts.<p>And of course every app is optimized for desktops&#x2F;laptops... but I guess that&#x27;s a chicken-or-egg problem: once there is a working distro, there will be apps too. And once there will be apps to use, there will be a working distro. Maybe.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>hirako2000</em>:</p>
-<blockquote>The fact I thought it was a custom UI over stock android means they got this well rounded.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Cannabis users face substantially higher risk of heart attack (2025)</title>
-      <link>https://www.acc.org/about-acc/press-releases/2025/03/17/15/35/cannabis-users-face-substantially-higher-risk</link>
-      <guid isPermaLink="false">hn3-48793492</guid>
-      <pubDate>Sun, 05 Jul 2026 11:59:27 +0000</pubDate>
-      <description>150 points, 207 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.acc.org/about-acc/press-releases/2025/03/17/15/35/cannabis-users-face-substantially-higher-risk"><strong>→ Article</strong></a> <small>(acc.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48793492">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 207 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>teekert</em>:</p>
-<blockquote>I wonder about all the confounding effects. In my country (famous for cannabis to be easy to come by (for decades already), and I saw many smoke from age 16 up as I grew up in 90&#x27;s, 00&#x27;s). I have always felt that the heavy cannabis smokers had something to compensate; stress, unrest, impending depression, friction with parents. It was never the healthy sporty types with fulfilling relationships, good grades or a nice career that smoke cannabis heavily (like daily). Sure, some of those smoked, but more occasionally.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dubeye</em>:</p>
-<blockquote>this is true of most risk factors though, diet, excercise, relationships, work , all suffer under stress. it&#x27;s the job of medical reseach to sift this stuff as best they can.</blockquote>
-<p>↳ reply 2 — <em>basisword</em>:</p>
-<blockquote>Yeah I think for any of the significant pot smokers I&#x27;ve known it&#x27;s a way of avoiding other issues. As a positive it&#x27;s probably much better they descend into pot than alcohol which I&#x27;m sure many would if it was the only other easy coping mechanism.</blockquote>
-<p>↳ reply 3 — <em>uwagar</em>:</p>
-<blockquote>It was never the healthy sporty types with fulfilling relationships, good grades or a nice career that smoke cannabis heavily (like daily)<p>^^ many of those are boring people.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>kovacs_x</em>:</p>
-<blockquote>6x sounds too clickbaity.<p>but sure, still lets make to account by other &quot;legal&quot; substances (alco, tobacco, cocaine, pharmaceutics and other &quot;lifestyle choices&quot; infecting cardiovascular system)
-and way they are consumed(smoked, ingested, pure or with say tobacco)<p>would love see data for a group who consumes cannabis by ingestion and especially not via smoking!<p>also- do they differ different thc&#x2F;cbd grades used (high&#x2F;low thc, &quot;medical&quot;)?<p>im regards &quot;research demonstrates something does this..&quot; for many years alcohol was considered &quot;healthier&quot; over non consumption, just becauses non-drinkers were together with those of abstinent ex-alcholics.. thus average score was lower than for those who drunk minimal amounts and were considered &quot;healthier&quot;.</blockquote>
-<p><strong>Top #3</strong> — <em>acc_297</em>:</p>
-<blockquote>The study controlled for general health but I would note that the odds-ratio reported for cannabis use (4-6) is not so different from the odds-ratio associated when studying high vs. low income cohorts (3-5). This study is not a random blinded clinical trial it&#x27;s reporting a trend present in ~5 million electronic health records which I assume record yes&#x2F;no to patients ever telling a doctor they have used cannabis.<p>I would assume that cannabis use correlates with a few other important heart health variables and we would expect the odds ratio to be lower when accounting for those (alcohol doesn&#x27;t have an OR more than 1.0, tobacco smoking ~1.5)<p>I&#x27;m sure that cannabis use is bad for cardio health but the reported odds ratio is very high. I personally do not use cannabis.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Introduction to Compilers and Language Design (2021)</title>
-      <link>https://dthain.github.io/books/compiler/</link>
-      <guid isPermaLink="false">hn3-48793454</guid>
-      <pubDate>Sun, 05 Jul 2026 11:54:16 +0000</pubDate>
-      <description>241 points, 42 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://dthain.github.io/books/compiler/"><strong>→ Article</strong></a> <small>(dthain.github.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48793454">→ HN comments</a> &nbsp;·&nbsp; 241 points &nbsp;·&nbsp; 42 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>userbinator</em>:</p>
-<blockquote>I don&#x27;t know if any courses have referenced it yet, but I think C4 (<a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=8558822">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=8558822</a>) and C4x86 (<a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=8746054">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=8746054</a>) would make for a great semester&#x27;s worth of study; it&#x27;s a tiny, <i>self-compiling</i> C-subset compiler that would probably make a good base for further exercises in extending it.</blockquote>
-<p><strong>Top #2</strong> — <em>shuyang</em>:</p>
-<blockquote>Took Dr. Thain&#x27;s compilers class in college! It was the best. He&#x27;s an excellent instructor, and the course project made me build a working C-style compiler step by step. I think the sample project here is pretty much the project we did; highly recommend following through the entire thing!</blockquote>
-<blockquote>
-<p>↳ reply — <em>coreyp_1</em>:</p>
-<blockquote>Dr. Thain is great!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>dang</em>:</p>
-<blockquote>Related:<p><i>Introduction to Compilers and Language Design (2021)</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=31388741">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=31388741</a> - May 2022 (68 comments)<p><i>Introduction to Compilers and Language Design</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=19728749">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=19728749</a> - April 2019 (1 comment)</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>EU Council forces Chat Control via fast-track</title>
-      <link>https://www.heise.de/en/news/Chat-Control-1-0-EU-Council-forces-messenger-scans-via-fast-track-11353659.html</link>
-      <guid isPermaLink="false">hn3-48793393</guid>
-      <pubDate>Sun, 05 Jul 2026 11:44:04 +0000</pubDate>
-      <description>344 points, 193 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.heise.de/en/news/Chat-Control-1-0-EU-Council-forces-messenger-scans-via-fast-track-11353659.html"><strong>→ Article</strong></a> <small>(heise.de)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48793393">→ HN comments</a> &nbsp;·&nbsp; 344 points &nbsp;·&nbsp; 193 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>neobrain</em>:</p>
-<blockquote>For context, this refers to &quot;Chat Control 1.0&quot;, allowing facebook and other messaging providers to scan chats for harmful content (which they had been <i>temporarily</i> allowed to do by a recently expired law).<p>This is still problematic, but the far more dangerous Chat Control 2.0 that would weaken end-to-end-encrypted messengers like Signal is not being discussed here.<p>Not to diminish the gravity of the new development, but the defeatist &quot;no way to prevent this&quot; narratives that are already popping up here are getting old -- when in fact it looks like 2.0 is off the table for good because protest against it has proven effective.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tremon</em>:</p>
-<blockquote>That exemption had an expiration date for a reason. That they failed to consolidate that practice into a better law does not make forcefully overriding that expiration any more democratic.</blockquote>
-<p>↳ reply 2 — <em>riedel</em>:</p>
-<blockquote>I think the problem is really that law enforcement have got used to outsourcing this kind of policing to private operated platforms (at least here in Germany). I was actually at the local police station because I notified them via an online mechanism  about sth that looked very CSAM to me in a random forum tracking some gossip&#x2F;Internet meme (actually I did not really look further than a title because that can be already illegal). Just dropping the link (which I thought would be just auto scanned and sent into some central pool), led to the fact that I had to go there in person, wait and  had to listen to a speech about the fact that it can be easily illegal to be in certain places in the Internet and that I should be careful because I had a daughter in the age.  It was almost that they are threatening me. They told me that all the CSAM stuff anyways comes through the provider and that they would do raids if needed.  They cannot do much anyhow on the state level if they do not get the local ISP and IP delivered.
-It felt rather absurd and somewhat scary&#x2F;dystopian that there are Internet companies that sent cops out to do raids based on some IP. According to the police officer it seemed very effective.</blockquote>
-<p>↳ reply 3 — <em>JensRantil</em>:</p>
-<blockquote>Thanks for clarifying this!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mdp2021</em>:</p>
-<blockquote>Do also see:<p># Italy warns against Chat Control mass surveillance, but votes in favour of it (digitalcourage.social)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48783340">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48783340</a><p>Do, because already there nuances (towards the better or worse) are revealed, which are not evident in journalism as we have it. The whole story needs more investigation than the stubs.<p>But the way they are managing it in the workflow does not seem too linear...</blockquote>
-<blockquote>
-<p>↳ reply — <em>stavros</em>:</p>
-<blockquote>&quot;We are in favour of this law, so long as it is not used for its intended purpose.&quot;</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mdp2021</em>:</p>
-<blockquote>You should elaborate. And explain what you understood as &quot;its intended purpose&quot;.<p>My understanding of the vote last Friday was about protracting the 2021 temporary compromise (scan voluntarily until we have a full law), which was suspended at the beginning of April. It is not clear how they proceeded that way. It seems some vertices imposed that they would not accept a legal vacuum there. So, it&#x27;s not a &quot;law&quot;. What ran for the past five years was an &quot;exception to privacy laws&quot; (I am not informed of the mandated guardrails).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>pessimizer</em>:</p>
-<blockquote>I regret to inform you that a temporary exception to a law is also a law.<p>edit:<p>&gt; It seems some vertices imposed that they would not accept a legal vacuum there.<p>I find this sentence unintelligible. Can you come up with another wording? And who are these &quot;vertices&quot; who have been given approval rights over EU legislation?</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>anthk</em>:</p>
-<blockquote>This is illegal in Spain.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
