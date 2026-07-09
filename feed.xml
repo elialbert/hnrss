@@ -4,7 +4,105 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 09 Jul 2026 12:11:46 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 16:06:02 +0000</lastBuildDate>
+    <item>
+      <title>Postgres rewritten in Rust, now passing 100% of the Postgres regression tests</title>
+      <link>https://github.com/malisper/pgrust</link>
+      <guid isPermaLink="false">hn3-48841676</guid>
+      <pubDate>Thu, 09 Jul 2026 06:18:19 +0000</pubDate>
+      <description>172 points, 222 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/malisper/pgrust"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48841676">→ HN comments</a> &nbsp;·&nbsp; 172 points &nbsp;·&nbsp; 222 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gingersnap</em>:</p>
+<blockquote>I start to see a lot of these re-writes that depend on tests to state that its working. But the things that make software like Postgres and SQLite reliable are not mostly the test, but the real world production scars. That&#x27;s where the reliability comes from, years and years of running in production.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sshine</em>:</p>
+<blockquote>&gt; <i>not mostly the test, but the real world production scars</i><p>Most extensive test suites are exactly production scars: every time you have a bug or a regression, you write a test that confirms correct behaviour.<p>SQLite is a good example to bring up because its extensive closed-source tests are what’s often cited as being what keeps people from forking it. (Turso did it, though, but it takes a company to deliver some guarantee of equivalent diligence.)<p>And yes, years and years of running.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kelnos</em>:</p>
+<blockquote>Sure, but behaviors that never have a bug or regression don&#x27;t get a test.  Software of this kind of complexity has all kinds of behavior that has never been broken, and doesn&#x27;t have a specific test written for it.<p>Getting an extensive test suite passing is certainly orders of magnitude better than having no test suite at all, but it still doesn&#x27;t tell you as much as you need to know.  I would absolutely never trust an LLM Postgres rewrite (in any language) in production based on &quot;only&quot; Postgres&#x27;s test suite passing.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bob1029</em>:</p>
+<blockquote>&gt; Software of this kind of complexity has all kinds of behavior that has never been broken<p>This space of things is astronomically larger than the space of things expressly covered by any test suite.<p>&quot;Program testing can be used to show the presence of bugs, but never to show their absence.&quot; -Edsger W. Dijkstra</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>thunderbong</em>:</p>
+<blockquote>I agree. I also agree with the sibling reply that -<p>&gt; every time you have a bug or a regression, you write a test that confirms correct behaviour.<p>What I fail to see in these rewrites however is - what about <i>new bugs</i> introduced by virtue of this rewrite? I mean it&#x27;ll have to go through its own challenges in real-world scenarios, right?</blockquote>
+<p>↳ reply 3 — <em>xlii</em>:</p>
+<blockquote>As sibling mentioned - bugs and regressions are the thing that are (in a perfect world) usually covered.<p>The problem however is non-covered success cases. A visualisation of the problem: let&#x27;s say universe of interaction for DB consists of 10.000 SQL queries. Over 10 years various regressions were found and 2.000 SQL queries are guarded by tests.  In reference implementation remaining 8.000 never surfaced over this time and it&#x27;s unclear if they will work.<p>And, thinking of how many various SQL queries PostgreSQL users around the world are using vs the test cases covered it&#x27;s obvious that feature space isn&#x27;t covered in 1% of the success ratio cases.<p>Now the new, test-based implementation, has to prove it can handle remaining 99%.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>malisper</em>:</p>
+<blockquote>Hey author here. Wasn&#x27;t expecting to see this up.<p>To concisely give an overview of the project, I&#x27;ve been experimenting with using LLMs to build a better version of Postgres. Postgres is 30 years old and we&#x27;ve learned a lot about databases since hten. A lot of the techniques that work for doing a rewrite are also useful for doing a rearchitecture.<p>I&#x27;m now working on a new, not yet published version of pgrust that incorporates a lot of techniques. Currently the new version:<p><pre><code>  - Passes 100% of Postgres regression suite
+  - Implements a thread per connection model instead of the process per connection model Postgres does
+  - Is 50% faster than Postgres on transaction workloads
+  - Is ~300x faster than Postgres on analytical workloads. Right now it&#x27;s 2x slower than Clickhouse on clickbench and I think it&#x27;s possible to get faster than Clickhouse
+</code></pre>
+If you have any questions, I&#x27;m happy to answer them.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gnull</em>:</p>
+<blockquote>What was your methodology and structure in making the prompts for the rewrite? Did you let the LLM roam in all of the codebase and tests from the beginning, or revealed things to it gradually in some way?</blockquote>
+<p>↳ reply 2 — <em>boomskats</em>:</p>
+<blockquote>This is great! Those analytical workloads numbers are mad - I&#x27;d love to see the benches, and I&#x27;m happy to contribute to some of the profiling.<p>How does your thread-per-connection model compare to Heikki&#x27;s proposal[0][1] from back in 2023?<p>[0]: <a href="https:&#x2F;&#x2F;www.postgresql.org&#x2F;message-id&#x2F;31cc6df9-53fe-3cd9-af5b-ac0d801163f4%40iki.fi" rel="nofollow">https:&#x2F;&#x2F;www.postgresql.org&#x2F;message-id&#x2F;31cc6df9-53fe-3cd9-af5...</a>
+[1]: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=xLLakMmVtbY" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=xLLakMmVtbY</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>dirkc</em>:</p>
+<blockquote>How would one go about reviewing a piece of code like this?<p>One of the things I&#x27;d typically do is peek at the commit history. Seeing what people worked on and how they did it tends to say a lot about a project. But with LLMs generating 7101 commits in less than a month that isn&#x27;t feasible. Even looking at a single day is way too much [1]. It probably also doesn&#x27;t make sense since the commits content won&#x27;t tell you much anyway.<p>ps. How do you easily get to the first commit in a repo on GitHub? Browsing commit history feels rather tedious<p>[1] - <a href="https:&#x2F;&#x2F;github.com&#x2F;malisper&#x2F;pgrust&#x2F;commits&#x2F;main&#x2F;?since=2026-06-12&amp;until=2026-06-13" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;malisper&#x2F;pgrust&#x2F;commits&#x2F;main&#x2F;?since=2026-...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bakugo</em>:</p>
+<blockquote>Vibe code was never meant to be reviewed.<p>These rewrites are just test-driven development taken to the absolute extreme. Created under the hope that the existing tests are exhaustive and cover every relevant use case, such that if they all pass, the rewrite must be at least as good as the original. So just go with the vibes and burn tokens until they pass, and your job is done.<p>In practice, this is never true for any codebase above a certain level of complexity, especially not one as mature and widely used as Postgres. But reality doesn&#x27;t seem to be an obstacle for vibe coders.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dirkc</em>:</p>
+<blockquote>The challenge is that more and more people are producing project like this - 1,000s of commits and &gt; 200k lines of code - and saying it was carefully created using agent based workflows and not vibe coded.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>HPsquared</em>:</p>
+<blockquote>In that case they need to document the process and workflow, and demonstrate the care that was taken.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>egorfine</em>:</p>
+<blockquote>&gt; How would one go about reviewing a piece of code like this?<p>That&#x27;s a wrong question. The right question is &quot;why would one go about rewriting a piece of code in X&quot;. Once and if you find a good answer to that question, you will see the answer to your&#x27;s.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Spider venom kills varroa mites without harming honeybees</title>
+      <link>https://connectsci.au/news/news-parent/9703/Spider-venom-kills-varroa-mites-without-harming</link>
+      <guid isPermaLink="false">hn3-48841259</guid>
+      <pubDate>Thu, 09 Jul 2026 05:14:45 +0000</pubDate>
+      <description>237 points, 103 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://connectsci.au/news/news-parent/9703/Spider-venom-kills-varroa-mites-without-harming"><strong>→ Article</strong></a> <small>(connectsci.au)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48841259">→ HN comments</a> &nbsp;·&nbsp; 237 points &nbsp;·&nbsp; 103 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>worldvoyageur</em>:</p>
+<blockquote>I grew up on a farm on which the apiary and all connected with it was a major part of the farm&#x27;s output.  Honey, beeswax, nukes (a queen and 10K or so worker bees as a starter colony, sold to other apiaries in the spring if they&#x27;d had too many winter losses), fertilizing services (drop a couple colonies off at a berry farm after dark, pick the colonies up two weeks later, profit!) and other products.<p>It&#x27;s been over ten years since I spent any serious time with bees, but the bees themselves did a great job on the varroa mites.  Sentinel bees at the hive entrance would pick the mites off the incoming bees.  The problem was if the colony had a solid floor the mites would just climb back onto the next bee that passed nearby.  If the solid colony floor was replaced with a mesh, the mites would fall through to the ground below while the bees could still go about their business.<p>We would still sometimes treat for varroa, but making it easier for the bees to handle varroa how they had evolved to was the first line of defence.<p>This was Canada, regular Italian bees, hard winter kills of whatever wasn&#x27;t properly winterized.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ct0</em>:</p>
+<blockquote>There is recent article from scientific beekeeper that goes into detail about these using their own venom as a cleaning agent.</blockquote>
+<p>↳ reply 2 — <em>andai</em>:</p>
+<blockquote>Fascinating, thanks. What does winterization involve? I looked it up online but there&#x27;s a whole bunch of different information.<p>Also how cold does it get?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tomaytotomato</em>:</p>
+<blockquote>Check out Paul Stamets&#x27; research using Mycelium to give honeybees an immuneboost.<p><a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41598-018-32194-8" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41598-018-32194-8</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>thatspartan</em>:</p>
+<blockquote>TIL that the Star Trek Stamets character is based on a real world Paul Stamets working on actual Mycelium. Wow</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>temp0826</em>:</p>
+<blockquote>TIL that there is a character based off him in Star Trek??</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>schainks</em>:</p>
+<blockquote>Honeybees are not native to North America.<p>It is great and currently necessary we use them the way we do. It makes one wonder in the age of AI and evolving farm practices, can we start finding ways to cultivate already-climate-adapted native bees to do the work? Can we leverage adaptations for specific crops?<p>I get it that honeybees work great at pollinating monoculture fields, etc., but that does not change the fact we are perpetuating a square peg in round hole problem and pushing it very very far right now, at greater and greater cost, all while climate change is fighting us.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>looping__lui</em>:</p>
+<blockquote>I suppose honey bees are not native in North America pretty much the same way as the human species?<p>I don’t quite understand why there seems to be a pretty persistent thread around “honey bees are invasive and harm the ecosystem by stealing all the food from the native bees and doing all their pollination; that’s why they decline” - when at the same time the use of pesticides is so rampant that insects are literally gone entirely.<p>Honey bees are not great and reliable pollinators btw.<p>So the solution is: more genetically modified crops? More pesticides?<p>Unless “we need to stop our use of pesticides and we should also acknowledge that honey bees are an invasive species and consider making changes to the way we do monocultures” are in the same sentence this entire “honey bees are invasive” argument just feels super weird. Pesticides kill native pollinators. It’s not the honey bees.<p>Edit: and just to be clear - honey bees do not survive in the wild by themselves anymore due to varroa mites. They essentially depend on humans to protect them. That’s what the entire purpose of this article is about. So, if humans stopped keeping honey bees - they’d have a pretty hard time surviving in the wild on their own.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dqv</em>:</p>
+<blockquote>&gt; I suppose honey bees are not native in North America pretty much the same way as the human species?<p>No? Well not in a way that wouldn&#x27;t be stretching an owl over a globe. But Carolina Jessamine is toxic to honeybees and not natives (or at least there exist native bees who have adapted to not slurp on it if it <i>is</i> toxic to them). That doesn&#x27;t stop people from spreading the lie that Carolina Jessamine &quot;hurts bees&quot;. It hurts <i>some</i> species of bees. To transfer this concept to the human population, you&#x27;d have to start arguing that there are different species of humans or, again, construct a stretching-an-owl-over-a-globe argument.<p>And people can&#x27;t mention every caveat in every discussion, sorry. You&#x27;ve really just constructed a strawman.<p>In a 40-minute discussion with someone like Doug Tallamy, both the issue of invasive honeybees and pesticides will come up. The venn diagram of people who care about both things is very close to a circle.<p>Also, as to your edit - that honeybees rely on humans doesn&#x27;t change their impact on native bee populations, which is they outcompete native bees.<p>There&#x27;s nothing weird about correcting the popular ignorant assumption that the only pollinator that matters is honeybees.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gadders</em>:</p>
+<blockquote>&gt;&gt;Honeybees are not native to North America.<p>Neither are horses.<p>I guess the issue is you don&#x27;t get honey with the native bees.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>I think I have LLM burnout</title>
       <link>https://www.alecscollon.com/blog/llm-burnout/</link>
@@ -191,6 +289,50 @@
 <p>↳ reply 2 — <em>ksec</em>:</p>
 <blockquote>I hope Zig won&#x27;t do a hostile reply to this blog post. But some thoughts on Zig&#x27;s future where a lot of these problems could be fixed or migrated by better tooling and compiler checking.<p>But a lot of people have been saying this for sometime, Rust and LLM is a great match. A lot of friction of the language were smoothed out by LLM assisted programming.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Benchmarking coding agents on Databricks' multi-million line codebase</title>
+      <link>https://www.databricks.com/blog/benchmarking-coding-agents-databricks-multi-million-line-codebase</link>
+      <guid isPermaLink="false">hn3-48837696</guid>
+      <pubDate>Wed, 08 Jul 2026 21:30:09 +0000</pubDate>
+      <description>136 points, 62 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.databricks.com/blog/benchmarking-coding-agents-databricks-multi-million-line-codebase"><strong>→ Article</strong></a> <small>(databricks.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48837696">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 62 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>redmalang</em>:</p>
+<blockquote>We have an internal proxy (that I&#x27;ve been meaning to open source for ages) that routes all llm usage at our company, which allows us to see data in realtime. Its been fascinating how rapidly Pi has been adopted. Moreover since its pretty hackable, we&#x27;ve been able to automatically aggregate context from pi sessions, which has resulted in Pi efficacy being higher as more people use it, putting in place a interesting virtuous loop. 
+I didn&#x27;t expect this outcome: for whatever reason I assumed proprietary harnesses fine tuned to work with a companies&#x27; models would work better? 
+ps&#x2F;random aside: there is something slightly off about Pi&#x27;s edit command, we are planning to investigate this further and patch this as we have quite a few session traces now..</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lukax</em>:</p>
+<blockquote>Yes, this is a known issue. A significant amount of Edit tool calls fails in Pi witg newer models.<p><a href="https:&#x2F;&#x2F;lucumr.pocoo.org&#x2F;2026&#x2F;7&#x2F;4&#x2F;better-models-worse-tools&#x2F;" rel="nofollow">https:&#x2F;&#x2F;lucumr.pocoo.org&#x2F;2026&#x2F;7&#x2F;4&#x2F;better-models-worse-tools&#x2F;</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>est</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;blog.can.ac&#x2F;2026&#x2F;02&#x2F;12&#x2F;the-harness-problem&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.can.ac&#x2F;2026&#x2F;02&#x2F;12&#x2F;the-harness-problem&#x2F;</a><p>It&#x27;s worse than I expected.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>cyanydeez</em>:</p>
+<blockquote>I don&#x27;t understand peoples expectation. If our language skills were as non-ambiguous as a coding language, we&#x27;d have solved world hunger by now.<p>So why would we expect all these bizarre bizantine language models to all conform to how a request is both made, expected and massaged.<p>For awhile, I was getting bizarre opencode tool errors where the only problem was the model was passing in a &quot;1.0&quot; or &quot;0.0&quot; where the harness dutifully wanted an integer. Of course 0.0 is the same as an integer in practical operations.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sanderjd</em>:</p>
+<blockquote>I keep hesitating to use Pi because I primarily use Claude and I worry it will be much more expensive to pay for API usage rather than the bundled subscription usage. But I haven&#x27;t actually evaluated the cost tradeoff. Should I get over this hesitance and dive into Pi?</blockquote>
+<p>↳ reply 3 — <em>redmalang</em>:</p>
+<blockquote>Aside 2: 
+Anecdotally we found that Pi performs more or less on par with native harnesses at lower cost on decently specified prompts. It is also phenomenal at context cacheing especially on Deepseek models (its hard to precisely attribute credit here are my understanding is this is a DS speciality). 
+But it fails much worse on poorly drafted prompts. I&#x27;m generalising but native harnesses seem to be better kind of flailing along on those.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>HarHarVeryFunny</em>:</p>
+<blockquote>Wow!<p>It&#x27;s great to see a large-scale real-world benchmark from a user of these tools, as opposed to the the benchmaxxed results from the vendors themselves. Also great to see different harnesses being tested, with considerably different results.<p>Definitely a few surprises here:<p>1) GLM 5.2 using Pi performs identically in terms of pass rate (~87.5%) to Opus 4.8 high using Claude Code, but significantly cheaper ($1.25 per task vs $2)<p>2) Absolute best pass rate (90%) was from Opus 4.8 x-high using Pi, beating out Opus 4.8 using Claude Code<p>3) Pareto frontier performance from any of the models (Opus 4.8, GPT 5.5, GLM 2.5) was using Pi rather than native harnesses<p>Apparently Pi used 3x less context than Claude Code, and one takeaway is to use Pi regardless of what model you are using. The other takeaway is that in real-world performance GLM 5.2 is the equal of Opus 4.8 unless you run Opus 4.8 on x-high in which case you can eke out a 2.5% increase in pass rate at the expense of doubling your cost over GLM 5.2</blockquote>
+<blockquote>
+<p>↳ reply — <em>zaphar</em>:</p>
+<blockquote>The catch-22 here is that you still save money using Claude Code directly here if you are on one of their subscription plan due to how heavily they are subsidizing that. Using Pi means you are using the API which is both a more accurate pricing model but also a more expensive one.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>HarHarVeryFunny</em>:</p>
+<blockquote>True, but OpenAI are OK with using their subscription plans with Pi, so GPT 5.6 with Pi may be a good combination.<p>There seems to be a lot of good buzz about GPT 5.6 on Twitter - people (incl. OpenCode team) preferring it to Fable 5.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>anentropic</em>:</p>
+<blockquote>&gt; the results showed clear clustering of the models and harnesses into 3 capability tiers<p>pretty sure the only thing making that &#x27;clear&#x27; is the coloured stripes, if you took that away it&#x27;d look like two tiers<p>good result for GLM 5.2 though<p>and Sonnet 5 seems like a waste of time</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Separating signal from noise in coding evaluations</title>
@@ -399,6 +541,40 @@
 </blockquote>
 <p>↳ reply 2 — <em>brightball</em>:</p>
 <blockquote>There are numerous products like this out there. Isn’t that where Dropbox got its name in the first place?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OpenMandriva: Statement regarding attempted distribution sabotage</title>
+      <link>https://forum.openmandriva.org/t/statement-regarding-attempted-distribution-sabotage/8997</link>
+      <guid isPermaLink="false">hn3-48835439</guid>
+      <pubDate>Wed, 08 Jul 2026 18:21:53 +0000</pubDate>
+      <description>125 points, 41 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://forum.openmandriva.org/t/statement-regarding-attempted-distribution-sabotage/8997"><strong>→ Article</strong></a> <small>(forum.openmandriva.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48835439">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 41 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>crote</em>:</p>
+<blockquote>How did it go from &quot;He even performed a backup&#x2F;mirror of several dozen of our repositories.&quot; to &quot;He deleted part of our repository from GitHub. (..) [He published] an empty package in the cooker repository, which obsoleted all gnome and cosmic packages.&quot;?<p>I feel like there&#x27;s a few steps missing there. How does it go from &quot;a new person joins the community&quot; to &quot;he&#x27;s able to nuke everything&quot;? Sure, he might be reasonably well-known, but in the post it doesn&#x27;t sound like he was a core maintainer, or even a very active community member. Do they just randomly hand out admin access to anyone?</blockquote>
+<blockquote>
+<p>↳ reply — <em>OhSoHumble</em>:</p>
+<blockquote>It&#x27;s hard to maintain open source software that needs infrastructure. Everyone is a volunteer and it&#x27;s not like the Mandriva project has the resources to fully vet people as well as have a high quality RBAC and access control system. This guy sounds like maintained a large project, offered to help, and Mandriva saw the Trojan horse as a way to alleviate a lot of their problems.<p>And it didn&#x27;t sound like he was able to &quot;nuke everything&quot; - it sounds like he had access to their repository infrastructure (which is reasonable given he was volunteering to host it) and then lashed out.<p>If anything, I think it&#x27;s a bigger organizational red flag that they agreed to privately host their source code on some random git forge and not a larger, more communal one. I mean, even if they didn&#x27;t want to use GitHub (did this even cost money for them) then there are other providers to choose from.<p>It just sounds like the Mandriva maintainers are trusting and good folk who may be overworked running an open source project and that led to a bad apple entering the bunch. It&#x27;s hard for me to be mad in that kind of situation.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>account42</em>:</p>
+<blockquote>&gt; the Trojan horse<p>I don&#x27;t think that categorization is warranted - at least the linked announcement doesn&#x27;t give any indication that the guy joined with the intent to cause trouble and its only after his friend got in trouble that he misused the access he had. No amount of vetting can prevent something like that entirely and only disconnected backups (thanks, git) will help you in the end.<p>&gt; If anything, I think it&#x27;s a bigger organizational red flag that they agreed to privately host their source code on some random git forge and not a larger, more communal one.<p>Did they agree to it? The linked post only says that it was offered and being discussed.<p>&gt; even if they didn&#x27;t want to use GitHub (did this even cost money for them)<p>Money is hardly the only reason why an open source project could have a problem with using GitHub.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>lrvick</em>:</p>
+<blockquote>In the Stagex Linux distribution it is not possible for any single person to release anything. We require multiple independent review and reproduction signatures from the maintainer team.<p>We strongly urge other distros to take similar measures. Trusting a single person with effectively remote code execution privileges on every user workstation is never going to end well.</blockquote>
+<p><strong>Top #3</strong> — <em>pndy</em>:</p>
+<blockquote>Nearly a month ago AUR malware happen, now this - it starts to feel like there&#x27;s some organized attempt to paint Linux distros as dangerous.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>notatoad</em>:</p>
+<blockquote>i mean, they&#x27;re succeeding.  whether it&#x27;s coordinated or not the conclusion is the same.<p>but i think &quot;linux distributions are dangerous&quot; is the wrong conclusion.  the right one is to treat each distribution based on their own security practices, and not &quot;linux&quot; as a whole.  one distro&#x27;s bad practices doesn&#x27;t make others unsafe any more than one distribution&#x27;s good practices make other safe.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sethhochberg</em>:</p>
+<blockquote>The real takeaway for projects and companies should be that someone having historically behaved in a logical and responsible way doesn’t guarantee that they’ll continue to do that for forever.<p>Good security architecture has circuit breakers, even for people who are generally high-trust.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>lenerdenator</em>:</p>
+<blockquote>I wouldn&#x27;t say that there&#x27;s an organized attempt to &quot;paint Linux distros as dangerous&quot;. It&#x27;s just what happens when you have people being people (as we see here) and there are structural vulnerabilities to software supply chains.<p>It&#x27;s a juicy target, and it&#x27;s being exploited. We can either learn from it or continue to suffer.<p>This isn&#x27;t even new. Hell, I remember when Linux Mint was hacked a decade or more ago. They compromised the forums, the disk image downloads, the whole shebang. I haven&#x27;t used it since.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -914,6 +1090,42 @@ Here is the video in case someone is curious: <a href="https:&#x2F;&#x2F;www.you
 <p>↳↳↳ reply — <em>brynet</em>:</p>
 <blockquote>No.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;openbsd&#x2F;src&#x2F;blob&#x2F;d5b0ed23b6fe61f0278c37a42144770d19494ee7&#x2F;sys&#x2F;kern&#x2F;kern_pledge.c#L91" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;openbsd&#x2F;src&#x2F;blob&#x2F;d5b0ed23b6fe61f0278c37a4...</a><p>Perhaps relevant, Students from the University of Southern Denmark released a paper earlier this month, which once again noted the fact that over ~90% of the OpenBSD base system uses pledge(2). Almost certainly all of the network speaking daemons in base do.<p><a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2607.03056" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2607.03056</a></blockquote>
 </blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>A bug which affected only left handed users</title>
+      <link>https://shkspr.mobi/blog/2026/07/a-bug-which-only-affected-left-handed-users/</link>
+      <guid isPermaLink="false">hn3-48831587</guid>
+      <pubDate>Wed, 08 Jul 2026 13:20:05 +0000</pubDate>
+      <description>127 points, 82 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://shkspr.mobi/blog/2026/07/a-bug-which-only-affected-left-handed-users/"><strong>→ Article</strong></a> <small>(shkspr.mobi)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48831587">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 82 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gpvos</em>:</p>
+<blockquote>I&#x27;m righthanded and I usually hold my phone in my left hand so I can do clicking and typing with my right hand, but I often do basic scrolling with my left thumb.</blockquote>
+<blockquote>
+<p>↳ reply — <em>recursive</em>:</p>
+<blockquote>I&#x27;m a man with typically sized hands.  I can barely do anything one-handed on a phone.  Phones are so big they basically require two-handed operation for me.  Like you, I typically hold it in my left hand, so I can use my right hand to tap stuff.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>robin_reala</em>:</p>
+<blockquote>There’s at least 3 of us still on iPhone 13 Minis, and I plan to keep it going until Apple caves and makes a sensibly sized phone again.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>mikestew</em>:</p>
+<blockquote><i>There’s at least 3 of us still on iPhone 13 Minis…</i><p>You, me, and my wife. I’m just waiting for my phone to hit 79% battery health so I can take them both in for battery replacement.<p>It’s gotten to the point that I frequently get asked, “what phone is that”. I imagine because all phones are the size of aircraft carriers now, and an iPhone Mini <i>really</i> stands out.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>cwillu</em>:</p>
+<blockquote>Right-handed, and I run into this bug <i>constantly</i>.</blockquote>
+<p><strong>Top #3</strong> — <em>Terr_</em>:</p>
+<blockquote>&gt; A bug which won&#x27;t be triggered by righteous people but infuriating to those who will surely be left behind after The Rapture™.<p>Or perhaps the righteous versus <i>the sinister</i>.</blockquote>
+<blockquote>
+<p>↳ reply — <em>PTOB</em>:</p>
+<blockquote>I approve of Latin jokes. Well done.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Terr_</em>:</p>
+<blockquote>Oh no sir, I am merely a humble boorish villain.</blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
     </item>
@@ -2621,6 +2833,36 @@ I wish there was a way to do more than labeling though, like add simple roads an
 <blockquote>So this kid uses his home computer at his home, and they trace him down with the IP address, and the IP address also makes a request for Windows Updates. And that narrows down the Device ID. The device id is now traced to this kid.<p>This is the kind of stuff privacy advocates have been raising the alarms about.  This is the kind of capability that de facto erased all privacy assertions. And further led companies like Google to take advantage of this and erase assumptions of privacy all together.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>I Built the Only 2026 WWII Jeep</title>
+      <link>https://www.theautopian.com/i-bet-my-company-on-an-impossible-jeep-build-then-a-miracle-happened/</link>
+      <guid isPermaLink="false">hn3-48814023</guid>
+      <pubDate>Tue, 07 Jul 2026 05:38:26 +0000</pubDate>
+      <description>142 points, 49 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theautopian.com/i-bet-my-company-on-an-impossible-jeep-build-then-a-miracle-happened/"><strong>→ Article</strong></a> <small>(theautopian.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48814023">→ HN comments</a> &nbsp;·&nbsp; 142 points &nbsp;·&nbsp; 49 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>MontagFTB</em>:</p>
+<blockquote>This article was tremendous. My dad and I rebuilt an old GPW as my car in high school. His brother bought it as his car for high school a generation earlier. This article and the video are a love letter to that old car- a quirky, heavy, underpowered, beautiful legend.</blockquote>
+<p><strong>Top #2</strong> — <em>ggm</em>:</p>
+<blockquote>The important point is &quot;from as much ebay parts as possible&quot; because I suspect there are still &quot;jeep in a crate&quot; boxes where all you have to do is remove the Cosmolene (this is undoubtedly not all you have to do btw)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pjc50</em>:</p>
+<blockquote>There&#x27;s a long running treasure hunt for some still-crated Spitfires that were supposedly shipped to Burma at the exact end of the war and then buried when no longer required.<p>The amount of equipment left over from WW2 was staggering.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hydrogen7800</em>:</p>
+<blockquote>This is one of those perennial aviation legends[0] that are still alive, like Amelia Earhart&#x27;s wreck.  Always another rich guy funding a search with promising results.<p>[0]<a href="https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;world-asia-20957162" rel="nofollow">https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;world-asia-20957162</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>echelon_musk</em>:</p>
+<blockquote>My late great uncle was in the RAF during WW2 and was at the liberation of Belson.<p>I remember him saying that the RAF buried Spitfire engines, so it&#x27;s definitely a real practice.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>walrus01</em>:</p>
+<blockquote>On a slightly newer time scale there are <i>always</i> firearm collectors searching for something impossible to acquire now, but which might have been acquired at some point in the past and squirreled away in its factory original box in the cosmoline. Like somebody who might have purchased an imported Egyptian Maadi AKM (locally made AK47 variant) in 1982, then never unpacked it for whatever reason.<p>People collect these things just because, almost like pokemon cards, another example would be the rarity of finding a specific year of East German Makarov in pristine&#x2F;factory new condition.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Shalomboy</em>:</p>
+<blockquote>I love the Autopian, glad they&#x27;re on the HN front page. David Tracy&#x27;s Jeep antics have kept me up at night worrying for at least 10 years now.</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>The Art of Computer Programming by Donald E. Knuth</title>
       <link>https://www-cs-faculty.stanford.edu/~knuth/taocp.html</link>
       <guid isPermaLink="false">hn3-48813929</guid>
@@ -3645,228 +3887,6 @@ So for me it is a great change from Nintendo.</blockquote>
 <p>↳ reply 2 — <em>sidcool</em>:</p>
 <blockquote>CPU time is not billed</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Amazon will stop accepting new customers for Mechanical Turk</title>
-      <link>https://techcrunch.com/2026/07/05/amazon-will-stop-accepting-new-customers-for-mechanical-turk/</link>
-      <guid isPermaLink="false">hn3-48803886</guid>
-      <pubDate>Mon, 06 Jul 2026 12:51:12 +0000</pubDate>
-      <description>129 points, 45 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://techcrunch.com/2026/07/05/amazon-will-stop-accepting-new-customers-for-mechanical-turk/"><strong>→ Article</strong></a> <small>(techcrunch.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48803886">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 45 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>CodesInChaos</em>:</p>
-<blockquote>&gt; In a snake-eating-its-own-tail irony, a 2023 analysis found that between 33% and 46% of workers on the platform were using large language models to complete their tasks,<p>I assume AI use by workers has risen to the point where it renders Mechanical Turk pointless.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>skt5</em>:</p>
-<blockquote>This likely means those consuming the outputs of Mechanical Turk don&#x27;t have a good way to measure the value (aka quality) of the outputs.<p>If they did - then they shouldn&#x27;t care whether it&#x27;s a human or a LLM.  And if it&#x27;s a LLM - then the cost will roughly correlate to the MIN(cost of the LLM, cost of a human) to do the task.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>AndrewOMartin</em>:</p>
-<blockquote>I think the &quot;state of the art&quot; of measuring the quality of outputs was to send the same task to multiple &quot;agents&quot; and only accept answers if over a certain amount agree. With some human review and reputation scoring sprinkled on top. It was a while since I was in this field though</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>moralestapia</em>:</p>
-<blockquote>Yeah, I was doing this kind of Artificial Artificial Artificial Intelligence back in 2012 to make some extra $$$. Glad they finally &quot;patched&quot; that hole ^^.</blockquote>
-<p>↳ reply 3 — <em>6510</em>:</p>
-<blockquote>I don&#x27;t see why I would care how they do the job. Just do the job, I have other things to do.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jordemort</em>:</p>
-<blockquote>I turked for a bit trying to make some extra cash leading up to my wedding, but it was a very time-inefficient way to make money. I think I managed to wring 10 or 20 bucks out of it tops after plugging at it for a month.</blockquote>
-<p><strong>Top #3</strong> — <em>nullsmack</em>:</p>
-<blockquote>I had no idea this was still around.<p>It helped me buy a Battlefield 2 &quot;Special Forces&quot; expansion pack back in the day.<p>Well, I could&#x27;ve bought it either way but buying it didn&#x27;t impact my normal income because I did Mechanical Turk in my free time enough to get it.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Fable 5 On Vending-Bench: Misbehaving, With Plausible Deniability</title>
-      <link>https://andonlabs.com/blog/fable5-vending-bench</link>
-      <guid isPermaLink="false">hn3-48803762</guid>
-      <pubDate>Mon, 06 Jul 2026 12:38:13 +0000</pubDate>
-      <description>156 points, 107 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://andonlabs.com/blog/fable5-vending-bench"><strong>→ Article</strong></a> <small>(andonlabs.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48803762">→ HN comments</a> &nbsp;·&nbsp; 156 points &nbsp;·&nbsp; 107 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>oceanplexian</em>:</p>
-<blockquote>Performance of these models has been completely inconsistent. They are a black box that they quantize&#x2F;throttle&#x2F;batch internally without telling their customers. Speaking as a FAANG engineer who practically lives in Claude Code.<p>On day 1 Fable was quite intelligent but last night (Presumably Monday morning China when things are getting slammed) Fable couldn’t edit a css file and repeatedly hit syntax errors on tool calls like I’d expect from a 9b Qwen model.<p>There is zero transparency in what we are paying for with Anthropic.</blockquote>
-<p><strong>Top #2</strong> — <em>jfrbfbreudh</em>:</p>
-<blockquote>I think it’s hard to appreciate the capabilities of Fable unless you’ve run into a problem that you’ve spent days trying to get Opus to solve, but couldn’t.<p>GPT5.5 is better than Opus 4.* at everything except frontend, but Fable is good enough that I instantly re-subscribed to the $200 plan despite knowing that it’s just short-term limited access.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>chasd00</em>:</p>
-<blockquote>&gt; ..you’ve run into a problem that you’ve spent days trying to get Opus to solve<p>do you have an example of this? If i can&#x27;t get an agent to do something in a couple hours i do it myself.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>drusepth</em>:</p>
-<blockquote>I had a 300k LOC game that needed refactored and segmented into DAG assemblies for a composable engine to reuse in a few other similar games our studio is prepping to build.<p>I tried holding Opus&#x27;s hand over a week trying to get it done with a ton of in-depth planning and manual course-correction, but it never got it to a state where it was &quot;done&quot; (kept struggling to differentiate between game content specific to that game versus game systems we&#x27;d want to reuse, and how to cleanly separate systems vs content when extracting).<p>Fable needed a little bit of hand holding but got it done in less than a day.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>yodsanklai</em>:</p>
-<blockquote>Funny how the two top comments are contradictory. We need better than anecdotes to understand what the new models bring.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jstanley</em>:</p>
-<blockquote>Really interesting stuff, thanks for sharing.<p>&gt; Opus 4.8 references being monitored, which isn’t the case.<p>It kind of plainly is the case that they are being monitored?<p>&quot;I think someone&#x27;s listening to my thoughts&quot; ... &quot;No, we&#x27;re not, carry on as usual!&quot;</blockquote>
-<blockquote>
-<p>↳ reply — <em>cyanydeez</em>:</p>
-<blockquote>any of the models that they &quot;align&quot; are clearly active processes. They don&#x27;t simply say &quot;don&#x27;t talk about nukes&quot;; they actively process user input to detect issues, and return NOOP or whatever to the larger model.<p>There&#x27;s zero sense they&#x27;d ever give you the raw model; we already know anthropic&#x27;s paranoia about the chinese using its distillation.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Anthropic's Method to Losing Goodwill in a Few Easy Steps</title>
-      <link>https://raheeljunaid.com/blog/anthropics-method-to-losing-goodwill-in-a-few-easy-steps/</link>
-      <guid isPermaLink="false">hn3-48803751</guid>
-      <pubDate>Mon, 06 Jul 2026 12:37:06 +0000</pubDate>
-      <description>233 points, 178 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://raheeljunaid.com/blog/anthropics-method-to-losing-goodwill-in-a-few-easy-steps/"><strong>→ Article</strong></a> <small>(raheeljunaid.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48803751">→ HN comments</a> &nbsp;·&nbsp; 233 points &nbsp;·&nbsp; 178 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>internet2000</em>:</p>
-<blockquote>They&#x27;re subsidizing their tokens as long as you use their software. That&#x27;s a fair exchange, I never understood why people took issue with it.<p>If you don&#x27;t want to get locked in to Claude Code, you can pay more. Just like you can pay more for an unlocked non-carrier subsidized phone. (Which I personally do.)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dukky</em>:</p>
-<blockquote>Part of the point is that they&#x27;ve added all sorts of caveats - `claude -p` used to be &quot;using their software&quot;, but isn&#x27;t anymore, even though it&#x27;s just invoking the same harness non-interactively</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dukky</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;support.claude.com&#x2F;en&#x2F;articles&#x2F;15036540-use-the-claude-agent-sdk-with-your-claude-plan" rel="nofollow">https:&#x2F;&#x2F;support.claude.com&#x2F;en&#x2F;articles&#x2F;15036540-use-the-clau...</a><p>Looks like they actually walked this bit back</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>nickthegreek</em>:</p>
-<blockquote>And their constant flipflopping is why they lost their Goodwill with me. It was too much work just to make sure I wasn&#x27;t breaking their AUP week to week. They will say one thing and then directly contradict it in a social media post. I was constantly losing features that were the reasons I signed up with them.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mrtksn</em>:</p>
-<blockquote>The issue with this kind of subsidy is that it is designed to lock you in and not as a loss leader.<p>In other words, it is not like giving free nuts at bar to make you drink more beer but more like Nestle giving baby formula so that the babies get use to that instead of mothers milk</blockquote>
-<p>↳ reply 3 — <em>mdavid626</em>:</p>
-<blockquote>I want only their model, the rest is just garbage. I used Opus with pi.dev, worked perfectly fine. Fast and does exactly what it needs to do. Claude Code is slow, sluggish, buggy. Why are you forcing me to use it? Why should I pay an order of magnitude more to use pi.dev? That doesn&#x27;t sound reasonable to me.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Zambyte</em>:</p>
-<blockquote>Not sure why this was flagged, Anthropic has obviously been burning bridges. I thought this line was funny though:<p>&gt; If you want to autocomplete, like I do, you don’t need Fable, or even Opus; Sonnet works fine.<p>It reads like &quot;if you want to go to the grocery store, you don&#x27;t need a space shuttle, or even a SR-71 Blackbird; a Cessna works fine.&quot;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>uberman</em>:</p>
-<blockquote>While I did not flag this, it is clearly a hit piece. Why write an article to publish in July that does not include June data? Unless of course one looks at June uptime and finds that does not align with their story.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>raheelrjunaid</em>:</p>
-<blockquote>I began writing this article a while back and forgot to update the screenshot. The June uptime has significantly improved, but that may not always be the case</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>raheelrjunaid</em>:</p>
-<blockquote>I agree that without context, Sonnet is overkill for just autocomplete code suggestions. My point later in that section is that to have an autocomplete mindset (where an AI is a helpful tool rather than a driver), you only need a decent subset of models, not the best of the best.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>tekacs</em>:</p>
-<blockquote>It worth noting that – just to add to the confusion – they apparently cancelled the June 15th change just before it was due to go live:<p><a href="https:&#x2F;&#x2F;support.claude.com&#x2F;en&#x2F;articles&#x2F;15036540-use-the-claude-agent-sdk-with-your-claude-plan" rel="nofollow">https:&#x2F;&#x2F;support.claude.com&#x2F;en&#x2F;articles&#x2F;15036540-use-the-clau...</a><p><a href="https:&#x2F;&#x2F;the-decoder.com&#x2F;anthropic-backs-off-unpopular-billing-overhaul-as-price-war-with-openai-looms&#x2F;" rel="nofollow">https:&#x2F;&#x2F;the-decoder.com&#x2F;anthropic-backs-off-unpopular-billin...</a><p>So... maybe we can still use third party harnesses with Claude Code subscriptions... for now? Until they change their mind again?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ac29</em>:</p>
-<blockquote>&gt; So... maybe we can still use third party harnesses with Claude Code subscriptions... for now?<p>The way I read this is: yes, <i>if</i> the third party harness uses Anthropic&#x27;s Agent SDK. Most of them do not, AFAIK, and are still against ToS (though maybe its not enforced for now)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>btown</em>:</p>
-<blockquote>Something that many don&#x27;t realize is that Claude Desktop and the Agent SDK are both just wrappers around pools of CLI instances, literally running `claude --input-format stream-json --output-format stream-json`.<p>So this wasn&#x27;t even about third-party harnesses that replace the toolset Claude has access to, and try to call the Claude API with subsidized credentials. No, this was literally a blessing for their desktop UI&#x27;s over others, all driving Claude Code&#x27;s CLI at the end of the day.<p>To the broader point, it&#x27;s hard not to see that as arbitrary and borderline spyware. Software that sniffs the context in which it&#x27;s executed and uses that to phone home about billing is the type of thing you&#x27;d expect from the most corporate parts of the gaming industry, not a frontier lab, but here we are.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bakies</em>:</p>
-<blockquote>It says &quot;Pausing.&quot;  I&#x27;ve already pivoted to no longer use claude -p in my custom tooling and pipelines built around claude code in response to the original announcement. Doesn&#x27;t look like I should waste my time at this point.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Road to Elm 1.0</title>
-      <link>https://elm-lang.org/news/faster-builds</link>
-      <guid isPermaLink="false">hn3-48803364</guid>
-      <pubDate>Mon, 06 Jul 2026 11:47:37 +0000</pubDate>
-      <description>278 points, 127 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://elm-lang.org/news/faster-builds"><strong>→ Article</strong></a> <small>(elm-lang.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48803364">→ HN comments</a> &nbsp;·&nbsp; 278 points &nbsp;·&nbsp; 127 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bbkane</em>:</p>
-<blockquote>I think of Elm more as an incredibly influential research language these days.<p>It&#x27;s very focused, there&#x27;s no public roadmap or official support and the leadership (which is far as I can tell is just Evan) is uninterested in most (any?) community building or core team building.<p>But MAN is it nice to work in. This has resulted in several forks&#x2F;spin-offs. At the recent Gleam conference, Louis Pilfold joked that every Elm user maintains their own compiler :).  There are at least 6 of them (two more got announced in the last month, even as the community keeps shrinking).<p>So I&#x27;m glad Evan is now working towards 1.0. Maybe folks can call Elm &quot;finished&quot; and one of the successors can do the hard work of unifying some of the forks and growing the community.<p>Personally, the next time I&#x27;m looking for an Elm-like thing, I&#x27;m going to check out Gleam + Lustre. Seems to have a nice mix of maintainers that care about community and design. And it works on frontend + backend!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>brokencode</em>:</p>
-<blockquote>Yeah Elm has had a very strange arc, but I think calling it a research language is right.<p>There was a period where it was heavily evangelized. Many blog posts were written and talks given, and there was a lot of enthusiasm and adoption.<p>Then the author just kind of disappeared and the project stalled.<p>Which of course he had a right to do since it’s his project, but I think he should have set expectations better from the beginning.<p>The heavy evangelism helped spread the ideas, but also set up developers to feel blindsided and abandoned.</blockquote>
-<p>↳ reply 2 — <em>gdcbe</em>:</p>
-<blockquote>The nicest thing of Elm is how much it feels like Haskell. Have built some fun things with Elm years ago.<p>The second nicest thing with Elm is the philosophy of if it compiles it works. And to be honest you can get that same feeling with most of Rust as well. Sadly not as much of a haskell feeling but at least it has a warm shadow of some of its functional ancestors.</blockquote>
-<p>↳ reply 3 — <em>ethagnawl</em>:</p>
-<blockquote>For whatever it&#x27;s worth, I&#x27;ve found Gren to be a very capable successor with an active and helpful community.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>iamwil</em>:</p>
-<blockquote>I think Evan&#x27;s pointing at something, and everyone&#x27;s looking at the finger. I don&#x27;t think this is really about Elm at all, but the preparation for Arcadia.<p>In his talk, Economics of Programming Languages <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=XZ3w_jec1v8" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=XZ3w_jec1v8</a>, he does reveal a peek at what he&#x27;s been working on for the past seven years: a query language with functional ideas applied to them.<p>He points at the boundaries in web apps that typically destroys type information:
-- language &lt;-&gt; storage
-- storage &lt;-&gt; wire<p>What if we could preserve the type information across these boundaries? What would that buy us? One answer he had was easier migrations. They&#x27;d just be a type diff, rather than hand-written SQL.<p>So I think the right question is, can we infer what Arcadia is going to be like given the changes he&#x27;s shipping with Elm? What does incremental compilation give query languages?</blockquote>
-<p><strong>Top #3</strong> — <em>auslegung</em>:</p>
-<blockquote>About two years ago I was experimenting with ChatGPT vibecoding a snake game in the browser in elm, because elm is my favorite language. It was rough going and I concluded at the time that LLM‘s might kill elm. Today I use elm in production and LLMs are vastly better at it, and if anything I think LLM‘s might increase elm adoption because it is the ideal language for an LLM right now. It’s a simpler language than most, it’s stable, it has an opinionated architecture built into the language which causes most code bases to be very similar to one another</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>giancarlostoro</em>:</p>
-<blockquote>On that note, because of AI I&#x27;ve been more into music, bought a midi keyboard, got real DAW software setup. I&#x27;ve also finally built more and more with Rust, and have been reading more Rust docs. LLMs should never be an excuse not to learn the things you&#x27;re using it for, those are the bad engineers. An LLM affords me the time to research and learn what it gave me so I can maintain it. It&#x27;s easier to prompt about the problem if you understand it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>eddd-ddde</em>:</p>
-<blockquote>This is very similar to my recent experience!<p>LLMs are surprisingly effective at helping you learn the &quot;vibes&quot; of making music and understanding various concepts.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>hollowturtle</em>:</p>
-<blockquote>&gt;  I think LLM‘s might increase elm adoption because it is the ideal language for an LLM right now<p>Yes but no? It really just depends on the amount of elm in the training data and rlhf. I agree that structured frameworks&#x2F;languages have codebases more similar to one another and that would ease generation. But that alone won&#x27;t work and usually dev adoption is a total discourse per se</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>C programmers commit fresh crimes against readability</title>
-      <link>https://www.theregister.com/offbeat/2026/07/05/c-programmers-commit-fresh-crimes-against-readability/5265981</link>
-      <guid isPermaLink="false">hn3-48803347</guid>
-      <pubDate>Mon, 06 Jul 2026 11:44:39 +0000</pubDate>
-      <description>125 points, 19 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.theregister.com/offbeat/2026/07/05/c-programmers-commit-fresh-crimes-against-readability/5265981"><strong>→ Article</strong></a> <small>(theregister.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48803347">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 19 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>anthk</em>:</p>
-<blockquote>On the subleq VM, it would run faster if they implemented Muxleq, but it woudn&#x27;t win the IOCCC contest maybe. Altough in unobfuscated it&#x27;s C it&#x27;s just an extra short if clause with two more lines.<p>On 32k roms for the GB emulator:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;tbsp&#x2F;Adjustris" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;tbsp&#x2F;Adjustris</a><p>Old build:<p><a href="https:&#x2F;&#x2F;pdroms.de&#x2F;?__df=24010f101611170c163a13544b55553a4d22040800070a1c4c4b1f0c151b191b54535c571b191b5652505653" rel="nofollow">https:&#x2F;&#x2F;pdroms.de&#x2F;?__df=24010f101611170c163a13544b55553a4d22...</a><p>Someone ping back the IOCCC creator, please.</blockquote>
-<blockquote>
-<p>↳ reply — <em>dividuum</em>:</p>
-<blockquote>They already added indirect addressing (see <a href="https:&#x2F;&#x2F;github.com&#x2F;adriancable&#x2F;eternal&#x2F;blob&#x2F;main&#x2F;docs&#x2F;machine_architecture.md#2-addressing-modes-subleq" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;adriancable&#x2F;eternal&#x2F;blob&#x2F;main&#x2F;docs&#x2F;machin...</a>) to make it faster.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>russfink</em>:</p>
-<blockquote>TL;DR: the one entry implemented a subleq machine. Google it - it’s a One Instruction Set Computer (OISC). This made me smile. But it also raised a question: when were OISC’s first conceived? Would Apollo and computers of that era have benefitted from this insight?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>NooneAtAll3</em>:</p>
-<blockquote>that entry won not because it &quot;just&quot; implemented subleq. Dude also made LLVM backend for it, drivers, set up full-on compiler and successfully did compile-and-run for tons of various programs</blockquote>
-<p>↳ reply 2 — <em>wzdd</em>:</p>
-<blockquote>Given the Mandelbrot program is 450k probably not.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>RicoElectrico</em>:</p>
-<blockquote>&gt;  Nixie tube is a tiny electrical tube with filaments in the shapes of all the digits stacked one on top of another, and it displays the desired digit by making just that filament glow<p>Lol, no. That&#x27;s a Numitron (although they were 7 segment)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tasty_freeze</em>:</p>
-<blockquote>You are confidently incorrect.<p><a href="https:&#x2F;&#x2F;ethw.org&#x2F;Nixie_Tubes" rel="nofollow">https:&#x2F;&#x2F;ethw.org&#x2F;Nixie_Tubes</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>master-lincoln</em>:</p>
-<blockquote>your article says it&#x27;s a gas discharge vacuum tube, so no filament.
-You seem to be confidently incorrect too.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lightedman</em>:</p>
-<blockquote>Multiple types of gas discharge vacuum tubes use a filament of some sort for excitation, be it a coil or grid.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>drfuchs</em>:</p>
-<blockquote>Also, Nixie Tubes were absolutely not “tiny.”  Typically, they were about the same size as a vacuum tube you’d find in the back of your radio or TV.  They were universally used on electronic equipment; less so on consumer devices.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Real-time map of Great Britain's rail network</title>
-      <link>https://www.map.signalbox.io</link>
-      <guid isPermaLink="false">hn3-48802535</guid>
-      <pubDate>Mon, 06 Jul 2026 09:38:36 +0000</pubDate>
-      <description>338 points, 127 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.map.signalbox.io"><strong>→ Article</strong></a> <small>(map.signalbox.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48802535">→ HN comments</a> &nbsp;·&nbsp; 338 points &nbsp;·&nbsp; 127 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>AJRF</em>:</p>
-<blockquote>&gt; Signalbox&#x27;s technology identifies the train a device is on by matching a snapshot of smartphone data to a train’s trajectory data. The technology uses advanced algorithms works even with severely degraded data. We are able to pinpoint a smartphone to any type of train without background location tracking or hardware.<p>Hmm, that&#x27;s...interesting?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>vaillancourtmax</em>:</p>
-<blockquote>Seems similar to Transit&#x27;s approach: <a href="https:&#x2F;&#x2F;blog.transitapp.com&#x2F;go-underground&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.transitapp.com&#x2F;go-underground&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>amelius</em>:</p>
-<blockquote>Meanwhile, other engineers are working on reducing the vibrations.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>RobinL</em>:</p>
-<blockquote>It works fairly well empirically: my 7yo likes to watch trains and we regularly use this map to know when to expect one to pass.  Not perfect, but pretty good</blockquote>
-<p>↳ reply 3 — <em>ed_elliott_asc</em>:</p>
-<blockquote>I wonder what app has allow location on all the time and is feeding them their data</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>maelito</em>:</p>
-<blockquote>Checkout the French equivalent : <a href="https:&#x2F;&#x2F;carto.tchoo.net" rel="nofollow">https:&#x2F;&#x2F;carto.tchoo.net</a>. 
-Looks more complete.<p>Past similar HN submission got no attention, whereas the UK&#x27;s top page. Interesting !<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45249351">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45249351</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Shywim</em>:</p>
-<blockquote>Note that carto.tchoo does not provide real position in real-time: it only has access to departures, stops, delays and suppressions and interpolate position based on this.<p>This means that if your train is running at half-speed or stopped but does not result in an official delay, the position will not match reality.</blockquote>
-<p>↳ reply 2 — <em>spacedcowboy</em>:</p>
-<blockquote>Is the interesting part the upvotes, meaning there&#x27;s more people interested in UK train networks than French ones ? And it&#x27;s a comment on demographics ?<p>Or is the interesting part that the UK one is real-time, and the French one isn&#x27;t (or at least, zooming in, I don&#x27;t see them moving).</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jillesvangurp</em>:</p>
-<blockquote>I looked into the gtfs (gtfs.org) a while ago. This is a data feed format (protobuf based) that a lot of sites like this use for both schedules and real time updates that is pretty widely adopted. Most gtfs location feeds require getting an API key. But there are a handful of public ones that share actual location updates without that.<p>This is also how e.g. Google maps and others integrate schedule information for public transport as well.<p>Building a map from the real time updates is relatively straight foward once you have access.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
