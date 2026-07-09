@@ -4,7 +4,105 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 08 Jul 2026 22:13:30 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 00:17:31 +0000</lastBuildDate>
+    <item>
+      <title>TypeScript 7</title>
+      <link>https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/</link>
+      <guid isPermaLink="false">hn3-48833715</guid>
+      <pubDate>Wed, 08 Jul 2026 16:06:35 +0000</pubDate>
+      <description>440 points, 168 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/"><strong>→ Article</strong></a> <small>(devblogs.microsoft.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48833715">→ HN comments</a> &nbsp;·&nbsp; 440 points &nbsp;·&nbsp; 168 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>m3h</em>:</p>
+<blockquote>The speed up numbers based on their testing:<p><pre><code>    Codebase    | TypeScript 6 | TypeScript 7 | Speedup
+    ------------|--------------|--------------|--------
+    vscode      | 125.7s       | 10.6s        | 11.9x
+    sentry      | 139.8s       | 15.7s        | 8.9x
+    bluesky     | 24.3s        | 2.8s         | 8.7x
+    playwright  | 12.8s        | 1.47s        | 8.7x
+    tldraw      | 11.2s        | 1.46s        | 7.7x
+</code></pre>
+Congratulations to the team for pulling off this feat while doing a responsible migration (looking at you, Bun).<p>Quick question: How does this affect downstream tools like tsdown and esbuild, which need to build the TypeScript codebase? Can I use TS 7 and current tsdown together?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>DanRosenwasser</em>:</p>
+<blockquote>&gt; How does this affect downstream tools like tsdown and esbuild, which need to build the TypeScript codebase?<p>esbuild doesn&#x27;t rely on TypeScript at all, so there&#x27;s no issue there.<p>With tsdown on the other hand, it depends on if you use --isolatedDeclarations. If not, you can install TypeScript 6 side-by-side (instructions for this are on the blog)</blockquote>
+<p>↳ reply 2 — <em>hackerbrother</em>:</p>
+<blockquote>Do you think Bun&#x27;s migration was irresponsible?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>adamddev1</em>:</p>
+<blockquote>Remember when people would argue about how types weren&#x27;t worth the effort?<p>I love TypeScript, if nothing else for how it&#x27;s been able to popularize types.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kstrauser</em>:</p>
+<blockquote>I don&#x27;t recall anyone disliking <i>types</i>. Lots of people disliked <i>static typing</i>, or more directly <i>static, explicit typing</i>. For instance, I&#x27;ve been around many conversations over the years where people would say goofy things like they couldn&#x27;t use Python because it&#x27;s untyped. That&#x27;s insane: Python is strongly typed. It&#x27;s also <i>dynamically</i> typed, which is a different dimension.<p>There are some genuinely untyped languages, or more typically &quot;stringly typed&quot; ones. I hacked around on AREXX as a youth, where all values are strings, even when they look like numbers. Most of the Unix CLI tools like sed could be, uh, said, to be stringly typed. Most of the &quot;discussions&quot; about typing, though, involved Python and similar dynamically typed languages. I don&#x27;t think I&#x27;ve ever heard someone claim that weakly typed or untyped languages were great for building large project. I&#x27;ve heard plenty of people claiming that Python couldn&#x27;t be used to build large projects because it was dynamically typed, or &quot;untyped&quot; as they wrongly described it, which was confusing to those of us using it to build large projects.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>_flux</em>:</p>
+<blockquote>There&#x27;s a school of thought that consider the term &quot;types&quot; reflect to the properties that exist in programs even before they are run, as in they are a property of the programs themselves, not their state at runtime. This thinking—which is also what type theory talks about—does consider Python untyped: reading a Python program along with its specification, you are not able to assign types to each expression.<p>But what Python does have is tagging: when you create an object you tag it, and then whenever you operate on those values, you check the tag and maybe raise an exception or not. This is happening at runtime.<p>Strongly typed and weakly typed do not seem to have good definitions. A good one I&#x27;ve read is that &quot;strong typing describes the typing you like&quot;.<p>It is great though if people go to the same extent as you to define what they are talking about, as this reduces the chances of misunderstandings. But it should not be taken as fact that the definitions you have chosen are the universally accepted ones.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>jt2190</em>:</p>
+<blockquote>&gt; Strongly typed and weakly typed do not seem to have good definitions.<p>Is strongly typed not “I compiler&#x2F;runtime guarantee the bytes I read adhere to type T”?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>nicoburns</em>:</p>
+<blockquote>Type systems just used to be bad. Anything that forces you to use a class hierarchy to represent an &quot;OR&quot; type (sum types) is painful to work with. Modern languages like TypeScript &#x2F; Rust &#x2F; Swift &#x2F; Kotlin that have sum types are dramatically much nicer.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>dimitropoulos</em>:</p>
+<blockquote>the real story here is an incredible team that managed to simultaneously keep two separate codebases alive for the most advanced type system known to mankind (yeahhh yeahh Hindley-Milner eat your heart out).<p>huge congrats to the team!<p>looking forward to the Rust rewrite ;)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>DonaldPShimoda</em>:</p>
+<blockquote>Most <i>complex</i>, perhaps, but not &quot;most advanced&quot;. I don&#x27;t think there&#x27;s necessarily a meaningful &quot;correct&quot; choice for that title, but surely one of the proof assistant languages would be a more likely candidate?<p>(I don&#x27;t say this to be disparaging of TypeScript&#x27;s type system, by any means — it&#x27;s very interesting stuff!)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dimitropoulos</em>:</p>
+<blockquote>good points, let&#x27;s get negated types and higher kinded types in there then you&#x27;ve got yourself a deal.  maybe regex thrown in too for flavor</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>samuell</em>:</p>
+<blockquote>Steve Francia (author of Hugo and a bunch of other top Go projects) wrote up some thoughts of Go&#x27;s fit in the agentic era:<p><a href="https:&#x2F;&#x2F;spf13.com&#x2F;p&#x2F;go-the-agentic-language&#x2F;" rel="nofollow">https:&#x2F;&#x2F;spf13.com&#x2F;p&#x2F;go-the-agentic-language&#x2F;</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Chatto is now open source</title>
+      <link>https://www.hmans.dev/blog/chatto-is-open-source</link>
+      <guid isPermaLink="false">hn3-48833116</guid>
+      <pubDate>Wed, 08 Jul 2026 15:19:50 +0000</pubDate>
+      <description>677 points, 184 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.hmans.dev/blog/chatto-is-open-source"><strong>→ Article</strong></a> <small>(hmans.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48833116">→ HN comments</a> &nbsp;·&nbsp; 677 points &nbsp;·&nbsp; 184 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>wxw</em>:</p>
+<blockquote>&gt; It’s designed to be extremely easy to self-host on your own infrastructure.<p>Kudos for this. Per the docs: <a href="https:&#x2F;&#x2F;docs.chatto.run&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.chatto.run&#x2F;</a>,<p>&gt; Chatto ships in a compact, self-contained binary<p>&gt; it uses NATS, a compact message broker that also ships with a built-in stream persistence engine [...] NATS is just as easy to provision as Chatto, and most of our examples will show you how.<p>&gt; you can also configure an external S3-compatible object storage for Chatto to store your files in, and we strongly recommend doing so...<p>&gt; The actual calls are powered by LiveKit (Apache-2.0), which you need to deploy alongside Chatto. As with NATS, the deployment examples show the required wiring.<p>&gt; ...<p>And kudos for backing it up with real guidance. Great project.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>OhSoHumble</em>:</p>
+<blockquote>This is super cool. More options is always good. Something that is confusing about the docs though... is there a desktop application? The screenshot implies there is but I couldn&#x27;t find the docs to download THAT.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>moeffju</em>:</p>
+<blockquote>There is a Tauri wrapper that I built early on because I wanted the desktop convenience (autostart, separate app, etc) that Firefox+PWA couldn&#x27;t offer, I use the desktop version as my daily Chatto driver. The mobile build is more of a proof of concept for now. Check it out: <a href="https:&#x2F;&#x2F;github.com&#x2F;teal-bauer&#x2F;chatto-tauri" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;teal-bauer&#x2F;chatto-tauri</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>electriclove</em>:</p>
+<blockquote>Can it be installed on Cloudflare or Vercel or something else that is easy&#x2F;cheap&#x2F;free?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>duttish</em>:</p>
+<blockquote>A thought if you want to sell to companies, &quot;with per-user keys that get shredded when a user decides to delete their account.&quot;<p>You&#x27;ll need soft delete, work messages belong to the employer and not the user.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>moeffju</em>:</p>
+<blockquote>I would guess that in these cases you would just not allow users to self-delete their accounts? But for most users and providers of Chatto I think automatic right-to-deletion compliance sounds nice :)</blockquote>
+<p>↳ reply 2 — <em>anonym29</em>:</p>
+<blockquote>Employers may not be the target audience.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>dormento</em>:</p>
+<blockquote>Couldn&#x27;t help but smile because &quot;chato&quot; in portuguese means &quot;boring&quot;, and this seems very easy to set up and use.<p>Here&#x27;s to more boring software! :)</blockquote>
+<blockquote>
+<p>↳ reply — <em>brodock</em>:</p>
+<blockquote>Can also mean annoying. As a general recommnedation, before naming a project or company something, always search whether it means something bad in the top 10 most spoken languages.<p>For portuguese&#x2F;spanish, there is always a high chance of being a slang that is NSFW</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>andrepd</em>:</p>
+<blockquote>There&#x27;s a Hyundai car whose name literally means &quot;pussy&quot; in Portuguese and Galician x) It&#x27;s marketed as something else in those territories.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>celsoazevedo</em>:</p>
+<blockquote>Hyundai Kona :D<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hyundai_Kona" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hyundai_Kona</a></blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Mistral's Robostral Navigate: a state of the art robotics navigation model</title>
       <link>https://mistral.ai/news/robostral-navigate/</link>
@@ -291,6 +389,28 @@ Here is the video in case someone is curious: <a href="https:&#x2F;&#x2F;www.you
 <blockquote>I&#x27;m open to trying it, but my gosh, having one &#x27;w&#x27; offset slightly by a few pixels from the one right above it feels like it would drive me bonkers eventually.<p>And: doesn&#x27;t this result in text that &quot;jumps around&quot; as you type?</blockquote>
 </blockquote>
 </blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Geosql: A Claude/Codex skill for geospatial data</title>
+      <link>https://github.com/dekart-xyz/geosql</link>
+      <guid isPermaLink="false">hn3-48829242</guid>
+      <pubDate>Wed, 08 Jul 2026 08:37:26 +0000</pubDate>
+      <description>126 points, 13 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/dekart-xyz/geosql"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48829242">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 13 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>OtherShrezzing</em>:</p>
+<blockquote>&gt;4x improvement on geospatial tasks with map in the loop.<p>The graph shows a baseline 2% task success rate improving to to 8% task success rate, but the evals section details 100% success rates across the board.<p>I&#x27;m not sure what the effectiveness of this skill is from the readme. Is it 8% success, or 100% success?</blockquote>
+<p><strong>Top #2</strong> — <em>cpa</em>:</p>
+<blockquote>This space is very active. I work at the French mapping agency, and we&#x27;re currently building MCPs to work with our data.<p>See: <a href="https:&#x2F;&#x2F;github.com&#x2F;ignfab&#x2F;geocontext" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ignfab&#x2F;geocontext</a> (French)  
+Beta MCP instance: <a href="https:&#x2F;&#x2F;geollm.beta.ign.fr&#x2F;geocontext&#x2F;mcp" rel="nofollow">https:&#x2F;&#x2F;geollm.beta.ign.fr&#x2F;geocontext&#x2F;mcp</a><p>Unrelated, but also take a look at the nice high-density LiDAR point data we have!  
+<a href="https:&#x2F;&#x2F;visionneuse-lidarhd.ign.fr&#x2F;?px=4441970.281583222&amp;py=374682.8055641948&amp;pz=4547296.947251096&amp;qx=0.2607454059054861&amp;qy=0.2836776999465366&amp;qz=0.6793651702848728&amp;qw=0.6245012099716316" rel="nofollow">https:&#x2F;&#x2F;visionneuse-lidarhd.ign.fr&#x2F;?px=4441970.281583222&amp;py=...</a></blockquote>
+<p><strong>Top #3</strong> — <em>minraws</em>:</p>
+<blockquote>If I see another skill or markdown on hackernews I might just consider leaving the platform. What even is the point of sharing markdowns...<p>Either LLMs will be so good in a few months this will be redundant.<p>Or it won&#x27;t be and LLMs are a dead end and there are better ways to build with LLMs</blockquote>
+<blockquote>
+<p>↳ reply — <em>esafak</em>:</p>
+<blockquote>Skills provide guidance; they augment and narrow the search space. Even intelligent humans benefit from guidance.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3566,137 +3686,6 @@ Its really amazing what can be pressed into a single html these days.</blockquot
 </blockquote>
 <p><strong>Top #3</strong> — <em>dzink</em>:</p>
 <blockquote>Just read Careless People. It’s good and this triggers the Streisand effect.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>It's not about physical vs. digital games, it's about ownership</title>
-      <link>https://popcar.bearblog.dev/its-about-ownership/</link>
-      <guid isPermaLink="false">hn3-48794750</guid>
-      <pubDate>Sun, 05 Jul 2026 14:56:15 +0000</pubDate>
-      <description>255 points, 204 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://popcar.bearblog.dev/its-about-ownership/"><strong>→ Article</strong></a> <small>(popcar.bearblog.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48794750">→ HN comments</a> &nbsp;·&nbsp; 255 points &nbsp;·&nbsp; 204 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jbombadil</em>:</p>
-<blockquote>I am generally not in favor of adding regulation, but this is a place where I would support it.<p>Anything that you <i>BUY</i> needs to be your property. This means you must have the ability to:<p>1. Transfer ownership of it (either temporarily as a loan or permanently as a sale). Digital-only doesn&#x27;t preclude this: the store can have a &quot;transfer&quot; functionality.<p>2. (Within reason) use it at your discretion at any point after the sale. This means that a company cannot &quot;revoke&quot; your access at a later time. Specifically for content that is DRM locked, if they decide to sunset that service (store, DRM server, whatever), no problem! just offer DRM free (or generally lock-free copies). I have no problem with Sony not offering DRM free versions of games that I can still download and play with the store. But if that goes away -&gt; you must give me a path to local ownership.<p>(Multiplayer games that require server infrastructure are a bit more complex, and I&#x27;d leave aside for now).<p>This should apply equally to video games, movies, books, music. Any digital content.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>feoren</em>:</p>
-<blockquote>You&#x27;re not in favor of adding regulation, except when it comes to issues you understand and care about. All the oversight and regulation about everything you don&#x27;t care and&#x2F;or know about is big bad government overreach. Every government agency is a useless waste of your tax dollars, except the ones you rely on and the ones where you have friends that work there. Do I have that right?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>vanviegen</em>:</p>
-<blockquote>Though your point may have some value, your comment comes across as meanspirited and ad hominem.<p>Also, regulation is not universally supported by knowledgeable consumers. Often quite the opposite, in fact.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>nfw2</em>:</p>
-<blockquote>Mean spirited sure, ad hominem, no. It&#x27;s satirizing the argument, not personal traits unrelated to the argument</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>al_borland</em>:</p>
-<blockquote>I saw something earlier today that showed the Sony agreement specifies you’re only licensing the games, even if you buy it on a disc. So the fine print means no one ever “buys” a game for the PS5. They are buying a license to use the game for some indefinite period of time that Sony, or some other rights holder, will determine at a later date.<p>This is why things really need to be DRM free from the start, and portable (have the ability to back them up, move them, etc). It’s the only way to ensure they can’t pull that kind of stuff.</blockquote>
-<p>↳ reply 3 — <em>RHSeeger</em>:</p>
-<blockquote>&gt; I have no problem with Sony not offering DRM free versions of games that I can still download and play with the store. But if that goes away -&gt; you must give me a path to local ownership.<p>I worry about shenanigans where you &quot;buy&quot; the game from a shell company and that shell company &quot;folds&quot; and doesn&#x27;t uphold it&#x27;s promises. Same is true for a smaller, but not shell, company. If the non-DRM version isn&#x27;t already created and held in trust, then it&#x27;s not trustworthy.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>hx8</em>:</p>
-<blockquote>Absolutely this.<p>Fifteen years ago World of Warcraft was at its peak.  You had 12 million people paying a monthly fee, plus buying the occasional expansion pack.  No other gaming company had seen reoccurring revenue numbers like that before and it changed the industry.  One aspect of this was that if you stopped paying you lost access to the game.<p>The industry has been looking for the next way to level up this subscription model on gaming.  Battle Passes, Xbox Live, Game Pass, Playstation Plus, Stadia, Game Fly, and a ton of other ideas. Sony is now using the stick to directly attack ownership instead of the carrot to entice subscriptions.  We&#x27;ll see how this plays in the PS6, but I think they are overplaying their position, especially with how underwhelming the PS5 has been received by gamers.<p>I&#x27;m optimistic that the raise in PC gaming will act as a balance for the obvious greed of the consoles.  It&#x27;s becoming a larger and larger player in the non-mobile gaming market, and it&#x27;s too big to be treated like a second class citizen anymore.  The open platform prevents anyone from acting as a gatekeeper between game developers and players.<p>For me personally, I began losing interest in consoles the first time I had to install a console game to a hard drive. The plug and play magic just fell apart.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>PaulKeeble</em>:</p>
-<blockquote>People still don&#x27;t own their games with Steam, the main PC platform. I don&#x27;t think its going under anytime soon and currently its reasonably customer friendly but as we have seen these big tech companies can turn on their customer base at any moment. GOG is about the only way to actually own the games since no DRM is applied and you can download the entire package and keep it and don&#x27;t require their launcher.<p>PC already went digital no ownership for most people unfortunately. His argument that it isn&#x27;t the same doesn&#x27;t wash, you still can&#x27;t sell them or lend them to someone else and you have to hack around Steam&#x27;s DRM, which is a loophole that can be closed at any point.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>aceazzameen</em>:</p>
-<blockquote>You talk as if all Steam games use Steam DRM. No, it&#x27;s not GOG but it&#x27;s not the same category as Sony and Microsoft at all. It&#x27;s starting to sound disingenuous when I see Steam lumped together with them.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Uvix</em>:</p>
-<blockquote>Until Steam starts telling me before I buy which games have their DRM and which doesn&#x27;t, they belong in the same category as Sony and Microsoft.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thfuran</em>:</p>
-<blockquote>I’m not nearly so optimistic. I think we have a generation of kids now who mostly never owned any physical media, having grown up with Netflix instead of vhs&#x2F;dvd, Spotify instead of CDs, steam instead of retail games, etc.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>beloch</em>:</p>
-<blockquote>&quot;But most people use Steam anyway, I hear you say. That&#x27;s true, but you can still own your games on Steam. Very easily, in fact! Steam doesn&#x27;t apply a hard DRM for games on their platform, you can bypass it and play your games offline without the launcher if you know what you&#x27;re doing.&quot;<p>--------------<p>When it comes to PC games, the real peace of mind comes from cracks and piracy.<p>Sure, a single player game that requires an online service to start up could become unplayable if the company running that online service decides to end it without providing a patch.  If that happens, somebody will crack it so the game can be run.  Sure, a game could be yanked from Steam without notice, but you can always pirate it.  Sure, Steam could go under, but the internet is my backup drive.  I know what I&#x27;ve paid for.<p>I don&#x27;t have actual legal ownership of the titles I buy, but I also have recourse if I feel I&#x27;ve been ripped off.  That recourse may be abused by some, but game companies have no moral right to oppose it until they start respecting the rights of their paying customers.  Taking away something that was paid for is <i>theft</i>.  Ownership rights for downloaded titles is a critical stepping stone if game companies are serious about reducing piracy.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Organic Maps</title>
-      <link>https://organicmaps.app/</link>
-      <guid isPermaLink="false">hn3-48794446</guid>
-      <pubDate>Sun, 05 Jul 2026 14:14:30 +0000</pubDate>
-      <description>733 points, 208 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://organicmaps.app/"><strong>→ Article</strong></a> <small>(organicmaps.app)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48794446">→ HN comments</a> &nbsp;·&nbsp; 733 points &nbsp;·&nbsp; 208 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>eisa01</em>:</p>
-<blockquote>Organic Maps was my go to app for a navigation app where you can fix errors yourself immediately! So much better than having to work for free on the proprietary apps, and hope they accept your edits<p>There’s a fork from one year ago, CoMaps, that is gaining different features<p>E.g., I am adding CarPlay Dashboard support that you can test by joining the TestFlight<p>We are in great need of both more testers and some proper iOS devs (I am not). We’re racing to get scene lifecycle support by September, perfect opportunity if you like modernising old codebases!<p><a href="https:&#x2F;&#x2F;www.comaps.app&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.comaps.app&#x2F;</a>
-<a href="https:&#x2F;&#x2F;codeberg.org&#x2F;comaps&#x2F;comaps" rel="nofollow">https:&#x2F;&#x2F;codeberg.org&#x2F;comaps&#x2F;comaps</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>david-gpu</em>:</p>
-<blockquote>All these apps rely on the data provided by OpenStreetMap (OSM). It is a Wikipedia-like project where anybody can contribute edits.<p><a href="https:&#x2F;&#x2F;www.openstreetmap.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.openstreetmap.org&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>hinata08</em>:</p>
-<blockquote>yeah, so were LibreOffice and OpenOffice relying on the .odt format<p>CoMaps forked out of OrganicMaps after a row about money</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>JumpCrisscross</em>:</p>
-<blockquote>&gt; <i>CoMaps forked out of OrganicMaps after a row about money</i><p>Organic Maps is organized as a for-profit entity. CoMaps is not. This is a real difference, and the former asking for donations makes it look like a scam.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>frevib</em>:</p>
-<blockquote>Any recommendations for an OSS maps app that provides tracks like Strava,l and Komoot?</blockquote>
-<p>↳ reply 3 — <em>nelgaard</em>:</p>
-<blockquote>Comaps works for free with android auto.<p>I did buy OsmAnd a long time ago, but have since used the OsmAnd~ and needed an OSM client for a car.<p>I like OsmAnd because it is very powerful, but comaps is more elegant.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Yacoby</em>:</p>
-<blockquote>There is also CoMaps (<a href="https:&#x2F;&#x2F;www.comaps.app&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.comaps.app&#x2F;</a>) which is a fork of Organic Maps, after concern over the governance of Organic Maps <a href="https:&#x2F;&#x2F;itsfoss.com&#x2F;news&#x2F;organic-maps-fork-comaps&#x2F;" rel="nofollow">https:&#x2F;&#x2F;itsfoss.com&#x2F;news&#x2F;organic-maps-fork-comaps&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>random3</em>:</p>
-<blockquote>Thank you! This is highly relavant. I wish OPs would put a bit more research into  what they post<p><a href="https:&#x2F;&#x2F;itsfoss.com&#x2F;news&#x2F;organic-maps-fork-comaps&#x2F;" rel="nofollow">https:&#x2F;&#x2F;itsfoss.com&#x2F;news&#x2F;organic-maps-fork-comaps&#x2F;</a><p>&gt; Despite being advertised as a community-driven project, key decisions, including financial management, partnerships (with Kayak, for instance), and the inclusion of proprietary components in the code were made by a small group of shareholders, often without input from the broader contributor community.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>JumpCrisscross</em>:</p>
-<blockquote>&gt; <i>a small group of shareholders</i><p>This is sketchy. The entity at the bottom of the page is Organic Maps OÜ, which is an Estonian private limited company. Estonia has non-profits (MTÜs). The fact that this isn&#x27;t organised as one makes it a commercial venture, except one that asks for donations.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>elAhmo</em>:</p>
-<blockquote>e-Residency is most likely the main reason for this &#x27;run&#x27; from Estonia.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>z3ugma</em>:</p>
-<blockquote>Just downloaded CoMaps. Why does it start with a zoomed out view of the entire world, especially given that I gave it location services and it shows my current location (in North America). The very first UX experience this app gives is &quot;I am primarily for people interested in maps and geography&quot;<p>Contrast this with Apple Maps - when you open it, there are 4 big tap controls for actions like &quot;Home&quot; &quot;Work&quot;, a search bar, and a map that covers a 1-mile radius around you .<p>I&#x27;d encourage your UX flow to go something more like: request location services &gt; if granted, immediately start downloading their local tileset in the background &gt;  zoom to a 20-mile radius around the user</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>lone-cloud</em>:</p>
-<blockquote>I would recommend people use comaps instead which is the actual FOSS fork. OM has a long history of malicious behaviour like quietly adding ads, turning a part of its previously open sourced code proprietary and misappropriating donations. OM has lost most of its community a year ago to comaps and are now rushing vibe coded features to compensate.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Run Windows 2000 on a DEC Alpha with a new es40 fork</title>
-      <link>https://raymii.org/s/blog/Run_Windows_2000_for_Dec_Alpha_on_a_new_es40_fork.html</link>
-      <guid isPermaLink="false">hn3-48794302</guid>
-      <pubDate>Sun, 05 Jul 2026 13:47:44 +0000</pubDate>
-      <description>128 points, 74 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://raymii.org/s/blog/Run_Windows_2000_for_Dec_Alpha_on_a_new_es40_fork.html"><strong>→ Article</strong></a> <small>(raymii.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48794302">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 74 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bartvk</em>:</p>
-<blockquote>Somehow, Windows 2000 does not look dated to me. It looks functional and usable, and maybe even somewhat fresh. I never actually used it long-term (during college, started using Linux), so it can&#x27;t be nostalgic. Anyone else feel the same?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pavlov</em>:</p>
-<blockquote>Windows 2000 really was the best desktop OS from release until 2002 at least.<p>Linux was incomplete, Sun and SGI were dead except for servers, classic Mac OS was a crashy dinosaur, and Mac OS X was a slow mess. I bought 10.0 on release day and installed it on a dual core G4, almost the top Mac you could buy. It was not usable, much as I wanted to. (The real v1 was Mac OS X 10.2.)<p>Windows 2000 was designed for real professional apps because late ‘90s Microsoft had a serious appetite for taking over the workstation market. Microsoft acquired companies like Softimage, the leading 3D CGI app, and rebuilt their previously Unix-based products on Windows. This pro usability focus reflected back into the OS itself.<p>This didn’t last because Microsoft unified the Windows 95&#x2F;98 consumer lineage into NT&#x2F;2000, so starting with XP there wasn’t a pro Windows anymore. They had decisively won the workstation market and saw no need to invest anything more (just as happened with browsers). So 2000 remains the last time a major tech company built a pure pro desktop OS. Mac was always a consumer&#x2F;pro hybrid, and ultimately Apple did it better than Microsoft.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sgt</em>:</p>
-<blockquote>I seem to recall more or less exactly when OS X became legendary. Must be around Jaguar or Panther. But coming from a Linux (and Unix) background, this was a godsend at the time. Now, quarter of a century later - still running it and it&#x27;s brilliant. The only thing that bugs me is notarization.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ramgine</em>:</p>
-<blockquote>I still have my snow leopard usb installer. That was a great OS. It made me switch to daily driving a Mac completely</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>hadlock</em>:</p>
-<blockquote>I ran W2K through most of high school and until like 2009 when Valve finally dropped support for it. It was a great OS fast, rarely crashed, most games would actually run on it. Valve dropping W2K support meant TF2 no longer ran without jumping through a bunch of hoops</blockquote>
-<p>↳ reply 3 — <em>mysterydip</em>:</p>
-<blockquote>I daily drove it in the 2000s, and loved it. Later I used it for my server VMs due to the small memory footprint and fast remote response. If it supported current applications, I’d still be using it</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>andrewjf</em>:</p>
-<blockquote>This is pretty cool, it brings back memories.  Thanks for posting.<p>I used to manage Tru64 (Alpha) and OpenVMS (VAX and Alpha).  Mostly Oracle DB and whatever they called their App development suite (horrible, horrible software) for a University&#x27;s ERP system (called Banner) and infrastructure (Multinet on OpenVMS&#x2F;VAX for DNS, DHCP, mail, etc).  After that I moved on to AIX on Power5 for Oracle on HACMP and Veritas Cluster.  Such a different world from what we have now.<p>I have an old AlphaServer ES47 running OpenVMS and Power5 560Q running AIX in my garage</blockquote>
-<p><strong>Top #3</strong> — <em>crmd</em>:</p>
-<blockquote>This put a smile on my face. I have a random, vivid memory from college of being in a university IT cave trying and failing to install Windows 2000 RC3 on a DEC Alphastation 600. My friends and I were scratching our heads when somebody figured out that RC2 (the build referenced in this blog post) was the last Windows build to support Alpha.<p>If I remember correctly we installed Red Hat Linux ~5-6.0 on the DEC and used it for various shenanigans. In retrospect it would have been fun to get Tru64 running on it instead…</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>imoverclocked</em>:</p>
-<blockquote>AFAICR, Linux was far easier to run stuff on by that point. Playing with different variants of Unix was certainly fun though! I remember being blown away by an Irix+OpenGL demo on “deprecated hardware” that a friend had access to in the late 90s. After growing up with a Borland compiler in dos and programming graphics in the most naive of manners possible, seeing accelerated graphics that outmoded any xscreensaver on my fancy 200Mhz Pentium Linux box opened my eyes a little more!</blockquote>
-<p>↳ reply 2 — <em>toast0</em>:</p>
-<blockquote>&gt; failing to install Windows 2000 RC3 on a DEC Alphastation 600. My friends and I were scratching our heads when somebody figured out that RC2 (the build referenced in this blog post) was the last Windows build to support Alpha.<p>If you had seen the RC2 disks, it would have been obvious. RC2 had different disks for Intel and Alpha, RC3 only had Intel disk(s). NT4 had all archs on the same disk, so it would have made some sense to be confused.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
