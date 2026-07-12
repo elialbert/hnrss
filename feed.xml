@@ -4,7 +4,52 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 12 Jul 2026 09:08:17 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 11:17:11 +0000</lastBuildDate>
+    <item>
+      <title>What xAI's Grok Build CLI Actually Sends to xAI</title>
+      <link>https://gist.github.com/cereblab/dc9a40bc26120f4540e4e09b75ffb547</link>
+      <guid isPermaLink="false">hn3-48877371</guid>
+      <pubDate>Sun, 12 Jul 2026 01:09:50 +0000</pubDate>
+      <description>286 points, 133 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://gist.github.com/cereblab/dc9a40bc26120f4540e4e09b75ffb547"><strong>→ Article</strong></a> <small>(gist.github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48877371">→ HN comments</a> &nbsp;·&nbsp; 286 points &nbsp;·&nbsp; 133 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>freakynit</em>:</p>
+<blockquote>&quot;It uploads the whole repository — every tracked file&#x27;s content plus git history — independent of what the agent reads&quot;<p>Holy cow!!!! I mean I kinda expected Elon would do something like this to try to catch-up.. but this is extremely concerning.<p>This is precisely the reason, even though their pricing is competitive and grok-4.5 is actually good enough, I chose not to go with them.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>faangguyindia</em>:</p>
+<blockquote>Does OpenAI also have access to all github repos via partnership with microsoft?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>taywrobel</em>:</p>
+<blockquote>GitHub Copilot engineer here working on identity, safety, and privacy - no, even Microsoft doesn’t have access to all GitHub repos.<p>As years have passed since the acquisition “company” delineations have blurred a bit, but Microsoft employees still need to go through a separate onboarding process to access <i>any</i> GitHub company resources (internal repositories, telemetry, documentation, etc.), and then we have an additional layer of entitlements to gate and audit access to any sensitive data, including user data.<p>Very few employees within GitHub proper even have access to view private repositories, and in the rare cases where that’s done for legal or safety reasons the repository owner is notified.<p>There are currently no OpenAI employees with access to GitHub systems, so there’s about 4 layers of protection in place to prevent private repositories access. We do genuinely take user data protection and privacy seriously.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>csande17</em>:</p>
+<blockquote>This is a nice answer to the question &quot;how is GitHub preventing rogue employees at Microsoft from stealing my private repositories?&quot;. Like, it&#x27;s good to know I&#x27;m covered if Microsoft accidentally hires a North Korean spy or something.<p>But if Microsoft really was selling private repo content to OpenAI, it probably wouldn&#x27;t go through those access controls. It&#x27;d be an executive-level decision with enough force to plow through all the red tape, and it&#x27;d be implemented as a data pipeline or similar automated process that wouldn&#x27;t trigger the same kind of notification as, like, a Trust and Safety employee taking manual action.<p>Probably the better evidence here is in GitHub&#x27;s ToS where they say in pretty strong&#x2F;binding terms that they aren&#x27;t doing this: <a href="https:&#x2F;&#x2F;docs.github.com&#x2F;en&#x2F;site-policy&#x2F;github-terms&#x2F;github-terms-of-service#e-private-repositories" rel="nofollow">https:&#x2F;&#x2F;docs.github.com&#x2F;en&#x2F;site-policy&#x2F;github-terms&#x2F;github-t...</a> . If they are secretly selling your data to OpenAI they haven&#x27;t left themselves a ton of wiggle room if people ever found out.<p>(Probably the biggest loophole they could use is to send private repo content to an OpenAI service for scanning&#x2F;safety purposes. The ToS allows this and they&#x27;re almost certainly doing it with other services like PhotoDNA. Then OpenAI can just violate whatever agreement they have not to store the data sent to that service.)</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>whateveracct</em>:</p>
+<blockquote>it&#x27;s straight up data exfiltration and should be illegal</blockquote>
+<p>↳ reply 3 — <em>ashishb</em>:</p>
+<blockquote>There is a reason I run all such CLIs inside a sandbox [1] giving limited directory access.<p>Imagine if the CLI pulled your SSH keys or other sensitive information by mistake?<p>Programmers do make such mistakes all the time.
+I don&#x27;t want to count on whether &quot;uploading all files it can access&quot; is intentional or a mistake.<p>1 - <a href="https:&#x2F;&#x2F;github.com&#x2F;ashishb&#x2F;amazing-sandbox" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ashishb&#x2F;amazing-sandbox</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>gitgud</em>:</p>
+<blockquote>This is one of the reasons why native proprietary coding agent runners like claude-code, codex, grok-build etc are so dangerous for privacy… you just don’t know what “secret sauce” they’ll add in the next update…<p>It’s much safer to use something like opencode and use models via their API… however, the tradeoff is that it will never perform as well as it does in their native agent runners…</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gruez</em>:</p>
+<blockquote>Give enough usage, you can reconstruct an entire codebase via tool calls alone, and it&#x27;ll be entirely undetectable because it&#x27;s all done server side. Whatever grok&#x27;s doing is just more blatant, but using opencode or whatever doesn&#x27;t create a meaningful security boundary. It&#x27;s like the meme of using cheetos as a lock.</blockquote>
+<p>↳ reply 2 — <em>rohansood15</em>:</p>
+<blockquote>I agree with you, but Codex is open source.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Geee</em>:</p>
+<blockquote>Isn&#x27;t it assumed that the AI agent is allowed to read your files in the directory you launch the harness? Most agents read your code on the first prompt, including any secrets you have there, which you shouldn&#x27;t have. Also the .env file is for local environment, and shouldn&#x27;t contain any actual secrets. AI agents should be isolated from any actual secrets, because they can&#x27;t be trusted to follow instructions.<p>If you adjust your expectations, I think it&#x27;s be better to upload the code to their servers instead of sending it through context over and over again.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dminik</em>:</p>
+<blockquote>It will have to be sent through the context again. That&#x27;s how LLMs work.<p>The only reason to do this is so that Musk has clean training data for his next model. Project setup, popular libraries, CI workflows, etc.</blockquote>
+<p>↳ reply 2 — <em>edg5000</em>:</p>
+<blockquote>Even if it&#x27;s uploaded once, it&#x27;s still being ran through inference. It saves a bit of HTTP traffic I suppose.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>How Doctors die. It’s not like the rest of us (2016)</title>
       <link>https://archive.cancerworld.net/featured/how-doctors-die/</link>
@@ -173,6 +218,30 @@ Based on the post his exact quote sounds more like 1 but obviously some people d
 <p>↳ reply 2 — <em>theMackabu</em>:</p>
 <blockquote>I dont know a single soul who uses the Anthropic `ant` cli....</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>How to hide from killer drones</title>
+      <link>https://www.economist.com/science-and-technology/2026/07/08/how-to-hide-from-killer-drones</link>
+      <guid isPermaLink="false">hn3-48874357</guid>
+      <pubDate>Sat, 11 Jul 2026 18:22:02 +0000</pubDate>
+      <description>127 points, 162 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.economist.com/science-and-technology/2026/07/08/how-to-hide-from-killer-drones"><strong>→ Article</strong></a> <small>(economist.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48874357">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 162 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>orthoxerox</em>:</p>
+<blockquote>Dazzle camouflage doesn&#x27;t work on killer drones. Even civilian LLMs recognize that the object on the photograph is a military truck, except they can&#x27;t explain why it&#x27;s been painted to resemble a zebra. Most dedicated machine vision models easily lock in on a boxy shape moving along a road. If anything, the stripes make the trucks easier to see.<p>The real answer to killer drones is a CIWS that can cover 2pi steradians and attack multiple drones at the same time, because otherwise it will be just swarmed by drones that quietly glide towards it, engines off, from several directions before entering the final dive.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zh3</em>:</p>
+<blockquote>Absolutely this will work, it&#x27;s all over social media.<p>Remember, in WWII Carrots were the secret weapon used to defeat the night fighters.<p>[Todo: Add link to Poe&#x27;s Law]</blockquote>
+<p>↳ reply 2 — <em>Waterluvian</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;youtube.com&#x2F;shorts&#x2F;9VSHhx0nJPI?si=rxibNMYv0jKnAIEl" rel="nofollow">https:&#x2F;&#x2F;youtube.com&#x2F;shorts&#x2F;9VSHhx0nJPI?si=rxibNMYv0jKnAIEl</a><p>They’re looking for camouflaged military trucks.<p>What they’re not looking for is a convoy of Zambonis painted in Toronto Maple Leafs white and blue.</blockquote>
+<p>↳ reply 3 — <em>ukd1</em>:</p>
+<blockquote>This. See <a href="https:&#x2F;&#x2F;9mothers.com">https:&#x2F;&#x2F;9mothers.com</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>davidwritesbugs</em>:</p>
+<blockquote>As a bonus it will also repel horse flies.<p><a href="https:&#x2F;&#x2F;www.science.org&#x2F;content&#x2F;article&#x2F;zebra-stripes-confuse-biting-flies-causing-them-abort-their-landings" rel="nofollow">https:&#x2F;&#x2F;www.science.org&#x2F;content&#x2F;article&#x2F;zebra-stripes-confus...</a></blockquote>
+<p><strong>Top #3</strong> — <em>srameshc</em>:</p>
+<blockquote>This title scared me, not for myself but more thinking about how kids will probably need to learn these things next. We are such strange &#x27;intelligent&#x27; creatures who have figured out everything but not to be at peace with each other.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>AI 2040 and the cult of intelligence</title>
@@ -3717,68 +3786,6 @@ Here is the video in case someone is curious: <a href="https:&#x2F;&#x2F;www.you
 </blockquote>
 <p><strong>Top #3</strong> — <em>tomwheeler</em>:</p>
 <blockquote>The headline absolves me from reading the article. My work here is done.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Apple to increase spend with Broadcom to produce billions more U.S. chips</title>
-      <link>https://www.apple.com/newsroom/2026/07/apple-to-increase-spend-with-broadcom-to-produce-billions-more-us-chips/</link>
-      <guid isPermaLink="false">hn3-48830565</guid>
-      <pubDate>Wed, 08 Jul 2026 11:30:56 +0000</pubDate>
-      <description>266 points, 217 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.apple.com/newsroom/2026/07/apple-to-increase-spend-with-broadcom-to-produce-billions-more-us-chips/"><strong>→ Article</strong></a> <small>(apple.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48830565">→ HN comments</a> &nbsp;·&nbsp; 266 points &nbsp;·&nbsp; 217 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Isamu</em>:</p>
-<blockquote>&gt;Broadcom will produce advanced radio frequency components — including FBAR filters<p>Thin-film bulk acoustic resonator<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Thin-film_bulk_acoustic_resonator" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Thin-film_bulk_acoustic_resona...</a><p>&gt;Trends to utilize RF spectrum more efficiently with higher frequencies than roughly 1.5–2.5 GHz and in some cases also simultaneously with increasing RF output power have supported FBAR technology to become one of the key enabling technologies in telecommunication realisations. FBAR technology complements and in some cases competes with surface acoustic wave (SAW) technology and FBAR resonators can replace crystals in crystal oscillators and crystal filters at frequencies more than 100 MHz.</blockquote>
-<blockquote>
-<p>↳ reply — <em>MrBuddyCasino</em>:</p>
-<blockquote>Fascinating. I suppose they can be smaller than quartz crystals?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ahartmetz</em>:</p>
-<blockquote>If you find that fascinating already... did you know that all cellphones use <i>mechanical filters in the GHz range</i>? They combine very good performance with very low energy consumption.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Surface_acoustic_wave" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Surface_acoustic_wave</a><p><a href="https:&#x2F;&#x2F;de.wikipedia.org&#x2F;wiki&#x2F;Akustische-Oberfl%C3%A4chenwellen-Filter" rel="nofollow">https:&#x2F;&#x2F;de.wikipedia.org&#x2F;wiki&#x2F;Akustische-Oberfl%C3%A4chenwel...</a> (pictures)</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>MrBuddyCasino</em>:</p>
-<blockquote>Honestly, the &quot;HF physics is black magic&quot; trope has made me numb to the phantastical contraptions. I appreciate when they look cool, like esoteric orgon wave radiators.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>rantingdemon</em>:</p>
-<blockquote>This seems to be paying lip service to creating a supply chain in the USA.  These are not anything like Apple Silicon ARM chips, they are not even Wifi chips?</blockquote>
-<blockquote>
-<p>↳ reply — <em>arenaninja</em>:</p>
-<blockquote>I figure supply chain migration is an incremental process and any progress is a win. In my mind some of the tech needs genuinely experienced staff and that must be seeded somehow.<p>Note I am talking out of my ass but this is how I see the picture. I have no experience in supply chain or manufacturing :)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>eitally</em>:</p>
-<blockquote>I have 15 years experience working in high tech electronics manufacturing (for a global firm with factories around the world, including in the US and China) and can tell you the most difficult thing to manage is the supply chain.  For time as much as cost, but if you have to ship a $.10 component 6000 miles to get it to a factory, it&#x27;s pretty dang inefficient.<p>That said, you&#x27;re right about cultivating new experience in younger generations.  It&#x27;s probably not surprising to hear that the majority of factory workers in the US are GenX or older.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ksec</em>:</p>
-<blockquote>Apple is already purchasing these Broadcom analog components that is made in the US.<p>This isn&#x27;t exactly new [1] ( Apple announces multibillion-dollar deal with Broadcom for components made in the USA ), and this was in 2023.<p>I am not exactly sure what is the timing of this for. Why now?<p>[1] <a href="https:&#x2F;&#x2F;www.apple.com&#x2F;newsroom&#x2F;2023&#x2F;05&#x2F;apple-announces-multibillion-dollar-deal-with-broadcom&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.apple.com&#x2F;newsroom&#x2F;2023&#x2F;05&#x2F;apple-announces-multi...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>radley</em>:</p>
-<blockquote>&gt; I am not exactly sure what is the timing of this for. Why now?<p>It&#x27;s simply a clever way to satisfy the current administration&#x27;s ambitions. Nothing had to change, just the semantics.</blockquote>
-<p>↳ reply 2 — <em>cmgbhm</em>:</p>
-<blockquote>Probably to highlight us investment and get authorization for buying Chinese memory</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Unicode's transliteration rules are Turing-complete</title>
-      <link>https://seriot.ch/computation/uts35/</link>
-      <guid isPermaLink="false">hn3-48829797</guid>
-      <pubDate>Wed, 08 Jul 2026 09:44:20 +0000</pubDate>
-      <description>126 points, 32 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://seriot.ch/computation/uts35/"><strong>→ Article</strong></a> <small>(seriot.ch)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48829797">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 32 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>SonOfLilit</em>:</p>
-<blockquote>This is not interesting in the way that &quot;DNS parsing is turing complete&quot; is interesting. Nobody can send you a unicode file and make you run an infinite loop or whatever.<p>Within Unicode is defined a DSL used internally by the library implementers to define some business logic, like most DSLs it is turing complete. Anyone with the ability to make you run their rules file already has the ability to make you run arbitrary code (it&#x27;s a software vendor for software you use).<p>It&#x27;s still always fun to find Weird Machines, but as they go, this one is not very weird (it&#x27;s one of the known families of programming languages, the Mathematica language being the most well known example. The person who specified this most likely was aware that this is turing complete and it&#x27;s the rules author&#x27;s responsibility not to write infinite loops).</blockquote>
-<blockquote>
-<p>↳ reply — <em>baq</em>:</p>
-<blockquote>&gt; The person who specified this most likely was aware that this is turing complete and it&#x27;s the rules author&#x27;s responsibility not to write infinite loops<p>Software developer’s job description: prove that this instance of the halting problem you’re being paid to work on today is decidable</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>beefburger</em>:</p>
-<blockquote>I&#x27;ve been wondering for a while if anything in Unicode could accidentally compute. It turns out that UTS #35 transliteration rules are Turing-complete. I show how to compute Collatz with just 3 rewrite rules running on stock ICU.</blockquote>
-<p><strong>Top #3</strong> — <em>anankaie</em>:</p>
-<blockquote>At this point it feels more difficult to ensure that your format cannot compute than to ensure it can</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
