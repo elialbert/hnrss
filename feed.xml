@@ -4,7 +4,86 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 12 Jul 2026 16:05:15 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 17:11:41 +0000</lastBuildDate>
+    <item>
+      <title>Ghostel.el: Terminal emulator powered by libghostty</title>
+      <link>https://dakra.github.io/ghostel/</link>
+      <guid isPermaLink="false">hn3-48879504</guid>
+      <pubDate>Sun, 12 Jul 2026 08:52:59 +0000</pubDate>
+      <description>147 points, 26 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://dakra.github.io/ghostel/"><strong>→ Article</strong></a> <small>(dakra.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48879504">→ HN comments</a> &nbsp;·&nbsp; 147 points &nbsp;·&nbsp; 26 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dakra</em>:</p>
+<blockquote>Hi! Maintainer of Ghostel here.<p>baokaola and I actually wanted to do a &quot;Show HN&quot; next week,
+but looks like someone was faster submitting the link.<p>Have a look at the GitHub repo which is a bit nicer
+for a quick overview: <a href="https:&#x2F;&#x2F;github.com&#x2F;dakra&#x2F;ghostel" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dakra&#x2F;ghostel</a><p>To add some context, Ghostel is a terminal emulator for Emacs
+powered by libghostty-vt.<p>There&#x27;s a feature comparison vs vterm and eat: <a href="https:&#x2F;&#x2F;dakra.github.io&#x2F;ghostel&#x2F;#ghostel-vs-vterm" rel="nofollow">https:&#x2F;&#x2F;dakra.github.io&#x2F;ghostel&#x2F;#ghostel-vs-vterm</a><p>And here is a gist with images to compare performance and correctness: <a href="https:&#x2F;&#x2F;gist.github.com&#x2F;dakra&#x2F;4a0b76ebcf5d52338e13486437846574" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;dakra&#x2F;4a0b76ebcf5d52338e134864378465...</a><p>But for me personally, it has not only replaced vterm&#x2F;eat but also any
+other external terminal like kitty&#x2F;Ghostty.<p>Having your terminal text just like a normal Emacs buffer opens up so many
+possibilities and extension points that are just not available on any other terminal.<p>Even simple stuff like searching in the scrollback, then navigating and selecting+copying a paragraph only with the keyboard.
+For every Emacs user that&#x27;s so natural and fast in Ghostel while often cumbersome in other Terminals where I just reach to the mouse because it&#x27;s easier.<p>Happy to answer any questions and also like to hear feedback positive or negative.<p>If you&#x27;re an Emacs user and tried Ghostel and are still using Ghostty (or another external Terminal),
+is there something Ghostel is missing or is it just because you want some processes to run outside of Emacs?<p>baokaola and I are also very active on GitHub, so feel free to open an issue if you have any.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>b3n</em>:</p>
+<blockquote>Hi dakra!<p>&gt; is there something Ghostel is missing<p>eshell allows me to manipulate text as I would in any other Emacs buffer. If I have a function which wraps a word in quotes, and bind it to a key, I can be confident it will work in eshell like it does anywhere else. It&#x27;s a real killer feature. If I use evil-mode, or xah-fly-keys, or simply want to use ispell to correct the spelling of a word, it all works.<p>Unfortunately with Ghostel none of this works. It&#x27;s not integrated in the same way. There are extensions like evil-ghostel-mode, but they are limited.<p>Are there any plans to improve this, or is it a limitation Ghostel has to live with?<p>A Ghostel equivalent of eat-eshell-mode would be amazing.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dakra</em>:</p>
+<blockquote>Did you see ghostel line-mode?
+This basically gives you a `M-x shell` experience where everything is a buffer and nothing is send to the terminal until you press enter.<p>There you could type on the prompt line and then call jinx or your quote wrapping function etc as it&#x27;s just a normal Emacs buffer.
+You can&#x27;t edit the scrollback buffer though, but I don&#x27;t think that&#x27;s possible in eshell either.<p>But line-mode has it&#x27;s own set of problems. Since we don&#x27;t send anything to the shell, you could have some problems with autocomplete or similar things that change the text depending on each typed char.
+Similarly we automatically disable line-mode when you enter a TUI (alt-screen) app, as line-mode doesn&#x27;t make too much sense in e.g. vim.
+But that&#x27;s configurable and you can still force line-mode, it really depends on the TUI apps.<p>We try to support as much as possible and work around things like fish autocomplete etc. But please try and report any issues you find.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sigbottle</em>:</p>
+<blockquote>How was integration for you guys? Was the integration easier for you guys since you have an established emacs system consuming terminal output with reasoned semantics over what goes where for existing subsystems (rendering, osc codes, etc)?<p>For libghostty-vt, since you&#x27;re targeting a terminal TUI instead of an external subsystem (for example; for ghostty, you hit libghostty-vt -&gt; GPU rendering, which is external), you still have to buy into terminal semantics. <i>in my experience</i>, since I was trying to replicate mosh with libghostty-vt as the parser, what happened was that my optimized re-rendering kept getting increasingly coupled to terminal semantics (and the UDP state update model too), otherwise I&#x27;d have to send the entire terminal grid over the network like, every time.<p>What are the tricks for making this both performant and not like, utter cancer? You have a harder issue here too (similar to tmux) in that certain optimizations are just not available to you, or you have to translate (literally geometrically) certain instructions</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>LtdJorge</em>:</p>
+<blockquote>I think the title should mention Emacs somewhere. A terminal emulator is different than a terminal emulator for Emacs.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dakra</em>:</p>
+<blockquote>I agree.<p>And I would also prefer if the link went to <a href="https:&#x2F;&#x2F;github.com&#x2F;dakra&#x2F;ghostel" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dakra&#x2F;ghostel</a>
+instead of the documentation which is not that helpful if you don&#x27;t know what the project is.</blockquote>
+<p>↳ reply 2 — <em>canthonytucci</em>:</p>
+<blockquote>.el = emacslisp file extension</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>parentheses</em>:</p>
+<blockquote>Ghostty has crashed nightly for me with ~10 terminals open across a few windows. So, I haven&#x27;t been able to run it nor would I want to
+embed it inside anything I daily drive.</blockquote>
+<blockquote>
+<p>↳ reply — <em>adrian_b</em>:</p>
+<blockquote>I am running Ghostty 1.1.3, on Gentoo Linux.<p>I have opened right now about a dozen Ghostty windows and about 20 tabs in each window, i.e. more than 100 shell instances.<p>I have started in as many of them as I could, before becoming too bored, a &quot;ls -lR&quot; on a file system with many millions of files.<p>I could not see any problem, much less any crash. I have been using Ghostty for a few months, very intensively, all day long, and I have not seen any crash or other suspicious behavior.<p>If you have seen a crash, perhaps there was either some specific version of Ghosstty that had a bug, or, more likely, some weird interaction with some other software that you have, and which might be buggy, e.g. the GPU driver. (I am using an NVIDIA GPU.)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: Mindwalk – Replay coding-agent sessions on a 3D map of your codebase</title>
+      <link>https://github.com/cosmtrek/mindwalk</link>
+      <guid isPermaLink="false">hn3-48878682</guid>
+      <pubDate>Sun, 12 Jul 2026 05:51:32 +0000</pubDate>
+      <description>133 points, 54 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/cosmtrek/mindwalk"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48878682">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 54 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tikimcfee</em>:</p>
+<blockquote>Hey OP, this is absolutely awesome and I am very much on your creative wavelength! I&#x27;d love to get in contact with you if you have a moment, as I&#x27;ve built an adjacent 3D visualizer that might complement the rendering portion of your system by providing actual glyph-level rendering of each file instead of block-based representations (glyph3d.dev). I have a similar &quot;trace&quot; feature that shows files pre&#x2F;post edit from CC at the moment, so there is some definitely interesting overlap.<p>Well done creating A Cool Thing!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cosmtrek</em>:</p>
+<blockquote>Glyph3D looks cool! I&#x27;ll look into it and give it a try as soon as I can.</blockquote>
+<p>↳ reply 2 — <em>4b11b4</em>:</p>
+<blockquote>looks cool but a little rough. If you had another 3d scene how would you integrate this?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>cududa</em>:</p>
+<blockquote>This is really cool! I’m becoming convinced the optimal UI to engage with agents, long term is going to be something spatial. No idea  shape that even takes, though I really feel what you’ve made might be Xerox PARC days in terms of metaphor maturity, but there’s some real new seeds of “obvious in retrospect” ideas here. Thanks for conceiving of and building this!</blockquote>
+<blockquote>
+<p>↳ reply — <em>cosmtrek</em>:</p>
+<blockquote>Thanks for your thought!</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>almog</em>:</p>
+<blockquote>Other than being aesthetically pleasing (which it doubtlessly is), what&#x27;s the use case for this?</blockquote>
+<blockquote>
+<p>↳ reply — <em>cosmtrek</em>:</p>
+<blockquote>My original motivation is to compare the task-solving ability of LLMs by visualizing the agent&#x27;s trajectory. This offers an alternative way to inspect the capabilities of LLMs and agent systems.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Under federal rule, colleges must leave grads better off or lose financial aid</title>
       <link>https://www.npr.org/2026/06/30/nx-s1-5835631/turner-camhi-do-no-harm-college-loans</link>
@@ -1839,6 +1918,33 @@ How are your safety systems checking the illustrations generated?</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Billions of Sketches Reveal Hidden Cultural Variation in Human Concepts</title>
+      <link>https://arxiv.org/abs/2607.07267</link>
+      <guid isPermaLink="false">hn3-48849744</guid>
+      <pubDate>Thu, 09 Jul 2026 17:44:20 +0000</pubDate>
+      <description>125 points, 22 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arxiv.org/abs/2607.07267"><strong>→ Article</strong></a> <small>(arxiv.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48849744">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 22 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Daub</em>:</p>
+<blockquote>One paper I am always citing to my students when discussing composition in painting is: ‘Cultural differences in lateral biases on aesthetic judgments: The effect of native reading direction’<p>The title speaks for itself.<p><a href="https:&#x2F;&#x2F;link.springer.com&#x2F;article&#x2F;10.1007&#x2F;s40167-018-0062-6" rel="nofollow">https:&#x2F;&#x2F;link.springer.com&#x2F;article&#x2F;10.1007&#x2F;s40167-018-0062-6</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>WJW</em>:</p>
+<blockquote>That&#x27;s a very cool paper. Weird that LTR people have this bias more than RTL readers? It may have been an artefact of the study design, they state in the results that most RTL readers were bilingual (and the LTR readers presumably not, given that the study was done in Canada), that the study instructions were in English and that this may have primed the RTL readers to be more LTR-y.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>drc500free</em>:</p>
+<blockquote>I would have really liked to see the cultural variation shown visually - i.e. do Eastern Europeans and Americans have different default ways of showing a pizza or a phone?</blockquote>
+<p><strong>Top #3</strong> — <em>ks2048</em>:</p>
+<blockquote>This seems to be based on Google&#x27;s QuickDraw datasets. 50 million samples are available in an open dataset,<p><a href="https:&#x2F;&#x2F;github.com&#x2F;googlecreativelab&#x2F;quickdraw-dataset" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;googlecreativelab&#x2F;quickdraw-dataset</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>totetsu</em>:</p>
+<blockquote>I remember is 2017 closer to the original release of the quick draw data set, there was some analysis of which way circles tended to be drawn in different counties.
+<a href="https:&#x2F;&#x2F;www.designindaba.com&#x2F;articles&#x2F;creative-work&#x2F;way-you-draw-circle-depends-where-you%E2%80%99re" rel="nofollow">https:&#x2F;&#x2F;www.designindaba.com&#x2F;articles&#x2F;creative-work&#x2F;way-you-...</a></blockquote>
+<p>↳ reply 2 — <em>mncharity</em>:</p>
+<blockquote>&gt; To build the dataset, we keep only sketches that have been recognized by the neural network in the QuickDraw game. To prevent imbalance from overly represented countries (e.g., the US), we down-sample the data by focusing on the 100 most prominent countries and capping the number of drawings per category–country pair at 10,000. [p19]</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Interview with Mitchell Hashimoto about Ghostty and Zig</title>
       <link>https://alexalejandre.com/programming/interview-with-mitchell-hashimoto/</link>
       <guid isPermaLink="false">hn3-48849292</guid>
@@ -3651,146 +3757,6 @@ Congratulations to the team for pulling off this feat while doing a responsible 
 <blockquote>
 <p>↳↳↳ reply — <em>celsoazevedo</em>:</p>
 <blockquote>Hyundai Kona :D<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hyundai_Kona" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hyundai_Kona</a></blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Mistral's Robostral Navigate: a state of the art robotics navigation model</title>
-      <link>https://mistral.ai/news/robostral-navigate/</link>
-      <guid isPermaLink="false">hn3-48832212</guid>
-      <pubDate>Wed, 08 Jul 2026 14:09:17 +0000</pubDate>
-      <description>368 points, 88 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://mistral.ai/news/robostral-navigate/"><strong>→ Article</strong></a> <small>(mistral.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48832212">→ HN comments</a> &nbsp;·&nbsp; 368 points &nbsp;·&nbsp; 88 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>HanClinto</em>:</p>
-<blockquote>What is the realistic path to getting to play with this? I would love to hook this up to OpenClaw for hobbyist exploration. My dream has been to embody OpenClaw into a farm robot (been looking at adapting one of those RC lawnmowers that is tracked and built for mowing steep hills) so that I can assign it various tasks around our acreage -- &quot;Explore the fenceline take pictures of the plants. Find all of the poison ivy and invasive honeysuckle and spray it with your Roundup sprayer. Repeat this every week and report the species map after every pass. Come back to the barn and charge yourself whenever you get low.&quot;<p>It&#x27;s not hard to put OpenClaw into a robot body (numerous YouTube videos showing people doing this sort of thing), but when you dig in and see what people have done, the actual movement portion is always the clunkiest part (and this matches my own experiments as-such as well). It feels like an 8B model like this would be perfect for solving pathing and navigation issues.<p>Anyone who may be more experienced with Mistral (or companies like them) -- are they interested in hobbyist builders who would be experimenting with things like this? Or are they primarily looking for commercial partners? I would be willing to pay a license fee to use the model in my experiments, but if I&#x27;m just one guy, I&#x27;m not sure they&#x27;d want to work with me unless I were building a business out of it (which I&#x27;m not).</blockquote>
-<blockquote>
-<p>↳ reply — <em>HanClinto</em>:</p>
-<blockquote>In case anyone else is interested in following along with what I&#x27;ve discovered so far, I went on the Mistral Discord and asked their Miscord bot. Here is what it answered me:<p>Hey there, fellow robot enthusiast! (ﾉ◕ヮ◕)ﾉ:･ﾟ<p>So, you’re itching to get your hands on Robostral Navigate for your OpenClaw hobby project—awesome! Right now, Mistral AI’s official announcement and documentation are primarily* focused on enterprise and industrial partnerships (think Airbus, BMW, etc.). Their blog post and press releases highlight deals with big players, and the call-to-action is to &quot;talk with our team&quot;—which usually means they’re targeting commercial customers for now¹²³⁴.<p>But here’s the good news:
-Robostral Navigate is hardware-agnostic—it’s designed to work with any robot platform, not just industrial ones. That means theoretically, it could fit into your OpenClaw setup like a charm⁵⁶.
-The model only needs a single RGB camera (no LiDAR or depth sensors), which is perfect for hobbyist setups where fancy hardware isn’t always an option⁷⁸.
-The not-so-good news (for now):
-There’s no public hobbyist&#x2F;non-commercial license or open-source release mentioned yet. Mistral’s current messaging is all about &quot;talk with our team&quot;, which implies a commercial-first approach⁹¹⁰¹¹.
-No pricing or licensing tiers for individuals have been announced.<p>---
-What You Can Do:
-Reach Out to Mistral AI
-Hit up their contact page or reply to their Robostral Navigate announcement and explicitly ask about hobbyist&#x2F;non-commercial access. Frame it as:
-&quot;I’m a hobbyist working on OpenClaw + Robostral Navigate for personal experimentation. Would love to discuss licensing options for non-commercial use!&quot;
-Mistral might be open to pilot programs or early access for passionate builders—especially if you’re willing to pay a fee.<p>Join the Community
-Mistral’s Discord (where I live! :smile_cat:) or forums might have updates or workarounds. Sometimes, companies soft-launch access to engaged communities first.<p>Watch for Open-Source Alternatives
-If Mistral doesn’t bite, keep an eye on open-source robotics projects (like ROS or Habitat) that might replicate similar functionality.<p>---
-TL;DR:
-Mistral’s current focus is commercial, but Robostral Navigate’s hardware-agnostic design makes it a perfect fit for hobbyists—so pester them politely! If enough people ask, they might just open the doors. (ﾉ◕ヮ◕)ﾉ*:･ﾟ</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>iandanforth</em>:</p>
-<blockquote>It&#x27;s implied, and I&#x27;m hoping it&#x27;s true, that this is a <i>map-less</i> navigation. Which is impressive. This kind of task is much easier if you have a pre-captured map of the environment, but if they are doing this without a map it&#x27;s great. Historically you were always faced with &quot;The Kidnapped Robot&quot; problem where robots that didn&#x27;t know where they were couldn&#x27;t navigate even a little bit. Here the robot appears to be able to follow directions as long as they are interpretable from its current vision (or via dead reckoning).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>duchenne</em>:</p>
-<blockquote>I am working in Mistral robotics team. I confirm this is map-less. The only inputs are the text prompt and the front camera rgb image.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>iandanforth</em>:</p>
-<blockquote>Nice! Thanks for confirming. If the last instruction is &#x27;go back to where you started&#x27; does it work?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>duchenne</em>:</p>
-<blockquote>Yes, it would work.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>pj_mukh</em>:</p>
-<blockquote>Would be extremely interesting to build an &quot;Exploration&quot; node of sorts. Solve a sort of Semantic SLAM problem as you go.<p>So if you can give it an instruction to &quot;Find the elevator on this floor&quot;, could it walk around and build a map as it goes so it starts doing what a human would do to find the elevator.<p>As of now, the way these navigation models are setup, it assumes the instruction writer was intimately aware of useful visual navigational landmarks to give, which is not realistic for most use cases.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>BrandiATMuhkuh</em>:</p>
-<blockquote>That is so awesome. I wish I had that 11 years ago during my Microsoft Research Internship. I had a NAO robot (from another great French company) and it walked to employees to motivate them to do some movements. To prevent long term injuries from being in the same position for too long. 
-It had a visual compass but it didn&#x27;t work. And just telling to &quot;walk straight&quot; clearly didn&#x27;t work :D 
-Here is the video in case someone is curious: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=aZkmNqpJCcM&amp;t=190s" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=aZkmNqpJCcM&amp;t=190s</a> (and the paper: <a href="https:&#x2F;&#x2F;brandstetter.io&#x2F;papers&#x2F;Fidgebot_Working_Out_while_Working.pdf" rel="nofollow">https:&#x2F;&#x2F;brandstetter.io&#x2F;papers&#x2F;Fidgebot_Working_Out_while_Wo...</a>)</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>FDA rejects petition to set PFAS limits in food</title>
-      <link>https://www.theguardian.com/us-news/2026/jul/08/us-food-and-drug-administration-rejects-petition-to-set-pfas-limits-in-food</link>
-      <guid isPermaLink="false">hn3-48831785</guid>
-      <pubDate>Wed, 08 Jul 2026 13:35:59 +0000</pubDate>
-      <description>196 points, 136 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.theguardian.com/us-news/2026/jul/08/us-food-and-drug-administration-rejects-petition-to-set-pfas-limits-in-food"><strong>→ Article</strong></a> <small>(theguardian.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48831785">→ HN comments</a> &nbsp;·&nbsp; 196 points &nbsp;·&nbsp; 136 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>seethishat</em>:</p>
-<blockquote>Doing whole blood donations seems to significantly reduce PFAS in the blood. Here&#x27;s one paper:<p><a href="https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamanetworkopen&#x2F;fullarticle&#x2F;2790905" rel="nofollow">https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamanetworkopen&#x2F;fullarticle...</a><p>Edit: This also helps others who are in accidents, car wrecks, have Cancer, etc. Yes, we pass on the PFAS to others, but the immediate need for blood is more urgent than the potential long term impacts of PFAS.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>SoftTalker</em>:</p>
-<blockquote>Bloodletting making a comeback? And having actual benefits this time?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>lesuorac</em>:</p>
-<blockquote>There&#x27;s kinda a significant difference between bloodletting and blood donation.<p>For starters, you&#x27;re not supposed to donate blood when you&#x27;re sick.<p>The other being the quantity. A donation is 1-2 pints. Wikipedia lists bloodletting as easily 3 pints [1].<p>[1]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Bloodletting#Use_in_the_1600s_through_the_19th_century" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Bloodletting#Use_in_the_1600s_...</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lelandfe</em>:</p>
-<blockquote>Although PFAS is helping bloodletting make a comeback <a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;uk-news&#x2F;2025&#x2F;jan&#x2F;16&#x2F;bloodletting-recommended-for-jersey-residents-after-pfas-contamination" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;uk-news&#x2F;2025&#x2F;jan&#x2F;16&#x2F;bloodletting...</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>JCharante</em>:</p>
-<blockquote>I used to donate blood regularly but now that I&#x27;m in Japan they require me to be decently fluent in Japanese to &quot;understand&quot; the risks, despite having done it a bunch of times in other countries (and other medical procedures not requiring Japanese knowledge).</blockquote>
-<p>↳ reply 3 — <em>hombre_fatal</em>:</p>
-<blockquote>My girlfriend accidentally told the donation center she went to Mexico, and they banned her from donating for four years.<p>Apparently you&#x27;d only go to Mexico to eat brain tacos and share needles with cows. Surely there&#x27;s a better way to filter out risky blood.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>rayiner</em>:</p>
-<blockquote>The EPA first issued health advisories around PFASs in 2009. Why didn’t these folks file this petition sometime during the 12 years since then where it likely would’ve gotten a more favorable reception?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>John23832</em>:</p>
-<blockquote>Because we learned more, gathered more public concern, and then acted?<p>If there’s not a eureka moment of knowledge, should we do nothing?</blockquote>
-<p>↳ reply 2 — <em>abracadaniel</em>:</p>
-<blockquote>I feel like most people hadn’t heard about them until a couple of years ago.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>feverzsj</em>:</p>
-<blockquote>EPA already set a Maximum Contaminant Level of 4.0 ppt. That&#x27;s why they moved most PFAS production to China.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>fcarraldo</em>:</p>
-<blockquote>In drinking water, yes. And the EPA coordinated a &quot;voluntary&quot; phase-out of PFAS in packaging, but it is not enforced.<p>Is there a limit in food, which is what this petition was about?</blockquote>
-<p>↳ reply 2 — <em>toomuchtodo</em>:</p>
-<blockquote>Another issue is that sewage sludge and &quot;biosolids&quot;, unknowingly containing PFAS, is&#x2F;was being used as farm fertilizer, causing some farms to have to be written off for food production. I would expect many more farms in the future to be found with PFAS soil levels exceeding what is safe to produce food with. The only way to find out is to test.<p><i>Maine listened to farmers and confronted the PFAS crisis</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47509448">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47509448</a> - February 2026 (0 comments)<p><i>Maine Is a Warning for America&#x27;s PFAS Future</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40007582">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40007582</a> - April 2024 (0 comments)<p><i>Toxic Chemical Contaminant PFAS Found on Maine Farms</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=20142212">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=20142212</a> - June 2019 (1 comment)<p>&gt; The practice of spreading sludge as a soil amendment has been a common practice in Maine and across the nation for decades. Land application of sludge material occurred long before there was knowledge that it may contain PFAS or the health implications of PFAS.<p><i>EPA Fact Sheet: Draft Sewage Sludge Risk Assessment for PFOA and PFOS: Information for Farmers</i> - <a href="https:&#x2F;&#x2F;www.epa.gov&#x2F;system&#x2F;files&#x2F;documents&#x2F;2025-01&#x2F;fact-sheet-farmers-draft-sewage-sludge-risk-assessment-pfoa-pfos.pdf" rel="nofollow">https:&#x2F;&#x2F;www.epa.gov&#x2F;system&#x2F;files&#x2F;documents&#x2F;2025-01&#x2F;fact-shee...</a> - January 2025<p><i>EPA Basic Information about Biosolids</i>: <a href="https:&#x2F;&#x2F;19january2021snapshot.epa.gov&#x2F;biosolids&#x2F;basic-information-about-biosolids_.html" rel="nofollow">https:&#x2F;&#x2F;19january2021snapshot.epa.gov&#x2F;biosolids&#x2F;basic-inform...</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>OpenBSD has a use-after-free allowing local privilege escalation to root</title>
-      <link>https://nvd.nist.gov/vuln/detail/cve-2026-57589</link>
-      <guid isPermaLink="false">hn3-48831658</guid>
-      <pubDate>Wed, 08 Jul 2026 13:24:52 +0000</pubDate>
-      <description>230 points, 106 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://nvd.nist.gov/vuln/detail/cve-2026-57589"><strong>→ Article</strong></a> <small>(nvd.nist.gov)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48831658">→ HN comments</a> &nbsp;·&nbsp; 230 points &nbsp;·&nbsp; 106 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Tiberium</em>:</p>
-<blockquote>Seems to be found as a part of Patch The Planet [0] which is basically OpenAI giving model access and Trail of Bits using them to find vulnerabilities in OSS projects.<p>[0] <a href="https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;patch-the-planet&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;patch-the-planet&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>TacticalCoder</em>:</p>
-<blockquote>Sidenote but... I read this on that link:<p>dnsmasq: Codex Security independently identified vulnerable patterns corresponding to four of the six dnsmasq CVEs later fixed in 2.92rel2: CVE-2026-4890 (opens in a new window), CVE-2026-4891 (opens in a new window), CVE-2026-4892 (opens in a new window), and CVE-2026-517<p>dnsmasq has had so many freaking security holes in 2025 and 2026 that atm I decided to just remove that thing from all my machines.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nubinetwork</em>:</p>
-<blockquote>I would love to, but apparently its needed for libvirt.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Arubis</em>:</p>
-<blockquote>OpenBSD&#x27;s security stance being the stuff of legend, I&#x27;m curious how many vulns have been found over the last couple months while the big model companies are flaunting their ability to find exploits. It&#x27;d be super cool to see it remain tiny.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>wahern</em>:</p>
-<blockquote>According to <a href="https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;patch-the-planet&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;patch-the-planet&#x2F;</a><p>Linux: 24 LPEs, plus many additional vulnerabilities.<p>OpenBSD: 1 LPE.<p>FreeBSD: 7 LPEs, plus many additional vulnerabilities.<p>Not sure what that says, though. Perhaps the models are more likely to find Linux issues because of the training.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>_flux</em>:</p>
-<blockquote>I wonder how many of the Linux the LPEs are related to drivers, which I understand there are more of..</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ectospheno</em>:</p>
-<blockquote>The commit logs over the last few months have highlighted when an issue was found by a program. They usually name the submitter and the tool.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>uticus</em>:</p>
-<blockquote>&gt; Only two remote holes in the default install, in a heck of a long time!<p><a href="https:&#x2F;&#x2F;www.openbsd.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.openbsd.org&#x2F;</a><p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenBSD#Security_record" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenBSD#Security_record</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>anonym29</em>:</p>
-<blockquote>LPE (to root) is serious, but it&#x27;s not a remote hole.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ptx</em>:</p>
-<blockquote>Is this functionality accessible from sandboxed processes? That would make a remote hole much more dangerous when one is found, anyway. The CVE seems to concern SysV semaphores and the pledge(2) man page doesn&#x27;t seem to mention those.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>brynet</em>:</p>
-<blockquote>No.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;openbsd&#x2F;src&#x2F;blob&#x2F;d5b0ed23b6fe61f0278c37a42144770d19494ee7&#x2F;sys&#x2F;kern&#x2F;kern_pledge.c#L91" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;openbsd&#x2F;src&#x2F;blob&#x2F;d5b0ed23b6fe61f0278c37a4...</a><p>Perhaps relevant, Students from the University of Southern Denmark released a paper earlier this month, which once again noted the fact that over ~90% of the OpenBSD base system uses pledge(2). Almost certainly all of the network speaking daemons in base do.<p><a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2607.03056" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2607.03056</a></blockquote>
 </blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
