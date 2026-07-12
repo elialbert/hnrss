@@ -4,7 +4,39 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 11 Jul 2026 22:56:50 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 00:01:42 +0000</lastBuildDate>
+    <item>
+      <title>We scaled PgBouncer to 4x throughput</title>
+      <link>https://clickhouse.com/blog/pgbouncer-clickhouse-managed-postgres</link>
+      <guid isPermaLink="false">hn3-48872874</guid>
+      <pubDate>Sat, 11 Jul 2026 15:28:02 +0000</pubDate>
+      <description>167 points, 28 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://clickhouse.com/blog/pgbouncer-clickhouse-managed-postgres"><strong>→ Article</strong></a> <small>(clickhouse.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48872874">→ HN comments</a> &nbsp;·&nbsp; 167 points &nbsp;·&nbsp; 28 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>x4m</em>:</p>
+<blockquote>Just use <a href="https:&#x2F;&#x2F;github.com&#x2F;yandex&#x2F;odyssey" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;yandex&#x2F;odyssey</a> :) It&#x27;s a scalable PgBouncer.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>saisrirampur</em>:</p>
+<blockquote>We started with the most battle-tested and native option to Postgres, which is PgBouncer and tried tuning it the right way. Also now that long due kinks like support for prepared statements are solved, it’s been working really well. There are many customers scaling well with 10K+ Postgres connections. We will consider other options like odyssey, pgdog in the future!<p>Side note: I’m not a big fan of having 10K+ connections on Postgres, 100s are more than enough to scale Postgres well. But that’s a story for another day. ;)</blockquote>
+<p>↳ reply 2 — <em>sevg</em>:</p>
+<blockquote>Fun (semi-related) fact, ClickHouse was originally developed by Yandex :)</blockquote>
+<p>↳ reply 3 — <em>Yajirobe</em>:</p>
+<blockquote>yandex is a russian company, so no, don&#x27;t use it</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ezekiel68</em>:</p>
+<blockquote>&gt; The cancel lands on a process that has never heard of the query, and nothing happens.<p>&gt; Peering fixes this. The processes are aware of one another, so a cancel that lands on the wrong process is forwarded to the one that actually owns the session.<p>I understand &quot;peering&quot; as a concept here but have never tried this with PostgreSQL before.  May I ask:<p>A) Does PostgreSQL have a mode&#x2F;setting for peering that makes this easy?  I&#x27;m imagining a mechanism that either goes round robin (re-sending the cancel to peers until it doesn&#x27;t return an error of some kind) or some metadata in the cancel request that enables the wrong-destination process to somehow identify the proper process.<p>B) And by what mechanism?  If all the PostgreSQL processes are listening to clients via so_reuseport, I guess there must be some other IPC method used for the peering chatter.</blockquote>
+<p><strong>Top #3</strong> — <em>nosefrog</em>:</p>
+<blockquote>Interesting. We run pgbouncer via kubernetes so it was straightforward to make multiple pgbouncer processes on one machine. Also straightforward to get them running on multiple machines, which helps because we run on Azure and they like to cause rolling outages across our fleet via VM maintenance...</blockquote>
+<blockquote>
+<p>↳ reply — <em>saisrirampur</em>:</p>
+<blockquote>Ack, makes sense. I’m very curious on how this affects throughput due to a potential extra network hop from pgbouncer to Postgres. Expecting it to have a minor difference, but still curious.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>toredash</em>:</p>
+<blockquote>Cross zone latency has noticeable effect: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45512351">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45512351</a></blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Networking and the Internet, from First Principles</title>
       <link>https://fazamhd.com/mental-models/networking/</link>
@@ -3847,38 +3879,6 @@ SM</blockquote>
 <blockquote>
 <p>↳ reply — <em>Princesseuh</em>:</p>
 <blockquote>This was actually part of the reason I made the Rust markdown processing, the unified ecosystem is a lot of deps!<p>I still have some plans in this area that should reduce the overall count further, though.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Local, CPU-Friendly, High-Quality TTS (Text-to-Speech) with Kokoro</title>
-      <link>https://ariya.io/2026/03/local-cpu-friendly-high-quality-tts-text-to-speech-with-kokoro/</link>
-      <guid isPermaLink="false">hn3-48821576</guid>
-      <pubDate>Tue, 07 Jul 2026 18:24:10 +0000</pubDate>
-      <description>320 points, 70 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ariya.io/2026/03/local-cpu-friendly-high-quality-tts-text-to-speech-with-kokoro/"><strong>→ Article</strong></a> <small>(ariya.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48821576">→ HN comments</a> &nbsp;·&nbsp; 320 points &nbsp;·&nbsp; 70 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>sudobash1</em>:</p>
-<blockquote>I have used Kokoro fairly extensively for an accessibility product. I have loved working with it (especially because I don&#x27;t have an NVidia GPU like many TTS of similar quality require).<p>I particularly appreciate the fact that it lets you manually add IPA pronunciation guides. There have been some cases where an important word is a homograph and Kokoro assumed the wrong pronunciation.<p>The place where it falls a little short is in saying just a single word or two. Try having it say simply &quot;six&quot; and it almost always says something like &quot;ah-six-ah&quot;. I found a way around that though. If you give it a longer sentence to say (eg &quot;The word is: six&quot;) it will say it fine. The trick is that the Kokoro API gives you the timestamp of each word in the sentence. So you can have a Python script crop out just the word you care about. The intonation is a little flat this way, but is very reliable.<p>I asked about this on the discord, and was told that it is a limitation of the small parameter size. But in fairness to Kokoro, even eleven-labs&#x27; voices suffer from this occasionally.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>QuantumGood</em>:</p>
-<blockquote>Same trick with many others. I say &quot;Knight&quot; to Wispr or Google and see &quot;night&quot;. I say &quot;Knight to f3&quot;, and just backspace out &quot;to f3&quot;.</blockquote>
-<p>↳ reply 2 — <em>cdr</em>:</p>
-<blockquote>It is indeed a common weakness of TTS models.<p>Unfortunately it makes it unsuited for my use case, which is almost entirely single words, as I don&#x27;t particularly want to deal with stitching&#x2F;segmenting input&#x2F;output.</blockquote>
-<p>↳ reply 3 — <em>dr_dshiv</em>:</p>
-<blockquote>Great technique, thanks for sharing</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bronco21016</em>:</p>
-<blockquote>Love this model. I’m GPU poor and have had FOMO that I haven’t played with local models at all. About a month ago I setup Kokoro on my GTX1650 to do TTS for an article reader. A simple WebUI lets me paste a URL or a chunk of copy pasted text. Python cleans it up and sends to Kokoro for TTS and it’s then served via RSS for Apple Podcasts. Then for my morning drive I’ll catch up on articles or blog posts I’ve gathered.<p>At some point I’d like to play with separate voices and see if I could build something like NotebookLM for kind of like a radio morning show of news items I’ve gathered.</blockquote>
-<p><strong>Top #3</strong> — <em>dmayle</em>:</p>
-<blockquote>Fun... This is something I actually care about...<p>I used to keep a version of whisperx around, because I think it&#x27;s important to have not just transcription, but also timing and speaker identification (e.g. for subtitles)... It depends on pyannote, though, which has some wierd licensing (and is tougher to script the installs because of it), so I wanted to look at something that both had better transcription, and supported diarization (the speaker and timing).  I decided on parakeet for the transcription with softformer (the diarization), but most of the available engines for it don&#x27;t include softformer.<p>I coded up an OpenAI compatible server for parakeet-rs ( <a href="https:&#x2F;&#x2F;github.com&#x2F;altunenes&#x2F;parakeet-rs" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;altunenes&#x2F;parakeet-rs</a> ) (which does support softformer) and I&#x27;ve been using it with OpenWhispr (a desktop app for transcription that handles all sorts of neat thing).<p>I&#x27;m doing CPU-only transcription (because I use my GPUs for other stuff and haven&#x27;t gotten around to adding in the GPU-path), but it&#x27;s incredibly empowering to be able to have local transcriptions at will.</blockquote>
-<blockquote>
-<p>↳ reply — <em>dghlsakjg</em>:</p>
-<blockquote>This is TTS. Not STT.<p>For what you are doing, Senko works really well for diarization along with parakeet.<p>Faster and more accurate than Pyannote and whisper on my MacBook anyway.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dmayle</em>:</p>
-<blockquote>You&#x27;re right... I read the title too quickly...  I&#x27;ll have to look at Senko vs Softformer later...</blockquote>
-</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
