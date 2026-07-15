@@ -4,7 +4,167 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 15 Jul 2026 06:22:14 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 09:15:44 +0000</lastBuildDate>
+    <item>
+      <title>TS-2026-009: Insecure argument handling in Tailscale SSH permitted root access</title>
+      <link>https://tailscale.com/security-bulletins</link>
+      <guid isPermaLink="false">hn3-48915004</guid>
+      <pubDate>Wed, 15 Jul 2026 01:08:26 +0000</pubDate>
+      <description>147 points, 71 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://tailscale.com/security-bulletins"><strong>→ Article</strong></a> <small>(tailscale.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48915004">→ HN comments</a> &nbsp;·&nbsp; 147 points &nbsp;·&nbsp; 71 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tptacek</em>:</p>
+<blockquote>This is such a venerable and ancient class of bugs, going at least as far back as AIX 3. Glad to see they&#x27;re still makin&#x27; &#x27;em like they used to.<p>(If you had SSH access to a host in your Tailscale ACL, you could log in as `-i` and get a root login.)</blockquote>
+<blockquote>
+<p>↳ reply — <em>RossBencina</em>:</p>
+<blockquote>I&#x27;m somewhat alarmed that the context that this bug was running in was capable of root login. Is there a reason that an SSH login process would, by default, have enough capabilities to facilitate direct root login?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>anilakar</em>:</p>
+<blockquote>We did Tailscale-like SSH reverse tunnels at scale first in 2013 and the main issue has always been that there are no good libraries. Bash scripting around the OpenSSH binaries is pretty much the only way to go.<p>There&#x27;s Paramiko, but Python is still a huge liability in memory-constrained systems.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>formerly_proven</em>:</p>
+<blockquote>libssh, libssh2. These are totally independent and unrelated code bases, libssh is maintained by Red Hat mainly for ansible and some other tools, libssh2 was created for curl. libssh2 is client-only, libssh can also be used to implement servers.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>doublepg23</em>:</p>
+<blockquote>I’m a heavy Tailscale user, so I do trust them quite a bit, but I never used the Tailscale SSH feature. 
+I feel like OpenSSH’s security record is pretty unbeatable, not sure why I’d swap over for such a security-sensitive tool.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>OJFord</em>:</p>
+<blockquote>The SSH vulnerability here only applies if the attacker is already on the network. It violates your Tailscale ACLs, but it&#x27;s not arbitrary external root ssh access. Arguably that&#x27;s a more secure starting point than vanilla ssh to publicly accessible machine.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fodkodrasz</em>:</p>
+<blockquote>With a plain VPN like WireGuard when they get access to your network, they don&#x27;t have plain ssh, not to mention root ssh access to hosts. This is a serious issue.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bakies</em>:</p>
+<blockquote>Yeah pretty much just use tailscale as a vpn.. do one thing as they say.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>jcarrano</em>:</p>
+<blockquote>&gt; usernames were passed as arguments to getent(1) to retrieve the corresponding passwd entry<p>Always try to use actual API&#x2F;system calls (in this case getpwnam) instead of calling sub-processes.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Data centers have hiked electricity prices on the public by $23B</title>
+      <link>https://fortune.com/2026/07/14/data-centers-23-billion-electricity-bills/</link>
+      <guid isPermaLink="false">hn3-48914683</guid>
+      <pubDate>Wed, 15 Jul 2026 00:20:31 +0000</pubDate>
+      <description>179 points, 107 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://fortune.com/2026/07/14/data-centers-23-billion-electricity-bills/"><strong>→ Article</strong></a> <small>(fortune.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48914683">→ HN comments</a> &nbsp;·&nbsp; 179 points &nbsp;·&nbsp; 107 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>kmod</em>:</p>
+<blockquote>This $23B number that gets thrown around is not the increase to the public. The wording in the referenced report is<p>&gt; Based on actual auction clearing prices and quantities and uplift MW, inclusion of existing and forecast data center load growth resulted in a combined total increase in capacity market revenue for the 2025&#x2F;2026 BRA, the 2026&#x2F;2027 BRA, and the 2027&#x2F;2028 BRA of $23,100,955,341.<p>This is the increase in revenue to PJM from adding datacenter customers, and includes both the amount that datacenters paid as well as the amount that other customers paid due to higher prices from datacenters. So Fortune calling it an increase to &quot;the public&quot; means that they didn&#x27;t read the report they are using as their source and are probably just repeating what they thought someone else meant.<p>Bloomberg in the past worded it as &quot;data centers will add at least $23 billion to customer bills&quot; in April and &quot;added a minimum of $23 billion to customer bills&quot; in February. Which while technically correct (datacenters are customers) seems meant to be misleading. And now that&#x27;s the number that&#x27;s getting thrown around as the increase to &quot;the public&quot;.<p>The part I don&#x27;t get is that the journalists could just give the actual number for the quantity that they are referring to (the amount that non-datacenters paid due to higher rates due to datacenter loads): when I calculated it a few months ago I think it was something like $16 billion rather than $23 billion. I feel like the story would have the same impact if the headline number was $16B as $23B, but $16B has the benefit of not being a misrepresentation of the situation.<p>---<p>Also I would definitely recommend checking out the PJM BRA report. It&#x27;s a bit dense but not too hard to follow, and my personal takeaway was that the PJM market is just very dysfunctional and they are blaming the datacenters instead. I thought SemiAnalysis had a good analysis of it: <a href="https:&#x2F;&#x2F;newsletter.semianalysis.com&#x2F;p&#x2F;are-ai-datacenters-increasing-electric" rel="nofollow">https:&#x2F;&#x2F;newsletter.semianalysis.com&#x2F;p&#x2F;are-ai-datacenters-inc...</a></blockquote>
+<p><strong>Top #2</strong> — <em>anubistheta</em>:</p>
+<blockquote>It&#x27;s important to ground the increase in raw numbers.<p>The total revenue for electricity generation was $514b in 2024.  So this was a 4-5% increase in costs. And if it is being invested in better generation and our aging infrastructure, that seems fine.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>NewsaHackO</em>:</p>
+<blockquote>The fact they gave a raw number instead of a percent of a quantity that is a change  hinted that this was the case. $23B is more impressive than 4%.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mrcode007</em>:</p>
+<blockquote>Imagine a mortgage rate raising by 4%. Still unimpressive ?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>NewsaHackO</em>:</p>
+<blockquote>It&#x27;s funny that you don&#x27;t realize you are doing the same thing; you are giving the absolute change like the article is doing; you are just doing the change in the rate instead of the underlying quantity. A 4% change in my rate if the original rate is 4% would be a 100% rate rate change, which of course is substantial.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>stevelini</em>:</p>
+<blockquote>&gt;&gt; if it is being invested in better generation and our aging infrastructure<p>If.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>jbellis</em>:</p>
+<blockquote>This just isn&#x27;t true. On balance, data centers are turning out to be more like the &quot;anchor tenant&quot; of the power grid, financing improvements for everyone.<p>Overview article with links to actual studies: <a href="https:&#x2F;&#x2F;cityjournal.substack.com&#x2F;p&#x2F;data-centers-arent-raising-your-power" rel="nofollow">https:&#x2F;&#x2F;cityjournal.substack.com&#x2F;p&#x2F;data-centers-arent-raisin...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>ZeroGravitas</em>:</p>
+<blockquote>If the climate change denying and anti renewables Manhattan Institute is running propaganda for something that is strong evidence that the ordinary person is being conned.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Solving 20 Erdős Problems with 20 Codex Accounts Running in Parallel</title>
+      <link>https://www.starfleetmath.com/</link>
+      <guid isPermaLink="false">hn3-48914646</guid>
+      <pubDate>Wed, 15 Jul 2026 00:15:56 +0000</pubDate>
+      <description>131 points, 59 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.starfleetmath.com/"><strong>→ Article</strong></a> <small>(starfleetmath.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48914646">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 59 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>vessenes</em>:</p>
+<blockquote>Very interesting, on many levels: first, the raw additional compute &#x2F; search harness is worth reading about; huge numbers of Lean 4 theorems, thousands of vCPUs available for spreading out search, embedding databases of proofs, all very interesting.<p>Second, the proofs -- I understand the Lean 4 proofs to be refereed by Fable, and generated by Chat 5.6 Sol. Unlike the leaked proof of the Cycle Double Cover Conjecture last week which had a very nicely readable nearly humanlike writeup, the proof summaries (from Fable) read like Claude tends to read to me these days - real difficulty with the theory of mind of the reader, they are filled with technical phrases, acknowledgment of hard bits and oblique reference to solutions. In short, they suck. I didn&#x27;t see the word load-bearing, but I bet it&#x27;s there.<p>That said, a Lean 4 proof is a pretty compelling output artifact. I find it interesting that it&#x27;s an additional type of effort to turn these into human readable &#x2F; appreciable &#x2F; beautiful &#x2F; non-shitty proofs.<p>To those who say who cares -- indeed. But. One of the major reasons things like the Erdos problems are valuable is that they can at times spur new techniques and concepts. The best of these concepts are applied elsewhere, advancing the frontier. While we gain a lot from solving these problems, we&#x27;ll gain even more from that next step of distillation &#x2F; explanation into something humans and computers can grok together. I&#x27;d hope that with so many tentatively marked &#x27;solved&#x27; we will see some new techniques &#x2F; ontology &#x2F; concepts. If not, still pretty amazing.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>colin7snyder</em>:</p>
+<blockquote>This is great feedback (thank you for taking the time), &amp; you especially bring up a fair point on the writeups needing to be more human readable. I&#x27;ll work on that</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>echelon</em>:</p>
+<blockquote>Can you explain what you&#x27;re using the local compute for vs. the API-based frontier models? That was entirely unclear to me.<p>Are you running tool calls that include inference with local fine tunes? And fast math packages? Controlled by the frontier model agents?<p>Is there a way folks can contribute to this?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>cubefox</em>:</p>
+<blockquote>This reminds me of certain simple but addictive video games: &quot;What are these virtual coins good for?&quot; &quot;You can buy better equipment&quot; &quot;Why do you need this equipment?&quot; &quot;To get more virtual coins of course!&quot;</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>fractorial</em>:</p>
+<blockquote>My mouth is agape at the fact that this project
+is basically what I have been working on non-stop
+for the last three weeks and just yesterday gotten
+to the point of evaluating; hats off... I only have
+one novel proof (non-Erdos) and 13 first-time
+formalizations thus far.<p>I still like doing maths by pen and paper, but
+this is fun too.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lionkor</em>:</p>
+<blockquote>When you say &quot;working on&quot; what is your actual contribution? Like, what should I imagine you do? For most people who tell AIs what to do and are proud of it, it&#x27;s sadly mostly sitting around and staring at &quot;thinking&quot; output, and steering a bit, so I&#x27;m curious what the work looks like.</blockquote>
+<p>↳ reply 2 — <em>colin7snyder</em>:</p>
+<blockquote>Thank you for the kind words! I agree, it&#x27;s exciting that we can now build advanced AI systems for solving novel math (but i still love pen &amp; paper too)</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>zitterbewegung</em>:</p>
+<blockquote>I was studying Erdos problems by only taking ChatGPT 5.5 outputs and just asking it to keep on attempting to solve it by asking it to go further. I haven&#x27;t started doing this with chatgpt 5.6 I have some partial results here <a href="https:&#x2F;&#x2F;chatgpt.com&#x2F;g&#x2F;g-p-69f03400f420819192418b18ca90ffee-dabook&#x2F;project" rel="nofollow">https:&#x2F;&#x2F;chatgpt.com&#x2F;g&#x2F;g-p-69f03400f420819192418b18ca90ffee-d...</a><p>What was really interesting is that during the process it was able to find lemmas or theorems that might be related or relevant to be published.<p>While I was doing that I was also trying to use Aristotle to do the Lean formalization and I have a WIP system to do that at <a href="https:&#x2F;&#x2F;github.com&#x2F;aconsapart&#x2F;thesisus&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;aconsapart&#x2F;thesisus&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>universa1</em>:</p>
+<blockquote>This looks interesting. I am not really familiar with lean, etc... Could I use this to formalize&#x2F;verify a proof from a paper?</blockquote>
+<p>↳ reply 2 — <em>colin7snyder</em>:</p>
+<blockquote>I haven&#x27;t played around with Aristotle at all, thanks for bringing it up &amp; (also your codebase, thesisus, is very solid!)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Vancouver PD website features Quick Escape button that wipes itself from history</title>
+      <link>https://vpd.ca/</link>
+      <guid isPermaLink="false">hn3-48914644</guid>
+      <pubDate>Wed, 15 Jul 2026 00:15:53 +0000</pubDate>
+      <description>261 points, 104 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://vpd.ca/"><strong>→ Article</strong></a> <small>(vpd.ca)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48914644">→ HN comments</a> &nbsp;·&nbsp; 261 points &nbsp;·&nbsp; 104 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>quirino</em>:</p>
+<blockquote>The gov.uk Design System calls this the &quot;Exit a page quickly&quot; pattern [1], with an associated component [2]. It can be activated by clicking the Shift key three times.<p>There&#x27;s this nice blog [3] that explains why they chose Shift instead of other keys, and also gives a nice overview of the pattern.<p>[1] <a href="https:&#x2F;&#x2F;design-system.service.gov.uk&#x2F;patterns&#x2F;exit-a-page-quickly&#x2F;" rel="nofollow">https:&#x2F;&#x2F;design-system.service.gov.uk&#x2F;patterns&#x2F;exit-a-page-qu...</a>
+[2] <a href="https:&#x2F;&#x2F;design-system.service.gov.uk&#x2F;components&#x2F;exit-this-page&#x2F;" rel="nofollow">https:&#x2F;&#x2F;design-system.service.gov.uk&#x2F;components&#x2F;exit-this-pa...</a>
+[3] <a href="https:&#x2F;&#x2F;beeps.website&#x2F;blog&#x2F;2024-10-09-why-govuk-exit-this-page-doesnt-use-escape&#x2F;" rel="nofollow">https:&#x2F;&#x2F;beeps.website&#x2F;blog&#x2F;2024-10-09-why-govuk-exit-this-pa...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pdpi</em>:</p>
+<blockquote>I&#x27;m surprised that the blog doesn&#x27;t mention what, to me, is the most obvious reason not use Esc — because it&#x27;s conspicuous as all hell! If somebody&#x27;s at risk and wants to hide what they&#x27;re doing, their abuser seeing them repeatedly hit Esc just screams &quot;I&#x27;m trying to hide something&quot;.</blockquote>
+<p>↳ reply 2 — <em>therein</em>:</p>
+<blockquote>&gt;It can be activated by clicking the Shift key three times.<p>Windows Sticky Keys entered the room.</blockquote>
+<p>↳ reply 3 — <em>xeyownt</em>:</p>
+<blockquote>This is nice but how, as a user, do you learn it exists?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Titan2189</em>:</p>
+<blockquote>Some New Zealand Government &#x2F; Business sites have a Javascript-based pop-up available called Shielded Site <a href="https:&#x2F;&#x2F;shielded.co.nz&#x2F;" rel="nofollow">https:&#x2F;&#x2F;shielded.co.nz&#x2F;</a><p>&gt; If you are experiencing family violence, don&#x27;t worry, the information within this pop-up won&#x27;t appear in your browser&#x27;s history.<p>Pages like Banks or Council websites have it in their footer, so people can lookup information without it appearing in their history</blockquote>
+<p><strong>Top #3</strong> — <em>phillipseamore</em>:</p>
+<blockquote><p><pre><code>  (a class=&quot;quickBrowserEscape ...&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.google.ca&#x2F;&quot;) Need to leave site for your safety? Quick Escape
+  $(&#x27;.quickBrowserEscape&#x27;).on(&#x27;click&#x27;, function () {
+      document.body.style.opacity = 0;
+      document.title = &#x27;New Tab&#x27;;
+      window.open(&#x27;https:&#x2F;&#x2F;www.weather.gc.ca&#x2F;canada_e.html&#x27;, &#x27;_blank&#x27;);
+      window.location.replace($(&#x27;.quickBrowserEscape&#x27;).attr(&#x27;href&#x27;)); &#x2F;&#x2F; removes current page session DOES NOT WORK IN IE
+      return false;
+  });
+</code></pre>
+Would recommend picking random URLs from an array.</blockquote>
+<blockquote>
+<p>↳ reply — <em>shakna</em>:</p>
+<blockquote>This would also leave intact cookies, local&#x2F;session storage, indexeddb, caches. All of which abusers do actually check, when controlling their victims.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>otherme123</em>:</p>
+<blockquote>A quick check shows that they don&#x27;t store <i>anything</i> as cookies or any other browser storage.<p>The thing that still works is the back button after the redirection to Google, and you can still un-close the tab with Ctr-Shf-T which pops the Google page with back history intact. They have &quot;cache-control: max-age=0&quot; which probably should be changed to &quot;cache-control: no-store&quot;. Still, the back button has the history if the user clicked links. Improvements could be:<p>- Recommend the usage of incognito mode.<p>- Blank the page immediately with &quot;document.body.innerHTML=&#x27;&#x27;&quot; before the page replacement, as the replacement alone can have a delay and the abuser could see a glimpse of the police page. Blanking is immediate.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Financing the AI boom: from cash flows to debt [pdf]</title>
       <link>https://www.bis.org/publ/bisbull120.pdf</link>
@@ -43,6 +203,40 @@
 <blockquote>just recalled: some significant open source projects are being rewritten in Rust, with the help of Claude. I don&#x27;t know if these efforts will be successful in the long run, but in some way these news headlines may be creating a media dynamic as part of the IPO preparations?<p>[1] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48870966">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48870966</a> pgrust passes 100% of the Postgres regression tests<p>[2] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48837877">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48837877</a> Rewriting Bun in Rust<p>[3] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48789325">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48789325</a> My AI-built PHP engine in Rust passes 17% of PHP-src tests, renders WordPress (ekinertac.com)</blockquote>
 <p>↳ reply 2 — <em>eric_khun</em>:</p>
 <blockquote>they&#x27;re probably waiting to see how market reacts to fable5 and  gpt 5.6</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Microsoft has released software updates to plug at least 570 security holes</title>
+      <link>https://krebsonsecurity.com/2026/07/microsoft-patches-a-record-570-security-flaws/</link>
+      <guid isPermaLink="false">hn3-48913190</guid>
+      <pubDate>Tue, 14 Jul 2026 21:32:22 +0000</pubDate>
+      <description>126 points, 71 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://krebsonsecurity.com/2026/07/microsoft-patches-a-record-570-security-flaws/"><strong>→ Article</strong></a> <small>(krebsonsecurity.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48913190">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 71 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>lionkor</em>:</p>
+<blockquote>If I find a bug in very important MS products, I usually do report them using their shitty feedback app. Not once has any of that yielded anything.<p>Maybe a way to find tons of high impact bugs would be to let MS developers access those bug reports?</blockquote>
+<p><strong>Top #2</strong> — <em>charonn0</em>:</p>
+<blockquote>It seems like bug hunting might be the one area where AI is actually making the world a better place.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ashleyn</em>:</p>
+<blockquote>How many were introduced by misuse of AI coding&#x2F;vibe coding though?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>miffy900</em>:</p>
+<blockquote>highly unlikely for many of them. SharePoint, bitlocker, Active directory, hyper-v, rdp, DHCP and MSMQ are all software&#x2F;technologies that have decades of history and long pre-dated LLMs. seriously, do people not realise it was entirely possible to write insecure or bad code before LLMs?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>shakna</em>:</p>
+<blockquote>Sure, that&#x27;s true.<p>It is also true that Copilot is currently in use developing Bitlocker and Sharepoint. So I wouldn&#x27;t be confident saying it was one or the other.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>beebmam</em>:</p>
+<blockquote>99.9% of people complaining about AI making the world a worse place would be fully happy with AI if they shared in the economic benefits of automation.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>fuckinpuppers</em>:</p>
+<blockquote>This is great. Now ask Mythos to make windows suck less and let it go crazy.</blockquote>
+<blockquote>
+<p>↳ reply — <em>stubish</em>:</p>
+<blockquote>It would certainly make sense to sick it on all those crash reports and complaints. All the obscure 0x error codes that end up with you being punted to the forums for &#x27;community support&#x27; and being told to reinstall everything.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3570,147 +3764,6 @@ FYI, neither is scheme.</blockquote>
 </blockquote>
 <p><strong>Top #3</strong> — <em>papaver-somnamb</em>:</p>
 <blockquote>Bravo! If only Clojure(Script) did this. There is a real need to reduce the size of compiled JS delivered to the browser and eliminate legacy dependency on goog.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Autopsy Study Finds Replicating SARS-CoV-2 in the Hearts of Long Covid</title>
-      <link>https://my.uscap.org/uscap/program/S0tc675/index.cfm?pgid=5167&amp;sid=14770&amp;abid=51228</link>
-      <guid isPermaLink="false">hn3-48877214</guid>
-      <pubDate>Sun, 12 Jul 2026 00:38:02 +0000</pubDate>
-      <description>125 points, 45 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://my.uscap.org/uscap/program/S0tc675/index.cfm?pgid=5167&amp;sid=14770&amp;abid=51228"><strong>→ Article</strong></a> <small>(my.uscap.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48877214">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 45 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mchusma</em>:</p>
-<blockquote>After seeing studies like this, and how the shingles vaccine reduces dimensia, I have become increasingly convinced that it’s bad to get almost any disease, even transiently. I used to think that it was kind of good to train your immune system (kind of whatever doesn’t kill you makes you stronger). I no longer believe that. I believe that diseases often cause unknown effects and it’s better to avoid disease entirely, that vaccines are actually more beneficial than current studies show in this regard, and new universal vaccines to prevent the common cold and flu will likely have significant health span improvements over time beyond the acute prevention of symptoms.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tigerlily</em>:</p>
-<blockquote>I have come to the same conclusion, especially in regards to anything affecting digestion, from food poisoning, campylobacter, salmonella, giardia, to any gut parasites or just bad bacteria. It can change your gut physiology, mess with enzyme production long term, fucking up your diet by reducing the kinds of foods you can eat. There&#x27;s also the possibility of bowel cancer pathways via such diseases, which I read is currently under investigation.</blockquote>
-<p>↳ reply 2 — <em>apexalpha</em>:</p>
-<blockquote><i>I used to think that it was kind of good to train your immune system (kind of whatever doesn’t kill you makes you stronger). I no longer believe that.</i><p>Vaccines are a method of training your immune system…</blockquote>
-<p>↳ reply 3 — <em>PaulKeeble</em>:</p>
-<blockquote>I am now pretty certain every virus we have ever caught is just smouldering in our body somewhere constantly held in check by the immune system. We seem to just accumulate ever increasing issues until our body can&#x27;t cope anymore and become symptomatic with damage and then ultimately die. We have had a huge blindspot for the damage viruses are doing to people, I doubt any infection leaves us.<p>The research from Covid is just finding so much evidence for tissue resident viral infection and prior work on ME&#x2F;CFS autopsies showed other viruses doing similar in the brain. Catching anything is bad for our health.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>rdmirza</em>:</p>
-<blockquote>It&#x27;s established that COVID can persist in tissue&#x2F;blood - particularly in immunocompromised patients - and is associated with long COVID [1]. This abstract only reports a cut-off of &gt;60 days from COVID infection, so it&#x27;s hard to know how many of these deceased patients are truly outside the acute infection phase.<p>Although this research area is the most promising avenue for long COVID -- wrt biologic rationale -- the major anti-viral trials for long COVID were negative.<p>STOP-PASC trial [2] and PAXLC [3] were both 15-day courses of Paxlovid and showed no benefit across patient reported outcomes.<p>The real question however, is whether anti-virals have benefit in patients with active viral replication. Like only cases of long COVID can be implicated to viral persistence.<p>STOP-PASC did collect stool PCR at baseline, but every tested sample was negative. PAX LC later reported a exploratory biomarker analysis of 82 PAX LC participants did measure circulating SARS-CoV-2 S1 and full-length Spike, and wasn&#x27;t powered to find a difference. Notably, spike presence doesn&#x27;t necessarily mean active viral replication [4].<p>As an aside, mchusma&#x27;s post is probably right. Viral disease is not being associated with more and more long term diseases. EBV is being linked to MS, cervical cancer to HPV, and so on.<p>[1] <a href="https:&#x2F;&#x2F;www.sciencedirect.com&#x2F;science&#x2F;article&#x2F;pii&#x2F;S1473309924001713?casa_token=3WtX0uPOYT4AAAAA:kRZnUe4WTU2n667j3ef7YTR7FApEZwvm6o8avP3WGa5tqxXNqOL6gHMucVjnAIfs5w0JSxsfiQ" rel="nofollow">https:&#x2F;&#x2F;www.sciencedirect.com&#x2F;science&#x2F;article&#x2F;pii&#x2F;S147330992...</a>
-[2] <a href="https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamainternalmedicine&#x2F;fullarticle&#x2F;10.1001&#x2F;jamainternmed.2024.2007" rel="nofollow">https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamainternalmedicine&#x2F;fullar...</a>
-[3] <a href="https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;40188838" rel="nofollow">https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;40188838</a>
-[4] www.medrxiv.org&#x2F;content&#x2F;10.64898&#x2F;2026.02.24.26347001v1.full</blockquote>
-<blockquote>
-<p>↳ reply — <em>draebek</em>:</p>
-<blockquote>&gt; Viral disease is not being associated with more and more long term diseases.<p>You meant to write &quot;<i>now</i> being associated with more and more long term diseases&quot;, right?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rdmirza</em>:</p>
-<blockquote>Aye. Outside edit window unfortunately</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>realo</em>:</p>
-<blockquote>The science is interesting but I must admit I learned a new word today.<p>A deceased person is also a decedent. Adjective vs noun. Cool.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jgalt212</em>:</p>
-<blockquote>Yes, but deceased is also a noun.  The Economist&#x27;s Style Guide would not approve.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rolph</em>:</p>
-<blockquote>the antecedent decedent, was deceased and desistant.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How the FSF sysadmins block botnets with reaction</title>
-      <link>https://www.fsf.org/blogs/community/blocking-botnets-with-reaction</link>
-      <guid isPermaLink="false">hn3-48876809</guid>
-      <pubDate>Sat, 11 Jul 2026 23:26:12 +0000</pubDate>
-      <description>137 points, 49 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.fsf.org/blogs/community/blocking-botnets-with-reaction"><strong>→ Article</strong></a> <small>(fsf.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48876809">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 49 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>LoganDark</em>:</p>
-<blockquote>Do you block people with donation popups? I got a fullscreen one instantly, and upon dismissing it was greeted with a donation banner that takes nearly half my screen.</blockquote>
-<p><strong>Top #2</strong> — <em>idoubtit</em>:</p>
-<blockquote>That&#x27;s interesting. I haven&#x27;t used <i>fail2ban</i> for a long time, but <i>reaction</i> is worth evaluating. Unfortunately, that post does not describe their full configuration. Maybe it&#x27;s on purpose, so that attackers can&#x27;t adjust to fit.<p>My experience is that modern web scraping had no obvious pattern, since it is proxied through many IPs. The last time a server was failing to handle the pressure, we decided to temporarily ban IPs from some Asian regions. How does the FSF decide to ban an IP?<p>Why do they use iptables + ipset instead of nftables? Is there a technical reason or is it just legacy? AFAIK, Nftables is more performant, and IMO simpler. And it has native sets, see <a href="https:&#x2F;&#x2F;wiki.nftables.org&#x2F;wiki-nftables&#x2F;index.php&#x2F;Sets" rel="nofollow">https:&#x2F;&#x2F;wiki.nftables.org&#x2F;wiki-nftables&#x2F;index.php&#x2F;Sets</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>itintheory</em>:</p>
-<blockquote>&gt; The last time a server was failing to handle the pressure, we decided to temporarily ban IPs from some Asian regions.<p>This is something we&#x27;ve been forced to do at work, a LOT.  Some weeks it&#x27;s Huawei Cloud, Tencent, and Alibaba.  Other weeks it&#x27;s all China Telecom.  We&#x27;re using Anubis where possible, but a lot of it is just whack-a-mole with residential proxies.  I looked at Datadome and HUMAN, but they would be hundreds of thousands a year at our traffic scale, and I suspect may also have false positives.  We abandoned CrowdSec for that reason as well.<p>I&#x27;d love to find a decent k8s native solution to this problem.</blockquote>
-<p>↳ reply 2 — <em>thomzane</em>:</p>
-<blockquote>iptables has been mostly a wrapper for nftables for some time now. The choice of iptables + ipset with reaction is the difference in their configuration. Compare restart performance between the ipset and nftables example configurations with lists of greater than 1 million IPs.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Bender</em>:</p>
-<blockquote>My personal preference is to &#x27;ip route add blackhole ${net}&#x27; as it has the lowest CPU overhead and I can add hundreds of thousands of CIDR blocks with no noticeable impact.  The only downside is that it won&#x27;t stop UDP packets from getting to a UDP listener.  There will not be a response but the application will still see it.  For my TCP daemons it&#x27;s great.<p><pre><code>    grep -m1 -E ^Tot &#x2F;proc&#x2F;net&#x2F;fib_triestat ;ip route | grep -Fc blackhole
-    Total size: 56735  kB
-    426951
-</code></pre>
-Those 426951 blackhole routes include data-centers, VPS providers, botnets, AI datacenters that ignore robots.txt, search engines, abused CDN&#x27;s, known bad residential nodes and much more.  I still see a few residential proxy bots that do a halfway decent job of pretending to be real people <i>at times</i> but the feds are playing whack-a-mole with them.  The bots self report to my silly blog so I can block them elsewhere on systems I might care a little bit about.  Happy to share them if anyone is remotely interested.<p>I also use a couple generalized rules in nftables raw table that keeps a lot of beyond poorly written bots away including hping3 tcp floods and masscan.  My rules to port 443 are stateless.  One must not taunt the state table.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How Doctors die. It’s not like the rest of us (2016)</title>
-      <link>https://archive.cancerworld.net/featured/how-doctors-die/</link>
-      <guid isPermaLink="false">hn3-48876741</guid>
-      <pubDate>Sat, 11 Jul 2026 23:15:06 +0000</pubDate>
-      <description>166 points, 98 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://archive.cancerworld.net/featured/how-doctors-die/"><strong>→ Article</strong></a> <small>(archive.cancerworld.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48876741">→ HN comments</a> &nbsp;·&nbsp; 166 points &nbsp;·&nbsp; 98 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mimo84</em>:</p>
-<blockquote>I recently read the book Being Mortal by Atul Gawande, a doctor. He emphasized how terminal care should focus on quality of life instead of attempting to prolong it and making it awful.</blockquote>
-<p><strong>Top #2</strong> — <em>jrapdx3</em>:</p>
-<blockquote>I&#x27;m a physician, an old one. We&#x27;re lucky to live as long as we do, but life will end. The article emphasizes the value of dying peacefully. Sure, that&#x27;s how we want it to be, but we have to make it known to assure it goes that way.<p>Don&#x27;t know what happens elsewhere, but every time I see a doctor someone asks if I have a signed, notarized directive. Yes, I&#x27;ve done that, but so should everybody else concerned about the issue.<p>I have asked aged patients the same question. More than not the answer is &quot;no&quot;. Why haven&#x27;t you? Various versions of &quot;on my list of things to do&quot;. We can&#x27;t really predict future events, in our own interests best to be prepared. Some will take the hint, more than not, people procrastinate.<p>At least I&#x27;ve done what I can do, but we can&#x27;t save people from themselves. Maybe people in healthcare are more aware of what&#x27;s at stake, but everyone has the option to make it as clear as possible their wish (no, their demand) to die in peace.</blockquote>
-<p><strong>Top #3</strong> — <em>djoldman</em>:</p>
-<blockquote>&gt; Even when the right preparations have been made, the system can still swallow people up. One of my patients was a man named Jack... He explained to me that he never, under any circumstances, wanted to be placed on life support machines again.<p>&gt; Even with all his wishes documented, Jack hadn’t died as he’d hoped. The system had intervened. One of the nurses, I later found out, even reported my unplugging of Jack to the authorities as a possible homicide. Nothing came of it, of course; Jack’s wishes had been spelled out explicitly, and he’d left the paperwork to prove it.<p>It&#x27;s interesting that our laws punish homicide with maximum criminal penalties, but the opposite (keeping someone alive against their wishes) seems to be assault and battery at worst, with much much lighter punishment.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>SiempreViernes</em>:</p>
-<blockquote>&gt; It&#x27;s interesting that our laws punish homicide with maximum criminal penalties, but the opposite (keeping someone alive against their wishes) seems to be assault and battery at worst, with much much lighter punishment<p>Is it? One action is reversible and the other is not. And it&#x27;s not very rare that moral systems treat an action and its opposite in different ways (cooperating with police vs hindering, rendering aid vs withholding aid, etc).</blockquote>
-<p>↳ reply 2 — <em>ourmandave</em>:</p>
-<blockquote>This reminds me of an interview with neurosurgeon and author Henry Marsh who had prostate cancer.<p>He described how he&#x27;s arranged to end his own life should he get alzheimer&#x27;s or dementia as he didn&#x27;t want to waste away. But he explained that he has access to knowledge and things ordinary people don&#x27;t.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Weightlifting beats running for blood sugar control, researchers find (2025)</title>
-      <link>https://news.vt.edu/articles/2025/11/research_fralinbiomed_yanweightlifting.html</link>
-      <guid isPermaLink="false">hn3-48876593</guid>
-      <pubDate>Sat, 11 Jul 2026 22:49:42 +0000</pubDate>
-      <description>136 points, 79 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://news.vt.edu/articles/2025/11/research_fralinbiomed_yanweightlifting.html"><strong>→ Article</strong></a> <small>(news.vt.edu)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48876593">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 79 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>beejiu</em>:</p>
-<blockquote>&quot;In this model, mice lived in specially designed cages where food was accessed through a hinged, weighted lid. To eat, the mice had to lift the lid while wearing a small shoulder collar, causing a squat-like movement that engaged the muscle contractions people use during resistance exercise. The load was gradually increased over several days, mimicking progressive strength training.&quot;<p>So the study doesn&#x27;t really show that weighlifting per se is beneficial, but putting food behind weighted hatches is?<p>&quot;Voluntary wheel running (EEX) was conducted as previously described in single-housed mice with access to voluntary running wheels and food and water ad-libitum,&quot;<p>And the runners could each as much as they liked?<p>Sounds like bunk.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>beala</em>:</p>
-<blockquote>This is great news if you&#x27;re a mouse with diabetes.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>signatoremo</em>:</p>
-<blockquote>But do you know why mice is often used instead of says, cat?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>DanMcInerney</em>:</p>
-<blockquote>Does the average &quot;scientist&quot; even care about quality these days or is it all just whatever headline makes their funders happy?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>umvi</em>:</p>
-<blockquote>Dr. Bernstein has long argued this and documents it extensively in his book &quot;Dr. Bernstein&#x27;s Diabetes Solution&quot;[1]. The main reason being that muscles act like natural glucose sinks that drain sugar directly out of the bloodstream, bypassing the liver, so more muscles = more glucose control.<p>I highly recommend the introductory chapter to &quot;Dr. Bernstein&#x27;s Diabetes Solution&quot; by the way, even for non-diabetics. It&#x27;s basically just the &quot;Life and career&quot; section of his wiki page, but in way more detail -- a really interesting biographical account about an industrial engineer doing diabetes self-experiments with a glucose meter he procured through his wife and going up against the medical community&#x2F;orthodoxy and failing, only to finally break through when he got a medical degree late in life. I could probably upload and link to just that section if people are interested.<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Richard_K._Bernstein" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Richard_K._Bernstein</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>mlhpdx</em>:</p>
-<blockquote>Have you studied control systems? Adding a second storage mechanism with different dynamics changes control, and may complicate it. Those muscles may increase hypoglycemic events as well as soften spikes.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sublinear</em>:</p>
-<blockquote>As much as we like to think in abstractions, the tail does not wag the dog.<p>You may intend to lift weights to gain muscle, but the body is doing a lot more than just gaining muscle. It&#x27;s interesting to see what else happens. That is the point of this discussion.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>gopalv</em>:</p>
-<blockquote>Outside of the (in mice) factor, the study compares optional exercise with mandatory exercise factors.<p>&gt; To eat, the mice had to lift the lid while wearing a small shoulder collar, causing a squat-like movement that engaged the muscle contractions people use during resistance exercise.<p>vs<p>&gt; For the endurance group, mice were given open access to a running wheel, an established model of aerobic exercise<p>The study is comparing the exercise that came in right before eating, which is effective at sugar control over the exercise done at any time as desired.<p>Speaking as a runner, I ignore the diet bump which makes me put on extra fat when I am training up for the SF (+2.5 kg over June &amp; July is normal).<p>Mostly because I eat more the night before and mostly light carbs.<p>In fact, I&#x27;d bet my resting metabolism is actually slower when I&#x27;m training and the resting heart rates drop to 45 bpm &amp; sleep takes up fewer calories too.<p>The muscle mass increase from lifting probably never cuts your metabolism needs when you are recovering or resting.<p>Cardiovascular fitness doesn&#x27;t really cause weight loss when you&#x27;re resting. So you&#x27;ll be comparing something which reduces the calorie spend for the all the time you&#x27;re not running vs something slightly bumps the spend when you are not lifting.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Mesh LLM: distributed AI computing on iroh</title>
-      <link>https://www.iroh.computer/blog/mesh-llm</link>
-      <guid isPermaLink="false">hn3-48876505</guid>
-      <pubDate>Sat, 11 Jul 2026 22:38:57 +0000</pubDate>
-      <description>185 points, 43 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.iroh.computer/blog/mesh-llm"><strong>→ Article</strong></a> <small>(iroh.computer)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48876505">→ HN comments</a> &nbsp;·&nbsp; 185 points &nbsp;·&nbsp; 43 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>MattPerry</em>:</p>
-<blockquote>The first picture &quot;gpu rig&quot;, &quot;laptop&quot;, &quot;server&quot;, &quot;cloud node, etc made me realize how little compute I have. I don&#x27;t have a laptop with 24GB VRAM or a workstation with 96GB. I think if I convinced all of my friends to run LLMs on their gaming PCs, I don&#x27;t I would have the total VRAM in the picture.<p>As an aside, I saw this post mentions a public mesh, but I couldn&#x27;t find any more information.</blockquote>
-<p><strong>Top #2</strong> — <em>whs</em>:</p>
-<blockquote>I&#x27;ve been looking for similar distributed computing style LLM, and I found AI Horde and a few other smaller efforts like one from Aphrodite people and distributed training from Nous Research.<p>AI Horde seems to be the biggest of them all. Their API speaks KoboldCPP text completion (not even chat completion). It seems that the community (or at least the active people) strongly prefer it this way because the API exposes more tunables than chat completions, which for roleplay use seems to result in better result. I don&#x27;t know what else you can use AI Horde for anyway since all other use cases likely will require tool use. Just this week I was set out to improve their OpenAI bridge to support chat templates and response parsing. We&#x27;ll see if I could get it deployed officially then you might be able to use it to code, although you&#x27;ll have to use RP models.<p>I think Horde do have a lot more abuse prevention. Workers needs to have 1 week of cumulative uptime to be considered trusted to prevent brigading - users can opt into trusted workers only. Running a worker give you kudos which is required for &gt;512 max tokens generations and also free requests get bumped to last.</blockquote>
-<p><strong>Top #3</strong> — <em>Abishek_Muthian</em>:</p>
-<blockquote>I&#x27;m more interested in running distributed inference for purpose built small language models than these coding LLMs.<p>Say a distributed inference for image processing,  SDR, local weather monitoring etc. These will run on mediocre specs and produce dependable output.<p>Nicely done OP.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
