@@ -4,7 +4,59 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 16 Jul 2026 06:25:44 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2026 09:20:34 +0000</lastBuildDate>
+    <item>
+      <title>SQLite should have (Rust-style) editions</title>
+      <link>https://mort.coffee/home/sqlite-editions/</link>
+      <guid isPermaLink="false">hn3-48928135</guid>
+      <pubDate>Wed, 15 Jul 2026 22:42:58 +0000</pubDate>
+      <description>263 points, 104 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mort.coffee/home/sqlite-editions/"><strong>→ Article</strong></a> <small>(mort.coffee)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48928135">→ HN comments</a> &nbsp;·&nbsp; 263 points &nbsp;·&nbsp; 104 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sethev</em>:</p>
+<blockquote>Interesting idea - I like seeing a list of pet-peeves followed by a proposal for a straightforward way to have a set of &#x27;alternative defaults&#x27; that remains backwards compatible. If you don&#x27;t want to opt in, don&#x27;t run the new PRAGMA edition = 2026.<p>Too often it&#x27;s just a list of issues and a wish that everyone else will change.<p>In (mild) defense of SQLITE_BUSY - busy_timeout just tells sqlite to sleep and retry up to the timeout when it receives SQLITE_BUSY. It seems like a sensible default for a library to leave that up the calling code - which may have something else it could do while it waits. However, that logic often gets missed!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tptacek</em>:</p>
+<blockquote>This isn&#x27;t so much a list of pet peeves as it is the almost universal way people that work seriously with SQLite configure the database. It&#x27;s reasonable to suggest that the alternative settings for each of these suggestions is probably the wrong default for 2026.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Animats</em>:</p>
+<blockquote>&gt; It&#x27;s reasonable to suggest that the alternative settings for each of these suggestions is probably the wrong default for 2026.<p>That&#x27;s the key concept here. When tightening up the defaults, an &quot;edition&quot; mechanism is a good solution.<p>Now we need this for C&#x2F;C++, which have much legacy stuff which ought to go away for new code. This is more feasible than it used to be, because &quot;Convert this Edition 4 code to Edition 5&quot; is something LLMs can do now.<p>I&#x27;d never seen all the rules for SQLite soft typing written out before. Those are more complicated than strong typing.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>tialaramex</em>:</p>
+<blockquote>&gt; Now we need this for C&#x2F;C++<p>P1881 Epochs proposed to WG21 (the C++ standards committee) in 2019 by Vittorio Romeo<p>The committee found plenty of problems with this, and made it clear that if Vittorio did all the hard work to resolve those problems they would find more, P1881 was abandoned.<p>There was a Reddit thread <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;cpp&#x2F;comments&#x2F;1tja9zr&#x2F;c_profiles_a_chance_to_fix_some_annoying_defaults&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;cpp&#x2F;comments&#x2F;1tja9zr&#x2F;c_profiles_a_c...</a> which suggested that the &quot;Profiles&quot; idea Bjarne is pushing for C++ 29 could be used to deliver this.<p>So, you&#x27;re not the first person to notice that this is a good idea, P1881 was written after Rust&#x27;s 2018 Edition, but before 2021 Edition with its even more significant improvements. I firmly believe Rust&#x27;s Editions unlock not only technical possibilities (though it does certainly do that) it unlocks an appetite from users which is good for your ecosystem.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>platz</em>:</p>
+<blockquote>busy_timeout is often sidestepped (ignored) when a transaction attempts to upgrade from a read to a write producing SQLITE_BUSY.<p>By default, SQLite transactions start in DEFERRED mode, acting as read transactions until an actual write operation occurs.<p>If another connection begins writing to the database while your transaction is in this read state, an immediate SQLITE_BUSY error is triggered regardless of what you set busy_timeout to</blockquote>
+<p>↳ reply 3 — <em>mamcx</em>:</p>
+<blockquote>After read, it hit me that because sqlite is a DB, &quot;editions&quot; as-is not work.<p>Because it not <i>tied</i> to the data but to the code.<p>Instead, what I think should be is that the PRAGMAs become &quot;data&quot; that is always checked in full with &quot;if manually set&quot; and then on <i>next</i> &quot;open&quot; THEY GET APPLIED.<p>That is.<p>(and in the command line when open interactively they show up).</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>kccqzy</em>:</p>
+<blockquote>SQLite is slightly different from Rust in that it is a data container. It’s somewhat more common for people to move SQLite database files from one machine to another and then inspect using the command line tool. And it is often the case that the embedded SQLite version in your app is a newer version than whatever version &#x2F;usr&#x2F;bin&#x2F;sqlite3 happens to be. Adding editions to your SQLite file will probably break this use case of using an older version to read a database written by a newer version because it does not know what has changed in a new edition.<p>Not a big deal though. Probably just need better ops to bundle the command-line utility that’s the same version as what’s used in your app.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tptacek</em>:</p>
+<blockquote>For some of these pragmas you have the same issue with or without &quot;editions&quot;, right? Busy timeout is per-connection. And then: if you&#x27;re running in WAL mode, you, the user, have to know that, or risk messing up the database by copying just the .db file rather than vacuuming-into.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kccqzy</em>:</p>
+<blockquote>Editions make the problem worse by requiring the version not only to support the underlying pragmas but also to understand the edition mapping.<p>Example: PRAGMA foo=1 is introduced in 2027. PRAGMA edition=2030 implies this foo pragma. Now you unnecessarily lock out three years worth of releases.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>amluto</em>:</p>
+<blockquote>There’s no need to store the literal edition in the DB file. Instead the edition could be a library construct that sets appropriate flags. So if you set edition 2026 you get WAL, etc.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>arijun</em>:</p>
+<blockquote>I think you can maintain full backward compatibility with all these changes. SQLite has a bunch of meta-data that you can use to see that no earlier editions have modified your database since you last wrote. You make the new editions follow these strict rules, but if an old edition modifies the DB in the interim, you fall back to the original rules, until it’s verified compliant again.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>bambax</em>:</p>
+<blockquote>&gt; <i>I don&#x27;t think I need to explain why it&#x27;s a bad idea for a database to be so careless about data validation.</i><p>Well, loose typing can be extremely useful, and having a type of &quot;ANY&quot; would not replace it.<p>I have built recently an accounting reconciliation system to find discrepancies in data coming from a large variety of sources: some from proper database engines (MySQL MariaDB), but most from proprietary systems that export to CSV. It&#x27;s amazing how corrupt data can become: dates that are invalid, numbers that aren&#x27;t numbers, strings strings strings everywhere.<p>Being able to store the data into tables that have types, but can accept anything, is simply great.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mickeyp</em>:</p>
+<blockquote>Your... solution to bad ETL data is to go &quot;let&#x27;s keep it this way&quot;?<p>You can already &quot;store whatever you want&quot; in a serious database that respects types by default. It&#x27;s called a blob or if you must, a text&#x2F;varchar.</blockquote>
+<p>↳ reply 2 — <em>amluto</em>:</p>
+<blockquote>Are you saying that you have an application where you want the loose-typing-with-integer-affinity semantics for a column (or some other particular affinity)?  It would be entirely reasonable to have a specific type for each loose-with-affinity variant. But I don’t think those should be the default.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Governments, companies, nonprofits should invest in free, open source AI [pdf]</title>
       <link>https://www.siegelendowment.org/wp-content/uploads/2026/07/fortune-david-siegel-open-source-ai.pdf</link>
@@ -111,6 +163,28 @@
 </blockquote>
 <p>↳ reply 2 — <em>trollbridge</em>:</p>
 <blockquote>I had a very weird experience two days ago where Cursor-Grok-4.5 was either stuck in a loop (it would keep attempting to answer the prompt over and over), or else it would just quit halfway through a reasoning loop. Might have been that I was using omp, but it&#x27;s still not the most stable thing out there.<p>Nonetheless when it&#x27;s working, it&#x27;s pretty good, and for the price ($10 a month) is an absolute bargain.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Duskers, the scary command line game, is getting a sequel</title>
+      <link>https://elbowgreasegames.substack.com/p/misfits-attic-announces-duskers-20</link>
+      <guid isPermaLink="false">hn3-48925888</guid>
+      <pubDate>Wed, 15 Jul 2026 19:27:59 +0000</pubDate>
+      <description>126 points, 39 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://elbowgreasegames.substack.com/p/misfits-attic-announces-duskers-20"><strong>→ Article</strong></a> <small>(elbowgreasegames.substack.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48925888">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 39 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>somenameforme</em>:</p>
+<blockquote>Duskers is absolutely amazing - huge recommendation to anybody that hasn&#x27;t played it. But it comes with one huge downside. In the game you play a drone commander who&#x27;s guiding drones exploring various derelicts and other locations after some catastrophic event, to try to figure out what happened. But the frustrating part is that there is no answer - there&#x27;s a number of various explanations that you explore in the game, but no final resolution.<p>The dev explained this was an intentional choice to leave it sort of open-ended and up to the player, but I think he just didn&#x27;t want to commit to any single answer. Even more interesting&#x2F;replayable would&#x27;ve been the potential for him to randomly pick one of the causes (AI, biological virus, etc) at the start of each game, and concluding that path leads to a distinct ending. Realllly hope the sequel has a more satisfactory conclusion.</blockquote>
+<p><strong>Top #2</strong> — <em>trinsic2</em>:</p>
+<blockquote>So the trailer for 2.0 is exactly what I was thinking of for continuation of this kind of game. I was missing a lot that would have made it deep like a backstory. I was thinking it would be great to tell that back story through the logs you find on derelict ships.<p>Im really glad this appears as if it&#x27;s going to happen. Duskers was a great game even in its limited story driven context.</blockquote>
+<p><strong>Top #3</strong> — <em>michalpleban</em>:</p>
+<blockquote>I am obviously missing something here, but how is it &quot;command line&quot;?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pferde</em>:</p>
+<blockquote>Because while exploring derelic ships (the major part of the game), you control your drones remotely, via commands that you type into the console.</blockquote>
+<p>↳ reply 2 — <em>PeterStuer</em>:</p>
+<blockquote>I was also expecting a TUI based game.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -1137,6 +1211,34 @@ Love this combo, once you buy into &quot;go generate .&#x2F;...&quot; as a build
 <p>↳ reply 2 — <em>LeoPanthera</em>:</p>
 <blockquote>The UK is passing a law which makes it illegal to resell event tickets for greater than the face value.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>I also filed the corners off my MacBook</title>
+      <link>https://www.brt.fyi/posts/mac-book-filing/</link>
+      <guid isPermaLink="false">hn3-48911803</guid>
+      <pubDate>Tue, 14 Jul 2026 19:25:41 +0000</pubDate>
+      <description>180 points, 68 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.brt.fyi/posts/mac-book-filing/"><strong>→ Article</strong></a> <small>(brt.fyi)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48911803">→ HN comments</a> &nbsp;·&nbsp; 180 points &nbsp;·&nbsp; 68 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>rob74</em>:</p>
+<blockquote>Nitpick: those are (sharp) edges, not corners. Maybe the next generation of MacBooks will also actually have exactly 90° non-rounded corners? I guess that&#x27;s the next logical step...<p>Also, TIL that Bosch also makes files. I was under the impression that they only made powertools (or electronic measuring devices, or other things with a battery or power cord).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ctippett</em>:</p>
+<blockquote>You mentioned Bosch and I can&#x27;t think of anywhere or anyone else who&#x27;d be interested in this little bit of trivia, so a random comment on a thread about filing the edges off a laptop seems like a fitting place to share it.<p>Bosch dates their appliances using a thing called the Fertigungsdatum Number. The first two digits represent the year of manufacture, the second two are for the month. Except the year  doesn&#x27;t align with the <i>actual</i> year, you first have to add 20. Why 20? Well, Bosch first started using their internal dating system back in 1920 and appliances from that year started with the code &quot;00&quot;. I had an oven that had a date of &quot;7808&quot;, which means it was manufactured in August 1998 (it lasted almost 30 years before we finally had to replace it last month).<p>In 2020 the system wound back around and started with &quot;00&quot; again.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fransje26</em>:</p>
+<blockquote>And the majority owner of Bosch is the Robert Bosch Stiftung (Robert Bosch foundation), which uses its dividends to fund projects in social sciences, public health and education.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Cthulhu_</em>:</p>
+<blockquote>Their main bread and butter is components for cars and ebikes, their (power) tools &#x2F; DIY stuff is like 22% of their business. Or so I learned just now.</blockquote>
+<p>↳ reply 3 — <em>boredpudding</em>:</p>
+<blockquote>Bosch is one of those companies that makes a lot of different things. I own powertools, kitchen appliances and car parts from them.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>musha68k</em>:</p>
+<blockquote>I&#x27;ve been using Macs for decades and never had these issues personally. It seems like some people do literally rest their hands &#x2F; arms on desk &#x2F; notebook body while typing.<p>The &quot;sharp edge syndrome&quot; here to me seems to be a good thing then as it acts as a reminder for proper ergonomics &#x2F; posture.<p>First Google AI search result on the topic:<p>&quot;Never rest your wrists on your MacBook while typing. Instead, let your palms rest gently on the laptop body only when you pause. Hover your hands as you type. This prevents you from bending your wrists and protects the nerves in your carpal tunnel.&quot;<p>That also pretty much exactly mirrors the way we learned typing &#x2F; posture at school in Austria.</blockquote>
+<p><strong>Top #3</strong> — <em>akhil08agrawal</em>:</p>
+<blockquote>Never knew that there are more people like me who get irked at such things. But yeah, I do not have the heart to do this to my laptop, so I end up using my laptop on a solid surface xD</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Cursor 0day: When Full Disclosure Becomes the Only Protection Left</title>
@@ -3593,97 +3695,6 @@ For custom web components, maybe the author forgot that you don&#x27;t need to p
 <blockquote>
 <p>↳ reply — <em>CobaltFire</em>:</p>
 <blockquote>Patlabor is left out of most lists.<p>The new one (EZY) is amazing if you haven&#x27;t seen it.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Kode Dot Programmable pocket device for makers, pentesters and geeks</title>
-      <link>https://kode.diy</link>
-      <guid isPermaLink="false">hn3-48884992</guid>
-      <pubDate>Sun, 12 Jul 2026 21:27:29 +0000</pubDate>
-      <description>125 points, 35 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://kode.diy"><strong>→ Article</strong></a> <small>(kode.diy)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48884992">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 35 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tom2948329494</em>:</p>
-<blockquote>I think it&#x27;s great!<p>I looked into ESP32, M5 Stack, Arduino, etc. but as someone without experience it&#x27;s very confusing. Which parts go together? Which case fits? Does that have a battery? All of this can be found out if you study the specs but it&#x27;s not intuitive.<p>If all you want is tinker with a device, this device here is optimal.<p>For the people saying you can build this yourself: Yes. You can also build your own guitar from invidual parts and it will be cheaper than a store bought guitar. (I have done this). Is it super fun to build? Yes. Can everyone do it? No.</blockquote>
-<p><strong>Top #2</strong> — <em>oliwarner</em>:</p>
-<blockquote>For £160 you can buy three JC1060P470, 7 inch proto-tablet systems with the same P4+C5 stack, with GPIO, ethernet in some models.<p>I get that the expense here is miniaturising and integration, but even at half the RRP, I&#x27;d be wincing. The maker market knows how to work out a napkin-BOM, and knows that this is a lot of money for what you&#x27;re getting.</blockquote>
-<blockquote>
-<p>↳ reply — <em>glitchc</em>:</p>
-<blockquote>Miniaturization and OS customization are significantly more expensive than the BoM suggests. By that logic, every Android phone is a Qualcomm board with some bits stuck on, why does Samsung charge so much for it?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>oliwarner</em>:</p>
-<blockquote>This is not phone-grade miniaturisation.<p>As a maker, I see somebody selling a dev kit that with £20 more in buttons, battery, and an afternoon in CAD gives me a Steam Deck sized version of this for a third the price. It&#x27;s not the same format, but it&#x27;s not a disparate bucket of parts either.<p>Again, you market yourself at people like me, this is the pushback you have to expect.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jvilalta</em>:</p>
-<blockquote>Is this similar to a Flipper Zero? It seems some of the capabilities are there but maybe not all even though you could add anything with the extensions it seems.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Ask HN: What Are You Working On? (July 2026)</title>
-      <link>https://news.ycombinator.com/item?id=48884984</link>
-      <guid isPermaLink="false">hn3-48884984</guid>
-      <pubDate>Sun, 12 Jul 2026 21:26:41 +0000</pubDate>
-      <description>133 points, 418 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=48884984"><strong>→ Article</strong></a></p>
-<p><a href="https://news.ycombinator.com/item?id=48884984">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 418 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>BrunoBernardino</em>:</p>
-<blockquote>My wife and I continue to work on Uruky [1], a simpler Kagi alternative, based in the EU.<p>Last month we reached 200 monthly active accounts (we’ve passed 250 now), and last week we launched support for XMR&#x2F;Monero payments via ProxyStore [2]!<p>You can also see in our homepage that more independent bloggers and privacy-minded people have written about us!<p>The main differences between Uruky and Kagi, DuckDuckGo, SearXNG, etc. are visible in the footer (right side), but one huge difference is that with Uruky, after being a paying customer for 12 months, you get copy of the source code (licensed as BUSL,into AGPLv3 in 2 years — a suggestion made here in HN)!<p>Uruky is paid and you can get a free 2h trial when you signup if you pass a proof-of-work captcha (another suggestion made here on HN, and it uses a local Altcha).<p>Our main challenge continues to be discoverability and outreach because we want to do it ethically. Ideas are welcome! We’ve been sponsoring open source projects, open source maintainers, and indie, small-web, and privacy-related websites and applications. This month was Caddy [3]!<p>Feature-wise, for July we’ve already shipped a lot of visible and less visible things. We’re currently looking into increasing our own index, focused on indie&#x2F;small web, and plan to add a couple of new search providers in the upcoming weeks.<p>Thank you for your kindness!<p>[NO-AI]: There is no generative AI product or service, here.<p>[1]: <a href="https:&#x2F;&#x2F;uruky.com" rel="nofollow">https:&#x2F;&#x2F;uruky.com</a><p>[2]: <a href="https:&#x2F;&#x2F;digitalgoods.proxysto.re&#x2F;en&#x2F;brand&#x2F;uruky" rel="nofollow">https:&#x2F;&#x2F;digitalgoods.proxysto.re&#x2F;en&#x2F;brand&#x2F;uruky</a><p>[3]: <a href="https:&#x2F;&#x2F;caddyserver.com" rel="nofollow">https:&#x2F;&#x2F;caddyserver.com</a></blockquote>
-<p><strong>Top #2</strong> — <em>bredren</em>:</p>
-<blockquote>I&#x27;ve been working on Contextify: <a href="https:&#x2F;&#x2F;contextify.sh" rel="nofollow">https:&#x2F;&#x2F;contextify.sh</a><p>Makes it easy to use Claude Code or Codex interchangeably across multiple computers. Personal editions are free, I have a hosted commercial cloud (workgroups share AI history) and commercial self-hosted option available.<p>It has macOS and Linux clients and I released a guide for setting up the source-available, self-hosted cloud option this week: <a href="https:&#x2F;&#x2F;contextify.sh&#x2F;docs&#x2F;self-hosted&#x2F;" rel="nofollow">https:&#x2F;&#x2F;contextify.sh&#x2F;docs&#x2F;self-hosted&#x2F;</a><p>I am thinking about the other AI cli environments and providing support for those as well.</blockquote>
-<p><strong>Top #3</strong> — <em>mohsen1</em>:</p>
-<blockquote>This is a Chrome extension that records lots of details in a usage session. Stuff like network calls, console logs, screenshots and also optionally screenshots and user narration<p>Tools like this exist, but every one I tried is uploading the session details somewhere in their cloud and try to monetize this.<p>So I built the version I wanted: free, open source, and local. There is no account, no backend, no telemetry. Sessions live in IndexedDB in your browser and exported as a zip.<p>What it records:<p>* Clicks, typing, page changes, network requests and responses, console errors screenshots, video with sound<p>* Your voice, transcribed and placed next to what you were doing at the time<p>* Annotations: Arrows and boxes you draw on the page&#x27;s screenshot<p>Note: Passwords, auth headers, and tokens are masked at capture time<p>All events are lined up in a timeline with timestamps<p>At export you pick a detail level with a live token estimate, so a long session still fits your model&#x27;s context window.<p>.<p>Repo: <a href="https:&#x2F;&#x2F;github.com&#x2F;mohsen1&#x2F;session-recorder-chrome-extension" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;mohsen1&#x2F;session-recorder-chrome-extension</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Since Chromium 148, Math.tanh is now fingerprintable to link underlying OS</title>
-      <link>https://scrapfly.dev/posts/browser-math-os-fingerprint/</link>
-      <guid isPermaLink="false">hn3-48884853</guid>
-      <pubDate>Sun, 12 Jul 2026 21:12:11 +0000</pubDate>
-      <description>392 points, 185 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://scrapfly.dev/posts/browser-math-os-fingerprint/"><strong>→ Article</strong></a> <small>(scrapfly.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48884853">→ HN comments</a> &nbsp;·&nbsp; 392 points &nbsp;·&nbsp; 185 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Aurornis</em>:</p>
-<blockquote>&gt; One tanh call on the right input is a per-OS signature. Claim macOS, return Linux math bits, and you have contradicted your own User-Agent.<p>They (or rather the LLM that wrote this) missed that this is possibly fingerprintable to browser version range, which is slightly more interesting. Most users aren&#x27;t spoofing their user agent headers to be a different operating system. Most fingerprinting solutions aren&#x27;t trying to infer your operating system, they only care about semi-unique things that show up.<p>It&#x27;s an interesting finding. I wish they had taken some time to have a real person write it up. This is too heavily LLM written to ignore.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>comex</em>:</p>
-<blockquote>This can be used to fingerprint version range, but so can a million other things.  Browsers are constantly adding new features and fixing bugs, most of which can be detected from JavaScript.</blockquote>
-<p>↳ reply 2 — <em>userbinator</em>:</p>
-<blockquote>The LLM has a good point. I personally don&#x27;t care what or who wrote it if it&#x27;s true.</blockquote>
-<p>↳ reply 3 — <em>jeroenhd</em>:</p>
-<blockquote>&gt; Most users aren&#x27;t spoofing their user agent headers to be a different operating system.<p>The people behind the LLM behind this blog post are. They&#x27;re trying to pretend their robots are people to sell other websites&#x27; data to their customer. It&#x27;s easier to pass bot detection gates if you pretend to be a physical machine running Windows or macOS than if you honestly admit you&#x27;re using Linux on a VM.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jeroenhd</em>:</p>
-<blockquote>Kind of a smart move by this company: write up an AI analysis of all fingerprinting techniques in hopes they get fixed after outrage so their scraping company can make more money. If it weren&#x27;t for companies like this, fingerprinting wouldn&#x27;t be so ubiquitous and the internet would be a better place in general.<p>I prefer articles like this coming from the other side of the battle (fingerprint.js and friends) because at least their motives are clear.</blockquote>
-<blockquote>
-<p>↳ reply — <em>codedokode</em>:</p>
-<blockquote>I disagree, fingerprinting is necessary to track humans and it will be used regardless of scrapers being there or not.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nradov</em>:</p>
-<blockquote>Why is it necessary to track humans? It might be more <i>profitable</i> for advertising but that&#x27;s not the same as <i>necessary</i>.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>zdragnar</em>:</p>
-<blockquote>Tracking humans isn&#x27;t necessary. Fingerprinting is necessary to tracking humans.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>sjrd</em>:</p>
-<blockquote>I guess that&#x27;s one more good reason to push for correctly rounded transcendental functions. I recently learned that they&#x27;re basically solved now. [1]<p>[1] <a href="https:&#x2F;&#x2F;arith2026.org&#x2F;program.html" rel="nofollow">https:&#x2F;&#x2F;arith2026.org&#x2F;program.html</a> (2nd keynote)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>torginus</em>:</p>
-<blockquote>I never understood why fixed precision, and integer math isn&#x27;t more popular. In engineering, we used fixed point all the time, it ran on much simpler hardware and  the error is mathematically easy to model. IEEE 754 floats are not only suspect when it comes to theory, but are often outperformed with integers smaller than the mantissa (so less than 24 bits of int can beat a 32 bit float), when it comes to things like loss of precision.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>AlotOfReading</em>:</p>
-<blockquote>I recommend pretty much everyone avoid fixed point and other float alternatives, barring exceptional cases after you&#x27;ve done your own numerical analysis, or you lack floating point hardware (rare these days).<p>Yes, fixed point can use simpler hardware. That&#x27;s also a completely irrelevant consideration for software. The vast majority of processors are optimized for floats now and some operations (e.g. division) are actually faster.<p>The precision argument also falls apart. Any float with mantissa &gt;= X+Y can get exactly the same results as a QX.Y fixed point. The float will actually perform better across the same range because you have to round it to perform like the fixed point. That means more precision, lower error, automatic normalization, better overflow behavior, a larger working range, etc. And it&#x27;ll probably be just as fast, unless you&#x27;re bottlenecked on memory bandwidth of inputs (unlikely). When you inevitably want an exp() or another special function, it&#x27;s a heck of a lot easier to call libm than implement your own and it will perform better.<p>Floats are also much easier to get right for your coworkers that aren&#x27;t numerical analysts.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>torginus</em>:</p>
-<blockquote>I didn&#x27;t recommend fixed point for simpler HW - I recommended it for better precision (if you know what you are doing). First, a point I didn&#x27;t make, is that if you have 32 bits of fixed, you get <i>way</i> more precision than with a 32 bit float. But I can think of a pretty common case where a 24 bit int would win against a 32bit float: convolution filters.
-If you have a filter whose inputs are supposed to sum up to 1 (which is the most common case), integer computations  mean that, even with internal overflows, the end result will be correct. In contrast, with floats, you can lose precision. If you apply said operation 10000x recursively (say, you are &#x27;stepping&#x27; a simulation), those errors can add up bigtime.<p>&gt; Floats are also much easier to get right for your coworkers that aren&#x27;t numerical analysts.<p>That one is true, however, when you have people, such as EEs who really care about precision, and know the theory behind it, then floats are often not the obvious choice. It has other advantages, like your calculation running the exact same regardless of CPU and&#x2F;or compiler, which I&#x27;m sure a lot of analysts care about. Afaik finance people don&#x27;t even use floats for things like account balances, because you can&#x27;t represent something like 0.1$ exactly.<p>Fixed point has basically no language support, and is very hard to get right, but sometimes you need to do that.<p>Do you have any subject matter expertise in quantization errors? Like doing simulations or DSP work? Not trying to be antagonistic, just figure out where you&#x27;re coming form.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Retr0id</em>:</p>
-<blockquote>Tangential, but wow do they really register a new domain for each year and renew it in perpetuity?</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
