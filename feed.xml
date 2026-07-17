@@ -4,7 +4,103 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 17 Jul 2026 22:55:32 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2026 23:57:31 +0000</lastBuildDate>
+    <item>
+      <title>Frame – Linux X server in Assembly</title>
+      <link>https://isene.org/2026/07/Frame.html</link>
+      <guid isPermaLink="false">hn3-48948597</guid>
+      <pubDate>Fri, 17 Jul 2026 15:31:22 +0000</pubDate>
+      <description>133 points, 90 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://isene.org/2026/07/Frame.html"><strong>→ Article</strong></a> <small>(isene.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48948597">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 90 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>adrian_b</em>:</p>
+<blockquote>When first looking at the source code, I wondered why one would waste so much time to write 25k lines in raw assembly language, but then I saw that it was generated with Claude, for whom it does not matter much how expanded is the written text.<p>If someone had written this program manually, the strategy would have been very different. With a good macro-assembler (and nasm is good enough) one should define a great number of macros, to encapsulate all the tedious boilerplate, especially for things like function prologues, epilogues and invocations.<p>With a well written macro library, an assembly program can be almost as compact as a C program, instead of containing many text lines for each equivalent high-level language statement.<p>Such an assembly source with good macros can be read and understood much more easily than raw assembly language, like in this &quot;frame.asm&quot;.<p>Otherwise, this is interesting work.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Aurornis</em>:</p>
+<blockquote>It’s an interesting strategy, but I question how much it pays off, if at all. Very few parts of a program benefit from manually tuned assembly compared to the naive C implementation. Writing everything in assembly adds an extra layer of thought, which even for an LLM is additional effort that could have been used for targeted optimizations instead. It makes it harder to notice patterns that have been trained into the data set, from security problems to performance opportunities.<p>On a long enough time frame with enough tokens invested there’s probably not a difference, but being written in assembly by an LLM doesn’t imply optimal to me. I’d almost prefer having an LLM rely on higher level abstractions offered by a programming language rather than rolling everything itself. After reviewing a lot of LLM code, even at Fable and Sol levels, I just don’t trust that LLMs are writing optimal code. Assembly makes it harder to even review.<p>I do it find it very fun and entertaining. This is a component and I’m grateful that it was shared.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cogman10</em>:</p>
+<blockquote>It will make the code slower.<p>Writing maintainable assembly is at odds with writing fast assembly in most circumstances.<p>A key optimization that&#x27;s hard to pull off is inlining.<p>An optimizing compiler can see that a method is small enough that it can be pulled into the caller, it can then further eliminate from that smaller method branches that can&#x27;t be executed due to the nature of the caller (Imagine calling a function with a `bool` parameter and you send in `true` at the call site).<p>To make the code faster in hand written assembly, you have to do the inlining, but that makes writing more structured code a lot harder.  You are duplicating logic paths in the name of performance.<p>Not to mention the fact that the compiler gets updated and knows about more instructions and architectures then you do or then you could have.  Hard to write the FMA instruction if it didn&#x27;t exist when you were writing the assembly in the first place.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>kees99</em>:</p>
+<blockquote>Claude has surprisingly good knowledge of X11 protocol.<p>The other day, colleague showed me a (pretty basic) terminal emulator written in one-shot by Opus. Kicker is - that was compiled to a 30 KB <i>static</i> binary. That&#x27;s right. No libX11, no libXfont, not even libc.</blockquote>
+<p>↳ reply 3 — <em>casey2</em>:</p>
+<blockquote>Once you create an abstraction (like a macro, routine, language) you forfeit the benefits using machine code gives you wherever you use that abstraction, since there could be some bespoke implementation that solves the problem.<p>That entire point is moot here because the abstraction in this case is a massive ball of crap and it&#x27;s used everywhere. So you never get the benefit you think you would for using a lower level language. That&#x27;s why generally LLMs are best with python and even better with a &quot;harness&quot; (domain specific framework and language)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bogwog</em>:</p>
+<blockquote>&gt; I wrote my own<p>I see the growing trend of words losing all meaning is still going strong in 2026. I wonder what human communication will look like in the near future?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>xkriva11</em>:</p>
+<blockquote>Reminds me this meme: <a href="https:&#x2F;&#x2F;pbs.twimg.com&#x2F;media&#x2F;HNIjjQQasAA77yl.jpg" rel="nofollow">https:&#x2F;&#x2F;pbs.twimg.com&#x2F;media&#x2F;HNIjjQQasAA77yl.jpg</a></blockquote>
+<p>↳ reply 2 — <em>ape4</em>:</p>
+<blockquote>I wrote my own.... symphony, novel, programming language, etc</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>yjftsjthsd-h</em>:</p>
+<blockquote>I am loving the shift from &#x27;X11 is too big and messy to ever reimplement&#x27; to &#x27;there are multiple wildly different X servers being built from scratch&#x27;.<p>Also, has anyone run it successfully? I got as far as building and running with --display and then running  `DISPLAY=:7 dwm` and  `DISPLAY=:7 alacritty`, but I can&#x27;t seem to focus the window to actually type. Given that the author posted a picture of the thing actually running a live environment and claims to actually be using it, I&#x27;m pretty sure this is a me problem but I haven&#x27;t been able to figure out where it is. Mouse works, too.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>vidarh</em>:</p>
+<blockquote>Yeah, I have a mostly-functioning X11 server in Ruby, myself (not anywhere public yet).<p>Isene and I have relatively similar philosophies on this, except I have Claude burning tokens on optimizing and fixing my Ruby compiler now because I still want things in a high-level language, and my entire stack is Ruby instead of asm. But I love what he&#x27;s doing - I just don&#x27;t love x86 asm...<p>Turns out a functioning X server is a relatively simple piece of software. It&#x27;s mostly just <i>tedious</i>. And most of the bulk is protocol handling that Claude can handle <i>really trivially</i>.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ptx</em>:</p>
+<blockquote>Wasn&#x27;t a lot of the protocol encoded in XML as part of libxcb? Could that be used to generate the tedious code for the X server?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>vidarh</em>:</p>
+<blockquote>Yes, it is. I haven&#x27;t actually made use of it, but really should. There are other tedious bits too, like all of the details around exactly how to propagate which events, but the protocol encoding is certainly one of the most tedious bits.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Kelteseth</em>:</p>
+<blockquote>&gt;  &#x27;there are multiple wildly different X servers being built from scratch&#x27;<p>by claude code. So this was only possible since no human had to bear looking at X original source code.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Short sellers notch $8.7B profit as SpaceX shares dip to IPO price</title>
+      <link>https://www.reuters.com/business/media-telecom/short-sellers-rack-up-87-bln-profit-spacex-slips-below-ipo-price-ortex-2026-07-16/</link>
+      <guid isPermaLink="false">hn3-48948435</guid>
+      <pubDate>Fri, 17 Jul 2026 15:17:54 +0000</pubDate>
+      <description>150 points, 148 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.reuters.com/business/media-telecom/short-sellers-rack-up-87-bln-profit-spacex-slips-below-ipo-price-ortex-2026-07-16/"><strong>→ Article</strong></a> <small>(reuters.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48948435">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 148 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jacobgold</em>:</p>
+<blockquote>I completely understood the idea of Starlink and expected that it would be successful and useful, which it is. I&#x27;ve worked in data centers for decades now, and I am incredibly skeptical of the &quot;data centers in space&quot; sales pitch. It seems like an actual scam.<p>Data centers submerged in the ocean or placed in the desert seem much more promising. But I have only an enthusiast&#x27;s understanding of rockets and physics, so I&#x27;m genuinely open-minded to the possibility.<p>Is there anyone credible who thinks this is a plausible pathway for SpaceX to make huge amounts of profit?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>paxys</em>:</p>
+<blockquote>For something to be a viable product it has to solve a problem. What problems are data centers in space solving? I can&#x27;t think of a single one.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>techgnosis</em>:</p>
+<blockquote>No noise pollution or actual pollution from gas turbines. No using water in the desert. No angry communities.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>chris_money202</em>:</p>
+<blockquote>Repairability and depreciation are the main problems. A earth data center can be repaired, depreciated, and recycled at EoL recovering some of the costs. SpaceX datacenters are a total write off from the moment they are launched.</blockquote>
+<p>↳ reply 3 — <em>onli</em>:</p>
+<blockquote>No. It really is a scam. Everyone with understanding of the physics involved wrote so. Heat dissipation + radiation + launch cost make it a no-go.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>zugi</em>:</p>
+<blockquote>SpaceX has accomplished spectacular things in reusable launch vehicles and space-based networking. It will soon restore the heavy launch capability that the US lost when it retired the Saturn V in the 1970s, but in an affordable and sustainable manner. SpaceX is almost single-handedly keeping the US ahead in space.<p>I&#x27;m bullish on SpaceX as a company in terms of technical accomplishment.<p>Buying SPCX would make sense at about 1&#x2F;4 of its IPO price. The IPO price and subsequent rise was inflated via hype and artificial supply restriction, i.e. publicly selling just 4% of the total company ownership.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nijave</em>:</p>
+<blockquote>&gt;but in an affordable and sustainable manner<p>Affordable is a bit questionable. It&#x27;s heavily subsidized by Starlink and government.<p>Not completely clear what happens to price if SpaceX doesn&#x27;t keep launch demand propped up with their own business.</blockquote>
+<p>↳ reply 2 — <em>amanaplanacanal</em>:</p>
+<blockquote>Yes but... All the &quot;value&quot; in SpaceX is in AI. Actual space launches are a tiny part of the portfolio. Talking about launch capability is almost off topic when taking about SpaceX valuation.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>londons_explore</em>:</p>
+<blockquote>Insiders who have locked up stocks but still want to sell could presumably just short the stock and take out a loan secured on the stock to get the financial effects of selling, without actually selling...<p>I wonder if that&#x27;s what&#x27;s happening with ~$1T of stocks currently locked up...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>laluser</em>:</p>
+<blockquote>That’s almost always prohibited.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>meowkit</em>:</p>
+<blockquote>Given the current administration’s recent market behavior I would not be shocked if people got away with exactly what OP described.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>compiler-guy</em>:</p>
+<blockquote>It&#x27;s often prohibited by contract, not just law, so what the administration thinks is only part of the story.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tehlike</em>:</p>
+<blockquote>You don&#x27;t &quot;short the stock&quot; by taking a loan secured by it.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>The state of open source AI</title>
       <link>https://stateofopensource.ai/</link>
@@ -3527,88 +3623,6 @@ I&#x27;ve been using Linux (Linux Mint Cinammon, then Fedora Linux GNOME) for ov
 <blockquote>This is a rather stupid to rave about, but I was in amsterdam several months ago, and I forgot to bring my NA to EU plug adapter. I was a bit miffed having to buy a new travel charger, but it&#x27;s become the best one I own. (Only because all the other chargers I own were spawned into existence around me&#x2F;came with some device)<p>65watts isn&#x27;t even that much, but its enough that I don&#x27;t need:<p>- the mac charger that&#x27;s always connected to the magsafe cable I can&#x27;t use with anything else,<p>- the dinky iPhone brick with the cable that needs USB-C on both ends,<p>- and the slightly less dinky pocketbook e-reader charger with the cable that needs USB-A on the brick-end and micro USB on the business-end.<p>2x 65 watt USB-C ports and 1x USB-A running at whatever anemic power USB-A is capable of pitfully spitting at my ancient e-reader without drawing the ire of UL or something (5v&#x2F;500ma still?), perfection.<p>You should go purpose-buy a charging brick, anything is better than the freebie ones you get with stuff.</blockquote>
 <p><strong>Top #3</strong> — <em>evanjrowley</em>:</p>
 <blockquote>I used to think of myself as one as well but that&#x27;s changing as of late.<p>Looking back 15 years or so, I remember the old ThinkPad and Dell Latitude&#x2F;Precision docking stations functioned reliably for as long as I can remember.<p>Today I have a variety of USB-C and thunderbolt 3&#x2F;4 docking stations, all of which have been affected by various issues. The the manufacturers of these things don&#x27;t care.<p>The latest casualty is a Pluggable TBT4-UDZ, which randomly decided one day that I should only have one working monitor instead of two. Doesn&#x27;t matter if I use Windows, Mac or Linux. Meanwhile, the same monitors &amp; cables work fine with my desktop.<p>I appreciate USB-C as a means to charge my stuff, but from now on, I&#x27;m going to try and use other ports and cables for everything else. Every laptop&#x27;s settings will assume only the main screen will ever be used. I&#x27;ve no time to get used to a nice multi-monitor setup just to have it taken away when the USB-C dock starts acting up.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Are we offloading too much of our thinking to AI?</title>
-      <link>https://www.artfish.ai/p/offloading-thinking-to-ai</link>
-      <guid isPermaLink="false">hn3-48908178</guid>
-      <pubDate>Tue, 14 Jul 2026 15:18:13 +0000</pubDate>
-      <description>356 points, 357 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.artfish.ai/p/offloading-thinking-to-ai"><strong>→ Article</strong></a> <small>(artfish.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48908178">→ HN comments</a> &nbsp;·&nbsp; 356 points &nbsp;·&nbsp; 357 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>roncesvalles</em>:</p>
-<blockquote>I fear more for the future where you&#x27;re <i>forced</i> to offload your thinking to AI. Everything you say must be cited with LLM, everything you do must be signed off by The LLM. If you&#x27;re in a meeting and have an idea, but Fable 9 says it&#x27;s not a good idea, you cannot pursue it or you lose your job. The low-friction path will always be to do what the LLM tells you, and many people will shut off and surrender completely. (this is already how SWEs behave in companies where management forces them to tokenmaxx).<p>AI will be treated like a God that talks to us, and you can&#x27;t disagree with it, you can only try to change its mind. The most horrific form of mental oppression. And it&#x27;s just a few years away.</blockquote>
-<p><strong>Top #2</strong> — <em>ericpauley</em>:</p>
-<blockquote>&gt; What are we automating? Human work or human agency? Human tasks or human thinking?<p>I find it&#x27;s so easy to convince oneself they&#x27;re doing the former when it&#x27;s increasingly the latter. The thinking part is so often provided by default by the models, or is a single prompt away. The thoughts are so syntactically (though not stylistically) perfect that it&#x27;s difficult to ignore them and reason greenfield.<p>What&#x27;s the solution? Given how keen models are to short-circuit the thinking process it could be the only solution is to silo off tasks&#x2F;ideas. Choosing which mental tasks to silo off is itself incredibly difficult especially when there&#x27;s a pressure to deliver rapidly (and in quantity) on those tasks.</blockquote>
-<p><strong>Top #3</strong> — <em>AnEro</em>:</p>
-<blockquote>When I use a calculator, I atleast try to get with in a few digits of what I think the anwser is in my head. Mostly since when I was younger I had a very passionate teacher about how much slower everyone is now because of calculators on simple math. I just apply the same thing with LLMs, just try and think of how and what I would have said and see how close I was. Only thing I change is I don&#x27;t trust the anwsers and accept some nuance in the given context. It&#x27;s a double edge sword because then I crash out over it more than if I don&#x27;t. When it over and under explaining the wrong sections or when it gets to an objectively terrible solution that technically anwsers the question. It feels like a student trying to get brownie points and&#x2F;or give fluffed anwsers for the sake of not leaving anything blank on a test.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>contextfree</em>:</p>
-<blockquote>Yeah, I&#x27;ve always tried to train myself to do calculations in my head as much as reasonably possible when learning about mathematical objects, etc. Like when I was learning linear algebra I made myself invert 4x4 matrices in my head. (Pen and paper is also cheating!) Calculators and computers have been better than me at this sort of thing for my entire life, so in some sense this isn&#x27;t a change?</blockquote>
-<p>↳ reply 2 — <em>rokhayakebe</em>:</p>
-<blockquote>We had Mental Math sessions in class. The goal was to teach you how to do math without pen&#x2F;paper, calculators were not even an option. I try to teach some of this to my 6 y o.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>New York becomes the first state to impose a data center moratorium</title>
-      <link>https://www.reuters.com/world/new-york-becomes-first-state-impose-data-center-moratorium-2026-07-14/</link>
-      <guid isPermaLink="false">hn3-48907296</guid>
-      <pubDate>Tue, 14 Jul 2026 14:17:54 +0000</pubDate>
-      <description>150 points, 207 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.reuters.com/world/new-york-becomes-first-state-impose-data-center-moratorium-2026-07-14/"><strong>→ Article</strong></a> <small>(reuters.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48907296">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 207 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>whartung</em>:</p>
-<blockquote>How are (can) datacenters be taxed?<p>Mind, I don&#x27;t know, but normally you put in a business, or factory, etc. the state can tax the economic output of the factory.<p>The factory builds things, sells things, they tax the sales of those things. Local employees get salaries that can be taxed, etc. Of course, property taxes on the land and improvements.<p>But how does that work with a datacenter?<p>If I pay $5 for an EC2 instance that happens to be hosted in, say, Virginia, is that a &quot;sale&quot; from the &quot;Virginia Data Center&quot;, or is that sale realized somewhere else?<p>Of course I don&#x27;t know how that works with, say, a Ford assembly line in Tennessee, with the car sold in California. Does Tennessee get a piece of that Bronco when it leaves the factory, or is it all just internal, corporate money shifting?<p>As I understand it, the people -&gt; systems ratio is really low. Large datacenter managed by, perhaps, a 1 or 2 dozen people. Most of the &quot;work&quot; is remote, but there needs some hands on to dust the hardware off once a week. But, it&#x27;s not your typical ratio of people per sq ft of space as other industries.<p>Just seeing that if you have this datacenter thats &quot;bringing in&quot; lots and lots of dollars, how does the state and local community get their take of that economic activity?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>twoodfin</em>:</p>
-<blockquote>Property tax is the dominant method for local governments to capture the value of hosted commercial activity.<p>You don’t need a high rate to capture plenty of value out of a $multi-billion data center.<p>The problem is mostly on the electricity side, with highly regulated utilities not prepared (on the regulator or regulated sides) to respond to such a large shock to demand. Utilities are typically regulated at the state level.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kotaKat</em>:</p>
-<blockquote>They keep negotiating payments-in-lieu-of-taxes to dodge fair tax rates and grab special treatment, so we do see a loss in value there over decade(s) in many cases.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>gruez</em>:</p>
-<blockquote>&gt;so we do see a loss in value there over decade(s) in many cases.<p>Source? Maybe it was the case 10 years ago, but today with all the datacenter backlash it&#x27;s hard to imagine anyone giving sweetheart deals to them.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>cwmma</em>:</p>
-<blockquote>If you can&#x27;t tax the outputs you tax the input.<p>So force then to pay more for electricity or water either through direct taxes or by forcing them to subsidize other users.</blockquote>
-<p>↳ reply 3 — <em>victorbjorklund</em>:</p>
-<blockquote>If the factory in Tennessee is its own legal entity and the sales office is in another (it’s a group) then yes transfer pricing is used where the goal is to use the market price of an arm length distance (what would you pay for the factory&#x2F;data center if it was someone unrelated to you) and if same company (guess more uncommon) you use formulas to allocate where value is created and where taxes should be paid.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>afavour</em>:</p>
-<blockquote>It’s a one year moratorium. I don’t see a problem with this. A lot of voters are concerned about the impacts data centers will have, those concerns are not entirely unwarranted.<p>We don’t actually <i>have</i> to be moving at breakneck speeds, the AI companies just want you to think we do. A pause to investigate seems warranted.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pj_mukh</em>:</p>
-<blockquote>Blocking is easy, UN-blocking is hard (see: zoning and housing). There are no objective concerns to be met, and there will never be. I would bet a lot of money the moratorium is indefinitely extended every year.<p>Always thought letting populism define a &quot;slow-down&quot; was silly, its a moratorium and a permanent veto everyone is looking for. It&#x27;s fine, the data centers will be built elsewhere in more politically impoverished states, New York and especially NYC will still reap the benefits and offload solving the gnarly energy problems to someone else. Federalism working?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>afavour</em>:</p>
-<blockquote>&gt; There are no objective concerns to be met<p>Are you sure? Most of the objections I&#x27;ve seen center around environmental impact and effect on residential energy pricing in the surrounding area. Both of these seem to be to be objectively measurable.<p>&gt; the data centers will be built elsewhere in more politically impoverished states<p>What does &quot;politically impoverished&quot; mean? I&#x27;d say more &quot;politically permissive&quot; states would make more sense here. Red states are not impoverished of politics, they just have different politics.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>pj_mukh</em>:</p>
-<blockquote>&quot;environmental impact and effect on residential energy pricing&quot;<p>Sooo, how does that change in New York in a year? You&#x27;ve mostly re-inforced my point. And specifically the bill doesn&#x27;t use any automatic re-enablement criteria, so data centers are basically dead in the state.<p>Realistically, this is a canard, AI scares people and environmental impact is a lever to use to stop it. Ask yourself this: if this was a new Ford plant (dirtier, also uses a lot of energy), would we be having this conversation?<p>I actually do mean politically impoverished. Banning Data centers is a horsehoe populism issue, the right wing loves it too. The data center builders will just have to find municipalities with less people and&#x2F;or a less engaged political atmosphere aka politically impoverished. They mostly already have.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>UncleOxidant</em>:</p>
-<blockquote>To some extent you wonder if this &quot;tapping the brakes&quot; might be saving some companies from themselves. It&#x27;s likely we&#x27;re in the overinvestment phase of this technological cycle and that&#x27;s usually followed by the bust phase where a lot of companies with a lot of debt go under. See The Panic of 1873 and the overbuilding of railroads (and huge debt accumulation) that led to that.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>aynyc</em>:</p>
-<blockquote>Don&#x27;t worry, they&#x27;ll just build the data centers in NJ and still considered NY 1-20.<p>Sarcasm aside, I don&#x27;t really know where they would build data centers in NYS. Electricity rate in northern and western NY is going thru the roof. ADK&#x2F;Catskill have very sensitive environmental laws. Can&#x27;t really build in lower hudson as real estate cost would be killer.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>hexator</em>:</p>
-<blockquote>The Catskills have those environmental protection laws because they are the water source for NYC. It would be very stupid to relax those to build data centers.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>aynyc</em>:</p>
-<blockquote>NYC owns those lands for water. ADK has forever wild in NYS constitution. They are not gonna get relax for data center because they discharge water and noise and add significant infrastructure change.<p>Solar farm on the other hand might go up tho.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>giantg2</em>:</p>
-<blockquote>Replacing natural lands with solar farms is one of the stupidest things I&#x27;ve seen. They&#x27;re doing that on some state parks near me.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>cromka</em>:</p>
-<blockquote>&gt; I don&#x27;t really know where they would build data centers in NYS<p>They would build them as close to NYC as possible. Data Centers existed prior to AI boom. HFT, edge hosting, etc.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
