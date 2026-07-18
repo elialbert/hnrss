@@ -4,7 +4,76 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 17 Jul 2026 23:57:31 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2026 03:14:00 +0000</lastBuildDate>
+    <item>
+      <title>Learning a few things about running SQLite</title>
+      <link>https://jvns.ca/blog/2026/07/17/learning-about-running-sqlite/</link>
+      <guid isPermaLink="false">hn3-48950122</guid>
+      <pubDate>Fri, 17 Jul 2026 17:45:41 +0000</pubDate>
+      <description>181 points, 42 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://jvns.ca/blog/2026/07/17/learning-about-running-sqlite/"><strong>→ Article</strong></a> <small>(jvns.ca)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48950122">→ HN comments</a> &nbsp;·&nbsp; 181 points &nbsp;·&nbsp; 42 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>striking</em>:</p>
+<blockquote>&gt; Maybe one day I’ll learn to read a query plan.<p>With SQLite&#x27;s `.expert` mode you can delay that day a little longer: <a href="https:&#x2F;&#x2F;www.sqlite.org&#x2F;cli.html#index_recommendations_sqlite_expert_" rel="nofollow">https:&#x2F;&#x2F;www.sqlite.org&#x2F;cli.html#index_recommendations_sqlite...</a><p><pre><code>  sqlite&gt; CREATE TABLE x1(a, b, c);                  -- Create table in database 
+  sqlite&gt; .expert
+  sqlite&gt; SELECT * FROM x1 WHERE a=? AND b&gt;?;        -- Analyze this SELECT 
+  CREATE INDEX x1_idx_000123a7 ON x1(a, b);
+
+  0|0|0|SEARCH TABLE x1 USING INDEX x1_idx_000123a7 (a=? AND b&gt;?)
+
+  sqlite&gt; CREATE INDEX x1ab ON x1(a, b);             -- Create the recommended index 
+  sqlite&gt; .expert
+  sqlite&gt; SELECT * FROM x1 WHERE a=? AND b&gt;?;        -- Re-analyze the same SELECT 
+  (no new indexes)
+
+  0|0|0|SEARCH TABLE x1 USING INDEX x1ab (a=? AND b&gt;?)
+</code></pre>
+Also wrt<p>&gt; My approach so far has been to just do these cleanup operations in small batches so that I don’t need to do database queries that take more than 5 seconds to run. This whole experience has given me more of an appreciation for why someone might want to use a “real” database like Postgres which can have more than one writer at the same time though.<p>The advice for those &quot; “real” &quot; databases is generally to also do cleanup operations in small batches, they just tend to make it less obvious you&#x27;re doing something unperformant in the smaller case. You&#x27;re more right than you thought!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>simonw</em>:</p>
+<blockquote>I&#x27;ve worked with large MySQL databases that used row-based replication and things like an UPDATE or DELETE that affected millions of rows had to be applied in batches there, because otherwise one SQL query might result in a million updated rows needing to be sent to all of the replicas at once.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cogman10</em>:</p>
+<blockquote>Yeah, I think anyone that&#x27;s done significant database work has come to the understanding that large updates need to be done in batches, otherwise you nuke performance.<p>Once you get to about 1M rows of data, batching is essential.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>DANmode</em>:</p>
+<blockquote>&gt; they just tend to make it less obvious you&#x27;re doing something unperformant<p>Is this being positioned as a strength, in your comment?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>simonw</em>:</p>
+<blockquote>&gt; I’ve been backing up to AWS, which is always a pain because it’s annoying to navigate the AWS console to generate credentials.<p>I got <i>so annoyed</i> with that a few years ago that I ended up building a whole tool just to solve that one problem:<p><pre><code>  uvx s3-credentials create my-existing-s3-bucket
+</code></pre>
+This spits out read-write credentials that are scoped JUST for that bucket. You can add --read-only or --write-only to have credentials that are further locked down, or even add --prefix foo&#x2F;bar for credentials that can only read&#x2F;write keys that start with that prefix within the bucket.<p>&gt; Maybe one day I’ll move away to some other S3-compatible alternative.<p>I&#x27;ve used Restic with Cloudflare R2 and it worked great.</blockquote>
+<p><strong>Top #3</strong> — <em>andrewaylett</em>:</p>
+<blockquote>I run my backups like this:<p><pre><code>    OUT=&quot;${i}.sql.zst&quot;
+    PART=&quot;${OUT}.part&quot;
+    sqlite3 -readonly &quot;${i}&quot; .dump | zstd --fast --rsyncable -v -o &quot;${PART}&quot; -
+    mv &quot;${PART}&quot; &quot;${OUT}&quot;
+</code></pre>
+That doesn&#x27;t block writers (when the writer uses WAL), and gives me a dump that&#x27;s compressed well while also being easy to sync.  My Home Assistant DB is 1.8GB, my dump is 286MB compressed, and I&#x27;d guess 90% of that is consistent from one day to the next.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>arjie</em>:</p>
+<blockquote>What do you backup from your Home Assistant? The default backups are huge, but I finally settled for just the config and I leave the videos and caches off. I also leave off all the HACS downloaded repos. I&#x27;m wondering if I&#x27;m missing out by doing what I&#x27;m doing.<p>What&#x27;s in the DB that makes the HA DB that big? You keep lots of historical time-series?</blockquote>
+<p>↳ reply 2 — <em>formerly_proven</em>:</p>
+<blockquote>&gt; That doesn&#x27;t block writers (when the writer uses WAL)<p>Neither does VACUUM INTO or &quot;.backup&quot; (which uses the backup API) or sqlite3_rsync or litestream.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Thanks HN for 15 years of support and helping me find my life's work</title>
+      <link>https://news.ycombinator.com/item?id=48949551</link>
+      <guid isPermaLink="false">hn3-48949551</guid>
+      <pubDate>Fri, 17 Jul 2026 16:57:27 +0000</pubDate>
+      <description>392 points, 36 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=48949551"><strong>→ Article</strong></a></p>
+<p><a href="https://news.ycombinator.com/item?id=48949551">→ HN comments</a> &nbsp;·&nbsp; 392 points &nbsp;·&nbsp; 36 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>fcjr</em>:</p>
+<blockquote>My time at RC has genuinely changed my life.  I joined my first batch expecting to dust some rust off after being in management at my last gig, and found a community I will cherish for the rest of my life!<p>If you looking for community in tech I can&#x27;t think of a better place.<p>To 15 more!</blockquote>
+<p><strong>Top #2</strong> — <em>mnky9800n</em>:</p>
+<blockquote>I loved my time at RC. It changed me a lot. I wrote several blog posts about different projects and my time during my batch. I would strongly suggest applying if you like computers and want to talk about them constantly while building cool stuff.<p><a href="https:&#x2F;&#x2F;www.lowimpactfruit.com&#x2F;p&#x2F;rainy-citycom-a-side-project-i-have" rel="nofollow">https:&#x2F;&#x2F;www.lowimpactfruit.com&#x2F;p&#x2F;rainy-citycom-a-side-projec...</a><p><a href="https:&#x2F;&#x2F;www.lowimpactfruit.com&#x2F;p&#x2F;zork-bench-an-llm-reasoning-eval" rel="nofollow">https:&#x2F;&#x2F;www.lowimpactfruit.com&#x2F;p&#x2F;zork-bench-an-llm-reasoning...</a><p><a href="https:&#x2F;&#x2F;www.lowimpactfruit.com&#x2F;p&#x2F;my-return-statement" rel="nofollow">https:&#x2F;&#x2F;www.lowimpactfruit.com&#x2F;p&#x2F;my-return-statement</a></blockquote>
+<p><strong>Top #3</strong> — <em>ThePhysicist</em>:</p>
+<blockquote>Congrats Sonali, Nick, Dave &amp; everyone else! I had an incredible time with you all in NY more than 10 years ago, it was so cool, and I&#x27;m still thinking of it very fondly. Spent my days hacking away in the space near Canal Street and the nights and weekends exploring NYC with other Recursers, visiting museums, parks and venturing out to buy cheap dumplings by the dozen. I was quite poor back then but I enjoyed my life so much, had a tiny room at the Kolping house on the Upper East Side which was very run down and tiny but also very cheap, basically just went there for sleeping and spent every other minute in the space and outside. No distractions, no possessions beyond my laptop, no responsibilities, simple but happy times. And then in 2021 I found my dream job at DuckDuckGo through RC, been working there for almost five years now! Thanks for everything and great to see it&#x27;s still going strong!</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Frame – Linux X server in Assembly</title>
       <link>https://isene.org/2026/07/Frame.html</link>
@@ -3551,78 +3620,6 @@ I&#x27;ve been using Linux (Linux Mint Cinammon, then Fedora Linux GNOME) for ov
 </blockquote>
 <p><strong>Top #3</strong> — <em>Cynddl</em>:</p>
 <blockquote>Entropy is unfortunately a very bad metric to estimate if these identification techniques will scale. Plugging my work here as example: <a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41467-024-55296-6" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41467-024-55296-6</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Opening lines of famous literary works</title>
-      <link>https://www.verbaprima.com/</link>
-      <guid isPermaLink="false">hn3-48908271</guid>
-      <pubDate>Tue, 14 Jul 2026 15:24:49 +0000</pubDate>
-      <description>140 points, 78 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.verbaprima.com/"><strong>→ Article</strong></a> <small>(verbaprima.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48908271">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 78 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>olooney</em>:</p>
-<blockquote>&gt; so hopefully you can refresh a few times and get a fresh one every time<p>If you randomly sample from only 60 quotes, then after 10 refreshes there will be a greater than 50% chance of at least one repeat, and by 20 refreshes it&#x27;s up to 95%. This is an example of the birthday paradox[1].<p>On the flip side, if someone wants to see all 60 quotes, they will have to refresh the page an average of 281 times, mostly (~80%) seeing quotes they&#x27;ve already seen before. This is an example of the coupon collector&#x27;s problem[2].<p>The way to avoid both these problems is to shuffle the quotes into a random order, just once, and remember that order. The first time a user comes to the page, start at a random index in that shuffled list, and from then on, simply move to the next item in the list. Every user will get a unique set of random quotes, but will see no repeats until the list is exhausted, and will be guaranteed to be able to see all available content in just 60 refreshes.<p>[1]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Birthday_problem" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Birthday_problem</a><p>[2]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Coupon_collector%27s_problem" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Coupon_collector%27s_problem</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>dantillberg</em>:</p>
-<blockquote>If the user doesn&#x27;t know how many unique items there are, they would need to keep refreshing even longer to gauge whether the N they&#x27;ve seen is the full set.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jihadjihad</em>:</p>
-<blockquote>Few can top the opening line of <i>Fear and Loathing in Las Vegas</i>.<p>But there were brave souls who tried, in the now-defunct Bulwer-Lytton Contest [0].<p>Where else could you find gems like these?<p><pre><code>  &gt; The day I lost my tractor was the same day I found out my wife was moonlighting as a hooker when she gave me a wad of cash and told me, “It’s from a John, dear.&quot;
-</code></pre>
-0: <a href="https:&#x2F;&#x2F;www.bulwer-lytton.com" rel="nofollow">https:&#x2F;&#x2F;www.bulwer-lytton.com</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Doches</em>:</p>
-<blockquote>Truly evidence that we’re living in the worst timeline — the Bulwer-Lytton has been one of the highlights of my year for as long as I can remember. My parents introduced me to it before I could read; I remember them laughing and crying as they tried to explain to four-year-old me why this one inscrutable sentence was the funniest thing on earth. I’ve looked forward to it ever since, though recently I’ve only checked in to read the dishonorable mentions and winners once every few years.<p>Knowing I’ll never again check and find a year’s crop of perfect sentences dims the light more than I would have expected. Sad times.</blockquote>
-<p>↳ reply 2 — <em>kej</em>:</p>
-<blockquote>The &quot;Lyttle Lytton&quot; contest seems to still be going strong, for what it&#x27;s worth: <a href="https:&#x2F;&#x2F;adamcadre.ac&#x2F;lyttle&#x2F;2026.html" rel="nofollow">https:&#x2F;&#x2F;adamcadre.ac&#x2F;lyttle&#x2F;2026.html</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>entropie</em>:</p>
-<blockquote>Really cool!<p>&gt; The Man in Black fled across the desert, and the gunslinger followed.<p>I did not refresh to check if you already have that, but I really find it very strong. Its from Kings &quot;Dark Tower - Black&quot; (edit: its &quot;The Gunslinger&quot;, not Black. its named &quot;Schwarz&quot; in the german translations) the first of 8 books in the series.<p>If you dont know it; its not like the usual King books. It mixes fantasy elements (inspired by LoTR), western, scfi (robots, AI-trains) cyberpunk and horror. Its a great series!</blockquote>
-<blockquote>
-<p>↳ reply — <em>kamranjon</em>:</p>
-<blockquote>I actually read the first book and it was so poorly written it made me wonder if I should continue, because I did find the general story quite engaging. I&#x27;ve heard it gets better&#x2F;tighter in subsequent books, but it was the only King i&#x27;ve ever read so wasn&#x27;t sure if he just had a sort of sloppy style (he did write pretty prolifically). I also read it following a Cormac McCarthy book so that might have lead me to believe it was sloppier than it deserved.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>entropie</em>:</p>
-<blockquote>&gt; I actually read the first book and it was so poorly written it made me wonder if I should continue<p>In his defense, that was early in his career, and in one of the countless afterwords or prefaces, he also mentions that he has, of course, evolved since then.<p>&quot;The Gunslinger&quot; is really a bit borderline. The next one, &quot;The Drawing of the Three&quot; is much more complex and better written. You could also read the last book first (&quot;The Wind Through the Keyhole&quot;); it’s separate from the main story and set somewhere in between, but it’s the final book.<p>&gt; Cormac McCarthy<p>No country for old men? Its probably in my top 5 of all the books (and movies) that I read. A masterpiece.<p>Edit: i realized i mixed the names up. Its not black, its &quot;The Gunslinger&quot;. Its translated as black in the german series and confused me.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>kamranjon</em>:</p>
-<blockquote>I haven&#x27;t read No Country yet - I think at the time it was Suttree which is definitely in my top 5 - I also read The Road recently and was pretty blown away, really quick read and very meticulously structured, I loved it. I&#x27;ll make a point to read No Country, I heard it was originally written as a screenplay and so is less descriptive than his other work.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I'm a USB-C Maximalist</title>
-      <link>https://shkspr.mobi/blog/2026/07/im-a-usb-c-maximalist/</link>
-      <guid isPermaLink="false">hn3-48908214</guid>
-      <pubDate>Tue, 14 Jul 2026 15:20:36 +0000</pubDate>
-      <description>137 points, 230 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://shkspr.mobi/blog/2026/07/im-a-usb-c-maximalist/"><strong>→ Article</strong></a> <small>(shkspr.mobi)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48908214">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 230 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>chaosharmonic</em>:</p>
-<blockquote>I too am a USB-C maximalist, but with a handful of differences from OP:<p>- You lose me at &quot;toothbrush.&quot; I don&#x27;t want personal care items that have internal batteries <i>at all</i>, because they&#x27;ll eventually die on me while the device itself (brush heads notwithstanding) is otherwise perfectly functional. I&#x27;d much rather keep rechargeable AA(A)s on hand for that kind of stuff. (I still haven&#x27;t found a good electric razor for this purpose, though, and have actually just gone back to manual for the foreseeable future.)<p>- I don&#x27;t think I could live off just one charging port, but <i>would</i> rather just ditch USB-A entirely.<p>- I&#x27;m using wired earbuds, with a standard headphone jack, but with the number of full-sized cans that are using USB-C in some way it baffles me that there aren&#x27;t more or them (or any, that I&#x27;ve been able to find) that also support using it for audio input, so you you can play them while charging.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>JoshTriplett</em>:</p>
-<blockquote>&gt; I&#x27;d much rather keep rechargeable AA(A)s on hand for that kind of stuff.<p><a href="https:&#x2F;&#x2F;www.amazon.com&#x2F;s?k=rechargeable+aa+batteries+usb+c" rel="nofollow">https:&#x2F;&#x2F;www.amazon.com&#x2F;s?k=rechargeable+aa+batteries+usb+c</a><p>But in practice, I greatly prefer devices with integrated batteries, because they&#x27;re more likely to be able to give me useful feedback about the battery level (e.g. a <i>reliable</i> low-battery indicator), rather than just winding down, or having a low-battery indicator with only a passing correlation to reality.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>cogman10</em>:</p>
-<blockquote>&gt; But in practice, I greatly prefer devices with integrated batteries, because they&#x27;re more likely to be able to give me useful feedback about the battery level (e.g. a reliable low-battery indicator), rather than just winding down, or having a low-battery indicator with only a passing correlation to reality.<p>That has less to do with the battery being integrated and more to do with different battery chemistries having different voltage curves.<p>Nothing would prevent a device from accurately detecting battery levels of NiMH batteries.  The problem is all these devices are tuned to an Alkaline battery voltage curve which is much more slanted than NiMH. NiMH has a nearly flat curve with a sudden drop off while Alkaline have a pretty steady decent (with a sudden drop off).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>JoshTriplett</em>:</p>
-<blockquote>I&#x27;m aware of why it happens, but the net effect is the same. No device powered by AA&#x2F;AAA is in practice going to be able to detect battery charge level <i>correctly</i>. Combine that with the annoyance of separate chargers versus integrated USB-C, and the result is that I never want to use non-integrated rechargeable batteries. (In practice, I also prefer to avoid devices that use AA&#x2F;AAA&#x2F;etc at all, for some of the same reasons.)</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>hokkos</em>:</p>
-<blockquote>An electric toothbrush can never break: it can only become a toothbrush. You should never see an “Electric Toothbrush Temporarily Out of Order” sign, just “Electric Toothbrush Temporarily Manual.” Sorry for the exercise.</blockquote>
-<p>↳ reply 3 — <em>hereme888</em>:</p>
-<blockquote>You&#x27;re probably missing out on the feeling of really, really clean teeth. Regular brushing never gave me the feeling of ALL biofilm getting stripped from the enamels.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>graypegg</em>:</p>
-<blockquote>This is a rather stupid to rave about, but I was in amsterdam several months ago, and I forgot to bring my NA to EU plug adapter. I was a bit miffed having to buy a new travel charger, but it&#x27;s become the best one I own. (Only because all the other chargers I own were spawned into existence around me&#x2F;came with some device)<p>65watts isn&#x27;t even that much, but its enough that I don&#x27;t need:<p>- the mac charger that&#x27;s always connected to the magsafe cable I can&#x27;t use with anything else,<p>- the dinky iPhone brick with the cable that needs USB-C on both ends,<p>- and the slightly less dinky pocketbook e-reader charger with the cable that needs USB-A on the brick-end and micro USB on the business-end.<p>2x 65 watt USB-C ports and 1x USB-A running at whatever anemic power USB-A is capable of pitfully spitting at my ancient e-reader without drawing the ire of UL or something (5v&#x2F;500ma still?), perfection.<p>You should go purpose-buy a charging brick, anything is better than the freebie ones you get with stuff.</blockquote>
-<p><strong>Top #3</strong> — <em>evanjrowley</em>:</p>
-<blockquote>I used to think of myself as one as well but that&#x27;s changing as of late.<p>Looking back 15 years or so, I remember the old ThinkPad and Dell Latitude&#x2F;Precision docking stations functioned reliably for as long as I can remember.<p>Today I have a variety of USB-C and thunderbolt 3&#x2F;4 docking stations, all of which have been affected by various issues. The the manufacturers of these things don&#x27;t care.<p>The latest casualty is a Pluggable TBT4-UDZ, which randomly decided one day that I should only have one working monitor instead of two. Doesn&#x27;t matter if I use Windows, Mac or Linux. Meanwhile, the same monitors &amp; cables work fine with my desktop.<p>I appreciate USB-C as a means to charge my stuff, but from now on, I&#x27;m going to try and use other ports and cables for everything else. Every laptop&#x27;s settings will assume only the main screen will ever be used. I&#x27;ve no time to get used to a nice multi-monitor setup just to have it taken away when the USB-C dock starts acting up.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
