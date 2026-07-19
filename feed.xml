@@ -4,7 +4,49 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 19 Jul 2026 15:03:17 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 16:02:34 +0000</lastBuildDate>
+    <item>
+      <title>OpenAI reduces Codex Model Context Size from 372k to 272k</title>
+      <link>https://github.com/openai/codex/pull/33972/files</link>
+      <guid isPermaLink="false">hn3-48965850</guid>
+      <pubDate>Sun, 19 Jul 2026 07:54:39 +0000</pubDate>
+      <description>151 points, 67 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/openai/codex/pull/33972/files"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=48965850">→ HN comments</a> &nbsp;·&nbsp; 151 points &nbsp;·&nbsp; 67 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tekacs</em>:</p>
+<blockquote>I know a lot of people like to say that compaction makes this moot, but the level of detail you lose across compaction is wildly too much for most things that I do, unfortunately.<p>Perhaps if your plans don&#x27;t have as much detail, or if you&#x27;re not, for example, having a discussion with a lot of nitty-gritty then it&#x27;s fine?<p>The lack of long context is the main reason that I still end up using Anthropic.<p>The worst is when you need it to hold for example a number of papers in its head, or large and complex materials that it needs full resolution on and your context window ends up being perennially at 16%. You have about five minutes of conversation and it compacts and then you have to wait for it to read that again, get to 16%... and repeat.<p>372 was not perfect, but it was so much better and a godsend. It turned that 12 to 20% into more like 40%.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>planckscnst</em>:</p>
+<blockquote>I agree. Compaction sucks, so I made tools that let the LLM selectively delete (and recall if needed) chunks of its context. You might want to try context bonsai if you&#x27;re routinely hitting the auto-compaction wall.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;Vibecodelicious&#x2F;context-bonsai-agents" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Vibecodelicious&#x2F;context-bonsai-agents</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tekacs</em>:</p>
+<blockquote>I&#x27;ve implemented a similar approach – although I&#x27;m surprised not to see mention of cache prefix busting in there!</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>jeremyjh</em>:</p>
+<blockquote>Yes the idea is cool but this could really hammer usage, especially just leaving it up to the agent to decide when to do it. I&#x27;m not surprised though, considering the github account is named &quot;Vibecodelicious&quot; and became active in December.<p>Poking around in the repo the whole implementation is an unsupervised LLM fever-dream.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>skybrian</em>:</p>
+<blockquote>That seems quite different from my design process. I write a plan.md that goes through multiple revisions. The plan is the memory. Restarting and reading the plan again to do another review is a good way to get a different perspective.</blockquote>
+<p>↳ reply 3 — <em>jmalicki</em>:</p>
+<blockquote>Instead of compaction, I very aggressively do everything with teams of subagents.  The main agent keeps the high level context, and all of the nitty gritty detail and code details not needed by the main agent never even make it into the context.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dannyw</em>:</p>
+<blockquote>This was tweeted about when it happened, with some explanation from Tibo here: <a href="https:&#x2F;&#x2F;x.com&#x2F;thsottiaux&#x2F;status&#x2F;2076543065045795309" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;thsottiaux&#x2F;status&#x2F;2076543065045795309</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>imgyuri</em>:</p>
+<blockquote>How can the overall trajectory length be the same across reasoning efforts? I don&#x27;t see how this is possible even if reasoning is not included in the trajectory length calculation.</blockquote>
+<p>↳ reply 2 — <em>mkl</em>:</p>
+<blockquote>To see replies: <a href="https:&#x2F;&#x2F;xcancel.com&#x2F;thsottiaux&#x2F;status&#x2F;2076543065045795309" rel="nofollow">https:&#x2F;&#x2F;xcancel.com&#x2F;thsottiaux&#x2F;status&#x2F;2076543065045795309</a><p>The linked tweet is an unofficial reply to Tibo&#x27;s official info and Tibo makes a correction in a reply.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>damsta</em>:</p>
+<blockquote>Not a fan of their context compaction and I feel like 1M-token context should minimum today. Each day I see how GPT 5.5 and 5.6 struggle a bit after each compaction before they get to the full speed, sometimes focusing too much on some older steering message that made it into the compacted context.</blockquote>
+<blockquote>
+<p>↳ reply — <em>Sammi</em>:</p>
+<blockquote>Just use md files for working memory. No need for large context. LLMs get dumber as you put more in context, as it stretches their attention. Keeping context small is better for quality.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>AI Mania Is Eviscerating Global Decision-Making</title>
       <link>https://ludic.mataroa.blog/blog/ai-mania-is-eviscerating-global-decision-making/#fnref:3</link>
@@ -3666,38 +3708,6 @@ But maybe I&#x27;ll need to revise the phrasing on that page and in instructions
 </blockquote>
 <p><strong>Top #3</strong> — <em>cbcoutinho</em>:</p>
 <blockquote>I have developed an open-source memory system for agents accessible over MCP, which makes it possible to access it via any coding agent locally (claude-code) or via mobile (Claude AI, Mistral AI, etc).<p>The primary storage mechanism is .md files stored as Notes in Nextcloud; however, since Nextcloud supports a rich ecosystem of apps such as documents, rss feeds, calendar, etc, your knowledge base can grow with you. All content can optionally be indexed and available via semantic search - powered by a Qdrant vectordb.<p>The biggest cost drivers of a system like this is the memory required to host the vectordb - I&#x27;m really curious how others are optimizing their knowledge base. Thanks OP for doing to work in summarizing these tools!<p>If you&#x27;re interested either the MCP server or Nextcloud App frontend, please check out:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;cbcoutinho&#x2F;nextcloud-mcp-server" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;cbcoutinho&#x2F;nextcloud-mcp-server</a><p><a href="https:&#x2F;&#x2F;apps.nextcloud.com&#x2F;apps&#x2F;astrolabe" rel="nofollow">https:&#x2F;&#x2F;apps.nextcloud.com&#x2F;apps&#x2F;astrolabe</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Codex Micro</title>
-      <link>https://openai.com/supply/co-lab/work-louder/</link>
-      <guid isPermaLink="false">hn3-48923079</guid>
-      <pubDate>Wed, 15 Jul 2026 16:12:58 +0000</pubDate>
-      <description>269 points, 228 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://openai.com/supply/co-lab/work-louder/"><strong>→ Article</strong></a> <small>(openai.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48923079">→ HN comments</a> &nbsp;·&nbsp; 269 points &nbsp;·&nbsp; 228 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>geraneum</em>:</p>
-<blockquote>If you’re puzzled as to why this exists, imagine that, out of the goodness of your heart, you donate $230 to OpenAI to support their mission of rear ending the singularity, and receive Codex Micro memorabilia as a token of appreciation.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>zzrrt</em>:</p>
-<blockquote>The phrase made me chuckle, but I&#x27;m curious what exactly &quot;rear ending the singularity&quot; means.</blockquote>
-<p>↳ reply 2 — <em>krzyk</em>:</p>
-<blockquote>tokens are getting expensive these days</blockquote>
-<p>↳ reply 3 — <em>xgulfie</em>:</p>
-<blockquote>Ah, the lesswrong people are going to buying these in droves to prove their faith to the basilisk</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Centigonal</em>:</p>
-<blockquote>The cloud logo that is inscribed onto the base of this device and on its bottom-right key is no longer used by OpenAI. In fact, the &quot;Codex&quot; app, branding, and featureset was folded entirely into the ChatGPT app earlier this week. Upon release, this device is already outdated.<p>What an interesting world we live in!</blockquote>
-<blockquote>
-<p>↳ reply — <em>flakiness</em>:</p>
-<blockquote>Maybe it&#x27;s worth getting one just to cherish this crazy moment 10 years later. This does cost money but won&#x27;t cost much of your drawer space.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>eric__cartman</em>:</p>
-<blockquote>It would be a nice collectable trinket, but OpenAI is quite down on the list of companies I&#x27;d gift money to</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>nikisweeting</em>:</p>
-<blockquote>If you want an $18 DIY &#x2F; open hardware version of this using an LED cube off amazon &amp; WLED, here you go: <a href="https:&#x2F;&#x2F;github.com&#x2F;pirate&#x2F;led-cube-agent-monitor" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;pirate&#x2F;led-cube-agent-monitor</a></blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
