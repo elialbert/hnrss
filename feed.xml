@@ -4,7 +4,45 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 24 Jul 2026 14:00:24 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 15:34:54 +0000</lastBuildDate>
+    <item>
+      <title>Flux 3</title>
+      <link>https://bfl.ai/blog/flux-3</link>
+      <guid isPermaLink="false">hn3-49031796</guid>
+      <pubDate>Fri, 24 Jul 2026 06:17:08 +0000</pubDate>
+      <description>471 points, 115 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://bfl.ai/blog/flux-3"><strong>→ Article</strong></a> <small>(bfl.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49031796">→ HN comments</a> &nbsp;·&nbsp; 471 points &nbsp;·&nbsp; 115 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>thisisauserid</em>:</p>
+<blockquote>- Showed close to zero examples of people.<p>- Frivolous use of the term World Model.<p>- Claims 20 seconds of video, shows only jumpcuts.<p>Coming soon!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sexy_seedbox</em>:</p>
+<blockquote>Many video examples on &#x2F;r&#x2F;stablediffusion</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>thisisauserid</em>:</p>
+<blockquote>None within 24 hours of the announcement that show realistic human faces for than 3 seconds.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>smokel</em>:</p>
+<blockquote><i>&gt; Frivolous use of the term World Model</i><p>The term &quot;world model&quot; as it was once used in model-based RL can now apparently refer to anything as silly as linear regression.  Then again, the RL folks probably borrowed the term from behavioral scientists before them.  It&#x27;s probably best to simply accept this :&#x2F;<p>A similar thing happened to &quot;object oriented&quot; which has been misused by philosophers and visual artists alike.</blockquote>
+<p>↳ reply 3 — <em>vitorgrs</em>:</p>
+<blockquote>Yeah, very weird launch. I was like... where&#x27;s the videos?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jdthedisciple</em>:</p>
+<blockquote>It&#x27;s incredible how negative and dismissive the comments in here are while here I am thinking the model actually looks impressively capable.<p>But then again I heard the downers have always been the first to leave their dung comments here so let&#x27;s see...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ra</em>:</p>
+<blockquote>It would be interesting to see some time-series sentiment analysis of HN. Subjectively it feels like there&#x27;s much negativity on HN these days, I hope I&#x27;m wrong.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>speff</em>:</p>
+<blockquote>You may like this old comment by dang who did this type of analysis: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=24215601">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=24215601</a> (2020)</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>impossiblefork</em>:</p>
+<blockquote>It&#x27;s probably actually good, but after this stuff with Qwen-Image-3 and it&#x27;s ability to things like render images that look like they were rendered with LaTeX or compose many things side by side or in depth, maybe it&#x27;s perhaps not totally in the right direction to only focus on visual stuff.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>forgotusername6</em>:</p>
+<blockquote>Is anyone feeding models touch data? It seems the main thing we want the robots to do is touch things, but we are just feeding them audio&#x2F;video&#x2F;images. The model has to learn how to touch things despite never having touched anything before. Perhaps that&#x27;s why they all look so hesitant when they touch things?</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Claude Cookbook</title>
       <link>https://platform.claude.com/cookbook/</link>
@@ -3749,34 +3787,6 @@ For everyone else the existing one is good enough for incidental usage.<p>So ~no
 <blockquote>If you want a shell to interact with the results, you can of course just use a (sub)shell.<p><pre><code>    ls -1 .&#x2F;*.sh | xargs -rd\\n sh -c &#x27;for i in &quot;$@&quot; ; do ... ; done&#x27; sh
 </code></pre>
 1. not strictly necessary to use -1 as I believe all common ls detect !isatty(stdout) and produce line-by-line output anyway.<p>2. xargs -r just doesn&#x27;t run the command if there&#x27;s no input, also not strictly necessary but I&#x27;m addicted to using it because it&#x27;s the sensible default to me.<p>3. xargs -d\\n makes it collect fields as full lines, which is what you typically want, unless you&#x27;re able to generate NULs.<p>4. use whatever shell you want of course, but I don&#x27;t use bashisms, etc., by default, &#x2F;bin&#x2F;sh is fine for me, even if it&#x27;s dash.<p>5. the trailing &quot;sh&quot; at the end is due to a quirk of `sh -c` usage, where $0 is the first non option argument, so `printf %s\\n 1 2 3 | xargs -rd\\n sh -c &#x27;for i in &quot;$@&quot; ; do printf &quot;%s &quot; &quot;$i&quot; ; done ; echo&#x27;` (note the lack of trailing &quot;sh&quot;) would only print &quot;2 3 &quot; as $0 is not included in &quot;$@&quot; ($0 is 1, $1 is 2, $2 is 3). It&#x27;s very easy to just always give the shell name itself manually as $0 instead of trying to ingest &quot;$0&quot; into your logic.<p>Of course, you could `find . -maxdepth 1 -type f -name &#x27;*.sh&#x27; -print0 | xargs -r0 ...` instead, depending on what you&#x27;re up to, that may be the easiest. It&#x27;s definitely the simplest -- as long as your xargs has -0 support.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Immersive Gaussian Splat tour of grace cathedral, San Francisco</title>
-      <link>https://vincentwoo.com/3d/grace_cathedral/</link>
-      <guid isPermaLink="false">hn3-48984254</guid>
-      <pubDate>Mon, 20 Jul 2026 20:10:44 +0000</pubDate>
-      <description>137 points, 28 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://vincentwoo.com/3d/grace_cathedral/"><strong>→ Article</strong></a> <small>(vincentwoo.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48984254">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 28 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>franky47</em>:</p>
-<blockquote>[delayed]</blockquote>
-<p><strong>Top #2</strong> — <em>wxw</em>:</p>
-<blockquote>From OP&#x27;s prior work scanning Sutro Tower in SF: <a href="https:&#x2F;&#x2F;vincentwoo.com&#x2F;2025&#x2F;02&#x2F;18&#x2F;sutro-tower-in-3d&#x2F;" rel="nofollow">https:&#x2F;&#x2F;vincentwoo.com&#x2F;2025&#x2F;02&#x2F;18&#x2F;sutro-tower-in-3d&#x2F;</a>.<p>&gt; This scan is made possible by recent advances in Gaussian Splatting. This is an emerging technology that lets us quickly create very detailed models just from photographs. For this model (or splat, as we call them), my friend Daylen and I flew our drones around Sutro Tower at a respectful distance for an afternoon until we had collected a few thousand photographs.<p>&gt; I then aligned these pictures in free software called RealityCapture. Alignment is the process that teaches the computer that a bunch of points in different images all actually correspond with the same point in real life. Then I used another piece of free software called gsplat to produce the 3D model itself.<p>I&#x27;m assuming this was done similarly. Very cool.</blockquote>
-<blockquote>
-<p>↳ reply — <em>akanet</em>:</p>
-<blockquote>Yes, I also added a bit of context on twitter (<a href="https:&#x2F;&#x2F;xcancel.com&#x2F;fulligin&#x2F;status&#x2F;2079296985811873796" rel="nofollow">https:&#x2F;&#x2F;xcancel.com&#x2F;fulligin&#x2F;status&#x2F;2079296985811873796</a>) and will probably blog about the process a bit more. Grace was a lot more work than Sutro. I wanted to be ambitious in combining interior&#x2F;exterior scenes in a new way, and I also wanted it to be less of a &quot;toy&quot;. Grace actually plans to use this to show prospective renters the space, and we spent a lot of time making sure it could run well on a wide variety of devices.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nmstoker</em>:</p>
-<blockquote>Beautiful work, thank you for sharing it!<p>In case it&#x27;s useful, given your last sentence, it runs really well on Chrome on Android (on a Pixel 10) but it&#x27;s a bit glitchy (although not impossible) on Firefox on Android. The loading indicator on Chrome got stuck briefly whereas the Firefox one was smoother, but that&#x27;s about the only case there Firefox is better.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Hnrobert42</em>:</p>
-<blockquote>FWIW, it works great in Firefox focus on an iPhone 16 Pro.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>suejunghuh0</em>:</p>
-<blockquote>Gsplat is indeed the future for graphics. Handling much more detail in mobile hardware spec. Check this work too. (Not mine) <a href="https:&#x2F;&#x2F;demo.immersivetech.ch&#x2F;chateau-la-sarraz&#x2F;" rel="nofollow">https:&#x2F;&#x2F;demo.immersivetech.ch&#x2F;chateau-la-sarraz&#x2F;</a></blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
