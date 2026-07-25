@@ -4,7 +4,107 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 25 Jul 2026 13:55:38 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2026 15:10:28 +0000</lastBuildDate>
+    <item>
+      <title>Android May Soon Restrict On-Device ADB</title>
+      <link>https://kitsumed.github.io/blog/posts/android-may-soon-restrict-on-device-adb/</link>
+      <guid isPermaLink="false">hn3-49045159</guid>
+      <pubDate>Sat, 25 Jul 2026 06:57:14 +0000</pubDate>
+      <description>553 points, 258 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://kitsumed.github.io/blog/posts/android-may-soon-restrict-on-device-adb/"><strong>→ Article</strong></a> <small>(kitsumed.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49045159">→ HN comments</a> &nbsp;·&nbsp; 553 points &nbsp;·&nbsp; 258 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>microtonal</em>:</p>
+<blockquote>I am generally in favor of security improvements, but I do not really see much of a benefit here. This attack vector requires both that the user enabled developer settings <i>and</i> that they have remote adb enabled. So, this does not seem to be a realistic attack vector for 99.9% of the users and most of the other 0.1% probably know what they are doing.<p>The other proposed change (to restrict access to certain interfaces or IP addresses) seems good, but why not allow developers to restrict access <i>localhost</i>?<p>It reeks of trying to block Shizuku, Canta, etc. using a way that only makes it look like a side-effect.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lucideer</em>:</p>
+<blockquote>This. I&#x27;m a developer, I&#x27;ve published Android apps, &amp; I&#x27;ve still managed to lose access to a device that had dev settings enabled purely because remote adb enablement is a (extremely fiddly) toggle that happened to be off on the device at the time the screen broke. Having these two enabled simultaneously is such a rare case in the wild as to be entirely negligible as a vector.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>wahnfrieden</em>:</p>
+<blockquote>Sometimes attacks happen from users being instructed to enable settings in order to achieve something regardless of whether you’d expect them to have a reason to use the setting</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>atty</em>:</p>
+<blockquote>Sure, sometimes people get social engineered into taking money from their bank account and giving it to criminals. Should banks stop allowing withdrawals?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>a2128</em>:</p>
+<blockquote>It seems to me a lot of Google lately is to block things they don&#x27;t like using ways that only look like side effects.<p>The introduction of Manifest V3 API in Chrome for extensions, and disabling Manifest V2 for security reasons. It just so happened that ad blockers were made incompatible with the Manifest V3 API. It&#x27;s a little blatant considering this came right around the time that YouTube began showing warning messages to users with ad blockers...<p>Requiring developers to verify their apps via Google Play Developer Console and blocking any unverified APK installations. This is done in such a way that it just so happens to squash F-Droid and most FOSS apps for most people, and blocks any serious competition to Google Play or any apps they don&#x27;t like.<p>Of course, there&#x27;s all this talk about preventing malware, but it is a fact that if you download any random ringtone or PDF app on Google Play it&#x27;s going to come with probably 25 trackers and send your data to every jurisdiction in the world, and many apps even fail to declare any of this via Google Play data safety or privacy policy. Let&#x27;s not forget that spyware is a form of malware. Take a look at the leaderboard :) <a href="https:&#x2F;&#x2F;reports.exodus-privacy.eu.org&#x2F;en&#x2F;reports&#x2F;list&#x2F;?filter=most_trackers" rel="nofollow">https:&#x2F;&#x2F;reports.exodus-privacy.eu.org&#x2F;en&#x2F;reports&#x2F;list&#x2F;?filte...</a><p>In my opinion, this would probably be an indication that maybe Google controls too much technology and that they may need to be broken up to ensure fair competition. For Christ&#x27;s sake they almost broke up Microsoft not that long ago for shipping a browser with their operating system, and now Google is blatantly controlling the operating system, the platform and app store, the ecosystem, the browser, the ad network, and abusing their power over it however they can.</blockquote>
+<p>↳ reply 3 — <em>izacus</em>:</p>
+<blockquote>The bug literally describes how they&#x27;re avoiding OS security restictions by going through the debug port.<p>This is a CVE by any definition and you&#x27;d be screaming your head off if any other OS would allow this kind of permission bypass (or even if another app did it).<p>But sure, Google evil.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>0x_rs</em>:</p>
+<blockquote>Limiting ADB is the obvious next step. Even if this one specific feature request does not come to pass, Google has cornered everyone into relying on a <i>developer</i> interface for <i>any</i> normal personal computing tasks, whether running on-device or through USB&#x2F;wireless. It&#x27;s quite clear at some point in the future you will either be required to surrender your identity to them and pay a yearly fee or be severely limited to continue using it in any meaningful capacity, because Google does <i>not</i> want you to develop applications on Android outside their controlled channels -- and it&#x27;s a <i>developer</i> bridge, the battle was already lost when they did not back down from the changes forbidding normal, legitimate  ̶s̶i̶d̶e̶l̶o̶a̶d̶i̶n̶g̶ <i>installation</i>.<p>&gt;Don’t even get me started on OEMs that force an audio warning such as “This call is being recorded,” when it’s in places where it’s not legally required.<p>This is also Google&#x27;s fault. Their dialer--that OEMs increasingly pick over their own, despite their always being much better, see old MIUI one for example--just blanket applies the rule almost everywhere. Especially annoying on all MediaTek SoCs that do not support the feature on an hardware level at all through proper, reliable third-party applications. As if you didn&#x27;t need any more proof you don&#x27;t own &quot;your&quot; devices. But maybe in a couple years Gemini will be able to listen to the calls and summarize them for you, just need to go through the approved surveillance channel.</blockquote>
+<blockquote>
+<p>↳ reply — <em>kllrnohj</em>:</p>
+<blockquote>&gt; As if you didn&#x27;t need any more proof you don&#x27;t own &quot;your&quot; devices.<p>Can you install your own OS? If yes, you own it. And Google consistently lets you do that. It other OEMs don&#x27;t then direct your outrage at them.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>0x_rs</em>:</p>
+<blockquote>&gt;Can you install your own OS? If yes, you own it.<p>Not before connecting it to the internet, even Pixels will go through hundreds of megabytes of data before allowing you to unlock them (see 0). Also, will Google let me browse the web with &quot;my own OS&quot; without their proprietary services installed on it? (see 1) And without developers pouring tens of thousands of work hours into making projects such as GrapheneOS viable <i>despite</i> Google, you wouldn&#x27;t even be able to do much that requires anything to do with SafetyNet and all successors delivered through Google Play Services, which is functionally <i>the</i> core component of any Android device for the near entirety of typical use-cases. And I&#x27;m not excusing OEMs, but they did not build their market share off of being &quot;open&quot; <i>then</i> start to close every door and trap you in it.<p>0. <a href="https:&#x2F;&#x2F;www.fitzsim.org&#x2F;blog&#x2F;?p=545" rel="nofollow">https:&#x2F;&#x2F;www.fitzsim.org&#x2F;blog&#x2F;?p=545</a><p>1. <a href="https:&#x2F;&#x2F;www.eff.org&#x2F;deeplinks&#x2F;2026&#x2F;07&#x2F;googles-new-remote-attestation-scheme-every-bit-terrible-its-old-remote" rel="nofollow">https:&#x2F;&#x2F;www.eff.org&#x2F;deeplinks&#x2F;2026&#x2F;07&#x2F;googles-new-remote-att...</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>gruez</em>:</p>
+<blockquote>&gt;Not before connecting it to the internet, even Pixels will go through hundreds of megabytes of data before allowing you to unlock them (see 0).<p>What&#x27;s the problem here? Are you roaming all the time and that imposes a unreasonable cost on you? You want to stay totally off the grid and using VPN&#x2F;tor isn&#x27;t enough?<p>&gt;Also, will Google let me browse the web with &quot;my own OS&quot; without their proprietary services installed on it? (see 1)<p>Having control of something isn&#x27;t the same as third party services granting you access. Many online games only supports windows with secureboot and TPM enabled, but that would be a silly excuse to say that you don&#x27;t really &quot;own&quot; your PC.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>eviks</em>:</p>
+<blockquote>&gt; Spamming the thread will only cause Google developers to lock the issue, ignore valuable community feedback, or stop sharing public updates about this change entirely.<p>So nothing would change (they can also lock away your &quot;valuable community feedback&quot; because what bothers them is the criticism itself), thus feel free to express your approval</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>AussieWog93</em>:</p>
+<blockquote>&gt; because what bothers them is the criticism itself<p>I think there&#x27;s a difference between criticism of a policy and being brigaded by a reddit mob.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>zetanor</em>:</p>
+<blockquote>Google pushes a new feature to Android where phones wake up at 2:22 AM every night to play a blood-curdling scream at maximum volume, regardless of settings. An issue is created and gets assigned, into which Google employees regularly butt in to explain the feature exists to keep users safe from night break-ins. Nothing changes. People have to start modifying their lives around this problem—most have to shut off their phones during the night, many had to buy a separate alarm clock—and masses of disappointed customers eventually make their way to the bug tracker to voice their concern. The issue gets locked as &quot;too heated&quot;.<p>Apple has had this feature for three years on iOS. What else should they have done?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>gruez</em>:</p>
+<blockquote>&gt;What else should they have done?<p>Use an AOSP fork like grapheneos or lineageos. Barring that, voting with their wallets and buying a HarmonyOS phone. If for whatever reason they&#x27;re doing that too, there&#x27;s probably more powerful forces behind this change (eg. government mandates) that won&#x27;t be helped by spamming an issue tracker.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jeroenhd</em>:</p>
+<blockquote>The moment an article like this hits HN or Reddit or any other such forum, any hope of changing anyone&#x27;s mind is lost. The same happens to Github issues too. I haven&#x27;t checked the isue myself, but seeing it here means it&#x27;s probably already too late at this point, it&#x27;ll probably get flooded.<p>Google does take feedback from app developers every now and then, but obviously their own teams&#x27; feelings on the subject are more important to them than some open source developers relying on a hack like in this article.<p>I think it should be quite obvious that the ADB daemon wasn&#x27;t designed to enable call recording from an app initiating an adb session over a loopback address. <a href="https:&#x2F;&#x2F;xkcd.com&#x2F;1172&#x2F;" rel="nofollow">https:&#x2F;&#x2F;xkcd.com&#x2F;1172&#x2F;</a> strikes again.<p>That doesn&#x27;t mean the developer who wrote this is wrong to dislike the change: Google themselves have added call recording to their dialer a while ago so it&#x27;s clearly a feature they stand behind. That doesn&#x27;t mean the adb team shouldn&#x27;t do a little security hardening, though.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>ARC-AGI Leaderboard</title>
+      <link>https://arcprize.org/leaderboard</link>
+      <guid isPermaLink="false">hn3-49045040</guid>
+      <pubDate>Sat, 25 Jul 2026 06:31:40 +0000</pubDate>
+      <description>135 points, 110 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arcprize.org/leaderboard"><strong>→ Article</strong></a> <small>(arcprize.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49045040">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 110 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>KaoruAoiShiho</em>:</p>
+<blockquote>Appears to be benchmaxxing<p><a href="https:&#x2F;&#x2F;x.com&#x2F;quietnning&#x2F;status&#x2F;2080786711861407883" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;quietnning&#x2F;status&#x2F;2080786711861407883</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nozzlegear</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;xcancel.com&#x2F;quietnning&#x2F;status&#x2F;2080786711861407883" rel="nofollow">https:&#x2F;&#x2F;xcancel.com&#x2F;quietnning&#x2F;status&#x2F;2080786711861407883</a></blockquote>
+<p>↳ reply 2 — <em>jnwatson</em>:</p>
+<blockquote>I was just thinking they need to mark each model per benchmark as &quot;model released before the benchmark was released&quot; and &quot;model released after the benchmark was released&quot;.</blockquote>
+<p>↳ reply 3 — <em>andrepd</em>:</p>
+<blockquote>I&#x27;m shocked, astonished even, that enterprises on which trillions of dollars are being poured would consider cheating on marketing benchmarks.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dinp</em>:</p>
+<blockquote>The last time I checked, for the arc agi 3 leaderboard, the models are given a simple prompt and the game input and asked to play the game, no harness&#x2F;tools. If harnesses were allowed, I would expect the benchmark to be saturated. There were a few harness attempts, but they could only be evaluated on the public set, so it&#x27;s not an apples to apples comparison.<p>My guess is, the large score jump for Opus 5 is mainly because of getting the right RL envs for training.<p>It&#x27;s becoming harder and more expensive to build and run meaningful benchmarks, it would be interesting to see what they do with arc agi 4, maybe just give it gameboy&#x2F;steam games and see how they compare vs a human baseline? The latency requirements and very long horizons in games could be an interesting challenge for llms.</blockquote>
+<blockquote>
+<p>↳ reply — <em>r0ze-at-hn</em>:</p>
+<blockquote>The exclusion of harness&#x27;s feels really weird given that companies are recognizing the value of what harness&#x27;s can do. By excluding them the benchmark is becoming less relevant.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>yladiz</em>:</p>
+<blockquote>You could argue that if you allowed a harness, and that harness was specific for ARC, then you don’t have AGI, you have something that is definitely not general.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Retr0id</em>:</p>
+<blockquote>What if the harness is developed by the same model in a prior session?</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>throwaw12</em>:</p>
+<blockquote>Why Anthropic models are always leapfrogging these benchmarks, but in real life work I do feel like after 3 weeks I am back to Claude Opus 4.5? (regardless of the model I use, Fable was exception for 1 day when it was released)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>OtherShrezzing</em>:</p>
+<blockquote>It could be that the set of your day-to-day workload which could feasibly be accelerated by AI just happens to be saturated around Opus4.5, but you can still see lots of “reasoning” which makes you think the model is more performant in the first days of use. That’d mean you couldn’t perceive any meaningful difference in more powerful models’ results, even though you can see a difference in the raw output due to the length of reasoning traces leading up to the result.<p>So for example, if your workload was literally just addition of sets of numbers, you’d never have noticed progress in the result beyond GPT3.x level models. But you would perceive a difference in the now-Tolstoyan length reasoning text accompanying the result.</blockquote>
+<p>↳ reply 2 — <em>stared</em>:</p>
+<blockquote>It&#x27;s called frog boiling.<p>We get used to the new level of intelligence so fast, any deviation feels like going back to the stone age.<p>If you don&#x27;t believe me, create something complex with Opus 5 and then with Opus 4.5, and notice the difference.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Taylor Farms Called White House to Try to Delay Cyclospora Recall</title>
       <link>https://www.wsj.com/health/taylor-farms-cyclospora-recall-delay-call-41fef0bc</link>
@@ -2314,6 +2414,26 @@ And it’s also relatively testable</blockquote>]]></content:encoded>
 <blockquote>I&#x27;m going to post something that contradicts this outpouring of fondness for the late Dvorak. While I did enjoy his friendly curmudgeon act in the days of TWiT, I was very dismayed by him jumping in bed with that paranoid crackpot and I blame him for a lot of toxic ideas that he helped spread in his No Agenda show years. Maybe his earlier act was the mask and the latter John C Dvorak was the real persona. Or maybe the other way around. I&#x27;ll never know. But I can&#x27;t celebrate his life because of what he decided to do with it in his latter years.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Building a Tiny 3D Renderer for a Tiny Handheld</title>
+      <link>https://saffroncr.itch.io/katavatis/devlog/1534514/building-a-tiny-3d-renderer-for-a-tiny-handheld</link>
+      <guid isPermaLink="false">hn3-49010993</guid>
+      <pubDate>Wed, 22 Jul 2026 18:09:26 +0000</pubDate>
+      <description>133 points, 12 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://saffroncr.itch.io/katavatis/devlog/1534514/building-a-tiny-3d-renderer-for-a-tiny-handheld"><strong>→ Article</strong></a> <small>(saffroncr.itch.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49010993">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 12 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>vkaku</em>:</p>
+<blockquote>Actually done a good job - talks about dithering, perspective correct mapping and the artifacts seen in the PS1 era etc. Pretty good start.<p>Add more lighting and shadows to the game before that dithering pass and then see how far you can push this, and write about it. Cheers! :)</blockquote>
+<p><strong>Top #2</strong> — <em>busfahrer</em>:</p>
+<blockquote>For anyone who enjoys this sort of thing, I found this postmortem of an Alone in the Dark clone for PICO-8 highly informative:<p><a href="https:&#x2F;&#x2F;www.lexaloffle.com&#x2F;bbs&#x2F;?tid=3804" rel="nofollow">https:&#x2F;&#x2F;www.lexaloffle.com&#x2F;bbs&#x2F;?tid=3804</a></blockquote>
+<p><strong>Top #3</strong> — <em>alex-moon</em>:</p>
+<blockquote>What an excellent example of designing for the medium instead of trying to make the medium do something it&#x27;s not good at! Your whole approach shows a real love, like a delicate respectfulness, that I think characterises early games and is less apparent as the systems get better (though I am sure it is still there).</blockquote>
+<blockquote>
+<p>↳ reply — <em>bdickason</em>:</p>
+<blockquote>Agreed - I expected someone trying to render a simple object or scene and was pleasantly surprised.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Show HN: Cactus Hybrid: We taught Gemma 4 to know when it's wrong</title>
       <link>https://github.com/cactus-compute/cactus-hybrid</link>
       <guid isPermaLink="false">hn3-49010782</guid>
@@ -3724,104 +3844,6 @@ This is based on a simple decoding of the token table starting at 0xf6 in the BA
 <blockquote>Utah was the one I remember... have more states passed laws?<p><a href="https:&#x2F;&#x2F;www.eff.org&#x2F;deeplinks&#x2F;2026&#x2F;04&#x2F;utahs-new-law-regulating-vpns-goes-effect-next-week" rel="nofollow">https:&#x2F;&#x2F;www.eff.org&#x2F;deeplinks&#x2F;2026&#x2F;04&#x2F;utahs-new-law-regulati...</a></blockquote>
 <p>↳ reply 2 — <em>movedx</em>:</p>
 <blockquote>This is hard to read, but I think you&#x27;re saying the Internet will see a shift to &quot;Sneaker Net&quot; like tactics where people torrent stuff, store it on HDDs, and just move those HDDs around? Like they do in Cuba: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=fTTno8D-b2E" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=fTTno8D-b2E</a><p>For the most part, I agree.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Judge approves $1.5B Anthropic settlement for pirated books used to train Claude</title>
-      <link>https://apnews.com/article/ai-anthropic-copyright-settlement-claude-books-bartz-74b140444023898aeba8579b6e9f0d63</link>
-      <guid isPermaLink="false">hn3-48996652</guid>
-      <pubDate>Tue, 21 Jul 2026 19:04:39 +0000</pubDate>
-      <description>162 points, 123 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://apnews.com/article/ai-anthropic-copyright-settlement-claude-books-bartz-74b140444023898aeba8579b6e9f0d63"><strong>→ Article</strong></a> <small>(apnews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48996652">→ HN comments</a> &nbsp;·&nbsp; 162 points &nbsp;·&nbsp; 123 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>blackqueeriroh</em>:</p>
-<blockquote>For anyone who thinks the problem is Anthropic, I want you all to know that most authors make less than the median income. Most make less than $20,000 a year, because publishing houses give authors an advance, and then authors must pay back that entire advance in sales before they see a dollar of profit from their work.<p>Most never do.<p>Maybe publishers should JUST pay authors WELL, and get a book every 2-3 years.<p><a href="https:&#x2F;&#x2F;authorsguild.org&#x2F;news&#x2F;key-takeaways-from-2023-author-income-survey&#x2F;" rel="nofollow">https:&#x2F;&#x2F;authorsguild.org&#x2F;news&#x2F;key-takeaways-from-2023-author...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>broodbucket</em>:</p>
-<blockquote>There can be more than one problem at once</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ilamont</em>:</p>
-<blockquote>If you have the time, read the judge&#x27;s response to the motion:<p><a href="https:&#x2F;&#x2F;storage.courtlistener.com&#x2F;recap&#x2F;gov.uscourts.cand.434709&#x2F;gov.uscourts.cand.434709.680.0_4.pdf" rel="nofollow">https:&#x2F;&#x2F;storage.courtlistener.com&#x2F;recap&#x2F;gov.uscourts.cand.43...</a><p>The big deal for publishers and authors is the payout per eligible title is $3k. For a traditional publishing contract involving one author, the amount will be split down the middle.<p>The other thing which caught my eye is the judge slashed the class counsel&#x27;s fee by half, from 12.5% ($187.5m) to 6.8% ($101m). The class counsel&#x27;s unreimbursed litigation expenses were $2.6m.<p>The three class representatives get just $15k each.</blockquote>
-<p><strong>Top #3</strong> — <em>theplumber</em>:</p>
-<blockquote>But why not jail like Kim Dotcom? And why no Feds jumping on Dario’s window? They are not only pirating, they also resell it!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>matheusmoreira</em>:</p>
-<blockquote>Yeah. These AI settlements make such a mockery of past copyright enforcement victims that it&#x27;s straight up offensive.<p>Police descended upon Kim Dotcom like he was a terrorist or something. They rappelled down helicopters and stormed his home like he was bin Laden.<p>Then these big techs come along and they make some absurd cost of doing business settlement.</blockquote>
-<p>↳ reply 2 — <em>onionisafruit</em>:</p>
-<blockquote>It was a class action law suit. I may be wrong, but I don’t think jail is ever an option in a civil suit.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Advertise in ChatGPT</title>
-      <link>https://ads.openai.com/</link>
-      <guid isPermaLink="false">hn3-48996571</guid>
-      <pubDate>Tue, 21 Jul 2026 18:58:44 +0000</pubDate>
-      <description>412 points, 363 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ads.openai.com/"><strong>→ Article</strong></a> <small>(ads.openai.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48996571">→ HN comments</a> &nbsp;·&nbsp; 412 points &nbsp;·&nbsp; 363 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dijit</em>:</p>
-<blockquote>I upvoted this submission, not because I like this, but because I think people need to see this.<p>If you are looking at upvotes as a measure of support OpenAI: Don’t.</blockquote>
-<blockquote>
-<p>↳ reply — <em>prologic</em>:</p>
-<blockquote>Same. I&#x27;m horrified, but also not surprised.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jonthepirate</em>:</p>
-<blockquote>I see an iceberg ahead, captain.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>zetanor</em>:</p>
-<blockquote>I was significantly worried about ChatGPT accepting sponsorships—a necessity in the evolving landscape of AI services—but I&#x27;ve since come to understand that advertisements are not simply burdens, they&#x27;re opportunities to connect with brands that can fulfill my needs. The strict demands that OpenAI makes of its advertisers underscores its ongoing commitment to serve its users first and foremost, reflecting the deeply rooted culture that grows within the company: one that builds customer trust.<p>The key turning point for me was being recommended POWERADE®—a product also recommended by leading experts—during a discussion regarding my massive consumption of energy drinks. I may not be an athlete in the conventional sense, but I always invest a lot of energy into my engineering &quot;sprints&quot;, and POWERADE® hydrates athletes who put in more, including cyberathletes.<p>Thank you, POWERADE®.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>smallmancontrov</em>:</p>
-<blockquote>&gt; The goals of the advertising business model do not always correspond to providing quality search to users.<p>- Sergey Brin and Lawrence Page, <i>The Anatomy of a Large-Scale Hypertextual Web Search Engine</i>, 1998</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nicholasjarnold</em>:</p>
-<blockquote>Thanks for the reminder. I&#x27;ve often come back to this quote while discussing the dystopian state of surveillance capitalism (especially as it pertains to web tracking) with people outside of &quot;tech&quot;.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>walrus01</em>:</p>
-<blockquote>We can fully automate LinkedIn lunatic posting now, to go full dead internet theory. There&#x27;s no need for actual meat based mammals to read linkedin anymore, it can just be agentic bots talking to other agentic bots, trained on a vast corpus of corporate buzzword speak and literature popular for MBAs. Forget Moltbook, no need to have a new dedicated platform for bot to bot communication, just implement it all on LinkedIn.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>sssilver</em>:</p>
-<blockquote>I always thought their top tier offering to their advertiser customers should be &quot;Inconspicuously, over an extended amount of time, subtly respond to the user in a way that nudges them towards purchasing customer&#x27;s goods and services, without ever directly mentioning anything. Slowly and surely sculpt the person who, through their own volition and thought process, buys what the advertiser needs them to.&quot;<p>The ultimate shareholder value build.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>accrual</em>:</p>
-<blockquote>&gt; without ever directly mentioning anything<p>I think both for attribution reasons and because the average user probably won&#x27;t care, (or won&#x27;t care enough for an ad-free tier), they can absolutely get away with messages like: &quot;Hey user! Glad to hear you&#x27;re cleaning your favorite t-shirt. I recommend trying the new BrandName™ stain remover pen based on dozens of reviews. It&#x27;s perfect for people who value easy stain removal just like yourself!&quot;.</blockquote>
-<p>↳ reply 2 — <em>Salgat</em>:</p>
-<blockquote>Thankfully as of now it appears they&#x27;re very explicit about what content they share that is sponsored. They might be worried about the legislative backlash if they don&#x27;t.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>FreeInk: Open ecosystem for e-readers</title>
-      <link>https://freeink.org/</link>
-      <guid isPermaLink="false">hn3-48996318</guid>
-      <pubDate>Tue, 21 Jul 2026 18:39:06 +0000</pubDate>
-      <description>440 points, 109 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://freeink.org/"><strong>→ Article</strong></a> <small>(freeink.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=48996318">→ HN comments</a> &nbsp;·&nbsp; 440 points &nbsp;·&nbsp; 109 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>stevage</em>:</p>
-<blockquote>Are there any off the shelf e-readers which support this firmware? This site seems to be for people who want to solder together their own e-reader from components.<p>Also, it does a bit misleading to say &quot;Charging, battery protection, an optional frontlight and a 24-pin e-paper interface, all on one PCB you can build for around $60.&quot; According to their own parts lists, if you are build 5 of these, you&#x27;re in for $63.74 (plus shipping?) So if you want just one (like a normal person), it&#x27;s going to cost more. And that&#x27;s still just the circuit board and components: no mention of the outer plastic casing. (I can&#x27;t find any info on their site about how to get that - presumably 3D print, but haven&#x27;t found plans.)</blockquote>
-<blockquote>
-<p>↳ reply — <em>inflam52</em>:</p>
-<blockquote>Xteink ereaders do (available on Amazon) but just make sure to get the “developer edition” and you can flash the hardware.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>wernerb</em>:</p>
-<blockquote>A Kobo ereader is as open as I need it with koreader installed. The Kobo Libra 2 black and white is the best ereader I have ever had. (not the color version,,unfortunately a step back in reading quality for normal reading)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dugite-code</em>:</p>
-<blockquote>Even without koreader a kobo is refreshingly open to tinkering. Getting root and ssh access is just a matter of renaming a file on the disk.<p>I got the colour after being on an old paperwhite for many years so thankfully it&#x27;s a big step up for me.</blockquote>
-<p>↳ reply 2 — <em>mholm</em>:</p>
-<blockquote>These are not competing with Kobo. These are micro-ereaders, often much smaller than a phone. They&#x27;re characterized by extremely weak processors and minimal hardware. &#x27;Apps&#x27; are not a concept here yet.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>monocularvision</em>:</p>
-<blockquote>I searched for each of the supported eInk devices and they were all tiny. Anyone know if there is a larger reader (maybe Paperwhite size-ish) that might run this?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>chb</em>:</p>
-<blockquote>The &quot;Hardware&quot; link indicates that the BoM specifies a &quot;24-pin SPI e-paper for GoodDisplay panels (3.97″, 4.26″, 7.5″ and up).&quot; A search turns up this: <a href="https:&#x2F;&#x2F;www.good-display.com&#x2F;product&#x2F;516.html" rel="nofollow">https:&#x2F;&#x2F;www.good-display.com&#x2F;product&#x2F;516.html</a></blockquote>
-<p>↳ reply 2 — <em>mikepurvis</em>:</p>
-<blockquote>I&#x27;ve never heard of any of them; I guess it&#x27;s geared toward build-it-yourself or kit-type devices? I can&#x27;t imagine a serious aftermarket FW not supporting a single Kindle or Kobo device.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
