@@ -4,7 +4,45 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 26 Jul 2026 15:10:46 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2026 17:09:26 +0000</lastBuildDate>
+    <item>
+      <title>Ruff v0.16.0 – Significant new updates – 413 default rules up from 59</title>
+      <link>https://astral.sh/blog/ruff-v0.16.0</link>
+      <guid isPermaLink="false">hn3-49056112</guid>
+      <pubDate>Sun, 26 Jul 2026 09:01:39 +0000</pubDate>
+      <description>270 points, 167 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://astral.sh/blog/ruff-v0.16.0"><strong>→ Article</strong></a> <small>(astral.sh)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49056112">→ HN comments</a> &nbsp;·&nbsp; 270 points &nbsp;·&nbsp; 167 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>nickjj</em>:</p>
+<blockquote>I updated a ~3k line Python project with this the other day. I was using v0.15.x beforehand. It didn&#x27;t take too long and the new rules do improve code quality. It caught quite a few things previous versions didn&#x27;t.<p>Here&#x27;s a few commits of changes:<p>(A whole bunch of manual changes based on its suggestions) <a href="https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;plutus&#x2F;commit&#x2F;9af66d31f98bef841588effe7e1288395d6f7bce" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;plutus&#x2F;commit&#x2F;9af66d31f98bef841588...</a><p>(Re-enable line length) <a href="https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;plutus&#x2F;commit&#x2F;21789f89bbcee37913c13a98abf789a3f3b56341" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;plutus&#x2F;commit&#x2F;21789f89bbcee37913c1...</a><p>(Force _ prefix for unused variables) <a href="https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;plutus&#x2F;commit&#x2F;a272c77b932e1c78558a790bbff2a11517fc9d81" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;plutus&#x2F;commit&#x2F;a272c77b932e1c78558a...</a><p>(Auto-corrected by Ruff) <a href="https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;plutus&#x2F;commit&#x2F;6fe69cf88385ebdf9b8c2c63c3566e76ef8093f4" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nickjj&#x2F;plutus&#x2F;commit&#x2F;6fe69cf88385ebdf9b8c...</a></blockquote>
+<p><strong>Top #2</strong> — <em>maratc</em>:</p>
+<blockquote>The amount of fascination that people have with these &quot;grammar nazi&quot; bots -- some of them implementing completely arbitrary &quot;rules&quot; and some of them disagreeing with others on what &quot;good&quot; Python code should look like -- doesn&#x27;t stop to amaze me.<p>Here&#x27;s &quot;bad&quot; code:<p><pre><code>     important_numbers = {
+        &#x27;x&#x27;: 3,
+        &#x27;y&#x27;: 42, # Answer to the Ultimate Question!
+        &#x27;z&#x27;: 2
+    }
+</code></pre>
+Here&#x27;s what &quot;good&quot; code should look like:<p><pre><code>    important_numbers = {&quot;x&quot;: 3, &quot;y&quot;: 42, &quot;z&quot;: 2}  # Answer to the Ultimate Question!
+</code></pre>
+Which completely misses the writer&#x27;s intent. But did you notice that there are <i>two spaces</i> before the pound now? Also, the quotes are now <i>double</i> because apparently it&#x27;s somehow more kosher! So much improvement!<p>The actual problems in the code I work with are not the spaces at the end of line or imports in non-alphabetic order, it&#x27;s the 10-line list comprehensions that are so long that they&#x27;re impossible for me to parse. None of these tools catch that. My place used pylint, flake8, black, ruff -- with hundreds of commits on every change. All that energy could be better spent elsewhere.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Majestic121</em>:</p>
+<blockquote>The point of the &quot;grammar nazi&quot; bots is to focus on the actual problems: if a bot is deciding about linting, you don&#x27;t have to waste brain power to discuss it in PRs.<p>It is what it is, everyone gets the same, shut up and work on what matters.<p>I&#x27;m surprised you consider it a lot of energy spent, I tend not to spend any on this, it just runs automatically on my code and I drop out of pretty much every discussions about linting as it&#x27;s good enough with automated tools.<p>I also used to work in places where there was no such tools, and there I had to actually spend time discussing and thinking about linting.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>maratc</em>:</p>
+<blockquote>In my previous place, discussions on <i>coding style</i> were forbidden in PRs. It worked just fine.<p>Edit: one could also use single or double quotes in strings, and it didn&#x27;t anger the grammar nazi bots as there were none.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>dewey</em>:</p>
+<blockquote>Which gets rid of the discussion, but not the problem coding style rules are supposed to fix: Code looks the same, regardless of who wrote it. That&#x27;s the whole point of code style guidelines like that as there&#x27;s no functional reason for them.<p>That&#x27;s why I like Go, every piece of code looks the same, there&#x27;s one default enforced linter and this discussion (or discussion if discussion should be allowed or prohibited) doesn&#x27;t even cross anyones mind.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>rsyring</em>:</p>
+<blockquote>I&#x27;ve read through all the sub-comments you&#x27;ve left here.<p>In short, you seem to have a grievance against linters that goes way past reasonable.  You assert this example you give is &quot;perfect&quot; below.  You also complain linters waste time and commits despite able evidence in the field they do the opposite.<p>You seem willing to add drama, grievance, and personal bias to what could have been a rather straightforward technical discussion.  The sum of which is: linters sometimes make changes to code that I don&#x27;t like.<p>I&#x27;d encourage you to reconsider what&#x27;s really important when it comes to team development and try listening more to those around you.  You seem overly focused on asserting your opinion instead of having a discussion.<p>These types of exchanges are usually very unproductive and stressful in a team environment.  They are evidence, IMO, of a dev having the wrong priorities.  I&#x27;d encourage you to step back and really consider how you view craftsmanship in a team dynamic and whether or not you are fighting the right battles.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>woadwarrior01</em>:</p>
+<blockquote>Great to see ruff, ty and uv being actively developed, even after Astral was acquired by OpenAI.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>GrapheneOS protections against data extraction from locked devices</title>
       <link>https://discuss.grapheneos.org/d/40700-grapheneos-protections-against-data-extraction-from-locked-devices</link>
@@ -127,6 +165,50 @@
 <blockquote>
 <p>↳ reply — <em>dhx</em>:</p>
 <blockquote>OSM probably has the best data on golf courses because for many courses, people have mapped each &#x27;golf=hole&#x27; as a way, and mapped other golf course features such as &#x27;golf=bunker&#x27;, &#x27;golf=green&#x27;, etc.<p>OSM knows of almost 40k golf courses around the world.[2] This compares to 38k golf courses known to the R&amp;A Golf Around the World Fourth Edition (2021) report and 37.6k courses listed in the NGF course database as of July 2024. It&#x27;s likely OSM knows of 99.99..% of all active golf courses and also still retains tags for closed&#x2F;unused golf courses too. So if OSM were to be inaccurate, it&#x27;d likely be inaccurate for whether a golf course is open or closed, rather than OSM not knowing about a golf course existing.<p>I wonder whether an OSM tile server &#x2F; custom style sheet for golfers would be easiest and most useful&#x2F;comprehensive way to keep track of golf courses?<p>[1] <a href="https:&#x2F;&#x2F;wiki.openstreetmap.org&#x2F;wiki&#x2F;Tag:golf%3Dhole" rel="nofollow">https:&#x2F;&#x2F;wiki.openstreetmap.org&#x2F;wiki&#x2F;Tag:golf%3Dhole</a><p>[2] <a href="https:&#x2F;&#x2F;taginfo.openstreetmap.org&#x2F;tags&#x2F;leisure=golf_course#overview" rel="nofollow">https:&#x2F;&#x2F;taginfo.openstreetmap.org&#x2F;tags&#x2F;leisure=golf_course#o...</a><p>[3] <a href="https:&#x2F;&#x2F;assets.randa.org&#x2F;c42c7bf4-dca7-00ea-4f2e-373223f80f76&#x2F;50ff4344-b576-4e2e-a9e2-8411712954ac&#x2F;2021%20Golf%20Around%20The%20World%20Fourth%20Edition.pdf" rel="nofollow">https:&#x2F;&#x2F;assets.randa.org&#x2F;c42c7bf4-dca7-00ea-4f2e-373223f80f7...</a><p>[4] <a href="https:&#x2F;&#x2F;thegolfwire.com&#x2F;worldwide-golf-course-development-report&#x2F;" rel="nofollow">https:&#x2F;&#x2F;thegolfwire.com&#x2F;worldwide-golf-course-development-re...</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Alien World Chemistry Found Inside Meteorite That Struck New Jersey Home</title>
+      <link>https://www.seti.org/news/alien-world-chemistry-found-inside-meteorite/</link>
+      <guid isPermaLink="false">hn3-49053708</guid>
+      <pubDate>Sun, 26 Jul 2026 01:35:03 +0000</pubDate>
+      <description>140 points, 51 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.seti.org/news/alien-world-chemistry-found-inside-meteorite/"><strong>→ Article</strong></a> <small>(seti.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49053708">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 51 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>xnx</em>:</p>
+<blockquote>Source paper: <a href="https:&#x2F;&#x2F;www.science.org&#x2F;doi&#x2F;10.1126&#x2F;sciadv.aea2105" rel="nofollow">https:&#x2F;&#x2F;www.science.org&#x2F;doi&#x2F;10.1126&#x2F;sciadv.aea2105</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>fuzzfactor</em>:</p>
+<blockquote>Oh, I wanted to subscribe to &quot;Alien World Chemistry&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jimnotgym</em>:</p>
+<blockquote>Did someone pay him for the rare meteorite? At least enough to fix the roof?<p>Who should one contact if this happens?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ck2</em>:</p>
+<blockquote>someone recently SOLD a t-rex skeleton for $50 MILLION  (61% complete)<p>so you should be able to sell meteorites that land on your property<p>only thing you can&#x27;t own&#x2F;sell is NASA Moon Rocks</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fuzzfactor</em>:</p>
+<blockquote>&gt;Who should one contact if this happens?<p>If you ever watched Hardcore Pawn it looks like they would buy just about anything for the right price :)</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>crooked-v</em>:</p>
+<blockquote>In the US, if a meteorite lands on your property, it&#x27;s yours and you can sell or donate it as you please. This homeowner probably made a decent amount on the sale, especially with the emphasis on immediate preservation.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>fractallyte</em>:</p>
+<blockquote><i>&quot;Our cameras in Northford, Connecticut, and Douglassville, Pennsylvania, as well as a doorbell camera in Wayne, New Jersey, captured the meteor, and from that we measured its trajectory... The path traced back to low in the asteroid belt.&quot;</i><p>I don&#x27;t doubt it, but that&#x27;s an astounding trajectory estimation...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>defrost</em>:</p>
+<blockquote>Desert Fireball Network, and less public precursor projects have been doing this for a while now:<p>* <a href="https:&#x2F;&#x2F;dfn.gfo.rocks&#x2F;" rel="nofollow">https:&#x2F;&#x2F;dfn.gfo.rocks&#x2F;</a><p>* <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Desert_Fireball_Network" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Desert_Fireball_Network</a><p>* <a href="https:&#x2F;&#x2F;pawsey.org.au&#x2F;researchers&#x2F;desert-fireball-network-team&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pawsey.org.au&#x2F;researchers&#x2F;desert-fireball-network-te...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>imoverclocked</em>:</p>
+<blockquote>From the wikipedia link:<p>&gt; The dark flight trajectory of a meteoroid is significantly affected by the atmospheric winds, especially by the jet stream. As a result, the meteorite fall position can be shifted by up to several kilometers compared to a scenario with no winds.<p>That network is mostly interested in where it falls, not where it came from. A few degrees for finding an origin is a huge variation.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>defrost</em>:</p>
+<blockquote>Planetary scientists are motivated to physically examine freshly fallen near pristine samples, yes. They are also keenly interested in origins, intra or extra solar system, relationships to known showers et al.<p>The less public precursors were and still have an interest in both projected targets and sources.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>anovikov</em>:</p>
+<blockquote>This is absolutely trivial as long as any fixed ground objects are visible in a camera and does not at all require some sub-pixel precision.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3586,92 +3668,6 @@ I didn&#x27;t understood anything about the thread, but reading Terrence&#x27;s 
 </blockquote>
 <p>↳ reply 2 — <em>bredren</em>:</p>
 <blockquote>It is ~a meme on subreddits that developers struggling to get good results out of any given model is a &quot;skills issue.&quot;<p>But I think your comment drives at some authentic take on this.  Skill with AI is not only crafting iterative prompts the agent will understand, but also very high domain-specific knowledge of what the prompts explore.<p>One without the other can result in frustration or worse.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>GigaToken: ~1000x faster Language model tokenization</title>
-      <link>https://github.com/marcelroed/gigatoken/</link>
-      <guid isPermaLink="false">hn3-49010167</guid>
-      <pubDate>Wed, 22 Jul 2026 17:20:38 +0000</pubDate>
-      <description>408 points, 81 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/marcelroed/gigatoken/"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49010167">→ HN comments</a> &nbsp;·&nbsp; 408 points &nbsp;·&nbsp; 81 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>maxdo</em>:</p>
-<blockquote>Interesting :<p>Q: Did you just way over-optimize for a specific CPU and tokenizer? How is it so fast?
-No, I way over-optimized for every combination of these! The results are very consistent across CPUs (modern x86 and ARM), and across specific tokenizers.<p>The major improvements are in optimizing heavily an implementation that usually is outsourced to a Regex engine (pretokenization) using SIMD, minimizing branching and other tricks, as well as heavily optimizing caching of pretoken mappings (if a word has been seen before, look it up its encoded tokens efficiently). Caching is a very hard problem in this domain since the cache grows very quickly, and pretoken distributions are very long-tailed.<p>Finally, interactions with Python are minimized, and threads have minimal interactions with each other.</blockquote>
-<p><strong>Top #2</strong> — <em>cschmidt</em>:</p>
-<blockquote>Can I say this seems to be fantastic work. I cloned your repo earlier today after seeing it on the tokenization discord. I know everyone in the tokenization community wants to absorb the lessons of how you got such a speedup. The caching and replacing the regex for pretokenization seem like generally useful ideas.<p>And screw all the 0.1% haters on here, this is great stuff.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>marcelroed</em>:</p>
-<blockquote>Thanks for the kind words, Craig! I&#x27;m planning to do a technical writeup+paper and a presentation video on the project in the near future. Will make sure to share it with the Discord!</blockquote>
-<p>↳ reply 2 — <em>cs702</em>:</p>
-<blockquote>That is my reaction too. It looks like great work!<p>Valuable not only for inference, but for training too (think proprietary datasets).<p>I would add, a single individual did this.<p>One person can make a difference :-)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>onlyrealcuzzo</em>:</p>
-<blockquote>This is awesome, but tokenization is typically &lt;0.1% of total inference time.<p>Presumably there&#x27;s a host of applications that just need to tokenize, though, and this would be great for those!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>marcelroed</em>:</p>
-<blockquote>Author here: Actually, depending on the nature of the inference you&#x27;re doing it can be quite significant. Here are some numbers for time-to-first-token (time to process the entire input and produce the first token of output) for an 8B Qwen3 model running on a single B200. Obviously these numbers are more significant with smaller models and on faster GPUs. Credit to fastokens [0] for the benchmark.<p><pre><code>  sglang_speed [huggingface]: mean=10.31ms median=6.48ms p99=45.98ms rps=96.8
-  sglang_speed [gigatoken]: mean=10.13ms median=6.54ms p99=45.16ms rps=98.4
-
-  input_len=  2048: TTFT mean    30.74 -&gt;    29.05 ms (+5.5% reduction) | median    31.00 -&gt;    28.80 (+7.1%) | p99    33.02 -&gt;    32.02 (+3.0%)
-  input_len=  8192: TTFT mean   105.20 -&gt;    96.36 ms (+8.4% reduction) | median   103.87 -&gt;    95.49 (+8.1%) | p99   126.88 -&gt;   113.84 (+10.3%)
-  input_len= 32768: TTFT mean   687.05 -&gt;   633.66 ms (+7.8% reduction) | median   708.14 -&gt;   657.35 (+7.2%) | p99   728.95 -&gt;   678.79 (+6.9%)
-</code></pre>
-These are preliminary numbers, so I will need to do some more testing before including this in the README.<p>[0] <a href="https:&#x2F;&#x2F;github.com&#x2F;crusoecloud&#x2F;fastokens" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;crusoecloud&#x2F;fastokens</a></blockquote>
-<p>↳ reply 2 — <em>scottcha</em>:</p>
-<blockquote>I run an AI platform and we need to tokenize fast and early to make a lot of decisions on the subsequent steps (things like routing, rate limiting and such).  Its really important to do this efficiently even though its not a large % of total end to end time for the request.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Are AI labs pelicanmaxxing?</title>
-      <link>https://dylancastillo.co/posts/pelicanmaxxing.html</link>
-      <guid isPermaLink="false">hn3-49010129</guid>
-      <pubDate>Wed, 22 Jul 2026 17:17:54 +0000</pubDate>
-      <description>426 points, 163 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://dylancastillo.co/posts/pelicanmaxxing.html"><strong>→ Article</strong></a> <small>(dylancastillo.co)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49010129">→ HN comments</a> &nbsp;·&nbsp; 426 points &nbsp;·&nbsp; 163 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>simonw</em>:</p>
-<blockquote>This is fantastic<p>I&#x27;ve been casually spot-checking other animals in other vehicles, because my absolute dream situation here is to catch an AI lab that&#x27;s demonstrably better at pelicans on bicycles than other combinations.<p>Catching a lab cheating specifically on my one dumb benchmark would be <i>really funny</i>.<p>Dylan&#x27;s methodology here - generating 1008 SVGs across an 8x6 combination - is significantly more robust than anything I was considering.<p>His conclusion:<p>&gt; Nothing jumped out at me. I couldn’t find a case where the pelican-bicycle images looked noticeably better than the rest of that model’s grid.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lukev</em>:</p>
-<blockquote>What if they’re not pelicanmaxxing, but svgmaxxxing in general?<p>Because otherwise using a LLM to generate complex svgs is pretty niche and what I thought made this a good benchmark when it was new - generalized programming and spatial knowledge.<p>Obviously image gen in svg format is not a particularly hard problem if tackled directly on its own.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>qq66</em>:</p>
-<blockquote>But that&#x27;s a genuine worthwhile capability. It&#x27;s like benchmarkmaxxing on a weightlifting competition by getting really strong.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>throw10920</em>:</p>
-<blockquote>&gt; benchmarkmaxxing on a weightlifting competition<p>If you stick to the benchpress, it&#x27;s just &quot;benchmaxxing&quot;.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>eob</em>:</p>
-<blockquote>Simon I hope from this day hence, your bio always includes:<p>&quot;Simon Willison, among other things, is an advocate for the inclusion of pelican geometry in LLM training datasets.&quot;</blockquote>
-<p>↳ reply 3 — <em>julianz</em>:</p>
-<blockquote>I asked Gemini 3.6 Flash for a pūkeko on a unicycle yesterday and the results were very stylish. The thinking notes were cool too, making sure it got all the high points of what it means to be a pūkeko (distinctive swamp hen found in NZ and Australia for anyone not familiar) and then figuring out how the legs would work with the pedals.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mauvehaus</em>:</p>
-<blockquote>&gt;  All 21 pelican-bicycle images, across all seven labs, face right. No other animal&#x2F;vehicle combination does that.<p>&gt; However, facing right is common: 60% of all 1,008 images do it. How common depends on the animal and the vehicle, and bicycles are one of the two vehicles where it’s strongest<p><i>Of course</i> the pelican on the bicycle is facing right. The drivetrain on a bicycle is on the right side. If you want any representation of a bicycle that shows the drivetrain you&#x27;re going to show the right side of it if you want to do so without the frame occluding it. It&#x27;s an excellent bet that their training data reflects this.<p>Citation: <a href="https:&#x2F;&#x2F;www.rei.com&#x2F;c&#x2F;bikes" rel="nofollow">https:&#x2F;&#x2F;www.rei.com&#x2F;c&#x2F;bikes</a><p>Edited to add:<p>As near as I can tell, all of the bicycles are shown facing right, regardless of the direction the animal is facing (GPT 5.6-Terra, Sample 1&#x2F;3). Also, in every case where the rider has legs (i.e. not the whale) both of the rider&#x27;s legs are on the right side of the bicycle. This suggests a pretty serious lack of actual understanding of how a bicycle works.</blockquote>
-<blockquote>
-<p>↳ reply — <em>nl</em>:</p>
-<blockquote>To add to to this looking at the #baaw (bikes against a wall) tag on insta It was over 200 pics before I found a pic of a bike that wasn&#x27;t facing left-to-right<p><a href="https:&#x2F;&#x2F;www.instagram.com&#x2F;explore&#x2F;search&#x2F;keyword&#x2F;?q=%23baaw" rel="nofollow">https:&#x2F;&#x2F;www.instagram.com&#x2F;explore&#x2F;search&#x2F;keyword&#x2F;?q=%23baaw</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>stusmall</em>:</p>
-<blockquote>I&#x27;m glad someone ran the numbers on this.  Every single Simon Willison post of an SVG is followed with someone dismissing it saying &quot;I&#x27;m sure they train on it by now.&quot; This is despite a good blog post with sound logic on how easy that is to catch. [1] Glad to see someone took the time for a quantitative analysis of dumb little animals riding dumb little bikes.<p>1. <a href="https:&#x2F;&#x2F;simonwillison.net&#x2F;2025&#x2F;Nov&#x2F;13&#x2F;training-for-pelicans-riding-bicycles&#x2F;" rel="nofollow">https:&#x2F;&#x2F;simonwillison.net&#x2F;2025&#x2F;Nov&#x2F;13&#x2F;training-for-pelicans-...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>unholiness</em>:</p>
-<blockquote>I don&#x27;t think this small amount generalization to other animals and vehicles is strong evidence they haven&#x27;t trained on this, either directly or more generally.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>conception</em>:</p>
-<blockquote>Honest question how could they possibly train on this as there are no good SVG pelicans to train off right? So they’re just training off a bunch of bad ones which should lead to just bad pelicans, but the pelicans are getting better.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>unholiness</em>:</p>
-<blockquote>Training on generating SVGs directly at all is already fairly niche. Generating full scenes with a cartoony character is even nicher. But there&#x27;s plenty of non-pelican cartoony SVG content out there (created, not written, by humans with vector design tools), and more importantly, plenty of vision models to give feedback on the output (just raster as a png). You could easily hill climb this niche skill, if you cared.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>elicash</em>:</p>
-<blockquote>There&#x27;s that version of the argument version, but there&#x27;s also the softer version: that there used to be no training material of illustrated pelicans on bicycles, but now you have actual artistically talented individuals drawing it and that could improve the performance even though the AI labs are sucking it up no differently than everything else.<p>This post proves that hasn&#x27;t happened yet, either. Although maybe the bad results posted online are being trained on and that explains the UNDER performance.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
