@@ -4,7 +4,67 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 27 Jul 2026 18:41:07 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2026 20:26:22 +0000</lastBuildDate>
+    <item>
+      <title>How is the Bun Rewrite in Rust going?</title>
+      <link>https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html</link>
+      <guid isPermaLink="false">hn3-49067854</guid>
+      <pubDate>Mon, 27 Jul 2026 11:12:26 +0000</pubDate>
+      <description>389 points, 294 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html"><strong>→ Article</strong></a> <small>(lockwood.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49067854">→ HN comments</a> &nbsp;·&nbsp; 389 points &nbsp;·&nbsp; 294 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Jarred</em>:</p>
+<blockquote>Bun’s Rust rewrite shipped in Claude Code over a month ago and barely anyone noticed. Claude Code is widely used. The Rust rewrite is going well overall.<p>In the Bun v1.4 video, I promised a certain number of newly passing Node.js tests were added to force us to improve compatibility, and that number is not true  yet. The release is delayed until it is true. The PRs to make it true are up but not merged yet. Most likely next Tuesday we’ll do the release of 1.4.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>inglor</em>:</p>
+<blockquote>Take as long as you need to ensure software quality. A month without a release isn&#x27;t a big deal and whomever needs a specific feature can offer to contribute or build themselves.<p>Node has 4-6 weeks without a meaningful release (other than security stuff) pretty much every December. I think the criticism in the article is unfounded and whomever needed&#x2F;wanted a release should have asked first instead of writing an &quot;angry&quot; blog post.<p>(I&#x27;m a Node.js maintainer)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tomlockwood</em>:</p>
+<blockquote>Author here: I don&#x27;t need or want another Bun release or an NPM release or anything like that. Like I very clearly say in the article I just got chatting with a peer about the Bun rewrite and I decided to take a look.<p>I&#x27;m consistently skeptical about new tech whether it is NoSQL or Blockchain or Serverless. Some of the things I&#x27;m skeptical about fail and some succeed.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>da02</em>:</p>
+<blockquote>What are some of your favorite tools or services that you adopted in the past few years?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>thayne</em>:</p>
+<blockquote>That&#x27;s not surprising. Claude code is buggy enough, and releases break things often enough, that I wouldn&#x27;t expect users to distinguish bugs introduced by switching to rust-based-bun from the normal garden variety bugs.</blockquote>
+<p>↳ reply 3 — <em>lantry</em>:</p>
+<blockquote>Any comment on the costs estimated in the article? especially the buildkite costs?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>SquareWheel</em>:</p>
+<blockquote>I&#x27;m not sure how much insight we can glean from looking at the number of commits and release cadence here.  In the aftermath of such a major refactor&#x2F;rewrite, I would expect it to take some time to get back up to their usual development speed.<p>Jared and the other developers are new to the Rust codebase, even if the structure is largely familiar.  They&#x27;re also likely focusing on other priorities right now such as tracking down instances of &#x27;unsafe&#x27;, rather than making user-facing changes (which might encourage a release).<p>Bugfixes could encourage rapid new releases, but perhaps the rewrite simply hasn&#x27;t been very buggy?  As far as I know, those on the canary channel haven&#x27;t reported any major issues, or even really noticed the change.  So perhaps there&#x27;s little reason for new releases right now, as the team slowly churns through the backlog.<p>&gt; P.S. Anthropic’s C compiler and Cursor’s FastRender web browser haven’t had any commits for months.<p>I always assumed those were just experiments in capability, and weren&#x27;t meant to be ongoing projects.  I would hope that nobody is using them directly today.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>usef-</em>:</p>
+<blockquote>They also have made a release, in a sense, since they moved all Claude code users to it a month ago. (And apparently no one noticed).<p>I think they&#x27;re taking things &quot;gradually&quot; as they are under a lot of scrutiny and no rush for full release.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Aurornis</em>:</p>
+<blockquote>Claude Code has a huge userbase. This is an impressive result so soon after the rewrite.<p>This is an impressive milestone for their rewrite. There are a lot of comments trying to downplay this as being unimpressive for some reason, but I can’t see them as anything other than sour grapes because the rewrite hasn’t crashed and burned like they were hoping.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>giancarlostoro</em>:</p>
+<blockquote>It&#x27;s just blind AI hate for no rhyme or reason. I&#x27;ve ported projects from one language to the next using Claude Code long before Bun even did this, it&#x27;s very trivial for an LLM. In the case of Bun though, they have a test suite to run the entire codebase against, and so long as all of those tests pass, there&#x27;s and drastically more likely chance that its correct.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>wonnage</em>:</p>
+<blockquote>The CI&#x2F;CD costs are an interesting take, most of the rebuttals to AI ROI are something like “more code doesn’t mean more value!” but if you are charging per CI run then it actually does! Particularly with CI and extra testing being the main way to prevent the loops the AI companies are shilling from going off the rails</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>bendmorris</em>:</p>
+<blockquote>As a comparison point, someone decided to try to fix the issues in the Zig original and is now claiming sub-second build times, plus fixed bugs, by modernizing the codebase and sticking with best practices - indicating that all of the issues that justified the rewrite were self-inflicted and addressable.<p><a href="https:&#x2F;&#x2F;ziggit.dev&#x2F;t&#x2F;buz-a-drop-in-replacement-for-bun-using-modern-zig-with-sub-1s-incremental-builds&#x2F;16891" rel="nofollow">https:&#x2F;&#x2F;ziggit.dev&#x2F;t&#x2F;buz-a-drop-in-replacement-for-bun-using...</a><p>I have no skin in this game, and the Zig version is <i>also</i> using LLMs if that helps take the culture war out of it. But, it has always been true in my experience that someone who really understands a problem space can outcompete someone who just throws resources (in hundreds of thousands of dollars of token spend) at it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jeremyjh</em>:</p>
+<blockquote>&gt;  indicating that all of the issues that justified the rewrite were self-inflicted and addressable<p>The main issue that justified the rewrite were memory bugs, especially related to interaction with GC managed Javascript objects. There is no fully general way to prevent those bugs in Zig, and I don&#x27;t see any claims that they did so in Buz.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bendmorris</em>:</p>
+<blockquote>They also complained about build times, and in fact the Rust rewrite started <i>immediately</i> after some other drama about Bun being unable to contribute back LLM-written changes to the Zig compiler to improve build times, and the Zig team rejecting them in principle. So while memory issues did become the focus later, I don&#x27;t think it was the entire story.<p>Migrating to Rust in a one-to-one translation with unsafe blocks does not make the code any more safe initially. It might provide tools to do a significant refactor that solves lifetime issues with Rust&#x27;s help, but I haven&#x27;t seen evidence that they&#x27;ve done that either. They&#x27;re also embedding a large C++ codebase, JavaScriptCore, so there are always going to be unsafe areas and touchpoints where memory issues could live, and Rust won&#x27;t magically solve them.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>qudat</em>:</p>
+<blockquote>It wasn’t just on principle that those changes were rejected, they also stated the bun changes were not actually that great or general enough to upstream.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Aurornis</em>:</p>
+<blockquote>This looks like a meme or attempt at a joke.<p>&gt; Bun is the quintessential AI slop project at this point. Inheriting that is no easy task. I don’t think any human should sacrifice their sanity untangling this mess of 600K lines of slop code. For that reason, I will not be accepting any human-coded contributions until I deem the project to be in a sane enough shape. It will likely require most subsystems to be rewritten.<p>They&#x27;re refusing to accept human-authored contributions. They&#x27;re using LLMs to do the work. The author says they&#x27;ll use LLMs to de-slop what they think is slop, and humans are banned from contributing.<p>I don&#x27;t think you should take this seriously.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Libsm64: Mario 64 as a library for use in external game engines</title>
       <link>https://github.com/libsm64/libsm64</link>
@@ -137,6 +197,52 @@
 </blockquote>
 <p>↳ reply 2 — <em>_trampeltier</em>:</p>
 <blockquote>Tesla is kind the same. Everybody bought it, because it went up so much, less because of the product. I guess every AI would do the same.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>VLC for Unity now supported on Linux</title>
+      <link>https://code.videolan.org/videolan/vlc-unity</link>
+      <guid isPermaLink="false">hn3-49066928</guid>
+      <pubDate>Mon, 27 Jul 2026 09:06:34 +0000</pubDate>
+      <description>126 points, 36 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://code.videolan.org/videolan/vlc-unity"><strong>→ Article</strong></a> <small>(code.videolan.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49066928">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 36 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tmtvl</em>:</p>
+<blockquote>On a similar note: Godot VLC (&lt;<a href="https:&#x2F;&#x2F;github.com&#x2F;xiSage&#x2F;godot-vlc" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;xiSage&#x2F;godot-vlc</a>&gt;), because let&#x27;s not pretend we don&#x27;t remember the Unity terms change controversy.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>thih9</em>:</p>
+<blockquote>Context about the Unity terms change controversy: <a href="https:&#x2F;&#x2F;www.gamedeveloper.com&#x2F;business&#x2F;unity-is-killing-its-controversial-runtime-fee" rel="nofollow">https:&#x2F;&#x2F;www.gamedeveloper.com&#x2F;business&#x2F;unity-is-killing-its-...</a><p>&gt; Initially, the Runtime Fee sought to charge developers a per install tariff once projects had passed certain milestones. It was a decision that left many users reeling, resulting in a colossal backlash (…)<p>How users reacted: <a href="https:&#x2F;&#x2F;old.reddit.com&#x2F;r&#x2F;OutOfTheLoop&#x2F;comments&#x2F;16h9lnw&#x2F;whats_going_on_with_unity_changing_their_policies&#x2F;k0ckycp&#x2F;" rel="nofollow">https:&#x2F;&#x2F;old.reddit.com&#x2F;r&#x2F;OutOfTheLoop&#x2F;comments&#x2F;16h9lnw&#x2F;whats...</a><p>&gt; Any install, any reinstall, any installation on a second device, each and every one slap the dev with a fee. It gets dumber, because that cracked copy of your game on the high seas still incurs a fee when the pirate installs it.
+You might think we&#x27;re at peak stupidity. You might think anyone who makes anything with Unity is a &quot;fucking idiot&quot; (the CEO certainly does), but we&#x27;re not done yet.
+It&#x27;s retroactive. (…)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>arijun</em>:</p>
+<blockquote>Side note--is there any way to access reddit now for people who refuse to log in or get the app? Old reddit asks tells me I have to use new reddit for &quot;security&quot; and new reddit says &quot;Get the app to keep using Reddit&quot;.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>nolok</em>:</p>
+<blockquote>On mobile ? Not really. Their website is mobile cancer, and their app is barely better. I&#x27;m impressed at how bad it is, and it&#x27;s not even about &quot;pushing more ads&quot; but &quot;controlling what people see&quot;. That&#x27;s also why they&#x27;ve removed r&#x2F;all.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>martz</em>:</p>
+<blockquote>yes this is good too, actually started contributing to this :)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>martz</em>:</p>
+<blockquote>Recently added support for Linux to VLC for Unity, with full hardware decoding.<p>It uses OpenGL rendering through GLX and EGL, with DMA-BUF texture sharing to pass video frames efficiently to Unity’s renderer.<p>Only x86_64 is supported at this time. In the future, I will add ARM64 support as well as Vulkan.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>torginus</em>:</p>
+<blockquote>Would it not be more efficient to create the decoder in-process, then you could feed it the bitstream via a compute buffer, and the video would be rendered to a texture.</blockquote>
+<p>↳ reply 2 — <em>sylware</em>:</p>
+<blockquote>Don&#x27;t forget to build &#x27;correct&#x27; ELF64 binaries for broad elf(glibc)&#x2F;linux distro support (-static-libgcc -static-libstdc++, and tight glibc ABI version control with binutils VERSION scripts).<p>At least those build options should be default.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Hendrikto</em>:</p>
+<blockquote>To everybody else being confused: This is about Unity the game engine, not Unity the desktop environment.</blockquote>
+<blockquote>
+<p>↳ reply — <em>tokai</em>:</p>
+<blockquote>Unity (the DE) was discontinued 9 years ago..</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>extraduder_ire</em>:</p>
+<blockquote>It&#x27;s still being developed outside of Canonical. The latest release of an Ubuntu version is 26.04.<p><a href="https:&#x2F;&#x2F;unityd.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;unityd.org&#x2F;</a></blockquote>
+</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3588,84 +3694,6 @@ I realize all the time I spent admiring, and now I have become.</blockquote>
 </blockquote>
 <p><strong>Top #3</strong> — <em>Alifatisk</em>:</p>
 <blockquote><a href="https:&#x2F;&#x2F;xcancel.com&#x2F;fried_rice&#x2F;status&#x2F;2080059356322918777" rel="nofollow">https:&#x2F;&#x2F;xcancel.com&#x2F;fried_rice&#x2F;status&#x2F;2080059356322918777</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>What happened to TheNumbers.com</title>
-      <link>https://stephenfollows.com/p/what-just-happened-to-thenumberscom-should-worry-us-all</link>
-      <guid isPermaLink="false">hn3-49024691</guid>
-      <pubDate>Thu, 23 Jul 2026 16:53:33 +0000</pubDate>
-      <description>312 points, 136 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://stephenfollows.com/p/what-just-happened-to-thenumberscom-should-worry-us-all"><strong>→ Article</strong></a> <small>(stephenfollows.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49024691">→ HN comments</a> &nbsp;·&nbsp; 312 points &nbsp;·&nbsp; 136 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>primitivesuave</em>:</p>
-<blockquote>A couple years ago, I was running a website which allowed the public to view all the US government handouts to small businesses during the COVID-19 pandemic. It also tracked all the fraudulent loans being prosecuted by the DOJ, and allowed anyone to run structured queries over the public dataset. There was a &quot;donate&quot; button which took in ~$2k in donations over the lifetime of the site, and you could download the entire underlying dataset (around 10 GB uncompressed) for free directly on the site.<p>Despite the &quot;download all data&quot; link being prominently placed on the front page, the AI scrapers decided it would be more efficient to download terabytes upon terabytes of raw HTML by paginating through every possible facet on the search endpoint. Even with CloudFront caching results and a fairly efficient backend setup, the monthly bill ended up with around $1k just going toward network ingress&#x2F;egress, so I shut down the site the following month.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>deepsun</em>:</p>
-<blockquote>BigQuery has &quot;public datasets&quot;, so users can even run complex SQL on it, but it&#x27;s them who pays for it, not you. You only pay for data storage.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>primitivesuave</em>:</p>
-<blockquote>Thanks for that tip, this is exactly how I would do this if I had to do it from scratch. Just in case it&#x27;s useful for anyone else: <a href="https:&#x2F;&#x2F;docs.cloud.google.com&#x2F;bigquery&#x2F;public-data" rel="nofollow">https:&#x2F;&#x2F;docs.cloud.google.com&#x2F;bigquery&#x2F;public-data</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>userbinator</em>:</p>
-<blockquote><i>the AI scrapers decided it would be more efficient to download terabytes upon terabytes of raw HTML by paginating through every possible facet on the search endpoint.</i><p>No, they decided that would be a great way to convince you of the narrative and persuade you to pay for &quot;security&quot; services that further the incumbent browser monopoly.<p>They&#x27;re not &quot;AI scrapers&quot;, they&#x27;re DDoS&#x27;ers manufacturing consent.</blockquote>
-<p>↳ reply 3 — <em>sillysaurusx</em>:</p>
-<blockquote>For what it’s worth, a Hetzner dedicated server has unlimited ingress and egress. It seems like it’s the only provider that does. Egress fees suck.<p>You can get a beefy one for about $40&#x2F;mo on their server auction site.<p>Just... don’t miss payments. Ever. Or they’ll delete your server within a week or so.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ethagnawl</em>:</p>
-<blockquote>At the risk of oversimplifying things from a distance, this site -- especially the free, public-facing part of it -- seems like it would be an ideal candidate for a rewrite using static site generator&#x2F;framework. That, coupled with a bot-aware CDN should keep them online at a reasonable cost for many years to come.<p>Otherwise, I&#x27;m very curious to know more about their old and new architecture and what sorts of mitigation&#x2F;scaling strategies they&#x27;ve started using to keep the site online.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>zackmorris</em>:</p>
-<blockquote>Ya this problem was solved 20 years ago with Varnish cache and Coral cache&#x2F;CDN.<p>I think what&#x27;s really going on is that bots expose how underpowered web servers has gotten in recent years. In the 2000s, even poorly-architected PHP sites tended to serve about 200 requests per second, with 1000+ being common for static sites. I remember when Node.js came out and claimed that it could serve more like 100,000 RPS due to its cooperative threading model. But today sites have a remarkable slowness to them, running many hundreds or thousands of database queries due to ORMs and N+1 problems, so that response times can be 500 ms or more and even 1000 simultaneous users stresses servers.<p>What went wrong is that nobody solved stuff like Russian doll caching in a general way separate from the programming language and database. We should have had ways to make dependency graphs using Etag headers as keys with real cache invalidation of dependent data. I went down that rabbit hole 10 years ago using touch events in Laravel with callbacks to handle cache invalidation when class model data was saved to the database. Also a query cache using Redis which I think might have been handled better at the database level anyway. After that experience, I can honestly say that cache invalidation is so difficult to get right that it&#x27;s effectively an open problem. Meaning that programmings should use a package instead of rolling it by hand, and it should be a major concern from the start (along with sharding by user id or using something like Firebase).<p>Don&#x27;t get me started on how the web should have been a P2P content-addressable memory anyway. Nearly everything should be available from a nearby edge peer, similarly to BitTorrent. But nobody bothered to solve how to make that work with HTTPS&#x2F;SSL. I suspect that has to do with early flaws in the browser security model where the whole page has to be behind HTTPS or warnings appear. So it was never clear what was personally identifiable information (PII) or merely public data being served over HTTPS. To really solve that, we probably need real trust networks and maybe even zero-knowledge proofs.<p>Since these problems are so challenging to fix, and big companies can&#x27;t be bothered to do it since they pulled the ladder up behind them, we&#x27;re probably stuck with banal &quot;are you human&quot; challenge screens for the foreseeable future.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>withinboredom</em>:</p>
-<blockquote>They are indeed quite challenging. We literally wrote a paper about it (<a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.09114" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.09114</a>) ... you almost describe some of our original architecture too! You might find it interesting -- or not. <a href="https:&#x2F;&#x2F;getswytch.com" rel="nofollow">https:&#x2F;&#x2F;getswytch.com</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>RobotToaster</em>:</p>
-<blockquote>Or just use a cache.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>abetusk</em>:</p>
-<blockquote>I think people are missing one of the points of the article. It&#x27;s not just that agents are hammering the site, it&#x27;s that there might be lurking vulnerabilities that allow malicious usage, which is why it went down, then came back up with a fraction of the data and a reduced design.<p>The article says (speculates?) that malicious users are trying to get privileged access for an edge in prediction market betting. From the article:<p>&gt; If you could see The Numbers data before everyone else, every single week, you would have a significant edge over all the other traders - learning the answers slightly ahead of publication would allow you to front-run the trades.</blockquote>
-<blockquote>
-<p>↳ reply — <em>squidproquo</em>:</p>
-<blockquote>If it&#x27;s the case that prediction market traders were trying to front-run the market outcomes, the prediction markets should put the fix on their end by locking  down trading before a market closes with some time buffer to prevent this.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The arguments against open source AI are bad</title>
-      <link>https://tombedor.dev/arguments-against-open-source-ai-are-very-bad/</link>
-      <guid isPermaLink="false">hn3-49024643</guid>
-      <pubDate>Thu, 23 Jul 2026 16:49:57 +0000</pubDate>
-      <description>219 points, 153 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://tombedor.dev/arguments-against-open-source-ai-are-very-bad/"><strong>→ Article</strong></a> <small>(tombedor.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49024643">→ HN comments</a> &nbsp;·&nbsp; 219 points &nbsp;·&nbsp; 153 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>petcat</em>:</p>
-<blockquote>This is not &quot;open source&quot; AI.<p>Photoshop source code + OSI license = open source<p>Photoshop binary = open weight<p>Photoshop SAAS web app = closed model like GPT, Opus&#x2F;Fable etc.<p>There is nothing &quot;open source&quot; about the Chinese models in question.  All they&#x27;re doing is allowing you to run their binary yourself instead of through their API.<p>If you want actual open source then you would need to look at like OLMo 3<p><a href="https:&#x2F;&#x2F;allenai.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;allenai.org&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>thoughtpeddler</em>:</p>
-<blockquote>It&#x27;s true that there isn&#x27;t currently a single Chinese model family that matches the full OLMo&#x2F;Nemotron end-to-end &#x27;cookbook&#x27; one could rightly call &quot;open-source&quot; (i.e. a full manual on how to reproduce your own foundation model by including the models, data, checkpoints, evals, and code for base&#x2F;thinking&#x2F;instruct&#x2F;RLVR)...<p>But! the Chinese ecosystem does have most of those components, just that they&#x27;re split across separate projects: MAP-Neo or YuLan-Mini for transparent pretraining, plus DAPO&#x2F;verl or Open-Reasoner-Zero for transparent reasoning RL.<p>My bet is it&#x27;s just a matter of time until there is a Chinese equivalent to OLMo. It won&#x27;t just be China either - from the public sector across the globe there are efforts ranging from Apertus in Switzerland to LLM-jp-4 in Japan, and more. They&#x27;re not OLMo-level but I&#x27;m sure by 2027 you&#x27;ll see fully open-source &#x27;cookbooks&#x27; help an enterprising individual reproduce frontier models of at least a 2023-2024 vintage.</blockquote>
-<p>↳ reply 2 — <em>shwaj</em>:</p>
-<blockquote>Equating an open weight model to a closed source binary is ludicrous. An open weight model can be fine tuned, for example.  How easy is it to modify a closed source binary for your purposes?</blockquote>
-<p>↳ reply 3 — <em>SwellJoe</em>:</p>
-<blockquote>Open Source AI is challenging. Even tiny models require tremendous resources to produce, so all the things we know about &quot;open source&quot; for software, like a random person in Nebraska can produce a critical piece of the world&#x27;s infrastructure in their spare time, don&#x27;t apply.<p>Actually open source AI is more like scientific research. It needs public funding and reputable institutions as stewards of that funding. I&#x27;m hopeful Allen AI is able to do the things, but I&#x27;m not sure the US is moving in the direction it needs to be to get to the point where AI in the public interest is something we invest in.<p>But, also Photoshop is not at all comparable to open weight models. I can&#x27;t legally give you a copy of Photoshop, but I can give you a copy of GLM 5.2. There are free proprietary applications out there that fit the bill, Photoshop isn&#x27;t one of them.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>MostlyStable</em>:</p>
-<blockquote>Just to add on to other comments: reasonable people can disagree about the degree of safety concern with near to medium term AI. But to not address the arguments at all is, in my opinion, a serious mark against the value of this article.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jjfoooo4</em>:</p>
-<blockquote>I tried to address safety, albeit briefly, in the sections on backdoors and propaganda. What would you have liked to see?<p>I didn&#x27;t give it much treatment because my frame of reference is about open vs closed AI, and I don&#x27;t see a lot of daylight in safety concerns between the two.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>adahn</em>:</p>
-<blockquote>The core safety-related arguments for closed weights are:<p>1. Visibility. API providers can monitor for misuse, and regulators only need to oversee a few centralised players. Once weights are released, anyone with sufficient hardware (foreign governments, criminal groups, terrorists?) can run them and monitoring is no longer feasible.<p>2. Revocability and containment. If closed-weights models are found to be dangerous, access can be withdrawn. Deployments that are autonomously causing harm are easier to contain.<p>3. Guardrails. Safety fine-tuning and classifiers can be removed from open-weights models, enabling harmful use that would not be possible via API.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>marcus_holmes</em>:</p>
-<blockquote>I trust open source code more than I trust proprietary code. And I believe history vindicates me.<p>Everything that you&#x27;re saying can be done with open-weights models by bad people can also be done with closed-weights models by the people who own them. And there is no defence against that, we are forced to trust that the owners are not bad people. Those owners have proven time and again that they are only interested in profit and&#x2F;or control. They will do whatever they think makes them the most money, or gives them the most control. They will also lie about this.<p>At least with open weights we know the danger and can do something about it. With closed weights we don&#x27;t know what&#x27;s going on.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>QuadmasterXLII</em>:</p>
-<blockquote>“you can not stop X” is a shitty lazy stupid argument for “X is not bad.” No comment  on the rest of the article.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
