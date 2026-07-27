@@ -4,7 +4,62 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 27 Jul 2026 11:32:33 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2026 14:51:58 +0000</lastBuildDate>
+    <item>
+      <title>Kimi-K3 Releases on HuggingFace 7/27</title>
+      <link>https://huggingface.co/moonshotai/Kimi-K3</link>
+      <guid isPermaLink="false">hn3-49065752</guid>
+      <pubDate>Mon, 27 Jul 2026 06:18:10 +0000</pubDate>
+      <description>710 points, 318 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://huggingface.co/moonshotai/Kimi-K3"><strong>→ Article</strong></a> <small>(huggingface.co)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49065752">→ HN comments</a> &nbsp;·&nbsp; 710 points &nbsp;·&nbsp; 318 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>KronisLV</em>:</p>
+<blockquote>I feel like most hardware to run LLMs on is shaped wrong for individuals.<p>It&#x27;s either having a model struggling along with like 5-10 tokens per second on unified memory, or data center cards with hundreds of GB of VRAM consuming more than a kW of power. It doesn&#x27;t seem like there&#x27;s prosumer GPUs with like 180W-250W TDP and 128 GB or 256 GB of VRAM (one can dream). Then bifurcation and even just two of those cards would be kinda useful (albeit NVLink or equivalent would need to be commonplace).<p>Obviously nobody is running Kimi K3 locally without an insanely beefy homelab and lots of money to burn, but running GLM 5.2 would be cool at like ~100 tokens per second for a single session and maybe ~60 tokens per second with N subagents.<p>How unfortunate.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>walrus01</em>:</p>
+<blockquote>I have found that the &quot;mostly didn&#x27;t lose anything&quot; Q8 large models that I want to run are all too large to run on the &quot;only $3995!&quot; 128GB max RAM systems that some people are buying, and definitely won&#x27;t fit with any usable amount of context. Things like Qwen 3.5 122B Q8 or deepseek v4 flash Q8, or Laguna S 2.1 Q8 need 170-190GB of RAM including full context, which fits on a 256GB RAM dual socket workstation or rackmount server (sans GPU).<p>Copy and paste below from my notes and reported memory consumption with latest llama-server, assuming use of &quot;--no-mmap&quot; to load the entire thing into RAM at the time that llama-server launches.<p>DeepSeek-V4-Flash-UD-Q4_K_XL via unsloth
+145GB on disk GGUF
+0.03.323.204 I common_params_fit_impl: projected to use 178175 MiB of host memory<p>DeepSeek-V4-Flash-UD-Q8_K_XL via unsloth
+151GB on disk GGUF
+0.02.215.885 I common_params_fit_impl: projected to use 184636 MiB of host memory<p>Laguna-S-2.1-UD-Q8_K_X via unsloth
+120GB on disk
+0.01.616.119 I common_params_fit_impl: projected to use 172860 MiB of host memory<p>Qwen3.5-122B-A10B-UD-Q8_K_XL via unsloth
+160GB on disk GGUF
+165GB RAM use on launch, fresh context
+0.04.976.905 I common_params_fit_impl: projected to use 170038 MiB of host memory</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>johndough</em>:</p>
+<blockquote>DeepSeek-V4 should use only 5GB for context due to CSA and HCA, see figure here: <a href="https:&#x2F;&#x2F;huggingface.co&#x2F;deepseek-ai&#x2F;DeepSeek-V4-Pro" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;deepseek-ai&#x2F;DeepSeek-V4-Pro</a><p>But not every framework implements it properly yet.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>walrus01</em>:</p>
+<blockquote>Yeah, or close enough to 5GB for estimation purposes, for example a just spawned qwen 3.5 122B llama-server instance reports as:<p>0.07.015.888 I common_memory_breakdown_print: |   - Host               |                 170038 = 162913 +    6740 +     384                |<p>The 6740 is the cache size.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>schmorptron</em>:</p>
+<blockquote>LLM inference unfortunately also seems to be a task that&#x27;s poorly formed for moderate consumer hardware,as a single user. For a single user use case, the load is bursty but requires the weights to be in memory already. So a multi user server that keeps the model weights in parts of its memory and then spends some more per user kv cache is wildly more efficient and the wildly expensive gpu cores aren&#x27;t just sitting idle most of the time. Don&#x27;t get me wrong, most desktop workloads are bursty, but the power needed to to them has gotten cheap enough that we can have way overkill for idle scenarios hardware just sitting on our desks.</blockquote>
+<p>↳ reply 3 — <em>chrysoprace</em>:</p>
+<blockquote>I&#x27;ve been feeling for a while that as we keep increasing model size, we&#x27;re going through the opposite of the PC revolution.<p>The &quot;democratisation&quot; talk from the frontier labs is especially egregious when they only release closed models (gpt-oss hardly counts) and are trying everything they can to make it harder to run open models.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>gorgmah</em>:</p>
+<blockquote>We already know that competition brought GLM 5.2 prices down roughly 45% since its release on June 16th (1.5 months ago), and the price downward slope is probably still going (I&#x27;ve been checking regularly and new providers keep fighting on price, I don&#x27;t think prices have settled yet). For reference : <a href="https:&#x2F;&#x2F;openrouter.ai&#x2F;z-ai&#x2F;glm-5.2#providers" rel="nofollow">https:&#x2F;&#x2F;openrouter.ai&#x2F;z-ai&#x2F;glm-5.2#providers</a><p>I saw arguments like &quot;Providers cannot price less than their costs&quot; in other comments. In economics, it&#x27;s generally admitted that they shouldn&#x27;t price less than their marginal costs, i.e. in their case roughly the cost of electricity, since a lot of these datacenters are not at capacity in terms of graphics cards usage (speculation since it&#x27;s very easy to rent a GC for a couple hours on some providers). My guess is that someone will be selling tokens at less than electricity + depreciation of GCs soon, since there&#x27;s a lot of competition and &quot;smaller&quot; data centers have overcapacity? This is speculation, correct me if I&#x27;m wrong</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>teruakohatu</em>:</p>
+<blockquote>&gt; My guess is that someone will be selling tokens at less than electricity + depreciation of GCs soon, since there&#x27;s a lot of competition and &quot;smaller&quot; data centers have overcapacity? This is speculation, correct me if I&#x27;m wrong<p>My guess is they are selling you the tokens, then selling your tokens (data) onto someone else.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pembrook</em>:</p>
+<blockquote>I see these conspiratorial arguments all the time and I think people massively overestimate the value of the average users tokens.<p>The problems with frontier models (design taste, ability to solve novel&#x2F;difficult problems, etc) cannot be solved by throwing more slop from the average user at it.<p>Actually, most of the main deficiencies in current models stem from the fact that their data sets aren’t  curated and specialized enough.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>horsawlarway</em>:</p>
+<blockquote>I don&#x27;t think the goal of this data is necessarily model improvement.<p>I think it&#x27;s marketing, advertising, and product refinement.<p>Ex: all the things Google wants your search data for.<p>It&#x27;s somewhat silly to think the value of that data has changed much.  Advertisers want to know what&#x27;s popular and getting clicks and attention. Competitors want to know what features are getting used in their markets.<p>In the simplest case, think of this data as improving the harness, not the model.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>markasoftware</em>:</p>
+<blockquote>Press x to doubt on the 45% number. The cheaper providers on open router are fp4 vs fp8 for official zai. There are some cheap fp8 ones (like novita) but the ui makes it seem like it&#x27;s a temporary promotion, with their normal prices being almost equal to official zai (idk much about open router so not really sure what&#x27;s going on with these discounts)</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>taf2</em>:</p>
+<blockquote>[delayed]</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>PGSimCity - How PostgreSQL Works</title>
       <link>https://nikolays.github.io/PGSimCity/</link>
@@ -357,6 +412,80 @@ I have not achieved that goal yet.<p>What I have so far:<p>- one (non-optimized)
 </blockquote>
 <p>↳ reply 2 — <em>strken</em>:</p>
 <blockquote>What is there to discuss? Outlier weather events are growing more common and the hot summer obviously played a role here.<p>Even climate change denial has moved from denying the fact to denying that we can fix anything, for either economic or technical reasons.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>How to write English prose (2023)</title>
+      <link>https://thelampmagazine.com/blog/how-to-write-english-prose</link>
+      <guid isPermaLink="false">hn3-49060295</guid>
+      <pubDate>Sun, 26 Jul 2026 17:29:35 +0000</pubDate>
+      <description>126 points, 65 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://thelampmagazine.com/blog/how-to-write-english-prose"><strong>→ Article</strong></a> <small>(thelampmagazine.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49060295">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 65 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>GCA10</em>:</p>
+<blockquote>Kept out of sight in this rogue essay is the classic question: Who&#x27;s your audience?<p>If you&#x27;re writing for yourself (and maybe a very small number of equally erudite readers) cut loose! Embrace &quot;anfractuous density and heedless flamboyance.&quot; But if you&#x27;re trying to change people&#x27;s minds, or share knowledge widely, everything in this essay is defiantly at odds with what&#x27;s necessary to get the rest of the world to pay attention.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>scandox</em>:</p>
+<blockquote>What&#x27;s interesting to me is that the examples he gives are beautiful because of their sincerity. Even if there is artifice, or they&#x27;re being formal or playful, their style reflects their reading, their shared culture and of course as you say their audience - which I think for them was a very small elite.<p>Anyone who writes in a flamboyant style now - as the essay&#x27;s author does - necessarily comes across as a kind of pastiche. There is something camp or affected about it. Maybe that can change. Maybe a new flamboyance can develop. But I think his antiquated style of flamboyance is unlikely to come back to real life.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gerdesj</em>:</p>
+<blockquote>Take a copy of &quot;Usage and Abusage&quot; and blend with Lord Byron after applying suitable libations; toss in the bear for body.  Season to taste with the darker dictionary (the parts chained down to protect the reader).  Simmer over a fire of coked Latin and Greek primers, scented with a whiff of lilac.<p>Serve in a curiously beige vessel.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>hydrox24</em>:</p>
+<blockquote>I agree that it has been left to the reader to infer, but then again this is not really a how-to guide!<p>And he gestures at the need for this at least once.<p><pre><code>  To be able to balance expressiveness and reticence, or to know when to cast that balance away, requires tact and ingenuity and taste on the part of writers</code></pre></blockquote>
+<p>↳ reply 3 — <em>Barrin92</em>:</p>
+<blockquote>does anyone need to get the &#x27;rest of the world&#x27; to pay attention? That&#x27;s already a crowded market of questionable characters.<p>There&#x27;s something ironic and self-defeating in trying to write to the whole world while also having such a low opinion of the whole world that a writer thinks they can&#x27;t express themselves the way they want to or lose their audience.<p>As DBH says at the end of the essay, don&#x27;t write down to what you <i>presume</i> to be the level of your readers, that&#x27;s insulting to both you and your readers.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>A_D_E_P_T</em>:</p>
+<blockquote>&gt; <i>8.  If you must choose between elegance and perfect clarity, allow yourself a period of decorously agonized indecision, and then always choose elegance.</i><p>I believe that this may be true of prose (it depends on the style of the author and the nature of what&#x27;s being written,) but that it&#x27;s untrue of every other form of written communication, and acclaimed prose stylists are often very poor letter-writers for just this reason.  In writing non-prose, I find that there are only two rules:<p>1.  Be as clear as possible.<p>2.  Be as brief as possible, but do not veer into the intentionally laconic or abbreviated.<p>I also am absolutely certain that attempting to attain <i>maximal</i> elegance is a trap that leads directly to purple prose, to works of literature that cannot naturally be read out loud, and to other unfortunate outcomes.</blockquote>
+<p><strong>Top #3</strong> — <em>Animats</em>:</p>
+<blockquote>This guy hates Strunk and White’s <i>Elements of Style</i>, the famous &quot;omit needless words&quot; book. He&#x27;s plugging for a baroque style that would be unreadable today.<p>We do have baroque styles today, but they&#x27;re different from classical baroque literature. They&#x27;re the postings that start with a bio and cover the author&#x27;s hobbies before getting to the point, perhaps including an anecdote from the author&#x27;s past. There are writers who can make that interesting, and you can read them in the New Yorker. But the serious magazines have editors. In blog postings, you&#x27;re reading the slush pile.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>chris_armstrong</em>:</p>
+<blockquote>It might just be me, but I find his baroque style very readable. Despite using a vocabulary much broader than mine (irritating but admirable), he at least seems to have read his prose aloud, and considered how it&#x27;s meter makes its meaning fluent.<p>I agree that many writers fill their works with needless diversions and unnecessary expositions on their life that add nothing to their text, but this is different from a &quot;baroque style&quot;.</blockquote>
+<p>↳ reply 2 — <em>jacobolus</em>:</p>
+<blockquote>Strunk and White promote all sorts of prescriptivist nonsense, taking arbitrary personal preferences and elevating them to sacred rules (including many which they themselves constantly violate because they don&#x27;t accord with idiomatic English).</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Using ThinkPad T480 as a mobile phone</title>
+      <link>https://grego.site/blog/thinkphone</link>
+      <guid isPermaLink="false">hn3-49059977</guid>
+      <pubDate>Sun, 26 Jul 2026 16:56:06 +0000</pubDate>
+      <description>127 points, 50 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://grego.site/blog/thinkphone"><strong>→ Article</strong></a> <small>(grego.site)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49059977">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 50 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>butz</em>:</p>
+<blockquote>Considering the size of current smartphones, using laptop as more compact alternative is quite clever idea.</blockquote>
+<p><strong>Top #2</strong> — <em>userbinator</em>:</p>
+<blockquote><i>most Android phones have a separate Android system running in the modem</i><p>Very strong doubt. They&#x27;re usually running a RTOS. My experience has mainly been with Mediatek&#x27;s, which use Nucleus Plus.<p>The OP may have confused things with the ultra-cheap USB modems which are actually a headless smartphone, and those do run Android: <a href="https:&#x2F;&#x2F;liliputing.com&#x2F;this-dirt-cheap-4g-lte-modem-on-a-usb-stick-can-be-hacked-to-run-mainline-linux&#x2F;" rel="nofollow">https:&#x2F;&#x2F;liliputing.com&#x2F;this-dirt-cheap-4g-lte-modem-on-a-usb...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>marosgrego</em>:</p>
+<blockquote>What about Qualcomm modems? It is the case for this one at least.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bri3d</em>:</p>
+<blockquote>My experience has been that Qualcomm mobile phone chipsets don’t run Android on the modem side, but that standalone (ie laptop &#x2F; USB &#x2F; router) ones like this Quectel part sometimes do, in order to provide the userland components that run on the phone’s Android system &#x2F; AP in a phone application. The actual basebands run an OS called REX usually.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>marosgrego</em>:</p>
+<blockquote>Thanks, corrected it.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Scene_Cast2</em>:</p>
+<blockquote>I love the hackability of Thinkpads circa that generation.</blockquote>
+<blockquote>
+<p>↳ reply — <em>binsquare</em>:</p>
+<blockquote>it&#x27;s incredibly repairable. I still use the t480 for modern workloads because I&#x27;ve been able to switch out the battery, the fan, the keyboard with fairly abundant aftermarket parts.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sudopluto</em>:</p>
+<blockquote>sadly my t480&#x27;s usb c port is no longer able to charge the device, do you know of a way to fix it without replacing the mobo &#x2F; getting god tier soldering skills? i&#x27;m kinda attached since i did a bunch of upgrades like two heatpipes and glass touchpad, sad to see my laptop from college die for a reason like the port dying</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>lavela</em>:</p>
+<blockquote>On virtually all t480&#x27;s I&#x27;ve seen having a broken USB-C port it was only the left one (some people don&#x27;t even realize there are two!) so you can charge using the second one and since it has thunderbolt you could connect a dock and both charge and have e.g. a monitor on one port(obviously?).<p>On my current t480 I also succeeded in slightly bending the port shell tighter and using a USB-C cable with tighter tolerances to get the port to be usable for charging again, but it&#x27;s a not guaranteed trial and error solution.</blockquote>
+</blockquote>
+</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3534,105 +3663,6 @@ I realize all the time I spent admiring, and now I have become.</blockquote>
 <p>↳ reply 2 — <em>mbreese</em>:</p>
 <blockquote>Knowing that makes a lot of sense. Sometimes his prose can read like a sentence that was started but he’s too much effort in to give up on. It probably helps his writing to do it by hand - you can’t edit quickly on the fly with paper (unless you’re cutting stuff out). I could see this as being part of his process - just write and let the editing happen later.<p>Whatever the process it is, long as his books may be, it works.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Fields Medals 2026</title>
-      <link>https://www.mathunion.org/imu-awards/fields-medal/fields-medals-2026</link>
-      <guid isPermaLink="false">hn3-49022137</guid>
-      <pubDate>Thu, 23 Jul 2026 14:23:51 +0000</pubDate>
-      <description>128 points, 61 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.mathunion.org/imu-awards/fields-medal/fields-medals-2026"><strong>→ Article</strong></a> <small>(mathunion.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49022137">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 61 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>siva7</em>:</p>
-<blockquote>&quot;harmonic analysis and geometric measure theory, including applications of multiscale and decoupling techniques to the local smoothing conjecture for the planar wave equation, and major advances in Fourier restriction, Falconer distance sets, Furstenberg sets in the plane, and the Kakeya problem in three dimensions.&quot;<p>I&#x27;m not sure there is another profession in the world where it&#x27;s impossible to explain to a layman on what the winners of their most prestigious award have worked on.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>frakt0x90</em>:</p>
-<blockquote>I bet she could do it. Maybe not in a sentence, but at least the Kakeya problem is easy to understand, so maybe these other things would be explainable by an expert. I would like to see them try at least!<p>fwiw, I feel the same way about biology &quot;Lysing action of the (1,2)b-carotene receptive encephalopathy pathway&quot; type shit.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Onavo</em>:</p>
-<blockquote>&gt; <i>Lysing action of the (1,2)b-carotene receptive encephalopathy pathway</i><p>High school biology is enough to get a vague idea of this though.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>fn-mote</em>:</p>
-<blockquote>Try the Quanta magazine articles.<p><a href="https:&#x2F;&#x2F;www.quantamagazine.org&#x2F;series&#x2F;fields-and-abacus-medals-2026&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.quantamagazine.org&#x2F;series&#x2F;fields-and-abacus-meda...</a></blockquote>
-<p>↳ reply 3 — <em>solomonb</em>:</p>
-<blockquote>My experience talking with high level mathematicians is that they tend to know their subjects so well and are so excited to share it that they can and will scale their explanation to match their audience.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>rahimnathwani</em>:</p>
-<blockquote>The winners were inadvertently announced early:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48905091">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48905091</a></blockquote>
-<p><strong>Top #3</strong> — <em>hackandthink</em>:</p>
-<blockquote>Scary stuff from one of the winners:<p>&quot;A Taxonomy of Omnicidal Futures Involving Artificial Intelligence&quot;<p>(Jacob Tsimerman, Andrew Critch)<p><a href="https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2507.09369" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2507.09369</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>gizajob</em>:</p>
-<blockquote>This is a piece of sci-fi formatted with LaTeX so it looks like philosophy.</blockquote>
-<p>↳ reply 2 — <em>yewenjie</em>:</p>
-<blockquote>Does anyone know if Tsimerman talked about AI extinction risk at other places? Critch has worked long-term in the field (MIRI, CHAI) but I was surprised to see this colab.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Software rendering in 500 lines of bare C++</title>
-      <link>https://haqr.eu/tinyrenderer/</link>
-      <guid isPermaLink="false">hn3-49022038</guid>
-      <pubDate>Thu, 23 Jul 2026 14:17:40 +0000</pubDate>
-      <description>222 points, 40 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://haqr.eu/tinyrenderer/"><strong>→ Article</strong></a> <small>(haqr.eu)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49022038">→ HN comments</a> &nbsp;·&nbsp; 222 points &nbsp;·&nbsp; 40 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>nkanaev</em>:</p>
-<blockquote>This resource, along with Mathematics for Computer Graphics by John Vince [1], was truly indispensable when I wrote my own software renderer [2]. This was long before LLMs, so the whole process took me at least a couple months - most of it trying to wrap my head around math behind computer graphics and tracking down C segmentation faults. Fun times.<p>[1]: <a href="https:&#x2F;&#x2F;www.amazon.co.uk&#x2F;Mathematics-Computer-Graphics-John-Vince-ebook&#x2F;dp&#x2F;B000T09X0E&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.amazon.co.uk&#x2F;Mathematics-Computer-Graphics-John-...</a><p>[2]: <a href="https:&#x2F;&#x2F;github.com&#x2F;nkanaev&#x2F;tipsy" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nkanaev&#x2F;tipsy</a></blockquote>
-<p><strong>Top #2</strong> — <em>bob1029</em>:</p>
-<blockquote>I wish we could have just one of these tutorials properly cover the concern of triangle clipping. This is the part that I struggle with the most in a software renderer. If you are going to be building a practical one, this is something you will eventually have to deal with, even for super basic scenes. Any time geometry intersects the view frustum you need to clip those triangles.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ggambetta</em>:</p>
-<blockquote>I have a whole chapter on that! <a href="https:&#x2F;&#x2F;gabrielgambetta.com&#x2F;computer-graphics-from-scratch&#x2F;11-clipping.html" rel="nofollow">https:&#x2F;&#x2F;gabrielgambetta.com&#x2F;computer-graphics-from-scratch&#x2F;1...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>aninteger</em>:</p>
-<blockquote>Sorta unrelated but I really enjoy (I don&#x27;t want to use the past tense as I often refer back to it) your article on Emulator Backed Remakes (<a href="https:&#x2F;&#x2F;gabrielgambetta.com&#x2F;remakes.html" rel="nofollow">https:&#x2F;&#x2F;gabrielgambetta.com&#x2F;remakes.html</a>). Thanks!</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ggambetta</em>:</p>
-<blockquote>Thanks for saying that :) Have you built something based on that idea? I still haven&#x27;t, but I&#x27;m thinking on throwing some Claude at it for the most mechanical parts.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thechao</em>:</p>
-<blockquote>You only need to clip triangles is you&#x27;re worried about attribute interpolation for very large triangles. There&#x27;s two ways to handle this: (1) discard (fast but not a great user experience); or, (2) primitive synthesis. Just frustum clipping is enabled by point picking in the local tile. Primitive synthesis requires some FP kung fu; but, is easiest done in barycentric space against a reverse transformed clipping rectangle. This lets you carefully control clip rounding error using either doubles or (better) fixed point. Abrash likes to use integer fixed point, but that is historical — modern fixed point can be handled with careful control of the fp unit in the mantissa. The major issue is regenerating the Z and the 1&#x2F;Z values for the new vertices of the synthesized primitives. Everything else should flow down the pipe naturally, assuming a deferred attribute synthesis rasterizer.<p>There are examples in the open source version of my rasterizer: OpenSWR.org.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>atan2</em>:</p>
-<blockquote>on the topic of software rendering, im surprised how little gustavo pezzi&#x27;s lectures get mentioned here on hacker news.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I Regret Migrating to Codeberg</title>
-      <link>https://xn--gckvb8fzb.com/i-regret-migrating-to-codeberg/</link>
-      <guid isPermaLink="false">hn3-49021856</guid>
-      <pubDate>Thu, 23 Jul 2026 14:06:47 +0000</pubDate>
-      <description>126 points, 96 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://xn--gckvb8fzb.com/i-regret-migrating-to-codeberg/"><strong>→ Article</strong></a> <small>(xn--gckvb8fzb.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49021856">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 96 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Aachen</em>:</p>
-<blockquote>I&#x27;m a member of Codeberg and was allowed to vote on these amendments. There was the annual assembly meeting before the ballots were sent by email. Each proposal had a short presentation and a few minutes of Q&amp;A.<p>It wasn&#x27;t a discussion (the text was final at this point), it was just to ask for clarifications. In the meeting I asked about the server load that they mentioned in their presentation, but misphrased it and got some answer about (AI?)bots scraping Codeberg and not if auto-generated code being shared on Codeberg is actually an issue.<p>It seemed pretty useless compared to commenting on the ticket where one could have a structured discussion. I also don&#x27;t know how many of the &gt;1000 members were in the meeting in the first place and how many just got the email &quot;Wanna ban AI? Vote now!&quot;<p>Once the results were announced, the rest of the users came into the ticket and started asking questions <a href="https:&#x2F;&#x2F;codeberg.org&#x2F;Codeberg&#x2F;org&#x2F;pulls&#x2F;1253#issuecomment-19869436" rel="nofollow">https:&#x2F;&#x2F;codeberg.org&#x2F;Codeberg&#x2F;org&#x2F;pulls&#x2F;1253#issuecomment-19...</a> This was then shut down and if you have questions you should join the chat room on Matrix</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Tepix</em>:</p>
-<blockquote>There was also a discussion on the codeberg forum.
-Anyway, I hope this new rule will be overturned in the future. I think it invites arbitrariness and besides, whether or not a project was vibecoded (and how much) doesn&#x27;t really decide how useful or even how well-written it is.</blockquote>
-<p>↳ reply 2 — <em>Aachen</em>:</p>
-<blockquote>So I voted against, partly because I feel that the text doesn&#x27;t to justice to such a multifaceted topic.<p>If all projects on Codeberg were human-written, that would be a big seal of quality! There are a lot of projects coming out now where someone feels like they&#x27;ve made a cool thing but it breaks on the first edge case and is entirely unmaintainable. Many are built on wrong principles because the prompt authors aren&#x27;t savvy and don&#x27;t know better. Some authors (I&#x27;ve encountered this in the OpenStreetMap community) even have the gall to pretend that their code is a gift that we now have to host and maintain. Aside from these quality and community issues, build and test pipelines also take a lot of compute resources, and with large growth in projects, that will increase as well. That the author of the proposal wants to avoid this makes a ton of sense to me.<p>But it also drives a lot of projects away because maybe you later want to use LLM assistance (imagine LLMs got twice as good as they are today), or maybe the auto-generated tests might become &gt;50% of the code. You&#x27;d have to migrate your repository and community away from Codeberg. Why take that risk? It&#x27;s just not a worry I feel that developers need. They&#x27;re looking to get away from Microsoft (GitHub) for their open source project and that&#x27;s the point where Codeberg should be a no-brainer<p>We&#x27;re an open source community and so the mass stealing of all our work to feed LLM training which heats the world and causes (at least temporarily) giant price hikes in consumer hardware... there&#x27;s a lot to say for more ethical training and use of LLMs, but does it matter at all if Codeberg bans LLM output? Won&#x27;t we just make ourselves obsolete? Idk. It&#x27;s multifaceted and this proposal seems too vague and blunt for me. That&#x27;s not an option that&#x27;s set in stone btw, just my current understanding of the different aspects</blockquote>
-<p>↳ reply 3 — <em>nozzlegear</em>:</p>
-<blockquote>Extremely tangential, but:<p>&gt; As highlighted by [...], status quo for now due to being sent for voting, minor edits can be made by the board&#x2F;presidium if the text generally passes.<p>It&#x27;s fascinating to me how relatively unknown projects like these have very fancy governance terms like <i>board</i> and <i>presidium</i> for what amounts to a handful of people in a private Discord DM discussing a text document. It&#x27;s kinda like bureaucracy larping.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Rendello</em>:</p>
-<blockquote>If you click to another tab, the site changes its title and favicon to a random webpage like:<p>- Pick up lines suggestions – ChatGPT<p>- Rick Astley - Never Gonna Give You Up - Youtube<p>- Amazon.com: waifu pillow<p>When you go back to it there&#x27;s an overlay chastising you for allowing JS on an untrusted website. I thought it was pretty funny. You can see the  list of fake pages in the source (which has the sketchiest URL ever due to punycode + the filename):<p><a href="https:&#x2F;&#x2F;xn--gckvb8fzb.com&#x2F;js&#x2F;kill.js" rel="nofollow">https:&#x2F;&#x2F;xn--gckvb8fzb.com&#x2F;js&#x2F;kill.js</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>itsmartapuntocm</em>:</p>
-<blockquote>I feel like it&#x27;s a bit ironic that the blog post chastises Codeberg for taking a stance and then does the same with JS.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>FireInsight</em>:</p>
-<blockquote>The whole blog post is also taking a stance. What is criticized is the specific stance taken by Codeberg. TFA seems to state that Codeberg should allow projects of all kinds to be hosted on their service (though apparently artificially limiting their resources would be alright).</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>classictraffic</em>:</p>
-<blockquote>I thought it was funny at first and kept clicking away to see what other random changes I&#x27;d get, but then I got a &quot;Zuckerberg nudes&quot; Google search webpage and I&#x27;m on my work computer...<p>Fortunately this functionality doesn&#x27;t change your browser history, but it did really annoy me for a bit</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>lioeters</em>:</p>
-<blockquote>&gt; LLM-generated code, or is cryptocurrency-related<p>Codeberg is making decisions to better manage their resource and infrastructure. It&#x27;s no different than any other privately owned platform, making decisions to forbid certain kinds of content, or ban people for various reasons. Unlike other large centralized platforms, they at least tried to involve the community in this decision-making process, but in the end it&#x27;s their call.<p>If you don&#x27;t want to be under the mercy of someone else&#x27;s decisions, you have to become more independent and host it yourself. Even then, who owns your server? Who owns the &quot;pipes&quot; of the network? They have terms of services, and can also ban you for various reasons, including your nationality, beliefs, etc. This line of thinking leads to a bigger question of how&#x2F;whether a truly decentralized and free (as in freedom) computing and communication network is possible, how such a network can defend against abuse and malicious actors without compromising that freedom.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
