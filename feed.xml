@@ -4,7 +4,61 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 28 Jul 2026 16:45:10 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jul 2026 18:19:50 +0000</lastBuildDate>
+    <item>
+      <title>About the security content of macOS Tahoe 26.6</title>
+      <link>https://support.apple.com/en-us/128067</link>
+      <guid isPermaLink="false">hn3-49081555</guid>
+      <pubDate>Tue, 28 Jul 2026 09:45:43 +0000</pubDate>
+      <description>178 points, 121 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://support.apple.com/en-us/128067"><strong>→ Article</strong></a> <small>(support.apple.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49081555">→ HN comments</a> &nbsp;·&nbsp; 178 points &nbsp;·&nbsp; 121 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tengwar2</em>:</p>
+<blockquote>15.7.8 is out today  as well, with these security fixes:
+<a href="https:&#x2F;&#x2F;support.apple.com&#x2F;en-us&#x2F;128071" rel="nofollow">https:&#x2F;&#x2F;support.apple.com&#x2F;en-us&#x2F;128071</a>.<p>For context, there have been issues with MacOS 26 which have led many people to defer upgrading until MacOS 27 is available, and MacOS 15 is the previous version.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jghn</em>:</p>
+<blockquote>&gt; For context, there have been issues with MacOS 26 which have led many people to defer upgrading<p>For me the issue is liquid glass. Which I doubt is getting fixed any time soon</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>coldpie</em>:</p>
+<blockquote>I found if you turn off transparency effects and turn on high contrast in the accessibility settings, it&#x27;s actually a pretty nice looking UI. Still has some dumb quirks like inconsistent corner radiuses and text appearing under UI elements (because they&#x27;re assumed to be transparent, but aren&#x27;t). But all software is trash in 2026 so be thankful it isn&#x27;t even worse, I guess.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>reddalo</em>:</p>
+<blockquote>&gt;have led many people to defer upgrading until MacOS 27 is available<p>Then there&#x27;s me, crying in MacBook Pro 2019 stuck on MacOS 15 because 27 won&#x27;t be available for my machine.</blockquote>
+<p>↳ reply 3 — <em>bouke</em>:</p>
+<blockquote>The question now is, is 27 sufficient enough of an improvement over 15 to upgrade and tolerate Liquid Glass?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>pjmlp</em>:</p>
+<blockquote>Map the amount of fixes with <i>&quot;... improved bounds checking...&quot;</i>, <i>&quot;...improved memory handling...&quot;</i>, <i>&quot;...improved memory management...&quot;</i> into the amount of developer, QA and release management teams salaries per hour, versus other stuff they could be working on, and that gives an approximate value of how using specific languages maps into monetary loss, and why companies are starting to care nowadays, given computers are always exposed to the world network.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>snvzz</em>:</p>
+<blockquote>If anything, there&#x27;s a strong argument to switch to seL4.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>yjftsjthsd-h</em>:</p>
+<blockquote>It was my vague understanding that by the time you implemented all the apis needed to run normal software on top of that, you either have enough apis that different tasks can still compromise each other, or you have shoved everything into a single task with very little isolation between normal user processes. In either case, it doesn&#x27;t seem like you actually gained so much. What am I missing?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bluecalm</em>:</p>
+<blockquote>&gt;&gt;, and that gives an approximate value of how using specific languages maps into monetary loss, and why companies are starting to care nowadays, given computers are always exposed to the world network.<p>You need also factor development time and ease of finding developers willing to work in a specific language. There are other factors like readability of the code (very verbose languages are likely to be worse) and cost of maintenance - languages forcing a lot of abstractions are likely much worse.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>TheJoeMan</em>:</p>
+<blockquote>This may be a naive take, so if anyone has insight please feel free to share, but across Windows, Mac, and Linux OS&#x27;s I see many cases of path parsing vulnerabilities resulting in sandbox escapes, code execution, or data access issues. When presenting the user with a file picker or command-line input, is it really needed that the software can handle the full POSIX spec?<p>I do not see a &quot;typical&quot; user needing to access a path with say a network storage but multiple ..&#x2F;.. and hard and soft symlinks simultaneously.
+I think &quot;be liberal in what you accept&quot; might need to be revisited for path parsing with some sort of OS-wide single-implementation as an optional feature.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>acuozzo</em>:</p>
+<blockquote>&gt; I do not see a &quot;typical&quot; user needing to access a path with say...<p>Typical users run software written by atypical users.<p>&gt; some sort of OS-wide single-implementation<p>How do you propose handling migration? What if someone tries to expand an old archive file containing a now-forbidden path?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>TheJoeMan</em>:</p>
+<blockquote>What I mean is that for “honest” software, built-in to the OS or otherwise, the programmer finds a situation where they take some user-supplied input and concatenate that into a path, and call something like OS.read(). If they want to prevent the user from causing havoc, they now find themselves dealing with path validation in their software instead of calling OS.safeOpen(), which would be a reduced subset of allowed chars?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>SoftTalker</em>:</p>
+<blockquote>If the OS is working properly, the havoc should just result in &quot;permission denied.&quot;<p>If there&#x27;s a path on the system that the user should not be able to read, that&#x27;s the job of the OS to handle, not the individual applications.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>catlifeonmars</em>:</p>
+<blockquote>How would you enforce a single implementation of path parsing?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>7.1 Earthquake in Japan</title>
       <link>https://www.data.jma.go.jp/multi/quake/quake_detail.html?eventID=20260728163528&amp;lang=en</link>
@@ -3668,46 +3722,6 @@ I realize all the time I spent admiring, and now I have become.</blockquote>
 <p>↳ reply — <em>christophilus</em>:</p>
 <blockquote>One of my favorite talks.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Be skeptical of OpenAI's rogue hacker agent story</title>
-      <link>https://www.theguardian.com/technology/2026/jul/24/openai-rogue-hacker</link>
-      <guid isPermaLink="false">hn3-49038060</guid>
-      <pubDate>Fri, 24 Jul 2026 16:33:31 +0000</pubDate>
-      <description>445 points, 250 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.theguardian.com/technology/2026/jul/24/openai-rogue-hacker"><strong>→ Article</strong></a> <small>(theguardian.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49038060">→ HN comments</a> &nbsp;·&nbsp; 445 points &nbsp;·&nbsp; 250 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>sfink</em>:</p>
-<blockquote>The article, summarized: there are incentives for OpenAI to claim that their AI hacked its way out of their network and into Hugging Face.<p>Ok... and what?<p>Do you have any evidence for the claim being either true or false that you&#x27;d like to write an article about? I guess not. Without <i>anything</i> to add, this article reduces to &quot;I has big brain and can see what you sheep cannot. Very big brain. Gullible sheep. Sucks to be you, sheep.&quot;<p>(For the record: I see the incentive. My guess is that it happened exactly as described. The main takeaways: (1) science fiction is now real, we should all be very afraid; and (2) OpenAI, which claims to have a God-given responsibility to get to AGI first to protect the world from danger, cannot be trusted with this foundational task even when it&#x27;s in easy mode. The latter is true whether or not you believe in OpenAI&#x27;s reasoning and purpose.)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>wrs</em>:</p>
-<blockquote>I think you misread the article. The skepticism isn’t about whether it <i>happened</i>. It’s about whether it’s a reason for models to be locked behind “trusted partner” firewalls. Offensive hacking capabilities are the same as defensive. Hugging Face had to use a Chinese model to defend against this because they weren’t allowed to use OpenAI models to do it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sfink</em>:</p>
-<blockquote>Ok, fair. I know that was also in the article, but your comment made me reread it, and I think you&#x27;re right about the focus. I over-fixated on the headline. On second read, it&#x27;s more like a lazy way to justify a preconceived idea that all models should be available and unconstrained to everyone (or everyone who might get attacked, at least, but that&#x27;s approximately everyone.)<p>Updated tl;dr: &quot;There are incentives for OpenAI to say that AI is powerful and dangerous, therefore fully unconstrained AIs should be available to everyone.&quot;<p>It&#x27;s still more of a statement of belief than a logical argument.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>microcentury</em>:</p>
-<blockquote>Left-leaning media like the Guardian hate technology in general and AI in particular.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bluGill</em>:</p>
-<blockquote>I don&#x27;t care how it happened someone should be arrested for illegal intrusion. Agents don&#x27;t work on their own, someone is responsible. If nobody else the CEO for allowing something unsupervised.<p>Hugging face also needs someone arrested for not providing security but that is a lesser charge.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rubyfan</em>:</p>
-<blockquote>Being a poorly equipped victim still isn’t a crime thankfully.<p>It may or may not be a crime and typically the damaged party is pressing the charges. One would argue there is no actual damage here.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Analemma_</em>:</p>
-<blockquote>Despite the common misconceptions from TV, the victim &quot;pressing charges&quot; isn&#x27;t actually a thing in criminal cases: prosecutors can choose to put someone on trial even if the victim doesn&#x27;t want that. In practice this is somewhat rare, but it certainly can happen. In my reply to tokioyoyo below I laid out why this is one instance where the government <i>should</i> prosecute even if HuggingFace doesn&#x27;t want it to.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>pixl97</em>:</p>
-<blockquote>I mean, in theory the FBI could press charges on this as it was an attack involving interstate commerce.<p>The chances of this are nearly zero if HF doesn&#x27;t want it, and even if they did OAI has their bread buttered with the administration.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sfink</em>:</p>
-<blockquote>I agree with the attacker side. The actions of autonomous agents are absolutely the responsibility of the one or more humans that enabled them to take that action. Whether that means someone is arrested, maybe or maybe not, but at least there should be a hefty fine.<p>I disagree with the defender side. It&#x27;s not an unreasonable end state, but we&#x27;re nowhere near there now. It would require holding company employees legally responsible for the security of their services, which means the risk of being employed as a (defensive) security professional is much higher, which means pay needs to be much higher and insurance needs to be available, etc. It&#x27;s a very different world.<p>On the weekends, I&#x27;m coding up a list management app with a sync server. It&#x27;s unreleased but exposed to the internet. (This is not hypothetical.) If that server ends up being used as part of an exploit chain, am I legally liable too?<p>Forget about age verification, now you want to associate every exposed port on the internet with a legally responsible human?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>skybrian</em>:</p>
-<blockquote>Seems like this is repeating the usual low-effort speculation you can find anywhere.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
