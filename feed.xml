@@ -4,7 +4,121 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 29 Jul 2026 20:15:12 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 22:05:33 +0000</lastBuildDate>
+    <item>
+      <title>Handbook.md shows that long policy documents do not reliably govern agents</title>
+      <link>https://arxiv.org/abs/2607.25398</link>
+      <guid isPermaLink="false">hn3-49096969</guid>
+      <pubDate>Wed, 29 Jul 2026 13:01:57 +0000</pubDate>
+      <description>272 points, 170 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arxiv.org/abs/2607.25398"><strong>→ Article</strong></a> <small>(arxiv.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49096969">→ HN comments</a> &nbsp;·&nbsp; 272 points &nbsp;·&nbsp; 170 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>DiabloD3</em>:</p>
+<blockquote>This is a problem with long context models. To put it as simple and as bluntly as possible: just because they claim you can use 1M tokens in your context doesn&#x27;t mean its true and you should do that.<p>Due to extreme quantization of models and the context&#x27;s KV cache, and also just really shitty samplers provided to the user (hell, most are just getting rid of sampler knobs altogether), this problem will absolutely continue.<p>Want it to go away, almost like magic? Local inference. When its under your control, and no longer being forced to hold it wrong, all of the common LLM defects will go away.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Aurornis</em>:</p>
+<blockquote>&gt; Want it to go away, almost like magic? Local inference. When its under your control, and no longer being forced to hold it wrong, all of the common LLM defects will go away.<p>This is just not true. Any local LLM you can host on consumer-accessible hardware has all of these defects, too. Adjusting the knobs doesn’t solve everything.<p>The closest you can get to frontier performance is Kimi K3, but you’re not hosting that unless your budget is on the order of a nice house in a good metro area.<p>I like my local LLMs as much as the next person and my office is currently uncomfortably warm from the amount of compute happening, but I would never agree that local LLMs solve all of the common LLM defects. This is peak wishful thinking.<p>In my experience, the local models and even the larger ones that we can’t run at home suffer more from long context degradation than the frontier models. You are exactly right that you need to manage context length, but even at fp16&#x2F;bf16 the local models have a lower ceiling for usable context length in my experience.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>KerrAvon</em>:</p>
+<blockquote>We&#x27;re on the cusp of Kimi K3 becoming usable on sub-10k hardware.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;gavamedia&#x2F;deltafin" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;gavamedia&#x2F;deltafin</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>edot</em>:</p>
+<blockquote>14 seconds per token? Not tokens per second. Seconds per token? That’s nowhere near the cusp!</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>_fat_santa</em>:</p>
+<blockquote>At my org we&#x27;ve been building AI agents and one internal rule we have is to use at most 50% of the models context window with the recommendation to not go over 25% for large context window models.<p>Anytime I see a &quot;1M Context Window&quot;, my brain always goes &quot;Gotcha so a 250k usable window&quot;</blockquote>
+<p>↳ reply 3 — <em>satvikpendem</em>:</p>
+<blockquote>How do they go away with local models? It&#x27;s a bug of all LLMs not just cloud vs local. As mentioned in another comment, they did test local models here too and those failed as well.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>wongarsu</em>:</p>
+<blockquote>Any model with a good score on this benchmark would have a good claim on superhuman abilities. Humans are pretty terrible at being thrown a long policy document and being expected to follow it<p>And while we shouldn&#x27;t anthropomorphize these models too much, I wouldn&#x27;t be surprised if many of the core reasons for failures are similar. Working memory is a limited resource; you can only focus on so many things at once; reasoning depth is limited; and many real-world policies are not actually meant to be implemented in the same way they are written and have insufficient specification of edge cases<p>With humans, we usually do the equivalent of RLHF, both via &quot;training&quot; with simulated cases, and via feedback while on the job. You would never hand a newbie a 124 page policy document and expect them to correctly apply it on the first task, or to do it reliably in the first month</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>batshit_beaver</em>:</p>
+<blockquote>The challenge with comparing these things to humans, is that humans learn. A newbie might not respect your organization’s set of policies on day one, but what about 3 months in? Or 3 years? Meanwhile there’s still no reasonable mechanism for automatically fine tuning LLMs or adjusting their harnesses to make them better at completing your organization’s objectives more successfully. They’re still overwhelmingly governed by the shared weights and harness policies found to be successful for the average case.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kridsdale1</em>:</p>
+<blockquote>Models learn. It just costs $10B and 1 year to do what a human does every night.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>wongarsu</em>:</p>
+<blockquote>LoRAs or even full fine-tunes would be much cheaper than that, and with some investment in the right infra could be updated regularly. And at least LoRAs can be swapped in and out cheaply, making them usable in large-scale inference providers. But there seems to be limited appetite in offering this. Both Anthropic and OpenAI no longer offer fine tuning for current models</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>DoctorOetker</em>:</p>
+<blockquote>&quot;You would never hand a newbie a 124 page policy document and expect them to correctly apply it on the first task, or to do it reliably in the first month&quot;<p>So the behavior policy should reside in the weights, not in some ever expanding KV cache context, like sticking it in the wrong orifice if the goal is to be reproductive.<p>Instead of putting the policy document in some tightly crammed RAM, shove it in the weights that already exist, online &#x2F; post training.<p>It does make one wonder if there is some way to compute the change to the weights from the computed context (so that we can free it up) without essentially continued &quot;pre&quot; training RMAD after each communication round.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>elevation</em>:</p>
+<blockquote>Long policy documents are also a problem for human agents.  Without special training no one will retain 180 pages HR employee handbook, fire codes, OSHA safety rules, FCC regulations, the US legal code.<p>If the stakes are high, e.g, proceeding in ignorance could lead to prison time, people will favor inaction, even if the policy technically permits a corner case. If the stakes are low, people will completely override policy for the path of least resistance.</blockquote>
+<blockquote>
+<p>↳ reply — <em>DenisM</em>:</p>
+<blockquote>So what is tre answer then?<p>I feel like “discretion” parties missing. Do we need some kind of special discretion model?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>San Francisco: Don't Fall for Industry Defense of Surveillance Pricing</title>
+      <link>https://www.eff.org/deeplinks/2026/07/san-francisco-dont-fall-industry-defense-surveillance-pricing</link>
+      <guid isPermaLink="false">hn3-49096885</guid>
+      <pubDate>Wed, 29 Jul 2026 12:55:50 +0000</pubDate>
+      <description>136 points, 75 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.eff.org/deeplinks/2026/07/san-francisco-dont-fall-industry-defense-surveillance-pricing"><strong>→ Article</strong></a> <small>(eff.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49096885">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 75 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bobbiechen</em>:</p>
+<blockquote>I had an interesting conversation with an coworker recently -<p>If you give an agent a budget of $500 to buy a flight, and the airline knows this and bumps your price to $499 even though it will offer the same flight at $300 to someone else, is there harm done? I argued it feels unjust. He said it&#x27;s totally fair, it&#x27;s within budget so what&#x27;s the problem?<p>Naturally this trends towards a sort of principal-agent problem where the airline is incentivized to bribe your agent for up to $198 to max out your budget (which is a problem if you&#x27;re not running your own agent).<p>But for general personalized pricing, there is the same dynamic to posture that you have a limited budget so that companies offer you better prices (regardless of whether you really do or not). This is haggling culture at scale.<p>I worry about a world trending towards this sort of thing and away from clearly universal prices and wrote about this at the beginning of the year: <a href="https:&#x2F;&#x2F;digitalseams.com&#x2F;blog&#x2F;the-behavioral-cost-of-personalized-pricing" rel="nofollow">https:&#x2F;&#x2F;digitalseams.com&#x2F;blog&#x2F;the-behavioral-cost-of-persona...</a>)</blockquote>
+<blockquote>
+<p>↳ reply — <em>TheCoelacanth</em>:</p>
+<blockquote>The problem is that it completely eliminates the consumer surplus from the transaction and converts it to producer surplus. It basically erases all benefits of capitalism for the average person.<p>If it becomes the norm to charge the maximum that someone is willing to pay in every consumer transaction, then business owners are almost forcing average people to try to end capitalism.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dynm</em>:</p>
+<blockquote>Like most people, surveillance pricing feels gross to me. But I think we need to separate two things: Surveillance pricing is a combination of (a) price discrimination and (b) surveillance.<p>If it were up to me, I&#x27;d probably give people much stronger legal rights to control their personal information, which would in turn decrease &quot;surveillance&quot;.<p>But I haven&#x27;t seen a convincing argument to ban price discrimination. There seems to be some kind of implicit assumption that price discrimination reduces consumer surplus on average. But I&#x27;ve never seen a convincing argument to that effect.<p>For example: Pharmaceuticals are often priced much low in poor countries. That&#x27;s price discrimination. (You could think of it as a primitive form of surveillance pricing.) But if that were banned, pharmaceutical companies wouldn&#x27;t lower prices for everyone. That would destroy almost all their revenue which comes from high prices in rich countries. Instead, they&#x27;d charge rich-country prices to everyone, and most people in poor countries would simply have to go without. That seems like it would be pure harm.<p>It&#x27;s entirely possible that some kind of &quot;coarse&quot; price discrimination is OK&#x2F;good but &quot;fine-grained&quot; price discrimination is bad. But where&#x27;s the argument?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ndriscoll</em>:</p>
+<blockquote>Well for one it undermines the currency by making my dollar worth something different from your dollar, makes it impossible for individuals to make informed choices, and makes it so that there&#x27;s no reason to try to be more productive&#x2F;chase some higher paying endeavor since it will be extracted for your basic necessities anyway and you&#x27;ll end up in the same position. So now labor price signals fail.<p>We already see the results of this in the US in the medical and educational systems, where planning is nearly impossible because the price is hidden until purchase (or even afterward) and the other side is trying to price it at &quot;whatever you have&quot;. Unsurprisingly, both of those have absurd debt loads and are causing society-wide discontent&#x2F;destabilization.<p>Now imagine that grocers can individually price to you, and you find out what you owe (and whether you need to put some items back) at the register, and this information about you is available to be purchased by anyone so all available grocers have that same knowledge. What are you going to do?</blockquote>
+<p>↳ reply 2 — <em>pc86</em>:</p>
+<blockquote>&gt; <i>It&#x27;s entirely possible that some kind of &quot;coarse&quot; price discrimination is OK&#x2F;good but &quot;fine-grained&quot; price discrimination is bad. But where&#x27;s the argument?</i><p>This seems entirely reasonable - they&#x27;re obviously a point where tax rates are too low and revenue isn&#x27;t being brought in, but also a point where tax rates are too high, incentivizing tax shelters or outright crime, and revenue starts decreasing again. The price discrimination side is the same thing just on &quot;optional&quot; purchases instead of taxes so it makes sense there is some Laffer curve corollary.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>zzo38computer</em>:</p>
+<blockquote>Possibly, to add the anti-discrimination law, one of the other things that is protected against discrimination would be the computers (including kind of computers and lack of computers). Then, they cannot expect you to have a app to get a discount.<p>Additionally, in situations where it would be reasonable, to publish the catalogs including prices and to allow them to be distributed. (My idea of a computer payment file, additionally requires that the catalog file have a proof of work field.)</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Darktable</title>
+      <link>https://www.darktable.org/</link>
+      <guid isPermaLink="false">hn3-49096654</guid>
+      <pubDate>Wed, 29 Jul 2026 12:33:02 +0000</pubDate>
+      <description>263 points, 127 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.darktable.org/"><strong>→ Article</strong></a> <small>(darktable.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49096654">→ HN comments</a> &nbsp;·&nbsp; 263 points &nbsp;·&nbsp; 127 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>lionkor</em>:</p>
+<blockquote>I&#x27;ve been using darktable for a while to edit my RAW photos. The amount of features, viable workflows, and in general the quality of the software is baffling for a free product. I would happily pay 200 bucks or something per year to use this, it makes all other RAW editing software obsolete.<p>I can only recommend it, and there&#x27;s nothing missing for me, even for editing thousands of RAW photos with presets, different steps, color correction in various color spaces, it&#x27;s simply fantastic and the documentation absolutely shines.<p>Not only does the documentation explain how to use it in a way that non-professional photographers understand, it also explains edge cases, things to be careful about, and in general whoever wrote the documentation is sharing a lot of knowledge. I keep pushing this software and it just keeps doing it, I don&#x27;t seem to stop finding features and little things that do what I wanted, and do it well.<p>I learned more from reading darktable documentation than from any lightroom&#x2F;draktable&#x2F;davinci resolve tutorial.<p>With the new local-model AI features for denoising and subject selection, it filled the last little missing piece for me. Absolutely fantastic software, can recommend it.<p>I&#x27;m on arch, so to get the latest build I built it myself which was painless.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>qurren</em>:</p>
+<blockquote>I&#x27;ve used Darktable for almost a decade quite happily, but recently am moving off of it because they made one MASSIVE blunder with the new shitty color grading and white balancing tool that never gets <i>any</i> of my images right, all the tones are off, and it doesn&#x27;t have sane defaults that renders things at least &quot;almost correctly&quot; at first go like the previous white balance tool did. It was way better a couple years ago with the vanilla &quot;White Balance&quot; and &quot;Base Curve&quot; tools.<p>Darktable also cannot correctly color any of my DJI Mini Pro imagery. None. They all have really bad greenish hues. I haven&#x27;t been able to publish any of my DJI images for 4 years now because Darktable won&#x27;t fix it, and it&#x27;s a known issue that they explicitly plan to not fix (<a href="https:&#x2F;&#x2F;github.com&#x2F;darktable-org&#x2F;darktable&#x2F;issues&#x2F;13319" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;darktable-org&#x2F;darktable&#x2F;issues&#x2F;13319</a>).<p>I&#x27;m currently starting to love RapidRAW (<a href="https:&#x2F;&#x2F;github.com&#x2F;cybertimon&#x2F;rapidraw" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;cybertimon&#x2F;rapidraw</a>); the developer is super active and releases new features every couple of weeks. I&#x27;m also able to add a few minor nitpick features I want quite easily with AI code tools. I have a good feeling I can get AI to fix the DJI issue on RapidRAW since the code is quite nicely organized.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pmarreck</em>:</p>
+<blockquote>I now have a business idea: Curated Open-Source App Forks.<p>Would you pay to have access to a service which tweaked the open-source software you use just enough to make it much more useful to your workflow, and automatically updated it over time? (I&#x27;m not just talking about a one-time fork; I&#x27;m talking about a subscription to get access to a <i>maintained</i> fork that stays current with upstream, fixes any conflicts, does the rebuild, hosts the build, etc... This justifies a cost) This incompatibility with DJI images that the Darktable devs #wontfix is a perfect example use-case.<p>Needless to say this would be for professional use, with professional expectations, but if your business depends on having that slightly-tweaked tool, then it may be worth it; just exploring the idea, here</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>qurren</em>:</p>
+<blockquote>Honest answer from me: Probably not, because vanilla Claude Code already does a great job of maintaining my forks with open-source main, and also handles the packaging and installation beautifully.<p>There is a huge overlap between (OSS users, people who can code) and an even bigger overlap between (OSS users, people who can use coding AI tools)<p>The people who can&#x27;t even use coding AI tools almost universally use closed-source software like Adobe Lightroom that you can&#x27;t fork easily.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mcdonje</em>:</p>
+<blockquote>I&#x27;m on Debian, which is of course behind. I tried installing the flatpak, which is up to date, but the packager removed the AI parts. The only option I have (short of moving to Arch or similar) is AppImage, which doesn&#x27;t integrate well with the DE.<p>I get being against AI, but Darktable is very responsible about it according to their release notes. Local only, opt-in only, no nagging. It&#x27;s not like Adobe trying to push AI on you when you don&#x27;t want it.</blockquote>
+<p>↳ reply 3 — <em>anfractuosity</em>:</p>
+<blockquote>Doesn&#x27;t arch already package it (<a href="https:&#x2F;&#x2F;archlinux.org&#x2F;packages&#x2F;extra&#x2F;x86_64&#x2F;darktable&#x2F;" rel="nofollow">https:&#x2F;&#x2F;archlinux.org&#x2F;packages&#x2F;extra&#x2F;x86_64&#x2F;darktable&#x2F;</a>), I was using darktable on arch, but recently switched distros.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>erksa</em>:</p>
+<blockquote>Darktable is fantastic, and their darktable-cli is really clutch as a photographer turned SWE.<p>If coming from lightroom or the likes it does take some dedicated learning to adapt to the &quot;Darktable&quot; ways of doing things. Deceptively similar UI, yet very different approaches and naming.<p>Darktable is however, bad at photograpy organization and collections. Something Lightroom shines at.<p>Built many processes around it for my own post-processing needs.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jillesvangurp</em>:</p>
+<blockquote>&gt; Darktable is however, bad at photograpy organization and collections. Something Lightroom shines at.<p>It has a very clunky UX for this. But it actually has a lot of useful features for organizing large amounts of photos. There&#x27;s a guy Bruce Williams on Youtube who has been doing tutorials on Youtube for Darktable for many years that has many relevant videos on this topic. But you can do rule based collections with filters on tags, camera type, and whatever other meta data is there.<p>It&#x27;s probably a bit different from what you are used to and IMHO it&#x27;s over engineered and there are some bad ideas for usability that never really got addressed and are made worse by the developers just putting buttons and controls in all the wrong places. But once you get over that, it actually does have a lot of powerful features for getting organized.<p>There&#x27;s actually a fork of Darktable called Ansel that addresses a lot of the UX issues that has been in the works for a few years. The creator of the fork got annoyed with the level of indifference on this topic. There were other reasons as well (he was the creator of the filmic module in Darktable). But most of his UX work at least looks to me as something that the Darktable people might consider adopting.</blockquote>
+<p>↳ reply 2 — <em>dllu</em>:</p>
+<blockquote>I have a pet peeve that darktable-cli requires the GUI darktable to not be running. It would be nice to export photos using my script without having to disrupt my editing workflow...</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>andyjohnson0</em>:</p>
+<blockquote>A rather less positive view of Darktable than msny of the opinions in this thread:<p><a href="https:&#x2F;&#x2F;ansel.photos&#x2F;en&#x2F;news&#x2F;darktable-dans-le-mur-au-ralenti&#x2F;" rel="nofollow">https:&#x2F;&#x2F;ansel.photos&#x2F;en&#x2F;news&#x2F;darktable-dans-le-mur-au-ralent...</a></blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>French musician Kavinsky found dead</title>
       <link>https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home</link>
@@ -3032,6 +3146,44 @@ It&#x27;s retroactive. (…)</blockquote>
 <blockquote>[delayed]</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Hunter-gatherers introduced fish to a mountain lake 7000 years ago</title>
+      <link>https://www.newscientist.com/article/2580119-hunter-gatherers-introduced-fish-to-a-mountain-lake-7000-years-ago/</link>
+      <guid isPermaLink="false">hn3-49063983</guid>
+      <pubDate>Mon, 27 Jul 2026 00:58:45 +0000</pubDate>
+      <description>125 points, 94 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.newscientist.com/article/2580119-hunter-gatherers-introduced-fish-to-a-mountain-lake-7000-years-ago/"><strong>→ Article</strong></a> <small>(newscientist.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49063983">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 94 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>m463</em>:</p>
+<blockquote>&gt; That is the only possible explanation for how fish could have populated isolated mountain lakes<p>isn&#x27;t that a common question?<p>&quot;How do fish appear in landlocked lakes&#x2F;ponds&#x2F;etc&quot;?<p>After digging a pond and letting it fill with rainwater&#x2F;groundwater, fish appear.  I don&#x27;t think its because people carried them there.<p>(don&#x27;t really know the common answer though)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>giancarlostoro</em>:</p>
+<blockquote>Birds can drop fish after they&#x27;ve captured them. Not longer than a year now, we were visiting my wife&#x27;s family, and me and my father in law got to Walmart there was a dead fish in the front, but when we mentioned it to my wife who got there before us (separate cars) she said it was struggling for life when they saw it, I don&#x27;t think there was a lake nearby enough, but I wouldn&#x27;t be surprised if birds have accidentally introduced life into new bodies of water.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>HarHarVeryFunny</em>:</p>
+<blockquote>Yeah, but at least two live fish (a male and female) being dropped into the same remote lake, then finding each other at spawning time seems increasing implausible. Never say never, but ...<p>Apparently some fish species do have small sticky eggs that can stick to the legs of water fowl, or even (with very small probability) pass through them intact, so this seems much more likely. Maybe a group of ducks feeding in one place then flying off to another?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ge96</em>:</p>
+<blockquote>The fish equivalent of <a href="https:&#x2F;&#x2F;soundcloud.com&#x2F;noisykeyboard&#x2F;last-kauai-oo-extinct" rel="nofollow">https:&#x2F;&#x2F;soundcloud.com&#x2F;noisykeyboard&#x2F;last-kauai-oo-extinct</a> or my weekends</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>iefbr14</em>:</p>
+<blockquote>Fish eggs often travel long distances by sticking to the feathers or legs of waterfowl I have been told at school long ago.</blockquote>
+<p>↳ reply 3 — <em>stevenwoo</em>:</p>
+<blockquote>In this case they have carbon dated wooden equipment for fish farming and know due to geological factors when the lake could support fish, though of course the fish might have gotten there first somehow. I thought this was interesting because it predates agriculture in the same area.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>rurp</em>:</p>
+<blockquote>Somewhat related, after desert rains you can often see fairy shrimp (think sea monkeys you might have had as a kid) swimming around in the isolated pools that form. I looked this up after wondering how the heck these water creatures could survive dozens of miles from the nearest permanent water source.<p>The answer is that their eggs are extremely lightweight, so much so that wind can carry them long distances. Their entire life cycle is extremely accelerated. Once water soaks the eggs the critters can hatch, develop, and lay new eggs in a matter of days. The newly laid eggs have a tiny chance of reaching a new seasonal pool area.</blockquote>
+<p><strong>Top #3</strong> — <em>fractallyte</em>:</p>
+<blockquote>An alternative vector: &quot;cloud seeding&quot; (<a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;science&#x2F;2004&#x2F;sep&#x2F;09&#x2F;science.research" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;science&#x2F;2004&#x2F;sep&#x2F;09&#x2F;science.rese...</a>)<p>Charles Fort collected numerous data for his famous &quot;The Book of the Damned&quot; <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;The_Book_of_the_Damned" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;The_Book_of_the_Damned</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>codethief</em>:</p>
+<blockquote>From the The Guardian article:<p>&gt; As well as living matter, inorganic substances also crash to earth, including seeds, stones and sand. However, these pale in comparison to the mighty ice blocks. January 2000 saw several chunks weighing up to four kilograms each fall on Spain, but they&#x27;re dwarfed by the 200kg titans that struck Brazil in 1995.<p>Wat. Does anyone have a reference for the Brazil one? Wikipedia (<a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Megacryometeor" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Megacryometeor</a> ) mentions nothing. <i>Megacryometeors: Distribution on Earth and Current Research</i> (2006)[0] says:<p>&gt; In Campinas and Itapira, Brazil, two huge megacryometeors of 50 and 200 kg fell in 1997; the atmosphericisotopic signature of both specimens wasunequivocally confirmed (8). Finally, on 21 July 2004, a huge mass of ice weighingapproximately 400 kg fell very close to a 15-year-old girl in Toledo, Spain.<p>400kg! Unfortunately, no reference is given for this one and for the one in Brazil they refer to <a href="https:&#x2F;&#x2F;cepagri.unicamp.br&#x2F;gelo&#x2F;gelo.html" rel="nofollow">https:&#x2F;&#x2F;cepagri.unicamp.br&#x2F;gelo&#x2F;gelo.html</a>, which – like many other of their references – produces a 404 nowadays. And, of course, the page hasn&#x27;t gotten preserved by the Internet Archive, either. :(<p>[0]: <a href="https:&#x2F;&#x2F;www.jstor.org&#x2F;stable&#x2F;4315744" rel="nofollow">https:&#x2F;&#x2F;www.jstor.org&#x2F;stable&#x2F;4315744</a> , PDF download available on <a href="https:&#x2F;&#x2F;www.researchgate.net&#x2F;publication&#x2F;6561843_Megacryometeors_Distribution_on_Earth_and_Current_Research" rel="nofollow">https:&#x2F;&#x2F;www.researchgate.net&#x2F;publication&#x2F;6561843_Megacryomet...</a></blockquote>
+<p>↳ reply 2 — <em>pnut</em>:</p>
+<blockquote>It rained fish in my front yard in South Carolina back in the 80&#x27;s, it&#x27;s definitely a real phenomenon.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>PGSimCity - How PostgreSQL Works</title>
       <link>https://nikolays.github.io/PGSimCity/</link>
       <guid isPermaLink="false">hn3-49063754</guid>
@@ -3674,144 +3826,6 @@ a mjpeg system basically, all in python but does need opencv</blockquote>
 <blockquote>I was getting frothy and feeling stress due to juggling sessions. I switched to managing my backlog (Obsidian base), writing specs, launching agents in the background. I review and make changes,merge and release.
 It&#x27;s a fixed cycle and I optimize to maintain relaxed engagement. 
 Rate of features and fixes went up a lot.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Reverse Minesweeper</title>
-      <link>https://sunflowersgame.com/</link>
-      <guid isPermaLink="false">hn3-49057666</guid>
-      <pubDate>Sun, 26 Jul 2026 12:51:03 +0000</pubDate>
-      <description>163 points, 54 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://sunflowersgame.com/"><strong>→ Article</strong></a> <small>(sunflowersgame.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49057666">→ HN comments</a> &nbsp;·&nbsp; 163 points &nbsp;·&nbsp; 54 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bonoboTP</em>:</p>
-<blockquote>Single click places an x instead of a sunflower. I solved the puzzle but placed those xes instead of sunflowers and was confused why it doesn&#x27;t say I solved it. I would suggest making a single click be the main action, ie placing a sunflower.</blockquote>
-<blockquote>
-<p>↳ reply — <em>rezonant</em>:</p>
-<blockquote>But you have 3 mistakes you can make, and you spend one when you accidentally place a sunflower. I played through all the daily puzzles and have started into the master puzzles and I&#x27;m glad flower is double click, because a misplaced X is free, but a misplaced flower is not.<p>It would be far too easy to accidentally tap the screen and burn a Mistake, and if its your last one that would be frustrating.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Dwedit</em>:</p>
-<blockquote>Maybe count perfect solves in a separate average than solves with mistakes?</blockquote>
-<p><strong>Top #3</strong> — <em>itherseed</em>:</p>
-<blockquote>It is really good but it needs a dark theme. My eyes!</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Google Discloses $94.1B in SpaceX Stock, Marking 6% Stake</title>
-      <link>https://www.wsj.com/tech/google-discloses-94-1-billion-in-spacex-stock-marking-6-stake-91655d7c</link>
-      <guid isPermaLink="false">hn3-49057574</guid>
-      <pubDate>Sun, 26 Jul 2026 12:43:21 +0000</pubDate>
-      <description>289 points, 232 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.wsj.com/tech/google-discloses-94-1-billion-in-spacex-stock-marking-6-stake-91655d7c"><strong>→ Article</strong></a> <small>(wsj.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49057574">→ HN comments</a> &nbsp;·&nbsp; 289 points &nbsp;·&nbsp; 232 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>miohtama</em>:</p>
-<blockquote>This investment has never been secret.<p>Google (now under parent company Alphabet) invested roughly $900 million as the majority of a ~$1 billion funding round alongside Fidelity Investments. This gave Google an initial equity stake of about 7–7.5% in SpaceX at a valuation of roughly $10–12 billion.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>matwood</em>:</p>
-<blockquote>Remember this was also when SpaceX was actually about space, instead of mostly AI and Twitter. Long-term shareholders that were sold on the space, have to be thinking about how to get out once their lockups expire.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dgellow</em>:</p>
-<blockquote>Not just that, but private investors were sold shares that all had the same voting rights. Since just before the IPO SpaceX now has dual class shares, Elon and a few insiders have class-B shares with 10x the voting power, while everybody else (including private investors) have class-A shares with 1x the voting power</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>hbarka</em>:</p>
-<blockquote>Putting the principal idea of “publicly owned” in its head.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>alberth</em>:</p>
-<blockquote>Original HN thread, 11-years ago (220 comments):<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=8914956">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=8914956</a></blockquote>
-<p>↳ reply 3 — <em>3form</em>:</p>
-<blockquote>In fact it was often mentioned as a recommended way to try to invest in SpaceX via proxy, before IPO. I don&#x27;t think that advice had much merit, but it was there nevertheless.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>wenbin</em>:</p>
-<blockquote>Alphabet is the modern day berkshire hathaway.<p>Alphabet’s investment holdings (eg, spacex, anthropic..) are worth in the same order of magnitude of BRK’s (~$300B)<p>The track record of google’s M&amp;A is pretty good.<p>Except for search and cloud, many of Google’s important products were from M&amp;A - Maps, Docs, android,  doubleclick, youtube , deep mind, etc.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>glimshe</em>:</p>
-<blockquote>The companies you listed have great synergy with Google&#x27;s core business. What&#x27;s Google&#x27;s play with SpaceX? Data centers in space?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>theptip</em>:</p>
-<blockquote>Google X was building Loon at least a decade ago to solve internet connectivity with laser-networked high-altitude balloons. They clearly benefit structurally from expanding access to the internet to the unconnected population.<p>So on that front, while I didn’t guess this, it does sound like a good investment.<p>Furthermore, while I am skeptical about the “DC in space” thing in the short term, and Musk’s timelines are, generously, something like P99.9 outcomes, it seems plausible that in 10 years it might make sense. And at that point Google will want to put their TPUs in orbit, too.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nonethewiser</em>:</p>
-<blockquote>How is Alphabet the modern Berkshire Hathaway?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>kristianp</em>:</p>
-<blockquote>Google also has around a 14% stake in Anthropic (as at 2025 [1]) and they participated in the &quot;G&quot; funding round [2].  Amazon has a significant stake in them too.<p>[1] <a href="https:&#x2F;&#x2F;www.nytimes.com&#x2F;2025&#x2F;03&#x2F;11&#x2F;technology&#x2F;google-investment-anthropic.html" rel="nofollow">https:&#x2F;&#x2F;www.nytimes.com&#x2F;2025&#x2F;03&#x2F;11&#x2F;technology&#x2F;google-investm...</a> , <a href="https:&#x2F;&#x2F;archive.md&#x2F;f0BxC" rel="nofollow">https:&#x2F;&#x2F;archive.md&#x2F;f0BxC</a><p>[2] <a href="https:&#x2F;&#x2F;www.anthropic.com&#x2F;news&#x2F;anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation" rel="nofollow">https:&#x2F;&#x2F;www.anthropic.com&#x2F;news&#x2F;anthropic-raises-30-billion-s...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Go Analysis Framework: modular static analysis by go team</title>
-      <link>https://pkg.go.dev/golang.org/x/tools/go/analysis</link>
-      <guid isPermaLink="false">hn3-49057398</guid>
-      <pubDate>Sun, 26 Jul 2026 12:21:26 +0000</pubDate>
-      <description>158 points, 27 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://pkg.go.dev/golang.org/x/tools/go/analysis"><strong>→ Article</strong></a> <small>(pkg.go.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49057398">→ HN comments</a> &nbsp;·&nbsp; 158 points &nbsp;·&nbsp; 27 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jamescun</em>:</p>
-<blockquote>This isn&#x27;t new?<p>You can see it&#x27;s used by _a lot_ of linters already:<p><a href="https:&#x2F;&#x2F;pkg.go.dev&#x2F;golang.org&#x2F;x&#x2F;tools&#x2F;go&#x2F;analysis?tab=importedby" rel="nofollow">https:&#x2F;&#x2F;pkg.go.dev&#x2F;golang.org&#x2F;x&#x2F;tools&#x2F;go&#x2F;analysis?tab=import...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>tgv</em>:</p>
-<blockquote>I visited that link three years ago. It isn&#x27;t new. It&#x27;s nifty, though.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jzelinskie</em>:</p>
-<blockquote>For SpiceDB[0], we&#x27;ve found a lot of success using this framework to define our own analyzers; it&#x27;s probably 10x easier now with LLMs. No need for tribal knowledge or more time wasted on code review if you can just turn it into a linter and move on.<p>[0]: <a href="https:&#x2F;&#x2F;github.com&#x2F;authzed&#x2F;spicedb&#x2F;tree&#x2F;main&#x2F;tools&#x2F;analyzers" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;authzed&#x2F;spicedb&#x2F;tree&#x2F;main&#x2F;tools&#x2F;analyzers</a></blockquote>
-<p><strong>Top #3</strong> — <em>ksec</em>:</p>
-<blockquote>So what is context? This isn&#x27;t new and why the submission ?</blockquote>
-<blockquote>
-<p>↳ reply — <em>hxtk</em>:</p>
-<blockquote>Someone in the thread about the Ruff update ingenuously said they wished Go had something like Ruff, being unaware of this framework. In that thread, someone seemed to take it as a sign that many people who might care to know about this don&#x27;t yet, so they made a dedicated post for it.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Third Drone Shot Down in Three Days in Romanian Territory</title>
-      <link>https://english.mapn.ro/</link>
-      <guid isPermaLink="false">hn3-49057248</guid>
-      <pubDate>Sun, 26 Jul 2026 12:00:42 +0000</pubDate>
-      <description>215 points, 265 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://english.mapn.ro/"><strong>→ Article</strong></a> <small>(english.mapn.ro)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49057248">→ HN comments</a> &nbsp;·&nbsp; 215 points &nbsp;·&nbsp; 265 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cbg0</em>:</p>
-<blockquote>As part of the SAFE EU financial instrument Romania is spending a lot of cash on defense measures for drones and other armament[1]. Currently still relying heavily on <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Flakpanzer_Gepard" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Flakpanzer_Gepard</a> for anti-air as well as fighter jets with air-to-air missiles, as these recent drones were all brought down by F-16s.<p>Aside from strategic targets, a lot of the civilian infrastructure is quite vulnerable to drone attacks as there&#x27;s a huge border to cover and definitely not enough anti-drone tech deployed. An apartment building was hit months ago with no casualties: <a href="https:&#x2F;&#x2F;www.reuters.com&#x2F;world&#x2F;europe&#x2F;apartment-building-hit-by-drone-romanias-galati-close-ukraine-border-radio-says-2026-05-29&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reuters.com&#x2F;world&#x2F;europe&#x2F;apartment-building-hit-...</a><p>[1] <a href="https:&#x2F;&#x2F;www.rheinmetall.com&#x2F;en&#x2F;media&#x2F;news-watch&#x2F;news&#x2F;2026&#x2F;06&#x2F;2026-06-02-major-historic-contract-in-romania-worth-5-7-billion" rel="nofollow">https:&#x2F;&#x2F;www.rheinmetall.com&#x2F;en&#x2F;media&#x2F;news-watch&#x2F;news&#x2F;2026&#x2F;06...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>alephnerd</em>:</p>
-<blockquote>&gt; Romania is spending a lot of cash on defense measures for drones and other armament<p>Some of this is going to be stalled - Romania was planning on deploying the Iron Dome [0] and Spyder [1] for AD which was going to be co-produced by Volkswagen in their German factories that were on the chopping block, but Qatar (Volkswagen&#x27;s largest minority shareholder with 17% voting share) blocked that deal [2].<p>[0] - <a href="https:&#x2F;&#x2F;www.jpost.com&#x2F;international&#x2F;article-861770" rel="nofollow">https:&#x2F;&#x2F;www.jpost.com&#x2F;international&#x2F;article-861770</a><p>[1] - <a href="https:&#x2F;&#x2F;www.calcalistech.com&#x2F;ctechnews&#x2F;article&#x2F;sy1n3pcfzx" rel="nofollow">https:&#x2F;&#x2F;www.calcalistech.com&#x2F;ctechnews&#x2F;article&#x2F;sy1n3pcfzx</a><p>[2] - <a href="https:&#x2F;&#x2F;www.bloomberg.com&#x2F;news&#x2F;articles&#x2F;2026-07-10&#x2F;qatar-blocks-defense-joint-venture-between-vw-and-israeli-firm" rel="nofollow">https:&#x2F;&#x2F;www.bloomberg.com&#x2F;news&#x2F;articles&#x2F;2026-07-10&#x2F;qatar-blo...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rjzzleep</em>:</p>
-<blockquote>Iron Dome is designed for protecting from home made rockets made with dung from the Gaza Strip. And according to research the main reason for the low casualty rate is actually the early warning. How exactly is it supposed to help with real missiles and drones?<p>How do these scams keep happening? Why doesn&#x27;t anyone care how their taxpayer money is spent?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>alephnerd</em>:</p>
-<blockquote>&gt; home made rockets made with dung from the Gaza Strip<p>Homemade bottle rockets are a 2000s era Israel thing. Now it&#x27;s Ababeel, Mohajer, Shahed, Arash and other Iranian drones deployed in Lebanon, Iraq, Yemen, and Iran. The same kinds of drones being used in Ukraine <i>and</i> operated by Iranian personnel [0][1][2] that are also the same make as the drones shot down in Romania as well as Poland.<p>Ukraine also gave us intel linking Iranian strike capacity with Russia [3] and Russia has previously offered to stop giving Iran geoint and strike intel in return for the US stopping geoint and strike intel sharing with Ukraine, which the US rejected [4].<p>[0] - <a href="https:&#x2F;&#x2F;www.pravda.com.ua&#x2F;eng&#x2F;news&#x2F;2026&#x2F;03&#x2F;10&#x2F;8024839&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.pravda.com.ua&#x2F;eng&#x2F;news&#x2F;2026&#x2F;03&#x2F;10&#x2F;8024839&#x2F;</a><p>[1] - <a href="https:&#x2F;&#x2F;www.pravda.com.ua&#x2F;eng&#x2F;news&#x2F;2022&#x2F;11&#x2F;07&#x2F;7375314&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.pravda.com.ua&#x2F;eng&#x2F;news&#x2F;2022&#x2F;11&#x2F;07&#x2F;7375314&#x2F;</a><p>[2] -  <a href="https:&#x2F;&#x2F;www.pravda.com.ua&#x2F;eng&#x2F;news&#x2F;2022&#x2F;10&#x2F;23&#x2F;7373119&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.pravda.com.ua&#x2F;eng&#x2F;news&#x2F;2022&#x2F;10&#x2F;23&#x2F;7373119&#x2F;</a><p>[3] - <a href="https:&#x2F;&#x2F;xcancel.com&#x2F;ZelenskyyUa&#x2F;status&#x2F;2081074329115078813#m" rel="nofollow">https:&#x2F;&#x2F;xcancel.com&#x2F;ZelenskyyUa&#x2F;status&#x2F;2081074329115078813#m</a><p>[4] - <a href="https:&#x2F;&#x2F;www.politico.eu&#x2F;article&#x2F;putin-offers-stop-intel-iran-condition-us-cuts-off-ukraine&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.politico.eu&#x2F;article&#x2F;putin-offers-stop-intel-iran...</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sneak</em>:</p>
-<blockquote>F-16s with human pilots and a2a missiles vs cheap drones? That’s one hell of an asymmetry and doesn’t seem robust enough to handle 100x the scale.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>walrus01</em>:</p>
-<blockquote>URL appears to go to home page of RO military, another URL is: <a href="https:&#x2F;&#x2F;www.france24.com&#x2F;en&#x2F;europe&#x2F;20260726-romanian-jet-shoots-down-drone-entering-country-airspace-for-third-day-in-a-row" rel="nofollow">https:&#x2F;&#x2F;www.france24.com&#x2F;en&#x2F;europe&#x2F;20260726-romanian-jet-sho...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>close04</em>:</p>
-<blockquote>The home page shows 3 consecutive press releases for the past 3 days each detailing a similar incident.<p>The first drone on 24.07 took ~80min to intercept and shoot down, well into the country. The other 2 were shot down within kilometers of the border so they’re paying closer attention.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bestham</em>:</p>
-<blockquote>The asymmetry between the drones and the F16 neutralising them quickly makes this financially unsustainable.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lukan</em>:</p>
-<blockquote>Yes, but it also trains the pilots and everything around them for real action in a non war environment (you cannot just shoot anywhere in civilian airspace).<p>And they would need to train anyway.<p>But for a real conflict, sure, more economical solutions are on the way.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>nesarkvechnep</em>:</p>
-<blockquote>I hope they don’t send any to Bulgaria. Our PM is waiting exactly this to declare we’re joining the Russian federation.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>AnimalMuppet</em>:</p>
-<blockquote>How are Russian drones entering Bulgarian territory going to give the PM the chance&#x2F;excuse to join Russia?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>GTP</em>:</p>
-<blockquote>I don&#x27;t know if this is their case, but some politicians don&#x27;t care much about their arguments making sense. In this specific case, a politician could either claim the drones come from some other country, and Russia is going to protect them, or that they need to join Russia for them to stop.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>paganel</em>:</p>
-<blockquote>&gt; we’re joining the Russian federation.<p>Based PM, from one of your neighbors just North of the Danube.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
