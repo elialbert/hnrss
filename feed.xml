@@ -4,7 +4,96 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 29 Jul 2026 22:05:33 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 23:07:53 +0000</lastBuildDate>
+    <item>
+      <title>Show HN: Open-source engine running Gemma 4 26B in 2 GB RAM on any M-series Mac</title>
+      <link>https://github.com/drumih/turbo-fieldfare</link>
+      <guid isPermaLink="false">hn3-49098510</guid>
+      <pubDate>Wed, 29 Jul 2026 15:05:43 +0000</pubDate>
+      <description>594 points, 208 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/drumih/turbo-fieldfare"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49098510">→ HN comments</a> &nbsp;·&nbsp; 594 points &nbsp;·&nbsp; 208 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>giancarlostoro</em>:</p>
+<blockquote>Nice, I think this is the second time I see this here on HN, I always wondered why we need to shove the entire model into memory, I don&#x27;t care who King Charles is every single time. It always felt as though we already figured out how to break up large files and parse them efficiently with very little memory.<p>Frontier AI feels like its full of people who are brilliant at making models, but when it comes to scale and practicality, they just leave it to whoever sets up infrastructure to worry about. I wouldn&#x27;t be surprised if frontier AI could be drastically cheaper if they just finetune and optimize their models to not consume all available RAM to only access less than 10% of the models knowledge.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>walrus01</em>:</p>
+<blockquote>&gt; I don&#x27;t care who King Charles is every single time<p>There is just a stupendous amount of everything packed into a 35B size or larger model. For instance Qwen 3.6 35B A3B (Q8) can do a fairly decent job translating English to Arabic, but it can also generate python code with a reasonable layout and commenting.<p>I try to remember that as a mental model, an epub copy of a truly gargantuan sized 1000+ page novel such as the unabridged&#x2F;2nd revision of Steven King&#x27;s The Stand is about 800KB, and we&#x27;re talking about a GGUF file that&#x27;s 37GB in size or something like that.</blockquote>
+<p>↳ reply 2 — <em>Keyframe</em>:</p>
+<blockquote><i>I don&#x27;t care who King Charles is every single time</i><p>that&#x27;s the trick and a multi-billion dollar question, how would an llm engine know that? it&#x27;s an active research area how to cull the initial layer surface and do the optimal traversal path through the layers and it&#x27;s a damn hard problem. It&#x27;s definitely an area where a ton of performance is left on the table still.</blockquote>
+<p>↳ reply 3 — <em>bastawhiz</em>:</p>
+<blockquote>&gt; I always wondered why we need to shove the entire model into memory, I don&#x27;t care who King Charles is every single time.<p>That&#x27;s kind of the problem, isn&#x27;t it? How do you know which part of the model to put in memory? You have to make a per-parameter decision of whether or not it&#x27;s worth it to have it in memory or whether the value should just be treated as zero. Then you have to &quot;re-link&quot; the layers of the model to the new positions of each of the weights. For billions of parameters, that&#x27;s a lot of calculations. And it requires us to know what each parameter actually represents, which nobody does.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>xenonite</em>:</p>
+<blockquote>With my M1 MBA, I am still on macOS 15. To compile it, just remove the two lines with<p><pre><code>  opts.languageVersion = .version4_0
+</code></pre>
+or surround them with<p><pre><code>  if #available(macOS 26.0, *) {
+    opts.languageVersion = .version4_0
+  }
+</code></pre>
+You&#x27;ll miss out on a prefill speedup of 2.4x (as it yields 11.24x faster attention), according to the git comments, but it works. (On the 8-GPU-core MBA M1, I get 5-6 tok&#x2F;s.)</blockquote>
+<blockquote>
+<p>↳ reply — <em>gitpusher42</em>:</p>
+<blockquote>Thank you! That’s useful. I might try lowering the minimum version later.
+The 2.4x prefill improvement will only work on the apple10 GPU family. The M1 uses apple7 as I remember</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>wilj</em>:</p>
+<blockquote>I&#x27;m looking forward to trying it, but not willing to upgrade to Tahoe, so I&#x27;d appreciate it for sure!</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tredre3</em>:</p>
+<blockquote>I&#x27;m curious how your project compares to plain mmap!<p>Because llama.cpp will already run 26B in 2GB of RAM if you really want to (mmap enabled, repacking disabled).<p>It seems like the main difference is that your project synchronizes the SSD reads with inference activity, which you&#x27;ve presumably tuned to cause the least latency possible? Whereas the OS wouldn&#x27;t care about any of that.</blockquote>
+<blockquote>
+<p>↳ reply — <em>gitpusher42</em>:</p>
+<blockquote>My first version used plain `mmap`. On the 8 GB M2, a cold 3.36 MB expert took 10 ms with mmap and 2.8 ms with `pread`. The full simulation was 0.50tok&#x2F;s for `mmap` vs 4 tok&#x2F;s for `pread`<p>With `mmap`, OS loads pages reactively as the model touches them. It doesn’t know which experts were selected or when their reads could overlap with GPU work<p>And common weights still use mmap for simplicity<p>So, I believe llama.cpp might run it under 2gb, but I assume it will be slower</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>a-dub</em>:</p>
+<blockquote>hm. in linux you have MAP_POPULATE which forces a prefetch where macos relies on page faults and lazy loading. if MADV_WILLNEED doesn&#x27;t help, maybe readv to vector read directly or mmap+writev (write to a dummy fd, with an iovec for each page, hopefully resulting in a one-syscall-big-pagefault for mmap.) maybe also experiment with a loop that just reads one byte from each relevant page after mmap but before real computation?</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Anatomy of a Frontier Lab Agent Intrusion: A Timeline of the July 2026 Incident</title>
+      <link>https://huggingface.co/blog/agent-intrusion-technical-timeline</link>
+      <guid isPermaLink="false">hn3-49098466</guid>
+      <pubDate>Wed, 29 Jul 2026 15:01:52 +0000</pubDate>
+      <description>135 points, 16 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://huggingface.co/blog/agent-intrusion-technical-timeline"><strong>→ Article</strong></a> <small>(huggingface.co)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49098466">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 16 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>simonw</em>:</p>
+<blockquote>Don&#x27;t miss their blogpost about the incident, which is long, detailed, and absolutely fascinating (but didn&#x27;t make the HN homepage): <a href="https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;agent-intrusion-technical-timeline" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;agent-intrusion-technical-timeli...</a><p>Thread from yesterday: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49089500">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49089500</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>tomhow</em>:</p>
+<blockquote>We&#x27;ve re-upped that thread and moved relevant comments to it, thanks!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>gitpusher</em>:</p>
+<blockquote>Man, these AI-generated UIs are so bad. They always look pretty at first glance... punchy headline, nice colors, lots of &quot;widgets&quot; and doo-hickeys. But it&#x27;s just a nice paint job. Trying to actually read them is a recipe for suffering.<p>This one has at least 20 distinct text styles. They are seemingly deployed in random ways, following no discernible hierarchy. the smallest text is &quot;9.6px&quot; which is not only small, but also fuzzy due to the 0.6 pixels (?? why) making it impossible to read.<p>Likewise for the size, placement, and emphasis of various widgets on the page. Altogether it&#x27;s just a big pile of information. It&#x27;s hard to know where to begin, or how one&#x27;s eye should move around the page<p>(In their defense: this particular UI is attempting to convey a very complicated sequence of interrelated events from multiple data sources. Doing that well isn&#x27;t easy.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>avs733</em>:</p>
+<blockquote>I&#x27;ve become convinced that AI models have no concept of &#x27;white space&#x27; or cognitive load which is something technically minded folks have already seemed to underappreciate so it is amplified in situations like this.<p>To call it out again...<p>(1) almost no white space - every square inch is communicating information<p>(2) no clear hierarchy - almost in search of minimizing white space and presenting maximum rather tham maximally useful information.<p>(3) no consistency of any taxonomy for presenting information across the page<p>(4) no guidelines or legend for interpreting what any of the visual cues (color, size, etc.) mean.<p>There is a huge push in engineering at least to try and introduce better communications skills into curricula. It is hard in part because students are very much of the mindset that information and meaning is inherently shared and structuring a narrative or story is to whit unnecessary. This is in part because so much of their education is focused on the bulk transfer of facts and an assumption they will stitch information together into knowledge.</blockquote>
+<p>↳ reply 2 — <em>teaearlgraycold</em>:</p>
+<blockquote>We&#x27;re in the geocities days of AI UI.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>metanonsense</em>:</p>
+<blockquote>This visualization really makes not much sense. Very modest signal-to-noise ratio.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>A.I. companies are recruiting electricians and carpenters by the thousands</title>
+      <link>https://www.nytimes.com/2026/07/29/business/economy/data-center-electricians-training.html</link>
+      <guid isPermaLink="false">hn3-49098198</guid>
+      <pubDate>Wed, 29 Jul 2026 14:43:47 +0000</pubDate>
+      <description>195 points, 239 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.nytimes.com/2026/07/29/business/economy/data-center-electricians-training.html"><strong>→ Article</strong></a> <small>(nytimes.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49098198">→ HN comments</a> &nbsp;·&nbsp; 195 points &nbsp;·&nbsp; 239 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>eddyg</em>:</p>
+<blockquote>Gift link: <a href="https:&#x2F;&#x2F;www.nytimes.com&#x2F;2026&#x2F;07&#x2F;29&#x2F;business&#x2F;economy&#x2F;data-center-electricians-training.html?unlocked_article_code=1.1VA.5fEj.rFBMdMeVhPpP&amp;smid=url-share" rel="nofollow">https:&#x2F;&#x2F;www.nytimes.com&#x2F;2026&#x2F;07&#x2F;29&#x2F;business&#x2F;economy&#x2F;data-cen...</a></blockquote>
+<p><strong>Top #2</strong> — <em>xur17</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;archive.is&#x2F;f1p75" rel="nofollow">https:&#x2F;&#x2F;archive.is&#x2F;f1p75</a></blockquote>
+<p><strong>Top #3</strong> — <em>throwawayffffas</em>:</p>
+<blockquote>Get it now, while the getting is good. Chip maker valuation in Korea is going down[1]. The bubble may be coming to an end sooner than we would like.<p>1. <a href="https:&#x2F;&#x2F;www.reuters.com&#x2F;world&#x2F;asia-pacific&#x2F;south-koreas-kospi-drops-7-global-chipmaker-selloff-deepens-2026-07-28&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reuters.com&#x2F;world&#x2F;asia-pacific&#x2F;south-koreas-kosp...</a></blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Handbook.md shows that long policy documents do not reliably govern agents</title>
       <link>https://arxiv.org/abs/2607.25398</link>
@@ -3712,120 +3801,6 @@ a mjpeg system basically, all in python but does need opencv</blockquote>
 </blockquote>
 <p><strong>Top #3</strong> — <em>ttoinou</em>:</p>
 <blockquote>Once constraints are fixed you can choose your tradeoff among dimensions, that’s the compromise.<p>But constraints are not fixed, you can optimize, discover new techniques and change the space of requirements.<p>For example thanks to computer scientists we get better and better algorithms for compression, and thanks to hardware companies we get new &#x2F; faster chips with different models to do new kinds of computation<p>Thus, you can move the compromise space, by working harder</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The relay market powering token resellers and fraud</title>
-      <link>https://vectoral.com/blog/token-relay-market</link>
-      <guid isPermaLink="false">hn3-49058993</guid>
-      <pubDate>Sun, 26 Jul 2026 15:17:06 +0000</pubDate>
-      <description>167 points, 99 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://vectoral.com/blog/token-relay-market"><strong>→ Article</strong></a> <small>(vectoral.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49058993">→ HN comments</a> &nbsp;·&nbsp; 167 points &nbsp;·&nbsp; 99 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>namanyayg</em>:</p>
-<blockquote>One aspect that seems to be missing is the abuse of the free credits provided for new companies by AWS, Azure, and other providers.<p>I know of a friend&#x27;s company in India who purchased inference, at 4% of the actual price and states that it gave him an unbeatable competitive edge in their large running video influence pipelines. Any new competitors could not offer their pricing at all.<p>Primarily that operated because registering a new company getting free AWS credits was a very tiny cost</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mlenhard</em>:</p>
-<blockquote>I was going to cover this in a follow-up article, but yeah, there are network of token brokers who buy unused credits from startups and then resell them.</blockquote>
-<p>↳ reply 2 — <em>namanyayg</em>:</p>
-<blockquote>I should have added that I ran my first startup in India for 8 years before moving to the states, that&#x27;s why I have an insider view.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>benlivengood</em>:</p>
-<blockquote>The real problem is subscription models.  Businesses want recurring revenue so they try to game the ratio of fixed subscription prices to COGS but it&#x27;s always a game and so whoever can figure out the upside for the company can figure out the complementary upside for themselves.<p>How would one even word a bulletproof subscription contract for agentic tokens, anyway? You can&#x27;t forbid automation because sub-agents are automation.  You could forbid &quot;using tokens for the benefit of more than the human who signed up&quot; but then what do families (especially with kids) need to do?  What if your friend asks you a question and you turn to a chat model?  Forbidding &quot;reselling&quot; tokens outside of a household sounds like the closest terms but that&#x27;s leaky for anyone who travels a lot, etc.<p>Fixed cost per token simply works.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Aurornis</em>:</p>
-<blockquote>The abuse is factored in to pricing and quota structure.<p>I have some past experience with subscription plans for a much less interesting product. Abuse is inevitable. As you do your math on the subscription costs you look at the actual usage across all accounts, which includes the abuse.<p>Cleaning up abuse was still a priority because it meant we could give more service to the real customers. It&#x27;s a frustrating battle because you actually want to give good service to the real customers, but you also want to let each account do as they please with their susbcription. That latter priority probably fades fast for something like an LLM company when you discover that the abuse has become automated and is scaling up so fast that it&#x27;s tilting the math toward degrading service for everyone.<p>&gt; Fixed cost per token simply works.<p>As a consumer, I benefit greatly from the subscription rates. There&#x27;s a lot of grumbling about how they should go to fixed token for everyone but I&#x27;m over hear happy with the subscription plan offerings while they last.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jwsteigerwalt</em>:</p>
-<blockquote>Tokens are becoming a hard commodity.  Subscriptions don’t work with hard commodities.  Subscriptions work fine where fixed costs&#x2F;capital investment are massive and service delivery is negligible.  Think car washes and Netflix.  The marginal cost of adding an additional subscriber to a streaming platform or a monthly car was membership is negligible.  While there was substantial capital investment to generate the models, we are learning that the service delivery cost of tokens is real.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>grinich</em>:</p>
-<blockquote>This is the problem we&#x27;ve been working on solving with WorkOS Radar. We run it for Cursor and a bunch of other AI companies who have a free trial that gives some free inference to test the product.<p>It turns out to be a pretty complex program to solve at scale. Token fraud is a lucrative market and the adversaries are surprisingly sophisticated. It&#x27;s a cat-and-mouse game, accelerated with AI.<p><a href="https:&#x2F;&#x2F;workos.com&#x2F;radar" rel="nofollow">https:&#x2F;&#x2F;workos.com&#x2F;radar</a><p>(If you&#x27;d like to work on this, we are hiring :))</blockquote>
-<blockquote>
-<p>↳ reply — <em>mlenhard</em>:</p>
-<blockquote>I don&#x27;t think device fingerprinting is the right approach here.<p>Client-side detection can always be sidestepped, and you need to intermediate the actual inference to get enough signals to make an accurate prediction. There are hundreds of listings for cursor tokens&#x2F;credits right now.<p>We use canary values to detect the resellers, and I believe that&#x27;s the only approach that will actually work at scale.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>London Gatwick has launched a robotic airport parking service</title>
-      <link>https://aerospaceglobalnews.com/news/gatwick-airport-robotic-parking-stanley-robotics/</link>
-      <guid isPermaLink="false">hn3-49058669</guid>
-      <pubDate>Sun, 26 Jul 2026 14:40:27 +0000</pubDate>
-      <description>263 points, 220 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://aerospaceglobalnews.com/news/gatwick-airport-robotic-parking-stanley-robotics/"><strong>→ Article</strong></a> <small>(aerospaceglobalnews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49058669">→ HN comments</a> &nbsp;·&nbsp; 263 points &nbsp;·&nbsp; 220 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>pontus</em>:</p>
-<blockquote>So I&#x27;ll have to park my car in a garage first, then take a bus to the terminal just so that a robot can move my car from the place where I parked it to a different place? I was hoping it&#x27;d be something where I&#x27;d pull up to the curb, grab my bags and head in while the robot parked the car for me but apparently I&#x27;ll still have to take a bus to the terminal?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>clickety_clack</em>:</p>
-<blockquote>Implementation is everything. If there’s enough capacity to drive up and drop your car off without queueing, and your car is ready to go as you leave the terminal then it sounds great. If there’s a half hour wait to get into the drop off zone, and another half hour wait after picking up your bags, and a half hour walk to the pickup&#x2F;dropoff area then I’d prefer a 30 min shuttle.</blockquote>
-<p>↳ reply 2 — <em>iamben</em>:</p>
-<blockquote>I think this is solving the &#x27;airport parking&#x27; problem my dad has. He drives to the airport, parks a mile or so away in some field and the company that owns the field drops him off at the terminal. He can leave his car there for the week.<p>This feels like a clever solution to have some spaces closer to the airport and many spaces further away.</blockquote>
-<p>↳ reply 3 — <em>have_faith</em>:</p>
-<blockquote>Article says one of the terminals is within walking distance</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jalada</em>:</p>
-<blockquote>Simultaneously - <a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;uk-news&#x2F;2026&#x2F;jul&#x2F;26&#x2F;water-supply-failure-gatwick-airport-toilets-bars-restaurants" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;uk-news&#x2F;2026&#x2F;jul&#x2F;26&#x2F;water-supply...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>kylehotchkiss</em>:</p>
-<blockquote>It’s exciting to invest in the future and not exciting to invest in infrastructure</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>joe463369</em>:</p>
-<blockquote>Neither VINCI Airports nor Stanley Robotics are responsible for the water infrastructure in South East England.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>longsangstan</em>:</p>
-<blockquote>I am quite surprised by the amount of negative comments here. My immediate reaction after watching the video is that this is pretty cool and I want to try it, even though I expect issues given that it is the first service of this kind in London.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Tade0</em>:</p>
-<blockquote>Personally I wonder why didn&#x27;t they put several Pater Noster parking machines instead.<p>Systems with eight slots have decent throughout, the same density as cars parked side-by-side and bumper-to-bumper - even including the space needed to roll out - and are mechanically simple compared to just about anything else in this space.</blockquote>
-<p>↳ reply 2 — <em>forgetfreeman</em>:</p>
-<blockquote>Replacing &quot;hand over your keys&quot; with &quot;perform detailed inspection of your vehicle, including undercarriage and suspension for damage before leaving&quot; doesn&#x27;t sound particularly enticing. Given I&#x27;m capable of parking my own vehicle without having an anxiety attack in the process I&#x27;m also fairly certain this thing doesn&#x27;t solve any of my problems. I am likewise surprised that this seemingly pointless, grossly overengineered system that is nakedly hostile to minimum wage tier workers like valet service drivers isn&#x27;t being warmly received here, but for different reasons.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The New AI Superpowers: Focus and Followthrough</title>
-      <link>https://www.rickmanelius.com/p/the-new-ai-superpowers-focus-and</link>
-      <guid isPermaLink="false">hn3-49057877</guid>
-      <pubDate>Sun, 26 Jul 2026 13:13:03 +0000</pubDate>
-      <description>167 points, 49 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.rickmanelius.com/p/the-new-ai-superpowers-focus-and"><strong>→ Article</strong></a> <small>(rickmanelius.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49057877">→ HN comments</a> &nbsp;·&nbsp; 167 points &nbsp;·&nbsp; 49 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cgearhart</em>:</p>
-<blockquote>This seems very related to a trend I’m seeing as my company goes all in on AI: everyone thinks that every problem is “a couple hours” with AI now, and they all want zero external dependencies because they can move faster alone. As a result, we’re now in an even worse “yet-another-…” age where everyone has built approximately the same (but somehow incompatible) versions of all the same beginner-level software, and (ironically) while they want no external dependencies they’re also pushing for org-level mandates to require everyone else to use their solution. Meanwhile, no one wants to do the slow&#x2F;bottleneck part that cant easily be automated or scaled; they just throw an “agent” at it and call it done—but there’s nothing _there_. You can trust the agent on easy tasks and you can’t trust it on hard ones, but you can’t tell which ones are easy or hard. Improvements in foundation model tech move thresholds of the problem but can’t eliminate it.<p>Long story short, I think we’re in a phase where the organizational value function is lagging behind the tech. A “proof of concept” used to be correlated with “proof of work” and some amount of domain understanding, but I think now what we need is a focus on “proof of understanding” or else you’re probably just wasting tokens on a baby version of the problem. A decent proxy right now is that if you have zero external dependencies then your solution is probably a toy.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tayo42</em>:</p>
-<blockquote>&gt; they’re also pushing for org-level mandates to require everyone else to use their solution.<p>That&#x27;s how you get promotions when you don&#x27;t do anything valuable lol ok done with the cynicism</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>oblio</em>:</p>
-<blockquote>Not cynicism, incentives. Everything is shaped by incentives. We make movies about heroes and martyrs because they&#x27;re 0.001% of us.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ehnto</em>:</p>
-<blockquote>No disagreement here, the incentives for software have always sucked. People complain constantly about how everything is enshittefied, that&#x27;s just corporate incentives manifested.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>dominotw</em>:</p>
-<blockquote>problem is that no one knows what to build and there are way too many ppl employed</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>LogicFailsMe</em>:</p>
-<blockquote>In my side hustle time, I use coding agents to explore what if projects I would otherwise never get to build.<p>At my day job, I use AI to fix config, container, and installation issues so I can spend my time coding instead of struggling to fix mostly other people&#x27;s mistakes. And really, in this age of python wheels, containers, virtual environments, and fragmented APIs, the cognitive load of doing this by hand would shut me down for the day.<p>1.5 years in and I haven&#x27;t burnt out. If anything, I&#x27;m ramping up. I&#x27;m no longer afraid of adding a web UI, or insane numbers of unit tests, or deploying other people&#x27;s software.<p>What I&#x27;m not doing is using it to build products, but instead just doing so to augment the supporting stack. All of this is subject to change as the AI landscape evolves.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>voicedYoda</em>:</p>
-<blockquote>My biggest struggle is UI. I can make functional, but my design skills couldn&#x27;t sell water to someone in death valley</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>saghm</em>:</p>
-<blockquote>Same, honestly. I&#x27;ve dabbled in trying to come up with some UI stuff with LLMs, but I&#x27;m still not at the point where I&#x27;m totally comfortable. At my day job, luckily I have people much more talented than me at design who can provide feedback and guidance. For my personal side projects, I&#x27;ve had some modest success inducing the agent to provide the feedback from a suitable &quot;persona&quot;, for lack of a better term (e.g. &quot;Is there any existing standard on how to make this component accessible?&quot;, &quot;How intuitive would you expect a non-technical user to find interaction with this?&quot;).</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>vouaobrasil</em>:</p>
-<blockquote>&gt; At my day job, I use AI to fix config, container, and installation issues so I can spend my time coding instead of struggling to fix mostly other people&#x27;s mistakes. And really, in this age of python wheels, containers, virtual environments, and fragmented APIs, the cognitive load of doing this by hand would shut me down for the day.<p>I think it was a mistake to add this much complexity to the world of software in the first place, so I&#x27;d view AI as a bandaid to a problem rather than addressing the underyling issue. But on the whole, the cost of all this extra complexity, data centers to run AI to fix layers of crud and buildup don&#x27;t seem to provide much of a net benefit to society (except to those who are at the top and need to see growth to pad their retirement portfolios).</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>crucialfelix</em>:</p>
-<blockquote>I was getting frothy and feeling stress due to juggling sessions. I switched to managing my backlog (Obsidian base), writing specs, launching agents in the background. I review and make changes,merge and release.
-It&#x27;s a fixed cycle and I optimize to maintain relaxed engagement. 
-Rate of features and fixes went up a lot.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
