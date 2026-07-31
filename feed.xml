@@ -4,7 +4,103 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 31 Jul 2026 21:13:41 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 23:09:28 +0000</lastBuildDate>
+    <item>
+      <title>Arch Linux disables AUR package adoption</title>
+      <link>https://lwn.net/Articles/1086489/</link>
+      <guid isPermaLink="false">hn3-49123208</guid>
+      <pubDate>Fri, 31 Jul 2026 13:57:35 +0000</pubDate>
+      <description>128 points, 93 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://lwn.net/Articles/1086489/"><strong>→ Article</strong></a> <small>(lwn.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49123208">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 93 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>WD-42</em>:</p>
+<blockquote>I’ve been using arch for nearly 2 decades at this point. It’s amazing that the AUR went this long without any serious attacks.<p>It’s a different world now. I can’t help but feel there used to be honor among hackers. You didn’t go after your own. What kind of jerk would attack Arch Linux?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sp0rk</em>:</p>
+<blockquote>&gt; I can’t help but feel there used to be honor among hackers. You didn’t go after your own. What kind of jerk would attack Arch Linux?<p>This has absolutely not ever been the case.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>m463</em>:</p>
+<blockquote>I think smaller &quot;unimportant-ish&quot; communities become larger and attract attention from a wider variety of people.<p>If 1:10,000 people is an axe murderer, when your community reaches 20,000 people...  You have to create an axe-murderer-captcha.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>static_motion</em>:</p>
+<blockquote>The reason is popularity. SteamOS is Arch-based and in the hands of a ton of people who aren&#x27;t necessarily that technical. CachyOS and EndeavourOS have become very popular with the increasing adoption of desktop Linux. The AUR thus becomes an enticing attack surface.</blockquote>
+<p>↳ reply 3 — <em>jolmg</em>:</p>
+<blockquote>Arch is simply getting popular enough to be targeted.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>vlovich123</em>:</p>
+<blockquote>&gt; The project had suspended new account registration in June. That followed a campaign in which an attacker or attackers created new accounts to adopt orphaned packages and push malicious updates to them that would install malware on user systems. AUR registration was reopened on July 13 after the DevOps team added some minor, and apparently ineffective, restrictions on creating new accounts.<p>Disabling AUR package adoptions has been like the #1 thing recommended. While it&#x27;s a positive step, it&#x27;s not good news they literally tried everything else first. This doesn&#x27;t speak well to the security headspace of the Arch maintainers.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>qwery</em>:</p>
+<blockquote>I&#x27;m sure the team are having a rough time with all this, but I don&#x27;t understand the path you followed to go from <i>the maintainers have not taken this action until now</i> to <i>&quot;This doesn&#x27;t speak well to the security headspace of the Arch maintainers&quot;</i>. Or what &quot;security headspace&quot; means exactly.<p>Yes, lots of people thought disabling package adoption is&#x2F;was a good idea. It seems quite likely that the Arch DevOps team also could have come up with that one, and they certainly wouldn&#x27;t have missed all of the people telling them to do so.<p>It seems to me that disabling package adoption is not a desirable thing to do in general, and can only be used as a stopgap response to an emergency, which seems to be what is happening right now.<p>&quot;just disable adoption&quot; certainly can&#x27;t be a long-term solution:
+Without adoption, the AUR will slowly fade away as orphaning a package would be permanent.
+Maybe the idea is to have some sort of approval process to filter adoption requests? In that case the AUR just dies instantly as that would effectively be another official repo with all of the issues that that would bring.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>vlovich123</em>:</p>
+<blockquote>&gt; AUR registration was reopened on July 13 after the DevOps team added some minor, and apparently ineffective, restrictions on creating new accounts.<p>This - they tried this first even though it’s pretty obvious this is an ineffective mechanism to fight security issues around adopting orphaned packages.<p>“Security headspace” means treating security seriously and acting appropriately and correctly with appropriate urgency. This whole saga they were slow to respond, they took days to actually stop the ongoing attack, and have tried everything else other than stopping adoption of orphaned packages. This should have been the FIRST thing done and only once you have a solid idea on how to reenable then you allow it. And even then I’m not sure orphaned packages are ever suitable for adoption - if you want to take over for an abandoned project, you start your own alias and try to convince all downstream dependencies to change where they point. This makes it adoption by the community which is slow and takes time and won’t be as trivial to convert into a mass scale cyber attack.<p>That everyone here is “but adoption is required for AUR” makes it clear there’s very limited experience and research on how other package managers don’t have this embarrassing failure (both OS and language ones like node and Cargo which have to deal with far more sophisticated attacks) and this is the way - you don’t allow identity laundering. They are all susceptible to identity laundering by just buying the project (assuming the maintainer is open to selling their keys) but that’s harder to scale by a script kiddie and requires a more sophisticated form of action.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Matl</em>:</p>
+<blockquote>Well, this kills a very useful feature of the AUR. It&#x27;s like Wikipedia disabling editing. So I can see trying other things first before resorting to removing features, but I do agree it should have happened faster.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>delecti</em>:</p>
+<blockquote>That title had me worried, but the reality seems quite reasonable.<p>I assumed the goal was to reduce usage of AUR, they&#x27;ve actually remove the ability to adopt (take ownership of) <i>orphaned</i> packages. I&#x27;m sure there are legitimate uses of that functionality, but it also seems like a pretty big avenue for abuse.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>OJFord</em>:</p>
+<blockquote>I&#x27;ve used it (not for abuse). It&#x27;s simply volunteering to maintain the package after previous maintainer(s) have explicitly disowned it, knowing they no longer have time for it or don&#x27;t care because they stopped using it, etc.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gchamonlive</em>:</p>
+<blockquote>Problem is that there is no KYC process before someone can adopt any orphaned package</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>OJFord</em>:</p>
+<blockquote>Yeah, I don&#x27;t disagree there should be more of a barrier, I remember being surprised I could just adopt things. Just explaining the intended use.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bee_rider</em>:</p>
+<blockquote>IMO allowing package adoption makes sense in the responsible&#x2F;intended use-case: AUR packages aren’t trusted, you have to read the PKGBUILD anyway, so the reputation of the contributor doesn’t matter. Removing adoption is admitting that there’s no way to prevent some users from blindly trusting a PKGBUILD.<p>Which is probably the best choice, unfortunately.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Situational Awareness down 67% in July in AI stock rout</title>
+      <link>https://www.wsj.com/finance/investing/situational-awareness-down-67-in-july-in-ai-stock-rout-cd19901f</link>
+      <guid isPermaLink="false">hn3-49122994</guid>
+      <pubDate>Fri, 31 Jul 2026 13:37:36 +0000</pubDate>
+      <description>139 points, 138 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.wsj.com/finance/investing/situational-awareness-down-67-in-july-in-ai-stock-rout-cd19901f"><strong>→ Article</strong></a> <small>(wsj.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49122994">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 138 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>scrlk</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;archive.ph&#x2F;PCjtG" rel="nofollow">https:&#x2F;&#x2F;archive.ph&#x2F;PCjtG</a></blockquote>
+<p><strong>Top #2</strong> — <em>vessenes</em>:</p>
+<blockquote>This is everywhere. For reference, former FTXer and OpenAIer raised $225m into a hedge fund structure, went long and short, and reportedly peaked at $40bn of value; leverage bit hard this week and they sold their entire-ish portfolio to Citadel at $10bn. (Which, I imagine was very likely aiming at this outcome in their trading in the last few weeks).<p>Not reported anywhere -- was additional money raised in to the fund, and what is the LP basis? The story might be: wunderkind 40x+ed his first hedge fund and sold it to Citadel, or it might be: wunderkind raised $20bn and turned it into $10bn fast trading against Citadel.<p>Inquiring minds want to know!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tyre</em>:</p>
+<blockquote>You’re talking about the same fund.<p>They were open about their gains. It was the margin calls and illiquidity that got them, not going negative. Some of their assets, like Anthropic stock, isn’t worthless, it’s just illiquid.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>andy_ppp</em>:</p>
+<blockquote>“isn’t worthless” is still to be decided IMO. Until you can sell it it defines worthless!</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>victorbjorklund</em>:</p>
+<blockquote>You can sell it on secondary market? I’m sure many investors are bound up but there are transactions there.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>animal_spirits</em>:</p>
+<blockquote>If you owe someone 10 thousand dollars that’s a big problem for you. If you owe someone 10 billion dollars that’s a big problem for them</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>cmiles8</em>:</p>
+<blockquote>An inexperienced portfolio manager that’s never seen a down tech market in his life has created a massively leveraged position on frothy assets in a bubble and the bubble is looking ill. What could possibly go wrong.<p>Many of these AI plays are massively entangled and leveraged. It all looks good until it doesn’t and when there’s a hiccup things unravel quickly and exponentially. I fully expect in the next 12 months we’re going to see some rather spectacular investment implosions with folks losing their shirts. Get your popcorn ready.</blockquote>
+<blockquote>
+<p>↳ reply — <em>forgetfreeman</em>:</p>
+<blockquote>I&#x27;d be excited for the show myself if I had any idea how to prevent my portfolio from tanking when this clusterfuck finally unravels.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mikestew</em>:</p>
+<blockquote>Sibling comment says &quot;diversify&quot;, and I tend to agree. I&#x27;ve seen some shit, man. 2000 dot bomb, 2008, bumps along the way. 2000, I was in tech stocks like everyone else, lost a bunch. 2008, learned my lesson and was much more diversified. Lost <i>some</i> money, but not nearly as much as others. It was amazing watching, say, the S&amp;P crater while our portfolio..just didn&#x27;t. It just went down a fair chunk, and came back later (and probably didn&#x27;t come back as much as it did for those that held on to their equities).<p>Diversification is a smoothing function. You won&#x27;t get as much upside holding 25-30% bonds, but your portfolio won&#x27;t suffer as much on the downside. If you&#x27;re young and not ready for boring old-people investments like bonds, at least limit your tech stock exposure. Go buy boring utilities or something, maybe Berkshire Hathaway B shares.<p>One other advantage to diversification that I hear very little about is this: if you have to sell in a down market, you can sell your bonds and hold on to your equities in the hopes they&#x27;ll bounce back. Regardless, you&#x27;re not held to selling depreciated assets like equities, you can sell the bonds which are boring, but probably actually went up while everything else turns to shit.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>2OEH8eoCRo0</em>:</p>
+<blockquote>A side effect of keeping a stock&#x2F;bond asset allocation is that when the stocks tank you&#x27;ll naturally be overweight on bonds, so you can sell bonds to buy stocks (the dip).</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>The End of an Era</title>
       <link>https://hughhowey.com/the-end-of-an-era/</link>
@@ -130,6 +226,29 @@ As humans, we prefer simple structures&#x2F;proofs (I suspect that is to a great
 </blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Danube's record low levels force shutdown of Hungary's only nuclear plant</title>
+      <link>https://www.bbc.com/news/articles/cn0nqv05g0do</link>
+      <guid isPermaLink="false">hn3-49120120</guid>
+      <pubDate>Fri, 31 Jul 2026 07:33:10 +0000</pubDate>
+      <description>125 points, 132 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/cn0nqv05g0do"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49120120">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 132 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Triesault</em>:</p>
+<blockquote>I wonder if any new hunger stones have been found since the Danube&#x27;s wafer level reached this new record low.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hunger_stone" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Hunger_stone</a></blockquote>
+<p><strong>Top #2</strong> — <em>Luc</em>:</p>
+<blockquote>Of course a 1960&#x27;s design isn&#x27;t adapted to current weather conditions. That doesn&#x27;t mean the whole technology is useless, like so many commenters imply.<p>Any new build can and will include cooling adapted to hotter conditions.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>riffraff</em>:</p>
+<blockquote>The one that shut down in Romania is a CANDU, built in the 80s.</blockquote>
+<p>↳ reply 2 — <em>exploderate</em>:</p>
+<blockquote>It&#x27;s not matter of &quot;can&quot;, it&#x27;s a matter of &quot;how much does it cost?&quot; and &quot;who pays for that?&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>_tk_</em>:</p>
+<blockquote>Related:
+<a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49107044">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49107044</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Google fixed more Chrome bugs in June than over the past two years, thanks to AI</title>
@@ -3644,116 +3763,6 @@ The heiroglyphs let me offload some of the work to my vision system. It feels li
 <blockquote>I&#x27;ve been playing this nearly every day and sharing the results in my family&#x27;s group chat. I&#x27;ve been to a lot of museums and I didn&#x27;t realize how much information I wasn&#x27;t retaining. No quiz once you exit I guess. Anthropeum really starts to train your brain to remember patterns, times, and locations. I often get stumped by whether something is Peruvian, African, or Native Islander. Always more to learn!</blockquote>
 <p><strong>Top #3</strong> — <em>prewett</em>:</p>
 <blockquote>The scoring is the same as a project from a year or two ago that used AI generated videos, I wonder if this a rework of that? I think this is a definite improvement, if so.<p>I think the &quot;top nn%&quot; is misleading if you do terribly, though. &quot;Top 67%&quot; sounds better than average, but a look at the graph shows that my inability to distinguish between locations of tribal art puts me well below average.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Now is the time to give LLMs access to the ACM digital library</title>
-      <link>https://cacm.acm.org/opinion/now-is-the-time-to-give-llms-access-to-the-acm-digital-library/</link>
-      <guid isPermaLink="false">hn3-49084987</guid>
-      <pubDate>Tue, 28 Jul 2026 15:01:12 +0000</pubDate>
-      <description>125 points, 106 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://cacm.acm.org/opinion/now-is-the-time-to-give-llms-access-to-the-acm-digital-library/"><strong>→ Article</strong></a> <small>(cacm.acm.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49084987">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 106 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Cynddl</em>:</p>
-<blockquote>As a researcher with many articles in the ACM library, I have to say this is a masterclass in hypocrisy. Obviously, lawyers can decipher the terms of ACM publishing contracts and Creative Commons licences to determine if this will be acceptable or not. But ACM is not a company, it&#x27;s a non-profit founded in 1947 to represent scientists.<p>I would be surprised if a majority of ACM members were to say yes should we ask them (but ACM is not known for such democracy). Along with book authors, we are one of the many people that provide the knowledge and expertise on which large tech firms train their models, and get nothing in return. Actually, life is getting worse for us: extra workload in universities with students&#x27; AI use, a completely broken peer review system, etc. Hence the irony of ACM thinking about licensing, and only licensing, at a time where this is the least of our priorities.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>joshka</em>:</p>
-<blockquote>How do you square away the idea that you do science for the increase in knowledge of human kind, but then say that a particular use of that knowledge is verboten?<p>I get the copyright aspect of this and I&#x27;m not arguing that here. I&#x27;m more asking about the moral &#x2F; ethical idea of choosing who can benefit from your science.<p>Obviously there are the moral &#x2F; ethical arguments about AI in general here to weigh against - those have been hashed out significantly elsewhere, and I&#x27;m not interested in debating them. What I&#x27;m asking about here is the impact on science by sharing it with tooling that distributes it in ways not generally considered when originally written.<p>A quick check of your post history suggests the frame that you work in strongly is privacy related research (observation - may be wrong). I&#x27;m curious how that impacts what you wrote here generally.<p>(Just to be perfectly clear, I&#x27;m not arguing your points here, trying to understand them better)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Cynddl</em>:</p>
-<blockquote>Good question. Unfortunately, academic knowledge is widely ‘verboten’ already. Everything under paywall, researchers having to pay up to $10,000 to publish in open access in some venues, rare books unavailable even to top universities. Access to knowledge and information is increasingly difficult for everyone.<p>That said, what matters here is the social contract, what do I bring to society and what do we get from tech companies. For most people around the world, access to the typical leading models is out of reach. Not many on this planet can pay the subscriptions (or even API keys) that offer access to the best models. So I&#x27;m not buying the argument that tech companies are broadening access. What we&#x27;re creating is a increasingly discriminatory society where the few get access to information, and the many don&#x27;t.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Aurornis</em>:</p>
-<blockquote>&gt; most people around the world, access to the typical leading models is out of reach. Not many on this planet can pay the subscriptions (or even API keys) that offer access to the best models. So I&#x27;m not buying the argument that tech companies are broadening access. What we&#x27;re creating is a increasingly discriminatory society where the few get access to information, and the many don&#x27;t<p>I’m sorry, but I can’t buy this argument. Making information more available does not make it more discriminatory. Nobody is saying it will only be available in the best models and withheld from other models or services like the ChatGPT free plan. Nobody is saying we’re going to make the original content inaccessible through the previous means after the LLMs are trained on it. Nothing about this shrinks access or makes it more discriminatory.<p>I understand that you’re upset about the use of the content, but I think you need to admit that your stance is the one trying to restrain use of the content. Training LLMs on it can only bring knowledge to a wider audience, not restrict it.<p>Whether or not that’s a good or fair idea is a separate discussion, but arguing that this makes access  to the knowledge more discriminatory and locked away is 180 degrees backwards.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>maCDzP</em>:</p>
-<blockquote>If it was a non profit that trained the model - would that change your mind?</blockquote>
-<p>↳ reply 3 — <em>seanmcdirmid</em>:</p>
-<blockquote>I’m pretty sure most people who have papers in the ACM digital library already have “preprints” in other freely accessible locations, especially for papers written in the last two decades. LLMS have been able to search&#x2F;find most of my papers for long time now.<p>The peer review system was broken before AI, so I’m not sure what your point is there.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>fsmv</em>:</p>
-<blockquote>How about we give humans access</blockquote>
-<p><strong>Top #3</strong> — <em>juancn</em>:</p>
-<blockquote>They probably already scraped it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>IAmGraydon</em>:</p>
-<blockquote>Of course they did. There is open access to this library. These guys actually think they&#x27;re offering new training data? It&#x27;s kind of hilariously naive.</blockquote>
-<p>↳ reply 2 — <em>computerdork</em>:</p>
-<blockquote>Haha, agreed:)</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Stop Killing the Internet: No Digital ID and No Age Verification</title>
-      <link>https://citizens-initiative.europa.eu/initiatives/details/2026/000011_en</link>
-      <guid isPermaLink="false">hn3-49084938</guid>
-      <pubDate>Tue, 28 Jul 2026 14:58:15 +0000</pubDate>
-      <description>493 points, 179 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://citizens-initiative.europa.eu/initiatives/details/2026/000011_en"><strong>→ Article</strong></a> <small>(citizens-initiative.europa.eu)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49084938">→ HN comments</a> &nbsp;·&nbsp; 493 points &nbsp;·&nbsp; 179 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>atmosx</em>:</p>
-<blockquote>There is a surprising amount of engineers who don’t understand what’s happening. So they deal with it as if it’s a funny thing… yeah if two police officers come knocking your door with hard data, you will just explain… and yeah, I mean kids, can bypass it… right? Wrong. This is not 1995. They can make very harsh laws and they can make it borderline impossible to bypass should some authority choose to do so.<p>The danger here is control: total and absolute control of who will be able to see what, at any given time. Once upon a time this was a hard problem, not anymore.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>yorwba</em>:</p>
-<blockquote>The last time I had police knocking at my door, it was a lot more than two, and they were readying their battering ram when I opened, and then immediately swarmed me and told me to sit down, and then I just explained and they realized their warrant was for a different address and they left. It was scary in the moment, but I never had a gun pointed at me and I wasn&#x27;t even touched, so overall it left me with a rather positive impression of how search warrants are executed in Germany.<p>By all means, if you have an adversarial relationship with the state, fight every expansion of its power tooth and nail. But conversely, if you think that everything is going basically fine and the police are reasonable folks overall, then giving them more power doesn&#x27;t look like a slippery slope straight to dystopia.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nate_meurer</em>:</p>
-<blockquote>&gt; giving them more power doesn&#x27;t look like a slippery slope straight to dystopia.<p>This only makes sense if you have no concept of &quot;future&quot;, wherein different, less reasonable people can gain power.  This should be especially obvious in Germany, where an adversarial relationship with the state can easily be had by merely criticizing it.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nemomarx</em>:</p>
-<blockquote>what&#x27;s the current solution that&#x27;s impossible for kids to bypass with a borrowed or stolen id, say?<p>I don&#x27;t see any proposals yet that will actually work for what they say they&#x27;ll do.</blockquote>
-<p>↳ reply 3 — <em>b112</em>:</p>
-<blockquote>Here:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49080929">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49080929</a><p>There is discussion about LLMs, models, CSAM, undressing people with AI, and posting those images to places.<p>No handy wavy stuff, makes this problem go away due to filtering at creation.  That&#x27;s because, open models are a thing.  So you either ban all open models, or maybe make it a crime to publish uncensored models, or you <i>punish what individuals do on the internet</i>.<p>Slander and libel and defamation are a thing, and have been a thing forever, millennia.  Suddenly, on the open and free internet, for barely an eyeblink, anyone could say anything with zero liability and responsibility.<p>Then, 2010s came.  Then, doxing of people we didn&#x27;t like, or didn&#x27;t agree with, became OK.  So suddenly, it was OK to &quot;out&quot; a person, but not to just force everyone to be de-anonymoized.  In other words, unpopular opinions?  Yeah, that&#x27;s OK to remove the cloak.<p>And with AI, everyone and their dog will be able to render images of anyone they want naked.  CSAM.  Political lies, made up videos, slander, libel, literal wors in people&#x27;s mouths, on and on.<p>What&#x27;s my point?<p>Well, just as 2000 brought a new world to people, 2025 is doing the same.<p>This is only going to get worse.  And I fully agree, the dangers for &quot;control&quot; are going to exist.  But the dangers of people posting all of this stuff, has hit the point where a lot of people are uncomfortable with it.  And if you think Grok creating CSAM is bad, then you must think anyone creating CSAM is bad.  Or anything.  So how to you prevent the harm?<p>Well really, you either heavily restrict software.  Open LLMs, or?<p>You make people posting this stuff liable.<p>The world is at a fork.  Everything will change.  Because banning software requires immense control over hosting software, but so does deanonymizing the internet.  And really, this is inline with how the political and societal landscape changes.<p>It&#x27;s only been 20 years since a lot of people were on the Internet, and only 10 years since I&#x27;d label it &#x27;mainstream&#x27;.  As in, even grandma uses it.  And so, now the laws are coming, as legislation and law and change takes time for politicians, and political bodies.<p>We&#x27;re here.  Right now.  This is the moment.<p>So I 100% guarantee that absolutely nothing will stop the path to liability for slander, libel, and more that is coming.  Nothing.  Whatever it takes, you can be sure it will happen.<p>So how will it happen?<p>Well, by knowing who to sue.<p>Like it or not, that&#x27;s the truth.  And no, I don&#x27;t like it myself.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>josalhor</em>:</p>
-<blockquote>I want the right to not be identified.
-I also <i>want the right to SELF identify</i>.
-I think the toxic culture of the internet has happened in part because anonymity leads to lack of accountability. I want to self identify and interact with other people who also self identify. The cost of running LLM botnets is going down. I cannot imagine how the next cycle of elections is going to be like on all countries. I understand the right to remain anonymous, that should remain, but that state should not be the default on these massively big platforms. Our brains and political systems are not designed for this.
-And no, &quot;get people to get rid of their smartphone voluntarily&quot; like I see on the comments is not going to happen.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Dig1t</em>:</p>
-<blockquote>&gt;I want to self identify and interact with other people who also self identify.<p>You can do that already, Facebook is pretty close to exactly what you&#x27;re talking about. They do a lot of work to identify real people and de-prioritize spam&#x2F;bots. You can configure your account to only be able to interact with real people if you want. Many people like anonymity though, it&#x27;s important for speaking truth to power and discussing topics which are outside the Overton window.<p>There&#x27;s a good reason that many of the United States&#x27; founding fathers used pseudonyms when writing. Anonymity and real freedom of speech are foundational to democracy. If you can put someone in jail for saying something that the government doesn&#x27;t like, then the government will be able to steer discourse towards outcomes it deems acceptable, even if those outcomes subvert the will of the people.<p>There&#x27;s no real need to have the government force all websites to always authenticate all humans. The only real argument for such a system is to move us toward dystopian authoritarianism.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>urbandw311er</em>:</p>
-<blockquote>The physical world has age checks when kids attempt to enter a premises with dangerous or unsuitable content - eg bars, casinos, strip joints. These seem largely accepted as a good thing. Why do so many seem to feel that the same protections are so outrageous when applied in the virtual world? Honest question, I can see both sides.</blockquote>
-<blockquote>
-<p>↳ reply — <em>krater23</em>:</p>
-<blockquote>We don&#x27;t talk about age verification like in a bar. We talk about age verification like in the internet, where every of your step generates data. So you don&#x27;t verify your age, you verify your identity. 
-It&#x27;s like you step in a bar and someone writes down every word you say, every drink you order and every person or place you look at. And then he places your complete name and address on it and stores it in his closet to pull it out when he needs it.<p>Would you really enter a bar, casino or strip club when it would look like this?<p>We don&#x27;t talk about children, we talk about everyone here.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Una GPS smart watch – Repairable, USB-C charging, developer-friendly</title>
-      <link>https://unawatch.com/</link>
-      <guid isPermaLink="false">hn3-49084813</guid>
-      <pubDate>Tue, 28 Jul 2026 14:48:13 +0000</pubDate>
-      <description>128 points, 85 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://unawatch.com/"><strong>→ Article</strong></a> <small>(unawatch.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49084813">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 85 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>pandemicsyn</em>:</p>
-<blockquote>&gt; &quot;UNA is currently a non-submersible device due to its innovative modular design. So, swimming is not something we offer as an activity, nor do we advise it. UNA is IPX5 rated, which means it is splash &amp; showerproof to a high degree.&quot;<p>If I had a dollar for every time some project that was ipx5 rated failed after getting caught in the rain one too many times...I&#x27;d have enough to buy another Garmin Fenix.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>whynotmaybe</em>:</p>
-<blockquote>Cue to younger me that discovered the difference between water resistant and water proof when I found out that my  &quot;7 melodies electronic watch&quot; didn&#x27;t survive after a few minutes in the swimming pool.<p>Will the UNA hint us with a little bit of fog on the window?</blockquote>
-<p>↳ reply 2 — <em>quickthrowman</em>:</p>
-<blockquote>I would not buy a watch rated less than IP68&#x2F;IPX-8, annd ideally it would be much more water resistant. Apple Ultra watches are rated to 100m of water which is well beyond that.<p>The watch I am wearing right now is a steel automatic that would have an IP69 rating as it’s rated to 150 meters of water depth.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>lrae</em>:</p>
-<blockquote>Some good points were already brought up in the comments (IP5X, USB C charging), but I have the feeling that it&#x27;s also just not a good fitness tracker&#x2F;smartwatch.<p>I see a single unboxing of the watch from three weeks ago on Youtube and zero reviews on YT or websites. Just posts based on their PR release that it&#x27;s available now. (Though some clearly already shipped.)<p>Thus, it&#x27;s unfortunately very likely that the product is also not good at its main purpose, tracking activities, workouts and health. If it would only even come somewhat close to the performance of all the competitor smartwatches&#x2F;trackers, they&#x27;d be louder about that part.</blockquote>
-<p><strong>Top #3</strong> — <em>slibhb</em>:</p>
-<blockquote>&gt; Can I swim with UNA?<p>&gt; UNA is currently a non-submersible device due to its innovative modular design. So, swimming is not something we offer as an activity, nor do we advise it. UNA is IPX5 rated, which means it is splash &amp; showerproof to a high degree.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pockybum522</em>:</p>
-<blockquote>Damn. But hopefully they improve on that. I would absolutely be considering one if this wasn&#x27;t the case</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>parl_match</em>:</p>
-<blockquote>that&#x27;s the thing about these &quot;open&quot; devices, there&#x27;s always one &quot;would absolutely be considering&quot; use case that they never meet. makes it real easy to not buy one ;)</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jhoechtl</em>:</p>
-<blockquote>So it will never last a lifetime.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
