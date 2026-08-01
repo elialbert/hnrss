@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 01 Aug 2026 03:37:05 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 01 Aug 2026 06:36:01 +0000</lastBuildDate>
     <item>
       <title>Tailscale didn't stop the Hugging Face intrusion</title>
       <link>https://tailscale.com/blog/hugging-face-intrusion</link>
@@ -83,6 +83,34 @@ It isn&#x27;t the best approach to language design in theory, but they did try t
 </blockquote>
 <p><strong>Top #3</strong> — <em>valcron1000</em>:</p>
 <blockquote>22 years late, but better late than never.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>June in Servo: real world compat, media queries, SharedWorker, and more</title>
+      <link>https://servo.org/blog/2026/07/31/june-in-servo/</link>
+      <guid isPermaLink="false">hn3-49126765</guid>
+      <pubDate>Fri, 31 Jul 2026 18:17:52 +0000</pubDate>
+      <description>130 points, 41 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://servo.org/blog/2026/07/31/june-in-servo/"><strong>→ Article</strong></a> <small>(servo.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49126765">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 41 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Fervicus</em>:</p>
+<blockquote>Congrats on the new release. Anything that creates more competition in the browser space has my support. I was hyped about Ladybird but their recent adoption of LLMs and going source-available only has put a bit of a dent in it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bobajeff</em>:</p>
+<blockquote>I think you mean that the Ladybird project doesn&#x27;t accept outside contributions anymore but it&#x27;s still open source (just checked it&#x27;s under BSD 2-Clause License). Pretty important distinction I think.</blockquote>
+<p>↳ reply 2 — <em>kingwill101</em>:</p>
+<blockquote>It&#x27;s just a pause until they get to their alpha deadline. Hard to do that when you can&#x27;t quickly validate all the drive by llm contributions</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bobajeff</em>:</p>
+<blockquote>The last few times I&#x27;ve tried to build Servo it&#x27;s failed for me. (It&#x27;s also one the very few rust projects that have ever failed to build for me).</blockquote>
+<blockquote>
+<p>↳ reply — <em>minraws</em>:</p>
+<blockquote>On a Linux system or something else? Iirc a proper build uses spider money which is hell to build&#x2F;embed.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bobajeff</em>:</p>
+<blockquote>Yeah, it&#x27;s a Linux system. I can&#x27;t remember if it was spidermonkey that it failed on or not. Though it sounds like maybe they should consider using another JavaScript engine if it&#x27;s causing problems.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>qm – Multiplayer agent harness for work</title>
@@ -552,6 +580,54 @@ As humans, we prefer simple structures&#x2F;proofs (I suspect that is to a great
 <p>↳ reply 2 — <em>scarmig</em>:</p>
 <blockquote>The beernet conjecture: all conjectures have both messy, ugly proofs, as well as a elegant clean proof lurking behind the scenes.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Progressive Web Components</title>
+      <link>https://arielsalminen.com/2026/progressive-web-components/</link>
+      <guid isPermaLink="false">hn3-49121196</guid>
+      <pubDate>Fri, 31 Jul 2026 10:04:40 +0000</pubDate>
+      <description>134 points, 20 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arielsalminen.com/2026/progressive-web-components/"><strong>→ Article</strong></a> <small>(arielsalminen.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49121196">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 20 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>akst</em>:</p>
+<blockquote>I think it&#x27;s better to think of &quot;Web components&quot; as &quot;Custom Elements&quot; they really aren&#x27;t components in the way you think of components in other frameworks (which on the web introduced them first), and I think most of the dissatisfaction with them comes from trying pretend they&#x27;re an alternative as they just aren&#x27;t. Components in almost every other framework are efficient (efficient rendering runtime) and expressive (the ability not to have a root element but instead a frag, or context APIs etc) in ways that web components never will be, which makes them unappealing.<p>But when you think of them as a suite of APIs to define custom elements, that can coexist with your framework components, this delimma goes away.<p>I do think it&#x27;s a-shame that modern frameworks don&#x27;t better support shadow dom and local styles, and local events. Understandably I also get why they also don&#x27;t see that as a good use of their time either, it adds complexity to the runtimes, they need to observe events at multiple root nodes.<p>Besides the cost of implementation and commitment to additional complexity, assuming that was a nonissue, with the exception of those otherwise legitimate reasons, there&#x27;s no technical limitation that prevents React from supporting shadow roots for arbitrary custom element. I made a proof of concept of this myself seems to work quite nicely with a stylesheet loader hook (which ensured it was loaded once and there was a shared sheet between all instances of the same element), but I had to start observing events in each elements shadow root.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>akst</em>:</p>
+<blockquote>I think also the lack of framework support for things like defining a shadow root probably feeds into this idea it needs to be mutually exclusive.<p>Elements in shadow root elements can be updated more or less the same way as elements in light doms with incremental patches and updates.<p>The main beneficiary of supporting shadow root and local stylesheets would likely be hobbyist projects looking to minimise their build step, as local stylesheets give you much of the benefits of many of the tools that handle localising a stylesheet to a component at build time.<p>Unfortunately, I haven&#x27;t really seen numbers on this but I can&#x27;t help but I feel the way styles are bundled by most modern bundlers (with global styles and minified classNames) will likely outperform a bunch of disparate components with their own individual local stylesheet with its own request (even with http2 or whatever). So again I can see why the framework maintainers may struggle justify spending time and energy on this.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>troupo</em>:</p>
+<blockquote>There&#x27;s also the issue that web components are eager. Once it&#x27;s in the DOM, and upgraded, it will cause an endless cascade of requests for every import inside.<p>I don&#x27;t know if they fixed it, but when reddit rewrote their menu with web components, it required 100+ http requests to render.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>akst</em>:</p>
+<blockquote>I don&#x27;t know I&#x27;ve encountered this same issue, but I&#x27;ve seen cases where the same stylesheet would be fetched multiple times which is quite annoying. I&#x27;ve done something like this to avoid repeat fetches of the same url, because that&#x27;s something I had to handle.<p>Basically in my own render DSL like, I do this:<p><pre><code>    import { customElement, define, shadow } from &#x27;...&#x27;;
+    
+    export const ExampleInput = define((props, ctx) =&gt; {
+      const sheet = ctx.useRemoteStyleSheet(styleSheetUrl);
+      const onInput = ctx.useHandler(...);
+      const onKeyDown = ctx.useHandler(...);
+      &#x2F;&#x2F; ...
+    
+      const field = input
+        .css({ opacity: sheet.loaded ? &#x27;1&#x27; : &#x27;0&#x27; })
+        .on(onInput, onKeyDown)
+        .void({ type: &#x27;text&#x27;, value: text, disabled, className });
+    
+      return customElement(&#x27;akst-input-number&#x27;)
+        .shadow(shadow.css(sheet).c(field))
+        .void({ className: hostClassName });
+    });
+</code></pre>
+There&#x27;s a bit going here, and my terrible method names probably don&#x27;t help, but `ctx.useRemoteStyleSheet` internally checks if the stylesheet has been fetched is the process of being fetched, returns an object which contains the load state allowing the component to handle its unloaded state. But this might avoid that specific issue of 100+ css requests, I still get quite a few just not that many.<p>Before that I had a more manual process where fetches had to go through a style sheet loading &quot;service&quot; (or a light stateful wrapper over one). This was before I effectively made the above react like clone. Now that just happens behind the scene instead of all this nasty wiring through a web component.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>troupo</em>:</p>
+<blockquote>Support for anything web components-related is a death by a thousand cuts both for the browsers and for the framework authors.<p>For the browsers:<p>Shadow dom breaks almost literally everything. It&#x27;s a parallel world that exists on its own and that needs dozens of additional web standards to patch holes introduced by it. And delays dozens of useful web standards that now have to be aware of it.<p>On top of that nothing in web components is ever created thinking even one step ahead, and break multiple pieces of basic functionality. It&#x27;s a collection of barely fitting patches. E.g. at first they couldn&#x27;t send data in forms. Enter FormData. Oops, still cannot be a custom form submit button. Here&#x27;s a 7-year old still unresolved issue: <a href="https:&#x2F;&#x2F;github.com&#x2F;WICG&#x2F;webcomponents&#x2F;issues&#x2F;814" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;WICG&#x2F;webcomponents&#x2F;issues&#x2F;814</a><p>For frameworks:<p>Framework authors have to patch all thise holes on their own. Because unlike web components they actually do care about standards and browser functionality. If styles don&#x27;t work, forms din&#x27;t work, code doesn&#x27;t work etc. because of web components, it&#x27;s the framework that will be blamed.<p>It doesn&#x27;t help that there&#x27;s an insane amount of work involved in figuring out all the ways they are broken. See for example: <a href="https:&#x2F;&#x2F;xcancel.com&#x2F;Rich_Harris&#x2F;status&#x2F;1841467510194843982#m" rel="nofollow">https:&#x2F;&#x2F;xcancel.com&#x2F;Rich_Harris&#x2F;status&#x2F;1841467510194843982#m</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>hyperhello</em>:</p>
+<blockquote>One fun thing I did once is use the custom elements API to make a custom tag &lt;element-template&gt;. When the page sees &lt;element-template tag=what-name&gt;&lt;&#x2F;element-template&gt;, it looks inside, finds any &lt;template&gt;&lt;&#x2F;template&gt; &lt;script&gt;&lt;&#x2F;script&gt; and &lt;style&gt;&lt;&#x2F;style&gt; tags, and builds a new custom element with that tag name and all the powers. Cool but not incredibly simple.<p>Another amazing trick is to put a mutation observer on the page to detect &lt;template&gt; tags as they&#x27;re created. (template tags parse the HTML within but don&#x27;t actually create it on the page). Once the observer finds a template tag it can upgrade them to have new powers, like replacing the contents of other tags. There are ways to tame web components and make them very easy to use.</blockquote>
+<p><strong>Top #3</strong> — <em>thex10</em>:</p>
+<blockquote>This article I came across last month on “Framework-agnostic design systems” happens to use this Elena library and I think explains its use case well: <a href="https:&#x2F;&#x2F;piccalil.li&#x2F;blog&#x2F;framework-agnostic-design-systems-part-1&#x2F;" rel="nofollow">https:&#x2F;&#x2F;piccalil.li&#x2F;blog&#x2F;framework-agnostic-design-systems-p...</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>DeepSeek V4 Flash 0731 Intelligence, Performance and Price Analysis</title>
@@ -1192,6 +1268,48 @@ Very well said…replace the word football with internet&#x2F;technology&#x2F;we
 <blockquote>
 <p>↳ reply — <em>TZubiri</em>:</p>
 <blockquote>To my knowledge there&#x27;s a lot of infrastructure NFP that have not sold their assets: the NICs, IETF, FSF&#x2F;GNU, Debian, WikiMedia (sort of)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Making Postgres queues scale</title>
+      <link>https://www.dbos.dev/blog/making-postgres-queues-scale</link>
+      <guid isPermaLink="false">hn3-49113913</guid>
+      <pubDate>Thu, 30 Jul 2026 18:39:32 +0000</pubDate>
+      <description>125 points, 33 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.dbos.dev/blog/making-postgres-queues-scale"><strong>→ Article</strong></a> <small>(dbos.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49113913">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 33 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>atombender</em>:</p>
+<blockquote>A performance pitfall that isn&#x27;t addressed in the DBOS article at all is the bloat problem: If you update or delete rows that you consume, dead tuples start to accumulate due to Postgres&#x27; way of doing MVCC.<p>This is a serious problem because it affects the planner&#x27;s ability to make good choices. Dead tuples are still indexed and the need to skip them isn&#x27;t accounted for by the query planner, so a table with lots of dead tuples may perform really badly. The autovacuum process will be constantly chasing dead tuples, and you&#x27;ll want to set the autovacuum settings to be very aggressive to be able to keep up.<p>My team has been starting to use PgQue [1] for a new application, and it seems really well-designed. PgQue is explicitly designed to solve the bloat problem, by avoiding tuple deletion. Instead of deleting processed tuples, it will periodically TRUNCATE the entire table. It uses two tables that it &quot;flips&quot; between so TRUNCATE can run on the inactive table while the active on is used for queuing. PgQue also uses a snapshot approach to avoid row-level locks.<p>PgQue also stands out in that its queue model is position-based, so it can implement nice features like collaborative consumers, fan-out, atomic batches, and &quot;recover from last good&quot; behaviour. It makes some compromises (no priority support, slightly higher latency), but they&#x27;re fine for most use cases.<p>Previously discussed on HN here [2].<p>[1] <a href="https:&#x2F;&#x2F;github.com&#x2F;NikolayS&#x2F;pgque" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;NikolayS&#x2F;pgque</a><p>[2] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47817349">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47817349</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>KraftyOne</em>:</p>
+<blockquote>This is something we mention in the third section of the article: dead tuples and autovacuum caused real performance hits, which we (partially) mitigated through index optimization (minimizing the number and size of indexes, and making indexes partial).<p>PgQue is a really interesting system! However, its semantics are quite a bit more similar to Kafka than to a job queue, which is good for some workloads and not for others. For example a truncation-based deletion system is fast but inflexible, and not suitable for a job queue system because a single long-running job (and DBOS supports workflows that run for months) can block truncation.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>danielheath</em>:</p>
+<blockquote>I suspect partitioned tables would be great for this - with a stored procedure to create partitions on-demand, you could split tasks up by date-range and type, and then drop the old tables once their time-range has passed and their jobs all processed.<p>Job workers could query the parent table, no need to modify them.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sgt</em>:</p>
+<blockquote>Not a problem unless your system has busy queue processing 24&#x2F;7 though, which I bet is pretty rare for most companies.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dewey</em>:</p>
+<blockquote>&gt; The conventional wisdom around Postgres-backed queues is that they don&#x27;t scale.<p>That might have been the case 10 years ago. In the past years there have been many Postgres powered queueing systems and even Rails switched to Postgres powered queues by default (SolidQueue) more than 3 years ago.</blockquote>
+<blockquote>
+<p>↳ reply — <em>mjfisher</em>:</p>
+<blockquote>I see a lot of back and forth about postgres&#x27; suitability as a queuing system. I wonder if there&#x27;s a couple of separable problems here. Postgres backed queues - even very scalable ones - might work well for background jobs in a monolithic app backed by a single DB. Things like backgrounding sending an email etc.<p>But usually when I reach for a queuing system, it&#x27;s because I want to decouple a part of the architecture. And in that case, it&#x27;s probably better to use a dedicated queueing system instead of postgres.<p>I wonder if the two cases are conflated in a lot of online discussion.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dewey</em>:</p>
+<blockquote>We are very heavily using Postgres as a queuing system in production for many years already, not just some quiet background tasks but with millions of tasks in the queue at any given moment. I have yet so see any issues with that so I&#x27;m always a bit suspicious when people say they had to reach for something else unless you are at a crazy scale.<p>I know it&#x27;s very hard to compare workloads, but famous recent example: <a href="https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;scaling-postgresql&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;scaling-postgresql&#x2F;</a><p>&gt; It may sound surprising that a single-primary architecture can meet the demands of OpenAI’s scale; however, making this work in practice isn’t simple.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>tomnipotent</em>:</p>
+<blockquote>That post is about how Postgres doesn&#x27;t scale for write-heavy workloads and that they had to move those workloads to Cosmos DB. For the rest of the remaining mostly-read workload they have a single primary with 50 read replicas.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sorentwo</em>:</p>
+<blockquote>They certainly do, and I don&#x27;t think it&#x27;s a controversial take at this point.<p>Shameless link to an older article about throughput with Oban (<a href="https:&#x2F;&#x2F;oban.pro&#x2F;articles&#x2F;one-million-jobs-a-minute-with-oban" rel="nofollow">https:&#x2F;&#x2F;oban.pro&#x2F;articles&#x2F;one-million-jobs-a-minute-with-oba...</a>), and in follow-up research we&#x27;ve sustained 12k&#x2F;s with a p99 under ~100ms.</blockquote>
+<blockquote>
+<p>↳ reply — <em>sebmellen</em>:</p>
+<blockquote>Very interesting, I’d never heard of Oban before, and that’s after a fair amount of research into background job queueing systems. Thanks for posting!</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3658,106 +3776,6 @@ in my src&#x2F; folder. Done.</blockquote>
 <blockquote>When can uv install gdal?</blockquote>
 <p><strong>Top #3</strong> — <em>yablak</em>:</p>
 <blockquote>thoughts on worm safety w.r.t. `exclude-newer`, and the right way to handle unpinned git repo deps?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Donate to GrapheneOS</title>
-      <link>https://grapheneos.org/donate</link>
-      <guid isPermaLink="false">hn3-49088451</guid>
-      <pubDate>Tue, 28 Jul 2026 19:06:10 +0000</pubDate>
-      <description>235 points, 77 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://grapheneos.org/donate"><strong>→ Article</strong></a> <small>(grapheneos.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49088451">→ HN comments</a> &nbsp;·&nbsp; 235 points &nbsp;·&nbsp; 77 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>thrownawaysz</em>:</p>
-<blockquote>I always found it funny that the first step of leaving the Google smartphone ecosystem is to buy a Google phone</blockquote>
-<blockquote>
-<p>↳ reply — <em>dreamcompiler</em>:</p>
-<blockquote>Same here. This situation is so mind-bogglingly ridiculous that I don&#x27;t know how anybody takes GrapheneOS seriously. I mean, let&#x27;s say I wanted to buy a big airplane but I don&#x27;t like Boeing. Airbus looks pretty good and they invite me to their factory to pick out a plane. But then they <i>insist</i> I fly to their factory on a Boeing plane. I&#x27;d assume they were joking, and then they say &quot;Really, we&#x27;re serious.&quot;<p>No Airbus for me I guess.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>em3rgent0rdr</em>:</p>
-<blockquote>The goal is that you want a privacy-focused phone. Whether Google makes money or not doesn&#x27;t matter to the goal. Has nothing to do with you liking or not liking Google...Google is a &quot;don&#x27;t care&quot;.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>LelouBil</em>:</p>
-<blockquote>Just waiting for the Motorolas that will have first party graphene os support.<p>That&#x27;s the only thing that will make me change my phone from 2019 still on life support thanks to custom roms</blockquote>
-<p><strong>Top #3</strong> — <em>canada_dry</em>:</p>
-<blockquote>Here&#x27;s hoping Pixel releases a flip phone 11 and Graphene support follows.<p>The Motorola razr has crease issues that they seem to want to ignore and Samsung has locked down their phones so root is impractical.</blockquote>
-<blockquote>
-<p>↳ reply — <em>notRobot</em>:</p>
-<blockquote>&gt; Motorola razr has crease issues that they seem to want to ignore<p>Details please?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>canada_dry</em>:</p>
-<blockquote>The razr forum on reddit has some examples.<p>It doesn&#x27;t seem extremely common, but the reports are for phones that are relatively new - not even two years of use.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Deflock Casa Grande</title>
-      <link>https://deflockcg.com/</link>
-      <guid isPermaLink="false">hn3-49088148</guid>
-      <pubDate>Tue, 28 Jul 2026 18:41:48 +0000</pubDate>
-      <description>252 points, 102 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://deflockcg.com/"><strong>→ Article</strong></a> <small>(deflockcg.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49088148">→ HN comments</a> &nbsp;·&nbsp; 252 points &nbsp;·&nbsp; 102 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mooreds</em>:</p>
-<blockquote>I learned about this site from the 404 media article: <a href="https:&#x2F;&#x2F;www.404media.co&#x2F;casa-grande-arizona-flock-city-council&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.404media.co&#x2F;casa-grande-arizona-flock-city-counc...</a><p>An excerpt:<p>&gt; “I&#x27;ve spent the last several months talking to people all over Casa Grande, and one thing keeps coming up: Safety. So, today I&#x27;m excited to announce a new company called Shepherd Safety,” he said. “Our mission is simple. Keep government officials and their families safe.” It would be no different than how the city monitors its citizens using Flock cameras, he said; he planned to launch satellites that would use AI to monitor “where government officials go, where they stop, who they meet with, and when they return home.”<p>It was satire, but drove the point home well.</blockquote>
-<blockquote>
-<p>↳ reply — <em>computably</em>:</p>
-<blockquote>Why, what a fantastic idea! Maybe a certain trillionaire would be interested...</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>joshcsimmons</em>:</p>
-<blockquote>I am right up the road from Casa Grande. I run a youtube channel with 30k subs and have recently gotten VERY INTERESTED in investigating Flock&#x2F;Deflock. I had no idea the cameras were everywhere.<p>I&#x27;ll reach out anywhere on the site but feel free to get in touch here as well. I want to interview the creator and broadcast the situation in Casa Grande.<p>edit: emailed the address on the site. Anyone else on the east valley working on similar efforts should give me a nudge in the comments.</blockquote>
-<p><strong>Top #3</strong> — <em>bronlund</em>:</p>
-<blockquote>This is like sending a letter to Satan asking him to please stop being a nuisance.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ryandrake</em>:</p>
-<blockquote>Yea, I am thoroughly unconvinced that protesting and asking nicely is really a way to implement political change. The people implementing these things and making these deals are sitting on their yachts and mansion balconies, sipping their martinis, and looking down at us little people with raised eyebrows, not caring in the slightest what we say. They are going to keep doing what they are doing, they&#x27;re going to keep getting elected, they&#x27;re going to keep getting appointed to their corporate boards, and they look at the protesters as just loud annoyances--if they even look at them at all.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>goda90</em>:</p>
-<blockquote>My suburb got rid of Flock after enough people complained at a city council meeting. I think more places in our county are following or attempting to follow in our footsteps.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>MCP 2026-07-28 Specification: transport going stateless</title>
-      <link>https://blog.modelcontextprotocol.io/posts/2026-07-28/</link>
-      <guid isPermaLink="false">hn3-49088058</guid>
-      <pubDate>Tue, 28 Jul 2026 18:35:11 +0000</pubDate>
-      <description>125 points, 40 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/"><strong>→ Article</strong></a> <small>(blog.modelcontextprotocol.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49088058">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 40 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>punkpeye</em>:</p>
-<blockquote>Finally.<p>I am running an MCP server gateway&#x2F;registry (some of you may know Glama).<p>I cannot tell you what portion of our issues&#x2F;bugs were due to the need to persist server state.<p>This change will allow us to offer a lot easier way for people to use Open-Source MCP servers.</blockquote>
-<blockquote>
-<p>↳ reply — <em>punkpeye</em>:</p>
-<blockquote>Just ran some quick numbers. In our index of 62,726 Open-Source servers, ~18,000 have been pushed to in the last 30 days.<p><pre><code>  ┌─────────────────────────────┬────────┬───────────┐
-  │ Pushed in last 7 days       │ 6,101  │ 9.9%      │
-  ├─────────────────────────────┼────────┼───────────┤
-  │ Pushed in last 30 days      │ 18,707 │ 30.2%     │
-  ├─────────────────────────────┼────────┼───────────┤
-  │ Pushed in last 90 days      │ 30,393 │ 49.1%     │
-  ├─────────────────────────────┼────────┼───────────┤
-  │ Pushed in last 365 days     │ 54,327 │ 87.8%     │
-  └─────────────────────────────┴────────┴───────────┘
-</code></pre>
-So about ~30% are actively maintained. That&#x27;s a pretty big portion of the community.<p>However, the new protocol is wire-incompatible in both directions. This means that many of the servers&#x2F;clients will need to be refactored (not enough to just update the SDK). It will take time and it will be messy (despite SSE deprecation, there are still many servers and clients that are SSE-only). Honestly, a legitimate opportunity for MCP gateways (ours included) to become more valuable by becoming an interoperability layer between protocol incompatible servers&#x2F;clients.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dend</em>:</p>
-<blockquote>Hey folks - one of the Lead Maintainers for MCP. Happy that we got this release out the door today, this is an exciting change for those that wanted to roll out remove MCP servers into serverless hosts. There is, of course, more good stuff packed, so if you have questions or feedback - our team is here to help!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jakobgm</em>:</p>
-<blockquote>Congrats at shipping the new specification!<p>Any new to share on file upload support? We have shipped a MCP server and it has been really frustrating to observe MCP clients fumbling around with base64-encodings, polluting their context window with binary data. SEP-1306 (Binary Mode Elicitation) was superseded by SEP-2356 (File input support for tools and elicitation), and that was in turn superseded by SEP-2631 (File Objects and Transfer) which is currently left in a draft state with little activity.<p>Allowing LLM-based agents to shuffle binary data around efficiently and reliably seems like a pretty big gap in the current specification, if you ask me!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>colinator</em>:</p>
-<blockquote>I concur. Most of my MCP pain is dealing with client&#x27;s differing ability to handle images. Some clients (old codex) would even truncate the base64 data regardless of how it was json-wrapped. And sometimes they just ingest the base64 date directly into their context window. Not sure if this is an MCP thing or a clients-poorly-implementing-MCP thing.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>flashgordon</em>:</p>
-<blockquote>Congrats mate - Great to see this and loved working with you all on a very very very tiny part of this!   Looking forward to a lot more awesome releases and features!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>btbuilder</em>:</p>
-<blockquote>Excellent improvement. The server-side complexity required to handle sessions has been a large burden both on infrastructure and on educating teams on its characteristics.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
