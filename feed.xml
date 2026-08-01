@@ -4,7 +4,50 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 01 Aug 2026 19:21:59 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 01 Aug 2026 21:01:56 +0000</lastBuildDate>
+    <item>
+      <title>RipGrep musl binaries occasionally segfault during very-large searches</title>
+      <link>https://github.com/BurntSushi/ripgrep/issues/3494</link>
+      <guid isPermaLink="false">hn3-49133889</guid>
+      <pubDate>Sat, 01 Aug 2026 12:34:25 +0000</pubDate>
+      <description>224 points, 151 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/BurntSushi/ripgrep/issues/3494"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49133889">→ HN comments</a> &nbsp;·&nbsp; 224 points &nbsp;·&nbsp; 151 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ndesaulniers</em>:</p>
+<blockquote>Heh, from the kernel patch: <a href="https:&#x2F;&#x2F;lore.kernel.org&#x2F;all&#x2F;CALCETrXbj__SFQMzPZhES5y6-sh4np-ZHY5T_=4QY5+Fn8BM4A@mail.gmail.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;lore.kernel.org&#x2F;all&#x2F;CALCETrXbj__SFQMzPZhES5y6-sh4np-...</a><p>&gt; I saw a fun bug report in ripgrep and a studious but pretty bad
+AI-generated analysis<p>Referring to <a href="https:&#x2F;&#x2F;github.com&#x2F;dfoxfranke&#x2F;ripgrep-3494-analysis" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dfoxfranke&#x2F;ripgrep-3494-analysis</a> which I indeed thought &quot;that&#x27;s an awful lot written to have been written by a human.&quot;<p>Looks like that thread is from...today!</blockquote>
+<blockquote>
+<p>↳ reply — <em>vaughands</em>:</p>
+<blockquote>Thanks for the fun read.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Orphis</em>:</p>
+<blockquote>I get why people don&#x27;t bother replacing the default allocator from musl all the time (it&#x27;s there, convenient). But in an application whose purpose is to be FAST, I find it weird they haven&#x27;t bothered replacing it with another more performant one.<p>mallocng is bad at dealing with contention during multithreading. I&#x27;ve had applications that usually were I&#x2F;O bound suddenly become &quot;malloc&quot; bound when building with musl in multithreaded scenarios (and only just 8 threads). Switching to mimalloc improved performance by 20x, very close to what glibc offers by default, and just a bit under a glibc + mimalloc configuration.<p>I get that there&#x27;s a real issue there and it&#x27;s interesting (to some) to address it, but it should have never surfaced this way in the first place.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>masklinn</em>:</p>
+<blockquote>&gt; I get why people don&#x27;t bother replacing the default allocator from musl all the time (it&#x27;s there, convenient).<p>ripgrep actually sets jemalloc as global allocator when built for 64b musl: <a href="https:&#x2F;&#x2F;github.com&#x2F;BurntSushi&#x2F;ripgrep&#x2F;blob&#x2F;435f59fc4b43af3ab32f34d53fa34978f393fe52&#x2F;crates&#x2F;core&#x2F;main.rs#L20-L41" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;BurntSushi&#x2F;ripgrep&#x2F;blob&#x2F;435f59fc4b43af3ab...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Orphis</em>:</p>
+<blockquote>That&#x27;s good! But I wonder why it wasn&#x27;t then enabled for that configuration or why the override wasn&#x27;t &quot;global&quot; enough and the default allocator was still partly used.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>tialaramex</em>:</p>
+<blockquote>Rust doesn&#x27;t get to override musl internals. Ripgrep uses opendir, a POSIX library feature implemented in musl to look at er, directories. The stack trace suggests we blew up when Rust&#x27;s std::sys::fs::unix::readdir internal detail called opendir, and it in turn allocated.<p>On Linux it would be possible for ripgrep to talk directly to the kernel via documented system calls without libc, but that wouldn&#x27;t work on any other popular OS.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>lrvick</em>:</p>
+<blockquote>We use musl+mimalloc by default for our entire production operating systems: <a href="https:&#x2F;&#x2F;stagex.tools" rel="nofollow">https:&#x2F;&#x2F;stagex.tools</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>dosman33</em>:</p>
+<blockquote>Anyone running ripgrep on a an HPC cluster against a large cluster filesystem needs to stop and redesign their workflow. This generates high amounts of small I&#x2F;O which is the Achilles heel of any large cluster filesystem. You are exporting your workload onto the metadata mechanisms of the filesystem rather keeping it within the higher bandwidth capable memory subsystem on your cluster. It doesn&#x27;t take but a couple users running these types of jobs simultaneously to bring a high-bandwidth filesystem to its knees. Just stop it already.</blockquote>
+<blockquote>
+<p>↳ reply — <em>btown</em>:</p>
+<blockquote>Similarly, I&#x27;ve often wondered if this is the root cause of why GitHub has become fragile of late. All of a sudden you have operations on billions of tiny files that are amplified by AI usage. And object graphs are so fragmented by nature that it&#x27;s hard to e.g. prefetch a page into memory and ensure that common git operations mainly touch that page&#x27;s set of objects.<p>And if <a href="https:&#x2F;&#x2F;isolveproblems.substack.com&#x2F;p&#x2F;how-microsoft-vaporized-a-trillion" rel="nofollow">https:&#x2F;&#x2F;isolveproblems.substack.com&#x2F;p&#x2F;how-microsoft-vaporize...</a> is to be believed even in the slightest, any unoptimized paths in Azure&#x27;s filesystem abstractions could cause usage spikes to have massive splash radius.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gsu2</em>:</p>
+<blockquote>&gt;  All of a sudden you have operations on billions of tiny files that are amplified by AI usage. And object graphs are so fragmented by nature that it&#x27;s hard to e.g. prefetch a page into memory and ensure that common git operations mainly touch that page&#x27;s set of objects.<p>In theory, that&#x27;s what git&#x27;s packfiles are for: loose objects get packed together into a file, and if the file is well-arranged then objects that tend to get read together will also end up getting paged-in together (see also: <a href="https:&#x2F;&#x2F;www.kernel.org&#x2F;pub&#x2F;software&#x2F;scm&#x2F;git&#x2F;docs&#x2F;technical&#x2F;pack-heuristics.html" rel="nofollow">https:&#x2F;&#x2F;www.kernel.org&#x2F;pub&#x2F;software&#x2F;scm&#x2F;git&#x2F;docs&#x2F;technical&#x2F;p...</a>).<p>GitHub in particular has spent a lot of time and effort on packing things well (e.g. <a href="https:&#x2F;&#x2F;github.blog&#x2F;open-source&#x2F;git&#x2F;scaling-monorepo-maintenance&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.blog&#x2F;open-source&#x2F;git&#x2F;scaling-monorepo-mainten...</a>), so I doubt that the &quot;billions of tiny files&quot; problem is at the root of their recent instability.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>RamenHaus</title>
       <link>https://ramen.haus/</link>
@@ -3607,47 +3650,6 @@ Congratulations for this great piece of software.</blockquote>
 <blockquote>I use BookFusion. A plugin for Calibre (which is still my central library) lets me upload chosen books to the BookFusion server, after which I download to KOReader. Using the BookFusion plugin for KOReader I can sync reading progress and annotations to back to the cloud, and read on iOS or other devices using KOReader.</blockquote>
 <p>↳ reply 2 — <em>idoubtit</em>:</p>
 <blockquote>&gt; - I literally endure calibre because that&#x27;s how I feed koreader. Any alternatives?<p>I use USB mass storage.<p>In details, I configured KOReader not to start mass storage automatically, so I need two taps after connecting the USB. Then on my Linux PC, I mount the device, exec a `rsync` command, then umount.<p>My ebooks directory uses Git (with LFS) so I can update it from several computers. I considered switching to git-annex, instead of gitlfs+rsync, but I&#x27;m not motivated enough to change a system that works.<p>&gt; - Is there really no practical way to mark a book as read other than give it a star rating or a custom tag?<p>There are 3 states : reading, on hold, finished. The rating is optional. A long press on a book title will give access to this states and more.<p>All that metadata is stored in lua data files (a bit similar to JSON). With mass storage, it&#x27;s easy to read or update these files. I use &quot;on hold&quot; to mean &quot;dropped&quot; (and I hide them in the listings).</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Amiga Graphics Archive</title>
-      <link>https://amiga.lychesis.net/index.html</link>
-      <guid isPermaLink="false">hn3-49095511</guid>
-      <pubDate>Wed, 29 Jul 2026 10:19:44 +0000</pubDate>
-      <description>144 points, 24 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://amiga.lychesis.net/index.html"><strong>→ Article</strong></a> <small>(amiga.lychesis.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49095511">→ HN comments</a> &nbsp;·&nbsp; 144 points &nbsp;·&nbsp; 24 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>rob74</em>:</p>
-<blockquote>I have especially fond memories associated with this logo (which is a work of art all of its own IMHO): <a href="https:&#x2F;&#x2F;amiga.lychesis.net&#x2F;assets&#x2F;Logos&#x2F;Psygnosis_1990_b.png" rel="nofollow">https:&#x2F;&#x2F;amiga.lychesis.net&#x2F;assets&#x2F;Logos&#x2F;Psygnosis_1990_b.png</a><p>And this one <a href="https:&#x2F;&#x2F;amiga.lychesis.net&#x2F;assets&#x2F;Logos&#x2F;SiliconSynapse.png" rel="nofollow">https:&#x2F;&#x2F;amiga.lychesis.net&#x2F;assets&#x2F;Logos&#x2F;SiliconSynapse.png</a>, besides being a very cool name, will forever be associated in my mind with The Lost Vikings (although I played that one on a PC, not the Amiga).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>irchans</em>:</p>
-<blockquote>I remember seeing the Amiga bouncing ball demo and being amazed.<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=-ga41edXw3A" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=-ga41edXw3A</a><p>The Amiga was the second computer that I ever owned.  The first was a C64 that I bought freshman year.  (My father bought a TRS-80 before that.)</blockquote>
-<p>↳ reply 2 — <em>ConceptJunkie</em>:</p>
-<blockquote>Roger Dean did some great artwork for computer games, etc., in the 1980s.  I still have the poster of the cover of the game Barbarian that came with the game.  Dean later recycled that painting for the cover of Steve Howe&#x27;s excellent &quot;Not Necessarily Acoustic&quot; album, and Dean is _still_ producing lovely and amazing artwork for Yes all these years later.</blockquote>
-<p>↳ reply 3 — <em>bzzzt</em>:</p>
-<blockquote>Agree about the Silicon and Synapse name, they never should have changed it into Blizzard ;)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Yokohiii</em>:</p>
-<blockquote>Defender of the Crown gives me so much flashbacks. The artwork is still great!<p><a href="https:&#x2F;&#x2F;amiga.lychesis.net&#x2F;games&#x2F;DefenderOfTheCrown.html" rel="nofollow">https:&#x2F;&#x2F;amiga.lychesis.net&#x2F;games&#x2F;DefenderOfTheCrown.html</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>amatecha</em>:</p>
-<blockquote>Oh dang, I never played that game but that looks amazing.  Especially for .. 1986?!  Wow.  I never had an Amiga growing up so I missed out on all those classics, and even trying to catch up later I keep discovering more awesome gems like this.</blockquote>
-<p>↳ reply 2 — <em>shevy-java</em>:</p>
-<blockquote>That was a really great game at that moment in time.<p>I played it quite a bit.<p>Modern games are very different to that. I don&#x27;t have
-any close attachment to those &quot;who got the better 3D
-engine&quot;. They seem to lack cleverness; it&#x27;s all a
-unified, singular game experience following a very
-simple recipe that has been dumbed down. Clones.<p>Sometimes there are exceptions to that formula; I
-liked little nightmares, even though it was also very
-dumbed down, but it was a bit different still to the
-usual 3D engine colour-flash-splashy effects.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ConceptJunkie</em>:</p>
-<blockquote>Seeing the juggler, and lots of other gee-whiz stuff in 1986 inspired me to buy an Amiga 500 as my first computer in 1988.  I got a lot of mileage out of that system, with its whopping 1.5MB of RAM, and two floppy drives (after shelling out another ~$150 for the 1MB upgrade and however much for an external floppy).</blockquote>
-<blockquote>
-<p>↳ reply — <em>ConceptJunkie</em>:</p>
-<blockquote>I also have really fond memories of Cinemaware&#x27;s Three Stooges game.  That&#x27;s one I&#x27;d love to play again.  It even had some digitized voices, sound effects and photos of the Stooges.  It consisted of several mini-games you had to play in order to make enough money in 30 days to save the orphanage.<p>One had you wheeling a patient through a hospital, avoiding obstacles, and included a clip of &quot;Calling Dr. Howard, Dr. Fine, Dr. Howard&quot;.  Another had Curly trying to eat oyster soup.  Another had one of the stooges dashing through town to get a violin for Larry to play.  And the best one was the pie fight stage.  There might have been one or two more, but it was a really cool game with excellent graphics for the time.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
