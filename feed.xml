@@ -4,7 +4,66 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 01 Aug 2026 22:59:48 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2026 00:02:53 +0000</lastBuildDate>
+    <item>
+      <title>Cursor removed cost information from the usage page and CSV export</title>
+      <link>https://forum.cursor.com/t/usage-page-to-token-amount-what/167153</link>
+      <guid isPermaLink="false">hn3-49135257</guid>
+      <pubDate>Sat, 01 Aug 2026 15:25:21 +0000</pubDate>
+      <description>293 points, 127 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://forum.cursor.com/t/usage-page-to-token-amount-what/167153"><strong>→ Article</strong></a> <small>(forum.cursor.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49135257">→ HN comments</a> &nbsp;·&nbsp; 293 points &nbsp;·&nbsp; 127 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tosh</em>:</p>
+<blockquote>I can only recommend to regularly measure how many tokens a harness+model combination uses for a certain task<p>There are huge token efficiency&#x2F;bloat differences between agents while working on the same tasks, using the same model, in the same environment<p>Yesterday I ran 10 agentic tasks using GPT 5.6 Sol in an ubuntu 26.04 vm a couple of times with different harnesses and got vastly different token usage.<p><pre><code>  +-------------+-----------+-----------+-----------+-----------+--------+
+  | Harness     | API total | Input     | Cached    | Uncached  | Output |
+  +-------------+-----------+-----------+-----------+-----------+--------+
+  | smol        |   172,807 |   142,334 |     8,704 |   133,630 | 30,473 |
+  | Pi          |   427,211 |   392,767 |   137,216 |   255,551 | 34,444 |
+  | OpenCode    | 1,564,429 | 1,523,957 | 1,204,736 |   319,221 | 40,472 |
+  | Codex       | 3,005,744 | 2,953,154 | 2,649,344 |   303,810 | 52,590 |
+  | Hermes      | 3,856,611 | 3,808,231 | 3,167,232 |   640,999 | 48,380 |
+  | Claude Code | 5,073,137 | 5,029,969 | 4,587,008 |   442,961 | 43,168 |
+  +-------------+-----------+-----------+-----------+-----------+--------+
+</code></pre>
+<a href="https:&#x2F;&#x2F;x.com&#x2F;__tosh&#x2F;status&#x2F;2083593799872237680" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;__tosh&#x2F;status&#x2F;2083593799872237680</a><p>I&#x27;m not surprised that Claude Code is not optimized for an OpenAI model but I was still quite shocked re how much of a difference the harness makes.<p>Disclaimer: I&#x27;m working on &#x27;smol&#x27; which is a minimalist harness but it&#x27;s really nothing special, just a minimal system prompt, no skills files, only tool is shell<p>Do not underestimate how much popular harnesses are spamming the context window. The context window is very important.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bonestamp2</em>:</p>
+<blockquote>&gt; Do not underestimate how much popular harnesses are spamming the context window. The context window is very important.<p>Do we have any insight into whether it is actually spam and not useful info such as project or programming language specific context?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tosh</em>:</p>
+<blockquote>in my book anything that is (I&#x27;m sure well intentioned) and injected to help the agent — but doesn&#x27;t help it — is a waste of tokens<p>but even injected context that when I read it sounds useful can oversteer the model and make it second guess or take a more complicated route than it normally would<p>(you can see this when looking at traces with and without that injected context)<p>often harnesses also mention in their system prompt locations of markdown files that the model can consult if the model thinks they might help<p>that hint alone as part of the system prompt can be strong enough to make the model read in more tokens than would have been necessary<p>&#x27;spam&#x27; is maybe a harsh way to say it<p>unfortunately I don&#x27;t see an easy way other than to invest time and tokens into finding out which parts of the added context (in system prompt, injected in turns etc etc) are actually helpful or harmful and when<p>I&#x27;m just doing the easiest thing I could think of: start from nothing or close to nothing<p>that seems to work better than what most harnesses are doing<p>turns out GPT 5.6 Sol is all you need</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>trollbridge</em>:</p>
+<blockquote>To be fair, 5.6 Sol is pretty much doing a ton of reasoning you can&#x27;t see (and which you don&#x27;t think about the cost of if you&#x27;re using it via an OpenAI Pro subscription)</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>yojo</em>:</p>
+<blockquote>Claude Code injects a ton of tools into the system prompt, including their “memory system” that’s like 10k+ tokens. Depending on your task shape, this can easily double your task cost (e.g. a low context-using job that takes many turns, like a monitoring loop).<p>You should use --disallowed-tools to prune any tools not needed for the task. Note that this is also a perpetual game of  whack-a-mole since they’re always adding new tools.</blockquote>
+<p>↳ reply 3 — <em>bermudi</em>:</p>
+<blockquote>If you&#x27;re working on smol? How complex is your work? The agent has to do everything using sed? Did you write your own tools? I guess my question is, why aren&#x27;t you using pi?<p>The difference in tokens between the two also makes super curious. The system prompt can&#x27;t be that different (I&#x27;d even bet Pi&#x27;s shorter) and the 4 tools shouldn&#x27;t make as much of a difference. I&#x27;m gonna have to try it.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>aroman</em>:</p>
+<blockquote>I was an early and passionate adopter and paying customer of Cursor (since 2023!), but it’s probably been 6 months since I opened it.<p>These days I “write” code with claude code and codex, and read&#x2F;review it on GitHub. If I need to read it locally, I use a plain text editor.<p>Can someone help me understand what value cursor offers in 2026?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>joinjune</em>:</p>
+<blockquote>It removes money from your pocket into theirs faster than Claude will take money out of your pocket and into theirs. I was a Windsurf then Cursor user and even provided product feedback to the Cursor team on various aspects of their product but the costs for using it killed the value.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ronsor</em>:</p>
+<blockquote>&gt; faster than Claude will take money out of your pocket and into theirs<p>Damn, and I thought Anthropic was fast.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>redox99</em>:</p>
+<blockquote>Cursor has two benefits<p>1) It&#x27;s still an IDE. Because of pricing I mostly use Codex, but I always have a VSCode&#x2F;Cursor IDE open, thus have to juggle between the two. Working directly in the IDE is more comfortable. For full on vibecoding that might be worse, but when you want to do a deep review of the changes, an IDE is way better than reading a diff on github.<p>2) It supports every model. It&#x27;s often very helpful to try different models when you don&#x27;t like the result of the first.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>jonjohnsen</em>:</p>
+<blockquote>(I work at Cursor)<p>You can still see what you’re billed on the Spending page. We did accidentally break dollar costs in the Usage CSV export yesterday while cleaning up an old feature flag. That was not intentional and the CSV export is fixed now.<p>That feature flag also showed a dollar usage graph to some self-serve users. The confusing part was included plan usage shown as $, which is not what you’re billed (on-demand usage is). Some people read it as actual spend, so we decided to remove that graph.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>seabass</em>:</p>
+<blockquote>The circular cost indicator near the context usage indicator was also removed. It is so much easier to accidentally leave an expensive model enabled now and not realize it until you have blown through the included credits. And it is hard to imagine that that wasn’t the point of the change.</blockquote>
+<p>↳ reply 2 — <em>EugeneOZ</em>:</p>
+<blockquote>&gt; You can still see what you’re billed on the Spending page.<p>No, you can not: <a href="https:&#x2F;&#x2F;www.pasteboard.co&#x2F;dNXUdT-h8Giy.png" rel="nofollow">https:&#x2F;&#x2F;www.pasteboard.co&#x2F;dNXUdT-h8Giy.png</a><p>If you want to say that &quot;admin can&quot; - it doesn&#x27;t matter, I&#x27;m not going to ping admin every day to check how it goes. I&#x27;m not going to ask admin about every session to check how cost efficient a model was.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>A Surveillance Treaty in Disguise: Canada Signs UN Cybercrime Convention</title>
       <link>https://www.michaelgeist.ca/2026/07/a-surveillance-treaty-in-disguise-the-trouble-with-canadas-quiet-decision-to-sign-the-un-cybercrime-convention/</link>
@@ -3603,40 +3662,6 @@ The 2.4x prefill improvement will only work on the apple10 GPU family. The M1 us
 <blockquote>I&#x27;ve got a few of these.<p>There&#x27;s one in particular that I use quite often and have for about a year, vibed for myself: it&#x27;s a chat interface that walks you through processing an emotional or difficult moment, following a process &#x2F; workflow. Supports Martin Seligman&#x27;s ABCDE and Byron Katie&#x27;s &quot;The Work&quot;. Two techniques that I found most useful to improve my thinking and responses to difficult situations. You converse with it, and it leads you through the stages of the selected flow. More than a system prompt - it tracks and progresses through the workflow at the right times, and you download a consistent pdf of key details from the &quot;session&quot; at the end for your records.<p>The thing is, I can&#x27;t sell it. I don&#x27;t even think I can open source it. It&#x27;s mental health (minefield of legal and ethical issues), and would probably breach copyright, trademark etc law.<p>Yet it&#x27;s very useful to me. I guess it&#x27;s the equivalent of making a system to do these things at home, like prompt cards or key points taken from the books, with a well formatted note taking structure. Except it&#x27;s way easier because you just chat like you&#x27;re talking to someone.<p>I would never have spent time building this. But now it&#x27;s so cheap and easy to do.</blockquote>
 <p><strong>Top #3</strong> — <em>ragebol</em>:</p>
 <blockquote>Since the advent of these coding assistants, I gathered a list of software tool ideas I usually discarded due to lack of time. No more! Main one on that list: grocery assistant, with a barcode scanner for empty packaging to order new stuff, inventory management, coupling to recipes and most importantly: automatic ordering for delivery.<p>There&#x27;s existing stuff for this but making a personal extension to this should be very well possible too.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>French musician Kavinsky found dead</title>
-      <link>https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home</link>
-      <guid isPermaLink="false">hn3-49096290</guid>
-      <pubDate>Wed, 29 Jul 2026 11:54:37 +0000</pubDate>
-      <description>305 points, 71 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home"><strong>→ Article</strong></a> <small>(euronews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49096290">→ HN comments</a> &nbsp;·&nbsp; 305 points &nbsp;·&nbsp; 71 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>nicolas_</em>:</p>
-<blockquote>I ran a fairly popular electronic music blog [1] in France between 2009 and 2014 and met him multiple times. I’m really sad he’s no longer with us. He was an icon of this bloghouse era with the Ed Banger crew. Rest in peace Vinco, you’ll be missed.<p>I can’t say I’m surprised though as most DJs during that era were known to abuse all kinds of substances and had to manage a non existent sleep schedule, long flights all around the world, and jet lag. It takes a toll on your body.<p>The entire industry is sharing stories about him today and The Toxic Avenger (Simon) shared a funny one about a set in Zurich <a href="https:&#x2F;&#x2F;x.com&#x2F;toxavanger&#x2F;status&#x2F;2082434657300177372" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;toxavanger&#x2F;status&#x2F;2082434657300177372</a><p>[1] <a href="https:&#x2F;&#x2F;www.stopthenoise.fr&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.stopthenoise.fr&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jordanscales</em>:</p>
-<blockquote>Definitely linked to you many times (I ran a blog called ilictronix in high school). Small world! Great posts over the years.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nicolas_</em>:</p>
-<blockquote>Thank you! Small world indeed! I’m glad the blog resonated with people as much as it did. I shared mp3 with friends back then and firmly believed that more people in France and around the world would love the same music as much as we did. Kudos for still posting on yours after all the years. That’s an insane feat! I really wished I kept going but starting my career in Paris in 2014 killed the momentum. I worked on the blog from 6pm to midnight pretty much every day after school and couldn’t do the same once I started working. I’ll bring it back one day! In the meantime, I’ll definitely check ilictronix. Thanks for sharing with the world. Love the MySpace like personal website with flat Eric!</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>w23n</em>:</p>
-<blockquote>Mais non ! J&#x27;ai toujours été attristé par la fin de Stop The Noise. Aucune intention de rallumer le flambeau ? :)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>teroshan</em>:</p>
-<blockquote>He&#x27;s rightly credited as having participated in the popularization of the musical and visual &quot;Synthwave&quot; aesthetic:<p><a href="https:&#x2F;&#x2F;aesthetics.fandom.com&#x2F;wiki&#x2F;Synthwave" rel="nofollow">https:&#x2F;&#x2F;aesthetics.fandom.com&#x2F;wiki&#x2F;Synthwave</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>taejavu</em>:</p>
-<blockquote>There’s a while sub genre of synthwave named after his album OutRun. Which, by the way, is best experienced while driving on the highway at night.<p><a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;outrun&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;outrun&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rikthevik</em>:</p>
-<blockquote>Certainly we should celebrate Morodor here too...<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=mpW3C_k0WMY" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=mpW3C_k0WMY</a></blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>creaghpatr</em>:</p>
-<blockquote>Loved &quot;Nightcall&quot;, shame to lose him. It was a was a happy surprise to see him get a feature at the 2024 closing ceremonies, RIP.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
