@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 02 Aug 2026 21:02:24 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2026 22:01:46 +0000</lastBuildDate>
     <item>
       <title>Twenty Years of RISC OS Open</title>
       <link>https://www.riscosopen.org/news/articles/2026/06/20/twenty-years-of-risc-os-open</link>
@@ -495,6 +495,42 @@ and would still stretch most people.</blockquote>
 <blockquote>They are also assuming that the comparison is to a financial advisor and not either nothing or a relative&#x2F;friend who may or may not give good advice.</blockquote>
 </blockquote>
 </blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Atom is better than RSS, in ways that matter</title>
+      <link>https://chrismorgan.info/atom%3Erss</link>
+      <guid isPermaLink="false">hn3-49138897</guid>
+      <pubDate>Sat, 01 Aug 2026 22:00:16 +0000</pubDate>
+      <description>126 points, 94 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://chrismorgan.info/atom%3Erss"><strong>→ Article</strong></a> <small>(chrismorgan.info)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49138897">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 94 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tjansen</em>:</p>
+<blockquote>I agree that Atom is easier to use and better defined in some ways. But why on earth would you want to put unrestricted HTML in the title in the first place? How is a reader supposed to handle that? It&#x27;s just a weird thing to allow.<p>In practice, the differences between the syndication formats don&#x27;t really matter. Today even less than when they were created, as a solution for most of the differences is just a prompt away.<p>In my humble opinion, JSON feed (<a href="https:&#x2F;&#x2F;www.jsonfeed.org&#x2F;version&#x2F;1.1&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.jsonfeed.org&#x2F;version&#x2F;1.1&#x2F;</a>) is the most practical format. By a small margin, but still...<p>- it&#x27;s really simple and doesn&#x27;t use XML<p>- it doesn&#x27;t allow stupid things like HTML in titles (which I guarantee &gt;50% of all implementations can&#x27;t handle correctly)<p>- JSON Feed allows feeds to have a &lt;favicon&gt; and a (square!) &lt;icon&gt;, which is a very practical thing for readers. You can use the &lt;favicon&gt; in lists of feeds, and the &lt;icon&gt; to present a single feed. Atom has a small square icon and a &lt;logo&gt; which is supposed to use a 2:1 aspect ratio. 2:1 is completely useless. No site has a logo in 2:1. It&#x27;s also useless for most full-name logos, like &#x27;New York Times&#x27;. (RSS is, of course, even worse; it doesn&#x27;t even recommend an aspect ratio, practically guaranteeing that RSS readers can look bad)<p>You can see that JSON feed has been designed from a feed consumer&#x27;s point of view: what does an RSS reader need to make a feed look good? While Atom and RSS have been written from an abstract publisher&#x27;s point of view, making everything possible and allowing maximum flexibility. Especially RSS, which has shown its flexibility in becoming the de facto format for podcasts. And both Atom and RSS are <i>really</i> old, written at a time when it probably wasn&#x27;t clear how RSS would eventually be used.<p>In the end, no matter which format a feed uses, users won&#x27;t notice any difference (as long as publishers are smart enough to use square images!). So any feed is a win, no matter whether RSS, Atom, or JSON feed.</blockquote>
+<blockquote>
+<p>↳ reply — <em>chrismorgan</em>:</p>
+<blockquote>Consider the title of my article: “Atom is better than RSS, in ways that <i>matter</i>”. That emphasis belongs there, and it’s mildly bad to lose it. (For presentation on my own site, I also control the line break position on larger screens; but that wouldn’t be appropriate for feeds, where you can’t control the presentation.)<p>We accept that <i>sentences</i> can have formatting, and <i>headings</i> can have formatting, so why shouldn’t titles? When you look at titles that get used on platforms like YouTube, there’s obviously a desire for formatting. People use Unicode shenanigans to work around the deficit frequently. (And they do so in ways that are mostly only available for the English script, quite inequitable for other scripts.) Even if you were to restrict it to ASCII, people GLEEFULLY abuse capital letters FOR EMPHASIS!!!!1!<p>Especially once you get to coding topics, titles <i>need</i> to support &lt;code&gt;, which is important semantics.<p>(My biggest disappointment with Atom is that text constructs are single-type-only. I wish you could provide distinct text and HTML representations, like email does with the multipart&#x2F;alternative MIME type. In some places where I use &lt;code&gt; in titles, I’d just drop the &lt;code&gt;…&lt;&#x2F;code&gt; wrapping, in other places I’d turn it into `…`.)<p>I will write a proper article about all this some time soonish, encouraging people to use markup in titles.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tjansen</em>:</p>
+<blockquote>&gt; We accept that sentences can have formatting, and headings can have formatting, so why shouldn’t titles?<p>1. Because there are things you can obviously not put in a headline. Like a large image, a YouTube video, or a paragraph. Defining an HTML subset would make it somewhat usable. But letting each consumer of the Atom feed decide which subset they support will make such a title look bad on at least those renderers that don&#x27;t support the same subset. No renderer can allow it completely (&lt;script&gt;...). HTML sanitation&#x2F;injection becomes a much bigger problem when it&#x27;s not limited to a text body that can be relatively easily sandboxed.<p>2. If you allow every feed to define its own font style or even color, that makes a list of posts look like a 2005 MySpace page. :)<p>It is producing bad UIs. Renderers can&#x27;t really render it as plain text, as they might lose a part of the meaning. But they also can&#x27;t really allow it because it might make their output look like trash. In the end, that would force renderers to develop complex heuristics of which elements and styles to allow, which to modify (do your HTML titles support dark mode? accessibility?), and which to filter out.<p>3. I don&#x27;t see the practical value of having &lt;code&gt; in a headline. If it shouldn&#x27;t be rendered in a different way for obvious reasons, and XML is not designed for human consumption, what is it good for? Who is the consumer of the &lt;code&gt; tag? AI?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>chrismorgan</em>:</p>
+<blockquote>Here’s an example of &lt;code&gt; in titles being quite valuable: <a href="https:&#x2F;&#x2F;chrismorgan.info&#x2F;blog&#x2F;make-and-git-diff-test-harness&#x2F;" rel="nofollow">https:&#x2F;&#x2F;chrismorgan.info&#x2F;blog&#x2F;make-and-git-diff-test-harness...</a>.<p>Inferior plain text: <i>Using make and git diff for a simple and powerful test harness</i><p>Better plain text: <i>Using `make` and `git diff` for a simple and powerful test harness</i><p>Better HTML: <i>Using &lt;code&gt;make&lt;&#x2F;code&gt; and &lt;code&gt;git diff&lt;&#x2F;code&gt; for a simple and powerful test harness</i><p>I use the second for the &lt;title&gt; and og:title on my site, and the third in the &lt;h1&gt; and feeds. It will unfortunately be turned into the first by some feed readers, but that’s <i>their</i> problem. (Some feed readers <i>do</i> accept a subset of HTML phrasing content.)<p>&gt; <i>If it shouldn&#x27;t be rendered in a different way for obvious reasons</i><p>I don’t perceive your obvious reasons.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jillesvangurp</em>:</p>
+<blockquote>If you publish content, Atom is the superior format. All the parsers support it so there&#x27;s no argument there against using it. You use it, everything should work just fine. There are no real downsides.<p>The issue with RSS of course is that there is a lot of really crappy and ancient code out there that should have died a long time ago written in languages like PHP, Ruby, etc. by people who did not really care about details. Details like having unambiguous time stamps (what do you mean, you don&#x27;t live in my time zone?), or details like &quot;this text is not encoded in UTF-8 but in my unspecified locale specific ASCII variant&quot; (why?!). Or indeed &quot;this description contains malformed tag soup with some of the tags escaped&quot;.<p>Also, while most modern RSS and Atom parsers are pretty decent, it&#x27;s not that hard to find feeds that still have parsing issues despite these frameworks giving it their best effort. Part of the reason is that the code that generates these feeds is a lot less well covered by frameworks. Lots of content management systems out there that use some wonky templating, home grown scripts, or other improvised shit to generate their feeds. That always was the biggest problem.</blockquote>
+<blockquote>
+<p>↳ reply — <em>alehlopeh</em>:</p>
+<blockquote>Grouping PHP and ruby together like that betrays some profound ignorance. I’m trying to understand how someone could come to utter such nonsensical drivel but honestly nothing is coming to me.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>adrianwaj</em>:</p>
+<blockquote>Both really need an explicit &quot;Full&#x2F;Partial&quot; flag.<p>Over-polling is also a problem with both formats.<p>But the Local-First Fediverse is evolving. <a href="https:&#x2F;&#x2F;share.gemini.google&#x2F;NHjiUHtpRTiJ" rel="nofollow">https:&#x2F;&#x2F;share.gemini.google&#x2F;NHjiUHtpRTiJ</a><p>That&#x27;s important and will break the walled gardens, and will change money flows I suspect as advertising revenue is more equitably shared with content providers, who themselves can be better paid for content produced and content promised. It&#x27;s the &#x27;ol centralization &lt;&gt; decentralization swinging back and forth again.</blockquote>
+<blockquote>
+<p>↳ reply — <em>Matumio</em>:</p>
+<blockquote>I agree with Gemin— wait. Did you just post a link to google.com to support an argument for self-hosting, decentralization and breaking monopolies...?</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3655,48 +3691,6 @@ Permafrost will also actually accelerate stuff since....well it __was__ permanen
                                                    wa wa a1    
                                                    wa wa wa a2    
                                                    mp  $.</code></pre></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Google will expand age checks on Android worldwide till the end of the year</title>
-      <link>https://android-developers.googleblog.com/2026/07/google-play-age-signals-api-safer-experiences.html</link>
-      <guid isPermaLink="false">hn3-49107950</guid>
-      <pubDate>Thu, 30 Jul 2026 10:13:46 +0000</pubDate>
-      <description>283 points, 341 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://android-developers.googleblog.com/2026/07/google-play-age-signals-api-safer-experiences.html"><strong>→ Article</strong></a> <small>(android-developers.googleblog.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49107950">→ HN comments</a> &nbsp;·&nbsp; 283 points &nbsp;·&nbsp; 341 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>iamflimflam1</em>:</p>
-<blockquote>I find myself stuck on the fence with age checks.<p>Companies have show that they are incapable or unwilling to address the problems they cause. And market forces are not working to correct things. It’s also pretty obvious that saying “parent should take responsibility” is also not working. Just observe the world around you to know it’s a non starter.<p>This is where regulation is supposed to come in.<p>At the same time, companies have shown that they will abuse any personal information that is shared with them and we are now giving them more details about ourselves…</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>K0nserv</em>:</p>
-<blockquote>I don&#x27;t want the market solving this. If we are going to do age checks it should be based on public key cryptography, be open source, and handled by the government. You verify with the government (or don&#x27;t since they already know your age), you get some form of cryptographic attestation, present said attestation to websites&#x2F;apps.<p>I&#x27;m not a fan of age verification in the first place, but I am extremely not a fan of random third parties doing the verifying.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sschueller</em>:</p>
-<blockquote>Why do we need to verify age?<p>You can&#x27;t tell me that these social media companies don&#x27;t already know exactly how old someone is just based on the enormous data that is collected.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>palata</em>:</p>
-<blockquote>A big concern around age verification is that some people will be locked out because they can&#x27;t prove their age.<p>Your solution here has the same flaw, I think. If <i>the algorithm</i> thinks I&#x27;m underage, I&#x27;m locked out.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Xelbair</em>:</p>
-<blockquote>&gt;It’s also pretty obvious that saying “parent should take responsibility” is also not working. Just observe the world around you to know it’s a non starter.<p>Then who should? Government, where each implementation strips away rights to privacy - which in some countries, including mine, are a constitutional right? Where it expands powers of government to track everyone&#x27;s activity online - and remember we&#x27;re one election away from total policy shift(just like with latest US elections)?<p>Free market? The profitable solution is, depending on environment - either ignore the problem(profit from ads served to children, no extra work necessary), or strip away all privacy (to filter out bots and get paid more per ad).<p>The sad reality is that &quot;parent should take responsibility&quot; is least bad option available, and takes into the account individual development of a child.<p>Even creation of a highly regulated child only internet creates more problems - as now that becomes a highly profitable target for bad actors(both individual abusers, and companies trying to serve ads)</blockquote>
-<p>↳ reply 3 — <em>sschueller</em>:</p>
-<blockquote>There should be a law that forces social media companies to use a different algorithm for anyone under a certain age and be required to disclose it to the public. Possibly different algorithm depending on age group.<p>There should however be no force age verification. Social media companies already know how old you are or very close to it using the data they collect everyday. Using this data they should be required to use &quot;best effort&quot; to determine which algorithm you fall in. Nothing is 100% and we should stop pretending it is, sure some kids will find a way around but they would also if there is a age verification system.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>random_ind_dude</em>:</p>
-<blockquote>I think it&#x27;s the old that need to be protected more on the Internet since they disproportionately fall prey to online scams. So let&#x27;s age-gate their access to online services too. If you are old and want to send money to someone, you get age-gating and second-factor authorization from a competent young person. If you want to watch porn online, believe it or not, age-gating and second-factor authorization.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jeroenhd</em>:</p>
-<blockquote>Honestly, I wouldn&#x27;t be opposed to that either. If we&#x27;re protecting kids, we should also protect the old and feeble. Old people, people with developmental handicaps, you name it: they&#x27;re being exposed to a world that can and will abuse you if you have any faith in humanity left and don&#x27;t have the technical skills to identify things like fake domains and scam sites.<p>For some reason we&#x27;re making sure no 12 year old can drive or run for any government positions, but a 90 year old can keep the driver&#x27;s license that they&#x27;ve had since before the start of colour television, or make critical decisions affecting millions. We can&#x27;t have it both ways.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>xinayder</em>:</p>
-<blockquote>Can&#x27;t we build a gateway in the internet that detects if someone is a influential CEO or something and just bar access to the internet?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>shrubby</em>:</p>
-<blockquote>I was just saying yesterday that we (Finland) could take the bullet and create a luxury resort for all the zillionaires in the world.<p>Connect them with each other and populate their air-gapped &quot;Internet&quot; with like-minded authoritarian AI-bots and create special news like Don and Vladimir are being fed to keep them from tantrums. A win win for everyone!<p>Ooh, and mental health services. Plenty of mental health services as we&#x27;re so poor of a race that even our richest can&#x27;t afford enough therapy to feel alright!</blockquote>
-<p>↳ reply 2 — <em>hellcow</em>:</p>
-<blockquote>There&#x27;s a Pink Floyd song about just such a thing, Fletcher Memorial Home: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=zDDzR2zSgsM" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=zDDzR2zSgsM</a></blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
