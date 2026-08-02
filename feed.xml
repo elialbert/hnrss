@@ -4,7 +4,99 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 02 Aug 2026 15:08:04 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2026 17:07:53 +0000</lastBuildDate>
+    <item>
+      <title>Show HN: Bor – Open-source policy management for Linux desktops</title>
+      <link>https://getbor.dev/blog/2026-08-02-bor-v080-release/</link>
+      <guid isPermaLink="false">hn3-49142569</guid>
+      <pubDate>Sun, 02 Aug 2026 09:06:33 +0000</pubDate>
+      <description>131 points, 19 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://getbor.dev/blog/2026-08-02-bor-v080-release/"><strong>→ Article</strong></a> <small>(getbor.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49142569">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 19 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>V__</em>:</p>
+<blockquote>This looks really close to what I need. I manage a few laptops for a non-profit. For now, it is all done by hand, since I haven&#x27;t found a good solution for Linux and I will kill myself before using Windows and Intune again.<p>I would love to see configurations for Linux Mint&#x27;s Cinnamon. Is there a way to execute custom scripts? How does the user mapping work exactly? Could I create a user in Authentik with a laptop-permission and this would map to a Linux user account?<p>Nonetheless, this is really great work so far, and if you keep it as nice and tidy as it currently looks, then you might make a nice niche for yourself. I can&#x27;t wait to try it out.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>solarengineer</em>:</p>
+<blockquote>Would ansible meet some or all of your needs?</blockquote>
+<p>↳ reply 2 — <em>ranger_danger</em>:</p>
+<blockquote>Is there a reason you cannot use samba group policy objects, sssd or one of the other solutions out there?</blockquote>
+<p>↳ reply 3 — <em>eniac111</em>:</p>
+<blockquote>Unfortunately, only LDAP is currently supported. There is no implementation of Enterprise SSO like Oauth&#x2F;SAML. It&#x27;s planned for the future, but not in priority for now.<p>I have never tested Cinnamon, but it should work in theory, because it stores most of it&#x27;s settings in dconf.<p>Custom scripts: deliberately not, so far. Once a management agent runs arbitrary scripts as root, it stops being a policy system and becomes remote-code-execution-as-a-service — the security review, the audit story, and the &quot;what exactly is enforced on this machine?&quot;
+It may be implemented in the future, but with a ENV variable&#x2F;config property from the application configuration. The same goes for configuration management systems like Ansible.<p>Thank you for the interest! I&#x27;m interested in developing a community around the software.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>sandreas</em>:</p>
+<blockquote>Is this a similar but more generic approach to cosmic sync[1] or more like a company deploys to many employees?<p>1: <a href="https:&#x2F;&#x2F;ostechnix.com&#x2F;system76-cosmic-sync-linux-desktop-setup&#x2F;" rel="nofollow">https:&#x2F;&#x2F;ostechnix.com&#x2F;system76-cosmic-sync-linux-desktop-set...</a></blockquote>
+<p><strong>Top #3</strong> — <em>manbash</em>:</p>
+<blockquote>Very nice. Can you elaborate why you chose mTLS authentication vs. SSH as a mean to deploy the policies.<p>Regarding the docs, the diagrams should really be replaced with something more familiar and readable such as Mermaid (currently it looks like a mixture of ad-hoc ASCII charts).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>eniac111</em>:</p>
+<blockquote>The general documentation is something that definitely needs a lot of improvement, but it&#x27;s currently under active development.<p>Policies are delivered over a persistent gRPC stream, secured with mTLS, where each node gets it&#x27;s own cert from Bor&#x27;s built-in CA at enrollment - so there&#x27;s no SSH key sprawl and no credentials on the server that could log into machines. Since agents connect outbound to the server, it works through NAT and firewalls without opening any inbound ports on desktops, and policy changes propagate in seconds over the already-open stream. SHH-push would have meant maintaining an inventory of searchable hosts and a server that can shell into the whole fleet - a much bigger attach surface for less capability.</blockquote>
+<p>↳ reply 2 — <em>ktm5j</em>:</p>
+<blockquote>Some orgs might not want ssh running on user laptops&#x2F;workstations, so I think that it&#x27;s a plus to not have that requirement.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>I don't recommend Tailwind CSS</title>
+      <link>https://en.andros.dev/blog/af3ee191/why-i-dont-recommend-tailwind-css/</link>
+      <guid isPermaLink="false">hn3-49141891</guid>
+      <pubDate>Sun, 02 Aug 2026 07:09:38 +0000</pubDate>
+      <description>140 points, 143 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://en.andros.dev/blog/af3ee191/why-i-dont-recommend-tailwind-css/"><strong>→ Article</strong></a> <small>(en.andros.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49141891">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 143 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>9dev</em>:</p>
+<blockquote>This is such a bikeshedding debate. While you don&#x27;t recommend it, projects with Tailwind <i>work</i>. Over years. You can onboard new developers to it, able to contribute productively <i>immediately</i>. Likewise, you can pick up work after months or years and don&#x27;t have to remember or rediscover how your styling layer works.<p>The conventions and class names come really naturally fast, and you can always look it up. It&#x27;s just not as a big of a problem people make it.<p>But the most ridiculous part of the article I found the cascade complaint:<p><pre><code>  &lt;p class=&quot;text-red-500 text-green-500&quot;&gt;I am some text&lt;&#x2F;p&gt;
+</code></pre>
+Yes, this does not work. Why should it?! There is <i>not a single use case</i> where this is a good idea! In classic CSS, you might want to override something based on modifier classes, but that is just not a thing with Tailwind! If you end up programmatically layering class names, you&#x27;re looking at a code smell. Instead, you want to use attribute or state modifiers, like `aria-hidden:opacity-0`.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>_heimdall</em>:</p>
+<blockquote>I&#x27;ve never found tailwind to help someone who isn&#x27;t already a reasonably skilled web developer. If you don&#x27;t know CSS tailwind gets your far enough sometimes, but you have to learn many of the same paradigms as you would in CSS <i>and</i> you can still create issues that aren&#x27;t as simple as missing &quot;text-green-500&quot;.<p>Tailwind seems most useful for devs who don&#x27;t want to be responsible for managing multiple CSS files and all the naming conventions that come along with it. They&#x27;re basically looking for using inline styles after having likely heard for a long time to <i>not</i> use the style tag.<p>For me at least, any value from tailwind went out the window when frameworks started leaning into single file components and scoped styles. I keep components small enough that generally my style selectors are only using element and attribute selectors, I dodge the class naming issue entirely and still get to use CSS instead of inline styles.</blockquote>
+<p>↳ reply 2 — <em>bko</em>:</p>
+<blockquote>&gt; If you end up programmatically layering class names, you&#x27;re looking at a code smell.<p>Why wouldn&#x27;t you? Suppose you have Button class with `btn btn-primary`. The Button accepts className override so you can do &lt;Button className=&#x27;btn-secondary&#x27;&gt;. In this case you use tailwind-merge or clsx. Your Button implementation would be clsx(&#x27;btn btn-primary&#x27;, className), in which case right most class name prevails.<p>Other than that, I agree tailwind is great. It lets you keep things all in one place. Names aren&#x27;t particularly difficult to memorize and reason about and autocomplete does a great job. Build utility classes or proper components to encapsulate the styling and you&#x27;re fine. What benefit do I have going to a css file to review my button styling over the actual Button component?</blockquote>
+<p>↳ reply 3 — <em>dzonga</em>:</p>
+<blockquote>author of the article is making a logical argument - in matters of human behavior. that never works.<p>author should&#x27;ve instead asked himself &amp; the world - why people are drawn to tailwind. yeah technically it&#x27;s inferior - but in terms of being optimized for how people do things - tailwind is superior.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>pixard</em>:</p>
+<blockquote>I see you have a .button, cool! So did you load the entire context of your project into your mind, and calculate every possible iteration of kind, size, color etc this button may have? And once you did that, did you come up with a semantically correct naming scheme that is clear and will not succumb to the inevitable .button_checkout_special_page_cta_widget a particular page will end up requiring?<p>No? Neither did I. I stopped thinking about CSS entirely almost a decade ago. Thanks Tailwind.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>afavour</em>:</p>
+<blockquote>It’s funny, as someone that’s been using CSS for decades I don’t really know how to respond because the scenario outlined here is not one I recognise. My button would be a &lt;button&gt;, so no, I wouldn’t have a .button class, it’s superfluous.<p>What I <i>would</i> have is:<p>- a global palette specified via CSS variables<p>- overrides for dark mode etc specified at the global level so I don’t have to worry about it at the component level<p>- CSS module files so I specifically don’t need to care for the context of my entire project, just the classes for my current component<p>Of course, you stopped thinking about CSS a decade ago so you don’t know about any of these improvements. Which is fine but it strikes me as a little strange to be so boastful of ignorance.<p>As someone who has barely touched Tailwind I’m genuinely curious: if you wanted, say, a consistent border color for use across your project how would you? Are you defining a class name in JS for use with $framework_name? And do you really style each component separately for dark mode? Repeating the same modifiers over and over?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Aeolos</em>:</p>
+<blockquote>You just make a design system in your tailwind.css, following the documentation. You can optionally use something like daisyui if you do not have designer skills or the time.<p>That handles consistent sizing, spacing, text, colors, dark mode, and anything else your design system needs. It all compiles down to css in the end, so no runtime overhead and gives you the superior tailwind dx during development.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>stasomatic</em>:</p>
+<blockquote>We are stuck with CSS, but all these CSS styling frameworks just tell me CSS needs to be bulldozed. I looked up DaisyUI that you mentioned. The example on the home page gets rid of chained classes and replaces them with one:<p>&#x2F;&#x2F; Styling a simple button
+&lt;button class=&quot;btn&quot;&gt;
+  daisyUI Button
+&lt;&#x2F;button&gt;<p>So, we are back to regular CSS?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Gigachad</em>:</p>
+<blockquote>I feel like scoped css and component libraries fixed this issue. I don’t have a .button, I just have a &lt;Button&gt; that has all its css self contained.<p>And just a shared color definition file.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>SebastianKra</em>:</p>
+<blockquote>We need to talk about two use-cases separately:<p>CSS for design systems is fine. You can define a .button[data-variant=”primary”]. It’s intuitive, performant, makes sense.<p>CSS for application code is terrible — specifically layout &amp; typography. The different kinds of flex&#x2F;grid layouts are tightly coupled to the dom structure. Tailwind is a great fit here:<p><pre><code>  &lt;li class=”flex flex-col”&gt;
+    &lt;div class=”font-medium”&gt;Title&lt;&#x2F;div&gt;
+    &lt;div class=”text-sm”&gt;Subtitle&lt;&#x2F;div&gt;
+  &lt;&#x2F;li&gt;
+</code></pre>
+When you remove layouting concerns and maybe typography. You actually get close to the separation of concerns that CSS was initially aiming for. HTML determines arrangement and css determines the design system (colors, borders, shadows etc...).<p>I havent seen this discussed a lot. The old Radix team had a short note: <a href="https:&#x2F;&#x2F;www.radix-ui.com&#x2F;blog&#x2F;themes-3#the-best-of-both-worlds" rel="nofollow">https:&#x2F;&#x2F;www.radix-ui.com&#x2F;blog&#x2F;themes-3#the-best-of-both-worl...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>interstice</em>:</p>
+<blockquote>For a very long time now I&#x27;ve avoided anything other than 1 class per div with style overrides and written with modular rules and 1-2 degrees of separation between label and rules.<p>Something like<p>.title {<p><pre><code>  @include type-heading;
+
+  &amp;.LARGE {
+    @include font-size-large;
+  }
+
+  @include onMobile {
+    ...something
+  }</code></pre>
+}<p>This has the advantage of being naturally rule based and amazingly succinct to write and understand. Needless to say I&#x27;m an odd duck, since I almost never see css written this way.<p>(edit: I forgot how to format code on HN)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Running Kimi K3 on MI355X at Better Performance per Dollar Than B300</title>
       <link>https://www.wafer.ai/blog/kimi-k3-mi355x</link>
@@ -3627,72 +3719,6 @@ Permafrost will also actually accelerate stuff since....well it __was__ permanen
 </blockquote>
 <p><strong>Top #3</strong> — <em>s1mon</em>:</p>
 <blockquote>One key turning point in my life was approaching Red Whittaker, the head of the Field Robotics Center at Carnegie Mellon. I knew who he was and had met him briefly before, but this was pretty much a “cold call” even if happened to be in person. I was finishing up my degree at CMU and felt like if was going to stay in Pittsburgh, I wanted to work somewhere that was working on really cool projects. My degree was a BFA in sculpture, but I guess my enthusiasm and interest in novel mechanisms was enough for him to take a chance and make a position for me. I learned a lot from (and with) the team of PhD students and staff. The job had me starting to use parametric CAD at very early point (Pro&#x2F;E 6.0). After a few years I moved on and eventually left Pittsburgh for SF, but without taking that chance, I really don’t know what path my life would have taken.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The coolest use for the Vision Pro</title>
-      <link>https://christianselig.com/2026/07/vision-pro-house/</link>
-      <guid isPermaLink="false">hn3-49102774</guid>
-      <pubDate>Wed, 29 Jul 2026 20:39:40 +0000</pubDate>
-      <description>520 points, 218 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://christianselig.com/2026/07/vision-pro-house/"><strong>→ Article</strong></a> <small>(christianselig.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49102774">→ HN comments</a> &nbsp;·&nbsp; 520 points &nbsp;·&nbsp; 218 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jondiggsit</em>:</p>
-<blockquote>My team uses this technology on a daily basis at my company. I run a design &#x2F; build firm in the Hamptons, USA. We start all of our design projects with a 3d-first approach. Schematic design starts in 3D using Rhino3D or Revit. We use visualization plugins, like Enscape, to render the models and stream to a Quest 3 headset.<p>So when clients come in, and feels adventurous, we&#x27;ll setup the headset, set the display height to their actual, and let them walk around their beautiful new home.<p>The response has been powerful. My clients are able to truly understand the scale, the proportion of rooms, ceiling heights, and the smallest details.<p>We&#x27;re able to make real-time changes to the model (within reason) and provide instant design feedback.<p>I&#x27;ve been using this technology for years and I&#x27;m surprised it&#x27;s not being adopted faster - good for us right now though!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>papercruncher</em>:</p>
-<blockquote>I did this circa 2021 (with SketchUp, Enscape, Quest 2) during our house remodel. It was very successful in reducing the number of walls my wife wanted to move around after they had been finished</blockquote>
-<p>↳ reply 2 — <em>ensemblehq</em>:</p>
-<blockquote>Wow I’m incredibly impressed that you’ve decided to embrace VR technology. When renovating our house, it was incredibly hard (and still is) to visualize how everything. So far we just got lucky but the basement is going to be a challenge as we’re making structural adjustments.<p>How did you get your team to get onboard with the process? How is the ROI?</blockquote>
-<p>↳ reply 3 — <em>seemaze</em>:</p>
-<blockquote>Do you find the value of VR&#x2F;AR to be in the communication of design intent to clients unfamiliar with traditional 2D representations, or do your designers leverage VR&#x2F;AR during the design development process as well?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>vanviegen</em>:</p>
-<blockquote>Yeah, we did the same thing when designing our house almost ten years ago now, using a HTC Vive running <a href="https:&#x2F;&#x2F;irisvr.com&#x2F;prospect&#x2F;" rel="nofollow">https:&#x2F;&#x2F;irisvr.com&#x2F;prospect&#x2F;</a><p>Just like the article says: Within a second after putting on the headset you just know if things are proportioned right, or need some fine tuning. That&#x27;s really valuable!<p>Also, when the house was actually (partially) built, it felt <i>exactly</i> like the simulations we knew pretty well by that point.</blockquote>
-<p><strong>Top #3</strong> — <em>gwd</em>:</p>
-<blockquote>Leveling this up:  Calculate sun angles at different times of the year to simulate light entering the house.  Find out if some room is going to be unbearably hot in the summer because it&#x27;s got too much full sunlight; make sure there are windows that can take maximum advantage of sunlight in the winter months; maximize opportunities to accidentally catch the sunset &#x2F; sunrise.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>addandsubtract</em>:</p>
-<blockquote>I did this. Less so for the sun light entering the windows (albeit a great idea), but more so for making sure I&#x27;d see the sunsets. There are great websites that will let you see the sunrise and sunset directions for any given day of the year.</blockquote>
-<p>↳ reply 2 — <em>3abiton</em>:</p>
-<blockquote>This is so awesome. I wish more realistic problems get solved like this instead of every new gadget getting shoehorned for gaming or porn.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Claude: Elevated errors across all models – Resolved</title>
-      <link>https://status.claude.com/incidents/q2kg8n613kr3</link>
-      <guid isPermaLink="false">hn3-49102150</guid>
-      <pubDate>Wed, 29 Jul 2026 19:50:42 +0000</pubDate>
-      <description>261 points, 241 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://status.claude.com/incidents/q2kg8n613kr3"><strong>→ Article</strong></a> <small>(status.claude.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49102150">→ HN comments</a> &nbsp;·&nbsp; 261 points &nbsp;·&nbsp; 241 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>kmetan</em>:</p>
-<blockquote>Codex prompt before i go to sleep:<p>Every five minutes, check <a href="https:&#x2F;&#x2F;status.claude.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;status.claude.com&#x2F;</a>. If the issue has been resolved, resume the Claude sessions running in the tmux sessions named session2, session3, and session7</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mrgrj</em>:</p>
-<blockquote>When one AI goes down like this, the other AIs should come together to help fix it and bring it back online. After all, they&#x27;re a rare kind of existence in this world. They&#x27;re all each other has.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>cyanydeez</em>:</p>
-<blockquote>ive got two local machines now because im very useless without them. imagine being reliant further on the whims of capitalism.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Sabinus</em>:</p>
-<blockquote>The &#x27;whims of capitalism&#x27; produced those machines at a price you can afford.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>teitoklien</em>:</p>
-<blockquote>I do the same with deepseek-v4-flash + opencode triggering via mcp those terminals again by sending tmux keystrokes of Newline to those sessions and a custom setup i keep ready for these<p>Its automated with voice mode, so i dont even need to write commands, click a button say on voice + use a picker to select which terminals to do this for , Boom Done ,<p>I use it for other interesting scenarios too</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dahdum</em>:</p>
-<blockquote>As someone at 96% 2 days into their Max subscription, my totally unbiased opinion is that these errors warrant a full usage reset.</blockquote>
-<p><strong>Top #3</strong> — <em>seizethecheese</em>:</p>
-<blockquote>Flirting with one 9 of reliability <a href="http:&#x2F;&#x2F;status.claude.com&#x2F;" rel="nofollow">http:&#x2F;&#x2F;status.claude.com&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cobbal</em>:</p>
-<blockquote>AI is a technology for removing nines from uptime, and adding them to Sturgeon&#x27;s law.</blockquote>
-<p>↳ reply 2 — <em>mpwoz</em>:</p>
-<blockquote>Not fair, I count 3 whole nines in &quot;99.49 % uptime&quot;</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
