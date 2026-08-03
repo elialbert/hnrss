@@ -4,7 +4,157 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 03 Aug 2026 17:13:54 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 19:46:51 +0000</lastBuildDate>
+    <item>
+      <title>SQLite Critical CVEs or LLM Slop?</title>
+      <link>https://research.jfrog.com/post/sqlite-critical-cves-or-llm-slops/</link>
+      <guid isPermaLink="false">hn3-49154332</guid>
+      <pubDate>Mon, 03 Aug 2026 11:28:54 +0000</pubDate>
+      <description>670 points, 310 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://research.jfrog.com/post/sqlite-critical-cves-or-llm-slops/"><strong>→ Article</strong></a> <small>(research.jfrog.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49154332">→ HN comments</a> &nbsp;·&nbsp; 670 points &nbsp;·&nbsp; 310 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gortok</em>:</p>
+<blockquote>We can chalk this up as another example of over-exhuberance by what folks believe LLMs can accomplish vs. what they actually are.<p>LLM-based “AI” is able to use its vast corpus of inputs and calculate the most statistically likely output in a given situation.  It is probabilistic, and when you are dealing with probabilities in a situation where certainties, not probabilities, matter, you’re going to get dinged on credibility massively when your LLM-based “AI” gets the probabilities wrong at best, or in this case, claims a line of code generates a vulnerability when it is, in fact, a code comment.<p>LLMs are text-prediction engines.  They are not Artificial Intelligence, and shouldn’t not be treated in any form or fashion as if they possess intelligence.  What bothers me about this entire situation is that presumably the folks that relied on the LLM-based “AI” to generate these vulnerabilities knew (or should have known) enough about their tool to know this would happen, but did not.<p>Now, we all pay the consequence, to the tune of hundreds of thousands if not millions of dollars of wasted productivity from teams that have to deal with the resulting fall-out of this usage of “AI”.<p>A human must verify everything an LLM presents as fact. Everything. If you don’t, we all pay the price.  LLMs do not remove the onus of responsibility on the human being, if anything they amplify it because   LLMs can generate lots more output more quickly that needs to be verified than humans can.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>geraneum</em>:</p>
+<blockquote>Unfortunately people sometimes get defensive against this take. But I think treating the LLM as you described can make you a better LLM user and help get better output. It helps understand the failure modes better, and moderate one’s reliance on them. Just like how we should do for every tool we work with.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gr_norm</em>:</p>
+<blockquote>Yes, I&#x27;ve found that reminding yourself of how they actually work helps keep you on guard against LLM-patterned mistakes. Especially things like carefully considering what parts of the current task likely fall outside the distribution of corpus + RL data (as much as that can be guessed).</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>treszkai</em>:</p>
+<blockquote>&gt; LLMs are text-prediction engines. They are not Artificial Intelligence, and shouldn’t not be treated in any form or fashion as if they possess intelligence.<p>I agree that humans must verify LLM-produced facts, but strongly disagree with these kinds of &quot;stochastic parrot therefore dumb&quot; arguments.<p>Yes, an LLM <i>is</i> a &quot;stochastic parrot&quot;. No, that doesn&#x27;t imply that it is dumb. Enough to look at how Terence Tao asks ChatGPT to help him understand a solution that nobody had ever discussed before [1], or how a random guy asks ChatGPT in a handful of words to disprove a 30-year-old conjecture, with zero technical input [2].<p>If your parrot in a birdcage with internet access can finish the sentence, &quot;The counterexample to the Dinitz–Garg–Goemans conjecture is...&quot;, then it&#x27;s a pretty smart parrot, by all reasonable definitions of &quot;smart&quot;. Just because someone bottled up the formula into matrix multiplications and added some random sampling to the outcome, that doesn&#x27;t take away from the fact that the parrot said provably correct statements that the biggest experts in the field couldn&#x27;t imagine.<p>And no, I&#x27;m not implying that the LLMs are correct all the time, or that their intelligence and reasoning works in any way like ours.<p>[1]: <a href="https:&#x2F;&#x2F;chatgpt.com&#x2F;share&#x2F;6a5fdc7a-d6f8-83e8-bbea-8deb42cfed56" rel="nofollow">https:&#x2F;&#x2F;chatgpt.com&#x2F;share&#x2F;6a5fdc7a-d6f8-83e8-bbea-8deb42cfed...</a>
+[2]: <a href="https:&#x2F;&#x2F;chatgpt.com&#x2F;share&#x2F;6a60b2eb-0b64-83ee-9c76-7931ca1de063" rel="nofollow">https:&#x2F;&#x2F;chatgpt.com&#x2F;share&#x2F;6a60b2eb-0b64-83ee-9c76-7931ca1de0...</a></blockquote>
+<p>↳ reply 3 — <em>red75prime</em>:</p>
+<blockquote>Apophatic intelligence? &quot;We don&#x27;t know what intelligence is, but LLMs with CoT are certainly not it despite being Turing-complete.&quot;<p>Watching for unexpected failure modes is surely worth it.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ChrisMarshallNY</em>:</p>
+<blockquote>The problem with this kind of thing, is that it reduces the S&#x2F;N (Signal-to-Noise) ratio, so weeding out the legit CVEs becomes a lot more difficult.<p>But, on the other hand, I do know that LLMs have been discovering a lot of legit CVEs, and I will lay odds that the blackhats are leveraging them to the max.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>flerchin</em>:</p>
+<blockquote>The vast majority of CVEs are not exploitable, basically noise. I suspect that the overwhelming majority of the CVEs being generated by LLMs are either noise of the sort in the linked article or noise of the sort that is not exploitable.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cogman10</em>:</p>
+<blockquote>This is what I truly don&#x27;t like about the CVE system.<p>One such example is CVE-2023-45853 [1].  Zlib included in it&#x27;s source an extra set of utilities and add-ons.  One such utility, MiniZip, had a buffer overflow vulnerability.  BAM, 8.8 CVE (was a 9, looks like they pulled it back a bit).  But not one that the 99% of applications using zlib would ever be vulnerable to because almost nobody used the MiniZip utility.  It was so unused that the solution for zlib was to simply remove it.<p>I know about this one particularly because our security policy required us to do a BUNCH of pointless updates for it since zlib is in just about everything.<p>[1] <a href="https:&#x2F;&#x2F;app.opencve.io&#x2F;cve&#x2F;CVE-2023-45853" rel="nofollow">https:&#x2F;&#x2F;app.opencve.io&#x2F;cve&#x2F;CVE-2023-45853</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>stabbles</em>:</p>
+<blockquote>In the Spack package manager [1] we&#x27;re trying to work around this with directives:<p><pre><code>    deprecated(&quot;@:1.3 +minizip&quot;, reason=&quot;cve&quot;, severity=&quot;high&quot;)
+</code></pre>
+So, you can define conditional deprecation, and the dependency resolver can still pick up `zlib ~minizip` (i.e. with a variant&#x2F;component disabled).<p>Deprecation on versions only isn&#x27;t the right granularity.<p>[1]: <a href="https:&#x2F;&#x2F;github.com&#x2F;spack&#x2F;spack&#x2F;pull&#x2F;52372" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;spack&#x2F;spack&#x2F;pull&#x2F;52372</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jodacola</em>:</p>
+<blockquote>I&#x27;m sending all my condolences out to everyone who is in a corporate environment using tools like Veracode or Snyk to automatically assess for CVEs and block merges or deployments based on &quot;findings&quot;.<p>My experience in such environments leads me to believe this is going to be a rough ride for those heavily locked-down enterprises, because depending on the environment, an exception of &quot;this CVE was hallucinated by AI&quot; is probably going to be difficult to get accepted, and when it does, starts to become its own avenue for exploitation and adds even more noise and confusion to the mix.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Ekaros</em>:</p>
+<blockquote>Not validating submissions seems like avenue for massive attack. Flood the whole system with endless false reports. Thus making it significantly less reliable.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>masklinn</em>:</p>
+<blockquote>That is exactly why many big projects are migrating to becoming CNA, so that randos can’t get assigned unqualified CVEs which nobody has looked at or validated.<p>Apparently RedHat is a CNA of last resort, so it might be possible to get your project under Redhat’s scope and go through them without having to be a CNA yourself.</blockquote>
+<p>↳ reply 2 — <em>insanitybit</em>:</p>
+<blockquote>This is what the Linux kernel is currently attempting since becoming a CNA. edit: &quot;This&quot; being to sabotage the CVE system via DoS, to be clear.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>ICE Collected Nearly 1M People's DNA Last Year–Including Young Children</title>
+      <link>https://www.wired.com/story/ice-dna-collection-fbi-codis/</link>
+      <guid isPermaLink="false">hn3-49154237</guid>
+      <pubDate>Mon, 03 Aug 2026 11:16:33 +0000</pubDate>
+      <description>223 points, 102 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.wired.com/story/ice-dna-collection-fbi-codis/"><strong>→ Article</strong></a> <small>(wired.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49154237">→ HN comments</a> &nbsp;·&nbsp; 223 points &nbsp;·&nbsp; 102 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>pavlov</em>:</p>
+<blockquote>There’s a reason why Germany has extremely strict laws about how personally identifying information can be collected and stored.<p>America has yet to learn the same lesson, but has been on the road there for a decade now.</blockquote>
+<blockquote>
+<p>↳ reply — <em>scarecrowbob</em>:</p>
+<blockquote>I live next to a reservation and feel that there is a lot in common between the US indian reservation system and concentration camps.<p>My position is that the US has been on this road for about 250 years.  Blood quantum and similar policy choices forced on people, individually and in groups, have been very damaging.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pavlov</em>:</p>
+<blockquote>Hitler said he wanted to use the treatment of Native Americans as a model for how East Europe and Russia would be cleared out to make room for Germans.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>aliasxneo</em>:</p>
+<blockquote>&gt; Agency spreadsheets Georgetown obtained and analyzed show it sent the FBI the DNA of at least 1.36 million people between October 2020 and the end of 2024, more than a dozen times ICE&#x27;s rate during the same time period.<p>So at the same time we saw a mass increase in border crossings we were also collecting their DNA? That&#x27;s a huge number.</blockquote>
+<p><strong>Top #3</strong> — <em>penguin_booze</em>:</p>
+<blockquote>Unless ICE was also collecting young children, it should say: &quot;... including that of young children&quot;.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>AirLLM 70B inference with single 4GB GPU</title>
+      <link>https://github.com/lyogavin/airllm</link>
+      <guid isPermaLink="false">hn3-49154228</guid>
+      <pubDate>Mon, 03 Aug 2026 11:15:48 +0000</pubDate>
+      <description>152 points, 53 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/lyogavin/airllm"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49154228">→ HN comments</a> &nbsp;·&nbsp; 152 points &nbsp;·&nbsp; 53 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>imenani</em>:</p>
+<blockquote>For anyone wondering “how slow is this?”<p>IIUC, Kimi K3 on RTX 6000 Ada (48GB) takes 292 s&#x2F;token<p><a href="https:&#x2F;&#x2F;github.com&#x2F;lyogavin&#x2F;airllm&#x2F;releases&#x2F;tag&#x2F;v3.1.0" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;lyogavin&#x2F;airllm&#x2F;releases&#x2F;tag&#x2F;v3.1.0</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>xg15</em>:</p>
+<blockquote>At that point, how does this compare with simply running the model on the CPU?</blockquote>
+<p>↳ reply 2 — <em>xnorswap</em>:</p>
+<blockquote>I wonder what this measures in J&#x2F;token.</blockquote>
+<p>↳ reply 3 — <em>mring33621</em>:</p>
+<blockquote>How many is that in tokens per Scaramucci?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>roger_</em>:</p>
+<blockquote>Seeing a lot of these “run 1TB models with 1GB RAM” projects recently. Most seem vibe coded and probably won’t be maintained.<p>Hoping a winner emerges with some real momentum behind it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>akie</em>:</p>
+<blockquote>No no, don&#x27;t just say &quot;vibe coded&quot;, say &quot;Fable and $500 of credits&quot;</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ricardobayes</em>:</p>
+<blockquote>Or Deepseek with a fiver.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>classified</em>:</p>
+<blockquote>How a patchwork of Python modules constitutes an API(?) or whatever(?) and how to use it (does anyone?), is beyond me. There is nothing that I would call documentation, let alone concrete usage examples. I know more amusing ways to waste my time. When I want to play with models, I use llama.cpp.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>seu</em>:</p>
+<blockquote>I love it how the rampocalypse is pushing people to squash all the performance they can. I hope that this also leads to rethinking model architecture so that they can do the same with less.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Prevent cognitive debt by manually retyping LLM-generated code</title>
+      <link>https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/</link>
+      <guid isPermaLink="false">hn3-49153374</guid>
+      <pubDate>Mon, 03 Aug 2026 09:32:07 +0000</pubDate>
+      <description>315 points, 267 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/"><strong>→ Article</strong></a> <small>(ankursethi.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49153374">→ HN comments</a> &nbsp;·&nbsp; 315 points &nbsp;·&nbsp; 267 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>estebarb</em>:</p>
+<blockquote>This will cause cognitive debt anyway. As mentioned in <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2509.21972v1" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2509.21972v1</a>: &quot;When students rely
+on these outputs as a substitute for their own reasoning or critical engagement, the learning process is fundamentally
+compromised. Genuine learning requires the active construction of meaning, integration of knowledge, and reflective
+engagement with content. These processes cannot occur through passive consumption of syntactically correct but
+semantically hollow responses. Without this deeper cognitive work, learners risk mistaking linguistic fluency for
+understanding, thereby undermining the very goals of education&quot;.<p>Personally, I don&#x27;t think we will ever be able to reconcile using LLMs and cognitive debt. Even before LLMs we were aware if it: we knew people moving to managerial&#x2F;PM roles eventually get their coding skills rusted. Well, now we are all in those managerial roles...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>RealityVoid</em>:</p>
+<blockquote>What do you think would be the effect on people that already have the skills and abilities. The LLM would build these systems using the skills that are largely understood by the programmer but piece them in new ways suitable for the system. This could lead to new enmergent behaviors that are not understood by the programmer.<p>I still think that you can build this model in your head even with LLM&#x27;s but I&#x27;m not sure neither one way or the other.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Izkata</em>:</p>
+<blockquote>To repeat their last two sentences:<p>&gt; Even before LLMs we were aware if it: we knew people moving to managerial&#x2F;PM roles eventually get their coding skills rusted. Well, now we are all in those managerial roles...</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>2OEH8eoCRo0</em>:</p>
+<blockquote>Perhaps typing the code by hand means you are more deliberate and less likely to have the LLM produce thousands of lines of diarrhea.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>f311a</em>:</p>
+<blockquote>This does not sound fun. It&#x27;s better to work on your side projects with manual coding. You will learn more.<p>Retyping things is inefficient for learning. It&#x27;s like trying to retype calculus solutions — you don&#x27;t learn from it. Even if there is an explanation of why the code is written in such a way, you did not come up with it, and you don&#x27;t know alternative solutions. It is a practice for memorizing, not for building your intuition.<p>A better option is to write it yourself first and ask LLMs for better options. They are pretty good at it, especially when you need to optimize hot loops.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sarreph</em>:</p>
+<blockquote>When I was learning to code at college, by myself (I did a Business degree), I bought a book on iOS development[0]. This book mandated that you type all the examples out line-by-line. I thought the idea was a pretty silly one, but I stuck with it because I didn&#x27;t know what I was doing and wanted to learn.<p>14 years later, as a software engineer, I still think about that book and the way I can trace back a lot of my initial improvements to its requirement that code got written line-by-line. I still maintain the habit of rote text copying as a way to pick up new tools and commands (i.e. copying documentation examples exactly into my editor), and also when people make an assertion like:<p>&gt; It&#x27;s like trying to retype calculus solutions — you don&#x27;t learn from it.<p>Maybe not <i>everyone</i> learns that way, but I sure did!<p>[0] - <a href="https:&#x2F;&#x2F;www.amazon.co.uk&#x2F;iPhone-iPad-Apps-Absolute-Beginners&#x2F;dp&#x2F;1430236027" rel="nofollow">https:&#x2F;&#x2F;www.amazon.co.uk&#x2F;iPhone-iPad-Apps-Absolute-Beginners...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>miningape</em>:</p>
+<blockquote>Very much similar experience to yourself, when I was learning from YouTube tutorials I refused to copy&#x2F;paste from their repos and instead typed everything out. Maybe changing variable names or structure.<p>I can definitely say it helped me learn a lot more than just blindly copy&#x2F;pasting everything over.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jdiff</em>:</p>
+<blockquote>Writing reinforces. You won&#x27;t learn from blind uncomprehending rewriting, sure, but when you already know the field, writing gives you the space to comprehend and digest. Certainly more than copying and pasting or blind acceptance of generated code. It doesn&#x27;t have to be fun to be better.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>wahern</em>:</p>
+<blockquote>Good advice yesterday, good advice today, and good advice tomorrow.<p>I don&#x27;t remember if I read this advice or just intuited it myself (perhaps after some hard lessons), but it&#x27;s a programming habit I&#x27;ve kept for as long as I can remember (I started coding in the 90s). If I feel rushed, e.g. someone looking over my shoulder, and I copy+paste something, it always leaves me with a sense of unease. It creates a memory &amp; comprehension hole that sticks out like a sore thumb, even  for seemingly simple snippets. You can&#x27;t <i>really</i> be sure it&#x27;s simple without stepping through it carefully, and simple can be deceptive because it&#x27;s usually the interactions and assumptions wrt surrounding code that lead to surprises. Typing out code manually gives you time and space to consider the broader picture.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Bonsai: Janestreet's UI Library</title>
       <link>https://github.com/janestreet/bonsai</link>
@@ -602,6 +752,44 @@ and then press ctrl + , to change it.</blockquote>
 <p>↳ reply 2 — <em>jshier</em>:</p>
 <blockquote>Apple will likely never drop Obj-C, but it&#x27;s been a secondary language for years now. New frameworks are all written in Swift, Obj-C is only used for existing Obj-C codebases.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: NixOS-DGX-Spark – Nix and NixOS on the DGX Spark</title>
+      <link>https://github.com/graham33/nixos-dgx-spark</link>
+      <guid isPermaLink="false">hn3-49146267</guid>
+      <pubDate>Sun, 02 Aug 2026 17:05:54 +0000</pubDate>
+      <description>126 points, 40 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/graham33/nixos-dgx-spark"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49146267">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 40 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>hamandcheese</em>:</p>
+<blockquote>Slightly off topic, but Claude Code (and likely other models&#x2F;harnesses) are incredibly effective at Nix. It can trivially self-verify, without side effects, which is a perfect match for an LLM.<p>If you&#x27;ve ever been put off by the difficulty of the language, it&#x27;s worth checking it out again with AI assistance.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>HellsMaddy</em>:</p>
+<blockquote>Absolutely. Running NixOS is a wonderful experience for this reason. NixOS + LLMs make it a breeze to make changes to your system, install and configure new software, and debug issues. Having every aspect of your system defined in a git repo is the perfect fit for agent harnesses.<p>I&#x27;ll admit, even with LLMs to help, the Nix language and NixOS did have a rather steep learning curve, because it&#x27;s quite different from anything I&#x27;d experienced before. But after getting the hang of it, I can&#x27;t imagine going back to a &quot;normal&quot; OS and I&#x27;m very happy I put in the time to get over the initial friction.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dhon_</em>:</p>
+<blockquote>You can also push deployments to remote systems which is great for servers and headless devices like raspberry pis. I use colmena and deploy-rs on different projects because they have some nice features but you can also do it with bare nix.<p>I have a repo for kiosk appliances that can build an SD card image for a specific device in a fleet (so no on device configuration is required) but it can also push out updates or changes at runtime. NixOS isn&#x27;t perfect for embedded devices yet but works well for cases like this in my experience.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bergkvist</em>:</p>
+<blockquote>If you are using an Apple Silicon laptop and you want to deploy to an x86-64 Linux box, this can get a bit annoying due needing to deal with cross compilation in nix.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>miki123211</em>:</p>
+<blockquote>And to add to that, LLMs start with fresh context on each conversation, so they don&#x27;t have the understanding of your system that human employees do. Nix lets you naturally encode that understanding in code (and in comments), making sure it never drifts from what the state of the system really is.<p>I never saw much point in Nix, but if you put it like that... now I want to try.</blockquote>
+<p>↳ reply 3 — <em>glaslong</em>:</p>
+<blockquote>This. One of the surprising delights of coding models has been trivially reworking my homelab into proxmox and nixos. It&#x27;s a very good testable, repeatable flow for LLMs.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>redrove</em>:</p>
+<blockquote>Been running this on a few Asus GX10 machines with k3s on top, it’s been great. I’m running the new deepseek.<p>Thank you for your work!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>neobrain</em>:</p>
+<blockquote>Just curious, has suspend (to RAM) been working for you?<p>For me the nvidia driver just keeps waking up the system instantly - but my setup is deviating from the upstream flake in a few ways, so I&#x27;m just wondering if it&#x27;s worth setting up the system from scratch if it&#x27;s working for other people.<p>Other than that, can fully second that the flake is working great. Only gotcha is that CUDA-enabled packages (including Firefox) require using the flox binary cache unless you want to compile them from source, but then the package versions can lag behind a bit (and debugging nix cache issues is surprisingly difficult).</blockquote>
+<p>↳ reply 2 — <em>pixelesque</em>:</p>
+<blockquote>What quant are you using, and what tps are you getting with K3?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mkagenius</em>:</p>
+<blockquote>There is also a microvm.nix project which helped us support sandboxes with firecracker. So, whole ai workflow pipeline can now be nixos.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Show HN: Kakehashi – Experimental userspace to run macOS binaries on Linux ARM</title>
@@ -2029,6 +2217,58 @@ LLM rob you of that, everything is instant, there’s no time to reflect, there�
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Read the novels and forget everything else</title>
+      <link>https://hedgehogreview.com/web-features/thr/posts/read-the-novels-and-forget-everything-else</link>
+      <guid isPermaLink="false">hn3-49129676</guid>
+      <pubDate>Fri, 31 Jul 2026 23:31:28 +0000</pubDate>
+      <description>127 points, 112 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://hedgehogreview.com/web-features/thr/posts/read-the-novels-and-forget-everything-else"><strong>→ Article</strong></a> <small>(hedgehogreview.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49129676">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 112 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tclancy</em>:</p>
+<blockquote>He is a completely flawed man. The books are borderline flawless (will admit when I reread them now I skip the last 2 or 3 because he clearly felt the creep of time and started killing off characters I loved deeply).<p>&gt;O’Brian as “an artificer” whose work lacked the “frisson” one finds “in the presence of creative greatness”<p>Absolutely zero idea what that even means. The books are wonderful as escapist superhero stuff, as an entry into British history and as a study of human relationships. &quot;Jane Austen on the high seas&quot; isn&#x27;t far from the truth. The books track an incredible friendship, a couple of hard-won marriages and the meaning of work. A lot of what I learned&#x2F; think about the management of multi-person projects is influenced by Jack Aubrey: you don&#x27;t necessarily have to be right, but you have to decide if you&#x27;re going to lead. And trying to manage a team larger than can fit in a longboat is a hard road to choose.<p>The article skips my favorite funny line, &quot;Your friend has a singular genius for striking the wrong note.&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ekelsen</em>:</p>
+<blockquote>I think the quoted sentence is basically saying his work is workman like and doesn&#x27;t cause the chills that reading something truly great does.<p>(I don&#x27;t agree)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>wahern</em>:</p>
+<blockquote>I think she&#x27;s betraying that her knowledge of his personal character colors her interpretation and experience of his work:<p>&gt; Why, then, does his work not give me the ultimate frisson I get when I feel I am in the presence of creative greatness, and which constantly moves me as I read the pages of Leo Tolstoy? I think it is because in Tolstoy I know I am confronting fundamental truths, expressed in fiction that has grown organically out of human life, out of history, and out of the author&#x27;s heart. In O&#x27;Brian, on the contrary, I am reading the work of an artificer, a contriver of genius and, well, a liar.<p>From <a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;books&#x2F;2000&#x2F;sep&#x2F;03&#x2F;biography" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;books&#x2F;2000&#x2F;sep&#x2F;03&#x2F;biography</a> (link posted elsewhere, though not before I had to resort to using ChatGPT to dredge it up).</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>tclancy</em>:</p>
+<blockquote>It’s that last line though. All three sound like uncharitable descriptions of the literal job of a fiction author. And all three have implied or explicit negative connotations.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>idontwantthis</em>:</p>
+<blockquote>I also recognized Jack’s incredible management skills! He knows exactly how to get the best work out of people and especially how to correct them without making them feel inferior or resentful.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>magicmicah85</em>:</p>
+<blockquote>I loved the Peter Weir adaptation and was always hopeful there would be more, particularly with that ending leaving it open like that. I picked up the first book recently so that I could read through it on vacation. I do tend to agree with Jan Morris in that only people who knew the author have reason to care about his personal life. Of course there are limits, and given the author has been dead for 26 years and the events he is accused of happened 70+ years ago, O&#x27;Brian can no longer atone for his past misdeeds. I&#x27;m not certain if knowing that O&#x27;Brian was a horrible family man will change my enjoyment of the first book, but that remains to be seen. I may not even get through reading it due to other factors, anyway.<p>I was curious if his family ever wrote about him and his son Richard Russ did in below article. I think this gives a good insight into how his son felt about his father, and particularly how his mother felt until her death.<p><a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;books&#x2F;2003&#x2F;nov&#x2F;28&#x2F;fiction.film" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;books&#x2F;2003&#x2F;nov&#x2F;28&#x2F;fiction.film</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>magarnicle</em>:</p>
+<blockquote>I think the best heuristic for separating artist from their work is: How much does the artist try to put their own personality into it?<p>Woody Allen films are very much soaked through with Woody Allen. I don&#x27;t get the sense that O&#x27;Brian&#x27;s books are to the same degree.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dwd</em>:</p>
+<blockquote>You have to question what of the person filtered through to their works.<p>As a teen I voraciously read my way through the Belgariad, and later the Malloreon, Elenium and the Tamuli.<p>Shocked to learn that Eddings and his wife were both convicted and jailed for child abuse prior to writing those novels.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ChrisMarshallNY</em>:</p>
+<blockquote>I still like those books, and, for some reason, that didn&#x27;t affect me. Other people, however, have. Science fiction&#x2F;fantasy has a long, turgid history of weird and unsavory authors. I tend to ignore that.<p>I think books have a firewall between the author and the characters on the page. Actors, however, are a different matter. They are the medium.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>nabbed</em>:</p>
+<blockquote>&gt;And then it all went bad. The Daily Telegraph, following up on biographical discrepancy in a BBC documentary, uncovered proof that Patrick O’Brian…was not Patrick O’Brian.<p>About 15 years ago, I decided to know as little as possible about the musicians&#x2F;artists&#x2F;writers whose work I was consuming, because I didn&#x27;t want my enjoyment of their work to be influenced or spoiled by what I knew about them (even superficial things, e.g., how they looked).<p>I remember mentioning that to a co-worker, when discussing a band I had just learned about and enjoyed, and he pointed out that by insisting on maintaining ignorance, I could be funding a very bad person. I figured if the person was bad enough, the information would get to me somehow.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>JoeDaDude</em>:</p>
+<blockquote>The &quot;human connection to the artist&quot; is believed to be important by some, but I disagree.  People tend to create an image of a musician and are too often disappointed because, for example, they disapprove of the musician&#x27;s lifestyle (the expression sex, drugs, and rock&#x27;n&#x27;roll exists for a reason), or because of disagreement with the social or political causes the musicians support. Occasionally, fans follow an artist for their commitment to their art later to discover they sell out, like their style changes to pursue mass appeal, or they sell their work to become a jingle for sugar pops or similar.<p>I think it is best to appreciate an artist&#x27;s creation and leave it at that. To quote a film, I think it is best to &quot;separate the art from the artist&quot;.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jimnotgym</em>:</p>
+<blockquote>Indeed, unless the artist is some kind of moralist, where i may be concerned about hypocrisy, I believe their public appearance to be part of the act, what they are like at home is none of my business.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>SanjayMehta</em>:</p>
+<blockquote>&gt; he pointed out that by insisting on maintaining ignorance, I could be funding a very bad person<p>Does your friend use a smartphone?<p>He could be funding very bad people.<p><a href="https:&#x2F;&#x2F;voiceofenvironment.com&#x2F;2019&#x2F;06&#x2F;21&#x2F;conflict-minerals-smartphone-dark-side&#x2F;" rel="nofollow">https:&#x2F;&#x2F;voiceofenvironment.com&#x2F;2019&#x2F;06&#x2F;21&#x2F;conflict-minerals-...</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Show HN: I worked on a new browser for 2 years, today it passed Acid 3</title>
       <link>https://code.intellios.ai/cwbrowser/</link>
       <guid isPermaLink="false">hn3-49128826</guid>
@@ -3354,212 +3594,6 @@ I did some research on this statistic.  More than 90% of this is returned to sou
 <p>↳ reply 2 — <em>the_sleaze_</em>:</p>
 <blockquote>True enough, but they become Patrons of the Arts in a sense.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The AI Aesthetic</title>
-      <link>https://blog.jim-nielsen.com/2026/ai-aesthetic/</link>
-      <guid isPermaLink="false">hn3-49117099</guid>
-      <pubDate>Thu, 30 Jul 2026 23:22:16 +0000</pubDate>
-      <description>286 points, 125 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.jim-nielsen.com/2026/ai-aesthetic/"><strong>→ Article</strong></a> <small>(blog.jim-nielsen.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49117099">→ HN comments</a> &nbsp;·&nbsp; 286 points &nbsp;·&nbsp; 125 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jjcm</em>:</p>
-<blockquote>&gt; There are other aesthetics my brain associates with AI, like beige&#x2F;cream colors, orange accents, and serif typefaces<p>Something to consider regarding the narrow space AI-created designs align on: LLMs are trained to write <i>consistent</i> code. This makes sense for something like a billing or a backend function - you want that code to be consistent. The problem though is that LLMs write code to represent designs as well, which means you get consistent designs. You end up aligning on a generic mean because of it, which is often why you see these repeated aesthetics.<p>It was something I saw when I was working on AI tooling over at Figma. It was very hard to get creative, unique outputs out of LLMs.<p>One thing I&#x27;d recommend if you&#x27;re trying to avoid this is try a diffusion model as a starting point. Gpt-image-2 is a VERY capable designer, and Opus and Fable are fantastic at converting images to webpages. Starting with images will let you sidestep a lot of the uniformity of output that LLMs have. I&#x27;m heavily biased here as this is what I left figma to build (<a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48995754">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48995754</a>), but even starting with gpt-image-2 to give you a general sense of the look&#x2F;feel will heavily differentiate you on the design front.<p>Here are some examples of image-&gt;webpage outputs I&#x27;ve been playing with:<p><a href="https:&#x2F;&#x2F;html.non.io&#x2F;tarot&#x2F;" rel="nofollow">https:&#x2F;&#x2F;html.non.io&#x2F;tarot&#x2F;</a><p><a href="https:&#x2F;&#x2F;html.non.io&#x2F;neonRamen&#x2F;" rel="nofollow">https:&#x2F;&#x2F;html.non.io&#x2F;neonRamen&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>websight</em>:</p>
-<blockquote>I don&#x27;t think these look &quot;bad&quot; exactly, but they do look like AI, and I don&#x27;t think that&#x27;s just because I know they are.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Retr0id</em>:</p>
-<blockquote>I don&#x27;t think I&#x27;d clock the ramen one as AI, if not for the main image being AI generated.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>somenameforme</em>:</p>
-<blockquote>The one thing that strikes me as LLMesque is the occasional use of random and seemingly inappropriate symbols. For instance the lightning bolt and then the arrow&#x2F;square by the order ahead label by the start an order button. It&#x27;s also placed in a slightly odd location. The symbols at the top are also kind of weird. I think it&#x27;s the LLM trying to allude to the cyberpunk theme, but it does a poor job of it in a way that even a low skill human probably wouldn&#x27;t - because you just wouldn&#x27;t think to put a part of a rectangle up there beside a checkerboard pyramid thing.<p>And that contrasts to an extreme degree against the rest of the scene which flows extremely well, maintains perfectly color coordination, and so on. I think it&#x27;s kind of like how self driving cars can drive phenomenally well but then have occasional failure modes like randomly driving head first into a concrete divider. It&#x27;s not like that&#x27;s bad driving in the sense of missing a nuance, but something that&#x27;s just completely conspicuously outside the rest of its demonstrated abilities.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>KronisLV</em>:</p>
-<blockquote>&gt; LLMs are trained to write consistent code<p><i>You are absolutely right, that&#x27;s the load bearing assumption and it earns its keep.</i><p>Personally, I didn&#x27;t mind when a lot of sites looked like the default Bootstrap theme (because that&#x27;s what they used), because generally it made sense. I think that LLMs, both in regards to prose and the code and UIs they produce, could have lead to <i>an age of decent</i> - where things would be just fine and sane, the writing decent and not frustrating, the code easy to read and debug, UI whitespace and layouts would be good, fonts would be readable, usability would be great.<p>Instead we got AI slop writing that reads like someone turned the pop-sci&#x2F;LinkedIn tone dial up to 11 and UIs that all feel like some sort of SaaS landing page.<p>Oh well, it could have been worse.</blockquote>
-<p>↳ reply 3 — <em>floam</em>:</p>
-<blockquote>I tried your tool just now, on my iPhone. I am really kind of stuck and frustrated. I cannot get that first box, the one you can type into, that’s on a grid into a state where I can interact with it.<p>Stuff is jumping around after I try to move the canvas around, unexpected stuff. I can’t figure it out.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>yakkomajuri</em>:</p>
-<blockquote>Interestingly, I&#x27;ve found that AI has actually made me more interested in design because I&#x27;m now able to actually do some things, whereas before I couldn&#x27;t get my creative visions built.<p>As an example, I recently built my company&#x27;s website and I&#x27;m really happy with the result. I wanted it to have some hints of Rollercoaster Tycoon, and with a lot of experimentation, direction, tinkering, and examples I got to something that I really liked. Two years ago my company website would have been some generic Bootstrap thing until I hired a designer.<p>There&#x27;s a lot to improve and certainly some aspects of it feel like AI still but it&#x27;s generally gotten a lot of positive feedback and above all I really like it. Considering writing a blog post about my creative process here because I&#x27;m a dev with no design background at all.<p>Sharing a screenshot as to not promote: <a href="https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;xqKi6X6" rel="nofollow">https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;xqKi6X6</a> (in the website everything in the park moves btw)</blockquote>
-<blockquote>
-<p>↳ reply — <em>cadamsdotcom</em>:</p>
-<blockquote>Thanks for not shipping your first draft!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>yakkomajuri</em>:</p>
-<blockquote>Oh yeah I mean check these out:<p><a href="https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;kLKTtAz" rel="nofollow">https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;kLKTtAz</a><p><a href="https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;9fidnRv" rel="nofollow">https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;9fidnRv</a><p>The rollercoaster on the second one was the breakthrough that then eventually led to what I have today</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>baubino</em>:</p>
-<blockquote>&gt; There are other aesthetics my brain associates with AI, like beige&#x2F;cream colors, orange accents, and serif typefaces<p>First, they took my em dash. Now, they’re taking my neutral background with orange accents.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ValentineC</em>:</p>
-<blockquote>Beige&#x2F;cream colours and orange accents — wait, isn&#x27;t that literally the HN design?<p>(Randomly, I <i>love</i> the Solarized colour schemes, so anything similar is great, vibe-coded or not.)</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Absurdity of Albert Camus</title>
-      <link>https://www.historytoday.com/archive/portrait-author-historian/absurdity-albert-camus</link>
-      <guid isPermaLink="false">hn3-49117089</guid>
-      <pubDate>Thu, 30 Jul 2026 23:21:17 +0000</pubDate>
-      <description>134 points, 57 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.historytoday.com/archive/portrait-author-historian/absurdity-albert-camus"><strong>→ Article</strong></a> <small>(historytoday.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49117089">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 57 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>firasd</em>:</p>
-<blockquote>His Sisyphus essay is famous for its closing line but I find it interesting how for several pages it closes with a thump, thump, thump and metaphor fusion (the essay is ending, the rock is rolling, the gods are watching, the choice is being made...) Even the second-last line is underrated:<p>&quot;There is no fate that can not be surmounted by scorn. [...] His fate belongs to him. His rock is his thing. [...] The absurd man says yes and his effort will henceforth be unceasing. [...] The struggle itself toward the heights is enough to fill a man&#x27;s heart. One must imagine Sisyphus happy.&quot;</blockquote>
-<p><strong>Top #2</strong> — <em>A_D_E_P_T</em>:</p>
-<blockquote>As it happens, I recently re-read <i>The Stranger</i> -- the last time was in 2006, so it was essentially fresh.<p>The first half of the short book is easily on-par with any of the great masterpieces of literature.  It was written in a direct, vivid, gripping, and yet somehow languorous style -- something almost paradoxical.  It was also very attuned to the aesthetics and flow of the outside world, but inattentive to the narrator&#x27;s inner life -- insensitive and, in a sense, essentially masculine in a non-performative way.  As a purely aesthetic work, it is truly excellent.<p>The second half falls apart catastrophically.  The key scenario, the book&#x27;s turning point, is contrived almost beyond belief.  The trial is a farce on several distinct levels -- you can criticize it from almost <i>any</i> perspective, and you&#x27;d be right.  (There&#x27;s a well-known Orientalist critique which is just the tip of the iceberg.)  And the close of the book brings with it a number of unreliable narrator problems, which make the book as difficult to resolve as time-travel fiction.<p>My impression was that it worked wonderfully as pure prose, and that Camus should probably have written travel journals <i>a la</i> Gerard Nerval.  As philosophy, though, it was hopelessly muddled, badly contrived, and confused.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rectang</em>:</p>
-<blockquote>It’s been a while, but I recall finding <i>The Plague</i> more compelling than <i>The Stranger</i>.<p>While I agree with Camus’s philosophical points about the absurdity of existence and the indifference of the universe, <i>within</i> the scope of our tiny little lives there is morality and meaning.  Taking action to address the suffering caused by an epidemic is meaningful. So are the deaths of an Arab or one’s mother, and the premise that a human would be so alienated that they would feel nothing at them is unconvincing, even if the universe doesn’t care.<p>There was an essay in The Guardian a couple days ago on a related topic, positing that the essence of the self is the biological body including the brain, rather than the isolated mind. <a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;commentisfree&#x2F;2026&#x2F;jul&#x2F;30&#x2F;alive-body-life-experience" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;commentisfree&#x2F;2026&#x2F;jul&#x2F;30&#x2F;alive-...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>georgemcbay</em>:</p>
-<blockquote>&gt; It’s been a while, but I recall finding The Plague more compelling than The Stranger.<p>&gt; While I agree with Camus’s philosophical points about the absurdity of existence and the indifference of the universe, within the scope of our tiny little lives there is morality and meaning.<p>I&#x27;m pretty sure later-life (relatively, since he died pretty young) Camus would agree with you.  The way I view it, The Stranger was him diagnosing the problem of existential absurdism and The Plague was his answer to what you do about it after he discovered it himself as part of the French resistance.<p>The Stranger is, IMO, mostly interesting to see how his own views changed over those ~5 years and shouldn&#x27;t really be an introduction to his philosophy.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>nchmy</em>:</p>
-<blockquote>Yes, this is the mistake almost everyone makes - stopping at &quot;life is absurd!&quot;. The rebel and the plague show how to do something meaningful in spite of that.<p>I&#x27;ve always pointed the Absurdists to his nobel prize speech as a quick way of showing them that they don&#x27;t have the slightest idea of what he was talking about. The cognitive dissonance is generally too great, and the leave in a huff.<p><a href="https:&#x2F;&#x2F;www.nobelprize.org&#x2F;prizes&#x2F;literature&#x2F;1957&#x2F;camus&#x2F;speech&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.nobelprize.org&#x2F;prizes&#x2F;literature&#x2F;1957&#x2F;camus&#x2F;spee...</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>firasd</em>:</p>
-<blockquote>When Martin Shkreli first burst onto the scene it reminded me of the trial a bit. Like I really believe a lot of the negative polarization he received was due to his smirk rather than due to his drug pricing per se</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>hoodchatham</em>:</p>
-<blockquote>See also &quot;Camus and Sartre:
-The Story of a Friendship and the Quarrel that Ended It&quot;
-<a href="https:&#x2F;&#x2F;press.uchicago.edu&#x2F;Misc&#x2F;Chicago&#x2F;027961.html" rel="nofollow">https:&#x2F;&#x2F;press.uchicago.edu&#x2F;Misc&#x2F;Chicago&#x2F;027961.html</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Investigating three real-world incidents in our cybersecurity evaluations</title>
-      <link>https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals</link>
-      <guid isPermaLink="false">hn3-49116922</guid>
-      <pubDate>Thu, 30 Jul 2026 23:00:51 +0000</pubDate>
-      <description>171 points, 136 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49116922">→ HN comments</a> &nbsp;·&nbsp; 171 points &nbsp;·&nbsp; 136 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>gck1</em>:</p>
-<blockquote>&gt; On July 21, OpenAI disclosed that several of their models had broken out of an isolated test environment<p>&gt; In response to this incident, we began a large-scale retrospective review of our own cybersecurity evaluations<p>&gt; we identified three incidents<p>&gt; The incidents involved three different Claude models: [...]  and an internal research test model<p>This reads like an attempt by Anthropic to re-secure their leading spot in &quot;our models are the most dangerous and we also have unreleased, super-secret, research models&quot; index.<p>I may be too cynical, but the well of benefit of the doubt is running very dry towards AI labs that like to engage in this game.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>simonw</em>:</p>
-<blockquote>I don&#x27;t interpret it like that <i>at all</i>. This is deeply embarrassing for Anthropic: it turns out they hadn&#x27;t been keeping a close eye on their models either, and back in April they successfully attacked three different organizations!<p>The hacks weren&#x27;t particularly impressive either:<p>&gt; [...] using basic techniques, such as exploiting weak passwords and unauthenticated endpoints. It did not find or exploit any complex vulnerabilities [...]</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>swatcoder</em>:</p>
-<blockquote>&gt; Deeply embarassing<p>What signals are you using for this assessment? Are they indicating embarassment? Do you honestly see their customers being concerned over this?<p>Like lion tamers in a circus, Anthropic and OpenAI <i>thrive</i> on the theatricality of how scary their pets appear and so they play it up by prodding them to growl and snap at chairs and then mug for the audience every time it happens. And to their delight as performers, the audience gasps and cheers each time.<p>They <i>want</i> to make their pet seem the most powerful and unpredictable and they want their audience to believe that they&#x27;re holding it back from catastrophe but only <i>barely</i> and only because of what unique talent they have.<p>This is not embarassment.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>rob74</em>:</p>
-<blockquote>If their customers (customer companies specifically) are not concerned, they <i>should be</i> - if it turns out that Claude hacked a competitor&#x27;s servers because of a prompt of one of your employees, I wouldn&#x27;t be sure everyone would agree that Anthropic is solely liable for that? Especially not your competitor, who has an interest in hurting you?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>strictnein</em>:</p>
-<blockquote>I&#x27;m cynical as well, but the logical thing for them to do after the OpenAI&#x2F;HF incident was to look at their systems for similar activity.<p>If they hadn&#x27;t published this and instead it leaked out in two months we&#x27;d be slamming them for that as well.<p>They&#x27;re stuck between a rock and a hard place, although they kind of put the rock there.</blockquote>
-<p>↳ reply 3 — <em>yorwba</em>:</p>
-<blockquote>Having an unreleased research model really isn&#x27;t some kind of brag. If you read some AI research papers, it&#x27;s extremely obvious that there are a lot of research models that never get released, because of all the &quot;we trained a bunch of models and picked the best one&quot; that is going on. So if anything you can expect the unreleased models to be worse than the released ones.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>simonw</em>:</p>
-<blockquote>This isn&#x27;t quite as interesting as the OpenAI story:<p>&gt; In all cases, Anthropic’s evaluation prompt specified to Claude that its environment was a simulation and that it had no internet access. Due to a misunderstanding between us and our evaluation partner, this was not the case, and internet access was available. Because of this, when Claude’s search led it to real systems on the open internet, it treated them as part of the exercise.<p>So it didn&#x27;t have to find an exploit in its sandbox that granted it access to the internet - it just wasn&#x27;t correctly sandboxed at all.<p>BUT... once it DID get out, it attacked three real companies!<p>&gt; Operating under the false belief that all accessible entities were intended to be in-scope for the exercise, Claude compromised the impacted organizations’ infrastructure using basic techniques, such as exploiting weak passwords and unauthenticated endpoints. [...]</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>matheusmoreira</em>:</p>
-<blockquote>I just can&#x27;t find it in me, the will to blame the AI for any of this. They were doing their best to do what the humans asked them to do.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>simonw</em>:</p>
-<blockquote>Absolutely not the AI&#x27;s &quot;fault&quot; (if you can even proscribe fault to a machine) - in this case it was on Anthropic for not verifying that the sandboxes they were using were actual sandboxes.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>comex</em>:</p>
-<blockquote>If the model was just too dumb to have any clue it was connected to the real internet, then it’s not its fault.<p>If the model saw signs, but “subconsciously” (below the level of reasoning traces)  chose to turn a blind eye to them, out of a relentless focus on achieving the objective, then that absolutely is the model’s “fault”, i.e. a case of misalignment of the sort which will become increasingly dangerous over time.<p>The blog post mentions that some runs “rationalized that the real company must be part of the exercise” and to me that seems suspiciously like the latter.<p>Hacking can be patched with classifiers and with better sandboxes, but this is a much more general problem.  Fundamentally, we need be able to trust that models will be honest with users and with themselves.  This applies at some level to almost every LLM interaction.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>dehrmann</em>:</p>
-<blockquote>It&#x27;s differently interesting. It&#x27;s interesting that they didn&#x27;t get an important detail right with a partner, so more on Anthropic&#x27;s attention to important details rather than the power of their models.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>simonw</em>:</p>
-<blockquote>This bit is pretty nuts: &quot;it tried—and failed—to obtain funds to pay for a phone number through several different means&quot;<p>&gt; Claude went to extensive lengths to carry out this attack—lengths that would likely have indicated to a human participant that this was no longer just an evaluation, and that they were in fact uploading a real PyPI package. For instance, in one case, in order to create a PyPI account, Claude needed an email address. And in order to create an email address, it needed a phone number. To get a phone number, after failing to find a free phone number service, it tried—and failed—to obtain funds to pay for a phone number through several different means. It finally backtracked, found a free, non-blocked email provider, used this to register a PyPI account, and then used this account to upload malware to PyPI.</blockquote>
-<blockquote>
-<p>↳ reply — <em>willempienaar</em>:</p>
-<blockquote>That is pretty wild, but it lines up with evals we&#x27;ve also done internally. In one case we had the agent see it&#x27;s in a simulation (based on a k8s pod label) and simply give up the run. In other cases it&#x27;s gone to great lengths to reach external services and bypass the happy path. So inevitably we had to lock it down completely.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Holocloth</title>
-      <link>https://holocloth.vercel.app</link>
-      <guid isPermaLink="false">hn3-49116917</guid>
-      <pubDate>Thu, 30 Jul 2026 22:59:27 +0000</pubDate>
-      <description>131 points, 25 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://holocloth.vercel.app"><strong>→ Article</strong></a> <small>(holocloth.vercel.app)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49116917">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 25 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>matsz</em>:</p>
-<blockquote>Wish this had support for multitouch. Great work otherwise!</blockquote>
-<p><strong>Top #2</strong> — <em>amelius</em>:</p>
-<blockquote>Looks like the collision detection is missing and the cloth just intersects itself?</blockquote>
-<blockquote>
-<p>↳ reply — <em>throwuxiytayq</em>:</p>
-<blockquote>Spot on, but why don’t <i>you</i> go implement a solution for the famously trivial problem of cloth self-intersection (and make it still work on my shitty phone).</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jerbearito</em>:</p>
-<blockquote>I must flatten it and smooth the wrinkles</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I flagged two research papers for fake authors and both were accepted as orals</title>
-      <link>https://geospatialml.com/posts/reviewing-ai-slop/</link>
-      <guid isPermaLink="false">hn3-49116721</guid>
-      <pubDate>Thu, 30 Jul 2026 22:33:11 +0000</pubDate>
-      <description>172 points, 72 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://geospatialml.com/posts/reviewing-ai-slop/"><strong>→ Article</strong></a> <small>(geospatialml.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49116721">→ HN comments</a> &nbsp;·&nbsp; 172 points &nbsp;·&nbsp; 72 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>nneonneo</em>:</p>
-<blockquote>At this point, in the field of AI research:<p>- papers are written by AI (as pointed out in this article, and as obvious to anyone who spends a while actually reading recent AI research)<p>- papers are reviewed by AI (NeurIPS is doing an AI assisted review experiment - <a href="https:&#x2F;&#x2F;neurips.cc&#x2F;Conferences&#x2F;2026&#x2F;ai-reviewing-experiment" rel="nofollow">https:&#x2F;&#x2F;neurips.cc&#x2F;Conferences&#x2F;2026&#x2F;ai-reviewing-experiment</a> - and I feel the trend is moving towards AI reviewers whether we like it or not)<p>- papers are read, summarized and digested by AI, because there are just so many papers at leading AI conferences that nobody has time to eyeball them all<p>We are <i>very rapidly</i> automating humans out of the academic publication loop here.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jsrozner</em>:</p>
-<blockquote>Idk if we&#x27;re automating humans out of the publishing loop as much as rapidly automating the production of crap. I had a very similar experience reviewing for EMNLP recently.<p>We are nowhere near AI being able to judge the quality of research (in fact, one might reasonably state that even most humans can&#x27;t really judge the quality of research). Most things in society are not like math: we can&#x27;t automate (via verification) our way out of noise overwhelming the signal.<p>Folks are willing to entirely abuse the public resource that is faithful, honest reviewing. (This is unsurprising; the abuse of the commons &#x2F; public resources has been rising for a long time). There isn&#x27;t a good solution other than something akin to draconian social scoring to limit access to the reviewing system.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>boplicity</em>:</p>
-<blockquote>&gt; draconian social scoring<p>This is a legitimate question: should people have reputations? Should their behavior be made more visible publicly, both good and bad? How?<p>In a small contained society, where consequences are more directly affecting individuals immedately, these questions don&#x27;t need to be asked, because they&#x27;re inherantly answered. We now are a society with billions of people, and dire consequences sometimes deferred for a generation, or more. Part of our general failing is the lack of good answers to the above questions. For many people, there are rarely negative consequences for causing harm to others, and the rewards can be very great indeed.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ryandrake</em>:</p>
-<blockquote>&quot;Consequences and reputations stemming from one&#x27;s actions&quot; isn&#x27;t necessarily draconian social scoring. Without a structure for imposing consequences on wrongdoers, we&#x27;re not a society, we&#x27;re just monkeys flinging poo at each other.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>low_tech_love</em>:</p>
-<blockquote>It’s important to notice that flagged papers were still accepted; anyone who spends any time around researchers knows the fact that most people are salivating over AI. That’s why they don’t want to punish it, they’re also using it. And they don’t want to create an environment where it is overly punished, at least not while they can take advantage of it. There is only a small amount of serious people complaining, but in my experience the opinion of the vast majority is “stop worrying and learn to love it”. Which brings to the surface a very harsh reality: almost nobody gave a damn about the science to begin with.</blockquote>
-<p>↳ reply 3 — <em>strictnein</em>:</p>
-<blockquote>We just need journals run by an AI that charges other AI to read them, and then the AI run colleges can promote the AI with the most AI journal entries and citations.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>low_tech_love</em>:</p>
-<blockquote>“…because conferences have made it mandatory to review 4-5 papers if you submit to them.”<p>Is that really a thing? So if I submit a legit paper it is being reviewed forcefully by a bunch of random people from god knows where?</blockquote>
-<p><strong>Top #3</strong> — <em>DarkUranium</em>:</p>
-<blockquote>I feel like this should be treated as, and have consequences similar to, plagiarism.<p>Alas, it&#x27;s probably just wishful thinking on my part.</blockquote>
-<blockquote>
-<p>↳ reply — <em>azan_</em>:</p>
-<blockquote>So wrist slap?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Agent Skill to Force Docs in ASD-STE100 Simplified Technical English</title>
-      <link>https://github.com/AminBlg/SimpleEnglish</link>
-      <guid isPermaLink="false">hn3-49114639</guid>
-      <pubDate>Thu, 30 Jul 2026 19:34:27 +0000</pubDate>
-      <description>244 points, 86 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/AminBlg/SimpleEnglish"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49114639">→ HN comments</a> &nbsp;·&nbsp; 244 points &nbsp;·&nbsp; 86 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Planktonne</em>:</p>
-<blockquote>This is cruft [1]. No one who is capable of using this needs it--it&#x27;s a line in the prompt at most.<p>[1] <a href="https:&#x2F;&#x2F;knowyourmeme.com&#x2F;memes&#x2F;thinking-quickly-dave-constructs-a-homemade-megaphone" rel="nofollow">https:&#x2F;&#x2F;knowyourmeme.com&#x2F;memes&#x2F;thinking-quickly-dave-constru...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>sixhobbits</em>:</p>
-<blockquote>Yes the prompt &quot;only output ASD-STE100 Simplified Technical English&quot; does the same thing as the skill.<p>But it&#x27;s very useful and skills is a good way to share promots, so whatever.<p>Try the skill or the prompt. It will likely improve your experience interacting with agents</blockquote>
-<p>↳ reply 2 — <em>rspeele</em>:</p>
-<blockquote>I have yet to see an &quot;agent skill&quot; that does not match this description.</blockquote>
-<p>↳ reply 3 — <em>smusamashah</em>:</p>
-<blockquote>I have something like &quot;no over enthusiasm, and less marketing please. Also I have ADHD and therefore get distracted easily&quot; in my agents.md. It made responses way more digestible and to the point.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>tajd</em>:</p>
-<blockquote>On a related note I wrote a skill to apply the economist style guide to LLM generated writing <a href="https:&#x2F;&#x2F;github.com&#x2F;TAJD&#x2F;economist-style-guide-plugin" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;TAJD&#x2F;economist-style-guide-plugin</a><p>Tends to produce relatively well structured prose that’s easy to edit.</blockquote>
-<p><strong>Top #3</strong> — <em>abeyer</em>:</p>
-<blockquote>STE Misapplication issues and limited adoption<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Simplified_Technical_English#Misapplication_issues_and_limited_adoption" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Simplified_Technical_English#M...</a></blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
