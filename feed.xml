@@ -4,7 +4,163 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 03 Aug 2026 21:12:01 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 23:10:55 +0000</lastBuildDate>
+    <item>
+      <title>Devtools must be open source</title>
+      <link>https://blog.exe.dev/devtools-must-be-open-source</link>
+      <guid isPermaLink="false">hn3-49156111</guid>
+      <pubDate>Mon, 03 Aug 2026 14:15:47 +0000</pubDate>
+      <description>458 points, 169 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.exe.dev/devtools-must-be-open-source"><strong>→ Article</strong></a> <small>(blog.exe.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49156111">→ HN comments</a> &nbsp;·&nbsp; 458 points &nbsp;·&nbsp; 169 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>simonw</em>:</p>
+<blockquote>One of the arguments for open source software for end-users has always been the freedom to examine and modify how that software works.<p>The reality for most people - even expert programmers - has been that the freedom is more about being able to lean on <i>other people</i> to do that. Most people can&#x27;t justify the time commitment needed to read and then modify the code for tools they use very often.<p>I think LLMs have changed that equation in a way that makes the original dream much more feasible.<p>Several times a day I&#x27;ll prompt regular Claude chat to &quot;Clone x&#x2F;y from GitHub and tell me how Z works&quot;.<p>Getting software to compile in order to start hacking on it used to be enough friction that I often wouldn&#x27;t bother. Now I treat that as a zero time investment challenge: tell Codex or Claude Code to checkout and build X and then come back ten minutes later and see how it got on.<p>I&#x27;m not habitually <i>modifying</i> the software I use yet, but I can see a path to that which didn&#x27;t exist a year or so ago.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dregitsky</em>:</p>
+<blockquote>Yeah I think this is changing, fast.<p>100% agree on &quot;clone X and tell me how it works&quot;. I&#x27;d also add: &quot;clone X and see how it does Y; use that as design reference for building feature Z&quot; if licenses permit.<p>On modifying software... I forked codex in ~Dec and had my own lightweight &quot;plan mode&quot; and a few other things. It was fun and satisfying, but it ended up being a bit of a pain to keep updated. The models were less good then, and maybe I should have learned some rust first. But it was close. For a less fast-moving codebase it&#x27;d have worked, and that was 8mo ago.<p>On the other hand as someone building in devtools for the first time, I struggle with how to think about this. We&#x27;re building a cloud agent + sandbox platform, <a href="https:&#x2F;&#x2F;boxes.dev" rel="nofollow">https:&#x2F;&#x2F;boxes.dev</a> - same problem space as the author&#x27;s product exe.dev. We could open source our client or the whole stack (we&#x27;ve been thinking about it), but we&#x27;re adding stuff so quickly that anyone customizing would have a hard time with updates. There&#x27;s also a lot on the hosted side that users couldn&#x27;t modify unless they self-host.<p>But I like this vision of a world where software is some fluid thing, and everyone is writing personal mods and building off of others&#x27; - basically OSS with forks but where every user (or their agent at least) is engaged with the code.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>SOLAR_FIELDS</em>:</p>
+<blockquote>As an end user, I don&#x27;t mind if you&#x27;re building a product with rapidly changing API&#x27;s out in the open. I&#x27;ll still use the product if it&#x27;s useful and deal with the churn. What I DO care about is not having half of that project rug pulled 12 months down the line when your Series B folks decide that this particular money knob needs to be turned up.<p>So if you want to not piss off your users, that&#x27;s the way to do it. Build a model where you can actually sustain the product, and no, giving it away on seed and series A round money then rug pulling that gift is not the way to achieve that.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>imrehg</em>:</p>
+<blockquote>I have sent countless small bug fixes even before, to tools that I use that I could dig into when something was off... No big heavy lifting, but plenty of &quot;tinker on your tools&quot; stuff. And I don&#x27;t think what I did was that special, so maybe the experiences are different?<p>The current LLM-driven stuff seems to break down the expectations, and now there are a lot of places which just ignore anything I send in (the same tinkers as before), generally, for a while. Though there are some tools that picked up the pace and actually react faster (so YMMV here too).<p>But there are few things more frustrating as being half-way. Case to point is LM Studio. It&#x27;s closed source, has bugs (duh!), and there&#x27;s at least a GitHub issue tracker to report the bugs -- but then by and large nothing happens to those reported things. It&#x27;s almost worse than not having an issue tracker (then I could justify never to really touch LM Studio again, this way I keep hoping against hope that reports will turn into fixes and thus I keep using and keep reporting...)</blockquote>
+<p>↳ reply 3 — <em>seba_dos1</em>:</p>
+<blockquote>&gt; Most people can&#x27;t justify the time commitment needed to read and then modify the code for tools they use very often.<p>As someone who way long before the LLM age had small patches accepted in several dozens of projects I&#x27;ve been using, I can assure you that this is just a matter of mentality. All I needed to be able to do that was to stop thinking that &quot;nobody has done it so far, so it must be hard&quot; and just do it. Sometimes I failed, but more often than not it turned out it wasn&#x27;t hard at all and nobody has done it so far simply because nobody cared enough to attempt it.<p>&gt; Getting software to compile in order to start hacking on it used to be enough friction that I often wouldn&#x27;t bother.<p>Not my experience at all. Usually the only limiting factor is the size of the project. Compiling a web browser on my 7 yo 13&quot; laptop is a miserable experience, but compiling most of the desktop components or utilities is and has always been a breeze and, in my experience with both Debian and Arch, just a matter of grabbing the distro&#x27;s source package. I even do it on my phone these days.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>kelnos</em>:</p>
+<blockquote>I agree that devtools should be open source, but...  I very much disagree with the premise that no tools should have config files, options, or plugin systems, and instead when you want to change something like your text editor&#x27;s font size, you should have an LLM download the code, change the hard-coded value, and rebuild it.<p>That&#x27;s just so inefficient and wasteful.  Assuming a world in which LLMs do most of the coding work, do we want to burn electricity having the LLM build an options dialog or config file parser once, or do we want to burn electricity millions of times as users want to change any little thing about the software they use?<p>I really hope what you should expect is my answer to that question isn&#x27;t controversial.<p>Having an LLM do bespoke customizations that are unlikely to be interesting to other people?  Great, sure.  But adding a generally-useful feature to a piece of software, but not caring to try to upstream it?  Lame.  Lame, lame, lame.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tajd</em>:</p>
+<blockquote>I completely agree - we&#x27;ve seen that tools with plugins are really scalable and then allow the better plugins to be folded back into the main tool where they become popular. I&#x27;ve taken that approach with my own dev tools that I&#x27;ve created.</blockquote>
+<p>↳ reply 2 — <em>wilsonnb3</em>:</p>
+<blockquote>Even pre-LLM this is how suckless tools work, I actually don’t much mind having to edit a variable in a header and recompile when you make a config change.<p><a href="https:&#x2F;&#x2F;dwm.suckless.org&#x2F;customisation&#x2F;" rel="nofollow">https:&#x2F;&#x2F;dwm.suckless.org&#x2F;customisation&#x2F;</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>theamk</em>:</p>
+<blockquote>&gt; Set up a nightly cron job that executes the prompt: fetch upstream changes to the &lt;software&gt; and rebase all local changes on top of upstream. Check that the software works as intended and replace the current version.<p>This sounds like hell. You have unreliable actor redoing the software every night, and every day there is a chance you wake up and find your workflow broken.<p>And no, &quot;Check that the software works as intended&quot; is not going to cut it, as AI are very, very good at obeying the letter but not the spirit of the ask. Yes, your diffs appear but they lack filenames. You&#x27;ve added this requirements to the prompt? Ok, filenames are back but they are font size 4, unreadably small. You want them well-seen? next week they become size 54, taking entire screen.. 
+This is not a problem with regular AI development - you review the changes and test them a bit. But doing it day-to-day with no overview is just asking for trouble.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>20k</em>:</p>
+<blockquote>I suspect the people advocating for this don&#x27;t actually do this, its one of those things that you say because it sounds modern and up to date, and makes for a good sounding blogpost. The actual reality of any of what they&#x27;re talking about is absolutely terrible<p>Even just the cost of this would be a disaster, especially once everything goes to token based pricing</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>raincole</em>:</p>
+<blockquote>Some people even claim that they don&#x27;t commit the code into source control, only the prompts. The best part about the internet is that you can publish any random shower thought.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>CamperBob2</em>:</p>
+<blockquote>Around 2020 I started getting downvoted for predicting that while the most popular programming languages at the time were Python, Java, and JavaScript, or whatever they were, the most popular programming languages in 2035 would be English and Mandarin.<p>Looks more like 2030, after all.  So the downvoters had a point.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>9dev</em>:</p>
+<blockquote>I don&#x27;t know; I&#x27;ve been rebasing <i>huge</i> branches in really mean divergent states with Claude Code, and it handled it flawlessly pretty much every single time. So I don&#x27;t think the actor is as unreliable as you think.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Andy Pavlo joins ClickHouse to establish ClickHouse Labs</title>
+      <link>https://clickhouse.com/blog/andy-pavlo-joins-clickhouse</link>
+      <guid isPermaLink="false">hn3-49156011</guid>
+      <pubDate>Mon, 03 Aug 2026 14:09:00 +0000</pubDate>
+      <description>250 points, 53 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://clickhouse.com/blog/andy-pavlo-joins-clickhouse"><strong>→ Article</strong></a> <small>(clickhouse.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49156011">→ HN comments</a> &nbsp;·&nbsp; 250 points &nbsp;·&nbsp; 53 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>remywang</em>:</p>
+<blockquote>Looks like Andy&#x27;s here, so if you see this - please also try to convince ClickHouse to consider funding DB research in academia. With all the money being poured into AI and the chaos in government funding, there is almost nothing for DB research anymore.</blockquote>
+<p><strong>Top #2</strong> — <em>bhickey</em>:</p>
+<blockquote>Andy taught me a lot about trolling. I also hear he&#x27;s banned from every post office within 50 miles of Baltimore.</blockquote>
+<p><strong>Top #3</strong> — <em>danlark1</em>:</p>
+<blockquote>Congrats, that&#x27;s incredible news. Watched apavlo@&#x27;s lectures while studying in the university and finished my bachelor thesis implementing features and doing research at ClickHouse. Surprised to see these worlds being together now!</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>MiniMax H3 Day-0 Support in ComfyUI: Open Weights, Native Audio, and 2K Video</title>
+      <link>https://blog.comfy.org/p/minimax-h3-day-0-support-in-comfyui</link>
+      <guid isPermaLink="false">hn3-49155629</guid>
+      <pubDate>Mon, 03 Aug 2026 13:34:43 +0000</pubDate>
+      <description>236 points, 74 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.comfy.org/p/minimax-h3-day-0-support-in-comfyui"><strong>→ Article</strong></a> <small>(blog.comfy.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49155629">→ HN comments</a> &nbsp;·&nbsp; 236 points &nbsp;·&nbsp; 74 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>vblanco</em>:</p>
+<blockquote>Im running this on my 4070ti super (16 gb vram), and it takes 10 minutes for a 10-seconds 480p video. but the results are spectacular.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Maxious</em>:</p>
+<blockquote>FWIW on a 5080 16GB it takes 3 minutes for 10 seconds 480p video (the mouse video workflow with length changed from 5 seconds to 10 seconds)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Sohcahtoa82</em>:</p>
+<blockquote>I must be doing something incredibly wrong.<p>I&#x27;m on an RTX 5090.  I told it to make a 5 second 864x480 video, it&#x27;s been running for over 30 minutes and is only 35% done in the SamplerCustomAdvanced step.<p>EDIT: Oh, I&#x27;m an idiot.  Forgot I had a llama.cpp webserver running with a model loaded.  Killed it and it finished very fast.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mwigdahl</em>:</p>
+<blockquote>If you wouldn&#x27;t mind sharing, what&#x27;s your Comfy workflow for this?  I have the same video card setup and would like to give it a shot.</blockquote>
+<p>↳ reply 3 — <em>chrsw</em>:</p>
+<blockquote>Huh, interesting. I tried to generate a 10 second 1080p clip on a bigger machine and the results were quite poor. Unusable for anything, in fact.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Mashimo</em>:</p>
+<blockquote>&gt; The result gives a total memory footprint reduced by 66%, from 123.6 GB in full precision to 42.5 GB with the smallest models variants. Combining this with our dynamic VRAM offloading enables a next-generation 2K video model to run locally on a GPU like the RTX 3060.<p>Pretty cool.<p>But assuming you have a 16GB 3060, how long would it take to generate a 15 second clip?</blockquote>
+<p><strong>Top #3</strong> — <em>fodkodrasz</em>:</p>
+<blockquote>On one hand: impressive. 
+On the other hands aesthetically it all looks painfully bland and generic.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>_diyar</em>:</p>
+<blockquote>I agree. But is that the model or the prompt?<p>I remember reading a report where people running AI-model instagram account were using insanely long and detailed prompts about the setting, lighting, makeup, pose, disposition, clothing, etc. about their models. Presumably with some reference image of the face &#x2F; body to remain consistent across images.<p>It‘s not clear to me whether a sufficiently detailed prompt can generate actually interesting video with a natural ”texture” (for lack of a better word).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>razster</em>:</p>
+<blockquote>That would be the prompt. With the right assistance from Qwen3.5&#x2F;Ornith I was able to achieve some amazing results. Unfortunately due to their licensing I&#x27;m not allowed to use it in the USA, so I had to halt testing.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>SV_BubbleTime</em>:</p>
+<blockquote>This, today, is the absolute worse this model will ever be. Chill.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Wind and solar overtake fossil fuels in Germany for the first time</title>
+      <link>https://www.intellinews.com/wind-and-solar-overtake-fossil-fuels-in-germany-for-the-first-time-ever-458379/</link>
+      <guid isPermaLink="false">hn3-49155359</guid>
+      <pubDate>Mon, 03 Aug 2026 13:13:02 +0000</pubDate>
+      <description>328 points, 260 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.intellinews.com/wind-and-solar-overtake-fossil-fuels-in-germany-for-the-first-time-ever-458379/"><strong>→ Article</strong></a> <small>(intellinews.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49155359">→ HN comments</a> &nbsp;·&nbsp; 328 points &nbsp;·&nbsp; 260 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>GuB-42</em>:</p>
+<blockquote>I have heard this news many times, technically not wrong, but each time with a different metric. This time it is production over a year.<p>It reminds me of the Voyager probes that left the solar system half a dozen times, each time taking a different definition of what marks the edge of the solar system.<p>Anyways, we are now getting to sensible metrics, which is good.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>rootusrootus</em>:</p>
+<blockquote>That doesn&#x27;t seem like a problem as long as the metrics chosen are trending towards greater achievements and are not just attempts at moving the goalposts.</blockquote>
+<p>↳ reply 2 — <em>emsign</em>:</p>
+<blockquote>That&#x27;s totally fine with me. Each time it&#x27;s an opportunity to be happy and proud.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>marcosdumay</em>:</p>
+<blockquote>What is not on the title:<p>For an entire year, that year being 2025.<p>Also, yes, absolute generation from fossil fuels is declining quickly. The total generation is changing way more slowly than that share.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>novaRom</em>:</p>
+<blockquote>But so is German industry - every day in the news either insolvency or workforce reduction and moving production to Eastern Europe - main reason often stated &quot;expensive Energy&quot;. I wonder what are the stats for industrial production in 2025 or total energy consumption in Germany?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>freehorse</em>:</p>
+<blockquote>Discussion about nuclear reactors aside, energy in germany became expensive when they cut off russian gas and they had no good alternative. There was no other source of cheap fossil fuels for electricity production. If anything, renewables are promoted as a solution to that energy problem.<p>The discussion about fossil fuels vs renewables is a bit different within countries which produce fossil fuels than within those that don&#x27;t.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Abimelex</em>:</p>
+<blockquote>Gas became expensive, energy for private houeholds became expensive, despite that electric energy for industries is currently on the same level as 2020. Even though there was a short spike in 2022. 
+See: <a href="https:&#x2F;&#x2F;www.smard.de&#x2F;page&#x2F;en&#x2F;topic-article&#x2F;5892&#x2F;216044&#x2F;industrial-electricity-price-trends" rel="nofollow">https:&#x2F;&#x2F;www.smard.de&#x2F;page&#x2F;en&#x2F;topic-article&#x2F;5892&#x2F;216044&#x2F;indus...</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>asdefghyk</em>:</p>
+<blockquote>RE &quot;...... yes, absolute generation from fossil fuels is declining quickly....&quot;<p>The challenge is to nake renewables reliable accross several days .<p>This is the most expensive part for needed storage and transmission lines ....</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>softwaredoug</em>:</p>
+<blockquote>The next frontier will be meat consumption. Particularly red meat.<p>A single 1&#x2F;4 beef hamburger emits 7-12 kg of carbon[1]. Compared to ~1.5kg of carbon driving your car 3 miles[2].<p>Not telling you to go full vegetarian, but I&#x27;m personally far less interested in a beef product unless you&#x27;re going to guarantee its an extremely expert prepared steak. Most beef is mediocre.<p>1 - <a href="https:&#x2F;&#x2F;ourworldindata.org&#x2F;environmental-impacts-of-food" rel="nofollow">https:&#x2F;&#x2F;ourworldindata.org&#x2F;environmental-impacts-of-food</a><p>2 - <a href="https:&#x2F;&#x2F;www.epa.gov&#x2F;greenvehicles&#x2F;greenhouse-gas-emissions-typical-passenger-vehicle" rel="nofollow">https:&#x2F;&#x2F;www.epa.gov&#x2F;greenvehicles&#x2F;greenhouse-gas-emissions-t...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>puchatek</em>:</p>
+<blockquote>Going vegetarian would only cut it if you stayed clear of dairy. Gram for gram it&#x27;s better to eat chicken than cheese for the climate.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>softwaredoug</em>:</p>
+<blockquote>My research seems to indicate its about on-par with chicken. IE a chicken filet is about the carbon impact of 8oz of milk.<p>And it seems here its about 1&#x2F;4 carbon per kg of food as beef:<p><a href="https:&#x2F;&#x2F;ourworldindata.org&#x2F;environmental-impacts-of-food" rel="nofollow">https:&#x2F;&#x2F;ourworldindata.org&#x2F;environmental-impacts-of-food</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bhelkey</em>:</p>
+<blockquote>&gt;&gt; Gram for gram it&#x27;s better to eat chicken than cheese for the climate.
+reply<p>&gt;IE a chicken filet is about the carbon impact of 8oz of milk.<p>They said cheese not milk. Note that it takes more than 1 unit of milk to produce 1 unit of cheese. From this source I found, they estimate ~10 input units of milk per output unit of cheese [1].<p>Assuming both of these are true, and assuming that the cheese making process produces no carbon, then a chicken filet would have the same carbon impact as .8oz of cheese or roughly a single slice of cheese.<p>The cheese making process does produce carbon (e.g. heating the milk) but it also produces whey as a valuable byproduct.<p>[1] <a href="https:&#x2F;&#x2F;pubs.nmsu.edu&#x2F;_e&#x2F;E216&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pubs.nmsu.edu&#x2F;_e&#x2F;E216&#x2F;</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>belorn</em>:</p>
+<blockquote>Getting people to agree to the same cultural diet is about as easy as getting people to agree to the same religion.<p>If we could change culture and the global diet, there are many exciting low carbon foods being promoted, especially in aquaculture. Shellfish and seaweed do not rely on artificial fertilizer, fresh water, or people burning down the rain forest.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>SQLite Critical CVEs or LLM Slop?</title>
       <link>https://research.jfrog.com/post/sqlite-critical-cves-or-llm-slops/</link>
@@ -154,6 +310,40 @@ understanding, thereby undermining the very goals of education&quot;.<p>Personal
 </blockquote>
 <p><strong>Top #3</strong> — <em>wahern</em>:</p>
 <blockquote>Good advice yesterday, good advice today, and good advice tomorrow.<p>I don&#x27;t remember if I read this advice or just intuited it myself (perhaps after some hard lessons), but it&#x27;s a programming habit I&#x27;ve kept for as long as I can remember (I started coding in the 90s). If I feel rushed, e.g. someone looking over my shoulder, and I copy+paste something, it always leaves me with a sense of unease. It creates a memory &amp; comprehension hole that sticks out like a sore thumb, even  for seemingly simple snippets. You can&#x27;t <i>really</i> be sure it&#x27;s simple without stepping through it carefully, and simple can be deceptive because it&#x27;s usually the interactions and assumptions wrt surrounding code that lead to surprises. Typing out code manually gives you time and space to consider the broader picture.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>What DMARC Protects You From, and What It Does Not</title>
+      <link>https://senderledger.com/articles/what-dmarc-actually-protects-you-from</link>
+      <guid isPermaLink="false">hn3-49153361</guid>
+      <pubDate>Mon, 03 Aug 2026 09:29:46 +0000</pubDate>
+      <description>125 points, 30 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://senderledger.com/articles/what-dmarc-actually-protects-you-from"><strong>→ Article</strong></a> <small>(senderledger.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49153361">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 30 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sam_lowry_</em>:</p>
+<blockquote>&gt; Every email carries two &quot;from&quot; addresses<p>I made a presentation about exactly the same subject many years ago, but I was not shy of separating the SMTP protocol (RFC 821 and the following ) and the email message (RFC 822 and the following).<p>It makes the link between SPF, DKIM and DMARC much clearer.<p>Anyway. The article covers just the bare minimum, and in the most obscure way.<p>For those interested in the inner workings of contemporary email delivery... I recommend the posts by Alex Shakhov on LinkedIn <a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;alexshakhov&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;alexshakhov&#x2F;</a> (Yes, there is still meaningful content on LinkedIn, it&#x27;s just vanishingly rare)</blockquote>
+<blockquote>
+<p>↳ reply — <em>ciupicri</em>:</p>
+<blockquote>If only I could read those articles without joining LinkedIn.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>avian</em>:</p>
+<blockquote>Vaguely related question: what is the go-to open DMARC check implementation these days? I mean the part that checks _received_ mail against DMARC rules. It used to be opendmarc, but it seems people have been dropping it for a while because of history of breaking changes and general lack of good stewardship [1].  Anyone using pydmarc [2]?<p>It&#x27;s hard to find good info on this since 99% of search hits are people talking about setting up DMARC from the _sender_ side.<p>[1] <a href="https:&#x2F;&#x2F;bugs.debian.org&#x2F;cgi-bin&#x2F;bugreport.cgi?bug=1014058#39" rel="nofollow">https:&#x2F;&#x2F;bugs.debian.org&#x2F;cgi-bin&#x2F;bugreport.cgi?bug=1014058#39</a><p>[2] <a href="https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;dmarc&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;dmarc&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>oogali</em>:</p>
+<blockquote>I use rspamd.<p>This might be a little heavy if you’re solely looking for DMARC validation, but I use the other parts of rspamd as well for inbound email.<p><a href="https:&#x2F;&#x2F;rspamd.com&#x2F;modules&#x2F;dmarc&#x2F;" rel="nofollow">https:&#x2F;&#x2F;rspamd.com&#x2F;modules&#x2F;dmarc&#x2F;</a><p>For a library, I mainly write Go and I use <a href="https:&#x2F;&#x2F;github.com&#x2F;emersion&#x2F;go-msgauth" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;emersion&#x2F;go-msgauth</a> (formerly known as go-dkim).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>actionfromafar</em>:</p>
+<blockquote>Url seems to be <a href="https:&#x2F;&#x2F;docs.rspamd.com&#x2F;modules&#x2F;dmarc&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.rspamd.com&#x2F;modules&#x2F;dmarc&#x2F;</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>oogali</em>:</p>
+<blockquote>Thanks for the correction. I guess I had a mis-paste that stripped out the leading part of the hostname... weird.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>1over137</em>:</p>
+<blockquote>Indeed opendmarc seems practically abandonware.<p>rspamd is what I use.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>crossroadsguy</em>:</p>
+<blockquote>&gt; Where it falls short<p>Really? DMARC falls short there? &quot;DMARC&quot; now must run around beating any naughty sender that tries to send spoofed email with a stick? Because it already proves they&#x27;re a spoofer (if domain owner was smart&#x2F;important enough) to anyone who is looking :)<p>I had set the rules to reject the mail (if someone tried to spoof my personal domain; some do) and then send me a combined report. After realising I could do nothing with those reports, I just removed that part.<p>Anyway, one of the few reasons I still use Thunderbird is its DKIM Verifier add-on.<p>SMS and email, in their current design, have outlived their safety relevance by a long shot. At least email has some protections (or a lot), but SMS is just a time bomb that keeps getting used even though it keeps going off.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Bonsai: Janestreet's UI Library</title>
@@ -1958,6 +2148,32 @@ AI-generated analysis<p>Referring to <a href="https:&#x2F;&#x2F;github.com&#x2F;
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>200 Milliseconds</title>
+      <link>https://200ms.thenodebook.com</link>
+      <guid isPermaLink="false">hn3-49132992</guid>
+      <pubDate>Sat, 01 Aug 2026 10:17:06 +0000</pubDate>
+      <description>145 points, 47 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://200ms.thenodebook.com"><strong>→ Article</strong></a> <small>(200ms.thenodebook.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49132992">→ HN comments</a> &nbsp;·&nbsp; 145 points &nbsp;·&nbsp; 47 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Retr0id</em>:</p>
+<blockquote>&gt; Violet marks the data as it moves, always top to bottom. Nothing else on the page uses that color.<p>I&#x27;m seeing 3 violet elements on my screen. &quot;ms&quot; in the top left, the dot next to that text, and a dot on a horizontal timeline at the lower edge of the screen. Scrolling down I see yet more violet UI elements, I assume the one on the vertical timeline represents the data, while all the others represent... other things.<p>It seems violet is just the accent colour used for everything, which makes it an especially perplexing comment. I can only assume the &quot;author&quot; never even read the LLM&#x27;s output before posting it.</blockquote>
+<p><strong>Top #2</strong> — <em>jonahrd</em>:</p>
+<blockquote>Am I crazy if for something like an online purchase, I kind of expect it to take a second or two to process the payment, so I would assume something went wrong if it was 200ms?</blockquote>
+<blockquote>
+<p>↳ reply — <em>1986</em>:</p>
+<blockquote>IIRC TurboTax has a bunch of loaders &#x2F; spinners like this, similar idea.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dylan604</em>:</p>
+<blockquote>reticulating spines...<p>kicking llama&#x27;s ass...</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>semiquaver</em>:</p>
+<blockquote><p><pre><code>  &gt; A problem repeatedly occurred on &quot;https:&#x2F;&#x2F;200ms.thenodebook.com&#x2F;#act-O-prologue”
+</code></pre>
+I find this usually is caused by being too clever with layouts.</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>RamenHaus</title>
       <link>https://ramen.haus/</link>
       <guid isPermaLink="false">hn3-49132460</guid>
@@ -3380,219 +3596,6 @@ I think it would help your pitch if you could show some task or workflow where y
 <blockquote>Yes. Having a strong spec helps also in general.<p>I think that, with all things on the table, backwards compatibility, a spec and, where things are broken things are signaled should be the standard for enterprise grade non-toy apps.<p>Of course, breaking something should be kept to the minimum.<p>That is why I keep using C++ and, if I have to do backend in the future for webs, I will probably choose Java over C#: stable, multi-vendor, will work in 10 years, stable.</blockquote>
 </blockquote>
 </blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The AI trade now runs on borrowed money, and the lenders are repricing it</title>
-      <link>https://greyswansignals.com/?theme=dark</link>
-      <guid isPermaLink="false">hn3-49118933</guid>
-      <pubDate>Fri, 31 Jul 2026 04:15:04 +0000</pubDate>
-      <description>134 points, 137 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://greyswansignals.com/?theme=dark"><strong>→ Article</strong></a> <small>(greyswansignals.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49118933">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 137 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>klodolph</em>:</p>
-<blockquote>A while ago I was thinking, “Gee, AI is so complicated, how can I keep up with the landscape?”<p>After reading these articles go by so often, it feels like what I actually can’t keep up with is the bond market. To paraphrase Trotsky, you may not be interested in the bond market, but the bond market is interested in you. I want to be able to read the signals at the bottom of this article, and divine some kind of prediction that can guide me… I don’t know, to choose whether I should buy a house or change the investment strategy in my retirement fund or something. But I’m just seeing all these signals go by, waiting for the story to be written, which only happens when the dust settles.<p>I guess I’ll go back to not understanding AI, instead of not understanding the bond market.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>eru</em>:</p>
-<blockquote>As a retail investor, you should buy an index fund and then forget about it.<p>By the time you have read this article, the professionals and their computers will have digested that material a thousand times over and have priced it in.<p>To be more precise: buy the lowest cost most diversified index fund you can buy and then hold it.  If you want to spend some smarts to get a better return: look at how to minimise taxes and fees.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Eddy_Viscosity2</em>:</p>
-<blockquote>How does &#x27;the market&#x27; properly set prices if everyone blindly buying the same things without any discriminators?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>dgellow</em>:</p>
-<blockquote>&gt; Gee, AI is so complicated, how can I keep up with the landscape?<p>The interesting thing is: you do not need to keep up. It’s actually way easier and cheaper to wait a bit for the chaos to stabilize, then learn to use the tools. You don’t need to have been someone who experienced the whole evolution, non stop at the edge. It’s ok to let the enthusiasts discover how things work and eventually learn from them. Just like any other technology. The whole „you will be left behind“ is nonsense. If AI is the future, then it will here to stay and you can let others map the domain first</blockquote>
-<p>↳ reply 3 — <em>rapind</em>:</p>
-<blockquote>I was able to create a custom index based on the top 500 that I stripped the big AI stocks from (shovels too). Then I added decent chunks of international, small cap, and treasury ETFs to it.<p>I have no illusions that I can time a bubble, but I&#x27;m hopeful I&#x27;m at least partially shielded, and most importantly I feel better about ignoring wall street again.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>blitzar</em>:</p>
-<blockquote>The headline and the link have nothing to do with each other.</blockquote>
-<p><strong>Top #3</strong> — <em>raincole</em>:</p>
-<blockquote>Am I too dumb to read or this thread is heavily botted? Why most top comments are unrelated to the linked site (which is pretty obscured already)?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The session you cannot take with you</title>
-      <link>https://earendil.com/posts/session-portability/</link>
-      <guid isPermaLink="false">hn3-49118781</guid>
-      <pubDate>Fri, 31 Jul 2026 03:47:59 +0000</pubDate>
-      <description>509 points, 132 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://earendil.com/posts/session-portability/"><strong>→ Article</strong></a> <small>(earendil.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49118781">→ HN comments</a> &nbsp;·&nbsp; 509 points &nbsp;·&nbsp; 132 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>solarkraft</em>:</p>
-<blockquote>This is an important article. I hadn’t realized it was already getting this bad. Like a frog enjoying a nice warm bath ...<p>&gt; Most people do not switch their operating system or phone provider every week either. But even if you do not utilize that freedom, it matters because it changes the relationship you have with the provider and the provider has with you.<p>This is why it’s important to utilize your freedoms. Do NOT let yourself get locked into a particular ecosystem (this is why I’m building a phone app for OpenCode).<p>This article makes me reconsider using my recently acquired Codex sub in my home setup. I never liked that they hide the reasoning, but somehow overrode the cognitive dissonance because the performance is so good. But the inauditability is already a huge problem.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>benob</em>:</p>
-<blockquote>People will keep hiding reasoning because it allows prompt injection <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2603.12277" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2603.12277</a>, in addition to facilitating distillation (you don&#x27;t pay the full cost of RL)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rsfern</em>:</p>
-<blockquote>Or they could store the reading traces and validate the user hasn’t edited them server-side? They could sign reasoning traces so they can’t be counterfeited?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>placebo</em>:</p>
-<blockquote>&gt;Like a frog enjoying a nice warm bath...<p>Exactly :-)<p>Call me naive but I think dark patterns are a short term strategy for winning and I&#x27;m optimistic that in the long run they will be replaced with those that are more respectful and oriented to the greater good (granted, the long run might take more time than one hopes for).<p>Given that the pendulum can sometime swing back fast enough to be able leverage it, it might be a good time to focus on models that are both open weights and economically viable to run to build the next great thing.</blockquote>
-<p>↳ reply 3 — <em>rkuska</em>:</p>
-<blockquote>I am waiting for prices to get down and in the meanwhile I am gathering as much session data from claude&#x2F;codex as possible so I can then later use them to fine tune open models. I&#x27;ve built my own session parser&#x2F;archiver for this.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>keeganpoppen</em>:</p>
-<blockquote>wow this is such an excellent framing of something that i have not managed to think about or come across in the vast ocean of discourse about LLMs. i had not really thought about how explicitly they are designed to not have histories that are user-interpretable. it is really quite not unlike how Apple locks down iOS and MacOS-- there are UI&#x2F;UX reasons for the choices the frontier models make, but that really is only part of the story, and these choices undeniably do conspire to make the resource more locked-down than it absolutely <i>has</i> to be. and the analogy to &quot;people don&#x27;t switch OSes every day, but the ability to switch OSes changes your relationship with the provider&quot; is extremely apt.</blockquote>
-<p><strong>Top #3</strong> — <em>realty_geek</em>:</p>
-<blockquote>Will <a href="https:&#x2F;&#x2F;buzz.xyz&#x2F;" rel="nofollow">https:&#x2F;&#x2F;buzz.xyz&#x2F;</a> not help with this a bit?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The bond market isn’t buying what Fed Chair Warsh is selling</title>
-      <link>https://www.reuters.com/commentary/reuters-open-interest/bond-market-isnt-buying-what-fed-chair-warsh-is-selling-2026-07-30/</link>
-      <guid isPermaLink="false">hn3-49118696</guid>
-      <pubDate>Fri, 31 Jul 2026 03:32:21 +0000</pubDate>
-      <description>125 points, 58 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.reuters.com/commentary/reuters-open-interest/bond-market-isnt-buying-what-fed-chair-warsh-is-selling-2026-07-30/"><strong>→ Article</strong></a> <small>(reuters.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49118696">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 58 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>miohtama</em>:</p>
-<blockquote>Reuters attributes this to be somehow a personal flaw in Walsh.<p>Pretty sure Jerome Powell, the previous chair, would have done exactly the same thing. In fact Jerome Powell is still in the Fed and participated in this decision.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>0x53</em>:</p>
-<blockquote>I think the article makes a good case why the difference in chair matters 
-- ending forward guidance 
-- confusing wording around what the target is now (pce vs “other stuff”) 
-- The fact that he was appointed specifically to not raise rates<p>None of the applies to Mr. Powell whom the market seems to have put a great deal of trust in</blockquote>
-<p>↳ reply 2 — <em>matwood</em>:</p>
-<blockquote>Maybe I missed it, but did Walsh explicitly say it&#x27;s tariffs and the war driving inflation? There&#x27;s a reason Trump was fighting with Powell.<p><a href="https:&#x2F;&#x2F;www.reuters.com&#x2F;markets&#x2F;us&#x2F;powell-says-tariffs-keeping-inflation-elevated-fed-watching-energy-prices-2026-03-18&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reuters.com&#x2F;markets&#x2F;us&#x2F;powell-says-tariffs-keepi...</a></blockquote>
-<p>↳ reply 3 — <em>jquery</em>:</p>
-<blockquote>Jerome Powell would’ve communicated in a mealy mouthed and confusing way that was meant to appease Trump?<p>I’ve had quite enough of Trump’s “meritocracy”, personally.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>seanhunter</em>:</p>
-<blockquote>Speaking as a non-American, and without the lens of partisan politics, it seems incredibly obvious to me that<p>Kevin Warsh &lt; Jerome Powell &lt; Janet Yellen<p>... in terms of credibility as an economist, with Ben Bernanke one step to either side of Powell depending on how much you feel he was a victim of circumstances in the 2008 crisis.<p>That said, the current problems in the US economy are entirely out of the control of the Fed and all to do with the current administration&#x27;s policies (mainly the war vs Iran driving commod vol and the on-again off-again trade tariff shuffle driving fx vol) and the long-term deficit position driving rate curve shenanigans. The AI and private credit bubbles are just adding to the anxiety.  All of this ultimately feeds into domestic inflation and job market malaise.<p>The bond market generally doesn&#x27;t take shit from anyone and it&#x27;s not surprising to me that bond investors are not impressed. None of that is on Warsh.</blockquote>
-<blockquote>
-<p>↳ reply — <em>cyberax</em>:</p>
-<blockquote>Look at outcomes, not just words. Bernanke made a correct prediction that the rate had to stay low and that it wouldn&#x27;t result in high inflation.<p>Meanwhile, the ECB started raising the rate once the economy stopped crashing. And that promptly caused the second recession in Europe.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>orwin</em>:</p>
-<blockquote>What caused the second recession in Europe was a decrease in energy supply. Country that depended the most on the North sea or North Africa oil and gas exports suffered the most.<p>We still live under the constraints of our world, and energy availablity is a big one.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jmyeet</em>:</p>
-<blockquote>As everyone should know by now, the US government runs a <i>massive</i> deficit, that is the difference between tax receipts (and other income) minus expenses. The current US public debt is hovering around $40T and the annual deficit is pushing toards $2T.<p>A lot of that $40T was borrowed at lower interest rates but let&#x27;s assume for argument&#x27;s sake that it was borrowed at 5%. That&#x27;s $2T in <i>interest alone</i> every year. There&#x27;s a huge difference between adding $2T in debt at 5%+ every year vs 1-3%.<p>The Fed has auctions to sell its debt. That market clears at a certain interest rate so if the market isn&#x27;t buying the debt the rate the Fed pays has to go up. That&#x27;s what&#x27;s happening here.<p>What&#x27;s driving this is that inflation is above the ~2% target. Well above, actually. There are generally two ways of tackling high inflation: with monetary policy (ie raising interest rates) and with fiscal policy (by raising taxes). Modern US administrations (both parties) have completely abandoned any pretense of ever raising taxes. That was the appropriate solution during the inflation shock of 2020-2022. Some European countries did this with a corporate windfall profits tax (eg Spain). The US did not.<p>The problem is that since housing is such a huge part of consumer spending, higher interest rates mean higher mortgage rates, which means higher housing expenditure, which means higher inflation. Now luckily most mortgages in the US are 30 year fixed so this is slow to respond and only really affects new mortgage. Other countries aren&#x27;t so lucky.<p>But the big drivers in inflation are soaring grocery costs and energy costs. Energy costs, particularly diesel, is a massive driver of inflation. The rise in groceries since Covid has completley outpaced inflation while real wages have fallen. There&#x27;s only so much more inflation the American consumer can take. Household savings rates are already very low so there&#x27;s very little in the way of a buffer to absorb higher costs.<p>This is all being exacerbated by the disastrous war in Iran and the war in Ukraine. Russia had been a net exporter of diesel until recently as Ukraine has damaged an estimated 40% of Russian refining capcity. Refineries in the Gulf have also been taken offline. There&#x27;s been a loss of over 1 million barrels per day in refining capacity. This is somewhat paradoxically why crudel oil prices are relatively low given all that&#x27;s going on: because crudel oil is mostly useless unless it&#x27;s refined. Destroy refineries and demand for oil goes down. But the demand for refined petroleum products goes up, <i>way</i> up [1].<p>It should be noted that China has essentially saved the world economy up to this point [2]. The closure of the Strait of Hormuz blocked the passage of ~20 million barrels per day of crude (plus 20-30% of the world&#x27;s natural gas plus fertilizer plus helium). The inflation shock of 2020-2022 occurred because we lost &quot;only&quot; 10 million barrels. But China seemingly cut their imports by 5M. Saudi Arabia diverted 5-7 via the East-West pipeline to the Red Sea. The US has been draining the strategic reserve and so net we&#x27;ve only lost a few million barrels per day. That&#x27;s temporary. the SPR has hit historic lows not seen in 40 years and it can&#x27;t get much lower without risking a collapse of the salt caverns it&#x27;s stroed in in Louisiana. Nobody knows if and when that&#x27;ll happen because we&#x27;ve never done this before.<p>The backdrop for all this is that there has been a decades-long effort at this point to essentially loot government coffers in the US. More tax cuts for the top 0.01%. The Western world in general has reached a breaking point where land hoarding and wealth need to be taxed or society as we know it will actually break down. I&#x27;m not being hyperbolic. Currently, there&#x27;s no concern for that from the looters because upheaval means war, which means more weapons sales. Also, free movement of capital means the wealthy believe they can just flee.<p>For context, a mere 10 years ago the US total public debt was ~$16T. It&#x27;s 2.5x&#x27;ed in a decade and only going to get worse unless something drastically changes.<p>Warsh was put in to cut rates for political purposes. The best he can do is to hold rates steady because they really should go up in an environment where we aren&#x27;t going to raise taxes.<p>As for Iran, it&#x27;s been clear since at least April, that this is an unmistakable and undeniable total strategic defeat for the US and there is no way out other than to surrender. This event will be written about in history books as a turning point in the world order that was designed by the US, for the US after 1945. We are entering a new era. This is going to redefine US relationships all over the world.<p>[1]: <a href="https:&#x2F;&#x2F;rbnenergy.com&#x2F;market-data&#x2F;3-2-1-crack-spread" rel="nofollow">https:&#x2F;&#x2F;rbnenergy.com&#x2F;market-data&#x2F;3-2-1-crack-spread</a><p>[2]: <a href="https:&#x2F;&#x2F;www.theatlantic.com&#x2F;economy&#x2F;2026&#x2F;07&#x2F;china-iran-usa-oil-prices&#x2F;688086&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.theatlantic.com&#x2F;economy&#x2F;2026&#x2F;07&#x2F;china-iran-usa-o...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Panzer04</em>:</p>
-<blockquote>American fixed 30y mortgages actually make interest rate policy much less effective, in theory.<p>In most countries with normal mortgages, raising rates fairly immediately transmits through to the rest of the economy, because it affects the mortgage market. This isn&#x27;t true in America, because everyone quite reasonably is able to get these insane mortgage products with literally no downside risk - if rates go up, you don&#x27;t pay more. If they go down, you refinance at minimal cost.<p>Agree to disagree on the tax issue. The way you&#x27;ve framed it is fairly inflammatory, but happy to have a discussion about it. The reality is that as much money as rich people have, the middle class have a whole lot more. Every country with large government spending has broad, high taxes on the entire population, not just the rich.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>fjfaase</em>:</p>
-<blockquote>This is not uniquely American. Here in the Netherlands we also have fixed interest rates for long periods. Usually for 20 years.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>orsenthil</em>:</p>
-<blockquote>The interesting thing is, US media, US social media driven by Big Tech algorithms, Google Search, nytimes, reddit, Social newsfeeds of students, teens, teachers is not exposing this at all. It feels like we are self-contained information exposure bubble too. Only a physical visit outside of US, and looking at the information from outside of US will give a picture of the mistakes being made here.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A California aquifer may have crossed the point of no return</title>
-      <link>https://www.science.org/content/article/california-aquifer-may-have-crossed-point-no-return</link>
-      <guid isPermaLink="false">hn3-49118663</guid>
-      <pubDate>Fri, 31 Jul 2026 03:27:36 +0000</pubDate>
-      <description>146 points, 123 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.science.org/content/article/california-aquifer-may-have-crossed-point-no-return"><strong>→ Article</strong></a> <small>(science.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49118663">→ HN comments</a> &nbsp;·&nbsp; 146 points &nbsp;·&nbsp; 123 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>rayiner</em>:</p>
-<blockquote>Why can&#x27;t we work up the political outrage over water-wasting agriculture in California that we managed to gin up over data centers: <a href="https:&#x2F;&#x2F;finance.biggo.com&#x2F;news&#x2F;202508220112_Data_Centers_vs_Alfalfa_Water_Usage_Battle" rel="nofollow">https:&#x2F;&#x2F;finance.biggo.com&#x2F;news&#x2F;202508220112_Data_Centers_vs_...</a><p>&gt; Alfalfa irrigation (Colorado River): 1.6 trillion gallons annually<p>&gt; Google data centers (global): 6.4 billion gallons in 2023<p>&gt; Thermoelectric power plants: 41% of total US water use<p>EDIT: that page has a correction to some of the other numbers on the page, but the 6.4 billion gallons number quoted above for Google&#x27;s data centers is in line with other sources: <a href="https:&#x2F;&#x2F;mostpolicyinitiative.org&#x2F;science-note&#x2F;data-center-water-use&#x2F;" rel="nofollow">https:&#x2F;&#x2F;mostpolicyinitiative.org&#x2F;science-note&#x2F;data-center-wa...</a> (&quot;Google reported their data center water consumption increased from 4.3 billion gallons in 2021 to 6.1 billion gallons in 2024.&quot;).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ChuckMcM</em>:</p>
-<blockquote>Its a fair question, California agriculture tends to use 11 trillion gallons (34e6 acre feet[1][2]) of water annually. (about 1,700 Googles worth). Generally from a market driven standpoint agricultural users are trying to get maximum $&#x2F;acre out of their land. I&#x27;m trying to convince the state legislature to reclassify &quot;solar farms&quot;[3] as agriculture (as opposed to &#x27;industrial&#x27; that they are today) which would allow a farm to decide on an acre by acre basis how much to plant and how much to put into solar farming. Presuming batteries were included in that allowance, 350,000 acres of California farmland as solar farms (panels + batteries for 24&#x2F;7 power) would power the entire state 24&#x2F;7 with no need for coal, gas, or nuclear power plants. 100% green energy.<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Water_in_California" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Water_in_California</a><p>[2] <a href="https:&#x2F;&#x2F;www.convertunits.com&#x2F;from&#x2F;billion+gallons&#x2F;to&#x2F;acre+foot" rel="nofollow">https:&#x2F;&#x2F;www.convertunits.com&#x2F;from&#x2F;billion+gallons&#x2F;to&#x2F;acre+fo...</a><p>[3] &quot;Agrivoltaics as a climate-smart and resilient solution for midday depression in photosynthesis in dryland regions&quot; --  <a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s44264-025-00073-1" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s44264-025-00073-1</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kbenson</em>:</p>
-<blockquote>If farms would choose to do solar instead of crops, I would assume that&#x27;s because they can get more $&#x2F;acre, but that could cause food prices to rise.  At the same time, energy prices would drop if there was a surplus, so I wonder where it would level out. Lower energy cost could have a small affect in reducing the price of processed foods, but I imagine it would be very small (but I don&#x27;t really know the energy cost of most processed foods).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>acdha</em>:</p>
-<blockquote>This can be confounded heavily by the riding “agrivoltaics” trend of finding ways to use solar panels while continuing to farm the same land. The most common example are ranching (e.g. letting sheep enjoy the shade under panels) but some crops actually benefit from lower sun intensity.<p><a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;global-development&#x2F;2022&#x2F;feb&#x2F;22&#x2F;kenya-to-use-solar-panels-to-boost-crops-by-harvesting-the-sun-twice" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;global-development&#x2F;2022&#x2F;feb&#x2F;22&#x2F;k...</a><p>However, that’s probably unnecessary: just converting the land used to produce ethanol to solar farms would produce an enormous amount of electricity with no impact on food production.<p>&gt; Through spatial analyses, we determined that converting just 3.2% of land currently used for corn ethanol would increase the share of utility-scale solar energy in the US from 3.9 to 13%.<p><a href="https:&#x2F;&#x2F;www.pnas.org&#x2F;doi&#x2F;full&#x2F;10.1073&#x2F;pnas.2501605122" rel="nofollow">https:&#x2F;&#x2F;www.pnas.org&#x2F;doi&#x2F;full&#x2F;10.1073&#x2F;pnas.2501605122</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>throwaway2037</em>:</p>
-<blockquote><p><pre><code>    &gt; Thermoelectric power plants: 41% of total US water use
-</code></pre>
-I did some research on this statistic.  More than 90% of this is returned to source.  So if the power plant is drawing water from a river (or aquifer), it is returned after being used to generate electricity (create steam, turn turbines).<p>For example, if you have a 1GW coal powerplant on a river, it might draw 4 billion liters of water per day, but will only evaporate about 5-10% of that amount.  The rest is returned to the river.  Of course, this is much less exciting (click-baity) than writing &quot;41% of US water use is for thermoelectric power plants&quot;.</blockquote>
-<p>↳ reply 3 — <em>supriyo-biswas</em>:</p>
-<blockquote>Farming is a necessary activity and in most countries, they are also a politically influential group.<p>The case for data centers in the age of AI is weaker, and the only effects for the average person are noise, pollution, higher electricity costs, higher water costs, for the ultimate &quot;benefit&quot; of losing your job.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>cobbzilla</em>:</p>
-<blockquote>California has codified a water caste system. In 2015 (my last experience with this), citizens were ordered to cut water use 25% while ~400 pre-1914 claimants with magical &quot;senior water rights&quot; took 90% of the water. [1][2]<p>We conserved, rates still rose, f*ck the poor the most, so that select farmers can use however much water they want. During a drought. As allowed and protected by law.<p>[1]: <a href="https:&#x2F;&#x2F;www.waterboards.ca.gov&#x2F;waterrights&#x2F;water_issues&#x2F;programs&#x2F;drought&#x2F;docs&#x2F;tucp&#x2F;curtailment_fact_sheet.pdf" rel="nofollow">https:&#x2F;&#x2F;www.waterboards.ca.gov&#x2F;waterrights&#x2F;water_issues&#x2F;prog...</a><p>[2]: <a href="https:&#x2F;&#x2F;archive.gov.ca.gov&#x2F;archive&#x2F;gov39&#x2F;2015&#x2F;04&#x2F;01&#x2F;news18913&#x2F;index.html" rel="nofollow">https:&#x2F;&#x2F;archive.gov.ca.gov&#x2F;archive&#x2F;gov39&#x2F;2015&#x2F;04&#x2F;01&#x2F;news1891...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>voakbasda</em>:</p>
-<blockquote>I expect the people will realize how easy it is to disable agriculture pumps, located in the middle of nowhere, with no one around to protect them.<p>When the law fails to protect the people, they will eventually do what it takes to protect themselves.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>euroderf</em>:</p>
-<blockquote>When water is outlawed, only outlaws will have water.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>LanceH</em>:</p>
-<blockquote>I see parallels between water rights &quot;xxx acre feet per year&quot; without regard for how much water is incoming, and pension funds where they simply declare how much will be paid out.<p>I really can&#x27;t tell the difference between people being uncaring or just stupid about either.</blockquote>
-<blockquote>
-<p>↳ reply — <em>p-e-w</em>:</p>
-<blockquote>The whole pension fund concept only works <i>because</i> it declares how much is going to be paid out.<p>Who’s going to pay in if the fund expects a guaranteed commitment but refuses to give such in return?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>JumpCrisscross</em>:</p>
-<blockquote>&gt; <i>Who’s going to pay in if the fund expects a guaranteed commitment but refuses to give such in return?</i><p>Literally defined contribution [1].<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Defined_contribution_plan" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Defined_contribution_plan</a></blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Religion of Speed</title>
-      <link>https://graybeard.ing/the-religion-of-speed/</link>
-      <guid isPermaLink="false">hn3-49117284</guid>
-      <pubDate>Thu, 30 Jul 2026 23:43:22 +0000</pubDate>
-      <description>169 points, 80 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://graybeard.ing/the-religion-of-speed/"><strong>→ Article</strong></a> <small>(graybeard.ing)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49117284">→ HN comments</a> &nbsp;·&nbsp; 169 points &nbsp;·&nbsp; 80 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>phtrivier</em>:</p>
-<blockquote>Impossible to disagree with the author, and yet something seems missing in the discussion... Let me check:<p>Ctrl-F, &#x27;deadline&#x27;<p>0 result.<p>Oh, yeah, that&#x27;s what missing from the discussion.<p>And without any trolling, I&#x27;m curious about what the author would have to say about this matter.<p>Not all &quot;need for speed&quot; comes from a vacuum. Is it always legit ? Should we push back ? Sure.<p>Do we always meaningfully, practically, realistically have a choice anyway ?</blockquote>
-<p><strong>Top #2</strong> — <em>austin-cheney</em>:</p>
-<blockquote><i>Slow is smooth. Smooth is fast.</i><p>My learnings about speed:<p>* people tend to not measure things and when they actually do bother they tend to measure the wrong things, the things of immediate comfort<p>* measurements, when executed correctly, are objective with numeric evidence, thus some people are wholly incapable of measuring things for the same reasons some people cannot introspect<p>* people tend to guess at measures because either they are incapable or the effort is too high<p>* when people guess at measures they tend to be wrong more than 80% of the time and when they are wrong they tend to be wrong by multiple orders of magnitude<p>* measurements tend to produce micro-improvements, but those micro-improvements add up in ways that are both significant and unexpected<p>* if you want to go faster the most certain course of action is to modify your technology and techniques<p>* hiring is slow, just as adding more people to a late project makes it slower<p>* changes lower in the stack tend to grant both increased speed and increased flexibility. Increased scale comes from what you do with those</blockquote>
-<p><strong>Top #3</strong> — <em>derefr</em>:</p>
-<blockquote>The religion of speed is the religion of VC investment backing, because VCs have set time horizons for delivering returns to their own investors. You can only get their interest if you can make them believe you can deliver 10x growth <i>on their schedule</i>.<p>Committing to that schedule — and really believing in that commitment — is what turns someone into the sort of person who sets arbitrary project timelines that disregard technical practicality, and then kills projects when they fail per those arbitrary timelines.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nine_k</em>:</p>
-<blockquote>These timelines are not arbitrary. They are dictated by the cost of money (for the VC). They have little to do with the target market situation, and totally don&#x27;t care about technical considerations. They only care if your profits, or at least revenue, or at least market share grows fast enough. If it does not, they write off their losses and liquidate the company.<p>This is the fear that dictates the damned speed™: either you go up insanely fast, or you die. If your goals do not align with this approach, do not take VC money. If you want to develop things without haste, only join a startup with a proven PMF and insanely goos sales team, which takes care of hockey- stick growth so that you can concentrate on quality.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>derefr</em>:</p>
-<blockquote>I never said the VC&#x27;s timeline is arbitrary! They&#x27;re ultimately based in loan interest rates &#x2F; bond yields &#x2F; etc — as you say, the &quot;cost of money.&quot;<p>But the timelines that <i>founders and CEOs</i> can end up coming up with for the arbitrary subprojects&#x2F;efforts they choose to pursue to try to get the company closer to giving those VCs the hockey-stick growth they demand, <i>are</i> much more arbitrary. Mostly in the sense that such subprojects&#x2F;efforts can often be selected&#x2F;pursued with no thought to the fact that either the goal is technically impossible within the chosen time budget; or, even if possible, that the effort won&#x27;t <i>demonstrate results</i> within the chosen time budget, and so will be given up on <i>whether or not</i> it&#x27;s working (because founders interpret absence of metrics as metrics relaying absence.)<p>Which is to say: if you can guarantee from before you start that a given subproject or effort will be considered &quot;a failed experiment&quot; — then you&#x27;d think it would be obvious that you shouldn&#x27;t do that one. That you should put it on the backlog of things you can try <i>after</i> PMF + hockey-stick growth, when you have time to evaluate things thoroughly.<p>But that doesn&#x27;t seem to be obvious to a lot of founders and CEOs. Many of them spend a lot of their and their employees&#x27; time setting off on efforts that everyone in the room basically already knows they&#x27;ll be cancelling two weeks later, before said effort has had a chance to either succeed <i>or</i> fail on its merits.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ymolodtsov</em>:</p>
-<blockquote>Venture-backed companies is an extremely small subset companies when you look at this objectively.<p>The alternative is debt financing, and let me tell you, there&#x27;s a lot more deadlines and urgency in there.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Premier league bans gambling sponsors</title>
-      <link>https://www.footyheadlines.com/2646571793/betting-ban-takes-effect-no-more-gambling-sponsors-in-the-premier-league.html</link>
-      <guid isPermaLink="false">hn3-49117266</guid>
-      <pubDate>Thu, 30 Jul 2026 23:40:59 +0000</pubDate>
-      <description>177 points, 52 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.footyheadlines.com/2646571793/betting-ban-takes-effect-no-more-gambling-sponsors-in-the-premier-league.html"><strong>→ Article</strong></a> <small>(footyheadlines.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49117266">→ HN comments</a> &nbsp;·&nbsp; 177 points &nbsp;·&nbsp; 52 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bastard_op</em>:</p>
-<blockquote>They turned themselves into whores for sale to the highest bidder. I imagine if they could, cocaine brands would be on everyone&#x27;s shirts and tattoo&#x27;s on players foreheads.<p>Silly people still care about this crap.</blockquote>
-<p><strong>Top #2</strong> — <em>raffa667</em>:</p>
-<blockquote>Same happened in Italy, so all betting sites turned into &quot;news&quot; site so you would have teams being spored by &quot;betting_company_name news&quot;. Useless. There&#x27;s a proposal to be back to previous type of sponsorship.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>arpinum</em>:</p>
-<blockquote>Same with the drinks companies, they switched to explicitly advertising their zero alcohol beers.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bragr</em>:</p>
-<blockquote>It just now clicked with me why they are doing that. I&#x27;ve been wondering why they are pushing them so hard. Barely anyone seems to buy NA beer.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>danesparza</em>:</p>
-<blockquote>Perhaps they should ban news sites that cover gambling.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>fancyfredbot</em>:</p>
-<blockquote>If I&#x27;m squeezing enough margin out of my customers that I can afford to sponsor a football team with some of the leftover cash then you probably don&#x27;t want to deal with me.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>NooneAtAll3</em>:</p>
-<blockquote>on the other hand, do you know how much it costs to sponsor?<p>maybe it&#x27;s relatively cheap, but nobody does it because football fans isn&#x27;t that of a target</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bluGill</em>:</p>
-<blockquote>I don&#x27;t know about this sport, but in other large sports it can costs millions per year to be a sponsor.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>the_sleaze_</em>:</p>
-<blockquote>True enough, but they become Patrons of the Arts in a sense.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
