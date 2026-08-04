@@ -4,7 +4,181 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 03 Aug 2026 23:10:55 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Aug 2026 03:22:58 +0000</lastBuildDate>
+    <item>
+      <title>Smaller, faster, safer: running Kimi and GLM at scale</title>
+      <link>https://blog.cloudflare.com/smaller-faster-safer-models/</link>
+      <guid isPermaLink="false">hn3-49158581</guid>
+      <pubDate>Mon, 03 Aug 2026 17:08:46 +0000</pubDate>
+      <description>159 points, 40 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/smaller-faster-safer-models/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49158581">→ HN comments</a> &nbsp;·&nbsp; 159 points &nbsp;·&nbsp; 40 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>scrlk</em>:</p>
+<blockquote>Nice to see a provider being transparent about KV cache quantisation. I&#x27;ve been suspecting that some providers do this silently whilst heavily promoting their unquantised weights, even though KV quantisation can degrade quality more than weight quantisation.<p>However, I wish their testing were more detailed. Firstly, some model families are more sensitive to KV quantisation than others (only Kimi K2.6 was tested). Secondly, the evaluation suite they use to claim that  FP8 KV quantisation is indistinguishable is noticeably lacking coding benchmarks; in long-running tasks, minor tool call errors compound over time.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>amluto</em>:</p>
+<blockquote>They made an extremely strong claim:<p>&gt; None of this would matter if it changed the model&#x27;s answers<p>If they want to assert that the answers don’t change, then perhaps they should calculate the statistical distance between the token probability outputs or something to that effect. I doubt the results would indicate that the answers don’t change by any reasonable interpretation.<p>Maybe the results are still good enough.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>scrlk</em>:</p>
+<blockquote>KL divergence is your friend when it comes to evaluating the effects of quantisation: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kullback%E2%80%93Leibler_divergence" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kullback%E2%80%93Leibler_diver...</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>anonova</em>:</p>
+<blockquote>vLLM&#x27;s study also concluded that &quot;FP8 can deliver meaningful latency and capacity gains with small or negligible accuracy loss&quot;. Their benchmarks include LiveCodeBench 6.<p><a href="https:&#x2F;&#x2F;vllm-project.github.io&#x2F;2026&#x2F;04&#x2F;22&#x2F;fp8-kvcache.html" rel="nofollow">https:&#x2F;&#x2F;vllm-project.github.io&#x2F;2026&#x2F;04&#x2F;22&#x2F;fp8-kvcache.html</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>syntaxing</em>:</p>
+<blockquote>&gt; View pricing in the Cloudflare dashboard ↗<p>Why… I wanted to see if it’s worth it to use cloudflare’s endpoint but I can’t even see the pricing</blockquote>
+<blockquote>
+<p>↳ reply — <em>maxmcd</em>:</p>
+<blockquote>I&#x27;m not sure how accurate this is, but there is pricing here: <a href="https:&#x2F;&#x2F;openrouter.ai&#x2F;provider&#x2F;cloudflare" rel="nofollow">https:&#x2F;&#x2F;openrouter.ai&#x2F;provider&#x2F;cloudflare</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>culi</em>:</p>
+<blockquote>So they don&#x27;t even support K3? What&#x27;s the point. K2.7 Code is practically free already</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>BadBadJellyBean</em>:</p>
+<blockquote>They do:<p>Input tokens (per 1M)$3.00
+Cached input tokens (per 1M)$0.30
+Output tokens (per 1M)$15.00</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>joshuamcginnis</em>:</p>
+<blockquote>&gt; If squeezing the best open models onto GPUs and serving them to millions of developers sounds like your kind of problem, come work with us.<p>What is the typical job title and&#x2F;or skillset for this?</blockquote>
+<blockquote>
+<p>↳ reply — <em>simonw</em>:</p>
+<blockquote>I&#x27;ve seen this called MLOps.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>buildbot</em>:</p>
+<blockquote>MLOps though typically wouldn&#x27;t been going quantization? It requires some careful testing of accuracy and performance even today.<p>Applied ML Research Engineer or something maybe, not that I have ever seen that title. Maybe just catchall ML Engineer...</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Celebrating 45 Years of Kermit with the First New C-Kermit Release in 15 Years</title>
+      <link>https://changelog.complete.org/archives/44456-celebrating-45-years-of-kermit-with-the-first-new-c-kermit-release-in-15-years-and-working-with-a-decades-old-c-codebase</link>
+      <guid isPermaLink="false">hn3-49158474</guid>
+      <pubDate>Mon, 03 Aug 2026 17:02:10 +0000</pubDate>
+      <description>135 points, 37 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://changelog.complete.org/archives/44456-celebrating-45-years-of-kermit-with-the-first-new-c-kermit-release-in-15-years-and-working-with-a-decades-old-c-codebase"><strong>→ Article</strong></a> <small>(changelog.complete.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49158474">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 37 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jonathaneunice</em>:</p>
+<blockquote>I complied Kermit for IBM&#x27;s AIX in ~1989 as a study in &quot;how compatible is AIX to other Unixes?&quot; Kermit source code remains the high-water mark in my memory for how many different, incompatible, non-standard platforms one piece of software can support. More than even Unix itself, as it could also run on VMS and non-Unixes of the time. I have never in my life seen so many `#ifdef`s and such complicated &quot;Am I running on this platform or that one? Does it have this feature or that feature? No, what about this other one? Is it HP-UX maybe? HP-UX 6? No, 7? No, 8? No, what about VMS? No, how about SunOS? No, how about Unix System III?&quot; ...on and on, seemingly endlessly.<p>Kermit was an extraordinary monument to portability in an era when &quot;portable&quot; often meant &quot;we have individually accommodated every incompatible system anyone has ever built or might possibly still be using, however improbably.&quot;</blockquote>
+<p><strong>Top #2</strong> — <em>chipotle_coyote</em>:</p>
+<blockquote>I remember mostly ignoring Kermit back in my BBSing days; by the time &quot;SuperKermit&quot; came along, which could get performance competitive with ZMODEM, it alreayd seemed ancient.<p>Then, around 1991, a friend gave me access to his college Unix account so I could play with Gopher, Archie, and TinyFugue (the world of MUDs&#x2F;MUCKs&#x2F;etc.). The catch: to get to his account from my home machine, I had to call into a Florida state network that let you dial in and connect to machines on various college campuses. The network ran on some IBM minicomputer. And, it didn&#x27;t connect to the Unix machine, oh no. It connected to a VAX, which was then on the same local network as the Unix machine.<p>So I had to dial in to the IBM machine, connect from it to a VAX, and then telnet from the VAX to the Unix box.<p>Incredibly, this all worked with only mildly annoying lag...but then I tried to transfer a file from the Unix machine to my personal machine. ZMODEM didn&#x27;t work. XMODEM didn&#x27;t work. I think I tried one or two other things that I&#x27;ve forgotten.<p>Then I remembered Kermit, and its reputation for being able to handle difficult connections. It got the file through on its first try.</blockquote>
+<blockquote>
+<p>↳ reply — <em>Isamu</em>:</p>
+<blockquote>Exactly my experience, the faster file transfer programs failed me on the crappy dialups of the day… but Kermit came to the rescue. As I recall it gave you a running tally of retries and all that.<p>For context, on the other side of the wall where we were doing this was a Cray, probably a Cray 1. The one with the bench seating in a semicircle on top of cooling hardware.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>compiler-guy</em>:</p>
+<blockquote>Bill Catchings (the undergrad who helped Frank da Cruz with the original spec and coding) still blogs. It has been a while since he spoke specifically about kermit, but he has one or two interesting posts about the 40th anniversary of Kermit.<p><a href="https:&#x2F;&#x2F;www.billcatchings.com&#x2F;2012&#x2F;04&#x2F;frog-from-my-past.html" rel="nofollow">https:&#x2F;&#x2F;www.billcatchings.com&#x2F;2012&#x2F;04&#x2F;frog-from-my-past.html</a>
+<a href="https:&#x2F;&#x2F;www.billcatchings.com&#x2F;2013&#x2F;11&#x2F;kermit-oral-history-panel-update.html" rel="nofollow">https:&#x2F;&#x2F;www.billcatchings.com&#x2F;2013&#x2F;11&#x2F;kermit-oral-history-pa...</a><p>and here is a link to the oral history he discusses:<p><a href="https:&#x2F;&#x2F;www.computerhistory.org&#x2F;collections&#x2F;catalog&#x2F;102746411&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.computerhistory.org&#x2F;collections&#x2F;catalog&#x2F;10274641...</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Ten advances in mathematics and theoretical computer science</title>
+      <link>https://openai.com/index/ten-advances-in-mathematics/</link>
+      <guid isPermaLink="false">hn3-49157930</guid>
+      <pubDate>Mon, 03 Aug 2026 16:27:12 +0000</pubDate>
+      <description>464 points, 736 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://openai.com/index/ten-advances-in-mathematics/"><strong>→ Article</strong></a> <small>(openai.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49157930">→ HN comments</a> &nbsp;·&nbsp; 464 points &nbsp;·&nbsp; 736 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sothatsit</em>:</p>
+<blockquote>People argue whether we are at y-5, y, or y+5, meanwhile we seem to be on a y=2^x exponential that keeps delivering more and more impressive results.<p>The most interesting question to me is what will be consumed by the exponential like math seems to be undergoing, and what won’t. Writing has been quite stubborn, but I’ve noticed Fable to be quite a big step up there. How about politics? Will we develop new ways to let people express their own values in democracies, or will we just get much better at manipulation? How about experiment driven domains like biology?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tyre</em>:</p>
+<blockquote>We will get much better at manipulation and better at people “writing” things to justify their own feelings.<p>What’s new about LLMs is that you can scalably manipulate people individually. It used to be that you could either have scale (speeches, tweets, interviews, website, etc.) or individual engagement (replying to mail&#x2F;tweets&#x2F;town hall questions.)<p>Now you can pull the history and preferences of an individual, then shape a message—in real time—to them, specifically. You can have conversations on social media with a single person and shape your message specifically to them.<p>Part of this can be good (you talk about what they care about, where 90% of broadcast messaging might not apply) and part of it can be bad (manipulation.)<p>My guess is that, in the US, the right will cynically adopt manipulation to great effect and the left will take a moral stand against shady practices and lose elections.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>plif</em>:</p>
+<blockquote>Not new about LLMs. Targeted ads &#x2F; big data is this.<p>Another degree of capability, yes. But we have been trending here for a long time.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>hnlmorg</em>:</p>
+<blockquote>It’s unfortunate that you’re being downvoted because this comment is true. And it just goes to show how far we’ve sunk that people have forgotten the problems of ad tech in the age of LLMs.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>cmdli</em>:</p>
+<blockquote>This reminds me a lot of the proof by construction for the 4-color theorem. It was only enabled by the advancement of computers and dissatisfied many of the computer scientists and mathematicians since it was a &quot;brute force&quot; approach.<p>I wonder if AI will end up being similar. Certain theorems get proven by AI but others do not. We haven&#x27;t reached the limits of this yet and I haven&#x27;t found a good argument for where those limits will be (I do doubt that there are no limits).</blockquote>
+<p>↳ reply 3 — <em>totetsu</em>:</p>
+<blockquote>I think you’re making a category error in your definition of politics here. 
+Certainly technologies can favour winners and losers, but the struggle is an inherently human one.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>plaidfuji</em>:</p>
+<blockquote>Any computable problem will eventually fall to computers.<p>LLMs have made math proofs more computable, in the sense that a computer can both generate potential solutions and check the validity of its solutions on its own, with a reasonable chance of converging on something correct. I assume this was already doable to some extent, but it seems like it’s now exponentially easier. That still doesn’t mean that all math is automatically solved.<p>This is somewhat similar to things like molecular dynamics or protein folding or finite element simulations, etc. Some problems that were previously intractable via computation became tractable. Others - the vast majority of other problems - remain unsolvable by these computational techniques, because the scale of compute required is beyond imagination. These are simple things like simulating the dynamics of a cubic millimeter of water molecules for 1 second. Unfathomably beyond current capabilities (and LLMs aren’t going to change that).<p>I think LLMs are great, I use them every day and I think they have a ton of value. But if these things were as revolutionary as people promote&#x2F;fear them to be, you should immediately point them at the <i>highest value</i> math problems and see progress. Like the Millenium Prize problems. Haven’t seen a solution to those.<p>So there are limits - but we’re about to learn a lot about the new normal of what constitutes a layup math proof vs the truly difficult.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gerdesj</em>:</p>
+<blockquote>&quot;Any computable problem will eventually fall to computers.&quot;<p>By definition.  Its those pesky NP jobbies that get in the way.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gerdesj</em>:</p>
+<blockquote>Just to re-iterate the point:<p>Whenever the handwaving starts around a discussion relating to a NP hard problem, I find it useful to imagine a Canadian bloke (MHRIP) in a red top, with a ... Scottish accent ... saying:<p>&quot;Ye cannae break the laws o&#x27; physics, Jim&quot;. (maffs not fisics, obvs!)<p>If that is a bit tiresome for the gung-ho AI evangelist, there is also the rather knotty snag that that blasted Austrian geezer Gödel fiddled up: incompleteness.<p>Its almost as though these bloody clever scientific and that types keep on putting artificial blocks in the way of LLMs laying golden eggs!<p>I&#x27;m quite happy with the &quot;marginal gains&quot; I get with a DGX Spark.  It will pay for itself within three months doing stuff on prem and us not sending data to someone else.  It will scale.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>GPerson</em>:</p>
+<blockquote>In my opinion, after seein the Jacobian conjecture go, the Riemann hypothesis only has about a year left.<p>I’m not sure if people just aren’t as aware, but the Jacobian conjecture practically was on par with those other great problems.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>DrBazza</em>:</p>
+<blockquote>Replace philosophers for mathematicians and Douglas Adams was spot on again.<p>Whilst current models can&#x27;t &#x27;intuit&#x27; and come up with conjectures, they can certainly disprove some of them very quickly through the kind of grind that humans can&#x27;t do.  I suppose there really are some mathematicians out there today, whose last few years of study, have just been up-ended by this.<p>--<p>&quot;Yes we are,&quot; insisted Majikthise. &quot;We are quite definitely here as representatives of the Amalgamated Union of Philosophers, Sages, Luminaries and Other Thinking Persons, and we want this machine off, and we want it off now!&quot;<p>&quot;What&#x27;s the problem?&quot; said Lunkwill.<p>&quot;I&#x27;ll tell you what the problem is mate,&quot; said Majikthise, &quot;demarcation, that&#x27;s the problem!&quot;<p>&quot;We demand,&quot; yelled Vroomfondel, &quot;that demarcation may or may not be the problem!&quot;<p>&quot;You just let the machines get on with the adding up,&quot; warned Majikthise, &quot;and we&#x27;ll take care of the eternal verities thank you very much. You want to check your legal position you do mate. Under law the Quest for Ultimate Truth is quite clearly the inalienable prerogative of your working thinkers. Any bloody machine goes and actually finds it and we&#x27;re straight out of a job aren&#x27;t we? I mean what&#x27;s the use of our sitting up half the night arguing that there may or may not be a God if this machine only goes and gives us his bleeding phone number the next morning?&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>MostlyStable</em>:</p>
+<blockquote>From a mathematician who was intimately familiar with some of these problems [0]<p>&gt;I don’t understand it yet. Maybe it’ll take me an afternoon to check all the calculations, but what would still be missing is <i>why</i> this was an approach that would’ve made sense in the first place. Is there some broader context or theory within which this would’ve been the obvious thing to do? What other results can be proven using these techniques? What is it telling us about quantum information or operator theory? I have no idea. I spent about an hour this morning asking ChatGPT these questions, but it’s somewhat frustrating because it speaks with a mishmash of physicist, operator algebraist, quantum information theorist-lingo, plus the usual LLM breezy lilt that annoys everybody.<p>They certainly seem to have &quot;intuited&quot;, in a way that is not immediately obvious to experts in the field, the way to solve at least some of these problems. This was not just simply grinding away at a method that humans already knew would work and just hadn&#x27;t gotten to yet.<p>[0] <a href="https:&#x2F;&#x2F;nitter.poast.org&#x2F;henryquantum&#x2F;status&#x2F;2083623695436623915" rel="nofollow">https:&#x2F;&#x2F;nitter.poast.org&#x2F;henryquantum&#x2F;status&#x2F;208362369543662...</a></blockquote>
+<p>↳ reply 2 — <em>pama</em>:</p>
+<blockquote>&gt; Whilst current models can&#x27;t &#x27;intuit&#x27; and come up with conjectures<p>I disagree. I routinely let LLMs speculate or generate hypotheses along the way of helping with technical research. Sometimes they can prove the correctness of a concrete math idea but other times even an unproven conjecture helps with the numerical algorithm implementation and the result is then simply supported by additional data. I guess that any autoresearch-adjacent application has LLMs intuiting and coming up with hypotheses&#x2F;conjectures—as do the steps&#x2F;lemmas along a complex proof. In my opinion the modern LLMs are powerful intuitive thinkers that generate lots of conjectures of varying quality or importance.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Taylor Farms has rewritten its cyclospora statement four times in sixteen days</title>
+      <link>https://www.marlerblog.com/case-news/taylor-farms-has-rewritten-its-cyclospora-statement-four-times-in-sixteen-days-it-still-has-not-said-what-changed-at-that-plant-after-2013-or-why-two-thousand-negative-tests-should-mean-an/</link>
+      <guid isPermaLink="false">hn3-49157128</guid>
+      <pubDate>Mon, 03 Aug 2026 15:31:32 +0000</pubDate>
+      <description>285 points, 228 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.marlerblog.com/case-news/taylor-farms-has-rewritten-its-cyclospora-statement-four-times-in-sixteen-days-it-still-has-not-said-what-changed-at-that-plant-after-2013-or-why-two-thousand-negative-tests-should-mean-an/"><strong>→ Article</strong></a> <small>(marlerblog.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49157128">→ HN comments</a> &nbsp;·&nbsp; 285 points &nbsp;·&nbsp; 228 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>wnevets</em>:</p>
+<blockquote>&gt; The CDC Has a Cyclospora Lab. DOGE Downsized It Last Year [1]<p>[1] <a href="https:&#x2F;&#x2F;www.wired.com&#x2F;story&#x2F;cdc-cyclospora-lab-doge-downsized-it-last-year&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.wired.com&#x2F;story&#x2F;cdc-cyclospora-lab-doge-downsize...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dgellow</em>:</p>
+<blockquote>DOGE will be seen by historians as the cause of so many crisis…</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>RunSet</em>:</p>
+<blockquote>It is the government equivalent of El Muskito buying Twitter and then wantonly disabling components with the assumption they do nothing.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>davidw</em>:</p>
+<blockquote>Except no one died because Twitter malfunctions here and there.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Maxion</em>:</p>
+<blockquote>Well, shit in peace i guess.</blockquote>
+<p>↳ reply 3 — <em>limagnolia</em>:</p>
+<blockquote>Too bad that article doesn&#x27;t have any evidence that the alleged cuts have had any impact on the cyclospora response.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ssl-3</em>:</p>
+<blockquote>It&#x27;s worth noting that Taylor Farms consumer bagged salads are consistently marked, in the form of an alphanumeric code printed on the bag near the sell-by date.<p>When this code begins with TF (like, say, the TFRB182A11B I had on a bag in my fridge last month), it&#x27;s a Taylor Farms product.<p>They control a huge percentage of this market.  Their products can be hard to avoid, and are sold under a wide variety of different brand names.  But again:  They&#x27;re all marked with TF.<p>---<p>It&#x27;s also worth noting that there&#x27;s some brand names that are <i>never</i> products of Taylor Farms.<p>Dole is the only example that I can find in stores near me (Ohio), but there may be others wherever you are.  (Food distribution is often very regionalized.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ornornor</em>:</p>
+<blockquote>It boggles my mind that people would buy salads in bags. Instead of just a head of lettuce like the rest of the world.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ssl-3</em>:</p>
+<blockquote>It boggles my mind that people think that salad contains only lettuce.  My world is much more flavorful than that.<p>I like my salad with a mixture of leafy greens, maybe with some radicchio or red cabbage for contrast, and perhaps some snow peas, radishes, and shredded carrots.  I can keep all of that stuff around at the house and keep it fresh and prep it all, and that sounds very nice in theory -- except, most of it will probably rot before it gets consumed.<p>Or I can just buy a bag of salad and eat some of it at my whim.<p>---<p>I&#x27;m further astounded that people bother with complaining about someone else&#x27;s choice of food.  It&#x27;s not like I broke into your wallet and used your money to buy bagged salad that I then replaced the contents of your fridge with.<p>Bagged salad isn&#x27;t your issue; it isn&#x27;t an issue at all.<p>What motivates you to make fun of me in this way, fellow HN user?<p>&gt; like the rest of the world.<p>Are the motivations political?  It&#x27;s just a salad.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ornornor</em>:</p>
+<blockquote>It’s much more polluting (why wrap salad in a plastic bag?), promotes bacteria growth (and disease like in the present case), and further removes us from food in its original form. Of course you’re to spend your money however you see fit, that’s not the issue.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jancsika</em>:</p>
+<blockquote>&gt; It&#x27;s worth noting that Taylor Farms consumer bagged salads are consistently marked, in the form of an alphanumeric code printed on the bag near the sell-by date.<p>This reads like C strings having not only a null terminator but carrying around a lifetime value specified in microseconds, and memory safety errors leading to weeks of explosive diarrhea.<p>How important is iceberg to your diet that you needed to create this YOLO lettuce header (heh)?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sharps_xp</em>:</p>
+<blockquote>I went to restaurant last night and asked where the chicken was sourced from and their response was &quot;it&#x27;s not the usual place we get chicken, but it&#x27;s US Farm Raised Hatched&quot;, but I misinterpreted the her answer as a distributor name but then I realized even if I had a name, I probably couldn&#x27;t figure out past that whether or not these chickens were pasture raised. If food labels are law, why doesn&#x27;t this apply to where restaurants source their ingredients?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>maxsilver</em>:</p>
+<blockquote>This, but unironically<p><a href="https:&#x2F;&#x2F;youtu.be&#x2F;G__PVLB8Nm4" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;G__PVLB8Nm4</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fsckboy</em>:</p>
+<blockquote>also, allergies pride parade <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=RhaUKnt1Zmw" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=RhaUKnt1Zmw</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Miner49er</em>:</p>
+<blockquote>Restaurants don&#x27;t even have to track and disclose what allergens their food contains.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Devtools must be open source</title>
       <link>https://blog.exe.dev/devtools-must-be-open-source</link>
@@ -3448,154 +3622,6 @@ For everything else, use another model.</blockquote>
 <blockquote>I want to second this, I use the same setup (pi + deepseek, with lots of custom tools for tracking TODOs, doing things with less tokens, etc, and with a SOTA model for very difficult tasks) and it&#x27;s all I need it to be.</blockquote>
 <p>↳ reply 2 — <em>peperunas</em>:</p>
 <blockquote>Do you have any recommendations of such extensions for pi?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Gander, an Android file viewer that asks for no permissions at all</title>
-      <link>https://github.com/mokshablr/gander</link>
-      <guid isPermaLink="false">hn3-49119425</guid>
-      <pubDate>Fri, 31 Jul 2026 05:45:13 +0000</pubDate>
-      <description>160 points, 60 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/mokshablr/gander"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49119425">→ HN comments</a> &nbsp;·&nbsp; 160 points &nbsp;·&nbsp; 60 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>TekMol</em>:</p>
-<blockquote>This is interesting.<p>I thought granting internet access to apps is not avoidable on Android.<p>When an app does not request internet, is it really guaranteed that it cannot talk to the outside world? Or is it having other avenues like opening a browser or some other component with a custom url or something?<p>Update: I just asked Gemini, and it does not look good:<p>An Android app without the INTERNET permission is not guaranteed to be isolated from the outside world. While it cannot make direct network connections itself, it can use several other mechanisms to transmit data externally:<p>Intent-Based Communication (The Browser) An app can launch an explicit or implicit Intent to hand data over to another app that does have internet access.<p>That means the app can open a system browser using a URL containing the data it wants to transmit.<p>It can also load a Chrome Custom Tab inside its own UI task, passing data through the URL string.<p>There is also Inter-Process Communication: If two apps from the same developer share a User ID (sharedUserId), they run in the same process and share all permissions, including internet access.<p>There is also the concept of Content Providers: Content Providers allow apps to share data. An offline app can write data into a shared database or a public Content Provider. A secondary, online-enabled app can then read that database and upload the contents.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>yonatan8070</em>:</p>
-<blockquote>&gt; That means the app can open a system browser using a URL containing the data it wants to transmit.<p>This can be mitigated by using an app like URLCheck [1], which you set as your default browser, and it shows and lets you edit the URL being opened before handing it off to your real browser. It also has neat features like choosing to open in incognito (if you use Firefox) and automatically removing tracking parameters.<p>[1] <a href="https:&#x2F;&#x2F;f-droid.org&#x2F;packages&#x2F;com.trianguloy.urlchecker" rel="nofollow">https:&#x2F;&#x2F;f-droid.org&#x2F;packages&#x2F;com.trianguloy.urlchecker</a></blockquote>
-<p>↳ reply 2 — <em>exe34</em>:</p>
-<blockquote>I use a rooted phone and afwall+ which uses the underlying Linux firewall. There&#x27;s also the mobile and WiFi data permissions you can change manually.</blockquote>
-<p>↳ reply 3 — <em>andyjohnson0</em>:</p>
-<blockquote>This is all very true, unfortunately. Google designed Android as a an OS for internet appliances. They&#x27;re not interested in local-only apps working on local files.<p>But I think the OP is to be complimented for what they&#x27;ve built and their intention in making it local-only. I&#x27;ve long felt that apps that *genuinely&quot; respect privacy are one of the few areas of opportunity still left in the mobile space. I wish there were more develpers building things like this.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dheerajvs</em>:</p>
-<blockquote>Tried it and I love it. Good work!
-Have you considered hosting it on F-Droid?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>netfortius</em>:</p>
-<blockquote>Obtainium works just fine with the github source</blockquote>
-<p>↳ reply 2 — <em>clort</em>:</p>
-<blockquote>That is listed in the Roadmap section right at the end of the README.md file</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>atmanactive</em>:</p>
-<blockquote>Thanks for sharing. Could it be possible to add optional force-dark mode for documents as well? The feature list mentioned dark mode, but that&#x27;s for app&#x27;s own UI. The really awesome feature would be to be able to invert the document colors so that the document itself is shown in dark mode. Thanks.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: What should the GUI for AI agents look like?</title>
-      <link>https://marbleos.com/demo</link>
-      <guid isPermaLink="false">hn3-49119274</guid>
-      <pubDate>Fri, 31 Jul 2026 05:17:29 +0000</pubDate>
-      <description>125 points, 70 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://marbleos.com/demo"><strong>→ Article</strong></a> <small>(marbleos.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49119274">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 70 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tdeck</em>:</p>
-<blockquote>I&#x27;m glad folks are experimenting with different paradigms.<p>That said, Hacker News might not be the best audience for this informal survey. I&#x27;d wager at least 70% of the people reading this are still interacting with their computers using &quot;strange terminal commands&quot;, by choice. We aren&#x27;t representative of what normal people will use or prefer.</blockquote>
-<blockquote>
-<p>↳ reply — <em>dormento</em>:</p>
-<blockquote>True, &quot;strange terminal commands&quot; gave me such a visceral reaction. &quot;Its GUIs that are strange, with their strange buttons in different shapes and forms&quot;.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>miguelacevedo</em>:</p>
-<blockquote>To clarify, we meant &quot;strange&quot; from the perspective of a new user, not that terminals are bad. GUIs made common actions visible and discoverable: you could point, click, and drag instead of already knowing the command and syntax.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>qsort</em>:</p>
-<blockquote>I completely agree with you that the chat interface is very undercooked and there&#x27;s a big untapped space for agent-first interfaces, perhaps even replacing traditional desktop metaphors. You&#x27;re spot on with your premise.<p>With that said, from the material you show in your homepage, it still seems like you&#x27;re doing something very similar to OpenAI and Anthropic&#x27;s first party apps?
-I think it would help your pitch if you could show some task or workflow where your interface truly makes a difference; loading files and asking questions about them is a staple of most harnesses.</blockquote>
-<blockquote>
-<p>↳ reply — <em>miguelacevedo</em>:</p>
-<blockquote>I think a better example is how Marble makes tools visible and easy to select for each task instead of requiring you to remember what exists or describing everything through the prompt.<p>Marble keeps the tools you use most close at hand and will surface other useful ones for the job. Combined with a birds eye view of multiple tasks running, it makes agent work easier to set up and manage. The goal is to minimize cognitive overhead in day to day tasks (both in specifying what you want, and managing after you ran something)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>AussieWog93</em>:</p>
-<blockquote>Love the username, very relevant!</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>visarga</em>:</p>
-<blockquote>Best interface in my opinion is a git tracked folder, files as state, agents coming in and doing work. It&#x27;s not just a chat interface because in chat mode everything flows like water under the bridge. It is files as agents, where you get the agent to write a task in a file, and then it updates the file like a blackboard as it performs work. Same task file can be seen by worker agent, multiple judge agents (for plan and implementation), documentation agents and reflexion agents (improve workflow). I would also track every user message in a chat_log.md for reflexion agents (what is wrong with the workflow) and intent review (is the agent still following user intent?).</blockquote>
-<blockquote>
-<p>↳ reply — <em>jaapz</em>:</p>
-<blockquote>Sure but this is a very software engineer coded answer<p>What about people who don&#x27;t think like you</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tdeck</em>:</p>
-<blockquote>I think this might not be the best forum to collect that research sample.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Let's make the worst Htmx</title>
-      <link>https://zserge.com/posts/worst-htmx-ever/</link>
-      <guid isPermaLink="false">hn3-49119270</guid>
-      <pubDate>Fri, 31 Jul 2026 05:16:45 +0000</pubDate>
-      <description>126 points, 57 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://zserge.com/posts/worst-htmx-ever/"><strong>→ Article</strong></a> <small>(zserge.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49119270">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 57 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Aeolos</em>:</p>
-<blockquote>I highly recommend everyone to give htmx or datastar a try, especially if your main experience is react or nextjs.<p>We recently rewrote a half-million LOC codebase from react to datastar, with a detour through htmx first, and the results are <i>staggering</i>.<p>First page load is 20KB down from a 750KB js bundle. 1 network request vs 40+. Total load time 0.1 seconds down from 2 seconds of spinners. Page refresh is so fast, the browser doesn’t even flash - there’s no massive js bundle to parse, so it can start rendering instantly.<p>But the most staggering result is that in-document navigation over SSE achieves up to 5000:1 compression ratio for network requests within the Brotli compression window. Yes, 5000:1, you read that right. When changing server state we rerender the entire page, like an immediate-mode game engine, and push it to the client over an SSE “fat morph”, in about 100 bytes.<p>It’s so fast and so much more stable, our users are literally having fun. With a medical device.<p>And this ends up ~50% less code to maintain for a VASTLY superior UIX.<p>You are really missing out if you don’t learn how this works. It can give you a significant competitive edge if you care enough to try.<p>Edit: Big BIG thanks to bigskysoftware and the datastar team for making the web a sane place again. You really deserve all the props.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andersmurphy</em>:</p>
-<blockquote>My experience was similar. I&#x27;d wound down a startup and as a solo developer could no longer afford to do react + a backend. So I tried HTMX, then turbo (which introduced me to morph and push based re-fetch). Finally moved to datastar because I could drop alpine and it has best in class morph, signals and SSE support. Immediate mode over the network is amazing DX.<p>Makes multiplayer out of the box over large datasets trivial. See these demos if you don&#x27;t believe me [1][2] (open them in multiple tabs and have fun)<p>[1] <a href="https:&#x2F;&#x2F;checkboxes.andersmurphy.com" rel="nofollow">https:&#x2F;&#x2F;checkboxes.andersmurphy.com</a><p>[2] <a href="https:&#x2F;&#x2F;example.andersmurphy.com" rel="nofollow">https:&#x2F;&#x2F;example.andersmurphy.com</a></blockquote>
-<p>↳ reply 2 — <em>bramhaag</em>:</p>
-<blockquote>Since you tried both, what made you choose datastar over htmx?</blockquote>
-<p>↳ reply 3 — <em>JSR_FDED</em>:</p>
-<blockquote>I’m getting about 800:1 compression with Brotli. I wonder if need to tune anything? Although tbh I have no performance issues at all.<p>It took me a minute to change my mindset to Datastar’s way of doing things. But it’s been amazing. Firstly to keep 99% of the state and logic on the back end is just so nice - no more having to deal with two sources of state at the same time (front end and back end). Secondly the ability to regenerate the entire view from scratch anytime something changes and then have Datastar efficiently morph just the changes is just such a simple mental model. Every fiber in me was like “no way that can work, the cpu, bandwidth, latency etc” - but it is buttery smooth.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>stevoski</em>:</p>
-<blockquote>Part of the beauty of htmx is how simple it is to recreate. As this post shows, the fundamental concepts of htmx really are straightforward.<p>Of course, there are all sorts of edge cases and minor features to add to make it complete.</blockquote>
-<p><strong>Top #3</strong> — <em>cpburns2009</em>:</p>
-<blockquote>I really want to try htmx but it specifically prohibits my most common usecases:<p>1) I want to take a JSON response, create HTML from it, and replace the target element with the generated HTML.<p>2) Similar to the above, take a JSON response, perform some action, and do nothing to the source element.<p>Is there a plugin to add this? I want to move away from jQuery, and having a small framework to wire up hooks would be useful.</blockquote>
-<blockquote>
-<p>↳ reply — <em>igor47</em>:</p>
-<blockquote>Why are you so wedded to JSON responses? HTMX is meant to be used to render html; my big HTMX app basically never(1) renders JSON, so much so that I have a standing instruction to coding agents that if they&#x27;re rendering JSON they&#x27;re probably doing something wrong. If you&#x27;re attached to JSON because you&#x27;re working with external API s you don&#x27;t control, a good place to perform those kinds of actions is in your backend, which can then return html to your frontend<p>(1) the exception is I think in one place concerned a flow for uploading images, where client side requests a signed url, uploads to that url, then registers completion. Getting the signed url back is JSON meant for the uploader</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>JEP 401: Value Objects (Preview) merged to OpenJDK master</title>
-      <link>https://github.com/openjdk/jdk/pull/31120</link>
-      <guid isPermaLink="false">hn3-49119063</guid>
-      <pubDate>Fri, 31 Jul 2026 04:38:19 +0000</pubDate>
-      <description>162 points, 88 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/openjdk/jdk/pull/31120"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49119063">→ HN comments</a> &nbsp;·&nbsp; 162 points &nbsp;·&nbsp; 88 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>timmg</em>:</p>
-<blockquote>I feel lonely in that: I mostly love Java as a language.<p>The lack of value types is the biggest impediment to certain types of performance.  I am really looking forward to this evolution of the language.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>DarkNova6</em>:</p>
-<blockquote>What I love the most is the sheer amount of thought and philosophy put into Valhalla. It transcends the binary understanding of object vs value and actually defines 4 distinct buckets:<p>1: Classical Object<p>2: Object without identity<p>3: Atomic Value<p>4: Classical Value (Tearable)<p>Each bucket has clearly defined performance characteristics and semantic constraints. So depending on the nature of your data, you can always get some benefit from values even if you couldn&#x27;t go all the way. This is a work of art.</blockquote>
-<p>↳ reply 2 — <em>daviddoran</em>:</p>
-<blockquote>I used to love Java mostly for its batteries-included well designed standard library. Despite the verbosity of the language itself. But over time the language has really evolved a lot and gotten a lot more pleasing to the eye (in my opinion).</blockquote>
-<p>↳ reply 3 — <em>merlindru</em>:</p>
-<blockquote>java the language is amazing<p>the problem with it is entirely cultural. why is `IStatusChangeEntityCreationManagerFactory` everywhere?<p>and why are the frameworks so huge and all encompassing? i think batteries included rails-style frameworks are great, but when i wrote Java, it didn&#x27;t feel like rails at all<p>none of these are language problems</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mormegil</em>:</p>
-<blockquote>I think it is important to understand what this does and does not cover. This is “only the first part of Valhalla”. See e.g. a good summary at <a href="https:&#x2F;&#x2F;www.jvm-weekly.com&#x2F;p&#x2F;project-valhalla-explained-how-a" rel="nofollow">https:&#x2F;&#x2F;www.jvm-weekly.com&#x2F;p&#x2F;project-valhalla-explained-how-...</a></blockquote>
-<p><strong>Top #3</strong> — <em>ludovicianul</em>:</p>
-<blockquote>I&#x27;m always amazed by how much thinking and work the Java leads put in rolling out changes that move the language forward, but make it backward compatible as much as possible.</blockquote>
-<blockquote>
-<p>↳ reply — <em>germandiago</em>:</p>
-<blockquote>Rhis is the correct way to do it in enterprise environments.<p>C++ gets a lotof rage for doing the same thing.<p>The last thing you want in an enterprise environment is that your working code breaks and you have to commit more time to things that were working before.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>cogman10</em>:</p>
-<blockquote>What I do like about java is that when breaking changes must happen (and they do occasionally), they are almost always small and the java authors signpost it WELL in advance of making the break.<p>For example, this is technically legal in Java and will probably work today.  Both foo and bar will synchronize on the same referenced object due to the integer cache.<p>This is something that will break when value types land for real.<p><pre><code>    void foo() {
-      Integer i = 1;
-      synchronized(i) {
-        doEvil();
-      }
-    }
-    
-    void bar() {
-      Integer i = 1;
-      synchronized(i) {
-        doEvil();
-      }
-    }</code></pre></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>germandiago</em>:</p>
-<blockquote>Yes. Having a strong spec helps also in general.<p>I think that, with all things on the table, backwards compatibility, a spec and, where things are broken things are signaled should be the standard for enterprise grade non-toy apps.<p>Of course, breaking something should be kept to the minimum.<p>That is why I keep using C++ and, if I have to do backend in the future for webs, I will probably choose Java over C#: stable, multi-vendor, will work in 10 years, stable.</blockquote>
-</blockquote>
-</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
