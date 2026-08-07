@@ -4,7 +4,102 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 07 Aug 2026 17:53:04 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 19:06:18 +0000</lastBuildDate>
+    <item>
+      <title>Making Postgres 300x faster for analytics: batching, operator fusion, and SIMD</title>
+      <link>https://malisper.me/how-we-made-postgres-hundreds-of-times-faster-the-query-engine/</link>
+      <guid isPermaLink="false">hn3-49208535</guid>
+      <pubDate>Fri, 07 Aug 2026 11:00:35 +0000</pubDate>
+      <description>166 points, 77 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://malisper.me/how-we-made-postgres-hundreds-of-times-faster-the-query-engine/"><strong>→ Article</strong></a> <small>(malisper.me)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49208535">→ HN comments</a> &nbsp;·&nbsp; 166 points &nbsp;·&nbsp; 77 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>malisper</em>:</p>
+<blockquote>Author here. Let me know if you have any questions about the post or about pgrust.<p>Let me take a shot at answering what I think will be the most common question: how can I trust pgrust? Our #1 priority right now is correctness. Over the past two weeks, I&#x27;ve done a mix of formal verification and differential fuzz testing. We&#x27;ve been able to prove over 1000 user facing functions have the exact same logic in both pgrust and postgres (see the proofs directory if you&#x27;re curious). For cases where formal verification is not easy, we&#x27;ve taken the c implementation of a function and the rust implementation of a function and ran millions of inputs through each of them and confirmed they gave the same results every time.<p>We&#x27;ve only covered about 15% of the surface area so far, but in the process, we&#x27;ve discovered ~100 bugs in pgrust and ~20 bugs in Postgres itself. My favorite postgres bug we found is this one[0]. Postgres has a quadtree implementation. Due to floating point rounding, it was possible for a point to be neither above, nor below, nor even with the center point of the quadtree.<p>We&#x27;ve also entered engagements with Antithesis[1] to do Jepsen style fault testing and Aretta[2] to do more serious formal verification.<p>If you want to support the project, the easiest way is to give us a star on GitHub[3]<p>[0] <a href="https:&#x2F;&#x2F;www.postgresql.org&#x2F;message-id&#x2F;19597-39c532e61d78dff6%40postgresql.org" rel="nofollow">https:&#x2F;&#x2F;www.postgresql.org&#x2F;message-id&#x2F;19597-39c532e61d78dff6...</a><p>[1] <a href="https:&#x2F;&#x2F;antithesis.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;antithesis.com&#x2F;</a><p>[2] <a href="https:&#x2F;&#x2F;aretta.ai&#x2F;" rel="nofollow">https:&#x2F;&#x2F;aretta.ai&#x2F;</a><p>[3] <a href="https:&#x2F;&#x2F;github.com&#x2F;malisper&#x2F;pgrust" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;malisper&#x2F;pgrust</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>marginalia_nu</em>:</p>
+<blockquote>How do you know if you&#x27;re making the right optimizations?<p>I struggle with this a lot with Marginalia&#x27;s index.  Where I identify a hot method in a prod profiler run, try to replicate it on a test machine where I can never get the same cache characteristics because everything in this space is like an onion of caching layers that you affect the real performance of the system.  I may get it to run significantly faster, but that only sometimes makes the production profiler sample move its needle.<p>e.g. I&#x27;ve recently been experimenting with using a cursed hybrid model in Marginalia&#x27;s index, where based on a mincore probe, I switch between mmap and io_uring for reading a cluster of pseudoadjacent data.  There are real tanglible benefits both in the test machine and in prod with this, but the numbers do not agree at all about how the needle moves :P</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>malisper</em>:</p>
+<blockquote>I would probably dig into the reasons for the differences in the benefit on the test machine and in prod<p>I had an issue like this for optimizing pgrust. I had an optimization that showed no impact on my test machine (c8g.4xl) and showed a 20% improvement when ran on my mac. It turns out the issue was the instruction cache on the c8g.4xl was being saturated on the test machine but not on my laptop, moving the bottleneck to a different place<p>If you can consistently reproduce the performance difference, you&#x27;re already half way there</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>marginalia_nu</em>:</p>
+<blockquote>I&#x27;m pretty sure the reason for the difference is that production machine exists in a state of mixed memory residency and low grade resource contention that is incredibly hard to replicate in a test scenario (as the moment you start making queries the pages warm up, and the test becomes unreliable).<p>The hard part about optimizing this type of code, IMO, is that there are so many cache layers, both in the CPU and the OS and sometimes in the storage medium.  You can warm all of those caches up, but then you&#x27;re testing a nonsense scenario that will basically never happen in a realistic scenario, where wall clock time is what matters, and not much the CPU is working or how many IOPS you&#x27;re pushing.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>throwaway7783</em>:</p>
+<blockquote>This is a great project. Thank you!<p>A question on 20s postgresql time - It does not look like you are accounting for reading data from disk? Wouldn&#x27;t the aggregation query have to load data from disk first? Or is it somewhat guaranteed that the table is already in memory? The Rust version is clearly in memory (I am no rust expert, so that may not even be actually in memory, if its a generator).</blockquote>
+<p>↳ reply 3 — <em>jnwatson</em>:</p>
+<blockquote>The floating point comparison bug is nightmare fuel. I could look at that for years and never spot the mistake.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>sgt</em>:</p>
+<blockquote>Cool project but .. reality is that people will generally not choose pgrust over Postgres, even 5-10 years from now. The problem is not that it may be technically superior and faster by then, it&#x27;s that it&#x27;s not built by the trusted Postgres team. There&#x27;s a lot more to trust than development velocity or performance. It&#x27;s also about the longevity and continuity of a critical piece of technology.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>andriy_koval</em>:</p>
+<blockquote>People will use it if it really delivers gain and can solve problems PG can&#x27;t.</blockquote>
+<p>↳ reply 2 — <em>yieldcrv</em>:</p>
+<blockquote>Their ai agents will if we keep writing about it<p>Project managers and Human Resources rolling out overengineered projects will outnumber current software engineers 10 to 1</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>AsyncBanana</em>:</p>
+<blockquote>You have no idea how long I have been waiting for adaptive planning. One of my biggest annoyances with the Postgres core team has been their reluctance to implement any sort of adaptive planning despite it, at this point, being a well-established technique that has been implemented in multiple production databases. I hope this, at the very least, proves the viability of this model outside of academic&#x2F;niche contexts.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>US strikes $1.2B deal to pay German firm to halt offshore wind projects</title>
+      <link>https://www.bbc.com/news/articles/c1e1vg0gjl5o</link>
+      <guid isPermaLink="false">hn3-49208314</guid>
+      <pubDate>Fri, 07 Aug 2026 10:28:55 +0000</pubDate>
+      <description>819 points, 773 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/c1e1vg0gjl5o"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49208314">→ HN comments</a> &nbsp;·&nbsp; 819 points &nbsp;·&nbsp; 773 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>saagarjha</em>:</p>
+<blockquote>&gt; Interior Secretary Doug Burgum said in a statement posted on X that Americans deserve an energy system built on common sense and not one dependent on &quot;costly subsidies&quot;.<p>I agree. This is why we are building offshore wind and not subsidizing fossil fuels, right?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Kim_Bruning</em>:</p>
+<blockquote>&gt; not one dependent on &quot;costly subsidies&quot;.<p>While paying out 1.2 billion dollars.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>est31</em>:</p>
+<blockquote>Mostly this is just about giving back the money RWE paid for the leases from the US government to build those turbines. Plus various fees. They could have went for suing for total profits too.<p>&gt; RWE U.S. Offshore secured these leases from the U.S. government with a long-term commitment to develop offshore wind capacity in American waters and invested more than $1 billion toward the leases and the development of these projects. These leases provided legal rights to develop offshore projects and represented years of planning, investment, and partnership with federal agencies.<p>&gt; After careful consideration, it was determined there is no path forward to permit these projects in the U.S. for the foreseeable future. The settlement resolves RWE U.S. Offshore’s legal claims and provides $1.22 billion in settlement funds.<p><a href="https:&#x2F;&#x2F;www.rwe.com&#x2F;en&#x2F;investor-relations&#x2F;financial-calendar-and-publications&#x2F;news-and-ad-hoc-announcements&#x2F;news&#x2F;news-2026-08-06&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.rwe.com&#x2F;en&#x2F;investor-relations&#x2F;financial-calendar...</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jeltz</em>:</p>
+<blockquote>All kinds of power generation are typically heavily subdized in some way. I do not think this &quot;common sense&quot; strategy exists.</blockquote>
+<p>↳ reply 3 — <em>rayiner</em>:</p>
+<blockquote>It&#x27;s even dumber than that. Someone built a wind farm near Trump&#x27;s golf course in Scotland and now he hates wind farms:  <a href="https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;articles&#x2F;c15l3knp4xyo" rel="nofollow">https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;articles&#x2F;c15l3knp4xyo</a>. He thinks they&#x27;re ugly and noisy.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>zmmmmm</em>:</p>
+<blockquote>I read up recently on the history of the fall of the roman empire and it was fascinating how eerily similar it was to the current state of the US. Overwhelmed by corruption and wars they make stupider and stupider decisions on ever larger scales, ever more frequently. And the population grows ever more cynical, eventually opting for authoritarianism before eventually the center can&#x27;t hold any more and it all collapses in on itself.<p>Funnily enough, the most striking part was the pure <i>stupidity</i> of a lot of it - seems so strange, but every day it seems I hear another really stupid story and think ... huh, maybe it really can be like that.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>whack</em>:</p>
+<blockquote>Never attribute to stupidity what can be attributed to self-interest. It sure looks stupid when you look at America or the Roman Empire as a whole. But when you look at the specific individuals doing these &quot;stupid&quot; things, and the individuals enabling them, it is perfectly aligned with their own best interests.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>JKCalhoun</em>:</p>
+<blockquote>Yes, but as a nation, we are stupid to go along with it.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>pessimizer</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Illusion_of_control" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Illusion_of_control</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mbesto</em>:</p>
+<blockquote>Also, two other characteristics of the fall of roman empire:<p>1. It struggled to remain &quot;solvent&quot; because it lost taxable provinces relative to the costs of wars, administration, etc.<p>2. It took years for it to eventually &quot;fall&quot;. It didn&#x27;t just magically disappear overnight.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>chewbacha</em>:</p>
+<blockquote>Parts of the world are literally on fire but the US is redirecting money to halt renewables and towards gas.<p>The demand for energy is higher than ever due to AI data centers, but I guess the next model is more important than a habitable environment.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>throw0101d</em>:</p>
+<blockquote>&gt; <i>Parts of the world are literally on fire but the US is redirecting money to halt renewables and towards gas.</i><p>Parts <i>of the US</i> are literally on fire.<p>* <a href="https:&#x2F;&#x2F;firms.modaps.eosdis.nasa.gov&#x2F;usfs&#x2F;map&#x2F;#d:24hrs;@-100.0,40.0,4.0z" rel="nofollow">https:&#x2F;&#x2F;firms.modaps.eosdis.nasa.gov&#x2F;usfs&#x2F;map&#x2F;#d:24hrs;@-100...</a><p>* <a href="https:&#x2F;&#x2F;wfca.com&#x2F;fire-map" rel="nofollow">https:&#x2F;&#x2F;wfca.com&#x2F;fire-map</a><p>* <a href="https:&#x2F;&#x2F;www.nifc.gov&#x2F;fire-information&#x2F;maps" rel="nofollow">https:&#x2F;&#x2F;www.nifc.gov&#x2F;fire-information&#x2F;maps</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>zelphirkalt</em>:</p>
+<blockquote>The issue will be &quot;out of sight, out of mind&quot; (or rather knowingly ignored) until the issue appears at scales as small as the home village, which in terms of the US government means the front and back yard of the white house or similar.<p>These people are living in parallel societies, where they are completely detached from the reality for many people living in the country. And that is not merely a problem in the US.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>dolmen</em>:</p>
+<blockquote>&gt; The issue will be &quot;out of sight, out of mind&quot; [...]<p>... while an offshore wind farm was once in DT&#x27;s sight in Scotland.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ZiiS</em>:</p>
+<blockquote>It is important to keep the main issue clear. Failing to invest in renewables is an existential risk to humanity&#x27;s future.
+Permanently shutting all Datacenters (not just AI) saves us about 1 year.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Framework discloses data breach via Metabase 0-day</title>
       <link>https://community.frame.work/t/framework-data-breach-discussion/83939</link>
@@ -3737,82 +3832,6 @@ What I mostly enjoyed reading is the insight that their actual software is quite
 <p>↳ reply 2 — <em>progbits</em>:</p>
 <blockquote>&gt; Is public opinion about this case so important to them?<p>They have no chance to win the court case, so public opinion is the only thing they have left to fight for.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>There Will Come Soft Rains (1950) [pdf]</title>
-      <link>https://users.wpi.edu/~zrbutzke/Docs/BradburyStories(1).pdf</link>
-      <guid isPermaLink="false">hn3-49162653</guid>
-      <pubDate>Mon, 03 Aug 2026 23:24:53 +0000</pubDate>
-      <description>157 points, 56 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://users.wpi.edu/~zrbutzke/Docs/BradburyStories(1).pdf"><strong>→ Article</strong></a> <small>(users.wpi.edu)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49162653">→ HN comments</a> &nbsp;·&nbsp; 157 points &nbsp;·&nbsp; 56 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>twotwotwo</em>:</p>
-<blockquote>Okay, a stretch for HN, but: singer-songwriter Silvana Estrada named an album released last year Vendrán Suaves Lluvias (meaning There Will Come Soft Rains). She talked about how she and her brother read The Martian Chronicles as kids and she remembered the Sara Teasdale poem quoted at the end. She said she composed the songs at a difficult time in her life and, I guess, something about that image in the story (and the poem in it) resonated then.<p>For anyone curious, there&#x27;s a Tiny Desk Concert of songs from the album at <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=o9PoZ0Vcb_s" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=o9PoZ0Vcb_s</a> and an interview, in English, at <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=WcQbB7Dc83U" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=WcQbB7Dc83U</a></blockquote>
-<p><strong>Top #2</strong> — <em>schoen</em>:</p>
-<blockquote>I think an appreciable number of people upvoting this and reading it or re-reading it may not have noticed why it was submitted today (the date on which the story takes place is tomorrow!).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ghaff</em>:</p>
-<blockquote>I didn&#x27;t get the link to the current date. But aside from the fact there was no Mars linkage probably my favorite Bradbury short.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>duskwuff</em>:</p>
-<blockquote>&gt; But aside from the fact there was no Mars linkage probably my favorite Bradbury short.<p>This story happens to describe events on Earth, but it&#x27;s part of the same chronology as the rest of the <i>Martian Chronicles</i> stories. The story <i>The Million-Year Picnic</i> describes the same war from the perspective of a family who escaped to Mars.<p>As an aside, later editions of the book advanced all the dates by 31 years; those editions put this story in August 2057 instead.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>briansm</em>:</p>
-<blockquote>Reminds me of when November 2019 came and went (the date that Blade Runner is set in)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>andai</em>:</p>
-<blockquote>This story was adapted into a short animated film in 1987:<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=5LNHYz89sNc" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=5LNHYz89sNc</a><p>(Russian, with subtitles.)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Mikhail_Edoshin</em>:</p>
-<blockquote>Bradbury was very popular in USSR. His Wikipedia page has an anecdote of a Soviet filmmaker recognizing him in a crowd and surprising the rest of the celebrities around who had no idea who Bradbury was. (Another such author would be Vonnegut.)<p>There was a Soviet publisher Kniga (Book) that published only books about other books: book art, technology, bibliophile stories and so on. One of their books was a collection of short stories whose main topic was books, reading, writing or similar. One of stories was Bradbury&#x27;s &quot;Forever and the Earth&quot;, translated, of course, but very well. I was a teenager then an I remember being deeply impressed by it. I knew Bradbury, of course, but mostly from sci-fi and he wasn&#x27;t really a sci-fi author. (One of Soviet sci-fi writers pointed out that Bradbury was pretty much anti-scientific in his stance.) That story made Bradbury stand out for me.</blockquote>
-<p>↳ reply 2 — <em>r721</em>:</p>
-<blockquote>Better quality: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=quyaaszg6jc" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=quyaaszg6jc</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Windows XP 2002 for the Itanium: Unbridled rage</title>
-      <link>https://virtuallyfun.com/2026/08/03/windows-xp-2002-for-the-itanium-unbridled-rage/</link>
-      <guid isPermaLink="false">hn3-49162086</guid>
-      <pubDate>Mon, 03 Aug 2026 22:04:49 +0000</pubDate>
-      <description>125 points, 80 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://virtuallyfun.com/2026/08/03/windows-xp-2002-for-the-itanium-unbridled-rage/"><strong>→ Article</strong></a> <small>(virtuallyfun.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49162086">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 80 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>sedatk</em>:</p>
-<blockquote>A historical note: Windows XP 64-bit Edition that was mentioned in the article, was Itanium-specific. It was based on XP kernel while Windows XP x64 Edition (for AMD64 architecture) was based on Windows Server 2003 kernel. Because of that, Windows XP x64 Edition had some significantly different performance characteristics compared to other Windows XP editions. If anything, it was closer to Vista than XP in some aspects.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>twoodfin</em>:</p>
-<blockquote>I would love to read the Microsoft PM spec for this product. Who in the world were they making it for?<p>Itanium never made it into the consumer-class hardware that was XP’s audience. AFAIK, Intel never even published a roadmap for that to happen!<p>Maybe a proof of concept they shipped as a demonstration of loyalty to Intel?!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>walrus01</em>:</p>
-<blockquote>In approx. 2000 to 2002, 2003 or around then, there was a theoretical dream that Itanium based workstations would become a real mass market thing, but it obviously never caught on.<p>Intel never made Itanium CPUs cheap enough to realistically purchase and Itanium motherboards never became a thing from the top-10 sized Taiwanese motherboard makers (the same companies that were making really nice boards for the 1 GHz to 1.2 GHz socketed Pentium 3 with 512KB cache and the first generations of Pentium 4).<p>Also the performance sucked. This was before AMD64 existed on the corporate desktop or home desktop.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>bobmcnamara</em>:</p>
-<blockquote>It totally worked! Took out like four decent risc competitors with just a little FOMO</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>protocolture</em>:</p>
-<blockquote>Watching my mate explain to his father for the 100th time that the game wont run on his 64 bit Itanium workstation despite it running windows did eventually get old.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>tech234a</em>:</p>
-<blockquote>I wonder if people are able to get Windows Server 2008 R2 to run on this yet as well. That was the last Windows OS to support Itanium, and it received updates until January 14, 2020.<p>EDIT: there was also an additional patch released in May 2020 according to <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Windows_Server_2008_R2#Itanium" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Windows_Server_2008_R2#Itanium</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>qingcharles</em>:</p>
-<blockquote>Wild that shipments of Itaniums didn&#x27;t end until 2021.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>taspeotis</em>:</p>
-<blockquote>I think HP had a big investment in Itanium and even sued Oracle to get them to keep supporting Itanium (they had contractually agreed to it, but Itanium was such a dead end...)</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>omnibrain</em>:</p>
-<blockquote>They had bet 100% on it killing PA-RISC and DEC Alpha. They ported HP-UX, OpenVMS and NonStop to it. All 3 of them were tangled up in long running enterprise and government contracts.<p>They since discontinued HP-UX, offloaded OpenVMS and ported NonStop to x86-64.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>WarOnPrivacy</em>:</p>
-<blockquote><p><pre><code>    XGCJ6-Q6XGJ-BQ2QQ-BRWJ7-67X7W
-</code></pre>
-I used to have this key memorized.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
