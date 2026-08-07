@@ -4,7 +4,58 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 07 Aug 2026 15:00:16 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 16:01:00 +0000</lastBuildDate>
+    <item>
+      <title>Framework discloses data breach via Metabase 0-day</title>
+      <link>https://community.frame.work/t/framework-data-breach-discussion/83939</link>
+      <guid isPermaLink="false">hn3-49206130</guid>
+      <pubDate>Fri, 07 Aug 2026 05:17:57 +0000</pubDate>
+      <description>126 points, 46 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://community.frame.work/t/framework-data-breach-discussion/83939"><strong>→ Article</strong></a> <small>(community.frame.work)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49206130">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 46 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>wkjagt</em>:</p>
+<blockquote>At some point I almost bought a Framework laptop, just didn&#x27;t click the Order button. I had my address etc already filled in, so because of that I also got that email from Framework this morning. From a technical perspective I guess it makes sense that Metabase has my personal information, but it&#x27;s still kind of crazy to think how much personal information you&#x27;re sending &quot;out there&quot; just by, for example, checking a final price of a product including shipping.</blockquote>
+<p><strong>Top #2</strong> — <em>chocolatkey</em>:</p>
+<blockquote>Here&#x27;s what an email from metabase looks like for those affected:<p><pre><code>  On Monday, August 3, we discovered  that Metabase Cloud was attacked by someone utilizing an unknown (“0-day”) security vulnerability in versions 1.58 and above. We immediately blocked the endpoints used for the attack, then quickly identified and patched the vulnerability. We notified law enforcement, and we have engaged with a third party forensics firm to conduct an independent investigation.
+
+  Your instance of Metabase was vulnerable to this 0-day. Therefore, to protect your company, we recommend you:
+
+  Rotate the credentials for every database connected to your instance; and
+   Review the admin accounts on your instance and remove anything you don&#x27;t recognize.
+   We also discovered that the attacker was able to gain access to your instance.  We created a report on the actions we believe the attacker took on your instance, which includes log files, and which you can get from the Metabase Store at https:&#x2F;&#x2F;store.metabase.com.
+
+  (If you do not have access to the Metabase Store, are having issues accessing the report, or do not want to click on a link in an unexpected email, you can log into your instance directly and reach us at Help &gt; Get help in the grid menu in the upper right hand corner. We&#x27;ll confirm this message is from us and email you the report.)
+
+  This report is based on our own application logs. We did not query or read the data in your connected databases.
+
+  Depending on the jurisdictions in which you operate and kinds of data your instance connects to, you may have notification obligations under applicable laws. If you have concerns in this regard, we recommend you assess potential notification obligations with your company’s legal or compliance experts.
+
+  We regret any inconvenience this incident may cause you, and we are here to support you. If you have questions, please reply to this email or email us at eventresponse@metabase.com, and we&#x27;ll get back to you as quickly as we can.
+
+  Sameer Al-Sakran
+  Founder and CEO
+  Metabase
+
+</code></pre>
+Based on what they shared in terms of logs and summary, the attacker was scanning tables for valuable data. They took the first N rows from various tables in connected DBs, kind of at random it seems. Possibly some kind of regexing. Here&#x27;s an example timeline:<p><pre><code>  | Time | Event |
+  | --- | --- |
+  | 13:00 | Access gained and authenticated as the administrator account |
+  | 13:01 – 13:12 | 54 queries were run through that session |
+  | 13:14 | API key was created (key ID `1`) tied to a service account |
+  | 13:14 – 13:17 | 19 further queries were run through the API key |
+  | 13:17 | API key was deleted |</code></pre></blockquote>
+<p><strong>Top #3</strong> — <em>pelagicAustral</em>:</p>
+<blockquote>Metabase again?? Last 0day was catastrophic. My previous employer moved all that infrastructure back to on-prem, I guess he must be laughing now.</blockquote>
+<blockquote>
+<p>↳ reply — <em>whazor</em>:</p>
+<blockquote>Even if its on the cloud, should be locked behind your VPN</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>halJordan</em>:</p>
+<blockquote>That&#x27;s certainly one way of thinking. But it&#x27;s not the only one. It&#x27;s not even the only secure one</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>New Mexico court orders Meta to pay $567m over harms to children’s mental health</title>
       <link>https://www.theguardian.com/technology/2026/aug/06/new-mexico-court-meta</link>
@@ -3767,48 +3818,6 @@ I used to have this key memorized.</blockquote>]]></content:encoded>
 </blockquote>
 <p><strong>Top #3</strong> — <em>xlii</em>:</p>
 <blockquote>I consider myself senior engineer. When talking with junior colleagues they often are surprised how little I care about some things and how much I care about others.<p>These internal &quot;attention weights&quot; are highly influential parameters of how I work with LLM.<p>E.g. when working with Rust I often hold strict control over structures and lifetimes. But when lately I&#x27;ve been doing token-based bind generation I didn&#x27;t care about anything outside of high level patterns like RAII and ultimately - API ergonomics which was verified in consumer app.<p>I&#x27;ve been in position of porting real-code to vibe-code platform and seeing non-technical people prompt-stream (they were shared across accounts) I know why they engaged engineer to run this work.<p>Their efforts took 6 weeks, I ported app within 4 days and (to be honest with myself) without LLM I that&#x27;d be 3M+ work pre-LLM.<p>In short: I observed same effect as claimed.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>AI's debt binge can't last, hidden borrowing reaches $1.65T</title>
-      <link>https://fortune.com/2026/07/31/ai-debt-hypescalers-capex-capital-spending-hidden-borrowing-bond-issuance/</link>
-      <guid isPermaLink="false">hn3-49160699</guid>
-      <pubDate>Mon, 03 Aug 2026 20:02:21 +0000</pubDate>
-      <description>125 points, 152 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://fortune.com/2026/07/31/ai-debt-hypescalers-capex-capital-spending-hidden-borrowing-bond-issuance/"><strong>→ Article</strong></a> <small>(fortune.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49160699">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 152 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>missedthecue</em>:</p>
-<blockquote>As a bystander directly immune to the fortunes of AI going up or down, it does feel like there are a <i>lot</i> more people thinking this is inning 9 of the LLM story than there are people thinking it&#x27;s inning 3. Which makes it tempting to believe it&#x27;s probably closer to inning 3.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>darth_avocado</em>:</p>
-<blockquote>&gt; As a bystander directly immune to the fortunes of AI going up or down<p>Sorry to break it to you but you are neither immune nor a bystander to the fortunes of AI going down. You are part of it all whether you like it or not.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>missedthecue</em>:</p>
-<blockquote>You&#x27;re not breaking anything to me. I deliberately phrased it as &quot;directly immune&quot; because I have no financial stake in AI-related companies. Obviously a debt-bomb of any type imploding reverberates across the economy.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>donavanm</em>:</p>
-<blockquote>&gt; I have no financial stake in AI-related companies<p>so zero exposure to any popular index? Even “ex-US” is tsmc and sk-hynix in a trenchcoat. I think it was BHP exclaiming that theyre an AI play because they cover 85% of the raw materials in DC build outs.<p>In the current mania “no financial stake in AI-related” is a <i>very</i> bold claim.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>XenophileJKO</em>:</p>
-<blockquote>It is like being in a city where Edison wired up lights.. and people are like..well I guess electricity has played out!<p>We have only begun to extract the value of commoditized intelligence. Sure there are arguments on local models and pricing power.. but I think we will be compute constrained for the near future.</blockquote>
-<p>↳ reply 3 — <em>kube-system</em>:</p>
-<blockquote>I think it&#x27;s the magnitude of the situation that is more concerning than how close we are.  We might not know when it pops but when it does, the dominos are in a pretty precarious position.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bravetraveler</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;archive.ph&#x2F;Lek29" rel="nofollow">https:&#x2F;&#x2F;archive.ph&#x2F;Lek29</a><p>For those without accounts, given faded body</blockquote>
-<p><strong>Top #3</strong> — <em>seizethecheese</em>:</p>
-<blockquote>&gt; AI’s insatiable need for debt has so far been matched by investors’ appetite for it, but they may turn nauseous on the belly-busting volumes coming from tech giants.<p>Headline doesn&#x27;t really match the facts in the article. The article seems to say &quot;hyperscalers are borrowing an enormous amount and so far people are lending to them. Other people are worried that this will stop&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>billywhizz</em>:</p>
-<blockquote>&quot;people are lending to them&quot; is doing a lot of heavy lifting here. e.g. <a href="https:&#x2F;&#x2F;prospect.org&#x2F;2026&#x2F;08&#x2F;03&#x2F;ai-bailout-could-be-baked-into-bubble-private-equity-life-insurers-loans&#x2F;" rel="nofollow">https:&#x2F;&#x2F;prospect.org&#x2F;2026&#x2F;08&#x2F;03&#x2F;ai-bailout-could-be-baked-in...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>seizethecheese</em>:</p>
-<blockquote>The article transparently documents that people are lending to them.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>kube-system</em>:</p>
-<blockquote>&gt; &quot;hyperscalers are borrowing an enormous amount and so far people are lending to them. Other people are worried that this will stop&quot;<p>You say this as if when &quot;lending stops&quot;, it isn&#x27;t a big deal.  What you&#x27;re describing is a concern for a collapse in finance markets.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
