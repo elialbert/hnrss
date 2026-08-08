@@ -4,7 +4,48 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 08 Aug 2026 14:38:21 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2026 15:36:13 +0000</lastBuildDate>
+    <item>
+      <title>Hardware backdoors in some x86 CPUs</title>
+      <link>https://github.com/xoreaxeaxeax/rosenbridge</link>
+      <guid isPermaLink="false">hn3-49219508</guid>
+      <pubDate>Sat, 08 Aug 2026 07:04:51 +0000</pubDate>
+      <description>238 points, 73 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/xoreaxeaxeax/rosenbridge"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49219508">→ HN comments</a> &nbsp;·&nbsp; 238 points &nbsp;·&nbsp; 73 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>joss82</em>:</p>
+<blockquote>This backdoor only appears on decades-old VIA C3 embedded x86 processors</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>K0balt</em>:</p>
+<blockquote>TBF the specific backdoor isn’t the point of the article. It’s a cautionary tale. The point is that practically all systems above the MCU level, and even some of those, have lower level systems that are often undocumented or not intended for use by the hardware designers, much less the end users. Those systems often have extremely low level access to system resources.<p>For example, I am building a device that records motion data, video, audio, and lidar imaging. Inside the 6 dollar IMU and the 12 dollar lidar sensor are powerful processors that load binary blobs provided by the manufacturer.  The lidar could potentially gain access to any of the system data stored on the SPI bus, which includes the bulk storage and secondary RAM for the system. It could exfiltrate that data using its laser to anyone within a few hundred meters in the laser fov. It could also receive remote c&amp;c over its optical sensor.  The only thing that prevents that from being the case is that I trust the blob does not include the code to do those things, but it would be trivial to replace the blob with one that does.<p>Millions of devices are made that include basic wifi functionality.  often, this comes in the form of a dedicated WiFi module. Those almost entirely consist of a powerful processor running a proprietary binary blobs, connected to some internal bus of the system that may give it access to some or all of the functions of the device, or at the very least could cause the device to malfunction. These WiFi phy modules are sub$1, pervasive, and often built in to devices that do not have any advertised connectivity features. A threat actor that has knowledge of an attack surface for that opaque blob can probably cause &gt;50% of the connected devices built with that product to malfunction, in some cases in serious and dangerous ways, and sometimes to exfiltrate  data that might be compromising or valuable.<p>That’s what this article is really about.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hnuser123456</em>:</p>
+<blockquote>I recently got an air purifier. The touch button controls for adjusting the fan speed didn&#x27;t seem to be working, so I emailed support.<p>They had me download their app, link the air purifier, and give them its MAC address. Then they asked me to try pressing each of the buttons a few times and email them back. I did so, and they responded that they re-calibrated the buttons using my touch samples. It worked.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>evilduck</em>:</p>
+<blockquote>That’s insane. I actively avoid buying things that are pointlessly internet connected nowadays. An air purifier’s buttons should be simple electromechanical switches.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>littlecranky67</em>:</p>
+<blockquote>They should have mentioned that in the first line of the github readme, not burried deep down in the text.</blockquote>
+<p>↳ reply 3 — <em>userbinator</em>:</p>
+<blockquote>It&#x27;s not even a &quot;backdoor&quot;, it&#x27;s documented in the datasheet...<p><a href="http:&#x2F;&#x2F;datasheets.chipdb.org&#x2F;VIA&#x2F;Nehemiah&#x2F;VIA%20C3%20Nehemiah%20Datasheet%20R113.pdf" rel="nofollow">http:&#x2F;&#x2F;datasheets.chipdb.org&#x2F;VIA&#x2F;Nehemiah&#x2F;VIA%20C3%20Nehemia...</a> (page 82)<p>...which along with the already publicly-known microarchitecture of the C3 makes this statement sound like total nonsense:<p><i>The rosenbridge backdoor is a small, non-x86 core embedded alongside the main x86 core in the CPU</i><p>I remember laughing at this with a few others knowledgeable in x86 when it first came out; a self-proclaimed &quot;security researcher&quot; who somehow failed to RTFM.<p>There&#x27;s even a Wikipedia article about it now, with a link to the alternate instruction set documentation: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Alternate_Instruction_Set" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Alternate_Instruction_Set</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>codedokode</em>:</p>
+<blockquote>This shows that large companies making closed-source CPUs cannot be trusted. No doubt they would add whatever the government asks them to add.<p>What can be done to mitigate this? One option would be to buy a large FPGA and flash it with an open-source CPU. Another would be to emulate a CPU, working with encrypted data and commands, so that even if the backdoor in a host CPU tries to overwrite memory, it would only crash the emulated OS. One more option would be to run the code in a Virtual Machine like QEMU which translates the code and prevents issuing unknown instructions.</blockquote>
+<blockquote>
+<p>↳ reply — <em>anthk</em>:</p>
+<blockquote>Once you control the hosts CPU it&#x27;s game over for the guest. 
+The best you can do is to fetch old PPC G4 Apple computers or Thinkpads.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>blueflow</em>:</p>
+<blockquote>As noted by userbinator: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49220030">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49220030</a><p>Not a backdoor, but a documented CPU feature.<p>The whitepaper about rosenbridge cannot be published because it would constitute scientific fraud.</blockquote>
+<blockquote>
+<p>↳ reply — <em>alfanick</em>:</p>
+<blockquote>&gt; Not a backdoor, but a documented CPU feature.<p>I would be even more explicit and call it “Not a backdoor, but a documented feature of ancient de facto unused Via C3 CPU.”</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>NASA figured out how to keep its Voyager 2 probe running for another year</title>
       <link>https://www.space.com/space-exploration/voyager/nasa-figured-out-how-to-keep-its-48-year-old-voyager-2-probe-running-for-yet-another-year</link>
@@ -3781,38 +3822,6 @@ So yeah , this is only going to get worse.</blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>cheriot</em>:</p>
 <blockquote>&gt; By sending an email that repels all but the most gullible the scammer gets the most promising marks to self-select, and tilts the true to false positive ratio in his favor.<p>There&#x27;s less need to identify the most gullible when AI drops the incremental cost of responding closer to zero.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Thanks FedEx, This Is Why We Keep Getting Phished (2024)</title>
-      <link>https://www.troyhunt.com/thanks-fedex-this-is-why-we-keep-getting-phished/</link>
-      <guid isPermaLink="false">hn3-49175192</guid>
-      <pubDate>Tue, 04 Aug 2026 21:09:39 +0000</pubDate>
-      <description>277 points, 72 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.troyhunt.com/thanks-fedex-this-is-why-we-keep-getting-phished/"><strong>→ Article</strong></a> <small>(troyhunt.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49175192">→ HN comments</a> &nbsp;·&nbsp; 277 points &nbsp;·&nbsp; 72 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>lemursage</em>:</p>
-<blockquote>This is so weird, seeing this. Two years ago, I got a customs notice from FedEx asking to fill in my details. That was just a plain email from __some guy__ at FedEx with a PDF file attached. I wasn&#x27;t expecting any package.<p>I wrote to their chatbot (of course, no human assistance) and after some time of &quot;prompt engineering,&quot; or what one might call coercing, it finally directed me to a human consultant who confirmed it was indeed not a scam, and that it was indeed their messaging.<p>I opened the PDF, and it was pre-filled with someone else&#x27;s data, with blank rectangles placed over fields in a bad attempt at redacting them (you could just move those rectangles around to reveal the underlying data).<p>The package later turned out to be a surprise from collaborators abroad. Years later, I still feel that scam aftertaste whenever I see the FedEx logo.</blockquote>
-<blockquote>
-<p>↳ reply — <em>handedness</em>:</p>
-<blockquote>I&#x27;ve gotten the same from FedEx several times over the years. It never gets less weird.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Terr_</em>:</p>
-<blockquote>I wonder how we could describe this so that aging non-technical executives understand.<p>&quot;It&#x27;s like your <i>real</i> salesperson showed up in a wrinkled suit smelling of booze, telling me that your product could be seen in the back of an anonymous white van... But only if I first proved I was carrying the asking-price in the form of gift-cards.&quot;</blockquote>
-<p><strong>Top #3</strong> — <em>kencausey</em>:</p>
-<blockquote>In a recent example my step-mother, who is constantly getting cloud storage full scam emails, received an email from Google about 75% full storage that appears to be fully valid.  However all the links use a domain c.gle and whois c.gle errors with &quot;getaddrinfo(whois.nic.gle): Name or service not known&quot;.  whois gle however does work.  I was not sure of the validity of c.gle myself, my step-mother would have no idea.</blockquote>
-<blockquote>
-<p>↳ reply — <em>varun_ch</em>:</p>
-<blockquote>not that it really helps to know now, but .gle is a TLD operated by Google. the only domains on a .gle domain will be Google (in theory). Plus, a single letter domain (on any TLD), like c.gle would be expensive to burn on a phishing scam.<p>But no one should need to know this. I don&#x27;t know what&#x27;s so wrong about just using google.com, or even .google for anything user facing...<p>I understand the idea that they want an official TLD that doesn&#x27;t necessarily have their trademark in it, so you know it&#x27;s a link to a Google service but potentially user content, but why have c.gle links to official&#x2F;urgent messaging??<p>(at least they don&#x27;t use 1drv.com in emails like Microsoft.. seriously...)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Terr_</em>:</p>
-<blockquote>I assume it&#x27;s tied somehow to SMS character limits, where somebody decided a couple extra letters of content was worth it somehow.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>xethos</em>:</p>
-<blockquote>I agree, but I&#x27;d also challenge you to find a cellphone that a normal person carries that doesn&#x27;t just concatonate multiple messages and turn them into MMS. My Pinephone and Librem 5 did that, but that reinforces my point: this is not something a normal person will see</blockquote>
-</blockquote>
-</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
