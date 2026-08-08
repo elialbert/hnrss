@@ -4,7 +4,49 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 08 Aug 2026 05:04:17 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2026 05:50:06 +0000</lastBuildDate>
+    <item>
+      <title>Water system controllers don't belong on the internet, says ex-NSA chief</title>
+      <link>https://www.theregister.com/security/2026/08/07/water-system-controllers-dont-belong-on-the-internet-says-ex-nsa-chief-after-suspected-iran-attacks/5285070</link>
+      <guid isPermaLink="false">hn3-49216362</guid>
+      <pubDate>Fri, 07 Aug 2026 21:19:57 +0000</pubDate>
+      <description>162 points, 112 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theregister.com/security/2026/08/07/water-system-controllers-dont-belong-on-the-internet-says-ex-nsa-chief-after-suspected-iran-attacks/5285070"><strong>→ Article</strong></a> <small>(theregister.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49216362">→ HN comments</a> &nbsp;·&nbsp; 162 points &nbsp;·&nbsp; 112 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>aliasxneo</em>:</p>
+<blockquote>Part of my career encapsulates a period where I was a PLC programmer, installer, commissioner, and troubleshooter for massive build outs (sky scrapers, data centers, laboratories, factories). Interestingly, this was after years of teaching myself software engineering, eventually participating in large open source projects. The clash of entering the PLC world was _extremely_ harsh.<p>Let me give an example: I once worked with an integrator who was working on an AHU feeding an extremely critical portion of a datacenter (I was a lead by this point and mostly played babysitter). During certain points of the day you couldn&#x27;t open the door to this room due to negative pressure because the logic was over-ramping the exhaust fans. As I watched this contractor work, I saw him open his laptop, with Windows on it (because Microsoft has had a death grip on this industry for decades now), and proceed to backup the PLC program into a massive folder with God knows how many other &quot;customer projects&quot; he was carrying around in this thing. He then proceeded to go do some physical checks in the field, came back, and prepared to upload the fixed program. As I watched, I noticed he _grabbed a backup from ANOTHER customer_ and I immediately had to intervene. Who knows what untold damage I saved from that single move.<p>I tell this story to demonstrate just how far into the dark ages this industry is. I vividly recall coming into the data center for a fortune 50 company, one everyone here would know, and being astonished that they had never heard of Network Attached Storage or RAID and why they might want to consider a disaster recovery plan for their multi-million dollar mechanical plant.<p>This industry is in _desperate_ need of strong technical help, but unfortunately the &quot;higher ups&quot; tend to be the same people who are &quot;comfortable&quot; with the way thing are and refuse to move. I literally tried for a decade before giving up and moving into software engineering proper.<p>So, anyways, just imagine the most archaic and barbaric set of IT software, controls, and procedures, dumb that down even further, and you&#x27;ve landed on the infrastructure&#x2F;teams that operate probably half of critical infrastructure.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>amluto</em>:</p>
+<blockquote>Another odd observation about the industry. For better or for worse, I inherited a little system controlled by a Fanuc PLC. It had a bug and would occasionally get stuck in a bad state. By some minor miracle, I managed to track down the person who had originally programmed it (now retired and moved out of state), and he emailed me a file and introduced me to his apprentice (who lives in a third state).  I found a trial version of the design software, opened the file and found the bug (despite never having seen this style of programming before).  Since I had no way to upload a new file (and since it wasn’t clear that uploading it without a matching outdated and not easily available copy of the programming environment would be wise), I convinced the apprentice to come visit while we was nearby for another client. He did not see the bug even when I pointed it out, but I convinced him to make the change and upload the modified file. Now the system works.  (He had a Windows laptop with a giant folder of customer files, of course.)<p>While he was on site, I asked him why there was nothing on the PLC or its enclosure to identify his old boss or give any contact information, and he seemed surprised and told me that no one ever does that.  I asked how a new owner is supposed to get support, and he shrugged.<p>If this thing ever fails, I’ll probably replace it with an Arduino or an ESP32 or something along those lines. Or I’ll just find something off the shelf to replace the entire system.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>spauldo</em>:</p>
+<blockquote>A microcontroller based solution is rarely a good replacement for a PLC. You can find integrators willing to come out and troubleshoot your device in the field a lot more easily than embedded progammers and vendor support is usually excellent. When your plant is down, that sort of thing matters. PLCs handle harsh environments for decades, whereas with a microcontroller all the thermal issues and power conditioning are all on you. When something fails, it&#x27;s usually just a matter of pulling a spare module off the shelf and plugging it in.<p>If that&#x27;s an old GE 90-30 (a common FANUC system), it&#x27;s time to replace it. You&#x27;re currently in that period when the CPU has reached end of life but the modules are still supported and the vendor has an easy upgrade path. Emerson owns the brand now, and can sell you a new unit that&#x27;ll run your old program with minimal changes. You can call them and get a list of integrators in your area. It&#x27;ll be pricey, but you won&#x27;t need to do it again for another quarter century.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>steve_adams_86</em>:</p>
+<blockquote>Everything you&#x27;re describing mirrors my experience with remote scientific deployments and lab equipment (wet labs in particular). I support a team which manages dozens of these, and while it&#x27;s shocking how inefficient and unsafe their practices are, it&#x27;s similarly shocking how poorly the industry has kept up with or even tried to establish better practices. We get brand new equipment that costs in the realm of $10k for a tiny logger, and the thing is barely capable of remotely managed deployment of version controlled firmware. There are no tools in place to allow proper testing of the firmware unless you have the cash to buy extras and build test harnesses from them. The firmware itself is often in languages that don&#x27;t have proper testing frameworks, type systems, IDEs, etc.<p>It&#x27;s HARD to do the right thing. Dragging and dropping files into proprietary hardware management programs is the de facto standard.<p>Then you layer on top the unfortunate reality that sometimes electricity does weird stuff, people design weird circuits or wire the wrong components in, and firmware tends to have to deal with non-deterministic inputs a lot more often than, say, an API on the web. It&#x27;s rough.<p>The pay is also so much worse in my experience.</blockquote>
+<p>↳ reply 3 — <em>technion</em>:</p>
+<blockquote>Im supposed to be doing endpoint work with people working in this field amd basically have to convince compliance they&#x27;ll need to be local administrators to do their job. They get onsite and dont know what app they&#x27;ll need until they look at a plc model. They&#x27;ll download something from a .tw ftp server and its an unsigned executable that absolutely must run as admin to program these things.<p>It is amazing how much of the sysadmin community just doesnt believe this is a thing you need to work with, everyone insisting its just security people being lazy and so on.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>clbrmbr</em>:</p>
+<blockquote>There are many wireless pump-and-reservoir systems that while not internet connected, use insecure RF links. These local RF (and casting a wider net, Bluetooth) interfaces are also ripe for abuse.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>barbazoo</em>:</p>
+<blockquote>If that means you need to at least be physically present then I&#x27;d say that&#x27;s a lot of protection already. Means someone in a foreign country can&#x27;t simply get lucky fuzzing.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>judge2020</em>:</p>
+<blockquote>Alternatively, small drones exist, and so do low power devices you could slingshot&#x2F;shoot into a secure area and set to auto wipe after they&#x27;ve done their job. Maybe could even build it out of biodegradable material so it&#x27;ll clean up in short time.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>closeparen</em>:</p>
+<blockquote>If you&#x27;ve got secret agents on enemy soil who can get near targets with drones, you&#x27;re probably just bombing them.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Wowfunhappy</em>:</p>
+<blockquote>Wouldn&#x27;t the physical facilities themselves have security?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>chmod775</em>:</p>
+<blockquote>At modern population densities, basic infrastructure breaking on down on a large scale can kill millions in a matter of weeks.<p>The largest threat isn&#x27;t bombs falling on our heads, it&#x27;s incompetent fools leaving the door open to their enemies.<p>These aren&#x27;t mistakes that can be excused. Failing in one&#x27;s duty to steward important infrastructure must mean immediate replacement of leadership.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>App Store Rejection of the Week: Dark Hours</title>
       <link>https://daringfireball.net/2026/08/app_store_rejection_of_the_week_dark_hours</link>
@@ -3793,38 +3835,6 @@ So yeah , this is only going to get worse.</blockquote>
 <blockquote>In SF, there&#x27;s a crosswalk on a street near me where cars regularly go 35 mph, so they rarely stop for pedestrians. A few days ago, I was waiting on the sidewalk to cross, and a Waymo stopped. I was so surprised, at first I thought it was letting someone out. It took a few seconds to realize that no, it was stopping for me to cross the street.</blockquote>
 <p>↳ reply 2 — <em>lokar</em>:</p>
 <blockquote>I took one to a show at the Hollywood Bowl.  Chaotic traffic environment: lots of cars, cones, people directing traffic, pedestrians everywhere.  It did great.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Web Security is Too Hard</title>
-      <link>https://textslashplain.com/2026/08/04/security-is-hard-yall/</link>
-      <guid isPermaLink="false">hn3-49172834</guid>
-      <pubDate>Tue, 04 Aug 2026 18:29:32 +0000</pubDate>
-      <description>204 points, 109 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://textslashplain.com/2026/08/04/security-is-hard-yall/"><strong>→ Article</strong></a> <small>(textslashplain.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49172834">→ HN comments</a> &nbsp;·&nbsp; 204 points &nbsp;·&nbsp; 109 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>yellow_lead</em>:</p>
-<blockquote>At one point in the article, the author asks Cloudflare&#x27;s bot if they&#x27;re launching a Wallet product, and it says no.<p>&gt; There is no such product in our documentation or dashboard, so treat any email, website, or message claiming to be &quot;Cloudflare Wallet&quot; as a phishing attempt.<p>What&#x27;s the point of adding these AI chatbots if they&#x27;re hopelessly uninformed about your products?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>devindotcom</em>:</p>
-<blockquote>heh yeah I ran into this with one of the few times I used claude desktop. it had no idea what features it had and didn&#x27;t have, where buttons were in the app, etc. isn&#x27;t that kind of a core category of knowledge you&#x27;d want the chatbot to know?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>fl0id</em>:</p>
-<blockquote>in my experience, usually it knows this (it is in the system prompt) but it can still get confused. Especially with skills for example, some skills might only work in claude code&#x2F;outside of sandbox or in desktop but not on web. And it would sometimes not know if it was on the web or desktop.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bakugo</em>:</p>
-<blockquote>The point is to signal to investors that they&#x27;re all-in on the current fad, thus making the stock price go up.</blockquote>
-<p>↳ reply 3 — <em>mirashii</em>:</p>
-<blockquote>What’s the point? To save money paying a human to man a support email. That human would have also been hopelessly uninformed for all the same reasons.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ozim</em>:</p>
-<blockquote><i>Web Developers, please follow every best practice, I’m begging you</i><p>Marketing people just make bunch of marketing domains. Business people push all kind of BS ideas.<p>No one is asking Web Developers about their opinion man.<p>STOP making everything developers fault.</blockquote>
-<p><strong>Top #3</strong> — <em>63stack</em>:</p>
-<blockquote>My main takeaway from this is not that &quot;security is hard&quot; but that cloudflare is pretty incompetent.</blockquote>
-<blockquote>
-<p>↳ reply — <em>madeofpalk</em>:</p>
-<blockquote>The takeaway is that everyone makes security hard. Everyone does this anti-pattern of having these <i>other</i> domains that defeat all their own security recommendations.<p>GitHub for ages had something like githubnext.com where they would make you do this same OAuth dance (except IIRC it was worse - it explicitly said that it WASNT GitHub). Apple has&#x2F;had an apple.tv microsite or something they hosted content on.<p>Your bank will send you “legitimate” surveys or communication from some third party domain like qualtropics.com.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
