@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 10 Aug 2026 15:06:09 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 16:06:36 +0000</lastBuildDate>
     <item>
       <title>Docker Sandboxes – Disposable, isolated sandboxes for AI agents</title>
       <link>https://www.docker.com/products/docker-sandboxes/</link>
@@ -151,6 +151,40 @@
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>How We Pushed CDC into Postgres</title>
+      <link>https://www.snowflake.com/en/blog/engineering/postgres-to-snowflake-replication-mirroring/</link>
+      <guid isPermaLink="false">hn3-49238050</guid>
+      <pubDate>Mon, 10 Aug 2026 01:01:34 +0000</pubDate>
+      <description>131 points, 27 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.snowflake.com/en/blog/engineering/postgres-to-snowflake-replication-mirroring/"><strong>→ Article</strong></a> <small>(snowflake.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49238050">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 27 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bastawhiz</em>:</p>
+<blockquote>Clickhouse really nailed this with the acquisition of peerdb. I used it with many terabyte databases and I essentially never thought about it. The only thing we really had to watch for was trying to replicate too much at once (because of the physical compute&#x2F;io capacity of the postgres or clickhouse clusters).</blockquote>
+<p><strong>Top #2</strong> — <em>gopalv</em>:</p>
+<blockquote>This was basically Vertica&#x27;s party trick for quite a long time to have a WOS and ROS formats for the same row and anti-caching between those two.<p>You could&#x27;ve built a similar system with dezebium and delta lake for quite some time but it would fail compactions, if you run it fast enough. I&#x27;ve seen Oracle GoldenGate 12c do this trick in 2014 or so, using Mysql as the cheap replica. But they are all fragile to schema updates in some direction.<p>The closest batteries-included equivalent to this is the Aurora -&gt; Redshift bridge[1].<p>[1] - <a href="https:&#x2F;&#x2F;aws.amazon.com&#x2F;rds&#x2F;aurora&#x2F;zero-etl&#x2F;" rel="nofollow">https:&#x2F;&#x2F;aws.amazon.com&#x2F;rds&#x2F;aurora&#x2F;zero-etl&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>bastawhiz</em>:</p>
+<blockquote>Aurora zero etl was a nightmare for us. Almost any schema changes require a VACUUM FULL for it to continue functioning. On a few occasions, it just stopped running without an obvious explanation, requiring slow and lengthy back and forth threads with AWS support. If it worked as advertised, it would be great, but I can&#x27;t recommend it for any serious production system.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fock</em>:</p>
+<blockquote>And this is, when it doesn&#x27;t delete data randomly: <a href="https:&#x2F;&#x2F;github.com&#x2F;trinodb&#x2F;trino&#x2F;issues&#x2F;28885" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;trinodb&#x2F;trino&#x2F;issues&#x2F;28885</a> (some enterprise open source was slop before AI even it seems)</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>hasyimibhar</em>:</p>
+<blockquote>It&#x27;s interesting to watch how different companies that offer both Postgres and warehousing solution under 1 roof approach the same problem:<p>- ClickHouse focuses on traditional CDC (ClickPipes) and just make it blazingly fast<p>- Databricks leans on their unified storage architecture (LTAP) to avoid copying data (though you can argue there is still a copy in the cache)<p>- Snowflake uses a data mirroring CDC as extension so it runs directly on Postgres<p>I&#x27;m still waiting for a Postgres provider to just let me mirror data directly to Iceberg, so I can plug in my own stateless query engine.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mslot</em>:</p>
+<blockquote>The challenge is converting primary key updates&#x2F;deletes to row offsets in a columnar table. That requires  maintaining an expensive mapping or doing expensive scans, and is not something you want Postgres itself to do. It&#x27;s also this bursty, memory-intensive workload that you&#x27;d rather not have a lot of dedicated infrastructure for.<p>At Snowflake we use Snowflake to do the apply work. Hence end-to-end mirroring has more pieces than just Postgres, but the capturing of changes is cheap enough to do in Postgres directly.<p>(Author)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hasyimibhar</em>:</p>
+<blockquote>Yes I’m not suggesting to do this inside Postgres. I’m hoping that a Postgres provider can provide this mirroring capability out of the box, similar to how they provide a connection-pooled endpoint out of the box so I don’t have to self-host pgBouncer. I just want to be able to check a box somewhere and have a table in Postgres automatically mirrored to Iceberg, with guarantee that no data is lost. They can charge more for it, I will gladly pay.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jbonatakis</em>:</p>
+<blockquote>&gt; I&#x27;m still waiting for a Postgres provider to just let me mirror data directly to Iceberg, so I can plug in my own stateless query engine.<p>The issue that each of those providers above has recently adopted Postgres as a secondary product aimed at supporting their main product, an OLAP database or engine, so they don’t want you plugging in your own query engine.<p>I’d bet you’re likely to see this from a Postgres-specific provider first, like Supabase.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Georgia police officers fired after Flock camera misuse</title>
       <link>https://www.wtoc.com/2026/08/07/savannah-police-department-fires-6-employees-over-flock-safety-system-misuse/</link>
       <guid isPermaLink="false">hn3-49236033</guid>
@@ -200,6 +234,32 @@
 </blockquote>
 <p><strong>Top #3</strong> — <em>AngryData</em>:</p>
 <blockquote>It should result in jail time. If I got access to government surveillance program and started using it for personal reasons, I would likely be charged with terrorism.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Tuxedo No. 2 – Cocktail recipes</title>
+      <link>https://tuxedono2.com</link>
+      <guid isPermaLink="false">hn3-49235697</guid>
+      <pubDate>Sun, 09 Aug 2026 20:48:46 +0000</pubDate>
+      <description>126 points, 36 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://tuxedono2.com"><strong>→ Article</strong></a> <small>(tuxedono2.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49235697">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 36 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ianthehenry</em>:</p>
+<blockquote>I like this website a lot and used it as the base recipe book for a program that will tell you what cocktails you can make with the ingredients you have, but also what cocktails you are “one ingredient away from.” <a href="https:&#x2F;&#x2F;github.com&#x2F;ianthehenry&#x2F;mixologician" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ianthehenry&#x2F;mixologician</a><p>It’s a little datalog script - input is a text file, output is a text file. I’ve used it a few times to decide what to pick up at the store!</blockquote>
+<blockquote>
+<p>↳ reply — <em>ljf</em>:</p>
+<blockquote>Love this - I&#x27;d wanted a little site that helps me see which of the top ~100 cocktails I already have the ingredients to make, and which I need to make a purchase to be able to sample: <a href="https:&#x2F;&#x2F;iba-world.com&#x2F;cocktails&#x2F;all-cocktails&#x2F;" rel="nofollow">https:&#x2F;&#x2F;iba-world.com&#x2F;cocktails&#x2F;all-cocktails&#x2F;</a><p>When I had more time and money, I planned to try to make one a week, across two years - but I rarely seem to drink these days.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jnwatson</em>:</p>
+<blockquote>I like cocktails. I like cocktail recipes. I don&#x27;t know why this is on hacker news thought.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dsr_</em>:</p>
+<blockquote>There ought to be an XKCD for this, but instead it&#x27;s from the FAQ.<p>In short: somebody thought it was interesting enough to submit, and enough other people voted for it that it got to your attention.<p>That&#x27;s it.<p>If it ends up with 2000 points and sits on the new page for 3 days, I&#x27;ll be quite surprised, but strange subjects do that.</blockquote>
+<p>↳ reply 2 — <em>stronglikedan</em>:</p>
+<blockquote>&gt; I don&#x27;t know why this is on hacker news thought. (sic)<p>Because someone posted it, and others upvoted it, and it got enough upvotes while it was new to get recognized by the algorithm and promoted to the front page. Now you know, and knowing is half the battle!</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>chongli</em>:</p>
+<blockquote>I’m a big fan of the Webtender [1]. A super old school website without style sheets. Tons of information, nicely organized, and everything loads super quickly, as it should be!<p>[1] <a href="https:&#x2F;&#x2F;www.webtender.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.webtender.com&#x2F;</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>New Zealand lost its music media, and what we're building to replace it</title>
@@ -3504,110 +3564,6 @@ And as a fine purveyor of hand-crafted shit code for many years, I&#x27;m not go
 <blockquote>
 <p>↳ reply — <em>digitalsushi</em>:</p>
 <blockquote>i can make a snickers bar at home in 30 minutes right now. what&#x27;s stopping me from taking over mars inc</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Almost no skill required to cook a steak</title>
-      <link>https://blog.sydorets.com/en/posts/almost-no-skill-required-to-cook-a-steak/</link>
-      <guid isPermaLink="false">hn3-49198069</guid>
-      <pubDate>Thu, 06 Aug 2026 15:30:48 +0000</pubDate>
-      <description>266 points, 307 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.sydorets.com/en/posts/almost-no-skill-required-to-cook-a-steak/"><strong>→ Article</strong></a> <small>(blog.sydorets.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49198069">→ HN comments</a> &nbsp;·&nbsp; 266 points &nbsp;·&nbsp; 307 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>MostlyStable</em>:</p>
-<blockquote>I take the point, but I think the author picked a poor analogy. Cooking even an excellent steak is actually not that hard. In fact, I&#x27;d argue that it&#x27;s among the easiest things to master&#x2F;make at a top level quality at home. Does it require some modicum of attention and understanding? Sure. But starting with a high quality cut, owning a meat-thermometer, and knowing about reverse searing is about all it takes to reliably and easily get a near perfect steak every time.<p>There are far, far better cooking examples out there.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>PaulRobinson</em>:</p>
-<blockquote>All metaphors break at some point.<p>However, your example actually proves the point.<p>How many people who want a good steak know how to identify a high quality cut? Do they even know where to buy a high quality cut? What the different cuts are and whether they want rump, sirloin or fillet? How many kitchens have a meat thermometer? How many home cooks know how to use it and what the right temperature should be? How many home cooks know about reverse searing? Or timing? Or resting? Or seasoning?<p>Is it all learnable? Sure. But even something as simple as steak has nuance that needs to be learned, equipment deployed to go from &quot;pretty good&quot; to &quot;great&quot;, experimentation and trial and error.<p>Steak is the simplest thing to choose to get started. It&#x27;s also the hardest to get right.<p>Building an app is the simplest thing to choose to get started. It&#x27;s also the hardest to get right.<p>So, honestly, the whole metaphor stands up pretty well for me, specifically <i>because</i> of your response.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>MostlyStable</em>:</p>
-<blockquote>My point is that steak is very, very, very far from the hardest to get right. I&#x27;m not going to contest your argument about <i>how</i> hard it is to get right, I&#x27;m going to argue that innumerable other dishes are <i>vastly</i> harder. Because the quality ingredients are harder to find, because they involve far more steps, each of which is harder to judge, because often good recipes or instructions simply don&#x27;t exist, etc. etc. etc. Every single difficulty that you imagine exists to make a truly great steak exists 100 fold for other dishes.<p>In my opinion, steak has gotten the reputation that it has <i>because</i> it&#x27;s so easy to get top tier restaurant quality at home (relative to cooking more generally). It is easy enough that, with a little care, almost any one can master it if they decide to, and therefore lots of people try and end up caring, and discussing, and sharing tips, etc.<p>There are a whole host of dishes where true mastery, to restaurant level, is borderline impossible for a home chef, and so most people never even try.<p>I don&#x27;t disagree that reliably getting the last 5% of quality out of a steak is non-trivial, but the idea that, relative to the entire world of cooking, it&#x27;s particularly difficult is laughably incorrect.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>calf</em>:</p>
-<blockquote>A steak is hard because the processes to make it are physically contradictory (crust vs interior). Its hardness is a microcosm for why cooking in general is hard. There is a profound value in that, in that if you can handle a single steak (to some standard of satisfaction) then you will have the general skills to handle recipes involving even more steps. It becomes a reduction argument. It is true that the more moving parts&#x2F;steps&#x2F;interactions a dish involves the hardness grows combinatorially. But that is logistical hardness, e.g. managing the complexity of a flavor profile. Soon that amount of multiplication&#x2F;permutations escapes the realm of any one human being to handle.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>onlyrealcuzzo</em>:</p>
-<blockquote>I also don&#x27;t think the analogy will age well.<p>It might take more than 10 years, but robots will almost certainly master cooking single pieces of meat.<p>It&#x27;s substantially harder to reach self driving than it is to cook a &quot;good&quot; steak.<p>Sure, for probably quite a long time you&#x27;ll be able to find someone who can cook a way better steak than the best robot, especially because taste is extremely subjective...<p>You can debate the horizon and the extent, but changes ARE coming.<p>Change is the only thing you can count on besides death.</blockquote>
-<p>↳ reply 3 — <em>wheels</em>:</p>
-<blockquote>Agreed.  I&#x27;m an avid cook.  Sous vide circulators are cheap now, and so are meat thermometers.  Doing a steak well is one of the easiest cooking tasks, to the extent that I won&#x27;t bother paying top dollar in a restaurant because it&#x27;s so easy to do restaurant quality at home.  I could teach someone to cook a restaurant quality steak in a couple hours and a few practice runs.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>xtajv</em>:</p>
-<blockquote>I do not appreciate when authors use the royal &quot;we&quot; to speak for all software engineers when admitting to low quality-control standards.<p>I suspect that it is an attempt to broach an uncomfortable topic through vulnerable self-disclosure, but we need to be serious about admitting when there is a problem somewhere.<p>&quot;Bugs&quot; are not any more cute or fuzzy or entertaining or harmless than the engine &quot;gremlins&quot; that haunted the aviation industry back in the day.<p>I don&#x27;t know how many accidents had to happen before the airplane people got serious, but software people are overdue for a similar reckoning.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Xirdus</em>:</p>
-<blockquote>I just want to point out this is not a royal &quot;we&quot;. It&#x27;s a regular &quot;we&quot;. Royal &quot;we&quot; is when you say &quot;we&quot; but mean a singular person, yourself. Here, the author does actually mean multiple people beyond themselves - like you pointed out, they claim to speak for all software engineers.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>lmm</em>:</p>
-<blockquote>No, that is exactly GP&#x27;s complaint. Their whole point is that OP has written things like &quot;we throw everything at a model and hope it gives us what we imagined, without ever having to understand how any of it actually works&quot; when the honest statement would be &quot;I throw everything at a model and hope it gives me what I imagined, without ever having to understand how any of it actually works&quot;.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Xirdus</em>:</p>
-<blockquote>Yes I understand the complaint. It&#x27;s just that &quot;royal we&quot; means something else.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>asdfman123</em>:</p>
-<blockquote>&gt; To build good software with AI, you still have to understand software.<p>&gt; You need to know what you’re actually asking for, how to judge what comes back, and when the machine is just confidently serving you charcoal.<p>It&#x27;s surprising to me this even needs to be written down. Like, obviously still use your brain and think about what the computer is doing. Did you guys think that LLMs were magic?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>asdfman123</em>:</p>
-<blockquote>God dammit I thought this was going to teach me how to cook a steak, not talk about AI.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nielsbot</em>:</p>
-<blockquote>HN has also covered steak cooking before:<p>Show HN: I Derived a Steak <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48691840">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48691840</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>asdfman123</em>:</p>
-<blockquote>This place is nerd central (which I guess explains why I&#x27;m here).</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>silisili</em>:</p>
-<blockquote>It&#x27;s one of those things that you have to experiment for yourself I think.  You&#x27;ll get tons of advice, I already saw sous vide, reverse sear, 30 second flip, etc.  My favorite?  I just get a cast iron as hot as I can on the stovetop and flip it once, then at the end quickly sear the edges using tongs.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: I spent 2 years designing a mechanical Magic Keyboard</title>
-      <link>https://electronicmaterialsoffice.com/</link>
-      <guid isPermaLink="false">hn3-49197137</guid>
-      <pubDate>Thu, 06 Aug 2026 14:26:14 +0000</pubDate>
-      <description>256 points, 212 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://electronicmaterialsoffice.com/"><strong>→ Article</strong></a> <small>(electronicmaterialsoffice.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49197137">→ HN comments</a> &nbsp;·&nbsp; 256 points &nbsp;·&nbsp; 212 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ary</em>:</p>
-<blockquote>To everyone who is about to pile on regarding the lack of a fingerprint sensor: you know it&#x27;s not possible, we all know it&#x27;s not possible, the creator of this project knows it&#x27;s not possible.<p>What are you adding to the conversation when you complain about it? So it&#x27;s a dealbreaker for you, don&#x27;t buy it.<p>To @aemerson_: Congratulations on taking a risk. On first look this is great work. The attention to detail on both the keyboard and the website is really impressive.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>xp84</em>:</p>
-<blockquote>Not defending anyone using Touch ID as a reason to complain about this -- I think it looks like a great keyboard -- but just yesterday I saw this super cool alternative to the hilarious &quot;buy the world&#x27;s most expensive mediocre membrane keyboard to tear out a tiny part&quot; idea: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=tB3lk-PNA6I" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=tB3lk-PNA6I</a><p>As near as I can understand it, macOS supports a smart card reader (and apparently will defer to its sign-off for authentication duties when it&#x27;s present and configured, and Touch ID isn&#x27;t), so if you emulate a smart card reader you can make your own fingerprint sensor and have it say &quot;I&#x27;m a smart card&quot; and sign challenges like a smart card does.<p>The creator is very up front that this isn&#x27;t equivalently secure for preserving state secrets, as if you carefully tear this device apart you can just short the pins that the sensor part connects when it&#x27;s happy with the fingerprint. On the other hand, it is hilarious that anyone who isn&#x27;t a person of interest for the CIA, Mossad, MI6, or FSB would think they&#x27;re important enough for someone to go to the trouble of using that method to unlock their secrets. Anyone else would just club you over the head or slip you a mickey, and stick your unconscious finger on your fingerprint sensor.</blockquote>
-<p>↳ reply 2 — <em>aemerson_</em>:</p>
-<blockquote>Thank you, it&#x27;s been a real labour of love!<p>People are raising a good point RE Touch ID. It is possible to add a fingerprint sensor. But that fingerprint sensor will never be able to do the things that Touch ID is most useful for: i.e. use Apple Pay. It would be incredibly confusing to have a fingerprint sensor that was usable for some things and not for others. Therefore the better experience today is to not include a fingerprint sensor at all, imo.</blockquote>
-<p>↳ reply 3 — <em>philistine</em>:</p>
-<blockquote>Get an Apple Watch. It massively cuts the amount of required unlocks.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>xingped</em>:</p>
-<blockquote>Love the design and have also wanted a super low profile mechanical keyboard like this! I have one question though - what is the travel or activation distance of the keys?<p>The one thing I actually like about the magic keyboard or Microsoft&#x27;s designer keyboard is that the &quot;click&quot; is immediate and the entirety travel distance of the key is the activation bump. I dislike any amount of the &quot;extra&quot; travel distance (I&#x27;m not sure if I&#x27;m using the right words&#x2F;description, but I hope you get what I mean) of regular mechanical switches and is the main thing that turns me off from them.<p>Oh also, is it possible to get a Windows version or switch the keys around to accommodate Windows as well?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>aemerson_</em>:</p>
-<blockquote>The travel distance on the Altar II switches is 1.8mm, so about 0.8mm more than on a MacBook keyboard. Similar to those keyboards, there is very little pre-travel on Altar II keys.<p>With regard to Windows keys that is a possibility. We shipped our previous keyboard, Altar I, with both Mac and Windows markings on the keys.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>xingped</em>:</p>
-<blockquote>It looks like the travel distance on the Microsoft Designer Keyboard is 1.35mm, so not far off.<p>How long are preorders&#x2F;is the preorder discount available? I may seriously consider this.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>aemerson_</em>:</p>
-<blockquote>Reservations are open until the Kickstarter launches on November 10th 2026.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>glitchc</em>:</p>
-<blockquote>What you are referring to is called the pre-travel distance. There are mechanical key options with very short pre-travel, such as the Cherry MX and Kailh Silver switches. They&#x27;re mainly used for gaming.<p><a href="https:&#x2F;&#x2F;keychron.ca&#x2F;blogs&#x2F;news&#x2F;kailh-mechanical-switch-guide" rel="nofollow">https:&#x2F;&#x2F;keychron.ca&#x2F;blogs&#x2F;news&#x2F;kailh-mechanical-switch-guide</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>runjake</em>:</p>
-<blockquote>LOVE the industrial design. <i>HATE</i> the font, especially on the number keys. But, great job overall!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>waffletower</em>:</p>
-<blockquote>I actually like the number font, the presence, but the loss of visibility for the shifted symbols is a huge loss.  I know where the numbers are -- I admittedly need more reminding for the symbols as I never explicitly practiced them.  The muscle memory for them isn&#x27;t quite as strong and in low light I need to see them.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>canada_dry</em>:</p>
-<blockquote>&gt; symbols need to be lit<p>100% this.<p>One of my absolute favorite keyboard designs: G915 TKL Lightspeed got relegated to the donation pile because the symbols were <i>NOT</i> backlit.  Such a dumb design choice to save a few cents IMHO.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>copperx</em>:</p>
-<blockquote>The keyboard seems to be missing important symbols, such as - and =, so it&#x27;s likely not the final design.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
