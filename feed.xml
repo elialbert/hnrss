@@ -4,7 +4,48 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 10 Aug 2026 10:24:03 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 11:53:13 +0000</lastBuildDate>
+    <item>
+      <title>Auto mode is now the default in Claude Code</title>
+      <link>https://claude.com/blog/auto-mode-default-in-claude-code</link>
+      <guid isPermaLink="false">hn3-49239021</guid>
+      <pubDate>Mon, 10 Aug 2026 03:50:00 +0000</pubDate>
+      <description>234 points, 238 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://claude.com/blog/auto-mode-default-in-claude-code"><strong>→ Article</strong></a> <small>(claude.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49239021">→ HN comments</a> &nbsp;·&nbsp; 234 points &nbsp;·&nbsp; 238 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>vehemenz</em>:</p>
+<blockquote>I switched to auto mode after using manual mode long enough to understand how it works. That takes at least a few days of babysitting prompts.<p>Will new users feel intimidated by being in auto mode right away? More likely they won’t notice.</blockquote>
+<p><strong>Top #2</strong> — <em>dgunay</em>:</p>
+<blockquote>Besides the debate about whether this is &quot;safer&quot; than manual human review, I have a slightly different problem.<p>Very often, when I&#x27;m running Claude in manual review mode, it will attempt to do things which are not &quot;dangerous&quot; but are misaligned with what I want it to do. Maybe I&#x27;m fighting the model here but for example, when orchestrating other agents to do work, Claude really badly wants to be overly prescriptive about how the work gets done, telling them exactly which files to edit, exactly what not to do, etc. instead of trusting the guardrails, review agents, or humans in the process to catch code-level mistakes. And no, telling it not to do this does not stick. Manual review is the last line of defense I have here.<p>I have stuff I don&#x27;t want blacklisted, only allow it to use tools with limited ability to boss around agents, and various hooks to try and catch behavior that the permissioning system can&#x27;t. If I use Auto mode though, I lose this control. The classifier will gleefully approve these types of commands because guess what, it&#x27;s also Claude.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jaggederest</em>:</p>
+<blockquote>&gt; Maybe I&#x27;m fighting the model here
+&gt; And no, telling it not to do this does not stick.<p>You&#x27;re fighting the model, don&#x27;t argue with city hall. Set the standards and let it figure out how to execute, stop getting bogged down in the minutia. I try, as much as I can, to treat the session as a black box - only the inputs and outputs matter, internal prompting of subagents is way out of scope.<p>You can&#x27;t change it via prompt, and you can&#x27;t control the guardrails, so something else has to give - either your perspective or the system you&#x27;re managing. If you really believe that the internal prompting is bad, turn off subagents and workflows and only let it execute in thread.<p>But if you&#x27;re going to do that, you&#x27;d better benchmark it against not doing that, because historically fighting the harness and model globally makes everything worse. I would bet you that the subagent prompting is excellent, and anything you do to change it will make it worse, but I wouldn&#x27;t make it a large bet.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>adrian17</em>:</p>
+<blockquote>If I ask a model to do a change involving editing a file, and it starts investigating internals of my build system, then sure it might not be counterproductive or break the task, and might have taken only extra 30 seconds; but for all I know, my quick rejection of a shell invocation (with a simple &quot;irrelevant to the task&quot; comment) might have just saved me half of today&#x27;s Opus tokens, which already makes it worth it.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dannyw</em>:</p>
+<blockquote>You can use another harness like Pi, OpenCode, etc and build your own auto reviewer if you’d like (or adapt the open source Codex one).<p>If you have an openai subscription you are explicitly allowed to use your subsidised tokens &#x2F; usage limits with any harness you like, not just Codex.<p>Unfortunately this is a violation of Anthropic’s terms but that’s their business decision.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>lukan</em>:</p>
+<blockquote>&quot;We spent the last several months testing whether auto mode is as safe or safer than an average user clicking through prompts.&quot;<p>Yeah, might make sense from their perspective, but no thank you. I also do click through at times without reading everything, but I like to stay in control, learn about the new code and change direction if it goes off track. This would just burn more tokens because I have to throw away much and I hope my manual approval settings will be respected also with future updates (or I jump ship).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>etoxin</em>:</p>
+<blockquote>At this stage with the latest models with &quot;increased persistence&quot; and the sheer amount of supply chain attacks, you&#x27;d be insane not running these tools in a sandbox.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fender256</em>:</p>
+<blockquote>Exactly. Claude in a VM is the way to go.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>trvz</em>:</p>
+<blockquote>A VM hosted by someone else. Somethig on your personal notebook or the proxmox server in your garage is still too risky.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>chrysoprace</em>:</p>
+<blockquote>Having used a bit of a mix of Claude Desktop and Claude Code lately, I discovered that Claude Desktop just times out when it asks you for a decision, and just goes ahead with the action anyway. There is no way to turn this off that I&#x27;ve found, unlike Claude Code where you can ask it to never time out.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>What Happened to HackerOne?</title>
       <link>https://blog.teknogeek.io/posts/what-happened-to-hackerone/</link>
@@ -41,6 +82,77 @@
 </blockquote>
 <p>↳ reply 2 — <em>ygouzerh</em>:</p>
 <blockquote>This one looks shocking on the outside indeed! It&#x27;s however a sales HR practice: lower salary and commission, but use the alluring treat that top performers will have a special exclusive trip at the end of the year. Many are crazy for it.<p>It&#x27;s more a reward for a competition-style work mindset.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Georgia police officers fired after Flock camera misuse</title>
+      <link>https://www.wtoc.com/2026/08/07/savannah-police-department-fires-6-employees-over-flock-safety-system-misuse/</link>
+      <guid isPermaLink="false">hn3-49236033</guid>
+      <pubDate>Sun, 09 Aug 2026 21:20:24 +0000</pubDate>
+      <description>127 points, 117 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.wtoc.com/2026/08/07/savannah-police-department-fires-6-employees-over-flock-safety-system-misuse/"><strong>→ Article</strong></a> <small>(wtoc.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49236033">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 117 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>simonw</em>:</p>
+<blockquote>Abuse by police officers and other individuals with access to these systems is <i>the</i> answer to the stupid but common question &quot;why should I worry about surveillance if I have nothing to hide&quot;.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tptacek</em>:</p>
+<blockquote>I never hear that question from Flock supporters. The question I hear[†] is &quot;why <i>shouldn&#x27;t</i> we be pulling over stolen cars?&quot;. It&#x27;s a much harder one to answer than the straw man questions we set up for these things.<p>(To be clear: I think the current generation of ALPRs is a policy failure and that major changes need to happen inside state law enforcement systems before they can be deployed successfully. But I also think people on HN have a real problem in convincing themselves about the obvious righteousness of their anti-surveillance arguments.)<p>[†] <i>I heard arguments like these because I was deeply involved in getting the cameras disabled in the inner-ring Chicago suburb in which I live, getting the first ACLU CCOPS ordinance in Illinois passed there, and helping draft what are probably the most detailed ALPR police General Orders in any municipality, or at least were at the time. Which is a long and pretentious way of saying I spent a lot of time talking to people who are not Very Online.</i></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>AdieuToLogic</em>:</p>
+<blockquote>&gt;&gt; Abuse by police officers and other individuals with access to these systems is the answer to the stupid but common question &quot;why should I worry about surveillance if I have nothing to hide&quot;.<p>&gt; I never hear that question from Flock supporters. The question I hear is &quot;why shouldn&#x27;t we be pulling over stolen cars?&quot;<p>These are the same Constitutional question.<p>In order to determine what cars are stolen, <i>all</i> cars must be inspected. If all cars are inspected, there is a reasonable case that the 4th amendment is being violated:<p><pre><code>  The right of the people to be secure in their persons, 
+  houses, papers, and effects, against unreasonable searches 
+  and seizures, shall not be violated, and no Warrants shall 
+  issue, but upon probable cause, supported by Oath or 
+  affirmation, and particularly describing the place to be 
+  searched, and the persons or things to be seized.[0]
+</code></pre>
+&gt; But I also think people on HN have a real problem in convincing themselves about the obvious righteousness of their anti-surveillance arguments.<p>See above.<p>0 - <a href="https:&#x2F;&#x2F;constitution.congress.gov&#x2F;constitution&#x2F;amendment-4&#x2F;" rel="nofollow">https:&#x2F;&#x2F;constitution.congress.gov&#x2F;constitution&#x2F;amendment-4&#x2F;</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>tptacek</em>:</p>
+<blockquote>They&#x27;re not remotely the same Constitutional question. The people asking this aren&#x27;t saying &quot;I&#x27;m fine with being profiled because I&#x27;ve got nothing to hide unlike the people driving stolen cars&quot;. They&#x27;re just as upset about abuses of these systems as you are (though: some of them think these cameras are no more intrusive than cell tower tracking). They just see an upside to the system that privacy advocates refuse to recognize.<p>I get that this sounds like standard-issue message board rhetoric where I&#x27;m Mary Sue&#x27;ing normies to make my points for me, but I don&#x27;t agree with my neighbors about this stuff, and you&#x27;ll probably have to take my word for it that I&#x27;m not making any of this up.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>veec_cas_tant</em>:</p>
+<blockquote>Maybe for some, but I honestly don&#x27;t find it very persuasive. The misuse of license plate data wouldn&#x27;t make my top ten list of potential powers that law enforcement might abuse. Clearly, abuse of any kind of power should not be tolerated, but potential benefits must also be considered. I think the widespread deployment of cameras at businesses and homes provides strong evidence of their benefits. The idea that a crime happens outdoors and the proper course of action is for police to knock on 100 doors to collect grainy doorbell footage is pretty inefficient, to say the least.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tptacek</em>:</p>
+<blockquote>Flock cameras appear to be one of the few things that can get police officers fired.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>xnx</em>:</p>
+<blockquote>Silver lining! The cameras are catching criminals.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>shermantanktop</em>:</p>
+<blockquote>To paraphrase Homer: the cause of, and solution to, a problem! In this case police misconduct.<p>It does make me wonder whether electronic evidence of police behavior will materially impact actual behavior over time.  But given that the normal reaction is to deny access to evidence, I doubt it.<p>The people who want to be police officers tend not to be the people everyone else would want to be police officers.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>parineum</em>:</p>
+<blockquote>&gt; The people who want to be police officers tend not to be the people everyone else would want to be police officers.<p>It&#x27;s tiring for good people when everyone they interact with thinks they&#x27;re the villain.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>edot</em>:</p>
+<blockquote>Right, because you don’t want to let the little guys mess it up for the big guys: <a href="https:&#x2F;&#x2F;arstechnica.com&#x2F;tech-policy&#x2F;2026&#x2F;05&#x2F;fbi-seeks-us-wide-access-to-license-plate-cameras-wants-data-in-near-real-time&#x2F;" rel="nofollow">https:&#x2F;&#x2F;arstechnica.com&#x2F;tech-policy&#x2F;2026&#x2F;05&#x2F;fbi-seeks-us-wid...</a><p>Gotta make a statement with the low level grunts so the citizenry think these systems have accountability.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>AngryData</em>:</p>
+<blockquote>It should result in jail time. If I got access to government surveillance program and started using it for personal reasons, I would likely be charged with terrorism.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The main way I've seen people turn ideologically crazy (2025)</title>
+      <link>https://blog.andymasley.com/p/the-main-way-ive-seen-people-turn</link>
+      <guid isPermaLink="false">hn3-49235349</guid>
+      <pubDate>Sun, 09 Aug 2026 20:15:52 +0000</pubDate>
+      <description>131 points, 115 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.andymasley.com/p/the-main-way-ive-seen-people-turn"><strong>→ Article</strong></a> <small>(blog.andymasley.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49235349">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 115 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>woodruffw</em>:</p>
+<blockquote>I think the advice at the end of this post is essentially sound: you should pre-filter your evaluation of others’ opinions through their understanding of related topics. But that isn’t elitist, and I think we shouldn’t call it that! It’s a form of media and cultural literacy we should be encouraging people to have; there isn’t (and shouldn’t) be anything elite about it.</blockquote>
+<p><strong>Top #2</strong> — <em>mxmilkiib</em>:</p>
+<blockquote>DUCK DUCK GO MURRAY BOOKCHIN!!<p><a href="https:&#x2F;&#x2F;theanarchistlibrary.org&#x2F;library&#x2F;lewis-herber-murray-bookchin-towards-a-liberatory-technology" rel="nofollow">https:&#x2F;&#x2F;theanarchistlibrary.org&#x2F;library&#x2F;lewis-herber-murray-...</a> (1965)<p><a href="https:&#x2F;&#x2F;theanarchistlibrary.org&#x2F;library&#x2F;murray-bookchin-post-scarcity-anarchism-book" rel="nofollow">https:&#x2F;&#x2F;theanarchistlibrary.org&#x2F;library&#x2F;murray-bookchin-post...</a> (1971)<p><a href="https:&#x2F;&#x2F;www.nybooks.com&#x2F;online&#x2F;2018&#x2F;06&#x2F;15&#x2F;how-my-fathers-ideas-helped-the-kurds-create-a-new-democracy" rel="nofollow">https:&#x2F;&#x2F;www.nybooks.com&#x2F;online&#x2F;2018&#x2F;06&#x2F;15&#x2F;how-my-fathers-ide...</a></blockquote>
+<p><strong>Top #3</strong> — <em>TrackerFF</em>:</p>
+<blockquote>For the past few years, I&#x27;ve seen a dozen of friends or acquaintances turn &quot;ideologically crazy&quot;, and they can be roughly grouped into:<p>A) Onset of schizophrenia or other serious mental illness, followed by psychosis. This is actually the most common I&#x27;ve seen. But it is also the easiest to spot.<p>B) Some crisis event in life, followed by finding &#x2F; joining a community. Some were hit hard by this during COVID.<p>I&#x27;ve yet to personally see people that have their, well, shit together and live busy lives turn into ideological crazies or extremists - where there is no mental illness. Of course, it could be that they just hide it better. Don&#x27;t use their public accounts, etc.<p>I also think it is much easier to become radicalized today. Once you search for any extremist views on say social media, you&#x27;ll be bombarded with it. Just belonging to a certain demographic could trigger a non-stop barrage of extreme wing influencer content in your feed.</blockquote>
+<blockquote>
+<p>↳ reply — <em>121789</em>:</p>
+<blockquote>Don’t agree actually. Have seen many busy working professionals fall into “extremism” and it’s pretty much always the same. They have a few issues they are firm on and align with one party, they don’t like the other side because of this, then they only hang out with people aligned with their views and only consume media aligned with their views. Quickly turns into lunatic talking points, and I’ve seen it happen to both the left and right.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3543,123 +3655,6 @@ dns_snek&#x27;s point about npm run in particular. Appreciate everyone who playe
 <p>↳ reply 2 — <em>dzonga</em>:</p>
 <blockquote>also Rails largely sits in a world where most apps are CRUD based or everything is CRUD e.g [0] - which for that purpose Rails has nice ergonomics.<p>whereas Django though it also provides almost similar abstractions in terms of CRUD - it doesn&#x27;t assume your app will only do CRUD stuff - hence the flexibility e.g there&#x27;s many apps where you only have a handful of endpoints that are user accessible maybe at most 15, then of course management of users via Django-admin but everything else is non CRUD e.g calling other systems<p>[0]: <a href="https:&#x2F;&#x2F;jeromedalbert.com&#x2F;how-dhh-organizes-his-rails-controllers&#x2F;" rel="nofollow">https:&#x2F;&#x2F;jeromedalbert.com&#x2F;how-dhh-organizes-his-rails-contro...</a></blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>On non-rooted Android 17, ADB uninstall of system apps fails</title>
-      <link>https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/issues/1426</link>
-      <guid isPermaLink="false">hn3-49193173</guid>
-      <pubDate>Thu, 06 Aug 2026 06:24:42 +0000</pubDate>
-      <description>152 points, 107 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/issues/1426"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49193173">→ HN comments</a> &nbsp;·&nbsp; 152 points &nbsp;·&nbsp; 107 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>develoopest</em>:</p>
-<blockquote>I don&#x27;t understand why ensuring general-purpose computing is not a priority of the European Union.<p>All that talk about sovereignty, and we are giving full control of our digital lives to 2 American companies.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>littlecranky67</em>:</p>
-<blockquote>Because the EU wants attestation for age verification, digital surveillance and censorship, not free software platforms that wont implement any of those.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>pbasista</em>:</p>
-<blockquote>EU does not want that.<p>Only a few politicians, some of whom happen to be currently in power, in the EU or elsewhere, are pushing for those agendas. But fortunately, they do not represent the majority.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>littlecranky67</em>:</p>
-<blockquote>Bank account register, EUDI Wallet, Chat Control, digital Euro… They might not be the majority but they manage to go through with all of this.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>vincnetas</em>:</p>
-<blockquote>Well that was the original android phone idea. Get a hackable open device that you can write apps for your self. Even attach third party hardware to it for extra functionality with lots of customisation. But this idea has mutated quite a bit.</blockquote>
-<p>↳ reply 3 — <em>yorwba</em>:</p>
-<blockquote>There is no shortage of general-purpose computing hardware in the EU. If you need some general-purpose compute to make a car, an oven, or a phone, you can get it. That consumers mostly buy special-purpose devices that don&#x27;t always allow them to make full use of the possibilities of the hardware is hardly a sovereignity challenge.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>K0balt</em>:</p>
-<blockquote>Seriously question; why is the answer to this not a phone that can just run GNU&#x2F;Linux? Is it just the lack of application support? I mean, you’ll have blobs, but at least at the os level you’ll have options?<p>Can’t you run an android sandbox in Linux?<p>Docker phone?<p>I’m sure I’m missing something here, but what?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jeroenhd</em>:</p>
-<blockquote>Energy efficient Linux is hard. Vendors aren&#x27;t doing the hard work for anything but Android. So, most hardware won&#x27;t work (for more than a few hours) using normal Linux.<p>postmarketOS and other projects are working tirelessly at bringing Linux to phones. SailfishOS too. Plenty of Android apps even run inside these runtimes.<p>App compatibility relies on apps supporting (very) old Android versions, though. It&#x27;s also flaky in many areas and with how few Linux phones have decent GPU support, there&#x27;s also a performance challenge there.<p>For some apps, running on Linux doesn&#x27;t work because the app developers chose to only run on Play Certified, original firmware (Play Integrity and friends). Those apps cannot be patched to work right unless they implemented their checks badly.</blockquote>
-<p>↳ reply 2 — <em>zb3</em>:</p>
-<blockquote>Because this will be less profitable. Google created a cartel-like model where if you make a device that doesn&#x27;t respect user choice, you will make more money because Google will share with you, providing you obey their rules.<p>This model is attractive for almost everyone - Google, OEMs, operators and even governments.. the only side that loses here is.. the user.<p>This situation can&#x27;t be solved with market forces alone, it must be solved by law.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jackdoe</em>:</p>
-<blockquote>In the next decade open hardware will win, any machine that exposes itself to be programmed by its user will be infinitely better than a machine that doesn&#x27;t.<p>From keyboards to phones to tractors.<p>The appstore will die, and the walled gardens will die.<p>Unless they use &#x27;for the children&#x27; to make open machines illegal.</blockquote>
-<blockquote>
-<p>↳ reply — <em>999900000999</em>:</p>
-<blockquote>Most people don&#x27;t care. Microsoft themselves are even moving Windows towards a more closed model. Apple&#x27;s in the same camp. If you don&#x27;t use their official magical stores or get something that has a certificate validating who actually compiled the code, all the sudden you&#x27;re using scary binaries that might do weird things to your box.<p>The six or seven percent of us that know how to use Linux will complain, but eventually I can even imagine bootloaders being locked down so much that you need to spend significantly more to buy a computer that actually lets you install what you want.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>France is banning unsolicited telemarketing calls starting next week</title>
-      <link>https://apnews.com/article/france-unsolicited-telemarketing-ban-4c946192a1e0d611fd80eacc708aa7da</link>
-      <guid isPermaLink="false">hn3-49192829</guid>
-      <pubDate>Thu, 06 Aug 2026 05:28:11 +0000</pubDate>
-      <description>127 points, 52 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://apnews.com/article/france-unsolicited-telemarketing-ban-4c946192a1e0d611fd80eacc708aa7da"><strong>→ Article</strong></a> <small>(apnews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49192829">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 52 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mkj</em>:</p>
-<blockquote>Australia banned telemarketing a while ago, it worked pretty well. The only spam phone calls left are 100% illegal scammers.<p><a href="https:&#x2F;&#x2F;www.acma.gov.au&#x2F;telemarketing-and-e-marketing" rel="nofollow">https:&#x2F;&#x2F;www.acma.gov.au&#x2F;telemarketing-and-e-marketing</a> they give out million+ dollar fines which sort things out. Just being a customer doesn&#x27;t allow them to send marketing, you have to opt in.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ActionHank</em>:</p>
-<blockquote>It&#x27;s the year 2026, I refuse to believe that phone companies cannot figure out who is a scammer and who is not.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>KuriousCat</em>:</p>
-<blockquote>If financial incentives align, we will be surprised how effective they would become.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mdrzn</em>:</p>
-<blockquote>You can ban these practices as much as you want, but what we really need is ENFORCING. I have to be able to report a phone number that called me, and have them either fined or blocked at the national level for spam.</blockquote>
-<blockquote>
-<p>↳ reply — <em>bionsystem</em>:</p>
-<blockquote>We have that in France already it is called bloctel</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Rygian</em>:</p>
-<blockquote>Bloctel is becoming obsolete due to this change.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jordiburgos</em>:</p>
-<blockquote>It happened in Spain months ago. Then the &quot;marketers&quot; start calling from international phone numbers.</blockquote>
-<blockquote>
-<p>↳ reply — <em>hollow-moe</em>:</p>
-<blockquote>Then most people can just block all international numbers. Hope to see phone number whitelisting soon.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Crime Pays but Botany Doesn't</title>
-      <link>https://www.crimepaysbutbotanydoesnt.com/reading-list</link>
-      <guid isPermaLink="false">hn3-49192566</guid>
-      <pubDate>Thu, 06 Aug 2026 04:46:35 +0000</pubDate>
-      <description>391 points, 125 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.crimepaysbutbotanydoesnt.com/reading-list"><strong>→ Article</strong></a> <small>(crimepaysbutbotanydoesnt.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49192566">→ HN comments</a> &nbsp;·&nbsp; 391 points &nbsp;·&nbsp; 125 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jojocool0501</em>:</p>
-<blockquote>My favorite Youtube channel.<p>Please watch the latest <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=HDVcfSYcxc0" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=HDVcfSYcxc0</a>. It&#x27;s an interview with an old botanist, who shares his wisdom and philosophy, remains engaged after decades of witnessing first hand America&#x27;s nature getting destroyed. 
-2 main points: 
-- destroyed old-growth forests, grassland, remnant prairies takes millennia to be back to what they were, not decades. Insects and other pollinators don&#x27;t just reappear 
-- water availability for plants comes in many forms, all of which disappear with tillage.<p>Joey is an acquired taste, but if you look past the strong and odd personality (the persona?), his channel is a gold mine. But this time he was (rightfully) impressed by Gerry (Gerould) Wilhelm&#x27;s wealth of knowledge.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andai</em>:</p>
-<blockquote>Brilliant, thanks for sharing.<p>I&#x27;m reminded of an article I read once, it seems to have gone offline, an interview with indie game dev Jason Rohrer. He said the city took him to court for not mowing his lawn. He ended up winning under the 1st amendment (the lawn was &quot;free expression&quot; or something...)[0]<p>I thought that was really interesting (and obviously wouldn&#x27;t work in other countries).<p>The other day I walked around the neighborhood and found this massive patch of grass and weeds that had been mowed, and scorched by the sun, so it was just mostly dead. Barely 5 minutes away, the city had fenced out special plots and paid to have a bunch of weeds <i>instlled</i>, to help the bees. Comedy.<p>[0] Edit: Yeah it&#x27;s deleted. I found backups though!<p><a href="https:&#x2F;&#x2F;archive.ph&#x2F;j9025" rel="nofollow">https:&#x2F;&#x2F;archive.ph&#x2F;j9025</a><p><a href="https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20150315123808&#x2F;https:&#x2F;&#x2F;www.esquire.com&#x2F;news-politics&#x2F;a5303&#x2F;future-of-video-game-design-1208&#x2F;" rel="nofollow">https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20150315123808&#x2F;https:&#x2F;&#x2F;www.esqui...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>badpun</em>:</p>
-<blockquote>&gt; I thought that was really interesting (and obviously wouldn&#x27;t work in other countries).<p>I don&#x27;t know about other countries, but in Poland you&#x27;re just not required to cut down your lawn at all, unless it&#x27;s a fire hazard (you have a lot of dead and dried up plants).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>graemep</em>:</p>
-<blockquote>I think legal requirements are a US thing. I had only heard of it in HOA run places though.<p>Here in the UK there are no usually legal requirements, but it might be a social problem as your neighbours will not like it.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>AHabe</em>:</p>
-<blockquote>I love this guy, also my favourite Youtube channel and one of my favourite podcasts, he also guests on In Defence of Plants from time to time, I have the impression he&#x27;s friends with the host.<p>Loved him ever since I randomly stumbled across his guerilla tree planting video in I want to say 2020?<p>Anyway, we all must support the train driver turned botanist.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>iammjm</em>:</p>
-<blockquote>I can strongly recommend the mobile app Flora Incognita for quickly identifying plants. It’s made by one of the German universities so it’s free, don’t have ads, and don’t collect your personal data. I even showed it to my mum and she loves it</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pbhjpbhj</em>:</p>
-<blockquote>I use iNaturalist for plants and animals, mostly insects (and Merlin for birdsong recognition).<p>No ads, non-profit, contribute to research, etc. It also allows you to find out what others have spotted in your area. I like the range maps, the images across seasons, and other seasonal information.<p>The actual ML-based recognition is somewhat hidden, I think that part of the UI needs some work; it seems like it was made for researchers first then hacked for non-experts to use.<p><a href="https:&#x2F;&#x2F;www.inaturalist.org&#x2F;pages&#x2F;about" rel="nofollow">https:&#x2F;&#x2F;www.inaturalist.org&#x2F;pages&#x2F;about</a></blockquote>
-<p>↳ reply 2 — <em>rapnie</em>:</p>
-<blockquote>It is a pity that, while their focus is on openness and accessiblity, neither Flora Incognita, nor iNaturalist or PlantNet can be installed from the F-Droid appstore. I unfortunately don&#x27;t use Google Play, so can&#x27;t testdrive them.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>brunohaid</em>:</p>
-<blockquote>Launching a thing soon to make it more accessible, without sacrificing scientific depth, eg:<p><a href="https:&#x2F;&#x2F;www.meso.cloud&#x2F;plants&#x2F;tracheophyta&#x2F;magnoliopsida&#x2F;gentianales&#x2F;rubiaceae&#x2F;coffea&#x2F;coffea_arabica" rel="nofollow">https:&#x2F;&#x2F;www.meso.cloud&#x2F;plants&#x2F;tracheophyta&#x2F;magnoliopsida&#x2F;gen...</a><p>Aggregates 780k plants and fungi from many canonical sources (IPNI, Wikidata, GBIF, iNaturalist etc) and tries to present the data in an intuitive and engaging way, lets you search by common names in 300+ languages etc.<p>Feedback from especially botany nerds very welcome!</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
