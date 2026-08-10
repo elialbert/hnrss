@@ -4,7 +4,31 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 10 Aug 2026 13:24:20 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 15:06:09 +0000</lastBuildDate>
+    <item>
+      <title>Docker Sandboxes – Disposable, isolated sandboxes for AI agents</title>
+      <link>https://www.docker.com/products/docker-sandboxes/</link>
+      <guid isPermaLink="false">hn3-49239751</guid>
+      <pubDate>Mon, 10 Aug 2026 06:02:38 +0000</pubDate>
+      <description>402 points, 257 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.docker.com/products/docker-sandboxes/"><strong>→ Article</strong></a> <small>(docker.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49239751">→ HN comments</a> &nbsp;·&nbsp; 402 points &nbsp;·&nbsp; 257 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>iamspoilt</em>:</p>
+<blockquote>I recently wrote a blog post on using Tart for Macs for something similar that docker is doing here but with better persistence and control. My take is that the Tart approach is superior to this as it gives you a full dev machine with a single command line that allows agents to access files on host, install packages, maintain the vm and do whatever they want to do without compromising the host OS.<p><a href="https:&#x2F;&#x2F;www.mrafayaleem.com&#x2F;blog&#x2F;sandboxing-claude-cli-with-tart-on-apple-silicon" rel="nofollow">https:&#x2F;&#x2F;www.mrafayaleem.com&#x2F;blog&#x2F;sandboxing-claude-cli-with-...</a></blockquote>
+<p><strong>Top #2</strong> — <em>Roark66</em>:</p>
+<blockquote>How about implementing proper permissions on the tool use or if you need more flexibility a dedicated model to analyse potential impact? (Like Claude Code&#x27;s Autopilot but more configurable)?<p>I find solutions like this to be a like trying to patch a leaking boat on a lake with duct tape. It will help, but it&#x27;s not a proper solution.<p>Also, often the tasks you want the AI to perform are in the outside world. Like &quot;connect to my servers, and figure out X and Y&quot;.<p>The proper way is permission isolation. I run a small k8 cluster in the homelab and I have 3 types of pod&#x2F;agent combinations for my AI agents. Read only, one that can change my gitops but it needs to create PRs that admin approves, and admin.<p>Likewise with code. I have a forgejo git instance where agents have ability to create feature branches and so on, but merging is gated.<p>Those things require &quot;GH enterprise features&quot;.<p>In fact more and more things we do at home will require &quot;enterprise features&quot;. Why? Because a person with AI is basically a small team, but some of team members behave like Chimps on crack... So security must be top notch.</blockquote>
+<p><strong>Top #3</strong> — <em>mikedelfino</em>:</p>
+<blockquote>Since everyone is sharing their setup, here’s my approach, just to give people an idea of how others are doing it, however impractical it might look: I run a full Linux VM (with a GUI) on my Linux host. I connect via virt-viewer to run Claude Desktop, as I’m not a fan of using the terminal for this.<p>The VM sits on its own libvirt network in a dedicated firewall zone, and specific directories are shared via filesystem passthrough. To keep the agent from accessing anything related to Git, the actual gitdir is stored on a separate path outside the mount point.<p>I review the git diff manually and commit it from the host.</blockquote>
+<blockquote>
+<p>↳ reply — <em>everforward</em>:</p>
+<blockquote>Do you find the permanence of a full VM useful? I’ve wondered about something like this but always defaulted to Docker for much the same reasons people use stuff like Ansible. I’m afraid the LLM will heavily customize its environment and I’ll be unable to replicate it when my laptop dies or I can’t upgrade the OS or whatever.<p>Then again, I guess GUI is a pain in Docker. I tend to operate through Zed and an ACP harness though, so my GUIs are sort of “inside the container” anyways.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mikedelfino</em>:</p>
+<blockquote>The VM is allocated 2 cores and 4GB of RAM. For my workload, it doesn&#x27;t feel any slower than running it directly on the host. The few times I&#x27;ve checked memory usage, it wasn&#x27;t anywhere near full as far as I remember.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Auto mode is now the default in Claude Code</title>
       <link>https://claude.com/blog/auto-mode-default-in-claude-code</link>
@@ -61,6 +85,32 @@
 <blockquote>Please add a demo video&#x2F;voice where you show someone asking questions and AI answering it. I wanted to see what it is like but dont want to signup.</blockquote>
 <p><strong>Top #3</strong> — <em>arexxbifs</em>:</p>
 <blockquote>I played various murder mystery games this summer and one of them had this feature: you could call a suspect and ask arbitrary questions for a limited amount of time (three minutes or something). The problem was of course that the model hallucinated an answer to one of the questions, suggesting that other suspects were related by blood even though they clearly weren&#x27;t.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Run Android ARM64 VR APKs on Apple Vision Pro</title>
+      <link>https://github.com/shinyquagsire23/Klepton</link>
+      <guid isPermaLink="false">hn3-49238818</guid>
+      <pubDate>Mon, 10 Aug 2026 03:12:48 +0000</pubDate>
+      <description>138 points, 42 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/shinyquagsire23/Klepton"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49238818">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 42 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>terhechte</em>:</p>
+<blockquote>This is incredible. Even though Apple seems hell-bent on repeating their iPad mistake on Vision Pro (&quot;A baby computer because our users are morons and we have to keep them safe from any theoretical harm. Also, any kind of software development outside of macOS is strictly forbidden&quot;), there is a small tinker community that works on genuinely making iPadOS useful. Another example (also shared here recently) is this:<p><a href="https:&#x2F;&#x2F;www.lispm.net&#x2F;apps&#x2F;uhf-x11&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.lispm.net&#x2F;apps&#x2F;uhf-x11&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>stronglikedan</em>:</p>
+<blockquote>Apple has a huge audience for that - non-tech-savvy folks. I&#x27;d wager that&#x27;s a much bigger audience than folks who have an inkling of how tech works. For example, when my family needs a new phone, I switch them from Android to Iphone. It may be limited, but what is available generally just works and is polished. My family tech support calls have diminished greatly.</blockquote>
+<p>↳ reply 2 — <em>figmert</em>:</p>
+<blockquote>Apple is like that because people are hellbent on giving Apple money despite them being so user hostile.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>linux2647</em>:</p>
+<blockquote>Any screenshots of this? I didn’t see one in the README</blockquote>
+<p><strong>Top #3</strong> — <em>treyd</em>:</p>
+<blockquote>I&#x27;m sure Apple will <i>love</i> this.</blockquote>
+<blockquote>
+<p>↳ reply — <em>actionfromafar</em>:</p>
+<blockquote>Well, they are <i>not</i> too busy making SwiftUI a delight to use.</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>What Happened to HackerOne?</title>
@@ -150,6 +200,44 @@
 </blockquote>
 <p><strong>Top #3</strong> — <em>AngryData</em>:</p>
 <blockquote>It should result in jail time. If I got access to government surveillance program and started using it for personal reasons, I would likely be charged with terrorism.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>New Zealand lost its music media, and what we're building to replace it</title>
+      <link>https://propelmusic.co.nz/articles/the-sound-went-quiet-nz-music-media</link>
+      <guid isPermaLink="false">hn3-49235641</guid>
+      <pubDate>Sun, 09 Aug 2026 20:42:29 +0000</pubDate>
+      <description>126 points, 89 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://propelmusic.co.nz/articles/the-sound-went-quiet-nz-music-media"><strong>→ Article</strong></a> <small>(propelmusic.co.nz)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49235641">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 89 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>pixelesque</em>:</p>
+<blockquote>&gt; Live performance revenue reached $329 million, well above pre-Covid levels.<p>Is that inflation-adjusted? And as the article points out, very little of that is local talent, so it&#x27;s likely some of that&#x27;s due to the cost of tickets.<p>As someone who lived in NZ (although Wellington) for 10 years until last year, the local music scene was there, but at least in Wellington, the change in the 10 years I was there was considerable: The earthquake in 2016 progressively caused several venues on Cuba Street to close due to building regulations, and Covid was a significant shock as well, with some of the smaller (although most places in Wellington were small!) gig rooms &#x2F; bars &#x2F; breweries that would often host bands closing.<p>There was still Valhalla, San Fran, The Rogue &amp; Vagabond and others, but it just didn&#x27;t feel as much was going on other than for things like Cuba Dupa street festival, etc, or the Jazz weekends that would be held.<p>As the article points out, this is not localised to NZ, it&#x27;s happening in Australia and the UK as well in terms of venues&#x2F;pubs closing and live music not being quite the draw it once was because of that.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Melatonic</em>:</p>
+<blockquote>There&#x27;s a venue in NZ called &quot;San Fran&quot; ? That&#x27;s pretty cool</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>DinosaurArms</em>:</p>
+<blockquote>First it was a massage&#x2F;sauna place called The San Francisco Bathhouse, and then it kept that name when it turned to a live venue. Now it is just San Fran.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>rvba</em>:</p>
+<blockquote>No idea how it looked in New Zealand, but after covid &quot;ended&quot;* there were a lot of people who simply wanted to go out - after spending so much time indoors.<p>I suspect that people went out more in 2023-2025, but then they reversed to the mean + economic impacts (of money printing everywhere) hit.<p>* by the way, did covid officially ever end? the new variants seem to be still there, but it just stopped being covered by media after Russia invaded Ukraine)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>gerdesj</em>:</p>
+<blockquote>This para is a salutary lesson for all of us:<p>&quot;This is not a New Zealand quirk. It is the local edge of a global collapse. Pitchfork, the most influential music publication in the world, was folded into GQ in 2024 and its editor-in-chief was laid off. Local music press has been gutted in the US, the UK and Australia. New Zealand just got there first and hardest, because we were small to begin with.&quot;<p>Aotearoa (NZ) has fired up the four way flashers.  We ignore it at our peril.</blockquote>
+<blockquote>
+<p>↳ reply — <em>AloysB</em>:</p>
+<blockquote>It&#x27;s not just X, it&#x27;s Y.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>zapzupnz</em>:</p>
+<blockquote>It&#x27;s not just N, it&#x27;s Z.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>foo42</em>:</p>
+<blockquote>But what are the questions nobody is asking?</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>gadders</em>:</p>
+<blockquote>When I went to NZ about 30 years ago, vibe-wise Auckland was like LA and Wellington was like Seattle. Not sure if that comparison still holds.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>The main way I've seen people turn ideologically crazy (2025)</title>
@@ -3520,118 +3608,6 @@ And as a fine purveyor of hand-crafted shit code for many years, I&#x27;m not go
 </blockquote>
 <p>↳ reply 2 — <em>copperx</em>:</p>
 <blockquote>The keyboard seems to be missing important symbols, such as - and =, so it&#x27;s likely not the final design.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Four simple rules behind Japan's most liveable cities</title>
-      <link>https://www.bbc.com/travel/article/20260805-four-simple-rules-behind-japans-most-liveable-cities</link>
-      <guid isPermaLink="false">hn3-49196174</guid>
-      <pubDate>Thu, 06 Aug 2026 13:08:21 +0000</pubDate>
-      <description>125 points, 166 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/travel/article/20260805-four-simple-rules-behind-japans-most-liveable-cities"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49196174">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 166 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>stringsandchars</em>:</p>
-<blockquote>&gt; It&#x27;s a concept that&#x27;s difficult to replicate elsewhere, but Lydon compares it to what made old Main Street America so special. Designing at a people-first scale pays off. &quot;The smell of fried croquettes drifting onto the streets, small shops run by the building owners, easy public transit access, a feeling of safety and community for all ages… it&#x27;s hard to overstate how well this all works.&quot;<p>Honestly, even though I love the idea of Japan and the idealized vision of Japan that&#x27;s often presented in the media, I can&#x27;t help thinking that a lot of this stuff can be found much closer to home in Europe. The BBC didn&#x27;t need to go all the way to Tokyo - they could find this in pretty much any Spanish city.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>danudey</em>:</p>
-<blockquote>Or come to downtown Vancouver. I live in a small apartment, but within four blocks I have a community centre with gym, a pharmacy, a post office, a grocery store, a small bakery, the best liquor store in the city, three banks, a hot pot restaurant, a physiotherapist&#x2F;massage therapist office, a vet, a dispensary, multiple hairdressers, an optometrist, several restaurants, two places to get gelato, a public plaza with a weekly farmer&#x27;s market, a walking&#x2F;cycling route along the waterfront, a car wash, a sports bar with arcade machines, skeeball, and pinball, an enclosed pollinator meadow, a science museum&#x2F;IMAX theatre, two separate public &quot;subway&quot; lines (though one is elevated and one is below-grade), and two private but inexpensive water taxi services.<p>I can leave my house at 6 AM and go get fresh bread or baked goods and go sit by the water, or I can leave the house at 7 AM to get groceries if I&#x27;m out of something and be back by 7:10.<p>American cities don&#x27;t want this because having a huge empty house with a huge empty yard and having to drive 90 minutes to get to work or 30 minutes to get groceries is the American Dream and no one who&#x27;s been sold this dream wants to believe that there are so many better and more efficient ways to live.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>treis</em>:</p>
-<blockquote>It&#x27;s because living in downtown Vancouver is expensive.  Your rent probably comes close to covering the mortgage on one of those huge empty houses in the suburbs. That fresh baked good is probably ~$4 while the equivalent at Walmart is $1.  No doubt it&#x27;s a great lifestyle for well off DINKs.  A lot harder to make it work for a family of 5 on 50k a year.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lwansbrough</em>:</p>
-<blockquote>It shouldn’t be, and certainly doesn’t have to be. Logically it should be cheaper to live in an apartment than an entire house - obviously.<p>Suburbs are subsidized by economic centres. And the state of affairs in North America - Vancouver included - is we’re not building housing to match demand. That’s true purely in terms of individual units but it’s also true for types of units. Like apartments that aren’t luxury units, but that can fit a family. They don’t build those anymore because city council makes it completely unprofitable for developers.<p>If you think that apartment living is inherently more expensive I’m sorry to tell you that you have it completely backwards.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>PaulRobinson</em>:</p>
-<blockquote>TFA explains that Japan is unusual as being the only country in Asia with two cities in the top 10 most liveable cities in the World. That&#x27;s why they wrote the article. If Spain had been the only country in Europe with two cities in the top 10, they might have done it in Spain.</blockquote>
-<p>↳ reply 3 — <em>pezezin</em>:</p>
-<blockquote>&gt; The BBC didn&#x27;t need to go all the way to Tokyo - they could find this in pretty much any Spanish city.<p>This. When my Japanese girlfriend finally visited my small hometown in Spain, she was surprised how lively the city was. Not Madrid or Barcelona, but just a small 100k city. In Japan the big cities are cool, but small cities are ugly and boring.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jankcorn</em>:</p>
-<blockquote>Many comments point to &quot;monoculture&quot;, but I think that a more useful lens to look at this is &quot;the importance of maintaining society vs the importance of individual rights&quot;.  In Japan, if you maintain society, my experience is that everyone is welcome (in my experience).<p>It seems like many times &quot;society vs individual&quot; discussion comes down to a cartoon like straw man discussion, but, living in Japan a long time, the difference in balance point feels quite tangible every day.  I won&#x27;t claim that this is a good tradeoff for everybody, but each society has quite serious benefits as (at times grating) restrictions.<p>It can be quite difficult to do something too outside the norm in Tokyo, but I am always surprised by the kindness, thoughtfulness and humane-ness I have been shown over the years.  
-In places like San Francisco, a wild variation of individual expression is encouraged, but it sometimes interactions with other people can feel quite jarring and little recognition for simple, calm coexisting humanity.<p>It really comes down to personal preferences.</blockquote>
-<p><strong>Top #3</strong> — <em>timr</em>:</p>
-<blockquote>I had to laugh when they put a quote from a wheelchair user at the top of the article. Japan is many good things, but friendly to wheelchair users is not one of them.<p>As western tourists always seem to find out when they land with their gigantic suitcases, many Tokyo train stations require stairs to enter or exit.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>wpm</em>:</p>
-<blockquote>In fairness to Japan, (unfortunately) most transit systems are not friendly to wheelchair users.</blockquote>
-<p>↳ reply 2 — <em>mikhael</em>:</p>
-<blockquote>on tokyo train and subway stations specifically: maybe in the past they weren&#x27;t accessible, but at least since the olympics, they&#x27;ve become so. i believe they&#x27;re closing in on 100% now.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Humans missed 1 in 3 threats approving AI agent commands across 40k game runs</title>
-      <link>https://scalex.dev/blog/ai-agent-permissions-stats/</link>
-      <guid isPermaLink="false">hn3-49195468</guid>
-      <pubDate>Thu, 06 Aug 2026 11:58:07 +0000</pubDate>
-      <description>248 points, 189 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://scalex.dev/blog/ai-agent-permissions-stats/"><strong>→ Article</strong></a> <small>(scalex.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49195468">→ HN comments</a> &nbsp;·&nbsp; 248 points &nbsp;·&nbsp; 189 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Wirbelwind</em>:</p>
-<blockquote>A couple of months ago I shared the AI agent permission game here on HN. After adding in stats it got a little over 40k plays and 409k decisions since then.<p>It&#x27;s just a game, but I found the stats still interesting that I wanted to share back. Even with the warning up front, 1 in 3 threats were missed, and the history log above npm run commands seems to be typically ignored.<p>I also incorporated the feedback and insights from the previous HN thread,
-dns_snek&#x27;s point about npm run in particular. Appreciate everyone who played and shared feedback!</blockquote>
-<p><strong>Top #2</strong> — <em>cmiles8</em>:</p>
-<blockquote>The “click yes the proceed” was never a serious security mechanism.<p>It’s simply a CYA click-thru by the model vendors so their lawyers can say “well you approved it this is on you” when AI does something stupid.</blockquote>
-<p><strong>Top #3</strong> — <em>continuational</em>:</p>
-<blockquote>It&#x27;s kinda funny there is still software coming out whose security model is &quot;constantly ask the user for permission, and hope they never make a mistake&quot;.<p>It&#x27;s been tried so many times before, and it never worked.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>brunoborges</em>:</p>
-<blockquote>I joined Oracle in 2012, and I myself complained that the user experience was horrible: get an Oracle DB installed was a nightmare, starting with so many questions. I heard complaints from other users about it requiring, during installation, that an admin password must be set.<p>I myself had preferred to use MySQL because it was so simple and easy to get started and using it.<p>Until I learned how many MySQL databases were configured without user&#x2F;password and many instances were reachable over the internet.<p>Then, eventually products started to move towards &quot;don&#x27;t even ask the user to set a password, otherwise they will set a stupid password&quot; and just generate the password during installation. This made the user think more before saving that password or changing the password to something less stupid. But better than all that, liability was no longer with the software maker.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>com2kid</em>:</p>
-<blockquote>I got bit by this with redis a couple years ago. The default install on my VPS&#x27;s distro had it open to the world by default, and it even configured UFW for me (gee thanks!)<p>No password, owned within seconds of install. :&#x2F;</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>est31</em>:</p>
-<blockquote>I think it&#x27;s partially for responsibility reasons. Your employee approved the bash call? not our fault then!</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Mario Meets Pareto</title>
-      <link>https://www.mayerowitz.io/blog/mario-meets-pareto</link>
-      <guid isPermaLink="false">hn3-49195231</guid>
-      <pubDate>Thu, 06 Aug 2026 11:24:53 +0000</pubDate>
-      <description>852 points, 147 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.mayerowitz.io/blog/mario-meets-pareto"><strong>→ Article</strong></a> <small>(mayerowitz.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49195231">→ HN comments</a> &nbsp;·&nbsp; 852 points &nbsp;·&nbsp; 147 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jerf</em>:</p>
-<blockquote>This is a really important concept for developers.<p>One aspect for developers that I see quite often is the assertion that &quot;We can&#x27;t have X without giving up more Y&quot;, most commonly &quot;we can&#x27;t have more security without giving up on user experience&quot;. With the Pareto idea in mind, we can see that that statement is true, <i>if and only if</i> you are in fact on the Pareto frontier of security and user experience already.<p>However, many times these confident pronouncements are being made when the system under question is quite evidently not on the Pareto frontier in the first place and indeed you can get more of one without giving up the other.<p>Making it more tricky is that in business, you can <i>never</i> discard &quot;money&quot; as a dimension, so unless you&#x27;re taking &quot;money&quot; as one of the dimensions in the original comparison you want to do, it sneaks its way in. Or, a composite time&#x2F;money, or &quot;cost to business&quot;, or some other similar concept, time &amp; money aren&#x27;t orthogonal and don&#x27;t need to be treated as two separate dimensions in general, though you can if you want. Which puts you into the 3D case, and as the page says, that grows the frontier quite a lot, which is good in some ways and bad in others. Nevertheless, in my opinion it is still often the case that even in that space we are often making &quot;tradeoffs&quot; without checking that we&#x27;re on the Pareto frontier in the first place.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>munchbunny</em>:</p>
-<blockquote>Agreed with what you said, when you&#x27;re only considering security and usability you&#x27;re often not at a Pareto optimal state, but once you add cost into the picture you see a lot more cases of being on the Pareto optimal boundary, or at least in case where the next improvement only comes with significant effort (by re-platforming, for example).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>efavdb</em>:</p>
-<blockquote>I guess that makes sense.  as you get to higher dimensions, most points sit very close to the surface.  So if we&#x27;re trading off N things and N &gt;&gt; 1, expect to basically always be at the pareto boundary.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>miki123211</em>:</p>
-<blockquote>On the other hand, we should recognize that, to put it plainly, not all dimensions on the frontier have the same level of importance.<p>Any technological and societal progress is going to have negative consequences. To give just one example, completely curing cancer will put many doctors (and other healthcare professionals who aren&#x27;t paid as well as doctors are) out of a job. It will definitely cause at least a few children to go hungry. It will probably cause a few suicides when some oncologists start to &quot;feel useless.&quot; This does not mean we shouldn&#x27;t cure cancer if the opportunity arises.<p>Our society, driven by clickbait, rage and social media hot takes, tends to overweight the dimensions at which new technology makes things worse. There are many news stories about social-media-fueled teen suicides or AI datacenter water use, very few about how talking to family abroad no longer requires astronomical long-distance bills.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>whateveracct</em>:</p>
-<blockquote>&quot;making tradeoffs&quot; is an excuse for management to cut corners to get their feature faster at the cost of future developer pain and suffering<p>you know how japanese oni would roll human souls into soba noodles? [1]<p>that&#x27;s what modern corporate software company management does :)<p>[1] i learned about this from the very funny gintama funeral episode</blockquote>
-<p>↳ reply 3 — <em>voidhorse</em>:</p>
-<blockquote>Yes, the difference between coding (writing software) and engineering (making informed trade offs about system design) is effectively bound up in analyses like those supported by concepts like pareto efficiency.<p>One should keep in mind though that not all problems have a neat solution. Many spaces have multiple efficient points that still need to be chosen from, and many pareto optimization problems actually become NP hard computationally when the problem is large enough.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>uzerfcwn</em>:</p>
-<blockquote>I did similar analysis a couple years ago for optimizing item builds in WoW classic. The tricky part in WoW is that there are 15ish item slots with hundreds of item choices for each slot, so the total number of builds is well over 100^15.<p>I ended up using a divide-and-conquer style approach, where I 1) pruned items that weren&#x27;t on the Pareto frontier individually for each slot, 2) took the two slots X and Y that had the least items after pruning and grouped them by calculating Z:={x+y|x∈X,y∈Y}, 3) pruned items that weren&#x27;t on the Pareto frontier in Z, and 4) repeated steps 2-3 until there was only one group remaining, comprised of the full Pareto-optimal item builds.<p>This ran in a couple of seconds, as opposed to the other solutions I tried that took somewhere between minutes and years. The downside was that including set bonuses into the model took extra work.</blockquote>
-<blockquote>
-<p>↳ reply — <em>r3trohack3r</em>:</p>
-<blockquote>Fascinating! Do you still have any of the code or datasets&#x2F;datasources laying around?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>uzerfcwn</em>:</p>
-<blockquote>The data came from wow.tools (which has since been replaced by <a href="https:&#x2F;&#x2F;wago.tools" rel="nofollow">https:&#x2F;&#x2F;wago.tools</a>) and Wowhead. I still have some code but it has so many ad-hoc scripts and sections that I commented in&#x2F;out while experimenting that I&#x27;d feel embarrassed sharing it.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>__s</em>:</p>
-<blockquote>&gt; You probably won&#x27;t pick a driver sitting on the edge of the frontier because you want some balance between speed and acceleration<p>for super mario kart speedruns go with bowser&#x2F;dk: <a href="https:&#x2F;&#x2F;www.speedrun.com&#x2F;smk&#x2F;runs&#x2F;zp68nr8m" rel="nofollow">https:&#x2F;&#x2F;www.speedrun.com&#x2F;smk&#x2F;runs&#x2F;zp68nr8m</a><p>That seemed to hold up for Mario Kart 8 too going with Bowser at the edge of their pareto frontier, <a href="https:&#x2F;&#x2F;www.speedrun.com&#x2F;mk8" rel="nofollow">https:&#x2F;&#x2F;www.speedrun.com&#x2F;mk8</a><p>needing acceleration is a skill issue</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nightpool</em>:</p>
-<blockquote>This used to be true on older patches but it&#x27;s not at all how top players play these days. See e.g. <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=ejt52UgnhAo" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=ejt52UgnhAo</a> for an example of the meta that prevailed for top-level versus play around the end of MK8&#x27;s lifespan (Yoshi Biddybuggy Roller or Yoshi Teddybuggy Roller depending on your preferred drift style) or <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=vvrCP50Gfj4" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=vvrCP50Gfj4</a> for a breakdown of some of the latest time trial world records. At the beginning of the game&#x27;s lifecycle top speed was the most important stat, but as more tricks were developed and the game&#x27;s balance was adjusted, having faster and more consistent miniturbo boosts became much more important.<p>(Mario Kart World, which isn&#x27;t covered in this article, has a more standard speed vs acceleration trade off but in that game high-max-speed (heavy) combos have even worse problems due to the way the rail grind mechanic was implemented and what seems to be an unforeseen interaction with the coin curve see e.g. <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;sPyur6BkiOs" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;sPyur6BkiOs</a>)</blockquote>
-<p>↳ reply 2 — <em>rtkwe</em>:</p>
-<blockquote>It&#x27;s optimizing for different environments and opponents, the speed runs only have to deal with the AI not human players and take such crazy paths the AI isn&#x27;t around to really mess with them so they don&#x27;t have to worry about reaccelerating. In versus it&#x27;s much less likely you&#x27;ll be able to avoid all the other players so you need to be able to get back up to speed after being hit. A common strategy in the online vs mode is actually back running to collect better items then cashing them in rapidly to win.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
