@@ -4,7 +4,52 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 12 Aug 2026 11:53:19 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 13:25:10 +0000</lastBuildDate>
+    <item>
+      <title>llama.cpp</title>
+      <link>https://llama.app</link>
+      <guid isPermaLink="false">hn3-49267928</guid>
+      <pubDate>Wed, 12 Aug 2026 04:51:59 +0000</pubDate>
+      <description>294 points, 126 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://llama.app"><strong>→ Article</strong></a> <small>(llama.app)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49267928">→ HN comments</a> &nbsp;·&nbsp; 294 points &nbsp;·&nbsp; 126 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>hypfer</em>:</p>
+<blockquote>Old news by now, but you might not be aware that llama-server can do multi-model for a while now,<p>Meaning that you (and by that I mean your AI agent that has read the llama.cpp code) can write an ini file pointing to your models with parameters optimized for the specific model on your specific hardware. (Optimized by you through testing. Not that AI)<p>Then, any api client can just select a model and the system does the right thing.<p>It&#x27;s great software. It just works.<p>__<p>You just need to ignore the cargo culting commandline options on social media.
+But you should be listening to the devs.<p>Have you already enabled ngram-mod (or rather just spec-default)? It is practically free.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jwr</em>:</p>
+<blockquote>Caveat: this kind-of-works. There are plenty of subtle bugs around this. For example, it&#x27;s hard to have a default model, and clients need to select the model explicitly in every API request, which makes it difficult to work with several models and multiple clients.</blockquote>
+<p>↳ reply 2 — <em>timschumi</em>:</p>
+<blockquote>Is that with vanilla llama.cpp or with the third-party llama-swap manager? Last time I checked llama-swap was still the go-to solution, although I admit I haven&#x27;t looked into it further.</blockquote>
+<p>↳ reply 3 — <em>mrighele</em>:</p>
+<blockquote>&gt;  (Optimized by you through testing. Not that AI)<p>Why not optimized by AI through testing ? Give it a test set to work on and let it loose.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>karimf</em>:</p>
+<blockquote>Not sure why it&#x27;s on the front page now, but I highly recommend using llama.cpp for running AI model locally vs using other inference framework, unless you have a very specific requirement.<p>ggerganov and the team have done a stellar job maintaining the quality while still being fast to implement new models&#x2F;improvements.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>walrus01</em>:</p>
+<blockquote>At this point the options are llama-server or vLLM if you&#x27;re serious about running things at your desk in the under 256GB RAM size class (70B, 120B size models). In addition to, of course, 27B to 35B size things. With of course a ton of compile time build customization options for whatever specific hardware platform you want to run either llama or vllm on.</blockquote>
+<p>↳ reply 2 — <em>markasoftware</em>:</p>
+<blockquote>possibly hitting front page because this website is fairly new? For me, it&#x27;s certainly the first time I&#x27;ve seen a one-liner curl|bash installer for llama.cpp, which was basically the only reason to use ollama.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>imrehg</em>:</p>
+<blockquote>llama.cpp works pretty well for me on the Framework 13 laptop, but the current era of &quot;move fast, break things, rarely fix&quot; (sorry, that&#x27;s how it feels), bites here quite a bit.<p>Two examples:<p>- <a href="https:&#x2F;&#x2F;github.com&#x2F;ggml-org&#x2F;llama.cpp&#x2F;pull&#x2F;25863" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ggml-org&#x2F;llama.cpp&#x2F;pull&#x2F;25863</a> Someone&#x27;s few lines change broke the native (ROCm) support for the AMD GPU inside Framework (and other integrated systems), and any rollback or proper fix is pending for almost a month. Fortunately there&#x27;s workaround (switching to Vulkan rather than ROCm devices), but both the way the bug was introduced and the way it is not fixed just doesn&#x27;t give much confidencen<p>- LM Studio is using llama.cpp internally for GGUF, they ship their own build with their closed source system as &quot;runtimes&quot;. Their ROCm runtime does not enable the the AMD GPU inside the Framework, even thought the llama.cpp version would support it. So their runtime keeps telling me that there&#x27;s no supported AMD GPU -- again, the solution is to use the GPU with the Vulkan devices. Not fixed since Jan at least <a href="https:&#x2F;&#x2F;github.com&#x2F;lmstudio-ai&#x2F;lmstudio-bug-tracker&#x2F;issues&#x2F;1394" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;lmstudio-ai&#x2F;lmstudio-bug-tracker&#x2F;issues&#x2F;1...</a><p>I guess overall it&#x27;s the worst runtime I&#x27;ve seen so far, except for all the other runtimes out there... I&#x27;m a fan, though in some cases I don&#x27;t have enough knowledge, or I don&#x27;t have access to fix things, and that feels like a bummer...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bjackman</em>:</p>
+<blockquote>I think ROCm is just a total second class citizen in the space TBH.<p>It&#x27;s a shame coz it&#x27;s not even really what we want, we would obviously all be better served if we could use Vulkan or something. But I guess it&#x27;s inevitable that a generic framework lags behind here.<p>If I was AMD I&#x27;d hire a whole ecosystem team to sit next to the ROCm people and just support big users like llama.cpp to work better on their HW, e.g. giving OSS maintainers access to their board farms. Maybe they have already done that, in which case I guess I should say I&#x27;d double the size of that team.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>roenxi</em>:</p>
+<blockquote>You probably can just use Vulkan. Why don&#x27;t you think Vulkan is an alternative? Can it not handle BLAS and memory access? What is a graphics card supposed to be doing that isn&#x27;t efficient in Vulkan?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>binary132</em>:</p>
+<blockquote>Sometimes it’s just that a particular backend is poorly optimized or has a regression on a particular platform as compared to the “mainstream” backends.  For example, whisper.cpp’s Vulkan backend performs 2-3x worse than CPU on my Snapdragon X2 laptop when using the ggerganov v3 turbo model.  It’s probably a simple fix, but it does need to be fixed.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>basedrum</em>:</p>
+<blockquote>I have a framework 13, but I couldn&#x27;t imagine running a local llm on it, how do you do it? Do you have a eGPU?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>The Human Is the Loop</title>
       <link>https://brentfitzgerald.com/posts/the-human-is-the-loop/</link>
@@ -123,6 +168,38 @@ without being licensed by the New York State Gaming Commission&quot;</blockquote
 </blockquote>
 <p><strong>Top #3</strong> — <em>impish9208</em>:</p>
 <blockquote>Americans’ continued ability to gamble, err…, trade multi-leg parlays is a matter of national security!</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>US hires over 2k video gamers as air traffic controllers</title>
+      <link>https://www.cbsnews.com/news/video-gamer-air-traffic-controllers-faa-recruitment-sean-duffy/</link>
+      <guid isPermaLink="false">hn3-49265879</guid>
+      <pubDate>Tue, 11 Aug 2026 23:26:17 +0000</pubDate>
+      <description>153 points, 116 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.cbsnews.com/news/video-gamer-air-traffic-controllers-faa-recruitment-sean-duffy/"><strong>→ Article</strong></a> <small>(cbsnews.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49265879">→ HN comments</a> &nbsp;·&nbsp; 153 points &nbsp;·&nbsp; 116 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gcanyon</em>:</p>
+<blockquote>So instead of training Air Traffic Controllers to play video games, you trained Gamers to direct air traffic?<p>It&#x27;s Armageddon! :-)</blockquote>
+<p><strong>Top #2</strong> — <em>mellosouls</em>:</p>
+<blockquote>What could go wrong with preferring people who have ingrained disconnect between the objects on screen and real living humans.</blockquote>
+<blockquote>
+<p>↳ reply — <em>lbriner</em>:</p>
+<blockquote>I think what has already gone wrong with US Air Command having drone pilots for foreign wars based in shipping containers in Texas. Starts off as surreal&#x2F;not morally challenging, and then it sinks in, these are real people. Also, I am not on the frontline with my comrades so am I a coward? Can I face my family tonight after this.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>_--__--__</em>:</p>
+<blockquote>ATCs are chronically understaffed in a way that endangers all of us, and the FAA has been under scrutiny for their hiring practices for over a decade <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39184451">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39184451</a><p>It&#x27;s equally plausible to me that this is an example of &quot;we need to try something and this is something&quot; or just deflection from the prior criticism.</blockquote>
+<blockquote>
+<p>↳ reply — <em>madrox</em>:</p>
+<blockquote>As trying things go, it doesn’t seem that crazy of an idea. I imagine air traffic control would even make for a pretty fun video game.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>vunderba</em>:</p>
+<blockquote>When I was working on my PPL, I used VATSIM which is a worldwide network where volunteer hobbyists actually act as virtual air traffic controllers, so you can practice traffic patterns, instructions, and just get more comfortable when you are operating real-life radio comms.<p><a href="https:&#x2F;&#x2F;docs.xpilot-project.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.xpilot-project.org&#x2F;</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>throwawayffffas</em>:</p>
+<blockquote>When I read the title I though that was the pool they were trying to access.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>WorldClaw Agentic 3D open-world generation at scale</title>
@@ -3315,88 +3392,6 @@ I stoped like half year, and I don&#x27;t having problems to sleep.</blockquote>
 <blockquote>I suggest this one: <a href="https:&#x2F;&#x2F;eclipsemap.xyz" rel="nofollow">https:&#x2F;&#x2F;eclipsemap.xyz</a></blockquote>
 <p><strong>Top #3</strong> — <em>alkyon</em>:</p>
 <blockquote>In Spain it&#x27;s a trio of consecutive eclipses from 2026 to 2028 (the last one annular). To view the second one I don&#x27;t even need travel anywhere.<p>Will be in Saragossa on Wednesday and gonna use Canon binos with image stabilization, the partial phase with filter and then some precious seconds without (a scary moment, I&#x27;ll rely on an alarm to prevent my eyes to get damaged when the totality is over). Some people generally advised to skip any instruments and just enjoy it with your own eyes for the first time, but I&#x27;m too curious about corona details to let this opportunity pass.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Danish high schoolers will have to verbally defend written assignments</title>
-      <link>https://mezha.net/eng/bukvy/ca117584_denmark_requires_oral/</link>
-      <guid isPermaLink="false">hn3-49224294</guid>
-      <pubDate>Sat, 08 Aug 2026 18:09:31 +0000</pubDate>
-      <description>516 points, 244 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://mezha.net/eng/bukvy/ca117584_denmark_requires_oral/"><strong>→ Article</strong></a> <small>(mezha.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49224294">→ HN comments</a> &nbsp;·&nbsp; 516 points &nbsp;·&nbsp; 244 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>azalemeth</em>:</p>
-<blockquote>This is already the case for Master&#x27;s degrees and above in Denmark. I&#x27;ve been the opponent examining students. We ask Master&#x27;s students to give US instruction on a topic (drawn randomly on a card in front of them, from a list they know a few days in advance). They do a chalk and talk on a topic for about fifteen minutes with three to five professors being &quot;dumb students&quot;. It works fantastically and at the end it&#x27;s very apparent to both student and teachers how well a topic is understood. Marks are rarely contested and in my experience most students think the process is fair.<p>Of course, woe betide those with social phobias....</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>talon8635</em>:</p>
-<blockquote>I have always disliked public speaking and oral defense since I was a child, to the point of fairly profound anxiety. But please withhold you woe—these people are, as I am today, adults. Masters students. Coddling them and holding low expectations has proven to be a sort of “killing them with kindness” approach to handling modern youth. People need to be encouraged (and required) to do things they don’t like to become proper functioning adults. I didnt like it, and I still don’t, as it the case with most everyone. But we all grow from it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>zem</em>:</p>
-<blockquote>&gt; But please withhold you woe<p>as a side note, &quot;woe betide you&quot; roughly means &quot;you&#x27;re in for a very bad time&quot;, not &quot;I feel sorry for you&quot;.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>LoganDark</em>:</p>
-<blockquote>&quot;Woe&quot; is also sometimes used to tell someone to just suck it up and deal with it. In those cases it is a way to make fun of someone for being too sensitive or complaining too much.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Athas</em>:</p>
-<blockquote>Clarification for non-Danes: this post is not entirely accurate. Not all Master&#x27;s courses in Denmark have oral examinations, and many courses before the Master&#x27;s level (including elementary school) have oral exams. It is unrelated to the academic level, and instead related to the academic discipline and the size of the course. The latter is in my experience the main constraint, as oral exams are difficult to scale. They usually take 20-30 minutes per student, and if you have a course with 200 students, well, you&#x27;re in for a long time.<p>The oral exam format described is also somewhat unusual, in my experience. It is usually the case that there is one internal examiner and one external examiner in the room. More than that would be ruinously expensive. The format varies; usually it&#x27;s a combination of a short presentation and questions asked by the examiner. Drawing a random topic is very common.<p>Source: I am a university teacher in Denmark who teaches master-level courses without oral exams, and I have been an examiner for many oral exams at university level.</blockquote>
-<p>↳ reply 3 — <em>obscurette</em>:</p>
-<blockquote>64 year old nerd with social phobias here. When I was in school, I had to practice oral knowledge tests since grade one. I had my first oral exam in grade six (math) and 2-3 oral exams every year since then. If I hadn&#x27;t had that experience, I would never have gotten into university. I still don&#x27;t like verbal communications with people (especially in a tense situations like exam), I&#x27;m slow etc, but it&#x27;s manageable because I had to practice it a lot. I don&#x27;t think I would have survived in modern &quot;the environment must be made suitable for everyone&quot; school&#x2F;university.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>datahack</em>:</p>
-<blockquote>This is how higher education was done for literal centuries before moving to the written word. So it’s not exactly innovative to return to oral arguments.<p>But what it does threaten to do is effectively abandon all the efficiencies of the written word.<p>When higher education evolved into a mass system in the 1800s and into the 1900s, pure oral examination was looked at as super inefficient. A written paper could be handed in and graded without lining everyone up in front of a panel.<p>The oral system scales poorly. One examiner can only hear so many students in a day. There are damn good reasons Medieval universities were small and modern ones are not.<p>Requiring every major paper to be defended live reintroduces the bottleneck that written exams were designed to escape.<p>Accessibility takes a hit too. Students with speech differences, anxiety disorders, hearing impairments, or simply less fluency in the language of instruction face an extra barrier that a written submission does not impose. The written form, for all its flaws, leveled some of that ground. Shall we abandon the differently abled because machines disrupt the academic system and essentially make cheating effective? This does not seem very logical, or sensitive.<p>So while it’s nice that academics are rediscovering the old ways, I don’t really see this as a scalable answer to raising education levels for the masses, but more of a knee jerk way to try to bypass the obvious technological disruption by returning to non-scalable, inaccessible ways of doing things that our ancestors abandoned for a reason.<p>It has its place for graduate students and smaller volume education systems. It’s fine for keeping the ivory tower clean. But it’s not the answer to expanding education to everyone and taking advantage of the technological disruption to advance education and learning throughout greater humanity, which is what AI definitely possesses as a possibility.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>wpietri</em>:</p>
-<blockquote>I&#x27;m quite skeptical that industrial-age measures of efficiency are the right way to think about education. Feinman&#x27;s story about teaching in Brazil comes to mind: <a href="https:&#x2F;&#x2F;enlightenedidiot.net&#x2F;random&#x2F;feynman-on-brazilian-education-system&#x2F;" rel="nofollow">https:&#x2F;&#x2F;enlightenedidiot.net&#x2F;random&#x2F;feynman-on-brazilian-edu...</a><p>And that&#x27;s before we get to technological changes making that sort of knowledge and those skills much less valuable.<p>As an aside, accessibility cuts both ways. As a person with ADHD I&#x27;d much rather do oral and practical exams.</blockquote>
-<p>↳ reply 2 — <em>bonoboTP</em>:</p>
-<blockquote>Oral exams are still common in Germany and many European countries in case of smaller courses taken by 20-30 students in a semester, and sometimes even in larger courses, and the task of examining is then split among multiple professors and lecturers.<p>In Hungary it&#x27;s a pipeline. You go in a room, you pick a piece of paper out of a hat, which gives you some task or topic to prepare for. Then you sit down at a desk (the room is filled with about 15 students working already), then you solve the problem or sketch out your notes to present the topic you picked for like 20 minutes, then you go to the professor and you have to, in low voice, explain your solution, the professor asks back and pokes at it to make sure you understand. The professor then gives a grade immediately and you go home.<p>In Germany, it&#x27;s usually no random pick of a topic, you just go through the entire semester&#x27;s material over 30-45 minutes and the professor stops to spend more or less time on each topic to explore your knowledge. You can explain things by making sketches on paper. A PhD student sits there quietly taking notes of what was asked and what the student answers approximately. You leave the room, the prof and the PhD student discuss the performance, decide the grade and you come back, and the professor explains the grade and what you did well and not well.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>thoughtpeddler</em>:</p>
-<blockquote>As an educator myself, this quarter for the first time for my course&#x27;s final project, I&#x27;ve switched to actually asking my students to provide an &quot;AI Authenticity Audit&quot; of their (project-relevant) chats in the construction of said projects. All my students&#x27; output over the last two years went from pre-AI level quality to boardroom-ready polish, and I&#x27;m actually more interested to see <i>how</i> they arrive at an outcome rather than the final output itself - focusing on their questioning, curating, editing, and iterating process. Didn&#x27;t think we&#x27;d get to somewhere like this so soon, but here we are. Strange, but I&#x27;m trying it out.</blockquote>
-<blockquote>
-<p>↳ reply — <em>tempestn</em>:</p>
-<blockquote>IMO this kind of thing adds work and stress for the best students. If I&#x27;d been faced with something like this while I was in school I would have felt the need to basically curate a parallel construction AI discussion, knowing it would be judged. I understand the theory that, in the age of AI, the prompts are more interesting than the outputs, but I&#x27;m not convinced this is the way.<p>Things like the Denmark approach (and&#x2F;or in-person written responses) seem like a better direction. Treat take-home writing the same as we&#x27;ve treated take-home math questions - as useful practice (for those who choose to actually engage with it), but not a significant input to grading.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>thoughtpeddler</em>:</p>
-<blockquote>Yes, I thought about that, and which is why I&#x27;m just running this as a pilot for this quarter to see how it goes and I&#x27;m not particularly attached to it if feedback&#x2F;results are mixed. But that said, there are real constraints on my ability to supervise students with in-person examination, but that is more a problem with how my society funds and cares about education. We are forced to take approaches that &#x27;work at scale&#x27;, hence experiments like this. But truly, reception was positive when this was introduced, because students too want to be held to a good standard and don&#x27;t want others to get credit for not doing the work toward achieving the learning outcomes like the most honest ones.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Amazon Is Creating the Biggest Pollution Source in the Country</title>
-      <link>https://newrepublic.com/post/214111/amazon-data-center-biggest-pollution-source-entire-country</link>
-      <guid isPermaLink="false">hn3-49223845</guid>
-      <pubDate>Sat, 08 Aug 2026 17:27:52 +0000</pubDate>
-      <description>209 points, 126 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://newrepublic.com/post/214111/amazon-data-center-biggest-pollution-source-entire-country"><strong>→ Article</strong></a> <small>(newrepublic.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49223845">→ HN comments</a> &nbsp;·&nbsp; 209 points &nbsp;·&nbsp; 126 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>zepearl</em>:</p>
-<blockquote>Let&#x27;s add as well &quot;SpaceX’s Terafab will rely on natural gas power plants, not Tesla solar panels&quot; to the mix :o(<p><a href="https:&#x2F;&#x2F;techcrunch.com&#x2F;2026&#x2F;08&#x2F;07&#x2F;spacexs-terafab-will-rely-on-natural-gas-power-plants-not-tesla-solar-panels&#x2F;" rel="nofollow">https:&#x2F;&#x2F;techcrunch.com&#x2F;2026&#x2F;08&#x2F;07&#x2F;spacexs-terafab-will-rely-...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>culi</em>:</p>
-<blockquote>Also an important part that keeps getting left out for some reason: they&#x27;re doing so <i>illegally</i>. They are running unpermitted turbines. They claimed the turbines were off and journalists had to use thermal cameras mounted on drones to prove that they are indeed running. Then a non-profit had to sue them to get them to agree to turn off the turbines by 2027...<p>That&#x27;s how bad our system is at giving any consequences to white collar crime.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dathinab</em>:</p>
-<blockquote>and they (and many other AI data centers) run on some of the environmental&#x2F;health hazard worst kinds of gas turbines available (i.e. cheap portable ones)<p>A well build gas power plane can be one of the cleanest fossile fuel power plants with neither huge issues of air nor sound pollution (compared to other fossile fuel, it still isn&#x27;t perfect by far)<p>Same btw. for data center cooling, my office was for 3 years above a data center of a super computer in the mittle of a city and there where no sound issues at all (through yes it was a special case in many ways).<p>I mean yes, it costs more and many well established companies for high quality gas turbines are booked out.<p>Still using the kind of gas turbines which can bring back literal acid rain shouldn&#x27;t be an option at all.<p>Lets also not speak about the environmental&#x2F;health damage the production of the natural gas through fracking does.<p>Which bring us to a common nonsense argument, people going on and on about hoe economically expensive&#x2F;harmful climate protection is, but totally missing that many oft he circumvented laws are not for climate protection but are for environmental protection for the sake of humans health.<p>To make thinks worse most of this data centers seems to be more about making money, then being in any way relevant for winning any AI race...</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>deepsun</em>:</p>
-<blockquote>Don&#x27;t understand why. AI training can be run during the sunny days. Could be a good PR opportunity for Musk, I&#x27;m surprised he doesn&#x27;t take it.<p>Especially if he buys from his own company.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>rgmerk</em>:</p>
-<blockquote>Some thoughts:<p>* you can run data centres on grid electricity, which can come from mostly-renewable sources (in short, you need gas mainly as as an occasional backup).<p>* running things off-grid is dumb, and they’re only doing it because they’re desperate to get their data centres up and running yesterday so that they’re the ones who get to the singularity first (or some approximation thereof).<p>* the US electricity grid is f**d, mostly for the same reasons you can’t build any linear infrastructure in the United States - too many bodies hold veto powers and use any such infrastructure as an extortion opportunity.<p>* The spike in gas-powered generation for data centres is essentially a US phenomenon.  Globally, the vast majority of new electricity supply is coming from renewables.<p>* in a sane world, Amazon and new large-scale data centre providers would face punitive carbon charges to incentivise them to switch to mostly renewables as soon as possible.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kristianp</em>:</p>
-<blockquote>&gt; you can run data centres on grid electricity<p>The reason they&#x27;re not doing that is because grid providers can&#x27;t grow their supply fast enough to support new AI data centres.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>skywhopper</em>:</p>
-<blockquote>Yes, they said that.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>throwaway473825</em>:</p>
-<blockquote>Gas is ridiculously cheap in the US while it&#x27;s often the most expensive source of electricity in the rest of the world.<p>We&#x27;re currently seeing a bifurcation where Asia bets on anything but oil and gas while the US goes in the opposite direction. Note that anything but oil and gas includes coal, so this isn&#x27;t about the environment.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>fhdkweig</em>:</p>
-<blockquote>Dupe of <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49220350">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49220350</a><p>256 comments, 8 hours ago</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
