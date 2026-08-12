@@ -4,7 +4,89 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 12 Aug 2026 02:30:22 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 04:53:12 +0000</lastBuildDate>
+    <item>
+      <title>Compression is prediction</title>
+      <link>https://ngrok.com/blog/compression-is-prediction</link>
+      <guid isPermaLink="false">hn3-49263497</guid>
+      <pubDate>Tue, 11 Aug 2026 19:49:44 +0000</pubDate>
+      <description>377 points, 145 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://ngrok.com/blog/compression-is-prediction"><strong>→ Article</strong></a> <small>(ngrok.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49263497">→ HN comments</a> &nbsp;·&nbsp; 377 points &nbsp;·&nbsp; 145 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>pizza</em>:</p>
+<blockquote>Compression is just counting. Probability, also, pretty much, just counting. For these reasons I think the role of information theory in describing the process of the development of reasoning and the gain of understanding has been overstated.</blockquote>
+<p><strong>Top #2</strong> — <em>Lerc</em>:</p>
+<blockquote>Prediction is compression, but I am not sure if it is true the other way around.<p>It&#x27;s obvious that an accurate predictor enables encoding only the data that the predictor gets wrong.<p>But a compressor can encode patterns that defy prediction by looking at the data as a whole.  It doesn&#x27;t have to look at everything in sequence as it arrives.<p>Applying transformations prior to entropy encoding often isn&#x27;t just &#x27;rearranging into an easier to compresss format&#x27; the transformation can be doing the job of peeking into the future.  That makes the encoding a whole lot easier,  but it is much harder to call it prediction.</blockquote>
+<p><strong>Top #3</strong> — <em>woliveirajr</em>:</p>
+<blockquote>There is Compression done by Prediction by partial matching [0]<p>There is the Kolmogorov Complexity [1], Normalized Information Distance [2] and Normalized compression distance [3] that correlates those.<p>Finally, there&#x27;s the Pre-Big Bang Informational Compression and the Delayed Release of Antimatter [4]<p>All big {rabbit&#x2F;black} holes to lose some time, if you have any.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Prediction_by_partial_matching" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Prediction_by_partial_matching</a><p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kolmogorov_complexity" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kolmogorov_complexity</a><p>[2] <a href="https:&#x2F;&#x2F;homepages.cwi.nl&#x2F;~paulv&#x2F;papers&#x2F;chapter08.pdf" rel="nofollow">https:&#x2F;&#x2F;homepages.cwi.nl&#x2F;~paulv&#x2F;papers&#x2F;chapter08.pdf</a><p>[3] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Normalized_compression_distance" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Normalized_compression_distanc...</a><p>[4] <a href="https:&#x2F;&#x2F;philarchive.org&#x2F;rec&#x2F;GREPBI" rel="nofollow">https:&#x2F;&#x2F;philarchive.org&#x2F;rec&#x2F;GREPBI</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Nvidia Nemotron 3.5 Lightning and NeMo Switchyard</title>
+      <link>https://blogs.nvidia.com/blog/nemotron-lightning-switchyard-rtx-dgx/</link>
+      <guid isPermaLink="false">hn3-49263340</guid>
+      <pubDate>Tue, 11 Aug 2026 19:35:52 +0000</pubDate>
+      <description>198 points, 106 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blogs.nvidia.com/blog/nemotron-lightning-switchyard-rtx-dgx/"><strong>→ Article</strong></a> <small>(blogs.nvidia.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49263340">→ HN comments</a> &nbsp;·&nbsp; 198 points &nbsp;·&nbsp; 106 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>kentonv</em>:</p>
+<blockquote>Coincidentally I&#x27;ve been playing with small (~30B) self-hostable models for coding tasks today -- specifically plugging them into Cloudflare OS (which I work on) and asking each to build a collaborative whiteboard.<p>I&#x27;m finding that the Mixture-of-Experts (MoE) models (Qwen 3.6-35B, and Nemotron 3.5 Lightning) are, well, terrible at this. They just couldn&#x27;t get the job done at all. Went way off the rails. They are really fast though!<p>Whereas ~30B <i>dense</i> models (not MoE) are pretty decent. I tried Muse Glimmer, Gemma 4-31B, Qwen 3.6-27B, and Laguna XS[0]. They were all able to build a working collaborative whiteboard app, without any guidance (other than feeding back error logs to the model). I also asked each to then draw a monkey by calling the API of the whiteboard it has just built. Laguna drew random scribbles but the rest all managed to produce something monkey-like.<p>(Frontier models in comparison will write the app in one shot with no errors at all.)<p>Note that both Qwen 3.6 and Gemma 4 each have both MoE and dense variants. I find this very confusing, because e.g. ollama&#x27;s model index typically only distinguishes variants by their size, but MoE vs. dense makes a huge difference in how they actually perform. IMO they should use a suffix, like Qwen 3.6-moe vs. Qwen 3.6-dense, or maybe Qwen 3.6-fast vs. Qwen 3.6-smart...<p>[0] EDIT: Turns out Laguna XS is MoE, I misunderstood. It performed similarly to the dense models. But maybe this explains why it couldn&#x27;t write code and think about monkey shapes at the same time!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zargon</em>:</p>
+<blockquote>&gt; ollama&#x27;s model index typically only distinguishes variants by their size<p>Don&#x27;t use ollama. The entire project is just a series of stupid decisions like this.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kristjansson</em>:</p>
+<blockquote>How they have any credibility after they told everyone they could run Deepseek R1 on their laptop (by giving the Qwen 7B distill the `deepseek` moniker)...</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ChadNauseam</em>:</p>
+<blockquote>I&#x27;ve been pretty impressed with Laguna. I downloaded their coding agent and have used it for a task here and there (the larger variant). Obviously it&#x27;s nothing like a frontier LLM, but it surprised me with how good it was. And I think the model personality and way it talks is pretty pleasant</blockquote>
+<p>↳ reply 3 — <em>sroussey</em>:</p>
+<blockquote>What’s good for data extraction? I have a hard time getting models to just pull names and titles from a blob of text.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>thehamkercat</em>:</p>
+<blockquote>&gt; NeMo Switchyard, an open source library for smart routing<p>&gt; When deployed, NeMo Switchyard can intelligently direct each request to the most capable and suitable model for the job<p>How do routers like this handle prompt caching when you send the second request?<p>Sticky models per session? but then the second message of that session won&#x27;t be sent to a suitable model, and will only be sent to the same model as previous one.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>eli</em>:</p>
+<blockquote>I&#x27;ve seen ones that are configurable to pick a trade off point between lower cost (cache stickiness) and routing performance (best model for that turn).<p>But yeah I&#x27;m skeptical all this overhead is worth it.</blockquote>
+<p>↳ reply 2 — <em>quinncom</em>:</p>
+<blockquote>Caching should be possible as long as all the models use the same shared cache. The models don&#x27;t even need to be running on the same server if the shared cache is distributed.<p>I have a feeling people reading this are thinking that a model router would be used to route between different <i>providers</i>. And in that case, a shared cache would be impossible, although some caching would still be effective. I think, ideally, a router like this is in front of a set of models hosted in one place.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>docheinestages</em>:</p>
+<blockquote>They conveniently decided not to include the Qwen range of models in the Artificial Analysis graph, except the out-of-league Max variant. At least be brave and honest.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Making holograms with a pen plotter</title>
+      <link>https://blog.jordan.matelsky.com/Penplotter-holography/</link>
+      <guid isPermaLink="false">hn3-49262811</guid>
+      <pubDate>Tue, 11 Aug 2026 18:51:35 +0000</pubDate>
+      <description>135 points, 14 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.jordan.matelsky.com/Penplotter-holography/"><strong>→ Article</strong></a> <small>(blog.jordan.matelsky.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49262811">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 14 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>nomel</em>:</p>
+<blockquote>Related, &quot;abrasion holography&quot;, with <i>great</i> good success for being hand drawn: <a href="http:&#x2F;&#x2F;amasci.com&#x2F;amateur&#x2F;holo1.html" rel="nofollow">http:&#x2F;&#x2F;amasci.com&#x2F;amateur&#x2F;holo1.html</a> (1995)<p>Maybe could swap out the pen for a needle?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>evilduck</em>:</p>
+<blockquote>Something tells me you didn&#x27;t open the posted link.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>nomel</em>:</p>
+<blockquote>I guess I don&#x27;t know how sharp a pick with an orange handle is from harbor freight, compared to a needle.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bradrn</em>:</p>
+<blockquote>In fact, I believe that the article is describing a reinvention of this technique! Just with a plotter on oil rather than a compass on plastic.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dejobaan</em>:</p>
+<blockquote>This is &quot;old Internet&quot; style fun territory (along the same lines as the Tom7 fun, if not quite as deep). I felt that the olive oil + fingerprint + phone screen was a really nice way to illustrate the core concept. Especially clever because it used something common and annoying to help describe how the plotter does its thing.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>radarsat1</em>:</p>
+<blockquote>Before getting further into the article I thought maybe he was going to show how to use the plotter to control the oil smearing technique, which honestly would have been kind of cool.</blockquote>
+<p>↳ reply 2 — <em>TacticalCoder</em>:</p>
+<blockquote>There are very few TFAs I upvotes before opening TFA. But with such a title, this is one of them...</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>asalahli</em>:</p>
+<blockquote>Steve Mould has a great video on youtube explaining how they work <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=sv-38lwV6vc" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=sv-38lwV6vc</a></blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Grok Bot</title>
       <link>https://x.ai/bot</link>
@@ -3337,97 +3419,6 @@ Actually, they’re all important and having great design skills without matchin
 <blockquote>I went directly to the comments like a true phone addict</blockquote>
 <p>↳ reply 2 — <em>haraldooo</em>:</p>
 <blockquote>Most upvoted comment in a long time. Probably.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Gentoo bugzilla closed due AI bot scraper overload</title>
-      <link>https://social.treehouse.systems/@mgorny/117058483039362779</link>
-      <guid isPermaLink="false">hn3-49221864</guid>
-      <pubDate>Sat, 08 Aug 2026 13:55:42 +0000</pubDate>
-      <description>145 points, 100 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://social.treehouse.systems/@mgorny/117058483039362779"><strong>→ Article</strong></a> <small>(social.treehouse.systems)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49221864">→ HN comments</a> &nbsp;·&nbsp; 145 points &nbsp;·&nbsp; 100 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mrweasel</em>:</p>
-<blockquote>While we&#x27;re dealing with the same issue at work, I sometimes still wonder exactly who these scrapers are. OpenAI, Google, Anthropic and others are normally fairly well behaved (Minus Anthropic attempting to hide behind a browser-for-hire company). Mostly you can get IP range and user-agents for the large players, while it problems mostly stem from bots pretending to be Chrome.<p>Our largest offenders seems to be mostly limited to South-East Asia, so probably mostly Chinese AI projects, but that&#x27;s speculation. I also don&#x27;t recall ever seeing Grok IP ranges or a specific Grok UA, but that doesn&#x27;t mean that they&#x27;re hiding, perhaps they&#x27;re just not interested.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>userbinator</em>:</p>
-<blockquote><i>I sometimes still wonder exactly who these scrapers are</i><p>This has zero to do with AI (it&#x27;s just a convenient scapegoat that fits the narrative). Absolutely everything to do with those pushing for centralised control of the Internet.</blockquote>
-<p>↳ reply 2 — <em>marginalia_nu</em>:</p>
-<blockquote>Most of the nonsense comes through botnets&#x2F;residential proxies, so it&#x27;s very hard to say.</blockquote>
-<p>↳ reply 3 — <em>shevy-java</em>:</p>
-<blockquote>Well, some websites claimed China is behind it, which could make sense (I would not know either way). At the same time, though, I kind of doubt your carte blanche here for all those companies. Why would you think none of them are responsible for the AI slop spam?<p>&gt; Our largest offenders seems to be mostly limited to South-East Asia, so probably mostly Chinese AI projects, but that&#x27;s speculation<p>Ok. So you also don&#x27;t know. Well, I don&#x27;t know either, but I don&#x27;t make a speculation by claiming x, y, and z companies to be exempt. In my book they are all responsible.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>userbinator</em>:</p>
-<blockquote>Manufactured consent. This is not AI, this is just DDoS&#x27;ing for extortion and driving towards the closed proprietary &quot;can only be accessed by a sanctioned UA&quot; Internet that they&#x27;re after. Why else do you think identity verification and attempting to turn the Internet into a walled garden became such a big thing in the recent years?</blockquote>
-<p><strong>Top #3</strong> — <em>FranOntanaya</em>:</p>
-<blockquote>After a decade and half we had to restrict our public side and reorganize our old TED content because scrappers were really hungry for assorted captioned videos. If you have anything of value for training you get eaten alive if you stick out, it&#x27;s like wearing short pants in the summer tundra.<p>It&#x27;s going to change a lot the internet we knew, unless somehow we managed to agree on a common high quality dataset repository.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Triton: DirectX 11 Driver for QEMU</title>
-      <link>https://blog.getutm.app/2026/introducing-triton-directx-11-driver-for-qemu/</link>
-      <guid isPermaLink="false">hn3-49221711</guid>
-      <pubDate>Sat, 08 Aug 2026 13:33:06 +0000</pubDate>
-      <description>140 points, 25 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.getutm.app/2026/introducing-triton-directx-11-driver-for-qemu/"><strong>→ Article</strong></a> <small>(blog.getutm.app)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49221711">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 25 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jamesu</em>:</p>
-<blockquote>Pretty cool to finally have a decent open 3d solution for windows vms. Now if only someone made an opengl driver for older intel macosx vms...</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>conradev</em>:</p>
-<blockquote>People are working on it!<p><a href="https:&#x2F;&#x2F;github.com&#x2F;steelbrain&#x2F;reims-vgpu" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;steelbrain&#x2F;reims-vgpu</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;steelbrain&#x2F;metal2vulkan" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;steelbrain&#x2F;metal2vulkan</a></blockquote>
-<p>↳ reply 2 — <em>cactusplant7374</em>:</p>
-<blockquote>Not exactly what you are looking for... but I am working on a 32 bit intel mac emulator. OpenGL support is pretty far along at this point.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>anonymousiam</em>:</p>
-<blockquote>Also covered here: <a href="https:&#x2F;&#x2F;www.phoronix.com&#x2F;news&#x2F;Triton-DirectX-11-QEMU-Driver" rel="nofollow">https:&#x2F;&#x2F;www.phoronix.com&#x2F;news&#x2F;Triton-DirectX-11-QEMU-Driver</a></blockquote>
-<p><strong>Top #3</strong> — <em>thehias</em>:</p>
-<blockquote>why always only DX11, why not DX12?
-Parallels and VMWARE can also do only DX11??</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tyfon</em>:</p>
-<blockquote>DX11 is much more high level while DX12 implements direct control over the GPU. 12 is much more like vulkan.<p>I guess since this is emulating the device instead of just passing the commands to vulkan it is easier to do DX11, but I could be wrong about this particular implementation.</blockquote>
-<p>↳ reply 2 — <em>Squarex</em>:</p>
-<blockquote>DX12 is much more complex to implement. Very different API.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A domain can now say it is for sale, in DNS</title>
-      <link>https://specification.website/spec/foundations/for-sale-dns/</link>
-      <guid isPermaLink="false">hn3-49221668</guid>
-      <pubDate>Sat, 08 Aug 2026 13:26:51 +0000</pubDate>
-      <description>288 points, 122 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://specification.website/spec/foundations/for-sale-dns/"><strong>→ Article</strong></a> <small>(specification.website)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49221668">→ HN comments</a> &nbsp;·&nbsp; 288 points &nbsp;·&nbsp; 122 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Tiberium</em>:</p>
-<blockquote>RFC: <a href="https:&#x2F;&#x2F;www.rfc-editor.org&#x2F;rfc&#x2F;rfc10023.html" rel="nofollow">https:&#x2F;&#x2F;www.rfc-editor.org&#x2F;rfc&#x2F;rfc10023.html</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>ricardobeat</em>:</p>
-<blockquote>Thank you, for a moment I wondered why a specification was being written by AI.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>verandaguy</em>:</p>
-<blockquote>This website has been trying to gain a veneer of legitimacy for months now. Half of its contents aren&#x27;t even published by any real standards body, it&#x27;s just AI-centric &quot;best practices&quot; for the current generation of hyperscaler models.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>asdfman123</em>:</p>
-<blockquote>They need Georgism for DNS names. You set your own price for your domain. But you have to pay 2-5% of that price annually to keep it.<p>That way, squatters are incentived to sell it to someone who&#x27;s going to use it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Fordec</em>:</p>
-<blockquote>Sounds like a great way to have larger competitors with more capital bid for your site to take down your domain that your users were using. Rather than Land Value Tax a better analogy might be a Vacant Property Tax which only targets squatting.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>asdfman123</em>:</p>
-<blockquote>The problem with that is the squatters would just turn it into a low quality blog or something along those lines.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Nifty3929</em>:</p>
-<blockquote>Pay 2-5% to who? That&#x27;s the problem for me - usually this means just another way to expand government. If you would just distribute it equally to all relevant citizens, with none of it going to the government, then I might get on board.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>kmoser</em>:</p>
-<blockquote>&gt; Remove it when the domain is no longer for sale. The convention has no “not for sale” value; absence is the only way to say no.<p>Since most domains that are for sale don&#x27;t currently have such a record, it would be wrong to assume they are not for sale. Therefore, absence of such a record does not explicitly mean &quot;not for sale.&quot; It&#x27;s no different from a house: a &quot;for sale&quot; sign in the front yard means it&#x27;s for sale, but lack of a sign doesn&#x27;t mean it&#x27;s not for sale; it could mean the owner doesn&#x27;t wish to advertise that way, or at all.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Marciplan</em>:</p>
-<blockquote>..so? It’s better than what we have now</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
