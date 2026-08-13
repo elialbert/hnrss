@@ -4,7 +4,47 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 13 Aug 2026 10:15:24 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 11:53:30 +0000</lastBuildDate>
+    <item>
+      <title>Flutter 3.47</title>
+      <link>https://flutter.dev/blog/whats-new-in-flutter-3-47</link>
+      <guid isPermaLink="false">hn3-49280061</guid>
+      <pubDate>Wed, 12 Aug 2026 23:46:00 +0000</pubDate>
+      <description>127 points, 141 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://flutter.dev/blog/whats-new-in-flutter-3-47"><strong>→ Article</strong></a> <small>(flutter.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49280061">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 141 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>oDot</em>:</p>
+<blockquote>Does anyone know if the original promise of their simple layout model proved itself?<p>IIRC, the Flutter team mentioned how using just width&#x2F;height constraints is enough to represent all relevant layouts. This sounds very nice, being so much simpler than Flexbox and miles ahead of CSS Grid ergonomics.<p>Did it live up to the promise or did they expand the model with Flex&#x2F;Grid&#x2F;etc?</blockquote>
+<blockquote>
+<p>↳ reply — <em>gman83</em>:</p>
+<blockquote>The premise is a bit off. Flutter was never just width&#x2F;height: the model is min&#x2F;max box constraints. The core rule is: constraints go down, sizes come up, parent sets position.<p>Row and Column are just layout algorithms built on that same model, not separate engines added later. GridView uses the sliver system internally, but still doesn&#x27;t require anything like CSS Grid&#x27;s general layout model. The render API is open enough for custom layouts too, so packages like <a href="https:&#x2F;&#x2F;pub.dev&#x2F;packages&#x2F;boxy" rel="nofollow">https:&#x2F;&#x2F;pub.dev&#x2F;packages&#x2F;boxy</a> build directly on it</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>doodlesdev</em>:</p>
+<blockquote>While I&#x27;ve used Flutter since Alpha, I&#x27;ve been away for a few years. A few things have shocked me in these release notes: how come Impeller still wasn&#x27;t the default engine for all platforms? Also, why are they migrating to WASM if one of the core features of Dart is compiling to JavaScript? Finally, how come multi window support only get viable now, after four years having desktop support?<p>Honestly, Flutter is an extremely enjoyable development experience I would recommend anyone I care for to stay away from. The fact it&#x27;s developed by Google doesn&#x27;t help: it&#x27;s a matter of time before they kill it like they did with so many UI libraries and frameworks already, specially with JetBrains developing Compose Multiplatform and the Android team going all-in in the Compose strategy.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nmfisher</em>:</p>
+<blockquote>&gt; how come Impeller still wasn&#x27;t the default engine for all platforms<p>Because Impeller has had quite a bumpy ride. Even as recently as June I reported a bug&#x2F;regression with basic stuff (lines with partial transparency on desktop). All my Android apps are still built with --no-enable-impeller because I&#x27;ve had many instances where the app just shows a blank screen due to driver conflicts.<p>It may be getting close to stable now, but it wasn&#x27;t a smooth transition at all.</blockquote>
+<p>↳ reply 2 — <em>maxloh</em>:</p>
+<blockquote>Flutter operates more like a 2D game engine. It renders its own views, which involves a lot of arithmetic operations, making WASM a more efficient option than JS.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>meerita</em>:</p>
+<blockquote>I still prefer React Native with Expo over Flutter, mostly for practical reasons:<p>* Language and hiring: TypeScript has a much larger developer pool. Dart is a solid language, but finding experienced Flutter engineers is harder.<p>* Platform model: React Native maps much more naturally to native platform concepts. Flutter owns much more of the rendering stack, which is powerful, but also creates another abstraction layer between the app and the platform.<p>* Performance: Flutter can absolutely be fast, so I would not claim otherwise. My experience, however, is that RN has required less work to get interactions and animations that feel consistently native.<p>* Ecosystem: RN benefits from the broader React, TypeScript, JavaScript, and native ecosystems. Expo has also improved dramatically and now covers a large part of the usual mobile platform work.<p>* Platform-specific features: neither framework completely eliminates native code. Things like widgets, Live Activities, Dynamic Island, extensions, NFC, and other platform APIs eventually bring you back to Swift&#x2F;Kotlin anyway.<p>* Migration to native: if the long-term destination is Swift and Kotlin, I find RN a better intermediate representation. Its component model and platform integration are closer to native concepts, which also makes the codebase easier for agents to translate incrementally into proper native applications.<p>That said, these are trade-offs, not claims that Flutter is bad. Flutter has improved a lot, and for teams that want a highly consistent cross-platform UI, its rendering model can be an advantage.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>wiradikusuma</em>:</p>
+<blockquote>You should try Dart&#x2F;Flutter again, they&#x27;ve improved a lot.<p>- Dart. It&#x27;s richer than JS&#x2F;TS with stronger type safety, and seems purpose-built for UI. Fewer Dart developers than JS, but I&#x27;d argue those JS developers cannot be immediately effective coding React Native (Expo) anyway.<p>- Emulated components vs. real native components. For multi-platform apps, this is actually desirable. These kinds of apps have their own design system.<p>- Speed. In my experience, it&#x27;s negligible, but maybe because I keep using the latest version.<p>- Ecosystem. Flutter&#x2F;Dart occasionally introduces &quot;breaking&quot; changes (such as migration to null safety, and recently deprecation of CocoaPods). Community very quick to update their plugins and adapt. Some abandoned plugins were immediately forked to keep being maintained.<p>- Migrating to native platforms, easier for agents to read an RN project. I&#x27;d argue it should be _easier_ to do that with Dart since the language is less &quot;ambiguous&quot; than JS.<p>However it&#x27;s not perfect. My complaints:<p>- Not ideal for web apps with lots of FIRST-time visitors, due to initial download. There are some attempts to solve this, e.g. deferred loading, but I think inherently it&#x27;s unsolvable since you need to download the whole world (a few MBs) to have the app running on your browser. That&#x27;s why for this scenario I use SvelteKit. But if you already have a mobile app and want to get a web app &quot;for free&quot;, this is a useful feature.<p>- WebView support is inconsistent across platforms (I&#x27;m looking at you, Windows and Linux).<p>- Text fields are quirky on Android TV.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>phist_mcgee</em>:</p>
+<blockquote>They still haven&#x27;t got native scrolling perfect for iOS. I used a big name app just today and I could instantly tell without looking it up that it was a flutter app, because the scrolling felt non-native.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>satvikpendem</em>:</p>
+<blockquote>This is fixed in the past few versions of Flutter, they likely haven&#x27;t updated their SDK.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>thelollies</em>:</p>
+<blockquote>Funny to see speed in there, my experience is the opposite.<p>Im a very happy Flutter dev and it&#x27;s always been odd to see so much negative sentiment around it when there are public discussions.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Principia Mathematica is modern and insightful</title>
       <link>https://okmij.org/ftp/Computation/Impressions/PrincipiaMathematica.html</link>
@@ -78,6 +118,42 @@ I assume you are talking about the recent deaths of Pacific Gray whales.[1]  The
 </blockquote>
 <p><strong>Top #3</strong> — <em>geysersam</em>:</p>
 <blockquote>Yes that&#x27;s good, blame social media and not the absence of sufficient regulation or the unsustainable fishing industry.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Breaking the WAL</title>
+      <link>https://antithesis.com/blog/2026/wal-reset-bug/</link>
+      <guid isPermaLink="false">hn3-49277799</guid>
+      <pubDate>Wed, 12 Aug 2026 20:00:16 +0000</pubDate>
+      <description>127 points, 45 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://antithesis.com/blog/2026/wal-reset-bug/"><strong>→ Article</strong></a> <small>(antithesis.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49277799">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 45 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>carlsverre</em>:</p>
+<blockquote>Hi! I&#x27;m the author and the person who was on a road trip when I decided to do this experiment back in July. I&#x27;m super excited to finally get the blog post out, and even better, alongside a post describing the root cause process that went into the project. You can read about Tailscale&#x27;s story here: <a href="https:&#x2F;&#x2F;tailscale.com&#x2F;blog&#x2F;sqlite-wal-reset-bug" rel="nofollow">https:&#x2F;&#x2F;tailscale.com&#x2F;blog&#x2F;sqlite-wal-reset-bug</a><p>I&#x27;m only sad that I didn&#x27;t put SQLite under test earlier in the year, or I would have found this issue right away. If you look at the workload[1], you can see how simple it is. Exactly the same kind of workload we write every day to help our customers find bugs.<p>If you have any questions about our process or how debugging with Antithesis works, please let me know! Thanks for reading!<p>[1]: <a href="https:&#x2F;&#x2F;github.com&#x2F;antithesishq&#x2F;sqlite&#x2F;blob&#x2F;3.51.2-instrumented&#x2F;antithesis&#x2F;workload.c" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;antithesishq&#x2F;sqlite&#x2F;blob&#x2F;3.51.2-instrumen...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>MPSimmons</em>:</p>
+<blockquote>How difficult would it have been to isolate that problem if you didn&#x27;t already know the SQLite subsystem it was in? This feels, to someone relatively ignorant of the SQLite &#x2F; Tailscale &#x2F; Antithesis architectures as a &quot;hindsight is 20&#x2F;20&quot; kind of thing, but I&#x27;m open to learning more.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>carlsverre</em>:</p>
+<blockquote>Great question! The general approach we take with transactional systems like this is to put reachability statements throughout the complex stateful machinery and then stress-test them in Antithesis.<p>The workload I put in place does exactly that[1]. It runs a write workload from multiple processes concurrently on the same SQLite database to cause writes to build up in the WAL, and runs checkpoints concurrently. This exercises the portion of the WAL code that, from a trivial read-through, is most likely to contain bugs (and turns out, did!).<p>Said differently, this is exactly the approach we take with all stateful transactional systems. I am only sad that I didn&#x27;t do this experiment months earlier, as it would have saved Tailscale and the SQLite team a lot of time.<p>[1]: <a href="https:&#x2F;&#x2F;github.com&#x2F;antithesishq&#x2F;sqlite&#x2F;blob&#x2F;3.51.2-instrumented&#x2F;antithesis&#x2F;workload.c" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;antithesishq&#x2F;sqlite&#x2F;blob&#x2F;3.51.2-instrumen...</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Mawr</em>:</p>
+<blockquote>&gt; This exercises the portion of the WAL code that, from a trivial read-through, is most likely to contain bugs (and turns out, did!).<p>Suuure. So why exactly <i>haven&#x27;t</i> you found this bug already a long time ago? I mean it is <i>trivially obvious</i> that this is where bugs in SQLite would be, right?<p>SQLite is open source and is one of the most popular databases, surely testing it to find bugs would also be obvious?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>skybrian</em>:</p>
+<blockquote>Nice article, but could you get someone to fix the blog layout? Having the author card pinned to the window rather than being able to scroll past it is distracting.</blockquote>
+<p>↳ reply 3 — <em>jauntywundrkind</em>:</p>
+<blockquote>you asserted that Antithesis would have found it right away, but it seems like from your write-up that you first set up instrumentation on the source, then told it to reproduce the WAL bug.<p>i don&#x27;t feel like i gained a strong appreciation for what the actual Antithesis capabilities are or why you had confidence this was anything the Antithesis tools would have helped find? i want to know more about what kind of analysis or capabilities Antithesis has and how it could have helped find the issue. what&#x27;s clear is that  Antithesis could confirm an already found issue. and even there I don&#x27;t feel like I gained any connection or knowledge or understanding of what the tooling was doing or how it would help. i&#x27;d really like more technical meat to this post to understand the value proposition.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>nemothekid</em>:</p>
+<blockquote>I understand the author feels he missed an opportunity to catch a bug in Sqlite - but this still feels like catching something in hindsight. Just knowing the bug the is in Sqlite&#x27;s concurrency engine is a huge win.<p>But reading over tailscale&#x27;s blogpost, I&#x27;m not sure how I would connect the dots to &quot;this issue I&#x27;m seeing in production&quot; to &quot;load this up in antithesis&quot;. It seemed half the battle was figuring out if the bug was in Sqlite, Tailscale, or Linux, and in that situation if you gave Antithesis all the context, would it reliably find the bug?</blockquote>
+<blockquote>
+<p>↳ reply — <em>stavros</em>:</p>
+<blockquote>Maybe it wouldn&#x27;t, but being able to cheaply test SQLite within a few minutes is still very valuable, even if just to rule it out.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>wwilson</em>:</p>
+<blockquote>We wanted to publish this ASAP since people are talking about this bug today. In a follow-up, we will show how our automated causality analysis could have saved Tailscale and SQLite from 6 months of root cause analysis. Stay tuned!</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Delta</title>
@@ -3524,56 +3600,6 @@ The Bell System loved nonlinear magnetic devices. There were lots of them, usual
 </blockquote>
 <p><strong>Top #3</strong> — <em>gadders</em>:</p>
 <blockquote>When I went to NZ about 30 years ago, vibe-wise Auckland was like LA and Wellington was like Seattle. Not sure if that comparison still holds.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The main way I've seen people turn ideologically crazy (2025)</title>
-      <link>https://blog.andymasley.com/p/the-main-way-ive-seen-people-turn</link>
-      <guid isPermaLink="false">hn3-49235349</guid>
-      <pubDate>Sun, 09 Aug 2026 20:15:52 +0000</pubDate>
-      <description>131 points, 115 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.andymasley.com/p/the-main-way-ive-seen-people-turn"><strong>→ Article</strong></a> <small>(blog.andymasley.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49235349">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 115 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>woodruffw</em>:</p>
-<blockquote>I think the advice at the end of this post is essentially sound: you should pre-filter your evaluation of others’ opinions through their understanding of related topics. But that isn’t elitist, and I think we shouldn’t call it that! It’s a form of media and cultural literacy we should be encouraging people to have; there isn’t (and shouldn’t) be anything elite about it.</blockquote>
-<p><strong>Top #2</strong> — <em>mxmilkiib</em>:</p>
-<blockquote>DUCK DUCK GO MURRAY BOOKCHIN!!<p><a href="https:&#x2F;&#x2F;theanarchistlibrary.org&#x2F;library&#x2F;lewis-herber-murray-bookchin-towards-a-liberatory-technology" rel="nofollow">https:&#x2F;&#x2F;theanarchistlibrary.org&#x2F;library&#x2F;lewis-herber-murray-...</a> (1965)<p><a href="https:&#x2F;&#x2F;theanarchistlibrary.org&#x2F;library&#x2F;murray-bookchin-post-scarcity-anarchism-book" rel="nofollow">https:&#x2F;&#x2F;theanarchistlibrary.org&#x2F;library&#x2F;murray-bookchin-post...</a> (1971)<p><a href="https:&#x2F;&#x2F;www.nybooks.com&#x2F;online&#x2F;2018&#x2F;06&#x2F;15&#x2F;how-my-fathers-ideas-helped-the-kurds-create-a-new-democracy" rel="nofollow">https:&#x2F;&#x2F;www.nybooks.com&#x2F;online&#x2F;2018&#x2F;06&#x2F;15&#x2F;how-my-fathers-ide...</a></blockquote>
-<p><strong>Top #3</strong> — <em>TrackerFF</em>:</p>
-<blockquote>For the past few years, I&#x27;ve seen a dozen of friends or acquaintances turn &quot;ideologically crazy&quot;, and they can be roughly grouped into:<p>A) Onset of schizophrenia or other serious mental illness, followed by psychosis. This is actually the most common I&#x27;ve seen. But it is also the easiest to spot.<p>B) Some crisis event in life, followed by finding &#x2F; joining a community. Some were hit hard by this during COVID.<p>I&#x27;ve yet to personally see people that have their, well, shit together and live busy lives turn into ideological crazies or extremists - where there is no mental illness. Of course, it could be that they just hide it better. Don&#x27;t use their public accounts, etc.<p>I also think it is much easier to become radicalized today. Once you search for any extremist views on say social media, you&#x27;ll be bombarded with it. Just belonging to a certain demographic could trigger a non-stop barrage of extreme wing influencer content in your feed.</blockquote>
-<blockquote>
-<p>↳ reply — <em>121789</em>:</p>
-<blockquote>Don’t agree actually. Have seen many busy working professionals fall into “extremism” and it’s pretty much always the same. They have a few issues they are firm on and align with one party, they don’t like the other side because of this, then they only hang out with people aligned with their views and only consume media aligned with their views. Quickly turns into lunatic talking points, and I’ve seen it happen to both the left and right.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Poland now 6th-largest EU economy, ahead of Switzerland and Belgium</title>
-      <link>https://www.euronews.com/business/2026/08/09/poland-now-sixth-largest-eu-economy-ahead-of-switzerland-and-belgium</link>
-      <guid isPermaLink="false">hn3-49235323</guid>
-      <pubDate>Sun, 09 Aug 2026 20:13:38 +0000</pubDate>
-      <description>125 points, 174 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.euronews.com/business/2026/08/09/poland-now-sixth-largest-eu-economy-ahead-of-switzerland-and-belgium"><strong>→ Article</strong></a> <small>(euronews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49235323">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 174 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dzonga</em>:</p>
-<blockquote>Poland has made a lot of good moves lately. for techies in the UK&#x2F;US they might not care that much - but there&#x27;s also an effect on you.<p>in the U.K - a polish skilled workers are choosing to remaining in Poland instead of moving to the uk.<p>for the US - a lot of firms are setting up polish offices - hence when you hear &#x27;a.i&#x27; efficiency most of those jobs have moved to Poland or India. Whether it&#x27;s big tech, big banks and small funded VC startups. What remains in the US are just senior+, staff software engineers.</blockquote>
-<blockquote>
-<p>↳ reply — <em>elAhmo</em>:</p>
-<blockquote>This is not viable long term, but cool to ride the train while the outsourcing lasts.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>petcat</em>:</p>
-<blockquote>I saw an interesting stat recently that the poorest USA state, Mississippi, has a larger economy and GDP than 1&#x2F;3rd of all EU members.<p>It just seems like the EU is too top-heavy and I wonder if that&#x27;s where a lot of the discontent comes from.  It seems like there a lot of micro-nations in eastern Europe that have outsized influence over the union as a whole.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Epa095</em>:</p>
-<blockquote>15-20% of Mississippis GDP is healthcare cost.<p>Gdp is not really a great measure of how well an economy works for it&#x27;s inhabitants, if it was we should all spend our time breaking each others windows.</blockquote>
-<p>↳ reply 2 — <em>notfromhere</em>:</p>
-<blockquote>That example is a good reason nominal GDP has limits on what it can measure, as a drive thru Mississippi would show a poor state with small pockets of wealth</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>vivzkestrel</em>:</p>
-<blockquote>- i came expecting to read something about how taking no immigrants has helped or something along those lines<p>- has there been any studies conducted on how 10% immigration affects a country&#x27;s economic outcomes?</blockquote>
-<blockquote>
-<p>↳ reply — <em>profstasiak</em>:</p>
-<blockquote>But its not true! We had like massivie migration in last few years, mostly Ukrainian though</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
