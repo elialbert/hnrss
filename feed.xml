@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 13 Aug 2026 15:04:09 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 16:04:31 +0000</lastBuildDate>
     <item>
       <title>ChatGPT Desktop (Codex Desktop) for Linux</title>
       <link>https://openai.com/codex/</link>
@@ -697,6 +697,43 @@ Tap to talk to ChatGPT and get a 100 word or less reply</blockquote>
 <p>↳ reply — <em>ryandrake</em>:</p>
 <blockquote>&gt; using a 2000x2000 image for a icon displayed 20x20 is a waste<p>The number of web sites that do this is enraging.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>My Agent Setup</title>
+      <link>https://chad.cm/posts/2026-8-11-my-agent-setup</link>
+      <guid isPermaLink="false">hn3-49272484</guid>
+      <pubDate>Wed, 12 Aug 2026 13:56:05 +0000</pubDate>
+      <description>125 points, 58 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://chad.cm/posts/2026-8-11-my-agent-setup"><strong>→ Article</strong></a> <small>(chad.cm)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49272484">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 58 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>shostack</em>:</p>
+<blockquote>Love the post and have a similar setup. But I have questions about how you handle sensitive personal info with Codex and Claude with this setup given Hermes has no boundaries on its own with its integrations with Codex for example. It can leak memory and tool calls and context through.<p>At home I have Hermes on a VPS with matrix and mnemosyne and it is largely for personal use. While I was excited to try out the seamless Codex wrapper, this leakage was unacceptable compared to a ZDR OpenRouter provider like fireworks.<p>Where I struggle is now in architecting a clean way to have Hermes separate out personal stuff from coding stuff, and then orchestrate coding through Codex as that seems to be the only way to use it headlessly on my phone since they have no way of doing that in the ChatGPT app right now on Linux.<p>Does Buzz let you neatly silo that?<p>I&#x27;m struggling between: 
+&quot;I want to use Hermes with frontier models with a seamless wrapper on my $20 ChatGPT pro subscription so I can go through my Hermes setup for everything including coding&quot;<p>And<p>&quot;OpenAI and Anthropic are not ZDR and I am not comfortable sending sensitive personal and family data to them. But I at least want a mobile-friendly remote coding experience with them on my phone and VPS&quot;</blockquote>
+<blockquote>
+<p>↳ reply — <em>ljlolel</em>:</p>
+<blockquote>Keep the memory&#x2F;tool silo in Hermes. I run TrustedRouter; trustedrouter&#x2F;zdr gives that agent a ZDR-only model hop, but it cannot make Codex or Claude subscriptions ZDR. <a href="https:&#x2F;&#x2F;trustedrouter.com&#x2F;blog&#x2F;one-api-all-llms-provably-private?utm_source=hackernews&amp;utm_medium=organic_reply&amp;utm_campaign=openrouter_conversations_202608&amp;utm_content=20260813_hackernews_personal_agent_zdr" rel="nofollow">https:&#x2F;&#x2F;trustedrouter.com&#x2F;blog&#x2F;one-api-all-llms-provably-pri...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>shostack</em>:</p>
+<blockquote>I already have that effectively via pinning Fireworks on Openrouter. I am unclear how this would solve the architecture issue I raised though.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>whazor</em>:</p>
+<blockquote>I am now on the MCP route, where I have lots of personally hosted MCPs. Including managing calender&#x2F;e-mail.<p>It does not cost too much effort to maintain MCP servers. No port forwarding or VPNs required thanks to OpenAI tunnels.<p>And security wise its quite nice, since you have to activate MCP or give permission sometimes. So each chat is kind of isolated from each-other.</blockquote>
+<blockquote>
+<p>↳ reply — <em>carimura</em>:</p>
+<blockquote>interesting.. does that bloat the context window? I imagine Hermes already struggles with context window size.. been meaning to look into that.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>trollbridge</em>:</p>
+<blockquote>Couple of notes on this<p>First, it matters how well the MCP is written; a well-written one won&#x27;t be so massive<p>Secondly, different sessions should load different MCPs. Load only what is needed<p>Thirdly, if you&#x27;re finding you need a dozen MCPs, you need to consolidate that into a single service that does the work and then presents a single, unified API (via MCP) to your agent<p>Finally, start using models with 1M context window limits. I really don&#x27;t know how people can stand being stuck at a limit like 272K.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>carimura</em>:</p>
+<blockquote>ya all makes sense. hoping the harness can manage some of the MCP noise. I&#x27;m using 5.6-Sol so context window is 1M.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>noashavit</em>:</p>
+<blockquote>This is a great post, thanks for sharing!</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>AI is removing the middle class of software engineering?</title>
@@ -3564,57 +3601,6 @@ The Bell System loved nonlinear magnetic devices. There were lots of them, usual
 <p>↳ reply 2 — <em>jbonatakis</em>:</p>
 <blockquote>&gt; I&#x27;m still waiting for a Postgres provider to just let me mirror data directly to Iceberg, so I can plug in my own stateless query engine.<p>The issue that each of those providers above has recently adopted Postgres as a secondary product aimed at supporting their main product, an OLAP database or engine, so they don’t want you plugging in your own query engine.<p>I’d bet you’re likely to see this from a Postgres-specific provider first, like Supabase.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Georgia police officers fired after Flock camera misuse</title>
-      <link>https://www.wtoc.com/2026/08/07/savannah-police-department-fires-6-employees-over-flock-safety-system-misuse/</link>
-      <guid isPermaLink="false">hn3-49236033</guid>
-      <pubDate>Sun, 09 Aug 2026 21:20:24 +0000</pubDate>
-      <description>127 points, 117 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.wtoc.com/2026/08/07/savannah-police-department-fires-6-employees-over-flock-safety-system-misuse/"><strong>→ Article</strong></a> <small>(wtoc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49236033">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 117 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>simonw</em>:</p>
-<blockquote>Abuse by police officers and other individuals with access to these systems is <i>the</i> answer to the stupid but common question &quot;why should I worry about surveillance if I have nothing to hide&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tptacek</em>:</p>
-<blockquote>I never hear that question from Flock supporters. The question I hear[†] is &quot;why <i>shouldn&#x27;t</i> we be pulling over stolen cars?&quot;. It&#x27;s a much harder one to answer than the straw man questions we set up for these things.<p>(To be clear: I think the current generation of ALPRs is a policy failure and that major changes need to happen inside state law enforcement systems before they can be deployed successfully. But I also think people on HN have a real problem in convincing themselves about the obvious righteousness of their anti-surveillance arguments.)<p>[†] <i>I heard arguments like these because I was deeply involved in getting the cameras disabled in the inner-ring Chicago suburb in which I live, getting the first ACLU CCOPS ordinance in Illinois passed there, and helping draft what are probably the most detailed ALPR police General Orders in any municipality, or at least were at the time. Which is a long and pretentious way of saying I spent a lot of time talking to people who are not Very Online.</i></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>AdieuToLogic</em>:</p>
-<blockquote>&gt;&gt; Abuse by police officers and other individuals with access to these systems is the answer to the stupid but common question &quot;why should I worry about surveillance if I have nothing to hide&quot;.<p>&gt; I never hear that question from Flock supporters. The question I hear is &quot;why shouldn&#x27;t we be pulling over stolen cars?&quot;<p>These are the same Constitutional question.<p>In order to determine what cars are stolen, <i>all</i> cars must be inspected. If all cars are inspected, there is a reasonable case that the 4th amendment is being violated:<p><pre><code>  The right of the people to be secure in their persons, 
-  houses, papers, and effects, against unreasonable searches 
-  and seizures, shall not be violated, and no Warrants shall 
-  issue, but upon probable cause, supported by Oath or 
-  affirmation, and particularly describing the place to be 
-  searched, and the persons or things to be seized.[0]
-</code></pre>
-&gt; But I also think people on HN have a real problem in convincing themselves about the obvious righteousness of their anti-surveillance arguments.<p>See above.<p>0 - <a href="https:&#x2F;&#x2F;constitution.congress.gov&#x2F;constitution&#x2F;amendment-4&#x2F;" rel="nofollow">https:&#x2F;&#x2F;constitution.congress.gov&#x2F;constitution&#x2F;amendment-4&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>tptacek</em>:</p>
-<blockquote>They&#x27;re not remotely the same Constitutional question. The people asking this aren&#x27;t saying &quot;I&#x27;m fine with being profiled because I&#x27;ve got nothing to hide unlike the people driving stolen cars&quot;. They&#x27;re just as upset about abuses of these systems as you are (though: some of them think these cameras are no more intrusive than cell tower tracking). They just see an upside to the system that privacy advocates refuse to recognize.<p>I get that this sounds like standard-issue message board rhetoric where I&#x27;m Mary Sue&#x27;ing normies to make my points for me, but I don&#x27;t agree with my neighbors about this stuff, and you&#x27;ll probably have to take my word for it that I&#x27;m not making any of this up.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>veec_cas_tant</em>:</p>
-<blockquote>Maybe for some, but I honestly don&#x27;t find it very persuasive. The misuse of license plate data wouldn&#x27;t make my top ten list of potential powers that law enforcement might abuse. Clearly, abuse of any kind of power should not be tolerated, but potential benefits must also be considered. I think the widespread deployment of cameras at businesses and homes provides strong evidence of their benefits. The idea that a crime happens outdoors and the proper course of action is for police to knock on 100 doors to collect grainy doorbell footage is pretty inefficient, to say the least.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>tptacek</em>:</p>
-<blockquote>Flock cameras appear to be one of the few things that can get police officers fired.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>xnx</em>:</p>
-<blockquote>Silver lining! The cameras are catching criminals.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>shermantanktop</em>:</p>
-<blockquote>To paraphrase Homer: the cause of, and solution to, a problem! In this case police misconduct.<p>It does make me wonder whether electronic evidence of police behavior will materially impact actual behavior over time.  But given that the normal reaction is to deny access to evidence, I doubt it.<p>The people who want to be police officers tend not to be the people everyone else would want to be police officers.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>parineum</em>:</p>
-<blockquote>&gt; The people who want to be police officers tend not to be the people everyone else would want to be police officers.<p>It&#x27;s tiring for good people when everyone they interact with thinks they&#x27;re the villain.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>edot</em>:</p>
-<blockquote>Right, because you don’t want to let the little guys mess it up for the big guys: <a href="https:&#x2F;&#x2F;arstechnica.com&#x2F;tech-policy&#x2F;2026&#x2F;05&#x2F;fbi-seeks-us-wide-access-to-license-plate-cameras-wants-data-in-near-real-time&#x2F;" rel="nofollow">https:&#x2F;&#x2F;arstechnica.com&#x2F;tech-policy&#x2F;2026&#x2F;05&#x2F;fbi-seeks-us-wid...</a><p>Gotta make a statement with the low level grunts so the citizenry think these systems have accountability.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>AngryData</em>:</p>
-<blockquote>It should result in jail time. If I got access to government surveillance program and started using it for personal reasons, I would likely be charged with terrorism.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
