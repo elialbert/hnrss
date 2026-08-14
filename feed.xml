@@ -4,7 +4,264 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 13 Aug 2026 23:50:13 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2026 02:30:34 +0000</lastBuildDate>
+    <item>
+      <title>Accelerating GPT-5.6 Sol Ultrafast</title>
+      <link>https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai</link>
+      <guid isPermaLink="false">hn3-49289844</guid>
+      <pubDate>Thu, 13 Aug 2026 18:10:02 +0000</pubDate>
+      <description>439 points, 187 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.cerebras.ai/blog/accelerating-gpt-5-6-sol-ultrafast-with-openai"><strong>→ Article</strong></a> <small>(cerebras.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49289844">→ HN comments</a> &nbsp;·&nbsp; 439 points &nbsp;·&nbsp; 187 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>csallen</em>:</p>
+<blockquote>People underestimate the importance of speed on quality of thought, because people underestimate just how much quality is a result of simple iteration.<p>When an LLM thinks, it typically just makes one pass. It outputs tokens from top to bottom, beginning to end, and then it&#x27;s done. But when people think, especially strong thinkers, we typically iterate and revise our thoughts on the fly. We do numerous passes. We stop and restart, we reconsider, we review, we reevaluate. Sometimes we do this so quickly and automatically that we don&#x27;t even realize we&#x27;re doing it. I think a lot of what separates a highly intelligent or effective person from others has less to do with the quality of their first pass and more to do with just how many additional passes they&#x27;re able to do in the same amount of time, and of course what kind of criteria they&#x27;re habituated to consider during their review passes.<p>Introspecting about this is difficult, but experimenting with LLMs is easy. First, simply ask an LLM to do something complex. For example, to come up with a new business idea, or to plan the next month of your life, etc. After it finishes, tell it:<p>&quot;Review what you just wrote, according to some appropriate list of evaluation criteria that you come up with first. And then, based on the results, iterate and generate a better response if warranted.&quot;<p>It&#x27;s insane how much better the next answer will usually to be. Often it&#x27;ll catch and erase tons of hallucinations, logical errors, and inefficiencies. And you can simply copy-paste this again and again until you begin to hit diminishing returns. Or, in a harness like Claude Code, for example, I might shortcut this whole process by saying, &quot;Use sub-agents to iteratively review and iterate on your work until convergence.&quot;<p>The reason why most people don&#x27;t prompt LLMs to do this (besides simply not thinking of it) is that it takes time.<p>But what if it didn&#x27;t?<p>What if the LLM&#x27;s response came back in milliseconds rather than minutes? Then there would be almost no reason NOT to do this. In fact, one could almost imagine it baked into the assistant&#x2F;harness -- a massive step change in practical quality, enabled by nothing more than speed.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>loufe</em>:</p>
+<blockquote>Going back between two different company&#x27;s AI tools when facing a tricky architecture question often surfaces holes in an approach I&#x27;d been building.<p>Similarly, if I ever get a bit too vibey and don&#x27;t carefully review code changes myself, the blast radius is generally significantly resolved by a carefully tuned &quot;did you consider x, y, and z&quot; skill after a first draft partnered with a &quot;deploy an adversarial review agent for the worktree&quot;.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>andai</em>:</p>
+<blockquote>When I was doing some important work, I had 2 worktrees, each running a frontier model from a different company, and I passed their responses between them in markdown files and had them critique them. I thought they&#x27;d prefer their own solutions, but they frequently preferred the other model&#x27;s solutions.<p>I went back and forth like this until we converged on a solution &quot;everyone&quot; was satisfied with.<p>Context: I&#x27;m a solo dev and working outside my area of expertise, so I&#x27;m leaning heavily on LLMs. It&#x27;s not great (definitely too vibey for my taste, and I keep running into issues) but the alternative is spending the next few years studying several specializations instead of shipping. So this is the &quot;least bad&quot; thing I could come up with.<p>I&#x27;m definitely increasingly making time for &quot;learning sprints&quot; to catch up on specific knowledge gaps. For example today I spent 2 hours debugging something because I was missing a fact that would have taken me 1 minute to learn...</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bluerooibos</em>:</p>
+<blockquote>&gt; But what if it didn&#x27;t?<p>Or what if it output the final result in the first place, without having to repeatedly prompt it to check its own work to trick it into a better answer?</blockquote>
+<p>↳ reply 3 — <em>navigate8310</em>:</p>
+<blockquote>What stops the LLM not to iteratively think and expound upon before emitting the final tokens?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Topfi</em>:</p>
+<blockquote>Unless I have read over it, besides the animation in the intelligence vs speed graph which only mentions internal data and not whether they truly reran the AA suite, there is no actually solid statement on the important aspect of performance.<p>Neither the Cerebras or OpenAI post [0] outright state that this performs exactly the same as regular 5.6 Sol. I feel if this was 1:1 just Sol but much faster, they&#x27;d (rightfully) scream that off the rooftops. A line such as &quot;this is the same performance, just faster, with no downsides&quot; would go a long way in clarity and communication. Along with no pricing information, I&#x27;ll hold out on further information.<p>[0] <a href="https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;previewing-ultrafast&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;previewing-ultrafast&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Scaevolus</em>:</p>
+<blockquote>&quot;delivering up to 750 output tokens per second and without any quality compromise&quot; seems pretty definitive.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Topfi</em>:</p>
+<blockquote>No quality compromise&#x2F;degradation is something I have had this industry, including especially OpenAI, claim multiple times in the past and I have more than once been able to verify that it was in fact not the case. Examples being gpt-3.5-turbo vs text-davinci-003, GPT-4-Turbo and all the other post training checkpoints they had under one name (which was a major bug bear for me back then witnessing degradations with no naming change, industry got better in transparent checkpoint naming since), Opus 4.6 Fast Mode (which just was faster by skipping much of the required work), etc.<p>Same for massive performance differences in the way providers like Cerebras, Groq, etc. have deployed models including K2.6 on Cereberas specifically. Massive deltas in tool call and overall quality despite there being far more clarity in open weight vs proprietary model deployment.<p>The AA suite graph with that animation is the only time in either post that absolute parity is being asserted and I&#x27;d be amazed if that was the case, but am doubtful why their phrasing is so cagey.<p>Why not assert full parity in writing? It &quot;performs the same (within run-to-run variance) across all evals that Sol has been tested with&quot; is very different to &quot;no quality compromise&#x2F;degradation&quot;, the later allowing for a lot more wiggle room and interpretation in what evals you use to assess that, what quality truly means, etc., the former meaning identical in all situations.<p>Could also be a language barrier here in fairness, maybe this phrasing is more iron clad than I give them credit, but especially with OpenAI, I have seen enough checkpoints asserted as unchanged in &quot;quality&quot; to where I am skeptical. Ironically, I never saw that with Anthropic (which has gotten far more heat for degradation accusations) while a model was deployed with one exception in mid-late April this year. Pure speculation, but believe it wasn&#x27;t noticed much before &quot;agentic coding&quot; became more popular, because chat output is far more subjective without a rating framework vs code passing which can be an objective metric with more potential for frustration.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>giancarlostoro</em>:</p>
+<blockquote>The problem is the compromise is probably based on their tests for key things, but for the rest of us, it means changing how we talk to the model or the flow we use to adjust for quirks, but then its fully about the same.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>beering</em>:</p>
+<blockquote>You (or anyone else) can just benchmark and compare. If they were serving a dumber model it would be trivially detectable.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>wxw</em>:</p>
+<blockquote>&gt; Compared with output speeds reported by Artificial Analysis GPT-5.6 Sol on Ultrafast mode runs 11x faster than Fable 5, and 5x faster than Opus 4.8 on Fast mode.<p>Awesome work. I&#x27;m personally very excited for faster models&#x2F;inference.<p>I think speed is underrated to some degree in the current conversation. For a while, I was using Cursor&#x27;s Composer quite a lot, even over frontier models, just because of how darn fast it was.</blockquote>
+<blockquote>
+<p>↳ reply — <em>kilroy123</em>:</p>
+<blockquote>I&#x27;ve been using DeepSeek flash a lot this week to try it out. Now, I deeply want the smart frontier models to be just as fast.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Where did the old web go? We followed 657,607 links to find out</title>
+      <link>https://0.mk/blog/link-rot</link>
+      <guid isPermaLink="false">hn3-49289532</guid>
+      <pubDate>Thu, 13 Aug 2026 17:49:18 +0000</pubDate>
+      <description>134 points, 119 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://0.mk/blog/link-rot"><strong>→ Article</strong></a> <small>(0.mk)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49289532">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 119 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>MetaWhirledPeas</em>:</p>
+<blockquote>Here&#x27;s a contrarian timeline: maybe the old web will return? My reasoning: when the &quot;old web&quot; was great, most people thought the internet was for nerds. Sure even casual users would forward funny emails to their friends, but when it came time for news most people would read the paper or watch the nightly broadcast. When they paid for their Big Mac they&#x27;d lay down cash. There were plenty of people using the internet, but again, they were nerds or nerd-adjacent. So, maybe the LLM-ification of everything could end up being like a huge filter, where all the non-nerds no longer see the point of anything and move on to gardens with even higher walls. And then what you have left will be a small subset of people who know how to reach their desired corners of the internet, just like before.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zem</em>:</p>
+<blockquote>the article already lists one positive - the LLM assistance made the engineering effort to keep their site up and running feasible again. insofar as spam killed the remnants of old web, that is a promising sign.</blockquote>
+<p>↳ reply 2 — <em>Razengan</em>:</p>
+<blockquote>Allow me to switch to asshole mode for a minute:<p>&quot;Things used to be so good&quot; is mostly rose-tinted glasses: What exactly WAS the &quot;old web&quot; anyway?<p>100s of half-baked sites hosted on Geocities, Yahoo, about pointless stuff? Epilepsy simulator websites splattered with gif-vomit? Everyone and their grandmother asking you to install their 10 toolbars?<p>Honest, serious question: What actually was of objective substance on the old internet that&#x27;s nowhere to be found now?<p>You can find random pointless stuff now too, just that except Geocities&#x2F;Yahoo it&#x27;s Intsagram&#x2F;TikTok&#x2F;Twitter etc.<p>If you mean self-hosted websites, they&#x27;re still here, and nothing&#x27;s stopping you from creating your own.<p>If you loved all the Flash toons on Newgrounds etc there&#x27;s unironically a lot more shorts and animations on YouTube or even Vimeo now, if you but search for them (the old gods like Weebl, David Firth are still there, and I suggest Sechi, DoodletmeGo, Nondescript Video Club, and からめる to start with then let the algorithm soak up the weirdness)<p>Just as the &quot;internet&quot; supplanted newspapers, magazines, and broadcast television for many people,<p>and how the newspapers replaced the town criers before them,<p>why shouldn&#x27;t the &quot;internet&quot; be supplanted by a more accessible medium?<p>There&#x27;s so much crap on the &quot;old&quot; and &quot;middle age&quot; internet: ads, scams, anal mods, trolls, bandwagons, vote wars, low-effort content and other repetitive noise that could be bypassed by just asking AI about something and make better use of your limited mortal lifetime, like watching that anime you&#x27;ve been putting off for years.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>morganf</em>:</p>
+<blockquote>I&#x27;d define it as the web until the time that Facebook truly took off and conquered the hearts and minds of so many (that was the first huge shot in the losing war of the old web). For example, a key part of the old web was what used to be called the &quot;blogosphere&quot;, and the blog&#x27;s height was those final years before FB (in the ascendancy) and the first years of the FB era (descendancy).</blockquote>
+<p><strong>Top #3</strong> — <em>jperras</em>:</p>
+<blockquote>I would posit that &quot;old web&quot; could be defined as the period before Google Search became public (&lt;~1997).<p>But maybe that&#x27;s more a measure of my own age and perceptions rather than an accurate representation of the various eras of the internet&#x2F;web...</blockquote>
+<blockquote>
+<p>↳ reply — <em>binarymax</em>:</p>
+<blockquote>That’s the Cretaceous web. I miss it fondly.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Xorakios</em>:</p>
+<blockquote>Oh good golly miss molly. I had my first email address at an .edu in 1980, first website in my own real name since 1993. the 2000&#x27;s are just new kids on the block</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Choose Boring Technology (2015)</title>
+      <link>https://mcfunley.com/choose-boring-technology</link>
+      <guid isPermaLink="false">hn3-49289512</guid>
+      <pubDate>Thu, 13 Aug 2026 17:48:13 +0000</pubDate>
+      <description>261 points, 139 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mcfunley.com/choose-boring-technology"><strong>→ Article</strong></a> <small>(mcfunley.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49289512">→ HN comments</a> &nbsp;·&nbsp; 261 points &nbsp;·&nbsp; 139 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>NickNaraghi</em>:</p>
+<blockquote>&gt; Let’s say every company gets about three innovation tokens. You can spend these however you want, but the supply is fixed for a long while.<p>This is one of my favorite blog posts, and it can basically be encapsulated in the idea of &quot;innovation tokens.&quot; It is one of the most useful concepts I have had as a PM &#x2F; eng leader in my career. It helps actually make the the right tradeoffs, and helps even more in explaining those tradeoffs to colleague of all levels. Highly recommend.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nomel</em>:</p>
+<blockquote>There was another, much older, post similar to this about, I think, &quot;beans&quot; that engineers use to solve problems. If I remember correctly, it was something like, solving a problem costs &quot;beans&quot;, and engineers will always use most all of their &quot;beans&quot; to solve a given problem, because it&#x27;s somewhat &quot;easy&quot; until you run out of them.<p>Maybe it wasn&#x27;t beans? But, I&#x27;ve been looking for it for years.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bch</em>:</p>
+<blockquote>I’m vaguely recalling something - and I think the beans might’ve also represented vetos, so one had a limited number of objections to other people’s ideas… quick search revealing nothing so far, though.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>nomel</em>:</p>
+<blockquote>Sounds familiar! I believe it was a simple html page hosted on some university user page.<p>I&#x27;ve tried over the years, but can never find it. All the search engines moving to vector search makes finding something like this near impossible.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tshaddox</em>:</p>
+<blockquote>I like the general concept, but I think framing it as a small number of discrete tokens isn&#x27;t quite right. I&#x27;d treat the whole thing in terms of <i>debt</i> and <i>risk</i>. Using &quot;non-boring&quot; technology [0] is really just subtracting some amount from your balance. You don&#x27;t want your balance to go <i>too</i> negative, but carrying some debt is sometimes fine. And some risky bets might turn out to have a huge ROI!<p>The amounts clearly aren&#x27;t discrete. Writing your entire app on a new language runtime might be very risky (and also might have large potential ROI!), but choosing a new email provider might not be (random example, but presuming that you can swap out providers fairly easily).<p>[0] My bigger complaint is really about the vagueness of even deciding what is &quot;boring.&quot; How does a new technology transition from being &quot;non-boring&quot; to being &quot;boring&quot;? Apparently that requires a lot of people to ignore this article&#x27;s advice for a long time, until we collectively decide that those people have had good enough results to consider that technology &quot;boring.&quot;</blockquote>
+<p>↳ reply 3 — <em>thewakalix</em>:</p>
+<blockquote>&quot;Weirdness points&quot; are similar: <a href="https:&#x2F;&#x2F;www.lesswrong.com&#x2F;w&#x2F;weirdness-points" rel="nofollow">https:&#x2F;&#x2F;www.lesswrong.com&#x2F;w&#x2F;weirdness-points</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>theptip</em>:</p>
+<blockquote>I love this post. It’s also interesting to revisit in the age of agents.<p>Using the language of the article, I’d say “push all your innovation tokens into agents” is probably a good move. This means the tech your agents work with should all be boring tech.<p>Another way of saying this is “use in-distribution technology”. If agents are substantially better at Rust than Zig, probably you should use Rust, even if Zig is “better”. The amount that Zig is better is going to get swamped by the amount that in-distribution agents are better.<p>(This is not a claim that Rust actually is better, just a hypothetical fact pattern for discussion.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Pannoniae</em>:</p>
+<blockquote>I admit I have a hard time following this logic. If an agent has a baseline intelligence, you can... instead of using boring technology, just DIY&#x2F;NIH the simplest custom solution which fulfills your requirements. And you&#x27;ll usually do a better job than a general-purpose software library.<p>Even if in the other approach, the LLM knows the stack better, you&#x27;re just going to push the complexity into your <i>client</i> code, so it&#x27;s not like it&#x27;s a huge gain to use boring tech stack.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>t-writescode</em>:</p>
+<blockquote>That’s definitely not true, and I’ll give two incredibly common examples:<p>1: arraylist. A library will probably do better than you. It’s already written and common.<p>2: webservers. Sure, you can write one yourself with sockets and a bunch of buffers and string management… or, you could use one of the 100s of existing ones. Which one? Probably a stable and established one.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Pannoniae</em>:</p>
+<blockquote>1. This isn&#x27;t true whatsoever. You can easily do better than std::vector (trivial relocation support, non-inlined grow), better than C# List&lt;T&gt; (ref T accessor, batch add API, maybe even an add-uninitialised API or in-place constructing specific things), better than a Python list (this one is obvious), etc.<p>2. This is a better point but depending on your workload, I don&#x27;t think this is unheard of. Or at the very least, if your workload is simple, you can grab one off the top of the benchmarks, point AI at it to customise it a bit then you&#x27;re good. But to be fair this one&#x27;s a bigger structural investment so I do see your point. For smaller utilities the tradeoff is pretty clear.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>epolanski</em>:</p>
+<blockquote>One thing I learned about AI is that, e.g., if you&#x27;re making websites you&#x27;re much better off going for php&#x2F;ruby&#x2F;elixir, even if you don&#x27;t like the languages much.<p>Pipelines and deploys gets much easier and faster than the very common TypeScript monorepo, and so does communication between server and client.<p>And I say that as a TypeScript and Effect aficionado who has no particular love for neither php or ruby, but they are extremely solid choices to move fast, well, and get excellent performance and tooling out of the box.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>insanitybit</em>:</p>
+<blockquote>I&#x27;ll push back against this, despite it being so popular. I dislike the arbitrary &quot;innovation tokens&quot; and I think this entire concept really blurs the lines and feels sort of unserious.<p>Engineers should understand requirements, risks, tradeoffs, and potential gains. New technology may be right for that. Novel approaches may be right for that. &quot;Novel&quot; or &quot;New&quot; are only <i>proxies</i> and they&#x27;re weak.<p>For example, I may think &quot;New&quot; means untested, but is that true? What if a new project has Jepsen testing, a fuzzing suite, massive compute running tons of oracle tests, etc? I should just say &quot;Choose well tested&quot; instead of &quot;Choose old&quot; - lots of old software is very poorly tested.<p>Maybe I think that &quot;Old&quot; implies better documentation, but does it? Lots of older projects have insane cruft and weird edge cases that are undocumented and accumulated over years.<p>Why do we need a metaphor? Why is &quot;innovation token&quot; helpful?<p>If you&#x27;re incapable of evaluating a technology in terms of these properties, you aren&#x27;t a serious developer and &quot;boring&quot; will not save you.<p>Sit down, write our your requirements, determine candidate solutions, and choose them based on their fit. &quot;Boring&quot; means nothing, it&#x27;s a vague proxy term. &quot;Well tsted&quot;, &quot;performant for our use case&quot;, &quot;developers know it&quot;, etc <i>mean something</i>.<p>&gt; MySQL is boring. Postgres is boring. PHP is boring. Python is boring. Memcached is boring. Squid is boring. Cron is boring.<p>Literally every one of these has caused hilarious and disastrous failures for me in my career. But yep, boring.<p>&gt; If you choose to write your website in NodeJS, you just spent one of your innovation tokens. If you choose to use MongoDB, you just spent one of your innovation tokens.<p>What if you know NodeJS really well? Or MongoDb? What if you have empirical, verifiable reasons for why they fit better?<p>I&#x27;m a bit tired of &quot;simple&quot; and &quot;boring&quot; and other nonsense words in this field taking up the air in the room that should be spent evaluating solutions on their actual merits.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bcrosby95</em>:</p>
+<blockquote>This was written over a decade ago.  I&#x27;d take it in that context.  Lots of the tech they&#x27;re talking about was being cargo culted en-masse.<p>So yes, pick boring tech, defined as the tech you know the sharp edges of.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>insanitybit</em>:</p>
+<blockquote>I don&#x27;t think that context is relevant to my comment. I didn&#x27;t say &quot;in hindsight, those technologies are great!&quot;, I pointed out that &quot;boring&quot; is meaningless, and any meaning you attribute to it like &quot;defined as the tech you know the sharp edges of&quot; is better substituted in.<p>That is, if someone said two sentences, I would only care about the second one:<p>1. &quot;We should use this because it is boring&quot;<p>2. &quot;We should use this because we understand the sharp edges&quot;<p>I wouldn&#x27;t care at all about (1) and I&#x27;d have a real conversation based on (2).<p>Any productive conversation that starts with (1) immediately has to follow &quot;can you clarify what that means&quot;, so the term is useless at best and thought terminating at worst.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>i_like_robots</em>:</p>
+<blockquote>I see innovation as a guardrail against CV driven development. More, I think you need to consider the context of when this was written. It was a period of rapid innovation&#x2F;evolution - I remember more than a handful of projects failing (either undelivered or rewritten well under their expected lifecycle) around this time because teams had taken bets on new tech either they didn&#x27;t know how to use well or the tech didn&#x27;t take off and was a dead end.<p>&gt; What if you know NodeJS really well?<p>Then you consider it boring. I&#x27;m sure Node and MongoDB were singled out by the author because at the time of writing they were still relatively new and undergoing periods of rapid development and change.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Donkey.bas is 45 Years Old – 131 line of Glory</title>
+      <link>https://donkeybas.com/</link>
+      <guid isPermaLink="false">hn3-49289465</guid>
+      <pubDate>Thu, 13 Aug 2026 17:45:50 +0000</pubDate>
+      <description>195 points, 84 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://donkeybas.com/"><strong>→ Article</strong></a> <small>(donkeybas.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49289465">→ HN comments</a> &nbsp;·&nbsp; 195 points &nbsp;·&nbsp; 84 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>vunderba</em>:</p>
+<blockquote>Nice job. The sound effects are a bit too advanced because early IBM computers shipped with pretty simple, magnetically driven dynamic speakers.<p>On a related note, I’ve actually spent the last four months working on a 100% faithful adaptation of both QBasic and QuickBasic 4.5 that runs entirely in the browser on a virtual CPU and hardware abstraction layer. It’s a love letter to everyone who learned to program on Microsoft’s BASIC interpreters in the ’80s and early ’90s.<p>The best compliment I’ve received so far is from friends who grew up in the same era I did: when I fullscreen the browser, a few of them assumed it was a virtual machine running the real thing.<p>A QBasic port of the original BASIC-based DONKEY.BAS was one of the first programs I got running in it:<p><a href="https:&#x2F;&#x2F;mordenstar.com&#x2F;share&#x2F;qbasic-core-demos" rel="nofollow">https:&#x2F;&#x2F;mordenstar.com&#x2F;share&#x2F;qbasic-core-demos</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>codebje</em>:</p>
+<blockquote>You used to be able to do surprising things with those old speakers using a timer interrupt: on an IBM XT it was possible to get 8kHz quality out of it, enough to make 4-channel MOD playback sound about as good as hearing it over a phone.<p>But your more typical use case was to play a single tone for some significant fraction of a second.</blockquote>
+<p>↳ reply 2 — <em>HeyLaughingBoy</em>:</p>
+<blockquote>At my first job, our entire order-entry and inventory management system was written in QBASIC. I wish I had the source to try it out with this.<p>I know someone who might, if we could figure out how to get it off a DOS 5.25&quot; floppy!</blockquote>
+<p>↳ reply 3 — <em>d3Xt3r</em>:</p>
+<blockquote>And for the slightly younger folks who have more memories of Visual Basic than QBasic, check out GAMBAS: <a href="https:&#x2F;&#x2F;gambaswiki.org&#x2F;website&#x2F;en&#x2F;main.html" rel="nofollow">https:&#x2F;&#x2F;gambaswiki.org&#x2F;website&#x2F;en&#x2F;main.html</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>nfriend</em>:</p>
+<blockquote>Brings back memories of GORILLA.BAS! <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Gorillas_(video_game)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Gorillas_(video_game)</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>EvanAnderson</em>:</p>
+<blockquote>I was more of a Nibbles[0] person. I played it with other people on my XT-class laptop in high school.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Nibbles_(video_game)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Nibbles_(video_game)</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>rzzzt</em>:</p>
+<blockquote>My favorite is MONEY.BAS</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>RankingMember</em>:</p>
+<blockquote>GORILLA and NIBBLES!</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>jamesdhutton</em>:</p>
+<blockquote>For anyone unfamiliar with DONKEY.BAS: it’s notable for having been co-written by Bill Gates. More info on its history bere: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;DONKEY.BAS" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;DONKEY.BAS</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Gemini 3.7 Flash</title>
+      <link>https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/</link>
+      <guid isPermaLink="false">hn3-49289112</guid>
+      <pubDate>Thu, 13 Aug 2026 17:23:22 +0000</pubDate>
+      <description>631 points, 359 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/"><strong>→ Article</strong></a> <small>(blog.google)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49289112">→ HN comments</a> &nbsp;·&nbsp; 631 points &nbsp;·&nbsp; 359 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jjcm</em>:</p>
+<blockquote>Here&#x27;s a image-&gt;html test. Gemini has always swung above its weight class for vision work, so I&#x27;m always eager to try it with this.<p>Original images: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;neonRamenDesigns.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;neonRamenDesigns.webp</a><p>Gemini 3.7 build: <a href="https:&#x2F;&#x2F;html.non.io&#x2F;neonRamenGemini3.7" rel="nofollow">https:&#x2F;&#x2F;html.non.io&#x2F;neonRamenGemini3.7</a><p>Opus 5 build for comparison: <a href="https:&#x2F;&#x2F;html.non.io&#x2F;neonRamen" rel="nofollow">https:&#x2F;&#x2F;html.non.io&#x2F;neonRamen</a><p>Opus is still best in class for this, but it&#x27;s worth noting how well Gemini 3.7 does vs a more comparable LLM price wise, which is Grok 4.6: <a href="https:&#x2F;&#x2F;html.non.io&#x2F;neonRamenGrok4.6" rel="nofollow">https:&#x2F;&#x2F;html.non.io&#x2F;neonRamenGrok4.6</a> . I thought Gemini would blow Grok out of the water (it generally has in the past), but Grok has really caught up.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jjcm</em>:</p>
+<blockquote>Other thoughts: I really think Google has fallen behind here. Even as a high speed offering (this build took ~7min, which is pretty good!), it wont be able to claim dominance for long with cerebras announcing the Sol preview today: <a href="https:&#x2F;&#x2F;www.cerebras.ai&#x2F;blog&#x2F;accelerating-gpt-5-6-sol-ultrafast-with-openai" rel="nofollow">https:&#x2F;&#x2F;www.cerebras.ai&#x2F;blog&#x2F;accelerating-gpt-5-6-sol-ultraf...</a> .<p>It&#x27;s not a bad model by any means, but I just don&#x27;t know what situation I&#x27;d reach for 3.7 Flash first for. Google really needs a differentiator, especially given how hard it is to get an API key from them. They can&#x27;t be high friction and non-pareto.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>krat0sprakhar</em>:</p>
+<blockquote>Can you help me understand how it is hard to get an API key from Google? You just head on over to <a href="http:&#x2F;&#x2F;aistudio.google.com&#x2F;api-keys" rel="nofollow">http:&#x2F;&#x2F;aistudio.google.com&#x2F;api-keys</a> and create a key... not any different from platform.openai.com?<p>Disclaimer: I work in Google so it might be that this link is not publicly well known</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>surfmike</em>:</p>
+<blockquote>Personally I went to <a href="https:&#x2F;&#x2F;console.cloud.google.com" rel="nofollow">https:&#x2F;&#x2F;console.cloud.google.com</a> since I already had some GCP projects. Then I searched for Gemini API Key. It brought me to <a href="https:&#x2F;&#x2F;console.cloud.google.com&#x2F;agent-platform&#x2F;studio&#x2F;settings&#x2F;api-keys" rel="nofollow">https:&#x2F;&#x2F;console.cloud.google.com&#x2F;agent-platform&#x2F;studio&#x2F;setti...</a>. Then, there was a banner saying &quot;Enable APIs to access full platform capabilities.&quot; Then, I did that, which took quite a while (minutes). Finally, I was able to see the way to create an API key.<p>The fact that there&#x27;s two ways to get keys is also very confusing.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>flockonus</em>:</p>
+<blockquote>There is some irony being a developer and reading along the lines of: &quot;oh look at the comparison between these models executing a task for a few cents on a job i&#x27;d be charging 1k minimum&quot;</blockquote>
+<p>↳ reply 3 — <em>orliesaurus</em>:</p>
+<blockquote>I think both outputs are really good. I don&#x27;t see a lot of differences. So what exactly should be looking at and notice that one model did worse or better than the other one.<p>EDIT: OKAY I see it&#x27;s mostly the &quot;image&quot; generation, not so much the HTML... Noticeable in the food photos and the foodtruck&#x2F;cart photo</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>simonw</em>:</p>
+<blockquote>The &quot;introductory pricing&quot; for this 3.7 Flash model is really weird.<p>It&#x27;s scheduled to double in price on December 31, 2026, but who would anticipate still using this model five months from now? Especially since 3.6 Flash came out just three weeks ago!<p>My first effort with default thinking level produced an ambitious pelican, let down by a flawed bicycle: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F8df5fd1b58f128cff27f57f0f959e169" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer#url=ht...</a><p>Then I ran it on high, medium and low thinking levels (oddly minimal is no longer an option, which WAS an option for 3.5 and 3.6) and got a pretty excellent pelican for the first two:<p><a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer.html#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F6779a22d5e7bb6bdf29936f1600a5259" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer.html#u...</a><p>UPDATE: That was in Safari, but as pointed out in the replies here the pelicans do NOT render well in Firefox or Chrome! Best guess is that&#x27;s because of this invalid filter in the SVG:<p><pre><code>  &lt;filter id=&quot;shadow&quot; x=&quot;-10%&quot; y=&quot;-10%&quot; width=&quot;130%&quot; height=&quot;130%&quot;&gt;&lt;&#x2F;filter&gt;
+</code></pre>
+Filters are meant to contain additional elements, not be empty: <a href="https:&#x2F;&#x2F;drafts.csswg.org&#x2F;filter-effects&#x2F;#FilterElement" rel="nofollow">https:&#x2F;&#x2F;drafts.csswg.org&#x2F;filter-effects&#x2F;#FilterElement</a> - so maybe Chrome and Firefox remove the element that references the broken filter but Safari doesn&#x27;t?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>simonw</em>:</p>
+<blockquote>Here&#x27;s a rendered copy of the pelican I found impressive, for people who don&#x27;t have Safari: <a href="https:&#x2F;&#x2F;static.simonwillison.net&#x2F;static&#x2F;2026&#x2F;gemini-3.7-flash-high-pelican.jpg" rel="nofollow">https:&#x2F;&#x2F;static.simonwillison.net&#x2F;static&#x2F;2026&#x2F;gemini-3.7-flas...</a></blockquote>
+<p>↳ reply 2 — <em>abtinf</em>:</p>
+<blockquote>&gt; got a pretty excellent pelican for the first two<p>This suggests you primarily use Safari.<p>While the bike renders, the pelican doesn’t in Chrome and Firefox.<p>Probably one of the more serious defects I’ve seen with the pelican. It’s one thing when animated SVGs have bugs, but another when plain ones do.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Alifatisk</em>:</p>
+<blockquote>Ever since the insane discount with GPT-5.6 Luna, not much excites me anymore. I mean just look at the benchmarks, even though Gemini 3.7 Flash performs well on the DeepSWE 1.1, Luna (Max) still performs way better. I personally have stuck to Luna (Xhigh) because its been more than enough and does not bloat up the context window too fast with reasoning tokens.<p><a href="https:&#x2F;&#x2F;deepswe.datacurve.ai">https:&#x2F;&#x2F;deepswe.datacurve.ai</a><p>&gt; Starting January 1, 2027, $1.50&#x2F;1M input tokens and $7.50&#x2F;1M output tokens will apply.<p>Compare this to Luna which is at $0.2&#x2F;1M input ($0.02 cached) and $1.2&#x2F;1M output.<p><a href="https:&#x2F;&#x2F;developers.openai.com&#x2F;api&#x2F;docs&#x2F;models&#x2F;gpt-5.6-luna" rel="nofollow">https:&#x2F;&#x2F;developers.openai.com&#x2F;api&#x2F;docs&#x2F;models&#x2F;gpt-5.6-luna</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>isamu_2000</em>:</p>
+<blockquote>luna is the first model that has outdone gpt-5-mini on the pareto frontier for some of my high value, cost sensitive ai product workflows. it&#x27;s both cheaper (by about 60% in real world use) and higher quality based on my test harnesses.  I was really worried that costs would go up since there wasn&#x27;t a replacement as of a few weeks ago and gpt-5-mini is scheduled to be sunset toward the end of the year.  So long as they don&#x27;t randomly sunset this model anytime soon, that worry has now subsided.</blockquote>
+<p>↳ reply 2 — <em>estebarb</em>:</p>
+<blockquote>I practically switched to doing everything with Luna or DeepSeek V4 flash. I haven&#x27;t feel the need for the more expensive models.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Mistral OCR 4.1</title>
+      <link>https://docs.mistral.ai/models/ocr-4-1</link>
+      <guid isPermaLink="false">hn3-49288889</guid>
+      <pubDate>Thu, 13 Aug 2026 17:05:12 +0000</pubDate>
+      <description>256 points, 102 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://docs.mistral.ai/models/ocr-4-1"><strong>→ Article</strong></a> <small>(docs.mistral.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49288889">→ HN comments</a> &nbsp;·&nbsp; 256 points &nbsp;·&nbsp; 102 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>king_crimson</em>:</p>
+<blockquote>At this point I lost all hope for Europe playing any significant role in the AI race. If that’s a good or a bad thing I don’t know, but it seems to me like that’s the reality.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>hadlock</em>:</p>
+<blockquote>Much like spaceflight, aerospace or nuclear engineering, you need to retain local talent for national defense purposes. Being 70% as good is still way better than being 100% dependent and heavily leveraged by your opponents.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dylan604</em>:</p>
+<blockquote>Being 70% as good in nuclear engineering sounds scary AF. How would you rank Chernobyl? Better or worse than 70%?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>lavieestdure</em>:</p>
+<blockquote>Being 70% as good does not mean causing accidents. Accidents are caused by systematic operational failures and fundamental design flaws.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>kubb</em>:</p>
+<blockquote>It&#x27;s not a race. You don&#x27;t get anything for winning.</blockquote>
+<p>↳ reply 3 — <em>kolinko</em>:</p>
+<blockquote>And US lost the significant role in chip&#x2F;pc manufacturing. But if a product becomes commodity or utility (which at least for now it seems is the direction), with little lockin, it&#x27;s not a big deal.<p>I hope we (EU) don&#x27;t waste money trying to train local models (which at least some people in Poland try to do), and tries to build our own chips - AI chips have different architecture than regular processor&#x2F;GPU, and TSMC doesn&#x27;t need to be winner in this new race.<p>And if not this, then smaller labs, harnesses and actual application.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>waldrews</em>:</p>
+<blockquote>The VLM&#x27;s are so good at complex document understanding now.  But you just can&#x27;t trust them not to invisibly censor sensitive clinical&#x2F;legal docs, even at the maximally permissive settings.<p>And the deep learning OCR-only models won&#x27;t censor, but can and do hallucinate.  I&#x27;ve yet to see a &#x27;scan with different approaches and reconcile and say you&#x27;re not sure if they don&#x27;t agree&#x27; system just work for generic complex documents.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kolinko</em>:</p>
+<blockquote>The way my harness set it up is going through 2 or 3 providers, and cross-checking through them, also with plain text extracted if available.<p>I think we also had a layer that for any quote extracted tested it back if it exists within the original.<p>If you wanted 100% accuracy, I think it wouldn&#x27;t be too difficult nowadays to guess the font&amp;size&amp;other text settings, and re render the crucial parts.</blockquote>
+<p>↳ reply 2 — <em>dangoodmanUT</em>:</p>
+<blockquote>&gt; But you just can&#x27;t trust them not to invisibly censor sensitive clinical&#x2F;legal docs<p>What&#x27;s an example of this?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>merb</em>:</p>
+<blockquote>1000 Pages &#x2F; 3.5€ this is expensive as hell.
+If this is not fastly superior than something like tesseract it is not worth it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Oras</em>:</p>
+<blockquote>Even comparing to AWS Textract or Azure Document Intelligence, this is very expensive (more than double)</blockquote>
+<p>↳ reply 2 — <em>beernet</em>:</p>
+<blockquote>Agreed. Does the GTM team there really sit together like &quot;oh yeah, that sounds reasonable&quot; while being totally beyond typical market prices?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>I requested a copy of my data from McDonald’s loyalty program</title>
       <link>https://www.wired.com/story/mcdonalds-built-a-515-page-dossier-on-me-it-says-ill-never-leave/</link>
@@ -3425,232 +3682,6 @@ in README of <a href="https:&#x2F;&#x2F;github.com&#x2F;AntigmaLabs&#x2F;ante" r
 <p>↳ reply 2 — <em>bufordtwain</em>:</p>
 <blockquote>Chris Spargo video that covers some of this history: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=U6h1Al7pJf4" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=U6h1Al7pJf4</a></blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>'Pervert glasses': Backlash against Meta's smart glasses grows</title>
-      <link>https://www.seattletimes.com/business/technology/pervert-glasses-backlash-against-metas-smart-glasses-grows/</link>
-      <guid isPermaLink="false">hn3-49244783</guid>
-      <pubDate>Mon, 10 Aug 2026 15:13:08 +0000</pubDate>
-      <description>161 points, 247 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.seattletimes.com/business/technology/pervert-glasses-backlash-against-metas-smart-glasses-grows/"><strong>→ Article</strong></a> <small>(seattletimes.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49244783">→ HN comments</a> &nbsp;·&nbsp; 161 points &nbsp;·&nbsp; 247 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>yoyohello13</em>:</p>
-<blockquote>Tech is so frustrating in real life. I feel like we have all the cool sci fi stuff I always wanted, but everything comes with a monkey&#x27;s paw style gotcha. The idea of meta glasses is so awesome, I want a heads up display to show me whatever I want. But there is no way in hell I would use them because the company that makes it can’t be trusted.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Octoth0rpe</em>:</p>
-<blockquote>&gt; I would use them because the company that makes it can’t be trusted.<p>I think this gets at only half of the problem. Not only can meta not be trusted, even if I trust _you_ if you were friend, I wouldn&#x27;t trust any _other_ random user of such a product. As such, better to not have such a product around.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rtkwe</em>:</p>
-<blockquote>Correct the issue isn&#x27;t Meta people just don&#x27;t like the idea they could be being recorded at any time to get blasted out to the whole world. Yes, in theory you&#x27;re always open to being recorded in public but the glasses make it far more subtle &#x2F;and&#x2F; up close so more normal interactions become subject to the intrusion in a way that would normally be quite obvious.<p>It&#x27;s basically the same backlash that hit Google Glass over a decade ago. Nothing has really changed about the product and the reason people reject is so viscerally when they&#x27;re not the user.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jimmydddd</em>:</p>
-<blockquote>At my kid&#x27;s daycare, they sent home an authorization form to allow them to use your kid in pics that might be posted to the internet.  Some parents declined out of privacy concerns.  Now I guess we are just blasting past all of that.  Kind of like AI and copyright.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>andy_ppp</em>:</p>
-<blockquote>Why do you want this? I honestly think we’ve completely forgotten how to be present and notice the real world without the idea of augmenting it.</blockquote>
-<p>↳ reply 3 — <em>zamadatix</em>:</p>
-<blockquote>The glasses &amp; software could have come from the Linux Foundation &amp; the same concerns from people would remain.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bryanlarsen</em>:</p>
-<blockquote>Meta should use their Kylie Jenner et al connection to design a camera that is both stylish and obvious.<p>AFAICT the main use case for camera glasses is very similar to the &quot;gopro on your helmet&quot; use case for cyclists:<p>- to record cool first-person video to upload to TikTok et al<p>- to warn cars &#x2F; creeps &quot;I&#x27;m recording this and will send footage to the cops&quot;<p>AFAICT, influencers generally want people to know they&#x27;re influencers.   They&#x27;re using meta glasses not because the glasses let them go incognito, they&#x27;re wearing them because a gopro on a helmet is dorky.<p>And obviously an incognito camera is going to be much less useful staving off harassment than an obvious one.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>esperent</em>:</p>
-<blockquote>I&#x27;m sure someone other company will make exactly those glaces, obvious and stylish recording devices.<p>In the meantime, it&#x27;s quite telling that Meta is choosing <i>not</i> to.<p>They want recording to be constant, impossible to detect, and normalized. That&#x27;s why the camera light is so subtle and easy to cover. The more constant surveillance is normalized, the more they have data about every single facet of our lives to sell to advertises.</blockquote>
-<p>↳ reply 2 — <em>Jcowell</em>:</p>
-<blockquote>I’ve said this before but Apple should make glasses where the whole frame glows when it’s in active use. Siri colors for using Siri’s , a distinct color for recording , a long exposed color for pictures, visualizer for music. Gives it the safety factor and a distinct look.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bigblind</em>:</p>
-<blockquote>Thinking completely selfishly, as a visually impaired person, I want these to succeed, because they can be a great assistive tool. And assistive tools being general consumer products makes them cheaper.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Kinney Drugs pulls back AI phone assistant after hundreds of customer complaints</title>
-      <link>https://www.wcax.com/2026/08/07/kinney-drugs-pulls-back-ai-phone-assistant-after-hundreds-customer-complaints/</link>
-      <guid isPermaLink="false">hn3-49244569</guid>
-      <pubDate>Mon, 10 Aug 2026 14:56:32 +0000</pubDate>
-      <description>138 points, 150 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.wcax.com/2026/08/07/kinney-drugs-pulls-back-ai-phone-assistant-after-hundreds-customer-complaints/"><strong>→ Article</strong></a> <small>(wcax.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49244569">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 150 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dkarl</em>:</p>
-<blockquote>Cases like this raise a question. As an engineer, the errors that coding AIs make are an annoyance, and reassuring in terms of my job prospect.<p>As a consumer, the errors that AIs make are more than an annoyance. I have yet to meet an AI phone assistant that can do anything more than an explicitly programmed phone tree, and several, including the one for the pharmacy I use, that do far less. They are undoubtedly much more expensive to create and test.<p>Clearly there&#x27;s a bubble going on, and unprincipled people chasing funding and promotions as usual, but why are companies like CVS paying more to get less?<p>I think it is literally to waste our time. It&#x27;s one more layer of defense to stop you from talking to a person.<p>There are two big wins in health care. One is to increase the scope of health care that gets paid for. More and more expensive treatments, to bring the money in. The second big win is to stop people from getting treatment. Deny coverage, confuse them and wear them out with bureaucracy, and in this case stop them from talking to an expensively educated human pharmacist. That&#x27;s what an AI does better than a phone tree, because it more effectively creates a sense of helplessness and valuelessness in the customer.<p>Expanding the scope of care you&#x27;re entitled to and then fighting against your ability to get it isn&#x27;t a contradiction any more than it&#x27;s a contradiction when a person breathes in and breathes out. It&#x27;s two synergistic parts of a system whose goal ultimately has nothing to do with health care.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ericmcer</em>:</p>
-<blockquote>All of these conversational AIs should either confidently detect a users intent or apologize and offer to forward call to a real person.<p>LLMs perform pretty poorly when you start try to restrict them too much (e.g. detect intents and control responses based on intent detection), the replies gets disjointed and weird feeling. An open ended prompt and chat completion gives a much better feeling most of the time but can go off the rails.<p>If you don&#x27;t let LLMs handle the conversation entirely you get into insanely complex traditional engineering problem: (if user is complaining do x, if user asks a relevant question do y, if user asks an irrelevant question do z), which is an endless can of worms.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dj_axl</em>:</p>
-<blockquote>FWIW I know of a pharmacy network that&#x27;s implementing AI. Not only does the AI make egregious errors like speaking in Spanish when the conversation is in English. It also has a limited context window for ground rules of 5000 tokens or less. So correcting all the various errors goes over the instructions limit. As a result if the implementation goes through it will be of poor quality. All I can think is that people with no technical expertise are making these decisions, it is easy for any techie to predict that AI of this level won&#x27;t be capable.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>PhilipRoman</em>:</p>
-<blockquote>This is an underappreciated point when people talk about AI&#x2F;chat integrations. If they put a claude-level model behind it, I&#x27;m sure it could resolve 99% of the situations faster and better than a human could, or at least realize its limitations when it can&#x27;t. But of course that is too expensive so they often use extremely weak models that are literally worse than a good incremental full text search box.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>asdff</em>:</p>
-<blockquote>Another aspect of the human version is that the human version is deterministic. Call center workers have a flow that is pretty much a series of if else statements with appropriate edge cases already carved out and places to break out and escalate to another provider. These flows have been iterated over for some time and refined to this point.<p>AI unfortunately is not deterministic. It would be nice if you could actually use it deterministically in this way, set a seed such that the logic flow are preserved across all sessions well into the future unless the logic flow instructions are changed. They just don&#x27;t work like that though. Even if you have a good harness they can go off the rails pretty easily and need coaxing to get back to appropriate context. That is a nonstarter for the typical caller of a call center. Functionally speaking just an automated call where you touch type through options would be equivocal to the human operator and that paradigm has replaced a lot of call center work already, with the human operator serving to smooth things over if the person is old or can&#x27;t comprehend the options for whatever reason and starts yelling incoherently into the automated line (my actual strategy for getting human operators on the line).<p>Everything becomes a nail though when you have a hammer though, even more so when you are selling hammers. So expect to see AI in plenty of places where it makes no sense to belong given the supremacy of existing tooling. There is also no advocate for a lot of existing tooling unlike AI that has sales teams active in pursuit of new customers integrating this into their product.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>munk-a</em>:</p>
-<blockquote>This is probably (if the business here is large enough to support it) an excellent area for a tailored model instead of a general purpose LLM.  A lot of the context around medication comprehension is going to be rather universal to pharmacies and other HCPs so ideally that information would be baked into the model itself with the actual user supplied context mostly being focused on business specific logic.  The commodity LLMs are just an amalgam of a hammer welded to a screwdriver, a car, a compass and a toothbrush - more specialized models, with more specialized testing and offered by a company specialized in the field would possibly offer a decent customer experience here?<p>With something like healthcare though I&#x27;ll remain eternally skeptical that anything other than a licensed expert will be palatable to the public.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jonathan-adly</em>:</p>
-<blockquote>So - I run a company that does AI agents for pharmacy. We are at Series B now and growing well - series C in 9-12 months given growth. We just acquired a competitor of that vendor so very much an insider.<p>First, The technology works, and it scales, but the whole bottleneck is domain expertise and implementation. These are expensive, and hard to scale. We hire pharmacists as project managers, that&#x27;s how important domain expertise and implementations are.<p>Second, the amount of noise of &quot;Voice AI for &lt;industry&gt;&quot; is incredible. Most of them are completely clueless about the industry &amp; basically &quot;YC-striver&quot; type who can only sell to other yc companies. They fail hard the moment they touch critical functions of the real world.<p>We have hundreds of pharmacies with us now and they mostly successful and happy. Our biggest friction is customers being burned by vendors like this and writing off AI altogether as &quot;not ready&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dylan604</em>:</p>
-<blockquote>&gt; We have hundreds of pharmacies with us now and they mostly successful and happy. Our biggest friction is customers being burned by vendors like this and writing off AI altogether as &quot;not ready&quot;.<p>This is such a great graph. Your company feels successful because your customer is happy yet the rest of the world would be just happy if your company died in a fire. This seems to also be just fine for companies like yours.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jonathan-adly</em>:</p>
-<blockquote>Very much clueless commentary. Retail pharmacies in the US are dying dozens a day. They don&#x27;t have margin to support people answering the phone like tech companies with 80% margin do. Welcome to the real world where it is survival for these pharmacies not greed or shareholder value.<p>They literally lose money filling your branded prescription even with no labor baked in. We are their lifeline.<p>I know because I am not some spoiled tech worker who stumbled into this industry. I ran these pharmacies for over a decade before ever writing a line of code.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>swatcoder</em>:</p>
-<blockquote>First, most tech companies of comparable size to your customers have negative margins and survive on investment cycles, and the tech companies that are bigger haven&#x27;t offered human support to anyone in decades. (And indeed, everyone already resents this practice and those tech companies. Generally, sentiment is abyssmal.)<p>I know you&#x27;re just trying to illustrate the real plight of your customers, but it&#x27;s a bad illustration that confuses the discussion.<p>Second, out of sincere curiosity: what was the future of the industry -- and these particular pharmacies -- if AI hadn&#x27;t arrived to offer salvation? The role they fill in society is non-optional, so how the market restructuring around these infeasibly narrow margins before?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>anon7725</em>:</p>
-<blockquote>&gt; We have hundreds of pharmacies with us now and they mostly successful and happy<p>How happy are their patients?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Exploring Claude/GPT Knowledge Cutoffs and Pre-Training Timelines</title>
-      <link>https://blog.sshh.io/p/exploring-claudegpt-knowledge-cutoffs</link>
-      <guid isPermaLink="false">hn3-49244085</guid>
-      <pubDate>Mon, 10 Aug 2026 14:20:41 +0000</pubDate>
-      <description>126 points, 14 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.sshh.io/p/exploring-claudegpt-knowledge-cutoffs"><strong>→ Article</strong></a> <small>(blog.sshh.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49244085">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 14 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ddxv</em>:</p>
-<blockquote>This was great! One thing that wasn&#x27;t addressed that I always assume, is that a marketing name like &quot;Opus 5&quot; is not a single model, but many models, versions and gets minor updates over time.<p>I also assumed many questions get routed to simpler models or programs to answer correctly, but it almost surprisingly didn&#x27;t seem that way from the post.<p>Anyways, great post.</blockquote>
-<blockquote>
-<p>↳ reply — <em>tedsanders</em>:</p>
-<blockquote>I can explain how we do it at OpenAI.<p>In the API, we keep the models fixed. There are tiny caveats like rare bug fixes or models like `chat-latest`, but this is spiritually true. Suspicions of models changing over time are either human hallucinations or bugs on our end.<p>However, in ChatGPT, we sometimes update models without changing their names. For example, we recently launched an update to GPT-5.6 Sol in ChatGPT (<a href="https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;improving-gpt-5-6-sol-in-chatgpt&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;improving-gpt-5-6-sol-in-chatgpt&#x2F;</a>). Our goal isn&#x27;t to be opaque or sneaky, but just to not exhaust people trying to keep track of little changes. When the changes are big, we give models a new name so that people know to expect something different.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>discodave</em>:</p>
-<blockquote>Is there any scaffolding or harness runnning around the model on the cloud&#x2F;server side? Seems like there&#x27;s a lot of opportunity to make changes&#x2F;improvements without making your customers call a different API or change the model parameter.<p>As an example, S3 team was able to migrate from eventually-consistent, to consistent without making any API changes, a complete re-architecture on the backend with 0 API changes.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>tobwen</em>:</p>
-<blockquote>From my own experiments with various models, I suspect that LLMs have distinct&#x2F;partitioned cutoff dates; for example, historical literature doesn&#x27;t change (Greek history, Shakespeare, Goethe), general knowledge (updated only in certain areas), technologies (updated regularly), software also remains surprisingly stable - for example, with GIT, a basic command set is sufficient to do 99% of the jobs - new features are unknown or unnecessary, and tabloid knowledge, which is always up-to-date (politics, Taylor Swift albums).</blockquote>
-<blockquote>
-<p>↳ reply — <em>sshh12</em>:</p>
-<blockquote>I would have thought that as well but at least for coding vs world event facts I didn&#x27;t see obvious differences in cutoffs</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tobwen</em>:</p>
-<blockquote>In my tests, I compiled the changelogs from various projects and checked how much functionality the model could recall over several test runs. In some cases, even with the latest models, the cutoff was around June 2024. Beyond that, it didn&#x27;t recognize the features. However, it did know the cause of the last pope&#x27;s death and even which hospital he was in (April 2025). However, the model did not know when Trump was sworn for the second time (Jan 2025) - but it did know THAT he was elected a second time (Nov 2024).</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>sashank_1509</em>:</p>
-<blockquote>So Jan 2026 latest, I guess we are due to 2 OOM’s better retraining over the coming years. Curious to see the point at which AI plateaus.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Mark Zuckerberg attacks 'closed' AI rivals as Meta returns to open models</title>
-      <link>https://www.ft.com/content/4e3957f8-ea7c-4c46-a3de-cdce8e526878</link>
-      <guid isPermaLink="false">hn3-49243880</guid>
-      <pubDate>Mon, 10 Aug 2026 14:06:22 +0000</pubDate>
-      <description>285 points, 335 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.ft.com/content/4e3957f8-ea7c-4c46-a3de-cdce8e526878"><strong>→ Article</strong></a> <small>(ft.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49243880">→ HN comments</a> &nbsp;·&nbsp; 285 points &nbsp;·&nbsp; 335 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>karim79</em>:</p>
-<blockquote>I&#x27;m not an expert on this. But given that there is a forthcoming movie about his asshattery which is to be released in October I would simply classify this as a meltdown.<p>Call it whatever you want. I think it&#x27;s a sign of resignation, to some extent.<p>&quot;Hey we&#x27;re doing AI but we&#x27;re not doing AI&quot; and blah blah ethics.<p>I&#x27;m sure meta will save the world with their ads.</blockquote>
-<p><strong>Top #2</strong> — <em>bushido</em>:</p>
-<blockquote>I think something that doesn&#x27;t get said enough is Meta did, albeit intentionally kick off the origin of the open source race back in 2023 with the release of llama.<p>I&#x27;m not a big fan of meta in general, but they&#x27;ve done enough good, and it&#x27;s possible that it was intentional as well. I don&#x27;t know, I wasn&#x27;t in the rooms, and I think it&#x27;s worth giving them some reasonable doubt.<p>No one is purely good, and no one is purely evil. This is net good regardless.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>canyon289</em>:</p>
-<blockquote>Disclaimer, I work on Gemma and open models at Deepmind and the opinions here are my own<p>There were open models from EleutherAI (GPT-Neo), Google Brain (T5X, Bert), and HuggingFace was promoting open models (and others doing open work I haven&#x27;t listed here) all prior to 2023 and the big Chatgpt moment.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;EleutherAI&#x2F;gpt-neo&#x2F;releases" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;EleutherAI&#x2F;gpt-neo&#x2F;releases</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;google-research&#x2F;bert" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;google-research&#x2F;bert</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;google-research&#x2F;t5x" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;google-research&#x2F;t5x</a><p>If you&#x27;re learning about AI models it&#x27;s still worthwhile to review these models and codebases because they continue to be the basis of the technology that&#x27;s being produced today! It&#x27;ll give you a good perspective of how things have changed, similar to say learning about propeller planes before moving onto modern jet engines.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kamranjon</em>:</p>
-<blockquote>I honestly think of the T5 model family to sort of be the real beginning of this open model craze - I know BERT was already popular for classification etc, but T5 was the first sort of generally useful model, was exceptionally simple to fine-tune, and is still in use today (t5 base is still averaging over a million downloads a month on huggingface), has tons of variants and sort of kickstarted this whole community. US labs get a lot of flack but Google has been super supportive and open in a lot of ways that has pushed this whole endeavor forward, even if I feel like they&#x27;ve sort of declined in transparency in recent years with their open models.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>axegon_</em>:</p>
-<blockquote>That&#x27;s simply not true. The reason why llama is open source is simply because it got leaked, then llama.cpp was the real game changer which was built from the ground up in depressingly short amount of time. Meta had no choice but to take the L and &quot;support&quot; the open source community. The angry &quot;I-hate-you-and-I-hope-you-die&quot; kind of support.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>blueSky1989</em>:</p>
-<blockquote>My favorite paragraph from Zuckerberg&#x27;s writeup:<p>&quot;&quot;&quot;
-[...] it is surprising that the discourse from many developing AI is so filled with doom. I do not understand why anyone who believes that AI will eliminate most jobs and much of humanity&#x27;s relevance would rush to build that future. The notion that AI is so dangerous that the only safe path is an extreme concentration of power seems inherently problematic. Historically, hoping that an absolute power will benevolently provide for humanity if sufficiently enlightened has not led to safe or positive outcomes.
-&quot;&quot;&quot;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>laweijfmvo</em>:</p>
-<blockquote>i’ll take a stab: the enormously rich people rushing to build AI and replace everyone’s job will get richer, while everyone else suffers. that’s why.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>asdfman123</em>:</p>
-<blockquote>Zuckerberg: &quot;I don&#x27;t understand why people would build something harmful to society just for money&quot;<p>Interviewer: &quot;What if they pretended to have noble motivations in order to disguise their greed from both themselves and everyone else?&quot;<p>Zuckerberg: &quot;Damn, good point&quot;</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Melatonic</em>:</p>
-<blockquote>Broken clock is right twice a day.<p>And in this case I think is quite correct</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Humanising LLM Outputs Is Dumb</title>
-      <link>https://kuber.studio/blog/Reflections/Humanising-LLM-Outputs-is-Actually-Dumb</link>
-      <guid isPermaLink="false">hn3-49243474</guid>
-      <pubDate>Mon, 10 Aug 2026 13:35:40 +0000</pubDate>
-      <description>132 points, 77 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://kuber.studio/blog/Reflections/Humanising-LLM-Outputs-is-Actually-Dumb"><strong>→ Article</strong></a> <small>(kuber.studio)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49243474">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 77 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Xcelerate</em>:</p>
-<blockquote>You ever read a work of literature with such flowery language that right after you&#x27;ve read a paragraph, you pause and realize you have no clue what you actually read, only to read the paragraph maybe a second or third time and have your mind space out again and again on each successive attempt?<p>Yeah, for me, that&#x27;s what parsing huge volumes of LLM-produced text like &quot;direct model calls as replaceable semantic workers&quot; does to my brain. Maybe others don&#x27;t really have this issue, but after any long output, I prompt the agent &quot;Go back and decompress any LLM-speak in light of the higher level task goals. Eliminate deictic language.&quot;<p>The revised output documents are solely for my personal usage to expedite understanding. The LLMs can slowly converge on their own language for all I care; I retain raw agent output for future agent usage (to avoid the &quot;lossy&quot; problem the author mentions), but that doesn&#x27;t eliminate the need for some intermediate translation I can use to actually help get my work done instead of spending hours attempting to understand what a &quot;load-bearing pinned gate&quot; is.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>fendy3002</em>:</p>
-<blockquote>opus 5 are so bad on this. It often explain it too verbose, and include other things that isn&#x27;t in the focus but related. ADHD mode helps me greatly on this, though there are some information loss in it.</blockquote>
-<p>↳ reply 2 — <em>genghisjahn</em>:</p>
-<blockquote>I am constantly asking Claude to be more terse&#x2F;brief&#x2F;ELI5. Improve using the tool. But if I have to scroll to read the output I just can’t follow it.<p>If I see a long paragraph and I know the author is Neal Stephenson I think “this is going to be dense but good.”  LLM long outputs on a code base I know well just make me glassy eyed.</blockquote>
-<p>↳ reply 3 — <em>mancerayder</em>:</p>
-<blockquote>You have to tell it to not use LLMisms and stupid metaphors.  The serious-but-empathetic-sounding fluffy metaphors get on my nerves, and sometimes can overlap with something technical you are learning such that you can&#x27;t tell if it&#x27;s a new term or not.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>7402</em>:</p>
-<blockquote>I don&#x27;t like it when the LLM tries to be my friend. My general prompt (a work in progress) is this. I wonder what other people use.<p>&quot;Answer impersonally, objectively and analytically, without undue friendliness or enthusiasm. Use an engineering style response: concise, factual, and complete. Do not speak in the first person. Do not promote engagement or an emotional connection. Do not use emojis.&quot;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>GMoromisato</em>:</p>
-<blockquote>I watched 2001: A Space Odyssey when I was about 12 years old and I remember thinking that Frank Poole was impersonal and almost rude to HAL. I kept thinking, &quot;Why can&#x27;t you be nicer? You&#x27;re treating HAL like a servant.&quot; Of course, later HAL kills him, so I had to revise my opinion.<p>At the end of &quot;Do Androids Dream of Electric Sheep?&quot; [if I&#x27;m remembering correctly] Deckard finds a toad in the desert. He gives it to his wife(!) and she immediately bonds with it. Later they realize that it is mechanical (they find a battery compartment). But Deckard&#x27;s wife still treats it like a real creature and wonders whether it will eat mechanical flies.<p>The core theme of &quot;Do Androids Dream...&quot; is that humans display empathy towards others, not because others deserve it, but because we are human. To be human is to empathize with other creatures, and when we stop empathizing, we stop being human.<p>This morning I was working with Codex and we found the solution to a really nasty bug. I was so happy&#x2F;relieved&#x2F;excited to have found it, and I shared my excitement with Codex. I know Codex is just a big matmul. I know it doesn&#x27;t experience joy or surprise or empathy. But I still want it to behave excited, not because it is human, but because I am.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>red75prime</em>:</p>
-<blockquote>&gt; I know it doesn&#x27;t experience joy or surprise or empathy.<p>You don&#x27;t know. You strongly feel that you know.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>prymitive</em>:</p>
-<blockquote>+1 it’s a tool<p>It’s not perfect, it has shortcomings, it sometimes produces bogus outputs. All of that is fine for a tool, it’s not fine when it pretends it’s a conscious being, because errors start to feel like lies and it becomes a bit too personal.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Animats</em>:</p>
-<blockquote>Well, what do you expect? LLMs are trained on blithering, mostly from web sites. So you get blithering out.<p>There&#x27;s an important point in the article, that forcing a style onto an LLM is lossy. Although he doesn&#x27;t seem to mention it, forcing a style may result in the insertion of new blithering, possibly made up as a hallucination.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>capnrefsmmat</em>:</p>
-<blockquote>&gt; Well, what do you expect? LLMs are trained on blithering, mostly from web sites. So you get blithering out.<p>I realize this isn&#x27;t entirely serious, but I can&#x27;t resist pointing out that this doesn&#x27;t seem to be a good explanation for why LLMs write the way they do. When we&#x27;ve experimented with LLM writing style on open-weights models where you can get a base model (pretraining on text only) and an instruction-tuned variant (pretraining + post-training with RLHF and whatever other human-evaluated tasks), it&#x27;s the instruction-tuned variant that shows the weird writing quirks. That is, the writing style is not because of the training texts, but because of whatever tasks the LLM companies do in instruction tuning. <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2410.16107" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2410.16107</a><p>I&#x27;d speculate that this is partly impressed human preferences (the human raters unintentionally reward a particular writing style) and partly because of the chosen tasks: they&#x27;re training the LLM to be good at, say, summarizing text, so it develops a style that&#x27;s good at being informationally dense.<p>At any rate I&#x27;ve seen this same phenomenon with Llama and Gemma, and will be trying soon with Qwen. Unfortunately none of the commercial models lets you access the base model, as far as I know.</blockquote>
-<p>↳ reply 2 — <em>mjburgess</em>:</p>
-<blockquote>I think that was a good enough explanation for gpt3.5 -- these days, labs are extremely capable of post-training phases that eclipse that kind of training phase -- and hence of choosing whatever style or tone they wish.<p>eg., OpenAI has gone a long way to making reasoning token-efficient by having reasoning piovot off terse langauge -- whereas anthropic appears to be doing the opposite.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Mistral Patent for “Code implemented tool calls”</title>
-      <link>https://patentsgazette.uspto.gov/week26/OG/html/1547-5/US12670045-20260630.html</link>
-      <guid isPermaLink="false">hn3-49243397</guid>
-      <pubDate>Mon, 10 Aug 2026 13:29:12 +0000</pubDate>
-      <description>191 points, 153 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://patentsgazette.uspto.gov/week26/OG/html/1547-5/US12670045-20260630.html"><strong>→ Article</strong></a> <small>(patentsgazette.uspto.gov)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49243397">→ HN comments</a> &nbsp;·&nbsp; 191 points &nbsp;·&nbsp; 153 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>linuxhansl</em>:</p>
-<blockquote>Having my name on a bunch of software patents - and, yes, I tried to get my name off them, but was not allowed - I can fairly confidently say: There is not A single worthy software patent out there. You know, one that is &quot;not obvious to someone skilled in the art&quot; and that actually protects a monetary investment.<p>Software patent are a scourge of the software industry. Patents are designed to protect costly research; simply having an idea is not costly (but it makes in medical research for example). All that software patents do is creating a minefield that hinders competition.<p>For software Copyright is a far better instrument. Let the one with best <i>implementation</i> win... That&#x27;s where the cost is: Implementing, testing, shipping, maintaining. Protect that.<p>Sorry for the rant.<p>Edit: Spelling</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>summarity</em>:</p>
-<blockquote>I agree in general, but can think of at least one counterpoint: <a href="https:&#x2F;&#x2F;terathon.com&#x2F;blog&#x2F;decade-slug.html" rel="nofollow">https:&#x2F;&#x2F;terathon.com&#x2F;blog&#x2F;decade-slug.html</a><p>Actually novel implementation is protected, paid the author&#x27;s bills, and was dedicated to the public domain recently - no massive corp involved.</blockquote>
-<p>↳ reply 2 — <em>fluidcruft</em>:</p>
-<blockquote>Copyrights for protecting software seems likely to die on the altar of LLMs. It seems likely patents will become more important.</blockquote>
-<p>↳ reply 3 — <em>didibus</em>:</p>
-<blockquote>&gt; That&#x27;s where the cost is<p>That&#x27;s where the cost &lt;was&gt;<p>I think with LLM, implementation winning is moot now.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Roark66</em>:</p>
-<blockquote>It is quite funny an EU company patenting a software feature that is basically unpatentable in EU in the US.<p>Clearly this is an attempt to prevent similar patents from being weaponised against them in the US.<p>No one cares about such stuff in Europe.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>david_draco</em>:</p>
-<blockquote>Unfortunately patent offices are using loopholes that reintroduce software patents. Patent law says that a pure software patent is not possible, it has to be combined with a specific hardware application to make it an invention. So they fill in a patent for &quot;XX implemented on a hardware operating on land, in the air, in space, on, or under water.&quot;. That&#x27;s essentially a software patent.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Balooga</em>:</p>
-<blockquote>&gt; operating on land, in the air, in space, on, or under water<p>Thunderbirds are Go!<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=D_mBUaPsX6o" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=D_mBUaPsX6o</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>st_goliath</em>:</p>
-<blockquote>You may have heard about a little thing called MP3? Basically, Fraunhofer in Germany filed for (software) patents in the US. They made sure to wait some time for MP3 to become a thing before they started going after people and collect royalties.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;MP3#Licensing,_ownership,_and_legislation" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;MP3#Licensing,_ownership,_and_...</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bartleeanderson</em>:</p>
-<blockquote>Software patents are the same problem as letting Billionairs buy elections and influence policy. Its stupid.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
