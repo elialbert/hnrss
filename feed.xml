@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 15 Aug 2026 12:50:54 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 13:35:38 +0000</lastBuildDate>
     <item>
       <title>The other Sean Byrne doesn't exist</title>
       <link>https://conic.al/writing/the-other-sean-byrne-doesnt-exist/</link>
@@ -103,6 +103,56 @@
 <blockquote>
 <p>↳ reply — <em>jason_s</em>:</p>
 <blockquote>&gt;by implying that situational awareness directly caused losses at JS.<p>Correlation is not causation.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Stop sending me huge PRs; a rant</title>
+      <link>https://getsmall.xyz/post/cmstjfl9l000if70ljmpzr4va</link>
+      <guid isPermaLink="false">hn3-49305558</guid>
+      <pubDate>Fri, 14 Aug 2026 22:48:15 +0000</pubDate>
+      <description>127 points, 91 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://getsmall.xyz/post/cmstjfl9l000if70ljmpzr4va"><strong>→ Article</strong></a> <small>(getsmall.xyz)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49305558">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 91 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>danpalmer</em>:</p>
+<blockquote>In my experience the models perform substantially worse if asked to create small PRs or commits. They lack the ability to sequence work and understand dependencies efficiently enough to manage it – it&#x27;s not that they can&#x27;t do small PRs, it&#x27;s that doing them takes vastly more resources which then hits context limits etc. And if you want to then go back and edit a stack of commits or PRs, rebasing work into the middle, that&#x27;s even more. I don&#x27;t think any of this scales linearly in the amount of code or number of commits.<p>This is all in addition to the fact that the models are generally poor at storytelling, because that requires a theory of mind of the person you&#x27;re communicating with. Authoring for review is storytelling, it&#x27;s making changes in such a way as to build confidence in the reviewer. I believe current LLMs are still years away from this.<p>In my opinion, if you can&#x27;t do these things, you&#x27;re just cosplaying software engineering. Vibe coding has its uses, as does LLM programming, I do a lot of this! But we&#x27;re kidding ourselves and dropping our standards dangerously low if we think that this is software engineering.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ulrikrasmussen</em>:</p>
+<blockquote>I have had some success with asking the LLM to rewrite the commit history after the feature was written. I often have a good idea of a good conceptual split, and the LLM has no problem doing the soul-crushing work of manually pulling out individual files or hunks into a sequence of commits and making sure each builds.<p>I <i>need</i> to do this before I can even review the code myself, and I review everything before I send it to my colleagues for their review.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ldng</em>:</p>
+<blockquote>But the thin is that de dev don&#x27;t review the generated code ... because, surely, that&#x27;s the reviewer&#x27;s job ... right ? &#x2F;s</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>singpolyma3</em>:</p>
+<blockquote>A human should be able to take the work and break it up properly during rework though.</blockquote>
+<p>↳ reply 3 — <em>garfij</em>:</p>
+<blockquote>I have a completely different experience than you, but I have also invested quite a bit of effort into the issue. I will agree that with simple prompting and without reminders, models do not do this sort of thing well or consistently.  On the other hand I have two skills that I use regularly `&#x2F;atomic-commits` and `&#x2F;split-branch` that do exactly what you&#x27;re describing. It has been an exercise in taking the time to put to words the concepts you&#x27;re describing, which has been very interesting because it&#x27;s forced me to put to words many thoughts on the subject I had never formalized, and you&#x27;re correct, there&#x27;s a lot of theory of mind and considering of other people&#x27;s perspectives that go into it.<p>* Does the series of commits tell a cohesive story of the feature, each commit building on the last one? It&#x27;s surprisingly easy to have an ordering of commits where each one builds, but the ordering is nonsense.
+* Is each commit scoped to the right size? Not too big of course, describes a single idea or concept. That same rule can also lead to commits that are comically small or separates two changes that can obviously be argued are &quot;two different things&quot; but that make more sense when seen together as a single conceptual change. 
+* When is it appropriate to split up disparate changes within a single file, interwoven together, and how to correctly orchestrate that with git commands.<p>I care _deeply_ about commit hygiene and presentation because it&#x27;s a foundation for making code review a smooth process and in the Before Times™ I would spend a _substantial_ amount of time reworking my own commits to ensure they were up to my own standards. I can count on two hands the number of commits I&#x27;ve authored on my own in the last year, and the process is immediately replicated and standardized across our entire engineering organization.<p>It is perfect 100% of the time? No, every once in a while I&#x27;ll hit some weird case and need to issue some corrective instructions, or more likely ask the model why things are like that to see if there&#x27;s tuning we need to do.<p>Commits are effectively like automated code-formatting now. This isn&#x27;t years in the future, this is already _old news_.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>gensym</em>:</p>
+<blockquote>&gt; why did you put it up for a human review at all then?<p>This seems to be the crux of the issue.<p>I&#x27;m guessing the most of the time, the answer is &quot;because that&#x27;s a mandatory gate to getting these changes into production&quot;. If the PR author doesn&#x27;t see the value in review, it&#x27;s going to be hard to convince them to write reviewable PRs.<p>If they&#x27;re <i>actually</i> looking for human feedback, telling them how to submit PRs in a way that&#x27;s amenable to human feedback is going to be a lot more successful.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lokar</em>:</p>
+<blockquote>I would back up.  If leadership is not committed to real reviews, it’s not your job to make them happen. Don’t try to fight an impossible fight no one cares about.<p>Personally, I would leave.  But that’s not always an option for everyone.</blockquote>
+<p>↳ reply 2 — <em>skydhash</em>:</p>
+<blockquote>Pretty much this. In OSS, review is mostly about convincing the others that your change is good and useful enough to merge. In corporate, it&#x27;s seen as a blocker to change the ticket status to done. The vibe of the latter is mostly &quot;it&#x27;s working on my computer, approve it so that we can reach the quota for the sprint&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sackfield</em>:</p>
+<blockquote>It is reasonable to break PRs up into smaller chunks, but there is a limit. There are frequently reviewers who get very zealous about this and insist on breaking things up beyond what is reasonable, for example if breaking it up would destroy the intent, or if the &quot;thousand line&quot; PR just contains lots of tests (AI&#x27;s love to write tests, and I love that they do that). Some tasks are just long, and its important to contextualise this when reviewing.<p>In the end though, these reviewers will die off like the dinosaurs. The article actually states that they find the idea of reviewing a large PR with AI bad because &quot;it wastes your tokens reviewing a reingesting code that was already made by an AI&quot;. This doesn&#x27;t make a whole lot of sense, AI will frequently reingest AI generated content, evals are a great example of this.<p>Just after this the article touches on the real issue at play: &quot;okay, great, why did you put it up for a human review at all then?&quot;. Indeed, this is a good question to ask, why do we put it up for human review? I would wager that they don&#x27;t actually want human feedback, a human has placed themselves as a gatekeeper and thus must be placated, and probably chooses the most inefficient way to keep that gate slowing everyone down who has kept up with the technology of our times.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>throwaway2037</em>:</p>
+<blockquote>I like this comment.  I also have a lot of experience with lazy (my accusation!) reviewers who ask me to split a PR into smaller PRs.  At some jobs, I felt like it was a strategy to sabotage my work (slow me down).<p>In my experience, the best was to ensure your code will be approved (ok, maybe some <i>minor</i> tweaks) is to assign a code reviewer <i>before</i> you start writing code.  You (the coder) performs some quick analysis, then formulates a plan for how to fix the bug or implement a change or new feature.  You verbally discuss this plan using screenshare (or side-by-side in-person) so both of you can see the code that will be changed.  The code reviewer needs to verbally approve your plan.  This way, you don&#x27;t spend a lot of time writing code <i>and</i> tests, only to have the reviewer rejected it very quickly: &quot;You should have done it this way instead.&quot;  (Please note: That process that I described is <i>intentionally</i> informal, casual, and unrigid.  Why?  This grants permission for the coder and reviewer to decide the plan as intelligent adults, not as &quot;Children of JIRA&quot; [hint: unnecessary formality].)<p>Another thing that I do: After I write the code, but before I write tests, I ask the reviewer to review, but <i>not</i> approve.  After looking at their comments, I quickly add another commit to the PR to address their concerns, then start work on the tests.  When the reviewer does the final review, it is <i>very</i> quick, like 10% of the initial review.  All of this really helps to reduce coder&#x2F;reviewer friction, and nearly eliminate &quot;Tyranny of the Reviewer&quot;.  One last gripe about code reviewing: It hardly makes sense for someone much more junior than the coder to do the review.  I have seen this too many times.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mulmboy</em>:</p>
+<blockquote>Yes this. As an author I see it as my responsibility to socialise my work early and get buy in from reviewers.<p>The more I think about PR review, which I&#x27;ve been doing a lot lately thanks to AI, the more I see it as social in nature. Built on trust and reputation. It&#x27;s no wonder OSS is tending to ban AI contributions - they don&#x27;t have trust and reputation to fall back on as a heuristic.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>squigz</em>:</p>
+<blockquote>&quot;There&#x27;s no trust or reputation in OSS&quot; is a pretty interesting take.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Defletter</em>:</p>
+<blockquote>&gt; why do we put it up for human review? I would wager that [...] a human has placed themselves as a gatekeeper<p>Well, yes, presumably because the maintainers have an obligation to their users (or whoever else they answer to), so I doubt they&#x27;re overly willing to relegate themselves to being a rubber stamp for whatever some LLM hallucinates as looking good to it.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3710,22 +3760,6 @@ without being licensed by the New York State Gaming Commission&quot;</blockquote
 <blockquote>To me what matters is being able to verify human authorship at a glance. It used to be that when you saw a work of visual art you were automatically 100% sure that someone had to have spent a great deal of effort producing that, but image models took it away. This is the same situation but with game environments.</blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Compression is prediction</title>
-      <link>https://ngrok.com/blog/compression-is-prediction</link>
-      <guid isPermaLink="false">hn3-49263497</guid>
-      <pubDate>Tue, 11 Aug 2026 19:49:44 +0000</pubDate>
-      <description>377 points, 145 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ngrok.com/blog/compression-is-prediction"><strong>→ Article</strong></a> <small>(ngrok.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49263497">→ HN comments</a> &nbsp;·&nbsp; 377 points &nbsp;·&nbsp; 145 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>pizza</em>:</p>
-<blockquote>Compression is just counting. Probability, also, pretty much, just counting. For these reasons I think the role of information theory in describing the process of the development of reasoning and the gain of understanding has been overstated.</blockquote>
-<p><strong>Top #2</strong> — <em>Lerc</em>:</p>
-<blockquote>Prediction is compression, but I am not sure if it is true the other way around.<p>It&#x27;s obvious that an accurate predictor enables encoding only the data that the predictor gets wrong.<p>But a compressor can encode patterns that defy prediction by looking at the data as a whole.  It doesn&#x27;t have to look at everything in sequence as it arrives.<p>Applying transformations prior to entropy encoding often isn&#x27;t just &#x27;rearranging into an easier to compresss format&#x27; the transformation can be doing the job of peeking into the future.  That makes the encoding a whole lot easier,  but it is much harder to call it prediction.</blockquote>
-<p><strong>Top #3</strong> — <em>woliveirajr</em>:</p>
-<blockquote>There is Compression done by Prediction by partial matching [0]<p>There is the Kolmogorov Complexity [1], Normalized Information Distance [2] and Normalized compression distance [3] that correlates those.<p>Finally, there&#x27;s the Pre-Big Bang Informational Compression and the Delayed Release of Antimatter [4]<p>All big {rabbit&#x2F;black} holes to lose some time, if you have any.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Prediction_by_partial_matching" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Prediction_by_partial_matching</a><p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kolmogorov_complexity" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kolmogorov_complexity</a><p>[2] <a href="https:&#x2F;&#x2F;homepages.cwi.nl&#x2F;~paulv&#x2F;papers&#x2F;chapter08.pdf" rel="nofollow">https:&#x2F;&#x2F;homepages.cwi.nl&#x2F;~paulv&#x2F;papers&#x2F;chapter08.pdf</a><p>[3] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Normalized_compression_distance" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Normalized_compression_distanc...</a><p>[4] <a href="https:&#x2F;&#x2F;philarchive.org&#x2F;rec&#x2F;GREPBI" rel="nofollow">https:&#x2F;&#x2F;philarchive.org&#x2F;rec&#x2F;GREPBI</a></blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
