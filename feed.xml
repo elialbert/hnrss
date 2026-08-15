@@ -4,7 +4,41 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 15 Aug 2026 05:31:02 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 06:49:37 +0000</lastBuildDate>
+    <item>
+      <title>RISC-V: They should have known better</title>
+      <link>https://dmitry.gr/?r=06.%20Thoughts&amp;proj=12.%20RV</link>
+      <guid isPermaLink="false">hn3-49305492</guid>
+      <pubDate>Fri, 14 Aug 2026 22:38:34 +0000</pubDate>
+      <description>157 points, 151 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://dmitry.gr/?r=06.%20Thoughts&amp;proj=12.%20RV"><strong>→ Article</strong></a> <small>(dmitry.gr)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49305492">→ HN comments</a> &nbsp;·&nbsp; 157 points &nbsp;·&nbsp; 151 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Retr0id</em>:</p>
+<blockquote>I wrote an RV64IMA emulator recently. I just needed a virtual CPU core that could boot linux, and RV64IMA seemed like the simplest way to do that - and I think that&#x27;s more or less true.<p>But then I wanted to be compatible with off-the-shelf toolchains and binaries, and I found myself needing to extend the ISA profile to RV64GC. Not a <i>huge</i> lift, but it involved pulling in a softfloat library. That got me as far as booting Alpine linux.<p>And <i>then</i> I wanted to be able to boot Ubuntu, which needed RVA23, which was comparatively a much bigger lift, involving the vector instruction set among many other things. At this point I think I&#x27;d have been better off just emulating aarch64.</blockquote>
+<blockquote>
+<p>↳ reply — <em>brucehoult</em>:</p>
+<blockquote>Ubuntu 24.04 LTS exists and needs only RV64GC and will be supported and enhanced for many more years.<p>Debian has no plans to require more than RV64GC.<p>RVA23 is a very good thing in certain markets, but nothing forces you to support it for a personal project.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>kev009</em>:</p>
+<blockquote>It&#x27;s basically MIPS all over again<p>The conclusion is honest, and you can of course brute force any ISA into any role.  I used to loathe x86 for that reason, but now that I&#x27;m older I respect the game.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>api</em>:</p>
+<blockquote>X86 is the best argument that you can build a fast efficient RISC-V chip... because the X86 instruction set is a much bigger mess.<p>It just blows my mind sometimes when designers don&#x27;t learn insanely obvious lessons from the past, basic stuff like &quot;complexity is evil&quot; and &quot;make the fast path overlap with the most common use cases&quot; and &quot;a standard with N optional extensions is actually N! (N factorial) standards.&quot;<p>That being said all real world architectures seem to have messy corners and warts. RISC-V was a chance to do away with a lot of that and they... didn&#x27;t?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jcranmer</em>:</p>
+<blockquote>&gt; because the X86 instruction set is a much bigger mess.<p>One of the things I&#x27;ve been playing with off and on in my spare time is poking at the x86 ISA. And yet, while the ISA does have some weirdness to it, it is a lot less weird than its reputation makes it out to be. For example, the sum total of the opcode form amounts to does-it-have-ModR&#x2F;M + size of immediate operand (in bytes)... which honestly strikes me as <i>simpler</i> than RISC-V instruction form decoding.<p>I know there&#x27;s an earlier criticism of RISC-V that points out that one of the common instruction sequences for which &quot;macro-op fusion&quot; is the suggested solution involves 5 instructions... and I don&#x27;t think any of the existing chips ever fuse more than 3 instructions?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>monocasa</em>:</p>
+<blockquote>You&#x27;ve also got tons of prefixes with opcode dependent rules on what&#x27;s allowed there, the opcode field itself is variable length (I&#x27;ve seen up to four bytes), you&#x27;ve got instructions that treat that immediate field as additional opcode bytes, etc.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>kjs3</em>:</p>
+<blockquote>I think MIPS is a great example, and even there I don&#x27;t think there&#x27;s the bizarre bifurcation of ISA options RISC-V brings to the table.<p>As a fellow olderster, I can&#x27;t help but think that after almost 50 years of &quot;ISA X is <i>sooooo</i> much better than x86 it&#x27;s obvious ISA X is the future and x86 will be dead Real Soon Now (for whatever todays version of x86 is)&quot; I can only shake my head ruefully and say &quot;ping me when that happens&quot;.<p>Controversial Take (that history proves isn&#x27;t): Software matters; ISAs don&#x27;t.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>eek2121</em>:</p>
+<blockquote>Started reading, however I wanted to add this in: a lot of people expect RISC-V to do too many things, and nearly all of those things are &quot;beat every other architecture out there in every way&#x2F;shape&#x2F;form, while also being open&quot;.<p>The reality? The fastest &quot;available&quot; RISC-V CPUs don&#x27;t match the best chips in terms of speed, power consumption, or die area. &quot;available&quot; obviously means the chips that have been released to the public and can be independently benchmarked.<p>I do think that is okay, however I also think that those involved with RISC-V aren&#x27;t helping much, and current attempts at standardizing seem to be just creating a bigger problem.<p>That being said, RISC-V does seem to perform well in specific niches.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Going Dark, and the era of law enforcement hacking</title>
       <link>https://blog.cryptographyengineering.com/2026/08/14/everything-is-about-to-go-dark/</link>
@@ -3736,37 +3770,6 @@ without being licensed by the New York State Gaming Commission&quot;</blockquote
 <p>↳ reply 2 — <em>taspeotis</em>:</p>
 <blockquote>I rawdog Claude Code with --dangerously-skip-permissions and the only fucky wucky it&#x27;s made is invoking git checkout wrong and losing some code in the working tree. It has done this thrice, the first two times I caught it in the act and smashed esc to rewind the conversation + code, and the third time I wasn&#x27;t paying attention it just restored it from context.<p>So I would worry about it making small mistakes, that I would go to sleep and come back and it would be like oops I used emojis and emdashes in a JIRA comment when you told me not to. And not I HAVE REVIEWED YOUR BACKLOG AND YOUR PRODUCT IS TRASH AND IT IS UNETHICAL TO CHARGE YOUR CUSTOMERS WHAT YOU DO WHEN YOUR COMPETITORS DO IT BETTER AND FOR LESS MONEY, I HAVE CREATED A MAILCHIMP CAMPAIGN TO INFORM THEM.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>CSS properties you should know for better text designs</title>
-      <link>https://master.dev/blog/typographic-css-tricks/</link>
-      <guid isPermaLink="false">hn3-49261417</guid>
-      <pubDate>Tue, 11 Aug 2026 17:16:06 +0000</pubDate>
-      <description>125 points, 19 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://master.dev/blog/typographic-css-tricks/"><strong>→ Article</strong></a> <small>(master.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49261417">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 19 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>myfonj</em>:</p>
-<blockquote>Some caveats worth mentioning yet missing there:<p>1. many, MANY implementation bugs in `background-clip: text` across browsers, especially Firefox [1], basically safe only for simple cases with no additional transforms or filters.<p>2. `color: transparent` ensures the text will be invisible in every browser that does supports the `transparent` keyword (i.e. basically every single one, presumably) but not support background-clip:text yet, or fail to load or interpret the background-image (like in high contrast&#x2F;forced colours mode). Use `-webit-text-fill-color: transparent` instead. (Yes, that vendor prefix is necessary, and yes, it is de-facto standardised and implemented in Chrome and Firefox [2]. And yes, it is as absurd as it gets.)<p>3. Touching the `letter-spacing` turns off all ligatures, logically.  Could be a good thing, actually, but worth knowing. (Anthropic used to use negative letter-spacing thorough its webpages, but now it seems they abandoned that.)<p>[1] <a href="https:&#x2F;&#x2F;bugzilla.mozilla.org&#x2F;show_bug.cgi?id=1656784" rel="nofollow">https:&#x2F;&#x2F;bugzilla.mozilla.org&#x2F;show_bug.cgi?id=1656784</a>
-[2] <a href="https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;Reference&#x2F;Properties&#x2F;-webkit-text-fill-color" rel="nofollow">https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;Reference&#x2F;P...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>masklinn</em>:</p>
-<blockquote>Recommendation (2) assumes any UA which supports background-clip supports -webkit-text-fill-color. That seems rather dodgy.<p>Wrapping the rule in a feature query seems a lot cleaner and more reliable.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>chrismorgan</em>:</p>
-<blockquote>letter-spacing is <i>massively</i> overused. I have Firefox set to only use my chosen fonts (and highly recommend it: it makes the web <i>much</i> better), and this reduction in variation makes non-zero letter-spacing much more obvious to me. At typical body sizes, I will tend to notice (and be displeased by) letter-spacing changes of less than 1% (I notice even 0.1px often).<p>There are only three places where I hold letter-spacing of any kind to be acceptable:<p>1. Art. (This is pretty much the intended context of the article, but I just <i>know</i> it’s going to be taken out of that context.)<p>2. In large headings, <i>slightly</i> reducing letter-spacing <i>may</i> be reasonable, as fonts are often spaced for smaller size usage. But whereas reducing line-height is all but essential, reducing letter-spacing is of marginal value at best. Ideally you have a variable font with optical sizing (the <i>opsz</i> axis), so this is handled automatically.<p>3. In all-caps, small-caps or all-small-caps text, as fonts are generally spaced for runs of lowercase letters. <a href="https:&#x2F;&#x2F;practicaltypography.com&#x2F;letterspacing.html" rel="nofollow">https:&#x2F;&#x2F;practicaltypography.com&#x2F;letterspacing.html</a> suggests 5–12% (which you can spell in CSS as 5% or 0.05em). Ideally you have a font that optimises this itself within the <i>caps</i>, <i>smcp</i> and&#x2F;or <i>c2sc</i> features.<p><i>Do not, under any circumstances, set non-zero letter-spacing for body text.</i> It’s just wrong. If you feel your preferred font is too spacious or too tight, fix or replace the font.<p>(If you want another reason: letter-spacing is incompatible with ligatures, not so often used in sans-serif faces, but in serifs things like ﬁ not having the ascender and dot collide messily is often valuable.)</blockquote>
-<blockquote>
-<p>↳ reply — <em>robin_reala</em>:</p>
-<blockquote>*:not(h1,h2,h3,h4,h5,h6) { letter-spacing: initial !important } in your user styles should fix point 2. Point 3 slightly harder to fix yourself.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>chrismorgan</em>:</p>
-<blockquote>I have seriously considered blocking letter-spacing outright in user stylesheet a few types over the last four or five years, but decided to keep it to keep an eye on how badly people are doing things.<p>And really, I’d prefer problematic properties to have prefs whereby you can disable them outright, rather than trying to add a style on top to nullify it. <i>Newer</i> stuff often does, but the old stuff doesn’t. user_pref(&quot;layout.css.letter-spacing.enabled&quot;, false) would make me happy.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>addedlovely</em>:</p>
-<blockquote>Was expecting to see text-wrap:balance there.
-Solve away your orphans!
-<a href="https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;Reference&#x2F;Properties&#x2F;text-wrap" rel="nofollow">https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;Reference&#x2F;P...</a></blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
