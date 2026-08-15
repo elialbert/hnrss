@@ -4,7 +4,61 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 15 Aug 2026 18:38:12 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2026 19:26:48 +0000</lastBuildDate>
+    <item>
+      <title>Auto-research with codex: How I achieved a 232x Faster Kernel</title>
+      <link>https://sankalp.bearblog.dev/autoresearch/</link>
+      <guid isPermaLink="false">hn3-49309549</guid>
+      <pubDate>Sat, 15 Aug 2026 11:00:02 +0000</pubDate>
+      <description>300 points, 79 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://sankalp.bearblog.dev/autoresearch/"><strong>→ Article</strong></a> <small>(sankalp.bearblog.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49309549">→ HN comments</a> &nbsp;·&nbsp; 300 points &nbsp;·&nbsp; 79 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Almondsetat</em>:</p>
+<blockquote>In the last couple of days I wanted to try out the new definitive DeepSeek v4 releases. I gave it the repository of a semi-abandoned video compression codec and I told it to perform the usual benchmark -&gt; profile -&gt; verify -&gt; research -&gt; improve loop. I specifically chose this codec because the authors include a verifier for the bitstream to make sure you don&#x27;t break stuff if you want to try your own implementation. I gave the agents access to the compiler&#x27;s profiler and also Intel&#x27;s VTune, which has fantastic output. In a couple of hours the LLM generated SSE and AVX implementations of the compression and decompression algorithms that almost doubled performance with a single core. Then I asked it to create a CUDA implementation using NVIDIA&#x27;s NSIGHT profiler as a guide and it also started doing some good work.<p>Personally, I believe that LLMs should be treated like an advanced version of Prolog or linear programming: you give the constraints, you have a way of verifying correctness, and you give it a clear goal. If the LLM can verify itself and course-correct you can basically leave it on autopilot</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>poizan42</em>:</p>
+<blockquote>I have used Opus 5 and some Fable 5 to finally get realtime transcoding of 4K 10-bit HEVC (to 1080p or smaller SDR AVC) working on a Raspberry Pi 4. It was very good at writing optimized NEON kernels. the Argon HEVC hardware decoder outputs SAND30 which is a tiled format that is annoying to work with and not really supported by anything else, the big performance issue has been with converting and scaling it, but as it turned out a lot of it was really with just moving memory around, so by fusing multiple steps into a single kernel it became fast enough. Experimenting with writing the NEON kernels for the different combinations would have taken forever by hand.<p>I do wonder if auto-research would have reached something similar, it did take a significant amount of steering from me to get it to the point where it was working realtime.<p>For anyone interested the ffmpeg is at <a href="https:&#x2F;&#x2F;github.com&#x2F;poizan42&#x2F;jellyfin-rpi-ffmpeg" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;poizan42&#x2F;jellyfin-rpi-ffmpeg</a> and a shim for using it with stock jellyfin at <a href="https:&#x2F;&#x2F;github.com&#x2F;poizan42&#x2F;jellyfin-rpi-ffmpeg-shim" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;poizan42&#x2F;jellyfin-rpi-ffmpeg-shim</a></blockquote>
+<p>↳ reply 2 — <em>eterm</em>:</p>
+<blockquote>I did something similar recently with Google&#x27;s C# protobuf library. I had spotted I was getting CPU bound rather than memory bandwidth bound when doing streaming of uint32 buffers in dotnet gRPC.<p>I then asked claude to compare the C#&#x2F;.NET implementation in the library with the C++ version, and it quickly identified that the C# library was missing a couple of fairly cheap optimisations that were present in the C++ version.<p>If I can help get a PR merged, then it&#x27;ll be by far the biggest impact of any work I&#x27;ve ever done.<p>I also compared the Rust version, it had this specific optimisation. The far more popular Tokio&#x2F;Prost library did not.<p>Given appropriate guardrails, LLMs are impossibly fast at iterating to find root causes and specific performance bottlenecks.</blockquote>
+<p>↳ reply 3 — <em>codetiger</em>:</p>
+<blockquote>Had a similar experience with my Rust implementation for JSONLogic expression evaluation engine. As it has a full test suite with 1000s of cases and a benchmarking script, I was able to give some basic hints to try different optimization techniques and the end result was impressive. Reached from 1.6s to 200ms for a full benchmarking test. 
+<a href="https:&#x2F;&#x2F;github.com&#x2F;GoPlasmatic&#x2F;datalogic-rs" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;GoPlasmatic&#x2F;datalogic-rs</a>
+First 3 versions were hand written and maintained for 3yrs, and now 4th version came out in less than a month&#x27;s time with impressive performance.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>themeiguoren</em>:</p>
+<blockquote>I&#x27;ve had pretty good luck with the following process for performance optimization loops:<p>- Have an agent generate unit tests until it gets to 100% <i>path</i> (not just statement) coverage, with every numerical test asserting checks against golden values to prevent regressions<p>- Let it rip on a performance improvement loop, for the widest E2E representative test case you have. Have it generate flamegraphs along the way so you can check in and steer it as necessary.<p>- Optionally allow for 1 ULP changes in output values so that it doesn&#x27;t kill itself getting bit-exact results.<p>- Have it flag correctness errors as it goes, since your code probably isn&#x27;t bug free.<p>This is also how I&#x27;ve done language ports from python to rust, and having the ironclad test coverage protects you from drifting.</blockquote>
+<p><strong>Top #3</strong> — <em>sqquima</em>:</p>
+<blockquote>Meta commentary but it felt fresh to read a long wall of text that didn&#x27;t seem to be AI generated. Thanks.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>halJordan</em>:</p>
+<blockquote>How is this meta commentary when this or its negative version is present on literally every post.</blockquote>
+<p>↳ reply 2 — <em>dejavucoder</em>:</p>
+<blockquote>author here!<p>welcome! check out my featured section</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Working with AI Feels More Like Leadership Than Coding</title>
+      <link>https://allen.bargi.org/notes/working-with-ai-feels-like-leadership/</link>
+      <guid isPermaLink="false">hn3-49309451</guid>
+      <pubDate>Sat, 15 Aug 2026 10:39:41 +0000</pubDate>
+      <description>194 points, 133 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://allen.bargi.org/notes/working-with-ai-feels-like-leadership/"><strong>→ Article</strong></a> <small>(allen.bargi.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49309451">→ HN comments</a> &nbsp;·&nbsp; 194 points &nbsp;·&nbsp; 133 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>boron1006</em>:</p>
+<blockquote>My Eng lead has no coding experience, 25 years of management experience, yet has driven 3 separate projects into technical bankruptcy to date.<p>He just accepts anything that Claude says as truth. He vibecoded over 60,000 lines of code in 3 weeks, but couldn’t get it to do what he want and made a project overrun for 3 extra months. When the pissed off stakeholders called a meeting to ask what was going on he didn’t show up and sent his junior engineer to answer questions and take the blame. Now thats leadership.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>serial_dev</em>:</p>
+<blockquote>&gt; When the pissed off stakeholders called a meeting to ask what was going on he didn’t show up and sent his junior engineer to answer questions and take the blame.<p>He doesn’t have 25 years of management experience for nothing, that’s a crafty vet move!</blockquote>
+<p>↳ reply 2 — <em>butterknife</em>:</p>
+<blockquote>Future president in the making.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>js8</em>:</p>
+<blockquote>Leadership is same as coding.<p>Leadership: Given task to produce something someone wants (B), get an expert (A-&gt;B) who knows how get it from something you have (A). If such expert doesn&#x27;t exist, build a team of experts A-&gt;C and C-&gt;B, for a suitable intermediate product C.<p>Coding: Given task to calculate something user wants (B), find a function (A-&gt;B) that calculates it from user input (A). If that function doesn&#x27;t exist, build it from functions A-&gt;C and C-&gt;B, for a suitable intermediate result C.</blockquote>
+<p><strong>Top #3</strong> — <em>flemhans</em>:</p>
+<blockquote>The task is very simple: Thousands of super fast fairly good contractors show up at your company&#x27;s front door. You can&#x27;t really trust them with  data, they do occasionally make mistakes, they have to learn everything about your organization and product from scratch, and btw they leave in 10 minutes again.<p>If you can design your organization to handle this, you gain superpowers. And of course this is a management problem rather than coding exercise.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>The other Sean Byrne doesn't exist</title>
       <link>https://conic.al/writing/the-other-sean-byrne-doesnt-exist/</link>
@@ -3687,69 +3741,6 @@ But you should be listening to the devs.<p>Have you already enabled ngram-mod (o
 </blockquote>
 <p><strong>Top #3</strong> — <em>thangalin</em>:</p>
 <blockquote><a href="https:&#x2F;&#x2F;i.ibb.co&#x2F;WWWYznHX&#x2F;flock-future.png" rel="nofollow">https:&#x2F;&#x2F;i.ibb.co&#x2F;WWWYznHX&#x2F;flock-future.png</a><p>;-)<p>See also: <a href="https:&#x2F;&#x2F;dave.autonoma.ca&#x2F;blog&#x2F;2019&#x2F;06&#x2F;06&#x2F;web-of-knowledge&#x2F;" rel="nofollow">https:&#x2F;&#x2F;dave.autonoma.ca&#x2F;blog&#x2F;2019&#x2F;06&#x2F;06&#x2F;web-of-knowledge&#x2F;</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>CFTC declares market emergency, orders Kalshi to continue to operate in New York</title>
-      <link>https://www.cftc.gov/PressRoom/PressReleases/9281-26</link>
-      <guid isPermaLink="false">hn3-49266277</guid>
-      <pubDate>Wed, 12 Aug 2026 00:17:59 +0000</pubDate>
-      <description>144 points, 129 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.cftc.gov/PressRoom/PressReleases/9281-26"><strong>→ Article</strong></a> <small>(cftc.gov)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49266277">→ HN comments</a> &nbsp;·&nbsp; 144 points &nbsp;·&nbsp; 129 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>akerl_</em>:</p>
-<blockquote>EDIT: see DannyBee&#x27;s comment below ( <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49266746">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49266746</a> ). It does look like the CFTC has extrapolated the &quot;nationwide&quot; out of either some novel interpretation of the filing or just entirely fabricated it as their justification for their action.<p>I&#x27;ve got no love for Kalshi, but &quot;orders Kalshi to continue operate in New York&quot; doesn&#x27;t seem to be present anywhere in the actual release.<p>The article presents the sequence of events as:<p>1. The State of NY files a lawsuit against Kalshi under the theory that it can be regulated by state gambling laws.<p>2. The State of NY files for a temporary restraining order requiring Kalshi to halt trading nationally, not just in NY.<p>3. Kalshi reaches out to the CFTC to claim that NY doesn&#x27;t have the authority to regulate interstate commerce.<p>4. The CFTC agrees and uses their authority to override the TRO.<p>That seems pretty aligned with how interstate commerce is regulated and managed in the US.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>anigbrowl</em>:</p>
-<blockquote>I think it&#x27;s good to have the official context from the state of NY as well, which argues that Kalshi meets the state&#x27;s standards for gambling; has serially refused to get the required licenses, and serves customers aged 18-20 in a market where gambling is restricted by law to people over 21.<p><a href="https:&#x2F;&#x2F;ag.ny.gov&#x2F;press-release&#x2F;2026&#x2F;governor-hochul-and-attorney-general-james-announce-new-york-has-sued-kalshi" rel="nofollow">https:&#x2F;&#x2F;ag.ny.gov&#x2F;press-release&#x2F;2026&#x2F;governor-hochul-and-att...</a><p>My impression was that NY wanted a TRO to stop Kalshi operating in New York, not nationally. A TRO seems like a rather extreme measure in that it assumes the plaintiffs win the lawsuit as a premise, but I guess that&#x27;s partly a function of how long New York has been trying and failing to obtain compliance with its gaming laws, and intended to provoke a preliminary hearing into the merits of the case (vs letting the litigation drag on for years without anyhting changing).</blockquote>
-<p>↳ reply 2 — <em>bhouston</em>:</p>
-<blockquote>Your claim here is wrong:<p>&gt; 2. The State of NY files for a temporary restraining order requiring Kalshi to halt trading nationally, not just in NY.<p>The State of New York did *NOT* file a temporary restraining order, neither in NY or nationally.  Please find a citation of that if you want to claim it is true.<p>Rather the State of New York filed suit here to stop operations in New York:<p><a href="https:&#x2F;&#x2F;ag.ny.gov&#x2F;press-release&#x2F;2026&#x2F;governor-hochul-and-attorney-general-james-announce-new-york-has-sued-kalshi" rel="nofollow">https:&#x2F;&#x2F;ag.ny.gov&#x2F;press-release&#x2F;2026&#x2F;governor-hochul-and-att...</a><p>Specifically the lawsuit asks for:<p>&quot;Permanently enjoining Respondent and its principals, agents, and employees from
-operating an unlawful gambling business, or otherwise advancing gambling activity, or
-profiting from gambling activity, within or from New York or to persons in New York,
-without being licensed by the New York State Gaming Commission&quot;</blockquote>
-<p>↳ reply 3 — <em>aliasxneo</em>:</p>
-<blockquote>It seems that New York is asking the court for a temporary restraining order that would prohibit Kalshi from offering all event contracts nationwide. I also have zero love for Kalshi, but I can see why such a request would be concerning, regardless of whether I think Kalshi is a degenerate trash heap.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mavbo</em>:</p>
-<blockquote>Friends in high places are worth their weight in gold. Anyone want to bet on how much they weigh?</blockquote>
-<blockquote>
-<p>↳ reply — <em>roughly</em>:</p>
-<blockquote>I mean, officially 225, but does <i>anyone</i> believe that?<p>(Which is a bit over $15M at today’s spot prices, by the by)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>impish9208</em>:</p>
-<blockquote>Americans’ continued ability to gamble, err…, trade multi-leg parlays is a matter of national security!</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>US hires over 2k video gamers as air traffic controllers</title>
-      <link>https://www.cbsnews.com/news/video-gamer-air-traffic-controllers-faa-recruitment-sean-duffy/</link>
-      <guid isPermaLink="false">hn3-49265879</guid>
-      <pubDate>Tue, 11 Aug 2026 23:26:17 +0000</pubDate>
-      <description>153 points, 116 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.cbsnews.com/news/video-gamer-air-traffic-controllers-faa-recruitment-sean-duffy/"><strong>→ Article</strong></a> <small>(cbsnews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49265879">→ HN comments</a> &nbsp;·&nbsp; 153 points &nbsp;·&nbsp; 116 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>gcanyon</em>:</p>
-<blockquote>So instead of training Air Traffic Controllers to play video games, you trained Gamers to direct air traffic?<p>It&#x27;s Armageddon! :-)</blockquote>
-<p><strong>Top #2</strong> — <em>mellosouls</em>:</p>
-<blockquote>What could go wrong with preferring people who have ingrained disconnect between the objects on screen and real living humans.</blockquote>
-<blockquote>
-<p>↳ reply — <em>lbriner</em>:</p>
-<blockquote>I think what has already gone wrong with US Air Command having drone pilots for foreign wars based in shipping containers in Texas. Starts off as surreal&#x2F;not morally challenging, and then it sinks in, these are real people. Also, I am not on the frontline with my comrades so am I a coward? Can I face my family tonight after this.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>_--__--__</em>:</p>
-<blockquote>ATCs are chronically understaffed in a way that endangers all of us, and the FAA has been under scrutiny for their hiring practices for over a decade <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39184451">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39184451</a><p>It&#x27;s equally plausible to me that this is an example of &quot;we need to try something and this is something&quot; or just deflection from the prior criticism.</blockquote>
-<blockquote>
-<p>↳ reply — <em>madrox</em>:</p>
-<blockquote>As trying things go, it doesn’t seem that crazy of an idea. I imagine air traffic control would even make for a pretty fun video game.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>vunderba</em>:</p>
-<blockquote>When I was working on my PPL, I used VATSIM which is a worldwide network where volunteer hobbyists actually act as virtual air traffic controllers, so you can practice traffic patterns, instructions, and just get more comfortable when you are operating real-life radio comms.<p><a href="https:&#x2F;&#x2F;docs.xpilot-project.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.xpilot-project.org&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>throwawayffffas</em>:</p>
-<blockquote>When I read the title I though that was the pool they were trying to access.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
