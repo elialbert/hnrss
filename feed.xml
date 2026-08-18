@@ -4,7 +4,39 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 18 Aug 2026 14:40:13 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 15:37:59 +0000</lastBuildDate>
+    <item>
+      <title>Rethinking Database Programming</title>
+      <link>https://acadia.engineering/blog/rethinking-database-programming</link>
+      <guid isPermaLink="false">hn3-49342530</guid>
+      <pubDate>Tue, 18 Aug 2026 07:28:27 +0000</pubDate>
+      <description>163 points, 78 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://acadia.engineering/blog/rethinking-database-programming"><strong>→ Article</strong></a> <small>(acadia.engineering)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49342530">→ HN comments</a> &nbsp;·&nbsp; 163 points &nbsp;·&nbsp; 78 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mike_hearn</em>:</p>
+<blockquote>The issue with defining schemas in a non-SQL programming language is they always lag behind what the underlying database can do. Sure, your ORM-like framework can define basics like primary keys and maybe uniqueness constraints, but can it define partitioning schemes, compression methods or more advanced constraints?<p>Look at all the features supported here:<p><a href="https:&#x2F;&#x2F;www.postgresql.org&#x2F;docs&#x2F;current&#x2F;sql-createtable.html" rel="nofollow">https:&#x2F;&#x2F;www.postgresql.org&#x2F;docs&#x2F;current&#x2F;sql-createtable.html</a><p>And then consider that other databases have even more. If you manage your schemas in code then you lose access to all of those, and will eventually need to write SQL anyway.<p>For queries it isn&#x27;t such a problem, especially if you have a nice compiler. However, I recently lost faith in SQL wrappers&#x2F;abstractions. The usual justification was that a lot of developers don&#x27;t know SQL well, but LLMs are great at it. It&#x27;s easier for the LLM to write SQL than some less familiar DSL. And SQL was written to be relatively easy to understand, especially if you do things like use CTEs and views correctly it should be possible to factor logic out to make even complex queries understandable.<p>The question for frameworks like Acadia is really: assuming I am fluent in SQL and know every feature of my database, what does the framework buy me? Because that&#x27;s the perspective an LLM comes to it with.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>elcritch</em>:</p>
+<blockquote>There&#x27;s a lot of benefit in these systems, though there&#x27;s rough edges and I agree about the basics like PK&#x27;s and uniqueness.<p>I&#x27;ve been using Ormin [1] in Nim which works by parsing the SQL tables and uses it to compile time check queries:<p><pre><code>    # Multiple joins with pagination
+    let page = query:
+      select Post(title)
+      join Person(name) on author == id
+      join Category(title) on category == id
+      orderby desc(post.creation)
+      limit 5 offset 10
+</code></pre>
+I think that&#x27;s better since defining SQL should be the source-of-truth for the DB and the code. ORM&#x27;s always ended up causing trouble in my experience.<p>Things like indexes, defaults, partitions, etc generally aren&#x27;t expressible in code without a lot of kludges. Then each DB engine have pretty different rules, syntax, etc for tables.<p>However having the queries compile time checked, type conversions handled, and the nuances between SQL query syntax handled is rather nice. As you mention it&#x27;s a much easier subset.<p>1: <a href="https:&#x2F;&#x2F;github.com&#x2F;Araq&#x2F;ormin" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Araq&#x2F;ormin</a></blockquote>
+<p>↳ reply 2 — <em>alpinisme</em>:</p>
+<blockquote>The point is end to end type safety. Whether that is worth the tradeoff of losing direct developer access to the db primitives is another question.</blockquote>
+<p>↳ reply 3 — <em>bazoom42</em>:</p>
+<blockquote>A core idea of the relational model is to seperate the logical model from the physical layer including optimizations, indexes etc.<p>So it makes sense to only expose the logical model at the ORM layer.<p>The problem comes if you want to <i>define</i> the database schema through the ORM layer, rather than just represet it.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dwohnitmok</em>:</p>
+<blockquote>I&#x27;m wary of languages that seek to own the database. In particular, the claim &quot;Coexist with SQL&quot; seems a bit suspect given that e.g. sum types have a custom binary encoding, which likely makes them difficult to interop with from other languages. This makes the claimed interop with other languages really more of a temporary stopping point towards full Acadia adoption rather than a viable long-term equilibrium, unless you e.g. eschew using sum types. (I also suspect that trying to natively support sum types can lead to a kind of FP-equivalent of ORMs&#x27; impedance mismatch. The ways I model data with relational logic can be pretty different than the ways I model data with algebraic datatypes and I wonder if trying to force fit the latter into the former doesn&#x27;t lead to the same problems as force fitting objects into relational logic).<p>This makes the database closer to something that Acadia compiles to, rather than something Acadia sits on top of. From my own developer experience this feels off, because I generally expect the data layer to be king and application code to revolve around that, rather than having data representation created in code and the database created off that (this is why I also dislike things like ORMs).<p>In general I view databases as usually having more longevity than application code, especially as you accumulate more data over time. For serious production applications, the database often outlives multiple rewrites of the production application.<p>I suspect though my concerns are overall rather minor. The ergonomics of the language itself seem enjoyable. Acadia seems like it would be great as an embedded DSL. It&#x27;s a bit unfortunate that it currently seems coupled to creating an HTTP server. I think that Acadia has greater ambitions beyond just the database, as evidenced by creating a binary web connection with frontend Elm code to presumably obviate the need for encode-decode layers. It seems like Acadia is meant to be a stepping stone towards a closer frontend-backend fusion. But I agree with mjaniczek that something like Lamdera seems a better fit for that.<p>But given how early Acadia is, I&#x27;m still very excited for where it goes. What I&#x27;ve listed is surmountable and I also feel that often a closer frontend-backend fusion might be worthwhile.</blockquote>
+<p><strong>Top #3</strong> — <em>bbkane</em>:</p>
+<blockquote>I&#x27;m actually most excited about the new funding model: <a href="https:&#x2F;&#x2F;acadia.engineering&#x2F;license&#x2F;faq" rel="nofollow">https:&#x2F;&#x2F;acadia.engineering&#x2F;license&#x2F;faq</a><p>I won&#x27;t be able to use Acadia at work, and I don&#x27;t have the risk tolerance to use it for personal projects, but I&#x27;m looking forward to seeing how&#x2F;if this model pays the bills. Can it compete with more liberally licensed code?</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>The Benchmarkpocalypse</title>
       <link>https://danluu.com/benchpocalypse/</link>
@@ -3416,52 +3448,6 @@ X2Go does....but I don&#x27;t trust it terribly. So, RustDesk..what do you need 
 </blockquote>
 <p>↳ reply 2 — <em>lacoolj</em>:</p>
 <blockquote>Totally agree. I actually didn&#x27;t know you already got to it and I ran it on mine. It even added a scarf lol<p><a href="https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;IgYKnmk" rel="nofollow">https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;IgYKnmk</a><p>Took almost 90 minutes on my Threadripper Pro, and feels well worth it.<p>28k tokens from the Q8 model</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>When Genius Fails: The Intellectual Arrogance of the AI Labs</title>
-      <link>https://weightythoughts.com/p/when-genius-failsthe-intellectual</link>
-      <guid isPermaLink="false">hn3-49299282</guid>
-      <pubDate>Fri, 14 Aug 2026 14:34:49 +0000</pubDate>
-      <description>169 points, 184 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://weightythoughts.com/p/when-genius-failsthe-intellectual"><strong>→ Article</strong></a> <small>(weightythoughts.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49299282">→ HN comments</a> &nbsp;·&nbsp; 169 points &nbsp;·&nbsp; 184 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mjr00</em>:</p>
-<blockquote>&gt; It’s much easier to say someone else’s job is going to be fully replaceable by AI when you don’t actually know what they do.<p>Too true. This isn&#x27;t limited to AI, either. The most obvious example in my lifetime was during peak blockchain hype, when people who had never worked in finance convinced themselves that blockchain was going to act as the backbone for how money gets moved around. As if the problem that needing solving was Bank of America doesn&#x27;t trust Capital One to update a number in their database.<p>The nice thing about AI, at least, is I can always push back and tell people, &quot;Sure, we can do this with AI. I just need you to use Claude or ChatGPT manually to prototype how it would work.&quot; This normally results in the requestor realizing that there&#x27;s human judgment calls involved in the inputs, process, or outputs that require meatbag intelligence.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>randusername</em>:</p>
-<blockquote>Some of my coworkers will complain that management is short-sighted for trying to automate programming work they don&#x27;t understand then immediately suggest we automate management because nobody knows what they do all day.<p>Maybe they&#x27;re right, maybe not, but it is ironic.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bee_rider</em>:</p>
-<blockquote>They are currently experimenting with replacing engineers with LLMs, so it would at least be interesting to try the flipped experiment.<p>It seems like, at least for tasks like distilling the work done at lower levels and passing it up the management tree, LLMs should be good at that. Maybe they could take out some levels at least.<p>And they can be programmed to be 100% selfless and on-mission: no turf battles or other internal politics. Everybody’s job involves office politics of course, but my gut says management has a lot more of it than engineering, so zeroing that out could be more significant.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>harikb</em>:</p>
-<blockquote>Aren&#x27;t LLM&#x27;s mostly overconfident? If they are independent entities&#x2F;agents, they may be tempted to try to sabotage the less performing teams to take over their projects - just like in human world.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>pj_mukh</em>:</p>
-<blockquote>&gt;&gt;fully replaceable by AI<p>I am trying to fathom a more catastrophic failure in communications than the lab CEO&#x27;s using this narrative. The reality ends up being closer to Radiology jobs [1], but we&#x27;re never able to fully realize this because the press is running around like headless chickens and unloading the fear on a public that then reaches for any leverage they can get (see: Datacenter NIMBY-ism).<p>Any short term FOMO valuation bumps they got from this narrative has to now be liquidated into paying premium for server racks in a warehouse.<p>Reminder folks: There is no evidence that AI is not normal technology [2]<p>[1]: <a href="https:&#x2F;&#x2F;www.apollo.com&#x2F;wealth&#x2F;insights-news&#x2F;insights&#x2F;daily-spark&#x2F;the-radiologist-paradox" rel="nofollow">https:&#x2F;&#x2F;www.apollo.com&#x2F;wealth&#x2F;insights-news&#x2F;insights&#x2F;daily-s...</a><p>[2]: <a href="https:&#x2F;&#x2F;knightcolumbia.org&#x2F;content&#x2F;ai-as-normal-technology" rel="nofollow">https:&#x2F;&#x2F;knightcolumbia.org&#x2F;content&#x2F;ai-as-normal-technology</a></blockquote>
-<p>↳ reply 3 — <em>palmotea</em>:</p>
-<blockquote>&gt;&gt; It’s much easier to say someone else’s job is going to be fully replaceable by AI when you don’t actually know what they do.<p>&gt; Too true. This isn&#x27;t limited to AI, either.<p>That&#x27;s so true there&#x27;s a term for it: engineer&#x27;s disease&#x2F;engineer&#x27;s syndrome.<p><a href="https:&#x2F;&#x2F;en.wiktionary.org&#x2F;wiki&#x2F;engineer%27s_disease" rel="nofollow">https:&#x2F;&#x2F;en.wiktionary.org&#x2F;wiki&#x2F;engineer%27s_disease</a><p><a href="https:&#x2F;&#x2F;ask.metafilter.com&#x2F;297591&#x2F;Origin-of-the-term-Engineers-Disease" rel="nofollow">https:&#x2F;&#x2F;ask.metafilter.com&#x2F;297591&#x2F;Origin-of-the-term-Enginee...</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>sarreph</em>:</p>
-<blockquote>What the author is getting at here:<p>&gt; Climbing Mount Everest and getting a PhD are both hard. I wouldn’t say that doing one means you can do the other “no problem.”<p>and here:<p>&gt; Surgeons and electrical engineers may be extremely smart and accomplished, but that doesn’t mean they have the ability to weigh in on climate science.<p>Feels tangentially like a version of Nobel disease[0], discussed here[1] a couple of weeks ago.<p>---<p>[0] - <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Nobel_disease" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Nobel_disease</a><p>[1] - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49166918">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49166918</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>rob74</em>:</p>
-<blockquote>I mean, in the meantime, the US president is weighing in on technical design decisions of aircraft carriers, and he has neither a PhD nor a Nobel Prize, so...<p><a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;us-news&#x2F;2026&#x2F;aug&#x2F;13&#x2F;trump-aircraft-carriers-steam-catapults" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;us-news&#x2F;2026&#x2F;aug&#x2F;13&#x2F;trump-aircra...</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>skrebbel</em>:</p>
-<blockquote>Wait is this real? Did a random 25yo get 45B under management because he got some interviews after getting fired from OpenAI? I missed all of this and it almost seems like performance art to me.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cortesoft</em>:</p>
-<blockquote>Yes, it’s real, and the failure is much more about risk management than about having wrong fundamentals.<p>His fundamental thesis is as an AI maximalist, with expertise on who will be the winners.<p>His fund completely blew up, even though his fundamental thesis still may be correct.<p>He made a ton of money early, but then he just kept increasing his bet size via leverage. The problem is that these stocks may be going up, but they are EXTREMELY volatile. When the whole market went down with some of the Iran news, his margin levels dipped too low, and his lenders issued margin calls. He had to sell his stakes at losses, and his fund collapsed.<p>Now, part of the problem is he was not a legacy hedge fund with great relationships with his banks, because if he was, he might have been able to postpone the margin calls. Had he been able to do that, he would have been ok, because his positions actually recovered within a few weeks.<p>It didn’t matter, though, because he was forced to sell at the low point.<p>In other words, even if your long term bet is correct, if you are maxing out your margin to max out your bet, you are one volatile dip away from blowing up.<p>No matter how good the bet, you have to be able to ride out the volatility to survive.<p>It’s like if someone offered you a bet on a coin flip, where they will pay 5x your bet if you win. How much should you bet on each flip?<p>Well, by expected value you should bet everything you have, because your EV is 2.5x, so the more you bet the higher your expected value.<p>However, if you bet it all, you have a 50% chance of losing all your money and not being able to make any more bets.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>JohnMakin</em>:</p>
-<blockquote>I would describe having billions under management and not understanding really basic kelly criterion as having wrong fundamentals, but I think you were talking about his beliefs in AI.<p>But thats sort of the whole problem, believing you know a lot about the future of AI, even if you’re correct, does not mean you have the expertise to manage a fund around that belief, and it’s absolutely shocking to me he was able to get that much money</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>cmiles8</em>:</p>
-<blockquote>Yes… and some folks gave him money. Per reporting from the NY Times he was broadly laughed out of the room with “East Coast” money which has a massive amount to invest but tends to hold a higher standard on where it goes. Per that reporting, the combination of a lack of experience and inability to give coherent answers to basic questions meant those folks stayed far away.<p>Regardless he was still able to build a giant pile of cash before alighting it on fire.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
