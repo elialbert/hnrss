@@ -4,7 +4,51 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 18 Aug 2026 15:37:59 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 18 Aug 2026 16:38:34 +0000</lastBuildDate>
+    <item>
+      <title>Linux 7.3 improves performance when running out of vRAM</title>
+      <link>https://pixelcluster.dev/VRAM-Overcommit/</link>
+      <guid isPermaLink="false">hn3-49342719</guid>
+      <pubDate>Tue, 18 Aug 2026 07:51:50 +0000</pubDate>
+      <description>398 points, 158 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://pixelcluster.dev/VRAM-Overcommit/"><strong>→ Article</strong></a> <small>(pixelcluster.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49342719">→ HN comments</a> &nbsp;·&nbsp; 398 points &nbsp;·&nbsp; 158 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>krisknez</em>:</p>
+<blockquote>I hope there will be an update where when my RAM gets full my PC doesn&#x27;t freeze and becomes unusable... I remember that Linux and Windows do this in different ways and Windows doesn&#x27;t have the problem.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>augusto-moura</em>:</p>
+<blockquote>Have you tried setting up systemd-oomd [1]? It works by killing the offending process (hopefully) before a true OOM.<p>When I run in a frozen system because of RAM, I&#x27;m a happy user of the Magic SysRq &#x27;f&#x27; [2], it bypasses most kernel scheduling so it works even on frozen systems<p>[1]: <a href="https:&#x2F;&#x2F;man.archlinux.org&#x2F;man&#x2F;systemd-oomd.8" rel="nofollow">https:&#x2F;&#x2F;man.archlinux.org&#x2F;man&#x2F;systemd-oomd.8</a><p>[2]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Magic_SysRq_key" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Magic_SysRq_key</a></blockquote>
+<p>↳ reply 2 — <em>webstrand</em>:</p>
+<blockquote>Its not enabled by default, but enabling MGLRU setting &#x2F;sys&#x2F;kernel&#x2F;mm&#x2F;lru_gen&#x2F;min_ttl_ms to 70 has entirely resolved the issue for me. It _does_ usually pick firefox or vscode to kill, but my system remains interactive, with no need for earlyoom.<p>Docs <a href="https:&#x2F;&#x2F;docs.kernel.org&#x2F;admin-guide&#x2F;mm&#x2F;multigen_lru.html#thrashing-prevention" rel="nofollow">https:&#x2F;&#x2F;docs.kernel.org&#x2F;admin-guide&#x2F;mm&#x2F;multigen_lru.html#thr...</a></blockquote>
+<p>↳ reply 3 — <em>NekkoDroid</em>:</p>
+<blockquote>For me Windows becomes unusable as soon as any of my drives is being hammered, including when it is swapping, but not limited to it.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>exceptione</em>:</p>
+<blockquote>Great article! I share the same hunch as the author does; when allocating memory ultimately the application itself is in the best position to inform the kernel about the desired stickiness to VRAM. The best a kernel can do is <i>guessing</i>.<p>As a side note, it strikes me how much we owe to young trans people for low level performance engineering.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>eru</em>:</p>
+<blockquote>They&#x27;ll get old soon enough.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>MengerSponge</em>:</p>
+<blockquote>Inshallah</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sfn42</em>:</p>
+<blockquote>I imagine &quot;we&quot; &quot;owe&quot; a lot more to young men or just men in general for the same, but I guess there&#x27;s no virtue signaling points to be harvested from making that observation.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>d3Xt3r</em>:</p>
+<blockquote>Gosh, 7.2 literally just dropped with a bunch of awesome of performance&#x2F;gaming related improvements (large folios, cache-aware scheduling, improved MGLRU reclaiming, Fair GPU Scheduler etc)... and I already can&#x27;t wait for 7.3 to come out.<p>Meanwhile in the Windows world, users <i>hate</i> updates... Like I genuinely can&#x27;t think of a single instance that made users exclaim, &quot;oh boy I just can&#x27;t wait for the next Patch Tuesday!&quot;.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zekrioca</em>:</p>
+<blockquote>[1] Linux 7.2 Reverts DRM Scheduler Change After Serious GPU Regressions: <a href="https:&#x2F;&#x2F;www.linuxjournal.com&#x2F;content&#x2F;linux-72-reverts-drm-scheduler-change-after-serious-gpu-regressions" rel="nofollow">https:&#x2F;&#x2F;www.linuxjournal.com&#x2F;content&#x2F;linux-72-reverts-drm-sc...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>d3Xt3r</em>:</p>
+<blockquote>Ah, didn&#x27;t know that was reverted. Cheers for the link.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>alt227</em>:</p>
+<blockquote>I personally am very excited for the upcoming Windows 11 update which will allow users to move the taskbar to any edge of their screen.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Rethinking Database Programming</title>
       <link>https://acadia.engineering/blog/rethinking-database-programming</link>
@@ -3422,32 +3466,6 @@ X2Go does....but I don&#x27;t trust it terribly. So, RustDesk..what do you need 
 <blockquote>
 <p>↳ reply — <em>mjd</em>:</p>
 <blockquote>One really nice thing about Pseudodoxia Epidemica is that you don&#x27;t have to read it cover to cover.  You can pick it up, read the bit about whether “a Diamond is made soft, or broke by the blood of a Goate”, or what he has to say about Pope Joan (a woman who supposedly tricked the college of cardinals into electing her pope) and put it down gain ten minutes later.  It&#x27;s great bathroom reading.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Qwen 3.8 27B</title>
-      <link>https://huggingface.co/Qwen/Qwen3.8-27B-FP8</link>
-      <guid isPermaLink="false">hn3-49299605</guid>
-      <pubDate>Fri, 14 Aug 2026 15:00:00 +0000</pubDate>
-      <description>810 points, 532 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://huggingface.co/Qwen/Qwen3.8-27B-FP8"><strong>→ Article</strong></a> <small>(huggingface.co)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49299605">→ HN comments</a> &nbsp;·&nbsp; 810 points &nbsp;·&nbsp; 532 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>CMay</em>:</p>
-<blockquote>Credit where it&#x27;s due.  Qwen 3.8 27B is only the second local model after Gemma 4 that managed to correctly reason through one of my private benchmarks.  It took 5x as many tokens to do it and 12m30s with MTP enabled, but it did do it.<p>Gemma 4 reasoned through it more implicitly, while Qwen 3.8 reasoned more explicitly.  Laguna and Muse Glimmer failed hard on it, though they&#x27;re useful for other tasks.<p>The VRAM usage seems way less efficient than Gemma 4 or Glimmer though, with 32K of context taking 2.5GB of VRAM.  With those, even with MTP or a DFlash model loaded, you could still fit 256k-768k of context.  With Qwen 3.8 27B I can&#x27;t even fit 128k if I quantize V to Q4_0.  Maybe with some trial and error I can find some settings that perform well enough with a larger context window that it&#x27;s still useful for longer tasks.<p>Lots more testing to do, though I was getting some decent results out of Muse Glimmer which was more than twice as fast and supported huge context windows, managing to solve some bugs that Gemma 4 struggled with.  I can&#x27;t even begin to throw that task at Qwen, because just the prompt alone would use the entire context window and then it would reason for probably that same amount.<p>If you&#x27;ve got a 32GB card, it should be a decent model even if it really is memory hungry.</blockquote>
-<p><strong>Top #2</strong> — <em>svdr</em>:</p>
-<blockquote>Wow. This model is so good, and we have GLM 5.3 (seems great voor security related work) and Deepseek. In a few months we&#x27;ll have Fable&#x2F;Sol-like capabilities that are not coming from the big US companies. I feel as a programmer that that is more than enough. How wil OpenAI and Anthropic survive when frontier model intelligence becomes commoditized?</blockquote>
-<p><strong>Top #3</strong> — <em>simonw</em>:</p>
-<blockquote>Absolutely the best pelican I&#x27;ve seen from a model that runs on my laptop: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Ffc909bea4fecf752c7bf9bad0e9dbf2a" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer#url=ht...</a><p>Bicycle is the right shape. Pelican beak is excellent. Nice background. Most importantly, the pelican has one leg on each side of the bicycle - that&#x27;s very rare.<p>(No chain on this bicycle though - in the reasoning trace it says &quot;already chainstay... skip chain detail; maybe a small chainring.&quot;)<p>I ran that on an M5 Max MacBook Pro using LM Studio and their 17GB GGUF: <a href="https:&#x2F;&#x2F;lmstudio.ai&#x2F;models&#x2F;qwen3.8" rel="nofollow">https:&#x2F;&#x2F;lmstudio.ai&#x2F;models&#x2F;qwen3.8</a><p>It took 21 minutes(!) and used 22,276 reasoning tokens to produce 3,223 tokens of output.<p>(For the &quot;they&#x27;re training on your benchmark now&quot; crowd, all of that cheating didn&#x27;t prevent it from spending 20 minutes thinking about the task first! You can see the reasoning trace in the link I shared.)<p>For comparison, here&#x27;s one I got from qwen3.8-2.4t-a95b on OpenRouter, which is pleasingly animated: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F557016f0895b2abb4b9957caec781734" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer#url=ht...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>simonw</em>:</p>
-<blockquote>For anyone who followed yesterday&#x27;s Gemini 3.7 Flash pelican which rendered in Safari but not in Firefox or Chrome... <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49289112#49290012">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49289112#49290012</a>. -  that turned out to be my fault, not the model.<p>My SVG rendering software was stripping some attributes. Here&#x27;s the Gemini 3.7 Flash pelicans in the fixed renderer: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer.html#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F6779a22d5e7bb6bdf29936f1600a5259" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer.html#u...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>walrus01</em>:</p>
-<blockquote>It is interesting that it went with something like:<p>&quot;pelican = ocean bird = nautical theme = this means I should put a captain&#x27;s hat on the cartoon Pelican&quot;<p>I think in some sense it understood the absurdity of a pelican riding a bicycle as intentionally nonsensical, so it went with a cartoon theme for the design and the shading. Worked out really well.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>lacoolj</em>:</p>
-<blockquote>Totally agree. I actually didn&#x27;t know you already got to it and I ran it on mine. It even added a scarf lol<p><a href="https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;IgYKnmk" rel="nofollow">https:&#x2F;&#x2F;imgur.com&#x2F;a&#x2F;IgYKnmk</a><p>Took almost 90 minutes on my Threadripper Pro, and feels well worth it.<p>28k tokens from the Q8 model</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
