@@ -4,7 +4,62 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 19 Aug 2026 20:35:36 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Aug 2026 21:31:37 +0000</lastBuildDate>
+    <item>
+      <title>PostgreSQL for Everything</title>
+      <link>https://www.raphaelbauer.com:443/posts/postgresql-everything/</link>
+      <guid isPermaLink="false">hn3-49361279</guid>
+      <pubDate>Wed, 19 Aug 2026 13:21:21 +0000</pubDate>
+      <description>262 points, 168 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.raphaelbauer.com:443/posts/postgresql-everything/"><strong>→ Article</strong></a> <small>(raphaelbauer.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49361279">→ HN comments</a> &nbsp;·&nbsp; 262 points &nbsp;·&nbsp; 168 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>HighlandSpring</em>:</p>
+<blockquote>This isn&#x27;t just theory either, for example: Revolut is a bank that does all its event persistence and streaming on top of postgres. No traditional message queues&#x2F;brokers in their stack.<p><a href="https:&#x2F;&#x2F;medium.com&#x2F;revolut&#x2F;recording-more-events-but-where-will-we-store-them-4b1dad457cf5" rel="nofollow">https:&#x2F;&#x2F;medium.com&#x2F;revolut&#x2F;recording-more-events-but-where-w...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>majormajor</em>:</p>
+<blockquote>If you start here, with the &quot;Postgres will take you wherever you need to go&quot; meme, without thinking extremely deeply about your schema and how you expect to evolve it in the future, you can easily paint yourself into a very difficult and expensive corner.<p>It&#x27;s easy to use Postgres poorly in ways that result in painful centralized bottlenecks.<p>(Obviously this is largely true for <i>anything</i>, but I think that in 2026, where there&#x27;s also a lot of more-specialized&#x2F;less-fleible but much-easier-to-scale well-supported mature alternatives, you should be VERY wary of making everything have a single central SPOF. What are your users going to expect in terms of maintenance windows, etc.)<p>I&#x27;d be cautious with articles that say things like &quot;All cloud providers allow you to run (and scale!) PostgreSQL by clicking a single button.&quot; with no mention of how long that will take and what options should be set to make it faster, or the costs of those things.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tensor</em>:</p>
+<blockquote>Having done that, e.g. used rabbitmq plus postgres, honestly I wish I had just used postgresql for both messages and data. It would have been easier to manage by an order of magnitude, <i>especially</i> at scale and needing to satisfy enterprise requirements. Also the flexibility of postgres would have solved problems that we ran into because of limitations of rabbitmq.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>majormajor</em>:</p>
+<blockquote>Without knowing any specifics of your uses, my usual starting point on that sort of design is that &quot;messages AND data&quot; is it&#x27;s own special little way of ending up with a hard-to-debug-and-operate system. ;)<p>It&#x27;s very hard to best-of-both worlds event-driven system + RDBMS-storage, it&#x27;s very easy to end up with worst-of-both-worlds. Hello distributed transactions!<p>Again, you just should think about all the ways you want to use it <i>and</i> the maintenance&#x2F;uptime requirements your users are going to have in advance.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>andriy_koval</em>:</p>
+<blockquote>they likely have something on top of PG to distribute data across shards, which is still untrivial task I think and require ops overhead.</blockquote>
+<p>↳ reply 3 — <em>dzonga</em>:</p>
+<blockquote>starling bank uk uses a similar kind of stack. both java based as revolut.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>psadauskas</em>:</p>
+<blockquote>My general rule of thumb is &quot;Use Postgres until you&#x27;ve discovered why you can&#x27;t use Postgres.&quot;<p>Anything you introduce is another moving part you have to operate and maintain, and in the beginning, Postgres can probably handle it. Wait for load, see <i>where</i> its failing, and then you&#x27;ll have a better idea if adding another tool is worth the cost.</blockquote>
+<blockquote>
+<p>↳ reply — <em>andai</em>:</p>
+<blockquote>Doesn&#x27;t the same argument apply even more to using SQLite instead?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>crazygringo</em>:</p>
+<blockquote>Not really. They are two different paradigms. Use the one that is right for you.<p>SQLite is embedded for local applications with one writer mostly.<p>Postgres is for a client-server architecture with many writers.<p>When you start a project, you generally know which architecture you need.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>andai</em>:</p>
+<blockquote>So if it needs to work offline, but it syncs with a server, then you use both? (And the schema becomes some kind of lowest common denominator?)</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>devin</em>:</p>
+<blockquote>This kind of post (Postgres! It&#x27;s all you need!) is getting pretty tiresome. Postgres does not even come close to a full replacement for Elastic, and that&#x27;s just the first bullet.<p>Looking down the list it is pretty easy to go: Yes, postgres can be used instead of that for extremely basic use cases, but it all goes out the window you actually need any of the power of these other tools.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>0cf8612b2e1e</em>:</p>
+<blockquote>I think it would be helpful if some of these posts included scale. There are almost always two groups talking past each other<p><pre><code>  - I run my B2B application, Postgres only, and it is perfect for my 50k MAU. No complaints, sleeping soundly with the low complexity and a two man team. 
+  - I work at FAANG, where we have 1 billion DAU, and this is a joke. Would fall over immediately. The dedicated ops teams for Kubernetes, Elastic, and Redis have never complained about scaling issues.</code></pre></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>lelanthran</em>:</p>
+<blockquote>I broadly agree, but would tweak those numbers a little for small B2B apps: I ran a small B2B application on a cheap VPS using PostgreSQL as a primitive messaging interface, and even on a small VPS 50k DAU won&#x27;t even cause the machine to break a sweat.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>vb-8448</em>:</p>
+<blockquote>&gt; Postgres does not even come close to a full replacement for Elastic<p>Size matters!<p>For most of the application out there elastic (or kafka or any other specialized tool) is just too much(and too costly). They can do fine with postgres or mysql. Actually, I&#x27;d argue that in a lot of cases even postgres is too much, probably sqlite is enough.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Geolocating a random island using geometry and CUDA programming</title>
       <link>https://yassa9.github.io/osint/gralhix-004/</link>
@@ -504,6 +559,37 @@ Edited for accuracy and more models.</blockquote>
 <p>↳ reply 2 — <em>tw1984</em>:</p>
 <blockquote>With GPT&#x2F;Claude, hiding those from users to waste their tokens is a feature, not a limitation.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>fx :Tiny, open, native coding agent.</title>
+      <link>https://fx.sh</link>
+      <guid isPermaLink="false">hn3-49353339</guid>
+      <pubDate>Tue, 18 Aug 2026 22:00:21 +0000</pubDate>
+      <description>135 points, 64 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://fx.sh"><strong>→ Article</strong></a> <small>(fx.sh)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49353339">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 64 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>rsyring</em>:</p>
+<blockquote>For all the people asking &quot;Why?&quot;, it seems like TFA has a pretty good list of features&#x2F;attributes that it thinks sets it apart:<p>- fx is a coding agent harness and CLI written in Zig, optimized for research and embeddability as part of larger systems.<p>- It focuses on minimalism and performance across the board, from system prompt design, to its tools, feature set, and 6.39mib binary.<p>- For end users, its CLI output style and form factor aims to be closer to a Unix shell than a heavy &quot;IDE in the terminal&quot; TUI.<p>- It&#x27;s open source (Apache-2.0), model-agnostic, and suitable for both local and cloud inference.<p>- Designed for instant installation and embedding in resource constrained environments and agent sandboxes.<p>- fx cold starts in 10µs and does no unnecessary work or I&#x2F;O prior to accepting user input, making it ideal for programmatic use.<p>- Optimal fx.wasm builds produced by the Zig toolchain, which further reduce fx&#x27;s size, making the network stack pluggable.<p>- fx contributes single-digit megabytes of memory baseline, allowing you to pack many instances in one machine.<p>- fx preserves scroll history by default, produces minimal output, and makes sparing use of complex TUI or paints<p>- Minimal system prompt and tools, to save on token costs and to yield optimal time-to-first-token performance (TTFT).<p>- Small core, extended via skills, plugins, MCPs, with a Unix-like philosophy to extensibility.<p>- Designed to work with local models, gateways, direct provider API access or subscriptions.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Kim_Bruning</em>:</p>
+<blockquote>Very neat. The demo on the page feels very intuitive to me! (if you&#x27;re used to bash at least)</blockquote>
+<p>↳ reply 2 — <em>jauntywundrkind</em>:</p>
+<blockquote>I&#x27;ve only done a little of the new opencode v2 &quot;mini&quot; but it too offers a nice preserve-scroll by default.<p>OpenCode is the best behaved TUI i&#x27;ve seen by far (they invented OpenTUI to make it so good, also in Zig), so it feels less crucial. But it&#x27;s nice to have there!<p>The &quot;small core&quot; model is very popular all of a sudden. DeepSeek&#x27;s new harness is famously like that. <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49285244">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49285244</a><p>OpenCode isn&#x27;t quite as small, but there&#x27;s very much been a deliberate attempt to drive much more into a plugin-based system. I enjoyed Dax talking about the new constitution of opencode, and the results of his agent comparing OpenCode &amp; the new DeepSeek. <a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3msy4gjttoc2f" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3msy4gjttoc2f</a> <a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3msygiqyg6v2y" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3msygiqyg6v2y</a><p>&gt; <i>an architectural change we made in opencode2 is nearly everything is an internal plugin &#x2F; there&#x27;s 68 of them that cover our built in agents, integrations, config loading, etc</i><p>i also think this is such a brilliant fun architectural twist too:<p>&gt; <i>OpenCode is the first time i could justify event sourcing in a real system &#x2F; everything that happens is an event which gets projected into the sqlite db</i><p><a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3mt2qx3ktib2c" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3mt2qx3ktib2c</a><p>it&#x27;s so fun seeing new malleable software cores emerge, try to figure out how to augment agency. agentic software striving itself to extend the agency it itself offers. it&#x27;s been way too long since we&#x27;ve had ambitions to build general system, architectures that serve more than the user. this has held computing back for far too long. this is such an excellent interesting field, of such a more ambitious computing, opening up.</blockquote>
+<p>↳ reply 3 — <em>rvz</em>:</p>
+<blockquote>Most of all what you have said is not really any clear differentiation against the rest of the 100s of other agents. Just minuscule or non-negligible implementation details and I&#x27;m afraid it is sadly yet another experimental slop project.<p>It is a branded &quot;mee too&quot; coding agent that we have seen hundreds of them already.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bodge5000</em>:</p>
+<blockquote>It does looks really interesting and definitely something I&#x27;ll check out, but (genuine question), should &quot;agent&quot; and &quot;agent harness&quot; be used interchangeably as it is on here? It describes itself as an agent harness, but the tagline is &quot;tiny, open, native coding agent&quot;.<p>I&#x27;m not sure harness is the right word either, but that seems to be what the industry has settled on so I&#x27;ll concede on that, but surely the agent is the thing doing the work (which I guess is the model, or an instance of the model which is why agent is different?), whereas the harness is how the user interacts with the agent. We&#x27;ve had ways to describe that relationship before; client and server, frontend and backend, but again, I&#x27;ll concede that the shiny new thing doesn&#x27;t want to use boring old terminology, but I think some consistency and logic in the shiny new terminology is pretty important<p>That isn&#x27;t specifically about fx of course, more of a general industry complaint</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>stellalo</em>:</p>
+<blockquote>harness + llm = agent</blockquote>
+<p>↳ reply 2 — <em>cramforce</em>:</p>
+<blockquote>Harness = the software the agent runs on. This is plain old software. You can trust it as much as any software.
+Agent = the thing that runs on the harness. It cannot be trusted because it is driven by an LLM</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>kgeist</em>:</p>
+<blockquote>&gt;Tiny ~6mb binary<p>I wonder why it&#x27;s so large for a program written in Zig. It&#x27;s basically just a loop that accepts user input, prepares the context, sends it to the LLM, parses the output, invokes the tools, and presents it all in the terminal. Add the built-in prompts and a few checks here and there (like blocking a write tool call before the file has been read first), and I&#x27;d expect a truly tiny native agent to be around 200-300 KB max.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>A 3D fruit fly on macOS desktop powered by the real FlyWire connectome</title>
@@ -3323,76 +3409,6 @@ Not that I don&#x27;t like the parens, mind you, but Rhombus looks so much more.
 <blockquote>
 <p>↳ reply — <em>zeroonetwothree</em>:</p>
 <blockquote>From 1965 issue of Time:<p>&gt; Union-shop steward, emerging from a meeting with management to face a group of workers: “Brothers, we’ve got it made. From now on, we will work only on Wednesdays.”<p>&gt; Irritated voice from the crowd: “You mean EVERY Wednesday?”<p>I suspect it’s significantly older than that though.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>St Lucie Nuclear Reactor Unit 1 manually shutdown, 3 control rods drop into core</title>
-      <link>https://www.wptv.com/news/treasure-coast/region-st-lucie-county/saint-lucie-nuclear-power-plant-unit-1-manually-shut-down-after-3-control-rods-drop-into-reactor-core</link>
-      <guid isPermaLink="false">hn3-49320856</guid>
-      <pubDate>Sun, 16 Aug 2026 15:16:06 +0000</pubDate>
-      <description>158 points, 122 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.wptv.com/news/treasure-coast/region-st-lucie-county/saint-lucie-nuclear-power-plant-unit-1-manually-shut-down-after-3-control-rods-drop-into-reactor-core"><strong>→ Article</strong></a> <small>(wptv.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49320856">→ HN comments</a> &nbsp;·&nbsp; 158 points &nbsp;·&nbsp; 122 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>CoryOndrejka</em>:</p>
-<blockquote>Dropped rods are an incident but one that occurs because of pressurized water reactors being very default safe. Controls rods are one way the criticality of a reactor is controlled and US reactors (in general) will go sub critical if even one rod is fully inserted into the core. You will likely have heard of a reactor scram (which goes back to the safety control rod ax man) where in an emergency, all the rods are dropped back into the core, greatly reducing its criticality. In some cases, an interruption of electrical power will cause a rod (or three) to drop accidentally. This is a &quot;dropped rod&quot; incident and will force a reactor shut down because it is now sub critical.<p>Lots of knock on effects -- sub critical, let heat in the primary loop, less steam and electricity generated in the secondary loop, etc -- but generally a non event that you practice for.<p>There&#x27;s no reason this would lead to a radiological event or more significant casualty.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Aeolun</em>:</p>
-<blockquote>&gt; There&#x27;s no reason this would lead to a radiological event or more significant casualty.<p>Depends on whether you lose cooling at the same time right? If your rods drop because the power&#x2F;cooling to your plant disappears (Fukushima) then all the safety in the world doesn’t help.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sitharus</em>:</p>
-<blockquote>If you lose cooling the reactor will certainly trip but it will take several hours until you start to get core damage - 4 hours in the case of Fukushima Daiichi according to the released timeline. This also requires multiple redundant power supplies and cooling systems fail.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>anonymousiam</em>:</p>
-<blockquote>There&#x27;s a difference between control rods (which are used to reduce fission by absorbing neutrons) and fuel rods (which contain enriched fissile material).  In this case, the control rods that fell into the core would pose no risk at all to anybody, but would inhibit the ability of the reactor to reach full capacity.</blockquote>
-<p>↳ reply 3 — <em>jwkpiano1</em>:</p>
-<blockquote>In case you weren’t aware, the “safety control rod ax man” thing is aprocryphal and almost certainly not reflective of the origins of the term.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>aeonik</em>:</p>
-<blockquote>This happened in 2024 too.<p>This link (second one down, first event is missing control rods in Texas...) has almost the exact same wording as the article.<p><a href="https:&#x2F;&#x2F;www.nrc.gov&#x2F;reading-rm&#x2F;doc-collections&#x2F;event-status&#x2F;event&#x2F;2024&#x2F;20241115en" rel="nofollow">https:&#x2F;&#x2F;www.nrc.gov&#x2F;reading-rm&#x2F;doc-collections&#x2F;event-status&#x2F;...</a><p>I found the root cause of the older issue on LinkedIn of all places.<p><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;posts&#x2F;robert-meyer-8672ab4a_st-lucie-ler-multiple-control-rod-drop-share-7288007676314238976-I1TW&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.linkedin.com&#x2F;posts&#x2F;robert-meyer-8672ab4a_st-luci...</a><p>Root cause of 2024 was apparently a procedural issue combined with electrical failure of the control rod grippers.</blockquote>
-<p><strong>Top #3</strong> — <em>fwipsy</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;www.nuclear-power.com&#x2F;nuclear-power&#x2F;reactor-physics&#x2F;nuclear-safety&#x2F;level-2-abnormal-operation&#x2F;control-rod-drop-pwr&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.nuclear-power.com&#x2F;nuclear-power&#x2F;reactor-physics&#x2F;...</a><p>Can someone check my understanding: Control rods are suspended above the reactor as a sort of a &quot;deadman&#x27;s switch&quot; - if a loss of power occurs, they will drop into the reactor core to limit reactivity. As a result, sometimes control rods will drop into the reactor accidentally. In these cases, the automatic system may withdraw other rods in order to maintain power output. However, this may overshoot the target power output or create a localized, dangerous &quot;hot spot&quot; elsewhere in the reactor core. In order to avoid this, in this case, the operators chose to insert other control rods instead of trying to stabilize the reactor under load.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mlyle</em>:</p>
-<blockquote>Yup.  Often one rod fully in is no big deal -- it has been analyzed and you keep operating.  But no one has certified to run the reactor with a few rods fully in.<p>The control systems are designed to err on the side of dropping the rods -- a failure to insert a rod is a lot worse than inserting one accidentally.  So now they figure out why this happened while the reactor is in standby.</blockquote>
-<p>↳ reply 2 — <em>solarkraft</em>:</p>
-<blockquote>&gt; sometimes control rods will drop into the reactor accidentally. In these cases, the automatic system may withdraw other rods in order to maintain power output<p>So this suggests that the dead man&#x27;s switch has an automated <i>anti-dead-man&#x27;s switch</i> that may result in more danger?<p>It&#x27;d be an interesting design choice, but defendable, if the &quot;accidental dropping&quot; rate is too high.<p>Safety wise, it would seem more sensible to try to keep the automatic drops unchallenged and try to prevent the conditions that make it happen.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The AI Credit Resale Economy</title>
-      <link>https://vectoral.com/blog/who-are-the-token-brokers</link>
-      <guid isPermaLink="false">hn3-49320611</guid>
-      <pubDate>Sun, 16 Aug 2026 14:44:55 +0000</pubDate>
-      <description>225 points, 88 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://vectoral.com/blog/who-are-the-token-brokers"><strong>→ Article</strong></a> <small>(vectoral.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49320611">→ HN comments</a> &nbsp;·&nbsp; 225 points &nbsp;·&nbsp; 88 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Aurornis</em>:</p>
-<blockquote>The original article linked in the opening has more context <a href="https:&#x2F;&#x2F;vectoral.com&#x2F;blog&#x2F;token-relay-market" rel="nofollow">https:&#x2F;&#x2F;vectoral.com&#x2F;blog&#x2F;token-relay-market</a><p>People trading their unused credits feels more genuine, although still in violation of the agreements. The person who got into YC Startup School who was trying to resell the $2500 of credits was interesting. It wouldn’t be that hard for OpenAI to identify the IP addresses of the relays and start flagging accounts, tracing it back to the source. Risking burning your bridges with YC for a relatively small profit is a questionable decision.<p>The original article showed discounts ranging all the way up to 98%. At those levels it’s obviously not people reselling anything. It’s either sourced from stolen API keys, bought with stolen credit cards, or acquired through automated sign up of trial accounts if you’re actually getting the API you request.<p>I would expect a lot of them are reselling a different API. Sign up for Anthropic tokens and get Deepseek responses instead.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>judge2020</em>:</p>
-<blockquote>Another part of the discount is that Claude Max 20x is $200 but gives usage equivalent to thousands of dollars worth of API-based token spend.<p>But also, resellers only need to make an overall profit including kickbacks from the companies purchasing token history for distillation.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>doctorpangloss</em>:</p>
-<blockquote>&gt; Another part of the discount is that Claude Max 20x is $200 but gives usage equivalent to thousands of dollars worth of API-based token spend.<p>this is all it is. it&#x27;s not complicated.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>diego_sandoval</em>:</p>
-<blockquote>Except for the cases of credit card fraud, I don&#x27;t see what&#x27;s morally wrong with it, for it to be called &quot;fraud&quot;.<p>It&#x27;s just reselling.<p>Maybe people are starting to copy Anthropic&#x27;s rhetoric of &quot;everything that inconveniences me is fraud (e.g. distillation). Everything that benefits me is legit.&quot;</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nerevarthelame</em>:</p>
-<blockquote>Distillation is one of the most unique and interesting aspects of this.<p>But otherwise, if a company gives something valuable for creating an account on their platform, expect that people will automate the creation of millions of accounts. If employees of B2B partners get benefits, they will resell them. Accounts will be hacked and resold. The same basic abuse patterns are decades old for online delivery services, loyalty accounts for airline and hotels, etc. There are entire industries dedicated to those spaces as well: large organizations with physical offices, hundreds of employees, HR departments, etc. dedicated to reselling digital benefits on grey markets.<p>Some companies are tolerant of allowing this to happen. The pessimistic view is that even illegitimate traffic contributes to the KPIs that your investors care about. The slightly less pessimistic view is that fraud prevention will always have trade-offs and false positives, and sometimes the savings of preventing fraud are genuinely outweighed by the false positives. Or maybe it&#x27;s just Hanlon&#x27;s razor and they truly never saw it coming.</blockquote>
-<p><strong>Top #3</strong> — <em>vb-8448</em>:</p>
-<blockquote>Wait a sec, I have to trust a third party with basically no reputation, did I get it right?<p>It&#x27;s basically asking for being hacked and&#x2F;or sending you private data to random email addresses! Neither at a 99% discount I&#x27;d do it.<p>I understand if someone, for any reason, cannot access a specific model ... But nowadays, there are so many alternatives that even this doesn&#x27;t make sense any more.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>raincole</em>:</p>
-<blockquote>It&#x27;s <i>really</i> common in China where OpenAI and Anthropic models are firewalled. There was a joke that Chinese people didn&#x27;t realize how cheap DeepSeek was, because they already were using resold ChatGPT&#x2F;Opus tokens at that price.<p>Here is a more detailed article about how it works:<p><a href="https:&#x2F;&#x2F;www.chinatalk.media&#x2F;p&#x2F;how-to-buy-cheap-claude-tokens-in" rel="nofollow">https:&#x2F;&#x2F;www.chinatalk.media&#x2F;p&#x2F;how-to-buy-cheap-claude-tokens...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>andai</em>:</p>
-<blockquote>Oh that&#x27;s interesting, looks like those proxies are probably also selling the data to Chinese AI companies for training.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Aurornis</em>:</p>
-<blockquote>I expect most of the use to be for bulk data processing or desperate founders who don&#x27;t care, not for agentic coding use at promising startups.<p>If your startup needs to run a million records of something, especially public data, through an LLM to extract the data you need, using bootleg tokens to shrink the bill starts feeling tempting.<p>If you&#x27;re concerned about the data leaking, the biggest risk is that the API backends are quietly routing your requests to a cheaper model. You might be trying to buy Opus tokens but get Deepseek Flash responses.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
