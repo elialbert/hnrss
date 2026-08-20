@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 20 Aug 2026 03:52:31 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 04:43:21 +0000</lastBuildDate>
     <item>
       <title>Unlocking a locked/deactivated e-waste Cricut Maker</title>
       <link>https://sprocketfox.io/xssfox/2026/07/01/cricut-unlock/</link>
@@ -299,6 +299,34 @@ Beyond the space saving, why removing the MTP? improves speed exactly for the gr
 <p>↳ reply — <em>low_tech_punk</em>:</p>
 <blockquote>They already sell API access to the model on Google&#x2F;Microsoft&#x2F;Amazon cloud. OpenRouter is the same deal. Note that the labs are not giving out model weights to OpenRouter. They are just selling tokens.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Extensible Software in the age of LLMs</title>
+      <link>https://jeremymorrell.dev/blog/extensible-software-in-the-age-of-llms/</link>
+      <guid isPermaLink="false">hn3-49363668</guid>
+      <pubDate>Wed, 19 Aug 2026 16:26:05 +0000</pubDate>
+      <description>125 points, 50 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://jeremymorrell.dev/blog/extensible-software-in-the-age-of-llms/"><strong>→ Article</strong></a> <small>(jeremymorrell.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49363668">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 50 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>BobbyJo</em>:</p>
+<blockquote>Me and a Cofounder are building something along these lines on top of K8s. The wisdom that &quot;if give the LLM clear boundaries and you get better results&quot; definitely holds IME, even with frontier models like fable. It&#x27;s impossible to specify all the guardrails you need to keep models from violating priors without writing the code yourself, so the only move is to remove their ability to do so, or to even recognize that the option exists.</blockquote>
+<p><strong>Top #2</strong> — <em>william-evans</em>:</p>
+<blockquote>I’m building one of these Podda [1], though pointed at households&#x2F;small communities rather than companies, so ordinary people can keep the apps they’ve made by talking to Claude or ChatGPT and share them with their friends.<p>Passing code only the things it’s allowed to use works on the server because you start from zero, so our generated code holds no credentials at all and its only way out is a proxy that allows exact origins and methods.<p>You can’t really do that in the browser. CSP only restricts which origins the code can reach, not the method or the path, so approving one destination means anything the code can read can go anywhere there. The difficult part is that if we&#x27;re writing an honest consent prompt to our users then it has to say that, and it sounds a lot worse than &quot;allow network access?&quot;. This is hard especially when our target users are non&#x2F;less-technical. There are other versions of the same problem everywhere, like revoking an origin not actually taking effect until a refresh.<p>[1] <a href="https:&#x2F;&#x2F;podda.app" rel="nofollow">https:&#x2F;&#x2F;podda.app</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>masterj</em>:</p>
+<blockquote>For client side there is <a href="https:&#x2F;&#x2F;hardenedjs.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;hardenedjs.org&#x2F;</a><p>And Cloudflare OS does some fancy things with iframes + capnweb iirc</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>william-evans</em>:</p>
+<blockquote>Will take a deeper look into the Cloudflare OS source - thanks!</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>kentonv</em>:</p>
+<blockquote>We (Cloudflare OS) run an app&#x27;s client-side code in a null-origin iframe sandbox that is denied access to everything that we can possibly deny access to. Its only communication line to the outside world is via a Cap&#x27;n Web RPC session over postMessage() to the parent frame, which in turn forwards the session on to the app&#x27;s own server, which runs in a Dynamic Worker sandbox on its end. So the app client can only talk to the app server and nothing else.<p>Or at least, ideally. Unfortunately, content-security-policy today has a few exotic holes. WebRTC, for instance, cannot be blocked; the standard simply doesn&#x27;t cover it.<p>So it&#x27;s not suitable as a sandbox against <i>malicious</i> code trying to leak data by any means possible. Instead it&#x27;s protection against the AI doing something stupid, perhaps prompted by a user who doesn&#x27;t know better.<p>(We would love to get those CSP holes plugged, though...)</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sroerick</em>:</p>
+<blockquote>I built a Lisp interpreter and hosted it on an OCaml http core, and it does exactly this for me.<p>I&#x27;ve been using it for the last three months for basically all my computing. I always wanted a Smalltalk type environment, and this finally scratches this itch.<p>Creating an endpoint is just defining a lisp function.<p>There&#x27;s still a billion things to clean up but it works really well.<p>My LLMs say that if you followed this same pattern in pure clojure or racket it would be comfortably &lt;10k lines of code.<p>That said, I do enjoy implementing my own lisp and I think the OCaml core gives it some stability and security.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Civic Hygiene – avoid building technologies that could be used by a police state (2013)</title>
@@ -1670,6 +1698,45 @@ When I first learned about linear types, my first thought of the use case was ma
 </blockquote>
 <p><strong>Top #3</strong> — <em>hoechst</em>:</p>
 <blockquote>More details in the developer portal: <a href="https:&#x2F;&#x2F;developer.apple.com&#x2F;support&#x2F;apps-in-the-eu&#x2F;" rel="nofollow">https:&#x2F;&#x2F;developer.apple.com&#x2F;support&#x2F;apps-in-the-eu&#x2F;</a><p>It seams that for &quot;reader apps&quot; (like Netflix &#x2F; Spotify), things got slightly better (<a href="https:&#x2F;&#x2F;developer.apple.com&#x2F;support&#x2F;reader-apps&#x2F;#:~:text=16.4%20or%20later.-,Beginning,-October%201%2C%202026" rel="nofollow">https:&#x2F;&#x2F;developer.apple.com&#x2F;support&#x2F;reader-apps&#x2F;#:~:text=16....</a>):<p>&gt; Beginning October 1, 2026, reader apps distributed in the EU may promote out-of-app offers for digital goods and services without an actionable link [...]<p>So you can now at least promote your offers, which was forbidden previously.<p>A reader app is, in Apples words: &quot;With reader apps, people can sign in to their account created outside the app, letting them view and enjoy previously purchased media content or content subscriptions on their Apple device.&quot;</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>MicroGPT-C in pure C hits 10M TPS on Apple M5</title>
+      <link>https://github.com/vixhal-baraiya/microgpt-c</link>
+      <guid isPermaLink="false">hn3-49347477</guid>
+      <pubDate>Tue, 18 Aug 2026 15:46:46 +0000</pubDate>
+      <description>125 points, 43 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/vixhal-baraiya/microgpt-c"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49347477">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 43 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>MycroftJones</em>:</p>
+<blockquote>Check out this port of microgpt to C, posted 5 months ago.  It got a 2500x speedup over the python version.  <a href="https:&#x2F;&#x2F;github.com&#x2F;moebiusV&#x2F;cugpt" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;moebiusV&#x2F;cugpt</a></blockquote>
+<p><strong>Top #2</strong> — <em>Retr0id</em>:</p>
+<blockquote>&gt; The most atomic way to train and inference a GPT in pure, dependency-free C.<p>What sense of the word &quot;atomic&quot; is meant here?</blockquote>
+<blockquote>
+<p>↳ reply — <em>elromulous</em>:</p>
+<blockquote>No dependencies, self-contained</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Retr0id</em>:</p>
+<blockquote>My read was that it meant &quot;small&quot;, since they already say &quot;dependency-free&quot; in the second half of the sentence. But it&#x27;s also a strange way to say &quot;small&quot; so I&#x27;m still not sure.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ilaksh</em>:</p>
+<blockquote>This is not an LLM obviously 
+, it&#x27;s just for generating random names. But interesting to think of the possibilities of truly tiny language models if there were connected together.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nomel</em>:</p>
+<blockquote>Hasn&#x27;t it been repeatedly shown that many small models perform worse than a large model of the same total parameters?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>reilly3000</em>:</p>
+<blockquote>I think that is a sort of a reverse scaling fallacy. Given the right resources and environments, many small models can function together in an emergent way. I’ve been on the lookout for an SLM version of Conway’s game of life. SLM always reminds me of slime molds, which demonstrate a form of intelligence which is remarkable.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>nomel</em>:</p>
+<blockquote>&gt; Given the right resources and environments, many small models can function together in an emergent way.<p>What is this based on? Every researcher I&#x27;ve heard talk about this says it&#x27;s exactly not true, as an uncontested rule, because the larger models will more effectively <i>contain</i> the smaller models, and use them together in ways that the connections between the smaller models can&#x27;t. Remember, even MOE is to <i>save compute&#x2F;memory</i>, not to help performance&#x2F;parameter.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>elzbardico</em>:</p>
+<blockquote>LLMs are an imprecise, more of a marketing term, to define Transformer models based on the self-attention mechanism, trained with massives amounts of data.<p>And this implements a transformer. Actually it is a very cool didactic example.</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Babies born under sugar rationing grew into adults with lower cancer risk</title>
@@ -3465,76 +3532,6 @@ on your ssh accessible server works just fine</blockquote>
 </blockquote>
 <p><strong>Top #3</strong> — <em>trollbridge</em>:</p>
 <blockquote>The fusion of &quot;64-bit architectures&quot; and &quot;64K total RAM machine&quot; brings a bit of a smile to my face with projects with names like this.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Rhombus 1.1 is now available</title>
-      <link>https://blog.racket-lang.org/2026/08/rhombus-v1.1.html</link>
-      <guid isPermaLink="false">hn3-49325384</guid>
-      <pubDate>Mon, 17 Aug 2026 00:48:21 +0000</pubDate>
-      <description>125 points, 58 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.racket-lang.org/2026/08/rhombus-v1.1.html"><strong>→ Article</strong></a> <small>(blog.racket-lang.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49325384">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 58 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dexterlagan</em>:</p>
-<blockquote>Rhombus is what Racket should have been, back when it was <i>the</i> learning language at MIT, before it became Python. Had it been like this, maybe Python would have never gained traction within that community. The world would have been a very different place.<p>Rhombus&#x27; syntax is soooo beautiful. As a Racketeer, it&#x27;s my dream language.
-All the power of Racket... without a Lots of Insipid, Stupid Parenthesis.
-Not that I don&#x27;t like the parens, mind you, but Rhombus looks so much more... 2009. My only regret is that <i>nobody</i> will use Rhombus, except a few enthusiasts, for fun. In an AI age, new programming languages should really be LLM-first, sadly. But it makes me so happy that there are some people who still care about humans coding.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>neilv</em>:</p>
-<blockquote>IIRC, MIT moved away from SICP, and therefore Scheme, because (something like) they saw the field for MIT EECS graduates changing -- from understanding how systems worked in detail, and being able to build from scratch, to assembling systems from off-the-shelf components.  And I guess some thought that a currently popular language (first Java, and then Python) was more appealing for that.<p>One of the other objections to SICP, at least outside of MIT, was that it was too hard (especially for high school students).  Which is part of why HtDP, and much of Racket supported that and other educational initiatives by Matthias Felleisen, et al.  <a href="https:&#x2F;&#x2F;htdp.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;htdp.org&#x2F;</a><p>I&#x27;m curious: Did MIT use Racket at some point for SICP, rather than MIT Scheme, either officially or grassroots?  Jens Axel Soegaard, Mike Sperber, and I made some conveniences for doing SICP with Racket, circa 2009, but I don&#x27;t recall hearing that Racket was used for SICP at MIT itself, only at various other places.  <a href="https:&#x2F;&#x2F;www.neilvandyke.org&#x2F;racket&#x2F;sicp&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.neilvandyke.org&#x2F;racket&#x2F;sicp&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bmitc</em>:</p>
-<blockquote>They moved to Python because they wanted to (the used a book that had been written by an MIT professor or two), because students were whining about it, and because of corporate pressure.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>klez</em>:</p>
-<blockquote>&gt; As a Racketeer, it&#x27;s my dream language. All the power of Racket...<p>Interesting. For me the interesting part of Racket has always been the language itself. What else is there that you like and can use from Rhombus?</blockquote>
-<p>↳ reply 3 — <em>mark_l_watson</em>:</p>
-<blockquote>I love Racket, and have a ton of Racket code I have written over the years. When I get home from a vacation I will have an AI translate a small sample of my Racket code to Rhombus: easiest way for me to play with the language.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>giancarlostoro</em>:</p>
-<blockquote>Racket was always one of my favorite Lisp &#x2F; Scheme dialect, mainly because of its very rich ecosystem, you can make websites, GUIs a lot of things with very minimal effort, that and Dr Racket lets you see visually where import goes into code, and a bunch of other nice things.<p>Rhombus strikes to me as an interesting language in this ecosystem (which it is!) that not only gives you access to all those capabilities, but shows how powerful Racket can be for building programming languages!<p>That said I have not yet sat down to try it, but as they seem to be doing quick development with it, I just might have to.<p>The entire Rhombus repo is all Racket:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;search?q=repo%3Aracket%2Frhombus++language%3ARacket&amp;type=issues" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;search?q=repo%3Aracket%2Frhombus++languag...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>piloto_ciego</em>:</p>
-<blockquote>I really want to like Racket?  I really do, but I just never really enjoyed like I liked Python.  And despite trying a bunch of other Lisps and liking them, something about Dr. Racket annoyed me.  I&#x27;m not sure why.<p>It&#x27;s &quot;cool&quot; and the ecosystem rules, and it&#x27;s fast enough, I just never really found that I liked writing Racket or using Dr. Racket the same way I like writing Python so I never really reached for it when I was trying to do something.  Indeed, from the first time I looked at Python I liked it.  That was not the case with Javascript or Java or C or PHP?  I don&#x27;t know, I <i>like</i> Python and really want a practical Lisp that I can really sink my teeth into?  So by all accounts I should love Racket.  And yet, I don&#x27;t.<p>That said, Rhombus looks really nice at first glance.  This might be worth a sustained excursion to build something a bit more fun...  I&#x27;m kind of excited about this!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>giancarlostoro</em>:</p>
-<blockquote>Racket and Clojure are the primary Lisp languages I like. The only thing I don&#x27;t like about Clojure is the JVM itself ;) Mainly because Oracle stopped working on making Java have a rich GUI stack, JavaFX was brilliantly done and headed in a positive direction, but once Oracle took over Java, it kind of turned it into &quot;that one backend language&quot; essentially, instead of the cross-platform multi-application need swizz army knife it used to be.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>geokon</em>:</p>
-<blockquote>I really highly recommend cljfx if you haven&#x27;t tried it. It&#x27;s a Clojure GUI library that works through javaFX. It&#x27;s an absolute pleasure to work with. It&#x27;s also designed in an extremely extendable - so can integrate with whichever state management systems you prefer (I have it working with Pathom).<p>JavaFX itself is pretty much &quot;done&quot;. Maybe there are corner cases where it&#x27;s lacking.. like displaying complex Math equations, drawing the full SVG spec, or making complex charts with UI elements. That said, there are plenty of Java libraries for some of these situations.<p>The main downside I&#x27;ve found is that my final bundled GUI apps are rather large binaries and they consume a ton of RAM (though I think it&#x27;s the JVM reserving it mostly). They take a few seconds to launch, but then they&#x27;re extremely snappy.<p>Supposedly you can shave the yak further with GraalVM but I haven&#x27;t gone down that rabbit hole</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>spdegabrielle</em>:</p>
-<blockquote>FWIW Rhombus is about 70% Racket and 30% Rhombus (by loc)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>spdegabrielle</em>:</p>
-<blockquote>We are pleased to announce Rhombus 1.1 is now available from <a href="https:&#x2F;&#x2F;rhombus-lang.org" rel="nofollow">https:&#x2F;&#x2F;rhombus-lang.org</a><p>Rhombus is easy to use and uniquely customizable.<p>See <a href="https:&#x2F;&#x2F;blog.racket-lang.org&#x2F;2026&#x2F;08&#x2F;rhombus-v1.1.html" rel="nofollow">https:&#x2F;&#x2F;blog.racket-lang.org&#x2F;2026&#x2F;08&#x2F;rhombus-v1.1.html</a> for the release announcement and highlights.</blockquote>
-<blockquote>
-<p>↳ reply — <em>JoelMcCracken</em>:</p>
-<blockquote>I experimented with Rhombus some time ago (most especially with Shplait). Is there much new with Shplait? Something I remember struggling with was trying to use racket libraries in Rhombus&#x2F;Shplait</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Life and Death of Direct File [pdf]</title>
-      <link>https://www.ischool.berkeley.edu/sites/default/files/vinton_report_5.pdf</link>
-      <guid isPermaLink="false">hn3-49325185</guid>
-      <pubDate>Mon, 17 Aug 2026 00:17:57 +0000</pubDate>
-      <description>184 points, 91 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.ischool.berkeley.edu/sites/default/files/vinton_report_5.pdf"><strong>→ Article</strong></a> <small>(ischool.berkeley.edu)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49325185">→ HN comments</a> &nbsp;·&nbsp; 184 points &nbsp;·&nbsp; 91 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>anigbrowl</em>:</p>
-<blockquote>I was surprised how much I enjoyed reading this. Although it&#x27;s necessarily opinionate d(the lead author was part of the Direct file team) it comes off as very even-handed, giving equal consideration to successes and failures, and addressing the partisan political environment in factual terms.<p>It&#x27;s unusually well-written, providing lots of key details or dropping in relevant context without ever losing sight of the big picture and the looming deadlines.  I expected to just read the executive summary and then skim the rest, but it held my attention the whole way through.</blockquote>
-<p><strong>Top #2</strong> — <em>LastTrain</em>:</p>
-<blockquote>There isn’t much to study - it didn’t succeed or fail on the merits - someone didn’t like it because he didn’t create it so it got axed.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pseudosaid</em>:</p>
-<blockquote>It didnt happen because Intuit lobbied against it like their business model was in existential crisis. The canary is that inappropriate power imbalances will ruin even the most hard one feats of human collaboration and effort. Its like learning about why jaywalking became a crime, or why recycling is a consumer’s respobsibility. Edit: So I&#x27;m about as original as a model can be as I went to go fact check myself and I basically cliff noted an AI summary for yall pre-gen.</blockquote>
-<p>↳ reply 2 — <em>margalabargala</em>:</p>
-<blockquote>I doubt this is the reason. In this particular case, it&#x27;s more likely that a company such as Turbotax paid a sufficient sum of money to the President or one of his family members in exchange for this consideration.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Defenestresque</em>:</p>
-<blockquote>A fascinating , yet sad, post-mortem.<p>Anyone wheeling and dealing along in the shadows between &quot;politics&quot; and &quot;deliverable, functioning product&quot;  should read it. Or, I guess, paste the link into Claude or ChatGPT and ask it to summarize for them, lessons learned in bullet points and how it could apply to $their_job.<p>But I&#x27;m generally a weirdo who finds these kinds of reports fascinating, so don&#x27;t purely go on my recommendation.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
