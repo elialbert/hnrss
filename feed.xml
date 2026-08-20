@@ -4,7 +4,51 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 20 Aug 2026 22:34:22 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 23:31:55 +0000</lastBuildDate>
+    <item>
+      <title>Vomit: Clean up Claude 5's token output with a separate LLM</title>
+      <link>https://github.com/zachahn/vomit</link>
+      <guid isPermaLink="false">hn3-49375996</guid>
+      <pubDate>Thu, 20 Aug 2026 15:26:02 +0000</pubDate>
+      <description>164 points, 175 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/zachahn/vomit"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49375996">→ HN comments</a> &nbsp;·&nbsp; 164 points &nbsp;·&nbsp; 175 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>trefoiled</em>:</p>
+<blockquote>I&#x27;ve been grappling with this for weeks, not just in Claude but in Codex as well, which isn&#x27;t quite as bad but still annoying. AGENTS.md does very little, agents will consistently violate the communication preferences, especially as the session drags on. It&#x27;s incredible to me that there&#x27;s no good way to reliably change the way an LLM responds to you that a workaround like this would even be necessary. It seems like such a failure to live up to the promises of the product.<p>The baked in communication style of these models is so obnoxious it&#x27;s impacting my work. The best way I can describe it is that everything is optimized to <i>impress</i> the user and make the agent sound more authoritative, but the way this is done is through deliberate obfuscation, inserting inappropriate and extremely dense jargon, and bizarre, stilted metaphors. It&#x27;s like they&#x27;ve been trained to produce output that&#x27;s hard to read.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>andai</em>:</p>
+<blockquote>I noticed with with OpenAI&#x27;s reasoning models (o3, o4-mini), and early GPT-5 (but they fixed it there, at least in chat). It went from the 4o &quot;over-familiar&quot; sycophancy to sounding like an absolute robot.<p>I think it&#x27;s because the reasoning stream shapes the style of the final output, and they optimized it for density, token efficiency. So it prefers to use more complex language, as a function of the rewards it was given?<p>Not 100% sure about this argument though (reasoning style -&gt; final response style); Gemini Pro, back when reasoning tokens were public, was different, which was interesting -- it would have a very structured reasoning section, and then the final output was in a completely different style. (I strongly preferred the reasoning section because it was logical and easy to parse! And was very sad when they hid it...)</blockquote>
+<p>↳ reply 2 — <em>bitexploder</em>:</p>
+<blockquote>It seems a little excessive to use another LLM. With OMP I basically created an ephemeral prompt stack all of my agent files. It walks up the directory tree looking for any Gemini.md, Agents.md or Claude.md files. And it puts those at the very top of the stack. Then at the end of every turn, it pops those off to preserve the conversation history. So every turn, they get all of my fresh instructions, which include things like what and how to use language, how to render results and things like that. Net effect, every turn, the agent gets the instructions and it adds to that turn&#x27;s tokens, but it does not become a part of the conversation history, which is really important for not bloating up the context. So it&#x27;s always just however many tokens are in that file instead of it becoming a permanent part of the context.</blockquote>
+<p>↳ reply 3 — <em>striking</em>:</p>
+<blockquote>I asked Claude to do the following:<p>&gt; hello i would like to configure a new output style for you. it should keep the coding instructions (as you will still be coding!) and otherwise produce the same output, but with two new caveats. first, long detailed replies are still permitted, but if employed they must end in a bullet pointed summary whose points are all brief; if the summary attempt ends up not being so brief, produce subsequent summaries until the most recent summary attempt is digestible. second, if there is an open queue of actions for me to execute and you are about to end a turn to wait for a reply or this set of actions has not recently been mentioned, please tabulate the open actions i should take and why i should take them before ending the response. does this make sense or do you have any follow up questions<p>And now every message contains the same stuff I don&#x27;t bother reading, but followed by a nicely formatted bullet point summary of the response and a table of follow up actions for me to take that I do read.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bob1029</em>:</p>
+<blockquote>At some point one has to wonder if it&#x27;s still worth using anthropic&#x27;s models if we need to babysit 100% of its output with another vendor&#x27;s model. Why not just use that other vendor&#x27;s model for everything?<p>I can&#x27;t help but feel the circumstances that enable this kind of front page article are vestigial from the days when OAI was super bad and Anthropic was beyond reproach. This change-over-time is why I avoid getting tribal with technology vendors. Assigning ideological motives to 200k+ employee organizations is how we wind up in weird contortions like this.<p>Most rational actors simply moved from one to the other. It takes a special kind of devotion to the proverbial hole in the ground to keep pushing in this direction.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lxgr</em>:</p>
+<blockquote>&gt; Why not just use that other vendor&#x27;s model for everything?<p>Effectively all models can do style transfer reasonably well at this point, but not so much for &quot;actual reasoning&quot;.<p>If the combination of two works better for you than each one by itself, why wouldn&#x27;t you stack them like that?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cyanydeez</em>:</p>
+<blockquote>whats going on is openai and anthropic have tons of garbage in their system prompts &quot;don&#x27;t talk about goblins&quot; so your ability to override that garbage is nearly wiped out. This is &quot;alignment&quot; and I&#x27;m pretty sure both orgs have convinced themselves that this benefits the customer.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Implicated</em>:</p>
+<blockquote>&gt; Why not just use that other vendor&#x27;s model for everything?<p>Because it&#x27;s not an either or thing. Neither is sufficient. I&#x27;d argue that, expenses aside, you should have every model you have access to cross reviewing the work of the others.<p>Outside of super trivial things that I should have just done myself, I have a cross-model review of _everything_ these days. The tokens are too cheap not to.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>imalerba</em>:</p>
+<blockquote>I like the &quot;Claudish to English&quot; name better.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;gvzdv&#x2F;claudish-to-english" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;gvzdv&#x2F;claudish-to-english</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pickledish</em>:</p>
+<blockquote>Word, that one also includes an example which is great, shows really clearly what the issue is for those who might be less familiar</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>floil</em>:</p>
+<blockquote>I&#x27;m unfamiliar with claudish and the example helped show the problem. But! There was something uncomfortably familiar in the Claudish example -- this is the way human programmers write when they&#x27;re deep in the weedy details, and writing the changelist description afterwards as if coming up for air. Overuse of parentheses in nested lists especially, as if the English text needs to bend to the strict needs of a C++ parser.<p>The rewrite did seem to lose the important fact about the ensure- pattern being idempotent.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>rafram</em>:</p>
+<blockquote>The funniest part is that that project&#x27;s own readme includes lots of good Claudish.<p>&gt; If CLAUDISH_MODEL names a model you have not pulled, every rewrite is skipped — with the one-time notice above.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Bun 1.4</title>
       <link>https://bun.com/blog/bun-v1.4</link>
@@ -3514,34 +3558,6 @@ General knowledge helps with coding when your don&#x27;t specify a lot of detail
 <p>↳ reply 2 — <em>mosselman</em>:</p>
 <blockquote>Let&#x27;s assume the calculation is correct and you actually earn back in 11-13 years. You are better off investing the money in something like the S&amp;P 500 where you&#x27;d double your investment in about a decade without the hassle.<p>Things will start to get interesting where €1600 don&#x27;t buy you 5kWh but double or triple the amount.<p>I can imagine most people are better off either investing like I said or in insulation.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Sun Clock</title>
-      <link>https://sunclock.net/</link>
-      <guid isPermaLink="false">hn3-49333824</guid>
-      <pubDate>Mon, 17 Aug 2026 16:37:54 +0000</pubDate>
-      <description>170 points, 56 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://sunclock.net/"><strong>→ Article</strong></a> <small>(sunclock.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49333824">→ HN comments</a> &nbsp;·&nbsp; 170 points &nbsp;·&nbsp; 56 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mourner</em>:</p>
-<blockquote>Author of suncalc (the JS library behind the sun calculations) here — happy to see such a nice application of it! Heads up if the author&#x27;s reading this — I recently released a major overhaul of the library that makes it a lot more precise: <a href="https:&#x2F;&#x2F;github.com&#x2F;mourner&#x2F;suncalc" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;mourner&#x2F;suncalc</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>carterschonwald</em>:</p>
-<blockquote>what sorts of background texts&#x2F;sources of info did you use?<p>edit: i think i have the dover book your readme mentions :)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mourner</em>:</p>
-<blockquote>Initially (about 15 years ago - it was my first ever open source library!) it was based on Astronomy Answers articles that are thankfully still live at <a href="https:&#x2F;&#x2F;www.aa.quae.nl&#x2F;en&#x2F;reken&#x2F;zonpositie.html" rel="nofollow">https:&#x2F;&#x2F;www.aa.quae.nl&#x2F;en&#x2F;reken&#x2F;zonpositie.html</a>, but v2.0 specifically was rewritten to use the approach described in Jean Meeus&#x27; Astronomical Algorithms book.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>TimTheTinker</em>:</p>
-<blockquote>It looks like the &quot;golden hour&quot; may be hardcoded as the hour before sunset. May I suggest updating it to be based on the sun&#x27;s position in the sky?<p>In high-northern and low-southern latitudes, the sun can stay close to the horizon for long stretches of the day depending on the season. For example, in Iceland in parts of the spring and fall, the golden hour lasts for most of the day - amazing for photography and just enjoying the scenery.</blockquote>
-<blockquote>
-<p>↳ reply — <em>mordechai9000</em>:</p>
-<blockquote>In northern Alaska it can last most of the day in the winter, and most of the night in the summer.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>staplung</em>:</p>
-<blockquote>Clocks like this are fun. I coded one but couldn’t decide how to handle the corner cases where the sun rises but does not set (and vice versa). You also have to decide if you’re showing the time that the sun rose today or if it should be tomorrow once you’ve already passed that time. Either way, at a certain point you’ll see the UI shift. At moderate latitudes it makes little difference but the effect can be quite extreme depending on the latitude and time of year.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
