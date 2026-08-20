@@ -4,7 +4,57 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 20 Aug 2026 17:35:57 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Aug 2026 18:50:04 +0000</lastBuildDate>
+    <item>
+      <title>AliExpress runs silent WebAudio fingerprinting that breaks Bluetooth multipoint</title>
+      <link>https://blog.laserphile.com/2026/08/aliexpress-webpage-keeping-multipoint.html</link>
+      <guid isPermaLink="false">hn3-49372583</guid>
+      <pubDate>Thu, 20 Aug 2026 10:08:52 +0000</pubDate>
+      <description>710 points, 234 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.laserphile.com/2026/08/aliexpress-webpage-keeping-multipoint.html"><strong>→ Article</strong></a> <small>(blog.laserphile.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49372583">→ HN comments</a> &nbsp;·&nbsp; 710 points &nbsp;·&nbsp; 234 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>lxgr</em>:</p>
+<blockquote>I wish such shenanigans would simply trigger the little speaker icon most browser display on tabs these days.<p>Given that they don&#x27;t (at least in my experience), I&#x27;m assuming &quot;playing silent audio&quot; is a sufficiently common thing for websites to do to have motivated browsers into doing the slightly more complicated thing of actually analyzing audio streams for content...<p>Now I wonder, does this also allow websites to continue running in the background on mobile browsers? Playing media is one of the very few things that can convince iOS Safari to keep a tab running indefinitely, in my experience.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nubinetwork</em>:</p>
+<blockquote>It does on my Firefox, I had to close their tab because it also tricks kde into thinking I&#x27;m playing audio.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>myself248</em>:</p>
+<blockquote>Thaaaaaaat explains why an open Aliexpress tab always bumps my thermals ever so slightly.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ryandrake</em>:</p>
+<blockquote>It&#x27;s insane that browsers just hand over API access to my microphone and&#x2F;or camera to rando web developers. Yes, I know things like Zoom exist. IMO software like that simply shouldn&#x27;t be possible on browsers, period.<p>Making the browser into a general purpose system SDK was a mistake--maybe the biggest mistake in personal computing&#x27;s history.</blockquote>
+<p>↳ reply 3 — <em>pmontra</em>:</p>
+<blockquote>The speaker icon would be handy but I think that it depends from both the good will of Firefox and the installed add ons. Of course if an add on blocks the audio file there is no need to display the speaker icon for that file.<p>To give you the idea of what is going on, this is what uMatrix shows about www.aliexpress.com in my Firefox browser on my laptop. It would be more difficult to copy and paste from uMatrix on my Android phone. It shows a number of sites. Nothing in first party and these that I must fully enable to make the site work (css, image, script, xhr)<p>* aliexpress.com<p>* ase.aliexpress.com<p>* it.aliexpress.com (my country two letters domain)<p>* umdc-global.aliexpress.com<p>* aidcgroup.net<p>* ase.aidcgroup.net<p>* 67372.ase.aidcgroup.net<p>* alibaba-inc.com<p>* epss.alibaba-inc.com<p>* alicdn.com<p>* ae01.alicdn.com<p>* assets.alicdn.com<p>* aliexpress-media.com<p>* ae-pic-a1.aliexpress-media.com<p>* assets.aliexpress-media.com<p>* aliyun.com<p>* acjs.aliyun.com<p>Scary list, right? According to google aidcroup is<p>&gt; Alibaba International IPP Platform<p>&gt; <a href="https:&#x2F;&#x2F;ipp.aidcgroup.net" rel="nofollow">https:&#x2F;&#x2F;ipp.aidcgroup.net</a><p>&gt; Alibaba International is committed to the protection of intellectual property rights. Right holders and their agents can enforce intellectual property ...<p>Let me add a &#x2F;s to the last line<p>There are two more sites that I can completely block<p>* googlesyndication.com<p>* pagead2.googlesyndication.com<p>so even Alibaba runs ads on Google.<p>I did not instrument the browser like the author of the post did, so I don&#x27;t know where the audio comes from. There is nothing listed in the media column of uMatrix. This does not mean that the post is inaccurate. It could be that the browser gets the audio stream from a request in one of the other categories.<p>uBlockOrigin blocks two of other requests.<p>1. <a href="https:&#x2F;&#x2F;g.alicdn.com&#x2F;code&#x2F;npm&#x2F;@ali&#x2F;gmod-pop-disclosure-code&#x2F;1.2.0&#x2F;??index-pc.umd.css=" rel="nofollow">https:&#x2F;&#x2F;g.alicdn.com&#x2F;code&#x2F;npm&#x2F;@ali&#x2F;gmod-pop-disclosure-code&#x2F;...</a><p>and this one that I anonymize<p>2. <a href="https:&#x2F;&#x2F;aplus.aliexpress.com&#x2F;g.gif?logtype=0&amp;title=WebPush" rel="nofollow">https:&#x2F;&#x2F;aplus.aliexpress.com&#x2F;g.gif?logtype=0&amp;title=WebPush</a> Permission&amp;pre=https:&#x2F;&#x2F;it.aliexpress.com&#x2F;?gatewayAdapt=glo2ita&amp;scr=1920x1080&amp;_p_url=https:&#x2F;&#x2F;it.aliexpress.com&#x2F;wp.html&amp;cna=&lt;whatever cna is&gt;&amp;category=&amp;aplus=&amp;$${beacon_mini}$$=&amp;yunid=&amp;=&amp;trid=&lt;trid&gt;&amp;asid=&lt;base64 stuff&gt;$${get_sign}$$&amp;p=1&amp;o=linux&amp;b=firefox153&amp;s=1920x1080&amp;w=gecko&amp;ism=other&amp;cache=&lt;7 letters&gt;&amp;lver=8.15.25&amp;jsver=aplus_std&amp;pver=0.7.12&amp;_pw=0&amp;_ph=0&amp;tag=1&amp;stag=-1&amp;lstag=-1&amp;_slog=0<p>Probably the audio file is coming from one of the unblocked requests but my Debian laptop does not pair with my Bluetooth earpieces so I can&#x27;t test it.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mgerdts</em>:</p>
+<blockquote>With my previous hearing aid I noticed that visiting a wide variety of web sites would cause a change in the amplification of environmental noise. I always assumed it was doing something with Bluetooth, and probably not for a good reason. This is with an iPhone 13 and one Kirkland&#x2F;phonak hearing aid.<p>I haven’t noticed this recently, but I also now have two newer Phonak hearing aids and a few iOS updates have happened. Maybe the silent Bluetooth shenanigans are less disruptive to my new aids or the programming is different. Surely shenanigans continue.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>retrac</em>:</p>
+<blockquote>It&#x27;s the Bluetooth; when Bluetooth connects most hearing aids reduce the environmental volume slightly so you can hear the streaming content.  Some app has started to play audio (perhaps silently).  I notice it on some websites.<p>How much HAs reduce environmental sounds when streaming is configurable by the way, but only by the audiologist if you don&#x27;t have your own programmer.  I don&#x27;t like the effect and prefer to just turn down the volume manually.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mgerdts</em>:</p>
+<blockquote>Is this tunable per hearing program? When in an even moderately noisy environment I find myself switching to AirPods if I’m streaming. I would love for the HA to give separate controls for BT audio vs ambient like AirPods do.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jonathanlb</em>:</p>
+<blockquote>I wear Phonak CI processors. It&#x27;s not just you. I&#x27;ve also experienced the volume drop on a few sites and apps. The Amazon iOS app does this. Each time I leave the app, ambient audio returns to normal.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>patspam</em>:</p>
+<blockquote>I noticed in the last few weeks that if I’d recently opened the AliExpress iOS app (ie. it was backgrounded) my car audio would freak out thinking I was giving it an audio command. Killing the AliExpress app immediately fixed the problem. After seeing it happen more than once I assumed it was something dodgey and uninstalled the app.</blockquote>
+<blockquote>
+<p>↳ reply — <em>lukeify</em>:</p>
+<blockquote>I cannot ever imagine installing something like AliExpress as an app.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ivanjermakov</em>:</p>
+<blockquote>Not sure if they still do, but a couple years ago prices in the app were lower than on the website. And they promoted installing it to save money.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>wongarsu</em>:</p>
+<blockquote>I believe the prices are the same. But the app has a number of &quot;games&quot; to collect tokens that get credited as discounts. Seems to be mostly stuff designed to get you to open the app daily and browse their offers. Which might be &quot;innocent&quot; if it&#x27;s just to get you to buy more stuff, or maybe they have more reasons they want you to have the app open. Who knows<p>At least Aliexpress doesn&#x27;t have all the fake slot machine type games that temu has that always end in variations of &quot;get $200 of discounts for your next order if you order x items from this list&quot;</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Don't paste the AI, please</title>
       <link>https://dontpastetheai.com/</link>
@@ -3478,52 +3528,6 @@ According to the Bundeskartellamt’s investigation, there are no other technica
 </blockquote>
 <p><strong>Top #3</strong> — <em>jonplackett</em>:</p>
 <blockquote>They also do other things you aren’t allowed to do as a developer - eg. When they do a ‘free trial’ of Apple TV, if you cancel it cancels immediately. All proper subscriptions you retain the use of until the renewal date.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How to disable or avoid intrusive AI</title>
-      <link>https://www.librarian.net/notoai/</link>
-      <guid isPermaLink="false">hn3-49331220</guid>
-      <pubDate>Mon, 17 Aug 2026 14:07:56 +0000</pubDate>
-      <description>220 points, 119 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.librarian.net/notoai/"><strong>→ Article</strong></a> <small>(librarian.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49331220">→ HN comments</a> &nbsp;·&nbsp; 220 points &nbsp;·&nbsp; 119 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dinkleberg</em>:</p>
-<blockquote>I recently discovered that you need to have Siri enabled for Apple CarPlay. I expect we&#x27;re going to see a lot of this where when you disable the AI functionality the devs won&#x27;t have put in fallback states and you&#x27;ll be effectively locked out. With CarPlay for instance there is no reason that I shouldn&#x27;t be able to listen to my music or use the map without Siri. But things like responding to texts does rely on Siri, so just gate that piece. It is rather unfortunate.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>MoreQARespect</em>:</p>
-<blockquote>I had a similar experience when I tried to search through reviews on amazon on the mobile website.<p>The search box is gone and you&#x27;re supposed to ask Rufus now.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>andrekandre</em>:</p>
-<blockquote><p><pre><code>  &gt; you&#x27;re supposed to ask Rufus now
-</code></pre>
-completely off-topic but the names they give these dumb ai tools is so cringe</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>fragmede</em>:</p>
-<blockquote>What would you call it?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>goalieca</em>:</p>
-<blockquote>I was very upset about this. I had a rental car and I needed to enter on the map where I wanted to go. Even with a damn keyboard it wanted Siri. It’s just gps and i had to dig my phone out and do the typing there instead.</blockquote>
-<p>↳ reply 3 — <em>thejosh</em>:</p>
-<blockquote>Yes, the &quot;okay if you want to disable AI, we&#x27;re going to remove non-AI features&quot; paradigm that Gmail is also doing.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>kennywinker</em>:</p>
-<blockquote>Switch to linux, that&#x27;s what I did.<p>Literally. The endless waves of companies forcing LLMs down our throats and into our workflows drove me off the mac. And windows is worse, which leaves linux.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jessamyn</em>:</p>
-<blockquote>Which Linux phone do you prefer?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kennywinker</em>:</p>
-<blockquote>Currently auditioning a used pixel 8 with graphene os on it. It&#x27;s nice. Not strictly linux, but it&#x27;s de-googled. Minimal. Not designed to suck you in. Bit of a pain to get installed, but other than that, pretty good.<p>My iPhone is the last tie i have to the apple ecosystem, so it&#x27;s been much harder to untangle than my mac was - but I&#x27;m getting close! :)</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jessamyn</em>:</p>
-<blockquote>Hello -- this is mine! There&#x27;s a short URL: <a href="https:&#x2F;&#x2F;NoToAI.org" rel="nofollow">https:&#x2F;&#x2F;NoToAI.org</a> If people have suggestions I&#x27;ll add them.</blockquote>
-<blockquote>
-<p>↳ reply — <em>devindotcom</em>:</p>
-<blockquote>funny to see you here rather than mefi jessamyn. thanks for everything!</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
