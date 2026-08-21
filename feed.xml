@@ -4,7 +4,109 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 21 Aug 2026 17:35:09 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 18:47:05 +0000</lastBuildDate>
+    <item>
+      <title>DeepSeek-v4-flash-vision-exp</title>
+      <link>https://api-docs.deepseek.com/guides/vision/</link>
+      <guid isPermaLink="false">hn3-49386163</guid>
+      <pubDate>Fri, 21 Aug 2026 10:33:56 +0000</pubDate>
+      <description>388 points, 126 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://api-docs.deepseek.com/guides/vision/"><strong>→ Article</strong></a> <small>(api-docs.deepseek.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49386163">→ HN comments</a> &nbsp;·&nbsp; 388 points &nbsp;·&nbsp; 126 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ciberado</em>:</p>
+<blockquote>DS being unable to precisely view Playwright screenshots is the only thing I really miss from Sonnet. This is promising.<p>&gt; Images are converted into tokens based on their dimensions, and these tokens are billed together with your text tokens.<p>&gt; Before inference, every image is automatically resized:<p>&gt; - Images with a total pixel count below roughly 384×384 are scaled up while preserving their aspect ratio.<p>&gt; - Larger images are scaled down while preserving their aspect ratio so that the total pixel count after resizing is roughly that of an 800×800 image.<p>&gt; As a result, there is an upper bound of 384 tokens per image: for example, a 2000×2000 image and a 5000×5000 image consume the same number of tokens after resizing. When a request contains multiple images, each image is counted independently under the same rule—there is no separate calculation for multi-image requests.<p>400 tokens per image results in 2,500 images per dollar, if I’m not mistaken.<p><i>edit: format.</i></blockquote>
+<p><strong>Top #2</strong> — <em>leumon</em>:</p>
+<blockquote>It fails the simple clock test for me which Qwen3.8 27B got (nearly) right.
+given an image of a clock <a href="https:&#x2F;&#x2F;files.catbox.moe&#x2F;kgwa5e.png" rel="nofollow">https:&#x2F;&#x2F;files.catbox.moe&#x2F;kgwa5e.png</a><p>I asked it &quot;what time does the clock show?&quot; (both on reasoning: high)<p>DS answered: The clock shows *5:10* (and 45 seconds).
+Here is the breakdown:
+*   *Hour hand (red, shortest):* Pointing at the *5*.
+*   *Minute hand (green, longest):* Pointing at the *2*, which represents 10 minutes.
+*   *Second hand (blue, medium):* Pointing at the *9*, which represents 45 seconds.<p>Qwen answered: The clock shows *8:10* (with the red second hand on the 5, i.e. *8:10:25*).<p>- *Hour hand* (short, blue) → 8
+- *Minute hand* (long, green) → 2 (10 minutes)
+- *Second hand* (thin, red) → 5 (25 seconds)<p>Correct answer is 08:09:25.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dghlsakjg</em>:</p>
+<blockquote>I’ll keep that in mind next time I need to tell what time it is by asking an llm to read an analog clock.<p>Snark aside, I’m not sure that these gotcha tests are any more useful than asking politicians gotcha questions. Sure, the model can’t tell me what time it is, but it can code the Wang algorithm for noisy audio matching in one shot. Maybe this is just me being an optimist, but this is my hiring philosophy and I guess maybe now my llm philosophy: I’m not interested in seeing how dumb I can make you look, I’m more interested in how smart you can be.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>atomicnumber3</em>:</p>
+<blockquote>It&#x27;s because the messaging for what the point of these things is supposed to be is all over the place. Ask 10 different people and you&#x27;ll get 10 different answers:<p>- A superintelligence that will usher in an age of human enlightenment<p>- A superintelligence that will usher in an age of human enslavement<p>- A really cool way to rake in trillion of rich VC&#x2F;investor money by promising you&#x27;re building a superintelligence that will usher in an age of human en[slave&#x2F;lighten]ment<p>- A transformer model for predicting output tokens given a series of input tokens, informed primarily by reddit, stack overflow, and 6000 years of classical literature.<p>- A replacement for white collar labor. Start now or join the permanent underclass.<p>- A convenient fuzzy-find tool also capable of some probably-correct code generation.<p>- The ultimate customizable text RPG experience (you can pick if G stand for game or...)<p>And so on.<p>So, some people see a new model and check for how close humanity is to enslavement. Some people check to see if it got better at fixing broken unit tests.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>KerrAvon</em>:</p>
+<blockquote>What&#x27;s amazing is that all of these are true at once. If you allow for some significant slack in what &quot;superintelligence&quot; means.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>emosenkis</em>:</p>
+<blockquote>This is not a normal looking clock - most clocks have either one color for all hands (second hand is thinnest and maybe also longest) or one color for hour&#x2F;minute and one for second.
+I know that the hand lengths and thicknesses on this image are correct but for some reason I, a totally human person who grew up when analog clocks were still common, see this and think the hand on the 5 is the minute hand. 
+How does the AI do if you just make all the hands black?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>LorenDB</em>:</p>
+<blockquote>I&#x27;ve heard that DeepSeek v4 Flash 0731 has frequently assumed that it has vision capabilities and then resorts to inventing text-based image analysis tools when it finds that it actually can&#x27;t see. In that case, this is a great upgrade for the model.<p>Anecdotally, I had to tell 0731 to refrain from viewing screenshots since it kept breaking its sessions by trying to read images.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>VulgarExigency</em>:</p>
+<blockquote>It tried to recreate vision by analyzing pixels on 3 separate projects I had it working on.</blockquote>
+<p>↳ reply 2 — <em>trollbridge</em>:</p>
+<blockquote>I&#x27;ve mitigated this by giving it a &quot;skill&quot; that just means the harness using a different model.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>AI companies destroy physical books – let's scan rare books before it's too late</title>
+      <link>https://annas-archive.pk/blog/physical-destruction.html</link>
+      <guid isPermaLink="false">hn3-49385994</guid>
+      <pubDate>Fri, 21 Aug 2026 10:05:46 +0000</pubDate>
+      <description>694 points, 2 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://annas-archive.pk/blog/physical-destruction.html"><strong>→ Article</strong></a> <small>(annas-archive.pk)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49385994">→ HN comments</a> &nbsp;·&nbsp; 694 points &nbsp;·&nbsp; 2 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>r721</em>:</p>
+<blockquote>Another discussion: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49383026">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49383026</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>dang</em>:</p>
+<blockquote>Comments moved thither. Thanks!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Small, native web tricks worth remembering</title>
+      <link>https://htmlcat.net/</link>
+      <guid isPermaLink="false">hn3-49385860</guid>
+      <pubDate>Fri, 21 Aug 2026 09:45:14 +0000</pubDate>
+      <description>192 points, 51 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://htmlcat.net/"><strong>→ Article</strong></a> <small>(htmlcat.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49385860">→ HN comments</a> &nbsp;·&nbsp; 192 points &nbsp;·&nbsp; 51 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>moontear</em>:</p>
+<blockquote>There are some good descriptions and hints, but what the site really needs is examples. Just looking at the code doesn&#x27;t help me much. The descriptions are also mostly so short, that they could just as well be tooltips on the homepage.
+The whole premise of the page is a collection of &quot;web tricks worth remembering&quot; and I can&#x27;t fathom what bash (e.g. `du -hd 1 . | sort -hr`) is doing there.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Aachen</em>:</p>
+<blockquote>fwiw I find `*` a lot easier in regular use than all of `-d 1 .`. It doesn&#x27;t automatically expand to dotfiles but for regular typing, this advice looks like something you&#x27;d do if you&#x27;re a robot or making an alias</blockquote>
+<p>↳ reply 2 — <em>marcomezzavilla</em>:</p>
+<blockquote>You’re absolutely right, thanks for the feedback. I initially included live examples (mostly through CodePen), but they were taking too much time to maintain, so I stopped.<p>The Bash entry was really just a half-finished personal note that I never properly edited. It’s probably out of scope too.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>zeroq</em>:</p>
+<blockquote>Maybe it&#x27;s just me, but it seems like a huge waste of time (or to be on a more positive note - potential).<p>Just the first example &quot;Device type in JS&quot;.<p>&quot;A coarse pointer does not mean “mobile”, and a fine pointer does not guarantee “desktop”. Ask the browser about input capabilities instead of guessing the device from its user agent.&quot;<p><pre><code>  const input = {
+  finePointer: matchMedia(&#x27;(any-pointer: fine)&#x27;).matches,
+  coarsePointer: matchMedia(&#x27;(any-pointer: coarse)&#x27;).matches,
+  canHover: matchMedia(&#x27;(any-hover: hover)&#x27;).matches,
+  }; 
+</code></pre>
+So it doesn&#x27;t tell me how to identify device type. It doesn&#x27;t even run the code so I could quickly compare results between my mobile and desktop devices to establish a baseline.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>marcomezzavilla</em>:</p>
+<blockquote>You’re right: it doesn’t identify the device type, so the title is misleading.<p>The intended point is that device type is often the wrong thing to detect: a touchscreen laptop may expose both coarse and fine pointers, while a tablet may be connected to a mouse or trackpad. The snippet detects available input capabilities instead, which is usually what the interface should respond to.<p>I wasn’t particularly careful with the titles, but this one should be &quot;Detect input capabilities&quot;. Thanks for the heads-up!</blockquote>
+<p>↳ reply 2 — <em>wonnage</em>:</p>
+<blockquote>It has all the hallmarks of just telling an agent to scrape MDN and make a website</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>apples_oranges</em>:</p>
+<blockquote>please don&#x27;t hide scrollbars :)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>chrismorgan</em>:</p>
+<blockquote>Yeah, that was the first one my eyes went to. The only scenarios I can think of where it is acceptable to hide scrollbars are infinite canvases where you’ll draw your own non-linear ones (and even then be disappointed because they can’t look or behave natively), and things like maps where you remap scrolling to zoom and <i>might</i> want to use a backing invisible scroll area for that rather than consuming scroll events (which are somewhat more limited).<p>In short: unless the native scroll bar will be <i>wrong</i>, do not under any circumstances hide it.</blockquote>
+<p>↳ reply 2 — <em>marcomezzavilla</em>:</p>
+<blockquote>If you mean the &quot;Hide scrollbars&quot; note, I agree 100% (:<p>There are a few specific situations where it can be useful, but I added the caveat precisely because it’s generally not a good practice.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>The Lost Treasure of Sid Meier's Pirates</title>
       <link>https://remapradio.com/articles/the-lost-treasure-of-sid-meiers-pirates/</link>
@@ -3535,102 +3637,6 @@ I&#x27;m here for it.<p>[1] <a href="https:&#x2F;&#x2F;www.reuters.com&#x2F;worl
 <p>↳ reply 2 — <em>tiahura</em>:</p>
 <blockquote>Companies buying other companies files have been a thing since companies.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Linux 7.3 improves performance when running out of vRAM</title>
-      <link>https://pixelcluster.dev/VRAM-Overcommit/</link>
-      <guid isPermaLink="false">hn3-49342719</guid>
-      <pubDate>Tue, 18 Aug 2026 07:51:50 +0000</pubDate>
-      <description>398 points, 158 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://pixelcluster.dev/VRAM-Overcommit/"><strong>→ Article</strong></a> <small>(pixelcluster.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49342719">→ HN comments</a> &nbsp;·&nbsp; 398 points &nbsp;·&nbsp; 158 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>krisknez</em>:</p>
-<blockquote>I hope there will be an update where when my RAM gets full my PC doesn&#x27;t freeze and becomes unusable... I remember that Linux and Windows do this in different ways and Windows doesn&#x27;t have the problem.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>augusto-moura</em>:</p>
-<blockquote>Have you tried setting up systemd-oomd [1]? It works by killing the offending process (hopefully) before a true OOM.<p>When I run in a frozen system because of RAM, I&#x27;m a happy user of the Magic SysRq &#x27;f&#x27; [2], it bypasses most kernel scheduling so it works even on frozen systems<p>[1]: <a href="https:&#x2F;&#x2F;man.archlinux.org&#x2F;man&#x2F;systemd-oomd.8" rel="nofollow">https:&#x2F;&#x2F;man.archlinux.org&#x2F;man&#x2F;systemd-oomd.8</a><p>[2]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Magic_SysRq_key" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Magic_SysRq_key</a></blockquote>
-<p>↳ reply 2 — <em>webstrand</em>:</p>
-<blockquote>Its not enabled by default, but enabling MGLRU setting &#x2F;sys&#x2F;kernel&#x2F;mm&#x2F;lru_gen&#x2F;min_ttl_ms to 70 has entirely resolved the issue for me. It _does_ usually pick firefox or vscode to kill, but my system remains interactive, with no need for earlyoom.<p>Docs <a href="https:&#x2F;&#x2F;docs.kernel.org&#x2F;admin-guide&#x2F;mm&#x2F;multigen_lru.html#thrashing-prevention" rel="nofollow">https:&#x2F;&#x2F;docs.kernel.org&#x2F;admin-guide&#x2F;mm&#x2F;multigen_lru.html#thr...</a></blockquote>
-<p>↳ reply 3 — <em>NekkoDroid</em>:</p>
-<blockquote>For me Windows becomes unusable as soon as any of my drives is being hammered, including when it is swapping, but not limited to it.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>exceptione</em>:</p>
-<blockquote>Great article! I share the same hunch as the author does; when allocating memory ultimately the application itself is in the best position to inform the kernel about the desired stickiness to VRAM. The best a kernel can do is <i>guessing</i>.<p>As a side note, it strikes me how much we owe to young trans people for low level performance engineering.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>eru</em>:</p>
-<blockquote>They&#x27;ll get old soon enough.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>MengerSponge</em>:</p>
-<blockquote>Inshallah</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sfn42</em>:</p>
-<blockquote>I imagine &quot;we&quot; &quot;owe&quot; a lot more to young men or just men in general for the same, but I guess there&#x27;s no virtue signaling points to be harvested from making that observation.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>d3Xt3r</em>:</p>
-<blockquote>Gosh, 7.2 literally just dropped with a bunch of awesome of performance&#x2F;gaming related improvements (large folios, cache-aware scheduling, improved MGLRU reclaiming, Fair GPU Scheduler etc)... and I already can&#x27;t wait for 7.3 to come out.<p>Meanwhile in the Windows world, users <i>hate</i> updates... Like I genuinely can&#x27;t think of a single instance that made users exclaim, &quot;oh boy I just can&#x27;t wait for the next Patch Tuesday!&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>zekrioca</em>:</p>
-<blockquote>[1] Linux 7.2 Reverts DRM Scheduler Change After Serious GPU Regressions: <a href="https:&#x2F;&#x2F;www.linuxjournal.com&#x2F;content&#x2F;linux-72-reverts-drm-scheduler-change-after-serious-gpu-regressions" rel="nofollow">https:&#x2F;&#x2F;www.linuxjournal.com&#x2F;content&#x2F;linux-72-reverts-drm-sc...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>d3Xt3r</em>:</p>
-<blockquote>Ah, didn&#x27;t know that was reverted. Cheers for the link.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>alt227</em>:</p>
-<blockquote>I personally am very excited for the upcoming Windows 11 update which will allow users to move the taskbar to any edge of their screen.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Rethinking Database Programming</title>
-      <link>https://acadia.engineering/blog/rethinking-database-programming</link>
-      <guid isPermaLink="false">hn3-49342530</guid>
-      <pubDate>Tue, 18 Aug 2026 07:28:27 +0000</pubDate>
-      <description>163 points, 78 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://acadia.engineering/blog/rethinking-database-programming"><strong>→ Article</strong></a> <small>(acadia.engineering)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49342530">→ HN comments</a> &nbsp;·&nbsp; 163 points &nbsp;·&nbsp; 78 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mike_hearn</em>:</p>
-<blockquote>The issue with defining schemas in a non-SQL programming language is they always lag behind what the underlying database can do. Sure, your ORM-like framework can define basics like primary keys and maybe uniqueness constraints, but can it define partitioning schemes, compression methods or more advanced constraints?<p>Look at all the features supported here:<p><a href="https:&#x2F;&#x2F;www.postgresql.org&#x2F;docs&#x2F;current&#x2F;sql-createtable.html" rel="nofollow">https:&#x2F;&#x2F;www.postgresql.org&#x2F;docs&#x2F;current&#x2F;sql-createtable.html</a><p>And then consider that other databases have even more. If you manage your schemas in code then you lose access to all of those, and will eventually need to write SQL anyway.<p>For queries it isn&#x27;t such a problem, especially if you have a nice compiler. However, I recently lost faith in SQL wrappers&#x2F;abstractions. The usual justification was that a lot of developers don&#x27;t know SQL well, but LLMs are great at it. It&#x27;s easier for the LLM to write SQL than some less familiar DSL. And SQL was written to be relatively easy to understand, especially if you do things like use CTEs and views correctly it should be possible to factor logic out to make even complex queries understandable.<p>The question for frameworks like Acadia is really: assuming I am fluent in SQL and know every feature of my database, what does the framework buy me? Because that&#x27;s the perspective an LLM comes to it with.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>elcritch</em>:</p>
-<blockquote>There&#x27;s a lot of benefit in these systems, though there&#x27;s rough edges and I agree about the basics like PK&#x27;s and uniqueness.<p>I&#x27;ve been using Ormin [1] in Nim which works by parsing the SQL tables and uses it to compile time check queries:<p><pre><code>    # Multiple joins with pagination
-    let page = query:
-      select Post(title)
-      join Person(name) on author == id
-      join Category(title) on category == id
-      orderby desc(post.creation)
-      limit 5 offset 10
-</code></pre>
-I think that&#x27;s better since defining SQL should be the source-of-truth for the DB and the code. ORM&#x27;s always ended up causing trouble in my experience.<p>Things like indexes, defaults, partitions, etc generally aren&#x27;t expressible in code without a lot of kludges. Then each DB engine have pretty different rules, syntax, etc for tables.<p>However having the queries compile time checked, type conversions handled, and the nuances between SQL query syntax handled is rather nice. As you mention it&#x27;s a much easier subset.<p>1: <a href="https:&#x2F;&#x2F;github.com&#x2F;Araq&#x2F;ormin" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Araq&#x2F;ormin</a></blockquote>
-<p>↳ reply 2 — <em>alpinisme</em>:</p>
-<blockquote>The point is end to end type safety. Whether that is worth the tradeoff of losing direct developer access to the db primitives is another question.</blockquote>
-<p>↳ reply 3 — <em>bazoom42</em>:</p>
-<blockquote>A core idea of the relational model is to seperate the logical model from the physical layer including optimizations, indexes etc.<p>So it makes sense to only expose the logical model at the ORM layer.<p>The problem comes if you want to <i>define</i> the database schema through the ORM layer, rather than just represet it.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dwohnitmok</em>:</p>
-<blockquote>I&#x27;m wary of languages that seek to own the database. In particular, the claim &quot;Coexist with SQL&quot; seems a bit suspect given that e.g. sum types have a custom binary encoding, which likely makes them difficult to interop with from other languages. This makes the claimed interop with other languages really more of a temporary stopping point towards full Acadia adoption rather than a viable long-term equilibrium, unless you e.g. eschew using sum types. (I also suspect that trying to natively support sum types can lead to a kind of FP-equivalent of ORMs&#x27; impedance mismatch. The ways I model data with relational logic can be pretty different than the ways I model data with algebraic datatypes and I wonder if trying to force fit the latter into the former doesn&#x27;t lead to the same problems as force fitting objects into relational logic).<p>This makes the database closer to something that Acadia compiles to, rather than something Acadia sits on top of. From my own developer experience this feels off, because I generally expect the data layer to be king and application code to revolve around that, rather than having data representation created in code and the database created off that (this is why I also dislike things like ORMs).<p>In general I view databases as usually having more longevity than application code, especially as you accumulate more data over time. For serious production applications, the database often outlives multiple rewrites of the production application.<p>I suspect though my concerns are overall rather minor. The ergonomics of the language itself seem enjoyable. Acadia seems like it would be great as an embedded DSL. It&#x27;s a bit unfortunate that it currently seems coupled to creating an HTTP server. I think that Acadia has greater ambitions beyond just the database, as evidenced by creating a binary web connection with frontend Elm code to presumably obviate the need for encode-decode layers. It seems like Acadia is meant to be a stepping stone towards a closer frontend-backend fusion. But I agree with mjaniczek that something like Lamdera seems a better fit for that.<p>But given how early Acadia is, I&#x27;m still very excited for where it goes. What I&#x27;ve listed is surmountable and I also feel that often a closer frontend-backend fusion might be worthwhile.</blockquote>
-<p><strong>Top #3</strong> — <em>bbkane</em>:</p>
-<blockquote>I&#x27;m actually most excited about the new funding model: <a href="https:&#x2F;&#x2F;acadia.engineering&#x2F;license&#x2F;faq" rel="nofollow">https:&#x2F;&#x2F;acadia.engineering&#x2F;license&#x2F;faq</a><p>I won&#x27;t be able to use Acadia at work, and I don&#x27;t have the risk tolerance to use it for personal projects, but I&#x27;m looking forward to seeing how&#x2F;if this model pays the bills. Can it compete with more liberally licensed code?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Finger: Social network that never died</title>
-      <link>https://en.andros.dev/blog/54572bc7/finger-the-1971-social-network-that-never-died/</link>
-      <guid isPermaLink="false">hn3-49342472</guid>
-      <pubDate>Tue, 18 Aug 2026 07:21:35 +0000</pubDate>
-      <description>134 points, 44 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://en.andros.dev/blog/54572bc7/finger-the-1971-social-network-that-never-died/"><strong>→ Article</strong></a> <small>(en.andros.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49342472">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 44 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>runnr_az</em>:</p>
-<blockquote>Haha... looks like I gotta get finger.farm up and running again... :)<p>Thx for the mention blogger!<p><a href="https:&#x2F;&#x2F;github.com&#x2F;jonroig&#x2F;finger.farm" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;jonroig&#x2F;finger.farm</a></blockquote>
-<p><strong>Top #2</strong> — <em>seoulbigchris</em>:</p>
-<blockquote>In the mid-90s I taught a night class on Unix, and was experimenting with shell scripts from The Unix Programming Environment. There was an example using a loop and the who command to alert you when someone logged onto your local system. My cousin was a professor at a university several states away, and we had already figured out the talk command. So I decided to expand the examples in the book to use finger. By parsing the reply, somehow I could tell if my cousin was logged on, and I would send myself a notice. There was an ISP in the same building, and one day the ISP engineer came to visit me with a stern look. He asked, &quot;By any chance are you sending a finger command every two minutes to this university&#x27;s mainframe?&quot; I proudly answered, &quot;As a matter of fact, yes, I am!&quot;. I eagerly got out my Unix book to show him what I was doing. He just said, &quot;Stop doing that. They have a system console logging program that has churned out dozens of pages of paper printouts because of you&quot;. I sheepishly acknowledged my mistake and quit running the script.</blockquote>
-<blockquote>
-<p>↳ reply — <em>quietbritishjim</em>:</p>
-<blockquote>I was sure this story was going to end with your script causing chaos by calling finger in a busy loop. But every 2 minutes! Even in the 90s, that&#x27;s a pretty mild amount of network traffic.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>OhMeadhbh</em>:</p>
-<blockquote>Also...  When we moved from having multiple users per machine to multiple machines per user, services like finger on a specific machine didn&#x27;t make much sense.  It seems you should have one well-advertised machine that maps `foo@example.com` to a `plan.html` file somewhere.  (If a user has multiple machines, which one do you query to get their daily .plan?)<p>Maybe the answer is to define a plan base URL as a DNS TXT resource on a particular DNS domain.  For instance, I added the string `&lt; plan <a href="https:&#x2F;&#x2F;bi6.us&#x2F;PL&#x2F;" rel="nofollow">https:&#x2F;&#x2F;bi6.us&#x2F;PL&#x2F;</a> &gt;` as a TXT resource at _plan.hamrick.rocks.  It should now be a trivial task to write a program called `finger-ng` that when I type `finger-ng meadhbh@hamrick.rocks`, it queries the TXT record at `_plan.hamrick.rocks`, extracts the plan base URL and then retrieves and displays a text document found at `<a href="https:&#x2F;&#x2F;bi6.us&#x2F;PL&#x2F;meadhbh%40hamrick.rocks" rel="nofollow">https:&#x2F;&#x2F;bi6.us&#x2F;PL&#x2F;meadhbh%40hamrick.rocks</a>`.  I guess you could serve up a text&#x2F;plain, text&#x2F;html or even image&#x2F;avif if you wanted to.<p>This, of course, assumes `bi6.us` is set up to allow me to update that file, but this is also straight-forward.  Anyway, check back in a couple days and I&#x27;ll have some code and I&#x27;ll write the RFC&#x2F;ID next week.<p>EDIT: I wrestled with apache and got it to understand files under www.bi6.us&#x2F;PL&#x2F; should be served as text&#x2F;dsd+plain, so you can hit `HTTPS:&#x2F;&#x2F;BI6.US&#x2F;PL&#x2F;MEADHBH%40HAMRICK.ROCKS` and get something that looks legit.  And sure enough, HTTPS:&#x2F;&#x2F;BI6.US&#x2F;PL&#x2F;MEADHBH%40HAMRICK.ROCKS encodes to a smaller QR code than <a href="https:&#x2F;&#x2F;bi6.us&#x2F;PL&#x2F;meadhbh%40hamrick.rocks" rel="nofollow">https:&#x2F;&#x2F;bi6.us&#x2F;PL&#x2F;meadhbh%40hamrick.rocks</a>.  (Though it looks like the HN text beautifier doesn&#x27;t automagically produce links for URLs beginning with upper-case HTTPS.)<p>EDIT EDIT: Hmm... still doesn&#x27;t say anything about privacy.  What if you wanted to have a different _plan file for friends, a _plan file for family and a _plan file for co-workers?  Clearly deep thoughts must be thunk.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
