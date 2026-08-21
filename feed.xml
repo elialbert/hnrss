@@ -4,7 +4,29 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 20 Aug 2026 23:31:55 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 01:46:14 +0000</lastBuildDate>
+    <item>
+      <title>Linux 7.2</title>
+      <link>https://www.igalia.com/2026/08/19/Linux-72-Released.html</link>
+      <guid isPermaLink="false">hn3-49376265</guid>
+      <pubDate>Thu, 20 Aug 2026 15:46:18 +0000</pubDate>
+      <description>192 points, 69 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.igalia.com/2026/08/19/Linux-72-Released.html"><strong>→ Article</strong></a> <small>(igalia.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49376265">→ HN comments</a> &nbsp;·&nbsp; 192 points &nbsp;·&nbsp; 69 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mort96</em>:</p>
+<blockquote>Does anyone understand how HDMI 2.1 support is now no problem? I remember that 2.1 support in AMD&#x27;s open source driver was blocked by the HDMI forum, but I haven&#x27;t heard any news about them unblocking it. What changed?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lashkari</em>:</p>
+<blockquote>It doesn&#x27;t give any specifics about what changed on the HDMI Forum side, but this article [0] from June indicates that Valve worked closely with AMD to get it pushed through prior to the release of the Steam Machine (which supports HDMI 2.1 VRR).<p>[0] <a href="https:&#x2F;&#x2F;www.digitalfoundry.net&#x2F;news&#x2F;2026&#x2F;06&#x2F;valves-hdmi-2-1-saga-is-fully-resolved-with-a-final-frl-update-to-come-for-full-4k-240hz-support" rel="nofollow">https:&#x2F;&#x2F;www.digitalfoundry.net&#x2F;news&#x2F;2026&#x2F;06&#x2F;valves-hdmi-2-1-...</a></blockquote>
+<p>↳ reply 2 — <em>seanw444</em>:</p>
+<blockquote>As far as I can recall: some internal implementation documentation leaked which made the legal position tougher for them somehow to protect it as proprietary (it made sense when I heard it explained, but now I feel like I&#x27;m missing an important detail to that), and then Valve had some talks with the HDMI Forum to convince them to let it go, presumably so they could have such support integrated into Linux for their hardware (Deck, Machine, Frame, etc).<p>So now the HDMI Forum just doesn&#x27;t really care anymore I guess.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>sbinnee</em>:</p>
+<blockquote>I clicked this one with no hype. I am now exited to update the kernel of my raspberry pi 4.</blockquote>
+<p><strong>Top #3</strong> — <em>pkilgore</em>:</p>
+<blockquote>What about this is more interesting than the LWN coverage?</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Vomit: Clean up Claude 5's token output with a separate LLM</title>
       <link>https://github.com/zachahn/vomit</link>
@@ -115,6 +137,45 @@ There is no standing Monday sync.<p>This is going to be a reverse acquisition wh
 <blockquote>
 <p>↳ reply — <em>drivingmenuts</em>:</p>
 <blockquote>OpenWouter does not strike me as being a customer-forward kind of service. Basically, it&#x27;s a deal-with-it kind of thing, I guess.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>DiffusionGemma Technical Report</title>
+      <link>https://arxiv.org/abs/2608.00146</link>
+      <guid isPermaLink="false">hn3-49374287</guid>
+      <pubDate>Thu, 20 Aug 2026 13:24:32 +0000</pubDate>
+      <description>134 points, 34 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arxiv.org/abs/2608.00146"><strong>→ Article</strong></a> <small>(arxiv.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49374287">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 34 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>kamranjon</em>:</p>
+<blockquote>Just wanted to share this, I found it was a really nice resource to understand how diffusion Gemma worked: <a href="https:&#x2F;&#x2F;newsletter.maartengrootendorst.com&#x2F;p&#x2F;a-visual-guide-to-diffusiongemma" rel="nofollow">https:&#x2F;&#x2F;newsletter.maartengrootendorst.com&#x2F;p&#x2F;a-visual-guide-...</a><p>The really interesting thing to me was that they didn’t need to train this model from scratch they just used their existing MOE checkpoint:<p>“To convert a decoder-only model (Gemma 4 26B A4B) into a denoiser, we can make use of something it is not directly using when generating tokens, namely the logits of all tokens!”<p>What makes me hopeful about this release is that possibly this same conversion can be applied to other open models and we might see a bunch of diffusion versions of existing local models. It’s exciting stuff!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>musebox35</em>:</p>
+<blockquote>That also surprised me, the diffusion gemma is actually a bunch of architectural changes to make discrete diffusion practical and an sft + distill of the Gemma 4. One cool trick they do is to take advantage of the entropy of the estimated probability distribution to adaptively adjust the required number of diffusion steps for inference. Image diffusion only yields the score function, a gradient instead of the probabilities, so the same trick does not apply.</blockquote>
+<p>↳ reply 2 — <em>jerpint</em>:</p>
+<blockquote>Oh wow that’s really cool!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mmastrac</em>:</p>
+<blockquote>I re-implemented this one for macOS over the last couple of months: <a href="https:&#x2F;&#x2F;github.com&#x2F;mmastrac&#x2F;diffgemma" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;mmastrac&#x2F;diffgemma</a><p>I like the model a lot and it&#x27;s fairly good at reasoning. You can also really bend it to your needs. It&#x27;s designed for machines with more compute than memory bandwidth but IMO does really well on metal.<p>I&#x27;ve got it up to ~15tok&#x2F;s on M3-class machines, but I wager there&#x27;s a bunch of perf on M5 that I just don&#x27;t have hardware access to unlock.<p>I tried to implement MTP using the other Gemma MTP heads but I failed to move that perf needle. There&#x27;s some interesting research to be done about pre-seeding the diffusion canvas from draft models. DiffusionGemma with the right drafter can hit 20-30 tok&#x2F;s on my machine, but I&#x27;ve been unable to combine the two together to make it faster than what it&#x27;s been running at so far.</blockquote>
+<blockquote>
+<p>↳ reply — <em>eamag</em>:</p>
+<blockquote>I have M5, but diffusion is a bad fit for metal: <a href="https:&#x2F;&#x2F;eamag.me&#x2F;2026&#x2F;why-parallel-diffusion-llms-are-slow-on-a-mac" rel="nofollow">https:&#x2F;&#x2F;eamag.me&#x2F;2026&#x2F;why-parallel-diffusion-llms-are-slow-o...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mmastrac</em>:</p>
+<blockquote>That&#x27;s mostly correct, but I believe the INT8 support on M5 changes the equation pretty drastically. I also believe that diffusion models generally output _better_ results if they have shaping for code (they often will miss delimiter matching inside of a canvas).</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mike_hearn</em>:</p>
+<blockquote>If these models get good at coding it&#x27;s going to force a rethink of how languages, compilers and test suite runners work. &quot;AI changes everything&quot; is a cliché by this point 
+but I think it&#x27;s actually true.<p>If your model can reason and write code at 1500 toks&#x2F;sec, then you should end up totally bottlenecked on CPU time the entire time a prompt is active. If you aren&#x27;t, then you&#x27;re losing wall time versus competitors. But our whole development stack is based around the idea that programmers spend most of their time thinking, talking and coding, not waiting for the CPU (melting CI clusters being a painful exception to that).<p>What I&#x27;m imagining here is some sort of hybrid mode in which compiling code and running it through an interpreter can be overlapped, so an LLM can propose a change and immediately begin running unit tests while type errors that might affect some other module are found in parallel. And the tests would always run sharded, potentially on a remote cluster, even in local dev.<p>Obviously this approach is to some extent what made the JVM popular. Java compiles very fast because javac does little more than type checking, and the type system is simple. Then the JVM does the heavy lifting of compilation in parallel with it running. So although Java has a reputation for poor startup times, turnaround times for the JVM can be really excellent compared to something like C++, Swift or Rust. And a lot of startup time pain is just poor frameworks like old Springs that want to reflectively scan the app&#x27;s files and do other inefficient stuff. More modern frameworks push more to incremental build tasks and can get startup down to very little, &lt;0.5secs for a web server with DB connections to start for instance.<p>But it feels like this approach should be pushed much further. The model should spend all its time waiting on unit tests to run.</blockquote>
+<blockquote>
+<p>↳ reply — <em>michaellee8</em>:</p>
+<blockquote>no way llms can reason through (spring) java&#x27;s stacktrace hell, and rust compilation is just too slow, i think golang is gonna be gold.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mike_hearn</em>:</p>
+<blockquote>LLMs are excellent at reading stack traces, better than humans. The underlying algorithm lets them link every token with every other in parallel (modulo approximations, linear attention, etc). And they&#x27;re trained on needle-in-a-haystack tasks. You really want to present LLMs with lots of data up front in large chunks to get the best out of their algorithms.</blockquote>
+</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3462,102 +3523,6 @@ General knowledge helps with coding when your don&#x27;t specify a lot of detail
 </blockquote>
 <p><strong>Top #3</strong> — <em>steve_adams_86</em>:</p>
 <blockquote>Fastmail is the service I&#x27;ve paid for longer than any other, without any pauses, and with the most satisfaction of any subscription. Like the author says, email isn&#x27;t exciting, it isn&#x27;t a fun or interesting subscription, but it works perfectly for me and offers excellent value for what I pay. It&#x27;s so gratifyingly functional and boring.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Cursor launches Origin, GitHub alternative</title>
-      <link>https://cursor.com/changelog/origin-code-hosting</link>
-      <guid isPermaLink="false">hn3-49334209</guid>
-      <pubDate>Mon, 17 Aug 2026 17:02:44 +0000</pubDate>
-      <description>125 points, 82 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://cursor.com/changelog/origin-code-hosting"><strong>→ Article</strong></a> <small>(cursor.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49334209">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 82 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tomasreimers</em>:</p>
-<blockquote>Hi all, my name is Tomas. I am one of the developers on Origin, and I was one of the founders of Graphite (<a href="https:&#x2F;&#x2F;graphite.com" rel="nofollow">https:&#x2F;&#x2F;graphite.com</a>).<p>Happy to answer any questions about Origin or source control in general!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jjcm</em>:</p>
-<blockquote>What I don&#x27;t understand from the blog post is what&#x27;s different in this offering than github - is it just the agentic tie ins where I can ask my agent to make changes while browsing the PR?<p>Are there any fundamental differences, ie ways of working that solve the worktrees problem?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tomasreimers</em>:</p>
-<blockquote>Expect a lot more from us.<p>We wanted to release a beta so people could start experimenting with our scalability and extensibility themselves. Over the next few weeks, you can expect a handful of features starting to change source control to better understand and work with agents.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>skissane</em>:</p>
-<blockquote>Are there any plans for compatibility with GitHub&#x27;s APIs?<p>I have a lot of dev tooling which assumes code is stored on public GitHub and&#x2F;or GitHubEnterprise. This produces some degree of lock-in, in that all that code would have to be rewritten to migrate to something else. (Yes, AIs can help, but they still don&#x27;t make migration effortless.)<p>The major Git hosters tend to implement roughly the same concepts, albeit with lots of little variations. It would be great if there were some sort of standardised API everyone implemented. In the absence of that, it makes sense for people to emulate the incumbent&#x27;s APIs as a de facto standard, just like how other vendors copy OpenAI&#x27;s APIs for talking to LLMs.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>autonomousErwin</em>:</p>
-<blockquote>What&#x27;s the biggest differentiator to GitHub (other than uptime). I keep hearing something along the lines of &quot;GitHub for Agents&quot; but would be great to hear from the devs of Origin what they actually think it means in tangible features&#x2F;functionality?</blockquote>
-<p>↳ reply 3 — <em>jmknoll</em>:</p>
-<blockquote>Completely unrelated to Origin, but are there plans for closer integration of Graphite with Cursor? A combined product would be a very compelling product, but not much seems to have changed since the acquisition.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jjcm</em>:</p>
-<blockquote>I do wonder if calling this &quot;Origin&quot; is going to result in semantic misinterpretations by LLMs. Ie saying,<p>&gt; &quot;hey can you push to origin main?&quot;<p>now has two separate meanings.<p>A LLM may inadvertently push your code to a new provider without you knowing. It&#x27;s walking a thin line between genius-growth-move and domain typosquatting.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rzzzt</em>:</p>
-<blockquote>EA has also called its games platform Origin until last year when it was shuttered.</blockquote>
-<p>↳ reply 2 — <em>melezhik</em>:</p>
-<blockquote>Yep. The same feeling )</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>dmix</em>:</p>
-<blockquote>I was waiting for an AI company to do this. The opportunity to disrupt Github is very apparent right now.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kakugawa</em>:</p>
-<blockquote>I believe Entire.io is also trying to build a Github replacement. (Not affiliated, but I use the Entire.io CLI and I find it useful.)</blockquote>
-<p>↳ reply 2 — <em>pydry</em>:</p>
-<blockquote>Although since vibe coding is Github&#x27;s Achilles heel openai might not be quite the right company to exploit that.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Buy Your Friends Batteries</title>
-      <link>https://domenkozar.com/2026/08/17/buy-your-friends-batteries/</link>
-      <guid isPermaLink="false">hn3-49333932</guid>
-      <pubDate>Mon, 17 Aug 2026 16:45:11 +0000</pubDate>
-      <description>132 points, 143 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://domenkozar.com/2026/08/17/buy-your-friends-batteries/"><strong>→ Article</strong></a> <small>(domenkozar.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49333932">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 143 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Retr0id</em>:</p>
-<blockquote>&gt; Create a battery birthday club. Buy each friend a battery on their birthday until everyone has one.<p>At that point, wouldn&#x27;t it be easier if everyone just bought their own? And then whoever has the latest birthday doesn&#x27;t have to wait a year to get theirs.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>oytis</em>:</p>
-<blockquote>But then you still have to buy birthday presents on top of that</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Retr0id</em>:</p>
-<blockquote>If everyone&#x27;s giving everyone the same gift, it&#x27;s not really a &quot;gift&quot; any more, more of a p2p buy-now-pay-later arrangement (which isn&#x27;t a terrible idea, but it&#x27;s suboptimal for those with later bithdays).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>blitzar</em>:</p>
-<blockquote>Might as well just have an annual theme and try to negotiate a bulk discount.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>domenkozar</em>:</p>
-<blockquote>That&#x27;s step one, next is your friends.</blockquote>
-<p>↳ reply 3 — <em>benj111</em>:</p>
-<blockquote>No. This is how building societies work.<p>You may not have £100,000 but if you get 1000 people with £100 then you can buy a house.<p>Obviously the birthday system doesnt address the interest, but I&#x27;m sure your friends would be ok paying interest right?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>isoprophlex</em>:</p>
-<blockquote>&gt; You are also safer during a power outage. The STREAM 5000 provides up to 3 kW of off-grid output. Keep essential devices on its backup output and reserve some battery capacity, and your refrigerator, lights, router, and laptop can keep running when the grid goes down. An ordinary grid connection does not back up the whole house automatically; the backup output must be configured correctly.<p>Being able to cut over your entire house from grid power to a battery requires an invasive, expensive change to most connections. I wish people would stop breathlessly promoting batteries (which are good! we need decentralized storage!) because &quot;you can use them to run your fridge, router, etc&quot;. Yes you can, but for almost all consumers it&#x27;s an order of magnitude more effort and cash compared to just buying and plugging in a battery.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ssl-3</em>:</p>
-<blockquote>And the proposed battery solution only works at up to 3kW.  My electric range uses more than that, and my water heater, clothes dryer, and aircon each come close.<p>And, sure: I can get by very well with refrigeration, networking, computing and&#x2F;or TV, and lights during a power outage.  But those loads need to be segregated, or it just doesn&#x27;t work.  That adds more expense.<p>And since those segregated loads don&#x27;t even come anywhere near 3kW, it isn&#x27;t clear to me how I&#x27;m to be maximizing my local use of surplus power events.<p>There are grid-interactive battery solutions from companies like EG4 that can go betwixt the entire house and its grid connection, but this isn&#x27;t it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>croemer</em>:</p>
-<blockquote>Why do you need to segregate them? Can&#x27;t you switch the rest off? Or is the problem that otherwise you&#x27;d supply neighbors as well?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ssl-3</em>:</p>
-<blockquote>Just because it&#x27;s the real world.  :)<p>If things aren&#x27;t segregated and the power goes off while I&#x27;m cooking, the aircon is running, the water heater is doing its thing, or whatever, then:  I exceed 3kW.<p>3kW is the maximum that the device can supply.  If load exceeds maximum, then something will (must) fail.<p>Hopefully it fails gracefully, but I mean:  I&#x27;ve been married before and I understand how terrific and fantastic it can be when things go slightly wrong at home when I&#x27;m not around to address them.  The less Rube Goldberg my creations are, the more peaceful my life is.<p>(None of this modern name-brand grid-tied stuff is any particular danger to linemen.  It won&#x27;t output anything on those terminals if it doesn&#x27;t have an AC waveform to synchronize with.)</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Aachen</em>:</p>
-<blockquote>Not necessarily the point. If it provides a normal wall outlet I&#x27;m happy to plug essentials around for the one time per 1-2 decades this happens for longer than 4 hours and the fridge&#x2F;freezer&#x2F;laptop needs a boost</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>balderdash</em>:</p>
-<blockquote>11-13yr payback on something that is going to degrade ~3-4%&#x2F;yr for 10 years (and limited terminal value) doesn&#x27;t seem like the greatest investment unless you think the arb is going to widen a ton.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lkbm</em>:</p>
-<blockquote>Add in that  my freezer probably contains over $500 of food (and the fridge has less, but not none.)<p>Usually you can buy ice, but when I had a ~36 hour outage a couple years ago, I couldn&#x27;t. Most stuff was fine for that long, but 2-3 days would&#x27;ve meant tossing pretty much the entire contents.<p>(Plus, I don&#x27;t have cell service where I live, so being able to power my router is pretty useful.)<p>This is probably a bad move if you live in a city. It makes more sense in rural areas.</blockquote>
-<p>↳ reply 2 — <em>mosselman</em>:</p>
-<blockquote>Let&#x27;s assume the calculation is correct and you actually earn back in 11-13 years. You are better off investing the money in something like the S&amp;P 500 where you&#x27;d double your investment in about a decade without the hassle.<p>Things will start to get interesting where €1600 don&#x27;t buy you 5kWh but double or triple the amount.<p>I can imagine most people are better off either investing like I said or in insulation.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
