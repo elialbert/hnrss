@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 21 Aug 2026 08:49:44 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 09:43:35 +0000</lastBuildDate>
     <item>
       <title>Copyright does not protect AI-generated content in EU</title>
       <link>https://mathstodon.xyz/@maxpool/117128107757895678</link>
@@ -655,6 +655,44 @@ but I think it&#x27;s actually true.<p>If your model can reason and write code a
 <p>↳ reply 2 — <em>abhisek</em>:</p>
 <blockquote>This is exactly what PMG is designed for ie. install&#x2F;build time process level sandboxing. It currently doesn&#x27;t support cargo, but I believe the challenges are same.<p>Here is my learning building PMG:<p>Sandboxing is good when the workload is predictable, and the goal of sandbox is to guard against exploitation of vulnerabilities, like sandbox protecting chrome tabs (renderers). But unfortunately build scripts are not predictable, at least not in npm&#x2F;pypi world and I have seen build scripts doing weirdest of the things which is no different from malware. When popular packages do weird things, build breaks and users end up turning off the sandbox. This is a perpetual problem to deal with while building sandbox (or any least privilege solution) to protect unbounded workloads.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;safedep&#x2F;pmg" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;safedep&#x2F;pmg</a></blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Xorg-server 26.1.0 rc1</title>
+      <link>https://lists.x.org/archives/xorg-announce/2026-August/003741.html</link>
+      <guid isPermaLink="false">hn3-49373932</guid>
+      <pubDate>Thu, 20 Aug 2026 12:50:16 +0000</pubDate>
+      <description>126 points, 104 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://lists.x.org/archives/xorg-announce/2026-August/003741.html"><strong>→ Article</strong></a> <small>(lists.x.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49373932">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 104 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>throw0101d</em>:</p>
+<blockquote>The mention of XQuartz (for macOS) reminded me to check that, and 2.8.6 was released mid-July:<p>* <a href="https:&#x2F;&#x2F;www.xquartz.org&#x2F;releases&#x2F;bare&#x2F;XQuartz-2.8.6.html" rel="nofollow">https:&#x2F;&#x2F;www.xquartz.org&#x2F;releases&#x2F;bare&#x2F;XQuartz-2.8.6.html</a><p>Previously 2.8.5 was out in 2023:<p>* <a href="https:&#x2F;&#x2F;www.xquartz.org&#x2F;releases&#x2F;bare&#x2F;XQuartz-2.8.5.html" rel="nofollow">https:&#x2F;&#x2F;www.xquartz.org&#x2F;releases&#x2F;bare&#x2F;XQuartz-2.8.5.html</a><p>There&#x27;s a XQuartz 2.8.7 beta as well (xorg-server 26.1 rebase):<p>* <a href="https:&#x2F;&#x2F;www.xquartz.org&#x2F;releases&#x2F;index.html" rel="nofollow">https:&#x2F;&#x2F;www.xquartz.org&#x2F;releases&#x2F;index.html</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>egorfine</em>:</p>
+<blockquote>omg, it&#x27;s been over a decade since I have last used XQuartz. Did they finally open source the whole quartz-wm?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>throw0101d</em>:</p>
+<blockquote>&gt; <i>An XQuartz installation consists of many individual pieces of software which have various licenses. The X.Org software components’ licenses are discussed on the X.Org Foundation Licenses page.[1] The quartz-wm[2] window manager included with the XQuartz distribution uses the Apple Public Source License Version 2.[3]</i><p>* <a href="https:&#x2F;&#x2F;www.xquartz.org&#x2F;index.html" rel="nofollow">https:&#x2F;&#x2F;www.xquartz.org&#x2F;index.html</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>panzi</em>:</p>
+<blockquote>Just looked it up, that Apple license is indeed approved as open source&#x2F;free software by the FSF and OSI!</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Narishma</em>:</p>
+<blockquote>This is a much more substantial changelog than I was expecting for something that is often presented as a deprecated project.</blockquote>
+<blockquote>
+<p>↳ reply — <em>qwertox</em>:</p>
+<blockquote>It basically is a deprecated project.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mmh0000</em>:</p>
+<blockquote>That&#x27;s a new take: Project with new release 1 day ago declared deprecated!<p>I&#x27;ve been using Linux for around 2 decades. I am currently running Fedora 43&#x2F;KDE Plasma ... and wait for it ... Xorg.<p>Why? Because it works. It works well!<p>Why don&#x27;t I use Wayland? Because it breaks everything.<p><pre><code>  - Screensharing is just wonky and inconsistent across applications. It has gotten better in the last 2 years, but it&#x27;s still quite wonky. And janky. And flobby. I **could** put effort into fixing this, but it already works in Xorg. 
+  - I have a bunch of Xorg&#x2F;xdotool scripts bound to hotkeys. Move, resize windows. If AppX is running and the window isn&#x27;t shown, show it; otherwise, hide it. If AppX and AppY are both running and meta+y is pressed, then tile in a specific way, else do something different. These scripts are either ungodly difficult to rewrite to work in Wayland or just flat-out impossible in the name of &quot;security&quot;.
+  - Easystroke. https:&#x2F;&#x2F;github.com&#x2F;mmh0000&#x2F;easystroke . Nothing like that exists on Wayland (that actually works). And I can not live without it after having it for 20 years.</code></pre></blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>kobbs</em>:</p>
+<blockquote>Intel modesetting driver with tearfree support in a xorg release!</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Show HN: I trained a 125M model to autocomplete piano on-device</title>
@@ -3544,32 +3582,6 @@ I think that&#x27;s better since defining SQL should be the source-of-truth for 
 <blockquote>My ex-partner and I used to have &quot;drink it and fix it&quot; on Sunday evenings where she would bring stuff out for me to fix and we&#x27;d slowly get pissed! Some things remained fixed, some things, erm, needed re-fixing!</blockquote>
 <p><strong>Top #3</strong> — <em>jaredhallen</em>:</p>
 <blockquote>Like others, I love this idea. A related idea I had was a library of 3d models of parts. Like thingiverse, but specifically for repair&#x2F;replace components and not limited to plastic. My thought was if it&#x27;s plastic you could 3d print whatever little busted plastic part was going to send your household item to landfill. But also models of things like automotive parts that you could have made by somewhere like xometry. I thought of it as an &quot;international component database.&quot;</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How Bluesky draws its logo on screenshots</title>
-      <link>https://timmarinin.net/2026/bluesky-screenshots/</link>
-      <guid isPermaLink="false">hn3-49338459</guid>
-      <pubDate>Mon, 17 Aug 2026 22:20:40 +0000</pubDate>
-      <description>408 points, 276 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://timmarinin.net/2026/bluesky-screenshots/"><strong>→ Article</strong></a> <small>(timmarinin.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49338459">→ HN comments</a> &nbsp;·&nbsp; 408 points &nbsp;·&nbsp; 276 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jjcm</em>:</p>
-<blockquote>If it&#x27;s between this and a perpetual logo, I&#x27;ll take this any day.<p>I actually really like this approach. The action button isn&#x27;t relevant in this context, and it doesn&#x27;t occlude the content.<p>There&#x27;s certainly situations where you wouldn&#x27;t want this (ie if you&#x27;re developing the app and you want to redesign starting from a screenshot), but for the average user I think this isn&#x27;t overly hostile. I understand that people are dogmatically opposed to intent being modified, but I think you need to balance nuance. I actually enjoy having an attributable source in shared elements, and I think this is a low-impact way of achieving that.</blockquote>
-<p><strong>Top #2</strong> — <em>wraptile</em>:</p>
-<blockquote>This is why pocket computers are still so unserious. My programs should not be aware let alone respond to my administrative actions like screenshots.</blockquote>
-<p><strong>Top #3</strong> — <em>3form</em>:</p>
-<blockquote>Well, I have not once found a single case where an app reacting to screenshots and controlling the process in any way was anything to me but hostile and annoying. This one does not help.<p>It somehow is perfect example of how modern software engineering feels to go astray for me. A feature in my device working completely in benefit of the one providing said software. I wish, and wish only I can, that this trend goes away at some point.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>thepasswordis</em>:</p>
-<blockquote>It is actually astonishing to me that this is not something which can be turned off at the OS level, or as a permission setting in the app permissions.<p>The app knowing I took a screenshot feels adjacent to me to a keylogger.  Imagine how many apps are capturing that information silently.  To my mind, a screenshot is something that is happening outside of the app context, the app knowing about it is a security flaw imo.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>raincole</em>:</p>
-<blockquote>&gt; The app knowing I took a screenshot feels adjacent to me to a keylogger.<p>That is what this article is about and why you should read it before commenting. The <i>whole point</i> is that it doesn&#x27;t need to know you&#x27;re taking screenshots. That&#x27;s why it&#x27;s a clever trick.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>fer</em>:</p>
-<blockquote>&gt; hostile and annoying<p>If someone from Google Maps or LinkedIn team is here, please, when I take a screenshot it&#x27;s because I want to a screenshot, not share the friggin location&#x2F;post.<p>Not sure who got the idea that it was useful, it isn&#x27;t.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
