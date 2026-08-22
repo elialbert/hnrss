@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 22 Aug 2026 10:30:26 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 11:26:19 +0000</lastBuildDate>
     <item>
       <title>There's no reason for software to be slow anymore</title>
       <link>https://danluu.com/perf-opt/</link>
@@ -155,6 +155,32 @@ I do expect a lot of analytical advances thanks to the combination of open datas
 <p>↳ reply — <em>layer8</em>:</p>
 <blockquote>And we can only look as far as the CMB. The universe might be gazillion times larger beyond that, or, indeed, infinitely large.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OTel isn’t going well</title>
+      <link>https://matduggan.com/otel-isnt-going-well-and-i-made-a-spreadsheet-about-it/</link>
+      <guid isPermaLink="false">hn3-49391553</guid>
+      <pubDate>Fri, 21 Aug 2026 17:45:41 +0000</pubDate>
+      <description>135 points, 55 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://matduggan.com/otel-isnt-going-well-and-i-made-a-spreadsheet-about-it/"><strong>→ Article</strong></a> <small>(matduggan.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49391553">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 55 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>osener</em>:</p>
+<blockquote>I like the end result of OpenTelemetry tracing when using Axiom and the like, but the SDKs have been a nightmare. Too much emphasis on automatic instrumentation, Java-isms, everything is stateful and abstracted away.<p>It can do distributed tracing of otherwise traditional long running microservices, but breaks down when  your functions are distributed like in durable execution engines, Cloudflare Workflows, “functions” that span hours&#x2F;days&#x2F;weeks and steps that retry many times.<p>I had to reverse engineer how SDKs work and how tracing UIs display data so I could make simpler functions that fit wider variety of runtimes and more freely parent spans, start spans and end them from different function instances.<p>I think most of the API and terminology complexity is self inflicted. Would love to see a rebooted developer experience that is less Kubernates-brained.</blockquote>
+<blockquote>
+<p>↳ reply — <em>phrotoma</em>:</p>
+<blockquote>I tried to emit metrics from a python app using otel once. Gave up and switched to prometheus. What a nightmare.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>EdSchouten</em>:</p>
+<blockquote>What always puzzles me about OpenTelemetry is that tracing, metrics and logs are all designed independently. I wish there was a way I could just annotate my code base once, and let the ultimate decision to expose something as a metric&#x2F;log&#x2F;trace be dynamic at runtime.<p>For example, if I look at a graph in monitoring dashboard and see something suspicious, I’d like to say: “The next time something like this occurs again, please save me a trace.” I should be able to just do that with a single mouse click.<p>I remember them releasing the tracing spec&#x2F;SDKs and saying “now let’s move on to metrics&#x2F;logs.” That never sat right with me.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>hobofan</em>:</p>
+<blockquote>I don&#x27;t think OTEL is necessarily &quot;at fault&quot; here. It&#x27;s a split that&#x27;s carried all throughout the observability ecosystem. e.g. in the Grafana suite of solutions you have Loki (logs), Tempo (tracing) and Mimir (metrics) to cover storage &amp; querying for all three axis, as all of them have very distinct processing &amp; performance characteristics.<p>While it may intuitively may look like there is a large overlap in the three areas there is suprisingly little, and for the few parts there are (e.g. trace &lt;-&gt; log correlation), OTEL does offer a standard.</blockquote>
+<p>↳ reply 2 — <em>fuzzy2</em>:</p>
+<blockquote>I just don’t get this sentiment. How would you represent metrics as traces? You cannot. Even reconstructing traces from logs would be challenging at best. How would you get, say, Garbage Collector metrics from logs or traces? You cannot.<p>There is no magic bullet. Observability isn’t something you can just slap on and call it a day. While traces and logs might share superficial similarities, they are not the same. And metrics are something else altogether. Trying to somehow unify them would be a prime example of &quot;wrong abstraction&quot;.<p>&gt; “The next time something like this occurs again, please save me a trace.”<p>The building blocks for this exist. The observability platform must simply (haha) implement the pattern detectors and use them for sampling decisions.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>time4tea</em>:</p>
+<blockquote>Its a shame that the various implementations are pretty horrible. Global state, static methods etc etc.<p>If you get rid of that, and just pass dependencies around, create some appropriate local abstraction around them.. the tooling, be it datadog or honeycomb does a great job making it useful. Can&#x27;t really say the same for grafana, but ymmv - depending on budget</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Kobo can run apps now</title>
@@ -3607,52 +3633,6 @@ Agent = the thing that runs on the harness. It cannot be trusted because it is d
 </blockquote>
 <p>↳ reply 2 — <em>recursivecaveat</em>:</p>
 <blockquote>&gt; Larry would do these big usability studies and demonstrate beyond any shred of doubt that nobody can understand that frigging website, but Bezos just couldn&#x27;t let go of those pixels, all those millions of semantics-packed pixels on the landing page. They were like millions of his own precious children. So they&#x27;re all still there, and Larry is not.<p><a href="https:&#x2F;&#x2F;gist.github.com&#x2F;chitchcock&#x2F;1281611" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;chitchcock&#x2F;1281611</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>US announces new sanctions on top ICC figures</title>
-      <link>https://www.bbc.com/news/articles/cnvnl0elz47o</link>
-      <guid isPermaLink="false">hn3-49350955</guid>
-      <pubDate>Tue, 18 Aug 2026 19:06:16 +0000</pubDate>
-      <description>141 points, 66 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/cnvnl0elz47o"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49350955">→ HN comments</a> &nbsp;·&nbsp; 141 points &nbsp;·&nbsp; 66 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bhouston</em>:</p>
-<blockquote>There is currently not a SINGLE American citizen under indictment, investigation, or facing an arrest warrant from the International Criminal Court (ICC).  The one case tied to US soldiers in Afghanistan was ended.<p>So why is the US doing this with such intensity right now?<p>( My question was rhetorical, you can see in the initial ICC sanctions from the Whitehouse it was all about Israel + Netanyahu: <a href="https:&#x2F;&#x2F;www.whitehouse.gov&#x2F;presidential-actions&#x2F;2025&#x2F;02&#x2F;imposing-sanctions-on-the-international-criminal-court&#x2F;#:~:text=The%20ICC%20has,Defense%20Yoav%20Gallant" rel="nofollow">https:&#x2F;&#x2F;www.whitehouse.gov&#x2F;presidential-actions&#x2F;2025&#x2F;02&#x2F;impo...</a> )</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>verytrivial</em>:</p>
-<blockquote>I know your question is rhetorical, but for the avoidance of doubt: <a href="https:&#x2F;&#x2F;www.icc-cpi.int&#x2F;defendant&#x2F;netanyahu" rel="nofollow">https:&#x2F;&#x2F;www.icc-cpi.int&#x2F;defendant&#x2F;netanyahu</a></blockquote>
-<p>↳ reply 2 — <em>wnmurphy</em>:</p>
-<blockquote>It’s a preemptive attack to prevent accountability for Trump and Hegseth under the next presidency. All of those extrajudicial boat attacks that have been justified by claiming they were smuggling drugs (cocaine imports to the US haven’t dropped at all, BTW) are likely unjustified murders.<p>This administration attacks any body or authority that has the power to hold them accountable. See: attacks on the judiciary, attacks on the media, attacks on academia, etc.</blockquote>
-<p>↳ reply 3 — <em>scoofy</em>:</p>
-<blockquote>I think Trump just wants to be able to play golf at his courses in Scotland without being arrested for his decisions to arbitrarily make war however he wants. I honestly think it&#x27;s that simple. He is a simple man.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>willio58</em>:</p>
-<blockquote>&gt; Those sanctions were issued in retaliation for ICC investigations into US personnel in Afghanistan and for warrants the court issued against top Israeli officials, including Prime Minister Benjamin Netanyahu, for alleged war crimes in Gaza.<p>Oh no! An international body is taking action against some of the worst criminals on the planet? I&#x27;m glad the U.S. is taking actions to prevent those people from doing their job. America is doing great!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>busterarm</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;MapPorn&#x2F;comments&#x2F;1d097g2&#x2F;which_countries_accept_the_international_criminal&#x2F;#lightbox" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;MapPorn&#x2F;comments&#x2F;1d097g2&#x2F;which_coun...</a><p>The US withdrew its signature all the way back in 2002, the same year the ICC came into being.<p>It&#x27;s only &quot;their job&quot; where they have jurisdiction.<p>This is like Ofcom trying to require overseas companies&#x2F;providers to enforce the Online Safety Act.<p>The ICC doesn&#x27;t even automatically have jurisdiction of signatory nations either -- it&#x27;s only when that nation fails to actively pursue prosecutions in their own courts.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Kim_Bruning</em>:</p>
-<blockquote>ICC has jurisdiction in the signatory countries themselves.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>762236</em>:</p>
-<blockquote>This mentality is exactly why the US is doing this. You&#x27;ve already condemned people without access to any good evidence. Besides, US defense requires the ability to do everything Israel did against Gaza.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>scoofy</em>:</p>
-<blockquote>The relationship between the ICC and the &quot;great powers&quot; is an interesting one. It sort of separates the normal alliances of &quot;west&quot; and &quot;non-west&quot; alliances, and reshapes them into powerful and non-powerful. And it seems this conflict is ongoing.<p>Apart from Europe, the number large, powerful non-signatory countries is pretty significant: US, China, India, Russia, Iran, Saudi, Egypt, Turkey, Indonesia, and more.<p>I&#x27;ve always thought it is interesting that the concept of international law is <i>by definition</i> in conflict with the de facto anarchy of international relations. I&#x27;ve always had mixed opinions on the topic, simply because you can look at an institution like the UN, and see that it functions much more successfully as a simple forum than a deliberative body. The idea that somehow we are going to implement something as difficult as a criminal court on an international basis seems... very idealistic. A court like this always seems sensible at first glance, but I&#x27;m not sure it can really exist effectively at all over any serious time horizon.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Barrin92</em>:</p>
-<blockquote>&gt;interesting that the concept of international law is by definition in conflict of the anarchy of real Realpolitik<p>not &#x27;by definition&#x27;. There&#x27;s a fairly good case to be made that playing by, and being able to set, international norms is in the long term interest of powerful countries. For one because you don&#x27;t know when you&#x27;ll cease to be powerful, which will happen given enough time and secondly because even smaller players can cause significant damage when acting without constraint, a lesson several great powers are currently learning for the umpteenth time.<p>It&#x27;s very meathead schoolyard bully coded to think that anarchy benefits you just because you happen to be the biggest dude around. It speaks more to the intellect of current leaders than it does to some fundamental contradiction.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>scoofy</em>:</p>
-<blockquote>I&#x27;ve updated the language there a bit, but the meaning is the same.<p>&gt;There&#x27;s a fairly good case to be made that playing by, and being able to set, international norms is in the long term benefit of powerful countries.<p>Yes, but it doesn&#x27;t matter. The entire concept of <i>truly sovereign</i> states existing is the point. The second a state wants to leave the agreement, they just stop cooperating. There is no &quot;greater sovereign&quot; with which you can enforce these rules, and if there is -- say, a bigger country invading a smaller country to enforce the rules -- you&#x27;re once again in a state of war, and none of the rules mattered in the first place.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jacobgorm</em>:</p>
-<blockquote>You can always hide in your own country, as long as you or the people who protect you are able to stay in power, but at least you cannot use the rest of the world as playground or shopping center. Sucks to be a rich kleptocrat and not be able to have a yacht in Nice or be able to take your wife shopping in London.</blockquote>
-</blockquote>
-</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
