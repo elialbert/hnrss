@@ -4,7 +4,49 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 22 Aug 2026 08:37:42 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 09:33:16 +0000</lastBuildDate>
+    <item>
+      <title>There's no reason for software to be slow anymore</title>
+      <link>https://danluu.com/perf-opt/</link>
+      <guid isPermaLink="false">hn3-49395628</guid>
+      <pubDate>Sat, 22 Aug 2026 01:06:17 +0000</pubDate>
+      <description>395 points, 283 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://danluu.com/perf-opt/"><strong>→ Article</strong></a> <small>(danluu.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49395628">→ HN comments</a> &nbsp;·&nbsp; 395 points &nbsp;·&nbsp; 283 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ehnto</em>:</p>
+<blockquote>One of the biggest causes of slowness is just waiting for web requests. The fact that so much software is either online or built using the same stack even if it isn&#x27;t, puts all that software in this blocked&#x2F;waiting state constantly while using it.<p>Anyone not in the US feels this even more since so much online is US hosted, 300ms for every little interaction adds up quick.<p>If your software has the affordance of a waiting dialogue or loading wheel for many of its UI controls, you are building with this default blocked assumption. Even if you are building something web based, ask yourself if that&#x27;s actually necessary for your software or if you could build it differently to avoid constant UI blocking.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>stymaar</em>:</p>
+<blockquote>&gt; If your software has the affordance of a waiting dialogue or loading wheel for many of its UI controls, you are building with this default blocked assumption. Even if you are building something web based, ask yourself if that&#x27;s actually necessary for your software or if you could build it differently to avoid constant UI blocking.<p>I wish Atlassian listened to you.</blockquote>
+<p>↳ reply 2 — <em>mawadev</em>:</p>
+<blockquote>I agree and see this as a side effect of a subtler thing. As people shall be replacable, software is designed and subtly mimics the organization&#x27;s communication patterns. Features are cut up into the tiniest pieces with clear separation from the start (at least its claimed), and over time whatever change or feature seems overly complicated, won&#x27;t be done or won&#x27;t be done in a sane manner because its uneconomical.<p>You are starting to get software with ticket driven development layered around glue code for existing libraries. I see no problem with libraries, it is just the architecture and vertical understanding that leaves a lot of performance on the table, because refactoring insanity takes resources and a lot of talking, understanding and convincing to be done.<p>Doing this across big teams starts to have downsides. So one team doesn&#x27;t have a particular use case implemented or understood it and does not want to support it and you run code to compensate for this.<p>Best example in a monolith case is oracle...</blockquote>
+<p>↳ reply 3 — <em>bob1029</em>:</p>
+<blockquote>The UI threading model is usually not the problem.<p>The problem usually comes from inappropriately arranging the systems of record such that information needs to be communicated beyond the scope of one computer in order to satisfy a single logical request.<p>Moving information between physical processors tends to be significantly more expensive than local computation over that same information. JSON serialization is a really good example of this. You need a network with bandwidth in excess of 10 GbE to begin overtaking simdjson.<p>SSR or SPA doesn&#x27;t really matter if the server still takes a minimum of 300ms to compose any kind of response due to how its database or other infrastructure is set up. Information theory doesn&#x27;t care how clever your loading indicator is. If the information isn&#x27;t available, we can&#x27;t do anything meaningful. Stringing the user along with psychological tricks is a lot cheaper than hiring a skilled developer to do it the right way.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mccoyb</em>:</p>
+<blockquote>Here&#x27;s this boiled down:<p>&gt; A stochastic search process with an executable optimization objective over space of programs S can only maintain or improve the objective<p>This is superoptimization. We&#x27;ve known this since the 80s (Massalin, STOKE is more recent: <a href="https:&#x2F;&#x2F;github.com&#x2F;StanfordPL&#x2F;stoke" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;StanfordPL&#x2F;stoke</a>) The only novelty is that <i>the proposer</i> is now way better with LMs.<p>Further, there&#x27;s a large number of reasons for software written by agents to be slow:<p>- LMs still don&#x27;t do data or hardware-oriented design well out of the box, and therefore if you&#x27;re engaging in any sort of serious novel work, beyond porting an extremely well-understood program with extremely well-understood workloads, you&#x27;re going to be spending hours tracking down bad allocation decisions (c.f. why TigerBeetle doesn&#x27;t use agents), which are often the root of evil (before you&#x27;d reach for anything further)<p>- The knobs you&#x27;d need to get serious performance are nearly unreachable in languages which LMs are good at (even Rust requires a discipline that the default language doesn&#x27;t enforce). When you drop into the lower realms, you&#x27;re trading consumption context for access to these levers. The levers are also &quot;soft&quot;: you find yourself writing a bunch of skills, and tools to try and enforce the discipline.<p>The reality is to get performant code (quickly) out of an agent, you need to know how to write performant code (and you need to know how to surface the information that you&#x27;d use to create a verifier for such a thing to the agent), which 99% of developers do not know in 2026.<p>Sure, agents can teach you how to do this -- but it&#x27;s one of these things where iykyk.<p>Experience: I&#x27;ve poured 10s of billions of tokens into Zig with the best agents and I have the time and space to try these things.<p>If you want to start learning the discipline, I&#x27;d recommend matklad&#x27;s + TigerBeetle blog -- as well as hardware-oriented design.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Aurornis</em>:</p>
+<blockquote>&gt; - The knobs you&#x27;d need to get serious performance are nearly unreachable in languages which LMs are good at (even Rust requires a discipline that the default language doesn&#x27;t enforce). When you drop into the lower realms, you&#x27;re trading consumption context for access to these levers. The levers are also &quot;soft&quot;: you find yourself writing a bunch of skills, and tools to try and enforce the discipline.<p>Hasn’t been my experience at all. The latest LLMs can knock out assembly optimized subroutines and benchmark 100 different variations faster than I ever could dream of.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mccoyb</em>:</p>
+<blockquote>That&#x27;s fair for a well-scoped subroutine: what I meant is that if you ask an agent to write a compiler and let it rip for a few days, you are going to be spending a few more days correcting the default behaviors in the distribution, which often do not tend towards hardware-oriented design.<p>To correct those behaviors, you&#x27;re going to write tools and skills, and that&#x27;s going to help, but it is still clear that you are fighting the distribution (today).</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>josephg</em>:</p>
+<blockquote>&gt; iykyk<p>A story.<p>I have a friend, who is - like me - interested in the CRDT &#x2F; collaborative editing space. He asked ChatGPT to write him a CRDT. Then he grabbed every good CRDT implementation, and asked chatgpt to benchmark and optimise his CRDT, using tricks and techniques from existing hand-optimised CRDTs. He got massive performance gains by doing this - which is really interesting! I think it helped that he had a clear objective function, and chatgpt could look at other projects for ideas on how to optimise.<p>He proudly boasted that his resulting code outperformed my diamond-types library. I asked him if he was comparing against the native implementation, or the -Oz webassembly build, running in a wasm vm. It was the latter. When he tested it properly, his CRDT was - and is - significantly slower than diamond types. As far as I know, chatgpt still hasn&#x27;t been able to catch up. I tried myself using fable. Even with reference to my source code, Fable still doesn&#x27;t understand what I did in diamond types and why. (... Maybe I should document what I did!)<p>I think his technique itself is solid though. I tried it myself. I asked fable to write a custom binary serialization format &amp; parser. Then optimise. Then optimise, with explicit reference to existing libraries. Optimising with reference to other code made a huge additional difference. It is now nearly as fast as those libraries. (But still not faster than them.)<p>My takeaway is this: I think LLMs are exceptionally good at reading and understanding code. If you guide them to do so, they&#x27;re good at profiling and benchmarking. But it seems like they&#x27;re not very good at coming up with novel optimisations. If you have an obviously slow program (for example, some slop claude wrote), you can often get big speedups by asking it to benchmark and optimise. But if you have a complex, already well optimised codebase, like the zig compiler, claude doesn&#x27;t seem very good at figuring out novel ways to improve things on its own.<p>This is good news for the 95% of slow software out there. But bad news for the 5% of us who write fast code already, but want our code to go even faster.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>chvid</em>:</p>
+<blockquote>ChatGPT MacOSX is the only software that regularly crashes on my machine when its memory consumption for no apparent reason spins up towards 50 GB.<p>And that software is build by some of the highest paid software engineers on the planet with full access to all the LLM compute in the world.</blockquote>
+<blockquote>
+<p>↳ reply — <em>blfr</em>:</p>
+<blockquote>Yes, but it&#x27;s also built by people who would rather tinker with AI than build MacOS apps. Intrinsic motivation is very hard to beat, especially in subtler areas like good UX or performant software.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>chvid</em>:</p>
+<blockquote>I think the software out of the big AI labs: OpenAI&#x27;s ChatGPT MacOSX app, Anthropic Claude Code - is a sign of the future to come.<p>Big, feature rich, built in quick iterations - but also, in particular if you look under the hood, of extremely poor quality if measured by traditional software engineering standards (code structure as exemplified by the leaked Claude Code source code, resource usage, &quot;buggyness&quot; etc.).</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Three important steps in my maturation process</title>
       <link>https://thomasdullien.github.io/posts/2026-08-21-three-important-steps-in-my-maturation-process/</link>
@@ -770,6 +812,30 @@ So it doesn&#x27;t tell me how to identify device type. It doesn&#x27;t even run
 </blockquote>
 <p><strong>Top #3</strong> — <em>delduca</em>:</p>
 <blockquote>This article was made for LLMs reading, not for human reading.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Stop Making TUIs</title>
+      <link>https://sockpuppet.org/blog/2026/08/20/stop-making-tuis/</link>
+      <guid isPermaLink="false">hn3-49384210</guid>
+      <pubDate>Fri, 21 Aug 2026 05:37:38 +0000</pubDate>
+      <description>126 points, 196 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://sockpuppet.org/blog/2026/08/20/stop-making-tuis/"><strong>→ Article</strong></a> <small>(sockpuppet.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49384210">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 196 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>joshka</em>:</p>
+<blockquote>As a ratatui library maintainer, NO - please don&#x27;t stop making TUIs ;)<p>As a developer outside of that, I love the scratch the itch apps stuff mentioned in here. I have a vibe coded SwiftUI chess repertoire builder app that fits in that same sort of space that I&#x27;m currently working on, where I&#x27;d probably not have chosen to explore the idea if not for coding agents.<p>I agree with the article that the terminal is an odd shape which you&#x27;re fighting against historical specs, etc. The key observation I have though is that the mismatch of terminal apps and libraries to deal with this are all fundamentally built around character cells and cursor movement plus various CSI&#x2F;OSC&#x2F;ASC&#x2F;DEC&#x2F;xterm&#x2F;... protocols which are complex and have varying support and interact in weird ways.<p>To get a good terminal UX, I think the answer to this is probably to throw all that compatibility mess away and redesign a modern terminal protocol that bakes in accessibility, regions, scrolling, selection, proper keyboard, etc.<p>I know Mitchell Hashimoto has a bit of a different perspective on this, which seems like it&#x27;s to define some more protocol stuff and continue to build up on things. I think that probably gets to 95% pretty well. But a 100% good is a full replacement.</blockquote>
+<p><strong>Top #2</strong> — <em>Retr0id</em>:</p>
+<blockquote>Stop making TUIs, stop making GUIs, and make more CLIs. Claude can read the help text and efficiently drive it directly, without needing a vision model in the loop. Then I can go outside and do more something more interesting while Claude plays computers without me.</blockquote>
+<blockquote>
+<p>↳ reply — <em>porridgeraisin</em>:</p>
+<blockquote>Claude (and many models, deepseek, etc) can operate a TUI just fine by reading and sending control codes to a PTY.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>WhyNotHugo</em>:</p>
+<blockquote>Maybe on macOS you have great APIs, libraries and toolkits for making high quality GUIs, but if you&#x27;re wanting to write open source software or target open source platforms, your options are limited and poor.<p>On the Linux&#x2F;BSD side, most toolkits are of not great quality, you&#x27;ll inherit all sorts of subtle bugs and quirky behaviours. Most of the software that&#x27;s of _great_ quality doesn&#x27;t use the toolkit, but interfaces with the compositor directly. The effort for developing GUIs under such circumstances is dramatically higher than a TUI, and a TUI is usually &quot;good enough&quot;.<p>I really would prefer GUIs for a lot of things. But when a TUI takes a few weeks to make, the equivalent GUI would take a few months to make.</blockquote>
+<blockquote>
+<p>↳ reply — <em>discreteevent</em>:</p>
+<blockquote>Use Qt or Flutter</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Japan tried to build an operating system for the world, the US intervened</title>
@@ -3578,68 +3644,6 @@ Agent = the thing that runs on the harness. It cannot be trusted because it is d
 <p>↳ reply — <em>pixelready</em>:</p>
 <blockquote>Cybersecurity has long been a climate change sort of problem. A vague diffuse threat that is seen as an inconvenient distraction to leadership and moneyed-interests, easy to blame other factors when something occasionally goes terribly wrong.<p>People are so uncomfortable thinking about the true extent of the systemic risk that they will happily slurp up distractions, excuses, scams and performative fig-leaf solutions rather than face down the cost of a real system-wide solution. Meanwhile, those occasional black swan disasters are becoming more and more commonplace as we acclimate to that being “just the way things are”.<p>An unseasonably warm summer here, a database breach there, c’est la vie.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How does IKEA come up with names for its products?</title>
-      <link>https://www.ikea.com/se/en/customer-service/knowledge/articles/6f564c4d-2ccc-46de-b643-545a3948dc79.html</link>
-      <guid isPermaLink="false">hn3-49349984</guid>
-      <pubDate>Tue, 18 Aug 2026 18:11:53 +0000</pubDate>
-      <description>252 points, 148 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.ikea.com/se/en/customer-service/knowledge/articles/6f564c4d-2ccc-46de-b643-545a3948dc79.html"><strong>→ Article</strong></a> <small>(ikea.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49349984">→ HN comments</a> &nbsp;·&nbsp; 252 points &nbsp;·&nbsp; 148 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dools</em>:</p>
-<blockquote>&gt; In other parts of the world, they are basically incomprehensible, but fun!<p>For some reason unknown to either of us it really pisses off my wife when I refer to our IKEA furniture by the Swedish names. I think it stems from a deep seated disdain she has for flat pack furniture.<p>Me: where’s the thing?<p>Wife: in the white cupboard<p>Me: which white cupboard? There are 6<p>Wife: the white cupboard opposite the piano<p>Me: the Brimnes?<p>Wife: &gt;.&lt;</blockquote>
-<p><strong>Top #2</strong> — <em>fy20</em>:</p>
-<blockquote>For a Swede it must seem kind of strange to understand the product names. You see an ACORN toy, a NIGEL bookshelf, and the CROYDON sofa... which sounds like it belongs in a council estate flat.<p>Definately more fun would be the Polish version. How many people can pronounce the BYDGOSZCZ sofa, the PRZEMYSŁAW bookcase and the PSZCZOŁA soft toy?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>MajorBee</em>:</p>
-<blockquote>&gt; BYDGOSZCZ sofa<p>This may not even be that far off from reality, looking at the sort of names rando brands on Amazon often have...</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dylan604</em>:</p>
-<blockquote>At least BYDGOSZCZ is a real word in a real language</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nine_k</em>:</p>
-<blockquote>If the goal is something that reads weird for most Europeans, then try picking names from Finnish, Estonian, Hungarian, or Welsh.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>senko</em>:</p>
-<blockquote>My favorite is `fejka` for the artificial plant&#x2F;flower.<p>I think &quot;being as widely-understandable pun as possible&quot; is definitely one of their naming priorities.</blockquote>
-<blockquote>
-<p>↳ reply — <em>kube-system</em>:</p>
-<blockquote>Want a nice wardrobe? Well vuk u, you get this one:<p><a href="https:&#x2F;&#x2F;www.ikea.com&#x2F;us&#x2F;en&#x2F;p&#x2F;vuku-wardrobe-white-80331973&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.ikea.com&#x2F;us&#x2F;en&#x2F;p&#x2F;vuku-wardrobe-white-80331973&#x2F;</a><p>Need an end table that is lacking?<p><a href="https:&#x2F;&#x2F;www.ikea.com&#x2F;us&#x2F;en&#x2F;p&#x2F;lack-side-table-white-30449908&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.ikea.com&#x2F;us&#x2F;en&#x2F;p&#x2F;lack-side-table-white-30449908&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Walf</em>:</p>
-<blockquote>&quot;Hey, Dana…”<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=7T2oje4cYxw" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=7T2oje4cYxw</a></blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Turbovec – Google's TurboQuant for vector search in Rust</title>
-      <link>https://github.com/RyanCodrai/turbovec</link>
-      <guid isPermaLink="false">hn3-49349898</guid>
-      <pubDate>Tue, 18 Aug 2026 18:07:21 +0000</pubDate>
-      <description>212 points, 29 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/RyanCodrai/turbovec"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49349898">→ HN comments</a> &nbsp;·&nbsp; 212 points &nbsp;·&nbsp; 29 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Eridrus</em>:</p>
-<blockquote>FAISS is no longer close to SoTA:<p><a href="https:&#x2F;&#x2F;ann-benchmarks.com&#x2F;index.html" rel="nofollow">https:&#x2F;&#x2F;ann-benchmarks.com&#x2F;index.html</a>
-<a href="https:&#x2F;&#x2F;vector-index-bench.github.io&#x2F;" rel="nofollow">https:&#x2F;&#x2F;vector-index-bench.github.io&#x2F;</a>
-<a href="https:&#x2F;&#x2F;big-ann-benchmarks.com&#x2F;neurips23.html" rel="nofollow">https:&#x2F;&#x2F;big-ann-benchmarks.com&#x2F;neurips23.html</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ehsanu1</em>:</p>
-<blockquote>Surprised that usearch isn&#x27;t in any of these, it&#x27;s pretty fast.</blockquote>
-<p>↳ reply 2 — <em>nl</em>:</p>
-<blockquote>I think their point is the size&#x2F;performance tradeoff rather than outright performance. The point of TurboQuant is the size savings, while still giving high accuracy.<p>It&#x27;s been a while, but I do recall some high-performing vector matching indexes being very large.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ghm2199</em>:</p>
-<blockquote>Wow! 4GB for 10 million documents. This means one could build a reverse index much faster than before and devx processes like debugging, performance testing would become much smoother. Can&#x27;t wait for the sqlite bindings to come out!</blockquote>
-<blockquote>
-<p>↳ reply — <em>ghm2199</em>:</p>
-<blockquote>Also the removal latency is on a log scale. Which is quite insane.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>nharada</em>:</p>
-<blockquote>It would be nice to have the README be a little more human written for a project where you actually want people to adopt it</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
