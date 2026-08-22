@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 22 Aug 2026 16:31:51 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 17:26:39 +0000</lastBuildDate>
     <item>
       <title>Canada will match US tariffs 'dollar for dollar' as trade talks break down</title>
       <link>https://www.bbc.com/news/articles/cvgvyy4x2mvo</link>
@@ -445,6 +445,38 @@ I do expect a lot of analytical advances thanks to the combination of open datas
 </blockquote>
 <p><strong>Top #3</strong> — <em>WalterGR</em>:</p>
 <blockquote>Related and recent: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49375996">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49375996</a><p>&quot;Vomit: Clean up Claude 5&#x27;s token output with a separate LLM&quot; (github.com&#x2F;zachahn)<p>285 points | 23 hours ago | 288 comments</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Zig’s Io.Threaded is neat</title>
+      <link>https://matklad.github.io/2026/08/06/neat-io-threaded.html</link>
+      <guid isPermaLink="false">hn3-49388694</guid>
+      <pubDate>Fri, 21 Aug 2026 14:28:15 +0000</pubDate>
+      <description>131 points, 75 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://matklad.github.io/2026/08/06/neat-io-threaded.html"><strong>→ Article</strong></a> <small>(matklad.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49388694">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 75 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>_old_dude_</em>:</p>
+<blockquote>Just here to say that Java as interruptible channels since the beginning of 2000.<p>You can interrupt a blocking IO operation with either interrupt() or close().<p><a href="https:&#x2F;&#x2F;docs.oracle.com&#x2F;en&#x2F;java&#x2F;javase&#x2F;25&#x2F;docs&#x2F;api&#x2F;java.base&#x2F;java&#x2F;nio&#x2F;channels&#x2F;InterruptibleChannel.html" rel="nofollow">https:&#x2F;&#x2F;docs.oracle.com&#x2F;en&#x2F;java&#x2F;javase&#x2F;25&#x2F;docs&#x2F;api&#x2F;java.base...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>twic</em>:</p>
+<blockquote>Pretty sure you&#x27;ve been able to interrupt a thread blocked on IO in a normal InputStream since 1.0.2 in 1996.<p>There is a significant caveat to this, which is that if the underlying blocking IO operation isn&#x27;t natively cancellable (and the JDK doesn&#x27;t use the trick Zig uses here), then the interrupt is allowed to close the IO resource as a way of ending the operation early. In practice this is usually fine, as you&#x27;re interrupting the thread precisely because you want it to give up on whatever it&#x27;s doing, but it precludes some particularly subtle possible IO designs.<p>Not sure if this changes under virtual threads, where the thread is much more loosely coupled to the syscall.</blockquote>
+<p>↳ reply 2 — <em>gdcbe</em>:</p>
+<blockquote>You might want to read the “prior art” section of their article…</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>lll-o-lll</em>:</p>
+<blockquote>All my days of low level stuff were in the windows world where async&#x2F;cancel was supported since nt kernel days at least. Wrapping this coherently at some level of abstraction was always worth doing, although threads are just one way. Overlapped I&#x2F;O let you do it all on one thread. Linux looks harder.<p>Great that Zig is supporting this more “first class”; not strictly <i>required</i>, but looks useful.</blockquote>
+<blockquote>
+<p>↳ reply — <em>lukaslalinsky</em>:</p>
+<blockquote>If you are comparing to overlapped I&#x2F;O, you should use io_uring as reference and cancellation in io_uring is fairly simple.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>two_handfuls</em>:</p>
+<blockquote>Oh man this finishes too early, I would want to read more!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>memco</em>:</p>
+<blockquote>Agreed.<p>There&#x27;s this line:<p>&gt; Wouldn’t it be cool if we could just use standard OS threads, blocking APIs, avoid new shinies like io_uring, but still get to cancel any work reliably?<p>Wish more was said about this: why would that be cool? I get that having robust cancellation in standard threads is cool, but why do we want to avoid io_uring?</blockquote>
+<p>↳ reply 2 — <em>skrebbel</em>:</p>
+<blockquote>It got cancelled halfway</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Kagi added a setting for removing paywalled links from search results</title>
@@ -1137,6 +1169,44 @@ web_search = &quot;disabled&quot;</blockquote>
 <blockquote>
 <p>↳ reply — <em>gexla</em>:</p>
 <blockquote>Yeah, whatever it is, it&#x27;s particularly bad at front-end from what I have been seeing.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Early-life stress leaves a 'scar' inside brain cells in mice</title>
+      <link>https://medicine.washu.edu/news/how-early-life-stress-leaves-a-scar-inside-brain-cells/</link>
+      <guid isPermaLink="false">hn3-49380303</guid>
+      <pubDate>Thu, 20 Aug 2026 21:08:36 +0000</pubDate>
+      <description>130 points, 60 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://medicine.washu.edu/news/how-early-life-stress-leaves-a-scar-inside-brain-cells/"><strong>→ Article</strong></a> <small>(medicine.washu.edu)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49380303">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 60 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sajithdilshan</em>:</p>
+<blockquote>Whenever I’m having a dream at night, it’s always about my childhood and always at the place I grew up. It feels like my mind is a prisoner of the place I grew up. Childhood stress and trauma is deeply burnt into my brain I guess</blockquote>
+<blockquote>
+<p>↳ reply — <em>cfiggers</em>:</p>
+<blockquote>EMDR is an amazing thing, you might look into it. Be well, friend.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>anigbrowl</em>:</p>
+<blockquote>Not to play down anyone&#x27;s stressful life experiences, but the sort of stress they&#x27;re talking about in this article is more typically correlated with stressors like violence, hunger, or institutionalization in the first decade of life.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>onion2k</em>:</p>
+<blockquote>Surely the level of stress needed to have this impact is something that needs to be studied. The researchers presumably went to an extreme to ensure a clear signal for a result, but the fact they&#x27;ve shown there is a significant outcome the next step is to work out how much stress is needed to cause a long term problem.<p>You can&#x27;t just dismiss the result because you think it&#x27;s unlikely to be something that affects a lot of people.<p>There is a theory in transactional analysis therapy that states adult addiction (in all its forms) pretty much always stems from childhood trauma...</blockquote>
+<p>↳ reply 2 — <em>thibaut_barrere</em>:</p>
+<blockquote>I do not read this in the article, I was more understanding that half the kids of the world could be concerned to a level or another, can you quote?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>redrix</em>:</p>
+<blockquote>I remember having it drilled into me in High School that unless you did well on your finals:<p>1. You wouldn’t get the score you needed to get into a good University and&#x2F;or accepted into the course you wanted.
+2. If you didn’t get into that course, you wouldn’t be able to do &lt;x&gt; for a career.
+3. If you DID get into the course you wanted, it needed to be at a top University (which of course required an even higher entry score) or else you’d find it hard to get a job afterwards.<p>Imagine all of that stress: Telling 16-18 year olds that unless you ace your tests, you won’t be able to do what you want to in life.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>syllogism</em>:</p>
+<blockquote>The optimal amount of stress about that stuff is not zero, and most teenagers are going to be desperately biased towards &quot;none of this matters, just peermax&quot;.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>AngryData</em>:</p>
+<blockquote>Couldn&#x27;t some of that because of how people act like EVERYTHING is the most important thing for kids to do, irregardless of how it actually stacks up, and some develop something akin to alarm fatigue and stop listening?<p>Plus almost everyone can get into a college, there is only really competition for a handful of elite schools. My college wanted SAT scores for admission, I did not take the SAT, they still admitted me without question. As long as you don&#x27;t fail out your first two semesters in a row most colleges don&#x27;t give two craps about your highschool performance.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>NewJazz</em>:</p>
+<blockquote>I remember having it drilled into me in high school that I was procrastinating school work while at my mom&#x27;s to avoid spending time with my dad and I was faking my sobbing for sympathy and I was a horrible person who was lucky to have a dad as good as I had and how I keep doing the same things wrong and I am a smartass prick who doesn&#x27;t care about anyone but myself.<p>12-14 was rough.<p>School work stress was quite tame by comparison. At least your teachers don&#x27;t scream at you for hours until you forget why.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3576,80 +3646,6 @@ Edited for accuracy and more models.</blockquote>
 <p>↳ reply 2 — <em>tw1984</em>:</p>
 <blockquote>With GPT&#x2F;Claude, hiding those from users to waste their tokens is a feature, not a limitation.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>fx :Tiny, open, native coding agent.</title>
-      <link>https://fx.sh</link>
-      <guid isPermaLink="false">hn3-49353339</guid>
-      <pubDate>Tue, 18 Aug 2026 22:00:21 +0000</pubDate>
-      <description>135 points, 64 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://fx.sh"><strong>→ Article</strong></a> <small>(fx.sh)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49353339">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 64 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>rsyring</em>:</p>
-<blockquote>For all the people asking &quot;Why?&quot;, it seems like TFA has a pretty good list of features&#x2F;attributes that it thinks sets it apart:<p>- fx is a coding agent harness and CLI written in Zig, optimized for research and embeddability as part of larger systems.<p>- It focuses on minimalism and performance across the board, from system prompt design, to its tools, feature set, and 6.39mib binary.<p>- For end users, its CLI output style and form factor aims to be closer to a Unix shell than a heavy &quot;IDE in the terminal&quot; TUI.<p>- It&#x27;s open source (Apache-2.0), model-agnostic, and suitable for both local and cloud inference.<p>- Designed for instant installation and embedding in resource constrained environments and agent sandboxes.<p>- fx cold starts in 10µs and does no unnecessary work or I&#x2F;O prior to accepting user input, making it ideal for programmatic use.<p>- Optimal fx.wasm builds produced by the Zig toolchain, which further reduce fx&#x27;s size, making the network stack pluggable.<p>- fx contributes single-digit megabytes of memory baseline, allowing you to pack many instances in one machine.<p>- fx preserves scroll history by default, produces minimal output, and makes sparing use of complex TUI or paints<p>- Minimal system prompt and tools, to save on token costs and to yield optimal time-to-first-token performance (TTFT).<p>- Small core, extended via skills, plugins, MCPs, with a Unix-like philosophy to extensibility.<p>- Designed to work with local models, gateways, direct provider API access or subscriptions.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Kim_Bruning</em>:</p>
-<blockquote>Very neat. The demo on the page feels very intuitive to me! (if you&#x27;re used to bash at least)</blockquote>
-<p>↳ reply 2 — <em>jauntywundrkind</em>:</p>
-<blockquote>I&#x27;ve only done a little of the new opencode v2 &quot;mini&quot; but it too offers a nice preserve-scroll by default.<p>OpenCode is the best behaved TUI i&#x27;ve seen by far (they invented OpenTUI to make it so good, also in Zig), so it feels less crucial. But it&#x27;s nice to have there!<p>The &quot;small core&quot; model is very popular all of a sudden. DeepSeek&#x27;s new harness is famously like that. <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49285244">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49285244</a><p>OpenCode isn&#x27;t quite as small, but there&#x27;s very much been a deliberate attempt to drive much more into a plugin-based system. I enjoyed Dax talking about the new constitution of opencode, and the results of his agent comparing OpenCode &amp; the new DeepSeek. <a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3msy4gjttoc2f" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3msy4gjttoc2f</a> <a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3msygiqyg6v2y" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3msygiqyg6v2y</a><p>&gt; <i>an architectural change we made in opencode2 is nearly everything is an internal plugin &#x2F; there&#x27;s 68 of them that cover our built in agents, integrations, config loading, etc</i><p>i also think this is such a brilliant fun architectural twist too:<p>&gt; <i>OpenCode is the first time i could justify event sourcing in a real system &#x2F; everything that happens is an event which gets projected into the sqlite db</i><p><a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3mt2qx3ktib2c" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;thdxr.com&#x2F;post&#x2F;3mt2qx3ktib2c</a><p>it&#x27;s so fun seeing new malleable software cores emerge, try to figure out how to augment agency. agentic software striving itself to extend the agency it itself offers. it&#x27;s been way too long since we&#x27;ve had ambitions to build general system, architectures that serve more than the user. this has held computing back for far too long. this is such an excellent interesting field, of such a more ambitious computing, opening up.</blockquote>
-<p>↳ reply 3 — <em>rvz</em>:</p>
-<blockquote>Most of all what you have said is not really any clear differentiation against the rest of the 100s of other agents. Just minuscule or non-negligible implementation details and I&#x27;m afraid it is sadly yet another experimental slop project.<p>It is a branded &quot;mee too&quot; coding agent that we have seen hundreds of them already.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bodge5000</em>:</p>
-<blockquote>It does looks really interesting and definitely something I&#x27;ll check out, but (genuine question), should &quot;agent&quot; and &quot;agent harness&quot; be used interchangeably as it is on here? It describes itself as an agent harness, but the tagline is &quot;tiny, open, native coding agent&quot;.<p>I&#x27;m not sure harness is the right word either, but that seems to be what the industry has settled on so I&#x27;ll concede on that, but surely the agent is the thing doing the work (which I guess is the model, or an instance of the model which is why agent is different?), whereas the harness is how the user interacts with the agent. We&#x27;ve had ways to describe that relationship before; client and server, frontend and backend, but again, I&#x27;ll concede that the shiny new thing doesn&#x27;t want to use boring old terminology, but I think some consistency and logic in the shiny new terminology is pretty important<p>That isn&#x27;t specifically about fx of course, more of a general industry complaint</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>stellalo</em>:</p>
-<blockquote>harness + llm = agent</blockquote>
-<p>↳ reply 2 — <em>cramforce</em>:</p>
-<blockquote>Harness = the software the agent runs on. This is plain old software. You can trust it as much as any software.
-Agent = the thing that runs on the harness. It cannot be trusted because it is driven by an LLM</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>kgeist</em>:</p>
-<blockquote>&gt;Tiny ~6mb binary<p>I wonder why it&#x27;s so large for a program written in Zig. It&#x27;s basically just a loop that accepts user input, prepares the context, sends it to the LLM, parses the output, invokes the tools, and presents it all in the terminal. Add the built-in prompts and a few checks here and there (like blocking a write tool call before the file has been read first), and I&#x27;d expect a truly tiny native agent to be around 200-300 KB max.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A 3D fruit fly on macOS desktop powered by the real FlyWire connectome</title>
-      <link>https://github.com/DenisSergeevitch/desktop-fly</link>
-      <guid isPermaLink="false">hn3-49353221</guid>
-      <pubDate>Tue, 18 Aug 2026 21:50:33 +0000</pubDate>
-      <description>239 points, 81 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/DenisSergeevitch/desktop-fly"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49353221">→ HN comments</a> &nbsp;·&nbsp; 239 points &nbsp;·&nbsp; 81 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>DaiPlusPlus</em>:</p>
-<blockquote>I have no exposure to connectomes - or really anything quite like this (as opposed to good ol’ fashioned perceptrons) - so forgive my following uninformed question:<p>Can someone explain if this software <i>is ethical?</i></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>vincnetas</em>:</p>
-<blockquote>Is ethics another tool in a power play game (religion being another) that people use to exert dominance over other people? No one expects of cat or pigeon to be ethical. But somehow humans sometimes get overloaded by external demand to think of gazillion things that might offend someone (sometimes unreasonable demands, or how it might get interpreted (sometimes incorrectly)) before acting.<p>Im not saying ethics is bad, but sometimes people bend to to extremes (same like spirituality or religion)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>yawpitch</em>:</p>
-<blockquote>Ethics has nothing to do with how an action is perceived, rather its focus is on is the action moral.<p>One should never take any action without considering the ethical implications of that action. Being capable of that is, arguably, the sole thing that meaningfully separates us from the (real or simulated) fruitfly.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>vincnetas</em>:</p>
-<blockquote>&quot;Ethics has nothing to do with how an action is perceived&quot;
-&quot;...considering the ethical implications of that action&quot;<p>Are these two not contradictions?<p>And is it not the do big of a load on an actor to thing about everything before acting? I would prefer to delegate this function to my empathy part of the brain...<p>At the end i think ethics is valid only for cases where empathy is functioning. You can not be ethical to a rock unless you feel empathy for it. Same probably would go for extra strange extraterrestrial life forms that you could not empathise with. Lets say hive of microbes that makes the hive sentient but no limbs, no shared communication signals, different size categories (planetary hive)</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bad_username</em>:</p>
-<blockquote>I believe that any simulation of consciousness is consciousness, so ethical implications apply. But I also don&#x27;t believe fruit flies are conscious for any definition of that word.</blockquote>
-<p>↳ reply 3 — <em>janalsncm</em>:</p>
-<blockquote>&gt; Can someone explain if this software is ethical?<p>Probably not. People have been coming up with ethical frameworks for thousands of years and we have yet to come to a consensus.<p>So it’s very unlikely that someone can say conclusively whether this is ethical or not, because that would require us to either 1) prove a single ethical framework is correct and then apply that framework to this software or 2) prove that under all possible ethical frameworks this software is either ethical or not ethical.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>a1o</em>:</p>
-<blockquote>&gt; What&#x27;s modeled vs. measured<p>&gt; Honesty section:<p>I wouldn’t mind an human written README</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rossy</em>:</p>
-<blockquote>&gt; <i>Honesty section:</i><p>This one gets to me. Not only is it useless (paragraph would have the same meaning if it was removed) but wdym &quot;honesty section,&quot; Claude? The whole readme should be honest! One of the many causes of psychological damage when reading AI-generated technical writing is the reminder that one of its tics is that <i>declares</i> when it&#x27;s being honest or real, casting doubt on the rest.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>isoprophlex</em>:</p>
-<blockquote>Don&#x27;t you ever add a few dishonest paragraphs to your docs to spice things up?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>dag11</em>:</p>
-<blockquote>&gt; runs as a 1 kHz leaky-integrate-and-fire (LIF) simulation<p>That hyphenated thing is always such a give. Clearly a thing discussed in the Claude conversation, made its way into the plan, then the readme. It always creates hyphenated phrases out of things it feels are core requirements.<p>I&#x27;m actually over caring about Claude&#x27;s obsession with the concepts of &quot;real&quot;, &quot;honest&quot;, and &quot;rather than&quot;. What annoys me the most now is how every single sentence, bullet, etc that even makes its way into the products it builds are advertisements for itself. Product settings pages now read like ads, or like something written by a student begging for extra credit from the teacher. You can&#x27;t unsee it!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>aperrien</em>:</p>
-<blockquote>Interesting work! There&#x27;s NeuroMechFly (<a href="https:&#x2F;&#x2F;github.com&#x2F;NeLy-EPFL&#x2F;flygym&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;NeLy-EPFL&#x2F;flygym&#x2F;</a>) available, you might try using that to simulate the fly body in real time as well.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
