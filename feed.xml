@@ -4,7 +4,51 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 22 Aug 2026 06:51:20 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2026 07:37:00 +0000</lastBuildDate>
+    <item>
+      <title>Rust Glancer: Rust LSP using 100x less RAM</title>
+      <link>https://rust-glancer.github.io/blog/hello-world/</link>
+      <guid isPermaLink="false">hn3-49393052</guid>
+      <pubDate>Fri, 21 Aug 2026 19:51:54 +0000</pubDate>
+      <description>132 points, 33 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://rust-glancer.github.io/blog/hello-world/"><strong>→ Article</strong></a> <small>(rust-glancer.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49393052">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 33 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>popzxc</em>:</p>
+<blockquote>Hey! Author here.
+Happy to answer any questions.</blockquote>
+<blockquote>
+<p>↳ reply — <em>potamic</em>:</p>
+<blockquote>Could you elaborate a bit on why RA&#x27;s incremental approach takes more memory? Intuitively it feels that it should take less, because you&#x27;re only processing what you need? Whereas you seem to indicate that you save a full analysis snapshot to disk and load it all up when needed? Shouldn&#x27;t that consume the max memory for a workspace?<p>Fantastic project btw, and it couldn&#x27;t come at a better time. With the way prices are going I really hope people start paying attention to memory again.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>popzxc</em>:</p>
+<blockquote>It&#x27;s explained in the blog post, but in short: rust-analyzer stores the data it needs in memory all the time, while Rust Glancer might consume more memory during indexing (because it&#x27;s not lazy and does more indexing), but after that it only loads _necessary_ information for the duration of the query.<p>Several things here:
+1. We don&#x27;t need all the information (project can have 1000+ dependencies, while query might only care about the current open file), so the amount of information we load is smaller.
+2. Most of the time IDE does not actually do any queries, so if you switch to browser&#x2F;Slack, you don&#x27;t pay the tax.
+3. Since data is loaded to the disk, after initial indexing restarting no longer consumes that much ram, and you get reindexing for free.
+4. Besides offloading, I implement quite a bit of memory optimizations (some of which are covered in docs: <a href="https:&#x2F;&#x2F;rust-glancer.github.io&#x2F;docs&#x2F;development&#x2F;MEMORY.html" rel="nofollow">https:&#x2F;&#x2F;rust-glancer.github.io&#x2F;docs&#x2F;development&#x2F;MEMORY.html</a> ), so it&#x27;s a combination of factors.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mayli</em>:</p>
+<blockquote>RA with disk cache?</blockquote>
+<blockquote>
+<p>↳ reply — <em>popzxc</em>:</p>
+<blockquote>In a way. It uses a different architecture, so it&#x27;s not exactly &quot;RA with something&quot;, but the main idea is similar: everything is on the disk, stuff is loaded only when it&#x27;s needed.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>t_mahmood</em>:</p>
+<blockquote>But RA already eats up huge amount if storage when working in a large project, if you&#x27;re using disk cache, it&#x27;ll gobble up more, That&#x27;s the biggest complain I had with RA. Somehow never had this issue with jetbrains rust plugin.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>matklad</em>:</p>
+<blockquote>To clarify, author is <a href="https:&#x2F;&#x2F;github.com&#x2F;popzxc" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;popzxc</a>, not me! My thoughts are here: <a href="https:&#x2F;&#x2F;matklad.github.io&#x2F;2026&#x2F;08&#x2F;21&#x2F;rust-glancer.html" rel="nofollow">https:&#x2F;&#x2F;matklad.github.io&#x2F;2026&#x2F;08&#x2F;21&#x2F;rust-glancer.html</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dang</em>:</p>
+<blockquote>Your thoughts are quite cool! but I thought featuring the project itself would make more sense for a frontpage thread, so I&#x27;m going to merge the comments (such as they are) from <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49392654">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49392654</a> and add your link to the toptext above. Thanks for drawing attention to this topic!</blockquote>
+<p>↳ reply 2 — <em>popzxc</em>:</p>
+<blockquote>Thanks for the coverage and kind words!
+The title of the post is a bit more ambitious than what I am confident to guarantee, but I&#x27;ll try my best to live up to it ^_^&quot;<p>Some comments on the thoughts post<p>&gt; I think that part can perhaps be made lazy (but not incremental!) with little overhead?<p>I am still thinking about making stuff lazy, since with non-incremental approach it can introduce more lags than would be perceived comfortable, but what I do right now is that I prioritize open buffers (so the stuff user needs gets processed faster), and everything else is indexed in background. I have some thoughts about lazy approach, but before I&#x27;ll try them, I want to work on the quality of analysis first.<p>&gt; Would be interesting to compare memory usage with Rust Rover. Net of the IDE GUI itself, I would expect RR to be more compact.<p>I&#x27;ve received a few comments about RR already, and, to be honest, I&#x27;ve never tried it (somehow I never got along with JetBrains IDEs) -- but will look into it.<p>&gt; One potential approach here is to pull the Sorbet trick, where you don’t run meta programming at all, and instead have a plugin interface to “explain” the effects of what that would have done.<p>Funnily, that&#x27;s exactly (well, mostly) the idea I have in mind and want to try out. Tentatively planned for Rust Glancer 0.3.0 (0.2.0 will be mostly about more complete indexing&#x2F;functionality and editors support). In short, I don&#x27;t want to have random code execution in the LSP itself (even diagnostics are disabled by default), but it&#x27;s quite possible that we don&#x27;t need that for proc macros.<p>&gt; Try changing this option and see if it helps?<p>I have tried both editor and server watcher options, didn&#x27;t really feel the difference, but can&#x27;t say that I performed a high quality investigation. I certainly noticed that vs code is not very good at properly reporting external changes (it misses a lot of them), and the server watcher was tricky to get right (and yeah, it has quite a bit of platform-specific quirks; which is one of the reasons I don&#x27;t feel comfortable providing a server for Windows yet -- I have no machine to test it).<p>&gt; This still seems to me to be the lowest-hanging watermelon here — split the world into arcy-pointy incremental tip of the iceberg, and mostly read-only, on disk, compact, dark, moist breeding ground for supply chain attacks.<p>This would be awesome! And I&#x27;d be really happy to see that change making Rust Glancer redundant; while ability to experiment is cool, I think that unified tooling is ultimately better for the language.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Scientists release biggest 2D map of the universe</title>
       <link>https://newscenter.lbl.gov/2026/08/10/scientists-release-biggest-2d-map-of-the-universe/</link>
@@ -3609,58 +3653,6 @@ Agent = the thing that runs on the harness. It cannot be trusted because it is d
 </blockquote>
 <p><strong>Top #3</strong> — <em>skybrian</em>:</p>
 <blockquote>The only way around this is to not to have any employees in the same country as the men with the guns.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Claude Code May–August 2026 weekly limits promotion</title>
-      <link>https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion</link>
-      <guid isPermaLink="false">hn3-49348751</guid>
-      <pubDate>Tue, 18 Aug 2026 17:02:15 +0000</pubDate>
-      <description>259 points, 228 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion"><strong>→ Article</strong></a> <small>(support.claude.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49348751">→ HN comments</a> &nbsp;·&nbsp; 259 points &nbsp;·&nbsp; 228 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>lubujackson</em>:</p>
-<blockquote>I think the difference between the Anthropic token maximization approach (vibe code all the things!) and OpenAI&#x27;s focus on efficiency, terseness and token reduction are going to be the defining features of who wins the long-term race.<p>My money is on the more efficient solution. Even if Anthropic can win some benchmarks by using 3x tokens over 3x time, it is a terrible base to build toward the future. Users are no longer willing to wait exponentially long for linear improvements. And as we see from some of the Chinese models, they can quickly distill frontier models with the tax of being slower and more token-guzzling, while retaining most of the quality. The real differentiators are becoming speed and efficiency, which translate to cost and user velocity more than incremental capability improvements.<p>It&#x27;s great that frontier models can solve complex math equations, but bread and butter LLM usage (where the money is made) has already shifted from &quot;I need the best always&quot; to &quot;what solves my day-to-day problems quickly and consistently&quot;. Fable usage as a percentage is flat-lining. We are already at the point where output quality is negligible. What wins going forward is cost, speed, consistency and the compounding effects of &quot;softer&quot; improvements to the harness.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>WhiteDawn</em>:</p>
-<blockquote>Not to sound like a mark, I try to not get attached to any of these providers.<p>I&#x27;ve jumped between copilot, claude, gemini and chatgpt since the start of the year. chatgpt wasn&#x27;t even worth looking at early this year.<p>Anthropic has the smarter models for sure, and seems to be default in corporate. However, the amount of budget you get with GPT as a user is much better, the harness feels more polished, and the models are faster. They are also much nicer to work with, I can just read the output for the most part. With claude I get pages of text and need to skim to find where the actual information i need to care about lies. So much more cognitive overhead.<p>Sol is smart enough for anything I&#x27;ve thrown at it, it&#x27;s not one-shotting like fable, but I&#x27;m more willing to actually go back and forth with it, and it&#x27;s likely producing better output to keep a human in the loop rather than trying to solve the world independently and making multiple incorrect assumptions.<p>I think GPT sees the market changing and is correctly repositioning themselves. Anthropic is down the wrong road, and if they don&#x27;t correct course quickly I&#x27;m sure many of those enterprise contracts will start pivoting.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>stanmancan</em>:</p>
-<blockquote>&gt; and it&#x27;s likely producing better output to keep a human in the loop rather than trying to solve the world independently and making multiple incorrect assumptions.<p>I was just discussing this with a co-worker yesterday. I would really like a model (or harness?) that worked with me instead of for me. Walk me through its choices and decisions, let me correct it and guide it along. I would be way more confident in it&#x27;s output, I would be more familiar with the changes that are being made, and it would make reviewing the final code way easier since I was making the decisions along side it. I&#x27;m sure it would also reduce the &quot;brainrot&quot; we&#x27;re all going to experience the more we hand work to these models.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>halfmatthalfcat</em>:</p>
-<blockquote>Those exist and they&#x27;re called orchestration skill frameworks like Superpowers, GetShitDone, etc.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>rebolek</em>:</p>
-<blockquote>I really would like to see OpenAI’s focus on efficiency but everytime I use Codex, it wastes tokens like there’s no tomorrow, hitting week limit in a day, where I’m able to use Claude just fine. Maybe it’s based on the codebase, I don’t know, but I have better results with Claude than Codex.</blockquote>
-<p>↳ reply 3 — <em>apsurd</em>:</p>
-<blockquote>You&#x27;ve articulated what I found unsettling about Boris&#x27; pov that &quot;coding is a solved problem&quot;. I listened to a few of his talks and was instinctively off-put by that sentiment. I figured a fellow programmer would understand and speak on the nuances.<p>Granted it did make me think about my biases and to lean into more future facing inevitabilities. But you&#x27;ve nailed it, for Boris and Anthropic, they are betting that coding is a solved problem in the sense that any person can one-shot any random idea and the output will be in some abstract sense &quot;good&quot;. And then at what cost and toward what end?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>swader999</em>:</p>
-<blockquote>Looking like this will be the last month with Anthropic. Between the outages and just overall crap utility of Opus&#x2F;Fable lately...</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>20k</em>:</p>
-<blockquote>They&#x27;ll all be getting around to this sooner or later, its just too expensive</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>wongarsu</em>:</p>
-<blockquote>I get incredible utility out of $200 per month<p>It&#x27;s hard to put a number on it, but even accounting for all the time in meetings, talking with stakeholders and developers etc I&#x27;m over 10% more productive overall. I earn substantially more than $2000&#x2F;month, the ROI is there<p>It&#x27;s only expensive compared to the currently very strong offering from OpenAI. Or other models - my hobby projects are all on DeepSeek</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>moregrist</em>:</p>
-<blockquote>What you’re saying is that they should be charging $2000 or more per month then.<p>Perhaps that’s true, but it’s a price tag that’s a lot harder to swallow for many orgs than $200&#x2F;mo, and would require some hard justification for how your increased productivity contributes to the business bottom line.<p>I’ll agree that you can probably do that with hard numbers. I am skeptical that most $200&#x2F;mo users could.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>apsurd</em>:</p>
-<blockquote>also codex + sol is really good and quite fast.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ryanSrich</em>:</p>
-<blockquote>For anyone on the fence, I was a hardcore CC user since it was released. I made the full switch to 5.6 sol and Codex about a month ago.<p>It&#x27;s the better experience. The limits are way higher (I almost never burn through my $200&#x2F;m plan), and the output is better than Opus 4.8 (Opus 5 is completely unusable for me).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>robertn702</em>:</p>
-<blockquote>I had a very similar experience. The combination of Claude going down frequently and the hype around open source models was enough for me to swap my harness from Claude Code to OpenCode. Then it became trivial to test out different models, and now the rest is history. Currently using OpenCode with z.ai and Codex $200&#x2F;m plans for all my work atm.</blockquote>
-<p>↳ reply 2 — <em>ramoz</em>:</p>
-<blockquote>You&#x27;re underselling how good&#x2F;reliable 5.6 sol is. It&#x27;s in the fable discussion league not Opus4.8</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
