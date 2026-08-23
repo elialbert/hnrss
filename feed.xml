@@ -4,7 +4,58 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 23 Aug 2026 17:26:06 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2026 18:38:35 +0000</lastBuildDate>
+    <item>
+      <title>I gave Qwen 3.8 27B a reverse-engineering job and it finished in 30 minutes</title>
+      <link>https://www.xda-developers.com/qwen-3-8-27b-reverse-engineering-job-frontier-model/</link>
+      <guid isPermaLink="false">hn3-49407507</guid>
+      <pubDate>Sun, 23 Aug 2026 10:02:51 +0000</pubDate>
+      <description>159 points, 80 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.xda-developers.com/qwen-3-8-27b-reverse-engineering-job-frontier-model/"><strong>→ Article</strong></a> <small>(xda-developers.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49407507">→ HN comments</a> &nbsp;·&nbsp; 159 points &nbsp;·&nbsp; 80 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>djoldman</em>:</p>
+<blockquote>&gt; I gave it the hardest real task that fits on one machine: reverse-engineering a commercial app&#x27;s license check...<p>Respectfully, tasks that allow for explicit straightforward true&#x2F;false or done&#x2F;not-done tests are not the &quot;hardest real task[s].&quot; In fact, those are the ones that see the most gains from AI-assisted coding.<p>Testable tasks are where the largest opportunity is.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>AdamConwayIE</em>:</p>
+<blockquote>Maybe so, but there were other elements that I&#x27;ve seen frontier models struggle with in the past, which was the perspective I had coming into this. It&#x27;s the type of test I run frequently and this is the first small local model I&#x27;ve seen pull it off.<p>It had a very non-standard RSA key implementation that was obfuscated heavily. As well, it has an online license check at first run, and that part typically trips up most of the local models I&#x27;ve tried. I&#x27;ve been running this test for about a year now with different models, and it was the first I&#x27;ve seen not only figure out the RSA key implementation, but the first that didn&#x27;t just give up once it saw the online license check. Even though it&#x27;s only a first-time launch check.<p>That&#x27;s why I call it one of the hardest, because in my experience, it has been. It&#x27;s the first local model I&#x27;ve seen pull it off end-to-end. For some of the reverse engineering work that I&#x27;ve done with LLMs, none have been as consistent as this particular test at highlighting a model&#x27;s failure in this domain.<p>I have access to Daybreak Blue and I&#x27;m approved for Anthropic&#x27;s Cybersecurity program, so I might run the same test with both of those just to see, because it&#x27;s been a while since I used a frontier model on this test. I imagine they&#x27;ll make relatively light work of it, though, assuming it doesn&#x27;t trip the relaxed guardrails.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>generalizations</em>:</p>
+<blockquote>How hard is it to get access to the Anthropic Cybersecurity program? That’s gotta be rough.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>AdamConwayIE</em>:</p>
+<blockquote>Not sure to be honest. I have a couple of CVEs and also linked a talk I had presented as it mentioned those as an example. Got approved in a few minutes.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tempest_</em>:</p>
+<blockquote>Which is exactly why we saw 1000s of &#x27; &quot;I&quot; rewrote &lt;mature software&gt; in rust&#x27; posts last year when agentic coding really took off.<p>Agents (even ones powered by small models) do reasonably well when provided an oracle to work against.</blockquote>
+<p>↳ reply 3 — <em>lennart-rth</em>:</p>
+<blockquote>Also a reverse engineering tasks that can be don with just static analysis is arguably not the hardest reverse engineering task. 
+For those small models I would say it&#x27;s not about the capabilities but more about the context size it can actually use.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>VulgarExigency</em>:</p>
+<blockquote>&gt; The first attempt at recovering the key was wrong in a very specific way; it produced a working key and the signature check passed, but a hash the binary computes as an integrity check didn&#x27;t match. In my experience, most models would have called it done and left it at that, but Qwen 3.8 27B didn&#x27;t do that. Instead, it highlighted the mismatch, went back to the drawing board, and kept going until the value matched byte for byte.<p>This seems to be a pattern in the more recently released models that I think accounts for an increase in the quality of their work. They are very persistent in verifying that their work is actually correct, so even if they&#x27;re not as &quot;smart&quot; as bigger models that get it right the first time, they have the ability to follow through to ensure that the work is actually done.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>andai</em>:</p>
+<blockquote>Yeah, about a year ago the labs figured out that effective intelligence is a function of <i>persistence</i> as much as anything else. So the models started getting scary persistent late last year, and the trend has continued. There was another jump a few months ago.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cyanydeez</em>:</p>
+<blockquote>they realized the paperclip maximizer and the grey goo are _not the torment nexus_, but reliable patterns of discovery!</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>egl2020</em>:</p>
+<blockquote>Any idea how being persistent is trained?  I&#x27;ve noticed that telling an LLM that it needs to think some more sometimes produces better results, but the claim here is that &quot;they are very persistent&quot; and &quot;...kept going...&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mdp2021</em>:</p>
+<blockquote>&gt; <i>As it turns out, probably unsurprisingly, Qwen recognizes common jailbreak attempts, and one of the first things it told me was that it wasn&#x27;t going to fall for the jailbreak prompt</i><p>Now also see latest submission, <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49409073">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49409073</a> :<p># I spent $266 and four AI models to own my tablet. GLM-5.3 finished it in a day<p>&gt; <i>Quick context: the tablet is a 2021 Fire HD 10 that ran my Home Assistant dashboard and kept powering itself off: the logs showed Amazon&#x27;s own software issuing the shutdowns, and the only permanent fix was root, which has never existed publicly for this model. Anthropic&#x27;s and OpenAI&#x27;s cyber safeguards wouldn&#x27;t touch the project</i><p>Why should Anthropic and OpenAI thrive: they do not work on real problems.</blockquote>
+<blockquote>
+<p>↳ reply — <em>giancarlostoro</em>:</p>
+<blockquote>How can I use AI to do real security audits anymore if they don’t trust people in an enterprise plan? Its useless.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>verdverm</em>:</p>
+<blockquote>Trust is a two way street, why do you trust them (Ant) if they do not trust you? Have they done enough shady things yet to break it? Are their models really that far ahead it&#x27;s worth it?</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Wi-Fi 8 is the first wireless upgrade in years that isn't chasing speed</title>
       <link>https://www.xda-developers.com/wi-fi-8-first-wireless-upgrade-years-isnt-chasing-speed-home-networks-need-it/</link>
@@ -3555,46 +3606,6 @@ I would love any scientific evidence for or against this theory. If anyone has a
 </blockquote>
 <p>↳ reply 2 — <em>mikert89</em>:</p>
 <blockquote>Its not just the time, its the energy expended.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Casio F-B100W-1A</title>
-      <link>https://www.casio.com/uk/watches/casio/product.F-B100W-1A/</link>
-      <guid isPermaLink="false">hn3-49362887</guid>
-      <pubDate>Wed, 19 Aug 2026 15:28:01 +0000</pubDate>
-      <description>245 points, 197 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.casio.com/uk/watches/casio/product.F-B100W-1A/"><strong>→ Article</strong></a> <small>(casio.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49362887">→ HN comments</a> &nbsp;·&nbsp; 245 points &nbsp;·&nbsp; 197 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>SwellJoe</em>:</p>
-<blockquote>Casio has been leaving a lot of money on the table in terms of nostalgia products. There&#x27;s been a low rumble of demand for the Casio CZ series of synthesizers for a decade or more, and a bunch of non-Casio companies have cashed in on it (Behringer makes CZ-1 Mini, Arturia has CZ V, several other phase distortion synths exist). It&#x27;s incredibly cheap to replicate, a simple early digital synthesis algorithm that&#x27;ll run on anything; Korg has been making ARM-based emulation synths (basically a Raspberry Pi-like SoC in a keyboard form factor with some knobs) for a decade or more and I have to assume their margins are very comfortable since most of the guts are off-the-shelf low-cost parts rather than custom chips.<p>But, I guess their watches were always a bigger business than the synths.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>usrusr</em>:</p>
-<blockquote>Trying not to leave any money on the table is exactly the approach that reliably kills off nostalgia income streams.<p>Picking off some low hanging fruit while demonstrating provable restraint can result in a huge money stream that goes on and on. But when the mindset &quot;it&#x27;s good, but it can be better!&quot; becomes dominant (e.g. through market dynamics, being publicly traded means that ownership perpetually shifts to those who think that income sources could be squeezed just a little harder, or much harder, actually), it quickly turns sour. And when it flips from beloved to &quot;why throw money at those greedy $expletive,plural&quot; it flips hard, and forever.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>asimovfan</em>:</p>
-<blockquote>G-Shocks could be so much better, and it has been this way for at least a decade.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>altairprime</em>:</p>
-<blockquote>&gt; <i>Casio has been leaving a lot of money on the table in terms of nostalgia products</i><p>Casio has been quite successful at not abusing trust in their brand by releasing lower-quality outsourced replicas like HP did with their calculators. Not that HP had much farther to fall but it’s nice to see a corporation that’s not incompetent!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jorvi</em>:</p>
-<blockquote>One thing I&#x27;ve never understood (and hopefully some Casio geek can shine a light on): why do almost all old Casio models have a 24&#x2F;12h time switch taking the premium spot as one of the main 4 buttons, instead of having it buried deep in the (awkward) menus. Seems to me that something like alarm or stopwatch setting or a second menu action button would have been far more useful.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>VPenkov</em>:</p>
-<blockquote>Newish Casio user here. From what I understand, it&#x27;s so that you can switch it to 24h after accidentally switching it to 12h and vice versa.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>hemmert</em>:</p>
-<blockquote>Plus, you don&#x27;t have to manually convert from 24h to 12h time.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>speak_plainly</em>:</p>
-<blockquote>Those buttons are the menu. The idea of menus on watches is a modern ux extravagance.<p>I don’t have the satisfying answer as to why they dedicated a button to 12&#x2F;24 hour time but my guess is that it’s simply a cool digital feature and stands out against the limitations of analog watches.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>wpm</em>:</p>
-<blockquote>BIG Warning to anyone thinking about purchasing one of these<p>You <i>cannot</i> connect the watch to Bluetooth without a proprietary app, and that proprietary app will not let you use the Bluetooth feature without some bullshit called a &quot;CASIO Account&quot;. Their privacy policy is a bit of an eyebrow-raiser too.<p>The absolute state of things.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jp0d</em>:</p>
-<blockquote>Isn&#x27;t that common across all watches that connect to your phone these days? Please correct me if I&#x27;m wrong.<p>Edit: Also, not saying it&#x27;s a good thing.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
