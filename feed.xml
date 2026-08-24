@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 24 Aug 2026 19:35:26 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2026 20:38:04 +0000</lastBuildDate>
     <item>
       <title>SeL4 security proofs now complete on AArch64</title>
       <link>https://proofcraft.systems/news-2026/#2026-08-21</link>
@@ -1216,6 +1216,49 @@ I know this is theoretically possible today. But in the real world, I have inher
 <p>↳↳ reply — <em>riobard</em>:</p>
 <blockquote>It&#x27;s slightly better than the aggregate number :p</blockquote>
 </blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>JIT Compiling Code in 5μs</title>
+      <link>https://malisper.me/jit-compiling-code-in-5-us/</link>
+      <guid isPermaLink="false">hn3-49406387</guid>
+      <pubDate>Sun, 23 Aug 2026 06:04:51 +0000</pubDate>
+      <description>161 points, 103 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://malisper.me/jit-compiling-code-in-5-us/"><strong>→ Article</strong></a> <small>(malisper.me)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49406387">→ HN comments</a> &nbsp;·&nbsp; 161 points &nbsp;·&nbsp; 103 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>MaxBarraclough</em>:</p>
+<blockquote>Reminds me of the 2024 blog post <i>Look ma, I wrote a new JIT compiler for PostgreSQL</i> [0]. Both articles lament that Postgres&#x27;s LLVM-based JIT [1] takes a while to generate code.<p>&gt; <i>The rarity of JIT compilers makes me believe that implementing a JIT compiler historically was too difficult for it to be worthwhile.</i><p>That&#x27;s only true of writing a JIT from scratch. There&#x27;s no rarity of JITs, it&#x27;s just that LLVM (and other frameworks) are often used. Every major interpreter has a JIT compiler. PCRE2 has a JIT compiler. There are JIT frameworks out there with much faster code-generation than LLVM: Cranelift, GNU Lightning, Mir. I doubt they could do code-generation faster than a custom copy-and-patch JIT, but they&#x27;d be much faster than LLVM.<p>[0] <a href="https:&#x2F;&#x2F;www.pinaraf.info&#x2F;2024&#x2F;03&#x2F;look-ma-i-wrote-a-new-jit-compiler-for-postgresql&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.pinaraf.info&#x2F;2024&#x2F;03&#x2F;look-ma-i-wrote-a-new-jit-c...</a> , discussed: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39742916">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39742916</a><p>[1] <a href="https:&#x2F;&#x2F;www.postgresql.org&#x2F;docs&#x2F;current&#x2F;jit-reason.html" rel="nofollow">https:&#x2F;&#x2F;www.postgresql.org&#x2F;docs&#x2F;current&#x2F;jit-reason.html</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>aengelke</em>:</p>
+<blockquote>Not sure where the idea comes from that Cranelift is much faster than LLVM -O0, at least in our experiments in 2024 it wasn&#x27;t, see [1] Fig. 6.<p>Template-based code generators suffer from bad code quality due to missing register allocation.<p>Our TPDE-based compilers compile a bit slower than template-based code generation but the generated code is much smaller and faster ([2] Fig. 2). Also for database workloads ([2] Fig. 6).<p>All that said, Postgres&#x27; main limitation is that it (IIRC) only compiles single expressions from operators, not pipelines. This fundamentally limits the achievable performance improvement compared to databases that perform more extensive query compilation.<p>[1]: <a href="https:&#x2F;&#x2F;aengelke.net&#x2F;pubs&#x2F;2403-cgo.pdf" rel="nofollow">https:&#x2F;&#x2F;aengelke.net&#x2F;pubs&#x2F;2403-cgo.pdf</a>
+[2]: <a href="https:&#x2F;&#x2F;aengelke.net&#x2F;pubs&#x2F;2602-cgo1.pdf" rel="nofollow">https:&#x2F;&#x2F;aengelke.net&#x2F;pubs&#x2F;2602-cgo1.pdf</a><p>PS: sorry for the promotion of my own research here, just couldn&#x27;t resist.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>MaxBarraclough</em>:</p>
+<blockquote>Always good to have proper researchers in the thread.<p>&gt; Not sure where the idea comes from that Cranelift is much faster than LLVM -O0<p>Cranelift describes itself as <i>a fast, secure, relatively simple and innovative compiler backend</i>. [0] Interesting that LLVM can compete there, with its optimisations dialed down.<p>&gt; Postgres&#x27; main limitation is that it (IIRC) only compiles single expressions from operators, not pipelines. This fundamentally limits the achievable performance improvement compared to databases that perform more extensive query compilation.<p>That sounds pretty limiting. That&#x27;s separate from query optimisation though, right? The query optimiser is presumably able to reason &#x27;broadly&#x27; and not just at the level of individual expressions? High-level query-plan optimisation must be much more consequential than effective use of JIT compilation.<p>[0] <a href="https:&#x2F;&#x2F;cranelift.dev&#x2F;" rel="nofollow">https:&#x2F;&#x2F;cranelift.dev&#x2F;</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>aengelke</em>:</p>
+<blockquote>&gt; That&#x27;s separate from query optimisation though, right? The query optimiser is presumably able to reason &#x27;broadly&#x27; and not just at the level of individual expressions? High-level query-plan optimisation must be much more consequential than effective use of JIT compilation.<p>Yes, yes, and yes. For databases, query optimization (esp. join ordering for larger queries, which heavily depends on estimates) is fundamental. Query optimization happens at the level of the query plan, JIT compilation is only relevant afterwards. A bad query plan leads to asymptotically worse performance (e.g., bad join ordering with huge intermediate results).<p>On query plan execution: The &quot;classical&quot; model as used in e.g. Postgres is a pull-based iterator model, where operators implement a next() method yielding the next tuple and in there recursively call next() on their child operators (e.g., a next() of a select operator calls next() on its child operator, then applies the predicate [what Postgres JIT-compiles], and returns the tuple if the predicate was true). This can happen one tuple at a time (Postgres) or &quot;vectorized&quot; where multiple tuples are processed at once (e.g. DuckDB). A query-compiling database will split the tree into pipelines and compile each pipeline as one function (e.g., a pipeline will iterate over all the tuples from a source (e.g. tablescan) and a select operator then becomes an if statement inside that loop). This results in pretty tight loops, avoids per-tuple dispatch overhead, and enables more optimizations inside the JIT-ted code (e.g., tuple values don&#x27;t need to be reloaded from memory all the time). (I find the original paper on query compilation [1] to be well readable.)<p>[1]: <a href="https:&#x2F;&#x2F;www.vldb.org&#x2F;pvldb&#x2F;vol4&#x2F;p539-neumann.pdf" rel="nofollow">https:&#x2F;&#x2F;www.vldb.org&#x2F;pvldb&#x2F;vol4&#x2F;p539-neumann.pdf</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>malisper</em>:</p>
+<blockquote>&gt; There&#x27;s no rarity of JITs, it&#x27;s just that LLVM (and other frameworks) are often used<p>Except that using LLVM has high latency limitting it&#x27;s applicability. Postgres just disabled LLVM by default because of this[0].<p>[0] <a href="https:&#x2F;&#x2F;www.postgresql.org&#x2F;message-id&#x2F;E1w8GWU-002bSL-31%40gemulon.postgresql.org" rel="nofollow">https:&#x2F;&#x2F;www.postgresql.org&#x2F;message-id&#x2F;E1w8GWU-002bSL-31%40ge...</a></blockquote>
+<p>↳ reply 3 — <em>pjmlp</em>:</p>
+<blockquote>The original Dartmouth BASIC had a JIT like approach, the REPL would compile to machine code before execution.<p>It was the limits of 8 bit home computers hardware that made the interpreter version be more widely known.<p>Same to Lisp, Smalltalk, and many other languages.<p>Fully agree with you.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>catlifeonmars</em>:</p>
+<blockquote>This is perhaps a little meta, but this was a pleasant read. It’s refreshing to read an article about using an LLM that doesn’t read like it was also written by that LLM.<p>I might use this approach to generate the stencils for a JIT firewall I’ve been experimenting with.<p>It also occurs to me that this could be used to generate eBPF byte code on the fly as well</blockquote>
+<p><strong>Top #3</strong> — <em>mgaunard</em>:</p>
+<blockquote>The problem with the approach is that it&#x27;s not real JIT-compilation, it&#x27;s just assembly templates with basic substitutions.<p>By not using LLVM, you&#x27;re missing all the optimizations it does.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>the-lazy-guy</em>:</p>
+<blockquote>This is absolutely a JIT-compiler. It compiles code into machine code. This is a surprisingly efficient way to get noticeable speedup relative to interpretation. Also it is much safer than proper optimising compiler. Say ebpf jit-compiler functions very similarly, because it is fast and _secure_ way to jit. (well, there&#x27;s a bit of cheating because before emitting bpf bytecode it goes through gcc&#x2F;clang pipeline).<p>LLVM is a large dependency if you need to JIT. There are plenty of smaller (and much faster) alternatives which are much better fit for smaller projects. Larger projects usually roll out their own jit-pipeline because they can integrate better with the source language&#x2F;interpreter and apply tricks LLVM is not well suited to (say, LLVM is not great at deoptimisation). I think only Julia is really a heavy user of LLVM JIT, also it is known for extremely slow repl from time to time.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mort96</em>:</p>
+<blockquote>To back up the &quot;surprisingly efficient way to get a speed-up&quot; thing: I once wrote a toy compiler, without an optimizer and without even a register allocator (so all variables lived in stack memory). In my test benchmarks it was roughly 4x slower than Clang at -O3, IIRC.<p>That&#x27;s not exactly blazing fast for a low level C-like language, but it&#x27;s not bad. It&#x27;s infinitely faster than what I&#x27;ve ever gotten a toy interpreter to be.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mort96</em>:</p>
+<blockquote>A non-optimizing compiler is a real compiler.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3597,42 +3640,6 @@ Wow, that is some incredible growth in a really short time.</blockquote>
 <blockquote>
 <p>↳↳ reply — <em>krapp</em>:</p>
 <blockquote>Walter&#x27;s proud of his D and he likes to show it off. Don&#x27;t make it weird.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How to compromise your system with a job interview</title>
-      <link>https://www.codedge.de/posts/how-to-compromise-your-system-with-a-job-interview</link>
-      <guid isPermaLink="false">hn3-49376332</guid>
-      <pubDate>Thu, 20 Aug 2026 15:50:57 +0000</pubDate>
-      <description>139 points, 129 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.codedge.de/posts/how-to-compromise-your-system-with-a-job-interview"><strong>→ Article</strong></a> <small>(codedge.de)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49376332">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 129 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>shahbaby</em>:</p>
-<blockquote>If a company is not even willing to have a real person speak to you at the start of the recruitment process, what does that say about them? Or about the legitimacy of that job posting? Or about the people you would be working with if you did get hired?<p>Regardless if you get an offer or not, you will invest a significant amount of finite time in each interview cycle and if you do get an offer, you&#x27;ll be investing even more time into that company.<p>So no matter who you are, protect your time and remember that interviewing is always a 2-way street.</blockquote>
-<blockquote>
-<p>↳ reply — <em>charcircuit</em>:</p>
-<blockquote>Are you familiar with the concept of a recruitment funnel? It is not financially worth it to personally talk with every single person that applies to a company.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>gmerc</em>:</p>
-<blockquote>Well then it’s not financially worth it for capable people to work for that company. And of story</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>charcircuit</em>:</p>
-<blockquote>Not all capable people are willing to reject a company because they upload their resume to an automated system than giving it to a human to talk with.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>forinti</em>:</p>
-<blockquote>&gt; “A relevant opportunity” with part-time remote work and a great hourly compensation<p>That is so suspicious at the moment.</blockquote>
-<p><strong>Top #3</strong> — <em>aliasxneo</em>:</p>
-<blockquote>I get enough legit and illegitimate ones every week on LinkedIn that it&#x27;s become really easy to tell the difference. Hard to pinpoint in a comment because it&#x27;s mostly a gut feeling. But, in rough order:<p>1. Look at the person&#x27;s LinkedIn profile contacting you and examine their post history. In one comical scenario the &quot;recruiter&quot; had a long 4 year gap where they were writing comments in English and all of the sudden they switched to Spanish. Mostly short, pointless comments as well.<p>2. Look at the company and make sure they have a legitimate website and are still actually in business. Even better, see if there&#x27;s a public team page that lists this person.<p>3. Give the recruiter an email (I usually use something like SimpleLogin) and ask them to forward you the details. Of course, pay close attention to what address they send it from.<p>4. In addition, or alternatively, ask the recruiter for the public job listing (scammers almost always &quot;paste&quot; it into a DM or upload a clearly AI generated PDF doc).<p>Once you learn the game it&#x27;s not too hard to start picking up on them. I&#x27;ve made it a game to play along sometimes just for fun. Ultimately, at the end of the day, make sure you report them on LinkedIn. I&#x27;ve had the account disappear within a hour of doing so.</blockquote>
-<blockquote>
-<p>↳ reply — <em>stevekemp</em>:</p>
-<blockquote>Honestly unless I&#x27;m planning on quitting my current job, or if I were unemployed, I just ignore the linkedin.<p>Sure they spam you with &quot;XX wants to connect&quot;, or &quot;I&#x27;m awaiting your reply&quot; emails.  But real contacts and friends can call&#x2F;email you, and everybody else can wait six months.<p>Despite only connecting with actual people I&#x27;ve worked with, not recruiters, I still get &quot;suggested&quot; posts which are slop, and &quot;that happened&quot;.  The site is a cesspool.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>aliasxneo</em>:</p>
-<blockquote>I got my last two jobs from recruiters contacting me via LinkedIn. I&#x27;ve also kept in touch with a good group of recruiters over DMs who regularly bring me new offers. My experience might be unique, but I&#x27;ve gotten a lot of value being on LinkedIn. I don&#x27;t interact with the social part of it (posts or whatever they are called) at all.</blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
     </item>
