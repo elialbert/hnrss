@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 25 Aug 2026 10:39:19 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 11:34:19 +0000</lastBuildDate>
     <item>
       <title>How Universities Should Prepare Founders</title>
       <link>https://paulgraham.com/prepare.html</link>
@@ -351,6 +351,40 @@ Predicting exactly what it will do to rainfall, temperatures, storms, or snowfal
 <blockquote>GTA games require a lot of effort outside of this, but the concept of mass-producing a GTA style open world game for any given environment is very compelling. Probably frightening to Rockstar themselves but such is the course of technological development.</blockquote>
 <p>↳ reply 2 — <em>michaelbuckbee</em>:</p>
 <blockquote>I feel like the closest we&#x27;ve gotten to that so far has been the flight sims.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: PicoMQ – Durable Streams over HTTP, on object storage</title>
+      <link>https://picomq.com/</link>
+      <guid isPermaLink="false">hn3-49421806</guid>
+      <pubDate>Mon, 24 Aug 2026 16:08:17 +0000</pubDate>
+      <description>133 points, 23 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://picomq.com/"><strong>→ Article</strong></a> <small>(picomq.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49421806">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 23 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gpsmsn</em>:</p>
+<blockquote>Love the landing page design! I&#x27;m excited to give it a whirl this evening.<p>Initially, I started to compare PicoMQ to <a href="https:&#x2F;&#x2F;github.com&#x2F;s2-streamstore&#x2F;s2" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;s2-streamstore&#x2F;s2</a>. If you&#x27;re familiar with them, how would you compare PicoMQ to S2?</blockquote>
+<blockquote>
+<p>↳ reply — <em>adesh_nalpet</em>:</p>
+<blockquote>Thank you! I&#x27;d say pretty close. But S2 is not open source, and the OSS version (<a href="https:&#x2F;&#x2F;github.com&#x2F;s2-streamstore&#x2F;s2" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;s2-streamstore&#x2F;s2</a>) is S2-Lite, which is single-node only and uses SlateDB.<p>SlateDB is great, but it&#x27;s not purpose-built for streaming workloads. With PicoMQ, the goal is to really do one thing well. It would have been far easier to just extend SlateDB, but instead, the S3Stream engine is built from the ground up with AutoMQ&#x27;s core primitives.<p>Not to mention, Pico supports multi-node&#x2F;cluster deployments and a bunch of other features (no feature gating).</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dzonga</em>:</p>
+<blockquote>only if it could be run serverless.<p>but nice product overall - just like s2 lite.</blockquote>
+<p><strong>Top #3</strong> — <em>KaiserPro</em>:</p>
+<blockquote>Can you help an old man understand?<p>This sounds like a kafka-like streaming system, but backed onto s3-objects?<p>Doesn&#x27;t this mean that write performance is going to be bad?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>adesh_nalpet</em>:</p>
+<blockquote>I&#x27;m glad you asked, and yes, PicoMQ does have some Kafka-like semantics. However, Kafka is great at being a huge pipe, so you&#x27;d create topics like tables. PicoMQ, on the other hand, recommends creating granular streams that make the most sense, say, by user, session, or vehicle (still bottomless).<p>And it&#x27;s also fair to question write performance, since it&#x27;s backed by object storage. The optimization is primarily from the shared WAL across streams, server-side batching, and client-side in-memory pipelining, especially with HTTP&#x2F;2, without as much connection pool overhead.<p>In practice, you can go to the extent of achieving up to 100 MiB&#x2F;s throughput per stream. Considering how granular streams can be, you&#x27;d rarely need as much. The latency for a durability ACK is, however, the price to pay, which is going to be ~250 ms, or lower with S3 Express, which I&#x27;d say covers most real-time use-cases. The design itself is easy enough to extend to a disk-staged WAL for single-digit durability ACK latency.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>atombender</em>:</p>
+<blockquote>Have you look at Google&#x27;s new Rapid Bucket offering? Google Cloud Storage is arguably as good as S3, and is protocol compatible; Rapid Buckets are a type of bucket which supports appendable objects and low latency I&#x2F;O. The downside is they can only be zonal, and they&#x27;re a bit more expensive.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>adesh_nalpet</em>:</p>
+<blockquote>PicoMQ works with any S3-compatible object store. But I wasn&#x27;t aware of GCS Rapid Bucket, it sounds a lot like AWS S3 Express, which is also zonal. And it does help with durability ACK latency quite a bit, keeping it closer to ~50ms.<p>I&#x27;ll be setting up a GCP deployment example similar to AWS soon. I&#x27;ll be sure to try Rapid Bucket as well, thanks for sharing!</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Shakahs</em>:</p>
+<blockquote>Not familiar with this particular library, but similar libraries use S3 Express One Zone which has write latency &lt;10ms, so you can use that for the WAL and compaction can move data onto other storage classes in the background.<p>Regular S3 has write latency 100-150ms, which might be fine depending on your workload anyway.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3634,46 +3668,6 @@ it had fixed the code (Section 4.1). &quot;<p>0. <a href="https:&#x2F;&#x2F;www.
 </blockquote>
 <p><strong>Top #3</strong> — <em>chaz6</em>:</p>
 <blockquote>It is a shame they did not actually set up a SIP server and see if any of those requests turned into actual call terminations.<p>There is another schema called TRIP [1] - telephony routing over ip that uses a number format &quot;1234*1455&quot; designed to be entered on a standard phone keypad. When I registered my ITAD (internet telephony administrative domain, the RHS of a TRIP number) I was lucky enough to get one that matches my local dialling code!<p><a href="https:&#x2F;&#x2F;tripresurgence.org&#x2F;trip&#x2F;history&#x2F;" rel="nofollow">https:&#x2F;&#x2F;tripresurgence.org&#x2F;trip&#x2F;history&#x2F;</a> [1]</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>New Worlds: We are living in the future of J.G. Ballard or William Gibson</title>
-      <link>https://precastreinforced.co.uk/2026/08/16/new-worlds/</link>
-      <guid isPermaLink="false">hn3-49387525</guid>
-      <pubDate>Fri, 21 Aug 2026 13:07:26 +0000</pubDate>
-      <description>185 points, 132 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://precastreinforced.co.uk/2026/08/16/new-worlds/"><strong>→ Article</strong></a> <small>(precastreinforced.co.uk)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49387525">→ HN comments</a> &nbsp;·&nbsp; 185 points &nbsp;·&nbsp; 132 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>keiferski</em>:</p>
-<blockquote>I am a big fan of both, but I think what&#x27;s missing in reality, but in their fiction (and cyberpunk fiction in general) is a sense of <i>coolness</i> and caring about aesthetics. For all the evil that the mega corporations do in a Gibson novel, they still have an aesthetic appeal.<p>Real-world corporations aren&#x27;t that interesting. Amazon, Facebook, or Google have nothing &quot;culturally&quot; or aesthetically on Hosaka, Arasaka or Sense&#x2F;Net.<p>Which is really the tragedy of it all: we are getting the cyberpunk dystopia with none of the aesthetics that have made it a household word.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Animats</em>:</p>
-<blockquote>&gt; we are getting the cyberpunk dystopia with none of the aesthetics that have made it a household word.<p>Sure we are. The future is here, it&#x27;s just not evenly distributed. Here&#x27;s a nighttime walk through Shenzhen.[1] Shenzhen is cyberpunk made real. Giant display screens everywhere. Light shows on major buildings, synchronized between the buildings. Robots on the streets. Drones in the sky. Cameras everywhere. Night markets where you can buy both food and electronics. Self-driving cars. Electric buses and taxis. Women in colorful outfits on motorcycles.<p>Shenzhen looks more cyberpunk than Cyberpunk 2077, the game.<p>[1] <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=JiXpYbCZyjs" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=JiXpYbCZyjs</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>asnelt</em>:</p>
-<blockquote>That&#x27;s an interesting video. If the skyscrapers were flickering just a little faster, the sky would be the color of a television tuned to a dead channel.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>kergonath</em>:</p>
-<blockquote>(For those who did not get it, it’s the first line of Neuromancer).</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thwarted</em>:</p>
-<blockquote>I never thought about this before, but you made me realize that Sense&#x2F;Net sure had a lot of employees considering the in-story world had true AGI, enough employees that the Panther Moderns exploited to cause chaos during the Dixie Flatline run. Or was it that the Turing Police were in the habit of shutting down really smart AI resulting in an aggressive need for white collar workers?<p>On aesthetics, the way the Hosaka is described is as the experience of touching and using it. The reader doesn&#x27;t actually know what the aesthetics are, nor does the reader get a taste of what it&#x27;s like to actually use. In stories, they don&#x27;t show people having driver problems, or their microphone not working, or having to go to the bathroom (unless it&#x27;s integral to the plot), which in some sense is similar to talking about lickable&#x2F;fluid UI widgets and how material design is great and not mentioning that Hosaka moved the setting dialog <i>again</i>, you have to update drivers before jacking in, the sliver of &quot;microsoft&quot; inserted behind your ear makes you watch an ad before giving you access to live prices of antique art, or cyberspace now has a ribbon instead of a toolbar.</blockquote>
-<p>↳ reply 3 — <em>adonovan</em>:</p>
-<blockquote>These companies do have an aesthetic, it&#x27;s just not cool. Mike Merrill calls it &quot;Corporate Memphis&quot;; see <a href="https:&#x2F;&#x2F;www.wired.com&#x2F;story&#x2F;corporate-memphis-design-tech&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.wired.com&#x2F;story&#x2F;corporate-memphis-design-tech&#x2F;</a>.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>phreeza</em>:</p>
-<blockquote>I agree, it is easy to miss just because we get used to things quickly. I remember this thought hitting me vividly when I saw this picture during COVID <a href="https:&#x2F;&#x2F;cdn.theatlantic.com&#x2F;thumbor&#x2F;MUBajBy-350E5JAjtntEhAYzWVQ=&#x2F;900x617&#x2F;media&#x2F;img&#x2F;photo&#x2F;2020&#x2F;03&#x2F;coronavirus-spraying-tk&#x2F;s03_1206499227&#x2F;original.jpg" rel="nofollow">https:&#x2F;&#x2F;cdn.theatlantic.com&#x2F;thumbor&#x2F;MUBajBy-350E5JAjtntEhAYz...</a></blockquote>
-<p><strong>Top #3</strong> — <em>eithed</em>:</p>
-<blockquote>I love that Gibsons cyberpunk is &quot;realistic&quot; and mundane (at this point): a girl replaces a virtual singer (Mona Lisa Overdrive), another girl steals glasses containing plans for urban redevelopment (Virtual Light), virtual world is as inhabited as real one and you only need helmet to access it (Pattern Recognition). We already are living with these stories and dystopia is already here, to a degree.</blockquote>
-<blockquote>
-<p>↳ reply — <em>svachalek</em>:</p>
-<blockquote>Life certainly feels like the &quot;Troubles&quot; of The Peripheral have started.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>commieneko</em>:</p>
-<blockquote>Gibson had a hell of a time getting the second book, _Agency_, out the door because the real world kept leap frogging him.  I fear we may never get _The Jackpot_ because we&#x27;ll get Jackpotted for real before he can finish it.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
