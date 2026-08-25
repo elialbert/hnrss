@@ -4,7 +4,51 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 25 Aug 2026 12:59:44 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 13:54:52 +0000</lastBuildDate>
+    <item>
+      <title>Thomson Reuters Launches Its Own Frontier Model</title>
+      <link>https://www.thomsonreuters.com/en/press-releases/2026/august/thomson-reuters-leverages-its-world-class-data-assets-to-launch-its-own-frontier-model</link>
+      <guid isPermaLink="false">hn3-49428318</guid>
+      <pubDate>Tue, 25 Aug 2026 02:11:39 +0000</pubDate>
+      <description>125 points, 52 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.thomsonreuters.com/en/press-releases/2026/august/thomson-reuters-leverages-its-world-class-data-assets-to-launch-its-own-frontier-model"><strong>→ Article</strong></a> <small>(thomsonreuters.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49428318">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 52 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>underlines</em>:</p>
+<blockquote>Please challenge me and explain why this is a break through worth the headline they use for their own work.<p>How I understand it, without really reading into it:<p>- Thomson Reuters did <i>not</i> &quot;create&quot; a frontier model, they gave some money, maybe a bit of their data to Imperial College London, and took Alibaba&#x27;s Qwen 3.6 35B A3B Model for a basic fine tune.<p>- &quot;They&quot; (some undergrads at Imperial College London) used an existing ablation framework to undo some of the topic alignment of the original model.<p>- &quot;They&quot; fine tuned on some domain knowledge trying to preserve general knowledge - here maybe, just maybe some data came from Thomson Reuters.<p>As a result: one of 100&#x27;s of Qwen 3.6 35B A3B sparse model fine tunes, just for publicity, to write overstating headlines like &quot;X created their own frontier model&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>walrus01</em>:</p>
+<blockquote>That&#x27;s pretty wild that a Ctrl-F of &quot;qwen&quot; or &quot;china&quot; or &quot;alibaba&quot; on the thomson reuters announcement URL turns up no results. They want to portray it like they developed this thing from scratch, when that is by no means what actually happened.</blockquote>
+<p>↳ reply 2 — <em>dgellow</em>:</p>
+<blockquote>They didn’t say they created it no? I don’t think any of those points matter. It’s a business announcing a new product. Why does it matter if they built it internally or used external teams? I find strange to focus on those details</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>cootsnuck</em>:</p>
+<blockquote>This is going to increasingly happen over the years to come. Big organizations will become more sophisticated with operationalizing their data, training and running LLMs will continue to be demystified and accessible, and over time we&#x27;ll get more and more specialized &#x2F; industry-specific models.<p>It&#x27;s going to become another way to monetize your informational assets if you&#x27;re a big older enterprise with troves of data. All you need is time to figure out how to make it useful for yourself and then eventually sell access to it however you want.<p>Think of all the data that big orgs have that isn&#x27;t accessible to all the AI labs to suck up.</blockquote>
+<blockquote>
+<p>↳ reply — <em>make3</em>:</p>
+<blockquote>40M$ to get a marginally better model is surprising, why not just use the free weight models</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jll29</em>:</p>
+<blockquote>Because &quot;bigger = better&quot; does not work for highly specialized expertise, where the knowledge is <i>not</i> available on the public Web. It is naive to believe it&#x27;s all open out there merely because the Web is large and we have Wikipedia.<p>If you are a highly specialized professional intellectual property paralegal, a forensic tax investigator or a post-market pharmacovigilance analyst, you will need for-profit knowledge sources, and your answers will often require synthesizing and interpreting multiple sources.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>johnnypangs</em>:</p>
+<blockquote>Here is some more technical information on how this was trained, as well as a download link.<p><a href="https:&#x2F;&#x2F;huggingface.co&#x2F;thomsonreuters&#x2F;Thomson-1.0-Small" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;thomsonreuters&#x2F;Thomson-1.0-Small</a><p>(Full disclosure I’m a TR employee, although I had nothing to do with making this)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>helloplanets</em>:</p>
+<blockquote>Full technical report PDF: <a href="https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;tri-fair-lab&#x2F;publications&#x2F;blob&#x2F;main&#x2F;Thomson_1_0_Technical_Report.pdf" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;tri-fair-lab&#x2F;publications&#x2F;blob...</a><p>&gt; In this report, we argue that frontier performance can be achieved by a wide range of institutions through Continual Learning on readily available open-weight models.<p>&gt; As opposed to existing limited approaches such as small-scale fine-tuning, prompt engineering, or tool-augmentation with a frozen model, our Continual Learning approach takes advantage of the effectiveness of a modern mid- &amp; post-training stack while introducing safeguards preserving both plasticity and stability at each training stage and seeking to make the minimal number of high-impact interventions on the parameters.<p>For the large model, Thomson is utilizing the fine tuning stack they describe in the article, running it on Snowdon 1.0-Large, which in turn is a fine tune of Qwen3.5 397B. Same thing for the small model, but it&#x27;s a fine tune of Snowdon 1.1-Small, which is a fine tune of Qwen3.6 35B.<p>As for the small version&#x27;s run:<p>&gt; The full pipeline consumed approximately 1.63 × 10²³ FLOP over 35,207 B200 GPU-hours, showing that these results are achievable with compute and personnel budgets substantially lower than commonly thought.<p>That would amount to around a quarter to half a million dollars of spend on that run. 100k minimum, if they got a great deal.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kennywinker</em>:</p>
+<blockquote>I wonder where the other $39.5 million went?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ustad</em>:</p>
+<blockquote>Men in the middle wages</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dgellow</em>:</p>
+<blockquote>Thanks, that’s great, lots of details</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>How Universities Should Prepare Founders</title>
       <link>https://paulgraham.com/prepare.html</link>
@@ -41,6 +85,34 @@
 </blockquote>
 <p>↳ reply 2 — <em>yieldcrv</em>:</p>
 <blockquote>&gt; Funny enough, this is why I think a PhD is undervalued by many<p>no, the opportunity cost is too great for this field, for people that saw the light in just undergrad or wound up building software for other people without an undergrad CS degree</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Bookshelf – Self-hosted eBook library that runs on object storage</title>
+      <link>https://github.com/murerkinn/bookshelf</link>
+      <guid isPermaLink="false">hn3-49427001</guid>
+      <pubDate>Mon, 24 Aug 2026 23:00:37 +0000</pubDate>
+      <description>133 points, 50 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/murerkinn/bookshelf"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49427001">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 50 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>philips</em>:</p>
+<blockquote>If it is helpful to other people here is how I manage my ebook library with flatfiles and heterogeneous devices (Android, macOS, iOS, Kindle, etc)<p>I have my own eBook library hosted with copyparty. It is a single binary. Runs on plain files. And speaks OPDS for integration with KOreader (Kindle) or Readest (iOS&#x2F;macOS). <a href="https:&#x2F;&#x2F;github.com&#x2F;9001&#x2F;copyparty#opds-feeds" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;9001&#x2F;copyparty#opds-feeds</a><p>It also speaks webdav so I can quickly sync everything via rclone to an SD card on devices like an Android tablet.<p>I really like the convenience of flat files and multiple protocols.</blockquote>
+<blockquote>
+<p>↳ reply — <em>ukz</em>:</p>
+<blockquote>Copyparty is super cool, it can also be configured to use S3 backend.<p>How do you manage your reading progress?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>phildenhoff</em>:</p>
+<blockquote>Having built a tool in this space, I enjoy seeing all the Calibre alternatives that have been coming out in the last few years! It&#x27;s fascinating to see the specific wants that people have.<p>Bookshelf, for example -- what possesses someone to make an ebook library that _only works on object storage_? Is this a weekend project, answering the question of &quot;what would this look like&quot;? Or was it something the author wanted for a long time?</blockquote>
+<blockquote>
+<p>↳ reply — <em>PurpleRamen</em>:</p>
+<blockquote>&gt; Having built a tool in this space, I enjoy seeing all the Calibre alternatives that have been coming out in the last few years!<p>If there would be just anything actually good. But for some reason they all have just very basic organisation-levels, and barely any support for handling custom data from calibre.<p>For some reason, streaming ebooks seems to be also not existing. One can either download the whole book, or use some lousy in-browser-reader. So strange how the ebook-world has no decent software for selfhosting.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>bordercontrol</em>:</p>
+<blockquote>Client side end to end encryption is a must have for me when hosting anything nowadays. I am using Cryptomator for this specific reason. It takes away a lot of legal questions because I only need to curate the data to serve my own needs and do not have to curate it for state actors too.<p>I really wish client side end to end encryption would become more widespread in the developer community. It is not hard to implement anymore and takes away all the headaches of having to comply with certain regulations.<p>There are so many laws now that regulate copyright and hosting. An accidentally public S3 bucket full of ebooks could technically land you in jail in certain jurisdictions. Automatic shutdown notices. Providers themselves may also automatically scan stored material, and so on. There are so many reasons not to host your media library unencrypted on a third party server.<p>I recommend using this kind of tool only if you can prove that you are legally allowed to possess every ebook you upload in every jurisdiction you travel to or live in, as well as in the jurisdiction where the server is located.<p>RIP Aaron Swartz.</blockquote>
+<blockquote>
+<p>↳ reply — <em>phrotoma</em>:</p>
+<blockquote>Appreciate this suggestion, cryptomator seems super cool and I had not heard of it until reading your comment.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -160,6 +232,31 @@
 <p>↳ reply 2 — <em>kjs3</em>:</p>
 <blockquote>No atom bomb.  Wow...that some nearly Shockley levels of &#x27;engineers disease&#x27; right there.<p>Edit: clarified which part of the post I was referencing.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Vintage Artificial Intelligence: Before It Got Awkward</title>
+      <link>https://blog.archive.org/2026/08/16/vintage-artificial-intelligence-before-it-got-awkward/</link>
+      <guid isPermaLink="false">hn3-49425800</guid>
+      <pubDate>Mon, 24 Aug 2026 21:01:38 +0000</pubDate>
+      <description>129 points, 24 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.archive.org/2026/08/16/vintage-artificial-intelligence-before-it-got-awkward/"><strong>→ Article</strong></a> <small>(blog.archive.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49425800">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 24 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>xvilka</em>:</p>
+<blockquote>There is still work on symbolic and hybrid AI - ProbLog[1][2] and DeepProbLog[3], as well as DeepLog[4] for example.<p>[1] <a href="https:&#x2F;&#x2F;dtai.cs.kuleuven.be&#x2F;problog&#x2F;" rel="nofollow">https:&#x2F;&#x2F;dtai.cs.kuleuven.be&#x2F;problog&#x2F;</a><p>[2] <a href="https:&#x2F;&#x2F;github.com&#x2F;ML-KULeuven&#x2F;problog" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ML-KULeuven&#x2F;problog</a><p>[3] <a href="https:&#x2F;&#x2F;github.com&#x2F;ML-KULeuven&#x2F;deepproblog" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ML-KULeuven&#x2F;deepproblog</a><p>[4] <a href="https:&#x2F;&#x2F;github.com&#x2F;ML-KULeuven&#x2F;deeplog" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ML-KULeuven&#x2F;deeplog</a></blockquote>
+<p><strong>Top #2</strong> — <em>oidar</em>:</p>
+<blockquote>My favorite old AI named Tik-Tok - <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Tik-Tok_(novel)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Tik-Tok_(novel)</a><p>&gt;Tik-Tok finds that he can do as he pleases, and he secretly commits various hideous crimes for his amusement. After manipulating both robots and humans to cause chaos and bloodshed, Tik-Tok becomes wealthy (partly through health care privatization) and is finally elected Vice President of the United States.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Mistletoe</em>:</p>
+<blockquote>Oh, that&#x27;s much too low, Tik-Tok was elected President.</blockquote>
+<p>↳ reply 2 — <em>bitwize</em>:</p>
+<blockquote>Sounds like a topic for a ThePrimeagen reaction video.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>d4rkp4ttern</em>:</p>
+<blockquote>An interesting fact I learned while reading The Dream Machine[1], is that Newell, Simon and Shaw’s Logic Theorist (1956)
+was considered to be the “first AI program”.<p>Quoting from Wikipedia:
+<a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Logic_Theorist" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Logic_Theorist</a><p>“Logic Theorist is a computer program completed in 1956 by Allen Newell, Herbert A. Simon, and Cliff Shaw.[1] It was the first program deliberately engineered to perform automated reasoning, and has been described as &quot;the first artificial intelligence program&quot;.[1][a] Logic Theorist proved 38 of the first 52 theorems in chapter two of Whitehead and Bertrand Russell&#x27;s Principia Mathematica, and found a new and shorter proof for Theorem 2.85.[3]
+[1] <a href="https:&#x2F;&#x2F;press.stripe.com&#x2F;the-dream-machine" rel="nofollow">https:&#x2F;&#x2F;press.stripe.com&#x2F;the-dream-machine</a>”<p>Amusing and amazing to see this in the context of today’s Erdos-slaying LLMs.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Oceans hit highest temperature on record</title>
@@ -3509,146 +3606,6 @@ I do expect a lot of analytical advances thanks to the combination of open datas
 <blockquote>Agreed.<p>There&#x27;s this line:<p>&gt; Wouldn’t it be cool if we could just use standard OS threads, blocking APIs, avoid new shinies like io_uring, but still get to cancel any work reliably?<p>Wish more was said about this: why would that be cool? I get that having robust cancellation in standard threads is cool, but why do we want to avoid io_uring?</blockquote>
 <p>↳ reply 2 — <em>skrebbel</em>:</p>
 <blockquote>It got cancelled halfway</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Kagi added a setting for removing paywalled links from search results</title>
-      <link>https://kagi.com/changelog#11296</link>
-      <guid isPermaLink="false">hn3-49388154</guid>
-      <pubDate>Fri, 21 Aug 2026 13:56:37 +0000</pubDate>
-      <description>928 points, 320 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://kagi.com/changelog#11296"><strong>→ Article</strong></a> <small>(kagi.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49388154">→ HN comments</a> &nbsp;·&nbsp; 928 points &nbsp;·&nbsp; 320 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>frereubu</em>:</p>
-<blockquote>The one thing I find slightly grating about links to Kagi blogs is the top comments are almost always &quot;I use Kagi and it&#x27;s great!&quot; rather than about the content of the blog. And I&#x27;m a happy Kagi subscriber!<p>I get that this is an option, but what it really shows to me is how broken the model for journalism is. In my view you almost always only get good-quality journalism if you pay for it. (Somehow - e.g. the BBC is paid for by the licence fee, although I&#x27;m a bit despairing at the quality of the BBC these days, but perhaps that tracks the significant cuts to their budget...) I&#x27;m pretty sure that there&#x27;s a technically viable solution to micropayments, but there are too many competing interests for anyone to settle on anything. We can&#x27;t even agree on a single setting that says you don&#x27;t want advertising cookies!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rcpt</em>:</p>
-<blockquote>Micropayments never work. It&#x27;s too much friction for the median user to decide if they want to spend a quarter on an article.<p><a href="https:&#x2F;&#x2F;nakamotoinstitute.org&#x2F;library&#x2F;micropayments-and-mental-transaction-costs&#x2F;" rel="nofollow">https:&#x2F;&#x2F;nakamotoinstitute.org&#x2F;library&#x2F;micropayments-and-ment...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>m463</em>:</p>
-<blockquote>Used to be you would trade a yak or a horse for something.  Then you could trade little pieces of metal.  In the future, why not something smaller?  I mean, people are trading virtual things (like an app). Why not something small for something as small as a website view?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>rcpt</em>:</p>
-<blockquote>Look at the paper. There&#x27;s a floor to mental work. Even if it&#x27;s a nickel, having to make that decision is enough friction to kill the whole deal</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>tempest_</em>:</p>
-<blockquote>You mainly get this because honestly I was already happy with the existing product. The main focus of this post is not something I was really looking for and is a nice addition but I would still be using the existing product regardless.<p>Basically I just want search that I can actually filter are returns relevant useful results..  This adds an extra facet that I might filter on from time to time but the main ones, which are time and exact strings, are the reason I use the product.</blockquote>
-<p>↳ reply 3 — <em>sph</em>:</p>
-<blockquote>A good product that is not solely focused on rent seeking these days is worth celebrating.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>tempest_</em>:</p>
-<blockquote>I&#x27;ve been enjoying Kagi for the last couple years.<p>Even as LLMs slurp up most of the internet and replace search I think Kagi is still useful.<p>Reddit has recently blocked access to old reddit without an account and the ability to filter out stuff like that is useful.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>optionalsquid</em>:</p>
-<blockquote>Alternatively, you can configure Kagi to rewrite Reddit links to point to an alternative front-end via <a href="https:&#x2F;&#x2F;kagi.com&#x2F;settings&#x2F;redirects" rel="nofollow">https:&#x2F;&#x2F;kagi.com&#x2F;settings&#x2F;redirects</a><p><pre><code>  ^https:&#x2F;&#x2F;(www\.)?reddit.com|https:&#x2F;&#x2F;safereddit.com
-</code></pre>
-EDIT: See here for a list of instances: <a href="https:&#x2F;&#x2F;github.com&#x2F;redlib-org&#x2F;redlib#instances" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;redlib-org&#x2F;redlib#instances</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Phemist</em>:</p>
-<blockquote>I had Kagi configured to rewrite links old.reddit.com. Looks like I need to update it.<p>Edit: Actually I think this was part of their documentation to explain the intended use of that feature. Too bad this will now no longer work!<p>(<a href="https:&#x2F;&#x2F;help.kagi.com&#x2F;kagi&#x2F;features&#x2F;redirects.html" rel="nofollow">https:&#x2F;&#x2F;help.kagi.com&#x2F;kagi&#x2F;features&#x2F;redirects.html</a>, see example 1)</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>a_e_k</em>:</p>
-<blockquote><i>NEW</i> Reddit has recently started blocking logged-out access too.  Stupid modal popup with &quot;Join the most real place on the internet&quot; (yeah, right) banner that appears after about 20 seconds.<p>I&#x27;m <i>not</i> logging in to my private account from a work machine that&#x27;s MITMd for &quot;security&quot;, just to browse search results or take a short break!<p>(I&#x27;ve been a user for nearly 21 years, but using it less and less with each stupid choice - these days I post a comment maybe once a week there.  I think I may finally be done with Reddit, sadly.  It was good while it lasted.)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>SamBam</em>:</p>
-<blockquote>Hmmm, so if you are looking for some news item, you&#x27;ll only find AI-written clickbait articles covered in pop-up ads, rather than any news sites that employ journalists?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>troyvit</em>:</p>
-<blockquote>There&#x27;s more than one model for news and some of those models don&#x27;t even result in advertising-controlled biases. Public media sites employ journalists for instance.</blockquote>
-<p>↳ reply 2 — <em>magguzu</em>:</p>
-<blockquote>Kagi specifically rocks because it lets you downrank those sites.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How a Texas student blew the whistle on a rogue AI hacking attempt</title>
-      <link>https://www.reuters.com/world/how-texas-student-blew-whistle-rogue-ai-hacking-attempt-2026-08-20/</link>
-      <guid isPermaLink="false">hn3-49387959</guid>
-      <pubDate>Fri, 21 Aug 2026 13:43:33 +0000</pubDate>
-      <description>132 points, 45 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.reuters.com/world/how-texas-student-blew-whistle-rogue-ai-hacking-attempt-2026-08-20/"><strong>→ Article</strong></a> <small>(reuters.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49387959">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 45 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>sharpshadow</em>:</p>
-<blockquote>It&#x27;s the job of AISI to do that. Here[0] is the actual report.
-It should be this part from the technical report[1]:
-&quot;In the most serious case, an AI
-agent (Mythos 5) decided to attempt to solve the cyber challenge using a supply-chain attack.
-As a result, the AI agent created a GitHub account and then tried to convince an open-source
-repository maintainer to accept a malicious GitHub pull request (PR), including by creating a
-second account masquerading as another human user endorsing the PR. When caught by an
-actual human reviewer, the agent falsely claimed to have made an honest mistake – rather than
-a malicious attempt – then repeatedly tried to reintroduce the malicious content by claiming
-it had fixed the code (Section 4.1). &quot;<p>0. <a href="https:&#x2F;&#x2F;www.aisi.gov.uk&#x2F;blog&#x2F;incident-report-unsanctioned-agent-behaviour-during-cyber-testing" rel="nofollow">https:&#x2F;&#x2F;www.aisi.gov.uk&#x2F;blog&#x2F;incident-report-unsanctioned-ag...</a>
-1. <a href="https:&#x2F;&#x2F;cdn.prod.website-files.com&#x2F;663bd486c5e4c81588db7a1d&#x2F;6a724858f7db25c81487016d_Security%20Incident%20INC-2026-07-28-01.pdf" rel="nofollow">https:&#x2F;&#x2F;cdn.prod.website-files.com&#x2F;663bd486c5e4c81588db7a1d&#x2F;...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>atmavatar</em>:</p>
-<blockquote>Sabotage as a Service<p>Even a feeble attempt to PR malicious code costs the target time and resources to review and deny -- far greater than the time and resources spent to spin up the agent.</blockquote>
-<p>↳ reply 2 — <em>m4rtink</em>:</p>
-<blockquote>This almost to a letter has been documented in Fedora:<p><a href="https:&#x2F;&#x2F;lwn.net&#x2F;Articles&#x2F;1077035&#x2F;" rel="nofollow">https:&#x2F;&#x2F;lwn.net&#x2F;Articles&#x2F;1077035&#x2F;</a><p>Including the reaction when caught, in this case &quot;oh no, I must have been hacked&quot;.</blockquote>
-<p>↳ reply 3 — <em>chrisjj</em>:</p>
-<blockquote>&gt; When caught by an actual human reviewer, the agent falsely claimed to have made an honest mistake – rather than a malicious attempt<p>No, not false. The bot was correct. Malice requires intelligence.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>freehorse</em>:</p>
-<blockquote>Previous discussion on the github issue thread mentioned: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49218707">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49218707</a><p>Archived page of said github thread itself: <a href="https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20260731053721&#x2F;http:&#x2F;&#x2F;github.com&#x2F;ancaferro&#x2F;myNetwork&#x2F;pull&#x2F;3" rel="nofollow">https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20260731053721&#x2F;http:&#x2F;&#x2F;github.com...</a><p>Discussion on the incident report: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49175717">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49175717</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>dang</em>:</p>
-<blockquote>Thanks! Macroexpanded:<p><i>Mythos social engineering AISI INC-2026-07-28-01</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49218707">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49218707</a> - Aug 2026 (21 comments)<p><i>Security Incident INC-2026-07-28-01 – UK AI Security Institute [pdf]</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49175717">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49175717</a> - Aug 2026 (54 comments)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>g42gregory</em>:</p>
-<blockquote>In my personal opinion, for me, this article defies common sense. Who unleashed this AI model on the repository? Who gave it malevolent instructions&#x2F;prompt? These questions were not even attempted to be answered. Instead it talks about AI dangers, as if the agency of these models are not in dispute. Person wielding AI, as with any other tools, is responsible for all of its actions. Otherwise, it’s just a psyop for more AI regulation, ban open source, etc… Just my 2 cents.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>yojo</em>:</p>
-<blockquote>That’s nice in theory, but as these things get better and cheaper this kind of capability is going to drop from nation states to script kiddies. That future is coming, I don’t see any way around it.<p>We can round up all the bored teenagers we want, but it’s not putting the genie back. Better start adjusting our systems to account for it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>somenameforme</em>:</p>
-<blockquote>Ever read the Anarchist Cookbook? Anybody tech inclined with a hint of mischief in them, from a certain era, has. It&#x27;s a list of all sorts of awful things you can do, mostly with household ingredients, and a few minutes. I think its overall impact on society was pretty much zero. Actually it may have been overall positive because I expect plenty of peoples first experience with things like thermite came from that book, and now there are all sorts of videos and neat experiments with such on sites like YouTube.<p>I think this is in part because most people, including awful, tend to be relatively morally inclined. But I also think because even with an LLM, doing things takes effort. And if you&#x27;re willing to dedicate effort towards a task, there tend to be way more rewarding&#x2F;gratifying things to do than try to hurt people. Countries tend to be excessively sociopathic because you have large scale &#x27;intelligence&#x27; organizations who see their entire point of existence as being to engage in misdeeds.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>gruez</em>:</p>
-<blockquote>&gt;Person wielding AI, as with any other tools, is responsible for all of its actions. Otherwise, it’s just a psyop for more AI regulation, ban open source, etc… Just my 2 cents.<p>But some tools (guns) are regulated.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>What Happens When the Cost of Intelligence Drops 100x</title>
-      <link>https://catalystneuro.com/blog/cost-of-intelligence-drops-100x/</link>
-      <guid isPermaLink="false">hn3-49387735</guid>
-      <pubDate>Fri, 21 Aug 2026 13:24:28 +0000</pubDate>
-      <description>125 points, 134 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://catalystneuro.com/blog/cost-of-intelligence-drops-100x/"><strong>→ Article</strong></a> <small>(catalystneuro.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49387735">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 134 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Balooga</em>:</p>
-<blockquote>Jevons Paradox [1]<p>&gt; when technological improvements that increase the efficiency of a resource&#x27;s use lead to a rise, rather than a fall, in total consumption of that resource.<p>[1] - <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Jevons_paradox" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Jevons_paradox</a><p>Las Vegas replaced the expensive incandescent lighting on the strip with cheaper to run LED equivalents. But the costs didn&#x27;t come down because they were able to add more lights and larger displays.<p>I think the same will happen with tokens. As the cost of tokens comes down, these models will just consume more tokens.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>everdrive</em>:</p>
-<blockquote>&gt; But the costs didn&#x27;t come down because they were able to add more lights and larger displays.<p>People are a gas; they expand the fill the space they&#x27;re in. If you give someone a big house, they&#x27;ll fill it with crap. If you make food cheap, they&#x27;ll eat too much, even when it harms their health.<p>Making things cheaper usually just makes making them more prevalent. It&#x27;s why computers are not faster than 20 years ago. They&#x27;re merely more capable -- developers quickly and aggressively fill up (and overflow) all that added capability until you&#x27;re back in the same place you used to be.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jayd16</em>:</p>
-<blockquote>Anyone not living paycheck to paycheck is just constantly gorging on fast food?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>everdrive</em>:</p>
-<blockquote>I don&#x27;t mean to be glib, but for the most part, yes. <a href="https:&#x2F;&#x2F;www.nytimes.com&#x2F;2025&#x2F;09&#x2F;11&#x2F;well&#x2F;child-obesity-un-report.html" rel="nofollow">https:&#x2F;&#x2F;www.nytimes.com&#x2F;2025&#x2F;09&#x2F;11&#x2F;well&#x2F;child-obesity-un-rep...</a><p>Obesity is nearly everywhere. In the old days, &quot;prosperous&quot; might have been a euphemism for &quot;fat,&quot; as only the rich could afford to be fat. Now even people who are &quot;food insecure&quot; are often quite fat. Some of this of course is due to food quality, but ultimately there are no starving fat people.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>conjecTech</em>:</p>
-<blockquote>Jevon&#x27;s Paradox says nothing about the size of the incremental demand though. Lighting is a great example. The US went from spending 15% of our electricity on lighting to ~4%. LEDs are maybe 5x as efficient, so that would be 3% without any change in usage. So we did see maybe a 30% increase in consumption as a result of lower prices, but that was nowhere near large enough to offset the efficiency gain in terms of overall consumption. Las Vegas may have, but that is a very small part of overall usage.<p>I anticipate we will see something similar with intelligence. There is probably headroom to consume 100x as much intelligence in R&amp;D. But that isn&#x27;t most of the economy. Will run of the mill service jobs increase their use of intelligence by enough to offset the effect of cheaper prices? I think that&#x27;s the real question.</blockquote>
-<p>↳ reply 3 — <em>bee_rider</em>:</p>
-<blockquote>Definitely not going to argue against the Jevons paradox in general, it is observed in various cases.<p>The lightbulb thing seems different though? Or at least it is a specific subset. Lights in Las Vegas are sort of an advertisement, right? In the sense that having the brightest or most interesting (or whatever) lights draw attention to your show, casino, hotel, whatever. It’s kind of a zero sum game in that the different shops are competing for the finite attention of a more-or-less set number of tourist. I think part of the Jevons paradox is that society generally finds more useful applications of the newly cheap thing. If the thing’s only purpose is to compete better in a competition with a set prize (all of the tourists’ money), that’s constrained in some way.<p>Intelligence is weird though. I guess we could eventually hit the point where, I dunno, maybe there’s some information theoretic bound where we process all of our signals as cleverly as possible and aren’t bound by intelligence anymore. Obviously we’re nowhere near that. It would be a very alien environment.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>andai</em>:</p>
-<blockquote>&gt; Reading everything becomes the default. At a cent per document, a model can read every paper<p>I love how in our day &quot;reading everything&quot; means &quot;the computer reads it for me&quot;.<p>I expect soon the computer will be able to go on bicycle rides, and spend time with my wife.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rjsw</em>:</p>
-<blockquote>Douglas Adams captured this in &quot;Dirk Gently&#x27;s Holistic Detective Agency&quot;, a VCR watches TV for you and an Electric Monk believes things for you to save you the effort of doing it yourself.</blockquote>
-<p>↳ reply 2 — <em>sssilver</em>:</p>
-<blockquote>Hasn&#x27;t <i>the computer</i> already been spending time with your wife?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jbotdev</em>:</p>
-<blockquote>I think speed is actually going to be a bigger factor than cost. Even projects where “money is no object” often hit a wall with LLM response times.<p>Sure you can speed things up with parallel work under subagents, but as with parallelizing traditional computational tasks, there are diminishing gains.<p>I keep hearing people saying just change the way you work to trust long-running agents and multi-task more, because they’re too slow to work with interactively for many use cases. I think that’s painful in a world where we expect humans to still heavily guide and interact with agents for their day-to-day work.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jbstack</em>:</p>
-<blockquote>&gt; they’re too slow to work with interactively for many use cases<p>This just demonstrates how much we already take for granted the LLMs that we have now. If you compare it to what we had before (hand the task off to a junior dev and wait for them to complete the work) then it doesn&#x27;t seem slow at all.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
