@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 26 Aug 2026 03:12:24 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 04:48:02 +0000</lastBuildDate>
     <item>
       <title>FDA authorizes first wearable device that monitors ketone and blood sugar levels</title>
       <link>https://www.fda.gov/news-events/press-announcements/fda-authorizes-first-wearable-device-continuously-monitors-both-ketone-levels-and-blood-sugar</link>
@@ -316,6 +316,45 @@ Thanks for this.</blockquote>
 <blockquote>
 <p>↳ reply — <em>sarreph</em>:</p>
 <blockquote>Thank you for your kind words!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: LatticeDB – Like SQLite but for graph databases</title>
+      <link>https://github.com/jeffhajewski/latticedb</link>
+      <guid isPermaLink="false">hn3-49437049</guid>
+      <pubDate>Tue, 25 Aug 2026 16:52:05 +0000</pubDate>
+      <description>128 points, 36 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/jeffhajewski/latticedb"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49437049">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 36 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>adsharma</em>:</p>
+<blockquote>I measured this on a M4 mac mini (base model):<p><pre><code>  zig build sqlite-benchmark
+
+  Medium (100K nodes)
+
+  +----------------------+-----------+---------+---------+
+  | Workload             | LatticeDB | SQLite  | Speedup |
+  +----------------------+-----------+---------+---------+
+  | 1-hop traversal      | 5.7μs     | 16.1μs  | 2.8x    |
+  | 2-hop traversal      | 30.1μs    | 59.4μs  | 2.0x    |
+  | 3-hop traversal      | 171.1μs   | 228.8μs | 1.3x    |
+  | Variable path (1..5) | 82.2μs    | 5.8ms   | 70.4x   |
+  +----------------------+-----------+---------+---------+
+</code></pre>
+Very different from the comparison on github and the website.<p>Given that on-disk data structures are similar to SQLite, I expect the competition from other &quot;graph on sqlite&quot; projects when they co-opt the techniques in LatticeDB.</blockquote>
+<p><strong>Top #2</strong> — <em>cjlm</em>:</p>
+<blockquote>Nice, I’ll get it added to gdb-engines.com</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>EGreg</em>:</p>
+<blockquote>Thanks, that&#x27;s a great list! Might be worth mentioning our engine there too, for people who want a graph database atop SQLite and other battle-tested relational databases like MySQL, MariaDB, Postgres.<p>My team and I built it over the years, and it&#x27;s open source (AGPL). Here is how it works: <a href="https:&#x2F;&#x2F;community.qbix.com&#x2F;t&#x2F;qbix-streams-as-a-graph-database&#x2F;769" rel="nofollow">https:&#x2F;&#x2F;community.qbix.com&#x2F;t&#x2F;qbix-streams-as-a-graph-databas...</a><p>Our database abstraction layer (and optional ORM) has been battle tested in production for millions of users, and has 3 adapters: Sqlite, Postgres, MySQL&#x2F;MariaDB. And recently it even added vector search for ranking results by similarity: <a href="https:&#x2F;&#x2F;github.com&#x2F;Qbix&#x2F;Platform&#x2F;tree&#x2F;main&#x2F;platform&#x2F;classes&#x2F;Db" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Qbix&#x2F;Platform&#x2F;tree&#x2F;main&#x2F;platform&#x2F;classes&#x2F;...</a><p>Documentation for the database layer is here: <a href="https:&#x2F;&#x2F;qbix.com&#x2F;platform&#x2F;guide&#x2F;database" rel="nofollow">https:&#x2F;&#x2F;qbix.com&#x2F;platform&#x2F;guide&#x2F;database</a><p>PS: If you do use a relational database for storing graph data, you&#x27;re going to have a lot of duplication in some public keys. I highly recommend putting ZFS underneath, to help with deduplication. ZFS uses zstd, developed at facebook, and also can encrypt your data at rest (don&#x27;t use the relational database to do the encryption, otherwise deduplication doesn&#x27;t work).</blockquote>
+<p>↳ reply 2 — <em>smiths1999</em>:</p>
+<blockquote>very cool site!</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>itissid</em>:</p>
+<blockquote>Does it have something like litestream to backit up for specific production usecases (i.e. a single webserver is enough and downtime of a few mins is tolerable)?</blockquote>
+<blockquote>
+<p>↳ reply — <em>smiths1999</em>:</p>
+<blockquote>I am in the final stages of adding this based on your comment. Just wrapping up doc updates and will push a new release with hot copy functionality tonight!</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3798,36 +3837,6 @@ So the puzzle apparently admits multiple accepted inputs. The agent found a vali
 <blockquote>What makes this different from the official Figma Chrome extension[0], other than that this may be able to run on browsers other than Chrome?<p>[0] <a href="https:&#x2F;&#x2F;www.figma.com&#x2F;downloads&#x2F;chrome-extension&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.figma.com&#x2F;downloads&#x2F;chrome-extension&#x2F;</a></blockquote>
 <p><strong>Top #3</strong> — <em>Uptrenda</em>:</p>
 <blockquote>Not much to add here but wanted to say I very much support having more people show video demos when they do show hn.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Thinking in Python</title>
-      <link>https://thinkinginpython.com/</link>
-      <guid isPermaLink="false">hn3-49402202</guid>
-      <pubDate>Sat, 22 Aug 2026 18:10:49 +0000</pubDate>
-      <description>128 points, 24 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://thinkinginpython.com/"><strong>→ Article</strong></a> <small>(thinkinginpython.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49402202">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 24 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bigcat12345678</em>:</p>
-<blockquote>I indeed find the formatting quality of the site to be superior. As mentioned below by the author.<p>&quot;&quot;&quot;
-I know some people don’t like AI. Without it, this book wouldn’t exist. The book is free, so if AI bothers you more than the resulting product might benefit you, please ignore this book.<p>Using Claude made me realize how many compromises I’ve made on books in the past. I would get a good idea about something (for example, automatically interleaving commented output in the listings). I either couldn’t implement it, or it seemed too hard, so I didn’t do it. But with AI I can explore and often implement every whim, from things as seemingly straightforward as inserting a new chapter to ones as daunting as that commented-output system. The result is much better than anything I managed before. I keep going until I’ve tweaked everything that occurs to me.
-&quot;&quot;&quot;</blockquote>
-<p><strong>Top #2</strong> — <em>ra</em>:</p>
-<blockquote>I originally learned Java in 2000 from Bruce Eckel&#x27;s &quot;Thinking in Java&quot;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>sakesun</em>:</p>
-<blockquote>I learn Thinking in C++ from his book for my Master thesis work in 2004</blockquote>
-<p>↳ reply 2 — <em>jkaplowitz</em>:</p>
-<blockquote>Me too, one year before you. A classic.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>roelschroeven</em>:</p>
-<blockquote>&quot;The book targets Python 3.15 and later&quot;<p>That&#x27;s a bit weird, Python 3.15 isn&#x27;t even fully released yet.</blockquote>
-<blockquote>
-<p>↳ reply — <em>rented_mule</em>:</p>
-<blockquote>You&#x27;re right that Python 3.15 is not fully released yet, but it&#x27;s in prerelease which is defined as:<p>&quot;&quot;&quot;
-After the first beta, no new features can go in, but feature fixes (including significant changes to new features), bug fixes, and security fixes are accepted for the upcoming feature release.
-&quot;&quot;&quot;<p>So it&#x27;s a fairly well known target. Bruce Eckel published the first edition of this book a quarter of a century ago - he has a pretty good handle on the progression of Python.<p>Definitions and status for all releases is at <a href="https:&#x2F;&#x2F;devguide.python.org&#x2F;versions&#x2F;" rel="nofollow">https:&#x2F;&#x2F;devguide.python.org&#x2F;versions&#x2F;</a></blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
