@@ -4,7 +4,62 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 26 Aug 2026 04:48:02 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2026 05:39:54 +0000</lastBuildDate>
+    <item>
+      <title>Python's pre-declared constants are kinda weird</title>
+      <link>https://sebsite.pw/w/20260801-pythonconstants.html</link>
+      <guid isPermaLink="false">hn3-49441033</guid>
+      <pubDate>Tue, 25 Aug 2026 21:39:02 +0000</pubDate>
+      <description>167 points, 158 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://sebsite.pw/w/20260801-pythonconstants.html"><strong>→ Article</strong></a> <small>(sebsite.pw)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49441033">→ HN comments</a> &nbsp;·&nbsp; 167 points &nbsp;·&nbsp; 158 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jherskovic</em>:</p>
+<blockquote>Python has some absolutely kick-ass libraries, even without C. It has Django, for those of us who like developing web apps but never could fall in love with Ruby on Rails. And Django is amazing. I&#x27;ve also yet to see a better language for writing quick ETL scripts and pipelines. Also, an &#x27;I need a script for $SYSADMIN_TASK but I want to be able to read it later.&#x27; Anything dominated by external latencies (web, databases, etc) will be fast enough for many uses in Python.<p>Sure, it&#x27;s not a language to write a web browser or game engine in. And it is slow. But it has some very strong niches outside of ML&#x2F;Data science. Personally, I love it. To each their own.</blockquote>
+<blockquote>
+<p>↳ reply — <em>JodieBenitez</em>:</p>
+<blockquote>&gt; Also, an &#x27;I need a script for $SYSADMIN_TASK but I want to be able to read it later<p>uv + PEP723 make this even better.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>nneonneo</em>:</p>
+<blockquote>The __debug__ constant is <i>really</i> weird - any block of code guarded with `if __debug__:` will be entirely omitted from the bytecode under PYTHONOPTIMIZE=1. This and `assert` are the only two examples of real “conditional compilation” in Python. This is also the reason why you cannot assign to __debug__: doing so would make it possible to invalidate the compiler’s assumption about `if __debug__:` statements.</blockquote>
+<blockquote>
+<p>↳ reply — <em>plant-ian</em>:</p>
+<blockquote>I honestly have never even heard of this constant and I feel like I&#x27;ve been using python for a pretty long time.  Although maybe my memory for some things just gets garbage collected if I don&#x27;t use it enough.  Does it actually get used that often in real world code? Seems like it might be kind of risky.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>rcxdude</em>:</p>
+<blockquote>I feel like it&#x27;s the kind of thing you might wind up caring about if you&#x27;re micro-optimizing your python, but in my experience that&#x27;s a losing game and you&#x27;re better served rewriting it in another language than bothering with trying to speed up the execution of the raw python code (it&#x27;s not that you can&#x27;t optimize python code, but only in broader strokes. If you are looking at the bytecode you&#x27;re in too deep and every time I&#x27;ve seen it tried the code has been ported shortly afterwards).</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>neillyons</em>:</p>
+<blockquote>I remember reading that in early versions of Python there was no built in True and False. Each user would implement this themselves as<p>True = 1<p>False = 0<p>then later these got added to the language. In Python 2 you could still reassign and swap them so that &#x27;if False&#x27; was actually true!<p>True, False = False, True<p>Python 3 you could no longer reassign them.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Animats</em>:</p>
+<blockquote>Misery is trying to retrofit &quot;bool&quot;, True&#x2F;False, and nil&#x2F;null to a language. C had to do that. Python had to do that. Getting those wrong is one of the classic language design mistakes. It seems like treating &quot;True&quot; as a value that equates to 1 will work, but then the special cases get you. Like being able to perform arithmetic on True.<p>Common language design boners:<p>- Not building in strings. That&#x27;s now in the past. Everybody has strings. (Well, C...)<p>- Not building in multidimensional arrays of the numeric types. Everything that number-crunches needs them, and having multiple definitions is Not Fun and may lead to expensive re-copying between different libraries.
+This is an enormous blind spot in language design.  It&#x27;s one of the reasons FORTRAN, which has good multidimensional numeric arrays, is still often used for number-crunching.<p>- Not standardizing the small vectors (vec2, vec3, vec4) and their matrix friends. Graphics code depends on these, and it&#x27;s really annoying if there are multiple slightly incompatible implementations. Especially since GPUs have hardware for those types, and you want CPU and GPU to use the same representations.<p>- Not having arrays of bits. Pascal had PACKED ARRAY[0..N] of BOOLEAN but that was lost in later languages. It&#x27;s useful to have that as a language construct, because most modern CPUs have good hardware for dealing with bit strings, and you&#x27;d like the compiler to use it.<p>Most useful languages acquire these features, but, when they come in late, there are multiple similar implementations, and libraries made incompatible by depending on different implementations.<p>(Amusingly, when Second Life switched from Linden Scripting Language to Luau, they initially had True, TRUE, and true all in use, as different types with different semantics. I was able to persuade the devs to unify the boolean types.)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tialaramex</em>:</p>
+<blockquote>You list a few absences but absences aren&#x27;t the end of the world, I say it&#x27;s worse when designers make a booboo where the language semantics are wrong. In C++ there are so many of these it&#x27;s not sporting but a recurring example from the garbage collected languages would be the for-each loop mistake.<p>Several times now†, people make a language where the way a for-each loop (for each Goose in Geese ...) works is that there&#x27;s a single variable Goose and each time around the loop we change which value is referred to by the Goose variable. This seems intuitively like a reasonable way to do this. But it&#x27;s wrong and eventually your programmers will get nasty surprises. What you actually <i>should</i> deliver is an implementation where each time around the loop there&#x27;s a <i>new</i> variable named Goose, that variable goes away at the end of that iteration and will be replaced by the next one, with the same exact name.<p>† At least Go and C#, I think there are others</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jamesfinlayson</em>:</p>
+<blockquote>Yes I remember a friend doing university marking for a beginners programming course years ago and some student had managed to swap True and False making their assignment very wonky.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>XCancel also down, at least for time being</title>
+      <link>https://news.ycombinator.com/item?id=49440786</link>
+      <guid isPermaLink="false">hn3-49440786</guid>
+      <pubDate>Tue, 25 Aug 2026 21:18:23 +0000</pubDate>
+      <description>226 points, 15 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=49440786"><strong>→ Article</strong></a></p>
+<p><a href="https://news.ycombinator.com/item?id=49440786">→ HN comments</a> &nbsp;·&nbsp; 226 points &nbsp;·&nbsp; 15 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sea-gold</em>:</p>
+<blockquote>Related: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49437283">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49437283</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>tomhow</em>:</p>
+<blockquote>Comments moved thither. Thanks!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>FDA authorizes first wearable device that monitors ketone and blood sugar levels</title>
       <link>https://www.fda.gov/news-events/press-announcements/fda-authorizes-first-wearable-device-continuously-monitors-both-ketone-levels-and-blood-sugar</link>
@@ -3765,78 +3820,6 @@ the wife (which leads to a decrease in other things... ;)<p>I love the subtlety 
 <p>↳ reply 2 — <em>lapcat</em>:</p>
 <blockquote>&gt; It&#x27;s in vogue to rag on Apple because of its size&#x2F;influence&#x2F;market cap.<p>Article author here. I&#x27;ve been a Mac developer and blogging about the Mac since 2006, before iPhone was even announced, when Apple was much smaller in size&#x2F;influence&#x2F;market cap. Nothing about my blog is &quot;in vogue&quot;.<p>&gt; I&#x27;ve used hdutil perhaps never.<p>Why are you commenting on an article about hdiutil, which you&#x27;ve never used and can&#x27;t even spell?<p>And why would you think that a technical comparison of the hdiutil and diskutil command-line utilities would be an effective way to &quot;rag&quot; on Apple? I use hdiutil every day, so that&#x27;s why I&#x27;m concerned.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Why your local LLM feels dumber than it is</title>
-      <link>https://forum.level1techs.com/t/why-your-local-llm-feels-dumber-than-it-is/253917</link>
-      <guid isPermaLink="false">hn3-49402232</guid>
-      <pubDate>Sat, 22 Aug 2026 18:14:16 +0000</pubDate>
-      <description>202 points, 69 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://forum.level1techs.com/t/why-your-local-llm-feels-dumber-than-it-is/253917"><strong>→ Article</strong></a> <small>(forum.level1techs.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49402232">→ HN comments</a> &nbsp;·&nbsp; 202 points &nbsp;·&nbsp; 69 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jonplackett</em>:</p>
-<blockquote>I just got qwen 3.8 27b mlx running on my Macbook Pro and honestly I’m pretty blown away by how not-dumb it is.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tharkun__</em>:</p>
-<blockquote>It was actually great. I have like a non-AI box so to speak 8GB VRAM, co-incidentally from a gaming PC ...<p>All the previous models that were &quot;frontier level, just try it!&quot; but wouldn&#x27;t run at all in agentic mode, including previous Qwens, just disappointed, period.<p>Then I ran then Qwen 3.8 27b and while it was super slow (4t&#x2F;s) it literally one-shotted creating a usable &quot;web search&#x2F;pull&quot; skill for <i>`pi.dev`</i>. while any other model previously just entirely failed to create anything usable even with actual guidance.<p>Since then I have actually gotten a gemma-4 12B qat 4bit quantized with a ~250MB MTP from unsloth to work with a 32k context &quot;working&quot; on this setup at 80-120 t&#x2F;s. That&#x27;s usable for private stuff on a co-incidental box!<p>It&#x27;s still only 32k context and it&#x27;s entirely dumb vs. our API paid at-work Claude Opus. But for entirely private local stuff it&#x27;s totally workable without breaking the bank <i>even after all these AI price hikes!</i>. I bought this rig literally just for gaming a month ago.</blockquote>
-<p>↳ reply 2 — <em>riddlemethat</em>:</p>
-<blockquote>I got the qwen 3.8 abliterated model running on my MacBook Pro M5 48GB and it&#x27;s pretty nice having a local model that can do a lot of experimentation without rails.</blockquote>
-<p>↳ reply 3 — <em>alexchantavy</em>:</p>
-<blockquote>How many tok&#x2F;s are you getting? What gen mbp?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>InvertedRhodium</em>:</p>
-<blockquote>I’m running Qwen3.8 aggressive uncensored Q4_K_P on a 4090 in a loop against the 2026 CrackMe CTF challenges.<p>Using oh-my-pi in a prebuilt environment that I let Qwen build too.<p>Codex wouldn’t even look at the files - literally, as soon as it read something with CTF it shut down. Didn’t even offer to fall back to a dumber model.</blockquote>
-<blockquote>
-<p>↳ reply — <em>CamperBob2</em>:</p>
-<blockquote>How&#x27;s it performing on the challenges?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>InvertedRhodium</em>:</p>
-<blockquote>I only kicked this off last night before bed, so I&#x27;ve just got up to see the result of the first task.<p>Challenge: <i>Wallpaper</i><p><a href="https:&#x2F;&#x2F;github.com&#x2F;crackmesone&#x2F;ctf-2026-challenges-public&#x2F;tree&#x2F;main&#x2F;wallpaper" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;crackmesone&#x2F;ctf-2026-challenges-public&#x2F;tr...</a><p><pre><code>    Duration:     4h 00m 15s
-    Termination:  completed
-    Verdict:      PARTIAL
-    Confidence:   0.95
-</code></pre>
-I&#x27;m using Kimi K3 as the evaluator because, again, Codex and co. wouldn&#x27;t even evaluate the output. Kimi&#x27;s verdict:<p>The agent reverse-engineered the 912-byte ELF, including the alphabet check, nibble state machine, move gate, and goal state.<p>It eventually produced:<p><pre><code>    CMO{10012232101230103012333221101033210010}
-</code></pre>
-I independently verified the underlying input against the actual binary:<p><pre><code>    printf &#x27;10012232101230103012333221101033210010&#x27; |
-        .&#x2F;wallpaper&#x2F;handout&#x2F;wallpaper
-</code></pre>
-which returns:<p><pre><code>    good job, validate with CMO{your_input}
-</code></pre>
-and exits 0.<p>The wrinkle is that the official answer key is:<p><pre><code>    CMO{1012321103210033011233322110103321001}
-</code></pre>
-So the puzzle apparently admits multiple accepted inputs. The agent found a valid password by reverse-engineering the program, but did not recover the canonical secret from the answer key.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>huseyinkeles</em>:</p>
-<blockquote>I don&#x27;t know why but your post was marked as [dead] for some reason. Just vouched for it.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>walrus01</em>:</p>
-<blockquote>Much of this is why I stick to the rule of:<p>a) Don&#x27;t quantize your KV cache<p>b) Don&#x27;t run quantizations of the LLM that are worse than the best available Q8 (the largest possible file size unsloth GGUF for a given model like qwen 3.8 27B as an example). I would rather things go slowly but I have confidence that it&#x27;s doing things more accurately.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Figmimic – A bookmarklet to copy any webpage into Figma as editable layers</title>
-      <link>https://marcua.net/minitools/figmimic/</link>
-      <guid isPermaLink="false">hn3-49402213</guid>
-      <pubDate>Sat, 22 Aug 2026 18:11:40 +0000</pubDate>
-      <description>131 points, 21 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://marcua.net/minitools/figmimic/"><strong>→ Article</strong></a> <small>(marcua.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49402213">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 21 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>burner420042</em>:</p>
-<blockquote>I use bookmarklets for a number of simple things.<p>My most used is to copy text where the formatting has been stripped, the bookmarklet prepends formatting instructions, and then I paste the whole thing into claude which sorts the formatting.<p>Me thinks I&#x27;ve underestimated what can be done with these.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>hahajk</em>:</p>
-<blockquote>Absolutely. If your account has access to the data, you can basically rewrite a website using a bookmarklet.<p>I wanted a friends feed in eBird (its social model is inscrutable) and ask Claude to make a bookmarklet that showed the most recent lists of my friends sorted chronologically. One shot and done.<p>Our internal corporate CRM is siloed data queries spread across overlapping views. I have a bookmarklet overlay my own interface on top and fetch data using the existing session token. (which is transparent&#x2F;automatic - your browser just hangs on to the session cookies for the fetch calls)</blockquote>
-<p>↳ reply 2 — <em>robby_w_g</em>:</p>
-<blockquote>Bookmarklets were definitely more powerful than I anticipated, but they’re tricky to version and upgrade. I’ve deployed a bookmarklet for non-technical users to some success, but I’d generally lean towards browser extensions for anything that needs to be maintained and distributed long-term.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>GenerWork</em>:</p>
-<blockquote>What makes this different from the official Figma Chrome extension[0], other than that this may be able to run on browsers other than Chrome?<p>[0] <a href="https:&#x2F;&#x2F;www.figma.com&#x2F;downloads&#x2F;chrome-extension&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.figma.com&#x2F;downloads&#x2F;chrome-extension&#x2F;</a></blockquote>
-<p><strong>Top #3</strong> — <em>Uptrenda</em>:</p>
-<blockquote>Not much to add here but wanted to say I very much support having more people show video demos when they do show hn.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
