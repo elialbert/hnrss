@@ -4,7 +4,161 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 29 Aug 2026 08:54:42 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Aug 2026 14:21:34 +0000</lastBuildDate>
+    <item>
+      <title>Samsung's Processing-in-Memory (PIM)</title>
+      <link>https://chipsandcheese.com/p/hot-chips-2026-samsungs-processing</link>
+      <guid isPermaLink="false">hn3-49487341</guid>
+      <pubDate>Sat, 29 Aug 2026 06:06:51 +0000</pubDate>
+      <description>166 points, 52 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://chipsandcheese.com/p/hot-chips-2026-samsungs-processing"><strong>→ Article</strong></a> <small>(chipsandcheese.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49487341">→ HN comments</a> &nbsp;·&nbsp; 166 points &nbsp;·&nbsp; 52 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bob1029</em>:</p>
+<blockquote>The tradeoff with putting the compute in the memory is that you have to know exactly where the dependent information will be at all times. <i>Most</i> problems do not fit this pattern very well. AI, gaming and crypto being the most obvious exceptions. It is incredibly constraining to develop applications using specialized hardware like this. You might as well spin out an ASIC for whatever it is you are doing. All 3 applications noted above eventually got their own flavors.<p>I think the Von Neumann bottleneck is mostly a feature. The fact that communication of information across distances is expensive should not be immediately assumed to mean that it is universally flawed to do this. You are paying for <i>something</i> when you use all those joules. I&#x27;d argue we are usually wasting our energy with regard to information communication (e.g., lighting up a network interface &amp; copper because we couldn&#x27;t be bothered to use SQLite), but other times this stuff is fundamentally required for practical solutions to exist.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>po1nt</em>:</p>
+<blockquote>I think you could do many performant things without any involvement of software. For example you could do AVX on RAM. The CPU would recognize PID RAM and offload AVX instructions to the module.<p>Then, by simply asking for a special memory address you could have access to registers&#x2F;regions within PID RAM that serve as a result region.<p>Let&#x27;s say you would need to run a sum over megabytes of data like for accounting. You could just ask RAM to do it and load just the result. The bandwidth would could be 8x higher and software could stay the same.<p>Doing scalar operations, frequent dereferencing and similar would not get much peformance benefit in many cases, as loading and accessing CPU cache is often much faster. But simple vector operations over large data could be massive.<p>Having accelerators on RAM like for jpeg compression, audio decoding or mass data operations could be beneficial but you would need to be careful with heat dissipation.<p>Personally I&#x27;m a big fan of the &quot;in-ram accelerator&quot; idea especially for server space. Doing fuzzy search in RAM could be massive performance improvement.</blockquote>
+<p>↳ reply 2 — <em>Eridrus</em>:</p>
+<blockquote>In a world where AI is writing all of the code, the difficulty of the task may no longer be a blocker.</blockquote>
+<p>↳ reply 3 — <em>jeffbee</em>:</p>
+<blockquote>There are fundamental issues here and I think the article only touched on a few. On the software side this completely blows up the whole virtual memory concept. We will need different operating systems.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>londons_explore</em>:</p>
+<blockquote>Whilst processing in memory is clearly the future, I am unconvinced by this implementation.<p>Matrix multiplication involves getting every entry of the input and output matrices to be at the same multiplier at the same time. (Ie. N^2).<p>To do that, a lot of data movement needs to happen.   Movement  is the main  thing - the multiplication and addition is a sideshow as far as energy and silicon space is concerned.   You need a &#x27;around the chip&#x27; ring shift register to pass every element of one matrix past every element of the other.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zozbot234</em>:</p>
+<blockquote>&quot;Movement is the main thing&quot; is precisely why pursuing compute-in-RAM makes some sort of sense to begin with.  But DRAM fabrication processes are quite specialized and do not perform well with pure compute logic.  The overall profile of this thing will arguably be similar to a rather weak NPU, though with much better memory bandwidth - one key limitation, as with NPUs, will be the bespoke programming model and lack of support for the latest compressed&#x2F;quantized number formats, which heavily limits the usefulness of being able to access memory directly.  GPUs, even weak iGPUs, can dequantize&#x2F;pad parameters on the fly which adds a lot of flexibility - and expose standard, well understood compute capabilities via CUDA, Metal or Vulkan.  This is not quite comparable unfortunately.</blockquote>
+<p>↳ reply 2 — <em>danmaz74</em>:</p>
+<blockquote>Given how important matrix multiplication with a huge number of fixed parameters is becoming, there is an enormous incentive to design much more efficient architectures where this very simple compute is colocated with memory. Inference cost would come down a lot.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>OptionX</em>:</p>
+<blockquote>So instead of putting more cache on the cpu you just put the cpu on the cache.</blockquote>
+<blockquote>
+<p>↳ reply — <em>dotancohen</em>:</p>
+<blockquote>Sort of, but the cache architecture is replaced with memory architecture. But you could look at it either way.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>TurboKV: Insanely fast Rust key-value store</title>
+      <link>https://github.com/kingroryg/turbokv</link>
+      <guid isPermaLink="false">hn3-49486334</guid>
+      <pubDate>Sat, 29 Aug 2026 02:23:37 +0000</pubDate>
+      <description>136 points, 64 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/kingroryg/turbokv"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49486334">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 64 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dangoodmanUT</em>:</p>
+<blockquote>&gt; DbOptions::durable()<p>&gt; Appended to the WAL without a per-write sync<p>So… it’s not durable? Durable doesn’t mean “survives a process restart”, it means “durably saved to persistent storage”. For example, this “durable” mode wouldn’t survive power loss.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>stingraycharles</em>:</p>
+<blockquote>Yeah this should be benchmarked against other systems that have flush() disabled.<p>mmap is nice but it doesn’t support durable semantics in the way that we usually mean with databases.<p>if a write is acknowledged it should not be forgotten, which is not what this is.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>rgbimbochamp</em>:</p>
+<blockquote>You&#x27;re right, that mode provides process crash recovery, not power-loss durability. The benchmark compares it against fjall’s equivalent buffered-WAL mode.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>deathanatos</em>:</p>
+<blockquote>Word choice matters. Defaults matter. People will go &quot;well it says durable right here&quot; and while arguably, yes, they should RTFM, it would still be great if tool-builders did not set the shotgun&#x27;s default state to State::AT_FOOT. It would be nice if every paragraph of technical writing that I have to do need not be burdened by a thousand asterisks of &quot;durable in this context means something other than durable&quot;.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>deepsun</em>:</p>
+<blockquote>Are we back to MongoDB -- no fsync() but webscale speed?</blockquote>
+<p>↳ reply 3 — <em>insanitybit</em>:</p>
+<blockquote>This is surprisingly common, from what I can tell.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>KAdot</em>:</p>
+<blockquote>The benchmark is setup to test 80 MiB dataset on a machine with 32 GiB RAM, which doesn&#x27;t represent a typical database workload. How does the key-value store perform on larger than RAM datasets? MMAP is fast when the dataset fits in memory, but it can slow to a crawl when it doesn&#x27;t, especially if the workload is mostly random point lookups.</blockquote>
+<p><strong>Top #3</strong> — <em>boguscoder</em>:</p>
+<blockquote>Embedded could also mean no_std, which this is absolutely not. Still cool though</blockquote>
+<blockquote>
+<p>↳ reply — <em>LoganDark</em>:</p>
+<blockquote>Yep, the correct term here is &quot;embeddable&quot;, not embedded.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Our decision on Cursor following its acquisition by SpaceX</title>
+      <link>https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/</link>
+      <guid isPermaLink="false">hn3-49486172</guid>
+      <pubDate>Sat, 29 Aug 2026 01:47:53 +0000</pubDate>
+      <description>648 points, 370 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/"><strong>→ Article</strong></a> <small>(openai.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49486172">→ HN comments</a> &nbsp;·&nbsp; 648 points &nbsp;·&nbsp; 370 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>rgbrenner</em>:</p>
+<blockquote>Anthropic already banned xAI for very similar ToS violations earlier this year: <a href="https:&#x2F;&#x2F;x.com&#x2F;kyliebytes&#x2F;status&#x2F;2009686466746822731?s=46" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;kyliebytes&#x2F;status&#x2F;2009686466746822731?s=46</a><p>So this is OpenAI following suit after Musk admitted to distilling their models.<p>This was bound to happen once Cursor decided to sell itself to a competing model provider.<p>It&#x27;ll be interesting to see if Anthropic applies their ban to Cursor, or if that datacenter deal they signed with Musk changes anything.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cornholio</em>:</p>
+<blockquote>It&#x27;s ironic how AI companies are re-inventing their own form of privately enforced copyright, lobby the government to ban foreign competitors that don&#x27;t respect it etc., all while spending the last 5 years fighting tooth and nail against the copyright of the training material they&#x27;re using.<p>If you can take any book and turn it into a model, because it&#x27;s &quot;transformative enough&quot;, and &quot;AI learns just like a person does&quot;, then surely a model distilling another model is transformative and fair use.<p>They tied themselves into knots fighting the letter of the law, and now, when they need the spirit of the law - that each creator deserves protection for their work - now we devolve to the law of the jungle. Maybe we&#x27;ll even see LLM book curses, the way medieval scribes damned book thieves to blindness and worms.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>WiSaGaN</em>:</p>
+<blockquote>It&#x27;s one of the things you need to do if you want your company to later become the only company in the world. They also promised that they would treat you nicely afterwards after they get what they want.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>frankacter</em>:</p>
+<blockquote>Your link doesn&#x27;t suggest a violation of TOS, but rather a policy shift disallowing their major competitors to use their model for any use.<p>That thread you linked suggested they were using it with cursor as part of their development process, not for distilling.<p>&gt;&quot;Hi team, I believe many of you have already discovered that anthropic models are not responding on cursor. According to cursor this is a new policy anthropic is enforcing for all its major competitors.&quot;</blockquote>
+<p>↳ reply 3 — <em>brightball</em>:</p>
+<blockquote>Anthropic seems to have no issues: <a href="https:&#x2F;&#x2F;x.com&#x2F;NotTomBrown&#x2F;status&#x2F;2093541294027280657?s=20" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;NotTomBrown&#x2F;status&#x2F;2093541294027280657?s=20</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jackjeff</em>:</p>
+<blockquote>Is there some kind of alternative to Cursor in these terms<p>- fast because the code is already indexed no need to start every prompt rediscovering the world with rg<p>- in editor&#x2F;vscode review much better than relying on git diff at the very end. You can click on next button to jump there. Quick edit in place. Or a quick prompt (seconds) to fix something small<p>- in editor completion &#x2F; quick edits, when you do things by hand.<p>It seems that everyone loves agentic Claude code things these days but I don’t understand how you can review what it did and remain as much in the flow as you do with cursor.<p>Also I find that incredibly slow. By the time Claude finished a prompt I could have done a few in cursor.<p>And mind you, I’ve been wanting to use zed instead but the clunky vscode fork called cursor. But cursor has just a better UX for AI integration even though it’s slow and guzzle up RAM.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>aws_ls</em>:</p>
+<blockquote>I code using Codex or sometimes ClaudeCode.<p>I use Zed to review the code.<p>CLI is great for most things. Some times, when I am reviewing a PR, I just tell Codex to do a diff between source and target branches in PR, and generate a HTML report. Then I read that, and also review relevant pieces of code in Zed.<p>I tried using Cursor, many of my colleagues use it, but stopped using it due to clunkiness. And of late, even in there, many of my colleagues use agentic coding. Instead, I prefer the snapiness of CLI (Codex coded in rust, takes less memory per session) and Zed (also coded in rust,) and blazingly fast. Zed is the new Sublime Text if you will.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jackjeff</em>:</p>
+<blockquote>Thanks your your feedback.<p>I just retried Zed and yeah, it&#x27;s much much better than last time I gave it a shot!!!<p>I turned on the review stuff, and yeah I can do more or less what I could in Cursor. Check something. Do a quick inline promtp for the three lines I dislike and move on.<p>And of course the editor is so much nimbler&#x2F;nicer.<p>No plan mode, but for big edits I&#x27;d probably use codex or something just like you. If you have any advice for integrating for that flow, I&#x27;ll take them.<p>I guess whatever advantage cursor has, it will die once &quot;Sol&quot; is no longer integrated, as it was my favorite heavy work model. But I sure will miss the snappy auto&#x2F;composer stack of Cursor.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>audunw</em>:</p>
+<blockquote>If you integrate Zed with Claude Code through ACP you get plan mode (and some other stuff like memory)</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>BrokenCogs</em>:</p>
+<blockquote>Vs code copilot is the same or better than cursor in my opinion - I mean that&#x27;s where cursor comes from</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>redox99</em>:</p>
+<blockquote>It&#x27;s always been clear to me that Cursor&#x27;s business model of reselling others&#x27; APIs had its days numbered. Not necessarily because the providers would pull the plug, but because you wouldn&#x27;t be able to compete with subsidized plans.<p>Cursor is already kind of useless for third party models unless you&#x27;re willing to spend thousands of dollars. It&#x27;s only worth it if you&#x27;re going to use mostly grok&#x2F;composer.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>raincole</em>:</p>
+<blockquote>I&#x27;ve never seen a product blow another product out of the water so hard as Claude Code did to Cursor.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fweimer</em>:</p>
+<blockquote>The TUI version of Claude Code just isn&#x27;t very good, though. The default keybindings do not work in the majority of terminals (because they generate the same byte sequences for key sequences assigned to different commands). Editing large prompts is rather painful because there doesn&#x27;t seem to be in-prompt search commands. There is no source code browser, so source code references cannot checked by the users without a separate tool. Diffs cannot be copied directly because they are indented by spaces (even though some tools strip indentation from patches, it&#x27;s still ugly). Switching between conversations is somewhat discouraged by the interface, which makes it harder to keep the context clean.<p>I think it&#x27;s possible to have a better TUI, with something that isn&#x27;t modeled after a shell prompt. Apparently, recent updates move in that direction. The GUI version of Claude Code seems to be coming to Linux, too.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mirzap</em>:</p>
+<blockquote>Why do people keep insisting that subscription plans are subsidized? They are not. API prices are outrageous, designed to milk enterprise users. They probably have an 80-90% profit margin on subscription plans.<p>Inference is cheap; Dax once said on a podcast that Opencode has a close to 90% profit margin on the openweight models it provides inference for (at 10x cheaper pricing). Those models are close in size and spec to models from large labs.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>StemDeck, a free, open-source and local AI stem separator</title>
+      <link>https://github.com/stemdeckapp/stemdeck</link>
+      <guid isPermaLink="false">hn3-49486081</guid>
+      <pubDate>Sat, 29 Aug 2026 01:24:13 +0000</pubDate>
+      <description>152 points, 37 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/stemdeckapp/stemdeck"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49486081">→ HN comments</a> &nbsp;·&nbsp; 152 points &nbsp;·&nbsp; 37 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>BrokenCogs</em>:</p>
+<blockquote>Is this a vibe coded wrapper? Imo what we really need is a model to separate rhythm guitar from lead guitar</blockquote>
+<p><strong>Top #2</strong> — <em>ipsum2</em>:</p>
+<blockquote>This is just a wrapper of htdemucs, if anyone&#x27;s wondering if it was a new&#x2F;better model.</blockquote>
+<blockquote>
+<p>↳ reply — <em>pdntspa</em>:</p>
+<blockquote>Damn, was hoping this would be an upgrade over (the seemingly abandoned) UVR5</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>adzm</em>:</p>
+<blockquote>There is a robust community around it but it is not very user friendly; most info is found in discord and a Google spreadsheet and custom patches&#x2F;builds of uvr</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>nubinetwork</em>:</p>
+<blockquote>Stream deck
+Steam deck
+Stem deck<p>We really suck at naming things...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Retr0id</em>:</p>
+<blockquote>That &quot;which words does claude overuse&quot; dashboard on the front page a few days ago should&#x27;ve called itself Seam Deck.</blockquote>
+<p>↳ reply 2 — <em>john-titor</em>:</p>
+<blockquote>about time people started replacing Deck with something similar-but-not-quite-the-same for their project names</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>9th Circuit sides with states in Kalshi gambling fight</title>
       <link>https://azmirror.com/2026/08/28/9th-circuit-sides-with-states-in-kalshi-gambling-fight-potentially-reviving-arizonas-prosecution/</link>
@@ -3551,197 +3705,6 @@ I have both GLM &amp; Gemini in a subscription and see no reason for choosing GL
 <blockquote>Politics aside, Twitter&#x2F;X has become a bad place to share information on and to link to. It&#x27;s a bad option from a technical point of view.<p>We can&#x27;t read a multi-part tweet (or follow-ups from the author) or check the latest updates from an official account without an account, which requires a mobile phone number and sometimes extra verifications. A digital &quot;town square&quot; can&#x27;t require an account and a phone number to read what&#x27;s said there.<p>Same with Instagram, Facebook, Threads, Linkdin, etc.</blockquote>
 <p><strong>Top #3</strong> — <em>SoKamil</em>:</p>
 <blockquote>It would be nice if URL schema was compatibile with X. In case of Nitter, I could’ve just replaced x.com with xcancel.com with a web extension and URL still works.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>GLM-5.3-Flash</title>
-      <link>https://z.ai/blog/glm-5.3-flash</link>
-      <guid isPermaLink="false">hn3-49449507</guid>
-      <pubDate>Wed, 26 Aug 2026 14:08:50 +0000</pubDate>
-      <description>815 points, 406 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://z.ai/blog/glm-5.3-flash"><strong>→ Article</strong></a> <small>(z.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49449507">→ HN comments</a> &nbsp;·&nbsp; 815 points &nbsp;·&nbsp; 406 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mmastrac</em>:</p>
-<blockquote>Weights on HF here: <a href="https:&#x2F;&#x2F;huggingface.co&#x2F;zai-org&#x2F;GLM-5.3-Flash" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;zai-org&#x2F;GLM-5.3-Flash</a><p>I decided to take the plunge and get myself four sparks at a decent price (and bought the QSFP cables from AliExpress because they are literally 1&#x2F;2 the price of Amazon), even knowing Apple was going to release new hardware and there&#x27;s probably a spark 2 on the horizon. It looks like this is going to be a decent fit for what I need. I&#x27;ve been experimenting with a two-node DS4 and it&#x27;s _good_ at some tasks, but it really just spins its wheels when it hits the limit of what it can reason through.<p>I can offload mundane&#x2F;basic tasks to DS4 on two sparks, but I&#x27;ve been pushing it harder on some novel work and it just can&#x27;t run on its own at all beyond a certain complexity level.<p>I would love to see an Opus-4.8-level local model but TBH I just haven&#x27;t got there yet. The models I&#x27;ve tried so far _are_ good but they aren&#x27;t able to solve tough technical challenges, regardless of harness&#x2F;prompting&#x2F;etc.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>comandillos</em>:</p>
-<blockquote>I am surprised. I&#x27;ve been using DS4 Flash (0731) for weeks now and it works perfectly fine as a replacement for Claude in a large variety of cases. It requires a few more iterations, sure, but it&#x27;s useful enough to not need a Claude subscription anymore. Among the things I do I&#x27;ve been reverse engineering, writing complex C++ code...</blockquote>
-<p>↳ reply 2 — <em>metadat</em>:</p>
-<blockquote>Qwen 3.8 27B is around Opus 4.8 level of capability on the Agentic Intelligence Index (52 vs 57).  In my testing the locally hosted Qwen is good enough that looking at a given piece of work output I couldn&#x27;t tell you which model was behind it.<p><a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;qwen3-8-27b?models=gpt-5-6-luna%2Cclaude-opus-5%2Cglm-5-3%2Cgpt-5-6-sol%2Ckimi-k3%2Cqwen3-8-27b%2Cclaude-opus-4-8" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;qwen3-8-27b?models=gpt-...</a></blockquote>
-<p>↳ reply 3 — <em>satvikpendem</em>:</p>
-<blockquote>Sparks don&#x27;t have enough memory bandwidth, for the same 20k you&#x27;re better off buying RTX or Apple M5 Ultra machines.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>guybedo</em>:</p>
-<blockquote>although i initially thought it didn&#x27;t make sense financially to run this kind of model locally, i did run the numbers and for heavy users this could justify buying $10k worth of hardware with a ROI over a few months, less than a year.<p>I was looking at my token usage, mostly from subsidized codex&#x2F;grok subscriptions and i&#x27;m a somewhat heavy user. The thing is i would actually use even more tokens if it wasn&#x27;t for the weekly quotas.<p>In the end, with a $10k investment and running this kind of model, estimating a 2x increase in token usage because i wouldn&#x27;t have weekly quotas and comparing to glm api prices, this thing could pay for itself in less than a year.<p>Obviously i&#x27;m paying subscription price right now, so the math doesn&#x27;t work. Although using local ai removes all weekly quotas. Keep a subscription to have access to frontier models for planning work, and local hardware + glm-5.3 flash for implementation, e2e testing, qa work 24&#x2F;7.<p>It&#x27;s not that crazy of an idea and the numbers aren&#x27;t that bad.</blockquote>
-<blockquote>
-<p>↳ reply — <em>minraws</em>:</p>
-<blockquote>You aren&#x27;t going to get nearly as much token usage locally from DGX Sparks or even M5 Ultra (though it might be close, unsure would need to get my mittens on it to clarify).<p>You will get around 2-4 concurrent streams of aggregate tokens at best for such a model and around 0.5B output tokens per month assuming you use loops and run it when you are sleeping. That&#x27;s 500 (per mill) * 0.5$ = 250$ only at most.<p>Then there is maintanence and efficiency costs due to electricity usage and such, any down time, etc.<p>You will be lucky if you can squeeze more than 200$ of value out of it in a month.<p>I don&#x27;t think people should buy local hardware for money reasons, by the time you will pay off a 10K USD machine, 2-3K USD machine will catch up and beat it by a significant margin.<p>Unless your expectation is that we will be in hardware winter for the next 10+ years. At 200$ per month it will take around 200 * 50 = 10k, that is, 50 months, so around 4-5 years.<p>Again assuming you are making the most of your hardware somehow, very hard to do in practice.<p>I don&#x27;t recommend people to use compute as investment or payoff thing, but if you have the money to burn and can afford it why not, maybe with some software optimizations it will be cheaper but then again Z.ai is currently offering 50% discount and providers will offer cheaper rates for sure.<p>But either way you will never be able to burn more than 200$ worth of token on a cheap hardware device, because inference becomes more profitable the more you scale it up, you have separate prefill and decode engines&#x2F;systems, and a lot of nuance, but assume for every 10x increase in infra you increase margins by 5-10%.<p>So from 10K to 100K to 1M to 10M to 100M.. I don&#x27;t think this curve continues beyond 100M but I have no idea about that scale unless some AI lab is interested in hiring me lol.<p>So a 100M infra will have ~30% better margins than you at 10K, then there is software optimizations but that&#x27;s cheap enough, though some of it is only viable at scale.<p>Either way assume 10K is the price of privacy if you really want to buy it. Don&#x27;t worry about making the most out of the usage, you will always be in a net loss but I would assume for you 10K doesn&#x27;t matter.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>matheusmoreira</em>:</p>
-<blockquote>You guys read Z.ai&#x27;s terms of service, right?<p>Broad and perpetual license over inputs and outputs, and even your name and profile picture.<p>Vague prohibitions on whatever may harm Z.ai’s &quot;interests&quot; or even the &quot;national interests&quot; of any country.<p>Vague prohibitions on &quot;disturbing&quot; or &quot;inappropriate&quot; content, whatever that is.<p>Vague prohibitions on discussing Z.ai, even my posting this comment violates it.<p>Can ban you if you, in the &quot;sole and absolute opinion&quot; of Z.ai, have violated these broad terms, and if you paid for the discounted yearly plan kiss your money goodbye.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>glub</em>:</p>
-<blockquote>&gt; Can ban you if you, in the &quot;sole and absolute opinion&quot; of Z.ai, have violated these broad terms.<p>OpenAI revoked my Cyber verification, along with many others, asked to reverify (i.e. give my biometric information to Persona), had me do it 8 times, just to find out several days later that they silently implemented a nationality whitelist, and my nationality didn&#x27;t make it (and no, it&#x27;s not a sanctioned country).<p>Their support says they can&#x27;t look into anything or do anything, and their public spokespersons on X deny everything.<p>I get tons of cyber refusals now (lots of reverse engineering), so it&#x27;s only matter of time when my account is going to get banned.<p>At least Z.AI is being honest here. And no provider other than OAI&#x2F;ANT had me submit my biometric information just to use Ghidra.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>matheusmoreira</em>:</p>
-<blockquote>&gt; just to find out several days later that they silently implemented a nationality whitelist, and my nationality didn&#x27;t make it (and no, it&#x27;s not a sanctioned country)<p>How did you discover this?<p>I opened the Persona tab once, closed it and the tab never opened ever again. &quot;Precheck failed&quot;.<p>What countries are banned? I&#x27;m from Brazil.<p>I went as far as initiating an LGPD (brazilian GDPR) process against them due to this. At some point I got it in writing that I&#x27;m allowed to make a new account and try again. Until now I was assuming it was just some weird account state. If I&#x27;m banned from TAC due to my nationality that&#x27;s seriously disgusting...</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>glub</em>:</p>
-<blockquote>When they initially revoked TAC for a bunch of users due to a &quot;technical error&quot;, the TAC verification flow opened a Persona iframe where you select the document country first. I was able to select it there (Georgia, in my case), went through the entire flow, and then got locked out after 8 attempts. Persona itself was successful end to end, so it failed somewhere on the OAI side. Other users then started reporting the exact same issue on the OpenAI forum.<p>A week later, I tried testing the TAC flow on my SO&#x27;s account, which had never had a TAC attempt before. Selecting Georgia in the Persona iframe now says, &quot;We are unable to verify identities in this country.&quot;<p>But I know this isn&#x27;t a Persona limitation, as I verified with Anthropic using Persona the same day.<p>So what I think happened was this: OpenAI silently implemented a country whitelist on their end and revoked TAC for affected individuals who already had it, calling it a &quot;technical issue&quot;. They forgot to disable those countries in Persona, so everyone just got a cryptic error. Then they disabled them in Persona too.<p>Interaction with support was AI with human names, which essentially just repeats what you said. And it ended with:<p>&gt; I’m unable to provide additional details about verification outcomes, and Support cannot manually override the result. At this time, Trusted Access for Cyber verification does not support retries or appeals.<p>I even provided them my credentials, and support AI was basically: lol wat we&#x27;re here to check technical errors, your credentials are of no relevance.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>microtonal</em>:</p>
-<blockquote>The model is MIT-licensed, so run it on any of the non-Chinese inference providers that will host it in a few days.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Access to Urban Woodlands Linked with Lower Use of Antidepressants</title>
-      <link>https://e360.yale.edu/digest/scotland-woodlands-antidepressants</link>
-      <guid isPermaLink="false">hn3-49449128</guid>
-      <pubDate>Wed, 26 Aug 2026 13:48:03 +0000</pubDate>
-      <description>135 points, 16 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://e360.yale.edu/digest/scotland-woodlands-antidepressants"><strong>→ Article</strong></a> <small>(e360.yale.edu)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49449128">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 16 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ossicones</em>:</p>
-<blockquote>There&#x27;s a strange contradiction in the findings, even just those in the abstract. When they look across individuals and try to predict antidepressant use based on exposure to woodlands, they find <i>higher</i> use among those who live closer to woodlands. It&#x27;s only when they look at individual trajectories that they see reduced antidepressant use lining up with periods where they lived closer to woodlands.<p>It&#x27;s almost like the same type of people who use antidepressants also like to live near woodlands. And they get depressed when they don&#x27;t live near woodlands.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dmicah</em>:</p>
-<blockquote>In the abstract they argue that this is because the woodland improvement program located woods in socioeconomically deprived areas. But in general they shouldn&#x27;t be making any causal claims with observational data like this. It&#x27;s a frequent problem that popular press takes a study and reframes an association as causation for their story.</blockquote>
-<p>↳ reply 2 — <em>galleywest200</em>:</p>
-<blockquote>Could be that woodlands grow better in areas with more rain and thus less sun and thus more cases of seasonal depression?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>AnthonBerg</em>:</p>
-<blockquote>My catchprase as of late: <i>Everything is pulmonary</i>.<p>Apropos of nothing.<p><a href="https:&#x2F;&#x2F;www.ahajournals.org&#x2F;doi&#x2F;abs&#x2F;10.1161&#x2F;01.res.50.3.325" rel="nofollow">https:&#x2F;&#x2F;www.ahajournals.org&#x2F;doi&#x2F;abs&#x2F;10.1161&#x2F;01.res.50.3.325</a></blockquote>
-<p><strong>Top #3</strong> — <em>ElijahLynn</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;www.thelancet.com&#x2F;journals&#x2F;lanplh&#x2F;article&#x2F;PIIS2542-5196(26)00076-8&#x2F;fulltext" rel="nofollow">https:&#x2F;&#x2F;www.thelancet.com&#x2F;journals&#x2F;lanplh&#x2F;article&#x2F;PIIS2542-5...</a><p>The study, linked to from the article.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ElijahLynn</em>:</p>
-<blockquote>&gt; Findings
-A total of 129 335 adults were included in the final sample. In the cross-sectional, between-individual analysis, we observed a greater risk (adjusted odds ratio [aOR] 1·10 [95% CI 1·03–1·20] p&lt;0·05) of antidepressant prescription for those living within 800 m (approximately 10-min walk) of an improved woodland compared with those living further away, but no significant difference in the risk of anxiolytic prescription. In the longitudinal, within-individual analysis, we observed lower prescription use for antidepressants (aOR 0·90 [95% CI 0·87–0·93] p&lt;0·01) and anxiolytics (aOR 0·94 [0·90–0·99] p&lt;0·01) during periods spent living within 800 m of an improved woodland when compared with periods spent living beyond 800 m of an improved woodland.</blockquote>
-<p>↳ reply 2 — <em>hungryhobbit</em>:</p>
-<blockquote>This is only the most recent of many studies into this, eg. <a href="https:&#x2F;&#x2F;pmc.ncbi.nlm.nih.gov&#x2F;articles&#x2F;PMC5663018&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pmc.ncbi.nlm.nih.gov&#x2F;articles&#x2F;PMC5663018&#x2F;</a><p>&gt; There is an urgent global need for accessible and cost-effective pro-mental health infrastructure. Public green spaces were officially designated in the 19th century, informed by a belief that they might provide health benefits. We outline modern research evidence that greenspace can play a pivotal role in population-level mental health.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>France reaches 94.9% fiber coverage in 2026</title>
-      <link>https://cartefibre.arcep.fr</link>
-      <guid isPermaLink="false">hn3-49448872</guid>
-      <pubDate>Wed, 26 Aug 2026 13:32:35 +0000</pubDate>
-      <description>296 points, 219 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://cartefibre.arcep.fr"><strong>→ Article</strong></a> <small>(cartefibre.arcep.fr)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49448872">→ HN comments</a> &nbsp;·&nbsp; 296 points &nbsp;·&nbsp; 219 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>oliwarner</em>:</p>
-<blockquote>It&#x27;s pretty insane. Our family has a holiday home in a fairly mountainous region in central-southern France. Dwindling population, no major tourist activity, wine production.<p>We&#x27;d long suffered the worst imaginable 56k but in 2018, the local ISP just ran fibre out to <i>everyone</i>. I think the current service is cheaper than the 56k was too, and far cheaper than any of the 4&#x2F;5G options back then.<p>What I mean (vis á vis insane) is that they&#x27;ll have routed about a kilometre of fibre over several dozen poles, up a mountain just for our house. And the same for all the equally rural neighbours miles around. The return on this is deeply social. Our area is never going to generate the return on internet alone, and that&#x27;s nice.<p>France does a lot of getting-shit-done-by-subsidy. The roads around Paris need some attention but they nailed internet hard. I wonder how far they blew their original €20bn budget. The Wikipedia page hasn&#x27;t had a decent financial update since 2017. <a href="https:&#x2F;&#x2F;fr.wikipedia.org&#x2F;wiki&#x2F;Plan_France_Tr%C3%A8s_Haut_D%C3%A9bit" rel="nofollow">https:&#x2F;&#x2F;fr.wikipedia.org&#x2F;wiki&#x2F;Plan_France_Tr%C3%A8s_Haut_D%C...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>basilgohar</em>:</p>
-<blockquote>A lot...and I mean a LOT of money...is wasted on things that benefit only a very, very small percentage of elite people in ways that don&#x27;t translate to benefits to the larger society or regular people.<p>What&#x27;s so wrong if something is done to benefit the regular people once in a while?<p>One may argue that this also isn&#x27;t helping &quot;regular people&quot; but I mean the subsidy aspect in particular. I mean, oil companies in the US are subsidized, for God&#x27;s sake. Most of the most profitable businesses in the US are subsized heavily and that&#x27;s part of how they became so profitable. Corporate welfare is not shunned but spend money on the common man and you have protests and politicians up in arms for wastage...</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>BrandoElFollito</em>:</p>
-<blockquote>&gt; very small percentage of elite people<p>Except when these &quot;elite&quot; people are inhabitants of a lost hole in the middle of the Creuse and suddenly all children can access Internet in a civilized way. The same way the true elites in Paris have done for some time already.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>zem</em>:</p>
-<blockquote>I think you misunderstood the comment you are replying to - they are arguing that running fibre to rural communities is a <i>good</i> use of subsidies, and contrasts pleasantly with the usual sort of subsidy that only a few large corporation owners really benefit from.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>throw101010</em>:</p>
-<blockquote>&gt; Our area is never going to generate the return on internet alone, and that&#x27;s nice.<p>The time scale for optical fibers&#x27; profitability is much longer than copper. The media itself is passive, cheap to maintain, and easy to upgrade by lighting more fibers or moving to newer PON standards. That&#x27;s why operators often overbuild the fiber count per home on purpose, something they would rarely do with copper (the time scale and upgradability being more limited by the intrinsic properties of the medium).<p>Fibering up a mountain becomes more rational once you view it as a 40+ year asset with very low upgrade cost (for the medium itself, not the equipment connected to it). Not a 10-year ROI project like copper often was. And even more rational when you can get subsidies by governments which are usually eager to develop the economical activity in regions that otherwise would have little to no opportunity to grow significantly.</blockquote>
-<p>↳ reply 3 — <em>ruined</em>:</p>
-<blockquote>&gt;Our area is never going to generate the return on internet alone<p>for the isp? maybe.<p>for the gdp? well, i imagine that a lot of highly paid remote labor would love to be located in rural France.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nsbk</em>:</p>
-<blockquote>Spain is at 96.79% (June 2025), up from 94.79% a year before. See [0]<p>I think France and Spain are the best of the big European countries regarding coverage, but also adoption: If we look at the adoption ranking globally, Spain sits fourth at 90%, behind the UAE, China and South Korea and ahead of France at 83.6%.<p>Very few European countries convert coverage into subscriptions that efficiently, and I think it&#x27;s driven by competition. You can get 500Mb symmetric connection for as little 10 euro [1], 20 for 2Gbps. DIGI has just gone crazy and in their own network they are offering symmetric 10Gbps for 25. Most people I know have 1Gbps because when is that not enough?<p>[0]: <a href="https:&#x2F;&#x2F;digital.gob.es&#x2F;en&#x2F;telecomunicaciones-infraestructuras-digitales&#x2F;areas-interes&#x2F;banda-ancha&#x2F;informacion-cobertura" rel="nofollow">https:&#x2F;&#x2F;digital.gob.es&#x2F;en&#x2F;telecomunicaciones-infraestructura...</a><p>[1]: <a href="https:&#x2F;&#x2F;www.digimobil.es&#x2F;fibra-optica&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.digimobil.es&#x2F;fibra-optica&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>alerighi</em>:</p>
-<blockquote>In Italy we are at 78% of addresses covered. That doesn&#x27;t mean automatically that one gets fiber. First at all, if someone doesn&#x27;t need to download heavy stuff and has a good coverage a 5G SIM with unlimited data (something you can get for 10&#x2F;15 euros a month) is cheaper than a fiber connection (that starts from 25 euros).<p>Second a lot of people has still FTTC even if it has FTTH, mostly because FTTC offers a speed that is enough for most people (100Mbit&#x2F;s) and upgrading may have costs (the installation of the fiber is at the expense of the ISP, but if you need to make modifications, such as put a pipe from your house to the street in which they will put the fiber, it&#x27;s at your expense). In some cases even if fiber is present it&#x27;s difficult&#x2F;not possible to get it into your house (for example you live in a condo and the other tenants doesn&#x27;t want to spend money to make the modifications that are needed to pass the wires).<p>In any case they have started to switch off copper (since it costs money to maintain an infrastructure that has decades), so either way customers will be forced to move to fiber or 5G network in the upcoming years. In any case a fault on a copper line is likely not to be repaired...</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>epistasis</em>:</p>
-<blockquote>&gt; a 5G SIM with unlimited data (something you can get for 10&#x2F;15 euros a month) is cheaper than a fiber connection (that starts from 25 euros).<p>These sorts of prices are unheard of in the US, so incredibly low.<p>Something has gone deeply wrong with US telecommunications.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>manacit</em>:</p>
-<blockquote>You can use any one of many MVNOs to get unlimited data for around that price, say less adjusted for household income, in the USA.<p>A favorite of mine is <a href="https:&#x2F;&#x2F;www.usmobile.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.usmobile.com&#x2F;</a> which is $25&#x2F;mo list price (and less if you pay for the year, or if they&#x27;re having a sale) which will give you Unlimited Data and 1GB a month of global roaming data<p>If you pay $45 you can get unlimited data from Mint for $15&#x2F;mo: <a href="https:&#x2F;&#x2F;www.mintmobile.com&#x2F;plans&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.mintmobile.com&#x2F;plans&#x2F;</a><p>It&#x27;s not unheard of!<p>It&#x27;s actually the high speed internet at home that is less competitive - the prices in Europe are unheard of.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>telesilla</em>:</p>
-<blockquote>I spent time in the interior of Portugal that had fibre internet, it was very impressive and incredibly helpful to the village. Better payment services and banking for example.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>halestock</em>:</p>
-<blockquote>Meanwhile, <a href="https:&#x2F;&#x2F;arstechnica.com&#x2F;tech-policy&#x2F;2026&#x2F;08&#x2F;fcc-abolishes-gigabit-speed-goal-suggesting-it-is-unfair-to-slower-technologies&#x2F;" rel="nofollow">https:&#x2F;&#x2F;arstechnica.com&#x2F;tech-policy&#x2F;2026&#x2F;08&#x2F;fcc-abolishes-gi...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pbkompasz</em>:</p>
-<blockquote>FCC abolishes gigabit speed goal, suggesting it is unfair to Musk&#x27;s Starlink</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dguest</em>:</p>
-<blockquote>FCC: high standards are unfairly prejudicial against subpar infrastructure.<p>&gt; The Carr FCC said last year that the gigabit goal “may be unreasonably prejudicial to technologies such as satellite and fixed wireless that presently do not support such speeds.”<p>I don&#x27;t know if this is so much a handout to Starlink, seems like a way to win the race by moving the finish line.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>micromacrofoot</em>:</p>
-<blockquote>it&#x27;s a regulatory change that opens up fiber infrastructure money for other uses, so it certainly is another Starlink handout, in addition to the hundreds of millions of dollars they&#x27;ve already received from taxpayers<p>though if we want to be fair, the competition is other telecoms that were also abusing the handouts until very recently</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>newhotelowner</em>:</p>
-<blockquote>Previous admin allocated a good chunk to upgrade to fiber network. Provider can claim 25% of installation cost. Frontier has been using it. I heard it&#x27;s about to run out.<p>Their workers were staying at my hotel, and putting fiber in my community. It was fascinating how frontier practically hires contractor to lay down pipes, and another contractor to pull the fiber, and another contractor to splice it and another contractor to run fiber to the house, and another contractor to come and install in the house.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Meta reaches $17B settlement over social media harms to children</title>
-      <link>https://www.reuters.com/world/us/meta-settles-with-us-states-over-social-media-harms-2026-08-26/</link>
-      <guid isPermaLink="false">hn3-49448819</guid>
-      <pubDate>Wed, 26 Aug 2026 13:28:32 +0000</pubDate>
-      <description>466 points, 446 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.reuters.com/world/us/meta-settles-with-us-states-over-social-media-harms-2026-08-26/"><strong>→ Article</strong></a> <small>(reuters.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49448819">→ HN comments</a> &nbsp;·&nbsp; 466 points &nbsp;·&nbsp; 446 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>_ink_</em>:</p>
-<blockquote>Pay 25% from your 2025 profit for harming children since at least 2019 and be able to continue doing so. Sounds like a loss for society and a win for Meta.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>oneneptune</em>:</p>
-<blockquote>The article outlines several changes Meta is having to implement that curbs the &quot;and be able to continue doing so&quot; argument a bit. That said, I wish these settlements included tobacco-esque requirements for ongoing funds to educate people. The tobacco settlement funds have been somewhat successful.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bsimpson</em>:</p>
-<blockquote>Have they?<p>I know a lot of my peers went to college for free with the Millennium Scholarship.<p>But so many young people vape now that it&#x27;s becoming cool to smoke analog cigarettes.  I barely knew anyone who smoked 10-20y ago.  Many people that age now do.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Melatonic</em>:</p>
-<blockquote>Maybe you know different young people now ?<p>I saw way more smoking 10-20 years ago. All have quit now.<p>I see a good amount vape but rarely see cigarettes these days</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nerder92</em>:</p>
-<blockquote>&gt; META Total Annual Revenue in 2025: $200.97 billion (up from $164.50 billion in 2024).<p>They literally don’t care.</blockquote>
-<p>↳ reply 3 — <em>voakbasda</em>:</p>
-<blockquote>Is anyone the slightest bit surprised?   Our courts are no longer effective at bringing justice.  They only have the law, and the law flagrantly favors the rich and their pet corporations.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>slibhb</em>:</p>
-<blockquote>It&#x27;s been eye-opening to watch people fall for the &quot;social media is hurting the children&quot; scam.<p>The best and largest observational studies don&#x27;t show a strong correlation. Studies with an intervention are mixed&#x2F;the effect isn&#x27;t large. Extreme and compulsive social media use is bad, but it&#x27;s almost maybe always a symptom rather than a cause.<p>I saw the trailer for the new Facebook movie last weekend. It&#x27;s comical really; first people blamed Facebook for the 2016 election and now for their kids being depressed. It&#x27;s classic scapegoating.<p>What makes this worse is the irony: in the name of protecting children, we&#x27;re going to further reduce their freedom. And if there is single largest cause of children being depressed, I&#x27;d bet on &quot;lack of freedom&quot; over &quot;social media use&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>CJefferson</em>:</p>
-<blockquote>This is completely different to my experience and my reading of the research. Please link me to any of this research you are talking about.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>slibhb</em>:</p>
-<blockquote>Meta-analysis, very large, shows small correlation between unhappiness and social media use: <a href="https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamapediatrics&#x2F;fullarticle&#x2F;2819781" rel="nofollow">https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamapediatrics&#x2F;fullarticle&#x2F;...</a><p>Large AU observational study. Moderate social media use correlates to the happiest kids, high use and no use correlates to unhappiness: <a href="https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamapediatrics&#x2F;article-abstract&#x2F;2843720" rel="nofollow">https:&#x2F;&#x2F;jamanetwork.com&#x2F;journals&#x2F;jamapediatrics&#x2F;article-abst...</a><p>Swedish obervational study, after adjusting the data there was no correlation: <a href="https:&#x2F;&#x2F;www.jahonline.org&#x2F;article&#x2F;S1054-139X(26)00162-X&#x2F;fulltext" rel="nofollow">https:&#x2F;&#x2F;www.jahonline.org&#x2F;article&#x2F;S1054-139X(26)00162-X&#x2F;full...</a><p>I can&#x27;t find the specific inverventional study I mentioned. As I recall, it was mixed but possibly I remembered wrongly.<p>Some studies do show a significant correlation between unhappiness and social media use, but causation has not been established and the bigger, better done studies have weaker correlations. People believe in causation because it suits their bias against social media.<p>I dislike social media but I doubt it&#x27;s harmful. This substack summarizes my view on what really makes children unhappy: <a href="https:&#x2F;&#x2F;substack.com&#x2F;home&#x2F;post&#x2F;p-186087964" rel="nofollow">https:&#x2F;&#x2F;substack.com&#x2F;home&#x2F;post&#x2F;p-186087964</a> (school). I&#x27;d guess that lack of freedom is what makes school so awful; modern schools are like little totalitarian states, where every minute of your day is accounted for and there is no privacy.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jrflowers</em>:</p>
-<blockquote>“There are studies that do not line up with my opinion but they aren’t as good as the studies that do” lol</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>tsss</em>:</p>
-<blockquote>I know that it&#x27;s hurting me. Hard to imagine that children are any less affected by it.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>NalNezumi</em>:</p>
-<blockquote>&gt;Meta will impose daily usage limits and restrict nighttime usage by children  who use Facebook and Instagram, and enhance measures to prevent children from accessing age-restricted content<p>So meta won.<p>The only thing I&#x27;m asking for is better control over my social media. Let me remove infinite scroll on Instagram and don&#x27;t show me things I have explicitly followed on Facebook. And do this setting by default and a cigarette like warning pop-up when you try to enable the algorithms.<p>(I know you can do this with custom apps and I&#x27;m doing that but you have no clue how many non tech people beg me to share how and then cop out when they learn you have to download custom apk. Just add these functionalities as an default )</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>phyzix5761</em>:</p>
-<blockquote>As someone who doesn&#x27;t use social media please explain. Is it not possible for people to just delete the apps and stop using them? Is the addiction so strong at this point that people don&#x27;t have the willpower to stop?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>alastairr</em>:</p>
-<blockquote>You describe the apps as though they are recreational drugs with no other purpose but to produce endorphins. These &#x27;apps&#x27; have a high level of utility - which is, I imagine, why most start to use them in the first place.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>cuu508</em>:</p>
-<blockquote>The utility is not of existential importance. Yes, you can uninstall Facebook, Instagram and WhatsApp, and the sky will not fall, life will just go on.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>pj_mukh</em>:</p>
-<blockquote>&quot;I know you can do this with custom apps and I&#x27;m doing that but you have no clue how many non tech people beg me to share how&quot;<p>Wait...I&#x27;m in tech and I&#x27;m begging you to share how. Is there a way on iOS?<p>I&#x27;ve mostly just stopped using these apps.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
