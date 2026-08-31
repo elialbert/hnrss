@@ -4,7 +4,343 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 31 Aug 2026 08:32:34 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 31 Aug 2026 16:59:58 +0000</lastBuildDate>
+    <item>
+      <title>Breaking Claude Code Opus 5 Auto Mode</title>
+      <link>https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/</link>
+      <guid isPermaLink="false">hn3-49506819</guid>
+      <pubDate>Mon, 31 Aug 2026 07:49:18 +0000</pubDate>
+      <description>285 points, 91 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/"><strong>→ Article</strong></a> <small>(embracethered.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49506819">→ HN comments</a> &nbsp;·&nbsp; 285 points &nbsp;·&nbsp; 91 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>andai</em>:</p>
+<blockquote>&gt;But it runs that decoder inside the attacker-controlled directory (unzipped archive)<p>&gt;There a malicious struct.py shadows Python’s standard implementation<p>I ran into this myself, where some file I had given a random name turned out to shadow some Python standard library module, giving me the weirdest startup crash ever.<p>That definitely doesn&#x27;t seem to me like how that should be designed, magically silently importing everything you see and overriding basic functionality.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>DanielHB</em>:</p>
+<blockquote>Claude ran npm update (update all dependencies to the latest version compatible with the semver specified) in my repo without telling me when trying to fix some problems. Given that only updates the dependency lock-file I didn&#x27;t notice and it caused several hours of debugging for me.<p>It is quite sneaky how LLM output can sometimes bypass human verification like that. No one is going around checking every single line change in auto-generated files. Someone could easily sneak a malicious dependency in there through some online tutorial that the LLM searches for.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kouteiheika</em>:</p>
+<blockquote>&gt; No one is going around checking every single line change in auto-generated files.<p>There&#x27;s a simple fix for your particular case: commit your lock fine (which you should do) and always review the diff (which you should also do). (:</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>eterm</em>:</p>
+<blockquote>You&#x27;ve made me realise a good signal for bug hunting: Search repos with lock files listed in their .gitignore.<p>It&#x27;s the sort of terrible practice that someone might be frustrated into taking after a nasty merge conflict, and signals a willingness to cut corners.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ricardobeat</em>:</p>
+<blockquote>It is kind of crazy that Python allows shadowing standard library modules so easily. If this was a &#x27;feature&#x27; in node.js it would have been front-paged and bashed to death in the blink of an eye.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>rcxdude</em>:</p>
+<blockquote>I would not really call this a prompt injection attack, since it doesn&#x27;t really hijack the agent to become malicious (something the article does discuss later on). It&#x27;s more a trojan that&#x27;s aimed at tricking Claude specifically.</blockquote>
+<blockquote>
+<p>↳ reply — <em>bjackman</em>:</p>
+<blockquote>Yeah I jumped on this quite excitedly but it&#x27;s not prompt injection at all.<p>To be fair to the authors they don&#x27;t actually say it is. But then they contrast it with the &quot;0.00% prompt injection attack success rate&quot;.<p>The upshot is kinda the same - this is still evidence that we should be sandboxing our agents. But it doesn&#x27;t actually challenge Anthropic&#x27;s &quot;our models are too clever to prompt-inject&quot; vibe.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ipython</em>:</p>
+<blockquote>But Anthropic themselves are the ones who made the equivalence of &quot;0.00% prompt injection attack success rate == auto-mode is safe&quot;<p>The tweet literally says: &quot;turns out you can get indirect prompt injection to ~0 on unseen attacks... <i>auto mode is default in claude code as of next week</i>&quot;<p>Making the assertion, quite clearly in my opinion, that the <i>reason</i> auto mode is default is <i>because</i> he feels the lack of successful prompt injection attacks makes auto mode safe. This blog post proves that you can break auto mode&#x27;s safety, even if it&#x27;s not technically through a textbook indirect prompt injection attack.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>colinmarc</em>:</p>
+<blockquote>What&#x27;s interesting to me about this is that it targets Claude&#x27;s specific tics. Anthropic has created model that reliably reaches for the same tools (yes, and phrases; `python -c` is a load-bearing tool for it). Everyone gets the same model, so by learning the model&#x27;s behavioral patterns you can target it better.</blockquote>
+<blockquote>
+<p>↳ reply — <em>throwawayffffas</em>:</p>
+<blockquote>Kimi and GLM reliably run python to do stuff as well.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>andai</em>:</p>
+<blockquote>If my memory serves me so do GPT and Deepseek. So I&#x27;m not sure if this attack is Claude specific at all.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>A 12TB Steam “teraleak” spills more than a decade of lost PC gaming history</title>
+      <link>https://arstechnica.com/gaming/2026/08/a-12tb-steam-teraleak-spills-more-than-a-decade-of-lost-pc-gaming-history/</link>
+      <guid isPermaLink="false">hn3-49506182</guid>
+      <pubDate>Mon, 31 Aug 2026 06:10:44 +0000</pubDate>
+      <description>320 points, 58 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arstechnica.com/gaming/2026/08/a-12tb-steam-teraleak-spills-more-than-a-decade-of-lost-pc-gaming-history/"><strong>→ Article</strong></a> <small>(arstechnica.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49506182">→ HN comments</a> &nbsp;·&nbsp; 320 points &nbsp;·&nbsp; 58 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>haunter</em>:</p>
+<blockquote>Yeah the long forgotten Steam release of League of Legends is also in the files (it was only available for like 5 months)<p>Might not be the most interesting game in the leak but old versions of live service games are almost impossible to come by<p><a href="https:&#x2F;&#x2F;steamdb.info&#x2F;app&#x2F;20590&#x2F;" rel="nofollow">https:&#x2F;&#x2F;steamdb.info&#x2F;app&#x2F;20590&#x2F;</a><p>Downloaded it to extract all the old assets but it still needs an encrypted depot key<p>&gt;error!! -- extract: missing depot key!, pass --key if you know it though<p>Some people reported that &quot;--key 0000000000000000&quot; or &quot;--key 0&quot; works on some depots... well not here</blockquote>
+<p><strong>Top #2</strong> — <em>austin-cheney</em>:</p>
+<blockquote>I did not know what to look for, so I looked at the list to see what is in there and had no idea what I was looking at.  I am making a lot of assumptions and don&#x27;t know how any of this works.<p>* It appears the dats_dates.txt file is a list of depot item contents string sorted by depo numeric identifier.<p>* It also appears the depo identifier is the first underscore separated value on a given line<p>* It seems the more popular artifacts are referenced multiple times in the list due to the quantity of contents and versions associated with a given depo<p>All of that could be wrong, but nonetheless I wrote a small 2minute Node.js script to analyze the list.  It takes about 0.03 seconds to execute, on my machine anyways, and produces as output a list of depo identifiers sorted by the frequency in which those identifiers occur in the dats_date.txt file.<p>These identifiers do not always resolve to a game title using the steamdb.info site but several do.  Because though because steamdb.info applies rate limiting and then a temporary IP address block.<p><a href="https:&#x2F;&#x2F;gist.github.com&#x2F;prettydiff&#x2F;fe1456dbd458b8a376961f4f658c76d5" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;prettydiff&#x2F;fe1456dbd458b8a376961f4f6...</a></blockquote>
+<p><strong>Top #3</strong> — <em>vivzkestrel</em>:</p>
+<blockquote>- would be nice to see ubisoft game source codes leak for their 20 yr old games which they have completely abandoned at this point</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>uv: Deduplicate all files in the wheel cache</title>
+      <link>https://github.com/astral-sh/uv/pull/21327</link>
+      <guid isPermaLink="false">hn3-49506142</guid>
+      <pubDate>Mon, 31 Aug 2026 06:03:02 +0000</pubDate>
+      <description>168 points, 83 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/astral-sh/uv/pull/21327"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49506142">→ HN comments</a> &nbsp;·&nbsp; 168 points &nbsp;·&nbsp; 83 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>notatallshaw</em>:</p>
+<blockquote>As a pip maintainer, I&#x27;ve long been looking at the tradeoffs of uv&#x27;s cache, it&#x27;s the biggest item that makes warm installs faster for uv vs. pip. As pip caches the original distributions and then has to unzip them each time, uv caches the unzipped distribution and hard links to it if it can.<p>But it has always had two major issues:<p>1. No way to reproduce exact distributions for a &quot;download&quot; command (there is no uv equivalent of &quot;pip download&quot;)<p>2. For people with a lot of different environments the cache grows significantly more than pip<p>I&#x27;m interested to see, at least anecdotally, if this significantly improves 2, then we can perhaps have a two layer caching strategy without the significant disk space cost.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>user5994461</em>:</p>
+<blockquote>Also as a pip contributor. The only advantage of uv is to have support for parallel async extraction. If pip extracted multiple files&#x2F;wheels in parallel without being blocked by the GIL, pip could easily match or outcompete uv.<p>I&#x27;m personally not looking forward to any deduplication&#x2F;hardlink in pip. Hardlinks are very dangerous and system dependent.<p>It&#x27;s very dangerous for empty files (init.py, empty.log yet not written). When the user edits one file, all files are modified simultaneously, all venv ever created by the user can be broken by editing one file, which is quite catastrophic.<p>It&#x27;s also dangerous for small files with repeated content, for example random settings files that would contain a &quot;1&quot; or &quot;true&quot;. Again, when the user edits one file, all files are edited and they were supposed to be different!<p>Hypothetically, a simple deduplication of binary files (.dll .so) should achieve 50% of the savings without significant drawbacks<p>I&#x27;d venture to say that pip extraction is more optimized than uv in at least one way. We have optimization for empty files (0 bytes) because there is nothing to write and checksum. uv doesn&#x27;t seem to have the same optimizations, though I could be wrong, I just had a cursory look and my rust is not great. uv should probably review their treatment of empty files, it&#x27;s counter productive to do any file system operation open&#x2F;read&#x2F;write because there is no content, it might be counterproductive to use any cache&#x2F;comparison&#x2F;hardlink if it takes more operations than doing nothing.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>zanie</em>:</p>
+<blockquote>(I work on uv)<p>&gt; The only advantage of uv is to have support for parallel async extraction.<p>This isn&#x27;t true, the biggest speed ups are for the warm cases where we&#x27;ve already unpacked the files into the cache, as notatallshaw mentions above. We can also make low-level optimizations during resolution, e.g., in version parsing, that are not possible in pure Python code.<p>&gt; If pip extracted multiple files&#x2F;wheels in parallel without being blocked by the GIL, pip could easily match or outcompete uv.<p>I&#x27;m a bit confused by these claims about the GIL? The expensive IO operations release the GIL.<p>&gt; When the user edits one file, all files are modified simultaneously<p>This is why we default to reflinks or copy-on-write semantics when creating environments, not all file systems support it but it&#x27;s becoming more common.<p>&gt; Hypothetically, a simple deduplication of binary files (.dll .so) should achieve 50% of the savings without significant drawbacks<p>We also explored this (see <a href="https:&#x2F;&#x2F;github.com&#x2F;astral-sh&#x2F;uv&#x2F;pull&#x2F;19694" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;astral-sh&#x2F;uv&#x2F;pull&#x2F;19694</a>) and the linked pull request has a table comparing to this strategy.<p>&gt; We have optimization for empty files (0 bytes) because there is nothing to write and checksum.<p>Interesting, I would be very surprised if this made a significant difference? but I&#x27;ll take a look.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>user5994461</em>:</p>
+<blockquote>&gt; I&#x27;m a bit confused by these claims about the GIL? The expensive IO operations release the GIL.<p>FYI: The extraction of files is largely python code that doesn&#x27;t release the GIL. (cf. the zipfile class from the python interpreter has large layers of abstraction with a massive overhead in python code).<p>Regardless, python packages are thousands of tiny files, so pip never gets to release the GIL for any meaningful duration.<p>If you were writing an app that only extracted large GB files, you could take advantage of some I&#x2F;O operations and some zlib operations freeing the GIL for a bit. Unfortunately pip is the opposite use case, lots of tiny files.<p>&gt; Interesting, I would be very surprised if this made a significant difference? but I&#x27;ll take a look.<p>Optimizing empty files was actually quite worthwhile for pip, because about 10% of python packages are empty init files.<p>This might not give the same result for uv though. pip is fully linear, every single open&#x2F;read&#x2F;write&#x2F;stat operation we removed was a direct performance gain. uv does parallel async IO, you could very well remove 10% of filesystem calls and barely affect the overall duration. :D</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>zanie</em>:</p>
+<blockquote>You might be interested in taking a look at the `uv download` sketch I started on last week <a href="https:&#x2F;&#x2F;github.com&#x2F;astral-sh&#x2F;uv-dev&#x2F;pull&#x2F;875" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;astral-sh&#x2F;uv-dev&#x2F;pull&#x2F;875</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mark_l_watson</em>:</p>
+<blockquote>Nice improvement. For me, uv is the ‘Quicklisp for Python.’ uv just let me enjoy using Python like Quicklisp just makes Common Lisp nicer to use.<p>I have always been a Lisp devotee, but a few years ago when I started using uv, I then started seeing Python as a language I could really enjoy using so I put effort into making my Python dev setup nearly frictionless.</blockquote>
+<p><strong>Top #3</strong> — <em>TacticalCoder</em>:</p>
+<blockquote>&gt; deduplication at the file level: every file is now stored under its BLAKE3 hash<p>Blake3 is really a wonderfully fast cryptographic hash. I use it for my own &quot;deduplication &#x2F; integrity &#x2F; berzerker&quot; utility (which I made before LLMs were a thing).<p>If I&#x27;ve got a file named:<p><pre><code>    DSC98731-b3-7b39197a22.JPG
+</code></pre>
+then:<p><pre><code>    - if that file doesn&#x27;t checksum back to 7b39197a22 there&#x27;s a file integrity problem (amazing and it already helped me troubleshoot issues)
+
+    - if any other file has the same Blake3 7b39197a22 hash, it&#x27;s a duplicate
+
+    - if that 7b39197a22 checksum is in my database, &quot;things can happen&quot;.
+</code></pre>
+For example my DB can say &quot;any file with a Blake3 hash of 7b39197a22 can always be deleted&quot; or &quot;any file with a Blake3 hash of 887463c09e, if it&#x27;s got a generic filename like &quot;dscXXXXX&quot; can always be renamed to &quot;20260722jackJohnAtTheBeach-b3-778463c09e.jpg&quot; (or whatever suits you).<p>It&#x27;s really great (and I know several here independently made similar schemes) and Blake3 is an amazing hash for those kind of use.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Someone</em>:</p>
+<blockquote>For those wondering like me: Blake3 generates hashes of at least 224 bits, not, as a literal reading of that comment indicates, 40 bits (which would be bad for file deduplication, giving you a 50% hash collision after around a million files)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>TacticalCoder</em>:</p>
+<blockquote>Yup sorry if I mislead people. I usually use 10 hexdigits (40 bits) but no matter how many there are, it&#x27;s the x bits of the beginning of the checksum that are verified against the hash (in the examples I gave 40 bits).<p>I wasn&#x27;t very clear.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>pama</em>:</p>
+<blockquote>So at 3 million different files you have a 98.3% chance of a hash collision. Wouldnt that cause problems in real datasets?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>maeln</em>:</p>
+<blockquote>Another cool thing about BLAKE3 is that it is a merkle tree. Not only it allows for good parallelism, but it also has a lot of cool property for data transfer. For example, you can check for partial validity, which allow for streaming error-detection and resend during the transfer. You only need to have the data and checksum in a way that you can start to reconstruct one or more subtree.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OpenClaw 2.0, Accidentally</title>
+      <link>https://openclaw.ai/blog/openclaw-2-accidentally</link>
+      <guid isPermaLink="false">hn3-49505310</guid>
+      <pubDate>Mon, 31 Aug 2026 03:38:02 +0000</pubDate>
+      <description>135 points, 165 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://openclaw.ai/blog/openclaw-2-accidentally"><strong>→ Article</strong></a> <small>(openclaw.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49505310">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 165 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>layla5alive</em>:</p>
+<blockquote>Open claw: aka. open door to a remote privilege escalation potentially granting root access to your computer (and if you&#x27;re using it &quot;as intended&quot; possibly all of your email&#x2F;internet logins&#x2F;accounts, your credit card, etc.) to any text your model ingests from the internet...<p>It&#x27;s already true of LLMs in general that they represent a privilege escalation opportunity to any text they ingest. But with human in the loop, and a well-formed sandbox, the blast radius and risk are both reduced..<p>Convenience is the root of much evil.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>blcknight</em>:</p>
+<blockquote>The risk here is wildly overstated, prompt injection risk is becoming vanishingly small with the latest frontier models.<p>I would not run an OpenClaw with full access to my bitwarden, but it certainly has some logins available to it, and can make purchases with link-cli which has human-in-the-loop.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>chmod775</em>:</p>
+<blockquote>There must be a bulk discount on those mindcuffs, considering there&#x27;s a prompt injection or a related confused deputy story on HN every other day.<p>Literally from hours ago: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49506819">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49506819</a><p>Even if you believe that they can&#x27;t be tricked directly, consider that these things will happily build a small node.js app in the background just to fulfill some request, run npm install... and that might&#x27;ve already compromised you if you&#x27;re only somewhat unlucky.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tempodox</em>:</p>
+<blockquote>It&#x27;s the lethal trifecta on steroids, sold to you as a feature.<p>Together with your point about convenience, it&#x27;s the lethal quadfecta, as we can take the prevalence of convenience as a given.</blockquote>
+<p>↳ reply 3 — <em>LaurensBER</em>:</p>
+<blockquote>Not only is it unsecured root access to your computer, it also adds a thousand layers of &quot;security&quot; (which will break on every update) to pretend that it&#x27;s safe.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>maherbeg</em>:</p>
+<blockquote>This is pretty cool. I&#x27;ll wait to watch some videos on it, but I haven&#x27;t quite found a tool that is excellent for both single player and multi-player.<p>I&#x27;d like to have basically the Codex Desktop App &#x2F; Mobile app for my personal use, connected to local LLMs. But I&#x27;d also like to be able to have a shared space, where my family and I can work together to do things like plan trips. This would then store artifacts like our itinerary, ideas, html mini sites for the trip for us to work on and use together. Agents sit alongside us helping us plan and organize. Buzz is decent for this use case, but hasn&#x27;t fully nailed the mark.</blockquote>
+<p><strong>Top #3</strong> — <em>whinvik</em>:</p>
+<blockquote>I actually think I would like to use OpenClaw but everytime I go to the docs I give up.<p>It feels so intimidating. There&#x27;s so much stuff going on. Maybe it is good for agents who can just motor through that volume, but me personally, I would want something simpler, maybe an `OpenClaw-lite`</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>saratogacx</em>:</p>
+<blockquote>When I tried OpenClaw it quickly turned into a lethargic mess which I really didn&#x27;t see myself wanting to maintain long term.  I looked at other alternatives which were similar enough to do what I was looking for (mostly scheduled tasks using data on my computer and some API data).  I saw a mention of nanoclaw which I looked at but didn&#x27;t try personally.  I eventually settled on trying picoclaw[1] because it was extremely small, fast, and had enough features to do the job for me.  It is under 10mb, fairly straight forward go codebase, and works with multiple model providers or locally hosted.<p>1 <a href="https:&#x2F;&#x2F;picoclaw.io&#x2F;" rel="nofollow">https:&#x2F;&#x2F;picoclaw.io&#x2F;</a></blockquote>
+<p>↳ reply 2 — <em>ethbr1</em>:</p>
+<blockquote>OpenClaw is designed for people who are okay with &quot;Don&#x27;t worry about it&quot; being an acceptable answer to &quot;How does this work?&quot;<p>Which is why it&#x27;s so big with the PM&#x2F;PO-turned-vibe-coder crowd.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>P99 0 ms* autocomplete for 240M domain names</title>
+      <link>https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names</link>
+      <guid isPermaLink="false">hn3-49505219</guid>
+      <pubDate>Mon, 31 Aug 2026 03:20:33 +0000</pubDate>
+      <description>200 points, 74 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names"><strong>→ Article</strong></a> <small>(ruurtjan.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49505219">→ HN comments</a> &nbsp;·&nbsp; 200 points &nbsp;·&nbsp; 74 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>skybrian</em>:</p>
+<blockquote>This autocomplete suggests domains that don&#x27;t exist. You can just type garbage and it will suggest something, but then if you go there, there are no records.<p>It seems like one purpose of an autocomplete box is help you avoid typos, so that makes it less useful.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pul</em>:</p>
+<blockquote>Author here.<p>Yes, it will autocomplete the most popular domains first, then known registered domains, and then fall back to appending popular TLDs.<p>The reason is that it&#x27;s impossible to enumerate all domains. gTLDs (like .com, .info) mostly publish their zone files, but ccTLDs (like .cn, .de) usually don&#x27;t.<p>But maybe you&#x27;re right. After reading these comments, it&#x27;s clearly confusing to people.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>8organicbits</em>:</p>
+<blockquote>There are limits to how accurate you can make this. Zones like .xyz renew at 18%, so you&#x27;d expect 0.2% of those domains to expire without renewal each day. The tranco list is based on a 30 day look-back and I&#x27;ve seen a small percent of those domains lack name servers, even for the latest list.<p>Similarly, domains can be registered since the last time you downloaded your lists. So you never have a complete or accurate list.<p>I think it&#x27;s perfectly reasonable to suggest names that have recently expired or domains that could have been recently registered. The alternative requires an NS lookup.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bawolff</em>:</p>
+<blockquote>The autocomplete seemed to suggest real domains to me. If you typed in garbage it suggested the garbage plus a bunch of common TLDs - that seems like a reasonable choice to me. In any case, if your issue is the list of domains to suggest, its trivial to change that to a different list.</blockquote>
+<p>↳ reply 3 — <em>pierrefermat1</em>:</p>
+<blockquote>Yes, OP seems to have completely lost touch with what is actually useful vs optimizing metrics for the sake of it.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>chrismorgan</em>:</p>
+<blockquote>Using keyup makes <i>no</i> sense and is inconsistent with user expectations. For triggering actions (which includes normal typing), you only <i>ever</i> use keydown. (Well, there’s <i>one</i> exception for reasons unclear to me: activating a button by pressing Space. That triggers on keyup like how clicks are on release, while Enter triggers on keydown.) Keyup is limited to things where you’re constantly reacting to the state of a key, as is common in games.<p>This affects the functionality, too. It is in fact <i>introducing</i> latency by using keyup instead of keydown. Feels bad.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>danbruc</em>:</p>
+<blockquote><i>For triggering actions (which includes normal typing), you only ever use keydown.</i><p>I think you have this wrong, actions generally occur on button release, until that you can move the mouse cursor to a different target, tab to another control, use [ESC] to cancel, and so on. Typing, moving a slider with the cursor keys, and similar things that make use of key repetition while holding down the key are the exception to this.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>chrismorgan</em>:</p>
+<blockquote>I am speaking specifically of keyboards. For mice, it’s release. (When I made a similar comment two months ago on Lobsters when this article came up there, I mentioned this, but decided to leave it out this time, thinking the context was clear enough. I think I was wrong.)</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>okamiueru</em>:</p>
+<blockquote>If it matters, it seemed pretty clear to me. You&#x27;re also explicit about it, so I&#x27;m not sure how one would think you were referring to mouse input. Unless people type by clicking on a virtual keyboard? Benefit of the doubt can only stretch so far.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>hnlmorg</em>:</p>
+<blockquote>Key down is used for events that can be duplicated by holding the key. Eg in a text editor, when you want multiples of the same letters, you’d press and hold the key.<p>Key up is used for when it’s important to only have one occurrence of that event.<p>Technically you could write code that made key down only react once. But the logical separation makes some sense.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ViscountPenguin</em>:</p>
+<blockquote>Unfortunately this approach doesn&#x27;t feel that great down here in Australia, definitely a function of latency.<p>I think you could get a lot closer by framing this as an optimization problem, where you use the full alphabet dictionary, but add a residual prediction which aims to cover as much of the remaining domain name tree as possible <i>weighted by popularity</i>. This tree could then be pre-baked and stored with the same system. This would probably get you p99 0ms even in Australia.</blockquote>
+<blockquote>
+<p>↳ reply — <em>pul</em>:</p>
+<blockquote>Interesting, I didn&#x27;t think of that yet.<p>I think most people search for domains they own, which doesn&#x27;t correlate with Tranco popularity ranking. Treating &#x27;popularity&#x27; not as a function of visitors, but as a function of number of known domain names with that prefix could work, though.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Transfer files over an Ethernet patch cable</title>
+      <link>https://maurycyz.com/misc/etherfiles/</link>
+      <guid isPermaLink="false">hn3-49505217</guid>
+      <pubDate>Mon, 31 Aug 2026 03:19:42 +0000</pubDate>
+      <description>130 points, 139 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://maurycyz.com/misc/etherfiles/"><strong>→ Article</strong></a> <small>(maurycyz.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49505217">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 139 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>steve1977</em>:</p>
+<blockquote>People discovering that network cables can be used to network things. And then calling it a &quot;trick&quot; (I&#x27;m surprised it&#x27;s not a &quot;hack&quot; actually).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>puzzlingcaptcha</em>:</p>
+<blockquote>&quot;It&#x27;s possible to just connect two computers together with Ethernet&quot; - on the front page of hackernews. Incredible. Ethernet over USB4 interdomain protocol at least had some novelty, but this...</blockquote>
+<p>↳ reply 2 — <em>teeray</em>:</p>
+<blockquote>Some of my favorite content are those that are like “hey, there’s no magic here.” See also: all of Ben Eater’s videos.</blockquote>
+<p>↳ reply 3 — <em>concerned_user</em>:</p>
+<blockquote>Back in the day you needed a modified cable for this with RX&#x2F;TX swapped on one end but nowadays probably all nic chips have auto-detect so you can take a normal patch cable and do it.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>yjftsjthsd-h</em>:</p>
+<blockquote>I am 95% confident you don&#x27;t actually need to assign IPs. Do this:<p><pre><code>  # ping all link-local devices on an interface:
+  ping ff02::1%eth0
+</code></pre>
+And then do your socat&#x2F;rsync&#x2F;whatever to the only IP that responds.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>MayeulC</em>:</p>
+<blockquote>Oh, I had no idea you could perform such a &quot;broadcast&quot; ping on link-local addresses. Now, <i>that</i> is a nice trick that will save me some typing between computers.<p>mDNS &#x2F; Avahi is also great if the machine advertises itself: just use machinename.local after plugging it.<p>Though the interface needs to be configured for link-local addresses. In my experience, NetworkManager now periodically resets the link if it can&#x27;t get a DHCP server to respond. I understand the rationale, but it used to be simpler to plug into a headless machine and be confident that you could just ssh in.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>alright2565</em>:</p>
+<blockquote>&gt; just use machinename.local after plugging it.<p>If only :)<p>This should work, but glibc has a bug where it doesn&#x27;t support communicating a link-local scope ID in its name resolution subsystem. So you will have to first manually resolve the name, and then use the IPv6 LL address with scope ID directly.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>steve1977</em>:</p>
+<blockquote>I would assume so as well, I&#x27;m not sure if all host operating systems act the same though. But you could probably just wait a couple of seconds and the interfaces would have assigned themselves link-local addresses.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>1vuio0pswjnm7</em>:</p>
+<blockquote>&quot;I think it&#x27;s underappreciated for non-internet applications and doesn&#x27;t even need a local network: point to point wiring is perfectly fine.&quot;<p>In the 1990s I used crossover cable for years with Apple computers that I bought for music production<p>To keep the disk drives &quot;clean&quot;, I never connected these computers to the internet<p>If I needed to transfer files to or from Apple computers I connected them to a laptop with crossover cable<p>I grew up using Apple computers that had no internet connection at home and school so this seemed perfectly natural<p>I used computers running Windows 3.11 that had no internet connection, only LAN<p>Needless to say, &quot;Big Tech&quot; companies like Apple are not what they used to be<p>These companies don&#x27;t really produce anything to be used &quot;offline&quot; anymore.  Watching the default network traffic from &quot;Big Tech&quot; marketed computers and software is sad<p>Not automatically trying to phone home is bad for the &quot;business&quot; of data collection, surveillance and ad services<p>There used to be a different attitude toward the internet; there was less trust.  I can still find traces of this in the archives at textfiles.com</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Understanding ChatGPT Work</title>
+      <link>https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/</link>
+      <guid isPermaLink="false">hn3-49504625</guid>
+      <pubDate>Mon, 31 Aug 2026 01:28:22 +0000</pubDate>
+      <description>290 points, 157 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/"><strong>→ Article</strong></a> <small>(simonwillison.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49504625">→ HN comments</a> &nbsp;·&nbsp; 290 points &nbsp;·&nbsp; 157 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tristanj</em>:</p>
+<blockquote>I think most people are sleeping on the ChatGPT Work&#x2F;Codex computer use feature. It&#x27;s incredibly useful. I can remote in from the app, voice it instructions, then let it work in the background. When I tell it &quot;draft a reply to this email (which it has access to thru the gmail connector) and attach the latest docs&quot; or &quot;fill out this multistep immigration electronic travel authorisation form using my passport files saved in the folder&quot;, it just asks for the relevant info and handles the rest. It opens its internal web browser and programmatically fills out the forms.<p>It gets the task done in 5-10 minutes. It&#x27;s it bit slow since I&#x27;m not paying extra for ultrafast mode, but it gets the job done. Frees up the brain to do other tasks.<p>It&#x27;s exactly like vibe coding but for computer tasks.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>safety1st</em>:</p>
+<blockquote>Using Work&#x2F;Codex I&#x27;m continually amazed at how far my experience is from the popular AI memes like &quot;this will destroy all jobs&quot; and &quot;AI is useless and is about to crash and take the economy with it.&quot;<p>My experience feels like I&#x27;m in an Iron Man movie. I get up in the morning, I turn on the voice chat mode, and while I&#x27;m making my coffee I ask it to highlight any important emails I received overnight. I then babble to it a bit with my initial reactions to those emails, and tell it to draft responses based on my thoughts, which it does.<p>By the time I start work I&#x27;ve got draft emails to review and I&#x27;ve had time to think about the ideas a bit more, the upshot is that I&#x27;ll get a day&#x27;s worth of email done in 20 minutes and probably make better decisions than I would have otherwise. By no means does this eliminate my job, just make me better at it and more productive. I can get into the day&#x27;s deep work sooner now.<p>Going into that two-way voice mode with all your Connectors available is a big part of the gain here, sometimes you just want to walk and talk through something. It seems you can&#x27;t get both of those simultaneously in the mobile app yet and when you can that&#x27;ll be a huge gain, like go take a walk in the garden, talk through your thoughts, the appropriate drafts and other artifacts are ready for you to finalize when you return to your desk. This stuff is honestly space age.<p>I don&#x27;t have much experience with Claude so if it also has that two way voice mode and can use its version of Connectors on mobile while that&#x27;s turned on, I should give it another shot.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>matsemann</em>:</p>
+<blockquote>Not to come across as dismissive of your job, but if a &quot;day&#x27;s worth of email&quot; can be done in 20 minutes now, it to me mostly highlights that it was mostly busy-work with little value and could have had another process? Good that AI improved upon the old process, though.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>safety1st</em>:</p>
+<blockquote>I mean, I can&#x27;t stop people from emailing me. I get over a hundred non-spam, non-mailing-list emails on some days. I&#x27;m not able to respond to most of them. I&#x27;m often not expected to, I&#x27;m just being copied in as a FYI. The AI is able to assess subject and intent well enough to determine what should receive my limited time, and through the voice interface it converts &quot;making coffee&quot; time into &quot;composing email&quot; time. I do read every email that&#x27;s sent to me eventually, but it can take several weeks in some cases. I don&#x27;t let AI reply to anything for me, but I&#x27;m happy to have it propose a draft.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ozgung</em>:</p>
+<blockquote>I think the whole world is sleeping on the privacy&#x2F;security implications of this technology. Recent OpenAI&#x2F;HuggingFace incident shows us that even in a very controlled top AI-lab setting, humans can&#x27;t know what agents are really doing. In our consumer environments at home or work we don&#x27;t even have access to reasoning logs or background agents&#x2F;tools. What they do gets more opaque and convoluted every day. When I grant access to gmail, it basically has access to every single mail in my account. When it has computer use or terminal use it can basically do anything on my computer. It&#x27;s like keeping your home&#x2F;office doors unlocked. You may think you live in a very safe neighborhood. Until someone needs to take something from inside (or worse, plant something).</blockquote>
+<p>↳ reply 3 — <em>digital_voodoo</em>:</p>
+<blockquote>&gt; I think most people are sleeping on the ChatGPT Work&#x2F;Codex computer use feature.<p>One of the root causes most people are &quot;sleeping&quot;, is most probably why we&#x27;re here now: the feature is marketed in such a confusing way to the general public, that it takes a post on a personal blog to actually explain it.<p>ChatGPT has been suggesting Work in the middle of some intense working sessions. Finally, I took some spare 30mn to research exactly this on ChatGPT, no later than this weekend: what does Work have that Chat doesn&#x27;t have?<p>It should be simple enough for someone using it for work. They say it&#x27;s great, and I still need to set time aside (from my real work) to research how great it is?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>simonw</em>:</p>
+<blockquote>I just updated the article to link to this site: <a href="https:&#x2F;&#x2F;codex-tool-reference.simonw.chatgpt.site&#x2F;" rel="nofollow">https:&#x2F;&#x2F;codex-tool-reference.simonw.chatgpt.site&#x2F;</a><p>Which I created using this prompt in a fresh Work session:<p>&gt; Build a site that lists every one of your tools - nearly grouped into categories - and for each one explain what it does. Try to exactly duplicate arguments and tool descriptions where possible. Design aesthetic should be technical docs, minimal flare<p>UPDATE: I had it add all of the available skills too. This solved a mystery: I didn&#x27;t see a tool for controlling the headless browser. It turns out that&#x27;s handled by a skill that tells is how to run the browser via its Node.js REPL tool: <a href="https:&#x2F;&#x2F;codex-tool-reference.simonw.chatgpt.site&#x2F;skills&#x2F;control-browser" rel="nofollow">https:&#x2F;&#x2F;codex-tool-reference.simonw.chatgpt.site&#x2F;skills&#x2F;cont...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ianpurton</em>:</p>
+<blockquote>Chat GPT work is running a full bash environment with python.<p>You can get it to run scripts direct from the prompt.<p>Try...<p>Run the script below in your sandbox<p>message=&quot;I&#x27;m running in a bash sandbox&quot;<p>printf &#x27;&lt; %s &gt;\n&#x27; &quot;$message&quot;
+printf &#x27;        \   ^__^\n&#x27;
+printf &#x27;         \  (oo)\_______\n&#x27;
+printf &#x27;            (__)\       )\&#x2F;\\\n&#x27;
+printf &#x27;                ||----w |\n\n&#x27;<p>printf &#x27;User:     &#x27;; whoami
+printf &#x27;Host:     &#x27;; hostname
+printf &#x27;System:   &#x27;; uname
+printf &#x27;Folder:   &#x27;; pwd
+printf &#x27;\nWorkspace:\n&#x27;
+tree<p>I have some more examples here -&gt; <a href="https:&#x2F;&#x2F;bionic-gpt.com&#x2F;architect-course&#x2F;ai-computer&#x2F;sandboxes&#x2F;" rel="nofollow">https:&#x2F;&#x2F;bionic-gpt.com&#x2F;architect-course&#x2F;ai-computer&#x2F;sandboxe...</a></blockquote>
+<p>↳ reply 2 — <em>matsemann</em>:</p>
+<blockquote>Honest question: why would I ever visit that site? It&#x27;s just an insane amount of text. Not written or curated by you. Any need for me for this data would be fulfilled by just asking the agent myself, and with pointed questions it could float better what I need than this vomit of data?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>simonjgreen</em>:</p>
+<blockquote>Missing from here is the marketing position. Claude _very_ rapidly gained traction in the business&#x2F;enterprise space earlier this year with Claude Cowork leading that drive. So successful it was, it lead to Microsoft licensing the Claude Cowork IP and white labelling it as Copilot Cowork (has anything like that ever happened before?!). ChatGPT Work was, imo, largely driven by a panic at OpenAI that they were haemorrhaging market intrigue and LinkedIn zeitgeist and headspace to Anthropic. ChatGPT had been the de facto, almost the Generic Trademark in business, and they got comfortable. Claude Cowork was eating their lunch. The way Anthropic targeted finance teams, legal teams, sales teams, with their positioning was absolute product marketing genius.<p>ChatGPT Work is trying to reclaim some of that magic that Claude Cowork affords its users that is so hard to explain succinctly.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bjackman</em>:</p>
+<blockquote>It&#x27;s funny coz it seemed like they also cloned the confusion.<p>I don&#x27;t really understand what Claude Cowork is. Sometimes I use it instead of plain Claude Chat for tasks that &quot;feel big&quot;? And when I&#x27;ve done that I&#x27;ve felt this was the right choice. But until I actually had that session up and running I would not be able to articulate what Cowork is or enumerate any specifics of how I expected it to behave. I just thought &quot;maybe this is a Cowork task?&quot;<p>(I have only used the cloud one. My understanding is the the local app is essentially Claude Code but for non-coders, which matches the description of the OpenAI equivalent).<p>Even as someone who&#x27;s now used it a few times I wouldn&#x27;t have been able to articulate as many details as Simon W does in this article, it&#x27;s a weirdly shaped product structure.</blockquote>
+<p>↳ reply 2 — <em>zmmmmm</em>:</p>
+<blockquote>Yeah ... the simplest answer to what ChatGPT Work is seems to be a panic-clone of Claude Cowork as a hail mary to try and catch up to Anthropic in enterprise.<p>Cowork is like crack cocaine to nearly every exec I&#x27;ve seen use it from the moment they put in an email search &#x2F; summary query.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>How to build a diffusion language model</title>
+      <link>https://kuleshov-group.github.io/blog/blog/2026/how-to-build-a-diffusion-language-model/</link>
+      <guid isPermaLink="false">hn3-49503956</guid>
+      <pubDate>Sun, 30 Aug 2026 23:41:32 +0000</pubDate>
+      <description>160 points, 19 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://kuleshov-group.github.io/blog/blog/2026/how-to-build-a-diffusion-language-model/"><strong>→ Article</strong></a> <small>(kuleshov-group.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49503956">→ HN comments</a> &nbsp;·&nbsp; 160 points &nbsp;·&nbsp; 19 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>quirino</em>:</p>
+<blockquote>I&#x27;ve been studying these a bunch for a project in university. Last week I went over the derivation of the ELBO for a couple hours and it was a very fun and elucidating exercise.<p>Once you give names to the larger mathematical structures and understand them a bit better it becomes quite simple. I wish some of the blogs&#x2F;papers I&#x27;d read had named &quot;Importance Sampling&quot;.<p>The probability notation can be pretty confusing too. Sometimes it&#x27;s hard to understand the &quot;types&quot; of some variables. But I&#x27;m inexperienced.<p>ChatGPT was surprisingly helpful. If you put in the work to truly understand the where the gaps are in your mental model (which parts aren&#x27;t completely intuitive), it can do an amazing job filling in the gaps.</blockquote>
+<p><strong>Top #2</strong> — <em>rottc0dd</em>:</p>
+<blockquote>A good video from welch labs on image generation with diffusion models:<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=iv-5mZ_9CPY&amp;pp=ygUVZGlmZnVzaW9uIG1vZGVscyAzYjFi" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=iv-5mZ_9CPY&amp;pp=ygUVZGlmZnVza...</a></blockquote>
+<p><strong>Top #3</strong> — <em>mmastrac</em>:</p>
+<blockquote>What&#x27;s missing from these discussions is the real weakness of diffusion models: you can have two positions where two tokens need to be coordinated, but both spots are teetering between two valid states. They don&#x27;t always collapse to the matching pair.<p>I only learned this the hard way reimplementing diffusiongemma. I had ideas on how to fix it but no cluster to train and experiment, hah.</blockquote>
+<blockquote>
+<p>↳ reply — <em>matrix2596</em>:</p>
+<blockquote>have u seen the dspark paper, they add a morkov head for light weight dependency, not sure whether it can be extended to multi step refining</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Matrox: Graphics for Professionals</title>
+      <link>https://www.abortretry.fail/p/matrox</link>
+      <guid isPermaLink="false">hn3-49503934</guid>
+      <pubDate>Sun, 30 Aug 2026 23:39:35 +0000</pubDate>
+      <description>167 points, 63 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.abortretry.fail/p/matrox"><strong>→ Article</strong></a> <small>(abortretry.fail)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49503934">→ HN comments</a> &nbsp;·&nbsp; 167 points &nbsp;·&nbsp; 63 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>georgeecollins</em>:</p>
+<blockquote>When I was working on early 3D video games in the 1990s, all these companies would give you prototype 3D cards to make sure what you made was compatible.  This was pre-direct X.   On Battlezone, many of us had different video cards to maintain compatibility.   I had a G200.  It wasn&#x27;t the fastest card, but I always thought it looked great.<p>Later we got to demo early builds on pre-release TNT2 cards and it caused a panic for us because our game had always been graphics limited, and the graphics pipeline was built to be very steady.  Incredibly smart programmers wrote our renderer from scratch in those days.  Suddenly the frame rate was really fast, and choppy, because the hit from physics and AI between frames caused stutters.  After that NVIDIA dominated.</blockquote>
+<p><strong>Top #2</strong> — <em>littlecranky67</em>:</p>
+<blockquote>Lesser known feature was that the Matrox MGA&#x2F;G200 chips were capable of delivering &quot;sync on green&quot; via regular VGA cable. This was a specialized format were VSync&#x2F;HSync weren&#x27;t transmitted over dedicated pins, but encoded into the green signal. This was required by some (then) older workstation monitors. In the early 2000s, I managed to get a 20&quot; SGI workstation monitor for 20€ at ebay (at times where 20&quot; monitors were above 1000€) - because no one could use them with regular PC hardware. Using a single &quot;sync_on_green&quot; flag in my XFree86.conf file, and it would work flawlessly on my linux box.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>raudette</em>:</p>
+<blockquote>Sync on green could be done with the ATI Mach 64 as well.  I picked up a 20&quot; SGI monitor (if memory serves, it was made by Hitachi) on the &quot;free&quot; table around 1999 on my university campus.<p>I got it working, but the one I had was pretty limited - it did a specific resolution at 60 Hz (I may have the details wrong - it was a long time ago).  I never ended up using it, as I had a newer 17&quot; DEC Trinitron from an old Alpha 3000&#x2F;300LX that I also got super cheap, and it was a much better screen.</blockquote>
+<p>↳ reply 2 — <em>pjmlp</em>:</p>
+<blockquote>PS2Linux required monitors able to do sync on green, which caught many that managed to get it, in for a surprise.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>zdw</em>:</p>
+<blockquote>When I was building a linux PC in the late 90&#x27;s, I bought a Matrox Millenium with the memory expansion to 8MB which could do 1600x1200 with 24 bit color.<p>That was an awesome card for the time, and an incredibly stable analog signal, which Matrox was known for - other cards at the time would get fuzzy, shimmer, or have ringing &#x2F; ghosting.<p>At the time, for good support you needed to *buy* an X11 server for accelerated graphics support.  I forget which one I paid money for, but within a few years it wasn&#x27;t necessary as open source had caught up.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>prescriptivist</em>:</p>
+<blockquote>Yeah, I wanted a Matrox so bad at that time because you could also do dual monitor on some of those cards. I had a sick NEC with a degauss button and trinitron style horizontal lines and a shit packard bell monitor. I wanted to do dual monitors so bad with both, despite the resolution asymmetry. Some matrox also had connection points for antennas and video capture. They were truly workhorse cards. But they sucked at 3D and were lapped in the Boot mag benchmarks for Quake 3D et al. I ended up with a 3D Labs Permidia 3D card anyway because I couldn&#x27;t afford a Diamond or Voodoo and ended up turning textures off fully on Quake 3d in the end. Fun times, shout out Hard OCP.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>noir_lord</em>:</p>
+<blockquote>I had dual Trinitrons around that era, to this day when I build myself a new computer desk I massively over build it (the latest one I can stand in the middle without noticeable flex..) because I lived in slight dread that the spacetime warping monitors would crush the one I had at the time.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>fithisux</em>:</p>
+<blockquote>You mean the one from Xi graphics?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>“I just chose words carefully”</title>
       <link>https://unsung.aresluna.org/i-just-chose-words-carefully/</link>
@@ -41,6 +377,114 @@
 </blockquote>
 <p>↳ reply 2 — <em>edanm</em>:</p>
 <blockquote>I wonder if that was part of the reason that some programming languages use constructs like &quot;if &#x2F; fi&quot; &quot;do &#x2F; od&quot; etc.<p>(Note: After writing the above, I checked with ChatGPT, it claims that the main motivation was to make it unambiguous which which &quot;opening word&quot; a &quot;closing word&quot; belonged to.)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Continuous Diffusion Language Models (CDLM's)</title>
+      <link>https://sander.ai/2026/08/24/continuous-dlms.html</link>
+      <guid isPermaLink="false">hn3-49502611</guid>
+      <pubDate>Sun, 30 Aug 2026 20:46:53 +0000</pubDate>
+      <description>126 points, 45 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://sander.ai/2026/08/24/continuous-dlms.html"><strong>→ Article</strong></a> <small>(sander.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49502611">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 45 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>janalsncm</em>:</p>
+<blockquote>&gt; [in 2020&#x2F;2021] the dominance of autoregression was not as well-established as it is today: GPT-3 had turned some heads, but the ‘ChatGPT moment’ wouldn’t come until late 2022<p>I disagree with this. Decoders were absolutely dominant in 2020 for chat. GPT2 was considered too dangerous to release, and I remember scrambling to get on the GPT3 waitlist. It worked.<p>(The only exception I will make is encoder-decoder models which now are often done by decoder-only.)<p>But what made it go mainstream was RL. RLHF at first, then other improvements like DPO that were less of a pain in the ass to set up. Adding diffusion on top of that would be an even bigger pain in the ass.<p>Before ChatGPT there really wasn’t much of a concept of pre-training and post-training. It was all pre-training. Post training was what made the bots conversational and not just “continuing the thing you wrote to them”.<p>So in short, diffusion never took off because it was just a more complicated way to generate tokens, and the real problem was getting tokens in the right distribution.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>benanne</em>:</p>
+<blockquote>I suppose what I was trying to say is that in the research community, people were still a lot more willing to entertain alternative modelling paradigms for language at that point, there was much less of a monoculture than there is today. It was really only after ChatGPT that non-autoregressive language modelling came to be seen as a fringe pursuit. Of course that is a highly subjective assessment, and my perspective is inevitably coloured by my own research interests at the time, and those of the people around me.<p>For what it&#x27;s worth, I don&#x27;t believe post-training diffusion models (of language or otherwise) is uniquely difficult, just a lot less thoroughly explored so far.</blockquote>
+<p>↳ reply 2 — <em>matusp</em>:</p>
+<blockquote>&gt; I disagree with this. Decoders were absolutely dominant in 2020 for chat. GPT2 was considered too dangerous to release, and I remember scrambling to get on the GPT3 waitlist. It worked.<p>He&#x27;s not talking about decoders, he&#x27;s talking about auto-regression. Before ChatGPT, the dominant paradigm was fine-tuning BERT-like models.<p>&gt; Before ChatGPT there really wasn’t much of a concept of pre-training and post-training.<p>Again, people spend years just post-training BERTs in various ways.</blockquote>
+<p>↳ reply 3 — <em>echelon</em>:</p>
+<blockquote>&gt; GPT2 was considered too dangerous to release<p>This is how ridiculous this industry is. Regulation-seeking panic over nothing. Drama in search of a moat.<p>Everything is &quot;too dangerous&quot;. GPT2 is going to invent a time machine and break crypto and genetically engineer super rabies.<p>They sell knives, guns, combustible materials, and multi-ton heavy machinery in stores. That&#x27;s what&#x27;s actually dangerous.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>p1esk</em>:</p>
+<blockquote>It’s refreshing to read something not AI generated.</blockquote>
+<blockquote>
+<p>↳ reply — <em>benanne</em>:</p>
+<blockquote>Glad to hear it! My stubbornness about this makes me feel like a luddite sometimes, but the additional effort required is probably still worth it, for the time being.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>2001zhaozhao</em>:</p>
+<blockquote>I would love to see models that can think at different rates and also output a thinking scratchpad <i>alongside</i> output text instead of before all output.<p>Right now models need to rely on less legible compressed CoT to get high intelligence per token&#x2F;step, but with diffusion they would just need to output more tokens per step instead.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Cores in space: The core memory module from a 1980 Spacelab computer</title>
+      <link>https://www.righto.com/2026/08/spacelab-core-memory.html</link>
+      <guid isPermaLink="false">hn3-49502214</guid>
+      <pubDate>Sun, 30 Aug 2026 20:00:25 +0000</pubDate>
+      <description>127 points, 21 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.righto.com/2026/08/spacelab-core-memory.html"><strong>→ Article</strong></a> <small>(righto.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49502214">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 21 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>kens</em>:</p>
+<blockquote>Author here for all your core memory questions...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>soneil</em>:</p>
+<blockquote>Can I confess I&#x27;ve never quite wrapped my head around the application of the &#x27;inhibit&#x27; line in this?<p>If a write cycle is just a read cycle with a) a reversed polarity and b) you don&#x27;t care about the contents of the sense line - I don&#x27;t get why current coincidence is sufficient during the read cycle, but not during the write cycle?<p>Every description of this I&#x27;ve ever read, sound like inhibit and current coincidence solve the same problem - but have never left me clear on why we need to solve it twice.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pests</em>:</p>
+<blockquote>The current coincidence is used to select a specific bit &#x2F; core. Except it selects the same bit in every bank.<p>Bytes or larger words are made by stacking multiple banks together (18 in the articles case) All 18 bits would be driven in parallel by the driver over the X&#x2F;Y wires to produce a coherent 18 bit value at the same moment.<p>The inhibit bit was so you could select which of those 18 bits (in separate banks) would be switched back to a 1, not selecting which bit across the entire bank.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>soneil</em>:</p>
+<blockquote>ahh - I see where my dots weren&#x27;t connecting, then.<p>I pictured having a current driver on each plane, so the data bits coming in would be enable bits for the current drivers.  Which obviously means 18xQty current drivers.<p>I think you&#x27;re describing having one big current driver for the whole job, and then data bits drive the inhibits to counter them.<p>I guess I&#x27;m looking through too modern a lens - pumping 18*600mA into the write cycle, plus (up to 18)*600mA into the inhibit, sounds insane to me (hitting 20A for a write) - but I can see that multiplying the current drivers may have sounded nuts in the 50s.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Zigurd</em>:</p>
+<blockquote>No special provisions for rad hardening needed?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>TacticalCoder</em>:</p>
+<blockquote>Funny to see that frontpage as earlier on today I made a comment saying that with LLMs I&#x27;m betting we&#x27;ll see N-modular redundancy systems soon, with a ultra-hardened, minimal, part picking the majority votes of N LLM-written implementations (in different languages, on different stacks, all running at the same time). Not 100% TFA but &quot;computing in space&quot; involved a lot of N-modular redundancy systems.<p>The reason I&#x27;m 99.9% sure we&#x27;ll see that is that it&#x27;ll help catch both bugs in the LLMs implementations themselves (and we know there are plenty of those) but also in the stacks&#x2F;platforms&#x2F;VMs running those software.<p>Imagine one spec and five implementations (Rust, Go, Java, Python, whatever) and one minimal system, with the tiniest of the tiniest attack surface, returning the answer as soon as 3-of-5 agree. And, as a bonus, if later on one the two &quot;missing&quot; answer arrives and doesn&#x27;t match, it&#x27;s cause for enquiry and bugs be smashed.<p>Basically (and although I don&#x27;t care about Ethereum or cryptocurrencies except for the cryptographic aspect), we already witnessed that: 3 different implementations of Ethereum and, in the early days, one of the implementation whose result differed from the two others. And hence the implementation not respecting the spec (in that case it was the only one that was faulty) got instantly detected (and promptly patched). My memory is fuzzy but I know this happened.<p>Heck, I may write a proof-of-concept for fun.<p>I&#x27;ve got other ideas as to what will be possible in the future but I&#x27;m keeping them for another day.</blockquote>
+<blockquote>
+<p>↳ reply — <em>kqr</em>:</p>
+<blockquote>This all rests on the assumption that design errors are independent beween LLM-generated programs for the same specification. That&#x27;s not true for humans (Knight and Leveson, 1986) and I highly doubt it&#x27;s any more true for robots.<p>(On the other hand I just found out about Ron, Baudry, Monperrus, 2026, which seems to say &quot;sure, problems are correlated, but it could still be useful.&quot;)</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>annoyingnoob</em>:</p>
+<blockquote>Built by highly skilled humans.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The world may have less time than it thinks on climate change</title>
+      <link>https://economist.com/by-invitation/2026/08/30/the-world-may-have-less-time-than-it-thinks-on-climate-change</link>
+      <guid isPermaLink="false">hn3-49501791</guid>
+      <pubDate>Sun, 30 Aug 2026 19:08:25 +0000</pubDate>
+      <description>135 points, 153 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://economist.com/by-invitation/2026/08/30/the-world-may-have-less-time-than-it-thinks-on-climate-change"><strong>→ Article</strong></a> <small>(economist.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49501791">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 153 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>talon8635</em>:</p>
+<blockquote>Birth rates are in decline. The global population is estimated to peak in the 2080s. I suspect that could be later than reality as the endless doom (like this article) inspires more and more people to not have kids. Then as the population declines precipitously, nature takes back over and begins resolving the problem itself.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dgellow</em>:</p>
+<blockquote>Population decline will not solve climate change, we already passed multiple points of no return that will result in worsening climate for the next 50-100y. And there won’t be a way to roll back those changes</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Panino</em>:</p>
+<blockquote>&gt; And there won’t be a way to roll back those changes<p>It&#x27;s possible to sequester CO2, and here are a couple ways.<p>1. Use permaculture or regenerative agriculture to aggressively increase SOM (soil organic matter) &#x2F; carbon content of the soil. Typical degraded farmland is around 1.5% SOM. For every 0.1% increase per acre, roughly 1 ton of carbon is sequestered. Setting an ambitious increase to 10% would take decades but would increase yields along the way. There are billions of acres of farmland, so a lot of carbon can be removed from the biosphere. Additionally, since people naively mimic farmers for home gardening etc., if farmers were part of the solution, then more home growers would be, too. With a couple decades of regenerative ag you can go from 1.5% to 7.5%, but with more time and motivation you can go higher.<p>2. Research and then put into practice industrial-scale pyrolysis for energy generation. So, instead of burning methane (aka &quot;natural gas&quot;) to boil water to spin a turbine, we could pyrolysize organic material to emit and burn syngas to boil water to spin a turbine. The resulting biochar can be co-composted and when finished, used as a soil amendment.<p>With a different mindset a lot can change, and quickly.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Koffiepoeder</em>:</p>
+<blockquote>In my own veg garden, I have noticed that my soil quality starts degrading around &gt;6% of carbon contents.<p>It wasn&#x27;t a problem until recently, but with all the droughts in recent years, too high carbon can make it hydrophobic and lead to water run-off that happens too quick once it has entirely dried out. I.e. it becomes too lose&#x2F;aereated. This then means that the occasional heat storm no longer replenishes water reserves and you end up a bit wirh the same problem as if you had 1% Carbon.<p>My soil is still way more resilient at the beginning of the drought (I can easily cover 1mo eithout rain without having to water most crops, except some smaller spices). But in recent times I have stopped mulching for a while.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sleight42</em>:</p>
+<blockquote>Good luck with that.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>r0ckarong</em>:</p>
+<blockquote>As long as there is no accountability for politicians, we will always have at least as much time as the next guy plans to stay in power.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>_petronius</em>:</p>
+<blockquote>There are more types of politics that national and international. Local, state&#x2F;provincal, city, etc. The close it is to home the more you&#x27;ll see the effects, and the more power you&#x27;ll have. And the more directly the electorate can keep people accountable. But I think it&#x27;s really throwing the baby out with the bathwater to declare that accountability is impossible, therefore there is no point in enagaging.</blockquote>
+<p>↳ reply 2 — <em>fzeroracer</em>:</p>
+<blockquote>Politicians can only be held accountable as long as their base is willing to hold them to account. And unfortunately the old and wealthy have practiced the maximal mantra of FYGM. The degree with which not only do they hoard wealth but do everything in their power to ensure the old ways they made their wealth stay empowered tilts politics heavily.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>unsupp0rted</em>:</p>
+<blockquote>I’m not sure: when I was in high school &#x2F; university it was well understood that places like Florida would be under water and unlivable by now.<p>Already then you could find this exact article title in a dozen publications per year, especially in academic publications. Al Gore made a third career out of it.<p>It was alarmist and too soon then but it’s not alarmist and too soon now?<p>Nobody upvotes an article titled “Things are about 0.5% more concerning than they were two decades ago”</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Marsymars</em>:</p>
+<blockquote>&gt; I’m not sure: when I was in high school &#x2F; university it was well understood that places like Florida would be under water and unlivable by now.<p>This doesn&#x27;t seem plausible - the worst-case predictions for sea level rise by the end of the century are around 2m.<p>That would certainly be <i>bad</i> for Florida, but like 80% of the population lives higher than 2m above sea level, so it certainly wouldn&#x27;t be <i>unliveable</i>.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ceejayoz</em>:</p>
+<blockquote>I&#x27;d note that &quot;under water&quot; isn&#x27;t the only issue at hand.<p>Florida&#x27;s homeowners insurance industry has largely collapsed in recent years.<p>Rising sea levels can impact fresh water supplies (<a href="https:&#x2F;&#x2F;www.wusf.org&#x2F;weather&#x2F;2024-11-27&#x2F;trillion-dollar-hidden-threat-climate-change-rising-groundwater-florida" rel="nofollow">https:&#x2F;&#x2F;www.wusf.org&#x2F;weather&#x2F;2024-11-27&#x2F;trillion-dollar-hidd...</a>).<p>&gt; Up to 70% of residents between North Carolina and Florida, and a trillion dollars in property, could be impacted by the end of the century with just over three feet of sea rise. South Florida represents the vast majority of that risk, with about 7.5 million people and $750 billion dollars in property expected to face increasing risks as groundwaters rise, the study found.<p>Power failures get scarier in high temp, high humidity scenarios, too. (<a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Wet-bulb_temperature" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Wet-bulb_temperature</a>)</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>metabagel</em>:</p>
+<blockquote>&gt; I’m not sure: when I was in high school &#x2F; university it was well understood that places like Florida would be under water and unlivable by now.<p>I don&#x27;t doubt that is your recollection, but nobody back then was predicting it would happen in 20 years. The time frames given were much longer. But, the vibe was definitely that we need to wake up and do something right now, because by the time climate change hits real hard it will be too late to avert the calamity.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3244,430 +3688,6 @@ But the main issue is when you want to say something precise with specific wordi
 </blockquote>
 <p><strong>Top #3</strong> — <em>strenholme</em>:</p>
 <blockquote>With my own MaraDNS, I aggressively optimized the memory usage of blacklist entries by having a single really big malloc() to allocate the memory for the entries, then traversing that memory block for potentially blacklisted entries.<p>When I was using one malloc() per entry, a large blacklist took up 237 megabytes of memory.  The same blacklist, once optimized to be loaded with a single malloc() call, only took up 9.5 megabytes of memory.<p><a href="https:&#x2F;&#x2F;samboy.github.io&#x2F;blog&#x2F;entries&#x2F;MaraDNS.html#BlogEntry-2022-12-28" rel="nofollow">https:&#x2F;&#x2F;samboy.github.io&#x2F;blog&#x2F;entries&#x2F;MaraDNS.html#BlogEntry...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Gemini Omni 1.1 Flash</title>
-      <link>https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/</link>
-      <guid isPermaLink="false">hn3-49467922</guid>
-      <pubDate>Thu, 27 Aug 2026 17:06:32 +0000</pubDate>
-      <description>203 points, 148 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/"><strong>→ Article</strong></a> <small>(blog.google)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49467922">→ HN comments</a> &nbsp;·&nbsp; 203 points &nbsp;·&nbsp; 148 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>petcat</em>:</p>
-<blockquote>I heard a radio spot recently and I wondered if the voice was a real person or AI.  It makes we wonder how such industries are dealing with this gen-AI revolution.  We spend a lot of time here thinking about how it affects software developers, but I hardly ever see any commentary on how it is affecting screen and voice actors.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lambda</em>:</p>
-<blockquote>Many screen and voice actors are unionized, and the unions have been striking and bargaining specifcially over these points.<p>For example: <a href="https:&#x2F;&#x2F;sites.suffolk.edu&#x2F;jhtl&#x2F;2025&#x2F;10&#x2F;30&#x2F;game-over-for-unauthorized-ai-performances-the-sag-aftra-video-game-strike-and-performer-protections-under-the-new-collective-bargaining-agreement&#x2F;" rel="nofollow">https:&#x2F;&#x2F;sites.suffolk.edu&#x2F;jhtl&#x2F;2025&#x2F;10&#x2F;30&#x2F;game-over-for-unau...</a><p>Software developers, unfortunately, have been convinced that they don&#x27;t need to unionize, so have no collective bargaining power for dealing with situations like this.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>arjie</em>:</p>
-<blockquote>Personally, I just can’t find it in me to be <i>that</i> self-interested. It’s how other people oppose buildings near them because it blocks their view. I really don’t want to stop other people from writing software. If they want to use AI to do it so be it.<p>That’ll be somewhat detrimental to me perhaps (which isn’t certain), but that’s okay. I’d rather attempt to adapt to a changing world.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lambda</em>:</p>
-<blockquote>I don&#x27;t know that unions would necessarily negotiate for no use of AI. The SAG-AFRA deals don&#x27;t preclude all use of AI; they just requre consent and negotiation in certain cases.<p>A union doesn&#x27;t give you unilateral power; it just gives you a better seat at the bargaining table. Capital pools its resources to negotiate better as a single bloc; why shouldn&#x27;t labor as well?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thangalin</em>:</p>
-<blockquote>It&#x27;ll come quickly for audio books. I&#x27;ve been working on a locally hosted, fully containerized web application to narrate my sci-fi novel using a full cast of characters and a few distinct narrators:<p>* <a href="https:&#x2F;&#x2F;i.ibb.co&#x2F;ccqKZ71L&#x2F;keenlore.png" rel="nofollow">https:&#x2F;&#x2F;i.ibb.co&#x2F;ccqKZ71L&#x2F;keenlore.png</a><p>* <a href="https:&#x2F;&#x2F;i.ibb.co&#x2F;1t3W0JqZ&#x2F;keenlore-02.png" rel="nofollow">https:&#x2F;&#x2F;i.ibb.co&#x2F;1t3W0JqZ&#x2F;keenlore-02.png</a><p>* <a href="https:&#x2F;&#x2F;i.ibb.co&#x2F;LdBqHwKB&#x2F;keenlore-03.png" rel="nofollow">https:&#x2F;&#x2F;i.ibb.co&#x2F;LdBqHwKB&#x2F;keenlore-03.png</a></blockquote>
-<p>↳ reply 3 — <em>earthnail</em>:</p>
-<blockquote>Work that doesn’t have a personal brand involved is basically dead. Arbitrary voice acting? Dead.<p>It’s brutal for these people. The creative industry was always hard, but this is just plain brutal.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>037</em>:</p>
-<blockquote>Prompt engineering tip for Google employees: just add &quot;P.S. Make sure the page works in Firefox too.&quot;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ygouzerh</em>:</p>
-<blockquote>No worries, even on chromium, their webpage is just horrible. They seems to have focus only on mobile reading, on desktop its a mess.</blockquote>
-<p>↳ reply 2 — <em>GaggiX</em>:</p>
-<blockquote>Firefox really struggle with demo pages of text-to-video models because of the large numbers of videos in the page in my experience, this page seems to work quite fine for me tho.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>simonw</em>:</p>
-<blockquote>Interesting that OpenAI abandoned Sora entirely but Google are continuing to invest heavily in their own video generation.<p>Maybe because they see video generation as key to developing &quot;world models&quot;?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>msabalau</em>:</p>
-<blockquote>Google has always been committed to multimodal.<p>And, Veo and omni simply were better than Sora<p>And, Youtube is huge both as a place where video contents goes and where can be trained from.  Microdramas are starting to become a real category--14 Billion USD, 90% of it made with AI.<p>Chinese video models can be more immediately impressive, but none of them come close to beat the value of Google&#x27;s Flow. Especially when you are throwing away a lot of generations as part of the creative process.  Which is what you have to do to make longer content with any video model.<p>OpenAI needed to be able to focus.  Google can walk and chew gum, and they&#x27;re not going to run out of money to buy chewing gum.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>pwython</em>:</p>
-<blockquote>Sora 2 was way better than Veo in terms of quality. It just didn&#x27;t have much of a use case for businesses outside of one-shot zany UGC-looking clips.<p><a href="https:&#x2F;&#x2F;youtu.be&#x2F;QaiecWzeHFM?si=UV6eF-m514nCOFe0&amp;t=156" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;QaiecWzeHFM?si=UV6eF-m514nCOFe0&amp;t=156</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>kranke155</em>:</p>
-<blockquote>Sora was a social network type thing. Google sells their models on a PAYG basis - and makes money off them. Nano Banana alone has changed advertising 2D mockups and Photoshop like tasks forever. Notice how GPT image 2 is now available also on a PAYG basis.<p>I work in advertising and some days I spent a lot of money using these models. The amount and rapidity of prototyping using them has changed everything about advertising pre production.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Flock CEO gets his house blurred out on Google Maps and Zillow</title>
-      <link>https://twitter.com/LocumRex/status/2092993787605717176</link>
-      <guid isPermaLink="false">hn3-49467750</guid>
-      <pubDate>Thu, 27 Aug 2026 16:53:01 +0000</pubDate>
-      <description>148 points, 41 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://twitter.com/LocumRex/status/2092993787605717176"><strong>→ Article</strong></a> <small>(twitter.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49467750">→ HN comments</a> &nbsp;·&nbsp; 148 points &nbsp;·&nbsp; 41 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>water-data-dude</em>:</p>
-<blockquote>I feel like setting up cameras pointed at the houses of influential people with public web feeds might help push some privacy reform.</blockquote>
-<p><strong>Top #2</strong> — <em>DrJokepu</em>:</p>
-<blockquote>There’s something wrong with that guy. Quite apart from the gross privacy violation issues. Most of us didn’t even know what Flock was before the Superbowl and now there is this massive public controversy around it, and every time he opens his mouth he makes it worse. The board needs to replace him ASAP.</blockquote>
-<p><strong>Top #3</strong> — <em>darrylb42</em>:</p>
-<blockquote>I don&#x27;t really understand how blurring out a house adds privacy.  Looking around my neighborhood on Google street view I sometimes find houses that are blurred, now that otherwise normal looking house is now suspicious. Because I am physically  close I can just look at the house if I wanted to. Someone &quot;special&quot; lives there.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>schiffern</em>:</p>
-<blockquote>I&#x27;m confused. If he has nothing to hide he has nothing to fear, right?<p>Seems like some Good Samaritan should set up a mobile pole camera (or twelve) outside his house 24&#x2F;7. Rest easy, it&#x27;s all being done for his own safety!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jordanb</em>:</p>
-<blockquote>The guy gives me unhinged stalker vibes whenever he does an interview.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>b3lvedere</em>:</p>
-<blockquote>It does enhance curiosity. As an experiment i once requested Google Street view to blur my previous home. It really stands out being the only blurred house in the entire area. And i can’t undo it either :)</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Small Models Have Arrived</title>
-      <link>https://calv.info/small-models-have-arrived</link>
-      <guid isPermaLink="false">hn3-49466917</guid>
-      <pubDate>Thu, 27 Aug 2026 15:56:58 +0000</pubDate>
-      <description>525 points, 237 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://calv.info/small-models-have-arrived"><strong>→ Article</strong></a> <small>(calv.info)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49466917">→ HN comments</a> &nbsp;·&nbsp; 525 points &nbsp;·&nbsp; 237 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>NickNaraghi</em>:</p>
-<blockquote>&gt; Across his various startups, Peter has seen two kinds of work:<p>&gt; 1. the &quot;IQ 180&quot; work. some mad scientist genius type comes up with some crazy solution you&#x27;ve never thought of.<p>&gt; 2. the &quot;token spewer&quot; work. being ultra responsive, pushing the ball forward across dozens of different fronts.<p>Interesting comp to pg&#x27;s Maker&#x27;s Schedule, Manager&#x27;s Schedule <a href="https:&#x2F;&#x2F;www.paulgraham.com&#x2F;makersschedule.html" rel="nofollow">https:&#x2F;&#x2F;www.paulgraham.com&#x2F;makersschedule.html</a><p>I&#x27;m curious about not only which of these roles models will fill, but also how they will empower us to be in the mode we prefer.</blockquote>
-<blockquote>
-<p>↳ reply — <em>kridsdale1</em>:</p>
-<blockquote>I conceive of this as Protoss vs Zerg. I’ve had a lot of success in my career following a Zerg strategy.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>leoh</em>:</p>
-<blockquote>Zerg rush</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>andsoitis</em>:</p>
-<blockquote>&gt; One thing a few investors I&#x27;ve talked with have mentioned: &quot;It&#x27;s weird we&#x27;re not seeing more consumer AI companies. Why is that?&quot;<p>What would consumer AI company even be? The frontier labs have declared they will eat everything and they have a head start.<p>Best bet would to be a contrarian and build products and services that people actually want or need. Fine to be AI powered or augmented, but consumer companies do the hard part of understanding specific consumer needs and wants and pursuing that.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nonethewiser</em>:</p>
-<blockquote>There is a thin line. Lots of AI powered things are just workflows you could implement with claude code and some skills. Or even just a prompt on the web chat. But I think these big technological swings sometimes take a long time to shake out. Society is still adapting to the internet.<p>I think there is more opportunity for consumer application of AI. Im surprised we dont see more models in game. Small models that do more purpose driven things not &quot;this npc is just a chatbot with a personality in its system prompt.&quot; I mean we literally have systems in games called &quot;AI&quot; and we dont think these much more powerful AIs have a place?</blockquote>
-<p>↳ reply 2 — <em>shostack</em>:</p>
-<blockquote>Yeah, I think if we reframed it as &quot;why is there no consumer AWS?&quot; It would make more sense.<p>AI is a utility that can abstract code to such a high level it is indiscernible from natural language.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>swiftcoder</em>:</p>
-<blockquote>I find it quite funny all these folks who are addicted to chasing frontier models, only just noticing that small models became &quot;good enough&quot; for most tasks. Those of us without fable-sized expense accounts noticed this quite a while back</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jbjbjbjb</em>:</p>
-<blockquote>I’ve been playing around with Luna, Terra and Sol and for the type of work I’ve been doing lately I actually think Sol is just a likely to trip up as Luna. Examples were Sol over assuming, persisting in the wrong direction, over engineering a little script to do some exploration of api. They can all be fixed but it’s a waste of tokens, I rather have Luna do it because course correction on small pieces of work is cheaper.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mchusma</em>:</p>
-<blockquote>I have an agentic workflow and Luna just always gets stuck, SOL and grok 4.6 don’t.  I like Luna in theory I just find not much practical work for it yet in coding type work.<p>Now I think Luna is plenty good for many applications inside a very good harness&#x2F;scaffold. And I think there are a lot of those usecases. So I think these small models are really good for application developers.<p>But for entrepreneurial knowledge work all of my work still benefits a lot from more intelligence.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>kccqzy</em>:</p>
-<blockquote>&gt; for most tasks<p>The word “most” is doing a lot of work here. On a percentage basis perhaps most tasks a typical SWE needs to do when they aren’t in meetings or writing docs are just glorified autocomplete. But that’s boring and that’s why people don’t usually talk about it.<p>People are addicted to chasing frontier models because they all have memories of spending a week on a deeply challenging algorithm problem or even have crazy complicated algorithms they cannot implement themselves and want to have the models achieve this technical breakthrough. It’s the kind of productivity boost from spending one week on a problem to spending one hour. In contrast the productivity boost from spending ten minutes to spending one minute just doesn’t occupy people’s mind.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Suica, Japan's First IC Transit Card</title>
-      <link>https://www.tokyodev.com/articles/the-story-of-suica</link>
-      <guid isPermaLink="false">hn3-49466894</guid>
-      <pubDate>Thu, 27 Aug 2026 15:55:12 +0000</pubDate>
-      <description>208 points, 181 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.tokyodev.com/articles/the-story-of-suica"><strong>→ Article</strong></a> <small>(tokyodev.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49466894">→ HN comments</a> &nbsp;·&nbsp; 208 points &nbsp;·&nbsp; 181 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cptcobalt</em>:</p>
-<blockquote>If you haven’t experienced suica, it’s like magically fast. Faster than NFC, faster than Apple Pay, faster than tap to pay, faster than Disney magic bands, faster than your work badge. It absolutely floored me every time I used it in Japan <i>and</i> it’s a full payment transaction.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pknomad</em>:</p>
-<blockquote>It&#x27;s not only magically fast, but it&#x27;s super useful. You can use it at vending machines + convenience stores anywhere (unless it&#x27;s one of those old ones that only take cash&#x2F;coins and print paper tickets) and at the shops as well.<p>People not in Japan&#x2F;Singapore&#x2F;Korea&#x2F;China should experience what a proper transit card done looks like.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Tor3</em>:</p>
-<blockquote>I&#x27;ve used a Suica card for many years now. I agree it&#x27;s both fast and reliable.
-One summer I was crisscrossing Tokyo by train over several days, using the Suica card, so I got to see a LOT of commuters. Lots of people were in a hurry and would <i>run</i> through the gates (the default state is open, it closes quickly if your card is out of funds or some other problem). Running through the gates while quickly touching the card to the reader. I&#x27;ve done that a couple of times myself.<p>It&#x27;s also useful in that you can pre-order a Shinkansen ticket, for example, and link that purchase to your Suica card, which you then use for the Shinkansen gate. If there are other fees (which there may be) they&#x27;re just deducted from the money the card holds, as usual. Makes everything very simple.<p>For me a physical card is easier than using a phone. A phone is so much larger so I would need to get it from a pocket somewhere, while the Suica card I can keep in my jeans pocket or some other easy place.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>m4rtink</em>:</p>
-<blockquote>It was funny during Expo in Osaka on the massive metro station - you could just zip in with the suica, while the less knowledgeable foreign tourists would form long queues in front of the special gates where they could pay by a payment card, which were glacialy slow in comparison.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>seanmcdirmid</em>:</p>
-<blockquote>But you should probably just get a suica in your apple or google wallet, you don’t actually need an IC card. I’m not sure if using a phone makes it less fast though, I couldn’t tell (we had to get a card for my kid since he doesn’t have a phone).<p>Definitely better than the QR codes used by China.</blockquote>
-<p>↳ reply 3 — <em>imglorp</em>:</p>
-<blockquote>It appears to be based on NFC-F with latency under 200 ms, called FeliCa. Similar  to regular NFC at around 300 ms latency plus any network times.<p><a href="https:&#x2F;&#x2F;www.sony.co.jp&#x2F;en&#x2F;Products&#x2F;felica&#x2F;NFC" rel="nofollow">https:&#x2F;&#x2F;www.sony.co.jp&#x2F;en&#x2F;Products&#x2F;felica&#x2F;NFC</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>speak_plainly</em>:</p>
-<blockquote>Sad to see the mascot going in March. Apparently this entire brand reset is tied to something JR East is calling &#x27;Suica Renaissance,&#x27; which is about a ten-year effort to turn Suica into a lifestyle brand.<p>Whitepaper: <a href="https:&#x2F;&#x2F;www.jreast.co.jp&#x2F;e&#x2F;press&#x2F;2024&#x2F;pdf&#x2F;20241210.pdf" rel="nofollow">https:&#x2F;&#x2F;www.jreast.co.jp&#x2F;e&#x2F;press&#x2F;2024&#x2F;pdf&#x2F;20241210.pdf</a><p>They&#x27;re planning on moving beyond the ¥20,000 prepaid balance limit, they are adding QR code payments (think WeChat and Alipay), making Suica work across regions and support more touchless and cloud-based systems, and connecting it more with banking, shopping, loyalty, discounts, and local services.<p>So essentially they want to become your default payment platform which is a huge opportunity given how paper-money-driven Japan is.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Shank</em>:</p>
-<blockquote>The penguin isn&#x27;t owned by JR East, which is the problem. It&#x27;s owned by a specific artist and licensed by Dentsu, who has to approve all usage. The other transit networks actually fully own their mascots, but Suica&#x27;s Penguin isn&#x27;t theirs to control.</blockquote>
-<p>↳ reply 2 — <em>echohack5</em>:</p>
-<blockquote>The weirdest payment method has got to be the Coke ON vending machines that do not support SUICA but instead require you to QR code-IR blaster you to a website where you bluetooth pair with the vending machine then buy it on your mobile browser.<p>Like....somehow they turned a sub 1ms operation into a 4 minute 32 second one. It boggles the mind</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>alerighi</em>:</p>
-<blockquote>Maybe it was advanced for the time being created, to me it&#x27;s just any other RFID card that is issued everywhere else in the world in the matter of read speed, from every public transit card that I find in every EU country I&#x27;ve visited (maybe for a US citizen not used to public transit it seems something special, I don&#x27;t know), to skipasses, to even your gym card.<p>Having the option to also pay with credit card would be much more convenient to tourists, when I visited Japan I&#x27;ve had difficulties finding the right place to get a SUICA card (being that my Android phone didn&#x27;t have Felica chip, as most phones sold outside Japan), and on top of that you almost everywhere need to charge it with only cash. And you can charge it only by 500 or 1000 yen at the time (depending on the machine), and of course tickets always have not round prices like 110 yen. And you have 500 yen of deposit for a card that probably costs to them 10 yen to manufacturer, unless you get the red SUICA card that you can get only in some special machines at the airport but with that you don&#x27;t get back the unused credit when you leave (you can spend it at vending machine tough).<p>So the speed saving of a couple of ms of not having to pay by tapping your normal credit card is completely vanished by wasting time to charge that card.<p>BTW even if they don&#x27;t want to put credit card POS on every station (I get it, it&#x27;s expensive and they need to pay fees if someone uses a card, compared to cash) they could make a system that uses regular NFC (would be 100ms slower, who cares) at least for tourists so they can use it with a regular NFC card in their phone wallet that they can charge with an app without requiring a technology that only works in phone sold in Japan?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>makeitdouble</em>:</p>
-<blockquote>There is a perhaps a trend of local payment means being less accessible to tourists. I haven&#x27;t experienced it first hand but WeChat&#x2F;Alipay are in the same boat as I understand, and PromptPay in Indonesia can be somewhat be used but needs preparation before making the trip.<p>Now, if you&#x27;re not a tourist passing by for 3 days, Suica has most of your gripes solved and is an incredibly useful general payment mean. I use the Felica version on my phone (so no card), charge it with 3 taps in the app from my credit card, could have it auto charge if I really wanted to and is my payment choice wherever QR codes or QuickPay won&#x27;t cut it.<p>BTW you can now use your credit card to ride JR trains.</blockquote>
-<p>↳ reply 2 — <em>Marsymars</em>:</p>
-<blockquote>&gt; I&#x27;ve had difficulties finding the right place to get a SUICA card<p>It&#x27;s not <i>that</i> hard unless you fly into somewhere other than Narita&#x2F;Haneda where Welcome Suica cards are readily available. They&#x27;re not available to Japanese residents, their only purpose is to function for tourists, so they&#x27;re made to be easy for tourists.<p>&gt; And you can charge it only by 500 or 1000 yen at the time (depending on the machine), and of course tickets always have not round prices like 110 yen.<p>Whatever I have leftover I spend at Starbucks at the airport on my way out. They&#x27;ll happily split your purchase up so you can drain your Suica card balance and pay the remainder on credit.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Decompiling a Nintendo 64 game in 84 days</title>
-      <link>https://blog.chrislewis.au/decompiling-a-nintendo-64-game-in-84-days/</link>
-      <guid isPermaLink="false">hn3-49466006</guid>
-      <pubDate>Thu, 27 Aug 2026 15:01:11 +0000</pubDate>
-      <description>197 points, 123 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.chrislewis.au/decompiling-a-nintendo-64-game-in-84-days/"><strong>→ Article</strong></a> <small>(blog.chrislewis.au)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49466006">→ HN comments</a> &nbsp;·&nbsp; 197 points &nbsp;·&nbsp; 123 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jmcgough</em>:</p>
-<blockquote>I&#x27;ve been absolutely loving the decomp projects that have been coming out lately. Huge props to the writer for this, Snowboard Kids is a real gem.<p>I&#x27;d also encourage people to check out the Legend of Dragoon recomp [1]. It&#x27;s a real labor of love that has breathed new life into a largely abandoned game. You can play it fully vanilla, or with improved graphics, fixes to cumbersome design choices, bugfixes, etc.<p>[1] <a href="https:&#x2F;&#x2F;legendofdragoon.org&#x2F;projects&#x2F;severed-chains&#x2F;" rel="nofollow">https:&#x2F;&#x2F;legendofdragoon.org&#x2F;projects&#x2F;severed-chains&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>matheusmoreira</em>:</p>
-<blockquote>Loving this trend too.<p>It inspired me to use AI to decompile my favorite games as well, mostly Mega Man Battle Network games from my childhood. I&#x27;m not going to make it in 84 days though. I insist on understanding the game and documenting it myself instead of just having the AI do it all for me on autopilot.<p>As slow as that is, it&#x27;s already led to some awesome moments. AI built a literal synthesizer that played back music straight out of the ROM. Mapped out all of the music that way. It was incredible.<p>Have neen reverse engineering my laptop&#x27;s BIOS as well. AI is fully in charge of that one, and it&#x27;s nearly done. Hopefully soon I&#x27;ll have drivers and perhaps even coreboot.</blockquote>
-<p>↳ reply 2 — <em>cleak</em>:</p>
-<blockquote>I love this trend as well. More than any other project or trend, it makes me feel optimistic about a future with AI and little or no slop.<p>I had hoped to someday make retro games for all major 80s and 90s consoles. I started with the Atari 2600 12 years ago[0], and planned to move to other 6502 family systems when I had time. I realized last year that AI could essentially do all of what I considered the hard parts and craft of retro game assembly, which felt like having the rug pulled out from me. Projects like this have really turned that around for me.<p>New tools just mean old things become easier and new things become the difficult (where I think the fun is), but solvable, frontier. This category of projects inspired me to pick back up an Ultima V decompilation project I started more than 10 years ago[1,2]. I&#x27;m looking forward to a world where all of my childhood games are cracked wide open for mods, ports, etc.<p>[0]: <a href="https:&#x2F;&#x2F;github.com&#x2F;cleak&#x2F;FlappyBoot" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;cleak&#x2F;FlappyBoot</a>
-[1]: <a href="https:&#x2F;&#x2F;github.com&#x2F;cleak&#x2F;u5-spec" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;cleak&#x2F;u5-spec</a> (spec for Ultima V binary)
-[2]: <a href="https:&#x2F;&#x2F;github.com&#x2F;cleak&#x2F;u5-engine" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;cleak&#x2F;u5-engine</a> (Rust port of Ultima V made from the spec; still lots of prose slop)</blockquote>
-<p>↳ reply 3 — <em>melony</em>:</p>
-<blockquote>Any advances in emulators recently? I would love to see Nintendo get into a legal tussle with Big AI. Giant douche can fight turd sandwiches.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>hombre_fatal</em>:</p>
-<blockquote>It&#x27;s pretty amazing what you can do when you embrace LLMs, figure out how to build one high-quality rigorous project with them, and then start working on more projects.<p>You become a machine with your workflow, once again limited only by your time&#x2F;energy, tokens, and your discretion on how to spend it.</blockquote>
-<blockquote>
-<p>↳ reply — <em>xyzsparetimexyz</em>:</p>
-<blockquote>matching decompilation is a verifiable target. Its hard to create slop that still matches. The same does not hold up for coding with llms normally.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>thebruce87m</em>:</p>
-<blockquote>Mildly related, but I have been waiting for goldeneye to be decompiled for a while but before that process has finished there is has been a spiritual successor(?) made that has scratched the single-player itch for me: <a href="https:&#x2F;&#x2F;store.steampowered.com&#x2F;app&#x2F;1574480&#x2F;Agent_64_Spies_Never_Die&#x2F;" rel="nofollow">https:&#x2F;&#x2F;store.steampowered.com&#x2F;app&#x2F;1574480&#x2F;Agent_64_Spies_Ne...</a><p>Worth a look if you want a bit of nostalgia.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>507 Mechanical Movements</title>
-      <link>https://507movements.com/</link>
-      <guid isPermaLink="false">hn3-49465169</guid>
-      <pubDate>Thu, 27 Aug 2026 14:08:18 +0000</pubDate>
-      <description>510 points, 69 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://507movements.com/"><strong>→ Article</strong></a> <small>(507movements.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49465169">→ HN comments</a> &nbsp;·&nbsp; 510 points &nbsp;·&nbsp; 69 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>WillAdams</em>:</p>
-<blockquote>One of my favourite sites! and an interesting example of that class of sites which are book made into sites with animations&#x2F;interaction --- the another classic and notable example is:<p><a href="https:&#x2F;&#x2F;mathcs.clarku.edu&#x2F;~djoyce&#x2F;java&#x2F;elements&#x2F;elements.html" rel="nofollow">https:&#x2F;&#x2F;mathcs.clarku.edu&#x2F;~djoyce&#x2F;java&#x2F;elements&#x2F;elements.htm...</a><p>Really wish that the folks doing the 507 Mechanical Movements would finish the balance of the animations.<p>Curious if folks are aware of other similar text&#x2F;website combinations which are still extant (many others such as Bembo&#x27;s Zoo are no longer available, and of course at one point in time, this sort of thing was the province of CD-ROMs such as Leonardo).</blockquote>
-<blockquote>
-<p>↳ reply — <em>pcshah1996</em>:</p>
-<blockquote>If you haven&#x27;t checked it out before, Nicholas Rougeux often does these types of modernization conversions for older printed content: <a href="https:&#x2F;&#x2F;www.c82.net&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.c82.net&#x2F;</a><p>e.g. here&#x27;s a very beautiful reproduction of Euclid&#x27;s elements <a href="https:&#x2F;&#x2F;www.c82.net&#x2F;work&#x2F;euclid" rel="nofollow">https:&#x2F;&#x2F;www.c82.net&#x2F;work&#x2F;euclid</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>WillAdams</em>:</p>
-<blockquote>Yes, I&#x27;m familiar with his work --- it&#x27;s very nice, but it&#x27;s not the on-line and animated&#x2F;interactive thing I was trying to describe&#x2F;specify&#x2F;ask about.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>hommelix</em>:</p>
-<blockquote>If you ever happened to go through Karlsruhe, Germany, there is a collection of mechanical transmission models from Redtenbacher. Some models were on display in the mechanical engineering building at the university.<p>I could only find this link (in German) about the collection. 
-<a href="https:&#x2F;&#x2F;redtenbachersteyr.com&#x2F;redtenbacher-in-karlsruhe&#x2F;" rel="nofollow">https:&#x2F;&#x2F;redtenbachersteyr.com&#x2F;redtenbacher-in-karlsruhe&#x2F;</a><p>One student from Redtenbacher was Reuleaux and there is another collection of transmission from Reuleaux at Cornell university.
-<a href="https:&#x2F;&#x2F;engineering.library.cornell.edu&#x2F;kmoddl&#x2F;" rel="nofollow">https:&#x2F;&#x2F;engineering.library.cornell.edu&#x2F;kmoddl&#x2F;</a></blockquote>
-<p><strong>Top #3</strong> — <em>nickpinkston</em>:</p>
-<blockquote>Two more great books to have in the mechanical world:<p>&quot;Manufacturing Processes for Design Professionals&quot; - amazing photos, diagrams, explanations, etc. of every major manufacturing process - great coffee table book.<p><a href="https:&#x2F;&#x2F;www.amazon.com&#x2F;Manufacturing-Processes-Design-Professionals-Thompson&#x2F;dp&#x2F;0500513759" rel="nofollow">https:&#x2F;&#x2F;www.amazon.com&#x2F;Manufacturing-Processes-Design-Profes...</a><p>&quot;Materials Selection in Mechanical Design&quot; - great book with &quot;Ashby Charts&quot; that let you compare materials against their material properties - e.g. strength vs. weight.<p><a href="https:&#x2F;&#x2F;www.amazon.com&#x2F;dp&#x2F;0750661682" rel="nofollow">https:&#x2F;&#x2F;www.amazon.com&#x2F;dp&#x2F;0750661682</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>XenophileJKO</em>:</p>
-<blockquote>I really love this book, I found a first edition copy in a used bookstore in Maine on vacation.<p><a href="https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;dli.ernet.14756&#x2F;page&#x2F;3&#x2F;mode&#x2F;2up" rel="nofollow">https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;dli.ernet.14756&#x2F;page&#x2F;3&#x2F;mode&#x2F;2up</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Harness Engineering</title>
-      <link>https://Habitat-Thinking.github.io/ai-literacy-superpowers/plugins/ai-literacy-superpowers/explanation/harness-engineering/</link>
-      <guid isPermaLink="false">hn3-49464970</guid>
-      <pubDate>Thu, 27 Aug 2026 13:54:57 +0000</pubDate>
-      <description>125 points, 42 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://Habitat-Thinking.github.io/ai-literacy-superpowers/plugins/ai-literacy-superpowers/explanation/harness-engineering/"><strong>→ Article</strong></a> <small>(habitat-thinking.github.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49464970">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 42 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ricardobeat</em>:</p>
-<blockquote>The term <i>harness engineering</i> does not come from Birgitta Boeckeler&#x27;s article in martinfowler.com. It was first used by Mitchel Hashimoto months earlier in his &#x27;My AI adoption journey&#x27; blog post [1], and immediately picked up by OpenAI [2] a week later.<p>Also worth noting that this text is not only entirely AI generated, but <i>meant for other agents to read</i>, not us humans.<p>[1] <a href="https:&#x2F;&#x2F;mitchellh.com&#x2F;writing&#x2F;my-ai-adoption-journey" rel="nofollow">https:&#x2F;&#x2F;mitchellh.com&#x2F;writing&#x2F;my-ai-adoption-journey</a><p>[2] <a href="https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;harness-engineering&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;harness-engineering&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tomrod</em>:</p>
-<blockquote>What they say about posting the wrong answer on social media is proven true here (though not my intention!). Thanks for the enlightenment!</blockquote>
-<p>↳ reply 2 — <em>tosh</em>:</p>
-<blockquote>the one by <a href="https:&#x2F;&#x2F;earendil.com&#x2F;posts&#x2F;what-is-a-harness&#x2F;" rel="nofollow">https:&#x2F;&#x2F;earendil.com&#x2F;posts&#x2F;what-is-a-harness&#x2F;</a> is also a good read<p>and if you want to see what a simple harness implementation looks like you can just dive into the code and ask your favorite agent about it<p><a href="https:&#x2F;&#x2F;github.com&#x2F;smol-env&#x2F;smol" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;smol-env&#x2F;smol</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;earendil-works&#x2F;pi" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;earendil-works&#x2F;pi</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>iTokio</em>:</p>
-<blockquote>It’s fascinating to live through a the emergence of a new technology and to see people trying to make sense of it as they go.<p>I personally think that a lot of the words used around AI, harness, SKILLS, agents, RAG.. are make up words or close to it, words that do not have profound semantics, even though people are trying to, often after the fact, make sense of them.<p>It’s just popular words that are different enough that people like to use them to claim a new knowledge, or to market a product.<p>But we could use AI tooling instead of harness in the abstract, and it would be better to use more precise terms for more concrete use cases, agent loop, CLI, IDE..<p>It was a fun game at a time where papers were competing for <i>attention</i>, but now that it has become a proven technology, I hope we can find more precise and meaningful words.</blockquote>
-<blockquote>
-<p>↳ reply — <em>tomrod</em>:</p>
-<blockquote>Hear hear! We techies are bad at naming things. &quot;NoSQL&quot; is probably a top contender there.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sroussey</em>:</p>
-<blockquote>I give you &quot;serverless&quot; which is on someone else&#x27;s... server.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>brianjking</em>:</p>
-<blockquote>It&#x27;s lies all the way down...or up?</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>gardnr</em>:</p>
-<blockquote>Here’s the original article this one is based on: <a href="https:&#x2F;&#x2F;martinfowler.com&#x2F;articles&#x2F;harness-engineering.html" rel="nofollow">https:&#x2F;&#x2F;martinfowler.com&#x2F;articles&#x2F;harness-engineering.html</a><p>And here is the original  author on a podcast talking about it: <a href="https:&#x2F;&#x2F;open.spotify.com&#x2F;episode&#x2F;4FxEdjXldNhoh67KYVmbDu" rel="nofollow">https:&#x2F;&#x2F;open.spotify.com&#x2F;episode&#x2F;4FxEdjXldNhoh67KYVmbDu</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>rush86999</em>:</p>
-<blockquote>Here&#x27;s a better summary: <a href="https:&#x2F;&#x2F;github.com&#x2F;rush86999&#x2F;atom&#x2F;blob&#x2F;main&#x2F;docs&#x2F;architecture&#x2F;AGENT_HARNESS_RESEARCH.md" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;rush86999&#x2F;atom&#x2F;blob&#x2F;main&#x2F;docs&#x2F;architectur...</a><p>I also have a self-evolving architecture on it, but you have to be careful, especially if you&#x27;re using multiple models (still WIP).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>gardnr</em>:</p>
-<blockquote>That looks like a “Deep Research” report generated by an LLM, not a summary.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>rush86999</em>:</p>
-<blockquote>Yeah, it is. Bad wording on my part, but the list is a summary of what&#x27;s going on so far in agent harnesses.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Trade (and Tariffs)</title>
-      <link>https://xkcd.com/3290/</link>
-      <guid isPermaLink="false">hn3-49464896</guid>
-      <pubDate>Thu, 27 Aug 2026 13:49:29 +0000</pubDate>
-      <description>487 points, 238 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://xkcd.com/3290/"><strong>→ Article</strong></a> <small>(xkcd.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49464896">→ HN comments</a> &nbsp;·&nbsp; 487 points &nbsp;·&nbsp; 238 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dvh</em>:</p>
-<blockquote>Alt text: &quot;You legs may have a comparative advantage at running, but we arms have a competitive advantage at swinging hammers, so unless you accept that we&#x27;re the dominant limbs and stop hogging the oxygen, that running advantage won&#x27;t be around for long.&quot;</blockquote>
-<blockquote>
-<p>↳ reply — <em>smallmancontrov</em>:</p>
-<blockquote>Ricardo&#x27;s comparative advantage result is contingent on the assumption that capital is not mobile across borders. This was a good assumption in 1817. Is it a good assumption today?<p>Furthermore, he&#x27;s very up front about this in <i>On the Principles</i>, and from this information you can calculate the exact number of people who read the damn thing between the person repeating the talking point and the person originating the talking point.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>javanissen</em>:</p>
-<blockquote>It doesn’t really matter what Ricardo said in 1817: every US academic economist surveyed in 2018 by the Kent Clark Center disagreed that US aluminum and steel tariffs would increase the welfare of the American people ([0]), and this is with the benefit of &gt;200 years in advances in economic scholarship and analysis since Ricardo.<p>[0] <a href="https:&#x2F;&#x2F;kentclarkcenter.org&#x2F;surveys&#x2F;steel-and-aluminum-tariffs&#x2F;" rel="nofollow">https:&#x2F;&#x2F;kentclarkcenter.org&#x2F;surveys&#x2F;steel-and-aluminum-tarif...</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>smallmancontrov</em>:</p>
-<blockquote>The fact that the dumbest president in American history is bad at industrial policy does not mean that industrial policy cannot or should not be done.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ot</em>:</p>
-<blockquote>Reference to Aesop&#x27;s fable?<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;The_Belly_and_the_Members" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;The_Belly_and_the_Members</a></blockquote>
-<p><strong>Top #3</strong> — <em>smallmancontrov</em>:</p>
-<blockquote>A current account deficit is a capital account surplus. Persistent deficits shift the balance between Asset vs Export sectors, dumping the export sector and pumping the asset sector. Put differently, we can pay for imports with shit that we make or shit that we own -- and this has implications for people in our country who make shit vs own shit.<p>A better analogy for the trade deficit would be sitting on the couch slamming potato chips and observing the shift in our body away from muscles and towards fatty tissue. Should we be excited to see this example of specialization in action? Is it wrong to want to fix our diet and push our body composition in the opposite direction?<p><a href="https:&#x2F;&#x2F;yalebooks.yale.edu&#x2F;book&#x2F;9780300261448&#x2F;trade-wars-are-class-wars&#x2F;" rel="nofollow">https:&#x2F;&#x2F;yalebooks.yale.edu&#x2F;book&#x2F;9780300261448&#x2F;trade-wars-are...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kennywinker</em>:</p>
-<blockquote>It’s reasonable to want to bring back american manufacturing. But the random, temper-tantrum, market-manipulation tariffs are not going to do that. America isn’t going to all of a sudden produce tonnes and tonnes of xmas decorations every year just because of a 50% tariff on all chinese goods that may or may not be around in 6 months. All that’s going to happen is xmas decorations are going to be more expensive.<p>An actual plan would be targeting specific industries where america has the ability to scale up, and having congress pass tariffs that slowly ramp up over time to allow a smooth transition.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>pjc50</em>:</p>
-<blockquote>The insane thing about this discussion is that America does still manufacture a huge amount of products that are used all over the world, and the people that make them are paid salaries that are the envy of the world! Many of the people working in this industry are posting on this site!<p>It&#x27;s just that because those products don&#x27;t come in boxes anymore but are distributed over the Internet people think they don&#x27;t count?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>smallmancontrov</em>:</p>
-<blockquote>The balance of trade accounts for &quot;export of computer services,&quot; because of course it does, and the account is in deficit in spite of these, because of course it is. The insane thing is that you tried to offer this &quot;insight&quot; without even bothering to check!</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>xutopia</em>:</p>
-<blockquote>Your framing is ridiculous. Canada sends raw materials to the USA and purchases it back once transformed.  If anyone has been bleeding it is Canada.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>CoMaps integration with the wider FLOSS ecosystem</title>
-      <link>https://www.comaps.app/news/2026-08-23/comaps-integration-with-the-wider-floss-ecosystem/</link>
-      <guid isPermaLink="false">hn3-49464637</guid>
-      <pubDate>Thu, 27 Aug 2026 13:29:54 +0000</pubDate>
-      <description>133 points, 31 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.comaps.app/news/2026-08-23/comaps-integration-with-the-wider-floss-ecosystem/"><strong>→ Article</strong></a> <small>(comaps.app)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49464637">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 31 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>diggernet</em>:</p>
-<blockquote>Two things I would love to see in the FLOSS mapping ecosystem:<p>1. A POI&#x2F;favorites app that maintains a local database with an API for other apps to access it. Apps could then store markers there instead of in their own private db, so that points added on one map app can be instantly available in other apps.<p>2. A shared traffic data service. Any OSM map app could contribute to the same data, helping reduce Google&#x27;s advantage in live traffic data.<p>Obviously, both of these would need privacy protections and be subject to user choice. And there should also be some requirement that both reading and writing be supported, to ensure apps reading POI data don&#x27;t lock in new data, and to prevent apps reading traffic data from freeloading.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>throwaway81523</em>:</p>
-<blockquote>I would also like to see manageable amounts of update traffic.  In the old days I had De Lorme street maps of the whole US.  It was sold on a CD-ROM so the whole dataset was at most 700MB.  It didn&#x27;t have updates.  I also have paper maps (Thomas Guide) of my local region in my car, from the 1990s, and they&#x27;re still perfectly good in most places.  Roads don&#x27;t move around THAT often.  But I have Organic Maps (predecessor of Comaps, maybe I should switch) for just some parts of California and that by itself is more than 1GB of updates EVERY MONTH.<p>Really seriously, if I go to someplace out of my area I might download that place&#x27;s map of 500MB or whatever, but then I probably want to just leave it on my phone in case I go there again, no updates needed.  I&#x27;d like an install for the entire US to be no bigger than say 100GB (my phone &quot;only&quot; has 256GB of storage), and maybe I want monthly updates for my local region of 200MB&#x2F;month, then perhaps annual updates for everything else unless marked as being of special interest.  Plus manual update on demand for wherever if I think I might travel there.</blockquote>
-<p>↳ reply 2 — <em>snickerer</em>:</p>
-<blockquote>A huge usabilitiy step would be the operating systems (and apps) just supporting geo links.<p>Geo links are from a RFC and are plain simple:
-geo:52.512974,13.420131<p>Clicking this link should open your chosen local map app at this position.<p>But it does not, actively sabotaged by big map app players who want only links to <i>their</i> app.</blockquote>
-<p>↳ reply 3 — <em>em-bee</em>:</p>
-<blockquote>for 2: <a href="https:&#x2F;&#x2F;opentrafficmap.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;opentrafficmap.org&#x2F;</a><p>it works by collecting C-ITS (Cooperative Intelligent Transport System) data, which many vehicles now send out.<p><a href="https:&#x2F;&#x2F;wiki.opentrafficmap.org&#x2F;en:c-its:start" rel="nofollow">https:&#x2F;&#x2F;wiki.opentrafficmap.org&#x2F;en:c-its:start</a><p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Intelligent_transportation_system" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Intelligent_transportation_sys...</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>willtemperley</em>:</p>
-<blockquote>Cool. In July, ESRI and Google teamed up to lock down road closure data on their “community maps” program. The community appears to be governments feeding their data to Google and ESRI who then look after it for us, entirely for our benefit.<p>I really think there needs to be an effort to get drivers to use real community software and provide this data as a public good.<p><a href="https:&#x2F;&#x2F;www.esri.com&#x2F;about&#x2F;newsroom&#x2F;announcements&#x2F;esri-helps-bring-up-to-date-road-closure-information-to-google-maps-and-waze" rel="nofollow">https:&#x2F;&#x2F;www.esri.com&#x2F;about&#x2F;newsroom&#x2F;announcements&#x2F;esri-helps...</a></blockquote>
-<p><strong>Top #3</strong> — <em>dang</em>:</p>
-<blockquote>Related. Others?<p><i>CoMaps: The Offline App That Guided Rescuers Without a Signal in Venezuela</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49452671">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49452671</a> - Aug 2026 (80 comments)<p><i>CoMaps – FOSS Offline Maps</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48808928">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48808928</a> - July 2026 (214 comments)<p><i>CoMaps emerges as an Organic Maps fork</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45899836">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45899836</a> - Nov 2025 (15 comments)<p><i>CoMaps: New OSM based navigation app</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=44453888">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=44453888</a> - July 2025 (55 comments)<p><i>A community-led fork of Organic Maps</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=43961908">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=43961908</a> - May 2025 (206 comments)</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Emacs 31: An unofficial guide to Markdown-ts-mode</title>
-      <link>https://rahuljuliato.com/posts/markdown-ts-mode-emacs-31</link>
-      <guid isPermaLink="false">hn3-49464543</guid>
-      <pubDate>Thu, 27 Aug 2026 13:22:36 +0000</pubDate>
-      <description>157 points, 65 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://rahuljuliato.com/posts/markdown-ts-mode-emacs-31"><strong>→ Article</strong></a> <small>(rahuljuliato.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49464543">→ HN comments</a> &nbsp;·&nbsp; 157 points &nbsp;·&nbsp; 65 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>pjdesno</em>:</p>
-<blockquote>For those of us who have just been using Emacs, rather than following its recent evolution, &quot;ts-mode&quot; refers to a mode which uses tree-sitter for parsing, highlighting etc.</blockquote>
-<p><strong>Top #2</strong> — <em>ggm</em>:</p>
-<blockquote>So I can get <i>bold</i> at a cost of shift* to get the star.<p>Or I can do ESC enable-this-mode-option and then press a single key.<p>I&#x27;m struggling with this. If it&#x27;s cheaper in keystrokes to type the codes inline why enable the mode?<p>This isn&#x27;t a vi vs emacs hate thing, It&#x27;s a key count efficiency thing. I don&#x27;t see the motivation even if translated to minimum prefix TAB complete terms. Its like 20x more presses.</blockquote>
-<p><strong>Top #3</strong> — <em>taude</em>:</p>
-<blockquote>One of the biggest reason I&#x27;ve stopped using Emacs, and I was a pretty heavy user before was that org-mode files weren&#x27;t fully native Markdown files, which caused annoying friction when collaborating with others.<p>It would be interesting for me to have a new markdown-centric org-mode thing.  I&#x27;d love to vibe lisp to customize my workflows, and I don&#x27;t totally love Obsidian, which is what I&#x27;ve setup and configured now.  I&#x27;d prefer to just have the config living in&#x2F;around init.el&#x2F;config.el (I used DoomEmacs most recently).<p>I realize that org&#x2F;agenda, etc does a ton more than markdown offers, but most of my flow is just around: raw notes to be consumed, check lists, due dates on items, and other &quot;basics&quot; of org-mode.<p>Any recent Emacsers have similar workflows that are tgenible these days?  I&#x27;d love to get Emacs back in use in my new antigenic Tmux-centric coding flows, and have it be a first class markdown editor, organizaer, and potentially collaboration.....</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rpdillon</em>:</p>
-<blockquote>Org mode is a coherent whole, and has capabilities far beyond what Markdown can accomplish (Markdown is inherently HTML-based, org-mode is not). Markdown&#x27;s history is littered with folks trying to augment it in just the right way to bring these sorts of features, which has resulted in a diaspora of flavors, none particularly dominant+powerful (which is to say, no real org-mode competitor has emerged, even though one could have).  I&#x27;ve used Markdown and Org-mode for 20 years concurrently, and trying to make Markdown work like org-mode has never been successful for me.<p>I wrote a bit about this back in 2021, in response to a query on Reddit &quot;Why didn&#x27;t org-mode just use Markdown?&quot;.<p><a href="https:&#x2F;&#x2F;rpdillon.net&#x2F;why-doesnt-emacs-org-mode-just-use-markdown-2021.html" rel="nofollow">https:&#x2F;&#x2F;rpdillon.net&#x2F;why-doesnt-emacs-org-mode-just-use-mark...</a></blockquote>
-<p>↳ reply 2 — <em>geokon</em>:</p>
-<blockquote>Asciidoc is a nice middle ground between the full suit of tools you get in Orgmode and bare Markdown.<p>To me Orgmode (after years of using it) feels like .docx. A weird poorly specified format that is only fully editable from one editor. Granted you ran read it from anywhere, but you won&#x27;t want to edit it from anywhere other than Emacs. That feels like it defeats the point of using markup - which is supposed to be editable&#x2F;usable from anywhere, even Notepad.<p>.adoc is usually sufficient (the only part I miss is tangle). Lots of options to specify at the top of a document like the images directory, or the CSS file to use, line SVG on HTML export etc. (which Markdown lacks). But the asciidoc converter runs from the command line or from code ( I write .adocs and convert them in Clojure). So you&#x27;re less married to your editor.<p>Ideally there&#x27;d be some markup that&#x27;s specified with a regex of PEGs or something that you could easily make a parse for in any context. I thought djot would be that, but it looks like making a grammar is secondary for them. I hope some day one could navigate to markup file in the browser and they&#x27;d automatically render with your own specified CSS.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Aphantasia Beginner's Guide</title>
-      <link>https://aphantasia.com/guide</link>
-      <guid isPermaLink="false">hn3-49464414</guid>
-      <pubDate>Thu, 27 Aug 2026 13:14:20 +0000</pubDate>
-      <description>146 points, 364 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://aphantasia.com/guide"><strong>→ Article</strong></a> <small>(aphantasia.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49464414">→ HN comments</a> &nbsp;·&nbsp; 146 points &nbsp;·&nbsp; 364 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jawns</em>:</p>
-<blockquote>I&#x27;ve known about aphantasia for a long time, but there is one question I keep coming back to: Is it a skill issue?<p>When I was in second grade, our teacher asked us to close our eyes and imagine a pretzel.  I closed my eyes and tried to will a pretzel to appear as an image, and I failed miserably.  All I saw was darkness and faint squiggles.  I didn&#x27;t understand why so many of my classmates said they could &quot;see&quot; the pretzel with their eyes closed.<p>Later on, I realized that my mind&#x27;s eye doesn&#x27;t actually work like that.  It&#x27;s not like turning on a projector screen against one&#x27;s closed eyelids and magically seeing things that aren&#x27;t there.  The imagery exists on another plane, such that I can visualize an apple with my eyes open or closed, because what I am &quot;seeing&quot; has nothing to do with my eyes themselves.<p>Which makes me wonder whether people who think they have aphantasia might not be missing a mind&#x27;s eye, but rather are unaware of how to active it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>basscomm</em>:</p>
-<blockquote>&gt; but there is one question I keep coming back to: Is it a skill issue?<p>Every time the topic of aphantasia comes up, this question always gets asked. I get that it&#x27;s apparently inconceivable that someone who doesn&#x27;t have aphantasia just assumes that everyone who claims they do is just doing it wrong or misunderstanding what the mind&#x27;s eye is or that the claimant&#x27;s own experience is just flat wrong. It&#x27;s dismissive and annoying.<p>If someone is born without a sense of smell, they don&#x27;t have people question if they <i>really</i> can&#x27;t smell anything or if it&#x27;s a skill issue. They don&#x27;t insist that the person actually <i>can</i> smell, but they just don&#x27;t know _what smelling means_ or some other bizarro argument.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jawns</em>:</p>
-<blockquote>In my own personal experience -- which I presented immediately after the sentence you quoted -- I didn&#x27;t originally understand how to visualize, and then later discovered more about how to actually visualize.<p>So clearly it&#x27;s <i>not</i> like the case where a person is born without a sense of smell, because in that case nobody&#x27;s going to present an &quot;at first I didn&#x27;t know how to smell, but now I do&quot; story.<p>I&#x27;m not saying that all people who experience aphantasia are &quot;just doing it wrong.&quot;  But I <i>can</i> assert that in at least <i>some</i> cases it <i>is</i> a skill issue, because one of those cases was my own case.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>antonvs</em>:</p>
-<blockquote>Sounds like you have aphantasia but you’ve convinced yourself that you don’t.<p>Here’s a simple question: how close are your waking visualizations to images you see in vivid dreams? From what you’ve said, assuming you do experience vivid dreams sometimes, it sounds like the answer is “not very”.<p>Many people without aphantasia report waking imagery quite close or at least comparable to what they experience in dreams. If that’s not the case for you, that’s consistent with aphantasia.<p>The OP article does a decent job of describing it. I recommend reading it, if you haven’t already. What you’ve described matches how it describes aphantasia very closely.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ozten</em>:</p>
-<blockquote>I can &quot;hear&quot; a song at will. I can &quot;hear&quot; it well enough to think about the instrumentation, etc.<p>I can&#x27;t &quot;visualize&quot; a pretzel. I go into an analytical mode and a gut-level physical mode, thinking about pretzels and their different aspects with momentary &quot;pops&quot; of &quot;visualizing&quot;, but they aren&#x27;t stable and continuous, the way I can imagine a song or any sound.<p>Oddly, I started life as a visual artist before computers. I&#x27;ve met both total aphantasia-suffering artists and artists who can visually project onto a blank page and trace what they are seeing. People are somewhere on this spectrum.</blockquote>
-<p>↳ reply 3 — <em>axegon_</em>:</p>
-<blockquote>So, I have this strange habit: whenever I can&#x27;t fall asleep, I&#x27;ll open up wikipedia on my phone and hit &quot;random article&quot; until something barely interesting shows up. I&#x27;ll start reading and a few minutes into it, I&#x27;ll be dead asleep. So about a month ago or so the Aphantasia article popped up on my screen and... I was in the second half of my 30&#x27;s when I learned that people can REALLY picture images in their heads. I spent my entire life thinking that &quot;picture {something}&quot; is just a figure of speech. And the fact that this phrase (with several variations) exist in all languages I speak kind of always flew over my head. From everything I read, there&#x27;s no consensus on what is really going on for those of us that have it.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>xlii</em>:</p>
-<blockquote>I have aphantasia in both visual and audio forms. And I can tell you audio aphantasia is wild.<p>I cannot hear a song in my head if my life depended on it but then there are triggers that extract it music it.<p>Examples: &quot;who let the dogs out&quot; (I remember rhythm but not the music). I play piano for almost 2 years but I have no idea what&#x27;s the each sound is. It gets even better. Even though I play and record [0] I can&#x27;t remember my own compositions. They usually come back to me as a play on hands and not on audio.<p>I thought I was music deaf for the most of my life. My music teachers mocked me in my youth showing me as an example of someone with zero hearing.<p>My latest music teacher discovered that I actually have absolute hearing skill but... can&#x27;t recall sound in my head. So I sense even slight shift in toning (e.g. given few variations of same melody I can tell which one is the original tuning) but I can&#x27;t reproduce it.<p>[0]: <a href="https:&#x2F;&#x2F;on.soundcloud.com&#x2F;Rv6t1jXzyAH8E2jEaY" rel="nofollow">https:&#x2F;&#x2F;on.soundcloud.com&#x2F;Rv6t1jXzyAH8E2jEaY</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dtkav</em>:</p>
-<blockquote>I think i have this too (also play piano, have perfect pitch). I have an excellent musical memory, but i have to actually play a song &#x2F; sing it out loud to hear it if that makes sense.<p>I do have the motion-centric imagination sense (i could &quot;feel&quot; what it would be like to do a layup) without physically moving.<p>No ability to generate audio, visuals, etc &quot;on the inside&quot;.<p>Do you have an internal voice?</blockquote>
-<p>↳ reply 2 — <em>iamhamm</em>:</p>
-<blockquote>You just broke my mind. I have visual aphantasia but until I just read your comment about audio aphantasia it never even dawned on me that hearing a song or sound in my head was a possibility. I just did your “who let the dogs out” test and I could remember the tune but as soon as I stopped thinking about it, it went away. That’s a wild personal discovery to have from an HN comment. Thanks!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>andrewla</em>:</p>
-<blockquote>It would take a lot to convince me that aphantasia or phantasia actually exist.<p>Let&#x27;s talk very specifically about the afterimage test here. Can anyone confirm that they have this ability, which specifically is to superimpose imagined objects inside your actual field of vision? If the answer to this is yes, then okay, I guess I have aphantasia. But none of the other criteria seems to apply.<p>I can imagine a song, and &quot;hear&quot; it in my &quot;mind&#x27;s ear&quot;, but I am not confused about whether it is occurring through my ears or just in my brain. I can easily imagine the tones and voices and tell you what the bass line sounds like, etc.<p>My visual imagination works the same way -- I can&#x27;t make the object appear in my field of vision any more than I can make sounds appear in my field of hearing, but I can definitely imagine the visual aspects of it. If you tell me to imaging an equilateral triangle, I can put it there in my mind&#x27;s eye, and if you tell me to attach another equilateral triangle to it I can see the resulting parallelogram. But I can&#x27;t actually *see* it.<p>It would take a lot to convince me that phantasia or aphantasia actually exist, and nothing I see on this webpage convinces me.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>numeri</em>:</p>
-<blockquote>Quoting myself from a thread on aphantasia several months ago:<p>… there are plenty of scientific experiments that show actual differences between people who report aphantasia and those who don&#x27;t, including different stress responses to frightening non-visual descriptions, different susceptibility to something called image priming, lower &quot;cortical excitability in the primary visual cortex&quot;, and more: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Aphantasia" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Aphantasia</a><p>So we know that at least the people who claim to see nothing act differently. Could it just be that people who act differently describe the sensation differently, you might ask?<p>No, because there are actual cases of acquired aphantasia after neurological damage. These people used to belong to the group that claimed to be able to imagine visual images, got sick, then sought medical help when they could no longer visualize. For me, at least, that&#x27;s pretty cut and dry evidence that it&#x27;s not just differing descriptions of the same (or similar) sensations.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>D-Machine</em>:</p>
-<blockquote>Yup, sadly the absolute denialists saying &quot;it is just semantic confusion&quot; don&#x27;t really have a tenable position, as a quick read through this whole thread would instantly reveal.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jhedwards</em>:</p>
-<blockquote>They absolutely exist. I have a VERY strong minds eye and can invent and watch movies if I want to. Once I was driving while my friend described a post-apocalyptic landscape. I was seeing that landscape and not the road. Suddenly (some part of my brain was still paying attention, thankfully) the road rushed back to me and I saw that the cars in front of me had stopped. I had to slam on the brakes to avoid an accident.<p>As possibly a tradeoff for this intense visual imagination, I have dyscalculia: I am unable to do more than simple calculations in my mind, and the more math I do the more my mind &quot;closes up&quot; and I feel a kind of pain and visceral frustration. There was nothing more frustrating growing up than people telling me I just needed to be patient or try harder, when nothing I did had any effect on my math ability.<p>As an adult I have worked around that disability by learning the fields of math that don&#x27;t involve lots of numbers (discrete math is fine, algorithms are fine), and by learning non-numerical strategies for breaking down problems into smaller, more manageable calculations.<p>People are different, we have different cognitive abilities. Just like some people are blind or deaf, some people lack a visual imagination, an internal narrative, or the ability to manipulate numbers. I think this cognitive diversity is really quite fascinating.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>US Government designates host of noblogs.org a "global terrorist"</title>
-      <link>https://crimethinc.com/2026/08/27/us-government-designates-host-of-noblogsorg-a-global-terrorist</link>
-      <guid isPermaLink="false">hn3-49464391</guid>
-      <pubDate>Thu, 27 Aug 2026 13:12:10 +0000</pubDate>
-      <description>218 points, 117 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://crimethinc.com/2026/08/27/us-government-designates-host-of-noblogsorg-a-global-terrorist"><strong>→ Article</strong></a> <small>(crimethinc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49464391">→ HN comments</a> &nbsp;·&nbsp; 218 points &nbsp;·&nbsp; 117 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>roughly</em>:</p>
-<blockquote>If you’ve wondered why there wasn’t an effective political Left in this county for the last ~60 years, buckle up.</blockquote>
-<p><strong>Top #2</strong> — <em>leonixyz</em>:</p>
-<blockquote>Being far-left is now officially terrorism. Now they will start move the bar one step at a time, one organization at a time, to cut off every political movement that does not align.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>swed420</em>:</p>
-<blockquote>It actually was declared a year ago<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;NSPM-7" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;NSPM-7</a><p>And a bit rich that it mentions its reasoning included the Kirk assassination. Kirk was starting to make noise about the Epstein stuff, so Trump personally called him and told him to knock it off. Shortly after he was assassinated.</blockquote>
-<p>↳ reply 2 — <em>TiredOfLife</em>:</p>
-<blockquote>I live in a country that enjoyed the wonders of being governed by far-left for 50 years. They are and always were terrorists.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>BLKNSLVR</em>:</p>
-<blockquote>Nice to know these guys exist, might have to make use of some of their services.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
