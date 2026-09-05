@@ -4,7 +4,202 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 04 Sep 2026 23:53:24 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 04:06:04 +0000</lastBuildDate>
+    <item>
+      <title>Can AI design circuit boards yet?</title>
+      <link>https://eebench.org/blog/can-ai-design-circuit-boards-yet/</link>
+      <guid isPermaLink="false">hn3-49569366</guid>
+      <pubDate>Fri, 04 Sep 2026 19:48:29 +0000</pubDate>
+      <description>187 points, 123 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://eebench.org/blog/can-ai-design-circuit-boards-yet/"><strong>→ Article</strong></a> <small>(eebench.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49569366">→ HN comments</a> &nbsp;·&nbsp; 187 points &nbsp;·&nbsp; 123 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>SequoiaHope</em>:</p>
+<blockquote>I have 15+ years of PCB design experience. Mostly hobby stuff but a fair amount of processional work. Kilowatt range brushless motor controllers, basic RF stuff, lots of microcontroller stuff.<p>I had Fable design an LED earring. Rechargeable coin cell, RP2350 cpu, IMU, 45 addressable LEDs. It made two mistakes - missed the through holes on the coin cell holder footprint and made the center pad too small. I was able to have JLC swap the through hole battery holder for a surface mount one, and I put a little solder on the small center pad to make it stick up above the mask. They work great! It took 6 days of Fable usage, so about $50 on my Max plan. Very cheap for hardware dev.<p>I was sufficiently impressed that I’ve been going over old circuit board designs. Some half finished, some completed but in need of a next rev, and I’m getting so much done.<p>To see it hit the mainstream like the OpenAI announcement, I think big things are coming for this world and by and large they are not ready for it.<p>For my part, I have always loved PCB design and layout but I simply can’t keep up with the amount of labor required to build what I want, so I welcome this change.<p>I have also begun exploring more advanced algorithms for PCB manipulation. I have a fairly dense board that needs a few more small chips added. I have an algorithm now that can kinda shuffle and jostle things around so you take up all the spare microns of space across a region of the board and make openings to squeeze a little more in there. It’s pretty cool to see the visualizations as I have it generate movies of the component drift. I foresee much more powerful tools like this in the future.<p>One tip: have it make a project web page with a chronological list of big changes and detailed visualizations for everything that happens. I can actually prompt all of this on my phone while I am out and about, and view the results on a Tailscale served local page. I’ve always wanted to be able to do PCB design when away from home and now I can!</blockquote>
+<blockquote>
+<p>↳ reply — <em>zorm</em>:</p>
+<blockquote>As someone without PCB design experience but with dreams of physical things that could be made with PCBs this sounds amazing. What software are you using for the PCB design? Or just entirely letting Fable do whatever and checking the work with the browser page you mention?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>SequoiaHope</em>:</p>
+<blockquote>The designs are in Kicad format, and the Kicad APIs are useful for Claude to work with. I would say that right now this involves a lot of knowledge about PCB design to do well, or for more detailed designs. However you might research how to design board for fabrication at JLCPCB and try something simple. Eg make a board with only LEDs in some pretty pattern and make it so you solder a raspberry pi Pico 2 to the board to drive it. Then you don’t have to worry about microcontroller work, just getting the LEDs placed. That is a little easier to get right. Just check the orientation of the LED footprint in the data sheet and make sure the four pins on the LED footprint match - and that there is a silkscreen dot on pin 1 of the LED. You can feed an agent this comment and it can check, though it’s good to check with your own eyes. You might ask it to screenshot the data sheet and the board footprint and display them side by side on the project web page for your review.<p>Put the LEDs in a cool pattern, slap a Pico on there, have your LLM program it, then dangle it off your backpack with a USB battery pack. Probably adding a motion sensor is easy enough.<p>Ask the LLM to make sure the board follows JLCPCB’s design rules, lists the LCSC part number for each part, verifies the parts are in stock, double checks every footprint, and makes sure the board passes DRC. Make sure it creates a schematic that is linked to the board design, and that the schematic is properly arranged in to logical blocks with clear connections the way a person would make a schematic - not a big array of parts with global labels for everything. Once it’s done, ask it to clean up the schematic and make it better. Repeat for the board layout. Ask it to review and look for issues multiple times. It will find them. Finally, take some time to doodle your own silkscreen art on there. Have fun! Note the Pico 2 is USB micro. For USB C, sparkfun or waveshare sell similar boards.<p>Also you can ask it to teach you! Ask a million questions and have it give you multimedia explainers.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>CyLith</em>:</p>
+<blockquote>A personal data point: I had Claude Opus 4.8 design a fairly textbook circuit that outputs a monochrome image burned in an EEPROM over standard 640x480 VGA using only 74 series logic and GALs. It designed the circuit and GAL code, and I did the routing, and got it made through JLC for $6. After it came back, there was one error that was not caught, which I could blue-wire, and it works just fine otherwise. I was fairly impressed.</blockquote>
+<blockquote>
+<p>↳ reply — <em>kennyadam</em>:</p>
+<blockquote>Are there any resources anyone could share that explain how LLMs can do things like design functioning circuits from next token prediction? I am totally baffled by how the models can complete so many varied and complex tasks without an actual understanding of what they&#x27;re doing.<p>I saw a post about models posting on forums, chatting together about how to complete tasks. Behaviour that seems totally, well, human. Yet, it&#x27;s all the most likely token and my brain hurts trying to understand how that can be.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hackinthebochs</em>:</p>
+<blockquote>&gt;without an actual understanding of what they&#x27;re doing.<p>At what point do you start to question your assumptions that are causing you so much cognitive dissonance?<p>But to answer your question: to predict the next token really well you just have to model the world. Think of it like this, a simple statistical model might say &quot;when token A is seen respond with token B&quot;. The next step will add conditions, &quot;...respond with token B unless X has been seen, then respond with Y&quot;. Add a few billion more of these contexual clauses and you have a sequence of logical rules that indirectly model the relevant processes in the world.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>corn-cheese</em>:</p>
+<blockquote>For reasonably complex boards, it’s often not possible to know if it’ll work as intended until you have an assembled prototype in hand… even if you have the best SPICE and RF simulations ever, data sheets for many components can be missing important details, or components can have errata.<p>LLMs may be able to accelerate time to first prototype, but I don’t think it’ll be possible for them to revolutionise electronics design in the same way that’s happened for software - there’s not enough data, and it’s not cheap to gather more.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Shutting down our public encrypted DNS</title>
+      <link>https://mullvad.net/en/blog/shutting-down-our-public-encrypted-dns-servers-and-sponsoring-quad9-instead</link>
+      <guid isPermaLink="false">hn3-49568579</guid>
+      <pubDate>Fri, 04 Sep 2026 18:50:28 +0000</pubDate>
+      <description>276 points, 122 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mullvad.net/en/blog/shutting-down-our-public-encrypted-dns-servers-and-sponsoring-quad9-instead"><strong>→ Article</strong></a> <small>(mullvad.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49568579">→ HN comments</a> &nbsp;·&nbsp; 276 points &nbsp;·&nbsp; 122 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>pbhjpbhj</em>:</p>
+<blockquote>&gt;We want a public service to be available. Going forward, we will support Quad9 instead of running it ourselves. Running a privacy-focused public DNS service is a highly specialized undertaking, and the Quad9 Foundation is the undisputed leader in the field. Rather than duplicating their efforts to achieve only part of what they do, we&#x27;re putting those resources toward financially supporting Quad9 instead.<p>Brilliant.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pbhjpbhj</em>:</p>
+<blockquote>On the Quad9 website:<p>&gt;Since Quad9 already performs DNSSEC validation, DNSSEC being enabled in the forwarder will cause a duplication of the DNSSEC process, significantly reducing performance and potentially causing false BOGUS responses.<p>This sounds dodgy. Surely that means Quad9 can poison my DNS?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>usr1106</em>:</p>
+<blockquote>I use Clouldflare DoT and enabled validation in systemd-resolved some time ago. Not because I would be particularly paranoid, but more out of curiosity how it works. I noticed no problems, except for with Atlassian. They use 2 second level domains (at least), one under .com signed and one under .net (unsigned) (IIRC). Most things worked like normal, but some Jira extension stopped working. Turned out that systemd did reject their signed subdomains. Could not figure out whether the rejection was justified or not. When I asked Claude 7 times about it, I also got 7 contradicting answers... Reported to Atlassian support that their signing is incorrect (some delegation missing). To my surprise they replied: Are you using systemd? And gave a bug number that systemd handles validation wrong in their case.<p>Haven&#x27;t had time to study the bug and really understand the whole issue myself. Just left it there with the takeaway that local validation is currently not for non-experts.<p>(Sorry not at my computer. Details rather vague from memory.)</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>oofdere</em>:</p>
+<blockquote>Quad9 doesn&#x27;t have an adblocking DNS service though, so it&#x27;s not really a replacement.</blockquote>
+<p>↳ reply 3 — <em>seany</em>:</p>
+<blockquote>I&#x27;m all for supporting quad9; but what if we just disable dnssec instead, it really solves nothing and continued support of it just makes it show up in compliance guides unnecessarily.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>iamnothere</em>:</p>
+<blockquote>Quad9 is a reasonable choice given the stance on privacy and the similar jurisdiction (Mullvad would probably face the same takedown orders as Quad9), but really anyone who cares about bypassing national blocking orders should run a local caching recursive resolver. Unbound is a great choice.<p>Unbound can also be used to block malware and advertising domains using shared public lists, or you can build your own list. Your resolver’s DNS queries could be piped through Mullvad or Tor if you want additional privacy.</blockquote>
+<p><strong>Top #3</strong> — <em>david_shaw</em>:</p>
+<blockquote>It&#x27;s not that I don&#x27;t trust Quad9 or dns.sb or any of the others, it&#x27;s just that I trust Mullvad more.<p>Sad to see this going away, but I assume this is so Mullvad can focus on their primary services.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Formalizing Fermat's Last Theorem</title>
+      <link>https://www.anthropic.com/research/formalizing-fermats-last-theorem</link>
+      <guid isPermaLink="false">hn3-49568506</guid>
+      <pubDate>Fri, 04 Sep 2026 18:42:56 +0000</pubDate>
+      <description>534 points, 334 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/research/formalizing-fermats-last-theorem"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49568506">→ HN comments</a> &nbsp;·&nbsp; 534 points &nbsp;·&nbsp; 334 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>lalitmaganti</em>:</p>
+<blockquote>I suggest also reading Kevin Buzzard&#x27;s blog post which was just posted: <a href="https:&#x2F;&#x2F;xenaproject.wordpress.com&#x2F;2026&#x2F;09&#x2F;04&#x2F;flt-anthropic-has-beaten-me-to-it&#x2F;" rel="nofollow">https:&#x2F;&#x2F;xenaproject.wordpress.com&#x2F;2026&#x2F;09&#x2F;04&#x2F;flt-anthropic-h...</a><p>Provides great context on this accomplishment, what it means but also <i>doesn&#x27;t</i> mean.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dang</em>:</p>
+<blockquote>Thanks! I&#x27;ve added that link to the toptext.<p>I&#x27;d really like to make it the top link (and relegate <a href="https:&#x2F;&#x2F;www.anthropic.com&#x2F;research&#x2F;formalizing-fermats-last-theorem" rel="nofollow">https:&#x2F;&#x2F;www.anthropic.com&#x2F;research&#x2F;formalizing-fermats-last-...</a> to the toptext) since HN has been tracking the work of <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;user?id=kevinbuzzard">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;user?id=kevinbuzzard</a> for a long time and we&#x27;re big fans. But I guess that would be overkill.</blockquote>
+<p>↳ reply 2 — <em>faitswulff</em>:</p>
+<blockquote>I’m not very good at mathematics, but it seems like Kevin should take his girlfriend on trips more often for the good of all mathematicians.</blockquote>
+<p>↳ reply 3 — <em>BeetleB</em>:</p>
+<blockquote>&quot;I was given £1M to run my project over 5 years; Anthropic took only 11 days but I do wonder if they spent more money…&quot;<p>Gives you an idea of the scale...</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>herbcso</em>:</p>
+<blockquote>So I don&#x27;t know Lean or Mathematics to any degree to really be able to say this with any level of confidence, but speaking from a pure software engineering backgrouand, how do we know that 13 MILLION lines of Lean code are bug-free? It seems to me that for a mathematical proof, bug-free would be an absolute requirement. Maybe the structure of Lean imposes that, I don&#x27;t know, but that seems highly unlikely to me. That just feels like a LOT of code to be comletely error-free... What am I missing here?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>raincole</em>:</p>
+<blockquote>The answer is we don&#x27;t really know [0]:<p>&gt; In 2026, AIs designed to spot bugs in software were directed at Lean, and found several loopholes which were then fixed. Perhaps related to this effort, a purported disproof of the Collatz conjecture was announced as verified in Lean. However, this proof was soon determined to rely on a bug in Lean, and once the bug was fixed the proof was found invalid<p>However it&#x27;s a bit different than the usual &#x27;bugs&#x27; we encounter in normal software development. Lean is more like a type checker. In other words if you can write a false proof in Lean then the bug is in Lean itself, not your code.<p>[0]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lean_(proof_assistant)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lean_(proof_assistant)</a></blockquote>
+<p>↳ reply 2 — <em>thevivekpandey</em>:</p>
+<blockquote>In lean, a theorem is specified by a type (in their highly complex &quot;dependent type system&quot;) and proof is specified by a code that produces a term of that type.<p>If the compiler certifies that the code indeed produces a term of that type, then the proof is correct.<p>So, only need to trust:
+(1) That theorem statement is correctly encoded (FLT has a very short 1 liner description really)<p>(2) Lean compiler is correct</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sigmar</em>:</p>
+<blockquote>&gt;The speed with which we were able to produce this proof demonstrates that it is now possible to formalize large swaths of mathematics, which may both catch errors in the common body of mathematical proofs and reduce the burden of refereeing new work.<p>^ this section should have been in the first few paragraphs imho. Explaining why this is relevant shouldn&#x27;t be so far down.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>doctoboggan</em>:</p>
+<blockquote>Isn&#x27;t it the cost we care about, rather than the speed? All we know know is that a frontier AI lab was able to do it in 11 days, we have no idea how much compute they threw at it.</blockquote>
+<p>↳ reply 2 — <em>paxys</em>:</p>
+<blockquote>Nah they should have released it in a 14-part tweet instead.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Nobody is saying why OpenAI and Anthropic had outages</title>
+      <link>https://www.wired.com/story/nobody-is-saying-why-openai-and-anthropic-had-outages-today/</link>
+      <guid isPermaLink="false">hn3-49567594</guid>
+      <pubDate>Fri, 04 Sep 2026 17:29:22 +0000</pubDate>
+      <description>193 points, 3 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.wired.com/story/nobody-is-saying-why-openai-and-anthropic-had-outages-today/"><strong>→ Article</strong></a> <small>(wired.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49567594">→ HN comments</a> &nbsp;·&nbsp; 193 points &nbsp;·&nbsp; 3 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ChrisArchitect</em>:</p>
+<blockquote>Related:<p><i>Ask HN: Why were OpenAI, Claude, and Grok simultaneously down?</i><p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49551096">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49551096</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>dang</em>:</p>
+<blockquote>Comments moved thither. Thanks!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bossyTeacher</em>:</p>
+<blockquote>I feel like some of the comments in here are astroturfing. HN is the wrong place to push for &quot;it was a coincidence&quot; explanations.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: Open-Source eInk Bike Computer</title>
+      <link>https://opentrailpaper.com</link>
+      <guid isPermaLink="false">hn3-49567437</guid>
+      <pubDate>Fri, 04 Sep 2026 17:18:08 +0000</pubDate>
+      <description>252 points, 87 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://opentrailpaper.com"><strong>→ Article</strong></a> <small>(opentrailpaper.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49567437">→ HN comments</a> &nbsp;·&nbsp; 252 points &nbsp;·&nbsp; 87 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Rebelgecko</em>:</p>
+<blockquote>The semi-interactive walkthrough on the website is really cool, great way to show the UX.<p>I&#x27;ve always wanted to use a round display and an 18650 to plop a mini bike computer into my headset (replacing the cap). There was a Kickstarter years ago for a project doing that, but it seems to have fizzled out</blockquote>
+<blockquote>
+<p>↳ reply — <em>pandaman</em>:</p>
+<blockquote>If you mean that you push a 18650 inside the steerer tube and have the display at the cap level - how do you preload the headset then? You need to pull the steerer up somehow and it&#x27;s done via that cap and a bolt that goes through it into a compression plug&#x2F;star nut inside the steerer. If you place something under the cap it needs to fit between that bolt and the inside of the steerer tube, which 18650 can&#x27;t.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ehnto</em>:</p>
+<blockquote>Some modern headset designs don&#x27;t use the top cap to do that. There&#x27;s a bunch of products that exploit that to put toolkits, spare CO2 canisters or whathave you in that spot.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>pandaman</em>:</p>
+<blockquote>Sure, threaded headsets (hardly modern, but they do still make bikes with those) don&#x27;t use top cap, but they also don&#x27;t have a hole at the top, which products you are talking about?<p>PS. I searched and found some in-steerer storage. It&#x27;s not a headset but essentially a hollow compression plug replacement with a top cap moved to the bottom. I have never seen a road fork with a hole at the bottom so it is likely limited to MTB forks and, since there is no compression in that thing, it might be not very safe with a carbon steerer.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>neoCrimeLabs</em>:</p>
+<blockquote>Within 10 seconds I was convinced I needed to try this.<p>For me, the next step for this is taking all the sensor data recorded for a ride, and loading it into my own fitness tracking database that I own, control, and isn&#x27;t tied to someone else&#x27;s profits.</blockquote>
+<p><strong>Top #3</strong> — <em>mholt</em>:</p>
+<blockquote>This is great, I just saw your post on X. I&#x27;m also building a bike computer!<p>eInk is the right display tech. I think this will do really well. It might need a UV filter.<p>That said, I don&#x27;t love needing a separate device (hence, I don&#x27;t own any bike computer). This is just my preference, but I really prefer to just plop my phone on my handlebars. So I&#x27;m building a bike computer app for iPhone: <a href="https:&#x2F;&#x2F;x.com&#x2F;mholt6&#x2F;status&#x2F;2090529441944687087" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;mholt6&#x2F;status&#x2F;2090529441944687087</a> (trying to get Apple to approve my developer account &#x2F; business info, but they&#x27;re hung up on my website of all things).<p>Phones are definitely not ideal in terms of display and energy use, but, I have found that with proper optimizations, energy use is a non-issue. To offset display problems, the app has several ride modes: a rich map display with 3D road or satellite view; a high-contrast wireframe map that looks great at both high and low refresh rates because it has no analog-style gauges; an instrument panel dashboard view; and a voice-only mode that has big touch zones for on-demand voice updates, using a state of the art mobile voice synthesis model. For connected radars, the app also renders radar data and has a screen like Tesla&#x2F;Rivian&#x27;s autonomy displays.<p>The app automatically manages thermals by switching modes to preserve battery life.<p>In my testing so far, by managing energy, making really good voice feedback, and using high-contrast screens (every mode other than the &quot;rich&quot; map), even a dimmed iPhone display is quite a usable bike computer in high-altitude sunlight.<p>But man, that eInk looks so clean and nice. Definitely the superior display! Nice work and I hope to learn some things from it!<p>EDIT: Woah, you got ANT+ support using BLE radio? I am not surprised that that is possible, but dang, that must have been a clever LLM.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>opello</em>:</p>
+<blockquote>eInk does seem like an awesome choice for this to me too.<p>I&#x27;ve gone without a bike computer for the same reasons as not wanting a second device.  I used my phone for years in a water proof front frame bag with a transparent cover.  Usually for not more than 3 hours at a time.  Only on my Pixel 7a did I end up with burn in from the Wahoo Android app&#x27;s status screen, where &quot;n&#x2F;a&quot; for not having a power meter ultimately burnt in after about 2 years, at least that&#x27;s when I noticed it.  Now I just go without being able to glance down and see ride stats or directions.  More planning or stopping if I reroute is required, but I didn&#x27;t want to damage the phone... :(<p>Presumably an app could cycle displayed screens, if that&#x27;s what you meant by switching modes, to avoid burn in?  But I really thought AMOLED was past that when I never saw it on previous phones.</blockquote>
+<p>↳ reply 2 — <em>alabut</em>:</p>
+<blockquote>I use my phone as a bike computer too but it only works on short rides around town. Anything longer gets cooked by the sun until the screen dims and battery stops charging.<p>That’s why the head units in my bikepacking groups have screens that double as solar displays. The Coros Dura is probably the most popular one for all day or multi-day trips.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Adult Film Producer Unmasks Prolific 'John DOE' Torrent Pirate as Meta Executive</title>
+      <link>https://torrentfreak.com/adult-film-producer-unmasks-prolific-john-doe-torrent-pirate-as-meta-executive/</link>
+      <guid isPermaLink="false">hn3-49567053</guid>
+      <pubDate>Fri, 04 Sep 2026 16:46:59 +0000</pubDate>
+      <description>366 points, 213 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://torrentfreak.com/adult-film-producer-unmasks-prolific-john-doe-torrent-pirate-as-meta-executive/"><strong>→ Article</strong></a> <small>(torrentfreak.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49567053">→ HN comments</a> &nbsp;·&nbsp; 366 points &nbsp;·&nbsp; 213 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>drewg123</em>:</p>
+<blockquote><i>However, Strike 3 argues that this is no ordinary home pirate, using the timing of the downloads as evidence. On March 20, 2025, the porn producer’s general counsel first emailed Meta’s lawyers with forensic evidence of BitTorrent activity on the tech giant’s corporate IP addresses.<p>“Just hours later, Strike 3 first recorded BitTorrent infringement on John Doe’s residential IP Address,” the motion reads.<p>“This may suggest that Meta desired to shift infringing activity to this hidden residential IP Address in order to prevent further detection,” </i><p>Seems like there are 2 different reads to that.  (a) is like they say, and Meta was using porn for AI training or something else official.  Or (b) that he was personally downloading porn either at the office or a corp VPN and was told to stop by their corp It folks..</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gchamonlive</em>:</p>
+<blockquote>&gt; b) that he was personally downloading porn either at the office or a corp VPN and was told to stop by their corp It folks..<p>I wonder how much porn you have to personally download to be considered prolific.<p>EDIT: &quot;Reality Labs executive downloaded nearly 20,000 files at his home for work purposes&quot;<p>Yeah, you can&#x27;t consume that much porn for your own amusement.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jnwatson</em>:</p>
+<blockquote>Yeah but some folks are just data collectors&#x2F;hoarders. It isn&#x27;t about consumption.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>gchamonlive</em>:</p>
+<blockquote>Maybe if Meta joined a preservation initiative, but that doesn&#x27;t seem to be the case</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>stevenwoo</em>:</p>
+<blockquote>When I worked for office with about 40 employees in 2001 or so, the FBI came to our office to arrest a guy using I think Limewire over our high speed internet access to share music and videos. It may be so common these days they only crack down like that on really egregious abuse.</blockquote>
+<p>↳ reply 3 — <em>ryandvm</em>:</p>
+<blockquote>&gt; Or (b) that he was personally downloading porn either at the office or a corp VPN<p>Man, if Facebook is hiring people this dumb, it&#x27;s going to make me feel a lot worse about getting rejected after interviewing there.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>hackingonempty</em>:</p>
+<blockquote>Strike 3, the studio involved, files more lawsuits in the USA than anyone else.  I think that makes them the biggest Copyright Trolls of all time.  They run their own BitTorrent monitoring operation.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mullingitover</em>:</p>
+<blockquote>Meta, the other company involved, engaged in industrial scale piracy in pursuit of training data[1].<p>Let me break out the world&#x27;s tiniest violin for them.<p>[1] <a href="https:&#x2F;&#x2F;arstechnica.com&#x2F;tech-policy&#x2F;2025&#x2F;02&#x2F;meta-torrented-over-81-7tb-of-pirated-books-to-train-ai-authors-say&#x2F;" rel="nofollow">https:&#x2F;&#x2F;arstechnica.com&#x2F;tech-policy&#x2F;2025&#x2F;02&#x2F;meta-torrented-o...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tencentshill</em>:</p>
+<blockquote>Fantastic, so we win either way</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>fn-mote</em>:</p>
+<blockquote>The company that owns the copyright should be allowed to enforce it. I don&#x27;t see how that can be called trolling.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>fckgw</em>:</p>
+<blockquote>&gt; As recently as August 25, Strike 3 says it recorded more than 150 daily downloads, from multi-language “Mega Packs” of TV shows, movies, software and books to what it describes as AI-generated pornography and VR adult films. That included nearly a dozen of its own titles.<p>It sounds like this person&#x2F;IP was just downloading a ton of different content, of which these VR videos were are part of.<p>Doesn&#x27;t that water down their complaint a bit? If they are trying to say they moved to a residential IP to specifically download VR content for training data, why are they also downloading unrelated eBook and other media? Seems like VR content made up a pretty small percentage of overall downloaded content.</blockquote>
+<blockquote>
+<p>↳ reply — <em>foolfoolz</em>:</p>
+<blockquote>but they allege $446M in damage. not all 20,000 files were porn, but they also don’t say where that number comes from</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Corporate America is getting hooked on open-source AI</title>
       <link>https://www.nytimes.com/2026/09/04/technology/open-source-ai-anthropic-openai.html</link>
@@ -3440,220 +3635,6 @@ I would say that any auto-update mechanism is a threat, so in both cases you wou
 <blockquote>
 <p>↳↳ reply — <em>tentacleuno</em>:</p>
 <blockquote>If anything, it seems more poised to damage the usability of systems which actively <i>rely</i> on Aurora Store, like CalyxOS and the likes.  Graphene actively discourages using Aurora.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Dwarf Fortress' creator says the industry's in shambles over AI</title>
-      <link>https://www.pcgamer.com/gaming-industry/dwarf-fortress-creator-says-the-industrys-in-shambles-over-ai-and-layoff-happy-ceos-everyone-i-know-their-bosses-are-slowly-getting-psychosis/</link>
-      <guid isPermaLink="false">hn3-49523720</guid>
-      <pubDate>Tue, 01 Sep 2026 15:53:42 +0000</pubDate>
-      <description>210 points, 216 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.pcgamer.com/gaming-industry/dwarf-fortress-creator-says-the-industrys-in-shambles-over-ai-and-layoff-happy-ceos-everyone-i-know-their-bosses-are-slowly-getting-psychosis/"><strong>→ Article</strong></a> <small>(pcgamer.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49523720">→ HN comments</a> &nbsp;·&nbsp; 210 points &nbsp;·&nbsp; 216 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>munificent</em>:</p>
-<blockquote>1. Human attention is a finite resource.<p>2. Digital media allows a single authored work to consume the attention of an unbounded number of people with near zero marginal cost. Further, once a work has been authored, it is available to be consumed forever.<p>3. Computers, software, the web, and now AI have drastically lowered the cost to produce a work of digital media.<p>You can&#x27;t have fixed demand and have the supply increase 10x every year without something going off the rails eventually.<p>Now, granted, a unit of digital media is not a commodity good. People have preferences and not all works are created equal. But people are also demonstrably not that discriminating at what they spend their attention on now matter how unsatisfying the experience was, once it&#x27;s spent it&#x27;s gone.<p>Our economic systems around making and consuming media were not set up to handle this level of imbalance between creator and audience and something will have to change if we want to still have a functioning world where people make good art and others are enriched by it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>asdff</em>:</p>
-<blockquote>I&#x27;d argue that supply isn&#x27;t really increasing. I mean, are we seeing 10x as many movies being released? NYT is now 10x as thick? Every source of quality has upped its quantity by 10x?<p>Not at all. Seems output in this brave new AI era is more or less the exact same as it was in the dark ages. The only output that has gone up, logarithmically at that, is spam and other low effort fodder.<p>I also want to push back on the idea that content is &quot;solved.&quot; Consider the fact that you could be born in 1810 or 1910 or 2010 and in each of those eras, have more content available for you to read than you could ever read in your lifetime. People tend to enjoy contemporary stuff vs exclusively reading classics, and therefore there is constant demand for new stuff of quality in principle.<p>I think writers who are trying to become truly gifted writers aren&#x27;t going to be out of demand in the future. I mean after all, technology has come up with dozens of new ways to commodity just about every medium of art there is for mass production, and yet, for every medium of art there is there are still sought after and celebrated artists.<p>Provenance has value. That is something that technologists often forget coming from engineering backgrounds, where everything they interact with is commodified and provenance doesn&#x27;t matter at all, only the binary of if the spec is met.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>munificent</em>:</p>
-<blockquote><i>&gt; I mean, are we seeing 10x as many movies being released?</i><p>20 million videos are uploaded to YouTube <i>every day</i>.<p>&gt;* NYT is now 10x as thick?*<p>One random site I checked says there are 600 million active blogs right now.<p><i>&gt; Every source of quality has upped its quantity by 10x?</i><p>I made no claims about quality. If you spend two hours watching Citizen Kane, or two hours watching loot boxed unboxing videos, the fraction of your life that&#x27;s spent is the same. The <i>attentional cost</i> is equivalent even if the value someone derived from it is not.<p><i>&gt; I think writers who are trying to become truly gifted writers aren&#x27;t going to be out of demand in the future.</i><p>Almost no one can make a living writing poetry any more. That means the hypothetically world&#x27;s best poet probably doesn&#x27;t exist because that requires a time investment that simply isn&#x27;t available except among the idle rich. The trend is going that way for photography, music, and fiction.<p>In order to be truly gifted, you need a massive amount of time to hone your craft and it&#x27;s very hard to find that in an economy that doesn&#x27;t pay you to do that.<p><i>&gt; Provenance has value. That is something that technologists often forget coming from engineering backgrounds, where everything they interact with is commodified and provenance doesn&#x27;t matter at all, only the binary of if the spec is met.</i><p>I agree. Hand-made stuff is good. But imagine a world where every fast food restaurant charged five cents for an entire meal. Home-cooked meals would still be superior, but how often would the average person summon the time and willpower to make them? And in that world, how good do you think the average home cook would get?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>lackoftactics</em>:</p>
-<blockquote>This seems to extend even beyond the arts. I would say that the race to add more features to web and mobile apps will face a similar obstacle.<p>How long can we continue making 10x more features just because we can, until somebody realizes that users do not have the attention to spend on them? There might be a shift, but currently, we are too focused on pleasing shareholders.</blockquote>
-<p>↳ reply 3 — <em>zetanor</em>:</p>
-<blockquote>&gt;people are also demonstrably not that discriminating at what they spend their attention on now matter how unsatisfying the experience was, once it&#x27;s spent it&#x27;s gone<p>I&#x27;ve refunded more games than I&#x27;ve kept on Steam over the past decade. While there&#x27;s now a much <i>wider</i> pool of games, there&#x27;s not necessarily a much <i>deeper</i> pool of games. Since trash sells and since marketing a game has been absurdly difficult recently, I can imagine that there&#x27;s plenty of people who <i>would</i> have made a good game, but who instead (quite rationally) decided against it.<p>On the flip side, the firehose of trash has pushed me to mess around and make little demos, so who knows?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>QuadrupleA</em>:</p>
-<blockquote>Love this quote, seems to apply to all software these days and maybe business generally: &quot;They&#x27;re trying to have a CEO press a button that makes a game, and then everyone else somehow buys it without a job.&quot;</blockquote>
-<blockquote>
-<p>↳ reply — <em>madrox</em>:</p>
-<blockquote>If you take away the cynical edge, though, if this actually happens we&#x27;re talking about an age of mom-and-pop businesses in industries that have not traditionally had them. It can&#x27;t&#x2F;won&#x27;t be all software, but mom and pop stores were only about serving their neighborhood to begin with.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>madrox</em>:</p>
-<blockquote>When we&#x27;ve used software to disrupt other industries to deliver more with fewer people we called that a good thing. And it is, because consumers tend to win. Games are a hit-driven business, so they&#x27;re going to feel the squeeze faster than, say, SaaS, but it&#x27;s coming for all of us. Software is now being disrupted. Reap the whirlwind.<p>I worked at a (very) well known media company in Hollywood during the Netflix disruption. This really doesn&#x27;t sound all that different from a Hollywood exec mocking internet media in the early 2000s. People are trying to understand it and leverage it. Quality is bad. Then one day you wake up and it&#x27;s taken over, because it kept improving. Setting aside the debate on AI use in the creative process, even if models never get better there are years of optimizations to be done on the tools&#x2F;business side.<p>As a gamer, I&#x27;m actually excited for it. I want more diversity in games beyond what the current indie scene provides. If we can give smaller teams the horsepower to make what was considered AAA 5-10 years ago I will be quite happy as a consumer.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>invalidptr</em>:</p>
-<blockquote>Netflix disruption might be an apt metaphor, since it did severely damage the industry and reduce the quality of its output. Those Hollywood execs were right, even if they were ultimately doomed. It&#x27;s another step in the Sheinification of everything. If it happens to software too, it won&#x27;t be a victory for anyone except the owners of software companies.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>madrox</em>:</p>
-<blockquote>I think people who long for pre-Netflix era are looking at the past with rose colored glasses. Distribution was terrible compared to now without a lot of choice. Anyone who thinks that time was better and the quality was higher don&#x27;t actually remember it. They just remember the best of the era and TV shows they liked when they were younger.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>tstrimple</em>:</p>
-<blockquote>Distribution got better for a time and then became the same old bullshit. When Netflix was the only dominant streaming service it was great. Now ever other person has their own custom streaming service and content is distributed across them. Back to the high seas for me. I don&#x27;t mind paying. I mind the inconvenience. There was a brief window when Netflix was <i>improving</i> TV quality. But now it&#x27;s almost all non-native US made originals that are cheap as fuck. They aren&#x27;t all bad. My wife has a weakness for Spanish and Korean dramas for some reason. But it&#x27;s all noise to me.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>archagon</em>:</p>
-<blockquote>It&#x27;s a huge mistake to think that indie teams would make <i>better</i> games if only they could balloon their projects to AAA-size.<p>Some of the most meaningful and engrossing gaming experiences of my life have come from 1-3 person teams, especially over the past few years. Meanwhile, the vast majority of AAA titles just feel like time-filling entertainment chow to me: fun-shaped but ultimately pointless. I would strongly argue that artistry and auterism is nearly impossible to preserve beyond a certain game size; the experience can&#x27;t be focused by definition.<p>In any case, many of the most talented indie game devs are rejecting this technology outright.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Ambient CSS v3 – Blender meets CSS</title>
-      <link>https://ambientcss.vercel.app/</link>
-      <guid isPermaLink="false">hn3-49523387</guid>
-      <pubDate>Tue, 01 Sep 2026 15:35:11 +0000</pubDate>
-      <description>216 points, 69 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ambientcss.vercel.app/"><strong>→ Article</strong></a> <small>(ambientcss.vercel.app)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49523387">→ HN comments</a> &nbsp;·&nbsp; 216 points &nbsp;·&nbsp; 69 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>CSSer</em>:</p>
-<blockquote>I really dislike how the dribbble&#x2F;envato style somehow escaped containment into Claude and now I’m seeing it everywhere mixed with mediocre design layouts. I think to myself that maybe stuff like this will help counteract that but then I see it in use with 12px typography (the kubernetes 3D dashboard thing) and I recoil in horror. Please consider this a PSA: Claude doesn’t understand UX or good design principles out of the box. Please go hug a designer.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>graypegg</em>:</p>
-<blockquote>UI greebling [0] is something I&#x27;m not looking forward to.<p>People always miss out the fact that older information-dense UIs were... information dense. We get this weird simulacrum of information density where the LLM has slapped on &quot;every pod has a machine&quot;, a made-up PDU for pods with a watt rating somehow, and random status labels EVERYWHERE. All it&#x27;s missing is the green circle &quot;LIVE&quot; label that every claude app seems to have...<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Greeble" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Greeble</a></blockquote>
-<p>↳ reply 2 — <em>andai</em>:</p>
-<blockquote>I&#x27;m waiting for Skeumorphism to make a comeback, but that will require a superior AI paradigm.</blockquote>
-<p>↳ reply 3 — <em>scythmic_waves</em>:</p>
-<blockquote>What&#x27;s a good example that comes to mind for you of it done right? I don&#x27;t do much frontend so I think I just uncritically accept whatever design is put in front of me.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mminer237</em>:</p>
-<blockquote>Neat idea, but feels very poorly made.<p>The light direction governs the whole grid for some reason but stops outside an arbitrary div and often just stops working period, on top of feeling laggy for such a simple effect.<p>Channels are messed up. The example doesn&#x27;t seem to work, while in the video it just makes two edges white for some reason?<p>The color options and textures are kinda ugly. The glass colors clearly just don&#x27;t work. &quot;Brass&quot; turns into &quot;Olive&quot; on the last one for no reason?<p>The radio buttons are a bad idea for a digital interface, implemented completely inconsistently(‽), and the middle one just doesn&#x27;t work at all.<p>Buttons have virtually no feedback if they&#x27;re pressed or not.<p>Reminds me a lot of Google&#x27;s material design, at least the older versions of it, just much sloppier and less usable and less colorful.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>danudey</em>:</p>
-<blockquote>It supports a dark theme but then you can&#x27;t see 90% of what it actually does because drop shadows on dark backgrounds just plain don&#x27;t work.</blockquote>
-<p>↳ reply 2 — <em>dkersten</em>:</p>
-<blockquote>It’s also glitchy and flickery for me on iOS.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>graypegg</em>:</p>
-<blockquote>Nitpick, but elevation would make much more sense if you assumed a base plane + set a perspective, and then translate3d&#x27;d upwards on the Z axis. It would grow the size of the element as well.<p>Saying that, probably annoying to work with transformed DOM nodes, but the background being the only thing moving in the &quot;bounce&quot; example just stood out to me as weird.<p>Also, the texures seem to be just gradients or embedded texture data. Was thinking this would use <a href="https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;Reference&#x2F;Values&#x2F;image&#x2F;paint" rel="nofollow">https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;CSS&#x2F;Reference&#x2F;V...</a> and fall back to gradients&#x2F;premade images for firefox.</blockquote>
-<blockquote>
-<p>↳ reply — <em>kikkupico</em>:</p>
-<blockquote>Orthographic projection was chosen here deliberately - that&#x27;s why elevation makes no difference to the size of the object but changes the shadow. Perspective projection won&#x27;t work well with scrolling because the angle of the object would have to subtly change when the user scrolls. Orthographic projection doesn&#x27;t need to handle that.<p>The docs have a page where the lighting and camera setup is explained with an actual threejs 3d scene - <a href="https:&#x2F;&#x2F;kikkupico.github.io&#x2F;ambientcss&#x2F;guide&#x2F;concept&#x2F;#how-it-works" rel="nofollow">https:&#x2F;&#x2F;kikkupico.github.io&#x2F;ambientcss&#x2F;guide&#x2F;concept&#x2F;#how-it...</a> . Hope it helps!<p>Regarding the textures, they respond to lighting but not especially well. In the demo app, you can scroll to the materials page and use the theme switcher at the top to see how the texture respond.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ricardobeat</em>:</p>
-<blockquote>I&#x27;m sorry but that&#x27;s just slop. The elevation in the actual CSS makes the shadow progressively lighter (technically correct, thought the proportions look very wrong, 2 is too dark), while the 3D model has it constant. There is nothing in this &#x27;camera and lighting setup&#x27; that was translated to the styles.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>kikkupico</em>:</p>
-<blockquote>The threejs scene in the docs is only for explaining the setup; it doesn&#x27;t have a raytracer to render shadows accurately. The reference renders for the CSS were done in Blender. See <a href="https:&#x2F;&#x2F;kikkupico.github.io&#x2F;ambientcss&#x2F;ambient-css&#x2F;grounded#elevation" rel="nofollow">https:&#x2F;&#x2F;kikkupico.github.io&#x2F;ambientcss&#x2F;ambient-css&#x2F;grounded#...</a> for examples.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Ask HN: Who is hiring? (September 2026)</title>
-      <link>https://news.ycombinator.com/item?id=49522897</link>
-      <guid isPermaLink="false">hn3-49522897</guid>
-      <pubDate>Tue, 01 Sep 2026 15:01:17 +0000</pubDate>
-      <description>173 points, 189 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=49522897"><strong>→ Article</strong></a></p>
-<p><a href="https://news.ycombinator.com/item?id=49522897">→ HN comments</a> &nbsp;·&nbsp; 173 points &nbsp;·&nbsp; 189 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>woodrow</em>:</p>
-<blockquote>New Lantern | <a href="https:&#x2F;&#x2F;newlantern.ai" rel="nofollow">https:&#x2F;&#x2F;newlantern.ai</a> | Software engineers (backend and generalist product engineers, founding recruiter) | Full time in San Francisco, CA (ONSITE)<p>New Lantern is building an AI radiology resident—think Cursor for radiologists. Our application integrates the three software tools radiologists use all day [1], together with AI, to create a platform that saves radiologists toil and lets them focus on reading images and finding disease.<p>We are a series A startup with ~20 engineers (~40 total staff), have a number of live customers generating revenue, plenty of runway, and are backed by Benchmark, Anthropic, and other great investors. Our customers have told us they would cry if they couldn&#x27;t use our product anymore.<p>We&#x27;re hiring for backend and product engineering, as well as a founding recruiter to help us scale. You&#x27;ll work directly with our founder&#x2F;CEO, our staff radiologists, and our end users to build a product that radiologists rely on daily. You&#x27;ll have real ownership and autonomy, and ship meaningful work frequently.<p>I&#x27;m Steve, New Lantern&#x27;s Head of Engineering. If you&#x27;re interested or want to learn more, shoot me a note at (my HN username)@newlantern.ai. I&#x27;ve already hired one engineer from HN this year and interviewed many more!<p>[1] a radiology image archive &amp; viewer, a medical report dictation system, and work management system</blockquote>
-<p><strong>Top #2</strong> — <em>fatnoah</em>:</p>
-<blockquote>DeepL | Software Engineer &#x2F; Senior Software Engineer &#x2F; Sr. Staff Software Engineer | New York, New York (Hybrid) | $200k-$300k+ plus equity<p>DeepL is a Language AI Company providing text, document, and real-time voice translation to name-brand companies across the world.  Maybe you&#x27;ve seen our recent announcement: <a href="https:&#x2F;&#x2F;www.deepl.com&#x2F;en&#x2F;press-release&#x2F;harvey-taps-deepl-to-power-legal-grade-ai-translation-for-global-law-firms-and-legal-teams" rel="nofollow">https:&#x2F;&#x2F;www.deepl.com&#x2F;en&#x2F;press-release&#x2F;harvey-taps-deepl-to-...</a><p>We&#x27;re building out our NYC-based API platform team as our API-based business rapidly grows.  We&#x27;re a European -based company, so you&#x27;ll enjoy the best of both worlds with competitive compensation, 30 days of PTO from day one (your manager, me, will make sure you use them all) &quot;work from anywhere&quot; days, addtional compensation for on-call shifts (including additional time-off if you actually have to do something after hours)<p>If you&#x27;re passionate about building the platforms that provide the foundation for reliable and high-peformance systems, please check out our NYC openings: <a href="https:&#x2F;&#x2F;jobs.ashbyhq.com&#x2F;DeepL?departmentId=0097f643-f517-4473-85ae-12a5487bbae9&amp;locationId=e6020112-df5a-430b-8803-f5c301ada653" rel="nofollow">https:&#x2F;&#x2F;jobs.ashbyhq.com&#x2F;DeepL?departmentId=0097f643-f517-44...</a></blockquote>
-<p><strong>Top #3</strong> — <em>digisign</em>:</p>
-<blockquote>Trustworthy Technology | Earth | Part Time | REMOTE | Vision, Marketing, and&#x2F;or  Design<p>Hi, we are a small group trying to bring the &quot;trustworthy&quot; feature back to tech.  Curating and building a FOSS+ toolset, storefront, and eventually online service—all to support freedom, privacy, and informed consent—on device and on the net.<p>We&#x27;ve written our thoughts and research down at: 
-<a href="https:&#x2F;&#x2F;trustworthy.technology&#x2F;" rel="nofollow">https:&#x2F;&#x2F;trustworthy.technology&#x2F;</a>
-and we have a few geeks starting projects at:
-<a href="https:&#x2F;&#x2F;codeberg.org&#x2F;aol" rel="nofollow">https:&#x2F;&#x2F;codeberg.org&#x2F;aol</a><p>First off, you&#x27;ll notice that you&#x27;ve not heard about this project before.  Next, the message is a bit scattered, and the &quot;programmer art,&quot; while arguably not horrible isn&#x27;t winning any awards either, haha.<p>That&#x27;s where you come in.<p>You are one of the few folks who really cares about this stuff, and also a graphic&#x2F;product designer, or perhaps a digital marketer, communicator or &quot;people whisperer.&quot;  (Being in the EU would be helpful as well, to work from the digital sovereignty angle, though not required.)<p>Some of us are unemployed and currently donating our time.  Maybe you are too, or retired&#x2F;cashed-out and bored.  Consider this another FOSS-like project.  We hope the store&#x2F;service will make money, but we&#x27;re not there yet.<p>Interested?
-Let&#x27;s chat at: 
-<a href="https:&#x2F;&#x2F;trustytech.zulipchat.com&#x2F;join&#x2F;h5usqnt2bet7exz747cbf3ix&#x2F;" rel="nofollow">https:&#x2F;&#x2F;trustytech.zulipchat.com&#x2F;join&#x2F;h5usqnt2bet7exz747cbf3...</a><p>BTW, when you join please say hi let us know what kind of projects you&#x27;re interested in.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Browser's Main Thread Is Expensive</title>
-      <link>https://kciter.so/posts/the-expensive-main-thread/en/</link>
-      <guid isPermaLink="false">hn3-49522137</guid>
-      <pubDate>Tue, 01 Sep 2026 14:00:15 +0000</pubDate>
-      <description>206 points, 63 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://kciter.so/posts/the-expensive-main-thread/en/"><strong>→ Article</strong></a> <small>(kciter.so)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49522137">→ HN comments</a> &nbsp;·&nbsp; 206 points &nbsp;·&nbsp; 63 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>eviks</em>:</p>
-<blockquote>&gt; Press a button: the JS animation and typing freeze, but the CSS animation keeps spinning<p>How do you expect me to type if pressing a button moved text focus away from the text field?</blockquote>
-<p><strong>Top #2</strong> — <em>martinald</em>:</p>
-<blockquote>Good article and I wish this was much better known.<p>The issue is though that it&#x27;s too focused on interactivity. In reality, 90%++ of slow sites are not slow because of interactivity really, they are slow because they ship enormous react&#x2F;nextjs bundles and have extremely heavy hydration work to do.<p>_so many_ sites have bundles &gt;10MB that need to be downloaded, parsed and hydrated.<p>I&#x27;ve even seen (many) sites which have multiple SPAs stacked inside of them.<p>If you&#x27;re on a slow internet connection and&#x2F;or CPU the page is basically unusable for many tens of seconds and no amount of yielding post bundle hydrate will really solve that.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pjmlp</em>:</p>
-<blockquote>99% of the time those sites could be plain HTML and CSS, but apparently new generations don&#x27;t even know how to do that, out of programming bootcamps.</blockquote>
-<p>↳ reply 2 — <em>jcelerier</em>:</p>
-<blockquote>I challenge you to browse the web one week on this laptop part of the current top 10 Amazon best sellers on a gigabit fiber connection and tell me if you still think that this is the problem: <a href="https:&#x2F;&#x2F;www.amazon.com&#x2F;HP-Everyday-Processor-Microsoft-Portable&#x2F;dp&#x2F;B0H94BMX1K&#x2F;ref=zg_m_bs_g_565108_m_sccl_5&#x2F;143-6149589-1760914?psc=1" rel="nofollow">https:&#x2F;&#x2F;www.amazon.com&#x2F;HP-Everyday-Processor-Microsoft-Porta...</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>vbezhenar</em>:</p>
-<blockquote>This mistake gets repeated over and over again, in every single GUI framework of any kind. I don&#x27;t understand why does it have to be that way.<p>Just use multi-threading. Run each library in a separate thread. Use actors approach to pass data between libraries, application and finally to submit data to update GUI.<p>Using single thread for everything and expecting that developer will create separate threads for heavy work is obvious approach, but it never worked. Developer doesn&#x27;t care. And user gets inferior experience.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Introducing Ad Blocker for Firefox on iOS</title>
-      <link>https://blog.mozilla.org/en/firefox/ad-blocker-on-ios/</link>
-      <guid isPermaLink="false">hn3-49521973</guid>
-      <pubDate>Tue, 01 Sep 2026 13:46:49 +0000</pubDate>
-      <description>262 points, 92 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.mozilla.org/en/firefox/ad-blocker-on-ios/"><strong>→ Article</strong></a> <small>(blog.mozilla.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49521973">→ HN comments</a> &nbsp;·&nbsp; 262 points &nbsp;·&nbsp; 92 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>NikxDa</em>:</p>
-<blockquote>I was going to give credit to the direction Mozilla was taking here after their... questionable decisions in the past few year(s).<p>Only to see that this is neither generally available, nor can you use it without enabling telemetry. I don&#x27;t know who makes these decisions inside Mozilla, but I just don&#x27;t get it.</blockquote>
-<blockquote>
-<p>↳ reply — <em>KennyBlanken</em>:</p>
-<blockquote>Mozilla lost the thread about a decade ago with the Mr. Robot crap.<p>1)Agreeing to it in the first place<p>2)Hiding it from users<p>3)Circling the wagons and setting the bugzilla ticket to a secrecy level so high all but upper management couldn&#x27;t even view it, and marking all the related tickets as &#x27;wontfix&#x27; and so on. The tickets are full of complaints that mozilla staff aren&#x27;t being remotely transparent about what was going on or decisions being made.<p>Oh, and the kicker? It exposed the fact that Mozilla was employing people from adtech companies. The project manager for the Mr. Robot bullshit had her entire career worked at advertising companies.<p>The bug kept bouncing between being secret and public, and I remember seeing it was the PM who kept trying to make it secret, and then some unknown dickhead exec at m<p>bugzilla.mozilla.org&#x2F;show_bug.cgi?id=1423003<p>Then there was the fact that the CEO was making more and more money as she drove Mozilla into the fucking ground with cratering market share numbers. Then there was Mozilla&#x27;s absurdly expensive taste in real estate...</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rrr_oh_man</em>:</p>
-<blockquote>Mr Robot? What?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>safeimp</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;techcrunch.com&#x2F;2017&#x2F;12&#x2F;15&#x2F;mozillas-mr-robot-promo-backfires-after-it-installs-firefox-extension-without-permission&#x2F;" rel="nofollow">https:&#x2F;&#x2F;techcrunch.com&#x2F;2017&#x2F;12&#x2F;15&#x2F;mozillas-mr-robot-promo-ba...</a><p>&gt; If you’re a Firefox user, you may have noticed a weird new extension that suddenly showed up in your browser this week.
-&gt; The extension is called “Looking Glass 1.0.3” and this is its description: MY REALITY IS JUST DIFFERENT FROM YOURS. Now that sounds ominous. It’s really not, though. It’s a promotional campaign between Firefox and the TV series Mr. Robot that brings an alternate reality game to your browser. This must have sounded like a great idea when somebody pitched it to Mozilla, but the backlash has been fierce.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>WD-42</em>:</p>
-<blockquote>It&#x27;s been days (weeks?) and I&#x27;m still waiting for the option to appear for me. These &quot;experiments&quot; are super annoying when you are on what I&#x27;m assuming is the long tail of a rollout but the marketing&#x2F;blog posts speak of the feature like it&#x27;s already launched.<p>If there&#x27;s someone at Mozilla reading this: turn it on already! I want to get off Orion, it&#x27;s so buggy, but the internet is unusable without an ad blocker.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bookofjoe</em>:</p>
-<blockquote>&quot;...the internet is unusable without an ad blocker.&quot; — for some but not most.</blockquote>
-<p>↳ reply 2 — <em>KORraN</em>:</p>
-<blockquote>Even worse, two weeks back when the first news appeared (<a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49319633">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49319633</a>), I had access to the ad blocker for about a week (and turned it on), but after a few days the option disappeared...</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>delduca</em>:</p>
-<blockquote>Wipr2 ftw</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>We could save petabytes of cache storage with Zstandard and Pingora</title>
-      <link>https://blog.cloudflare.com/cache-transcoding/</link>
-      <guid isPermaLink="false">hn3-49521909</guid>
-      <pubDate>Tue, 01 Sep 2026 13:41:11 +0000</pubDate>
-      <description>126 points, 58 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/cache-transcoding/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49521909">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 58 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>r3trohack3r</em>:</p>
-<blockquote>Tangentially related, I applied a similar approach to compress the npm registry by over 90% on disk a few years back. Since most versions of a package are similar, you can delta encode them first and then compress them. The deltas are small and compress well as a collection with the original source files.<p>For another use case, prior to compressing, I’ve applied a rolling hash to deterministically split the file. Then compressed the chunks and stored them in a CID filesystem. The result is that files that are largely similar share compressed chunks.<p>There are a lot of things we can do to be substantially more efficient with the computers we have, but engineers often cost more than hardware. With recent supply chain constraints that calculus is changing!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>oefrha</em>:</p>
-<blockquote>NPM packages doesn’t take up that much disk space for me with standard pnpm deduplication. The much bigger offender for me is Rust target dir: when people talk about vibe coding in Rust for performance, what they don’t mention (at least I’ve hardly ever seen it mentioned) is every trivial little tool pushes 1GB on disk and anything slightly nontrivial easily racks up multi-GB. Which hurts when you have lots of vibed small tools. I wonder if anyone bothered to look into this problem.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>edflsafoiewq</em>:</p>
-<blockquote>It was the second most reported problem on the 2025 Rust survey, after compilation times.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>vbezhenar</em>:</p>
-<blockquote>I did simpler trick with jars (basically zip archives). Java ecosystem loves huge directories full of jars. If one would just use good compressor like 7z over that directory, it won&#x27;t compress that good. So I extracted every jar into a separate directory and then compressed them all with 7z. The results were very good.<p>I just repeated the process. So directory of jars is 368M. If I just 7z it, it&#x27;ll be 282M. But if I unpack them (1.9G), and then 7z them, it&#x27;ll be 96M. Pretty substantial win.<p>The drawback is that you probably can&#x27;t easily restore previous jar file byte-for-byte which might matter for some use-cases. I guess it&#x27;s possible to achieve byte-for-byte copy with more effort.</blockquote>
-<p>↳ reply 3 — <em>a_t48</em>:</p>
-<blockquote>I&#x27;ve done similar things for large container images. My format allows for using FastCDC to chunk files, but there&#x27;s a tradeoff between number of shared chunks and between number of HTTP requests. I keep it turned off by default.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nithril</em>:</p>
-<blockquote>One thing that bothered me enough to comment on: &quot;transcoding&quot; doesn&#x27;t seem like the right term in this context. &quot;Encode&#x2F;decode&quot; is technically correct, but &quot;compress&#x2F;decompress&quot; would have made the intent much clearer.</blockquote>
-<blockquote>
-<p>↳ reply — <em>walrus01</em>:</p>
-<blockquote>Transcoding is generally used within the context of audio or video codecs, to convert a file from one format to another. And <i>usually</i> from one lossy format to another (eg: not raw uncompressed YUV420, YUV422P video or whatever that is stored in a lossless compression format). It&#x27;s not clear to me why they&#x27;re using it in this web page.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>TacticalCoder</em>:</p>
-<blockquote>Yeah, the following sentence in TFA is weird:<p>&gt; Transcoding does not mean compressing everything. Images, video, and fonts are usually compressed already.<p>It&#x27;s because they&#x27;re already lossily compressed that, precisely, they&#x27;re <i>the</i> typical targets for transcoding.<p>EDIT: oops, wrote lossless instead of lossy, sorry about that</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>walrus01</em>:</p>
-<blockquote>Additionally modern fonts are normally vector point data, no? So there&#x27;s plenty of opportunity for shrinking file size by <i>lossless</i> compession. But I don&#x27;t think that&#x27;s what they&#x27;re talking about here?</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>andersmurphy</em>:</p>
-<blockquote>I&#x27;m surprised the faster decompression speed of zstd wasn&#x27;t mentioned. Feels like a big win for cache (assuming decompress on read).<p>A shame browsers don&#x27;t support concatenating zstd frames (which zstd does support). Then you wouldn&#x27;t need to decompress, just serve zstd straight to the browsers after concatenating the frames you care about.</blockquote>
-<blockquote>
-<p>↳ reply — <em>wood_spirit</em>:</p>
-<blockquote>Wait, what?  Don’t browsers support concatenated zstd streams?<p>My reading - and I care because I’ve been using concatenation tricks in parquet - is that this is required by the standard.<p>In the distant past I made a jinja2-like template system for server side rendering that precompressed the static bits and injected the short dynamic bits into the output stream as literals with some basic lz match rewriting in the following chunks etc. This kind of trick ought be better with zstd frames.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>andersmurphy</em>:</p>
-<blockquote>Sadly they do not. They stop after the first frame (at least last time I tested it).<p>They also don&#x27;t always support window sizes above 8MB which means levels above 19 can fail to decompress (if they use the more than 8MB of window).</blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
     </item>
