@@ -4,7 +4,105 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 05 Sep 2026 12:32:58 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2026 15:54:18 +0000</lastBuildDate>
+    <item>
+      <title>AI handles incidents, engineers lose touch with their systems</title>
+      <link>https://www.sylvainkalache.com/blog/ai-handles-incidents-engineers-lose-touch-with-their-systems</link>
+      <guid isPermaLink="false">hn3-49574167</guid>
+      <pubDate>Sat, 05 Sep 2026 07:52:50 +0000</pubDate>
+      <description>272 points, 239 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.sylvainkalache.com/blog/ai-handles-incidents-engineers-lose-touch-with-their-systems"><strong>→ Article</strong></a> <small>(sylvainkalache.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49574167">→ HN comments</a> &nbsp;·&nbsp; 272 points &nbsp;·&nbsp; 239 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bob1029</em>:</p>
+<blockquote>A natural evolution of engineers losing touch with the customers and users.<p>I&#x27;m noticing some of the concern play out regarding AI weakening the capabilities of software people.<p>I gave the team an exact solution on a silver platter and they still failed to identify how to go about it after 3 days slamming it into Claude. The resolution is literally 1 line of code that could be arrived at in about 30 minutes of patient, old school troubleshooting.<p>I think what&#x27;s happening is the AI system draws poorly aligned and led engineers into this ego inflation feedback loop where they are completely detached from reality because these tools can simulate a better one.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tracerbulletx</em>:</p>
+<blockquote>What is your relationship to this team? Their manager? A senior colleague? Something about this sounds like a failure of communication or leadership. Why are you stand offish from them? Why are you treating them like children? If they don&#x27;t know what they&#x27;re doing why did you hire them? Now that you did why are you treating them like a burden and not an opportunity to mentor, teach, and uplift?</blockquote>
+<p>↳ reply 2 — <em>willtemperley</em>:</p>
+<blockquote>&gt; 30 minutes of patient, old school troubleshooting<p>This is also the best way to understand a codebase, and it&#x27;s quite enjoyable.<p>I think the models are getting too egotistical. They&#x27;re so confident of their fixes they won&#x27;t bother suggesting basic techniques like isolation of the problem by disabling code paths, for example. They&#x27;ll keep shotgunning less-and-less likely fixes with undiminishing confidence until the code is full of fixes that do nothing. Then they&#x27;ll double down on why these should be kept.</blockquote>
+<p>↳ reply 3 — <em>konschubert</em>:</p>
+<blockquote>It&#x27;s the uncanny valley of AI. It&#x27;s still not quite good enough yet that you can trust it blindly on a big codebase, so you still have to read and understand everything - which is often harder than just writing it up yourself.<p>EDIT: don’t get me wrong. I still think AI is incredibly useful for a lot of tasks! But when implementing an architecturally hairy thing, I find it less stressful and equally quick to jump down to the editor level and use AI just for code completion.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>solatic</em>:</p>
+<blockquote>Author has a good head on their shoulders, but few if any companies are going to spend time on incident simulations for their SREs.<p>Why not? Because even pre-AI, very few companies spend time practicing restoring their backups, or disaster recovery, or picking infrequently-used runbooks to practice, or seeing whether they can easily rotate secrets without downtime, or trying to redploy the system onto another vendor&#x27;s cloud&#x2F;platform, or, or, or... It is the least-sexy operations work that exists. No executive cares about this. Ops organizations push for flashy work, same as everybody else: new infrastructure for new projects, cool chatbots, new flashy dashboards, make charts go up and to the right, etc.<p>Airline pilots go through disaster simulation training because the government <i>mandates</i> that training. If it wasn&#x27;t a condition of holding a pilot&#x27;s license, no company would pay for it.<p>Want SREs to spend time training for disasters? Take a step back. Support professional licensure. Make it a condition of holding a license. You won&#x27;t get industry-wide professional behavior until you <i>professionalize</i> the work. It won&#x27;t happen without licensing because every corner cut that is not immediately visible to consumers translates to additional profit, and increasing competition eventually <i>requires</i> these corners to be cut in order to keep up with competition and stay in business. Forcing all players to submit to licensing requires all players to pay these costs and thus forbids them from cutting them to become more competitive.</blockquote>
+<blockquote>
+<p>↳ reply — <em>seer</em>:</p>
+<blockquote>Hmm that’s strange, in my experience it is the other way around - Claude is super diligent with infra and will _insist_ on double checking and trying everything for real before committing.<p>When I was doing this myself I would read the docs and just implement them - claud is going about doing real software archeology to figure if what is said is actually the truth or it’s stale&#x2F;inaccurate&#x2F;buggy.<p>I’ve become 10 times more diligent because it is a lot easier to do. It’s no longer Urgh it’s good enough let’s ship it, now it’s “sure put a leg on it to figure it out and double check it”.<p>Backups are _tested regularly_ now because LLMs make it cheap to do so.<p>The only problem is when new engineers who haven’t learned these things Pre-ai now don’t really get why it is needed in the first place and will often lead the agent astray.<p>I think to address this we need to change or improve our training routines in general for humans. I think a lot of companies nowadays just skip that and deploy a company wide skill&#x2F;policy for the agents, but don’t transfer the underlying skills to the devs themselves.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>solatic</em>:</p>
+<blockquote>&gt; Backups are _tested regularly_ now because LLMs make it cheap to do so.<p><i>sighs heavily in 90&#x27;s sysadmin</i><p>Testing backups is not just a question of whether or not the restore command works. Go back and read the Tao of Backup: <a href="http:&#x2F;&#x2F;www.taobackup.com&#x2F;history.html" rel="nofollow">http:&#x2F;&#x2F;www.taobackup.com&#x2F;history.html</a> . The application itself (in its current version, with its current features) needs to work with the backed-up data, and the only way to verify this is to attempt to actually work with the data.<p>If you don&#x27;t trust your agent to ship to production without manually reviewing the output (in some way), you have no business trusting your agent managing your backups. The agent writing <i>some</i> tests doesn&#x27;t mean that the tests adequately handle all of your actual scenarios, let alone that your system will adequately handle data that is missing since the last backup.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>cmiles8</em>:</p>
+<blockquote>This is the same challenge aviation had with an over-reliance on automation. You end up with pilots that can’t fly the plane when it really matters. Look up the Asiana crash at SFO which is a lesson in what will happen to engineering orgs that over-rely on AI.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Git hosting that never leaves Europe</title>
+      <link>https://pushin.eu</link>
+      <guid isPermaLink="false">hn3-49573680</guid>
+      <pubDate>Sat, 05 Sep 2026 06:31:49 +0000</pubDate>
+      <description>182 points, 96 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://pushin.eu"><strong>→ Article</strong></a> <small>(pushin.eu)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49573680">→ HN comments</a> &nbsp;·&nbsp; 182 points &nbsp;·&nbsp; 96 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>pjullrich</em>:</p>
+<blockquote>Hi, Peter the Founder of Pushin.eu here. Sorry, the website escaped containment and landed on HN before I had the chance to update the &quot;marketing materials&quot; aka. landing page. So, here are a few points:<p>*The product is stable, but still in development. That&#x27;s why some of the core things like pricing, etc. are missing. BUT:*<p>1. Business Model: Pushin will have subscriptions for individuals and teams. Pricing is not yet decided but it&#x27;ll be close to GitHub&#x2F;GitLab pricing.<p>2. Privacy: In true German fashion, we *don&#x27;t* want your private data. Pushin doesn&#x27;t track anything beyond the obvious: email, password hash, username, whatever information you put on your profile.<p>3. Roadmap: We&#x27;re currently in Beta, but everything looks good so far. We&#x27;ll probably go GA beginning of 2027. I&#x27;ll focus on delivering the core features first and make sure that they are polished and of good quality before moving on to the nice-to-haves.<p>4. I say &quot;we&quot; but it&#x27;s really only me (Peter Ullrich, peterullrich.com) and my dog (Bella, Labrador, beige). &quot;We&quot; are not VC funded, but bootstrapping on bare metal Scaleway servers. My wish is for this to become a proper company soon though.<p>5. Tech-stack: Elixir (Phoenix + LiveView) for most parts, Rust for the Git parts, S3-compatible buckets and Postgres on Scaleway, servers are bare metal Scaleway servers running in Paris.<p>6. Git implementation: Just like Tangled, I&#x27;ve used Rust and the gitoxide libraries to build a Git implementation that&#x27;s fully compatible with the canonical Git CLI, but uses S3-compatible buckets as storage instead of keeping the entire repo on disk. I&#x27;ll write in-depth about this soon, but it&#x27;s very much what Tangled did, just with a different storage concept.<p>I gotta be honest that I&#x27;m both scared but also excited that Pushin hit HN. I wish we&#x27;d be better prepared, but here we are. Many thanks to anyone who is willing to try it out!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>niag</em>:</p>
+<blockquote>How can I get invited to try it out?</blockquote>
+<p>↳ reply 2 — <em>biglyburrito</em>:</p>
+<blockquote>Is there any type of email list I can subscribe to, to be informed of news&#x2F;updates while (and even after) the site is in invite-only beta?</blockquote>
+<p>↳ reply 3 — <em>isodev</em>:</p>
+<blockquote>Hey Peter, that&#x27;s a very cool idea. I think (digital) sovereignty doesn&#x27;t just happen, it&#x27;s something we need to build and that&#x27;s how we do it. It&#x27;s a bit like &quot;local first&quot;. Looking forward to using it once it launches :)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Aeolun</em>:</p>
+<blockquote>Ooh, here come the others. I&#x27;m sure there&#x27;s more people working on this same thing. Probably mostly a matter of how ready we are to release something. Nice to see it coming out of the Netherlands though.<p>I think the hardest part about working on the same thing is to not immediately post it when you see other products in the same space pop up.</blockquote>
+<p><strong>Top #3</strong> — <em>okso</em>:</p>
+<blockquote>A few observations:<p>- Registrar: HOSTINGER operations, UAB, Lithuania. Hostinger-branded authoritative DNS servers run on Cloudflare’s network. This creates a dependency on a US company.<p>- IPv6 is not supported by the public website&#x2F;Git endpoint.<p>- DNSSEC would be a great addition for security, especially due to the use of US-based Cloudflare and Let&#x27;s Encrypt.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Why are European countries moving their gold out of North America?</title>
+      <link>https://www.bbc.com/news/articles/cvgyn8q8gqxo</link>
+      <guid isPermaLink="false">hn3-49573455</guid>
+      <pubDate>Sat, 05 Sep 2026 05:52:09 +0000</pubDate>
+      <description>176 points, 255 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/cvgyn8q8gqxo"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49573455">→ HN comments</a> &nbsp;·&nbsp; 176 points &nbsp;·&nbsp; 255 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>thelastgallon</em>:</p>
+<blockquote>Any country that keeps gold in US or dollar reserves may end up looking very foolish. Sanctions and asset (financial and real) forfeitures coming soon to a country near you.<p>The simplest and easiest geopolitical strategy that is available to any country: switch completely to renewables (solar, maybe wind), EVs, green hydrogen&#x2F;ammonia and synthetic fuels. Keep out of oil and natural gas. Keep out of dollar system. Any country can be immune to geopolitical drama, dollar shenanigans. Remember China has export restrictions on oil. When things get tough, most of the oil countries (with refining capacity to export) are going to have export restrictions. Thats the only way to deal with the mobs in their own country.<p>From: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;KPq7jyQcemA" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;KPq7jyQcemA</a><p>Richard Campbell: Politicians aren’t going to do things that aren’t popular, so we have to make these solutions popular for there to be a chance to build political will.<p>Richard Campbell: Corporations are inherently conservative, and power companies doubly so. Until there is a public groundswell demanding these changes, they won’t act. It’s up to us to make enough noise and show that these are good solutions worth pushing forward.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jacklbk</em>:</p>
+<blockquote>&gt; switch completely to renewables (solar, maybe wind), EVs, green hydrogen&#x2F;ammonia and synthetic fuels<p>You think other countries can&#x27;t restrict those things? Restricting components related to those things will work just fine.<p>By the way, you can never switch completely to just renewables, it doesn&#x27;t scale that well. They are simply too inefficient, unsecure, to &quot;switch completely&quot; in a country scale. Maybe just your house or some districts. You still need coal&#x2F;gas&#x2F;nuclear to maintain the power grid.<p>Oil is needed for many components inside stuff you mentioned. Oil is a must in military. If you want clean, abundant, cheap, secure energy, invest in nuclear.<p>Everything has tradeoffs. Diversify it.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>thelastgallon</em>:</p>
+<blockquote>&gt; By the way, you can never switch completely to just renewables, it doesn&#x27;t scale that well.<p>China is scaling, so is Australia, quite possibly other countries. We&#x27;ll know when they hit the limits and stop deploying more solar.<p>Solar is dirt cheap (1200x cheaper), batteries are getting cheaper by the minute.<p>If you are rational thinking person, would you bet on technology that increases in costs over time or gets cheaper over time?<p>&gt; invest in nuclear.<p>There was a time many decades ago to deploy nuclear at scale. Fossil fuel shills used &#x27;environmentalists&#x27; to shut down all progress of nuclear. Now, they use nuclear again to slow down solar and wind. Just wait 30 - 50 years, we&#x27;ll have a proper solution.<p>I do agree with you on nuclear though, countries should invest in nukes for security. All countries should invest in nuclear, it provides both energy security and real security from mischievous actors.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>euroderf</em>:</p>
+<blockquote>&gt; The simplest and easiest geopolitical strategy that is available to any country: switch completely to renewables (solar, maybe wind)<p>This lessens the impact of attacks on transformers too. A serious point of vulnerability.</blockquote>
+<p>↳ reply 3 — <em>hurril</em>:</p>
+<blockquote>Easiest. If that is the easiest way you see I am afraid to ask what the harder alternatives would be.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>raffraffraff</em>:</p>
+<blockquote>I suppose it could turn very bearish in the next few years?<p>Something always occurs to me whenever I think about climate change. I think, &quot;What is prosperity?&quot; and the answers are mainly centered on stability and security. Not &quot;stock market&quot; stability, or &quot;national security&quot; but...<p><i>Weather stability</i> (floods, droughts, severe storms that lead to crop loss or yield reduction, wildfires, power outages and destruction).<p><i>Food and energy security</i> (crop loss or low yields leading to scarcity, food &#x2F; gas &#x2F; electric price increases etc)<p>When I think about my family I think: first priority is to guarantee shelter, food and basic comforts. Everything after that is important of course, but without those three things, it all tastes like ashes. I can&#x27;t pretend to be happy without stability.<p>We can pretend that AI and GoogleAds are a great way to measure &quot;prosperity&quot; but in reality, if there&#x27;s a threat to the basics, we can&#x27;t pretend to be prosperous. &quot;Value&quot; can be destroyed very quickly when the foundations are gone.<p>I don&#x27;t have any more detail than that. I&#x27;m a lowly infrastructure engineer. I don&#x27;t go any deeper than those shower thoughts.<p>But is Europe looking at the state of the world and pulling it&#x27;s reserves closer-to?</blockquote>
+<p><strong>Top #3</strong> — <em>oleg_antonyan</em>:</p>
+<blockquote>Russia had assets in Europe, look what happened to those. We got so naive and relaxed in the abscense of big wars within the &quot;western hemisphere&quot; that some people geniunly forgot what will happen to all of their &quot;assets&quot; when shit hit the fan.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>baxtr</em>:</p>
+<blockquote>I really wonder why. Something must have happened</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mdp2021</em>:</p>
+<blockquote>Not relevant to the point - &quot;I gave my item to my former friend Paul&quot;. For some reason or for some other, it happens.<p>And miscalculations in game theory happen (&quot;he wouldn&#x27;t, given...&quot;).</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>speedgoose</em>:</p>
+<blockquote>I put my gold in the safe of my best friend, he has a good safe. Then I rapped and killed his wife and children, and destroyed his house. But he doesn’t want to give me the gold back.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>alibarber</em>:</p>
+<blockquote>The assets are still there and frozen for the most part (in Euroclear).<p>Some people would like to see them put to use in guaranteeing reconstruction and defence for Ukraine.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Nitter has more working instances than before the takedowns</title>
       <link>https://codeberg.org/mv12star/shitter/wiki/Instances</link>
@@ -272,6 +370,33 @@
 <blockquote>For reasonably complex boards, it’s often not possible to know if it’ll work as intended until you have an assembled prototype in hand… even if you have the best SPICE and RF simulations ever, data sheets for many components can be missing important details, or components can have errata.<p>LLMs may be able to accelerate time to first prototype, but I don’t think it’ll be possible for them to revolutionise electronics design in the same way that’s happened for software - there’s not enough data, and it’s not cheap to gather more.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Fermat's Last Theorem in Lean 4</title>
+      <link>https://github.com/anthropics/fermats-last-theorem</link>
+      <guid isPermaLink="false">hn3-49568697</guid>
+      <pubDate>Fri, 04 Sep 2026 18:57:32 +0000</pubDate>
+      <description>135 points, 27 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/anthropics/fermats-last-theorem"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49568697">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 27 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>black_knight</em>:</p>
+<blockquote>I wonder if any piece of the lean code is in a shape which means it could be contributed to one of the existing Lean libraries.<p>My experience is that it takes a lot of human input to make Fable write code nice enough for a formalisation library others can work on. But since this is certainly a lot of prerequisites formalised as well, it would be nice if not all of the effort was wasted on one capstone proof!
+(Repost of a earlier comment, but I feel it fits better here)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kmoser</em>:</p>
+<blockquote>Serious question: how do you prove that the Lean interpreter itself (not to mention the toolchain built around it) is error-free? Isn&#x27;t this turtles all the way down to some degree?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>arlort</em>:</p>
+<blockquote>In addition to what others added below you might be interested in this postmortem <a href="https:&#x2F;&#x2F;leodemoura.github.io&#x2F;blog&#x2F;2026-8-24-postmortem-for-the-kernel-soundness-bug-hunt&#x2F;" rel="nofollow">https:&#x2F;&#x2F;leodemoura.github.io&#x2F;blog&#x2F;2026-8-24-postmortem-for-t...</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Jhsto</em>:</p>
+<blockquote>My anecdotal experience is that while LLMs are quite good at closing theorems given an LSP to inspect the proof-tree, they suffer from similar kind of problems with proofs as they do with bigger codebases in any language -- finding reusable parts that can be built into libraries (that&#x27;s lemmas in Lean 4 sense). However, Buzzard has many times said that he wouldn&#x27;t care how big the proof is and how ugly it would be, as long as there would be a proof.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mcapodici</em>:</p>
+<blockquote>What a time to be alive stuff.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;anthropics&#x2F;fermats-last-theorem&#x2F;blob&#x2F;main&#x2F;verification&#x2F;comparator&#x2F;Solution.lean#L5" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;anthropics&#x2F;fermats-last-theorem&#x2F;blob&#x2F;main...</a></blockquote>
+<p><strong>Top #3</strong> — <em>chvid</em>:</p>
+<blockquote>I think an interesting problem, perhaps even more interesting problem, would be the shortest &#x2F; most concise &#x2F; easiest to understand (formally verifiably) proof.</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Shutting down our public encrypted DNS</title>
       <link>https://mullvad.net/en/blog/shutting-down-our-public-encrypted-dns-servers-and-sponsoring-quad9-instead</link>
       <guid isPermaLink="false">hn3-49568579</guid>
@@ -422,6 +547,48 @@
 <blockquote>eInk does seem like an awesome choice for this to me too.<p>I&#x27;ve gone without a bike computer for the same reasons as not wanting a second device.  I used my phone for years in a water proof front frame bag with a transparent cover.  Usually for not more than 3 hours at a time.  Only on my Pixel 7a did I end up with burn in from the Wahoo Android app&#x27;s status screen, where &quot;n&#x2F;a&quot; for not having a power meter ultimately burnt in after about 2 years, at least that&#x27;s when I noticed it.  Now I just go without being able to glance down and see ride stats or directions.  More planning or stopping if I reroute is required, but I didn&#x27;t want to damage the phone... :(<p>Presumably an app could cycle displayed screens, if that&#x27;s what you meant by switching modes, to avoid burn in?  But I really thought AMOLED was past that when I never saw it on previous phones.</blockquote>
 <p>↳ reply 2 — <em>alabut</em>:</p>
 <blockquote>I use my phone as a bike computer too but it only works on short rides around town. Anything longer gets cooked by the sun until the screen dims and battery stops charging.<p>That’s why the head units in my bikepacking groups have screens that double as solar displays. The Coros Dura is probably the most popular one for all day or multi-day trips.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>“Next-token predictor” is the wrong mental model for LLMs</title>
+      <link>https://gmcgoldr.github.io/2026/09/04/llm-next-token-predictors.html</link>
+      <guid isPermaLink="false">hn3-49567310</guid>
+      <pubDate>Fri, 04 Sep 2026 17:09:24 +0000</pubDate>
+      <description>130 points, 269 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://gmcgoldr.github.io/2026/09/04/llm-next-token-predictors.html"><strong>→ Article</strong></a> <small>(gmcgoldr.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49567310">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 269 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>perrygeo</em>:</p>
+<blockquote>&quot;LLMs are next-token predictors&quot; is a perfectly accurate mental model. But that doesn&#x27;t preclude higher-level models such as &quot;LLMs emulate artificial general intelligence&quot;. Both can be true.<p>In systems, we can have facts which <i>emerge</i> from other facts at different levels of abstraction. The causal relationship is not linear. It&#x27;s not entirely clear that next-token prediction should result in anything close to &quot;intelligence&quot;. Yet it does.<p>Life is another good example. Some might say &quot;biology is just organic chemistry&quot; while others might say &quot;biology is an interconnected planetary system which captures low entropy energy&quot;. Both are true.<p>As a result of emergent phenomenon, we have to take the stance of explanatory pluralism; using the explanation that works best in context. There is no single mental model that works everywhere.<p>I will continue to think of LLMs as next-token predictors because it&#x27;s (sometimes) useful, and empirically true. But I also think of them as &quot;pattern matchers&quot;, searching for language patterns and trying to replicate them. This is also (sometimes) useful and empirically true. There&#x27;s likely an infinite number of mental models; our job is to pick one that&#x27;s both true and useful.</blockquote>
+<p><strong>Top #2</strong> — <em>Planktonne</em>:</p>
+<blockquote>I&#x27;m not going to stop describing things accurately because someone generated an article that continually undermines its own main point. Limiting the way we talk and think about LLMs to a very narrow set of terms doesn&#x27;t help us.<p>EDIT: gentler phrasing</blockquote>
+<blockquote>
+<p>↳ reply — <em>garrinm</em>:</p>
+<blockquote>The distinction I perhaps didn’t make clearly enough is that I’m not really debating the concept of prediction at inference time, although, as I pointed out elsewhere, I think that’s the less interesting interpretation of what “prediction” means.<p>What’s more interesting to me is its application at training time. In reinforcement learning, there is no ground-truth next token to predict.<p>So if you’re comfortable calling Deep Blue a “next move predictor,” then I think it’s perfectly consistent to call an LLM a “next token predictor.” But I think it’s more useful to think of Deep Blue as evaluating the value of possible moves. roughly, how likely they are to lead to winning.<p>And I think effectively the same distinction applies here.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Planktonne</em>:</p>
+<blockquote>I think you&#x27;re trying to limit the meaning of both &#x27;next&#x27; and &#x27;prediction&#x27; in ways that don&#x27;t reflect usage and that--if adopted--would severely limit our ability to discuss and evolve what LLMs are actually doing.<p>There&#x27;s nothing inherent in either word that forces such a limit; predicting based on what will lead to success as measured by [reward function] is still a prediction.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>danielmarkbruce</em>:</p>
+<blockquote>It&#x27;s not a prediction of the next move though, and that is the point. It&#x27;s a prediction of what will happen if you make that move.<p>So, it&#x27;s not a next move predictor. It&#x27;s a game result predictor.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mofeien</em>:</p>
+<blockquote>Describing it as a &quot;next-token predictor&quot; in the sense that this would mean it&#x27;s fundamentally limited to just a fraction of an inferential step is doubly wrong:<p>1. In order to select even the first word of a meaningful sentence, it already has to have structure and meaning of what follows captured somewhere inside, mostly in it&#x27;s weights&#x2F;activations or indexed by it&#x27;s state vector.<p>2. What you see when you use an LLM is not next-token prediction directly next to the prompt, but instead following a block of varying length of next-token prediction that happened to make progress on the problem in your prompt, and which just summarizes the results.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Planktonne</em>:</p>
+<blockquote>&gt; Describing it as a &quot;next-token predictor&quot; in the sense that this would mean it&#x27;s fundamentally limited to just a fraction of an inferential step<p>I don&#x27;t think anyone is doing that though; we know LLMs are not simple Markov chains, and that the prediction they make is based on more than the previous X words.<p>It&#x27;s not minimising to describe even a complex prediction process as prediction.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gwerbin</em>:</p>
+<blockquote>But it literally is making a prediction based on the previous X tokens, it&#x27;s just that X is huge and there is a proportionally huge number of parameters in the token generation function.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>amluto</em>:</p>
+<blockquote>It has nothing to do with X being huge.  In fact X might be quite small.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>wonnage</em>:</p>
+<blockquote>I think you are just litigating the philosophical debate of Bayesian vs frequentist interpretations of probability. Because the weights really are just probabilities.<p>Bayesians say that the probabilities represent strength of belief, implying some subjective knowledge or information. It is necessarily subjective in that it requires priors, i.e information the predictor knew before making the prediction. In other words, the LLM has priors from training and is predicting tokens using real knowledge<p>Frequentists would say that probabilities are simply objective facts - e.g we all agree that the physical property of temperature follows from any molecules matching a particular energy distribution. You’re not predicting anything, there’s just some outcomes that are happening at the expected rate. In other words, the LLM is a stochastic parrot&#x2F;next token predictor</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3405,185 +3572,6 @@ Page 7.<p>They <i>train</i> what appears as embeddings for outer product of <i>r
 </blockquote>
 <p><strong>Top #3</strong> — <em>twoodfin</em>:</p>
 <blockquote>Taking as given this model meets the “Critical cybersecurity threshold” as defined by OpenAI:<p>Could the Federal government use the Defense Production Act or other legal tools to compel OpenAI to deliver the un-guarded model weights for national security needs?<p>Hard to believe any government would allow this level of capability to remain exclusively in private hands.<p>Interesting times.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Apple reveals 'shocking evidence' from ex-employee's MacBook in OpenAI suit</title>
-      <link>https://9to5mac.com/2026/08/31/apple-openai-forensic-macbook-evidence/</link>
-      <guid isPermaLink="false">hn3-49527573</guid>
-      <pubDate>Tue, 01 Sep 2026 20:19:11 +0000</pubDate>
-      <description>215 points, 150 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://9to5mac.com/2026/08/31/apple-openai-forensic-macbook-evidence/"><strong>→ Article</strong></a> <small>(9to5mac.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49527573">→ HN comments</a> &nbsp;·&nbsp; 215 points &nbsp;·&nbsp; 150 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dgellow</em>:</p>
-<blockquote>The claims:<p>- Mr. Liu not only downloaded a confidential Apple circuit schematic but also used it in his work at OpenAI;<p>- Far from his unauthorized access to Apple’s third-party cloud storage being unknown to him, Mr. Liu and others at OpenAI were well-aware of that access;<p>- Mr. Liu, upon learning of Apple’s internal investigation of him, sent instructions for destroying evidence to an OpenAI colleague who confirmed she would comply; and<p>- Mr. Liu used a tool in his work at OpenAI that has the same name as an internal Apple engineering application used for Apple development work.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>aeternum</em>:</p>
-<blockquote>Sounds like Apple might soon own some Jalapeño</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rTX5CMRXIfFG</em>:</p>
-<blockquote>That&#x27;s a good macOS version name</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Muromec</em>:</p>
-<blockquote>Sounds like the LLM is equally good a participating in a criminal conspiracy and keeping notes on it. Not the team mate we all want, but one we deserve.</blockquote>
-<p>↳ reply 3 — <em>snapetom</em>:</p>
-<blockquote>Good lord.  Smart people doing the dumbest things with their work equipment.<p>I have a former coworker who was the VP of Finance at my company.  He suddenly got fired out of the blue.  The company was in the midst of trying to find a buyer (this was announced) so this was extra surprising.  Turns out, he knew a lot of bad news about the company, and they caught him looking for a job.  They fired him because he was too much of a liability.<p>How did they catch him?  He was putting resumes and cover letters on OneDrive.  &quot;Yeah, in retrospect, that&#x27;s one of the dumber things I&#x27;ve ever done,&quot; he said to me later.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>joshka</em>:</p>
-<blockquote>&gt; Apple argues that when trade secret information is fed into an AI agent or model that learns from it, that learning “may create irreversible and continually propagating uses of the trade secret.”<p>This is somewhat of a high impact argument to test. I wonder if the case will eventually get to working this point out.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Jtsummers</em>:</p>
-<blockquote>There&#x27;s already some precedent when dealing with humans reverse engineering systems. We use &quot;cleanroom&quot; approaches where the ones doing the reverse engineering are segregated from those doing the later design and development work. Instead of producing a design document based on the thing being studied, the reverse engineers produce a specification from which a new design, untainted by knowledge of the original design, is produced.<p>People using ML to try and reverse-engineer and create a &quot;clean&quot; version of things will likely need to use a similar approach. You can&#x27;t ask one LLM to take in a circuit design as input and produce a specification <i>and design</i> within the same context. The resulting design will be at least partially informed by knowledge of the original design. The way to do this safely (potentially still with suits happening, but safer at least) will be to have one execution to produce a specification, and a second fresh execution taking the specification to produce a design. At least then you know your LLM was not aware of the original design.<p>Of course, LLM agents &quot;cheat&quot;, so you&#x27;ll also want to be careful to ensure a clean environment if you&#x27;re using an agent that does not provide access to the original design material.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kodablah</em>:</p>
-<blockquote>&gt; The way to do this safely (potentially still with suits happening, but safer at least) will be to have one execution to produce a specification, and a second fresh execution taking the specification to produce a design.<p>I have seen Claude literally suggest using a Sonnet sub agent to read source the main agent shouldn&#x27;t, and have the sub agent describe the &quot;facts and ideas&quot; via markdown to the parent agent thereby maintaining that it is clean room and not, for example, GPL encumbered.<p>This seems as acceptable as asking a human to do the same. Otherwise, taken to its logical conclusion, if any LLM was trained on GPL software, it cannot be used for non-GPL authoring (and IIUC Claude does offer indemnity for enterprise plans if this is challenged).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Terr_</em>:</p>
-<blockquote>&gt; This seems as acceptable as asking a human to do the same.<p>I wouldn&#x27;t be surprised if self-bias in the model weights and imperceptible grammar&#x2F;word&#x2F;punctuation choices could cause it to duplicate more information than a human-to-human transfer <i>Probably</i> not enough to matter, but...<p>To put it another way, imagine the task was one human viewing a painting, and then describing it over the phone for another human to paint, so that the final product wasn&#x27;t really a &quot;copy&quot;. Assume everyone has the same eyeballs and art-skills.<p>I&#x27;d expect a <i>massive</i> improvement if the humans on each end were freshly-made clones from a teleporter accident, sharing identical brain-structures and 99.9999% of their memories.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>rjsw</em>:</p>
-<blockquote>A related argument could be whether the output of an LLM that has been trained on GPL code should also be considered to be under a GPL licence.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>biggc</em>:</p>
-<blockquote>&gt; Additionally, Apple learned about Liu’s use of the schematic because he used it on a Mac mini which later synced via iCloud to the MacBook he took from Apple. Apple now also wants access to that Mac mini.<p>I&#x27;m very curious about the privacy implications of this. I know that anything I do and store on my company&#x27;s laptop can be tracked, but I hadn&#x27;t considered that if I forgot to sign out of my personal Gmail on it that they could legally search that information.<p>The files syncing to the company laptop&#x27;s disk is a layer of nuance that makes this situation tricky to evaluate.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>steveBK123</em>:</p>
-<blockquote>&gt; I forgot to sign out of my personal Gmail<p>Never, ever, ever sign into personal mail&#x2F;messaging on work machines.
-Even the appearance of having done so just sets up for bad things.<p>This was kinda iffy 20 years ago, now its crazy to do.
-We all have phones now, there&#x27;s no good reason to do this.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mathisfun123</em>:</p>
-<blockquote>&gt; Never, ever, ever sign into personal mail&#x2F;messaging on work machines<p>apple <i>explicitly</i> encourages their employees to do exactly this - it&#x27;s called &quot;carry&quot;ing your work device.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>morganw</em>:</p>
-<blockquote>encourages, but doesn’t require. My work phone is an iPhone 14 that I only use for Slack notifications &amp; to check the next day’s schedule when I don’t want to bother opening their laptop.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>lozenge</em>:</p>
-<blockquote>I think I&#x27;ve heard about this before, apparently Apple encourages its employees to use the same iCloud account for personal and business use.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The ChatGPT/Codex app bundles a full copy of LibreOffice</title>
-      <link>https://simonwillison.net/2026/Sep/1/codex-libreoffice/</link>
-      <guid isPermaLink="false">hn3-49527396</guid>
-      <pubDate>Tue, 01 Sep 2026 20:07:57 +0000</pubDate>
-      <description>408 points, 188 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://simonwillison.net/2026/Sep/1/codex-libreoffice/"><strong>→ Article</strong></a> <small>(simonwillison.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49527396">→ HN comments</a> &nbsp;·&nbsp; 408 points &nbsp;·&nbsp; 188 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>xvilka</em>:</p>
-<blockquote>Would be nice if they donate to LibreOffice then, to improve the support of various MS Office features in files, as well as comparison&#x2F;diffing features. Win-win to everyone.</blockquote>
-<blockquote>
-<p>↳ reply — <em>j16sdiz</em>:</p>
-<blockquote>As much as I would hope they would... I don&#x27;t think that&#x27;s in character for sam altman.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>esperent</em>:</p>
-<blockquote>I actually bundle LibreOffice with my app too and the reason is reading files, especially old xls files. Since I&#x27;m bundling it I&#x27;m now using it for everything docs related but the specific reason is those old files. I couldn&#x27;t find anything else that I could just drop it and feel confident it&#x27;ll just read anything I give it.</blockquote>
-<p><strong>Top #3</strong> — <em>lgl</em>:</p>
-<blockquote>Does that really mean that it&#x27;s bundling those apps from the start or did it just download and install them at some point to do some local work on some prompt or job you ask it to?<p>I don&#x27;t see it making much sense to bundle it. I&#x27;m sure a LOT of LLM prompts are related with docs, excels, powerpoints etc, etc but don&#x27;t really see it worth it for it to be bundled on the codex app from the get go, because otherwise, why not also install dozens of other apps?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>simonw</em>:</p>
-<blockquote>I&#x27;m not sure. Someone who hasn&#x27;t installed the ChatGPT (or Codex) apps yet could confirm this by installing the apps, seeing if that ~&#x2F;.cache directory exists, then try running a prompt that needs Python or Node.js or LibreOffice and see if it downloads them when needed.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>zatkin</em>:</p>
-<blockquote>I&#x27;ve never installed the ChatGPT app on my Mac until today.  I ran the app, signed in, and I see the same.<p>% ls ~&#x2F;.cache&#x2F;codex-runtimes&#x2F;codex-primary-runtime&#x2F;dependencies&#x2F;native&#x2F;libreoffice-headless<p>libreoffice     manifest.json</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>zamadatix</em>:</p>
-<blockquote>Notably: this did not exist after I installed the app, it existed after I ran the app and there was the long startup screen. Presumably, and I&#x27;m not sure I&#x27;m interested enough to redo it all and find out, that long startup screen involves the default skills plugins setting up their environment and one of those pulls it as a general app requirement.<p>I also saw this present after first run on macOS but not Windows.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>RomanHauksson</em>:</p>
-<blockquote>&gt; why not also install dozens of other apps?<p>because other apps are less likely to be useful, and there&#x27;s diminishing returns</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Refurbishing a Tektronix TDS7104 Oscilloscope</title>
-      <link>https://tomverbeure.github.io/2026/08/23/Tektronix-TDS7104-Refurbishing.html</link>
-      <guid isPermaLink="false">hn3-49527232</guid>
-      <pubDate>Tue, 01 Sep 2026 19:55:47 +0000</pubDate>
-      <description>140 points, 59 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://tomverbeure.github.io/2026/08/23/Tektronix-TDS7104-Refurbishing.html"><strong>→ Article</strong></a> <small>(tomverbeure.github.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49527232">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 59 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jhallenworld</em>:</p>
-<blockquote>Yeah 1 GHz is nice, but that tiny 200 MHz Siglent is going to be much more useful in practice for most things.<p>Speaking of boat anchors, I&#x27;m trying to get my company to buy a DSA91304a (13 GHz scope with SERDES debugging).  ~$44K with all the options, but still Windows-XP.  The Windows-7 ones unfortunately don&#x27;t have the options I want.  Maybe there is a hack..</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tverbeure</em>:</p>
-<blockquote>As I wrote: the TDS7104 is now sitting on a shelf in the garage, next to an Agilent 54831 and some other boat anchors. My daily drivers are a Siglent scope and a puny TDS220, which is about to be replaced by a TDS3052 that I&#x27;m bringing back to life. Hobbyists rarely need more than 100 MHz BW.<p>I hope you&#x27;re able to thoroughly test that DSA91304a before dropping $44k on it!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Tangurena2</em>:</p>
-<blockquote>I hope you&#x27;re aware of the TekWiki:<p><a href="https:&#x2F;&#x2F;w140.com&#x2F;tekwiki&#x2F;wiki&#x2F;Main_Page" rel="nofollow">https:&#x2F;&#x2F;w140.com&#x2F;tekwiki&#x2F;wiki&#x2F;Main_Page</a><p>Mine is a TDS224. Cheap, but I only use it for keeping my Eurorack synth going. 100MHz is overkill for audio. Although some modules use STM32 microcontrollers, so maybe the speed will come in handy.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>amelius</em>:</p>
-<blockquote>200 MHz is good enough for most things. And for modern computing electronics even 1GHz is too slow, e.g. monitoring USB3 or high speed PCIE data lanes.<p>Did you get a price quote for that keysight oscilloscope? I see that you can also rent them for $2000 a month.</blockquote>
-<p>↳ reply 3 — <em>liamkinne</em>:</p>
-<blockquote>I have a 1.5GHz TDS7154B in addition to my 200MHz SDS1204 specifically to measure power rail noise with a low noise probe.<p>You just can’t characterise power rail noise well with less than 500MHz of bandwidth.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>OldSchool</em>:</p>
-<blockquote>10 GS&#x2F;sec is very impressive as far as I&#x27;m concerned!  One sample every 20mm or so at typical transmission line speed.<p>That said, anything with a floppy drive scares me because it undeniably indicates how old it is. My SDS7102V is no Tektronix, but an honest 1 GS&#x2F;sec and at the time, under $200 on eBay.</blockquote>
-<p><strong>Top #3</strong> — <em>slhomme</em>:</p>
-<blockquote>Love this.  I knew nothing about oscilloscopes until just a few months ago, when reasearched and bought one from a science lab. It wasfor a personal side project. I gutted it out and installed a mini PC inside, and now i run AI models into it. It&#x27;s like my personal AI assistance. Hooked up to OpenAI realtime voice, grok bot, claude code, etc so I can command it to do stuff even when my main computer is off.<p>I just mainly love the retro-moder look of it. Here&#x27;s a link to how it looks, for those curious:<p><a href="https:&#x2F;&#x2F;x.com&#x2F;slhomme&#x2F;status&#x2F;1965131874734584291" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;slhomme&#x2F;status&#x2F;1965131874734584291</a><p>I had now idea there was such a huge second-hand market for those. It was such a great opportunity to learn about this tech.</blockquote>
-<blockquote>
-<p>↳ reply — <em>aa-jv</em>:</p>
-<blockquote>A pity you can&#x27;t still use it as an oscilloscope though.<p>I was initially confused how you managed to get amber and green screen together, but I guess you put an LCD in ..</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The largest electric aircraft just flew [video]</title>
-      <link>https://www.youtube.com/watch?v=nM86DBOqgPM</link>
-      <guid isPermaLink="false">hn3-49526453</guid>
-      <pubDate>Tue, 01 Sep 2026 19:02:34 +0000</pubDate>
-      <description>136 points, 86 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.youtube.com/watch?v=nM86DBOqgPM"><strong>→ Article</strong></a> <small>(youtube.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49526453">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 86 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>alberth</em>:</p>
-<blockquote>Is this EV or Hybrid?<p>The founder seems to sneak in the word &quot;hybrid&quot;, around 1m30 mark in the video below.<p><a href="https:&#x2F;&#x2F;youtu.be&#x2F;nM86DBOqgPM?si=5unXLmPxk6M_kmuN&amp;t=86" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;nM86DBOqgPM?si=5unXLmPxk6M_kmuN&amp;t=86</a><p>Note: not being negative, I just want to ensure I understand correctly since the title might imply something else.<p>Update: confirmed, it does use aviation fuel.<p>&gt; &quot;The airplane will also include a reserve-hybrid configuration, consisting of two turbo generators powered by <i>sustainable aviation fuel</i>. The reserve-hybrid system is installed to secure reserve energy requirements without cannibalizing battery range, and it can also be used during cruise on longer flights to complement the electrical power provided by the batteries.&quot;<p><a href="https:&#x2F;&#x2F;www.heartaerospace.com&#x2F;newsroom&#x2F;heart-aerospace-unveils-new-airplane-design-confirms-air-canada-and-saab-as-new-shareholders" rel="nofollow">https:&#x2F;&#x2F;www.heartaerospace.com&#x2F;newsroom&#x2F;heart-aerospace-unve...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>luma</em>:</p>
-<blockquote>Hybrid after the first 125 miles, total range 500 miles. Their problem is diversions - an incident at the destination airport may mean an passenger aircraft may need to land at an airport which could be a couple hundred miles away.  The hybrid powerplant throws the fuel efficiency numbers off so goal is not to run it unless needed, but they could not get certification without it.</blockquote>
-<p>↳ reply 2 — <em>yndoendo</em>:</p>
-<blockquote>With limited information form their web site, both. Being able to run pure electric while switching to fossil fuel. [0]<p>The way modern hybrids can charge from an outlet, I classify them as EV-Hybrid, and only use gas if need be vs older ones that only charge through the gas engine, Hybrid.<p>[0] <a href="https:&#x2F;&#x2F;www.heartaerospace.com&#x2F;es-30" rel="nofollow">https:&#x2F;&#x2F;www.heartaerospace.com&#x2F;es-30</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>detourdog</em>:</p>
-<blockquote>I was just at Newport Technology preview where they demoed a ground effects aircraft drone. This was a scaled model and the final drone aircraft is  designed for 12 passengers. All electric.<p><a href="https:&#x2F;&#x2F;polaristechbridge.org&#x2F;bluetide&#x2F;" rel="nofollow">https:&#x2F;&#x2F;polaristechbridge.org&#x2F;bluetide&#x2F;</a><p><a href="https:&#x2F;&#x2F;www.regentcraft.com&#x2F;">https:&#x2F;&#x2F;www.regentcraft.com&#x2F;</a></blockquote>
-<p><strong>Top #3</strong> — <em>rpaik</em>:</p>
-<blockquote>I also saw this about a year ago: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=_T9cxv9ubRg" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=_T9cxv9ubRg</a><p>More of a replacement for the &quot;helicopter market&quot;...</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Xanadu was waiting for agents</title>
-      <link>https://zed.dev/blog/agentic-xanadu</link>
-      <guid isPermaLink="false">hn3-49526298</guid>
-      <pubDate>Tue, 01 Sep 2026 18:50:42 +0000</pubDate>
-      <description>137 points, 57 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://zed.dev/blog/agentic-xanadu"><strong>→ Article</strong></a> <small>(zed.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49526298">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 57 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ameliaquining</em>:</p>
-<blockquote>This post buys into the common narrative about Xanadu, that it was a fundamentally good idea that failed due to some combination of poor execution, being too far ahead of its time, and the market not caring about quality (with this post in particular focusing mostly on the second thing).<p>In my view, Gwern makes a compelling counterargument: Xanadu was a fundamentally bad idea. The parts of it that weren&#x27;t incorporated into the World Wide Web either solved problems no one actually had, or couldn&#x27;t have constituted a stable equilibrium between users and publishers (i.e., even if it&#x27;d been magically willed into existence, it&#x27;d have quickly fallen apart). <a href="https:&#x2F;&#x2F;gwern.net&#x2F;xanadu" rel="nofollow">https:&#x2F;&#x2F;gwern.net&#x2F;xanadu</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kristopolous</em>:</p>
-<blockquote>Ted is super specific and inflexible about lots of technical details that just don&#x27;t work. I don&#x27;t want to air out dirty laundry here but it&#x27;s non-existence in any robust state wasn&#x27;t for lack of trying.<p>Also it&#x27;s a feature, not a bug. If we were all pragmatists ...</blockquote>
-<p>↳ reply 2 — <em>segfaltnh</em>:</p>
-<blockquote>This was my feeling trying to grok why I want or need Delta.</blockquote>
-<p>↳ reply 3 — <em>kabes</em>:</p>
-<blockquote>I agree with Gwern. And also Nelson kind of lost my respect after he spend the rest of his life bashing and complaining on how bad the WWW is compared to his ideas.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>e12e</em>:</p>
-<blockquote>Interesting. This and the other posts I&#x27;ve seen about Delta seems to exist in that liminal space, were it&#x27;s difficult to tell if the author has had a brilliant insight, that they struggle to convey to anyone who&#x27;s not yet had the same insight; or if they&#x27;ve simply gone slightly mad.<p>It&#x27;s a similar sense I get with reading Nelson (after being able to think about his ideas for a while, I&#x27;m quite certain it was mostly genius and only a little bit of lunacy).<p>It remains to see how Delta will turn out.<p>On a side-note; my initial reaction to the headline was; no. Xanadu wasn&#x27;t missing agents.<p>I do think I see where the author is going, though; and I think I agree that agents might be a new tool that might facilitate some hypertext ideas. Not Xanadu perhaps. But some other, more pragmatic and less magic place - but a place that is a little more magical than where we are now.<p>And it intersects a bit with an experiment we started at work; migrating our modest web site from WordPress to a static site combining 11ty (<a href="https:&#x2F;&#x2F;11ty.dev" rel="nofollow">https:&#x2F;&#x2F;11ty.dev</a>) (we already lean heavily on typescript for our application development) and visual studio code with frontmatter cms (<a href="https:&#x2F;&#x2F;frontmatter.codes" rel="nofollow">https:&#x2F;&#x2F;frontmatter.codes</a>) - and AI&#x2F;LLMs.<p>AI helps with making a static page version of our site, and adopting to 11ty.<p>The idea is that with trivial push-to-deploy setup, our business people, with the help of AI in vs code, will be able to work directly with 11ty and git to make changes, do reviews and publish changes.<p>A hill that would probably have been too steep for them to climb just six months ago.<p>So in reference to the theme of realizing a better hypertext system with the help of AI, we&#x27;re sort of doing the same thing, it turns out: mix solid, boring tools (static site gen, typescript, editor, version control, CI, static hosting) and some AI - to hopefully allow more users leverage both tooling and AI in an empowering way.<p>We&#x27;ve just stated the experiment - we may yet fly too close to the sun, and end up falling back to a traditional CMS.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andai</em>:</p>
-<blockquote>Well it unironically takes a thousand years to integrate the ideas revealed in a single acid trip. Doesn&#x27;t mean we shouldn&#x27;t try!</blockquote>
-<p>↳ reply 2 — <em>alex7o</em>:</p>
-<blockquote>I think not are the same the only thing that differentiates them is adoption. If people show interest in the thing you are a genius if they don&#x27;t you are mad&#x2F;crazy.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ThinkBeat</em>:</p>
-<blockquote>This sounds like one agent at each junction point, that may or may not be running the same model and architecture as the previous one, and they need to constantly crawl each other or just a protocol to call each other. 
-But then you have a million of then constructing a docuverse web all having an agent who all need to know each other and its all connections and each a database repository.<p>Well you only need links that exist, and those that are created.<p>In a paragraph it may exist in one node that is referenced and that node may be a collection of other nodes, or each sentence or even each word points to other nodes, how much does each model know and what does it keep in its database. 
-A point to the next node is not necessarily  durable or versioned, and that goes for each node is connects to.<p>A single paragraph could have thousands or more sources, references, and each source would need versioning and depending on version it may well point to different nodes in prior or future versions.<p>A proper version of a paragraph would then need to know this, or expect that all nodes with an agent will be durable and rational and interoperable 
-but if you build on that premise it will not work in the real world.<p>All unless you keep the docuverse limited in scope to a few data stores and agents who comprehend that spatial universe, and it is a form of an intranet</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
