@@ -4,7 +4,147 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 07 Sep 2026 19:48:46 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Sep 2026 22:43:39 +0000</lastBuildDate>
+    <item>
+      <title>bzip3</title>
+      <link>https://github.com/iczelia/bzip3</link>
+      <guid isPermaLink="false">hn3-49598291</guid>
+      <pubDate>Mon, 07 Sep 2026 13:35:13 +0000</pubDate>
+      <description>355 points, 101 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/iczelia/bzip3"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49598291">→ HN comments</a> &nbsp;·&nbsp; 355 points &nbsp;·&nbsp; 101 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>altairprime</em>:</p>
+<blockquote>Previously:<p>“Hi, tool author here.” A useful explanation of Burrows-Wheelers transform as used by bzip3: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=42902407">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=42902407</a><p>“bzip3 is not yet listed on the large text compression benchmark” It is now: <a href="https:&#x2F;&#x2F;mattmahoney.net&#x2F;dc&#x2F;text.html" rel="nofollow">https:&#x2F;&#x2F;mattmahoney.net&#x2F;dc&#x2F;text.html</a><p>(2 years ago, 176 comments) <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=42899713">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=42899713</a><p>(4 years ago, 104 comments) <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=31324439">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=31324439</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>andruby</em>:</p>
+<blockquote>&gt; “bzip3 is not yet listed on the large text compression benchmark” It is now<p>And it comes in relatively well, in my opinion. I&#x27;m a compression amateur, but bzip3 is the first entry I recognize as a general purpose compression program.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>idoubtit</em>:</p>
+<blockquote>Yes, bzip3 compresses that 1GB text file into 170 MB while zstd needs 213 MB (SI units, from my own tests with the &quot;enwik9&quot; file of the GP&#x27;s page, and the latest releases of both programs, same commands). But the decompression (memory and speed) is a different story.<p>On my desktop, decompressing with zstd requires 128 MB and 1 s, while bzip3 uses 3.2 GB and 90 s.<p>Without `-b 511`, bzip3&#x27;s ratio decreases and decompression requires about the same memory as zstd. But the decompression is still two orders of magnitude slower.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>p-e-w</em>:</p>
+<blockquote>&gt; “Hi, tool author here.” A useful explanation of Burrows-Wheelers transform as used by bzip3<p>FWIW, the Burrows-Wheelers transform is also used by bzip2, so this isn’t a new feature even though that quote kinda sounds like it is.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>8organicbits</em>:</p>
+<blockquote>I was processing compressed .jsonl files recently (JSON lines format). I found that lzma gave a much better compression than gzip or bzip2, which helps for archival costs, but it&#x27;s challenging to work with as software support is lacking. I do duckdb processing which supports gzip transparently. There&#x27;s an extension for bzip2, but not for lzma or bzip3.<p>I ended up using gzip because it&#x27;s best supported by the software I use and most likely to have support in software I adopt. But it gave the worst compression results of the options I tried. These bzip3 numbers certainly give me FOMO...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>retrac</em>:</p>
+<blockquote>For that type of structured data (logs and such), a custom dictionary can be extremely effective.  Zstd among others support generating a custom dictionary.  You just run zstd --train over the data first, and then feed that in when you run zstd.  For example: I found ~10 gigabytes of Usenet headers compress to ~700 MB using Zstd and 1 MB shared dictionary -- and that&#x27;s with each header individually compressed, so o(1) lookup time.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>torginus</em>:</p>
+<blockquote>Back in my data hoarder days, I downloaded one of those torrents that had all the world&#x27;s books in it. It was dunno how many terabytes, but way more than I had HDDs.<p>So I stripped out formatting, got rid of dupes, and tried out zstd, which was the hot new thing, along with the dictionary feature you describe, figuring it&#x27;d help. It didn&#x27;t. I tried having one per book, one per multiple books, one for the whole archive.<p>It didn&#x27;t work, or the gains were so marginal that I ended up scrapping the approach.<p>So it&#x27;s not impossible that it can work, but stuff like regular json already compresses extremely well, I haven&#x27;t found a scenario where it&#x27;s a major boon.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>igoose1</em>:</p>
+<blockquote>I have an anecdote about compressed data.<p>When I studied at school, I used ZFS with lz4 enabled on my working machine. During that times I had a task of parsing Wikipedia&#x27;s data. I had enough brain cells to find compressed dumps and download them with aria2 but not enough to leave the file compressed. I ran a decompressor. It&#x27;d been taking longer than I expected so I went out to walk a dog.<p>Imagine how fast me and the dog ran back 30 minutes later when I realized how cooked I was. I only had 10 GB left on my disks after I downloaded that 20 GB file. This decompressed file would have blown the machine up. I was terrified to find a frozen system with no storage space left.<p>Instead, the process finished and `df -h` reported 8 GB of the free space left. Files were decompressed. I could `less` them! That made no sense! Only many many minutes later I finally figured out to run a `zfs get compressratio` command which showed ZFS successfully and transparently recompressed everything on the fly. That was too impressive for that teenager and he never switched to a different file system.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bob1029</em>:</p>
+<blockquote>For structured logs and json I&#x27;ve found a lot of success with PPM-style schemes.<p>If your JSON file has many of the same object, you could see ratios in the single digits.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ot</em>:</p>
+<blockquote>The benchmarks are disingenuous, to the point of looking cherry-picked. The block size for bzip3 is set to 512MB, but the window size for zstd is left to its default (8MB I believe for high levels). So in this corpus, which is made up of all versions of Perl source code concatenated, the window is too small to see all the identical files and just match them.
+Also corpora made out of very long repetitions are pretty much the best case scenario for BWT-based compressors.<p>If we match the window size of zstd to that of bzip3 we get dramatically different results:<p><pre><code>    % gzcat *.gz | time zstd -T8 -16 | wc -c  # baseline
+     2819113884
+    zstd -T8 -16  2054.50s user 3.47s system 783% cpu 4:22.80 total
+
+    % gzcat *.gz | time zstd -T8 -16 --long=29 | wc -c
+     196405076
+    zstd -T8 -16 --long=29  1083.06s user 2.41s system 783% cpu 2:18.55 total
+</code></pre>
+Almost 15x smaller than the baseline, and more than 2x smaller than bzip3, also CPU time halves (since long matches are found earlier, so there&#x27;s less work to do).<p>(the baseline number is slightly different because I don&#x27;t have the exact Perl version set used by the author)<p>Also, in the benchmarks using lrzip, which would make the window size less relevant, zstd is not even compared.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cb321</em>:</p>
+<blockquote>I just tried a tar file of a git clone of the linux kernel sources where the most recent commit is 72c395024dac5e215136cbff793455f065603b06 (early Feb of this year).  zstd -19 got a slightly smaller size (3582930348 bytes vs bz3 -b 511&#x27;s 3597411687 bytes or 0.4% advantage to zstd).  More significantly 4-core zstd decompression was 2.05 seconds vs a whopping <i>297 seconds</i> for bzip3 -dj4 - 145x or over 2 orders of magnitude slower (about as much time to decode as to encode in the first place).  bzip3 1.5.3 compiled with gcc-16.1.0.  Granted, the .git objects are all compressed already and uncompressed tar-ball was only 5426667520 bytes, but even so...A lot of people care about fast(-ish) decompression.  Maybe I did something wrong?  Maybe `rm -rf .git` first would be a better benchmark?</blockquote>
+<p>↳ reply 2 — <em>optionalsquid</em>:</p>
+<blockquote>How does memory usage compare between your two runs?<p>The benchmarks report 687M for their run of zstd, and 12178M and 18301M for the two runs of BZip3. Which itself is a bit eyebrow raising</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>De-Brainrot Vacations</title>
+      <link>https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/</link>
+      <guid isPermaLink="false">hn3-49597907</guid>
+      <pubDate>Mon, 07 Sep 2026 13:00:48 +0000</pubDate>
+      <description>455 points, 186 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/"><strong>→ Article</strong></a> <small>(devz.cl)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49597907">→ HN comments</a> &nbsp;·&nbsp; 455 points &nbsp;·&nbsp; 186 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>FinnLobsien</em>:</p>
+<blockquote>I think the „my brain isn’t the same anymore“ sensation is pretty universal.<p>Between addictive online media in our personal lives and AI at work, I think we’ve made mental effort largely optional.<p>That must be a horrible thing.<p>One of my favorite theories is the physical activity transition.<p>In my grandparents‘ generation, physical movement became more optional as work shifted from manual labor to knowledge work or operating machines and transportation became motorized.<p>Exercise was an ambient byproduct of daily life. Then it disappeared (exercise as a hobby was viewed as extremely weird, runners used to be arrested!) and a few decades later heart disease, diabetes, and so on became deadly epidemics.<p>We now know exercise is not optional for health. And we’ve reintroduced it via gyms, clubs, etc.<p>But that took decades. And I believe we’re now in the Mental Activity Transition.<p>We’ve stripped away ambient mental effort so we practice it much less.<p>I don’t know what the decades-long consequences of that may be, but they can’t be good.<p>I hope it won’t take decades for societies to rediscover its value and figure out how to reintroduce it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>boudin</em>:</p>
+<blockquote>I have another suggestion which doesn&#x27;t contradict yours.<p>When I was younger I used to get bored way more often. I had to wait regularly during a week (e.g. for a bus, friend, appointment) or even at work as a software dev (e.g. compilation which used to take more time).
+This was also the case when doing some physical activities which didn&#x27;t require lot of thoughts.<p>Back then, before mobile phones with internet access, you were either reading something or alone with your thoughts in those situations. This was when I had time to think back at things that happened, processing the information I had, refining ideas etc.<p>Nowdays those are often situations where we ingest more information like listening to podcast, reading stuff on the phone, etc... or situations that just doesn&#x27;t exists anymore having optimised our work to remove those waiting points.<p>I personally find myself with clearer thoughts when I break those habits and give my brain some time to be bored again.<p>I do think there is &quot;lack of boreness&quot; epidemic leaving people with way more raw thoughts and way less time to process and challenge information, leading to some form of exhaustion and lack of clarity.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ProllyInfamous</em>:</p>
+<blockquote>I have another suggestion which doesn&#x27;t contradict yours:<p>This is only a small part of it (tech addiction 24&#x2F;7 via phone); certainly there is something bigger at play, here (e.g: &quot;the brain isn&#x27;t the same anymore;&quot; agreed).<p>I do not use email nor a cell phone (several years; outgoing landline, only), so I have more than enough time to ruminate (and read a few dozen books, annually) – and yet agree very much with OC&#x27;s theory on needing mental health exercises to replace our newfound AGI tools&#x2F;workers.<p>As an extremely conversive person (unbound by a cellphone), it&#x27;s become an extremely strange world, particularly when talking with strangers, even <i>in just the past two years</i>. It&#x27;s like: everybody is just <i>mentally exhausted</i>, mortal.<p>I know I am.<p>–Phoneless</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>p_j_w</em>:</p>
+<blockquote>Maybe we’re just getting older.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>downut</em>:</p>
+<blockquote>It&#x27;s possible that I&#x27;m in your grandparent&#x27;s generation, or maybe your parents.  I&#x27;m 65.  I don&#x27;t want to derail the conversation, but I do want to correct the bit about &quot;exercise as a hobby was viewed as extremely weird, runners used to be arrested!&quot;.  In the &#x27;70s at least, running was extremely normal.  Endurance bicycling was normal.  For instance, starting in 1979.  I bicycled all over the South: FL GA NC, at least.  These were then as they are now quite provincial from the POV of alternate ideas.  10K runs were a thing, with thousands of participants.  As were Marathons.  Cross country running was a popular high school sport.<p>If you want to talk about work, well I&#x27;m adjacent to 5th generation farmers.  Self driving climate controlled machinery is a thing now, but! hard to imagine I know, people had tractors back then too.<p>So, plausible as it might sound to ascribe some of the causality to flow from &quot;the physical activity transition&quot;, I don&#x27;t think it holds up.</blockquote>
+<p>↳ reply 3 — <em>serf</em>:</p>
+<blockquote>&gt;I think the „my brain isn’t the same anymore“ sensation is pretty universal.<p>I disagree with the premise that you&#x27;re propping up with the exercise example; I disagree that humans are thinking less because of mechanisms available in society.<p>if anything I think people are thinking more than they ever have, and that has triggered a lot of people into overthinking themselves into a quagmire of inaction , judgement, and group-think.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>herbertl</em>:</p>
+<blockquote>&quot;Fifteen years ago, the internet was an escape from the real world. Now the real world is an escape from the internet.&quot; <a href="https:&#x2F;&#x2F;www.noahpinion.blog&#x2F;p&#x2F;the-internet-wants-to-be-fragmented" rel="nofollow">https:&#x2F;&#x2F;www.noahpinion.blog&#x2F;p&#x2F;the-internet-wants-to-be-fragm...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>visarga</em>:</p>
+<blockquote>7.5 years ago it was perfect</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jmathai</em>:</p>
+<blockquote>I think this answer depends on age. For me, it was up until right around 2014. That’s when, I think, social media and mobile phones unlocked a number of generally unproductive behavior both personally and in business.<p>The early 2000s were truly great.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>holden_nelson</em>:</p>
+<blockquote>A number of years ago I had a period of my life where I decided to shut my laptop for a while.<p>I was working as a line cook and trying to find time and energy to code study so I could land a role in software (no degree). I was really struggling with my mental health and was having issues making or maintaining progress in pretty much any area of my life.<p>I got a new job, cooking breakfast in a small mountain town at a bakery. Before I left I sold my laptop and borrowed a bunch of books from some friends.<p>I really did feel much better a few months later. Taking the time to decompress allowed me to get my priorities in order and surface some biases &#x2F; blind spots I had. I ended up re-enrolling in school the next spring and am now happily employed in software.<p>I don’t think the modality is particularly important - coding vs reading vs anything else - but taking the time to put your goals away for a little while and decompress can make you more effective in actually reaching them</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gryfft</em>:</p>
+<blockquote>This is something I&#x27;ve felt very deeply intuitively. (It&#x27;s also something that it feels like my life actively optimizes against to prevent me being able to do it.)</blockquote>
+<p>↳ reply 2 — <em>wseqyrku</em>:</p>
+<blockquote>Turns out t-breaks works for social media too if you admit it&#x27;s an addiction that it is. When you are in it day in and day out you don&#x27;t realize how much time it&#x27;s costing you without the benefits that you signed up for at the beginning.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Splash-free urinals (2025)</title>
+      <link>https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false</link>
+      <guid isPermaLink="false">hn3-49597895</guid>
+      <pubDate>Mon, 07 Sep 2026 12:58:57 +0000</pubDate>
+      <description>215 points, 119 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false"><strong>→ Article</strong></a> <small>(academic.oup.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49597895">→ HN comments</a> &nbsp;·&nbsp; 215 points &nbsp;·&nbsp; 119 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>danw1979</em>:</p>
+<blockquote>The recent introduction, in the UK at least, of splash-back reducing urinal … mats (?) has basically solved the problem in my opinion.  They’re a disposable (but not single use…) plastic freshening insert with loads of short rubber strands, closely packed.<p>You can pee on one of these mats and the stream almost aerates itself on impact and you get basically no splashback, I guess with a similar mechanism to how an aerating tap produces a stream of water that doesn’t splash off whatever it hits.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Rendello</em>:</p>
+<blockquote>In my cleaning and maintenance work I&#x27;d replaced a lot of these. The orange ones I&#x27;m familiar with have a decently nice scent.<p>But last week I went to use my new shampoo and it had the same scent. On its own it would be nice enough but all I could smell was piss. Then I forgot and tried the same shampoo again a few days later to the same effect!</blockquote>
+<p>↳ reply 2 — <em>RattlesnakeJake</em>:</p>
+<blockquote>We&#x27;ve had those in the US for several years now, and they work really well.<p>I did encounter an upside-down one yesterday. That was... counterproductive.</blockquote>
+<p>↳ reply 3 — <em>astrolx</em>:</p>
+<blockquote>And those, when they have a target on them (like football theme often seen in pubs in Europe) kinda combine the igNobel prize with the &quot;Nobel&quot; [0] prize on nudge !<p>[0]  not a nobel prize but the prize of the swedish bank in memory of ...</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>xivzgrev</em>:</p>
+<blockquote>I remember being annoyed by splash back in sixth grade. I mocked up an alternative design (essentially, a urinal that tilted away from you), and emailed some friends. They never responded, and I never followed up.<p>Looking back I feel sad - that&#x27;s the kind of curiosity to nurture in a kid.  But peers are rarely the best group, it would&#x27;ve been better to tell my parents or the right kind of teacher.  My friends also could&#x27;ve said something: &quot; I don&#x27;t know what to do about this but you should tell ms blah blah blah&quot;, in a serious way not mocking way.<p>I&#x27;m glad someone else has finally looked at this sticky situation</blockquote>
+<blockquote>
+<p>↳ reply — <em>shevy-java</em>:</p>
+<blockquote>You would have been an excellent splash sputter scientist.<p>&gt; I&#x27;m glad someone else has finally looked at this sticky situation<p>Wait ... your splash variants are sticky???</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>xivzgrev</em>:</p>
+<blockquote>Thanks!<p>Ha no, I&#x27;m just saying when pee dries.  The article talked mostly about splash on the surrounding area vs self, though I was more concerned with the latter</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>dguest</em>:</p>
+<blockquote>Ig nobel prizes were just a few days ago:<p><a href="https:&#x2F;&#x2F;improbable.com&#x2F;ig&#x2F;winners&#x2F;#ig2026" rel="nofollow">https:&#x2F;&#x2F;improbable.com&#x2F;ig&#x2F;winners&#x2F;#ig2026</a><p><i>Edit:</i> The splash free urinal was the winner for physics!<p>I once joked that these do more for science than Nobel prizes. Now I don&#x27;t think it&#x27;s a joke: &quot;wacky but interesting&quot; awards are more important for the advancement of science than &quot;everyone agrees this these people should be even more famous&quot; awards.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dang</em>:</p>
+<blockquote><i>Meet the Ig Nobel Prize Winners</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49576611">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49576611</a> - Sept 2026 (42 comments)</blockquote>
+<p>↳ reply 2 — <em>microtherion</em>:</p>
+<blockquote>I wonder whether a “Ig Nobel Price Winner” sticker would provide marketing benefits for an urinal.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Smartphone makers don't bother to comply with EU repairability requirements</title>
       <link>https://www.theregister.com/personal-tech/2026/09/07/smartphone-makers-dont-bother-to-comply-with-eu-repairability-requirements/5294532</link>
@@ -156,6 +296,40 @@ Thank you.</blockquote>
 <blockquote>I&#x27;ve applied as a team, hope I get in.<p>Recently I care about how to create harness for mathematics that uses up the complete reasoning ability of the model. I care about both capability and cost.<p>Most generic harness we have now are not made for maximizing reasoning. I&#x27;ve tested agents like codex, and rarely the cost of reasoning tokens reaches more than 20%. Which is quite strange as math requires a lot of reasoning. So hackathons can be a good test bed.</blockquote>
 <p><strong>Top #3</strong> — <em>boothby</em>:</p>
 <blockquote>&gt; It will be the first hackathon ever devoted to research level mathematics.<p>Well, that&#x27;s pretty damned ignorant; I was attending William Stein&#x27;s hackathons on the BSD conjecture and the Sage Math project nearly 2 decades ago.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Speculative Decoding in vLLM on AMD GPUs</title>
+      <link>https://vllm.ai/blog/2026-08-23-speculative-decoding-amd-gpus</link>
+      <guid isPermaLink="false">hn3-49596054</guid>
+      <pubDate>Mon, 07 Sep 2026 09:26:41 +0000</pubDate>
+      <description>125 points, 46 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://vllm.ai/blog/2026-08-23-speculative-decoding-amd-gpus"><strong>→ Article</strong></a> <small>(vllm.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49596054">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 46 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>intothemild</em>:</p>
+<blockquote>Whilst this is an excellent post from vLLM, one of the truly baffling things from either their team or AMDs team, is how much the workstation grade AMD r9700 has been ignored.<p>Stock vLLM runs so slowly on these cards compared with vLLM forks like Radiance. Going from say 20-30t&#x2F;s gen, to 150-200t&#x2F;s<p>Most of AMD&#x2F;vLLM work seems to be around their data centre cards, or the AMD AI Halo&#x2F;Ryzen and ignores the R9700 AI Pro.<p>Really wish this would change.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>roenxi</em>:</p>
+<blockquote>&gt; ...one of the truly baffling things from either their team or AMDs team, is how much the workstation grade AMD r9700 has been ignored.<p>It makes a huge amount of sense after considering AMD&#x27;s approach to graphics cards from around 2010 to 2025. They just didn&#x27;t see graphics cards as viable compute platform and many who made the mistake of believing that good specs would translate into in-practice performance got badly burned. I&#x27;d have been involved in the AI boom but for an expensive AMD graphics card, I&#x27;m not going to forget that for a while.<p>George Hotz was interesting as a public example, but I think his story probably repeated a few times outside the public eye. People tried to make AMD work and ended up the worse for it.<p>People who had an interest in using AMD cards to get things done are probably by and large waiting for a new generation of hopefuls to prove this time is different. The mutterings out of AMD are promising, but that isn&#x27;t persuasive enough given the scale of the failures.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>lrvick</em>:</p>
+<blockquote>I have 4x r9700s as my coding daily drivers running qwen 3.8 27b at 80tps each. Zero complaints. Especially at $1200 each.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>pyrolistical</em>:</p>
+<blockquote>No way you can get that much each without extremely quants<p>For a single r9700 you have 637 GB&#x2F;s and for qwen 3.8 27b q4_k_xl the maximum tg&#x2F;s is 33 before mtp<p>Now if you meant 4xr9700 tensor parallelism with mtp, 80 tg&#x2F;s starts to make sense</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>minraws</em>:</p>
+<blockquote>I don&#x27;t see a reason why it should AMD doesn&#x27;t care about lower end prosumers atm.<p>They might in the future but future is in the future ofc<p>Edit: to be clear I think it&#x27;s ridiculous they don&#x27;t but from a company&#x27;s stand point it doesn&#x27;t make much sense</blockquote>
+<p>↳ reply 3 — <em>Roark66</em>:</p>
+<blockquote>I&#x27;d rather buy two used rtx3090 than a single r9700 AI pro. More VRAM (some wasted due to it being non continuous), more RAM bandwidth, more aggregate compute.<p>Only if AMD made a card like this with 48G+ I&#x27;d consider it.<p>Also these 20-30t&#x2F;s jumping to 150-200... Watch out for the massaged numbers coming from vendors.<p>I believe Intel has claimed something like 1400tok&#x2F;s (generation! Not prefill) of Qwen3.6-moe on Arc b70.<p>I was actually very interested in this so I checked the details. Turns out it was 200 simultaneous users running the same 1024 token prompt :D so all the experts got maximum parallelism.<p>How often are you going to run 200 parallel sessions with a tiny context and same prompt running at 7tok&#x2F;s.<p>Based on how much my rtx3090 is getting on a single user (150tok&#x2F;s) I&#x27;m estimating b70 to probably get less than that.<p>Sadly nvidia is king now.<p>Also, most of us already have nvidia cards and no inference software supports mixing let&#x27;s say nvidia, Intel and amd cards in inference of one model.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>myuzio</em>:</p>
+<blockquote>Very true, I see it for example when my co-workers apply DRY without actually thinking about the complexity it might cause. It objectively makes code smaller, but often comes with complexity cost.</blockquote>
+<blockquote>
+<p>↳ reply — <em>foota</em>:</p>
+<blockquote>You got an article off by one error, I think you meant to post on <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49558685">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49558685</a> :)</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Live map of public transport in Belgium</title>
@@ -2171,6 +2345,28 @@ The linked report is talking about a change of 1.5% from the latest-reported tot
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>This Month in Ladybird – August 2026</title>
+      <link>https://ladybird.org/newsletter/2026-08-31/</link>
+      <guid isPermaLink="false">hn3-49571096</guid>
+      <pubDate>Fri, 04 Sep 2026 22:47:04 +0000</pubDate>
+      <description>125 points, 15 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://ladybird.org/newsletter/2026-08-31/"><strong>→ Article</strong></a> <small>(ladybird.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49571096">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 15 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>binarymax</em>:</p>
+<blockquote>Really excited for alpha. When it hits I plan on using it for my daily driver to help them with usage stats and crash reports.</blockquote>
+<p><strong>Top #2</strong> — <em>jazzyjackson</em>:</p>
+<blockquote>This is such a nerdy newsletter I love it</blockquote>
+<p><strong>Top #3</strong> — <em>phendrenad2</em>:</p>
+<blockquote>Feels like the old &quot;browser wars&quot; days again. Between AI productivity, and Google losing the grace to bloat the web specs, I wouldn&#x27;t be surprised if it starts to take market share away from other browsers as soon as it&#x27;s stable.</blockquote>
+<blockquote>
+<p>↳ reply — <em>pkasting</em>:</p>
+<blockquote>Sure, it could easily take 1%.<p>Going above 5%, OTOH, I would be shocked to ever see happen, for two reasons.
+1) Mass-market adoption requires working well on an enormous long tail, which is difficult without a large team.
+2) The primary driver of playing at that size is mass marketing&#x2F;distribution, which requires $$$. Engineering a great product is necessary, but not sufficient.<p>My perspective on this is informed by being on Google Chrome from inception to 2025. Chrome from near the beginning was well-engineered and had three compelling-according-to-user-research advantages over the IE of 2008 (speed, security, and not being made by Microsoft), but mass adoption depended on a large number of non-engineering factors, of which marketing&#x2F;distribution was (to a then-mid-20s software engineer) the most surprising one. I didn&#x27;t believe that was what made the difference in which browser most people used; I was very wrong. Techies are not the leading-edge trendsetters for the masses we sometimes believe we are.<p>IMO, taking mass market share in the future will require either a compelling-to-users product coupled with at least a couple hundred million dollars in marketing and distribution budget, or else something that is completely unlike web browsers of the past (maybe there&#x27;s something that replaces the web entirely). No one has done the former since Chrome launched; the closest people have come to the latter thus far is things like Dia&#x2F;Atlas that try to reimagine workflows in an AI context, and I think the market has not found those to be sufficiently different+compelling.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Can guitar frets perform multiplication?</title>
       <link>https://www.charlespetzold.com/blog/2026/09/Can-Guitar-Frets-Perform-Multiplication.html</link>
       <guid isPermaLink="false">hn3-49571047</guid>
@@ -3474,151 +3670,6 @@ Self-serve billing is not available on Enterprise accounts. Please contact your 
 </blockquote>
 <p><strong>Top #3</strong> — <em>dang</em>:</p>
 <blockquote>Related ongoing thread:<p><i>OpenAI&#x27;s new reasoning technique alarms AI safety experts</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49552395">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49552395</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Artificial beaver dams saw juvenile coho salmon survival rates go from 8% to 60%</title>
-      <link>https://www.discoverwildlife.com/animal-facts/artificial-beaver-dams-california</link>
-      <guid isPermaLink="false">hn3-49552572</guid>
-      <pubDate>Thu, 03 Sep 2026 16:21:33 +0000</pubDate>
-      <description>191 points, 60 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.discoverwildlife.com/animal-facts/artificial-beaver-dams-california"><strong>→ Article</strong></a> <small>(discoverwildlife.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49552572">→ HN comments</a> &nbsp;·&nbsp; 191 points &nbsp;·&nbsp; 60 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>_whiteCaps_</em>:</p>
-<blockquote>There&#x27;s a really good book about a homesteader that did something similar to this in the 1930&#x27;s in British Columbia, &quot;Three Against The Wilderness&quot;. Basically he restored the dams that had been dynamited by the ranchers, and that restored all of the wetlands in the area.<p>Later on, the government brought him some beavers from elsewhere, and they flourished.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Waterluvian</em>:</p>
-<blockquote>I love this. Especially the part where you can ask the Government of Canada for beavers.<p>But it feels like there’s a bit of surprise to the idea that the environment takes on the form it takes on. And if you take away a part of it, it’ll take on a different form. And if you put that part back, it can take on the earlier form. There is no correct or canonical form.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>adrianN</em>:</p>
-<blockquote>While its true that there are no correct or canonical forms for the environment, there are states with large biodiversity and states with comparatively small biodiversity. Generally we regard the former more valuable than the latter.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>richiebful1</em>:</p>
-<blockquote>It was an interesting, but counterintuitive result that water temperatures went down after artificial beaver damming. Their theory is that the water is able to permeate more into the ground and exchange heat with the ambient underground temperature [1]<p>1. <a href="https:&#x2F;&#x2F;www.science.org&#x2F;content&#x2F;article&#x2F;beaver-dams-without-beavers-artificial-logjams-are-popular-controversial-restoration" rel="nofollow">https:&#x2F;&#x2F;www.science.org&#x2F;content&#x2F;article&#x2F;beaver-dams-without-...</a></blockquote>
-<p><strong>Top #3</strong> — <em>reilly3000</em>:</p>
-<blockquote>I’m rather partial to beavers myself and was sad to learn about their demise in North America. At one point their pelts were referred to as “the coin of the realm” <a href="https:&#x2F;&#x2F;youtu.be&#x2F;8XToPq9lsOM?si=DJKedkQXuzJhSmf7" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;8XToPq9lsOM?si=DJKedkQXuzJhSmf7</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>culi</em>:</p>
-<blockquote>Here&#x27;s your link without the surveillance: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=8XToPq9lsOM" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=8XToPq9lsOM</a><p>I&#x27;d recommend Leila Philip&#x27;s <i>Beaverland: How One Weird Rodent Made America</i>. It&#x27;s a great work of narrative science writing.<p>I think we deeply underestimate the profound impact beavers had on the landscape in North America. We truly live in a post-beaver geography. The beaver hat fad in Europe was the primary driver of their population going from <i>hundreds of millions</i> to less than 100,000.<p><a href="https:&#x2F;&#x2F;www.leilaphilip.com&#x2F;beaverland" rel="nofollow">https:&#x2F;&#x2F;www.leilaphilip.com&#x2F;beaverland</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>VC isn't VC anymore</title>
-      <link>https://www.anildash.com/2026/09/02/cancer-capital/</link>
-      <guid isPermaLink="false">hn3-49552055</guid>
-      <pubDate>Thu, 03 Sep 2026 15:51:53 +0000</pubDate>
-      <description>180 points, 2 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.anildash.com/2026/09/02/cancer-capital/"><strong>→ Article</strong></a> <small>(anildash.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49552055">→ HN comments</a> &nbsp;·&nbsp; 180 points &nbsp;·&nbsp; 2 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dang</em>:</p>
-<blockquote>Comments moved to <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49543220">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49543220</a>, which was posted a bit earlier<p>(this is my crude attempt at karma sharing - I hope that&#x27;s ok with you!)</blockquote>
-<blockquote>
-<p>↳ reply — <em>tlhunter</em>:</p>
-<blockquote>Haha, all good.<p>I could have sworn that the second posting was automatically collapsed into the first.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Sony makes bold claim about game ownership</title>
-      <link>https://aginggamer.net/game-industry/sony-makes-bold-claim-about-game-ownership/</link>
-      <guid isPermaLink="false">hn3-49551925</guid>
-      <pubDate>Thu, 03 Sep 2026 15:44:54 +0000</pubDate>
-      <description>170 points, 242 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://aginggamer.net/game-industry/sony-makes-bold-claim-about-game-ownership/"><strong>→ Article</strong></a> <small>(aginggamer.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49551925">→ HN comments</a> &nbsp;·&nbsp; 170 points &nbsp;·&nbsp; 242 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>captainbland</em>:</p>
-<blockquote>If we&#x27;re not owning it, you&#x27;re not selling it, you&#x27;re leasing it. Terminology on sales pages should reflect this. &quot;Subscribe now&quot; &quot;purchase license&quot; etc. should be mandated if this is the expectation. Terms like &quot;buy&quot; without qualification are misleading in this context, but they won&#x27;t remove them from store pages because people are more likely to pay higher rates for something if they believe they are actually owning the good in perpetuity.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Waterluvian</em>:</p>
-<blockquote>This is the only regulation I feel is reasonable.  When it comes to luxury goods like video games, it doesn’t make sense to dictate how the product is offered. But by all means insist they’re clear with what the transaction type is.<p>I can imagine the natural competitive wedge where GOG can say “Buy Game” but Steam has to say “Lease Game” on their buttons.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Zambyte</em>:</p>
-<blockquote>This would be case-by-case in Steam. There are some games which really do sell under &quot;irrevocable license to play&quot; (which, short of granting copyright privileges, is about as close as you can get to ownership for a digital product). Other games on Steam do not.<p>I think it would highlight the differences between publishers &#x2F; studios more than store fronts.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>chrisjj</em>:</p>
-<blockquote>&gt; There are some games which really do sell under &quot;irrevocable license to play&quot; (which, short of granting copyright privileges, is about as close as you can get to ownership for a digital product).<p>Far from it. E.g. excludes resale.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Boxxed</em>:</p>
-<blockquote>I even take issue with &quot;Purchase license&quot;. Shouldn&#x27;t it be &quot;Lease License&quot;? Purchase implies that it can&#x27;t be revoked, no?</blockquote>
-<p>↳ reply 3 — <em>simpaticoder</em>:</p>
-<blockquote>It&#x27;s a non-transferable lease that can be canceled at any time by the issuer.<p>The real problem is that most of society still thinks of games as a piece of physical media that you combine with a player that allows you to play the game. In that world you have a liscense to the software, and a physical token which is transferable and therefore valuable.<p>I&#x27;d argue that we need to decouple transferability and cancel ability from physical media. If this were to happen then the word &quot;Buy&quot; makes sense precisely the same way it used to with physical media. Of course more provision needs to be provided for live service games regarding cancel ability.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bluejay2387</em>:</p>
-<blockquote>I know I am in the overwhelming minority and that most people will just continue to buy Sony&#x27;s stuff anyway, but I decided a few years ago when all the ownership crap came up that I am just not buying stuff that I don&#x27;t own. Sony&#x27;s PS4 went to my local electronics recycler and I haven&#x27;t bought a Sony product since. I can&#x27;t realistically do it with everything, there are some products I have to buy rather I get to own them or not. But I am not putting up with it where I can and gaming is optional -- plus GOG has served me really well since.</blockquote>
-<blockquote>
-<p>↳ reply — <em>satellites</em>:</p>
-<blockquote>I&#x27;m keeping my ps4 as long as the hardware still runs because at least I can still buy discs for it. I have a nice collection of high-replay-value single player games. I know discs are just physical licenses at this point in time, not actual software on disc like the old school days.<p>But even with all this nonsense from Sony I don&#x27;t think they&#x27;ll cross the rubicon of terminating licenses that come on physical discs for their older consoles. If they do, I hear you can jailbreak ps4s :)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>dspillett</em>:</p>
-<blockquote><i>&gt; Sony would like you to know that any reasonable gamer would know that purchasing a game is just licensing a game, not owning it.</i><p>In that case, any reasonable company would have no trouble being honest and not using the words “buy” and “purchase” with respect to game access.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>K2 Horizon: A connected fleet of six open models</title>
-      <link>https://ifm.ai/blog/k2/</link>
-      <guid isPermaLink="false">hn3-49551760</guid>
-      <pubDate>Thu, 03 Sep 2026 15:36:43 +0000</pubDate>
-      <description>271 points, 88 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ifm.ai/blog/k2/"><strong>→ Article</strong></a> <small>(ifm.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49551760">→ HN comments</a> &nbsp;·&nbsp; 271 points &nbsp;·&nbsp; 88 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jjordan</em>:</p>
-<blockquote>Fully open models really need to be a big part of the AI future. That includes all source code, open training data, how it&#x27;s organized, fed to the model, processed, etc. Until that becomes a thing you&#x27;re always going to be left wondering what exactly lies underneath the closed model you are using, leaving open the possibility for societal manipulation.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>culi</em>:</p>
-<blockquote>Other than open training data (currently legally impossible), all of this holds for basically every major Chinese-made model. They not only open the weights but publish detailed methodology papers alongside the models in arXiv and even open source the code.</blockquote>
-<p>↳ reply 2 — <em>theplumber</em>:</p>
-<blockquote>But that would be impossible due copyrights laws. If the law would apply Anthropic and OpenAI executives would be in jail</blockquote>
-<p>↳ reply 3 — <em>trvz</em>:</p>
-<blockquote>Why? Sure, I’d prefer it, too, but this is just another GNU&#x2F;Linux vs. macOS situation: most of us would prefer the first, but actually get shit done on the latter.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>RandyOrion</em>:</p>
-<blockquote>Good to see new open source&#x2F;weight LLM families.
-Waiting for the final release of <a href="https:&#x2F;&#x2F;huggingface.co&#x2F;IFM&#x2F;K2-Horizon-32B" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;IFM&#x2F;K2-Horizon-32B</a> .</blockquote>
-<p><strong>Top #3</strong> — <em>a11r</em>:</p>
-<blockquote>It is great to see another player introduce a fully open stack. Nvidia&#x27;s Nemotron is the only other prominent one I know of.<p>All that said, the headline claims do not match the self-reported performance. For example, the dense 32B model is significantly behind Qwen3.8 27B (chart towards the bottom of <a href="https:&#x2F;&#x2F;ifm.ai&#x2F;blog&#x2F;k2" rel="nofollow">https:&#x2F;&#x2F;ifm.ai&#x2F;blog&#x2F;k2</a>). Gemma4 31B is not in the comparison set. This is the most important sweet spot for self hosted open-weight models today and real competition here will be very welcome.</blockquote>
-<blockquote>
-<p>↳ reply — <em>xienze</em>:</p>
-<blockquote>They have the 32B listed as &quot;stage 1&quot; with the note &quot;final checkpoint to be released.&quot; So, not finished yet. Not sure why you&#x27;d release it if it&#x27;s not finished, but that&#x27;s the explanation.<p>The 7B does look very, very good however.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bluejay2387</em>:</p>
-<blockquote>In this case, the fully open source pipeline is probably as valuable or more so than the weights, so releasing early has some justification.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Grok outage</title>
-      <link>https://status.x.ai/</link>
-      <guid isPermaLink="false">hn3-49551589</guid>
-      <pubDate>Thu, 03 Sep 2026 15:26:01 +0000</pubDate>
-      <description>157 points, 153 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://status.x.ai/"><strong>→ Article</strong></a> <small>(status.x.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49551589">→ HN comments</a> &nbsp;·&nbsp; 157 points &nbsp;·&nbsp; 153 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>harrisoned</em>:</p>
-<blockquote>Downdetector reports Claude, Grok, ChatGPT and Gemini with issues.<p>Is it happening???</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ibejoeb</em>:</p>
-<blockquote>Seems like openai is recovering. But even if it&#x27;s only 30 minutes, it&#x27;s a pretty interesting experiment.<p>I&#x27;m only half joking when I say that I&#x27;ll write code by hand for money.</blockquote>
-<p>↳ reply 2 — <em>giancarlostoro</em>:</p>
-<blockquote>Maybe people switched when Claude went down, giving more load than usual to the others? Or maybe just really bad timing from some of those providers to update?</blockquote>
-<p>↳ reply 3 — <em>sejje</em>:</p>
-<blockquote>I have a tire I need to plug, they&#x27;re just forcing my hand. Sorry guys, I&#x27;ll go get it done.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>infogulch</em>:</p>
-<blockquote>Posted by @SpaceXAI 1h ago: <a href="https:&#x2F;&#x2F;x.com&#x2F;SpaceXAI&#x2F;status&#x2F;2095597264043717014" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;SpaceXAI&#x2F;status&#x2F;2095597264043717014</a><p>&gt; We are sorry for the issues you may have experienced with Grok following an outage at our Memphis compute center this morning. We’d also like to apologize to our impacted compute partners.<p>&gt; All systems have now been restored and are functioning nominally.<p>---<p>It&#x27;s interesting to see how reliant the other AI companies are on SpaceXAI for compute.<p>Apparently a major bottleneck for building out datacenters is turbine blades for power plants, so SpaceX is building a foundry to alleviate supply constraints?! (Also useful for rocket engines.) Holy vertical integration, batman.</blockquote>
-<p><strong>Top #3</strong> — <em>lithiumii</em>:</p>
-<blockquote>Time to finish up my $5 at Deepseek.</blockquote>
-<blockquote>
-<p>↳ reply — <em>rs_rs_rs_rs_rs</em>:</p>
-<blockquote>See you in 2 months!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bdangubic</em>:</p>
-<blockquote>optimist</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
