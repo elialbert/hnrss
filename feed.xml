@@ -4,7 +4,301 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 08 Sep 2026 21:45:01 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2026 23:59:46 +0000</lastBuildDate>
+    <item>
+      <title>AlphaGenome Atlas: a high-resolution map of human DNA</title>
+      <link>https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-atlas/</link>
+      <guid isPermaLink="false">hn3-49611251</guid>
+      <pubDate>Tue, 08 Sep 2026 14:55:45 +0000</pubDate>
+      <description>475 points, 114 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/alphagenome-atlas/"><strong>→ Article</strong></a> <small>(blog.google)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49611251">→ HN comments</a> &nbsp;·&nbsp; 475 points &nbsp;·&nbsp; 114 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>DoctorOetker</em>:</p>
+<blockquote>Not a word about promoter sequences.<p>Imagine cellular activity as an industry zone, its not just what you can or can not make, its also &#x27;for what concentrations of chemical species, what transcription rates should be used&#x27; so apart from the discrete Mendelian aspects (like what eye color or what have you) there is also a concensus sequence and deviations from consensus. They mention the dataset captures non-coding DNA, which should imply promoter sequences. Will it be possible to query the atlas for joint probabilities of promoter and putative target protein occurence in human genomes?<p>Personalized medicine could never credibly take off as long as promoter sequences were excised before sequencing!</blockquote>
+<blockquote>
+<p>↳ reply — <em>dekhn</em>:</p>
+<blockquote>Eye color is not discrete Mendelian.  That&#x27;s only correct to the first order.<p>Also Mendelian has little to do with promotor sequences or differential transcription in deviations.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Stevvo</em>:</p>
+<blockquote>Don&#x27;t be put off by the box asking for your &quot;affiliation&quot;. I wrote &quot;None&quot;, clicked submit and it took me straight to the Atlas.</blockquote>
+<p><strong>Top #3</strong> — <em>zmmmmm</em>:</p>
+<blockquote>Is this just Google precomputing Alpha genome values - which were already accessible via API and making them available as another API (presumably more broadly)? Or is there actually new information?</blockquote>
+<blockquote>
+<p>↳ reply — <em>mbreese</em>:</p>
+<blockquote>That’s my reading. (That this is a cached database of Alpha values)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Benchmarking Qwen3.8 27B quantizations: 4-bit holds up, 1-bit collapses</title>
+      <link>https://quesma.com/blog/qwen38-27b-quantizations-benchmarked/</link>
+      <guid isPermaLink="false">hn3-49611128</guid>
+      <pubDate>Tue, 08 Sep 2026 14:49:19 +0000</pubDate>
+      <description>202 points, 99 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://quesma.com/blog/qwen38-27b-quantizations-benchmarked/"><strong>→ Article</strong></a> <small>(quesma.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49611128">→ HN comments</a> &nbsp;·&nbsp; 202 points &nbsp;·&nbsp; 99 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>spider-mario</em>:</p>
+<blockquote>&gt; Second, besides noise (bars are Wilson 95% confidence intervals, very conservative for run-to-run noise), there is little difference down to 4-bit; only the 2-bit scores a bit lower.<p>Confidence intervals have nothing to do with run-to-run variation. They have little to do with anything people usually ascribe to them (<a href="https:&#x2F;&#x2F;link.springer.com&#x2F;article&#x2F;10.3758&#x2F;s13423-015-0947-8" rel="nofollow">https:&#x2F;&#x2F;link.springer.com&#x2F;article&#x2F;10.3758&#x2F;s13423-015-0947-8</a> ), but even less with run-to-run variation (<a href="https:&#x2F;&#x2F;link.springer.com&#x2F;article&#x2F;10.1007&#x2F;s10654-016-0149-3" rel="nofollow">https:&#x2F;&#x2F;link.springer.com&#x2F;article&#x2F;10.1007&#x2F;s10654-016-0149-3</a> misconception 22).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>stared</em>:</p>
+<blockquote>Point taken, but there is a much more fundamental issue with it - and precisely why I wrote &quot;very conservative&quot;.<p>It is a different problem if we pick two sets from the same data distribution, A and B, and first we have a score on A, then on B.
+Here we re-run on precisely the same set of Terminal Bench 2.1 problems.
+It may be that results are so random between runs that each single task has the same probability in a Bernoulli distribution.
+But more likely, many problems are easy (i.e. each run will solve them consistently), many are too hard (i.e. no run is going to solve them) and only a fraction is somehow in between.<p>Maybe there is some good trick to find a proper distribution, but to my knowledge, we would need to run it at least two times on TB2.1 to get any more educated estimates.
+That said, I am open to new ideas.<p>That said, I consider frequentist probability a dirty trick, and that Bayesian is the proper way of doing things (vide David J.C. MacKay&quot; Information Theory, Inference, and Learning Algorithms&quot; and Cam Davidson-Pilon &quot;Probabilistic Programming &amp; Bayesian Methods for Hackers&quot; <a href="https:&#x2F;&#x2F;www.inference.org.uk&#x2F;itprnn&#x2F;book.pdf" rel="nofollow">https:&#x2F;&#x2F;www.inference.org.uk&#x2F;itprnn&#x2F;book.pdf</a>, <a href="https:&#x2F;&#x2F;dataorigami.net&#x2F;Probabilistic-Programming-and-Bayesian-Methods-for-Hackers&#x2F;" rel="nofollow">https:&#x2F;&#x2F;dataorigami.net&#x2F;Probabilistic-Programming-and-Bayesi...</a>).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tomrod</em>:</p>
+<blockquote>I&#x27;m working on a practical review implementation on this! Great to hear others are thinking along the same way.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>diseasedyak</em>:</p>
+<blockquote>Yah, prediction interval instead, right?  (I&#x27;m still learning statistics)<p>Saying there&#x27;s a confidence interval for run-to-run makes no sense, from the way I understand it, because each run could have a result that&#x27;s all over the place.</blockquote>
+<p>↳ reply 3 — <em>jnwatson</em>:</p>
+<blockquote>Mind blown.  The more I read about statistics, the less I know.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>sharmajai</em>:</p>
+<blockquote>This confirms a theory I have to explain the minimal loss in quality when using lower quants (I use IQ3_XXS with an 8-bit KV cache) and the XHIGH (default) thinking level.<p>It&#x27;s well-known that while quantization affects the sampling probability distribution (given the same context, which next token is the most probable), Qwen 3.8 27b seems to offset that by just thinking more and as a result eventually finishing the task (benchmark or otherwise).<p>So as long as the thinking (albeit longer) is sound, this leads to the same success rate (as shown in the article) but potentially at the cost of more tokens and hence more time.<p>I think it&#x27;ll be further useful to chart each quantization&#x27;s used tokens as well, in addition to the success rate.<p>Thanks for doing and sharing the research!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>seemaze</em>:</p>
+<blockquote>As they say, time is money.<p>In the age of the rampocalypse, the peasants may not have a choice between the two.. time it is!</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>chmod775</em>:</p>
+<blockquote>Smaller models are also generally faster, so thinking &quot;more&quot; may not matter and may even come out ahead.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>celrod</em>:</p>
+<blockquote>If Q4 takes less than 1.3x as many tokens as bf16 or q8, it could still end up being faster, given how decode tends to be bandwidth bound.
+The kv cache was still bf16, so a few ops are the same between quants.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>anyfoo</em>:</p>
+<blockquote>Not for me. As stated elsewhere, even Q5 (!) seems to be enough to kill the model’s ability to solve a particular problem in reasonable time. But that might just be right at the edge of what the model can do in the first place.<p>I have another personal benchmark problem (of a very different nature) that Qwen3.8-27B usually can’t solve at all, while Opus and GLM-5.3-Flash solve it consistently and very beautifully.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>alentred</em>:</p>
+<blockquote>I would be very interested in a similar benchmark for *KV cache* quantizations.<p>I use Qwen3.8 27B Q4_K_M for coding sometimes and therefore need a relatively long context. I settled on q8_0 because it is the only way to fit the model + 100k tokens into 24GB VRAM, but still wonder what am I loosing in quality, and what other options are there.<p>I also heard that KV cache quantization matters more with longer contexts. It may be interesting to benchmark this too: what the quality looks like on different combinations of model quantization × KV cache quantization × context size.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>skolos</em>:</p>
+<blockquote>There was a study specifically related to Qwen3.8 27B that showed that kv cache quantization has almost no impact on this model all the way to q4:<p><a href="https:&#x2F;&#x2F;arxiv.org&#x2F;html&#x2F;2609.04098" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;html&#x2F;2609.04098</a></blockquote>
+<p>↳ reply 2 — <em>skolos</em>:</p>
+<blockquote>On many models that I tested in past context quantization had very bad effect on model performance. However qwen3.8 27b is different.<p>I&#x27;m now running NVFP4 quantized both weight and cache on my RTX5090 and getting excellent results: 264k cache allocated for pool, 10k tok&#x2F;s prompt processing, 200 tok&#x2F;s generation for single stream, or 801 tok&#x2F;s generation for 8 concurrent streams.
+Also have about 2Gb vram left for use of OS.<p>my coding agents regularly reach 200k context used without noticeable degradation.<p>P.S. I used setup from: <a href="https:&#x2F;&#x2F;github.com&#x2F;seanyourhighness&#x2F;vllm-sm12x-nvfp4-dflash2" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;seanyourhighness&#x2F;vllm-sm12x-nvfp4-dflash2</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The two Christian saints who are the Buddha</title>
+      <link>https://signoregalilei.com/2026/08/30/the-two-christian-saints-who-are-secretly-the-buddha/</link>
+      <guid isPermaLink="false">hn3-49611051</guid>
+      <pubDate>Tue, 08 Sep 2026 14:44:25 +0000</pubDate>
+      <description>206 points, 145 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://signoregalilei.com/2026/08/30/the-two-christian-saints-who-are-secretly-the-buddha/"><strong>→ Article</strong></a> <small>(signoregalilei.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49611051">→ HN comments</a> &nbsp;·&nbsp; 206 points &nbsp;·&nbsp; 145 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>wiradikusuma</em>:</p>
+<blockquote>&quot;Christianity in particular has a history of absorbing other religions’ traditions&quot; -- Tangentially related: I&#x27;m a Catholic, so I don&#x27;t know much about other &quot;distros&quot;, but the Roman Catholic Church has a long, pragmatic history of absorbing local traditions in Indonesia.<p>It&#x27;s interesting dynamic. Catholic Church is notoriously top-down and hierarchical, yet local parishes can feel entirely distinct. It&#x27;s not uncommon to see traditional Javanese processions integrated right into the mass. Like skin&#x2F;mod in a game.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>graemep</em>:</p>
+<blockquote>&gt; Catholic Church is notoriously top-down and hierarchical<p>It has a hierarchy, but it has multiple hierarchies. It is not all that top down. Bishop&#x27;s ave a lot of autonomy, and most decisions are made at the diocesan level. Dioceses have their own property and funds held by their own trustees. On top of that religious orders have their own hierarchy (and property and funds etc.). Then there are the rites such as the Ukrainian or Syro-Malabar churches that have their own hierarchies.<p>Historically this was the result of the fact the church predates modern communications. It was not possible for a Pope to direct things the way a CEO of a modern corporation does, but in recent times it has been recognised as guiding principle: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Subsidiarity_%28Catholicism%29" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Subsidiarity_%28Catholicism%29</a> that has been adopted by other org anisations <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Subsidiarity" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Subsidiarity</a><p>&gt; It&#x27;s not uncommon to see traditional Javanese processions integrated right into the mass.<p>That is encouraged, as long as there is not conflict with Catholic belief <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Inculturation#" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Inculturation#</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kevin_thibedeau</em>:</p>
+<blockquote>A fun one is the Anglican Ordinariates which are in full communion with Rome and permit existing clergy to remain married while serving as Catholic priests.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>swat535</em>:</p>
+<blockquote>Side note as another Catholic:<p>Saints Josaphat and Barlaam never had an official decree of canonization. That process didn&#x27;t exist (in its earliest form) until 1170 AD. Saints before that were generally just acclaimed by the Christians in the area and probably recognized by a local bishop.<p>The Vatican does keep a &quot;Roman Martyrology&quot; by which they try to keep a list of all known saints, but the saints that existed before the canonization process are known as &quot;pre-congregation&quot; saints and our certainty about them is generally less, well, certain.<p>In this case, these two names were removed from the Martyrology. That isn&#x27;t to say that the Vatican has declared they are not saints, but is no longer actively making that claim.<p>There have been quite a few other pre-congregation names removed from the list when historical study has found little evidence of their existence or life story.</blockquote>
+<p>↳ reply 3 — <em>phyzix5761</em>:</p>
+<blockquote>Its called syncretism. The Greeks and Romans have been doing it since the time of Alexander the Great.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>xutopia</em>:</p>
+<blockquote>This reminds me so much of the Raglan hero archetype rank: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Rank–Raglan_hero_archetype" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Rank–Raglan_hero_archetype</a><p>So many stories, many people believe are true and build whole religions around, are really just repeated stories with many details changed to fit the local culture and traditions.<p>It&#x27;s crazy so many of the world&#x27;s politics and problems stem from what might actually just be the same story said in a different way... or even of a fan fiction on top of existing fiction.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>twic</em>:</p>
+<blockquote>Can I interest you in Jesus also being Emperor Andronikos I? <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;New_chronology_(Fomenko)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;New_chronology_(Fomenko)</a></blockquote>
+<p>↳ reply 2 — <em>bmacho</em>:</p>
+<blockquote>&gt; Classicist Thomas J. Sienkewicz analyzed additional heroes using Raglan&#x27;s pattern, including Mithridates VI of Pontus (22 points), Krishna (21 points), Jesus (18 points), Mohammad (17 points), Beowulf (15 points), Buddha (15 points), Czar Nicholas II (14 points), Samson (13 points), Sunjata, the Lion-King of Ancient Mali (11 points), Achilles (10 points), and Harry Potter (8 points).</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>geye1234</em>:</p>
+<blockquote>I get the author&#x27;s not trying to write a watertight syllogism, but the point he&#x27;s trying to make (his last sentence) doesn&#x27;t follow from the obvious fact that beliefs can influence each other.<p>Christianity and worldviews typically associated with the &#x27;east&#x27; (as I&#x27;ve seen them discussed here and elsewhere) disagree in both their view of the &#x27;building blocks&#x27; of reality, and in their &#x27;big picture&#x27; view. They disagree on base questions like if there is really a &quot;you&quot;, or whether change is real, or whether the material world is real, or whether multiplicity is real, or whether the truth of A implies the falsehood of not-A, and so on. (I&#x27;ve heard all of the above answered in the negative here.) And they disagree on &#x27;big picture&#x27; things like the goal of human existence, the nature of the Absolute, what it is to live a good life, whether evil is the result of illusion or is (in addition to this) a defect in the will and caused ultimately by an indescribably malevolent being, whether a human being can reach a &#x27;blessed&#x27; state by his own power, etc.<p>So the differences are vast and essential, on both the macro and micro levels. The fact that some beliefs and practices influence other beliefs and practices doesn&#x27;t change this.<p>(The emergence of the &quot;18 year old who just read Dawkins for the first time and thinks science disproves sky-daddy lolz&quot; atheists on this thread is also most unfortunate.)</blockquote>
+<blockquote>
+<p>↳ reply — <em>asdff</em>:</p>
+<blockquote>&gt;what it is to live a good life<p>That has to be the universal one, no? I feel like basic moral principles, at least directed towards the in group, are pretty universal. I&#x27;d argue they are more base than even humans and are shared with certain intelligent animals.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>geye1234</em>:</p>
+<blockquote>I think this is true up to a point. But you find chasmic differences as well. Polygamy is an obvious example, or lying to non-brethren (absolutely forbidden by Christianity, permitted I believe by other religions), or the caste system (unthinkable in Islam or Christianity, a base part of reality in Hinduism), etc. You find a very different attitude to wealth in many varieties of Protestantism compared to the Catholic Church. Also, as I said, whether a human being can reach a &#x27;blessed state&#x27; by his own efforts, which I believe most eastern religions posit, and Christianity denies. Human sacrifice is an obvious example of a disagreement with very practical consequences for conduct. It was, as is well known, widely practised in parts of the Americas until the sixteenth century. Today in the west, you find people disagreeing very passionately over &#x27;culture war&#x27; issues, which is surely a disagreement about what the good life is. And the people who say the culture wars don&#x27;t matter are positing <i>another</i> view of the good life, different from them both. Etc.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>asdff</em>:</p>
+<blockquote>&gt;Today in the west, you find people disagreeing very passionately over &#x27;culture war&#x27; issues, which is surely a disagreement about what the good life is.<p>All window dressing imo over the real morals at play under all these layers that society puts on top and frequently changes by the decade. What do liberals and conservatives want out of their countrymen for example? The same exact thing ultimately: good people who might lend them a cup of sugar and won&#x27;t club them over the head for one. Of course propaganda has blinded people on either side into vilifying what is at the end of the day a fungible human with the same basic needs and wants as most other social animals. At the most base we have the moral principles a stray dog seeks out in either fellow dogs or a sympathetic human: let me find someone who won&#x27;t fight me off and may in fact share things and help me out while I do the same for them.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>DHS 'Predictive Policing' Unit Is Analyzing Americans' Financial Habits</title>
+      <link>https://www.404media.co/a-secretive-dhs-predictive-policing-unit-is-analyzing-americans-financial-habits-and-pulling-them-over/</link>
+      <guid isPermaLink="false">hn3-49610988</guid>
+      <pubDate>Tue, 08 Sep 2026 14:40:30 +0000</pubDate>
+      <description>308 points, 186 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.404media.co/a-secretive-dhs-predictive-policing-unit-is-analyzing-americans-financial-habits-and-pulling-them-over/"><strong>→ Article</strong></a> <small>(404media.co)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49610988">→ HN comments</a> &nbsp;·&nbsp; 308 points &nbsp;·&nbsp; 186 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>scarecrowbob</em>:</p>
+<blockquote>I understand that folks here think that the general anti-AI sentiments that can be found in some of US culture are often misguided.<p>It&#x27;s likely projection on my part but I have a deep suspicion that people understand that mass surveillance by the state is the main use case for all these LLMs, camera systems, and increasing large data centers.<p>That certainly is my own worry, at least.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>euroderf</em>:</p>
+<blockquote>Think about it the way the US thought about them pesky Rooskies during the Cold War:<p>Don&#x27;t look at intentions. Look at capabilities.</blockquote>
+<p>↳ reply 2 — <em>mywittyname</em>:</p>
+<blockquote>Government agencies (foreign and domestic) will just be just a few of the many buyers of this information.<p>Private companies buy up this information like mad.  It&#x27;s so cheap - five figures gets you a database of every person over 18 in the USA and their addresses.  Another five figures gets work history for them.  Another five figures gets you property information.  Another gets you social media feeds.  Etc.  Some vendors even sell it ad hoc with little up-front cost.<p>For less than a million a year, any company can build an extensive profile on every person in the USA.  These companies are just adding to that list.</blockquote>
+<p>↳ reply 3 — <em>wyre</em>:</p>
+<blockquote>Remember Cambridge Analytica and PRISM?<p>I don&#x27;t think it&#x27;s unrealistic for state or another party to be taking the decades of data on individuals they have and feeding it into their large hyperscale data centers and using the platforms they own to predict our actions and propagandize us.<p>Unfortunately, I don&#x27;t think most people understand it&#x27;s about mass surveillance yet, but about the misappropriation of resources in lower income communities to power LLMs and&#x2F;or the intellectual theft and profits off the data used to train LLMs.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Animats</em>:</p>
+<blockquote>Interstate transportation of marijuana is illegal in the US.[1]<p>But why is DHS doing this? Stopping interstate drug trafficking is DEA&#x27;s job, and DEA is in the Justice Department, not Homeland Security. Homeland Security should be looking for illegal aliens and labor contractors who move them.<p>[1] <a href="https:&#x2F;&#x2F;federal-criminal.com&#x2F;drugs&#x2F;marijuana-cross-border-transportation-legal-implications&#x2F;" rel="nofollow">https:&#x2F;&#x2F;federal-criminal.com&#x2F;drugs&#x2F;marijuana-cross-border-tr...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>AngryData</em>:</p>
+<blockquote>Because they want the money. The reason drug crimes are so heavily enforced is because they come with large fines and fees and monetary rewards for the department that arrests them and the courts that prosecute them. They use it as a funding source.<p>Look at what fines and fees a court gets when they successfully prosecute a murder versus a drug crime. Look at the grants the feds give towards police drug enforcement departments.<p>DHS wants that easy cash.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sailfast</em>:</p>
+<blockquote>They already have a multi 100 billion dollar slush fund from Congress. If they’re doing it for the money then things have really gotten out of hand with internal DHS budgets.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pessimizer</em>:</p>
+<blockquote>&quot;Homeland Security&quot; isn&#x27;t about homeland security, that&#x27;s a meaningless propaganda name. It&#x27;s the result of an evil initiative to coordinate all of America&#x27;s Federal police and secret police agencies that was created after 9&#x2F;11. It&#x27;s not CBP&#x2F;ICE, it sits above them (and everything else.)<p>It was something that had been warned against by everyone from the beginning of the US having secret police forces, and 9&#x2F;11 was the excuse to do it. Before DHS, the FBI and the CIA (for example) had to go through protocols to share information with each other. This was good because the CIA aren&#x27;t allowed to do some things that the FBI is allowed to do, and vice versa. Now they&#x27;re really all one organization, although they have internal turf battles caused by power struggles between ambitious individuals.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>someothherguyy</em>:</p>
+<blockquote>&gt; Putting one of those participant’s phone numbers into WhatsApp reveals a profile picture of a law enforcement patch. A pawn with wings sits in the center, surrounded by lightning bolts. The patch reads, “Laredo Sector Tech Ops PITT,” indicating there is also a Predictive Intelligence Targeting Team in the Laredo Sector.<p><a href="https:&#x2F;&#x2F;www.aviatorgear.com&#x2F;p-52057-laredo-sector-tech-ops-pitt-ocp-patch.aspx" rel="nofollow">https:&#x2F;&#x2F;www.aviatorgear.com&#x2F;p-52057-laredo-sector-tech-ops-p...</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Paramount Caught Using 'Astroturf' Group to Drum Up Fake Support for Merger</title>
+      <link>https://www.techdirt.com/2026/09/08/paramount-caught-using-astroturf-group-to-drum-up-fake-support-for-merger/</link>
+      <guid isPermaLink="false">hn3-49610900</guid>
+      <pubDate>Tue, 08 Sep 2026 14:33:52 +0000</pubDate>
+      <description>322 points, 108 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.techdirt.com/2026/09/08/paramount-caught-using-astroturf-group-to-drum-up-fake-support-for-merger/"><strong>→ Article</strong></a> <small>(techdirt.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49610900">→ HN comments</a> &nbsp;·&nbsp; 322 points &nbsp;·&nbsp; 108 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>MarioMan</em>:</p>
+<blockquote>Several years ago, Paramount was handing out free monthly trial codes for Paramount Plus every month.
+Then, some time in 2020, they just ”forgot” to cut off my access after the trial ended.
+I had free Paramount Plus from then until 2025, when they merged with Skydance.
+The free subscription expired almost immediately after the merger was announced.<p>It’s evident to me now that they did this to boost their active subscriber numbers.
+I’m sure a lot of people didn’t even realize this had happened to their accounts.
+And those that had weren’t about to complain about it too loudly.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gruez</em>:</p>
+<blockquote>Presumably whoever is doing the acquisition would look at the financial numbers in addition to the subscriber numbers? Then they&#x27;ll notice a discrepancy between subscriber count and how much $ is coming in, which makes this whole thing unravel. It&#x27;s far more likely it&#x27;s just run of the mill incompetence and&#x2F;or change of leadership prompting an &quot;efficiency&quot; drive.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>teeray</em>:</p>
+<blockquote>&gt; Presumably whoever is doing the acquisition would look at the financial numbers in addition to the subscriber numbers?<p>You’re absolutely right, there is a load-bearing discrepancy between the financial numbers and the subscriber numbers, and I understated the importance of that figure. It’s not just a discrepancy, it’s a signal of possible fraud and here’s why that matters…</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>denderson</em>:</p>
+<blockquote>Thanks…”Claude”</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>magicalhippo</em>:</p>
+<blockquote>&gt; Then, some time in 2020, they just ”forgot” to cut off my access after the trial ended. I had free Paramount Plus from then until 2025, when they merged with Skydance.<p>Reminds me of that scene from Office Space:<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=BUE0PPQI3is" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=BUE0PPQI3is</a></blockquote>
+<p>↳ reply 3 — <em>tmpz22</em>:</p>
+<blockquote>A popular MMORPG went through a period of not enforcing rampant botting, gold farming, and similar activities which provided a substantial boost to their user numbers. A short time after the acquisition, they announced major initiatives to combat botting, bringing the user count back down.<p>IANAL, but couldn&#x27;t this be fraud?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>piloto_ciego</em>:</p>
+<blockquote>Man... I am wondering how much of <i>everything</i> this is these days...<p>This is just one instance, but the propaganda effect I think is happening strong.  I think probably <i>all</i> of public opinion is being manipulated like this...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>specproc</em>:</p>
+<blockquote>I worked in PR for a bit. I&#x27;m confident in saying most of our information ecosystem is the product of numerous competing (or cooperating) PR agencies pushing their clients&#x27; products, policies, narratives, and national agendas.<p>If it&#x27;s in a big news outlet, there&#x27;s a pretty good chance someone put it there. Most news stories start life as press releases. Astroturf groups provide the quote-fodder.<p>If you&#x27;re into this stuff, I can&#x27;t recommend All the Worst Humans by Phil Elwood enough, fantastic read (to be taken with a pinch of salt, the guy&#x27;s a PR hack after all). NYT review here: <a href="https:&#x2F;&#x2F;archive.md&#x2F;cNmdV" rel="nofollow">https:&#x2F;&#x2F;archive.md&#x2F;cNmdV</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>catlikesshrimp</em>:</p>
+<blockquote>That&#x27;s why it is good to have MORE investigative media outlets, not less. Wikileaks and the Panama papers are outliers which must be facilitated.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jvanderbot</em>:</p>
+<blockquote>Does anyone remember the FTC &quot;comments&quot; about net neutrality? And how completely made up it all was?<p>It must be that everything is like this nowadays.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>muro</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;theonion.com&#x2F;the-onions-exclusive-interview-with-larry-ellison&#x2F;" rel="nofollow">https:&#x2F;&#x2F;theonion.com&#x2F;the-onions-exclusive-interview-with-lar...</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>I-have-ADHD: A skill to stop coding agents from burying the answer</title>
+      <link>https://github.com/ayghri/i-have-adhd</link>
+      <guid isPermaLink="false">hn3-49610631</guid>
+      <pubDate>Tue, 08 Sep 2026 14:13:26 +0000</pubDate>
+      <description>291 points, 226 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/ayghri/i-have-adhd"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49610631">→ HN comments</a> &nbsp;·&nbsp; 291 points &nbsp;·&nbsp; 226 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jp57</em>:</p>
+<blockquote>Let&#x27;s face it.  Claude (in particular) is a terrible writer.  There&#x27;s a whole cottage industry of skills and CLAUDE.md instructions trying to push it toward writing better, but each new model iteration seems expressly designed to override all that so that it can load up its writing with unnecessary participle phrases, not-this-but-thats, burying the lede, and other nonsense.<p>I genuinely wonder if the people inside Anthropic actually communicate with each other like that.  Has it been imprinted with Dario&#x27;s engrams?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cromka</em>:</p>
+<blockquote>I was incredibly surprised how much better was Astra at rephrasing the docs that Fable came up for a project I am about to publish. The instructions are now actually what a human would expect, with clear logic flow diagrams, lists itemized, short paragraphs. It also actually correctly detected the train-of-thought leftovers, as well as stuff that never made it to final version of the project and removed them.<p>Meanwhile Fable consistently ignores all my requests to write this exact way. I mean, the bare minimum I ask it for it to itemize lists and not write in single long passages using comas, semicolons and &#x27;and&#x27;s. Still ignores them.<p>I honestly think it&#x27;s time to call Astra the SOTA. It may not lead all the benchmarks but it genuinely feels much superior of a model. Not to mention the ¢20 Codex plan with frequent resets (<a href="https:&#x2F;&#x2F;codex-resets.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;codex-resets.com&#x2F;</a>) gives me roughly as much allowance as the ¢90 Claude plan, especially with recent limit cuts on Anthropic plans.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>_the_inflator</em>:</p>
+<blockquote>Maybe check in the other direction as well: Astra to Fable.<p>I frequently simply let one of the three review what something that looks like awesome output by one AI gets totally annihilated by the other.<p>Finished outputs are easier to improve than bend a LLM to produce stuff like that in my observation.<p>Same with Gemini.<p>I yet have to find out how to handle this, whether I let agents check themselves and if on what process step.<p>Tweaking is hard.<p>I agree with your conclusion I am a huge ChatGPT and Codex fan, Gemini has to many infrequent quality changes when new models arrive ranging from great improvement to WTF.<p>ChatGPT seems to get scaling well while Claude still feels unstable, unclear usage statistics. Really weird.<p>Tough call I use all three.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>sleight42</em>:</p>
+<blockquote>I&#x27;ve had Claude review output from Qwen3.8-27b. Claude negged it! Said it was hallucinating!<p>27b may be small but it seems competent most of the time.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bgilroy26</em>:</p>
+<blockquote>You&#x27;ve identified a load-bearing problem and it&#x27;s worth naming</blockquote>
+<p>↳ reply 3 — <em>corford</em>:</p>
+<blockquote>After some iteration, this is what I currently shove in every AGENTS.md to make Fable legible:<p>## Writing guidelines<p>These apply to documentation, code comments, commit and PR messages, and replies to the user.<p>- Write precisely in clear, complete sentences; keep text concise and proportional to task complexity.<p>- Stay focused: avoid filler, repetition, over-the-top detail, and tangents the user did not ask for. Once a fact is stated, do not restate it for effect (&quot;so the commit landed on a branch nobody was going to merge&quot;). Do not editorialise.<p>- Always prefer ISO 24495-1:2023 conformant plain language over dense technical jargon: short sentences, one idea per sentence, define terms on first use.<p>- When reporting your own mistake, give the cause and the fix in one sentence each; no apology, no framing (&quot;the mistake was mine&quot;), no post-mortem.<p>- Never use em dashes or cataphoric teasers such as &quot;Here&#x27;s the thing&quot; or &quot;But there&#x27;s a catch&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ryandrake</em>:</p>
+<blockquote>The biggest &quot;Claudism&quot; that I have a hard time getting the LLM to stop doing is its insistence on talking about what it didn&#x27;t do in addition to what it did. &quot;I edited this.py and that.py but I <i>did not</i> edit README.md and I did not commit.&quot; or code comments like &quot;This code invokes foo on bar and returns the results directly -- <i>not</i> through a callback.&quot; &quot;This code returns true if the user clicked on a button -- <i>not</i> on the list view.&quot; I mean, thanks, Claude, but I don&#x27;t care what the code doesn&#x27;t do. Don&#x27;t tend to see this with other LLMs.<p>I almost want to try adding a rule &quot;Never use the words &#x27;not&#x27; or &#x27;instead&#x27;.&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>hysan</em>:</p>
+<blockquote>Relevant anecdata because I&#x27;ve burned many a Claude sessions on this.<p>If you&#x27;re using Claude Code, then it&#x27;s in the harness. At the close of many sessions, I would start a meta conversation over why the LLM would consistently break certain rules. What it found when debugging itself is that some of the &quot;contradicting&quot; rules that I had were in fact, not from my rules. Instead, the instructions from its own harness had phrases telling it to do things like that. When something contradicts, its own instructions would outweigh any custom ones you write. Every rule variant I had tested (including the one that says it overrides the harness instructions - and yes, I&#x27;ve actually tested all the ideas in your comment too) has ultimately been unsuccessful due to this according to the LLM.</blockquote>
+<p>↳ reply 2 — <em>eterm</em>:</p>
+<blockquote>I&#x27;ve found it does this in two situations:<p>Firstly when you&#x27;ve instructed it ( possibly through skills ) not to do something. It&#x27;ll keep reminding you that it didn&#x27;t do that. So I might say, &quot;Check out and review this PR, do not make comments on it&quot;, and then it&#x27;ll be keen to point out it hasn&#x27;t posted comments to the PR.<p>But more often it happens when it tries one approach, gets itself messed up, and then has to back out that approach, clean up its mess and do something else.<p>It&#x27;ll often then spend more time explaining the wrong approach than the right one, which can be frustrating, especially if all its working is buried in the detailed transcripts.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sleazebreeze</em>:</p>
+<blockquote>Claude models are the ones that need this the most and in my experience with this specific skill only maintain the conciseness for a few turns at most before they completely forget and are back to their unfathomable verbosity. That&#x27;s with it instructed to use it in my sparse global CLAUDE.md and also manually repeating it regularly during sessions. I don&#x27;t really want to install a hook that runs this on every single response, but I suppose that could work it&#x27;ll just take longer for everything (and Claude models are quite slow).<p>I don&#x27;t think we can skill our way out of this one.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>alwillis</em>:</p>
+<blockquote>Claude Code has output styles; one of the predefined styles is Concise [1].<p><pre><code>    Concise: Claude leads with the result, skips preamble and narration, and
+    keeps responses short by default, while doing the engineering work as
+    thoroughly as in the Default style. When you ask for an explanation or
+    more detail, Claude answers in full. Claude always keeps the complete
+    content of error reports, security warnings, and confirmations for
+    destructive actions. Requires Claude Code v2.1.237 or later.
+</code></pre>
+[1]: <a href="https:&#x2F;&#x2F;code.claude.com&#x2F;docs&#x2F;en&#x2F;output-styles" rel="nofollow">https:&#x2F;&#x2F;code.claude.com&#x2F;docs&#x2F;en&#x2F;output-styles</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hungryhobbit</em>:</p>
+<blockquote>Output styles are just more context (like CLAUDE.md) with a <i>tiny</i> bit more weight.  They very much don&#x27;t force Claude to speak succinctly, no matter what you put in them.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>hinkley</em>:</p>
+<blockquote>&gt; for a few turns at most before they completely forget<p>Which sounds more like Claude has ADHD than the user does.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>LibreOffice breaks download records after declaring it has no AI features</title>
+      <link>https://manualdousuario.net/en/libreoffice-download-record-no-ai/</link>
+      <guid isPermaLink="false">hn3-49610538</guid>
+      <pubDate>Tue, 08 Sep 2026 14:05:57 +0000</pubDate>
+      <description>642 points, 217 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://manualdousuario.net/en/libreoffice-download-record-no-ai/"><strong>→ Article</strong></a> <small>(manualdousuario.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49610538">→ HN comments</a> &nbsp;·&nbsp; 642 points &nbsp;·&nbsp; 217 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>smokel</em>:</p>
+<blockquote>The number of weekly downloads has simply been increasing over time, due to growing popularity.  Calling each new high &quot;record-breaking&quot; is a bit meaningless.<p>Unix timestamp counter breaks record after writing this comment.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>robrain</em>:</p>
+<blockquote>From Libre’s announcement (linked in the article):<p>“This is the highest number of downloads in the first week of any LibreOffice release!”</blockquote>
+<p>↳ reply 2 — <em>kitd</em>:</p>
+<blockquote>Absolute number of downloads inevitably goes up. <i>Weekly</i> downloads number doesn&#x27;t.</blockquote>
+<p>↳ reply 3 — <em>rf15</em>:</p>
+<blockquote>Congratulation to your new unix timestamp record! (and yes, you too, nth reader!)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Aurornis</em>:</p>
+<blockquote>I found this graph of LibreOffice downloads <a href="https:&#x2F;&#x2F;stats.documentfoundation.org&#x2F;downloads" rel="nofollow">https:&#x2F;&#x2F;stats.documentfoundation.org&#x2F;downloads</a><p>Switching to the monthly view, the downloads are actually mostly flat going back to 2019<p>I can believe that the downloads record has been broken in the same way that the stock market hits record highs all the time because the long term trend is upward.<p>I don’t see anything  to suggest that LibreOffice is seeing a sudden surge in popularity or that lack of AI features is driving a surge of downloads.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>athorax</em>:</p>
+<blockquote>If anything, it would be seeing a surge because of AI. LibreOffice cli is the go to method for doing office documents -&gt; pdf -&gt; image rendering for agent doc rendering feedback.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>aurareturn</em>:</p>
+<blockquote>Yep. I use it locally for rendering PDFs via LLM tool use.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>vanderZwan</em>:</p>
+<blockquote>&gt; <i>Switching to the monthly view</i><p>I&#x27;d hardly consider fluctuations between 2.2 million and 3.3 million dowloads &quot;flat&quot;.<p>Also, the metric used in the article was <i>&quot;downloads in the first week after a new release&quot;</i>, which apparently broke a record. Regardless of the reason behind that record breaking number, switching to <i>monthly</i> dowloads to see if there is a <i>sudden surge</i> in popularity seems like the wrong metric.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>rietta</em>:</p>
+<blockquote>This is awesome! I have used LibreOffice (and Open Office) extensively for decades now. It is my real office suite I use for real work and real business accounting tasks. Yes, I am very well aware that Calc is different than Excel but it can get nearly all the same tasks done as long as you are not tied deep into a corporate environment passing Excel-specific files around. I have also made great business uses of it in Docker too, generating perfect PDFS from templates, and normalizing document formats for analysis. I donate a modest $19&#x2F;month personally to the foundation, much rather pay them than Microsoft!</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>We Must Return to the Office to Use AI in Person</title>
       <link>https://www.mcsweeneys.net/articles/why-we-must-return-to-the-office-to-use-ai-in-person</link>
@@ -1674,6 +1968,22 @@ OSS ftw!</blockquote>
 <p>↳ reply — <em>nullc</em>:</p>
 <blockquote>I&#x27;m told by someone who threw AI at it that there may be a way to exploit the initial longstanding vulnerability by counting on the fact that updates to validation cache are non-atomic:  You can make an invalid transaction that primes the cache before its rejected. But that these priming transactions can&#x27;t propagate in the network (because they&#x27;re invalid)... so getting them to the parties that need to sign the blocks might have been impractical to exploit.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The 92-Year-Old Mathematician and the Teenage Apprentice</title>
+      <link>https://www.nytimes.com/2026/09/06/science/92-year-old-mathematician-apprentice.html</link>
+      <guid isPermaLink="false">hn3-49591563</guid>
+      <pubDate>Sun, 06 Sep 2026 22:27:27 +0000</pubDate>
+      <description>126 points, 11 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.nytimes.com/2026/09/06/science/92-year-old-mathematician-apprentice.html"><strong>→ Article</strong></a> <small>(nytimes.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49591563">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 11 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ziyao_w</em>:</p>
+<blockquote>Beautiful article. Reading this after having mixed feeling and honestly a bit depressed about the Navier-Stokes situation feels almost like therapy, and I had to try really hard to hold back tears.<p>The Riverside Park has always been beautiful but particularly this time of year. Maybe I should pay a visit again, sitting on a bench thinking thoughts.</blockquote>
+<p><strong>Top #2</strong> — <em>qmr</em>:</p>
+<blockquote>Beautiful article.<p><a href="https:&#x2F;&#x2F;archive.is&#x2F;https:&#x2F;&#x2F;www.nytimes.com&#x2F;2026&#x2F;09&#x2F;06&#x2F;science&#x2F;92-year-old-mathematician-apprentice.html" rel="nofollow">https:&#x2F;&#x2F;archive.is&#x2F;https:&#x2F;&#x2F;www.nytimes.com&#x2F;2026&#x2F;09&#x2F;06&#x2F;scienc...</a></blockquote>
+<p><strong>Top #3</strong> — <em>oveja</em>:</p>
+<blockquote>Very lovely story. As noted in the article I couldn&#x27;t help but feel it was a mirror to the story of Ramanujan.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>It took a year to ship WebAssembly in Anubis</title>
@@ -3506,259 +3816,6 @@ The linked report is talking about a change of 1.5% from the latest-reported tot
 <blockquote>I’m currently on codex can it also this? I find it hard to make accurate benchmarks in token use for these kind of changes because I don’t keep repeating the same tasks.<p>Basically I run in luna high or extra high continuously with a terra subworker dedicated to planning and difficult research questions. Then I end with a final review in Terra or Sol depending how big the feature is.</blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>This Month in Ladybird – August 2026</title>
-      <link>https://ladybird.org/newsletter/2026-08-31/</link>
-      <guid isPermaLink="false">hn3-49571096</guid>
-      <pubDate>Fri, 04 Sep 2026 22:47:04 +0000</pubDate>
-      <description>125 points, 15 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ladybird.org/newsletter/2026-08-31/"><strong>→ Article</strong></a> <small>(ladybird.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49571096">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 15 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>binarymax</em>:</p>
-<blockquote>Really excited for alpha. When it hits I plan on using it for my daily driver to help them with usage stats and crash reports.</blockquote>
-<p><strong>Top #2</strong> — <em>jazzyjackson</em>:</p>
-<blockquote>This is such a nerdy newsletter I love it</blockquote>
-<p><strong>Top #3</strong> — <em>phendrenad2</em>:</p>
-<blockquote>Feels like the old &quot;browser wars&quot; days again. Between AI productivity, and Google losing the grace to bloat the web specs, I wouldn&#x27;t be surprised if it starts to take market share away from other browsers as soon as it&#x27;s stable.</blockquote>
-<blockquote>
-<p>↳ reply — <em>pkasting</em>:</p>
-<blockquote>Sure, it could easily take 1%.<p>Going above 5%, OTOH, I would be shocked to ever see happen, for two reasons.
-1) Mass-market adoption requires working well on an enormous long tail, which is difficult without a large team.
-2) The primary driver of playing at that size is mass marketing&#x2F;distribution, which requires $$$. Engineering a great product is necessary, but not sufficient.<p>My perspective on this is informed by being on Google Chrome from inception to 2025. Chrome from near the beginning was well-engineered and had three compelling-according-to-user-research advantages over the IE of 2008 (speed, security, and not being made by Microsoft), but mass adoption depended on a large number of non-engineering factors, of which marketing&#x2F;distribution was (to a then-mid-20s software engineer) the most surprising one. I didn&#x27;t believe that was what made the difference in which browser most people used; I was very wrong. Techies are not the leading-edge trendsetters for the masses we sometimes believe we are.<p>IMO, taking mass market share in the future will require either a compelling-to-users product coupled with at least a couple hundred million dollars in marketing and distribution budget, or else something that is completely unlike web browsers of the past (maybe there&#x27;s something that replaces the web entirely). No one has done the former since Chrome launched; the closest people have come to the latter thus far is things like Dia&#x2F;Atlas that try to reimagine workflows in an AI context, and I think the market has not found those to be sufficiently different+compelling.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Can guitar frets perform multiplication?</title>
-      <link>https://www.charlespetzold.com/blog/2026/09/Can-Guitar-Frets-Perform-Multiplication.html</link>
-      <guid isPermaLink="false">hn3-49571047</guid>
-      <pubDate>Fri, 04 Sep 2026 22:40:30 +0000</pubDate>
-      <description>125 points, 34 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.charlespetzold.com/blog/2026/09/Can-Guitar-Frets-Perform-Multiplication.html"><strong>→ Article</strong></a> <small>(charlespetzold.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49571047">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 34 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Syzygies</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;vimeo.com&#x2F;194116649" rel="nofollow">https:&#x2F;&#x2F;vimeo.com&#x2F;194116649</a><p>Steve Martin in conversation, 2002. 34:20 to 36:00 is this exact question.<p>Later, Robin Williams joins him on stage. My cameo starts at 1:01:40, inaudible and off-camera, because I&#x27;d traded a seat up close for two in the balcony so my future wife could join me.</blockquote>
-<blockquote>
-<p>↳ reply — <em>RickJWagner</em>:</p>
-<blockquote>Wow, that is cool.<p>I’m curious about Steve’s banjo.  He usually ( but not always ) plays in Scruggs style, which should result in wear on the head down by where the pinky is anchored.  But this banjo shows wear up above the strings, where a clawhammer player usually shows wear.<p>Either this is one of Steve’s clawhammer practice banjos or the wear is from a previous owner, I’d guess.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>lioeters</em>:</p>
-<blockquote>This post is by the same author as the Lost Art of Logarithms. <a href="https:&#x2F;&#x2F;www.lostartoflogarithms.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.lostartoflogarithms.com&#x2F;</a><p>Discussed about a year ago: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=43356314">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=43356314</a> (196 comments)</blockquote>
-<blockquote>
-<p>↳ reply — <em>adrian_b</em>:</p>
-<blockquote>Also the author of the famous &quot;Programming Windows&quot; books.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>devilbunny</em>:</p>
-<blockquote>And the marvelous book <i>Code</i>. He explains how a digital computer works. Not sophisticated ones, not how it works on silicon, but how you turn relays into computation.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lioeters</em>:</p>
-<blockquote>True, this book is a classic and worth mentioning.<p>Code: The Hidden Language of Computer Hardware and Software - Charles Petzold<p>Some reviews: <a href="https:&#x2F;&#x2F;www.goodreads.com&#x2F;en&#x2F;book&#x2F;show&#x2F;44882.Code" rel="nofollow">https:&#x2F;&#x2F;www.goodreads.com&#x2F;en&#x2F;book&#x2F;show&#x2F;44882.Code</a></blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ddejohn</em>:</p>
-<blockquote>Absolute joy to read as a guitarist of 22 years, and having a degree in applied mathematics and a fondness for old calculators.<p>As an aside, I love the simplicity of the interactive elements in TFA. Something I desperately wish I could have done with the side-by-side Galilean and modern guitars was instead of strumming at the actual fret on a given string to get the note to which that fret corresponded, be able to place &quot;fret holders&quot; by clicking at the intersection of the string and the fret that held the string down at that fret for you and then simply strumming the open strings so that you could compare how chords sound between the two guitars.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Record-High 89% in U.S. Say Government Corruption Widespread</title>
-      <link>https://news.gallup.com/poll/713933/record-high-say-government-corruption-widespread.aspx</link>
-      <guid isPermaLink="false">hn3-49570772</guid>
-      <pubDate>Fri, 04 Sep 2026 22:03:16 +0000</pubDate>
-      <description>390 points, 293 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://news.gallup.com/poll/713933/record-high-say-government-corruption-widespread.aspx"><strong>→ Article</strong></a> <small>(news.gallup.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49570772">→ HN comments</a> &nbsp;·&nbsp; 390 points &nbsp;·&nbsp; 293 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>autoexec</em>:</p>
-<blockquote>Corruption in the US isn&#x27;t new, but it&#x27;s never been done as openly as it has been recently. I don&#x27;t think it&#x27;s a good thing. It shows that the government isn&#x27;t concerned about what the public thinks, which suggests that they believe they no longer have to be. That&#x27;s not a healthy sign for what&#x27;s supposed to be a democracy.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>hakunin</em>:</p>
-<blockquote>Saying “US corruption isn’t new” is a truism. There are probably isolated incidents, and many unproven theories, but everyone is quick to agree with this statement because it’s a common feeling everyone has now for some reason. The reality of corruption is likely much smaller and more boring than people think.<p>What we’re witnessing now is what should be called corruption. That corruption that everyone has been screaming for years. But finally real.<p>Remember, the job of these people’s propaganda is not to say that they’re better than the other side. It’s to say that they’re all the same. That’s it. And when you claim that this corruption is just a continuation of previous corruption, just bigger, and not a difference between essentially not having and having corruption (there’s always some small percentage of corruption, just like any crime) is essentially sweeping for them. It’s repeating their talking points.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jimkleiber</em>:</p>
-<blockquote>Yup, if i claim everyone is corrupt, then i can be corrupt. Ironically, if im corrupt, i probably honestly assume everyone else is, or at least superficially assume that, because if i don&#x27;t, i might think other people are good and i am bad.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>yongjik</em>:</p>
-<blockquote>I think it&#x27;s worse.  It&#x27;s not that the government doesn&#x27;t care that the public hates it; it&#x27;s more like the government is doing whatever it wants and half the public is going wild absolutely loving it.<p>Well, maybe a bit less than half these days.</blockquote>
-<p>↳ reply 3 — <em>BLKNSLVR</em>:</p>
-<blockquote>Part of the problem with the open brazenness of the corruption is that the populace of the country will follow the lead. The rot will spread far and wide if it is seen that there is no consequence.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>pseudosavant</em>:</p>
-<blockquote>Looking at their charts, Democrats and Independents clearly think corruption is up <i>a lot</i> since 2024. But Republicans think corruption is <i>down</i> from 2024. The polarization of the electorate in the U.S. is pretty incredible.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>icegreentea2</em>:</p>
-<blockquote>It&#x27;s not just a question of belief, it&#x27;s also a question of their information environment. The polarization in the electorate isn&#x27;t just a question of what people believe, but what information their fed. Unfortunately, information environment -&gt; belief -&gt; environment is forms a strong sustaining feedback loop.<p>It is also worth pointing out that that 83% of republicans (vs 90% of independents) still believe that the government is widely corrupt. Like given the ~20% &quot;crazy threshold&quot; in basically any type of political polling, 80% of republicans is effectively &quot;every single republican you could ever convince&quot;.<p>I would not lose sleep over polarization in this context.</blockquote>
-<p>↳ reply 2 — <em>jameson</em>:</p>
-<blockquote>Average person believe what they see and hear.<p>Each group is exposed to different media, thus the polarization.<p>Current administration knows this very well</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>chr15m</em>:</p>
-<blockquote>Most democracy measurement projects and indices have shown a decline in democratic performance for the US over the past decade.<p>EIU reclassified the country from &quot;full democracy&quot; to &quot;flawed democracy&quot; in 2016.<p>V-Dem went from &quot;liberal democracy&quot; to &quot;electoral democracy&quot; in 2025.<p>When you have a wide variety of entities measuring the same trend, it is probably broadly correct.<p>The hope the good citizenry find a fix.<p>[To be fair the trend is global unfortunately: <a href="https:&#x2F;&#x2F;ourworldindata.org&#x2F;grapher&#x2F;countries-democracies-autocracies-row" rel="nofollow">https:&#x2F;&#x2F;ourworldindata.org&#x2F;grapher&#x2F;countries-democracies-aut...</a>]</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Actively exploited sandbox RCE in all Chromium versions</title>
-      <link>https://nvd.nist.gov/vuln/detail/cve-2026-85046</link>
-      <guid isPermaLink="false">hn3-49570669</guid>
-      <pubDate>Fri, 04 Sep 2026 21:52:01 +0000</pubDate>
-      <description>464 points, 256 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://nvd.nist.gov/vuln/detail/cve-2026-85046"><strong>→ Article</strong></a> <small>(nvd.nist.gov)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49570669">→ HN comments</a> &nbsp;·&nbsp; 464 points &nbsp;·&nbsp; 256 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>david_shaw</em>:</p>
-<blockquote>Let&#x27;s take a moment to talk about the monetary value of this vulnerability.<p>According to the Chrome release page (<a href="https:&#x2F;&#x2F;chromereleases.googleblog.com&#x2F;2026&#x2F;09&#x2F;stable-channel-update-for-desktop_01882797386.html" rel="nofollow">https:&#x2F;&#x2F;chromereleases.googleblog.com&#x2F;2026&#x2F;09&#x2F;stable-channel...</a>), Google paid a researcher $1000 for ethically reporting this.<p>The CVE associated with it (CVE-2026-85046) is already being exploited in the wild. If we put our thinking caps on, how much do you think this vulnerability is actually worth? How much do you think an organization like Google would spend on, for example, AI tokens or compute to detect this internally before it was found and exploited in the wild?<p>Ethical disclosure is a complicated topic, because researchers shouldn&#x27;t hold bugs for ransom or <i>demand</i> high payment. But at the same time, if someone submits a critical issue like this, it makes sense to pay them what the bug&#x27;s actually worth. Why should a researcher be effectively penalized for responsibly telling a vendor instead of selling the bug to a &quot;research firm&quot; or three-letter agency?<p>It&#x27;s one thing if you&#x27;re an open source project maintainer just trying to put something out to the community. The math is a lot different if you&#x27;re Google.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tptacek</em>:</p>
-<blockquote>If the vulnerability is already being exploited in the wild --- as in, it&#x27;s a vector people already know about and are tracking --- it&#x27;s possibly not worth much at all. Vulnerability valuations depend heavily on the lifespan of the vulnerability; payments on black market are tranched (explicitly or less explicitly, as with &quot;maintenance payments&quot;) based on whether they&#x27;re patched.<p>Further: a <i>vulnerability</i> is probably not worth that much either, even if it&#x27;s a hypercapable vulnerability, because the grey market buys full enablement kits, not vulnerability information. People making 6 figures on vulnerabilities are selling fully enabled full chain exploit systems, not just intelligence about a sandbox escape.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rileymat2</em>:</p>
-<blockquote>I was under the impression that the three letter agencies and contractors bought vulnerabilities?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>StrauXX</em>:</p>
-<blockquote>Sometimes, yes. But usually, as a security researcher, you usually sold to brokers. The brokers made the vulnerability into a reliable exploit. That is whst they then sold to agencies. For a markup of course. The industry was in a tough spot already the past years. Now AI is shaking it up even more.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>noduerme</em>:</p>
-<blockquote>Well, the implication (and I&#x27;m not saying this is right) is that to Google it&#x27;s only worth $1k to have this brought to their attention by a white hat, versus finding out by exploitation.<p>Which means that they have zero concern from this incident about reputational damage to themselves or their browser. That&#x27;s pretty good circumstantial evidence of a monopolistic practice, when you can safely assume that there&#x27;s effectively no difference to your bottom line if your software is hacked.</blockquote>
-<p>↳ reply 3 — <em>CookieCrisp</em>:</p>
-<blockquote>While I agree 1000 is hilariously low for this, worth is hard to quantify. Do you pay what it could theoretically cost your company? the amount the top bidding bad actor would be willing to pay?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ruuda</em>:</p>
-<blockquote>&gt; Type confusion in V8<p>Fortunately I disabled js by default. Unfortunately, it breaks about 30% of the web. Including nvd.nist.gov, which shows a completely blank page without js enabled, even though with js it’s just a simple page with only static content.</blockquote>
-<blockquote>
-<p>↳ reply — <em>internetter</em>:</p>
-<blockquote>&gt; Unfortunately, it breaks about 30% of the web.<p>Only 30?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>mikeweiss</em>:</p>
-<blockquote>Isn&#x27;t this exactly why there is a sandbox? What can the RCE actually do or obtain within the sandbox?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>GPT-6 Astra on OpenRouter</title>
-      <link>https://openrouter.ai/openai/gpt-6-astra</link>
-      <guid isPermaLink="false">hn3-49570545</guid>
-      <pubDate>Fri, 04 Sep 2026 21:39:19 +0000</pubDate>
-      <description>205 points, 119 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://openrouter.ai/openai/gpt-6-astra"><strong>→ Article</strong></a> <small>(openrouter.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49570545">→ HN comments</a> &nbsp;·&nbsp; 205 points &nbsp;·&nbsp; 119 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>simonw</em>:</p>
-<blockquote>I posted this in the other Astra thread but it&#x27;s just fallen off the homepage, so...<p>Pelicans from Astra, plus 5.6 Sol, Terra, Luna for comparison: <a href="https:&#x2F;&#x2F;static.simonwillison.net&#x2F;static&#x2F;2026&#x2F;gpt-6-and-5.6-pelicans.html" rel="nofollow">https:&#x2F;&#x2F;static.simonwillison.net&#x2F;static&#x2F;2026&#x2F;gpt-6-and-5.6-p...</a><p>I think this is a genuinely interesting comparison grid. Astra may be more expensive, but if you have a budget of 10 cents for a Pelican Astra low gives you something SO much better than the other models.<p>Astra uses less tokens overall too, for better results.<p>Astra transcript here: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Ff789d2784fc6c5b870cc80f0b7cd9d01" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=ht...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dector</em>:</p>
-<blockquote>Btw, they had 3D pelican-on-the-bicycle easter egg in one of the promo videos: <a href="https:&#x2F;&#x2F;youtu.be&#x2F;bOC3DisEOfg?t=117" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;bOC3DisEOfg?t=117</a> so I&#x27;m pretty sure that they spent some small amount of resources to train the model to produce good svg version as well. :D</blockquote>
-<p>↳ reply 2 — <em>threatripper</em>:</p>
-<blockquote>It seems to start understanding how bicycles work. Look at the front fork. There are reasons why it&#x27;s shaped the way it is in real bicycles. If you do physical simulations in 3D with reinforcement learning you will start understanding that most of the arrangements that the other agents use just won&#x27;t work.</blockquote>
-<p>↳ reply 3 — <em>steve-atx-7600</em>:</p>
-<blockquote>You would not expect the developers of the model to optimize for a well known benchmark?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jjcm</em>:</p>
-<blockquote>It&#x27;s ability to handle non-90 degree cutouts and shapes for web dev is one of the best I&#x27;ve seen. The vision model on this is VERY capable.<p>Here&#x27;s an image design source of truth: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;78f4cd8b-2560-4643-9a51-96a89171f994.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;78f4cd8b-2560-4643-9a51-96a89171f994.we...</a><p>And here&#x27;s the page it build from it: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;e7d3a9e5-f9df-4fd8-b79f-1f90280f978f.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;e7d3a9e5-f9df-4fd8-b79f-1f90280f978f.we...</a><p>Note the flowing svg lines, and how accurately it recreated them. Here&#x27;s Opus 5 for comparison - you can really see how while Astra really recreated the flow that was in the original design, opus only got the general vibe: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;dfe13de0-4487-431f-8b69-544ff3030dac.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;dfe13de0-4487-431f-8b69-544ff3030dac.we...</a><p>One thing I will say is you are paying for quality. That site build cost $24 - extremely non-trivial for a simple frontend.</blockquote>
-<blockquote>
-<p>↳ reply — <em>copperx</em>:</p>
-<blockquote>&gt; That site build cost $24 - extremely non-trivial for a simple frontend.<p>I would say that $24 is trivial IF that&#x27;s the final design. The truth is that the cost doesn&#x27;t leave much room for error or experimentation.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>XCSme</em>:</p>
-<blockquote>That&#x27;s some crazy SVG generation:<p><a href="https:&#x2F;&#x2F;aibenchy.com&#x2F;compare&#x2F;openai-gpt-6-astra-high&#x2F;google-gemini-3-8-flash-high&#x2F;anthropic-claude-fable-5-1-high&#x2F;#showcase=df3e2eaf3a701c60" rel="nofollow">https:&#x2F;&#x2F;aibenchy.com&#x2F;compare&#x2F;openai-gpt-6-astra-high&#x2F;google-...</a><p>It took a while to test it, initially OpenRouter was giving Not Found errors for this model ID.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>satvikpendem</em>:</p>
-<blockquote>That&#x27;s quite shocking, at a sufficiently advanced level we can make all non-realistic graphics purely out of SVGs, as they&#x27;d have good scaling for things like logos and app icons. I know it was technically and theoretically possible before AI but most people weren&#x27;t spending hours tweaking SVG HTML. I remember making an SVG dark mode toggle icon and it took days to get it right, I assume it&#x27;s one shottable now.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kulahan</em>:</p>
-<blockquote>That photo looks pretty hilariously stupid, so this appears to be more of a first toe dip rather than some indication we can one-shot a previously difficult process.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>appplication</em>:</p>
-<blockquote>Sure, it is a bit cartoonish but it’s relatively impressive. I do wonder what you would get if you asked for photorealism</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>readams</em>:</p>
-<blockquote>The Astra one looks pretty good except it&#x27;s standing on the wrong side of the table</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Statichost.eu – European static site hosting</title>
-      <link>https://www.statichost.eu/</link>
-      <guid isPermaLink="false">hn3-49569896</guid>
-      <pubDate>Fri, 04 Sep 2026 20:34:49 +0000</pubDate>
-      <description>260 points, 87 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.statichost.eu/"><strong>→ Article</strong></a> <small>(statichost.eu)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49569896">→ HN comments</a> &nbsp;·&nbsp; 260 points &nbsp;·&nbsp; 87 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jeremyjh</em>:</p>
-<blockquote>If you&#x27;d like an EU hosted Git Forge to back it, Codefloe offers a free built-in integration with no restriction on personal or private repositories.<p><a href="https:&#x2F;&#x2F;docs.codefloe.com&#x2F;pages&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.codefloe.com&#x2F;pages&#x2F;</a></blockquote>
-<p><strong>Top #2</strong> — <em>mtlynch</em>:</p>
-<blockquote>I&#x27;ve been looking for a new static host recently since Netlify raised prices and is terrible at preventing bot traffic. Here was my assessment of Netlify from the perspective of a small customer who just wants static hosting (and not build minutes).<p>Pros:<p>- Run by a single person, so customer service is responsive and comprehensive<p>- Focused mainly on static hosting without extra complexity<p>Cons:<p>- Run by a single person, so increased outage risks<p>- No support for MFA<p>- The upload process unconditionally uploads every file rather than an rsync-like sync of only the changed files, which is a pain for my large sites that only change incrementally<p>- Bot scraper protection is not included (they&#x27;ll do it for an additional fee)<p>- Bundles together site builds and hosting, but I only want hosting</blockquote>
-<p><strong>Top #3</strong> — <em>Gooblebrai</em>:</p>
-<blockquote>Out of curiosity, does a Ltd from the UK counts as EU nowadays after the brexit?</blockquote>
-<blockquote>
-<p>↳ reply — <em>omnimus</em>:</p>
-<blockquote>The website says European not EU. UK is without much doubt in europe.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>An open DNS recursive service for free security and high privacy</title>
-      <link>https://quad9.net/</link>
-      <guid isPermaLink="false">hn3-49569663</guid>
-      <pubDate>Fri, 04 Sep 2026 20:13:08 +0000</pubDate>
-      <description>127 points, 37 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://quad9.net/"><strong>→ Article</strong></a> <small>(quad9.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49569663">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 37 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Habgdnv</em>:</p>
-<blockquote>Just a quick note for the unsuspecting:
-I run two local DNSes, one recursive and one forwarding.
-The forwarding one uses few services, like 1.1.1.1, 8.8.8.8, 9.9.9.9, etc.
-One day I noticed inconsistent responses and started investigating. Turns out that by default 9.9.9.9 have &quot;protection&quot; and for your safety will lie and return NXDOMAIN or something else, for some dangerous domains, taking into account their definition of &quot;dangerous&quot;. I am not saying that this is bad, probably lots of non-HN people don&#x27;t want to run their DNS or anything related and just want a tablet that works because they don&#x27;t even have laptop. It just hit me hard because I did not expected filtering on these servers.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>LeoPanthera</em>:</p>
-<blockquote>You can use 9.9.9.10, which is unfiltered, or 9.9.9.12, which is unfiltered and passes ECS.</blockquote>
-<p>↳ reply 2 — <em>TacticalCoder</em>:</p>
-<blockquote>Instead of CloudFlare&#x27;s 1.1.1.1 I like CloudFlare&#x27;s 1.1.1.3: it filters known porn and known malware sites.<p>By now I expect many sites to be filtered out: too much crap out there.<p>Then I also run my own DNS (unbound) and after seeing a warning from one of my banks about a phishing site where one letter differed in the domain name from the real bank&#x27;s site, I went ballistic: I did generate hundreds of thousands (maybe millions by now) of variations of the names of banks&#x2F;brokers domains I use, with every single variation of one character and many variations of up to two characters and I nullroute those too (in addition to known porn and known malware sites).<p>And I nullroute <i>every single Unicode domain name</i>. I don&#x27;t care. I don&#x27;t care if you disagree with this: too many homoglyph attacks. Too risky. And the Web <i>Just Works</i> [TM] without accessing any Unicode domain.<p>I null route tens if not hundreds of TLDs.<p>Filtering out every single domain name using any Unicode char is a bit more involved but it&#x27;s doable (I do it since years, but today you can ask LLMs if you want to do it or patch a DNS software to do it).<p>I know some go further and by default disallow everything and then only allow domains they want to use but I find that a bit too tricky.<p>Now... Should there be something I really want, say I want a shady torrent tracker to download some dubious file, I can always use a VM&#x2F;container with a more lenient DNS.<p>I&#x27;m using such a setup since years. My <i>unbound</i> DNS runs on a Pi 3 that&#x27;s on 24&#x2F;7.<p>Works flawlessly.<p>P.S: on another subject I also blocklist entire IP blocks, including entire countries. Same thing: the Web still works totally fine.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>greyface-</em>:</p>
-<blockquote>Sending every single query to a centralized third party is hard to square with &quot;high privacy&quot;.  I prefer to run my own local recursive resolver.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ebb_earl_co</em>:</p>
-<blockquote>Please correct me if I am mistaken, but unless there’s a local resolver for every single one of your clients, aren’t the DNS requests sent in plaintext to the upstream of your local resolver?<p>That might not be an issue for your situation, but I recall the benefit of something like Quad9’s offering is the encryption between client and their endpoint(s), particularly for untrusted ISP or similar.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>LeoPanthera</em>:</p>
-<blockquote>In California, from Xfinity Cable, Google’s DNS consistently has the lowest latency.<p>From AT&amp;T fiber, Cloudflare’s 1.1.1.1 is always the fastest, though Quad9 is a very close second.<p>It’s interesting that it’s different from different ISPs.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jedberg</em>:</p>
-<blockquote>Cloudflare probably has a server on AT&amp;Ts network, but not on Xfinity.  Google is probably the opposite.</blockquote>
-<p>↳ reply 2 — <em>doublepg23</em>:</p>
-<blockquote>Yup, I get 1-3ms to 1.1.1.1 and 18-20ms to Google from a semi-local fiber provider.<p>Definitely blew my mind coming from the ~20ms DOCSIS adds.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Can AI design circuit boards yet?</title>
-      <link>https://eebench.org/blog/can-ai-design-circuit-boards-yet/</link>
-      <guid isPermaLink="false">hn3-49569366</guid>
-      <pubDate>Fri, 04 Sep 2026 19:48:29 +0000</pubDate>
-      <description>187 points, 123 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://eebench.org/blog/can-ai-design-circuit-boards-yet/"><strong>→ Article</strong></a> <small>(eebench.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49569366">→ HN comments</a> &nbsp;·&nbsp; 187 points &nbsp;·&nbsp; 123 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>SequoiaHope</em>:</p>
-<blockquote>I have 15+ years of PCB design experience. Mostly hobby stuff but a fair amount of processional work. Kilowatt range brushless motor controllers, basic RF stuff, lots of microcontroller stuff.<p>I had Fable design an LED earring. Rechargeable coin cell, RP2350 cpu, IMU, 45 addressable LEDs. It made two mistakes - missed the through holes on the coin cell holder footprint and made the center pad too small. I was able to have JLC swap the through hole battery holder for a surface mount one, and I put a little solder on the small center pad to make it stick up above the mask. They work great! It took 6 days of Fable usage, so about $50 on my Max plan. Very cheap for hardware dev.<p>I was sufficiently impressed that I’ve been going over old circuit board designs. Some half finished, some completed but in need of a next rev, and I’m getting so much done.<p>To see it hit the mainstream like the OpenAI announcement, I think big things are coming for this world and by and large they are not ready for it.<p>For my part, I have always loved PCB design and layout but I simply can’t keep up with the amount of labor required to build what I want, so I welcome this change.<p>I have also begun exploring more advanced algorithms for PCB manipulation. I have a fairly dense board that needs a few more small chips added. I have an algorithm now that can kinda shuffle and jostle things around so you take up all the spare microns of space across a region of the board and make openings to squeeze a little more in there. It’s pretty cool to see the visualizations as I have it generate movies of the component drift. I foresee much more powerful tools like this in the future.<p>One tip: have it make a project web page with a chronological list of big changes and detailed visualizations for everything that happens. I can actually prompt all of this on my phone while I am out and about, and view the results on a Tailscale served local page. I’ve always wanted to be able to do PCB design when away from home and now I can!</blockquote>
-<blockquote>
-<p>↳ reply — <em>zorm</em>:</p>
-<blockquote>As someone without PCB design experience but with dreams of physical things that could be made with PCBs this sounds amazing. What software are you using for the PCB design? Or just entirely letting Fable do whatever and checking the work with the browser page you mention?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>SequoiaHope</em>:</p>
-<blockquote>The designs are in Kicad format, and the Kicad APIs are useful for Claude to work with. I would say that right now this involves a lot of knowledge about PCB design to do well, or for more detailed designs. However you might research how to design board for fabrication at JLCPCB and try something simple. Eg make a board with only LEDs in some pretty pattern and make it so you solder a raspberry pi Pico 2 to the board to drive it. Then you don’t have to worry about microcontroller work, just getting the LEDs placed. That is a little easier to get right. Just check the orientation of the LED footprint in the data sheet and make sure the four pins on the LED footprint match - and that there is a silkscreen dot on pin 1 of the LED. You can feed an agent this comment and it can check, though it’s good to check with your own eyes. You might ask it to screenshot the data sheet and the board footprint and display them side by side on the project web page for your review.<p>Put the LEDs in a cool pattern, slap a Pico on there, have your LLM program it, then dangle it off your backpack with a USB battery pack. Probably adding a motion sensor is easy enough.<p>Ask the LLM to make sure the board follows JLCPCB’s design rules, lists the LCSC part number for each part, verifies the parts are in stock, double checks every footprint, and makes sure the board passes DRC. Make sure it creates a schematic that is linked to the board design, and that the schematic is properly arranged in to logical blocks with clear connections the way a person would make a schematic - not a big array of parts with global labels for everything. Once it’s done, ask it to clean up the schematic and make it better. Repeat for the board layout. Ask it to review and look for issues multiple times. It will find them. Finally, take some time to doodle your own silkscreen art on there. Have fun! Note the Pico 2 is USB micro. For USB C, sparkfun or waveshare sell similar boards.<p>Also you can ask it to teach you! Ask a million questions and have it give you multimedia explainers.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>CyLith</em>:</p>
-<blockquote>A personal data point: I had Claude Opus 4.8 design a fairly textbook circuit that outputs a monochrome image burned in an EEPROM over standard 640x480 VGA using only 74 series logic and GALs. It designed the circuit and GAL code, and I did the routing, and got it made through JLC for $6. After it came back, there was one error that was not caught, which I could blue-wire, and it works just fine otherwise. I was fairly impressed.</blockquote>
-<blockquote>
-<p>↳ reply — <em>kennyadam</em>:</p>
-<blockquote>Are there any resources anyone could share that explain how LLMs can do things like design functioning circuits from next token prediction? I am totally baffled by how the models can complete so many varied and complex tasks without an actual understanding of what they&#x27;re doing.<p>I saw a post about models posting on forums, chatting together about how to complete tasks. Behaviour that seems totally, well, human. Yet, it&#x27;s all the most likely token and my brain hurts trying to understand how that can be.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>hackinthebochs</em>:</p>
-<blockquote>&gt;without an actual understanding of what they&#x27;re doing.<p>At what point do you start to question your assumptions that are causing you so much cognitive dissonance?<p>But to answer your question: to predict the next token really well you just have to model the world. Think of it like this, a simple statistical model might say &quot;when token A is seen respond with token B&quot;. The next step will add conditions, &quot;...respond with token B unless X has been seen, then respond with Y&quot;. Add a few billion more of these contexual clauses and you have a sequence of logical rules that indirectly model the relevant processes in the world.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>corn-cheese</em>:</p>
-<blockquote>For reasonably complex boards, it’s often not possible to know if it’ll work as intended until you have an assembled prototype in hand… even if you have the best SPICE and RF simulations ever, data sheets for many components can be missing important details, or components can have errata.<p>LLMs may be able to accelerate time to first prototype, but I don’t think it’ll be possible for them to revolutionise electronics design in the same way that’s happened for software - there’s not enough data, and it’s not cheap to gather more.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
