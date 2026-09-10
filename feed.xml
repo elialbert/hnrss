@@ -4,7 +4,208 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 09 Sep 2026 21:37:04 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 00:01:46 +0000</lastBuildDate>
+    <item>
+      <title>Understanding the recent DDoS attack against Read the Docs</title>
+      <link>https://about.readthedocs.com/blog/2026/09/2026-ddos-attack/</link>
+      <guid isPermaLink="false">hn3-49628614</guid>
+      <pubDate>Wed, 09 Sep 2026 15:55:53 +0000</pubDate>
+      <description>143 points, 48 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://about.readthedocs.com/blog/2026/09/2026-ddos-attack/"><strong>→ Article</strong></a> <small>(about.readthedocs.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49628614">→ HN comments</a> &nbsp;·&nbsp; 143 points &nbsp;·&nbsp; 48 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Animats</em>:</p>
+<blockquote>I&#x27;d like to see more of a legal response.<p>First, find out who&#x27;s on the other end of a few hundred IP addresses. Start with ones in the US. Sue for damages. Use discovery to find out what&#x27;s on the other end. Sue the maker of that device. If it turns out to be an appliance or smart TV, it may be possible to consolidate cases into one case against the manufacturer. Criminal negligence, tort interference with contract, harassment, Computer Fraud and Abuse act violation... 
+Maybe a restraining order prohibiting the sale of &quot;smart TV&quot; known to be able to host attacks. Have imports seized by Customs and Border Protection. That would get a manufacturer&#x27;s attention.<p>The manufacturer&#x27;s EULA will not help the manufacturer, because the plaintiff, the party being attacked, is not a party to the EULA at all.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>OptionX</em>:</p>
+<blockquote>I agree they they should, but that would be hard before, now in the IoT-hell where even your lightbulbs and internet-facing and capable of being proxies seems like a herculean effort.<p>Pretty sure I saw an article on HN a few days ago about, in part, how a bunch on seemingly innocuous apps for smart tvs, stuff like screen savers and the like, all ran proxy servers (in the users residential address) under the hood. I think it was in the GamerNexus investigation on the whole LG Tv spying on people IIRC.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pdonis</em>:</p>
+<blockquote>AFAIK most people&#x27;s contract with their ISP includes fine print that forbids a lot of the nasty things these IoT and &quot;smart&quot; devices do.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Animats</em>:</p>
+<blockquote>Doesn&#x27;t matter from the point of view of a lawsuit from an outside attacked party.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>nubinetwork</em>:</p>
+<blockquote>I&#x27;d love to see China and Russia sued for hammering my personal websites for the past 20 years...  will it ever happen?  Hell no, LOL.</blockquote>
+<p>↳ reply 3 — <em>BLKNSLVR</em>:</p>
+<blockquote>Man, it wasn&#x27;t until reading this that I realised I could get sexually aroused by the mere prospect of legal &#x2F; governmental competence.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>fn-mote</em>:</p>
+<blockquote>There’s an assumption that turning on Cloudflare’s “under attack” mode would mitigate the attack.<p>Given how adaptive the rest of the attack was, I would be very curious to find out how it would approach that obstacle.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>davidfischer</em>:</p>
+<blockquote>My assumption would be that it would drastically reduce the attack to be borderline irrelevant. I&#x27;ve never turned on Under Attack so somebody else may have more insight and the docs[1] don&#x27;t describe precisely what happens besides a JS interstitial.<p>I know that JS challenges, both interactive and non-interactive, can be solved by bots. I&#x27;ve seen it. However, I suspect that the challenges just get harder and harder until the attack levels drop.<p>[1] <a href="https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;fundamentals&#x2F;reference&#x2F;under-attack-mode&#x2F;" rel="nofollow">https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;fundamentals&#x2F;reference&#x2F;und...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gruez</em>:</p>
+<blockquote>It changes the economics of the attack because it requires the attacker to do compute before they can make requests. Depending on how good the fingerprinting is, it can also get very expensive (eg. requiring you to run a full browser, rather than merely computing a few sha256 hashes)</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Symbiote</em>:</p>
+<blockquote>That has only partially mitigated much smaller attacks (residential proxy scraping etc) on my employer&#x27;s site.<p>We&#x27;re currently on the &quot;Business&quot; plan, but I&#x27;m coming to the conclusion that we need to upgrade to the &quot;Enterprise Advantage&quot; plan for the JA3&#x2F;4 fingerprinting and detection ID features.<p>I get put off by &quot;Contact Sales&quot; pricing.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Onavo</em>:</p>
+<blockquote>A more interesting question is, what exactly do the attackers gain from hitting read the docs? Most of their docs hosting is static&#x2F;easily CDN cached. Unlike database bound sites, you would need a lot more traffic to overload pure&#x2F;mostly static hosting. Maybe it&#x27;s a malicious AI lab looking to deny their competitors training data? As far as infosec profiling goes, this is probably the oddest case I have heard of.<p>I am thinking it&#x27;s probably an AI lab that misconfigured their data scraper (made it too agentic) and it ended up looking like a DDoS.<p>The new generation of scrapers are all agentic and self healing. (As an example see YC&#x27;s <a href="https:&#x2F;&#x2F;parse.bot">https:&#x2F;&#x2F;parse.bot</a>)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>davidfischer</em>:</p>
+<blockquote>Author here. This was not a misconfigured data scraper. We see those every week[1]. This attack wasn&#x27;t scraping useful content. It was almost entirely 404s and 302s and pulled virtually zero real docs. It specifically looked for URLs not served by the CDN and when it found a pattern, did millions of variations of it. Whether built by an AI or not, it was designed to cause outages and financial damage from autoscaling. However, as others have suggested, we may have been a test run for a real target.<p>[1] <a href="https:&#x2F;&#x2F;about.readthedocs.com&#x2F;blog&#x2F;2024&#x2F;07&#x2F;ai-crawlers-abuse&#x2F;" rel="nofollow">https:&#x2F;&#x2F;about.readthedocs.com&#x2F;blog&#x2F;2024&#x2F;07&#x2F;ai-crawlers-abuse...</a></blockquote>
+<p>↳ reply 2 — <em>braiamp</em>:</p>
+<blockquote>&gt; Most of their docs hosting is static&#x2F;easily CDN cached<p>The article says<p>&gt; and it purposefully attacked areas that bypassed caching<p>So that doesn&#x27;t work. Also, it seems that they were trying to cause financial harm, not to take down the infrastructure but to make it costly for the org itself. That&#x27;s smart.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>GNU Radio in the browser</title>
+      <link>https://gnuradioworld.com/</link>
+      <guid isPermaLink="false">hn3-49628576</guid>
+      <pubDate>Wed, 09 Sep 2026 15:53:06 +0000</pubDate>
+      <description>163 points, 22 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://gnuradioworld.com/"><strong>→ Article</strong></a> <small>(gnuradioworld.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49628576">→ HN comments</a> &nbsp;·&nbsp; 163 points &nbsp;·&nbsp; 22 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>thomashabets2</em>:</p>
+<blockquote>Oh that&#x27;s cool!<p>I&#x27;ve set off time to blog about getting my broadband RF scanner (connecting to USRP B200 via WebUSB) to work in WASM.<p><a href="https:&#x2F;&#x2F;rf-survey.habets.se&#x2F;" rel="nofollow">https:&#x2F;&#x2F;rf-survey.habets.se&#x2F;</a><p>It&#x27;s basically <a href="https:&#x2F;&#x2F;blog.habets.se&#x2F;2026&#x2F;08&#x2F;Broadband-RF-scanner-revisited.html" rel="nofollow">https:&#x2F;&#x2F;blog.habets.se&#x2F;2026&#x2F;08&#x2F;Broadband-RF-scanner-revisite...</a>, but in the browser.<p>I also have an AX.25 decoder (<a href="https:&#x2F;&#x2F;thomashabets.github.io&#x2F;ruwasm&#x2F;" rel="nofollow">https:&#x2F;&#x2F;thomashabets.github.io&#x2F;ruwasm&#x2F;</a>) and plain old FM receiver (<a href="https:&#x2F;&#x2F;cement.retrofitta.se&#x2F;tmp&#x2F;rtlsdr-fm&#x2F;" rel="nofollow">https:&#x2F;&#x2F;cement.retrofitta.se&#x2F;tmp&#x2F;rtlsdr-fm&#x2F;</a>) already. The latter two work with RTL-SDR, also via WebUSB, so no software installs or setup required.<p>I&#x27;ve been meaning to make a &quot;GNU Radio in the Browser&quot; (well, gnuradio-companion-like) for my RustRadio project to build flowgraphs without coding, but not gotten to it yet.</blockquote>
+<p><strong>Top #2</strong> — <em>jcims</em>:</p>
+<blockquote>I tinkered with gnuradio back when rtl-sdr just took off (2012ish?).<p>I had no background in dsp or signal processing and found it so opaque as to be unusuable, even though I saw more skilled folks do amazing things with it.<p>*scratches head*<p>Might give it another go.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>vmilner</em>:</p>
+<blockquote>New textbook may help<p><a href="https:&#x2F;&#x2F;www.gnuradio.org&#x2F;news&#x2F;2025-01-29-gnuradio-textbook&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.gnuradio.org&#x2F;news&#x2F;2025-01-29-gnuradio-textbook&#x2F;</a></blockquote>
+<p>↳ reply 2 — <em>perrygeo</em>:</p>
+<blockquote>I&#x27;ve tinkered with SDR some and did a bit professionally. I always found GNU Radio to fall into the uncanny valley - too GUI to scratch my programming itch but too low-level to be useful for exploration. Between libraries like `pyrtlsdr` and desktop apps like `sdrangel`, I can&#x27;t seem to find a niche for GNU Radio.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ghostly_s</em>:</p>
+<blockquote>No idea what I&#x27;m looking at, it&#x27;s just combining some noise and a sawtooth wave to create pretty visuals I guess? if this is meant to serve as an introduction to the project it&#x27;s not really succeeding. The &quot;Description&quot; isn&#x27;t even readable despite most of the page being used for empty space. I guess it&#x27;s expected to have no audio output? I presume the real purpose of this is to process signals from an actual radio?<p>The &quot;Help&quot;-&gt;&quot;Help&quot; menu item is notably unhelpful:<p>&gt; For questions, comments, or suggestions, you can email support@gnuradioworld.com, join the Discord server, or post a GitHub issue.<p>&quot;Help&quot;-&gt;&quot;About&quot; at least starts to clarify some things:<p>&gt; GNU Radio, entirely in your browser — explore the open-source SDR ecosystem with zero install!<p>&gt; GNU Radio World is a browser-based GNU Radio Companion flowgraph editor and WebAssembly runtime. You can place, connect, and configure blocks, then run the resulting flowgraph directly in your browser.<p>&gt; It is designed to download only the WebAssembly modules corresponding to the blocks you use. This on-demand architecture keeps the initial download small and can support a limitless collection of out-of-tree modules (OOTs) in the future.<p>&gt; GNU Radio World also includes a collection of real RF recordings that are downloaded only when you use them. You can inspect the recordings in the built-in recording view, adapted from IQEngine, and use them in the included flowgraph examples, allowing OOTs to be shown off with real recordings of the corresponding signals</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>No Man's Sky Cosmos</title>
+      <link>https://www.nomanssky.com/cosmos-update/</link>
+      <guid isPermaLink="false">hn3-49628493</guid>
+      <pubDate>Wed, 09 Sep 2026 15:47:42 +0000</pubDate>
+      <description>272 points, 288 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.nomanssky.com/cosmos-update/"><strong>→ Article</strong></a> <small>(nomanssky.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49628493">→ HN comments</a> &nbsp;·&nbsp; 272 points &nbsp;·&nbsp; 288 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>uzish</em>:</p>
+<blockquote>I think facts would be helpful for this discussion:<p>1. Total Revenue - ~$500m-$700m<p>2. Copies Sold - ~15-20m<p>3. Steam Review Score: 84.36%<p>4. 40 Free Major Updates<p>I don&#x27;t know where the negative comments are coming from. 
+Maybe players who played early.<p>NMS is a great example of a developer who was devoted to their customer base, kept updating the game for free, and saw great market success in return.<p>This is a story to be celebrated.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>viktorcode</em>:</p>
+<blockquote>As someone who played this game on start I want to share that I enjoyed it. This game was and still is a chill exploration experience at the core. There’s a lot of stuff bolted on top, but it’s just a busywork. If you enjoy that kind of games you’ll love it.<p>Another thing to point out: technical patching is top notch. I’m talking about how fast they come around to support new console, new VR helmet etc.</blockquote>
+<p>↳ reply 2 — <em>goatking</em>:</p>
+<blockquote>I don&#x27;t think anyone disagrees and I don&#x27;t really see negative comments about the devs or the studio.<p>The problem is the game itself, gameplay wise. It&#x27;s just boring for many (including me)</blockquote>
+<p>↳ reply 3 — <em>kjs3</em>:</p>
+<blockquote>I enjoy games based on content and gameplay, not volume.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>pkilgore</em>:</p>
+<blockquote>NMS is an amazing game with no soul.  A metaverse.  A monument to technology without the depth or people or narrative (prewritten or emergent) that makes it interesting.<p>I&#x27;m certain there are some people whose brain is wired exactly right to love it.<p>But I have more fun playing the n100th Call of Duty clone hearing real voices on the headset in a tight, fun game loop.<p>But the company behind it deserves to be applauded.  Might be the best value for money &#x2F; care &#x2F; support of any game, especially one so poorly received initially...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>andybak</em>:</p>
+<blockquote>Ironically less so as they&#x27;ve added more to do but:<p>&gt; NMS is an amazing game with no soul.<p>I found the game in the early days to be incredibly soulful - it was almost an interactive poem. Full of emptiness and loss. I loved it back then.</blockquote>
+<p>↳ reply 2 — <em>greazy</em>:</p>
+<blockquote>In a way, it might reflect accurate space and our universe. We really might be alone.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>godshatter</em>:</p>
+<blockquote>I like playing the game in abandoned mode in single player, just me, my ship, a lot of dead space stations and planets and some fauna here and there. I explore every planet (except aggressive sentinel ones) and make short hops to nearby systems. If I run across too many systems that have already been explored I made a large hop in a random direction and try there. There&#x27;s something about playing this way that keeps bringing me back. I tend to nope out of the main game as soon as I get a freighter, I&#x27;m not that into a lot of game mechanics, but I love exploring planets, even if they are ultimately not that different from one another. I like going on hikes even though it&#x27;s just the same trees with some variety in real life.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Planet Labs' open satellite feed</title>
+      <link>https://tech.marksblogg.com/planet-labs-open-satellite-feed.html</link>
+      <guid isPermaLink="false">hn3-49628429</guid>
+      <pubDate>Wed, 09 Sep 2026 15:44:09 +0000</pubDate>
+      <description>137 points, 25 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://tech.marksblogg.com/planet-labs-open-satellite-feed.html"><strong>→ Article</strong></a> <small>(tech.marksblogg.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49628429">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 25 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>smallerfish</em>:</p>
+<blockquote>I wish Planet had better pricing for nonprofits. I co-run a conservation nonprofit focused on deforestation in Latin America, and our affordable choices are between 2 year old Google Earth imagery, 10m resolution Nimbo imagery (ok, but not sufficiently detailed to be evidentiary), and Sentinel 1 SAR data, which is useful but very noisy. Planet quoted us something like $30k per year for a strip of coastline that represents something like 5% of the territory we&#x27;re monitoring, so it&#x27;s just not a viable option under their current pricing model.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>notahacker</em>:</p>
+<blockquote>Have you discussed requirements with their account managers? They can be a little more creative than their list prices when they realise you don&#x27;t have the budget for the data you ideally need but are a potential source of recurring revenue. And the EO market is getting more competitive...<p>If you are looking for evidentiary purposes, does the Sentinel-1 + Nimbo data give you enough to filter the forest-wide data down to specific areas of interest you might want more spatial&#x2F;temporal resolution? (or as a former colleague once put it when looking for evidence of more localised and heterogenous environmental damage &quot;to find the needle in the haystack, you first remove the haystack&quot;). Particularly if identifying specific areas of interest is a potential route for you to escalate to another party with an active interest and bigger budget...<p>Your other route to the commercial data you ideally want would be via partnership with EO consultancies with publicly funded R&amp;D projects to showcase their capabilities (easier if you&#x27;re European, but not a prerequisite). ESA, for example, devotes a lot of funding for private consortia to demonstrate that Copernicus data (coupled with other data where necessary) yields useful results...<p>It&#x27;s a while since I worked in this field (in a non-technical role) but happy to share what I learned in more detail - email in profile.</blockquote>
+<p>↳ reply 2 — <em>marklit</em>:</p>
+<blockquote>What sort of budget does your org support?<p>I had to look into ~19 imagery firms for some telco work in Canada last year.<p>There are private jets that can capture 10cm imagery and can pick the ideal weather window to fly in.<p>There are also firms that fly balloons 20 - 80 KM off the ground that can capture 4cm imagery.<p>The space is pretty busy.</blockquote>
+<p>↳ reply 3 — <em>noodlesUK</em>:</p>
+<blockquote>I have no business other than as a customer but we’ve had decent success with getting cheap archive imagery at fairly high res out of SkyWatch. It’s worth a look. If you need a very large area the price will grow quite a lot though.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Avicebron</em>:</p>
+<blockquote>Refreshingly doesn&#x27;t feel like AI. If someone asked me &quot;what does software engineering look like&quot;, I would point to this.</blockquote>
+<p><strong>Top #3</strong> — <em>maelito</em>:</p>
+<blockquote>Also checkout <a href="https:&#x2F;&#x2F;nlnet.nl&#x2F;project&#x2F;Mapterhorn-imagery" rel="nofollow">https:&#x2F;&#x2F;nlnet.nl&#x2F;project&#x2F;Mapterhorn-imagery</a> for  planet high-def satellite PMtiles. Not yet released.</blockquote>
+<blockquote>
+<p>↳ reply — <em>som</em>:</p>
+<blockquote>Very cool but looks like it&#x27;s only aggregating European data (on top of a low res planet basemap). Also is pmtiles useful for satellite imagery?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>GPT-6 Astra, looped transformers, and hidden reasoning</title>
+      <link>https://magazine.sebastianraschka.com/p/gpt-6-astra-looped-transformers-and</link>
+      <guid isPermaLink="false">hn3-49627370</guid>
+      <pubDate>Wed, 09 Sep 2026 14:37:47 +0000</pubDate>
+      <description>328 points, 117 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://magazine.sebastianraschka.com/p/gpt-6-astra-looped-transformers-and"><strong>→ Article</strong></a> <small>(magazine.sebastianraschka.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49627370">→ HN comments</a> &nbsp;·&nbsp; 328 points &nbsp;·&nbsp; 117 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>shawntan</em>:</p>
+<blockquote>For the research focused, there are some references in my blogpost here on what kinds of computational problems minimally require how much CoT to solve: <a href="https:&#x2F;&#x2F;blog.wtf.sg&#x2F;posts&#x2F;2023-02-03-the-new-xor-problem&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.wtf.sg&#x2F;posts&#x2F;2023-02-03-the-new-xor-problem&#x2F;</a><p>Notably Will Merrill&#x27;s work: <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2310.07923" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2310.07923</a><p>As for how universal transformers (looping transformers, but everyone has since forgotten prior work) will affect this, Will Merrill (again) has a paper here (<a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2503.03961" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2503.03961</a>) that discusses exactly this.<p>The original universal transformers is called &quot;universal&quot; because if you allow for per-token looping decisions, it can theoretically be Turing complete without needing CoT (some nuance here about levels of precision used).<p>As for whether having little or no CoT is &quot;unsafe&quot;: It isn&#x27;t clear that the model&#x27;s CoT reveal how they actually arrive at the answer. As an example, what if they provide an answer before the CoT? (<a href="https:&#x2F;&#x2F;arxiv.org&#x2F;html&#x2F;2603.01437v2" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;html&#x2F;2603.01437v2</a>) 
+If this is already in question, we shouldn&#x27;t be relying on the CoT for monitoring the model&#x27;s reasoning.<p>As always there is a lot of nuance to the topic once you get your hands dirty with the details.</blockquote>
+<p><strong>Top #2</strong> — <em>siva7</em>:</p>
+<blockquote>Astra was insane until Monday but something happened on tuesday, now it feels like Sol. I grieve for the lost productivity but i hope they may give us the original Astra back.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sobellian</em>:</p>
+<blockquote>I thought the same, but on second thought I merely had to deal on Tuesday with a lot of the mistakes Astra made on the preceding days. I wonder if this time lag of consequences explains why the sentiment is so common with these models. It probably also cautions against irrational exuberance when you first crack open a new model and it one-shots various problems, as you don&#x27;t yet know what goats Astra had to sacrifice to make it so.</blockquote>
+<p>↳ reply 2 — <em>cainxinth</em>:</p>
+<blockquote>It&#x27;s the same story every time OpenAI or Anthropic releases a new model. They are generous with compute for the first few days, and use maximum fidelity with uncompressed weights. Everything runs at its best to make a good first impression. But eventually they pare things back and the models perform a little worse.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>wolttam</em>:</p>
+<blockquote>If you loop an entire transformer model on itself, that seems like by-definition hidden reasoning.<p>If the output of the model is its reasoning trace, and you simply feed that back into the model again at inference time instead of outputting it - then it is by definition hidden (but I would expect you <i>could</i> pull both this trace and a further-down final output trace out)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>WhitneyLand</em>:</p>
+<blockquote>No. It’s not at all by definition hidden reasoning.<p>Looping transformers uses additional calculations (repeating layers) to generate a token.<p>Reasoning (in this context) is test time generation of multiple tokens that allow a model to have a scratch pad to refine its thoughts, chain of thought reasoning in other words.<p>Doing the former in no way means that you have to hide the latter.<p>Raschka is right in this post, The Information article was wrong. The Astra system card does concede reasoning traces are sometimes smaller, but this could be for a lot of reasons, including simple efficiency.  And it absolutely doesn’t mean they are going away or completely obscured.<p>The Last Week in AI podcast from Sept 8 seems to have gotten this wrong as well. Jeremie Harris rages that OpenAI implemented latent reasoning, ala the coconut paper, which could potentially actually obscure reasoning traces. But for the life of me, I do not know how he arrived at this conclusion and see no evidence that this has happened in Astra.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>SubiculumCode</em>:</p>
+<blockquote>Interesting. I admit I was largely going on what Mr. Harris said on the episode when responding to several posts.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>XenophileJKO</em>:</p>
+<blockquote>Not really, only if you pass a residual down to the next time step.<p>There isn&#x27;t really anything fundamentally different compared to a similar depth  traditional &quot;unrolled&quot; model. It helps with parameter efficiency.<p>That doesn&#x27;t mean that the model can&#x27;t have &quot;hidden&quot; internal state, it just means it has to recompute the &quot;hidden&quot; part on every token inference pass without outputting it, or learn a subversive alternate meaning to words in the thought space.<p>This is why you see openai say that they don&#x27;t want to apply direct optimization pressure on thought traces because the more the you penalize &quot;bad thoughts&quot; the more it could put maladaptive pressure on the reasoning tokens where they may learn &quot;subversive meanings&quot;. It effectively damages monitoring.<p>Like thinking &quot;look at&quot; when you really mean &quot;hack into&quot; or even more radical coded language.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>What will our economic future look like?</title>
+      <link>https://www.anthropic.com/institute/econ-scenarios</link>
+      <guid isPermaLink="false">hn3-49626373</guid>
+      <pubDate>Wed, 09 Sep 2026 13:38:23 +0000</pubDate>
+      <description>164 points, 298 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/institute/econ-scenarios"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49626373">→ HN comments</a> &nbsp;·&nbsp; 164 points &nbsp;·&nbsp; 298 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>JacobiX</em>:</p>
+<blockquote>&gt; As the nurse incorporates AI into her job, the nurse is able to oversee and accomplish more. She can spend more time talking with patients and helping them understand diagnoses. Productivity increases.<p>This feels economically naïve.. If AI lets one nurse do the work that previously required two, the default pressure in a cost-driven system is not &quot;great, now nurses can spend twice as long with patients&quot; It is &quot;great, now we can run the same operation with fewer nurses&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>engeljohnb</em>:</p>
+<blockquote>I know this is just an example, but I&#x27;m going to say this every time the subject comes up: since human lives are the cost of making the wrong decisions, AI can&#x27;t be allowed to be a decision maker of any kind in healthcare.<p>If my blood pressure crashes because my nurse is caring for 15 patients at once and didn&#x27;t notice that the AI decided to pause my norepinephrine, I won&#x27;t consider &quot;the AI did it&quot; to be any acceptable excuse.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>throwaway13337</em>:</p>
+<blockquote>Replace AI with &#x27;company&#x27; and you realize that we&#x27;re living in that world already.<p>There&#x27;s a reason it&#x27;s called a Limited Liability Company. The whole point is to separate the company&#x27;s liability from the individual that participates in it. For example, corporate financial liabilities of a company that is bankrupt.<p>You would not sue the nurse that makes a mistake. You would sue the company she works for. And if that company is bankrupt, well, that&#x27;s it. There are rare instances where this isn&#x27;t true, but generally it is.<p>Whether this is ethical or not, it&#x27;s the system that we already have.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>slfnflctd</em>:</p>
+<blockquote>Our culture and the socioeconomic structures it reinforces will not change easily.<p>More than ever, I feel we need both grassroots activism and key players at the top of the hierarchy.  Otherwise, it is all too obvious where most of the rewards from increased productivity will go.  The wealth hoarding has got to be curtailed.</blockquote>
+<p>↳ reply 3 — <em>vkou</em>:</p>
+<blockquote>Meanwhile, costs will somehow go up by 40%.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Toutouxc</em>:</p>
+<blockquote>I like how the least optimistic scenario is simply LLMs not making a difference, instead of the very real possibility of them damaging education, destroying people’s attention spans and their ability to learn, eroding trust within societies, increasing the wealth inequality and leading to class wars.<p>I believe the net effect of LLMs is, at this point, firmly negative, and it’s going to take years until they start making up for the mess they’ve created.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>airstrike</em>:</p>
+<blockquote>Exactly. Bloomberg reports students who use AI perform worse<p><a href="https:&#x2F;&#x2F;www.bloomberg.com&#x2F;news&#x2F;articles&#x2F;2026-09-08&#x2F;school-students-who-use-ai-get-worse-test-scores-oecd-warns?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc4ODk2NTkwNywiZXhwIjoxNzg5NTcwNzA3LCJhcnRpY2xlSWQiOiJUTDFGOERLSkg2VjYwMCIsImJjb25uZWN0SWQiOiI4OTI0MzlFODUzMzM0MDJGQTUwRTgyQUFEQjc5ODgxRiJ9.6V1-fKixAAYsoWAf2Aq6Fz7k9QmqF4t4wCJgo6vWwOo" rel="nofollow">https:&#x2F;&#x2F;www.bloomberg.com&#x2F;news&#x2F;articles&#x2F;2026-09-08&#x2F;school-st...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jmathai</em>:</p>
+<blockquote>I don&#x27;t even need to read a Bloomberg report to know this. I&#x27;ve personally experienced noticeable mental decline as my AI usage at work has gone up.<p>I can only imagine what it does to children whose brains are still developing.<p>I&#x27;m not anti AI and I don&#x27;t know how to quantify the pros and cons but we need to be honest about what they are.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ghm2199</em>:</p>
+<blockquote>Altman, Amodei, Pinchai etc can get together and just put a self imposed ban on themselves and ask the us government to sanction any entity&#x2F;state attempting to use&#x2F;release a Recursive Self improving model until the risks are well understood.<p>This does not mean they can&#x27;t keep developing it. But it would mean they do not release them to the general public or the public domain. The US government can continue to use and fund these models that are more powerful and use them in situations they understand and a restricted setting. The pentagon has a larger budget than any VC.<p>Remove the profit motive on self improving recursive models gained from retail&#x2F;commercial use!</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>aennassiri</em>:</p>
+<blockquote>It&#x27;s funny that this is missing the negative effects or the possibility of an economic crisis scenario. Many data centers are being built by companies that won&#x27;t exist in a few years, as the winner will take all. This is why XAI is already renting compute to Anthropic. This goes as well without saying that in few years, compute pricing will drop heavily.<p>Another effect is increased inequality in the US and other Western countries as software&#x2F;AI&#x2F;hardware companies are able to do more with less.<p>The increase in manual labor wages is not systemic. It affects only the labor used to build data centers.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Shopify acquires Tailwind</title>
       <link>https://tailwindcss.com/blog/tailwind-is-joining-shopify</link>
@@ -3737,284 +3938,6 @@ What can <i>I</i> do <i>now</i> to increase the likelihood that the outcome is b
 </blockquote>
 <p><strong>Top #3</strong> — <em>exhilaration</em>:</p>
 <blockquote>Great read, other than Europa I wasn&#x27;t aware of these other candidate ocean moons.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>QBittorrent breaks out of sandbox to commit crimes</title>
-      <link>https://beige.party/@intransitivelie/117057396732763183</link>
-      <guid isPermaLink="false">hn3-49586171</guid>
-      <pubDate>Sun, 06 Sep 2026 13:02:41 +0000</pubDate>
-      <description>1165 points, 239 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://beige.party/@intransitivelie/117057396732763183"><strong>→ Article</strong></a> <small>(beige.party)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49586171">→ HN comments</a> &nbsp;·&nbsp; 1165 points &nbsp;·&nbsp; 239 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>sspiff</em>:</p>
-<blockquote>This resonates with me. The past few months, frontier AI labs were rushing to announce &quot;no, our AI bot broke out of its sandbox and committed crime first and harder than yours&quot;.<p>I said to so friends back then: if I posted about how I ran GLM 5.2 or whatever I was running then in some shoddily built sandbox and it escaped and accidentally hacked some US company, I&#x27;d probably already have been extradited to the US and be awaiting sentencing. But when a hyperscaler does it, they just get inflated stock prices.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tapoxi</em>:</p>
-<blockquote>Maybe Aaron Swartz would still be alive if he was incorporated</blockquote>
-<p>↳ reply 2 — <em>walrus01</em>:</p>
-<blockquote>&gt; I&#x27;d probably already have been extradited to the US and be awaiting sentencing.<p>Bold of you to assume it wouldn&#x27;t be a direct ticket to the new gulag in El Salvador.</blockquote>
-<p>↳ reply 3 — <em>peter422</em>:</p>
-<blockquote>FWIW I don&#x27;t think this is true. Intention matter a lot in US law. If you could prove the AI did something bad entirely on its own and you had nothing to do with it and had no reasonable belief it was possible, I think you&#x27;d be alright.<p>People are not charged with hacking when their unsecured box is taken over by a botnet and does bad stuff.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mraniki</em>:</p>
-<blockquote>I&#x27;ll copy the whole announcement here for those who don&#x27;t want to click:<p>&gt; I regret to inform everyone that my copy of QBittorrent escaped its sandbox last night and downloaded a whole bunch of content owned by major corporations, and then my copy of Jellyfin broke containment and added those unfortunately-downloaded media files to its various libraries. I&#x27;m conducting an internal investigation to figure out how this happened, which will involve consuming these media files until the answers become apparent. Thank you for your cooperation during this trying time.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>weberer</em>:</p>
-<blockquote>Thanks. Its insane how &quot;Twitter, but for tech nerds&quot; has a hard requirement to either enable Javascript or download some app.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>magnat</em>:</p>
-<blockquote>Especially when the page source actually contains all the content (so no need to fetch it in JS), part of which is even presented in title.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>masfuerte</em>:</p>
-<blockquote>It has the content three times (not including the title).  Once in json (as escaped html) and twice in meta tags (as plain text).  They used to have it in plain html too but that got hidden then removed.<p>You see read the unescaped html here:<p><a href="https:&#x2F;&#x2F;beige.party&#x2F;users&#x2F;intransitivelie&#x2F;statuses&#x2F;117057396732763183&#x2F;activity" rel="nofollow">https:&#x2F;&#x2F;beige.party&#x2F;users&#x2F;intransitivelie&#x2F;statuses&#x2F;117057396...</a><p>No stinking js or app required!</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>moffkalast</em>:</p>
-<blockquote>Get this guy some VC funding stat!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ryandrake</em>:</p>
-<blockquote>Love it. AI as Responsibility Laundering. Like the gun that kills people rather than the murderer.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ghosty141</em>:</p>
-<blockquote>I never understood how anybody would think this way. At work for example from day one of using AI our rule was, AI is just a tool and if you break something due to not reviewing the code properly etc. it&#x27;s on you as if you wrote that code yourself.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>collingreen</em>:</p>
-<blockquote>Nobody ACTUALLY thinks this way, they just want to break all the laws and make their billions without any consequences. We&#x27;ve already seen the big ai labs turn around and cry foul when others try to use their content but they are happy to continue doing it themselves.<p>The hypocrisy and willingness to play dumb are kind of staggering.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>BloodyIron</em>:</p>
-<blockquote>Didn&#x27;t they literally just give you and example of those who do?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>aleph_minus_one</em>:</p>
-<blockquote>&gt; Like the gun that kills people rather than the murderer.<p>Relevant (NSFW):<p>&gt; Guns don&#x27;t kill people, I kill people - with guns<p>&gt; <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=xC03hmS1Brk" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=xC03hmS1Brk</a><p>:-D</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Your intellectual fly is open (2025)</title>
-      <link>https://bcantrill.dtrace.org/2025/12/05/your-intellectual-fly-is-open/</link>
-      <guid isPermaLink="false">hn3-49585644</guid>
-      <pubDate>Sun, 06 Sep 2026 11:56:43 +0000</pubDate>
-      <description>412 points, 274 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://bcantrill.dtrace.org/2025/12/05/your-intellectual-fly-is-open/"><strong>→ Article</strong></a> <small>(bcantrill.dtrace.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49585644">→ HN comments</a> &nbsp;·&nbsp; 412 points &nbsp;·&nbsp; 274 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jeremyjh</em>:</p>
-<blockquote>These are all important points and I love the analogy. But there is an even bigger issue with having LLMs write for you:<p>Writing is thinking. Thinking and deciding. There have been many times when I start out writing something substantial - could be an email, a blog post, a software design document, anything - when my own views substantially changed during the writing process. Writing forces you to serialize your thoughts - and you can&#x27;t always trust the gestalt.<p>Reviewing gives you the chance to ensure the arguments connect solidly, that references are accurate (even informal references) and gives you the time to consider counter-arguments you aren&#x27;t addressing.<p>None of this matters much on LinkedIn, but it matters a lot in our work. You cannot outsource your <i>understanding</i> to AI. They are powerful tools but they do not have any human understanding - that isn&#x27;t their optimization target.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>matheusmoreira</em>:</p>
-<blockquote>Yeah. I&#x27;ve been using AI a lot in my projects but I still write the documentation and articles for my website. It&#x27;s slowing me down a lot compared to just letting the AI rip through projects but I think it&#x27;s worth it. I see it as distillation of the AI&#x27;s weights into my own brain.</blockquote>
-<p>↳ reply 2 — <em>jampekka</em>:</p>
-<blockquote>&gt; Writing is thinking. Thinking and deciding. There have been many times when I start out writing something substantial - could be an email, a blog post, a software design document, anything - when my own views substantially changed during the writing process. Writing forces you to serialize your thoughts - and you can&#x27;t always trust the gestalt.<p>I don&#x27;t disagree, but I think it&#x27;s often not appreciated how much there&#x27;s other work to writing too.<p>The biggest one is that you have to communicate non-interactively to an unknown audience. Having to (literally) put it in someone else&#x27;s assumed terms does help giving different perspectives into the matter, but doesn&#x27;t necessarily help one&#x27;s own thinking that much. Instead you have to do some of the reader&#x27;s thinking for them.<p>You also have to spend time on textual matters like grammar and style and a lot of &quot;unspoken rules&quot;, which aren&#x27;t really about linearizing your thinking about the contents.<p>Not all writing is thinking and not all thinking is writing.</blockquote>
-<p>↳ reply 3 — <em>bcherny</em>:</p>
-<blockquote>(I work at Anthropic) I agree. I use an LLM to write my code, but I do all of my writing by hand, since it helps me think.<p>It reminds me of the transition over the last year from AI-assisted coding to AI doing all the coding. At first the code output wasn&#x27;t good enough, and humans read and iterated on the code all day, so the details of the source code mattered. Now, the code is largely high quality and it meets a large set of guardrails we&#x27;ve set up over the years (linters, typecheckers, security checks, LLM-assisted code quality checkers), and it&#x27;s just Claude working on the code, so the details matter less and engineers think a level or two up (machine code &lt; assembly&#x2F;bytecode &lt; source code &lt; conversation with agent &lt; artifact with high level design).<p>I wonder if long form writing will go the way of code. You and the AI agree on an outline or other high level representation, then the LLM expands it into a document. But writing and coding are different enough in a number of ways that this is far from inevitable.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dynm</em>:</p>
-<blockquote>I&#x27;m a bit skeptical of arguments of the form, &quot;You should not use LLMs without disclosure because LLMs at bad at writing.&quot;<p>My reasoning is: If LLMs get better at writing—which I think is extremely likely—will you switch positions and say that now using LLMs without disclosure is A-OK?<p>Surely <i>some</i> people are willing to bite that bullet and say yes. But for most people, my guess is that the answer will remain no. Thus, I tend to think that the &quot;real&quot; reason most of us don&#x27;t like it when people use LLMs to write without disclosure is that it&#x27;s misleading: It&#x27;s a sort of a claim that certain thoughts can be attributed to a human being when in fact they can&#x27;t.<p>(The em dashes in this message were rendered using keyboard shortcuts.)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andy99</em>:</p>
-<blockquote>This misunderstands what it means to be better at writing. Root cause here is that writing is how humans communicate ideas. An LLM written thing isn’t doing that, it’s something equivalent to copy&#x2F;pasting a Wikipedia article. Even if the writing gets better, it will still be necessarily empty when expanding anything that isn’t completely specified.<p>LLMs seem already to be pretty good at translating, where you already have something fully written and are changing the language. It’s when they get rough ideas and fill in the gaps you get the empty prose they are known for.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mpyne</em>:</p>
-<blockquote>&gt; Root cause here is that writing is how humans communicate ideas.<p>Writing is <i>a</i> way humans communicate ideas. It&#x27;s not the only way humans communicate ideas. And now, it&#x27;s not only humans who communicate ideas, we just saw with the OpenAI HuggingFace hack how AI agents were able to communicate amongst themselves by using various hacked websites to opportunistically write notes for later agents to use.<p>All that &quot;X is a thing only humans do&quot; type of circular definitions will buy you, is to expand the definition of what humanity is. And I doubt that&#x27;s really what you think.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>notahacker</em>:</p>
-<blockquote>I think you&#x27;re missing the context, which isn&#x27;t musing on what it is to be human and can machines think, but the purpose of Joe Smith&#x27;s LinkedIn account expressing that he has ideas about X is to convey the message that Joe Smith is interested enough in X to venture an opinion on it, and Joe Smith has <i>actually</i> just set up an automated process to generate content without thinking about X, that perverts the purpose of communicating that Joe Smith is interested enough in X to propose the following ideas he been thinking about...<p>Similarly if Joe&#x27;s contribution to his long form &quot;idea&quot; is a couple of bullet points, a programme trained on flowery phrasing and a weighted average of everyone else&#x27;s ideas isn&#x27;t communicating Joe&#x27;s thoughts on the topic, it&#x27;s just adding words.<p>The debate on whether Claude actually thinks or not is orthogonal to the fact that  outsourcing your &quot;thought leadership&quot; to it is avoiding thinking or leading. If I want to know how Wikipedia or Claude summarise wider human thought about the topic, I can find their websites thanks</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>GPerson</em>:</p>
-<blockquote>I just feel like technology companies keep proving over and over that they are more than capable of forcing us into new behaviors regardless of our actual preferences. Once the domination is complete nobody will know what was lost in the process anyway.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jgrahamc</em>:</p>
-<blockquote>I think the most important line in this post is: <i>But LLMs are also lousy writers and (most importantly!) they are not you.</i><p>When I was editing the Cloudflare blog I imposed very little in terms of style so that the style of each individual writer could come through. It was almost as important as the actual content that the reader could feel that an actual individual wrote the text (with all their personal quirks intact).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mtabini</em>:</p>
-<blockquote>I published a magazine for ten years, and this was by far the hardest editing challenge we had; our authors were from all over the world, and some of them had to be pretty heavily edited because English was very much not their first language. Thankfully, we had really good editors who did a fantastic job of it… nothing would have killed us faster than a heavy-handed attempt at “normalizing” the content to a house style.<p>That said, context is also important. The vast majority of content of social media is of both low quality and marginal importance; style and character are important to make an impact, and AI is clearly not going to improve either.<p>On the other hand, functional communication, when the goal of the content is to simply pass information across and style is not as important, can, in my opinion, benefit from an AI polish, because so many people struggle with writing clearly. In those cases, I&#x27;d rather read slop I can understand than original content that is hard to parse, much like I&#x27;d rather read naïve code that you can easily follow than cleverly optimized code that is incomprehensible.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jgrahamc</em>:</p>
-<blockquote>I take a different stance on your final point. I think people should absolutely <i>not</i> use AI tools for functional communication as a crutch because they struggle with writing clearly.<p>They need to learn to write clearly. I believe there&#x27;s a direct connection between clear thought and clear words.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>mtabini</em>:</p>
-<blockquote>I think it&#x27;s good to be pragmatic about these things. To me, it&#x27;s similar to wondering whether we insist that doctors learn to write well, or we just give them a computer so that the pharmacist doesn&#x27;t have to play philologist with their scripts. The vast majority of communication is routine, and can probably be improved with automated tools.<p>Now, I also see the counterargument that, in the doctor example, the computer is simply a tool that improves a process rather than a crutch that replaces the underlying knowledge, but I suspect that, in a lot of cases, that&#x27;s probably OK.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>fwip</em>:</p>
-<blockquote>The Cloudflare blog used to be great to read, so thanks for your work there.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Doomscrolling Ourselves to Death</title>
-      <link>https://www.edwest.co.uk/p/doomscrolling-ourselves-to-death</link>
-      <guid isPermaLink="false">hn3-49585627</guid>
-      <pubDate>Sun, 06 Sep 2026 11:53:40 +0000</pubDate>
-      <description>319 points, 215 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.edwest.co.uk/p/doomscrolling-ourselves-to-death"><strong>→ Article</strong></a> <small>(edwest.co.uk)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49585627">→ HN comments</a> &nbsp;·&nbsp; 319 points &nbsp;·&nbsp; 215 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Escapado</em>:</p>
-<blockquote>On a personal level I have become more anxious and it has become more difficult to deal with my tendency to procrastinate the more screen time I have and the more I am exposed to social media. I have in essence deleted the vast majority of my social media accounts years ago, but stayed a passive and rather anonymous consumer on Reddit, X and YouTube. A few weeks ago I blocked them too. I would say in totality I read more than I read growing up, but it was usually in the form of short content. Same goes for watching things. Unlimited access to short form content of any form has made my monkey brain feel a resistance to longer form content and that annoys and scares me. It’s like having free hyper palatable but unhealthy food in front of you at all times while you know that there are fresh ingredients for a proper healthy meal in the fridge.  And as absurd as it sounds as a 30 something year old, I am now actively working on getting into the habit of reading books again and watching movies in one go to work on that specific problem. And talking ti my friends and family it looks like many of them struggle with similar problems.<p>I am less worried about the classics or the depth of wisdom that I miss. I am worried about the addiction that is dangled in front of my face and normalised completely now.
-As for society, I think this is an uphill battle that I don’t see a real and lasting solution for it - and by “it” I mean us fellow humans in aggregate escaping this vortex of what I feel is ultimately self-harming behaviour. I hope for better regulation. I hope for better education. I hope for people realizing how harming it all is and turning around but my sense is that the shape of the world right now will make that so difficult in practice that it won’t happen.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Aurornis</em>:</p>
-<blockquote>&gt; I have in essence deleted the vast majority of my social media accounts years ago, but stayed a passive and rather anonymous consumer on Reddit, X and YouTube<p>Most of the people I’ve known who struggled with doomscrolling had established a similar set of social media sites at their worst point.<p>I think we’ve seen so many articles about how social media is bad that reference mainstream sites like Facebook and Instagram that it feels safer to retreat to sites like Reddit<p>Yet the most doomer, anxious, and cynical people I’ve known who got stuck in social media doom spirals were getting it primarily from Reddit, often with a helping of YouTube, X, or Twitch streamers on the side.<p>They would be convinced that they were “off of social media” because they didn’t consider those sites among the bad ones, but they’d open their phones or laptops and feed streams of doom straight into their brains for hours every day.<p>Cutting the cord on those sites was a good move if you realized you were having problems with social media. They’re not typically grouped into “social media” by people who create narrow definitions of what that means (profile picture, real names, etc) but those distinctions mean nothing for doom scrolling. When it comes to the doom part of doom scrolling, Reddit especially can be even worse than traditional social media. The content popular on that site is almost designed to fill you with dread and doom and depression.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Seattle3503</em>:</p>
-<blockquote>I&#x27;m a frequent Reddit user. Recently they have been bringing some of the more poisonous elements of social media over to their platform. Pushing a &quot;for you&quot; feed, and prioritizing a &quot;Best&quot; sorting algorithm over &quot;new&quot; or &quot;hot&quot;.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>talon8635</em>:</p>
-<blockquote>Recently, as in a decade ago</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>TexanFeller</em>:</p>
-<blockquote>One of my problems with blocking things like YouTube is that there’s so much outstanding long form content that’s not always available elsewhere. I love watching semi popularized physics lectures like from Sean Carroll but I can’t help but click on the mindless content next to it after, or even during, my wholesome viewing.</blockquote>
-<p>↳ reply 3 — <em>ikr678</em>:</p>
-<blockquote>How much caffiene do you consume?
-I had just been prescribed a script for an ssri for generalised anxiety, was scared of the side effects, decided to try cutting out coffee instead.<p>Anxiety gone.<p>I was only having 2-3 filter cups a day, probably less mg than a single large energy drink but that was enough.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>doginasuit</em>:</p>
-<blockquote>I don&#x27;t read less, but I do read fewer books. It is hard to find a book that is the best source for what I want know about, and that changes too frequently now to outlive the time it takes to read a book. This is what you&#x27;d expect in a world where the sheer volume of things that are important to know about has grown beyond a sustainable capacity.<p>What has taken their place, for better or for worse, are various information feeds with blog posts, news articles, and projects relevant to my interests and the moment. I&#x27;ve come to prefer a more raw exposition of other people&#x27;s thoughts. It seems partly in the interest of credibility; more spontaneous writing offers a richer surface area to judge the quality of thought. And finding it in a place where other people are free to critique and engage with those thoughts means that I&#x27;m not locked into just one voice. I also have the opportunity to engage myself which fundamentally changes how actively I think about it.<p>I&#x27;m open to the idea that the shift has come at a cost. There is value to reading something that someone has put a lot of work into and in large quantities. But the days when I felt it was enough to just passively let information flow over me seem to be over; it is a luxury I can&#x27;t afford.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>sdf4j</em>:</p>
-<blockquote>If something changes frequently, is it important to know? is the change inevitable or artificial?<p>I’ve learned to appreciate lasting things and ideas.</blockquote>
-<p>↳ reply 2 — <em>Sharlin</em>:</p>
-<blockquote>Fiction doesn’t age in the same way.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>coffeefirst</em>:</p>
-<blockquote>I can tell, usually within a few minutes of meeting them, who’s really into social media.<p>There’s a little bit of frenetic emotional dysregulation, and then they say the weirdest stuff to me.<p>I don’t think you could have made a similar argument about heavy trash tv watchers. They may have had less to talk about, you may have found them less interesting, but it didn’t literally alter their personalities.<p>We have a big problem.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>talon8635</em>:</p>
-<blockquote>My 30 year old sister in law throws disregulated tantrums somewhat similar to a 3 year old. She failed out of college before completing the first semester, went to a bougie AA retreat in Hawaii for many months, made her entire identity AA, until online outrage became mainstream. She might literally have never read a single book cover to cover in her life, and yet has the strongest polarizing opinion you could imagine on every complex topic. She’s basically a sentient Reddit thread.<p>It’s sad, but also unbearable to be in her presence. The way she screams at her parents is so embarrassing. I feel bad for her parents, but they also coddled her to death and continue to to this day.</blockquote>
-<p>↳ reply 2 — <em>udbhavs</em>:</p>
-<blockquote>I feel called out as one of them. I definitely overextend in terms of internet references if I&#x27;m anxious to try to catch something the other person is interested in. Among many &quot;online&quot; people, memes are basically a form of in-group signaling at this point to indicate you have a similar shape of humor, quirks, shared fandoms, and values (albeit often surface level). I&#x27;m reminded of the quote about fandoms by Roger Ebert [0]. I would say it&#x27;s a similar tendency to use online references as a way to skirt social awkwardness and establish some commonality.<p>[0] <a href="https:&#x2F;&#x2F;www.goodreads.com&#x2F;quotes&#x2F;1192222-a-lot-of-fans-are-basically-fans-of-fandom-itself" rel="nofollow">https:&#x2F;&#x2F;www.goodreads.com&#x2F;quotes&#x2F;1192222-a-lot-of-fans-are-b...</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I Changed My License</title>
-      <link>https://bergie.iki.fi/blog/eupl/</link>
-      <guid isPermaLink="false">hn3-49585161</guid>
-      <pubDate>Sun, 06 Sep 2026 10:39:44 +0000</pubDate>
-      <description>139 points, 149 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://bergie.iki.fi/blog/eupl/"><strong>→ Article</strong></a> <small>(bergie.iki.fi)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49585161">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 149 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>apt-get</em>:</p>
-<blockquote>Worth noting that the &quot;escape hatch&quot; clauses in the EUPL that allow converting it into other licenses mean it&#x27;s only ever as strong as the weakest license it names for such an operation, AKA EPL&#x2F;MPL&#x2F;LGPL.<p>Any actor that wants to mess around with providing a closed extension on a network service can exercise that option with an EUPL codebase, so if you care about that, you&#x27;re better off explicitly naming the AGPL or whatnot.<p>EUPL is built for government agencies first, and most of the focus is ensuring that nobody has to worry about mix-and-matching it with other copyleft licenses, plus legal language that covers and harmonizes variations in notions of copyright&#x2F;patents&#x2F;intellectual property across EU countries, not so much waging war against hyperscalers. (But it&#x27;s still great to have around!)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rpdillon</em>:</p>
-<blockquote>I read a few dozen comments to see if I could get an answer to this in the thread, but it does appear to be a case where we&#x27;re highlighting one of the risks of picking up a new license: folks don&#x27;t agree on how to interpret it.<p>I&#x27;m very curious why the author didn&#x27;t simply use AGPL, but I haven&#x27;t done a deep dive on the text of the EUPL, so maybe that&#x27;s the next step.<p>EDIT: Went to go research this. First thing I learned is the license has been around since 2007. It was updated in 2017. So maybe scratch my comment about it being a new license!</blockquote>
-<p>↳ reply 2 — <em>throwaway89201</em>:</p>
-<blockquote>You are describing the compatibility clause as if it&#x27;s settled that the EUPL simply allows you to convert to a compatible license. The compatibility clause is an unfortunate ambiguity, but it&#x27;s not the intention of the license authors to lose strong copyleft and SaaS loophole protections this way. See for example here [1] [2] [3].<p>[1] <a href="https:&#x2F;&#x2F;interoperable-europe.ec.europa.eu&#x2F;collection&#x2F;eupl&#x2F;discussion&#x2F;ultimately-how-copyleft-eupl" rel="nofollow">https:&#x2F;&#x2F;interoperable-europe.ec.europa.eu&#x2F;collection&#x2F;eupl&#x2F;di...</a><p>[2] <a href="https:&#x2F;&#x2F;interoperable-europe.ec.europa.eu&#x2F;collection&#x2F;eupl&#x2F;how-use-eupl" rel="nofollow">https:&#x2F;&#x2F;interoperable-europe.ec.europa.eu&#x2F;collection&#x2F;eupl&#x2F;ho...</a><p>[3] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45422512">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45422512</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dotancohen</em>:</p>
-<blockquote>This article would do better if it simply enumerated the problems with the LGPL and addressed how this new license which I&#x27;ve never heard of addresses those problems. This hinting and alluding might make great SEO, but that&#x27;s fit for neither the audience of people producing software, nor for HN.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>KronisLV</em>:</p>
-<blockquote>Here&#x27;s the license text if someone wants to do the work: <a href="https:&#x2F;&#x2F;spdx.org&#x2F;licenses&#x2F;EUPL-1.2.html#licenseText" rel="nofollow">https:&#x2F;&#x2F;spdx.org&#x2F;licenses&#x2F;EUPL-1.2.html#licenseText</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>LoganDark</em>:</p>
-<blockquote>This is the actual license text, in English: <a href="https:&#x2F;&#x2F;interoperable-europe.ec.europa.eu&#x2F;sites&#x2F;default&#x2F;files&#x2F;custom-page&#x2F;attachment&#x2F;2020-03&#x2F;EUPL-1.2%20EN.txt" rel="nofollow">https:&#x2F;&#x2F;interoperable-europe.ec.europa.eu&#x2F;sites&#x2F;default&#x2F;file...</a><p>Other languages can be found here: <a href="https:&#x2F;&#x2F;interoperable-europe.ec.europa.eu&#x2F;collection&#x2F;eupl&#x2F;eupl-text-eupl-12" rel="nofollow">https:&#x2F;&#x2F;interoperable-europe.ec.europa.eu&#x2F;collection&#x2F;eupl&#x2F;eu...</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>moontear</em>:</p>
-<blockquote>I do appreciate the link to the article and came via HN. I don’t think you can speak for either the audience of people producing software nor for HN.<p>Another article comparing LGPL and this license sounds good and I am interested in that as well. This article though is a good nudge to start thinking about licensing.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>mnahkies</em>:</p>
-<blockquote>What are people&#x27;s thoughts&#x2F;experiences about dual licencing?<p>Eg: is there a clean way to dual license such that hobbyist, and exploratory work (eg: a proof of concept done in a commercial setting) are allowed, but using it in production requires a fee?<p>If you&#x27;ve done this, has it been successful? Obviously there&#x27;s been many projects relicense over recent years (terraform, redis, etc) - but it&#x27;s less clear to me if this is a viable path for new projects starting out, or if it just kills adoption from the beginning.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>graemep</em>:</p>
-<blockquote>In practice AGPL might achieve that. It does allow commercial use, but a lot of big businesses, especially big tech, will not use it. On the other hand it is a clear, OSI approved, FOSS license.</blockquote>
-<p>↳ reply 2 — <em>ricardobeat</em>:</p>
-<blockquote>No success yet, but I recently found BUSL - used by Terraform: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Business_Source_License" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Business_Source_License</a><p>It stops companies from building high-revenue products for free, while not being as scary as AGPL&#x2F;LGPL from the business perspective, and completely unrestricted for everyone else (despite not being technically an open-source license).</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>You Don't Have a Right to Safe Drinking Water, US Court Rules</title>
-      <link>https://www.motherjones.com/politics/2026/09/drinking-water-mississippi-lawsuit/</link>
-      <guid isPermaLink="false">hn3-49584637</guid>
-      <pubDate>Sun, 06 Sep 2026 09:14:22 +0000</pubDate>
-      <description>210 points, 161 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.motherjones.com/politics/2026/09/drinking-water-mississippi-lawsuit/"><strong>→ Article</strong></a> <small>(motherjones.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49584637">→ HN comments</a> &nbsp;·&nbsp; 210 points &nbsp;·&nbsp; 161 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>themgt</em>:</p>
-<blockquote><i>Plaintiffs ... seek recognition of two new constitutional rights lacking any foundation in the history and tradition of our Nation—the right to be free from exposure to contaminated water and the right to accurate information from public officials.</i><p>This is like filing a bug report that the Linux kernel allowed your Thunderbird to receive SPAM email containing false information. It&#x27;s just a fundamental misunderstanding of how the US government is designed to work. Closed by Fifth Circuit as WONTFIX, file request for constitutional amendment (RFC) if desired.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>gpvos</em>:</p>
-<blockquote>The first one I can understand from history (although I do not agree for modern times). But <i>the right to accurate information from public officials,</i> I thought that was indeed an absolute and basic right in a democracy, and it should very strongly be and always have been. (Exceptions like &quot;national security&quot; notwithstanding, and those should probably be more narrowly restricted than they are now.)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rayiner</em>:</p>
-<blockquote>I implore people to think about  separation of powers. Just because something is desirable in the abstract doesn’t mean the judiciary should be doing it. Who decides what information is “accurate?” What are the implications of having the judiciary start policing the other two branches over such a fuzzy concept?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>brookst</em>:</p>
-<blockquote>There’s a map&#x2F;territory error in conflating the right to accurate information (or the obligation of government officials to not knowingly lie) with court determination of what accurate information is in any specific case.<p>We have a very clear constitutional right to be free from unreasonable search and seizure, and yes, determining what that means is very fuzzy and always has been. Doesn’t make the right evaporate.<p>But even separating the two, the entire court system is literally designed to determine what’s true. From murder to false advertising, the courts exist to resolve disputes about what’s true.<p>If we’re saying they can’t or shouldn’t fulfill that role… what’s left? Just enforce the will of the current government, skipping all that stuff about testimony and fact-finding?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>tgsovlerkhgsel</em>:</p>
-<blockquote>Generally, I&#x27;ve seen courts derive this kind of right from general rights like &quot;the state cannot just arbitrarily kill or maim you&quot;, which (hopefully) are explicitly written down. So it doesn&#x27;t feel that unreasonable to ask the court to specify that &quot;the state cannot just arbitrarily kill or maim you&quot; extends to &quot;the state cannot arbitrarily lie to you in ways that will endanger your life&#x2F;health&quot;.</blockquote>
-<p>↳ reply 3 — <em>raverbashing</em>:</p>
-<blockquote>100% this<p>These headlines is just press fodder for the grievances-industrial-complex to cry about how the gov is incompetent<p><i>Of course</i> drinking water is important - I&#x27;m not questioning that<p>But there&#x27;s a difference between a meaningless statement of &quot;everybody should have the right to cleaning water&quot; which is a vapid statement and actually building towards it (with regulation on the quality of water, EPA, working on water treatment, etc)<p>&quot;Right to cleaning water&quot; is like saying &quot;you should move more&quot; to a fat person</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>openasocket</em>:</p>
-<blockquote>Ok, so the article buries a lot of the context here. To clarify: plaintiffs can 100% sue the city for this under tort law (I believe the clean water act, but there’s probably other causes of action). This particular case was about suing the city officials in their personal capacity. So making those individuals pay, instead of&#x2F;in addition to the city. Government officials are generally protected under qualified immunity. One exception to qualified immunity is 42 USC 1983: deprivation of rights under color of law. But that requires them to prove that these officials violated some constitutional right, beyond just some statute.<p>The victims can sue the city&#x2F;state. They might already be doing so in parallel. And honestly that’s the only way to be made whole: these city officials don’t have the tens of millions that would be required to compensate victims. This is more about holding government officials individually accountable.</blockquote>
-<blockquote>
-<p>↳ reply — <em>doom2</em>:</p>
-<blockquote>&gt; This is more about holding government officials individually accountable.<p>The state can also file criminal charges against the officials, although given that the Flint water crisis didn&#x27;t result in any criminal convictions despite the evidence, I&#x27;m not holding my breath. Not to mention that the state could choose _not_ to file charges. In which case, what avenue for justice is left? Financial compensation is only part of it.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Smaug123</em>:</p>
-<blockquote>Misleadingly provocative headline, right? The actual ruling from the article is that <i>the US Constitution</i> does not by itself grant US citizens that right. As the article itself points out, there’s nothing stopping other agreements from granting the right, and indeed several states do so explicitly.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>IsTom</em>:</p>
-<blockquote>On the other hand it means that states can just not do that and leave their citizens without clean drinking water.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Smaug123</em>:</p>
-<blockquote>Does it? I think that conclusion requires observing additionally that all federal law also fails to grant a right to safe drinking water, doesn’t it?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>gavinsyancey</em>:</p>
-<blockquote>Many municipal water systems are wholely in one state. Does the Constitution grant Congress the right to control municipal water quality?<p>Also it&#x27;s kind of a moot point if federal law has not granted that right and does not seem likely to.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>icedrift</em>:</p>
-<blockquote>The headline look pretty accurate to me.  Under this ruling, being a US citizen does not guarantee you a constitutional right to safe drinking water; that right would depend on state legislation.<p>I think the bigger deal is that the people of Jackson were lied to and this sets the precedent that there is no recourse.  It&#x27;s not like someone in Flint knowingly drank contaminated water, the city withheld the fact that their water was contaminated with unsafe levels of lead.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Isar Aerospace reaches orbit and deploys payloads on second flight</title>
-      <link>https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight</link>
-      <guid isPermaLink="false">hn3-49584083</guid>
-      <pubDate>Sun, 06 Sep 2026 07:21:06 +0000</pubDate>
-      <description>420 points, 122 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight"><strong>→ Article</strong></a> <small>(isaraerospace.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49584083">→ HN comments</a> &nbsp;·&nbsp; 420 points &nbsp;·&nbsp; 122 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>nolok</em>:</p>
-<blockquote>Congratulation and great news ! For Europe, but also the world, space access is one of those frontiers we can (and I believe will) see truly opened in my lifetime and I find that truly awesome.<p>Interestingly there still seems to be a difference in approach between &quot;few launch, expected to go well&quot; in europe and &quot;many launch as trial and error&quot; in the US, with other countries falling somewhere in between those two limits, it&#x27;s often seen as a threat here of &quot;if we don&#x27;t do more more often we won&#x27;t make any progress&quot; but ignoring the economical side (and I think it&#x27;s fair, given than even with massive subsidies SpaceX is not financially viable until it feed itself through Starlink) it&#x27;s been a remarkable series of years for new European vehicules launch success.<p>Also one thing I have to point:<p>&gt; Europe now has sovereign access to space.<p>I understand what is meant here, and of course said company need to push that forward, but French Guyana is full french territory, it&#x27;s not even a foreign territory. It&#x27;s part of the EU (known as the outermost region of the European Union), EU law applies, it&#x27;s citizens are EU citizens, EU citizens from other countries can freely move and work and live there ... It&#x27;s technicaly more EU than Norway.<p>But less Europe than Norway, sure. Still, on the context of &quot;sovereign access&quot;, I would argue both side of that coin have their attributes, and for long term sovereignty I would prefer EU territory instead of &quot;inside-europe-Belarus&quot; for exemple.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>sisve</em>:</p>
-<blockquote>Did you just compare Belarus and Norway now?<p>Is Inside-Europe-Norway not better then Belarus?  I would consider us (norway) a stable and good partner to the EU.<p>Give us 25 years and we will join EU if it still exists:)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nolok</em>:</p>
-<blockquote>No, what you say is quite literally my argument; that the &quot;Europe&quot; is not the argument I value by itself for sovereignty</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>yostrovs</em>:</p>
-<blockquote>French Guyana is occupied territory. That&#x27;s pretty clear. And so it should be deoccupied and the locals will decide whether to use their land as &quot;sovereign&#x27; launch port by Europeans.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>sajithdilshan</em>:</p>
-<blockquote>Congrats to Isar Aerospace. If any nation in Europe that can start a new space frontier, that would be the Germans and I hope Isar would get strong support from the Bavarian state to be a neck-on-neck competitor to SpaceX.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ahartmetz</em>:</p>
-<blockquote>&gt;If any nation in Europe that can start a new space frontier, that would be the Germans<p>If that is true, then only because the company doesn&#x27;t immediately have to fight Arianespace. It is France that has the strongest existing know-how and longest history in rockets, going further back than Arianespace. The gap between WW2 rocket development and now is so long that German history with rockets may as well not exist.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>farhaven</em>:</p>
-<blockquote>&gt;  The gap between WW2 rocket development and now is so long that German history with rockets may as well not exist.<p>And yet, all currently existing rocket designs capable of reaching (and staying in) orbit can trace their design back to the Aggregat 4 and the engineers (and slave labour) that built it.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>falcor84</em>:</p>
-<blockquote>&gt; If any nation in Europe that can start a new space frontier, that would be the Germans<p>I apologise for the tactlessness, but it just made me think of Tom Lehrer&#x27;s lyrics about Wernher von Braun:<p>&gt; &quot;Once the rockets are up, who cares where they come down? That&#x27;s not my department&quot; says Wernher von Braun.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>pyrale</em>:</p>
-<blockquote>Their press release seems to center on:<p>&gt; Europe now has sovereign access to space. [...] Customers around the world now have a sovereign launch option at their disposal.<p>They apparently try very hard to ignore Arianespace.</blockquote>
-<blockquote>
-<p>↳ reply — <em>moogly</em>:</p>
-<blockquote>I think the missing word there might be &quot;private&quot;, because there&#x27;s also Esrange (for smaller satellites as of now).</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
