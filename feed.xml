@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 11 Sep 2026 09:29:15 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 14:13:46 +0000</lastBuildDate>
     <item>
       <title>Mexican student creates an acoustic fire extinguisher to put out fire in seconds</title>
       <link>https://www.upsocl.com/en/16-year-old-mexican-student-creates-an-acoustic-fire-extinguisher-that-uses-sound-waves-to-put-out-fires-in-seconds/</link>
@@ -64,6 +64,64 @@
 </blockquote>
 <p><strong>Top #3</strong> — <em>ZeroGravitas</em>:</p>
 <blockquote>When Google was going hard on deploying renewables they stressed &quot;additionality&quot;.<p>They didn&#x27;t want to just buy clean hydro that already existed, or renewables that were going to get built anyway without their money, they wanted to be sure that their investment was growing the amount of clean energy available.<p>I&#x27;m hoping they have some justification like this for buying existing nuclear. They appear to be claiming that it would shut if they didn&#x27;t pay in advance.<p>A similar deal by Amazon got shot down in America because the regulators realised it was shifting costs onto other grid users.<p>You&#x27;d assume that Finnish regulators are better than American regulators, but I’d like to see some evidence of that.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Nine coding harnesses vs. your laptop</title>
+      <link>https://nasutton.notion.site/Nine-coding-harnesses-vs-your-laptop-3d139990182b80d59fa3cf500f0450ba?pvs=74</link>
+      <guid isPermaLink="false">hn3-49651221</guid>
+      <pubDate>Thu, 10 Sep 2026 22:54:01 +0000</pubDate>
+      <description>138 points, 46 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://nasutton.notion.site/Nine-coding-harnesses-vs-your-laptop-3d139990182b80d59fa3cf500f0450ba?pvs=74"><strong>→ Article</strong></a> <small>(nasutton.notion.site)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49651221">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 46 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>julesrms</em>:</p>
+<blockquote>HN seems to have had a stream of agent harness benchmarks floating past. And every time I wonder where the people who create these tests are looking when they&#x27;re deciding which harnesses to test? Because right now nobody seems to bother testing mine! (<a href="https:&#x2F;&#x2F;juggler.studio" rel="nofollow">https:&#x2F;&#x2F;juggler.studio</a>)<p>I know Juggler&#x27;s very new, but there&#x27;s so much churn going on in this area that it&#x27;s hard to know where I should be pushing it. It&#x27;s hard to guess whether juggler&#x27;s strengths would played well with a particular test like this, or made it look bad, all feedback about the kind of parameters people are interested in is useful to know when I&#x27;m deciding what to optimise.</blockquote>
+<blockquote>
+<p>↳ reply — <em>kouteiheika</em>:</p>
+<blockquote>&gt; And every time I wonder where the people who create these tests are looking when they&#x27;re deciding which harnesses to test?<p>Well, everyone and their dog has a custom harness now (including myself!), and more often than not they&#x27;re just... pretty much the same, just with a slightly tweaked UI and different defaults? The harness needs to either be one of the popular ones, or have some sort of a unique feature which actually differentiates how it <i>runs</i>, not just how it looks&#x2F;controls like.<p>For example, one of the unique features of my harness is that the filesystem is completely virtualized and <i>all</i> filesystem I&#x2F;O is part of the session. This means that any files the agent modifies aren&#x27;t actually modified on disk until the user uses `&#x2F;apply`, and <i>rewinding</i> the session also rewinds the state of the disk, and this works for <i>all</i> I&#x2F;O and <i>all</i> tools (including anything spawned by the `bash` tool), and also supports at-will forking of the session <i>including</i> the filesystem state. This means that the agent can run fully YOLO and won&#x27;t be able to nuke your disk, and it also means that there&#x27;s no need to use git worktrees and such because multiple agents can just run in the same directory at the same time without an issue.<p>Essentially, what I&#x27;m trying to say: I&#x27;d love to see more experimentation in the harness space which doesn&#x27;t just involve &quot;a different GUI&quot;.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>aktau</em>:</p>
+<blockquote>&gt; For example, one of the unique features of my harness is that the filesystem is completely virtualized and all filesystem I&#x2F;O is part of the session...<p>What are the mechanics of this? You mentioned bash so I asssume you don&#x27;t &quot;control&quot; all the tooling. Is it running in a VM with an overlay filesystem that takes snapshots at every file interaction? Or perhaps outside a VM but containerized with a FUSE-based overlay filesystem?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>kouteiheika</em>:</p>
+<blockquote>It&#x27;s not a VM; it&#x27;s containerized with a FUSE-based custom overlay, and the agent never touches a real mount (with two exceptions: passthrough read-only mounts for things like &#x2F;bin, and ephemeral tmpfs mount at &#x2F;tmp).</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>alex_john_m</em>:</p>
+<blockquote>What is this supposed to mean?<p>&quot;it spreads up to 50% between nights, so nothing between the lean arms is a finding.&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nxobject</em>:</p>
+<blockquote>Whatever it is, it’s just as hilarious as Engrish…</blockquote>
+<p>↳ reply 2 — <em>stavros</em>:</p>
+<blockquote>Means Claude can&#x27;t write for shit.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>lrvick</em>:</p>
+<blockquote>Really surprised to not see jcode in there which beats everything else in efficiency by miles with one tiny rust binary.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>NTSB issues investigative update on B-767 runway excursion accident in Miami</title>
+      <link>https://www.ntsb.gov:443/news/press-releases/Pages/NR20260909.aspx</link>
+      <guid isPermaLink="false">hn3-49650418</guid>
+      <pubDate>Thu, 10 Sep 2026 21:30:55 +0000</pubDate>
+      <description>130 points, 228 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.ntsb.gov:443/news/press-releases/Pages/NR20260909.aspx"><strong>→ Article</strong></a> <small>(ntsb.gov)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49650418">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 228 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>kashunstva</em>:</p>
+<blockquote>The details of course matter; but the overarching principle put on stark display here is that if you don’t meet stabilized approach criteria (on-speed, on-glidepath, minimal necessary flight control deflections) at the 1000 ft AGL gate, go around. Yes grey areas exist but this approach never became stabilized. The whole approach was a missed opportunity to go around.<p>I am a pilot; and although I don’t fly large transport category aircraft, this sort of procedural discipline makes all the difference no matter what you fly.</blockquote>
+<blockquote>
+<p>↳ reply — <em>detourdog</em>:</p>
+<blockquote>If there are factors that need to be met it seems like a red indicator light should trigger a go around.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>fiatpandas</em>:</p>
+<blockquote>&gt;A pilot called for ﬂaps to be set to 20 degrees, and the other pilot cautioned they were too fast. The other pilot made additional comments regarding the aircraft’s excessive speed throughout the remainder of the recording. There was not a consistent verbal response to the comments about speed.<p>Wow, The Rehearsal season 2 flashbacks. Although the show was mostly pure absurdity, the central claim of crisis in cockpit communications &#x2F; lack of adequate FAA mandated training around interpersonal dynamics was spot on.</blockquote>
+<blockquote>
+<p>↳ reply — <em>outworlder</em>:</p>
+<blockquote>&gt; lack of adequate FAA mandated training around interpersonal dynamics<p>Generally,  that&#x27;s under the &#x27;crew resource management&#x27; umbrella.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>thenthenthen</em>:</p>
+<blockquote>It was an overrun accident of an Amazon cargo plane that killed 5 people: <a href="https:&#x2F;&#x2F;www.cnn.com&#x2F;2026&#x2F;09&#x2F;06&#x2F;us&#x2F;boeing-miami-plane-overruns-runway" rel="nofollow">https:&#x2F;&#x2F;www.cnn.com&#x2F;2026&#x2F;09&#x2F;06&#x2F;us&#x2F;boeing-miami-plane-overrun...</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>OpenAI’s Navier-Stokes release included a Lean 4 formal proof</title>
@@ -2542,6 +2600,37 @@ shouldn&#x27;t the Agent have succeeded way faster&#x2F;efficiently instead of u
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>So you want to use OpenRouter?</title>
+      <link>https://mmoustafa.com/blog/so-you-want-to-use-openrouter/</link>
+      <guid isPermaLink="false">hn3-49621546</guid>
+      <pubDate>Wed, 09 Sep 2026 05:37:21 +0000</pubDate>
+      <description>340 points, 85 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mmoustafa.com/blog/so-you-want-to-use-openrouter/"><strong>→ Article</strong></a> <small>(mmoustafa.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49621546">→ HN comments</a> &nbsp;·&nbsp; 340 points &nbsp;·&nbsp; 85 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>joshstrange</em>:</p>
+<blockquote>This squares with my, much much, smaller OpenRouter usage. It’s just incredibly unreliable and you are forced to pin providers and even then it can be a crapshoot as the author found.<p>OpenRouter sells the idea of swapping being commodity providers but it couldn’t be further from the truth. Provider A is often not swappable for B or C (again, as this author found). It can be crazy-making as you sit there thinking “OpenRouter has no clothes right?! Am I the one that’s wrong?”.<p>I love the _idea_ of OpenRouter and maybe Stripe can improve this situation but the only sane way I’ve found to use it is to tightly pin providers to the point I wonder if I should just use the providers directly.<p>Without pinning you are in for a world of hurt and unreliability (varying model capabilities, speed, etc).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>artursapek</em>:</p>
+<blockquote>I only use OpenRouter to benchmark models. For my production app, I have direct integrations with OpenAI, Anthropic, Google, xAI. Even just input caching is enough of a reason to do that, assuming you are trying to build the fastest and most cost-efficient product possible. I don&#x27;t understand how people supposedly run production apps using OpenRouter unless those two variables somehow don&#x27;t matter to them.</blockquote>
+<p>↳ reply 2 — <em>miki123211</em>:</p>
+<blockquote>I think Openrouter is great for quick testing, getting a &quot;feel&quot; for the model, or very quick integration jobs where you want to try out as many models as possible.<p>For truly production use cases, use Novita, Fireworks, Toghether or something of the sort.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>sinuhe69</em>:</p>
+<blockquote>&quot;OpenRouter runs per-provider benchmarks on the same model: GPQA Diamond and TAU-Bench Airline (a tool-calling task).&quot; why I haven&#x27;t never seen it? Click on the link brings nothing! Benchmark is only for the model. Per provider is a performance matrix (latency, throughput)
+What did I miss?<p>--<p>Update: oh, that is the AutoExacto Benchmarks! Now I see it.</blockquote>
+<p><strong>Top #3</strong> — <em>rolfus</em>:</p>
+<blockquote>This is very useful information and comes at a perfect time! I use Openrouter for my newly released running tracker (I use it for live coaching and post-run debriefs). I&#x27;ve benchmarked a bunch of models over time to evaluate their aptitude for this specific task, and have noticed that sometimes a model can underperform for seemingly no reason. I&#x27;ll be sure to include model providers in my benchmarking suite going forward!</blockquote>
+<blockquote>
+<p>↳ reply — <em>aembleton</em>:</p>
+<blockquote>Whats the tracker called?  I&#x27;d like to try it.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bko</em>:</p>
+<blockquote>It&#x27;s in the parents profile<p>Android app called &quot;AudioRun&quot;<p><a href="https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=com.audiorun.app">https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=com.audiorun.a...</a><p><a href="https:&#x2F;&#x2F;apkpure.com&#x2F;audiorun&#x2F;com.audiorun.app" rel="nofollow">https:&#x2F;&#x2F;apkpure.com&#x2F;audiorun&#x2F;com.audiorun.app</a></blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Larger Pacific striped octopus</title>
       <link>https://en.wikipedia.org/wiki/Larger_Pacific_striped_octopus</link>
       <guid isPermaLink="false">hn3-49621018</guid>
@@ -3823,166 +3912,6 @@ I&#x27;m open to accept that AI can have a positive impact on education but peop
 </blockquote>
 <p>↳ reply 2 — <em>tristanj</em>:</p>
 <blockquote>This conclusion is flawed. It&#x27;s unclear at this point if OpenAI&#x27;s model or employees actually looked at or stole the author&#x27;s data. Having worked at large companies before, I&#x27;m leaning towards no, since very few employees have access to that data.<p>And simply knowing a problem can be solved is half the battle.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>My Feed, My Way</title>
-      <link>https://www.pm.gov.au/media/my-feed-my-way</link>
-      <guid isPermaLink="false">hn3-49605782</guid>
-      <pubDate>Tue, 08 Sep 2026 05:10:36 +0000</pubDate>
-      <description>172 points, 139 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.pm.gov.au/media/my-feed-my-way"><strong>→ Article</strong></a> <small>(pm.gov.au)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49605782">→ HN comments</a> &nbsp;·&nbsp; 172 points &nbsp;·&nbsp; 139 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>blfr</em>:</p>
-<blockquote>Why do people (or at least politicians pretend to) believe that social networks are popular despite the content algos and not because of them? The reason Tik Tok blew up is because it shows you what you want to see without you twiddling with a dozen dials.<p>Maybe giving people what they want is not great for them. I am ok with this argument. But then &quot;giving people control&quot; won&#x27;t change anything. Vast majority of users would rather put up with shocking (to me) levels of annoyance and expense just not to configure&#x2F;fix anything themselves.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>strken</em>:</p>
-<blockquote>They don&#x27;t. They want to let people opt out of social media feeds for the same reason they currently let gamblers self-exclude[0].<p>Politicians do not believe that casinos are popular despite the gambling and they do not believe that social media is popular despite the feed. They want to protect the general public from addiction.<p>It&#x27;s all fun and games when you download Tiktok. Then one day you&#x27;re scrolling while your kid is in the pool, the lifeguard jumps in to save her, you realise you would have let your daughter die because you&#x27;re addicted to watching dance videos on the fent rectangle, and you decide to quit.<p>[0] <a href="https:&#x2F;&#x2F;www.betstop.gov.au&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.betstop.gov.au&#x2F;</a></blockquote>
-<p>↳ reply 2 — <em>ssss11</em>:</p>
-<blockquote>Before it was social “media” Facebook was a great way to see friends &amp; families updates in a chronological way with very little clutter. Then people began soapboxing, then came the ads, then all the random “interests” they assign to you and it’s completely useless now.<p>TikTok, IG etc are a little different as they’re actually media streams but I wanted to say that about Facebook - give me what I want on Facebook and it would be a wonderful service.</blockquote>
-<p>↳ reply 3 — <em>mig1</em>:</p>
-<blockquote>Even if someone was crazy about facebook, there was a limited amount of content they could see from my friends, you&#x27;d be done watching everything in 10 minutes. The levels of addiction we see today on TikTok, IG, etc were not even possible.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>armchairhacker</em>:</p>
-<blockquote>I’d prefer similar to Doctorow, that governments simply make scraping and republishing (anything that anyone who consents can access) explicitly legal, then alternate frontends may appear with their own algorithms.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>xtiansimon</em>:</p>
-<blockquote>Does that include the social networks themselves? Essentially forcing APIs again?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>armchairhacker</em>:</p>
-<blockquote>Forcing APIs maybe wouldn&#x27;t be bad, but shouldn&#x27;t be necessary. It would be hard to enforce and the company could release convoluted APIs, which would be harder to regulate. Meanwhile, scrapers can publish a decent API.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>protocolture</em>:</p>
-<blockquote>Bingo. This is the path forward and solution to so many ills. IP needs a big rethink for the internet.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>vintagedave</em>:</p>
-<blockquote>&gt; <i>Just as we have basic safety standards for cars, toys or food, the duty of care applies basic standards for the online products we use every day.</i><p>Aussie here. Great to see this. I don&#x27;t think this goes far enough: I&#x27;d like to see addictive algorithms, content, and doomscrolling banned entirely. Not an option to see a different feed. <i>Illegal.</i> It&#x27;s manipulative, hurts people, hurts children: make it illegal.</blockquote>
-<blockquote>
-<p>↳ reply — <em>achenet</em>:</p>
-<blockquote>Please don&#x27;t start randomly prohibiting things because you dis-approve of those things.<p>We have, at this point, over a 100 years of evidence showing that prohibition of psychoactive substances (alcohol, cannabis, cocaine, etc) doesn&#x27;t actually do much to reduce consumption but do create an immense amount of suffering not just for anyone participating in the trade or consumption of those substances, but also anyone remotely connected to them - cf the immense violence perpetrated by drug cartels in the Americas, mostly because people living in the US seem to be in denial about their appetite for drugs.<p>So please, stop banning things you don&#x27;t like, tax and regulate them instead. Use the tax proceeds to fund &quot;social media rehab&quot; clinics if you&#x27;d like.<p>Draconian &quot;I don&#x27;t like it, it gets banned&quot; government wasn&#x27;t a good idea in 15th century Spain, it&#x27;s still not a good idea now. Let your fellow citizens make bad decisions, just ensure that the government is poised to profit from them.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jl6</em>:</p>
-<blockquote>&quot;tax and regulate&quot; isn&#x27;t immune from second-order effects either. Set the tax high enough and you&#x27;ll get smuggling gangs with all the same tendencies.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>achenet</em>:</p>
-<blockquote>no, it&#x27;s not a perfect system, but better.<p>Look at the alcohol market in the U.S.<p>Or even the tightly controlled Systembolaget [0] in Sweden, compared to the modern markets for cannabis and cocaine.<p>Tax and regulate lowers violence and increases tax revenue, outright prohibition&#x2F;making it illegal increases violence and lowers tax revenue.<p>I do believe &quot;sin prohibition&quot; policies, for not just drugs but gambling, prostitution, etc, are one example of &quot;low-hanging fruit&quot;, where there <i>is</i> a noticeably better option that is usually not implemented.<p>Really, for all trades usually controlled by violent criminals (so everything the Mafia&#x2F;Yakuza&#x2F;crime groups traditionally specialize in), I believe that the citizens of a given state will be happier if the trade is controlled by the state and not given over to criminals, which is functionally what &quot;make it illegal&quot; does.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Systembolaget" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Systembolaget</a></blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Mistral raises €3B</title>
-      <link>https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/</link>
-      <guid isPermaLink="false">hn3-49605767</guid>
-      <pubDate>Tue, 08 Sep 2026 05:06:23 +0000</pubDate>
-      <description>662 points, 479 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/"><strong>→ Article</strong></a> <small>(mistral.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49605767">→ HN comments</a> &nbsp;·&nbsp; 662 points &nbsp;·&nbsp; 479 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>davedx</em>:</p>
-<blockquote>Mistral is an interesting AI company because they clearly have a contrarian business strategy to the other AI labs. They&#x27;re also landing big customers in Europe for the right reasons. People dump on them because they&#x27;re not benchmaxxxing which is pretty shortsighted - do you really want to be in a benchmark arms race with China, or do you want to make money and deploy sovereign AI compute in Europe?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>TheJCDenton</em>:</p>
-<blockquote>When Apple is not racing for the frontier it&#x27;s a strategy, but when it&#x27;s Mistral it&#x27;s a mistake.<p>The two companies have read the market the same.<p>It&#x27;s always very dangerous for first movers and their investors, and the commodification of intelligence seems even more likely each time a chinese open model release. It&#x27;s less exciting to do business that way, but if you&#x27;re building to stand the test of time, it&#x27;s wiser that way.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>riffraff</em>:</p>
-<blockquote>I am not sure it&#x27;s correct to lump apple and Mistral&#x27;s strategies together. Apple&#x27;s business is selling hardware&#x2F;services and their stores, but Mistral&#x27;s business is AI.<p>Apple&#x27;s strategy seems to be &quot;wait till real business shakes out&quot; but Mistral&#x27;s strategy seems to be &quot;go after profitable niches and avoid unwinnable fights&quot;.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>buran77</em>:</p>
-<blockquote>Mistral is doing one more thing: building up local know-how in the European ecosystem. This is worth more than money, you can&#x27;t bootstrap an industry overnight.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>alexfortin</em>:</p>
-<blockquote>I root for Mistral and hope they&#x27;ll be successful, perhaps I&#x27;ll buy a subscription too once they&#x27;re good enough for coding aid (perhaps they are now, didn&#x27;t do any test with their models recently).<p>First of all, they release the models&#x27; weights, perdonally I don&#x27;t consider any other option as viable (no OpenAI and definitely no Anthropic, thank you).<p>I especially like their Vibe Chat web offer, the allowed monthly usage with a free account is incredibly generous (still have to hit a limit) and the deep research feature (5&#x2F;month for free) is also valuable.<p>I don&#x27;t know anything about the alleged regulation maxxing problems, I don&#x27;t perceive them as a problem for my causal&#x2F;personal usage anyway.</blockquote>
-<p>↳ reply 3 — <em>blfr</em>:</p>
-<blockquote>I don&#x27;t care about benchmarks. Benchmarks show that Opus 5 is a stronger model than Fable 5 which is obviously not the case.<p>But I do care about capability and so far only Anthropic and, very recently with Astra, OpenAI can deliver on coding quality. And capability matters immensely. There is a world of difference between being able to do something and not being able.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>donmb</em>:</p>
-<blockquote>Mistral is not that bad as the comments here suggest. I am not using it as a frontier model but with simple RAG tasks and its doing great. Also OCR is pretty decent. It&#x27;s a positive development that Europe is at least trying. Alternative would be: do nothing.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>eloisant</em>:</p>
-<blockquote>The problem is that they&#x27;re in a weird position between US models and Chinese models. Not as performant as US models, not as cheap as Chinese models.<p>Especially as Chinese models are getting better Mistral is getting less and less relevant.<p>It pains me because I want them to succeed, but despite them denying it I believe they&#x27;ll end up restrict their activity to (1) selling hosting for Chinese models (they&#x27;re already hosting GLM) and (2) selling AI-related consultant service (they&#x27;re also doing that already).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rich_sasha</em>:</p>
-<blockquote>I think Europe was at risk of being left without even a foot in the door. Mistral os one of few such feet. Just having some compute and know how for running Chinese models is better than nothing. Low bar I know but still. Who knows what R&amp;D they’re doing while keeping the business running.<p>I’m not sure really what the winning strategy is in this weird arms race.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>hakunin</em>:</p>
-<blockquote>I&#x27;ve made a personal doc tool based on Mistral OCR API at first, and then switched to Gemini Flash for the same price inline, or half price using batch API, and the difference is night and day. Mistral doesn&#x27;t even come close on anything non-trivial. Longer story here: <a href="https:&#x2F;&#x2F;max.engineer&#x2F;ringbinder" rel="nofollow">https:&#x2F;&#x2F;max.engineer&#x2F;ringbinder</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>tangled</em>:</p>
-<blockquote>Europe absolutely needs a home-grown AI lab, especially with  Pax Americana looking increasingly shaky.<p>LLMs embody value systems, and American and European values are not the same (yes, there are overlaps, but also key differences).<p>More nefariously, I can also imagine LLMs that silently degrade their reasoning when used in a national security context of a non-US country.<p>So, Mistral may not be competitive with OpenAI and Anthropic, but in many contexts that doesn’t matter. And, perhaps this gap could be closed with more funding (the three billion funding figure is a rounding error next to US labs). I’m sort of surprised that the EU isn’t stepping in to support them.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bambax</em>:</p>
-<blockquote>&gt; <i>I’m sort of surprised that the EU isn’t stepping in to support them.</i><p>It is! The second largest investor in this round is Scaleup Europe Fund:<p><a href="https:&#x2F;&#x2F;eic.ec.europa.eu&#x2F;eic-fund&#x2F;scaleup-europe-fund_en" rel="nofollow">https:&#x2F;&#x2F;eic.ec.europa.eu&#x2F;eic-fund&#x2F;scaleup-europe-fund_en</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>easytiger</em>:</p>
-<blockquote>Do you think that&#x27;s a good thing?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>bambax</em>:</p>
-<blockquote>I don&#x27;t know. Government funds have a unique way of being often wrong, so this may be the kiss of death. But it is a sign that the EU is helping Mistral.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>andsoitis</em>:</p>
-<blockquote>&gt; LLMs embody value systems, and American and European values are not the same (yes, there are overlaps, but also key differences).<p>There are also some areas where values across Europe are quite divergent. Think LGBT rights and social acceptance, religion &amp; secularism, immigration &amp; multiculturalism.<p>And countries don’t fall into neat “liberal west vs conservative east”. Spain is exceptionally liberal on LGBT issues while remaining more religious than some northern countries; Denmark is socially liberal but has adopted relatively restrictive immigration policies.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>We have a year to fix security everywhere</title>
-      <link>https://jyn.dev/a-year-to-fix-security/</link>
-      <guid isPermaLink="false">hn3-49605691</guid>
-      <pubDate>Tue, 08 Sep 2026 04:48:10 +0000</pubDate>
-      <description>284 points, 309 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://jyn.dev/a-year-to-fix-security/"><strong>→ Article</strong></a> <small>(jyn.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49605691">→ HN comments</a> &nbsp;·&nbsp; 284 points &nbsp;·&nbsp; 309 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>kennywinker</em>:</p>
-<blockquote>I&#x27;m confused why the worry about LLMs that will answer &quot;how do I build a pipe bomb&quot;. That information is easily available other places. The anarchist cookbook has been around and available for 55 years, and yet pipe bombs are not going off all around us.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>vbezhenar</em>:</p>
-<blockquote>Any sufficiently determined individual can buy mac mini, put it under their bed, configure outside proxy via some random internet address and prompt &quot;iterate on websites in the CT logs, one by one, try to find vulnerabilities, if you did - encrypt their data and blackmail them for this bitcoin address&quot;. And it&#x27;ll work, day and night. Abliterated GLM 5.3 is much smarter than average software developer, they know a lot about information security, they can use any available exploits, they can find novel vulnerabilities and they won&#x27;t say &quot;no&quot;. This is dangerous for an average IT system which never encountered nothing worse than some wordpress GET requests.<p>It&#x27;s not the end of the world. But future will be rough.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>HolyLampshade</em>:</p>
-<blockquote>&gt; It&#x27;s not the end of the world. But future will be rough.<p>Short term you’re probably right, but longer term is the realm where nation states will start to police the avenues of attack.<p>This is what will lead to govt needing to attach an actual ID your network connection.<p>I think it’s a bit like frontier development (like the US “Wild West”). You rob a bank because there’s no one to stop you, and even if you do get identified you can travel enough distance to regain anonymity. Application of legal recourse eventually caught up (as it will here), and the growing pains will certainly make things suck for all of us.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>vbezhenar</em>:</p>
-<blockquote>Even in China you can find a way out and build a tunnel. And once you built a tunnel to any outside server, you can jump into another server. So three jurisdictions and your target is fourth. Imagine untangling the links. Police won&#x27;t do that. Not for some small-sized business anyway. I don&#x27;t see how you can prevent something like that.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>0xDEAFBEAD</em>:</p>
-<blockquote>There used to be a thing called &quot;Moore&#x27;s Law of Mad Science&quot;:<p>&quot;Every eighteen months, the minimum IQ necessary to destroy the world drops by one point.&quot;<p>Nowadays it is dropping much faster.  At a certain point, the de-facto IQ needed to destroy the world will be low enough that someone can do it while they&#x27;re having a psychotic break.  There are millions of schizophrenics worldwide.  Are you sure you want to roll those dice?</blockquote>
-<p>↳ reply 3 — <em>helsinkiandrew</em>:</p>
-<blockquote>&gt; That information is easily available other places<p>Often ease of access in the moment is all that matters.  If there&#x27;s a gun nearby you might shoot someone or yourself in a heated argument, but are less likely to go and find&#x2F;buy one to use.  Someone who&#x27;s stopped from attempting a suicide will likely not try again (70%)<p>A bored&#x2F;depressed&#x2F;angry&#x2F;curious person might try to build a pipe bomb if they can find out how easily, but are less likely to put in effort.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>sho</em>:</p>
-<blockquote>&gt; On September 22, Apple is releasing the M5 Mac Studio with 256 GB of unified memory [..] it will probably [..] enough to write this snippet of code in 3 seconds<p>The author has obviously never ran an LLM on a mac! In 3 seconds, it will have possibly started to think about maybe scheduling a date to contemplate the planning timeline for processing the <i>second</i> token in your prompt.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>simonw</em>:</p>
-<blockquote>The difference is memory bandwidth. The M5 Ultra that&#x27;s coming out on 22nd September can do 1,200GB&#x2F;s. The M5 Max you can buy today only has 614GB&#x2F;s.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sho</em>:</p>
-<blockquote>So, that gets us to about where nVidia was with Ampere in 2020. Let&#x27;s hope the M7 catches us up with at least Hopper.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Gareth321</em>:</p>
-<blockquote>While true, the news here is the <i>size</i> of the unified RAM. Nvidia only exceeded 256GB RAM in the 2025 B300 - 288GB. The B300 alone (without the baseboard&#x2F;PSU&#x2F;chassis&#x2F;wiring&#x2F;CPUs&#x2F;system RAM&#x2F;etc) is at least 700% more expensive. This enables <i>large</i> language models on consumer hardware. 1200GB&#x2F;s is plenty for <i>many</i> tasks.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>akmarinov</em>:</p>
-<blockquote>The author put in the numbers, but maybe you didn’t read them.<p>45 t&#x2F;s a second is perfectly respectable especially with no limits and 24&#x2F;7 uptime with very little power draw on the Studio.<p>Luna is at around 100 t&#x2F;s for comparison, but it’s a worse model than 5.3 Flash</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>archi42</em>:</p>
-<blockquote>Zzzzz, we should have gotten security right a few decades ago. But security costs money and isn&#x27;t a flashy feature to attract new customers, or cuts into your margin if you&#x27;re a &quot;real&quot; business producing stuff or offering some service. Or whatever the decision makers in Berlin were thinking when they ignored security.<p>Yeah, we would still see hacks, but we would see less of them if security wasn&#x27;t optional.<p>Maybe the AI craze helps by forcing more decision makes to see security as imperative, and by giving us another powerful tool for our tool box.<p>N.b.: I work in the security industry, our customers obviously want to improve their security. We&#x27;ve been  seeing an uptick in awareness, but that&#x27;s mostly due to NIS2 and other legislative efforts. Those force them to do something. AI is a curiosity for small talk to many of them.</blockquote>
-<blockquote>
-<p>↳ reply — <em>protocolture</em>:</p>
-<blockquote>A large number of places will buy a new firewall every 5 years, or pay their fortinet renewal and check &quot;Security: Done!&quot; without any kind of analysis.<p>I was contracted in to a place to do among other things cyber security insurance audits, and they asked me to stop doing them because I refused to lie to their insurer. &quot;Wait but if we only score 20 &#x2F; 300 that makes us look kind of bad&quot; uh huh.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>chii</em>:</p>
-<blockquote>&gt; pay their fortinet renewal and check &quot;Security: Done!&quot; without any kind of analysis.<p>there exists objective measure of security, which would be some sort of hacks&#x2F;breaches per period. If customers cared about it (and i assume they do), they would choose companies that have less breaches over others with higher counts, normalized on cost differences.<p>Therefore, if companies didnt actually try to fix their security but instead just checked boxes, they would get breached more often, resulting in customer losses.<p>The only thing stopping this from actually occurring is the lack of mandatory regulatory reporting of it. So this is where gov&#x27;t needs to step in and mandate disclosure etc.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>geon</em>:</p>
-<blockquote>Breaches don’t happen often enough to be a useful metric. Most smaller companies are never breached, despite having basically zero security.</blockquote>
-</blockquote>
-</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
