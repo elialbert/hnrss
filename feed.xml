@@ -4,7 +4,166 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 15 Sep 2026 18:05:07 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2026 21:14:16 +0000</lastBuildDate>
+    <item>
+      <title>Java 27</title>
+      <link>https://mail.openjdk.org/archives/list/announce@openjdk.org/thread/ORGGLMN75HFEWP7YL3ZLGHLYHVIBJDYT/</link>
+      <guid isPermaLink="false">hn3-49712041</guid>
+      <pubDate>Tue, 15 Sep 2026 13:13:43 +0000</pubDate>
+      <description>287 points, 254 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mail.openjdk.org/archives/list/announce@openjdk.org/thread/ORGGLMN75HFEWP7YL3ZLGHLYHVIBJDYT/"><strong>→ Article</strong></a> <small>(mail.openjdk.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49712041">→ HN comments</a> &nbsp;·&nbsp; 287 points &nbsp;·&nbsp; 254 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>moomin</em>:</p>
+<blockquote>C# dev here: it’s amazing how different this is from a Microsoft release. First off, Oracle are doing versions at approximately twice the cadence. But also, and I’m guessing this is a function of the much larger Java audience: things rarely get two preview versions in a proper release. Updates in beta versions, yes, all the time. It also feels like Microsoft are bundling a lot more into the platform and leaving less to the community. Again, probably an artifact of the different sizes of the communities. Also, the page reads like an open source “We’re finished, we’re tired.” announcement rather than the razzmatazz of a Microsoft release.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kllrnohj</em>:</p>
+<blockquote>&gt; First off, Oracle are doing versions at approximately twice the cadence<p>Is that actually a good thing?<p>But Oracle started playing a game, for better or worse, where they decided to couple the &quot;language version&quot; with a single specific runtime&#x27;s release schedule. For example, in &quot;Java 27&quot; there are exactly 0 language changes and 1 minor feature addition to the TLS library.<p>Everything else is OpenJDK runtime internals which don&#x27;t impact the language or how you use it. So if you don&#x27;t use OpenJDK (such as if you use Oracle&#x27;s other runtime, GraalVM), then Java 27 basically doesn&#x27;t even exist <i>at all</i>. Skimming the past couple of C# releases, it doesn&#x27;t look like Microsoft is playing that game, so the release cadence will of course be different.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pron</em>:</p>
+<blockquote>The Java language and runtime have been co-designed as a unified platform for many years now. Virtually every significant feature has language, library, and VM people working on it, and we often don&#x27;t even know when we start how much of the feature would be in the language, library, or VM. Consequently, there is no &quot;language version&quot; or a &quot;runtime version&quot;. There&#x27;s only a platform version, which is defined in a single spec approved by the JCP (<a href="https:&#x2F;&#x2F;openjdk.org&#x2F;projects&#x2F;jdk&#x2F;27&#x2F;spec&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openjdk.org&#x2F;projects&#x2F;jdk&#x2F;27&#x2F;spec&#x2F;</a>). This also makes things easier with regards to compatibility and evolution.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>jonenst</em>:</p>
+<blockquote>I wish there was a canonical write up on the governance of &quot;java&quot; and its history, it has changed a lot over the years (not just once I guess) and has a lot of fine prints. I find it hard to understand the hidden reasons and behind-the-scenes conflicts&#x2F;compromises. There could probably be a whole book about this I guess.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>PaulHoule</em>:</p>
+<blockquote>One difference I think about is generics.  Java and .NET bolted generics on to an existing system.  Java used type erasure in such a way that a List&lt;OfThat&gt; is really just a List.  Type erasure has a lot of limitations.  If I am coding in Java for days I never get into trouble with it because I know how to color in the lines.  But do some balls-to-the-walls metaprogramming and then it is annoying that you can&#x27;t write<p><pre><code>   Expression&lt;Integer&gt; add(Expression&lt;Integer&gt; a, Expression&lt;Integer&gt; b);
+   Expression&lt;Double&gt; add(Expression&lt;Double&gt; a, Expression&lt;Double&gt; b);
+</code></pre>
+because in the end they both look like<p><pre><code>   Expression add(Expression a, Expression b)
+</code></pre>
+we have ways to cope,  like unerasing the types by rewriting the names...  And now you&#x27;ve got a reason to do balls to the walls metaprogramming!  Similarly if I do a lot of C# or Scala or something I will get into the habit of doing things I can&#x27;t do in Java.<p>.NET on the other hand did not keep backwards compatibility,  so a List is not a List&lt;X&gt; so .NET had a schism where some API functions use generic collections and others use non-generics which was annoying in its own way.<p>Something like that is how all methods in Java are virtual whereas methods in C# may or not be virtual.  All-virtual is probably not the best for performance,  but it is simple for understanding.  You never have to think &quot;do I make this virtual or not?&quot; or think &quot;is that method virtual or not and does that have consequences for how I use it?&quot;</blockquote>
+<p>↳ reply 3 — <em>pjmlp</em>:</p>
+<blockquote>Polyglot dev here, that uses both ecosystems, Java since 1996, .NET before it was announced to the public in 2001, only available to selected Microsoft partners.<p>A big difference between both ecosystems is that the Java world is like C and C++, even though Java isn&#x27;t defined by ISO or ECMA, since Sun days the main implementation is only a reference, there are official documents for everything, and there is a plethora of implementations, with various kinds of JIT, GC and AOT approaches.<p>You can pick the real time versions for embedded from PTC and Aicas, the cloud first from IBM and Azul with finance markets in mind, the Android cousin, the various implementations for M2M gateways, copiers and phone dashboards (Ricoh, Xerox, Cisco), IoT with microEJ, and many more.<p>Whereas Microsoft hardly cares about ECMA nowadays, most of Mono&#x2F;Xamarin is gone replaced by Core CLR and modern .NET, .NET Compact is gone, community maintained and so on.<p>That alone, regardless of the languages on top of JVM, or CLR, makes a big difference on the audiences when one silos themselves to a single ecosystem.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>aaronax</em>:</p>
+<blockquote>&quot;The Java Story&quot; documentary by CultRepo on YouTube is pretty great. A major topic is the release cadence which some other comments here are mentioning &#x2F; joking about.</blockquote>
+<p><strong>Top #3</strong> — <em>Horffupolde</em>:</p>
+<blockquote>Serious question: when should one use Java for greenfield projects in 2026?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pron</em>:</p>
+<blockquote>These days, Java is mostly used in greenfield software that has to be very reliable, very performant, and last for many years. So it&#x27;s often the first choice for banking, telecom, finance, government, defence, manufacturing control, logistics and shipping, media streaming, retail, hospitality, healthcare etc.. It&#x27;s usually not a first pick for more exciting software, such as Python type checkers, JS bundlers, or TUI file managers.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>rohan_</em>:</p>
+<blockquote>This is quite the take - i doubt most startups building in these spaces are using Java.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>layer8</em>:</p>
+<blockquote>From what I see, most software being created in these spaces isn’t made by startups.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>marginalia_nu</em>:</p>
+<blockquote>Not at all a bad choice.<p>It&#x27;s stable to the point of boring, and there&#x27;s no shortage of people who know the language and can work with it, it&#x27;s got best in class tooling, decades worth of libraries almost all very mature.  Most of the language&#x27;s issues are from legacy code bases coded in a style that isn&#x27;t really relevant to a greenfield project.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: An e-ink frame that hears birds and draws them as 1800s illustrations</title>
+      <link>https://github.com/arnegiacomo/fugleramme</link>
+      <guid isPermaLink="false">hn3-49711544</guid>
+      <pubDate>Tue, 15 Sep 2026 12:31:10 +0000</pubDate>
+      <description>1095 points, 148 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/arnegiacomo/fugleramme"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49711544">→ HN comments</a> &nbsp;·&nbsp; 1095 points &nbsp;·&nbsp; 148 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jadbox</em>:</p>
+<blockquote>This is the coolest thing on HN that I&#x27;ve seen in a minute. The whole thing is a perfect blend of ideas with the end result of something that feels... magical. Honestly this is the highest inspiration to me as a builder as I just want to create magical experiences, even if they are just small oddities.</blockquote>
+<p><strong>Top #2</strong> — <em>catapart</em>:</p>
+<blockquote>Awesome! It&#x27;s really cool that it uses public domain images as the inspiration, too. And even cooler that you link to the places where you got those public domain images.</blockquote>
+<p><strong>Top #3</strong> — <em>divbzero</em>:</p>
+<blockquote>The underlying classifier, BirdNET, is a traditional neural network and not an LLM:<p><a href="https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.ecoinf.2021.101236" rel="nofollow">https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.ecoinf.2021.101236</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>25 Years of Mass Surveillance Is Enough [Auth: Cindy Cohn; Bruce Schneier]</title>
+      <link>https://www.lawfaremedia.org/article/25-years-of-mass-surveillance-is-enough</link>
+      <guid isPermaLink="false">hn3-49711309</guid>
+      <pubDate>Tue, 15 Sep 2026 12:08:26 +0000</pubDate>
+      <description>139 points, 7 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.lawfaremedia.org/article/25-years-of-mass-surveillance-is-enough"><strong>→ Article</strong></a> <small>(lawfaremedia.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49711309">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 7 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>FrankWilhoit</em>:</p>
+<blockquote>Any discussion of this must center the fact that the surveillance began in Jan.-Feb. 2001, <i>NOT</i> after 11 September.  The one telecom executive who objected was instantly framed into prison.</blockquote>
+<blockquote>
+<p>↳ reply — <em>bilekas</em>:</p>
+<blockquote>Just because we&#x27;ve been handling privacy terribly forever so far, doesn&#x27;t means we should continue to though.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>25 years of mass surveillance is enough</title>
+      <link>https://www.schneier.com/blog/archives/2026/09/25-years-of-mass-surveillance-is-enough.html</link>
+      <guid isPermaLink="false">hn3-49710883</guid>
+      <pubDate>Tue, 15 Sep 2026 11:26:48 +0000</pubDate>
+      <description>693 points, 248 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.schneier.com/blog/archives/2026/09/25-years-of-mass-surveillance-is-enough.html"><strong>→ Article</strong></a> <small>(schneier.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49710883">→ HN comments</a> &nbsp;·&nbsp; 693 points &nbsp;·&nbsp; 248 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>calebm</em>:</p>
+<blockquote>Proposal: limit access of these camera networks to local jurisdiction. Just like rip-stop fabric and cell walls, boundaries are required for stability, and making it where federal agencies have eyes everywhere is far too dangerous.</blockquote>
+<p><strong>Top #2</strong> — <em>seydor</em>:</p>
+<blockquote>It isn&#x27;t going to stop until it becomes a national security issue. If your can spy on your citizens , your enemies can potentially gain access to the same surveillance and hit high profile targets.<p>We live in war times and will soon see it happening</blockquote>
+<blockquote>
+<p>↳ reply — <em>godelski</em>:</p>
+<blockquote><p><pre><code>  &gt; your enemies can potentially gain access to the same surveillance
+</code></pre>
+Which has already happened. Though it is less obvious if high profile targets have been blackmailed or coerced. There&#x27;s at least signs that some have. Even if not foreign governments, Epstein certainly had leverage</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>andrewla</em>:</p>
+<blockquote>I think we have to face the fact that we cannot unring this bell. There will be holding actions against things like Flock but in the end they will fail, and at best we will have a loosening of the laws that Flock is being used to enforce and more draconian enforcement of the laws that remain.<p>Like many on this site I&#x27;m in violent agreement with Schneier and have been ever since &quot;security theater&quot; entered the lexicon. But this is a hopeless fight.</blockquote>
+<blockquote>
+<p>↳ reply — <em>feanaro</em>:</p>
+<blockquote>Are you advocating for inaction? If so, what do you wish to achieve?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>maerF0x0</em>:</p>
+<blockquote>I would advocate for a shift of power by creating greater individual rights over their data (as their irrevocable property) , and greater oversight and consequences for those in power (ab)using the data.<p>It&#x27;s one thing for our data to be out there such that a NSA employee <i>could</i> stalk their girlfriend, it&#x27;s another thing for said person to be allowed to gracefully &quot;retire&quot; rather than be put in prison.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>pessimizer</em>:</p>
+<blockquote>&gt; I would advocate for a shift of power[...]<p>This is not advocating, this is wishing. It is as meaningful as &quot;advocating&quot; that you were rich and that Elon was poor, or &quot;advocating&quot; that you should be six inches taller.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Suspected sabotage causes major Netherlands rail disruption</title>
+      <link>https://www.bbc.com/news/articles/c8ly49w9g1edo</link>
+      <guid isPermaLink="false">hn3-49710253</guid>
+      <pubDate>Tue, 15 Sep 2026 10:22:46 +0000</pubDate>
+      <description>374 points, 364 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/c8ly49w9g1edo"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49710253">→ HN comments</a> &nbsp;·&nbsp; 374 points &nbsp;·&nbsp; 364 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>apt-get</em>:</p>
+<blockquote>Just days after a similar (criminal) incident causing a train to derail in France: <a href="https:&#x2F;&#x2F;www.lemonde.fr&#x2F;en&#x2F;france&#x2F;article&#x2F;2026&#x2F;09&#x2F;12&#x2F;french-police-suspect-train-derailment-was-sabotage_6757446_7.html" rel="nofollow">https:&#x2F;&#x2F;www.lemonde.fr&#x2F;en&#x2F;france&#x2F;article&#x2F;2026&#x2F;09&#x2F;12&#x2F;french-p...</a><p>&quot;close to Renault&#x27;s factory in the town of Cléon&quot;, which is now preparing to start manufacturing drones for the French military, in collaboration with Ukrainian military-industrial groups.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>walrus01</em>:</p>
+<blockquote>Most consumers know Renault as an ordinary car manufacturer but also worth mentioning it&#x27;s a major manufacturer of armored vehicles for the French armed forces.</blockquote>
+<p>↳ reply 2 — <em>Someone</em>:</p>
+<blockquote>&gt; Just days after a similar (criminal) incident causing a train to derail in France<p>From what I read, the similarity ends in “both involved trains”. This chain of attacks seems to have used short metal pipes (“Footage published by Dutch public broadcaster NOS on Tuesday showed police carrying what appeared to be metal pipes - about 1.5 metres (5ft) long”) to short a connection, making safety systems signal “there’s a train there”, stopping trains further up the track.<p>The France incident involved a piece of rails heavy enough to cause derailment (“The rail fragment was estimated to weigh between 250 and 300 kilograms”)<p>My money is on this being a rogue farmers protest.</blockquote>
+<p>↳ reply 3 — <em>misja111</em>:</p>
+<blockquote>Surely there is a lot of Russian-motivated sabotage going on in Europe, but there&#x27;s another group that might be motivated:<p>exactly today, a major farmer demonstration was already planned. They way they usually go ahead in the Netherlands is drive with their tractors over the highways towards The Hague, where our government is based. Obviously this leads to massive traffic jams.<p>A simultaneous disruption of the Dutch railways would add some extra effect to the expected traffic chaos.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>sorenjan</em>:</p>
+<blockquote>A Russian warship fired flares at a Danish military helicopter in international waters in the Baltic sea too.<p><a href="https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;articles&#x2F;cwn8mjl31p5yo" rel="nofollow">https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;articles&#x2F;cwn8mjl31p5yo</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>vincnetas</em>:</p>
+<blockquote>on same day today: Nato jets down drone that entered Lithuanian airspace<p><a href="https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;articles&#x2F;cjx2zgk7edlzo" rel="nofollow">https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;articles&#x2F;cjx2zgk7edlzo</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Kim_Bruning</em>:</p>
+<blockquote>So today&#x27;s the yearly presentation of the new budget, with protests expected in several places. Whether this sabotage campaign is (part of a) misguided protest action or something else is yet to be determined.<p><a href="https:&#x2F;&#x2F;nos.nl&#x2F;liveblog&#x2F;2631038-nog-steeds-nieuwe-sabotageacties-op-het-spoor-hooibalen-in-brand-langs-snelwegen" rel="nofollow">https:&#x2F;&#x2F;nos.nl&#x2F;liveblog&#x2F;2631038-nog-steeds-nieuwe-sabotageac...</a>    (Use google translate to read)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Vinnl</em>:</p>
+<blockquote>That does mean that I would not automatically jump to conclusions about Russia or war or whatever; since much of national public policy is presented today, it&#x27;s also a popular day to express disagreement, and apparently some farmers had already announced they would be doing so today.<p>(I&#x27;d assume the BBC reporter to be aware that Prinsjesdag is today, and that they&#x27;d mention that fact in this article, but apparently not.)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>libertine</em>:</p>
+<blockquote>You&#x27;ll find the answer in who is organizing these groups.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>FaridIO</em>:</p>
+<blockquote>Egging them on online, sure, but these groups have always existed and we&#x27;re plenty stupid without Russia&#x27;s help.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>qwertox</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;nos-nl.translate.goog&#x2F;liveblog&#x2F;2631038-hooibalen-in-brand-langs-snelwegen-nieuwe-sabotageacties-op-het-spoor?_x_tr_sl=nl&amp;_x_tr_tl=en&amp;_x_tr_hl=en" rel="nofollow">https:&#x2F;&#x2F;nos-nl.translate.goog&#x2F;liveblog&#x2F;2631038-hooibalen-in-...</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Let's make quality the norm again</title>
       <link>https://www.forbrukerradet.no/short-life/</link>
@@ -3699,168 +3858,6 @@ continues”</i> is doing a lot of optimistic heavy lifting. The whole premise o
 </blockquote>
 <p><strong>Top #3</strong> — <em>anentropic</em>:</p>
 <blockquote>Amazing analysis<p>Same author even found a bug in it <a href="https:&#x2F;&#x2F;eiln.github.io&#x2F;posts&#x2F;ane-dma.html" rel="nofollow">https:&#x2F;&#x2F;eiln.github.io&#x2F;posts&#x2F;ane-dma.html</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Usenet rewind archive search engine</title>
-      <link>https://www.usenet-rewind.com/</link>
-      <guid isPermaLink="false">hn3-49668777</guid>
-      <pubDate>Sat, 12 Sep 2026 04:19:52 +0000</pubDate>
-      <description>127 points, 38 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.usenet-rewind.com/"><strong>→ Article</strong></a> <small>(usenet-rewind.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49668777">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 38 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>vinc</em>:</p>
-<blockquote>You can visit only 25 pages on the website with a free account, that&#x27;s a bit too limiting. I&#x27;d suggest limiting the number of searches maybe but not the pagination over the results.<p>I got curious again to find my old posts and figured I could download and grep the mbox files from Internet Archive instead.</blockquote>
-<p><strong>Top #2</strong> — <em>msephton</em>:</p>
-<blockquote>Just found some cool old stuff thanks to this:<p>1996-01-17: first post! a reply to a thread in alt.music.bjork<p>1996-03-11: first mention of my website&#x2F;homepage<p>No links to avoid my own embarrassment.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>BugsJustFindMe</em>:</p>
-<blockquote>&gt; <i>No links to avoid my own embarrassment.</i><p>There are only 7 posts in alt.music.bjork on the first date, and one of them has your name on it. There&#x27;s 1 post with your name on the second date, and it gives a website. The earliest wayback entry for that website redirects to another wayback location that exists.</blockquote>
-<p>↳ reply 2 — <em>TehCorwiz</em>:</p>
-<blockquote>Upvoting for visibility ;)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>rfarley04</em>:</p>
-<blockquote>Oh my god this is a lifesaver. Just last week I was using Google Groups to search for old Usenet posts about the Commodore 64 and the Mimic Spartan, and I was getting &quot;too many requests&quot; errors 4 out of 5 times clicking a result. Happened on VPN+incognito, and in a separate browser. Just searched for what I was looking for in Rewind and immediately found the posts and even some I never saw in Google Groups results. So glad all of this is archived in multiple, non Google places</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Navier-Stokes Announcement</title>
-      <link>https://www.claymath.org/news/navier-stokes-announcement/</link>
-      <guid isPermaLink="false">hn3-49668706</guid>
-      <pubDate>Sat, 12 Sep 2026 04:09:43 +0000</pubDate>
-      <description>214 points, 144 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.claymath.org/news/navier-stokes-announcement/"><strong>→ Article</strong></a> <small>(claymath.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49668706">→ HN comments</a> &nbsp;·&nbsp; 214 points &nbsp;·&nbsp; 144 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Legend2440</em>:</p>
-<blockquote>Their rules PDF says they won&#x27;t accept any solution until at least two years after publication in a qualifying outlet. This allows time for the mathematical community to review and accept new results.<p>As the OpenAI proof hasn&#x27;t been officially published yet, the clock hasn&#x27;t started ticking.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>eru</em>:</p>
-<blockquote>I&#x27;m not sure it actually makes a difference.  OpenAI doesn&#x27;t care about the million dollars in any case.  And the judgement that they did it is independent of whether the Clay people agree: you can make up your own mind and so can everyone else.<p>Though it would be funny if no one ever bothers publishing the result in an appropriate journal, and thus the prize technically can never be claimed.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>c7b</em>:</p>
-<blockquote>Even funnier that it wouldn&#x27;t even be the first time that happens: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Grigori_Perelman" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Grigori_Perelman</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>yen223</em>:</p>
-<blockquote>It&#x27;s very likely that no one will claim any of the cash prizes, which is funny to me</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>auggierose</em>:</p>
-<blockquote>The Lean proof is published, you can download it. The clock definitely is ticking.<p>Edit: Oh, didn&#x27;t see the &quot;qualifying outlet&quot; condition. But Poincare was ever just put on arXiv, so arXiv must count as well.</blockquote>
-<p>↳ reply 3 — <em>baby</em>:</p>
-<blockquote>It’s easy to verify the lean statement, you don’t need to read the proof. That is part of the breakthrough</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>tristanj</em>:</p>
-<blockquote>Smart move by them for waiting until the drama died down before making a completely neutral statement.<p>The statement is so sterile they don&#x27;t even mention who solved it. The word &quot;OpenAI&quot; doesn&#x27;t appear at all.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mi_lk</em>:</p>
-<blockquote>I really like this style of writing for some reason. Not sure how to put it but it’s a rare combination of a vague post and confidence</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>lanyard-textile</em>:</p>
-<blockquote>It&#x27;s optimistic and grounded in knowledge seeking. I like it too.<p>It&#x27;s easy to get caught in the details of today. Our skepticism, our distrust, our loathing. For people, for companies.<p>This is a nice pull in the other direction, a silver lining. In the grand scheme of things, we&#x27;re solving these frontier problems: Somebody did it and that&#x27;s amazing.<p>That&#x27;s what it was all about when this started of in 2000.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>minimaxir</em>:</p>
-<blockquote>What makes a man turn neutral? Lust for gold? Power? Or were they just born with a heart full of neutrality?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>swyx</em>:</p>
-<blockquote>sounds like they are providing notice that the clock has started on affirming the solution, that it IS presumptively solved, but that they are not commenting on the credit dispute nor the fields medalists open letter. seems appropriate.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>google.com/goto: Google's anti-scraping update</title>
-      <link>https://www.autom.dev/blog/google-search-goto-links</link>
-      <guid isPermaLink="false">hn3-49668386</guid>
-      <pubDate>Sat, 12 Sep 2026 03:14:20 +0000</pubDate>
-      <description>491 points, 392 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.autom.dev/blog/google-search-goto-links"><strong>→ Article</strong></a> <small>(autom.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49668386">→ HN comments</a> &nbsp;·&nbsp; 491 points &nbsp;·&nbsp; 392 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>lubujackson</em>:</p>
-<blockquote>As much as I am sad that Google died like 15 years ago, I am past the mourning phase. That was when they announced they were shifting from returning websites to &quot;returning answers&quot; and it has been a long slide into shittification<p>I do enjoy using their free AI. For actual web search I actually like using Yandex. It reminds me of old Google, returning reasonable results and much less &quot;shaping results to please our corpo-political masters&quot;. It is surprising to see how much they have stripped from our view - long tail results, actual results for product reviews and not ad spam, no preference for 20 page recipe sites.<p>There are still illegal streaming sports and movie sites everywhere (who knew) and all other seedy corners of the internet that have been neatly erased by Google. It makes me nostalgic for that brief window of time when the web was truly uncontrolled, when page rank had meaning and you didn&#x27;t know if your search would return 0 results or 4,000 pages, which you could actually browse.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nine_k</em>:</p>
-<blockquote>The real &quot;old-school Google, but modern&quot; is Kagi, with the caveat of being paid. (Worth the $5 for me.)<p>But LLMs can be commanded. This is may bookmark alias for invoking the spirit of old Gog=ogle from within the new, AI-based Google:<p><a href="https:&#x2F;&#x2F;google.com&#x2F;search?q=You%20are%20Google%20Search%20from%202004.%20Given%20a%20search%20request,%20provide%2010%20links%20to%20relevant%20pages,%20each%20with%20a%20short%20text%20from%20the%20page,%20featuring%20the%20search%20terms.%20Avoid%20any%20pages%20that%20do%20not%20contain%20the%20search%20terms.%20the%20search%20request:%20%s" rel="nofollow">https:&#x2F;&#x2F;google.com&#x2F;search?q=You%20are%20Google%20Search%20fr...</a><p>(Cleaned &#x2F; decoded: &#x27;You are Google Search from 2004. Given a search request, provide 10 links to relevant pages, each with a short text from the page, featuring the search terms. Avoid any pages that do not contain the search terms. the search request: %s&#x27;)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>noisy_boy</em>:</p>
-<blockquote>&gt; Worth the $5 for me<p>Steep at 300 searches per month or about 10 per day. If you search often, it is too expensive. If you rarely search, not worth 5 bucks.<p>They are plainly trying to push people to their $10 unlimited plan. I would have appreciated if they allowed, say, 600 searches per month for $5 or so.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>brookst</em>:</p>
-<blockquote>Pretty much sums up why Google’s business model changed. Everyone wants good search, few are willing to be even $10&#x2F;mo.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>egorfine</em>:</p>
-<blockquote>&gt; For actual web search I actually like using Yandex<p>You might want to reconsider this.<p><a href="https:&#x2F;&#x2F;meduza.io&#x2F;image&#x2F;attachments&#x2F;images&#x2F;007&#x2F;699&#x2F;276&#x2F;large&#x2F;0FkizTYqq7SGCdZBNIeoyg.jpg" rel="nofollow">https:&#x2F;&#x2F;meduza.io&#x2F;image&#x2F;attachments&#x2F;images&#x2F;007&#x2F;699&#x2F;276&#x2F;large...</a></blockquote>
-<p>↳ reply 3 — <em>scosman</em>:</p>
-<blockquote>I made <a href="https:&#x2F;&#x2F;froogle.fyi" rel="nofollow">https:&#x2F;&#x2F;froogle.fyi</a> out of a desire to get that old school search back. Source: <a href="https:&#x2F;&#x2F;github.com&#x2F;scosman&#x2F;froogle" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;scosman&#x2F;froogle</a><p>It hasn’t replaced Kagi as my daily driver but the UX is fun.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>rkagerer</em>:</p>
-<blockquote>I did an interview with Google around 20 years ago, where they posed a challenge involving tracking which specific search results people click.  It&#x27;s obvious in hindsight the solution required rewriting all the urls to redirect through their servers.  Note this was in the days before they already did so as a matter of course.<p>I failed to gain traction on the problem, because to me the very idea of doing such a thing was too reprehensible to seriously consider.  It broke an unwritten contract between the company and the user&#x27;s expectation of how websites worked.  You expect to be able to do things like right-click a link and copy the authentic URL, or hover to see where it wants to take you.  The notion of obfuscating the link beyond easy recognition and polluting it with tracking markers felt misleading and, well, evil.  A move that would mainly only benefit Google, and not it&#x27;s users.  I (quite mistakenly) presumed this opinion would be obvious and self-evident to anyone who spent enough time around the early web to understand its norms.<p>I explored other ways of achieving the goal, but it clearly wasn&#x27;t the answer the interviewer sought.<p>I&#x27;m more seasoned now, and experienced enough to say with confidence the approach was wrong.  This may seem like a small thing, but a series of misteps and chronic failure to adequately advocate for users is what has led us to the toxic waste dump that so much of the Internet has become today.<p>I&#x27;m really glad to have fresh alternatives (like Kagi), and can&#x27;t  wait for the cultural zeitgeist among developers to swing back around to valuing users as human beings and living up to the trust they place in us.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pncnmnp</em>:</p>
-<blockquote>Apparently, there&#x27;s a term for the general practice, it&#x27;s called &quot;link shimming&quot; - <a href="https:&#x2F;&#x2F;www.usenix.org&#x2F;conference&#x2F;usenixsecurity20&#x2F;presentation&#x2F;li-frank" rel="nofollow">https:&#x2F;&#x2F;www.usenix.org&#x2F;conference&#x2F;usenixsecurity20&#x2F;presentat...</a>.<p>I had some fun in my grad days building a private information retrieval (PIR) scheme so the shim server can do its job without knowing which link you clicked: <a href="https:&#x2F;&#x2F;github.com&#x2F;pncnmnp&#x2F;shimmey" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;pncnmnp&#x2F;shimmey</a></blockquote>
-<p>↳ reply 2 — <em>watwut</em>:</p>
-<blockquote>&gt; This may seem like a small thing, but a series of misteps and chronic failure to adequately advocate for users is what has led us to the toxic waste dump that so much of the Internet has become today.<p>I think it is both monopolization and cheap money. Something in economy favors big companies and disfavors competition.<p>Cheap money means that a selected company can run at loss, kill competition and then enshittify to start earning. By that time it is too late and too easy to buy or destroy smaller competing company. And you get access to funding by being charming to VC, by being the kind of sociopath they like to see.<p>Capitalism works when there is a competition. Not when there is an oligarchy.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>userbinator</em>:</p>
-<blockquote>I was suspicious when they started obfuscating URLs in their own browser, then on their SERPs, and now this...<p>For many years, I had my filtering proxy rewrite the URLs in the way mentioned in the article.<p>Almost exactly a year ago, Google stopped working without JS. I stopped using Google.<p>Now they&#x27;re upping the game, and as the article (which is a bit of marketing itself) admits, those who have the resources can still blast through these obstacles while those who don&#x27;t are locked out.<p>Since the article brings up &quot;AI scrapers&quot;, I&#x27;ll just point it out as being the latest scare-tactic for coercing people to give up the privacy, anonymity, and (browser) freedom of an open interoperable Internet.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Pandas Should Go Extinct</title>
-      <link>https://eddie.codes/posts/pandas-should-go-extinct/</link>
-      <guid isPermaLink="false">hn3-49668198</guid>
-      <pubDate>Sat, 12 Sep 2026 02:42:08 +0000</pubDate>
-      <description>175 points, 89 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://eddie.codes/posts/pandas-should-go-extinct/"><strong>→ Article</strong></a> <small>(eddie.codes)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49668198">→ HN comments</a> &nbsp;·&nbsp; 175 points &nbsp;·&nbsp; 89 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>minimaxir</em>:</p>
-<blockquote>It&#x27;s been a while since I&#x27;ve seen an actual data science post submitted to Hacker News: both because AI has superset a lot of DS tasks (e.g. vector embeddings), but also because not much new has happened in DS. Polars has been around for a bit and as noted it is much better than pandas, but otherwise the DS ecosystem has been somewhat stagnant.<p>I&#x27;d write more tutorials about how to use data science tooling but one consequence of AI is that all the old data sources I used to analyze such as social media and Reddit are now completely locked down (I am surprised NYC Taxi is still being updated, though). Therefore in the meantime, I&#x27;m working on <i>making</i> better data science tooling...although unclear to what end due to the data issue above.</blockquote>
-<blockquote>
-<p>↳ reply — <em>fithisux</em>:</p>
-<blockquote>I believe the flood of AI articles drown the fact that data science is not dead.<p>I see a lot of work towards Geo-Data Science.<p>PostGIS was a first generation. Now we have GeoPandas, DuckDB Geoanalysis tools and Sedona DB.<p>IMDB data set is also up.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>sjtrny</em>:</p>
-<blockquote>&gt; People typically start with Excel and graduate to Pandas somewhere in the GB range. Pandas serves them well into the 10s of GBs range, and then they start hitting memory issues, slow computation, or become frustrated with Pandas’ baroque API.<p>Assumes that a project moves beyond 10s of GBs. I guess 99.9% of projects that import pandas fall well below this threshold.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>__eddie__</em>:</p>
-<blockquote>True, but also if Polars and DuckDB offer a similar experience with the ability to scale beyond that range, why not use them (for new projects)?<p>This isn&#x27;t a call to arms to rewrite everything in the new shiny, just consider the new shiny for new shiny things</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>appplication</em>:</p>
-<blockquote>Not to mention less footguns. I used to spend my days unwinding bad habits DS pick up from years of panda abuse.<p>Credit to pandas for popularizing dataframes in Python, but polars and duckdb are objectively better APIs in addition to their implementation improvements. Agree that it’s time we let it go.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>__eddie__</em>:</p>
-<blockquote>Yes, this was something I emphasised more in the slides &#x2F; my actual talk. But it&#x27;s just significantly easier to reason about the APIs for both DuckDB and Polars</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>minimaxir</em>:</p>
-<blockquote>At my work I had convinced the ML pipeline engineers to switch from pandas to polars for even small ETL pipelines and there were notable performance gain with better CPU&#x2F;memory utilization.<p>If a library is performant at large datasets, it is likely performant at small ones too.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>mulmboy</em>:</p>
-<blockquote>People are usually surprised to hear that polars can be slower for fairly pedestrian operations, especially with smaller datasets. For example take a 5000 x 3 dataframe of float64 and sort by one column and you&#x27;ll find polars takes about 2.5x as long. If you set POLARS_MAX_THREADS to 1 then it&#x27;s faster. Though this all depends on the machine. Polars tends to shine with larger datasets or where it can heavily take advantage of query planning.<p>Don&#x27;t skip your profiling</blockquote>
-<blockquote>
-<p>↳ reply — <em>winwang</em>:</p>
-<blockquote>(Without profiling or looking into this at all) I&#x27;d guess this has to with thread creation, inter-core communication&#x2F;latency, and possibly having to merge results or otherwise interleave operations. SMT is another likely candidate.<p>Regardless, CPUs are really good at single-thread.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Google stole open source code without crediting the authors (Artemis/Minitap)</title>
-      <link>https://www.minitap.ai/blog/i-expected-better-from-google</link>
-      <guid isPermaLink="false">hn3-49668181</guid>
-      <pubDate>Sat, 12 Sep 2026 02:39:39 +0000</pubDate>
-      <description>126 points, 23 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.minitap.ai/blog/i-expected-better-from-google"><strong>→ Article</strong></a> <small>(minitap.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49668181">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 23 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dataflow</em>:</p>
-<blockquote>&gt; The author history was harder to understand. An earlier package file listed Pierre-Louis Favreau, Jean-Pierre Lo, and Nicolas Dehandschoewercker. The version that replaced it removed all three names and substituted another author. The only change to the files was the author list. GitHub’s activity record shows that the replacement happened through a force push in August, before our investigation this September.<p>Wow, this looks pretty damning. I can&#x27;t imagine Google seeing this as worth the risks. Is an innocent explanation possible here?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>eadwu</em>:</p>
-<blockquote>Not Google or related to any of the projects.<p>This is normal (specific to pyproject.toml overwriting authors). I am not sure about pyproject.toml conventions but I would have done the same. This is the equivalent of telling you who the maintainers of the project are.<p>Usually what you see in the code is the retention of Copyright statements on source code and LICENSE with some reference on README.</blockquote>
-<p>↳ reply 2 — <em>VoidWhisperer</em>:</p>
-<blockquote>If there is an innocent explanation, I&#x27;d love to hear it, because it kind of reads like the force push was done to move the commit with the attribution change out of the public eye so it wasnt clear what they had done.<p>Maybe it is possible the google engineer didn&#x27;t understand how open source licenses work, or didn&#x27;t care since maybe it was supposed to be an internal project first that eventually ended up open sourced?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>camgunz</em>:</p>
-<blockquote>Is it even possible to steal this code? How much of it is uncopyrightable LLM output?</blockquote>
-<p><strong>Top #3</strong> — <em>neilv</em>:</p>
-<blockquote>Regardless of whether or not Google is liable, what would be interesting to me is how this happened, the role(s) at Google that were involved, when each knew of the problem, and what each did.<p>(I&#x27;m interested in what this says about current culture.)</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
