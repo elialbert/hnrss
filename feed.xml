@@ -4,7 +4,149 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 16 Sep 2026 14:45:46 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 18:47:23 +0000</lastBuildDate>
+    <item>
+      <title>Salesforce Global Outage</title>
+      <link>https://status.salesforce.com/products/all</link>
+      <guid isPermaLink="false">hn3-49724488</guid>
+      <pubDate>Wed, 16 Sep 2026 10:37:08 +0000</pubDate>
+      <description>240 points, 145 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://status.salesforce.com/products/all"><strong>→ Article</strong></a> <small>(status.salesforce.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49724488">→ HN comments</a> &nbsp;·&nbsp; 240 points &nbsp;·&nbsp; 145 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>stmw</em>:</p>
+<blockquote>Despite all of the snark here, in my experience Salesforce SRE team is quite competent. The engineering challenges of running a large PaaS - not just with own apps, but with millions of customer-written apps running on it - are quite interesting, and sadly things happen. The status page makes sense to actual customers, it&#x27;s the particular &quot;pods&quot; where a given service runs.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Anon1096</em>:</p>
+<blockquote>Hacker News is much easier to read when you realize that 95% of people have never worked on a &quot;high&quot; (maybe we could say &gt;1B requests per day as a starting point) scale distributed service and think it&#x27;s trivial to run one with more than 2 nines. You see comments all the time here mentioning that their own desktop at home is achieving more than that which belies deep misunderstanding of how systems are measured. Or that unofficial github status page repeatedly posted here that counts all github services together into one number.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>torginus</em>:</p>
+<blockquote>Well ackchually.. I get that large scale systems pose their own challenges on their own, but it also matters what&#x27;s the smallest isolable unit.<p>What I mean by this is a CDN consists of nodes that are horizontally replicable and don&#x27;t really talk to each other, and thus are easy to run even at scale.<p>In contrast, something like a bank or social media isn&#x27;t really reducible - every user needs to be able to interact with every other user in a consistent manner.<p>So running a midsize bank&#x27;s backend which processes 10m transactions per day, might be as if not more complex (all consistent, repeatable, and must never fail), that having a product which is a 10-10k org&#x27;s IT infra replicated a thousand times.<p>And yes, lots of people have worked at banks and other fintech companies of this scale, including me.<p>I am not an expert, as I never worked on the &#x27;core&#x27; systems but I know  folks who did, and everyone told me there&#x27;s an arcane database monolith that sits at the heart of these, very expensive and exotic big box SW &amp; HW (at least for us unwashed rubes used to EC2 instances)</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>r3trohack3r</em>:</p>
+<blockquote>&gt; What I mean by this is a CDN consists of nodes that are horizontally replicable and don&#x27;t really talk to each other, and thus are easy to run even at scale.<p>This is only true if you exclude problems like “finding a CDN node from the device,” “managing congestion,” etc. as part of the problem statement</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>nightski</em>:</p>
+<blockquote>For me personally the snark isn&#x27;t because their SRE team is incompotent.  It&#x27;s because software that tries to be everything to everyone is inherently terrible. It&#x27;s not fun to use for the users, and so many compromises need to be made on the technology side to make that happen that it ends up just being crap all around.  This includes Salesforce, SAP, Dynamics, any platforms like that which scale many industries.<p>Flexibility and abstraction come at a high cost. It doesn&#x27;t really matter though, world domination at all costs is the name of the game.</blockquote>
+<p>↳ reply 3 — <em>gibsonf1</em>:</p>
+<blockquote>Hmm, could the use of genAI have anything to do with this failure and the inability to quickly fix it?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>raffraffraff</em>:</p>
+<blockquote>Have you tried turning it off and then on again?<p>&gt; We&#x27;re no longer pursuing restarts as a path to remediation.<p>Oh you have</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cube00</em>:</p>
+<blockquote>Kind of surprised they admit they&#x27;re going to try restarting and see what happens. I&#x27;m sure it happens everywhere but nobody admits it.<p>&gt; We&#x27;ve attempted a rolling restart on one of the impacted instances to see if that resolves the issue.<p>At least it didn&#x27;t fix the problem so they can actually start finding the real cause.<p>&gt; We&#x27;re no longer pursuing restarts as a path to remediation.<p>Why isn&#x27;t the AI they sell telling them what&#x27;s wrong? Why do they need to take shots in the dark to &quot;see if that resolves the issue&quot;?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>swatcoder</em>:</p>
+<blockquote>I don&#x27;t know, that reads exactly like an AI troubleshooter working through a plan without the implicit contextual understanding an experienced human might bring to either the actions or the communications.<p>&quot;Oops, we forgot to tell it that this is the hyperscaled Salesforce production environment and that its choices need to project competence and consider brand embarrassment. WILLFIX&quot;</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>reaperducer</em>:</p>
+<blockquote><i>Have you tried turning it off and then on again?</i><p>Flashbacks to &quot;Thank you for calling Three-Ten-DELL.  Have you tried turning it of and turning it back on again?&quot;</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mergy</em>:</p>
+<blockquote>Unplanned outage timing is never good but this is really not good.<p><a href="https:&#x2F;&#x2F;www.salesforce.com&#x2F;dreamforce&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.salesforce.com&#x2F;dreamforce&#x2F;</a><p>Sept 15-17</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jppope</em>:</p>
+<blockquote>Say what you want about the product and leadership... they do throw a good conference.</blockquote>
+<p>↳ reply 2 — <em>ramesh31</em>:</p>
+<blockquote>Probably not a coincidence</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>EU chief opens door for Canada to become 'associate member'</title>
+      <link>https://www.bbc.com/news/articles/cjwyzrr9d3dko</link>
+      <guid isPermaLink="false">hn3-49724141</guid>
+      <pubDate>Wed, 16 Sep 2026 09:54:05 +0000</pubDate>
+      <description>626 points, 792 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/cjwyzrr9d3dko"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49724141">→ HN comments</a> &nbsp;·&nbsp; 626 points &nbsp;·&nbsp; 792 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>noir_lord</em>:</p>
+<blockquote>Good, if the middle power democracies don&#x27;t align&#x2F;work together they are going to get torn apart in the struggle between the US and China.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nixass</em>:</p>
+<blockquote>Non-aligned movement 2: electric boogaloo</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>xyzsparetimexyz</em>:</p>
+<blockquote>They&#x27;re very clearly aligned</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>gpvos</em>:</p>
+<blockquote>Not really with the US anymore.<p>Anyway, I think you missed this reference: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Non-Aligned_Movement" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Non-Aligned_Movement</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>krona</em>:</p>
+<blockquote>70% of Canadian exports are to the US. 6% to the EU. Why would e.g. Poland want to enter a trade war with the US on Canada&#x27;s behalf?</blockquote>
+<p>↳ reply 3 — <em>0xpgm</em>:</p>
+<blockquote>One thing that is common about middle democracies is that prioritize a bureaucratic elite structure over an entrepreneurship culture, while both the US and China embrace entreprenuership wholeheartedly.<p>If they changed that they&#x27;d perhaps become world powers themselves.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>adi_pradhan</em>:</p>
+<blockquote>Not sure what it really means but Mark Carney is turning out to be one of the the most consequential prime ministers of Canada.<p>He has an exceptionally poor hand of cards to play but is maximizing any opportunity. Very creditable leadership - even for those who don&#x27;t agree with everything he does.<p>I do think this is a lesson for political parties all over the world. You can be pragmatic.</blockquote>
+<p><strong>Top #3</strong> — <em>skissane</em>:</p>
+<blockquote>&gt; The president of the European Commission has backed proposals for Canada to become the EU&#x27;s first &quot;associate member&quot;.<p>Article 238 of the original Treaty of Rome, which is now article 217 TFEU, provides for the EU (or its precursors) to enter into &quot;association agreements&quot; with non-member states, e.g. Turkey has one of them. Many current EU members (e.g. Greece) had them before becoming members.<p>A lot of 1970s&#x2F;1980s sources referred to these states as &quot;associate members of the EEC&quot; – but it seems like everyone has forgotten that.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Learning Programming in an Age of LLMs</title>
+      <link>https://blog.ploeh.dk/2026/09/16/on-learning-programming-in-an-age-of-llms/</link>
+      <guid isPermaLink="false">hn3-49723873</guid>
+      <pubDate>Wed, 16 Sep 2026 09:12:34 +0000</pubDate>
+      <description>180 points, 129 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.ploeh.dk/2026/09/16/on-learning-programming-in-an-age-of-llms/"><strong>→ Article</strong></a> <small>(blog.ploeh.dk)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49723873">→ HN comments</a> &nbsp;·&nbsp; 180 points &nbsp;·&nbsp; 129 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>rgbrgb</em>:</p>
+<blockquote>I&#x27;ve been thinking about this in the context of learning new languages and tech. In pre-LLM days it was fun to sometimes try to implement a new idea in a new language or stack and build up an understanding by trial and error. You&#x27;d have to accept that it will be slower to get going than a familiar set of tools and maybe only trade out one old tool at a time in this way.<p>Now the pace of dev with something new is so rapid and fun that it&#x27;s hard to not skip even basic things with a new stack. I swapped postgres (old reliable) for clickhouse (first use) in a project and saw a massive speedup of my workloads, but I really have to go down the socratic rabbit hole to understand why and even then it&#x27;s a different level of understanding vs having to read the readme, quickstart, install it myself, rewrite queries by hand. TBH though, pre-LLM I probably would have just plodded along with postgres and built a hacky auto-indexer thing, so in a way the agentic coding helps me explore more territory but encourages less depth.<p>No strong conclusions. Like OP, I&#x27;m just spitballing &#x2F; trying to understand this new world too.</blockquote>
+<p><strong>Top #2</strong> — <em>japhyr</em>:</p>
+<blockquote>I&#x27;m the author of Python Crash Course, and I got this exact same email this week. I was thinking of writing a public response as well, because any attempt to sincerely answer these questions takes something along the lines of a full post. It&#x27;s also worth a public response because many people who are getting into programming for the first time right now are asking variations of these same questions.<p>&gt; Do I think that AI enables people to develop faster than they can keep up?<p>Absolutely. That&#x27;s the core of this person&#x27;s email, and everyone else who asks similar questions. Just five years ago, the only way to build a working project of moderate complexity was to learn the basic to intermediate concepts required to make an MVP. Now, if you can steer an LLM reasonably well, you can quickly build an MVP that goes well beyond your own understanding of the implementation.<p>I don&#x27;t think anyone has clear answers to all the questions brought up in this email. I think people can learn faster than they used to, because they can make connections between different areas faster than they used to. But it requires skill and discipline in how you learn, and how you work. You have to intentionally build your understanding as you build your projects.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>senko</em>:</p>
+<blockquote>&gt; <i>Just five years ago, the only way to build a working project of moderate complexity was to learn the basic to intermediate concepts required to make an MVP.</i><p>&gt; <i>Now, if you can steer an LLM reasonably well, you can quickly build an MVP that goes well beyond your own understanding of the implementation.</i><p>Somewhat agree. Five years ago you could build an MVP without understanding how to open TCP sockets or how to parse HTTP headers. You didn&#x27;t need to understand relational databases, let alone B-trees or cache locality. You didn&#x27;t need to know how to install Linux.<p>Now you don&#x27;t need to understand the details of connecting to Stripe or Auth0 or setting up a Kubernetes cluster.<p>&gt; You have to intentionally build your understanding as you build your projects.<p>Some things you need to understand-others, not so much. Depends on what you&#x27;re doing, the scale, risks, etc, but that&#x27;s always been the case.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>musebox35</em>:</p>
+<blockquote>&gt; Some things you need to understand-others, not so much.<p>This is the core of the matter though, knowing what you need to understand and what you can ignore is the actual programmer&#x27;s skill. It requires you to have a clear mental picture of both what you are trying to build and what the underlying machine will do when you are finished.<p>You need to understand the abstractions, but also where they leak, when they won&#x27;t match reality, and how. This is why knowing computer architecture and assembly helps you to optimize your code even if you are coding in a high level language.<p>The problem with coding agents is that they are tuned to work on all contexts so they always fill an underspecified request by optimizing the average case and often without stating all the assumptions that they make. So you still need to understand what you specified and what got filled in automagically by the agent. My experience is that they (even the paid frontier models) are poor judges of the most important assumptions they make, which will might be corrected by a prompt or a tool output in which case it is fine. Otherwise it will be ignored and steer the model into a weird loop. It then tries to fix things but can not do so since its mental model is totally broken now.<p>Do not get me wrong, I am so happy to let the agent handle tool building (especially those that involve a web UI) and fill in the CLI command line argument parser. But every time I trust the agent by relying on it to drive the mental model of what we are doing, I got seriously bitten. Well, maybe that should not be surprise me, but I can understand the confusion of less experienced programmers and non-coders. It must really be frustrating to be able to build so much, but also not to be able to fix seemingly small issues.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pluc</em>:</p>
+<blockquote>&gt; I think people can learn faster than they used to<p>Agree, but that only applies for people who were experienced developers before AI took over. Let&#x27;s see in 5-10 years what our caliber looks like when you skip the foundations.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>js8</em>:</p>
+<blockquote>I answered this to myself - stop worrying about LLMs. It&#x27;s pretty simple: due to Curry-Howard isomorphism, programming languages are just notations for some type of formal logic.<p>Now ask yourself a question, what language do you want to maintain the programs in? Do you think natural language is going to be easier and more maintainable than formal logic?<p>The answer is no. So you need programmers, people who can read the formal description and adapt it to new requirements.<p>LLMs are amazing technology, but the truth is - natural language just kinda sucks. Therefore, you don&#x27;t really need them (see also <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;AI_effect" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;AI_effect</a> ).<p>I think people love LLMs for the same reasons they love magicians. But just like the magician employs a hidden trick, LLM just runs some algorithm you don&#x27;t see or understand.<p>So worrying about LLMs taking programming job is kinda like worrying that a magician will take a warehouse worker job, because they can levitate stuff. Meanwhile, we already have automated programmer - it&#x27;s called a compiler.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sanderjd</em>:</p>
+<blockquote>I totally agree with the skepticism that we&#x27;ll ever get to a point where natural language becomes the &quot;formalism&quot; and stop needing people who understand the actual formalism underneath. And I agree that you don&#x27;t <i>need</i> LLM based tools.<p>But things that you don&#x27;t <i>need</i> can still be (and often are) incredibly <i>useful</i>. Nobody <i>needs</i> an IDE, nobody <i>needs</i> vim or emacs or bash or even compilers or assemblers.<p>But we have all those tools and they are useful. That is, their utility is net positive.<p>Using LLMs to generate code currently also has (wildly) net positive utility. Maybe that will change because some part of the calculation changes. But this is the situation right now.</blockquote>
+<p>↳ reply 2 — <em>tucnak</em>:</p>
+<blockquote>&gt; It&#x27;s pretty simple: due to Curry-Howard isomorphism, programming languages are just notations for some type of formal logic.<p>Thank you, this made me chuckle!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Mistral X Mozilla: Private, Multilingual AI Browsing</title>
+      <link>https://mistral.ai/news/mistral-x-mozilla/</link>
+      <guid isPermaLink="false">hn3-49723408</guid>
+      <pubDate>Wed, 16 Sep 2026 08:08:57 +0000</pubDate>
+      <description>423 points, 156 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mistral.ai/news/mistral-x-mozilla/"><strong>→ Article</strong></a> <small>(mistral.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49723408">→ HN comments</a> &nbsp;·&nbsp; 423 points &nbsp;·&nbsp; 156 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mattstir</em>:</p>
+<blockquote>It&#x27;s interesting to see Firefox attempt to create slightly more privacy-focused cloud inference infra (assuming you can trust that they adhere to their own policies and don&#x27;t have bugs, and that their partners adhere to their contractual obligations and don&#x27;t have bugs). Unfortunately that&#x27;s still a lot of trust that&#x27;s pretty much impossible for the end-user to verify, but at least it&#x27;s something? Arguably it&#x27;s better than the alternative of directly trusting AI companies that have shown absolutely no regard for other laws like copyright, but the marketing of this as ultra-private still leaves a bad taste. I wish this announcement clarified the cloud aspects directly instead of needing to browse through two layers of links to find how it actually works on a privacy notice.</blockquote>
+<p><strong>Top #2</strong> — <em>sourcecodeplz</em>:</p>
+<blockquote>Seems like what Chrome has with the default built-in Gemini Nano model.<p>Hey at least &quot;some&quot; news&#x2F;things from Mistral. Seems like ages ago when they launched vibe-code.<p>&gt; Powers context-aware search, page summaries, and memory retrieval across browser tabs.<p>&gt; Live in France and North America, with launches in the UK and Germany planned for later this year.<p>&gt; Built on a zero data retention policy; conversations are not saved on Mozilla’s servers by default.<p>&gt; Models are fine-tuned on regional languages, dialects, and local nuances to provide native-feeling responses.<p>&gt; Extends Mistral’s open-weight AI models directly to consumer web browsing alongside its enterprise offerings.</blockquote>
+<blockquote>
+<p>↳ reply — <em>karussell</em>:</p>
+<blockquote>I don&#x27;t think it is comparable. Nowhere in the news they say it is offline but IMO Gemini Nano is offline (?)<p>I&#x27;m not a Google fan but I never understood the outrage as it is a local model ... sure, you have to trust them, but if you use their browser you already do.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>debugnik</em>:</p>
+<blockquote>The outrage about Gemini Nano in Chrome was the surprise extra 4GB download plus their attempt to expose it as a non-standard browser API, IIRC.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mixcocam</em>:</p>
+<blockquote>Would be very cool if you could type a long query and the model would just build an advanced google search query using what you typed. You could even ship a tiny model in the browser itself that does that.<p>Something like: &quot;blog posts which talk about using sending emails to yourself as a notes taking mechanism&quot;.<p>The output could look like: &quot;note taking&quot; OR &quot;notes&quot; (&quot;emailing yourself&quot; OR &quot;email to myself&quot; OR &quot;email yourself&quot;) (inurl:blog OR inurl:posts OR site:medium.com OR site:substack.com)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>layer8</em>:</p>
+<blockquote>That’s a great idea, and would be a much better feature than the unimaginative things Mozilla has been implementing. It’s so disappointing.</blockquote>
+<p>↳ reply 2 — <em>Vinnl</em>:</p>
+<blockquote>I think that&#x27;s roughly what duck.ai is doing? If I type that in there I see it generating some search queries and then generating a list of links based on the different result pages.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Apple Reference Image: A New Approach for Verified Photography</title>
       <link>https://security.apple.com/blog/apple-reference-image/</link>
@@ -68,6 +210,53 @@ So… a nation-state can&#x27;t really do anything here unless they acquire alie
 </blockquote>
 <p>↳ reply 2 — <em>osy</em>:</p>
 <blockquote>It also doesn&#x27;t prevent you from staging an image or anything that&#x27;s existed since photography was invented. But that&#x27;s not the problem they&#x27;re trying to solve.<p>&gt; Today, powerful, widely available AI tools allow users to easily generate or alter photorealistic images to a degree that was difficult to imagine just a few years ago.<p>Photoshop has existed for decades and so has fake images. This is a low friction way to attest &quot;this image came from an iPhone sensor and Apple approved it&quot;. It will still take the usual image forensics to determine if the scene it depicts is legitimate.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Saving Jet Fuel</title>
+      <link>https://tech.marksblogg.com/scikit-decide-openap-optimal-flight-planning.html</link>
+      <guid isPermaLink="false">hn3-49720164</guid>
+      <pubDate>Tue, 15 Sep 2026 23:17:20 +0000</pubDate>
+      <description>127 points, 62 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://tech.marksblogg.com/scikit-decide-openap-optimal-flight-planning.html"><strong>→ Article</strong></a> <small>(tech.marksblogg.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49720164">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 62 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>buildsjets</em>:</p>
+<blockquote>This is the perfect route planning software if you are the only aircraft in the sky, and fuel is your only cost. The commercial solutions exist because they consider not only the winds and fuel costs in their optimization, but also known previously cleared ATC routings, altitude restrictions whether they are charted or only documented by letter-of-agreement, expected delays due to historical congestion, pilot and cabin crew pay, crew duty time limits (your more fuel efficient route may take longer and require an entire second crew), contracted lease, finance, insurance, and maintenance rates as these are also frequently paid by the the hour, and airport arrival curfew times. And probably a few more things too.<p>Also, you say nothing about incorporating ETOPS routing requirements into your application, and looking at the opentop source neither does it, therefore I assume this must mean this is the first time you have seen that acronym and therefore do not understand its criticality in determining aircraft routing. Might want to have your AI agent read this Wikipedia article, because your application generates many routes that are not legal to fly.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;ETOPS" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;ETOPS</a><p>Should I even ask if this application routes around areas that have been declared active war zones by NOTAM?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tgsovlerkhgsel</em>:</p>
+<blockquote>I find your comment unnecessarily harsh. I don&#x27;t see a claim that the open source solution is better or a good solution for actual production use by airlines - it reads to me as a &quot;here&#x27;s how to use what&#x27;s openly available&quot; blog post.<p>(Also, Scikit-decide seems to be on the Github account of Airbus, so I assume they have at least some basic knowledge of how aviation works.)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>scoot</em>:</p>
+<blockquote>I find it harsh but fair. The second paragraph reads:<p>&quot;Firms like Jeppesen have offerings in this space, but Scikit-decide, together with a narrow- and wide-body fuel consumption model built by a professor at the Delft University of Technology and wind data from NOAA, offer an open source solution.&quot;<p>So this is being positioned as an open source alternative to commercial offerings, which clearly it is not. If instead he made the limitations clear from the outset, that this is just a demonstration of what he&#x2F;the tools are capable of and that this is not in any way intended for real-world use, it would put the rest of the article into better context.<p>I also don&#x27;t see how Scikit-decide being developed by Airbus gives OP any domain authority. I use open source tools from all sorts of commercial ventures, and know nothing about how they themselves use them, or what for.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ivraatiems</em>:</p>
+<blockquote>I don&#x27;t like to be that guy, but this doesn&#x27;t read as a particularly well thought-through experiment... I don&#x27;t think it&#x27;s as effective an advertisement for OP&#x27;s consulting as they may have thought, because it suggests an inability to think within relevant context.<p>The truth is that given the legal and ethical constraints available, routing is already relatively well-optimized in many places. (There are some places, like China&#x27;s hybrid civilian-military airspace, where those constraints are extremely nasty and basically make the problem impossible to solve better than it is.)<p>Aviation tries to solve the fuel consumption problem by designing planes to use less fuel, rather than by flying more optimal routes. There is a massive effort in aviation pretty much all the time to try to use less fuel, for every reason from cost to environmental impact to the relative accessibility of jet fuel now and into the future. It&#x27;s the reason engines have gotten physically larger; it&#x27;s a big part of why we don&#x27;t use supersonic jets anymore as well.<p>The efforts have been pretty sucessful: <a href="https:&#x2F;&#x2F;theicct.org&#x2F;maximizing-aircraft-fuel-efficiency-designing-from-scratch&#x2F;" rel="nofollow">https:&#x2F;&#x2F;theicct.org&#x2F;maximizing-aircraft-fuel-efficiency-desi...</a><p>There&#x27;s no hubris in identifying a problem, and fairly little in thinking you might be able to help solve it, but there&#x27;s a good bit in imagining nobody else has done it.</blockquote>
+<p>↳ reply 3 — <em>TacticalCoder</em>:</p>
+<blockquote>username checks out!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>K0balt</em>:</p>
+<blockquote>I have a close family member who flys airliners. He routinely laments having to burn up thousands of pounds of fuel on the ramp to adjust changes to the landing weight projections by dispatch and from over fueling. The amount of waste in a single error (and they are not that infrequent) is enough to heat my house for a year… and I live within 200 miles of the arctic circle.  I mean, burning 1000 gallons of fancy diesel once in a while is a rounding error for jetliner operations, but still, it’s absurd that that is the best solution.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lukeify</em>:</p>
+<blockquote>Aviation is notoriously resistant to change. For both good and bad reasons. Look at how long it&#x27;s taken to get leaded fuel on the way out for light aircraft operations.<p>It seems like there should be a solution to this though, either battery-electric or fuel-cell auxiliary thrust for ground operations and taxiing, or utilising tractors more to do the full aircraft ground movement, not just pushing back from the gate.
+Unfortunately it&#x27;s impossible to suggest such changes without getting a horde of aviation nerds thinking of reasons to tell you why something isn&#x27;t possible, instead of imagining how it _could_ be possible.<p>So it&#x27;s exciting to see companies like Heart Aerospace innovating in this area.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cjrp</em>:</p>
+<blockquote>Virgin Atlantic trialled this at Heathrow in 2006[0]. It looks like it didn&#x27;t gain traction because the airport would need to be resigned to support it, and the landing gear might have been damaged by so much towing.<p>[0] <a href="https:&#x2F;&#x2F;simpleflying.com&#x2F;throwback-virgin-atlantics-fuel-saving-tug-trial&#x2F;" rel="nofollow">https:&#x2F;&#x2F;simpleflying.com&#x2F;throwback-virgin-atlantics-fuel-sav...</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>folmar</em>:</p>
+<blockquote>At least in Europe, except for the largest airports, the start slots are well organized enough that the taxi+wait time is just enough to warm up the engines, eliminating the saving.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ivraatiems</em>:</p>
+<blockquote>It&#x27;s unfortunate the fuel can&#x27;t be siphoned back out and used. I wonder why that is; I suspect if it were possible, it&#x27;d be happening.<p>Also worth noting, tangentially, though - the reason planes are fueled as they are is because if you run out of fuel in a car, you&#x27;re just stranded. In an airplane, you&#x27;re quite possibly dead. If you only load the plane with exactly as much fuel as it needs to get to its destination, you run the risk of not having enough to safely divert.<p>On the other hand, planes also have maximum landing weights, so a plane which must divert or land in an emergency often has to dump fuel for a while first. That&#x27;s more unusual and not something you can easily plan for, but it&#x27;s part of the problem too.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>t0mas88</em>:</p>
+<blockquote>Nice idea, but this is not how flight planning works. The optimization algorithms that airlines use consider a broader range of variables than just fuel, since you also have cost per hour that the engine is running, cost per hour for the crew, and overflight fees for different airspaces.<p>And the output still has to be a valid flight plan route. You can&#x27;t just file a flight plan for &quot;I want this zig zag line at this altitude&quot;.<p>Commercial flight planning software does this optimization as well, but it only selects routes that are valid. For example you have to be at a certain altitude to go one way on a route and another altitude to go the other way. ATC can&#x27;t do their job if you have planes pointing at each other in opposite directions doing 1000+ km&#x2F;h.</blockquote>
+<blockquote>
+<p>↳ reply — <em>codeduck</em>:</p>
+<blockquote>not just cost-per-hour of the crew, but also rest schedules.  A more economical flight-path is all well and good, but it&#x27;s useless if it means that the crew will breach their permitted duty hours.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -1016,6 +1205,30 @@ we have ways to cope,  like unerasing the types by rewriting the names...  And n
 <p>↳ reply 2 — <em>elil17</em>:</p>
 <blockquote>Glass Imaging focuses on AI enhancement of photos (in a way that&#x27;s informed by&#x2F;correcting for camera hardware defects)</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Tell the speakers that you liked their talks</title>
+      <link>https://ohhelloana.blog/tell-the-speakers/</link>
+      <guid isPermaLink="false">hn3-49710903</guid>
+      <pubDate>Tue, 15 Sep 2026 11:28:19 +0000</pubDate>
+      <description>164 points, 42 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://ohhelloana.blog/tell-the-speakers/"><strong>→ Article</strong></a> <small>(ohhelloana.blog)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49710903">→ HN comments</a> &nbsp;·&nbsp; 164 points &nbsp;·&nbsp; 42 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ynac</em>:</p>
+<blockquote>I once gave a short talk at Harvard.  Nearly didn&#x27;t because I was so intimidated by the crowd.  Got through it, hardly able to read the room because of my internal dialogue of focusing on the content, and also convinced I was a fraud. Then I realized I went over my time limit by almost 50%.  When it was over, my emotions were such a mess I logically thought I should try to cry or scream to let off the overwhelming negative energy I had built up.  It was one unreal bucket of feelings after another.  As I collected my clip board and bag, I walked to the side of the hall where I was sure I had seen an exit, someone dodged in front of me and put their hand out and introduced themselves and started asking questions about the talk.  Took her card and suddenly there was another.  It wasn&#x27;t until maybe the fourth person when I realized there was a line of at least twenty people.  Yeah, stop and say hi.  Even with critical questions, complaints.  Making a connection with other people is one of the most important things we can do.</blockquote>
+<blockquote>
+<p>↳ reply — <em>rkp8000</em>:</p>
+<blockquote>Another very useful trick I learned for handling criticism, especially when you&#x27;re standing nervously on stage and the critic is being unfriendly, unreasonable, and unlikely to change their mind about anything:<p>If you don&#x27;t feel you can give a quick response in a way that will bring them to your side right away, instead of arguing simply keep a notepad handy and (visibly) take a quick note about what they said and thank them. Most folks that raise unreasonable criticisms at talks just want to be heard, and in my experience they may even suddenly become very friendly to you for visibly acknowledging their comments, opening the door for a productive and constructive conversation.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jborichevskiy</em>:</p>
+<blockquote>In my experience this goes for more than just talks - can be helpful at events and regular meetings too</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>nate</em>:</p>
+<blockquote>On the flip of this. For those getting started at their first speaking things, don&#x27;t freak out when you look over the audience and feel like zero people are registering that you are even using real words :) . I&#x27;ve been on stage a lot: speaking, improv, plays, stuff. And there are countless times you&#x27;ll actually be able to make some eye contact with the audiecnce if there aren&#x27;t too bright of a stage light, and you will just see stone cold expressions staring back at you. And you will wonder if words are still coming out of your mouth. :) It happens. The human connection you get with a one on one encounter that your body kind of expects when you talk. Them nodding, or any expression whatsoever often goes completely absent in a speakers setting.<p>That&#x27;s why &quot;open with a joke&quot; is so useful. It&#x27;s not really for them! It&#x27;s for you!. If you can hear a laugh from your audience, YOU start to chill out. Your body is like &quot;ah. the mic is actually on, and I&#x27;m not having a stroke&quot;.<p>Another useful tip, if the scenario allows, try to hang out by the front row before your talk and chat someone up. That&#x27;s who you want to then make eye contact with often during your talk. Their expression will be or at least seem to be warmer to you. And you&#x27;ll feel some more calm looking at them than the random heads everywhere else.</blockquote>
+<p><strong>Top #3</strong> — <em>jjkaczor</em>:</p>
+<blockquote>For awhile I did the public speaking circuit - my focus was on infrastructure engineering, governance and supportability.<p>So - I would pepper my talks with real-life scenarios and anecdotes - and alot of humour - because my audiences where in the &quot;same trenches&quot; as me.<p>Then, I gave a talk to an audience of ALL corporate developers (Windows world, so .NET) - it was such a weird vibe, I have never had such a stony-faced, unresponsive crowd of attendees. (But their written feedback&#x2F;reviews were great, so...)<p>(It also didn&#x27;t start well, because the venue hosts attempted to eject an attendee because of the way he was dressed (motorcycle leathers, jeans - honestly nothing offensive) - and &quot;didn&#x27;t look like he was supposed to be there&quot; - I intervened - it turned out that he was a tech user-group leader in the local community, and was just &quot;different&#x2F;quirky&quot;.)</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>25 years of mass surveillance is enough</title>
@@ -2740,6 +2953,34 @@ watchOS 3.2+”<p>Maybe I’m misunderstanding what you’re missing?</blockquot
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Intelligence per Watt: Measuring Intelligence Efficiency of Local AI</title>
+      <link>https://arxiv.org/abs/2511.07885</link>
+      <guid isPermaLink="false">hn3-49694035</guid>
+      <pubDate>Mon, 14 Sep 2026 09:16:39 +0000</pubDate>
+      <description>143 points, 50 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arxiv.org/abs/2511.07885"><strong>→ Article</strong></a> <small>(arxiv.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49694035">→ HN comments</a> &nbsp;·&nbsp; 143 points &nbsp;·&nbsp; 50 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jmiskovic</em>:</p>
+<blockquote>Incredibly important research. We&#x27;ve reached the point where local LLMs are good enough! It takes less time for local model to take the first action on your task than it does for Claude to validate your login, put you into queue and start issuing the commands. Local models are persistent and 100% predictable unlike any cloud offering. It&#x27;s better for the power system for the demand to be distributed. During the winter time the GPU also doubles as a 300W in-house heater. Not to mention avoiding personal data collection and re-selling.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Aurornis</em>:</p>
+<blockquote>&gt; We&#x27;ve reached the point where local LLMs are good enough!<p>For some tasks, yes. For most of my deeper work they&#x27;re not even close to my subscriptions.<p>&gt; It takes less time for local model to take the first action on your task than it does for Claude to validate your login, put you into queue and start issuing the commands.<p>I have some decent LLM hardware here and I strongly disagree with this. Claude responds quickly. Using Fable or Opus it will deliver a working result faster than my local models because it gets there in fewer tokens. That&#x27;s just how it is.<p>&gt; During the winter time the GPU also doubles as a 300W in-house heater.<p>This is a curse in the summer. I&#x27;m feeling it right now.</blockquote>
+<p>↳ reply 2 — <em>rckoepke</em>:</p>
+<blockquote>&gt; During the winter time the GPU also doubles as a 300W in-house heater.<p>Just a reminder that heat pumps can consume 300W of electricity to provide 1200W of heat.</blockquote>
+<p>↳ reply 3 — <em>rpozarickij</em>:</p>
+<blockquote>&gt; During the winter time the GPU also doubles as a 300W in-house heater<p>There could be a service that works in reverse where if someone needs a heater for a few months, they could rent a portable server (e.g. using older repurposed GPUs) with a built-in 5G modem that would run inference on LLM queries. As an incentive perhaps renting itself could be free (or you could earn money?), but you&#x27;d still have to pay your electricity bill.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>surprisetalk</em>:</p>
+<blockquote>I rather like this paper, but I think it is generous to say their benchmarks measure &quot;intelligence&quot;.<p>[0] <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;1911.01547" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;1911.01547</a><p>We have no dang clue what intelligence is, nor how to measure it.<p>[1] <a href="https:&#x2F;&#x2F;taylor.town&#x2F;crowpower" rel="nofollow">https:&#x2F;&#x2F;taylor.town&#x2F;crowpower</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>RunSet</em>:</p>
+<blockquote>&quot;We see a future where intelligence is a utility like electricity or water and people buy it from us on a meter&quot;<p>- Sam Altman[0]<p>&quot;Can you define intelligence?&quot;<p>&quot;Yes, it is this many moneys.&quot;<p>[0] <a href="https:&#x2F;&#x2F;www.businessinsider.com&#x2F;sam-altman-ai-utility-electricity-water-openai-2026-3" rel="nofollow">https:&#x2F;&#x2F;www.businessinsider.com&#x2F;sam-altman-ai-utility-electr...</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>WASDx</em>:</p>
+<blockquote>I tried calculating historical &quot;intelligence per cost&quot; recently but stopped when I realized intelligence is not linear. For any meaningful &quot;x per y&quot; you can just double &quot;y&quot; if you have a half as efficient system to get the same result but so-called intelligence doesn&#x27;t work like that.</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Show HN: I made a flight simulator, except you're just a passenger</title>
       <link>https://inflightsimulator.com</link>
       <guid isPermaLink="false">hn3-49693971</guid>
@@ -3510,242 +3751,6 @@ Replace AI with vaccines and the problems with how some parties are pushing for 
 </blockquote>
 <p><strong>Top #3</strong> — <em>KennyBlanken</em>:</p>
 <blockquote>To save everyone a click: No cuDNN and based off an ancient version of ROCm for windows (7.1 has been out for ages, 7.2 is current.)</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>OpenArm: An open-source 7DOF humanoid arm</title>
-      <link>https://github.com/enactic/OpenArm</link>
-      <guid isPermaLink="false">hn3-49684289</guid>
-      <pubDate>Sun, 13 Sep 2026 14:17:49 +0000</pubDate>
-      <description>142 points, 26 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/enactic/OpenArm"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49684289">→ HN comments</a> &nbsp;·&nbsp; 142 points &nbsp;·&nbsp; 26 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>NegativeLatency</em>:</p>
-<blockquote>Crosses fingers for a general purpose laundry folding bot</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>smokel</em>:</p>
-<blockquote>We&#x27;ve come a long way from watching 50x speedups [1] to real-time [2] videos of watching robots fold clothes, student-style.<p>[1] <a href="https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=gy5g33S0Gzo" rel="nofollow">https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=gy5g33S0Gzo</a><p>[2] <a href="https:&#x2F;&#x2F;www.pi.website&#x2F;blog&#x2F;pi0" rel="nofollow">https:&#x2F;&#x2F;www.pi.website&#x2F;blog&#x2F;pi0</a></blockquote>
-<p>↳ reply 2 — <em>King-Aaron</em>:</p>
-<blockquote>I just want my laundry folding robot to run slower than me, and not be able to do karate backflips etc in the event of some undesired scope creep happening one day.</blockquote>
-<p>↳ reply 3 — <em>mxmilkiib</em>:</p>
-<blockquote>I&#x27;ve got a collection of socks needing darning!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>guestbest</em>:</p>
-<blockquote>Reminds me of the armatron from Radio Shack</blockquote>
-<p><strong>Top #3</strong> — <em>donpdonp</em>:</p>
-<blockquote>$6,500 for OpenArm v2. Incredibly smooth movement, 4kg of load per arm. Its unclear how far the level of autonomous control has come so far. The video shows mostly tele-operated operation. I have to agree with other comments here that folding laundry is the killer app.</blockquote>
-<blockquote>
-<p>↳ reply — <em>moffkalast</em>:</p>
-<blockquote>One would expect it to at least have calibration and inverse kinematics solved. That&#x27;s still a massive pain point for the SO-ARM101 despite it being so common now, since there&#x27;s no base_link to gripper calibration nor sag compensation and every center offset stacks.<p>Lerobot banked on having full DL control of each joint so they wouldn&#x27;t have to do that properly, but now VLAs just use inverse kinematics as a crutch and predict gripper offsets, so we&#x27;re back to square one.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>drapado</em>:</p>
-<blockquote>Hi! do you have any references for VLAs using inverse kinematics? I&#x27;m very curious and can&#x27;t find much</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>moffkalast</em>:</p>
-<blockquote>I&#x27;m not super up to date on new releases, the one I&#x27;m most familiar with is X-VLA which predicts gripper poses and relative movement deltas for kinematics to move to instead of joints, and trains on forward kinematic gripper poses. I think Intern and Octo have the same approach.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Making Startups Powerful</title>
-      <link>https://paulgraham.com/powerful.html</link>
-      <guid isPermaLink="false">hn3-49684196</guid>
-      <pubDate>Sun, 13 Sep 2026 14:09:53 +0000</pubDate>
-      <description>131 points, 59 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://paulgraham.com/powerful.html"><strong>→ Article</strong></a> <small>(paulgraham.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49684196">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 59 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dqh</em>:</p>
-<blockquote>&gt; Being generous makes you more powerful. As Tim O&#x27;Reilly said, you should create more value than you capture. Many hard-headed business types would write this off as idealistic hippy stuff, but in fact this is the route to becoming really rich.<p>&gt; Hired CEOS take the power of the companies they run for granted, whereas founders remember the days when the company was so weak that it had to delight users to survive.<p>I&#x27;ve always instinctively followed the generosity path, and have experienced that when customers are delighted and that when frictions are removed (or not added in the first place), good things will follow.<p>However, I have not always been able to convince others to trust in and follow this path. Can anyone offer any advice or experiences on talking people out of trying to prematurely squeeze out every last penny?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>InvertedRhodium</em>:</p>
-<blockquote>&gt; Can anyone offer any advice or experiences on talking people out of trying to prematurely squeeze out every last penny?<p>Yes. Lend them many more pennies, removing the necessity for short-term profit taking and allowing them to run at a loss until they decimate the competition, capture the market and then start raising prices to the point that they are more profitable than had they taken the short-sighted approach.</blockquote>
-<p>↳ reply 2 — <em>arnorhs</em>:</p>
-<blockquote>This depends on what you are building and what your goals are. What pg is referring to is how to build transformative companies, unicorns if you will.<p>There&#x27;s plenty of businesses where you are simply optimizing a funnel, and driving more revenue at all costs is fully aligned with the goals of the company</blockquote>
-<p>↳ reply 3 — <em>vhiremath4</em>:</p>
-<blockquote>my advice? be the boss.<p>before the pandemic hit and most of the world was quarantined, we decided to give loom away to students and teachers for free and made the service 50% off indefinitely. this was generous but also strategic. we made the simple deduction that, should people be locked inside, they would naturally see their sons&#x2F;daughters using loom as students. or their spouse or roommates as teacher&#x2F;staff.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bob1029</em>:</p>
-<blockquote>&gt; There&#x27;s a variant of going full stack where you eat your way gradually through the customer by doing all their hardest work for them.<p>One of my clients provisions front office applications for banks and the conversation has come up more than once regarding the client evolving into a bank themselves and building up operations around the capabilities of the product stack.<p>One good multi-regional partner and it could be a radically different animal. Providing software to one very big customer tends to be a lot simpler than providing it to 20+ smaller customers.</blockquote>
-<blockquote>
-<p>↳ reply — <em>n4r9</em>:</p>
-<blockquote>In my experience it depends on the nature of that client. A drawback to having a dominant client is that they have a lot more leverage in roadmap, prioritisation, and product fit. That can seriously impact the internal coherence and maintainability of the product. Too many bits of business logic lodges in weird places because the client didn&#x27;t want to write custom behaviours, and no time to tidy it up because they&#x27;re always demanding their next wishlist feature to be deployed yesterday.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>dools</em>:</p>
-<blockquote>How about &quot;making investors less powerful&quot;?</blockquote>
-<blockquote>
-<p>↳ reply — <em>ignoramous</em>:</p>
-<blockquote>You should read the essay. It is mostly about pivoting towards an outsized outcomes for founders &amp; leveraging various avenues available to their advantage.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dools</em>:</p>
-<blockquote>I don&#x27;t mean less powerful relative to startup founders, I mean less powerful in terms of how we allocate resources in the economy.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Data collected by cars and sold to third parties</title>
-      <link>https://www.theverge.com/column/994172/your-car-is-selling-your-data</link>
-      <guid isPermaLink="false">hn3-49683953</guid>
-      <pubDate>Sun, 13 Sep 2026 13:45:08 +0000</pubDate>
-      <description>251 points, 137 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.theverge.com/column/994172/your-car-is-selling-your-data"><strong>→ Article</strong></a> <small>(theverge.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49683953">→ HN comments</a> &nbsp;·&nbsp; 251 points &nbsp;·&nbsp; 137 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bitparadox</em>:</p>
-<blockquote>I posted a flavor of this comment on an article a few months ago, but it&#x27;s relevant here:<p>I have a seven year old Volkswagen, not financed. I&#x27;m security conscious and made sure to disable all the data collection I could find in the companion app before removing my account, turn off remote access services, dig through the infotainment to turn off what I could, etc.<p>Last year I requested a Carfax on it, and one of the fields in the request was current mileage. I entered an estimate like 75000 miles. On form submission, that field failed validation with red subtext along the lines of &#x27;this is less than the last reported mileage of 75345, reported &lt;5 or so days prior&gt;&#x27;. Checking my odometer and looking at my past few days&#x27; trips, that was indeed accurate.<p>The car hadn&#x27;t been to a shop or out of my possession in weeks, so I can only assume the telemetry was still dialing home and selling to third parties despite my best efforts to disable it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>torginus</em>:</p>
-<blockquote>Tangential, but one of the concerns I have about these &#x27;smart&#x27; cars is they have an expiration deadline.<p>There&#x27;s an exceedingly common type of failure I have seen myself in industrial electronics and (has happened with Tesla at least once), that some module keeps a log of some kind in a nonvolatile flash, and this flash has a limited lifecycle, which the equipment reaches at some years into its life (or earlier, if the flash came from a bad batch, or more logging happens than planned).<p>At this point the board usually gets bricked and replacement is very hard due to cryptographic handshakes between components.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>aceazzameen</em>:</p>
-<blockquote>They&#x27;ve become cell phones on wheels. I&#x27;m disappointed with what vehicles (and phones too!) have become.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>samsullivan</em>:</p>
-<blockquote>Your mileage went from VW-&gt;telematics vendor-&gt;broker-&gt;carfax, thats the chain it usually follows. The fuse stops it but the real issue is the owner is the only one without the record.<p>You could probably find some interesting info if you send out some privacy requests through the chain. LexisNexis and Verisk are consumer reporting agencies, so they have to provide you a disclosure on request. Start there.</blockquote>
-<p>↳ reply 3 — <em>wcunning</em>:</p>
-<blockquote>Lots of automotive OEMs want that specific kind of information for generic reasons (how many of what model made it to what mileage under what circumstances) that are entirely reasonable. Lots of them also want that info for warranty related reasons (you&#x27;ve hit the mileage limit and we won&#x27;t do anything for you anymore). But, my state of Michigan is starting a program to evaluate replacing registration fees with mileage charges to account for the additional wear and tear on the roads from EVs that don&#x27;t pay gas taxes to fund road repairs. This would require some kind of verification of mileage, which we can&#x27;t currently do during emissions testing, since it doesn&#x27;t exist here. Legally required data retention is becoming a bigger and bigger issue, particularly in light of the driver monitoring requirement starting in MY27 vehicles by the Bipartisan Infrastructure Act terms. That will presumably be integrated into any black box recording in a crash and probably subpoenaed in any dispute going forward.<p>In other news, I think I&#x27;ll be taking a trip to somewhere down south to find a nice, used 1999 F350 dually with a manual transmission, since they&#x27;re going to cease to exist shortly...</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jboggan</em>:</p>
-<blockquote>I&#x27;d like to point out that the CA assembly has passed AB-1542 and it is likely going to be signed by the governor this week. This would make the sale and sharing of &quot;sensitive&quot; personal information illegal, and one of the sensitive personal categories is geolocation data that can map an individual to within a 1850-ft radius.<p>In my understanding, this pretty much makes this type of driver data illegal to sell or share. CalPrivacy&#x27;s enforcement division has their eye on connected car manufacturers already, so we&#x27;ll see what they do with that.<p><a href="https:&#x2F;&#x2F;leginfo.legislature.ca.gov&#x2F;faces&#x2F;billHistoryClient.xhtml?bill_id=202520260AB1542" rel="nofollow">https:&#x2F;&#x2F;leginfo.legislature.ca.gov&#x2F;faces&#x2F;billHistoryClient.x...</a></blockquote>
-<p><strong>Top #3</strong> — <em>samsullivan</em>:</p>
-<blockquote>Two different things are getting called &quot;car data&quot; here.<p>Facts about the car: VIN, spec, recall status, odometer. Attested by someone other than the owner. Outlives every owner and the owner is the last to have it, if at all.<p>Facts about the driver: speed, location, timestamp. Thats what GM sold, the fix is to not collect it but OEMs seem to take &#x27;anonymization&#x27; approach.<p>The DRIVER act treats both as the same which is why it fails to fix anything. The second needs a ban. The first needs the opposite - especially as we take the driver out of the vehicle - an authoritative record of the vehicle. How do we expect AVs to have adoption when the only safety certification is the company&#x27;s press release?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Flock worker calls police on reporter filming public camera installation</title>
-      <link>https://www.investigatetv.com/2026/09/08/flock-worker-calls-police-investigatetv-reporter-filming-public-camera-installation/</link>
-      <guid isPermaLink="false">hn3-49683853</guid>
-      <pubDate>Sun, 13 Sep 2026 13:35:31 +0000</pubDate>
-      <description>331 points, 236 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.investigatetv.com/2026/09/08/flock-worker-calls-police-investigatetv-reporter-filming-public-camera-installation/"><strong>→ Article</strong></a> <small>(investigatetv.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49683853">→ HN comments</a> &nbsp;·&nbsp; 331 points &nbsp;·&nbsp; 236 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tptacek</em>:</p>
-<blockquote>Random people calling 911 on other people filming them is a staple of Youtube; banks, coffee store workers, hairdressers, most especially restaurant managers. I don&#x27;t know why anyone would expect technicians from Flock to be different. It&#x27;s worse for the technician in this case, because he really was being followed --- that&#x27;s not unlawful but it&#x27;s unnerving.<p>You&#x27;d think from the response that this was like the VP&#x2F;Sales of Flock Safety. But it&#x27;s just some installer dude probably making $65k&#x2F;year to climb poles and fasten cameras. I guess that&#x27;s praxis for you though.<p>I think this is just a ragebait piece.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>DrewADesign</em>:</p>
-<blockquote>Well, when you’re on the clock, you’re an agent of that company. And when you’re installing an indiscriminate mass-surveillance camera, calling the police on someone that’s <i>video recording </i> you is kind of bananas. Perhaps you don’t find that to be an interesting event, but a lot of people who are rightfully angry at the non-consensual deployment of a mass surveillance network disagree.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tptacek</em>:</p>
-<blockquote>It&#x27;s not bananas. It happens all the time. The police show up, check things out, and inform the caller that the person recording has a right to do so. In this case, it&#x27;s even less bananas, because the people recording him were literally following him around, which is not what generally happens in these &quot;audit&quot; scenarios where someone parks themselves on the street outside a restaurant or bank.<p>There&#x27;s pretty clearly a vibe on this thread that calling 911 is itself a use of coercive force. It is not. 911 is how you&#x27;re ordinarily supposed to reach the police. In my neighborhood, it&#x27;s how you&#x27;d report a stolen bicycle. It&#x27;s the job of the police to handle those calls appropriately, and I don&#x27;t see any indication that the call was handled inappropriately here.<p>The story doesn&#x27;t want to give you that context because their goal isn&#x27;t to inform you, it&#x27;s to get your blood pumping.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>tanseydavid</em>:</p>
-<blockquote>TIL that 911 (Emergency Services) is how one should report a stolen bicycle.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>giaour</em>:</p>
-<blockquote>&gt; It&#x27;s worse for the technician in this case, because he really was being followed --- that&#x27;s not unlawful but it&#x27;s unnerving.<p>The technician was in public, bearing a company logo, performing an activity in which there is widespread public interest, and identified himself to law enforcement as an agent of Flock Safety. He is entitled to be unnerved but has no reasonable expectation of privacy here.</blockquote>
-<p>↳ reply 3 — <em>hammock</em>:</p>
-<blockquote><i>&gt; it&#x27;s just some installer dude probably making $65k&#x2F;year to climb poles and fasten cameras</i><p>I find it hard to be persuaded by the salary idea. A hitman who works for $100 is just as bad as one who works for $10,000.<p>In fact other immoral activities work the opposite, bizarrely (a whore who works for $100 is worse than one who works for $10,000)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jamesnorden</em>:</p>
-<blockquote>Flock (YC 2017) missing from title.</blockquote>
-<p><strong>Top #3</strong> — <em>Zeetah</em>:</p>
-<blockquote>Privacy for me but not for thee - Flock</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>simpaticoder</em>:</p>
-<blockquote>A really interesting experiment would be to give the public access to all of Flock&#x27;s data, in real time. I say we try it and see how that goes.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>hammock</em>:</p>
-<blockquote>There was an organization I came across that was working with private property owners to set up cameras outside&#x2F;pointed at politicians, etc and sharing the footage. I can’t recall the name though</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>cute_boi</em>:</p>
-<blockquote>yea it is similar to robot mark zuckerburg who purchased everything near his house to protect privacy, but his app is the biggest privacy nightmares, especially rayban glasses.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>US Customs supervisor busted for stealing hardware from Homeland Security PCs</title>
-      <link>https://www.tomshardware.com/pc-components/us-customs-supervisor-busted-for-stealing-core-i7-cpus-ram-and-hard-drives-from-homeland-security-pcs-stolen-tech-swapped-with-inferior-hardware-and-cashed-out-on-newegg</link>
-      <guid isPermaLink="false">hn3-49683729</guid>
-      <pubDate>Sun, 13 Sep 2026 13:24:28 +0000</pubDate>
-      <description>128 points, 107 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.tomshardware.com/pc-components/us-customs-supervisor-busted-for-stealing-core-i7-cpus-ram-and-hard-drives-from-homeland-security-pcs-stolen-tech-swapped-with-inferior-hardware-and-cashed-out-on-newegg"><strong>→ Article</strong></a> <small>(tomshardware.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49683729">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 107 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>pushcx</em>:</p>
-<blockquote>Many years ago, I arrived to my half-height cubicle at a Fortune 100 company to see that my desktop PC case was ajar. I set the CRT aside, opened it, and realized that the RAM had been removed. My neighbor explained what must have happened: another employee must have needed to double their RAM from 8 to 16 MB. Requisitioning an upgrade was a weeks-long bureaucratic process that required approval by one&#x27;s manager and IT, perhaps prompting a review of per-team resource allocation. Repairing a broken PC was a trivial help desk ticket; my PC was restored in an hour or two.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>saghm</em>:</p>
-<blockquote>Sounds like the neighbor could have just taken the RAM from their own computer out and claimed someone stole it and then called IT to provide them with replacement and then opened it back to and put theirs in. Seems pretty selfish to disrupt someone else&#x27;s day for this instead of your own; they could have gotten back up and running before you did since they could have put in a help desk ticket before you even got in.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rigrassm</em>:</p>
-<blockquote>&gt; Sounds like the neighbor could have just taken the RAM from their own computer out and claimed someone stole it and then called IT to provide them with replacement and then opened it back to and put theirs in.<p>That would be the ideal way _if_ that person had a couple of hours to spare. In my meaningless anecdotal experience someone that would need to resort to this likely wasn&#x27;t planning to do it.<p>More likely they were working on their TPS reports and it got so big they couldn&#x27;t finish the work before their middle manager would be expecting it in 45 minutes so I&#x27;m a panic they sneak in and grab the extra RAM leading to them finishing the report with 1 minute to spare saving the company from insolvency!<p>&gt; Seems pretty selfish to disrupt someone else&#x27;s day for this instead of your own; they could have gotten back up and running before you did since they could have put in a help desk ticket before you even got in.<p>On principle I agree but it&#x27;s not the only option! The real pro wouldn&#x27;t have just taken the RAM and walked away, they would have taken the RAM and then submitted a ticket letting them know you noticed another employee&#x27;s PC case open and when you looked noticed the sticks were missing.<p>Bonus points if they include a blurb highlighting the importance of that person&#x27;s PC being functional before they get in the office since that PC has the super important customer files needed for the big meeting in an hour and if they don&#x27;t have them the company is going to have to make cuts and will likely start with the IT department.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>saghm</em>:</p>
-<blockquote>&gt; More likely they were working on their TPS reports and it got so big they couldn&#x27;t finish the work before their middle manager would be expecting it in 45 minutes so I&#x27;m a panic they sneak in and grab the extra RAM leading to them finishing the report with 1 minute to spare saving the company from insolvency!<p>I don&#x27;t think it&#x27;s more likely that this single action saved the company from insolvency than they were just impatient and selfish. I honestly don&#x27;t really believe you do either.<p>&gt; On principle I agree but it&#x27;s not the only option! The real pro wouldn&#x27;t have just taken the RAM and walked away, they would have taken the RAM and then submitted a ticket letting them know you noticed another employee&#x27;s PC case open and when you looked noticed the sticks were missing.<p>Yes, that also immediately occurred to me. Being less selfish is good, but not being selfish at all is better.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>peddling-brink</em>:</p>
-<blockquote>Was this explanation given with a wink and a nod, or did your neighbor always have 16MB of RAM?</blockquote>
-<p>↳ reply 3 — <em>walrus01</em>:</p>
-<blockquote>Reminds me of the kids in my high school who stole individual 4MB 72-pin SIMMs out of a bunch of computer lab desktop PCs to upgrade their approximately equivalent generation motherboard&#x2F;CPU home systems to whatever was their max capacity, in an era when a 16MB RAM desktop PC was a high performer. Shortly after all the PCs got locks on them.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>muragekibicho</em>:</p>
-<blockquote>Selling 105,800$ worth of compute for 39*200=7800$ is similar to theft I&#x27;ve only encountered in the third world.<p>My boiler&#x27;s copper water supply lines were vandalized for scrap. Their total value was 1540$ but the thief sold the copper for a grand total of 20$. The police and I went to the local scrap market, asked for anyone with a great deal on copper supply lines, and the perp was caught.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>AnotherGoodName</em>:</p>
-<blockquote>The copper theft thing happens in western nations too. There&#x27;s videos of people driving up in cars, license plates and faces showing and just to add to the stupidity they use bolt cutters to remove live power cables from EV charging stations.<p>The damage they do is well over $1000 from the multiple they hit so a major federal charge qualifies. The scrap value once you pull out the copper is less than $5. <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=RqmythK_b6Y" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=RqmythK_b6Y</a><p>The amount of effort to reward doesn&#x27;t come near even a minimum wage job. Similar to the above. The guy sold $7800 over the course of more than a year and not to factor in this was a swap so he bought replacements. Stupid.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sellmesoap</em>:</p>
-<blockquote>Geez $5 is the gas to drive up, reminds me of Zorg&#x27;s chaos is productivity speech.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thenthenthen</em>:</p>
-<blockquote>Not only in the third world i would say?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>2b3a51</em>:</p>
-<blockquote>Hang on, 105 800 &#x2F; 46 = $2300 per machine. Good heavens, when I was partially responsible for hardware refreshes in a UK public sector organisation with around a thousand endpoint PCs we budgeted something like £600 a box. Have prices <i>really</i> gone up that much in a decade or so, or is this some maximalist prosecution claim?<p>RAM thefts: Birmingham UK, Jewellery Quarter, St Paul&#x27;s Square. Some may remember the solicitor&#x27;s office on the corner that had &#x27;RAM removed from PCs overnight&#x27; etched on the street level windows pre-millenium. Has been converted into posh flats now.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Why is the x86 undefined instruction called ud2? Why 2?</title>
-      <link>https://devblogs.microsoft.com/oldnewthing/20260910-00/?p=112689</link>
-      <guid isPermaLink="false">hn3-49683262</guid>
-      <pubDate>Sun, 13 Sep 2026 12:30:15 +0000</pubDate>
-      <description>147 points, 37 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://devblogs.microsoft.com/oldnewthing/20260910-00/?p=112689"><strong>→ Article</strong></a> <small>(devblogs.microsoft.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49683262">→ HN comments</a> &nbsp;·&nbsp; 147 points &nbsp;·&nbsp; 37 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>hacker_homie</em>:</p>
-<blockquote>Thus finally the 0F FF believers were rewarded by being give the honor of op code UD0 making it the one and true original invalid opcode permanently disgracing the 0F B9 adherents with the shame of UD1.</blockquote>
-<blockquote>
-<p>↳ reply — <em>FartyMcFarter</em>:</p>
-<blockquote>That will show&#x27;em.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>gtirloni</em>:</p>
-<blockquote>I recently had to debug builds that failed randomly and a ud2 from V8 was there waiting for me.</blockquote>
-<p><strong>Top #3</strong> — <em>ordu</em>:</p>
-<blockquote><i>&gt; It’s called ud2 because the 0F FF variant was retroactively named ud0, and the 0F B9 variant was retroactively named ud1, leaving ud2 as the recommended undefined opcode.</i><p>It was a surprise for me as a reader. When I came to this sentence I assumed that 0f ff would become #1 and 0fb9 -- #2. But no, Intel counts from zero, so there is a third ud.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>'Fingerprints' inside the Sun could reveal if it once swallowed a planet</title>
-      <link>https://ras.ac.uk/news-and-press/research-highlights/fingerprints-inside-sun-could-reveal-if-it-once-swallowed-planet</link>
-      <guid isPermaLink="false">hn3-49683033</guid>
-      <pubDate>Sun, 13 Sep 2026 12:01:52 +0000</pubDate>
-      <description>125 points, 42 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ras.ac.uk/news-and-press/research-highlights/fingerprints-inside-sun-could-reveal-if-it-once-swallowed-planet"><strong>→ Article</strong></a> <small>(ras.ac.uk)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49683033">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 42 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mturk</em>:</p>
-<blockquote>MESA, a piece of software referenced in this article, is a pretty incredible system. (Even referring to it as software underplays the extent of its community and impact.)<p>Many people are involved in MESA and Bill Paxton was always quick to point out the many new folks that worked on it, but this article does a great job of celebrating his impact:<p><a href="https:&#x2F;&#x2F;www.kitp.ucsb.edu&#x2F;news&#x2F;an-accidental-astrophysicist" rel="nofollow">https:&#x2F;&#x2F;www.kitp.ucsb.edu&#x2F;news&#x2F;an-accidental-astrophysicist</a><p>It&#x27;s amazing to me that he went from being the voice on the other end of the Mother Of All Demos to having such a major impact on stellar astrophysics during his &quot;retirement.&quot; He passed away in 2025.</blockquote>
-<blockquote>
-<p>↳ reply — <em>vesinisa</em>:</p>
-<blockquote>Thank you, that definitely was an interesting read. Sad to learn of Bill Paxton&#x27;s passing. Clearly his legacy and impact however live on, like this research demonstrates.<p>It seems he preferred the term &quot;software instrument&quot; to refer to MESA:<p>&gt; Bildsten and Paxton have taken to calling programs like MESA &quot;software instruments,” according to the latter. “Just like you can’t do observational astrophysics without an instrument like a telescope,&quot;  he said, &quot;you can’t do computational astrophysics without an instrument such as MESA.&quot;<p>It&#x27;s amazing what impact one good piece of software, freely available to anyone anywhere to use, can have on a field. I think this quote illustrated the problem he was able to solve very well:<p>&gt; Ideally, you want to be able to run an experiment, but you can’t go grab a star, run an experiment for a billion years, and come back later to see how it turned out.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>A_D_E_P_T</em>:</p>
-<blockquote>&gt; <i>Their results favour a scenario in which the young Sun engulfed a super-Earth around 5–10 times the mass of Earth</i><p>Given the state of the early solar system, it would be surprising if the Sun didn&#x27;t swallow <i>a lot</i> of metallic and carbonaceous rocks and pebbles.  But it seems unclear to me how the researchers would distinguish between one super-Earth and &gt;10^10 smaller rocks?  Chemically I feel the two would be largely the same.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cfiggers</em>:</p>
-<blockquote>That&#x27;s easy, they&#x27;ll check whether there&#x27;s one big fingerprint vs &gt;10^10 little tiny fingerprints and conclude accordingly \j</blockquote>
-<p>↳ reply 2 — <em>hydrogen7800</em>:</p>
-<blockquote>&gt;But it seems unclear to me how the researchers would distinguish between one super-Earth and &gt;10^10 smaller rocks?<p>I have a similar feeling when life on earth is suggested to be &quot;alien&quot;, arriving via debris in the solar system as the earth formed.  Isn&#x27;t everything in the solar system coalesced from the same debris?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>regularfry</em>:</p>
-<blockquote>Has someone got a quick explainer for why adding a planet would result in less lithium? Is it just that a super-earth would be big enough and have so little lithium that it would measurably water down the other elements?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>gus_massa</em>:</p>
-<blockquote>Neither an astrophysics. I skimmed the paper. IIUC the collision with the planet mixed internal layers of the Sun and a lot of the Lithium went to the core and got fussed with Hydrogen.<p>PS: The paper says that that actual A(Li)=1.1 instead of the expected A(Li)=3.3. I needed a lot of search to understand it until Gemini kindly liked this page. <a href="https:&#x2F;&#x2F;astronomy.stackexchange.com&#x2F;questions&#x2F;61814&#x2F;what-do-lithium-abundance-numbers-mean-in-catalogs-like-hypatia" rel="nofollow">https:&#x2F;&#x2F;astronomy.stackexchange.com&#x2F;questions&#x2F;61814&#x2F;what-do-...</a><p>A(Li)=1.1 means the Li&#x2F;H ratio is 10^(-10.9) = 10^(-8.9)%<p>A(Li)=3.3 means the Li&#x2F;H ratio is 10^(-9.7) = 10^(-7.7)%</blockquote>
-<p>↳ reply 2 — <em>accrual</em>:</p>
-<blockquote>Not an astrophysicist, but since they mentioned the lithium is <i>depleted</i>, I wonder if that implies the collision of a planetary body with a sun would consume or react with the solar lithium.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
