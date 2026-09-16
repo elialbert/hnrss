@@ -4,7 +4,72 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 16 Sep 2026 09:48:09 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2026 14:45:46 +0000</lastBuildDate>
+    <item>
+      <title>Apple Reference Image: A New Approach for Verified Photography</title>
+      <link>https://security.apple.com/blog/apple-reference-image/</link>
+      <guid isPermaLink="false">hn3-49721322</guid>
+      <pubDate>Wed, 16 Sep 2026 02:07:31 +0000</pubDate>
+      <description>377 points, 248 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://security.apple.com/blog/apple-reference-image/"><strong>→ Article</strong></a> <small>(security.apple.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49721322">→ HN comments</a> &nbsp;·&nbsp; 377 points &nbsp;·&nbsp; 248 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tgsovlerkhgsel</em>:</p>
+<blockquote>This is really clever from Apple. The journalist use case is just the PR story. This will be really useful for identity verification and insurance apps, and has the potential to shift from &quot;you need a smartphone to be able to live normally&quot; to &quot;you need an iPhone to be able to live normally&quot;.<p>There are already plenty of insurances that require you to submit claims through a smartphone app that tries to essentially do this by capturing sensor metadata etc. - those don&#x27;t need to be nation-state resilient, just Joe the Crackhead Insurance Scammer resilient, so this works. Likewise, more and more things online require identity verification (either officially or disguised as age verification).<p>Edit: And while &quot;a nation state actor can spoof this&quot; is a problem for the journalism use case, the insurance&#x2F;ID verification use cases are <i>perfectly fine</i> with anything that raises the bar but could be bypassed with enough effort. Also, the journalism use case suffers from the same fundamental issue all of these use cases suffer from: People will &quot;verify&quot; the picture by looking at the repost of a screenshot of the verification UI, not by verifying the original themselves.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>alwillis</em>:</p>
+<blockquote>&gt; This is really clever from Apple. The journalist use case is just the PR story. This will be really useful for identity verification and insurance apps, and has the potential to shift from &quot;you need a smartphone to be able to live normally&quot; to &quot;you need an iPhone to be able to live normally&quot;.<p>You have it all wrong.<p>Apple Reference Image is not an id system; it&#x27;s primarily a way to attest that the pixels recorded by the camera sensor have not been altered in any way; the pixels, metadata and timestamp are all cryptographically signed.<p>There&#x27;s no way to link a reference image to a person; it&#x27;s also not possible to determine if a pair of images came from the same device.<p>&gt; And while &quot;a nation state actor can spoof this&quot; is a problem for the journalism use case<p>This is incorrect:<p><pre><code>    When the image sensor is first initialized in the factory, it creates a
+    cryptographic signing identity, sharing only the public key with the
+    factory. The SEP similarly creates a separately-attested signing
+    identity. These identities are bound together into the device manifest,
+    allowing us to later check whether a particular sensor and SEP are from
+    the same device.
+
+    The final signature on a reference image is a composite post-quantum
+    signature combining RSA-3072 and ML-DSA-87. To our knowledge, Apple
+    Reference Image is the only image provenance system that provides
+    quantum-secure defenses.
+</code></pre>
+So… a nation-state can&#x27;t really do anything here unless they acquire alien technology. If something crazy happens (solar flare or EMP?), a fraudulent reference image can be revoked.<p>&gt; Also, the journalism use case suffers from the same fundamental issue all of these use cases suffer from: People will &quot;verify&quot; the picture by looking at the repost of a screenshot of the verification UI, not by verifying the original themselves.<p>I would imagine there will be a way to confirm an Apple Reference Image on the web. Pretty soon, 3rd parties will be able to verify the image themselves:<p><pre><code>    Reference images can be viewed in the Photos app alongside the main
+    image, like a digital negative, to visually compare the two assets and
+    determine if any edits were made. APIs are available in iOS, iPadOS, and
+    macOS 27 for third-party apps to enable viewing of these reference images.</code></pre></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>JW_00000</em>:</p>
+<blockquote>&gt; Apple Reference Image is not an id system; it&#x27;s primarily a way to attest that the pixels recorded by the camera sensor have not been altered in any way; the pixels, metadata and timestamp are all cryptographically signed.<p>&gt; There&#x27;s no way to link a reference image to a person; it&#x27;s also not possible to determine if a pair of images came from the same device.<p>Some banking apps nowadays ask you to upload a photo of your ID and then use the webcam&#x2F;selfie camera to confirm that&#x27;s it&#x27;s really you (sometimes asking you to move your head in a particular way). But how trustworthy is that process really? Apple Reference Image could be (part of) a solution, by certifying that both images were taken by the same device around the same time.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>CrazyStat</em>:</p>
+<blockquote>&gt; Apple Reference Image could be (part of) a solution, by certifying that both images were taken by the same device<p>This is explicitly not possible, as the post you were replying to pointed out.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>rickdeckard</em>:</p>
+<blockquote>I don&#x27;t understand the vector of this:<p>An insurance would either assign #1 an insurance agent or mechanic to initially assess the damage (trusted) or #2 ask the customer to send pictures (untrusted).<p>Tendency is #2 for cost-saving of the insurance, and 3rd party apps are used to execute this.<p>Now the idea is that the insurance company discontinues the App and the (untrusted) customer must have an iPhone 18 Pro to make an insurance claim?<p>Or is the insurance agent &#x2F; mechanic an untrusted entity who will now be required to have an iPhone 18 Pro?<p>What is the fraud vector here, and how can the insurance service provider continue cost-saving on damage-assessment by offloading to the customer, if the customer is required to own a specific device?</blockquote>
+<p>↳ reply 3 — <em>itake</em>:</p>
+<blockquote>I don’t understand what this brings to the table beyond what we’re currently doing.<p>Insurance companies can have a native app and require the device’s camera. Companies already have tools to combat a liveliness check. Even if you’re using a modified app that pulls from the photo album instead of the camera? A video recording with the appropriate liveness verification easily avoids that mess.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>albert_e</em>:</p>
+<blockquote>Thinking aloud about failure modes &#x2F; edge cases:<p>If i create a high quality deepfake image, project it on a large screen and take a photo of that image with an iPhone (+apple verified image secure tag) ... would that resulting image be considered &quot;authentic&quot; by default?<p>Would digital forensics accessible to lay people still be able to fact-check and call out misuse &#x2F; fakery of the new secure tag.</blockquote>
+<blockquote>
+<p>↳ reply — <em>MBCook</em>:</p>
+<blockquote>It is authentic, in a way. It’s exactly what you took a picture of.<p>I do wonder how easy that would be to detect, but I can’t help but think some sort of artefacting or something would show up.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tristanj</em>:</p>
+<blockquote>Apple doesn&#x27;t address the modified photo replay situation, where you take a picture of an already edited image.<p>Photoshop &#x2F; AI-gen an image -&gt; display on a high-resolution monitor -&gt; photograph the monitor with iPhone 18 Pro -&gt; valid Apple Reference image.<p>To get valid reference photos, you can go to the actual physical location, put the iPhone&#x2F;monitor in a cardboard box to block external light, then photograph the monitor. Paint the inside of the box using Vantablack (stopping reflections) and cover the LiDAR projector with tape.<p>I can&#x27;t wait to see Apple Verified™ photos of UFOs flying over the Golden Gate Bridge.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pveierland</em>:</p>
+<blockquote>Claim 7 in this patent application describes how depth sensors are used as part of an image authentication process, which would make such a workaround more difficult:<p><a href="https:&#x2F;&#x2F;image-ppubs.uspto.gov&#x2F;dirsearch-public&#x2F;print&#x2F;downloadPdf&#x2F;20260268025" rel="nofollow">https:&#x2F;&#x2F;image-ppubs.uspto.gov&#x2F;dirsearch-public&#x2F;print&#x2F;downloa...</a><p>The Apple Reference Image feature is here launched on iPhone 18 Pro and iPhone 18 Pro Max that both have built-in LiDAR sensors that could be used for this process.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tristanj</em>:</p>
+<blockquote>Apple&#x27;s current implementation doesn&#x27;t integrate LiDAR. And LiDAR wouldn&#x27;t be enough here, it&#x27;s trivial to block the projector and hide the dot pattern. No dot pattern = iPhone thinks the object is far away, which is what happens in landscape photos.<p>A better fix is to take photos with all three iPhone cameras simultaneously, ideally as a 2-3s video, and use the parallax&#x2F;multiple perspectives to extract depth information. The video files (Possibly audio too) could also be included with the verified image as additional verification.<p>They can also prevent photos if iPhone detects the LiDAR sensor is covered, similar to how Meta does it with their camera glasses.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>dylan604</em>:</p>
+<blockquote>&gt; it&#x27;s trivial to block the projector and hide the dot pattern. No dot pattern = iPhone thinks the object is far away, which is what happens in landscape photos.<p>I&#x27;ve never looked at the LiDAR hardware, but where is the emitter in relation to the receiver. Why would the LiDAR not reflect off of whatever you&#x27;re blocking it with and return a very short flight meaning it was very close?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>osy</em>:</p>
+<blockquote>It also doesn&#x27;t prevent you from staging an image or anything that&#x27;s existed since photography was invented. But that&#x27;s not the problem they&#x27;re trying to solve.<p>&gt; Today, powerful, widely available AI tools allow users to easily generate or alter photorealistic images to a degree that was difficult to imagine just a few years ago.<p>Photoshop has existed for decades and so has fake images. This is a low friction way to attest &quot;this image came from an iPhone sensor and Apple approved it&quot;. It will still take the usual image forensics to determine if the scene it depicts is legitimate.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Recreating Voodoo Graphics and a Late-1990s Gaming PC on an FPGA</title>
       <link>https://nand2mario.github.io/posts/2026/zsst-voodoo/</link>
@@ -1315,6 +1380,40 @@ Yocto is basically automated LFS, it will compile a cross toolchain then use tha
 <p>↳↳ reply — <em>nl</em>:</p>
 <blockquote>Thanks - I didn&#x27;t realise and it was lazy of me to write like that.</blockquote>
 </blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Doing Everyone Else's Job</title>
+      <link>https://yosefk.com/blog/doing-everyone-elses-job.html</link>
+      <guid isPermaLink="false">hn3-49705944</guid>
+      <pubDate>Tue, 15 Sep 2026 00:01:31 +0000</pubDate>
+      <description>150 points, 65 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://yosefk.com/blog/doing-everyone-elses-job.html"><strong>→ Article</strong></a> <small>(yosefk.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49705944">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 65 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ChrisMarshallNY</em>:</p>
+<blockquote>I worked for a Japanese corporation, and a big part of their HR policy, was to move staff around the company. It was usually in 1- or 2-year stints (people would spend their entire careers at the company, so they could do this). Eventually, they would end up doing longer stints, where they would specialize.<p>They would couple this with things like standardized coding and documentation styles, common tools, etc. Training on these standards was a regular thing for all staff.<p>The idea was that they could rapidly move experienced staff around. It also helped staff to understand how their work was applied in an integrated system (having “blinders” on, is a fairly typical issue, with dedicated employees).<p>It generally worked, but relied on their particular culture, and introduced a fairly significant amount of overhead and rigidity to the system. It would also mean that it takes a long time to cultivate experts.<p>Personally, I’ve always enjoyed learning new stuff (still do). I actually enjoy taking on projects that I don’t know how to do. I wrote about it here: <a href="https:&#x2F;&#x2F;littlegreenviper.com&#x2F;miscellany&#x2F;thats-not-what-ships-are-built-for&#x2F;" rel="nofollow">https:&#x2F;&#x2F;littlegreenviper.com&#x2F;miscellany&#x2F;thats-not-what-ships...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>SenHeng</em>:</p>
+<blockquote>If you’re part of what is known as the general career track (総合職) and are actually being groomed for (middle) management, it’s common policy to move people every 3 years, in theory it prevents building of fiefdoms while also giving you a chance to improve your network, know the ins and outs of your company&#x2F;government agency and give you the opportunity to accumulate small wins along the way.<p>The silly policy also extends towards things like supermarket managers, midsized companies with a country wide branch network  public school teachers and other nonmilitary civil service positions.<p>If you’re a primary school teacher, you likely won’t see your students graduate.</blockquote>
+<p>↳ reply 2 — <em>jimmydddd</em>:</p>
+<blockquote>In the 1990&#x27;s UPS spent a lot of effort grooming promising junior employees to move up the ranks and become managers.  They would then move the managers around to different locations, thinking that good manager can manage any dept.  Many of these guys had moved up from being delivery drivers.  It became interesting when they would get assigned to manage the IT division, which was developing and supporting internal and external software products, as well as various help desks.</blockquote>
+<p>↳ reply 3 — <em>everforward</em>:</p>
+<blockquote>It also relies on lifelong tenure, which would be a huge cultural shift for both employers and employees. Employees are often used to quitting rather than having to fix business issues (easier to quit than make the business fix X), and businesses are largely used to mistreating their employees because they can be replaced.<p>We’re culturally very far from even being able to attempt that.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Aurornis</em>:</p>
+<blockquote>&gt; If a manager doesn’t actually manage anything, this is fine as long as you can go to his people and effectively manage them<p>&gt; but you can usually find people in his org who’ll work with you, on the theory that they’re supposed to.<p>In 100% of the cases where someone has tried this on me, both as the manager and the naive employee, the real reason was that they didn’t care about what the manager&#x2F;employee was supposed to be doing. They were looking for easy targets who could be abused to do their team’s work. Most of the “manager doesn’t manage anything” accusations came from other teams who weren’t even trying to understand what other managers or teams did. If the other manager or team wasn’t actively working for them in some capacity, they thought the manager wasn’t doing anything.<p>&gt; It’s true that many of them have long figured out that they’re really supposed to follow orders passed down the hierarchy and do nothing else, even if everything around them is on fire. But some never figure this out, and most managers fail to punish at least some of these slow learners of theirs, so they’re yours to work with.<p>The most generous interpretation is that this is taken idle employees and putting them to use for the greater good, but most of the cases I’ve seen in real companies are from one arrogant manager spreading their work across any workers gullible enough to do anything you ask of them.<p>I’ve worked with and hired a lot of really nice people who always want to lend a helping hand. They’re great, but many of them have a real problem handling workplace sharks like this who will saunter over to their desk (or DMs) and persuade them to work on something else, which puts them behind on their own work. When it happens chronically it gets so bad that you have to start checking in almost daily to make sure they haven’t been pulled into yet another team’s workload from a Slack DM or email.<p>Helping other teams when time is available is a good thing generally. You need to make your manager aware of the incoming requests and time spent, though. Don’t become the person who is working themself to the bone for everyone who comes over with a request but is holding their own team back because they can’t focus on their actual work.</blockquote>
+<blockquote>
+<p>↳ reply — <em>dasil003</em>:</p>
+<blockquote>&gt; <i>the real reason was that they didn’t care about what the manager&#x2F;employee was supposed to be doing.</i><p>This is true of course, but you say it as if it’s a bad thing.  At the end of the day, everyone has to manage their own time.  If everyone only cared about chain of command and scheduled priorities, overall efficiency would plummet.  Simple wins that just require a small amount of coordination outside the official org chart would be killed in committees and program manager reviews.<p>I understand the exploitative dynamic you’re describing, I just think there are many failure modes for productive operations that have to be balanced in some meta way.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>dmurray</em>:</p>
+<blockquote>One of the things I hate about my current job is that it&#x27;s impossible to do this.<p>Everything is locked behind multiple layers of permissions. It takes weeks to get the correct permissions set up even for my actual job (which I see any time changing roles here, or when onboarding new hires). Getting the permissions to jump in and improve some other part of the system that I don&#x27;t officially own - even though I might get granted them if I ask nicely, because nobody knows who is actually meant to have what permissions - is so much higher friction than asking the &quot;right&quot; person.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>phrotoma</em>:</p>
+<blockquote>That org is too large for you. At large orgs when you see a problem you think you can fix, someone will tell you that&#x27;s not your job. At small orgs when you see a problem you think you can fix someone will thank their lucky stars you offered to help.</blockquote>
+<p>↳ reply 2 — <em>cm2012</em>:</p>
+<blockquote>Companies underestimate how much this murders productivity. All friction compounds.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3646,104 +3745,6 @@ Replace AI with vaccines and the problems with how some parties are pushing for 
 <blockquote>Neither an astrophysics. I skimmed the paper. IIUC the collision with the planet mixed internal layers of the Sun and a lot of the Lithium went to the core and got fussed with Hydrogen.<p>PS: The paper says that that actual A(Li)=1.1 instead of the expected A(Li)=3.3. I needed a lot of search to understand it until Gemini kindly liked this page. <a href="https:&#x2F;&#x2F;astronomy.stackexchange.com&#x2F;questions&#x2F;61814&#x2F;what-do-lithium-abundance-numbers-mean-in-catalogs-like-hypatia" rel="nofollow">https:&#x2F;&#x2F;astronomy.stackexchange.com&#x2F;questions&#x2F;61814&#x2F;what-do-...</a><p>A(Li)=1.1 means the Li&#x2F;H ratio is 10^(-10.9) = 10^(-8.9)%<p>A(Li)=3.3 means the Li&#x2F;H ratio is 10^(-9.7) = 10^(-7.7)%</blockquote>
 <p>↳ reply 2 — <em>accrual</em>:</p>
 <blockquote>Not an astrophysicist, but since they mentioned the lithium is <i>depleted</i>, I wonder if that implies the collision of a planetary body with a sun would consume or react with the solar lithium.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Nvidia dismisses "circular financing", says every $1 it invests brings back $100</title>
-      <link>https://invezz.com/news/2026/09/11/nvidia-says-every-1-it-invests-brings-back-100-so-why-does-the-stock-keep-falling/</link>
-      <guid isPermaLink="false">hn3-49682319</guid>
-      <pubDate>Sun, 13 Sep 2026 10:29:18 +0000</pubDate>
-      <description>127 points, 179 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://invezz.com/news/2026/09/11/nvidia-says-every-1-it-invests-brings-back-100-so-why-does-the-stock-keep-falling/"><strong>→ Article</strong></a> <small>(invezz.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49682319">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 179 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>iammjm</em>:</p>
-<blockquote>Where are those 99$ coming from? Who is actually paying this money? Because it seems like so far everybody is losing money with no reversal of this trend in sight</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>JumpCrisscross</em>:</p>
-<blockquote>&gt; <i>Where are those 99$ coming from?</i><p>If this isn&#x27;t a house of cards, AI companies&#x27; customers. The companies and individauls ponying up for a Claude subscription or compute through OpenRouter.<p>Customer financing isn&#x27;t inherently fucked. It&#x27;s just highly suspect at the scale Nvidia&#x27;s doing it. There was another thread where I noted that Nvidia&#x27;s investments are literally monetarily significant, to the point that I expect them to start being directly referenced in the Fed&#x27;s beige book [1].<p>[1] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49673871">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49673871</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>polski-g</em>:</p>
-<blockquote>Demand for AI inference is infinite. It&#x27;s coming from the rest of the economy.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>swiftcoder</em>:</p>
-<blockquote>Money flowing from the rest of the economy means money no longer being spent on something else. Assuming for the moment it&#x27;s not all a big circular inflationary scheme, what exactly is being cut back on to fund this infinite spend on AI inference?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jstummbillig</em>:</p>
-<blockquote>&gt; Where are those 99$ coming from? Who is actually paying this money?<p>Companies who pay 99$ to make &gt;99$ in return. I am not saying it works in all cases but that&#x27;s the idea when a company spends money.<p>&gt; Because it seems like so far everybody is losing money with no reversal of this trend in sight<p>I am not sure what you are seeing: Anthropic (as one of only two major companies that do just AI) is starting to return profits, while demand for AI is accelerating and, clearly, compute is maxed out. And I mean: On the entire planet. They are turning profits <i>despite</i> everything being in full buildout mode.</blockquote>
-<p>↳ reply 3 — <em>marginalia_nu</em>:</p>
-<blockquote>Inflated valuations, mostly.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>vardump</em>:</p>
-<blockquote>I first read that &quot;every $1T brings back $100&quot;, thinking, wow, is it THAT bad?<p>No, it&#x27;s very unlikely <i>at this point</i> every $1 Nvidia invests brings back $100. Stating something like that is almost a red flag that things are overheating.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nerbert</em>:</p>
-<blockquote>Every $1 they invest brings back $100 in their valuation maybe.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>willis936</em>:</p>
-<blockquote>But even that isn&#x27;t really true since Nvidia P&#x2F;E was unreasonably high even 4 years ago.  So how is this not lying to investors (a thing that is illegal)?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>thunky</em>:</p>
-<blockquote>Because a PE is a fact not an interpretation.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nonethewiser</em>:</p>
-<blockquote>Its definitely consistent over the past several years.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bhouston</em>:</p>
-<blockquote>It is a bit circular but it also a growing real market. NVIDIA is accelerating the market and also making money.  It is a smart strategy on their part.<p>We are not at the top of this trend yet so I do not see this as over investment.<p>I remember the criticism Microsoft got for investing in Facebook&#x2F;Meta that gave them a whooping $15B valuation and getting 1.7% in 2007.  Not all deals will turn out that prescient but a few will and make up for any duds.  This is a real market.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>BunsanSpace</em>:</p>
-<blockquote>&gt; It is a smart strategy on their part.<p>No, it&#x27;s a high risk gamble.<p>If the market grows enough they will win the bet, but if the market doesn&#x27;t or we get a recession that dries up capital they will be holding the bag.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Avicebron</em>:</p>
-<blockquote>&gt; If the market grows enough they will win the bet<p>So for this to become true there are some number of jobs that that pay $N salary are replaced completely by LLMs that do the job for $N-0.01?<p>Is that what you mean by &quot;market grows enough&quot;</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ulfw</em>:</p>
-<blockquote>Tell us how you know we are not at the top of this trend yet please</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Revolut confirms customer data breach through fake government requests</title>
-      <link>https://techcrunch.com/2026/09/12/revolut-confirms-customer-data-breach-through-fake-government-requests/</link>
-      <guid isPermaLink="false">hn3-49682087</guid>
-      <pubDate>Sun, 13 Sep 2026 09:59:58 +0000</pubDate>
-      <description>151 points, 104 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://techcrunch.com/2026/09/12/revolut-confirms-customer-data-breach-through-fake-government-requests/"><strong>→ Article</strong></a> <small>(techcrunch.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49682087">→ HN comments</a> &nbsp;·&nbsp; 151 points &nbsp;·&nbsp; 104 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>neither_color</em>:</p>
-<blockquote>I had an interesting experience with my Revolut card. I only top it up when traveling, and the rest of the time it sits nearly empty, with like $3-4. At some point I started getting occasional notifications about transactions declining. Stuff like video game points and random little online shops. Clearly my card&#x27;s been skimmed or otherwise leaked somehow. Bummer.<p>Since Im months away from my next trip I didnt immediately cancel the card and just left it on out of curiosity. I started blocking every attempted merchant. At some point, I started getting Netflix subscription attempts, and when I tried to block it, it said &quot;We can&#x27;t block payments to Netflix. If you have a subscription with them, you can cancel it directly.&quot; Makes me wonder what kind of rube goldberg machine their backend runs on.</blockquote>
-<blockquote>
-<p>↳ reply — <em>LoganDark</em>:</p>
-<blockquote>What kind of financial institution has a special deal with Netflix to prevent blocking their charges? Did Netflix threaten to block Revolut or something?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>calderwoodra</em>:</p>
-<blockquote>If a merchant gets a lot of charge backs from a specific card issuer or acquirer, they can block them specifically. A company at Netlifx&#x27;s size could be doing this, but I&#x27;ve heard specific instances of it happening with grocery stores, gas stations and convenience stores.<p>It&#x27;s very common for neobanks to have a high rates of fraud, but also lower negotiating leverage with merchants because they&#x27;re not chase, Wells, etc.<p>So a specific arrangement with a specific merchant seems within the realm of normal to me.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>LoganDark</em>:</p>
-<blockquote>My card issuer just gives me a credit when I want to chargeback. They&#x27;re like, oh you don&#x27;t want to deal with a real chargeback, just have your money back for free. I would&#x27;ve pressed it since I kinda wanted the company to regret ripping me off, but I already got my money back so it wasn&#x27;t worth the extra effort.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>entropyneur</em>:</p>
-<blockquote>Here in Latvia, anything the government ever sends you of any importance is cryptographicaly signed. Not bulletproof, but that should be a baseline we demand in this age.</blockquote>
-<p><strong>Top #3</strong> — <em>rawland</em>:</p>
-<blockquote>How can this happen to a modern fintech... Esp. handling identity verification so poorly?<p>&gt; A Revolut spokesperson confirmed to TechCrunch that a “limited” number of customers were impacted and said the company had contacted those customers directly. Revolut, however, did not disclose the exact number of impacted individuals. It also did not answer whether the incident was limited to a specific market and declined to disclose the government agency involved.<p>Is the lack of transparency here about protecting the doxxed HNWIs or are they just trying to hide the incompetence?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>KaiserPro</em>:</p>
-<blockquote>Revolut has a history of being both halfarsed and shady<p>in 2018 they turned off basic money laundering detection<p>in 2019 they used job applicants as free labour to get people to sign up.<p>in 2023 they didn&#x27;t freeze accounts they were supposed to when asked by the NCA (the uk&#x27;s equivalent of the FBI, kinda)<p>again in 2024 they came bottom in the league table for reported fraud(action fraud). They had 10k reports, ahead of barclays, which at the time had a much large amount of active users.<p>Again in 2024, they also had the highest push payment fraud reports. now, this _could_ be bad controls, user incompetence, or data leak. it could be argued that they were part of the reason for the rule changes, meaning that banks are now 50&#x2F;50 liable for this kind of fraud.<p>Either way, they have a history of being shady&#x2F;incompetent&#x2F;bastards. They&#x27;ve also only been a fully licensed bank for ~6 months.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rawland</em>:</p>
-<blockquote>That&#x27;s some background. Thanks.<p>My speculative mental model so far was: They fired the dept which was handling those &quot;emails&quot; and did let some agents handle it. Which backfired and seems to fit that history you presented.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>sam_lowry_</em>:</p>
-<blockquote>Revolut is also run by a Russian with deep connections to wartime Russian elites, starting with his dad, who heads the biggest Gazprom R&amp;D center.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Maxion</em>:</p>
-<blockquote>I&#x27;ve processed government requests at a FinTech before. Some are pretty good and there are bespoke channels for them so that you can be sure their genuine. Other are literally random emails you get that you are required to reply to, many of them demanding information to be sent in the clear. We always declined to reply to those even though we legally had to, we offered them to set up PGP if they wanted the data via email, or we offered other secure mechanisms for them. Most of these (who I know were from real agencies) stopped asking for the data once we stood firm that we could only deliver it over an encrypted channel.<p>Note: This is now 5+ years ago so things have probably changed since then.<p>I am not surprised at all that fake requests receive real responses, happens probably way more than anyone thinks.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
