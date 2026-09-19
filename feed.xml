@@ -4,7 +4,97 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 19 Sep 2026 20:26:52 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2026 22:51:04 +0000</lastBuildDate>
+    <item>
+      <title>What Zig felt like, coming from Rust</title>
+      <link>https://besok.github.io/posts/what-zig-felt-like-coming-from-rust/</link>
+      <guid isPermaLink="false">hn3-49766637</guid>
+      <pubDate>Sat, 19 Sep 2026 13:55:18 +0000</pubDate>
+      <description>168 points, 201 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://besok.github.io/posts/what-zig-felt-like-coming-from-rust/"><strong>→ Article</strong></a> <small>(besok.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49766637">→ HN comments</a> &nbsp;·&nbsp; 168 points &nbsp;·&nbsp; 201 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Syzygies</em>:</p>
+<blockquote>For various purposes I work on a language comparison project that includes C and candidate successors such as Go, Zig. One question is the language to use for an archival port of a 1980&#x27;s computer algebra system written in 32-bit K&amp;R C. While Zig is a great debugging compiler, it&#x27;s not yet stable enough to be the best target language for archival purposes.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;Syzygies&#x2F;Compare" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Syzygies&#x2F;Compare</a><p>So you&#x27;re in a restaurant where you don&#x27;t speak the language, you can&#x27;t read the menu, but you see three price points for set meals featuring the house specialty. (Say, &quot;Crossing the Bridge&quot; noodles in Yunnan.) Which do you choose? My tour guide, the author Fuchsia Dunlop, later agreed with me this is obvious: The middle choice.<p>So you&#x27;re choosing between Go and C23 as candidate successors to K&amp;R C. They both have &quot;royal blood&quot;. One got the name. Knowing nothing more, which do you choose?<p>The answer is equally obvious. The one that got the name also got the warts.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dharmatech</em>:</p>
+<blockquote>You mention there that you like Ruby and that you wanted Ruby with types (and that you looked at Crystal).<p>I&#x27;ve been messing around with a language that I summarize as:<p>ALOE = Scheme + Smalltalk + Types<p><a href="https:&#x2F;&#x2F;github.com&#x2F;dharmatech&#x2F;2026-09-02-aloe-racket" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dharmatech&#x2F;2026-09-02-aloe-racket</a><p>One of the examples is a very basic computer algebra simplifier:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;dharmatech&#x2F;2026-09-02-aloe-racket&#x2F;blob&#x2F;main&#x2F;examples&#x2F;mpl&#x2F;core.aloe" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dharmatech&#x2F;2026-09-02-aloe-racket&#x2F;blob&#x2F;ma...</a><p>That simplifier is based on a computer algebra library in Scheme:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;dharmatech&#x2F;mpl" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dharmatech&#x2F;mpl</a></blockquote>
+<p>↳ reply 2 — <em>pjmlp</em>:</p>
+<blockquote>Despite my usual rants, naturally C23.<p>Minimal rewrite due to the breaking changes introduced in C23 versus K&amp;R C, while the others are a complete rewrite.<p>Even if the syntax is a bit of a kludge there are now ways to indicate bounds on function arguments.</blockquote>
+<p>↳ reply 3 — <em>d0mine</em>:</p>
+<blockquote>Middle may be wrong (it is a marketing trick to add 3rd outragesly expensive option, to make 2nd option look reasonable). The correct answer is “it depends” (even how long you should spend on choosing may depend on context too).<p>For example, write in whatever language you know best, then translate to a more appropriate language using LLMs once the desired behavior can be checked automatically. It is a tactic that  works in some cases.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>csense</em>:</p>
+<blockquote>One of the section headings says &quot;Mutation vs. immutable monad is the core difference&quot; but this is not true.<p>The code in that section is clear in its purpose and broad outline:  &quot;Give me a function and data; if the data is bare apply the function to it; if the data is a container apply the function to each item inside it.&quot;<p>You can absolutely do that with immutable data structures in Zig.  You just have to pass an allocator to the function (i.e. instead of calling data.flat_map(f), you call data.flat_map(a, f) where a is your allocator).<p>That the Zig version of the code does mutation is a matter of <i>programmer choice</i>, not something imposed by the language.<p>(Also, what do monads have to do with it?)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bunderbunder</em>:</p>
+<blockquote>Further up he discusses that using a functional paradigm is possible, but concludes that it doesn’t feel like a practical choice because of how Zig does memory management:<p>&gt; <i>But the language quickly forces you to diverge from the functional style, mostly because you’re now dealing with allocators directly, and a genuinely pure functional approach means constantly constructing new structures. That’s either expensive in memory or expensive in the manual bookkeeping needed to avoid it.</i><p>So I don’t think he’s trying to say that it’s literally impossible. It felt more like the result of a good faith attempt to understand how Zig itself actually wants to be used, and to compare that to how he’s used to using Rust.<p>I actually liked that he did it. So many other comparisons want to evaluate one language against the other language’s values. But I don’t want to know how well Zig can do Rust; I want to know how well Zig accomplishes its own goals, and what those goals are.</blockquote>
+<p>↳ reply 2 — <em>tialaramex</em>:</p>
+<blockquote>So, what you&#x27;re not seeing is that even though the Rust doesn&#x27;t <i>announce</i> mutation the implementation may be mutation anyway if that&#x27;s probably faster&#x2F; cheaper.<p><pre><code>    unsafe impl&lt;I, U, F&gt; InPlaceIterable for FlatMap&lt;I, U, F&gt; where
+    I: InPlaceIterable,
+    U: BoundedSize + IntoIterator,
+</code></pre>
+What you&#x27;re seeing is the graceful goose on the water moving forward at pace. Beneath there is frantic action to make that happen. The Rust surface was more a maintainable immutable operations, but the implementation is a frantic whirling mutation like the Zig.<p>In Zig you end up spending a lot of time writing How to do a thing, where in Rust you only wrote What the thing is and the machine did it. There are edge cases where Zig&#x27;s explicitness wins for the best programmers, but there just aren&#x27;t enough of those cases or those programmers for this to net out IMNSHO.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>weinzierl</em>:</p>
+<blockquote>Two additional points:<p>1. Tooling (as an extension to the mentioned IDE support point). Zig and Rust are both praised for their tooling and I think rightfully so. The C&#x2F;C++ interop story and the cross-compiling story in Zig are great. From the standpoint of a working practitioner though I think Rust is way ahead. Not surprising given that Zig is much younger, but something to keep in mind.<p>2. Compile Time Stuff: Here Zig is praised and Rust not so much. I think this is undeserved. Rust has much higher aspirations for their compile time features, namely that outcome must be identical regardless when the code runs. This is a very useful property but makes the task much harder and fundamentally incomparable with Zig comptime.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>chaz72</em>:</p>
+<blockquote>Are you saying that you think that Zig does not produce identical outcomes for comptime code regardless of when the code runs? What do you mean?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>weinzierl</em>:</p>
+<blockquote>Yes. For example in Rust it took a long time for floating point operations to be available at compile time and even now only a subset is. The reason is that a lot of energy and thought went into the issue of producing identical output (and what identical precisely means ) even when compilation is on a different processor than where the target runs.<p>As far as I know this is not a concern for Zig comptime.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>rvrb</em>:</p>
+<blockquote>there has been a ton of work on making comptime a pure and deterministic execution environment. I do not expect that work to stop. I don&#x27;t know where you are getting the idea that it is not an important design consideration for the language.<p>to expand, if two different host platforms cross compiling to the same target platform have different results, I am almost certain that would be considered a compiler bug.<p>if you&#x27;re pointing out that a runtime operation and a compile time operation might not agree, I&#x27;d be more interested in understanding when that would ever have any meaningful impact on anything. given the compilation is supposed to be deterministic, the difference can easily be addressed by comptime branching on target architecture in the rare case that it matters for your program.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>LoganDark</em>:</p>
+<blockquote>Zig comptime feels easier and more effective in practice. I&#x27;ve had some fun const evaluating some stuff in Rust, but I needed to use a bunch of annoying imperative hacks because so much of the functional stuff wasn&#x27;t supported in const context back then. It&#x27;s probably a bit better these days.<p>For one of my crates I needed to have a build script make a bunch of lookup tables as separate files for me to `include_bytes!` because at the time I couldn&#x27;t generate a bunch of floating point conversions in const.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Tin: full-text search for Postgres</title>
+      <link>https://planetscale.com/blog/introducing-tin</link>
+      <guid isPermaLink="false">hn3-49766611</guid>
+      <pubDate>Sat, 19 Sep 2026 13:52:06 +0000</pubDate>
+      <description>171 points, 70 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://planetscale.com/blog/introducing-tin"><strong>→ Article</strong></a> <small>(planetscale.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49766611">→ HN comments</a> &nbsp;·&nbsp; 171 points &nbsp;·&nbsp; 70 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>andrenotgiant</em>:</p>
+<blockquote>I think what we&#x27;re seeing with every database company providing new full-text search capabilities is an example of AI coding productivity showing up in the real world.<p>It started with paradeDB and pg_search <a href="https:&#x2F;&#x2F;www.paradedb.com&#x2F;blog&#x2F;introducing-search">https:&#x2F;&#x2F;www.paradedb.com&#x2F;blog&#x2F;introducing-search</a><p>Timescale has pg_textsearch <a href="https:&#x2F;&#x2F;github.com&#x2F;timescale&#x2F;pg_textsearch" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;timescale&#x2F;pg_textsearch</a><p>Neon and Databricks have Lakebase Search <a href="https:&#x2F;&#x2F;docs.databricks.com&#x2F;aws&#x2F;en&#x2F;oltp&#x2F;projects&#x2F;lakebase-search" rel="nofollow">https:&#x2F;&#x2F;docs.databricks.com&#x2F;aws&#x2F;en&#x2F;oltp&#x2F;projects&#x2F;lakebase-se...</a><p>Now PlanetScale.<p>AFAIK all of these are implementations of the BM25 algorithm. You can just tell an agent to read about BM25 and implement it in your system of choice. Cool to see. Seems like there&#x27;s still a lot of juice to be squeezed out of how it&#x27;s architected and integrated into each system, but you can&#x27;t help but wonder if this will lead to aggressive commodification</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>samwillis</em>:</p>
+<blockquote>There is a lot of truth to this, but it&#x27;s also very much down to domain experts being able to do this to move faster.<p>Planetscale (assuming they used a agentic development practice) will have pulled this off, to the level of performance that they have, because they have a team of very highly experienced Postgres developers. Their knowlage of Postgres internals will have given them the insights needed to steer the models to a plan that used the architecture as described in the post. That&#x27;s not something a model can do on its own*<p>World experts + LLMs = moving mountains.<p>(* we&#x27;re obviously seeing something a little different from inside the research teams in the labs. They are showing that the models, when you burn the level of tokens only they can, are able to do novel things from the models own insights.)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>nozzlegear</em>:</p>
+<blockquote>&gt; <i>There is a lot of truth to this, but it&#x27;s also very much down to domain experts being able to do this to move faster.</i><p>Yeah, I don&#x27;t think I could tell Qwen3.8 (my LLM of choice) to study up on bm25 and then implement full text search in the couchdb instances I maintain without studying both bm25 and couchdb internals myself.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>copperx</em>:</p>
+<blockquote>Oh, you could.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>CodesInChaos</em>:</p>
+<blockquote>ParadeDB&#x27;s implementation builds on the Tantivy crate, which predates AI coding.</blockquote>
+<p>↳ reply 3 — <em>ceuk</em>:</p>
+<blockquote>I don&#x27;t completely disagree with your hypotheses but it feels like the hard part of his TIN stuff isn&#x27;t BM25 (which has been around for donkeys years) it&#x27;s all the hardcore storage engine work around it. And is an LLM particularly good at e.g. segment merging under a thousand updates a second? I&#x27;ve had a few situations where I&#x27;ve been told &quot;we&#x27;ve hit the perf floor&quot; by Claude only to have persisted myself and shaved substantial amounts off still.<p>More damning for the theory might be that I think paradedb&#x27;s pg_search predates the agentic coding by a few years?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Tiberium</em>:</p>
+<blockquote>If anyone&#x27;s curious - <a href="https:&#x2F;&#x2F;planetscale.com&#x2F;docs&#x2F;postgres&#x2F;search&#x2F;get-started#local-development-and-ci" rel="nofollow">https:&#x2F;&#x2F;planetscale.com&#x2F;docs&#x2F;postgres&#x2F;search&#x2F;get-started#loc...</a>:<p>They&#x27;re not providing a local extension with the same performance at the time - it&#x27;s only offered on their cloud services.<p>The local version <a href="https:&#x2F;&#x2F;github.com&#x2F;planetscale&#x2F;lead" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;planetscale&#x2F;lead</a> is mainly just for testing the syntax, it doesn&#x27;t have the same perf characteristics.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>noir_lord</em>:</p>
+<blockquote>Becoming more the norm for them, Neki is the same.<p>Immediately rules out ever using them (though I don&#x27;t currently have any problems that would benefit from that level of scale currently, have in the past though).<p>Postgres&#x27;s license allows this but for me (personally) it leaves a bad taste.<p>Also it&#x27;s not really &quot;full-text search for Postgres&quot; it&#x27;s &quot;full-text search for <i>our</i> hosted version of Postgres&quot; so the title is a little misleading.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Cyph0n</em>:</p>
+<blockquote>&gt; Becoming more the norm for them, Neki is the same.<p>Uh, isn’t this becoming the norm everywhere ever since LLMs have been trained on OSS without credit or attribution? Why wouldn’t you want to hide your stuff going forward?<p>In my view, OSS is only going to move more and more towards one of two models: open core + proprietary functionality (e.g. MongoDB) OR open source + private tests (e.g. SQLite).</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pqdbr</em>:</p>
+<blockquote>The problem is that they don’t support bare metal. I’d love to use PlanetScale in our bare metal servers.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tannhaeuser</em>:</p>
+<blockquote>Postgres does have pg_fts (tsvector&#x2F;tsquery&#x2F;tsrank) which is a quite sophisticated full text search package integrated with functional indexing and query optimization. Why would I use something vibecoded that isn&#x27;t part of core Postgres instead?</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>I built non-autoregressive decision models with RL a year ago</title>
       <link>https://laya.convaiinnovations.com/</link>
@@ -714,6 +804,34 @@ As you move out of the lower levels, the operator has a tendency to assume the s
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>We made Playwright 2x faster and 80% more token efficient</title>
+      <link>https://github.com/browserbase/stagehand</link>
+      <guid isPermaLink="false">hn3-49756671</guid>
+      <pubDate>Fri, 18 Sep 2026 16:25:23 +0000</pubDate>
+      <description>125 points, 34 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/browserbase/stagehand"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49756671">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 34 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>wittydeveloper</em>:</p>
+<blockquote>We built Stagehand 2 years ago (24k stars and 4M monthly npm downloads) and recently fixed its biggest flaw: round-trip latency.<p>Every action performed requires a round trip between your script and the browser (short when running locally but increased when running in the cloud). We also saw multiple posts complaining about the eager token appetite of Playwright MCP.<p>For this reason, we rebuilt Stagehand from the ground up and shipped v4, where Stagehand controls the browser from an extension automatically loaded upon your browser startup.<p>Stagehand v4 comes with batch command support, dedicated token-efficient methods `act()` and `extract()`, and a brand new architecture making it 2x faster than Playwright and 80% more token efficient.<p>You can see for yourself by looking at our benchmarks, comparing its performance across a dozen models (frontier and open weights) and tools (Codex, Claude Code, and more): <a href="https:&#x2F;&#x2F;www.stagehand.dev&#x2F;evals" rel="nofollow">https:&#x2F;&#x2F;www.stagehand.dev&#x2F;evals</a><p>Ask me anything!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Phemist</em>:</p>
+<blockquote>I&#x27;ve been using Playwright a lot and also hit on the friction between playwright&#x27;s web testing scope (e.g. no 1st class support for &quot;muted&quot; start-up of browsers, jeez) and usage for task automation all the time. This looks very interesting!<p>How does stagehand deal with complex http&#x2F;websocket request&#x2F;response and or console message filtering? <a href="https:&#x2F;&#x2F;docs.stagehand.dev&#x2F;v4&#x2F;reference&#x2F;page#on" rel="nofollow">https:&#x2F;&#x2F;docs.stagehand.dev&#x2F;v4&#x2F;reference&#x2F;page#on</a> E.g. I would like a script that tracks all communication that matches a specific filter (implemented as an anonymous function&#x2F;lambda). This filter may look at patterns in the url, but sometimes needs to do a deeper inspection of also the payload (if the url does not carry enough information in itself).<p>I&#x27;ve found playwright to be prohibitively slow at this, not only because of the round-trip latency, but just the simple fact that it needs to pump the complete response to my filter function, which then proceeds to read only a couple of bytes to make the filtering decision. There are a lot of cases where I am only interested in around 1% of the total requests processed by the filter, which makes this behaviour massively wasteful.<p>Ideally I would like to run this filter in the browser as well. It currently simply searches the first 100 bytes (usually enough) for a given substring, but a more flexible filter would be good, perhaps even a filter func that is eval&#x27;ed in the extension? From the documentation, I don&#x27;t see this use-case is currently supported. Are there any plans along these lines? :)</blockquote>
+<p>↳ reply 2 — <em>bradleyy</em>:</p>
+<blockquote>I&#x27;m using playwright to do diagnosis on customer sites, and I&#x27;m wondering some things:<p>1) Does it have full Chrome Devtools support? Like, able to diagnose where a fetch() came from, what script sets a cookie?
+2) How hard would it be to set up in an AWS Lambda (I can run Playwright without needing to run a container, which saves a lot of startup time&#x2F;cost)?<p>Always interesting to see forward work on these kinds of tools which get used so foundationally billions of times a day.</blockquote>
+<p>↳ reply 3 — <em>squidproquo</em>:</p>
+<blockquote>How does the “Token efficiency Hybrid accessibility-tree trimming” work?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>MiguelG719</em>:</p>
+<blockquote>We also just added Jev support <a href="https:&#x2F;&#x2F;github.com&#x2F;browserbase&#x2F;stagehand&#x2F;pull&#x2F;2952" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;browserbase&#x2F;stagehand&#x2F;pull&#x2F;2952</a><p>On the act&#x2F;extract&#x2F;observe evals it shows promising results being extremely efficient<p>- act: 4.3x faster, 97% fewer LLM calls. Pass rate: 97.5% -&gt; 98.3%.
+- heldout: 4.1x faster, 78% fewer LLM calls. Pass rate: 87.5% -&gt; 97.5%.
+- observe: 11.1x faster, 69% fewer LLM calls. Pass rate: 75.0% -&gt; 83.3%.
+- extract: 8.7x faster, 75% fewer LLM calls. Pass rate unchanged at 92%.<p>cost effectively 0</blockquote>
+<p><strong>Top #3</strong> — <em>ulrikrasmussen</em>:</p>
+<blockquote>Looks very useful, and I like the caching idea which I think makes it interesting for self-healing CI tests.<p>How does it determine when a cached act() fails and has to be re-evaluated by the LLM? And in particular, if the cache is saved in the cloud (Browserbase?), won&#x27;t this lead to a lot of cache churn if used in CI pipelines where different versions of the site are running against the same cache?<p>Also, is there a technical reason why the cache couldn&#x27;t just be a local file that&#x27;s checked in along with the script but must be provided by Browserbase? If it was, devs could heal failing tests locally using LLM calls, while CI runs entirely deterministically.</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>US Treasuries Have Become Unappetizing for Foreign Central Banks and Governments</title>
       <link>https://wolfstreet.com/2026/09/17/treasuries-have-become-badly-unappetizing-for-foreign-central-banks-governments/</link>
       <guid isPermaLink="false">hn3-49756171</guid>
@@ -761,6 +879,36 @@ As you move out of the lower levels, the operator has a tendency to assume the s
 <blockquote>The only real dumping has happened from Japan, which is fighting to defend the yen, and China, which is obviously repositioning though to a way lesser degree than a nation dumping an adversary’s bonds would.<p>The story is just another way of saying we’re issuing more debt. Central banks aren’t reducing exposure. They just didn’t increase them with our own finances, which makes sense, our finances don’t increase their reserve requirements.</blockquote>
 </blockquote>
 </blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Two parallel neural ectoderm progenitors contribute to the developing brain</title>
+      <link>https://www.newscientist.com/article/2589739-our-brain-evolved-from-two-primitive-nervous-systems-that-merged/</link>
+      <guid isPermaLink="false">hn3-49755533</guid>
+      <pubDate>Fri, 18 Sep 2026 15:12:07 +0000</pubDate>
+      <description>125 points, 69 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.newscientist.com/article/2589739-our-brain-evolved-from-two-primitive-nervous-systems-that-merged/"><strong>→ Article</strong></a> <small>(newscientist.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49755533">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 69 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>rolph</em>:</p>
+<blockquote>this is not the claim made by the researchers generating this paper.<p>this is thier claim :<p>“We’ve shown for the first time that the front of the brain arises from a totally different progenitor cell than the back of the brain,” said Kyle Loh, PhD, associate professor of developmental biology. “Our discovery means that we can now grow neurons from the back of the brain, the hindbrain, in a petri dish and study their functions.”<p>in translation, the two regions of the brain develop from different expressive states of the progenitor populations.  the problem was difficulty culturing cerebellar neurons, due to a unrecognized disparity in genetic expressivity.  the neurons were being manipulated as if they were running the same config.sys, and that was not the case.  this work elucidates that fact and recognizes it as essential, to invitro culture of &quot;hindbrain&quot; neurons.<p>The findings were published in Nature Neuroscience Sept. 18. Loh is the senior author. Graduate students Carolyn Dundes and Rayyan Jokhai are co-first authors of the research.<p><a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41593-026-02433-7" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41593-026-02433-7</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>afpx</em>:</p>
+<blockquote>Does this help explain why the circuits that control emotional crying, which rely on connections that span the anterior, posterior and midbrain, develop?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jschveibinz</em>:</p>
+<blockquote>For those interested in brain evolution and practical neuroscience&#x2F;human behavior:<p>Carl Sagan&#x27;s books &quot;Broca&#x27;s Brain&quot; and &quot;The Dragons of Eden&quot; from the 70&#x27;s-80&#x27;s are good initial reads on brain composition and evolution.  The Sapolsky lectures and books are also great resources.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>esperent</em>:</p>
+<blockquote>I&#x27;d imagine the science from the 80s is very dated now, no matter how good the book is.</blockquote>
+<p>↳ reply 2 — <em>adammarples</em>:</p>
+<blockquote>The comments in the other post on this topic had an article which slammed Sagan&#x27;s book for being outdated and espousing debunked triune Brian theory. The article was called &quot;your brain is not an onion with a lizard inside&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Jimmc414</em>:</p>
+<blockquote>Original paper:<p><a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41593-026-02433-7" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41593-026-02433-7</a> (paywall)<p>New Scientist Article:<p><a href="https:&#x2F;&#x2F;www.newscientist.com&#x2F;article&#x2F;2589739-our-brain-evolved-from-two-primitive-nervous-systems-that-merged&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.newscientist.com&#x2F;article&#x2F;2589739-our-brain-evolv...</a><p><a href="https:&#x2F;&#x2F;archive.is&#x2F;1CFX9" rel="nofollow">https:&#x2F;&#x2F;archive.is&#x2F;1CFX9</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>dang</em>:</p>
+<blockquote>Thanks! I&#x27;ve changed the link above to <a href="https:&#x2F;&#x2F;www.newscientist.com&#x2F;article&#x2F;2589739-our-brain-evolved-from-two-primitive-nervous-systems-that-merged&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.newscientist.com&#x2F;article&#x2F;2589739-our-brain-evolv...</a> from <a href="https:&#x2F;&#x2F;medicalxpress.com&#x2F;news&#x2F;2026-09-human-brain.html" rel="nofollow">https:&#x2F;&#x2F;medicalxpress.com&#x2F;news&#x2F;2026-09-human-brain.html</a>.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3642,164 +3790,6 @@ This must all suck big time.</blockquote>
 <blockquote>FYI; the paper is clearly a reference to Danijar Hafner&#x27;s &#x27;Dreamer&#x27; line of work, which was published in 2019, and which Danijar has continued to iterate on. <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1912.01603" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1912.01603</a><p>The TalkRL podcasts on this line of work are reasonable accessible and quite interesting.
 <a href="https:&#x2F;&#x2F;www.talkrl.com&#x2F;episodes&#x2F;danijar-hafner" rel="nofollow">https:&#x2F;&#x2F;www.talkrl.com&#x2F;episodes&#x2F;danijar-hafner</a>
 <a href="https:&#x2F;&#x2F;www.talkrl.com&#x2F;episodes&#x2F;danijar-hafner-on-dreamer-v4&#x2F;transcript" rel="nofollow">https:&#x2F;&#x2F;www.talkrl.com&#x2F;episodes&#x2F;danijar-hafner-on-dreamer-v4...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Hackers Got Inside a Flock Camera</title>
-      <link>https://www.wired.com/story/hackers-flock-camera-data-shows-how-system-works/</link>
-      <guid isPermaLink="false">hn3-49726586</guid>
-      <pubDate>Wed, 16 Sep 2026 13:18:47 +0000</pubDate>
-      <description>396 points, 193 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.wired.com/story/hackers-flock-camera-data-shows-how-system-works/"><strong>→ Article</strong></a> <small>(wired.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49726586">→ HN comments</a> &nbsp;·&nbsp; 396 points &nbsp;·&nbsp; 193 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>vayup</em>:</p>
-<blockquote>If you want to know what a &quot;Vulnerability Disclosure Policy&quot; (VDP) would look like if its main purpose is to claim we have VDP and create an appearance of responsible security posture, but not really to learn about vulnerabilities - read Flock&#x27;s VDP.<p>They sincerely welcome your vulnerability disclosures, except in cases where you have to &quot;interact&quot; with the device&#x2F;service or download its data. Other than that TINY carveout, everything is okay.<p>Oh, if the vuln about configuration and hardening &quot;preferences&quot; like SSL&#x2F;TSL - Sorry, not interested.<p>And also, infrastructure vulnerabilities like DNS config - no no, try harder.<p>I know what you&#x27;re thinking..ha ha...but we are good guys. You can still report vulnerabilities in the above categories, but the onus is on you to convince us that we should care about them. It is only fair.<p><a href="https:&#x2F;&#x2F;www.flocksafety.com&#x2F;legal&#x2F;vulnerability-disclosure-policy" rel="nofollow">https:&#x2F;&#x2F;www.flocksafety.com&#x2F;legal&#x2F;vulnerability-disclosure-p...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ipdashc</em>:</p>
-<blockquote>This looks like a pretty reasonable policy to me all things considered. And no, I&#x27;m no fan of Flock. But they do run security cameras for the cops, they can&#x27;t just say go ahead, go wild on all our customers&#x27; cameras. The lawyers would throw a fit.<p>The carveouts for stuff like configuration and DNS are entirely reasonable. Have you ever been behind a security@ email before? You get a <i>lot</i> of BS reports of that sort.</blockquote>
-<p>↳ reply 2 — <em>bink</em>:</p>
-<blockquote>The TLS&#x2F;SSL and DNS carveouts are pretty normal. There are a million security options for those services and enabling them all would often mean denying access to anyone running a browser&#x2F;client more than a few weeks old. Documenting them all would be a PITA so most policies simply prohibit them entirely.<p>Testing against customers is also a common prohibition for obvious reasons.</blockquote>
-<p>↳ reply 3 — <em>lenerdenator</em>:</p>
-<blockquote>It&#x27;d be interesting to know how much of that they put second to &quot;Americans seem to like using our hardware as targets for firearms, reciprocating saws, spray paint, and garbage bags&quot; in their list of corporate concerns.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>killbot5000</em>:</p>
-<blockquote>This is pure laziness aka “reduced time to market” on the part of Flock.<p>It takes time and effort to think through proper secure boot architecture and to implement key management in a way that doesn’t kill developer productivity.<p>Their product managers, though, should have realized that setting these up in unsecured public spaces means that their threat model really does include local physical access to everything.<p>Using off the shelf hardware and software stacks all but guarantees attackers have tools at their fingertips to exploit said physical access.<p>Given all the recent exploits hitting the kernel, there’s a good chance that there exists an exploitable over-the-air vulnerability present in their WiFi&#x2F;bluetooth stack, too.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>teraflop</em>:</p>
-<blockquote>The flip side of this laziness is that now, when my elected representatives tell me &quot;these are just license-plate readers that don&#x27;t record video&quot;, I have evidence to show them that&#x27;s false.<p>If Flock had done a more competent job of securing their system, it would be harder to demonstrate this in a compelling way. To a technically-inclined person, it&#x27;s obvious from the get-go that <i>somewhere</i> in Flock&#x27;s pipeline, video is being recorded and archived, and is therefore vulnerable to misuse. But the more they&#x27;re allowed to keep the implementation proprietary, the easier this is to sweep under the rug.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>QuiEgo</em>:</p>
-<blockquote>Don’t worry, your elected representatives won’t be bothered by trivialities such as facts either way.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>toomuchtodo</em>:</p>
-<blockquote>They can be recalled and&#x2F;or replaced, as many have who voted for data centers.<p><i>They fought against datacenters. Now they are running for local offices</i> - <a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;us-news&#x2F;2026&#x2F;sep&#x2F;15&#x2F;datacenters-local-elections" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;us-news&#x2F;2026&#x2F;sep&#x2F;15&#x2F;datacenters-...</a> - September 15th, 2026<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49375000">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49375000</a> (citations)</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Spooky23</em>:</p>
-<blockquote>It’s not laziness, it’s hyper focus on compliance. CJIS is the policy maintained by the FBI that handles information security, which is derived from standards built around paper.<p>Adding more weirdness, the details get worked out by each state.<p>My guess is they encrypted whatever is criminal justice information (license plate hotlists, etc) or protected by local laws (DMV data) and left the rest to make it easier to deploy and service. Remember pictures of you or your car taken in public are not protected or in scope.<p>Police tech is garbage and usually driven by federal grant spending. So it’s going to be interesting to see how Flock and Axon grow the business as it turns into a service model.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>driverdan</em>:</p>
-<blockquote>This reporting was done in collaboration with 404media. Here&#x27;s the discussion for 404&#x27;s article: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49726577">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49726577</a><p>Distributed Denial of Secrets has published the partition images: <a href="https:&#x2F;&#x2F;ddosecrets.org&#x2F;article&#x2F;flock-alpr-camera" rel="nofollow">https:&#x2F;&#x2F;ddosecrets.org&#x2F;article&#x2F;flock-alpr-camera</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>fullstop</em>:</p>
-<blockquote>I poked around in the boot partition.  The kernel is ancient!<p>Linux version 3.18.71-perf-gaf770dc</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>incee</em>:</p>
-<blockquote>3.18.71-perf-gaf770dc is a Qualcomm Android vendor kernel from roughly late 2017. The 3.18 branch went fully EOL in 2019, so nothing after that was ever backported to it.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Wax motor</title>
-      <link>https://en.wikipedia.org/wiki/Wax_motor</link>
-      <guid isPermaLink="false">hn3-49726007</guid>
-      <pubDate>Wed, 16 Sep 2026 12:35:14 +0000</pubDate>
-      <description>186 points, 39 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://en.wikipedia.org/wiki/Wax_motor"><strong>→ Article</strong></a> <small>(en.wikipedia.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49726007">→ HN comments</a> &nbsp;·&nbsp; 186 points &nbsp;·&nbsp; 39 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>limaoscarjuliet</em>:</p>
-<blockquote>Wikipedia page has a small error. It shows an actuator (i.e. wax motor) described as thermostatic radiator valve <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Wax_motor#&#x2F;media&#x2F;File:Thermische_Stellantriebe,_Thermische_Antriebe,_Fussbodenheizung,_thermal_actuator,_actuateur_thermique.jpg" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Wax_motor#&#x2F;media&#x2F;File:Thermisc...</a><p>These are two separate things: thermostat will close and open based on surrounding temp., the actuator on the other hand opens and closes based on energizing a heating element that is driven by a separate thermostat.<p>Wax motors are pretty cool things. They rarely fail and do their job even in damp environments. I take care of my better half&#x27;s hotel with approx 100 of these installed and we replace one of these once every couple of years.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ta988</em>:</p>
-<blockquote>As you seem to know how to explain that would you mind fixing it? You don&#x27;t even need an account.</blockquote>
-<p>↳ reply 2 — <em>agumonkey</em>:</p>
-<blockquote>I was quite amazed to find these when dismantling appliances.</blockquote>
-<p>↳ reply 3 — <em>pak9rabid</em>:</p>
-<blockquote>Boy I really hope somebody got fired for that blunder!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>palmotea</em>:</p>
-<blockquote>If you want to see one in action, I found this: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=sApyrDEXGAI" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=sApyrDEXGAI</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>7373737373</em>:</p>
-<blockquote>Here is a timelapse of one opening a greenhouse window as it gets warm: <a href="https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=S-55VBYbbdo" rel="nofollow">https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=S-55VBYbbdo</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>FriedPickles</em>:</p>
-<blockquote>How does this deal with rain?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>lemarchr</em>:</p>
-<blockquote>It was so refreshing to see a video with a clear and direct title. In 2026 this would have been &quot;We cracked open a motor. You won&#x27;t believe what we found inside! &lt;emoji&gt;&quot;. Checking the channel, it seems they have succumbed to this for their latest videos.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>cbdumas</em>:</p>
-<blockquote>I&#x27;m surprised this page doesn&#x27;t mention the automotive thermostat which uses the same principle to control the flow of coolant between the engine block and radiator in an ICE vehicle.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>alnwlsn</em>:</p>
-<blockquote>Seems as though it&#x27;s been filed under a different page:<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Wax_thermostatic_element" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Wax_thermostatic_element</a></blockquote>
-<p>↳ reply 2 — <em>jammaloo</em>:</p>
-<blockquote>Perhaps you would consider adding that information? That&#x27;s would be an interesting addition!</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>DeepSeek v4.1 Flash Is Now Our Best Hacking Model</title>
-      <link>https://enclave.ai/blog/deepseek-v41-flash-is-now-our-best-hacking-model</link>
-      <guid isPermaLink="false">hn3-49725800</guid>
-      <pubDate>Wed, 16 Sep 2026 12:19:55 +0000</pubDate>
-      <description>150 points, 60 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://enclave.ai/blog/deepseek-v41-flash-is-now-our-best-hacking-model"><strong>→ Article</strong></a> <small>(enclave.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49725800">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 60 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>habosa</em>:</p>
-<blockquote>DeepSeek models have such good benchmark performance, amazing pricing, and the team over there seems to be widely considered impressive.<p>I just haven&#x27;t found them to be very good? I&#x27;ve had a ton more success with the GLM models (since 5.2 anyway). Maybe I&#x27;m just holding it wrong, DS models seem to get stuck in loops or tell me nonsense. GLM feels like budget Claude.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pimeys</em>:</p>
-<blockquote>My experience is complete opposite from yours. The V4 Flash was already quite good, but V4.1 is really very close to SOTA in my books. I&#x27;ve eval&#x27;d these models for weeks against Gemini 3.8, Kimi K3 and Opus 5, and DeepSeek absolutely wins these evals.<p>It&#x27;s really crazy. We price per token our customers. If Kimi was about 30% of the price of Opus 5 for the same quality, DeepSeek is 1&#x2F;10th of a price of Kimi K3. We&#x27;ve come down in price so much that I seriously cannot recommend other models before they reduce their pricing.<p>And what is really interesting is its programming ability. As I&#x27;ve said in my previous comments, I use agents a lot in my work. Since early Opus days until now I have 7-8 agents working in parallel for different tasks. Rust, design, GEPA, evals, analysis. For a long time Kimi K3 was the best model for this work, and before that GPT 5.5. But I still can&#x27;t really believe how well DeepSeek works here. I really try to find faults from it, trying to see that it must be doing sloppy work and be worse than the others. But it does not. It finishes every task I give to it. And the cost per task is under a dollar, usually 15-30 cents.<p>In comparison the same task with Kimi would be 3-15 dollars; sometimes closing to 100. And before that with GPT 5.5 a 800 dollar task was not uncommon if I spent days evaluating models.<p>Now it&#x27;s less than a dollar.<p>For me if the other providers will not drop their prices dramatically in the coming weeks I see no reason to use them. Even with a 200 dollar subscription, paying per token for DeepSeek is better value.<p>My harness: <a href="https:&#x2F;&#x2F;omp.sh&#x2F;" rel="nofollow">https:&#x2F;&#x2F;omp.sh&#x2F;</a></blockquote>
-<p>↳ reply 2 — <em>copperx</em>:</p>
-<blockquote>Are you using the API directly from Deepseek? Otherwise, performance will suffer greatly. If you&#x27;re using OpenRouter make sure to pin Deepseek as the provider. If you&#x27;re using OpenCode Go who knows who the provider is.</blockquote>
-<p>↳ reply 3 — <em>tired_star_nrg</em>:</p>
-<blockquote>It’s funny, in oh-my-pi I’ve had much better luck with DS 4.1 Flash than GLM 5.3 flash. Glm seems to just constantly reason in circles before attempting a tool call</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>TuxSH</em>:</p>
-<blockquote>I find this - or perhaps the title - a bit surprising.<p>I&#x27;ve benchmarked GLM 5.3 and DSv4.1-F on my fully-annotated decomp of the Nintendo 3DS&#x27;s kernel, which I have a good mental understanding of, tasking them to find vulns and other bugs (in Max mode w&#x2F; subagents). GLM 5.3 founds almost all the vulns in 30min for $22, while DS only found one vuln for $2 in 40min.<p>Perhaps DS works better where targets have low-hanging fruits than can be found fast?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mariopt</em>:</p>
-<blockquote>Makes sense, GLM 5.1&#x2F;5.2&#x2F;5.3 is a lot better than DS v4.1, I found the same results in other domains.<p>Given how fast and cheap DS is, it&#x27;s just an ideal model with enough &quot;IQ&quot; to let it loose. Another thing they left out of the article, DS becomes really good if you provide custom tools for the task, on it&#x27;s own it&#x27;s mediocre.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>seemaze</em>:</p>
-<blockquote>How does GLM 5.3 Flash rank against it&#x27;s big brother and the latest Deepseek?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>networked</em>:</p>
-<blockquote>Worth saying that GLM-5.3 isn&#x27;t GLM-5.3-Flash&#x27;s &quot;big brother&quot; the way one might think. GLM-5.3-Flash is <i>not</i> GLM-5.3 scaled down. While GLM-5.3 is based on GLM-5.2, and &quot;every gain comes from post-training&quot; (<a href="https:&#x2F;&#x2F;z.ai&#x2F;blog&#x2F;glm-5.3" rel="nofollow">https:&#x2F;&#x2F;z.ai&#x2F;blog&#x2F;glm-5.3</a>), GLM-5.3-Flash uses a newly trained multimodal base model (<a href="https:&#x2F;&#x2F;z.ai&#x2F;blog&#x2F;glm-5.3-flash" rel="nofollow">https:&#x2F;&#x2F;z.ai&#x2F;blog&#x2F;glm-5.3-flash</a>).</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>simlevesque</em>:</p>
-<blockquote>In your example, couldn&#x27;t you parallelize DS&#x27;s work more ? You could have 11 times as many agents for the same price.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>hactually</em>:</p>
-<blockquote>we recently got this running in 192gb of vRAM and using it with the Klaudia harness has been incredible for driving out work that we&#x27;d need to use Opus and Fable for previously</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Original Sony PlayStation 2 security chip 'broken wide open' after 26 years</title>
-      <link>https://www.tomshardware.com/video-games/playstation/26-year-old-sony-ps2-security-chip-broken-wide-open-after-four-years-of-effort-reverse-engineering-enthusiast-successfully-unlocks-cxp102064-mechacon-chip</link>
-      <guid isPermaLink="false">hn3-49725356</guid>
-      <pubDate>Wed, 16 Sep 2026 11:49:40 +0000</pubDate>
-      <description>252 points, 70 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.tomshardware.com/video-games/playstation/26-year-old-sony-ps2-security-chip-broken-wide-open-after-four-years-of-effort-reverse-engineering-enthusiast-successfully-unlocks-cxp102064-mechacon-chip"><strong>→ Article</strong></a> <small>(tomshardware.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49725356">→ HN comments</a> &nbsp;·&nbsp; 252 points &nbsp;·&nbsp; 70 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>uyjulian</em>:</p>
-<blockquote>Hello! I&#x27;m one of the people involved in reverse engineering the MechaCon. Please take note of the following:<p>* It is already possible to run backup&#x2F;copied discs entirely using software methods (from memory card, HDD, or DVD video player exploit), and in the case of the 50k series and newer (Dragon MechaCon), can use the &quot;force unlock&quot; patch that does not require any patches to copied discs.<p>* The dumps, alone, does not give enough information to create an &quot;&quot;&quot;hardware&quot;&quot;&quot; ODE (optical drive emulator). However, it is possible to make a modchip that replaces the MechaCon, relying on the DSP to continue to read discs.<p>* The current method to dump the ROM used in the SPC970 requires lots of writing to NVRAM.<p>* These dumps will eventually be useful for full-system low level emulation, as MagicGate and KELF&#x2F;KIRX security goes through it.<p>* These dumps are useful for vulnability searching, which can allow functionality to MechaPwn (code execution on MechaCon, unlocking security e.g. set disc type and max LBN) or TonyHax (unlocking PS1 mode to read any disc, on SPC970 based MechaCons and all PS1 MechaCons).<p>* The contents of game discs (except those that use DNAS online authentication) are not encrypted. These dumps don&#x27;t unlock anything additional there.<p>See <a href="https:&#x2F;&#x2F;gist.github.com&#x2F;uyjulian&#x2F;aaf4f4e2e74d980f620a9b73ba04b309" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;uyjulian&#x2F;aaf4f4e2e74d980f620a9b73ba0...</a> for updated info.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jordigh</em>:</p>
-<blockquote>I never could get the DVD player exploit to work, so I ended up buying a memory card with with FreeMCBoot.<p>I get the feeling that the DVD exploit is fiddly and requires adjustments for each iteration of the possible PS2 hardware configurations.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>uyjulian</em>:</p>
-<blockquote>There are many different revisions of the DVD player software, requiring specific offsets for each exploit. The SPRs (system parameter registers) exposed in DVD player scripting do not expose enough information to be able to merge the exploits onto one disc.<p>FreeMCBoot continues to work, but is no longer updated. I would recommend <a href="https:&#x2F;&#x2F;ps2homebrewstore.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;ps2homebrewstore.com&#x2F;</a> to check out the latest exploits and devices available, such as sd2psx, an open source reimplementation of a memory card that can also expose the filesystem on its inserted SD card.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>znpy</em>:</p>
-<blockquote>Would this allow, at learning in theory, to build and run a modern Linux distro to run on the ps2 ?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ethagnawl</em>:</p>
-<blockquote>&gt; Some of the reverse engineering tricks utilized by DiscoStarslayer include chemically decapping the CXP102064 to expose the die, then using microscopes and optical dumping skills to analyze the silicon chip circuitry. In this case, a lucky break during the hacking apparently uncovered an exploit that provided a method whereby the chip’s data could be extracted through software.<p>This is next level commitment to the cause.<p>Also, I can totally imagine their reaction when they discovered the exploit and realized they could put down the ... chemicals. XD</blockquote>
-<blockquote>
-<p>↳ reply — <em>spicyjpeg</em>:</p>
-<blockquote>There actually is a pretty large community of hardware reverse engineers decapping chips for fun, sometimes just to dump internal ROMs (like in this case) and other times going as far as to try reconstructing the original schematics and netlists in order to document the chip&#x27;s internals and allow for more accurate emulation, in some cases all the way down to the transistor level [1] [2]. If you want to learn more, Ken Shirriff has written a lot of blog posts on the subject [3] and Siliconprawn [4] hosts a huge collection of die shots from many contributors.<p>[1] <a href="https:&#x2F;&#x2F;floooh.github.io&#x2F;visual6502remix" rel="nofollow">https:&#x2F;&#x2F;floooh.github.io&#x2F;visual6502remix</a><p>[2] <a href="https:&#x2F;&#x2F;github.com&#x2F;iaddis&#x2F;metalnes" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;iaddis&#x2F;metalnes</a><p>[3] <a href="https:&#x2F;&#x2F;www.righto.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.righto.com&#x2F;</a><p>[4] <a href="https:&#x2F;&#x2F;siliconprawn.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;siliconprawn.org&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ZenoArrow</em>:</p>
-<blockquote>This book may also be of interest:<p><a href="https:&#x2F;&#x2F;nostarch.com&#x2F;microcontroller-exploits" rel="nofollow">https:&#x2F;&#x2F;nostarch.com&#x2F;microcontroller-exploits</a></blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>dzdt</em>:</p>
-<blockquote>This article seems to be completely based on the X post by the reverse engineer DiscoStarSlayer : <a href="https:&#x2F;&#x2F;x.com&#x2F;DiscoStarslayer&#x2F;status&#x2F;2099132300390744320" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;DiscoStarslayer&#x2F;status&#x2F;2099132300390744320</a>.<p>That post reads &quot;After 4 years of effort, I&#x27;m happy to announce that one of the final secrets of the PS2 has been broken wide open!<p>It&#x27;s been a long process of decapping, optical dumping, and now at last a software solution.<p>Thank you Libby for finding the exploit from our dirty optical dumps!&quot;<p>Yesterday DiscoStarSlayer also promised details are coming: &quot;Will share full write-up on how we got here soon!&quot;</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
