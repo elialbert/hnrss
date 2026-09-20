@@ -4,7 +4,113 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 20 Sep 2026 18:09:41 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 21:23:51 +0000</lastBuildDate>
+    <item>
+      <title>Qwen Image 2.1</title>
+      <link>https://qwen.ai/blog?id=qwen-image-2.1</link>
+      <guid isPermaLink="false">hn3-49775499</guid>
+      <pubDate>Sun, 20 Sep 2026 13:09:25 +0000</pubDate>
+      <description>400 points, 141 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://qwen.ai/blog?id=qwen-image-2.1"><strong>→ Article</strong></a> <small>(qwen.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49775499">→ HN comments</a> &nbsp;·&nbsp; 400 points &nbsp;·&nbsp; 141 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>vunderba</em>:</p>
+<blockquote>So thoughts<p>Positives<p>• It&#x27;s a heck of a lot smaller than Qwen-Image 1 (20b parameters) at only 7b, making it one of the smaller open-weight models available (Z-Image Turbo is one of the few that is smaller at 6b) when compared to Ideogram, Krea2, Flux2, etc.<p>• It supports native transparency (Qwen&#x27;s team, as far as I know, is the only one attempting to tackle this). Even though it&#x27;s relatively trivial to set up background removal postprocessors, it&#x27;s also neat to see it natively supported.<p>• It&#x27;s fast using QwenImage2.1 convrot, a 1MP image took around ~5 seconds on an RTX4090.<p>Negatives<p>• The license (assuming you respect it) is far more restrictive. The original Qwen Image 1 was released under the standard Apache license; this one explicitly forbids commercial usage without obtaining a separate license. On the other hand, a lot of us didn&#x27;t expect the Qwen team to ever release &quot;weights-available&quot; ever again.<p>Qwen-Image 1.0, released about a year ago, only scored 4&#x2F;15 on my <i>GenAI Showdown Benchmarks</i>. Since that time, they&#x27;ve been upstaged by Krea 2 (6&#x2F;15) and Ideogram4 (8&#x2F;15). I&#x27;ll post the new results once I have some more time to run them.<p><a href="https:&#x2F;&#x2F;genai-showdown.specr.net" rel="nofollow">https:&#x2F;&#x2F;genai-showdown.specr.net</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>zargon</em>:</p>
+<blockquote>It would make more sense to compare with Qwen Image 2, since that was the last open weights Qwen model.<p>Edit: This is wrong.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>vunderba</em>:</p>
+<blockquote>Wait... is that true? I don&#x27;t think the original Queen Image 2.0 was ever released beyond an API. At least, I don&#x27;t remember a public weights release.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>zargon</em>:</p>
+<blockquote>I promise I searched on my phone before posting that, but it looks like I misinterpreted an hf search result that was actually Qwen-Image-2512 but the url was truncated to Qwen-Image-2 due to my screen width (ugh). For some reason I was thinking Qwen Image 2.1 was the one that had been available for a while but not released, but you&#x27;re right that was 2.0.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jjcm</em>:</p>
+<blockquote>I run a prompt-to-ui design site that uses image models for the design process[1]. The text rendering especially makes this model deeply interesting to me, despite the license. Here are some tests using my harness comparing the outputs of gpt-image-2 and qwen 2.1:<p><a href="https:&#x2F;&#x2F;html.non.io&#x2F;qwen-comparison&#x2F;" rel="nofollow">https:&#x2F;&#x2F;html.non.io&#x2F;qwen-comparison&#x2F;</a><p>The text rendering definitely is much, much better than anything else on the open weights market right now. Small text fidelity is quite good. It seems like the text encoder however gets a little bit overloaded with larger prompts - note the presence of hex codes in the design output, those were inputs from the expanded prompt.<p>I&#x27;ll be trying a post-training run on this for web design, it has some serious potential.<p>[1] diffui.ai</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cloudking</em>:</p>
+<blockquote>Those simple prompts produce nearly the exact same layout in the 2 different models?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jjcm</em>:</p>
+<blockquote>My harness expands the prompt into a json representation that specifies layout much more rigorously, which is why you see such that amount of alignment between the two.<p>That internal json backing helps significantly when you want to maintain consistent design system components&#x2F;patterns across multiple pages. The aligned layout is it working as intended.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>xienze</em>:</p>
+<blockquote>&gt; The text rendering definitely is much, much better than anything else on the open weights market right now<p>Really? Because basically everything in those screenshots is completely garbled. I didn&#x27;t follow it super closely but I thought Ideogram or whatever was really good for this particular use, with actual clear text.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>jfoster</em>:</p>
+<blockquote>A lot of the previous Qwen models seem to have used Apache licenses, among others:<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Qwen#List_of_models" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Qwen#List_of_models</a><p>Unfortunately, it looks like this model is using a much more restrictive license:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;QwenLM&#x2F;Qwen-Image-2.1&#x2F;blob&#x2F;main&#x2F;LICENSE" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;QwenLM&#x2F;Qwen-Image-2.1&#x2F;blob&#x2F;main&#x2F;LICENSE</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kloud</em>:</p>
+<blockquote>Calling open-weights as open-source in marketing materials is the usual misrepresentation. But now with the restriction on commercial use (which is against opensource definition) it is not even open-weights, technically it would be more accurate to call it weights-available.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>NewJazz</em>:</p>
+<blockquote>And the only reason source available had any significance is that you could look at something and understand it. Weights are much much more opaque.<p>It&#x27;s just freeware.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gregoriol</em>:</p>
+<blockquote>Was going to post about this: the last image models with Apache 2.0 license seem to be from 2025, recent Qwen models are &quot;non-commercial use&quot;.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Chat-based Large Language Models replicate the mechanisms of a psychic's con</title>
+      <link>https://softwarecrisis.dev/letters/llmentalist/</link>
+      <guid isPermaLink="false">hn3-49775104</guid>
+      <pubDate>Sun, 20 Sep 2026 12:20:13 +0000</pubDate>
+      <description>149 points, 234 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://softwarecrisis.dev/letters/llmentalist/"><strong>→ Article</strong></a> <small>(softwarecrisis.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49775104">→ HN comments</a> &nbsp;·&nbsp; 149 points &nbsp;·&nbsp; 234 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bonoboTP</em>:</p>
+<blockquote>I don&#x27;t care if it&#x27;s &quot;intelligent&quot;, I don&#x27;t care if it &quot;has a mind&quot;. I don&#x27;t care if it is &quot;really reasoning&quot;, I don&#x27;t care if it &quot;understands&quot;. I don&#x27;t care if it is &quot;sentient&quot; or &quot;conscious&quot;.<p>None of this matters for the practical outcome.<p>You&#x27;d think that this has been understood over the last 4 years, but apparently it keeps circling back to this.<p>[Edit: I see that it was written back in 2023. Then (2023) should be added in the submission title]<p>If it generates functional output that works, then it works. And it works. It&#x27;s not a psychic&#x27;s con when it outputs Lean-verified proofs. It isn&#x27;t a con when it can find and exploit zero-days.<p>The OP is still in the &quot;denial&quot; phase. Most I see are already in &quot;anger&quot; (a blurry fury against everything AI-shaped, from vague reasons piling on all &quot;bad stuff&quot; political reasons they already hated before) or &quot;bargaining&quot; (mathematicians scrambling to come up with a new definition of their job and retcon that it was always the main part anyway). A few are already in &quot;depression&quot; and feel like spectators on the Titanic, and the tiniest sliver is at &quot;acceptance&quot; with some kind of well-informed plan for their future.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zkry</em>:</p>
+<blockquote>&gt; The OP is still in the &quot;denial&quot; phase.<p>This was written in July 2023. ChatGPT was released November 2022. No matter your views on AI, surely you can&#x27;t blame the OP for writing this after a few months ChatGPT was released.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bonoboTP</em>:</p>
+<blockquote>Apologies. The title should be amended with (2023). In this case it is an interesting snapshot of the zeitgeist back then and we can see how well it panned out and whether anyone involved has updated on new info.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>woah</em>:</p>
+<blockquote>For some reason the anti-AI camp ping pongs between different and often mutually incompatible arguments at lightning speed. The &quot;AI is fake&quot; argument has been completely forgotten at this point.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>_superposition_</em>:</p>
+<blockquote>I think you are majorly overstating OP that ai &quot;didn&#x27;t work&quot;.
+In fact I agree with the post on almost all aspects and I&#x27;d be the last to tell you ai doesn&#x27;t work. It absolutely does but with a caveat... It&#x27;s still a tool. And better expertise in the problem domain, along with a better harness used for verifiable outputs will get you better results.<p>I think the posts mental model of stastically likely prompt completions is spot on.</blockquote>
+<p>↳ reply 3 — <em>devin</em>:</p>
+<blockquote>I’m not sure acceptance buys you much. “Well-informed plan” at this stage feels like a useless exercise. It is changing fast, and the world only needs so many electricians. Besides, I don’t think “accepting” the fact that these big companies are pillaging human contribution and selling it back to us is good, even if “it works”.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>sethev</em>:</p>
+<blockquote>The challenge here is in trying to decide whether LLMs are intelligent or have a mind. Famously, the criteria for intelligence seem to slip with each advancement in technology. But going back to Turing, his test was actually more carefully phrased than we remember: he said that when machines could pass the test, the question of whether they are intelligent would become moot. That seems to be what we&#x27;re actually seeing: if people can&#x27;t tell the difference, it kind of won&#x27;t matter whether they&#x27;re &quot;truly intelligent&quot; or not.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bunderbunder</em>:</p>
+<blockquote>People also misunderstand the bar that was set by the test. It was more subtle than “Can the computer convincingly carry one side of a dialogue?”<p>His “imitation game” had three participants: a human participant, a computer participant, and an interrogator. The interrogator’s job was to talk to the participants and try to determine which participant is human and which is a computer.<p>He wasn’t interested in computers being able to fool the interrogator on occasion. The point where he thought the question of whether machines can think becomes moot is when the interrogator is unable to do much better than chance over many trials.<p>That’s a pretty high bar, and I don’t actually believe that LLMs have closed the gap with it by all that much. They still have so many obvious tells. And those tells are something Turing anticipated and accounted for. He explicitly considered deliberate deception as an essential part of the test, right there on the second page of a 30-odd page paper.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>famouswaffles</em>:</p>
+<blockquote>&gt;That’s a pretty high bar, and I don’t actually believe that LLMs have closed the gap with it by all that much. They still have so many obvious tells.<p>Frontier Labs are not interested in having LLMs being able to pass as humans. If anything, they explicitly train them not to. In many ways, this ability has regressed severely since the original GPT-3 with no instruct tuning or RL. How many &#x27;tells&#x27; would there be really if a frontier model trained with frontier techniques is optimized to pass this test? I think this was something Turing did not quite forsee. That such machines might be created but not really care about this specific shape of the test. Regardless, i think his broader point about functional equivalence is spot on.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bunderbunder</em>:</p>
+<blockquote>GPT-3 might not have said “load bearing” as much, but a savvy interrogator could still catch it out nearly every time just asking dumb gotcha questions like, “How many Rs are there in strawberry?”</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>famouswaffles</em>:</p>
+<blockquote>Turing was addressing the question of &quot;Can machines think?&quot; and his point was that the question itself is a meaningless one, and that we should stop wasting time by even giving it the light of day.<p>He proposes his game grounded on functional equivalence, then goes through a slew of objections on the question of &#x27;Can Machines think?&#x27;. It&#x27;s a terrific, very prescient read, and there&#x27;s no objection you hear today (and in the last few years) concerning LLMs he didn&#x27;t address.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>rahidz</em>:</p>
+<blockquote>Man I remember back when a psychic conned me by solving the Navier-Stokes problem.<p>Also
+&gt;July 4th, 2023</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>trescenzi</em>:</p>
+<blockquote>LLMs can be supremely useful but also not intelligent. It might seem like a pointless distinction but the way we talk about these models matters because it impacts how we interact with and understand their outputs.<p>For example if there’s a strongly held belief that models are independent intelligent entities we’re more likely to lay blame upon them instead of their user. It’s important for the safety discussion too. If they are a new class of life then safety is going to focus on making sure they don’t do bad things. If we instead see them as statistical models we will instead try to make sure people don’t misuse them.<p>This distinction is even more important today when some of the most powerful people are looking to absolve their crimes by passing them off on their LLMs.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mindcrime</em>:</p>
+<blockquote><i>For example if there’s a strongly held belief that models are independent intelligent entities we’re more likely to lay blame upon them instead of their user.</i><p>This sentence, to me, illustrates a great example of why it&#x27;s so hard to talk about this stuff. That is, this seems to strongly link notions of &quot;intelligent&quot; and &quot;independent&quot; (or maybe the word &quot;autonomous&quot; could also be used there). And a lot of people <i>do</i> seem to make an implicit assumption about the link between those two attributes. OTOH, I take it almost for granted that &quot;intelligence&quot; and &quot;independence&quot; (or &quot;autonomy&quot;) are things that are &quot;related but orthogonal&quot;. That is, I don&#x27;t see that &quot;intelligence implies independence&quot;. And I&#x27;m pretty sure I&#x27;m not the only one who sees things that way. So we have to fairly different fundamental worldviews expressed here. And that&#x27;s just <i>one</i> example of how these discussions go wonky. :-)</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>krupan</em>:</p>
+<blockquote>The LLM did not solve it.  It&#x27;s not intelligent.  Humans did, using a statistics-based computational tool (the LLM).  We don&#x27;t even know all the details of how the tool was used, we haven&#x27;t been allowed to use the exact tool they used ourselves, we don&#x27;t know much it really cost in dollars, energy, or time, etc. etc.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>AI and the Destruction of the Creative Commons</title>
       <link>https://www.chesterwisniewski.com/post/2026-09-13-ai-is-destroying-the-creative-commons/</link>
@@ -81,6 +187,26 @@ Fake news always existed. Now one dude in India can flood multiple sock puppet m
 </blockquote>
 <p><strong>Top #3</strong> — <em>pantulis</em>:</p>
 <blockquote>Spaniard here, it&#x27;s interesting that I haven&#x27;t noticed any disruption with archive.is in the last weeks.  Just checked today and though that it might be iCloud relay, but i don&#x27;t have it enabled. I&#x27;m only using Google&#x27;s DNS and am too lazy to try with my ISP ones.<p>Compare this to the absolute mayhem with the soccer matches blocking that will bring down an inordinate amount of legitimate sites during a match.<p>Not sure what are the technical measures they are deploying in one case or the other but I suspect that when Telefonica is involved they bring the big guns.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Step 5 Preview: Advancing the Pareto Frontier</title>
+      <link>https://www.stepfun.com/step-5-preview</link>
+      <guid isPermaLink="false">hn3-49772532</guid>
+      <pubDate>Sun, 20 Sep 2026 04:35:59 +0000</pubDate>
+      <description>127 points, 33 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.stepfun.com/step-5-preview"><strong>→ Article</strong></a> <small>(stepfun.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49772532">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 33 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>BoppreH</em>:</p>
+<blockquote>In their first demo video, to make a 3D render of the photo, the thinking trace gives away the game:<p>&gt; Interesting! It turns out there&#x27;s already an existing project here [...] The project is fully built [...]<p>I&#x27;m always astounded how little effort is put into checking the AI answers displayed in these announcements. Back when I paid more attention, I remember OpenAI&#x27;s and Google&#x27;s demos constantly showed their AIs giving wrong answers.</blockquote>
+<blockquote>
+<p>↳ reply — <em>BoppreH</em>:</p>
+<blockquote>Since people seem interested in this comment of mine, here&#x27;s another fun line I noticed in the same video, at the very top of the logs, just before the Step 5 agent found the already-completed project:<p>&gt; Error: OpenAI API error (403): {&quot;message&quot;:&quot;model water18-new is not available for user i-yuliang [trace_id=bfcfdd6bcdc236ca18d009c65cca52e4 code=40004]&quot;, &quot;type&quot;:&quot;invalid_request_error&quot;, &quot;param&quot;:null, &quot;code&quot;:null}<p>Here&#x27;s a still frame for posterity (apologies for the quality, the original video is tiny): <a href="https:&#x2F;&#x2F;boppreh.com&#x2F;room.jpg" rel="nofollow">https:&#x2F;&#x2F;boppreh.com&#x2F;room.jpg</a><p>Demos are demos and recreating scenarios is to be expected, but oh boy, somebody should review these things before publishing.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bethekind</em>:</p>
+<blockquote>&gt; Without any Pokémon-specific optimization, Step 5 Preview has so far sustained progress for more than 3,000 turns and 6 million tokens of interaction. By turn 3,082, it had unlocked Cut, earned three Gym Badges, and defeated Lt. Surge. The run is now roughly one-third of the way through the main story.<p>Finally FireRed is being used as a benchmark again! I believe Astra can beat it in 18 hours. Not sure how that compares.</blockquote>
+<p><strong>Top #3</strong> — <em>segmondy</em>:</p>
+<blockquote>The previous Step models were pretty decent, but unfortunately for them, their model reasons too much and too long and the Qwen&#x2F;Kimi&#x2F;DeepSeek&#x2F;GLM have been stronger.  Hopefully this doesn&#x27;t reason too long to get to the answer.  I welcome any open model, the more the merrier.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>RSA-896</title>
@@ -3581,106 +3707,6 @@ Rotating the API key doesn&#x27;t quite put them in a position to &quot;prevent 
 <blockquote>So much of our economy is local maxima and path dependencies. Plastic is so cheap because it&#x27;s basically a byproduct of the heavily subsidized oil industry. When we drill for oil we always also get ethane which companies would have to pay exorbitant amounts to get rid of in compliance with environmental standards. Turning it into plastic and other petro products is a great alternative<p>In a world that didn&#x27;t do this much oil drilling, plastic wouldn&#x27;t always be the cheapest option. In fact virgin plastic is often taxed even lower than recycled plastic to encourage plastic usage</blockquote>
 <p>↳ reply 2 — <em>nomel</em>:</p>
 <blockquote>Sails have an immediate operational cost reduction that should add up to a future net savings. Fusion research has no immediate benefit.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>OpenSpec – A lightweight and configurable AI spec framework</title>
-      <link>https://openspec.dev/</link>
-      <guid isPermaLink="false">hn3-49734264</guid>
-      <pubDate>Wed, 16 Sep 2026 23:06:39 +0000</pubDate>
-      <description>145 points, 65 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://openspec.dev/"><strong>→ Article</strong></a> <small>(openspec.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49734264">→ HN comments</a> &nbsp;·&nbsp; 145 points &nbsp;·&nbsp; 65 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mafro</em>:</p>
-<blockquote>I&#x27;ve used OpenSpec extensively on two large pieces of software which were worked solo over 6-9 months.<p>Recently, I&#x27;ve completely ditched the specification part. I found they just weren&#x27;t useful over the longer term. I used an LLM to assess in both directions whether the code matched the specs and whether the specs matched the code. On both software projects this came out with huge divergence from spec to code.<p>Basically the old theory is true - the code IS the specification.<p>What I did find very useful and have retained is the process flow. Create a proposal, review the proposal, implement, review the code. Also useful was building and maintaining ADRs and invariant logs for where a unit test cannot be made to verify behaviour. The process and the ADRs, unit test, invariant log all help the software stay coherent as the LLM churns on it over many unconnected contexts.</blockquote>
-<p><strong>Top #2</strong> — <em>ricardobeat</em>:</p>
-<blockquote>The documentation is entirely about <i>how</i> to use it, how to manage the skills and configure it.<p>What I&#x27;d like to see is <i>what</i> it is, how and <i>why</i> it works, ideally backed by some benchmarks. Otherwise it looks like just another pile of skills with unknown outcomes.</blockquote>
-<p><strong>Top #3</strong> — <em>twen_ty</em>:</p>
-<blockquote>Can someone tell me how this stuff is any different from the 90&#x27;s let&#x27;s use UML for code gen and how it&#x27;s not going to fail in the same way?<p>In my experience, spec drift is the main reason why none of these tools work. Maybe they work for one shot greenfield feature generation but in a large, multi developer long lived code bases, specs rot and end up being more pain than they are worth.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>spinningslate</em>:</p>
-<blockquote>that&#x27;s a good question.  UML - at least the mainstream version pushed by e.g. Rational - failed for many reasons.  A couple pertinent to this discussion:<p>1. Lack of closed loop between the &quot;spec&quot; and working code (your spec rot point).  The Rational Unified Process(RUP) was a grossly inefficient, heavily manual undertaking.  Mapping between artefacts - e.g. &quot;Platform Independent Models&quot; and &quot;Platform Specific Models&quot; was a manual, largely heuristic based approach.  As a consequence the models were not generally kept up to date as the project evolved.<p>2. User experience mismatch.  Developers were asked to create diagrams instead of writing code.  Tool usability was poor (&quot;write code with a mouse&quot;) and the artefacts didn&#x27;t fit well with necessary tools like diffing and source code control (try diffing an xml file textually).<p>Coding agents have some potential for alleviating (1) in that they can read the result code and, at least to some extent, ensure spec and code are in sync.<p>(2) is more open.  Some users - those proportionally more interested in solving the problem than designing&#x2F;writing code - are more comfortable with natural-language-based specs and exploration. Those more experienced&#x2F;comfortable with code will likely see those specs more akin to UML diagrams: a distraction from the real thing.</blockquote>
-<p>↳ reply 2 — <em>twohaibei</em>:</p>
-<blockquote>I think the premise is that when agent modifies the code with human instruction explicitly saying spec has changed, the agent goes to the spec and updates it. But maybe giving it too much of credit and projecting what I think it should do.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Australia says it could follow Canada in forging deeper ties with EU</title>
-      <link>https://www.independent.co.uk/news/world/australasia/canda-eu-membership-australia-us-trade-b3050227.html</link>
-      <guid isPermaLink="false">hn3-49734171</guid>
-      <pubDate>Wed, 16 Sep 2026 22:56:48 +0000</pubDate>
-      <description>224 points, 183 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.independent.co.uk/news/world/australasia/canda-eu-membership-australia-us-trade-b3050227.html"><strong>→ Article</strong></a> <small>(independent.co.uk)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49734171">→ HN comments</a> &nbsp;·&nbsp; 224 points &nbsp;·&nbsp; 183 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mindwok</em>:</p>
-<blockquote>As an Australian, I have noticed a shift personally in feeling like I identify more with &quot;European&quot; culture, compared to 10 years ago I felt like we were the 51st state and I felt very close with the US.<p>This seems to be shared by others, I remember reading there was a survey that asked Australians who they felt our closest international friend was. The US was the top answer for over a decade, having stolen the crown from the UK I think in the late 90s or something. Recently though, it switched to New Zealand.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bigger_cheese</em>:</p>
-<blockquote>Australia&#x27;s alignment with the US was a major consequence of  World War 2 and the aftermath of that.<p>Pre WW2 we were basically in lockstep with the UK. However after Singapore fell to the Japanese it became increasingly obvious that the UK could not be relied upon to defend Australia. At the time most of the elite Australian troops were fighting in North Africa (El-Alamein, Tobruk etc). and there was a genuine perceived threat that Australia could be invaded. PNG which was Australian territory at the time was invaded. The Japanese bombing of Darwin only intensified this.<p>Almost overnight our foreign policy swung behind the US instead. Post WW2 this led to things like the ANZUS Treaty. It is the reason there are US military bases in Australia and the reason why we have followed the US into all of their wars which we arguably had no business involving ourselves in (Vietnam, Iraq etc.).<p>Personally I feel the recent actions of the US are not beneficial to Australia&#x27;s interests at all. Trump has squandered an awful lot of accumulated goodwill already, even if another government is elected in US a lot of damage has already been done.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>totetsu</em>:</p>
-<blockquote>I feel like I wrote a paper about this in high-school history class.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mynameisash</em>:</p>
-<blockquote>I&#x27;m surprised - aren&#x27;t AU &amp; NZ super close culturally and aligned politically? I would have thought the US, CA, et al would be vying for a distant second.</blockquote>
-<p>↳ reply 3 — <em>SlightlyLeftPad</em>:</p>
-<blockquote>As an American, I identify more with European culture compared to 10 years ago.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nl</em>:</p>
-<blockquote>Just to be clear on this - Australia is primarily interested in methods of reducing trade barriers, not any sort of political union.<p>Australia is economically served well by free trade: most of its production is low cost, high quality primary production of mining outputs and agricultural goods (grains, wool and meat) where if price and quality are the primary selection criteria it wins.<p>The downside of this is that Australia hasn&#x27;t really got any significant manufacturing or advanced technology industry.<p>But it has made Australia one of the best performing economies of the past 25 years.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rsynnott</em>:</p>
-<blockquote>&gt; Just to be clear on this - Australia is primarily interested in methods of reducing trade barriers, not any sort of political union.<p>So, at a certain point, that gets fuzzy. The EU and Australia already have a free trade agreement which will remove essentially all tariffs when it goes into operation. But selling stuff from Australia to, say, Belgium will still be more difficult than selling stuff from Spain to Belgium due to lack of regulatory alignment. And regulatory alignment is political.</blockquote>
-<p>↳ reply 2 — <em>someperson</em>:</p>
-<blockquote>A big part of what makes Australia a better performing economy is maintaining high population growth rate of 1.5%, mostly through immigration.<p>Has had implications on housing affordability, but it&#x27;s great for GDP statistics.<p><a href="https:&#x2F;&#x2F;www.macrotrends.net&#x2F;global-metrics&#x2F;countries&#x2F;aus&#x2F;australia&#x2F;population" rel="nofollow">https:&#x2F;&#x2F;www.macrotrends.net&#x2F;global-metrics&#x2F;countries&#x2F;aus&#x2F;aus...</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bjt12345</em>:</p>
-<blockquote>The Australian government has always taken &quot;great interest&quot; in what Canada does in regards to policy - they practically copy Canada all the time, even my Economics lecturer made a point about this. This isn&#x27;t news.<p>Australia also has a huge problem with exports. For decades, China had huge demand for Australia&#x27;s resources, particularly Iron Ore.  However China is reducing this, so Australia needs a new plan.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kimos</em>:</p>
-<blockquote>There are many obvious differences, but Canada and Australia share many characteristics and I find myself comparing to Aussies. Similar population, massive landmass, population mostly contained in narrow stripes at the edges, ex UK colony, middle power, etc..</blockquote>
-<p>↳ reply 2 — <em>willsmith72</em>:</p>
-<blockquote>you might be overstating the problem. for sure there&#x27;s overreliance on China which is decreasing slightly (1-3% from what I remember), but Australian exports are still increasing because of the US, India, Japan and many others</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Why building a Rust LSP is hard</title>
-      <link>https://rust-glancer.github.io/blog/why-lsp-is-hard/</link>
-      <guid isPermaLink="false">hn3-49734131</guid>
-      <pubDate>Wed, 16 Sep 2026 22:51:16 +0000</pubDate>
-      <description>128 points, 56 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://rust-glancer.github.io/blog/why-lsp-is-hard/"><strong>→ Article</strong></a> <small>(rust-glancer.github.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49734131">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 56 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>weinzierl</em>:</p>
-<blockquote>Reading this made me realize that I want two different things from an LSP that are sometimes at odds with each other:<p>1. Editing help<p>2. Reliable and comprehensive analysis<p>The editing help needs to deal with incomplete and inconsistent state and answers on a best effort basis.
-This is good when I&#x27;m writing code.<p>When I&#x27;m trying to understand code it usually is in a complete and compiling state but best effort is not enough. I expect complete and exhaustive answers.<p>Independently of that I&#x27;d love to read a similar analysis that compares the approaches of rust-anslyzer, rust-glancer and the JetBrains analysis engine in Rust Rover.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ashkankiani</em>:</p>
-<blockquote>This is a good observation, with the observation that there are two different levels of latency requirements. Most of the time, I would be pretty happy with an untyped, unsemantic, mildly smart heuristic based ident completion while the asynchronous semantic one finishes.<p>The nice thing about this dual setup is that I tend to only want the semantic one if I&#x27;m thinking more, so there&#x27;s naturally a larger time budget for it.<p>One must always think about the experience they want in UX first, rather than the tools they want to build.</blockquote>
-<p>↳ reply 2 — <em>wannabe44</em>:</p>
-<blockquote>I feel most LSPs I used are fairly good at both. Sometimes I get no completion suggestions, look at the sidebar and fix compile errors, then start getting suggestions. For whatever reason, it&#x27;s a fine trade off for parsing errors.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>qudat</em>:</p>
-<blockquote>Tangentially, since I now write a lot of Zig and there’s no official LSP, I decided to see what life would be without an LSP for all my projects (Go, TS, Python).<p>Honestly, my LSP requirements are minimal: go to def, find all references, and symbol search. I’ve been wanting to try ctags for awhile and finally made the switch.<p>Another consideration were all the posts about how grep is better than LSPs for LLMs.<p>It really pushed me to just get better at grep. There have been a ton of benefits: I can symbol search outside of my editor, it’s much faster than an LSP, minimal configuration. It feels more like a universal tool I can use instead of a tool for IDEs.</blockquote>
-<blockquote>
-<p>↳ reply — <em>monocasa</em>:</p>
-<blockquote>I do like that vscode understands paths with line numbers in the terminal, so grep -n then ctrl+click takes you to that line.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>klodolph</em>:</p>
-<blockquote>The particulars of Rust make this a little more difficult, I think. There’s a certain tension between making your language more concise and adding useful redundancies, and Rust has generally gone to the “concise” side, with some redundancies that can make the tooling a little more painful. Like with imports.<p><pre><code>  impl std::fmt::Display for Blah {
-  }
-</code></pre>
-If your language makes you qualify your imports (like above) then your LSP can, delightfully, still <i>reliably</i> do certain ops like renaming, even when chunks of your project aren’t parsing. But if you glob import std::fmt, and glob import something else, you are fucked. Display could come from anywhere (maybe from a module that has a parse error at the moment). I really appreciate languages where glob imports (or their equivalent) are either disallowed entirely or where typical code doesn’t use it.<p>Meanwhile, if you add a new file, there’s this little dance where you say:<p><pre><code>  mod mycoolmod;
-</code></pre>
-And then you create mycoolmod.rs. Or you do it the other way around. A little redundancy (the file exists and it is declared), that seems to just create a little friction in the LSP because mycoolmod doesn’t get a working LSP until it’s declared in the parent (you have to create both, and then you get a transient diagnostic that your module is unused for a while yet). A small issue, just another little bit of friction in the tooling of Rust that has nothing to do with the type system.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>yencabulator</em>:</p>
-<blockquote>Wildcard imports are a horrible idea.<p>(And anyone pushing to have a &quot;prelude&quot; for their library is making it worse. Please don&#x27;t.)<p>Clippy `wildcard_imports = &quot;warn&quot;` is your friend.</blockquote>
-<p>↳ reply 2 — <em>verandaguy</em>:</p>
-<blockquote>Having worked with rust for nearly two years now (granted, on one team with agreed-upon standards):<p>- glob imports are rare in my experience, less for the LSP’s sake and more for code self-documentation<p>- the `mod foo` line exists because omitting it cannot fall back to a reasonable default visibility level (`pub`&#x2F;`pub(crate)`&#x2F;&lt;none&gt; (private))</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
