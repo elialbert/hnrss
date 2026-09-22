@@ -4,7 +4,174 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 22 Sep 2026 18:42:33 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 21:56:46 +0000</lastBuildDate>
+    <item>
+      <title>Show HN: Drop – A rootless Linux sandbox with gVisor support</title>
+      <link>https://droprun.sh/</link>
+      <guid isPermaLink="false">hn3-49801329</guid>
+      <pubDate>Tue, 22 Sep 2026 13:52:47 +0000</pubDate>
+      <description>147 points, 50 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://droprun.sh/"><strong>→ Article</strong></a> <small>(droprun.sh)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49801329">→ HN comments</a> &nbsp;·&nbsp; 147 points &nbsp;·&nbsp; 50 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>refibrillator</em>:</p>
+<blockquote>Hi OP, funny enough I’m working on something very similar. Lots of us are I guess! Take that as validation of your thinking.<p>I like that your readme has a couple paragraphs comparing to popular tools in this space. Personally I feel it is a bit light on the security differentiators (if any). For example you are using the same fundamental primitives that are used in nsjail, runc, etc. Thus it seems you have recreated those libraries in some aspects, so would be curious to hear your rationale for approaching this way vs building explicitly on those primitives.</blockquote>
+<blockquote>
+<p>↳ reply — <em>mixedbit</em>:</p>
+<blockquote>Thanks! My initial approach and the first prototype was for Drop to be a Python script that generates config.json file for runc Docker runtime (I also tried crun). I ran into issues that prevented the
+sandbox from being set up with all the Drop-required properties. These issues were certainly technically fixable, but it could be difficult for a new project with no usage to advocate for features in mature and widely adopted tools. Especially that runc and crun are OCI-compatible Container Runtimes, and Drop is not an OCI-compatible container, so it could be justifiably out of scope for these projects not to support Drop usage.<p>Anyway, my decision, for which I also evaluated the use of bubblewrap as a building block, was to err on the side of flexibility that calling fine-grained Linux APIs directly give. For a project like Drop, runc could be seen as very coarse-grained JSON-based API to Linux sandboxing calls (basically a single call: setup a sandbox, here is a json config that describes it), similarly bubblewrap is a coarse grained command-line API to Linux sandboxing calls. Reusing such tried and proved layers of course also has significant advantages, so as in case of many engineering decision, it wasn&#x27;t super obvious which path is better.<p>Drop eventually integrated gVisor&#x27;s runsc (as an option), which is also OCI-compatible Container Runtime, but this is to add a user-space kernel isolation layer.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>programd</em>:</p>
+<blockquote>So there are a lot of ad-hoc solutions everybody is using for agent isolation and Drop looks well thought out. But the obvious question is what do the pros use? What does Anthropic, OpenAI, SpaceXAI, Google and Amazon do in house to deal with the isolated agent environment problem?<p>Based on past experience I&#x27;m guessing everybody is using Kubernetes, but what are the details? Stripped down VMs on Kubernetes? Hardened containers on Kubernetes? Can the rest of us spin up something comparable on K3s?<p>Anybody knows the answers and can share?</blockquote>
+<p><strong>Top #3</strong> — <em>saghm</em>:</p>
+<blockquote>This is super interesting to me. I&#x27;ve slowly been working on something similar (<a href="https:&#x2F;&#x2F;gitlab.com&#x2F;saghm&#x2F;tartarus" rel="nofollow">https:&#x2F;&#x2F;gitlab.com&#x2F;saghm&#x2F;tartarus</a>) because my ideal sandboxing is &quot;prevent writing to anything outside this dir but still allow reading to most things so that I don&#x27;t have to manually copy things into a container&#x2F;VM&quot;. I approached it by trying to figure out how to build up a bubblewrap based on a config that gave the properties I wanted, with the hope that I could eventually expand it to support other platforms via stuff like `sandbox-exec` on MacOS, but I haven&#x27;t had time to work on it more for a while.<p>At a glance, this seems to be providing most of what I was originally looking for when I ended up deciding I&#x27;d have to write it myself, but focusing specifically on Linux and providing a more full-fledged sandbox rather than only caring about a small set of permissions that I personally had a need for. Probably the biggest (and least hardened) feature that I spent time on in mine was trying to figure out how to allow arbitrary GUI apps so that I could run agents in it via Zed.<p>I&#x27;m definitely going to try this out and see how well it works for me. It&#x27;s insane to me that this is something none of the big AI companies have bothered solving this yet other than via opaque rules built into their harnesses or absolutely awful manual rules that expect me to hard-code shapes of shell commands that I want to allow or not allow.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>killerstorm</em>:</p>
+<blockquote>&gt; my ideal sandboxing is &quot;prevent writing to anything outside this dir but still allow reading to most things so that I don&#x27;t have to manually copy things into a container&#x2F;VM&quot;<p>That&#x27;s what Codex does out of the box, and it&#x27;s not good against malware - i.e. a rogue npm packet (or even just codex after prompt injection) can read your ssh key and send it to the attacker.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>saghm</em>:</p>
+<blockquote>&gt; That&#x27;s what Codex does out of the box<p>As I said, opaque rules built into the harness rub me the the wrong way. They could change in an update without anything making it clear. Plus, I don&#x27;t use Codex outside of work (I don&#x27;t have any active paid subscriptions  LLM offerings).<p>&gt; it&#x27;s not good against malware - i.e. a rogue npm packet (or even just codex after prompt injection) can read your ssh key and send it to the attacker<p>Ignoring the repeated references to software I don&#x27;t personally use, I never said I was trying to hedge against malware. The use case for me is when I&#x27;m running agents directly based off of prompts that I give them and asking them to modify some files. If I wanted a solution for running code I didn&#x27;t trust, I wouldn&#x27;t rely on what I wrote, because that&#x27;s not the intended use case at all.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>everforward</em>:</p>
+<blockquote>Small world, we’re all working on the same thing!<p>I went with Docker because history has taught me that new isolation strategies _will_ have escape bugs at some point, and I’m distrustful that the LLM can’t find one if it wants to.<p>&gt; Probably the biggest (and least hardened) feature that I spent time on in mine was trying to figure out how to allow arbitrary GUI apps so that I could run agents in it via Zed.<p>I actually have code for this if you want to use&#x2F;fork&#x2F;borrow it. TLDR, mine pretends to be an ACP agent so you run Zed on the host, but under the hood that binary is just creating a Docker container with your image and agent, copying files, etc, and then proxying ACP messages via web socket back and forth. Except for the built-in ACP read&#x2F;write file and shell endpoints. Those get executed inside the container by the proxy by default, though there’s a config option to pass either or both through to the host.<p>Repo is <a href="https:&#x2F;&#x2F;github.com&#x2F;SethCurry&#x2F;abyss" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;SethCurry&#x2F;abyss</a> and the code you’d want would be in ‘internal&#x2F;websockets&#x2F;wsacp’.<p>It does wrap them in protobuf and there’s some router-like stuff so you can add your own non-ACP messages between the two ends of the proxy.<p>main also has experimental wasm plugin support in the proxies so you can block prompts&#x2F;tool calls&#x2F;whatever in an agent-independent way, or add RAG that works for every agent in the world, or whatever.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OpenAI GPT–6 Astra breaks Enigma message that has resisted solution since 2005</title>
+      <link>https://www.cryptocellar.org/bgac/the-mvueh-break.html</link>
+      <guid isPermaLink="false">hn3-49801324</guid>
+      <pubDate>Tue, 22 Sep 2026 13:52:15 +0000</pubDate>
+      <description>507 points, 345 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.cryptocellar.org/bgac/the-mvueh-break.html"><strong>→ Article</strong></a> <small>(cryptocellar.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49801324">→ HN comments</a> &nbsp;·&nbsp; 507 points &nbsp;·&nbsp; 345 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mmsc</em>:</p>
+<blockquote>For anybody interested, the actual encrypted message:<p><pre><code>  BTTE UM ANGABE DES MARSQWEGES X BEFINDE MIQ IN X ROSENOW ROSENOW X SOFORT FUNKANTWORT X WASCHBBSCH
+</code></pre>
+which, given misspellings, translates approximately to:<p><pre><code>  Please specify the route of march. I am in Rosenow, Rosenow. Immediate reply by radio. Waschbusch.</code></pre></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>booty</em>:</p>
+<blockquote><p><pre><code>    I am in Rosenow, Rosenow. 
+</code></pre>
+From the article:<p><pre><code>    After trying many different approaches, GPT–6 
+    Astra focused on using the repeated place name 
+    ROSENOW ROSENOW as a crib. 
+</code></pre>
+This feels extremely underexplained! Why would Astra think to use that as a &quot;crib&quot;? Was it common to repeat the place name in these messages?<p>(Is it possible that this is a misreported detail? It feels like a singular ROSENOW would be an equally effective crib)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>TheDong</em>:</p>
+<blockquote>This was explained in the article right there:<p>&gt; it suspected that the plaintext of Nr. 173, SIPVX, might be related to the plaintext of the unbroken MVUEH message<p>It makes sense that Nr. 172 and Nr. 173 might be related since they were sent at around the same time.<p>In Nr. 173, &quot;ROSENOW ROSENOW&quot; was also present.<p>It also makes sense that a longer crib would generally be more effective than a shorter one.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>booty</em>:</p>
+<blockquote>It was partially explained by the article. It was not stated that ROSENOW was repeated in 173, and it was not obvious from the article text why ROSENOW would ever be repeated. Thus my curiosity.<p>A sibling commenter explained it - Rosenow is both a municipal name and a district name, so naturally it would be repeated. (Like &quot;New York, New York&quot;)<p><pre><code>    It also makes sense that a longer crib 
+    would generally be more effective than a 
+    shorter one.
+</code></pre>
+It would seem to me that the odds of looking for even a single ROSENOW in the decrypted message would be plenty. The odds of a single ROSENOW randomly occurring in incorrectly decrypted output are vanishingly small. So it seems to me that looking for ROSENOW is a safer bet vs. looking for ROSENOW ROSENOW -- a single ROSENOW is a great sign you&#x27;ve got the correct key, whereas looking for ROSENOW ROSENOW seems like it would deliver false negatives (think of all the times we say &quot;New York&quot; rather than &quot;New York, New York&quot;)<p>I&#x27;m a novice at crypto though, so, maybe I&#x27;ve got that totally wrong.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>xnorswap</em>:</p>
+<blockquote>Out of interest, what was the ciphertext?<p>Edit: Found it from here: <a href="https:&#x2F;&#x2F;mvueh-enigma-solved.carterl.chatgpt.site&#x2F;" rel="nofollow">https:&#x2F;&#x2F;mvueh-enigma-solved.carterl.chatgpt.site&#x2F;</a><p><pre><code>    ICRVSORMCCWQTATYEVFXDBZGGSNXWLPSYWZYTCBSWULRTBZCVGODVJUSLSOOMJQJZSXSEBZPEYMDNXJYTC</code></pre></blockquote>
+<p>↳ reply 3 — <em>pjc50</em>:</p>
+<blockquote>Do we have any kind of transcript as to <i>how</i> the message was cracked, and whether this was cheaper or more expensive than simply Bombe-style trying all the combinations?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>podgorniy</em>:</p>
+<blockquote>gemini 3.8 flash in anrigravitiy oneshoted the descryption in about 45min non-steered run (opus is still running with the task, has some script to run for about 100min)<p>Prompt<p>Decrypt encrypted with enigma `ICRVSORMCCWQTATYEVFXDBZGGSNXWLPSYWZYTCBSWULRTBZCVGODVJUSLSOOMJQJZSXSEBZPEYMDNXJYTC`<p>Result<p>Raw Decryption (verbatim from the machine):
+BTTEUMANGABEDESMARSQWEGESXBEFINDEMIQINXROSENOWROSENOWXSOFORTFUNKANTWORTXWASCHBBSCH
+2. Segmented German (with military telegraph conventions expanded):
+BTTE UM ANGABE DES MARSQWEGES . BEFINDE MIQ IN : ROSENOW ROSENOW . SOFORT FUNKANTWORT . WASCHBBSCH<p>(Standard German radio conventions: X represents punctuation&#x2F;spacing; Q was frequently substituted for CH to prevent transmission ambiguities; BTTE was an enciphering operator typo for BITTE; WASCHBBSCH was an operator typo for the signature WASCHBUSCH).<p>3. Corrected German:
+„Bitte um Angabe des Marschweges. Befinde mich in Rosenow, Rosenow. Sofort Funkantwort. Waschbusch.“<p>4. English Translation:
+&quot;Please specify the route of march. I am in Rosenow, Rosenow. Immediate reply by radio. Waschbusch.&quot;<p>Cryptographic Verification
+Re-encrypting the plaintext using the identical key settings reproduces the exact ciphertext byte-for-byte:<p>Enigma
+(
+M
+raw
+)
+=
+ICRVSORMCCWQTATYEVFXDBZGGSNXWLPSYWZYTCBSWULRTBZCVGODVJUSLSOOMJQJZSXSEBZPEYMDNXJYTC
+Enigma(M 
+raw<p>)=ICRVSORMCCWQTATYEVFXDBZGGSNXWLPSYWZYTCBSWULRTBZCVGODVJUSLSOOMJQJZSXSEBZPEYMDNXJYTC
+19:10</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>coderintherye</em>:</p>
+<blockquote>How do you know it didn&#x27;t just get the result from the web?<p>Putting &quot;ICRVSORMCCWQTATYEVFXDBZGGSNXWLPSYWZYTCBSWULRTBZCVGODVJUSLSOOMJQJZSXSEBZPEYMDNXJYTC&quot; into google search returns the result from Gemini with similar explanation, which it references to a Yahoo article about the Astra breakthrough and that&#x27;s a result as of 3 hours ago.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>podgorniy</em>:</p>
+<blockquote>UPD out of curiosity I ran the same prompt against gemini 3.8 flash via api with and withouth internet search.<p>with search it found and referenced pages, including the hn ones. Without search it just described what one would need to descrypt (`To decrypt this ciphertext, the specific Enigma machine parameters are required:`) and the list.<p>Out of curiosity ran the same prompt against bunch of models - grok, kimi k3. They all say the same thing that they need model version, rotors and so on to descrypt.<p>When file output tool is enabled, some models give python script.<p>--<p>I read through some of the logs that antigravity gives. It produced intermediate results, scripts, calls, assumptions (about german language). I&#x27;ve shares random bits in comment below to give a taste of what it was doing.<p>--<p>The freshness of the news reduces changes that model fetched response from them</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>xg15</em>:</p>
+<blockquote>Wow. Was there any indication how it did that? Did it bruteforce the key and check which result looks sufficiently German, or was it just LLM magic like &quot;decoding&quot; base64 purely in the inference loop?<p>(Or did it look up the results on the web?)</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tantalor</em>:</p>
+<blockquote>Neat, but &quot;did it entirely on its own&quot; is incongruous with &quot;developing the necessary Python and C++ software for an Enigma simulator&quot;.<p>I&#x27;d start by asking how much of that generated software is novel, or easily found on the web? Then, how much of the breaking process was offloaded to that software? If Astra is just handing off tasks to another computer, then I&#x27;m not sure how much credit it deserves. Finally, it looks like Astra provided some useful insights which narrowed down the search. Were these insights cribbed from elsewhere?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>voiper1</em>:</p>
+<blockquote>It&#x27;s a given now that LLMs are leveraging code to do things.<p>&quot;On it&#x27;s own&quot; generally means &quot;not steered&quot; or otherwise given professional guidance or input.<p>I would say &quot;developed the necessary software for a simulator&quot; to be even more impressive - &quot;here solve this problem&quot; and &quot;OK, but first I have to built the entire lab!&quot;</blockquote>
+<p>↳ reply 2 — <em>tehlike</em>:</p>
+<blockquote>Why does any of this matter? Llm is a memory of knowledge, of course it got what it got based on prior work.<p>It can code enigma simulator from the algorithm. That&#x27;s not really a problem. Astra will send computing to programs, LLMs are not good at computing themselves, why is this a big deal?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>AI Has No Wisdom and Neither Will You</title>
+      <link>https://alexn.org/blog/2026/09/22/ai-has-no-wisdom-and-neither-will-you/</link>
+      <guid isPermaLink="false">hn3-49799965</guid>
+      <pubDate>Tue, 22 Sep 2026 12:11:09 +0000</pubDate>
+      <description>358 points, 504 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://alexn.org/blog/2026/09/22/ai-has-no-wisdom-and-neither-will-you/"><strong>→ Article</strong></a> <small>(alexn.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49799965">→ HN comments</a> &nbsp;·&nbsp; 358 points &nbsp;·&nbsp; 504 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>NalNezumi</em>:</p>
+<blockquote>The problem imo is the slow deterioration of institutional knowledge that offloading the mental task of wisdom gathering to AI is causing.<p>One interesting comparison is to the history of manufacturing. West&#x2F;America decided one day that manufacturing would be cheaper to outsource and better (short term) profit was to be made by outsourcing it all to China. The institutional expertise started to deteriorate, to the point that America simply didn&#x27;t even have the capacity, or expertise anymore to produce stuff (such as grill brush [1])<p>I feel like you could take all the handwavy comment that are made today to dismiss this caution, and find equal dismissal back then when companies were actively outsourcing the manufacturing.<p>&quot;I&#x27;m coding 10x faster&quot; 
+&quot;look at the output velocity per employee&quot;<p>&quot;we are producing much more (in China)&quot; 
+&quot;look at profit &#x2F; number of (manufacturing) employers&quot;<p>Seems ok if you&#x27;re American &#x2F; Chinese but I&#x27;m struggling to understand how the rest can be OK with allowing institutional knowledge to deteriorate while having an active dependency to the former two. We already see this with the tech dependency towards USA and manufacturing competition from China.<p>[1] <a href="https:&#x2F;&#x2F;youtu.be&#x2F;3ZTGwcHQfLY" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;3ZTGwcHQfLY</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jordanb</em>:</p>
+<blockquote>&gt; I feel like you could take all the handwavy comment that are made today to dismiss this caution, and find equal dismissal back then when companies were actively outsourcing the manufacturing.<p>Absolutely people were <i>extremely dismissive</i> to anyone saying that we&#x27;re losing the ability to make things in this country!<p>There were all these theories like Comparative Advantage that people would trot out to point out that, if you don&#x27;t like outsourcing, not only are you ignorant and backwards you&#x27;re also probably racist.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>FuckButtons</em>:</p>
+<blockquote>If there are not history books out there that try to discern the etiology of those decisions, there really should be.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>maerF0x0</em>:</p>
+<blockquote>Most of us can&#x27;t hunt either. Somethings go away in time because they&#x27;re no longer needed (by the masses). That is essentially what society does -- it allows us to multiply a few for the benefit of many so the many can focus on other things.<p>The resilience is more in ensuring archival process to ensure it&#x27;s never lost forever, and a continuity plan to ensure enough (but few) people still know.</blockquote>
+<p>↳ reply 3 — <em>6LLvveMx2koXfwn</em>:</p>
+<blockquote>&gt; The problem imo is the slow deterioration of institutional knowledge that offloading the mental task of wisdom gathering to AI is causing.<p>I believe this is what Socrates said (verbatim) about the invention of writing.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>davedx</em>:</p>
+<blockquote>There&#x27;s a continuum between &quot;vibe coded by someone with no technical knowledge or inclination&quot; and &quot;hand written domain driven design development&quot;. You can absolutely use coding agents AND have maintainable code. But yes, the coding agents will not magically make everything maintainable if you don&#x27;t tell them to.<p>&quot;Code maintainability and good architecture don’t have good measurements that we can apply&quot;<p>Who has no wisdom? There are dozens of ways to measure code maintainability. Cyclomatic complexity is just one.<p>Nothing stops you from wiring up something like SonarQube metrics to your agentic coding workflow.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bunderbunder</em>:</p>
+<blockquote>Plenty of measurements exist, but the trick, as the article said, is finding <i>good</i> measurements.<p>Cyclomatic complexity has been pretty solidly discredited within the maintainability research community for decades.<p>Sonar&#x27;s cognitive complexity metric is a bit better, but here&#x27;s a study that found that it still only has about a 0.5 correlation with how much difficulty programmers actually had reading code as measured by multiple methods.<p>They found that the most accurate way to measure code complexity that didn&#x27;t involve something like an eye tracker or EEG is still basically just vibes - asking programmers if they thought it was hard to understand.<p><a href="https:&#x2F;&#x2F;www.frontiersin.org&#x2F;journals&#x2F;neuroscience&#x2F;articles&#x2F;10.3389&#x2F;fnins.2022.1065366&#x2F;full" rel="nofollow">https:&#x2F;&#x2F;www.frontiersin.org&#x2F;journals&#x2F;neuroscience&#x2F;articles&#x2F;1...</a><p>Halstead Effort came in second, and scored pretty well, but here&#x27;s another one where it doesn&#x27;t do so well, either. And it scores the SonarQube metrics even worse, with only a 0.35 correlation: <a href="https:&#x2F;&#x2F;www.sciencedirect.com&#x2F;science&#x2F;article&#x2F;abs&#x2F;pii&#x2F;S0164121225003486" rel="nofollow">https:&#x2F;&#x2F;www.sciencedirect.com&#x2F;science&#x2F;article&#x2F;abs&#x2F;pii&#x2F;S01641...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pjc50</em>:</p>
+<blockquote>Yeah, we have this rule in our SQ and I absolutely hate it because of the number of times I&#x27;m forced to break something up. Complexity that matters is usually at a higher, more architectural level.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bunderbunder</em>:</p>
+<blockquote>Yeah. Looking at the code samples in that first page was pretty interesting. They&#x27;re cherry-picked, of course, but still it&#x27;s a little galling to see which ones SQ gave a lower score.<p>I definitely wouldn&#x27;t want AI to be autonomously using that as a guide without doing some fairly serious internal A&#x2F;B testing first. Kind of like for cyclomatic complexity, it&#x27;s just too easy to find ways to maliciously comply. And if that&#x27;s what you ask AI to do then that&#x27;s likely what you&#x27;re going to get.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>palmotea</em>:</p>
+<blockquote>&gt; There&#x27;s a continuum between &quot;vibe coded by someone with no technical knowledge or inclination&quot; and &quot;hand written domain driven design development&quot;. You can absolutely use coding agents AND have maintainable code. But yes, the coding agents will not magically make everything maintainable if you don&#x27;t tell them to.<p>Yes. But I think the idea is without &quot;hand written domain driven design development&quot; the result trends to &quot;vibe coded by someone with no technical knowledge or inclination,&quot; as developers de-skill.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tegeek</em>:</p>
+<blockquote>In the beginning of August 2026, I started a hobby project: building a MongoDB-like database. I have 20 years of industry experience and a master&#x27;s degree in computer science, so I followed a disciplined, spec-driven development model using Claude, Kiro, Qwen Coder, and Cursor.<p>The first version was built in about two weeks of part time work. Then I started exploring. I learned relational algebra, researched almost every kind of database, reworked the internals, built a small relational algebra layer, a query planner, and an executor, covering everything from the backend storage to the query language. I learned more in those two months than in the previous 20 years.<p>Did I care what code the agents wrote? No. I read zero lines of generated code. What I cared about was correctness, verified through tests, and the high-level product features. For the first time in my career, I acted as a senior product manager, steering the project along the right roadmap. Without AI, I wouldn&#x27;t have been able to do that.<p>When you have superpowers in your hands, you don&#x27;t need to worry about the laundry. For the first time in my career, I can produce code in C, C++, Java, .NET, or any other language. Sometimes it takes me longer than a senior developer in that language, but does that really matter? Absolutely not.
+Writing documentation and code by hand in 2026 is like driving a horse and buggy. It doesn&#x27;t matter how skilled you are with the reins; you&#x27;ll never compete with a car. 
+My hobby db project isnt opened source yet.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>adverbly</em>:</p>
+<blockquote>Okay, you&#x27;re going to need to go into a lot more detail about exactly how you learned more in 2 months than you did in 20 years having read zero generated code.<p>Code examples are literally bread and butter when it comes to learning.<p>How can you learn without looking at code? That&#x27;s like saying that you can learn to be an architect without looking at drawings...</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tegeek</em>:</p>
+<blockquote>I didnt know what is relational algebra is? why query plannering execution done in certain ways. What are backend storage system available in open source or commercial products. What are the traitts of each backend storage and how does that effects the replication and failover scenarios. I know all of this, I implemented a small subset of sql&#x27;s relational algebra in my project and its correct and concise. I expored different backend storage systems, first tried one, then move to next and then 3rd in line, all that in span of less than a month without ever looking what code the coding agents generates.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>adverbly</em>:</p>
+<blockquote>To make this concrete, it takes someone about 4 months to go through a university course.<p>They might take six courses at a time.<p>So you are saying that you learned more than 400 times as much content as a university course?<p>I&#x27;m sorry but this just sounds hilarious And unlikely to most people, and it comes off a bit crazy sounding... For example, do you actually think you could even pass a single university course exam on introductory relational algebra without AI I assistance at all?<p>I think what is more likely is that you feel confident trying to solve problems with AI&#x27;s help.<p>That is not learning.<p>To learn something, it has to be in your brain, not the AI.<p>Learning is not the same as becoming capable.<p>There&#x27;s an ocean of difference between those two</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tegeek</em>:</p>
+<blockquote>Here is one my project is opened source. Highway <a href="https:&#x2F;&#x2F;github.com&#x2F;System-D-AB&#x2F;highway" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;System-D-AB&#x2F;highway</a><p>It is fault tolerant, distributed broker which gurantees durable queues, pub&#x2F;sub and RPC all into one easy to use programming model. The application is in production and passing millions of messages every day with sub-millisecond performance, you can crash a server and replica set invokes within seconds without losing any messages. 
+The entire project is created in less than a month with part time working, just because of AI. Its in production and already proven.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>9 Ads per Minute: FIFA Cup 26 – "the price of the beautiful game"</title>
       <link>https://www.bristol.ac.uk/news/2026/september/world-cup-viewers.html</link>
@@ -371,6 +538,28 @@ in 2025, and it has resurfaced a couple of times since.<p>Basically, the idea is
 <p>↳↳ reply — <em>resonious</em>:</p>
 <blockquote>This, really. If I am entertained and learning then I do not care where the content came from.<p>Of course Claudeish or GPTish (&quot;unusually&quot;) will easily push me away. Just like any repetitive or obnoxious tendencies that might appear in human writing.</blockquote>
 </blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Solitaire Alone Together</title>
+      <link>https://solitairealonetogether.com/</link>
+      <guid isPermaLink="false">hn3-49794193</guid>
+      <pubDate>Mon, 21 Sep 2026 22:16:34 +0000</pubDate>
+      <description>125 points, 29 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://solitairealonetogether.com/"><strong>→ Article</strong></a> <small>(solitairealonetogether.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49794193">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 29 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>EvanAnderson</em>:</p>
+<blockquote>I can&#x27;t suggest moves, though! &gt;smile&lt;<p>Always carry a deck of cards when hiking in the wilderness. If you become lost deal a game of solitaire. In a few minutes someone will come up and start suggesting moves.</blockquote>
+<p><strong>Top #2</strong> — <em>nayuki</em>:</p>
+<blockquote>Neat concept - a web remake of a classic Windows game. I found it very hard to win though, due to the &quot;draw three&quot; rule. I finally won on my 12th shuffle.<p>Aside from this web game implementation, in past decades I grew tired of solitaire and its constrained nature. I found myself enjoying spider solitaire a bit more, where you have to be more strategic about building stuff. I discovered spider because it&#x27;s bundled with Windows. <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Spider_(solitaire)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Spider_(solitaire)</a></blockquote>
+<p><strong>Top #3</strong> — <em>v9v</em>:</p>
+<blockquote>For &quot;Solitaire Together&quot; instead, I recommend the game NERTS (<a href="https:&#x2F;&#x2F;store.steampowered.com&#x2F;app&#x2F;1131190&#x2F;NERTS_Online&#x2F;" rel="nofollow">https:&#x2F;&#x2F;store.steampowered.com&#x2F;app&#x2F;1131190&#x2F;NERTS_Online&#x2F;</a>). It&#x27;s a multiplayer competitive solitaire game by Zachtronics. Out of all the games I&#x27;ve played, it&#x27;s the one that stresses me out and takes me through emotional rollercoasters the most.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>eieio</em>:</p>
+<blockquote>Oh this is fun! I&#x27;m a big Zachtronics fan but didn&#x27;t know about NERTS.<p>I grew up playing &quot;double solitaire&quot; (basically multiplayer competitive solitaire where you play on each others&#x27; aces) with my family and love it, and it definitely contributed to me making this site. So I&#x27;m excited to play some Solitaire Together!</blockquote>
+<p>↳ reply 2 — <em>wildzzz</em>:</p>
+<blockquote>I really liked the flavor of solitaire they put into Shenzhen IO</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -1916,6 +2105,50 @@ trend reminds me a bit of remix&#x2F;DJ culture; the &quot;producing DJ&quot;?</
 </blockquote>
 <p>↳ reply 2 — <em>fsckboy</em>:</p>
 <blockquote>performance soooo degraded a child died?<p>when people talk about how healthcare needs to be better and better and more and more, I say &quot;tell me under your plan what diseases&#x2F;injuries to what extant will <i>not</i> be treated: who do you say &quot;no&quot; to? Every country could spend every collective nickel they have, and some people still would not live to see the next morning, but in a way that&#x27;s ok because there probably wouldn&#x27;t be any breakfast either, that money was spent on healthcare.<p>What exactly are you calling for? I thought millenial and genz home ownership was the problem we need to fix. Are we going to sacrifice hipster housing for healthcare? Since most healthcare today is probably needed by boomers, think carefully about your answer.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>MUNI Heritage Weekend in San Francisco</title>
+      <link>https://daniel.lawrence.lu/blog/2026-09-20-muni-heritage-weekend/</link>
+      <guid isPermaLink="false">hn3-49780622</guid>
+      <pubDate>Sun, 20 Sep 2026 22:13:07 +0000</pubDate>
+      <description>137 points, 32 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://daniel.lawrence.lu/blog/2026-09-20-muni-heritage-weekend/"><strong>→ Article</strong></a> <small>(daniel.lawrence.lu)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49780622">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 32 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dllu</em>:</p>
+<blockquote>OP here, ask me anything! I&#x27;ve also written about the process previously:<p>- Line scan camera image processing: <a href="https:&#x2F;&#x2F;daniel.lawrence.lu&#x2F;blog&#x2F;2025-09-21-line-scan-camera-image-processing&#x2F;" rel="nofollow">https:&#x2F;&#x2F;daniel.lawrence.lu&#x2F;blog&#x2F;2025-09-21-line-scan-camera-...</a> Previous discussions:<p><pre><code>  - https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=44996938
+
+  - https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46383593
+
+  - https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46388084
+</code></pre>
+- Standalone line scan camera hardware: <a href="https:&#x2F;&#x2F;daniel.lawrence.lu&#x2F;blog&#x2F;2026-06-12-standalone-cnc-line-scan-camera&#x2F;" rel="nofollow">https:&#x2F;&#x2F;daniel.lawrence.lu&#x2F;blog&#x2F;2026-06-12-standalone-cnc-li...</a><p>- Line scan camera image processing 2: <a href="https:&#x2F;&#x2F;daniel.lawrence.lu&#x2F;blog&#x2F;2026-08-02-line-scan-camera-image-processing-part-2&#x2F;" rel="nofollow">https:&#x2F;&#x2F;daniel.lawrence.lu&#x2F;blog&#x2F;2026-08-02-line-scan-camera-...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>0xfaded</em>:</p>
+<blockquote>Very cool.<p>I never thought about it until seeing these, but line scans yield an orthographic projection in the scan direction. There was a little bit of uncanny valley being able to see parts of the front&#x2F;back of the car that would have normally been compressed out occluded by perspective.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ramses0</em>:</p>
+<blockquote>Yarp... Mr. Lu, please go to your nearest gigantic poster shop and immediately start selling these prints at art-gallery prices!  There&#x27;s a brief moment in time where you&#x27;ve a monopoly on &quot;pictures that look like this&quot; and you&#x27;d probably be able to make your money back (and more) on this highly distinctive photograph style.  Do some back and forth chat with AI on &quot;fine art photography pricing structure&quot; and &quot;signature style &#x2F; visual voice&quot; and you&#x27;ll likely be pleasantly surprised.<p>...and I&#x27;ll be surprised if I don&#x27;t see these pictures hanging in a bank&#x2F;startup lobby at some point!</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>dole</em>:</p>
+<blockquote>Hell, I&#x27;d shop them around to transit authorities. Gorgeous photos, awesome hardware and processing techniques that went into them.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>trebligdivad</em>:</p>
+<blockquote>They&#x27;re great - I&#x27;m pleasantly surprised there&#x27;s no blur on the people.</blockquote>
+<p>↳ reply 3 — <em>wxw</em>:</p>
+<blockquote>These are fantastic, thanks for sharing</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>matja</em>:</p>
+<blockquote>I like the photos, they look like architectural diagrams.<p>I suppose the subjects moved past the camera perpendicular to the lens direction, so you only see one side.<p>Are there any examples of what it looks like with a line scan camera when a subject goes past at an angle?<p>Also, for anyone setting up a tripod with a tripping hazard in public, do consider public liability insurance :)</blockquote>
+<p><strong>Top #3</strong> — <em>abeppu</em>:</p>
+<blockquote>Ok the photos are cool and it&#x27;s nice to see the vintage street cars. But Muni has a budget shortfall and is planning on cutting a bunch of bus lines and reducing frequency on lines across the system. Meanwhile, it has an internal supply chain to custom build replacement parts for vintage vehicles that no other city will operate, and teams of specialist restorers. Viewed in isolation, they look cool! Viewed in context, is this ... irresponsible?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kelnos</em>:</p>
+<blockquote>From what I understand, the grants to restore the old railcars don&#x27;t come from their general funds (and if they decided not to do them, they wouldn&#x27;t get the money).  But I&#x27;m sure a lot of the regular maintenance comes out of their regular budget, and I agree that&#x27;s a difficult thing to justify.<p>I wish they could do something about fare evasion.  I ride Muni fairly often (both buses and trains), and I see <i>maybe</i> 20% of people paying when they get on.  I know some of the remaining 80% probably have monthly passes or something and don&#x27;t strictly need to tag on, but I can&#x27;t imagine it&#x27;s a large percentage.  Biggest offenders seem to be out-of-towners who are going to Chase Center or Oracle Park events (I live in the Dogpatch and see a lot of that on event days).  There&#x27;s no excuse now that the fare terminals accept NFC credit cards too (and not just Clipper cards).  I expect getting more people to pay could solve some of these funding problems, or at least make them less severe.<p>(I do wonder if the cost of fare enforcement exceeds what they&#x27;d recover in fares, though...)</blockquote>
+<p>↳ reply 2 — <em>convolvatron</em>:</p>
+<blockquote>looks like the one time cost for doing a renovation is around $1m per car, and are funded by spot grants rather than the general budget. I was unable to find the overhead involved in ongoing maintenance, but it looks like killing the F line is already on the table.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3673,189 +3906,6 @@ sales dynamics much more effectively than traditional classification models.”<
 <p>↳ reply 2 — <em>vessenes</em>:</p>
 <blockquote>Agreed. Another difficulty here is there are not good benchmarks for this new architecture yet, so it’s easy to potshot and snipe, where jev seems to be pretty broadly intelligent&#x2F;at least have had a lot of rl in different domains.<p>We haven’t seen any of these copy cats play doom or street fighter for instance; just categorize email.<p>I imagine once the author cools down and evaluates on a broad harness of tasks he may find that his new thing has a lot of engineering work ahead.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>AI-generated posters don’t have to be horrible</title>
-      <link>https://john.hartnup.uk/2026/06/07/ai-event-posters.html</link>
-      <guid isPermaLink="false">hn3-49764791</guid>
-      <pubDate>Sat, 19 Sep 2026 09:20:58 +0000</pubDate>
-      <description>1102 points, 617 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://john.hartnup.uk/2026/06/07/ai-event-posters.html"><strong>→ Article</strong></a> <small>(john.hartnup.uk)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49764791">→ HN comments</a> &nbsp;·&nbsp; 1102 points &nbsp;·&nbsp; 617 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ajjenkins</em>:</p>
-<blockquote>A lot of people in the comments say that the supposedly better examples in the article are still “horrible” because they can tell they’re AI and point to things that the AI did “wrong” and a human artist would do better.<p>That may be true if you’re working with a top of the line artist, but in my experience the average freelance designer online is significantly worse than AI. I’ve worked with dozens of budget friendly designers on Fiverr and consistently get way worse results than I’ve gotten from AI models. Will a great human designer produce better output than an AI? Maybe, but a small local event or business probably won’t have the budget to hire them or know where to find them. It’s cheaper, faster and easier to use AI to generate something that’s good enough for their purposes.<p>People also point out all the little flaws in the “good” examples and cite them as obvious tells that they were AI generated. I think it would be interesting to see if people could reliably distinguish between AI generated flyers and human made flyers. Sure, sometimes it’s obvious like when the AI adds those weird, cartoony people. But if the model is told not to create designs like that and stick to the styles used in the second half of the article, I expect people would have a much harder time distinguishing the human designs from the AI designs.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>eloisant</em>:</p>
-<blockquote>The biggest problem that I have with most AI posters is that they are too busy, you have to look for information instead of seeing it popping right away.<p>Amateurs posters of before AI didn&#x27;t have this problem. White background, the important info in big letters, maybe one clipart or to. So I&#x27;m not talking about how pro artists could make a better job, but even the small local non-profit used to produce better posters. Not in the sense of &quot;better looking&quot;, but in the sense that they were more readable.<p>At least the examples of this blog are more readable than what we usually see.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jcelerier</em>:</p>
-<blockquote>Well what&#x27;s better ? I have so many pictures of posters of old events or storefronts saved on my phone because they were so astronomically bad it&#x27;d have been better to not have any poster at all. Today&#x27;s AI makes it look even worse but I&#x27;m hopeful that in five years we&#x27;ll all live in a world generally more agreeable to look at and not &quot;concrete with pink and yellow fluo paper smashed on top of it&quot; like <a href="https:&#x2F;&#x2F;www.alamy.com&#x2F;stock-photo&#x2F;music-poster-wall.html" rel="nofollow">https:&#x2F;&#x2F;www.alamy.com&#x2F;stock-photo&#x2F;music-poster-wall.html</a>
-or 
-<a href="https:&#x2F;&#x2F;www.alamy.com&#x2F;stock-photo&#x2F;france-poster-wall.html?pseudoid=943AE081-1E9F-4158-A6AF-5FAE6EEE58B9&amp;sortBy=relevant" rel="nofollow">https:&#x2F;&#x2F;www.alamy.com&#x2F;stock-photo&#x2F;france-poster-wall.html?ps...</a>
-because the cost of making things enjoyable with more colour and detail will have come down. Maybe we can finally go back to Art Nouveau if the cost of making it comes down!</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>stymaar</em>:</p>
-<blockquote>&gt; we&#x27;ll all live in a world generally more agreeable to look at and not &quot;concrete with pink and yellow fluo paper smashed on top of it&quot; like <a href="https:&#x2F;&#x2F;www.alamy.com&#x2F;stock-photo&#x2F;music-poster-wall.html" rel="nofollow">https:&#x2F;&#x2F;www.alamy.com&#x2F;stock-photo&#x2F;music-poster-wall.html</a> or <a href="https:&#x2F;&#x2F;www.alamy.com&#x2F;stock-photo&#x2F;france-poster-wall.html?ps" rel="nofollow">https:&#x2F;&#x2F;www.alamy.com&#x2F;stock-photo&#x2F;france-poster-wall.html?ps</a>...<p>Sorry buf I&#x27;d take these posters over your “generally more agreeable ” homogeneous slop literally any day.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>atomicnumber3</em>:</p>
-<blockquote>It sure seems like, while LLMs and diffusion models won&#x27;t completely eradicate the middle class, the bar has now risen significantly to actually contribute in a lot of areas.<p>For programmers, sure SV startups and actual software-first shops are probably only augments with LLMs and not replacing. But what % of software engineers are employed in such shops? Well, from my graduating class in CS, approximately 30% of grads all went to the same contracting shop whose business model seems to be, take the bottom 30% of each CS class, underpay the fuck out of them, bootcamp them into something vaguely usable + teach the house style of CRUD&#x2F;LOB app framework, then throw them at clients. And this seems to still be a step above &quot;offshore to barely baseline capable (or worse) body shop for extremely dubious results.&quot;<p>That entire bottom 50% is probably about to be eviscerated. The &quot;offshore + pray&quot; approach is probably going to be completely zapped, much easier to just vibe code for probably better (or at least not worse) results. And the onshore-but-cheaper contracting shops are probably going to need a lot fewer people whose main contribution is translating low-ambiguity tickets into syntactically valid java spring code.<p>Similarly, for artists, disney is probably not going to use AI in a way that substantially speeds them up because they won&#x27;t tolerate the quality loss at all. But how many artists work for disney? And how many make anime waifus for the gacha apps? The latter of which I can only assume has already switched substantially to AI assets.</blockquote>
-<p>↳ reply 3 — <em>glenstein</em>:</p>
-<blockquote>There&#x27;s an amazing viral twitter thread where someone claimed a real Monet painting was an AI generated imitation, and it got an avalanche of comments from people who claimed it was an obvious fake and a poor imitation at that.<p>It&#x27;s not tracking a real thing as much as people would like to think.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>gammarator</em>:</p>
-<blockquote>While it’s interesting to see renderings in past styles graphic design, ultimately it’s going to ring false.  Even if it’s executed well it’s just a costume or pastiche, with no real connection to the style.<p>What made these historical design movements actually memorable was usually a set of newly-possible techniques joined with young people with a set of shared community values.<p>So if you want to make something that will read as authentically “2026” to future generations, you should make brainrot. :-)</blockquote>
-<p><strong>Top #3</strong> — <em>JSR_FDED</em>:</p>
-<blockquote>It’s not complicated - the default style signals low effort. Why should I get excited about the village fete if the organizers put in the barest minimum of effort?<p>But there’s another reason it drives people crazy - it’s low effort trying to present as high effort. If the sign was simple Comic Sans then it would at least be charmingly honest.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>viraptor</em>:</p>
-<blockquote>&gt; Why should I get excited about the village fete if the organizers put in the barest minimum of effort?<p>Because there&#x27;s no correlation between the ability to organise a village event and the graphic design skills. (Apart from &quot;it&#x27;s been so successful we can splash money on a design agency&quot;) Maybe someone actually liked it and thought it&#x27;s enough. I&#x27;ve seen groups overthinking posters and it felt similar to groups at uni overthinking funny names instead of doing the work that actually mattered.<p>To be clear, I&#x27;m not saying those designs are good, just that most of the time the design is not the point and minimum effort above &quot;Times New Roman 12pt&quot; is what many people always wanted to do.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>WD-42</em>:</p>
-<blockquote>It feels particularly bad for a local arts faire. Like maybe ask one of the local artists if they could design a poster instead of defaulting to the plagiarism machine? If I saw this ai poster for a local crafts faire I’d immediately dismiss it.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bonoboTP</em>:</p>
-<blockquote>I think this (low effort posters) rather signals to me that they have the right priorities. A true professional poster would tell me that it&#x27;s some commercial cash grab instead of real local enthusiasts making something normal.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>GPT-6 Astra Solves a WWI German Radio Cipher</title>
-      <link>https://www.prinzai.com/p/gpt-6-astra-solves-a-wwi-german-radio</link>
-      <guid isPermaLink="false">hn3-49763987</guid>
-      <pubDate>Sat, 19 Sep 2026 06:41:44 +0000</pubDate>
-      <description>257 points, 133 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.prinzai.com/p/gpt-6-astra-solves-a-wwi-german-radio"><strong>→ Article</strong></a> <small>(prinzai.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49763987">→ HN comments</a> &nbsp;·&nbsp; 257 points &nbsp;·&nbsp; 133 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>aaymeloglu</em>:</p>
-<blockquote>Agents just eat these things. After last week&#x27;s HN post about Cyphral Distich, I pointed Astra and Fable at some unsolved ciphers just to see whether some joker who knew nothing about the field could get the same results, and sure enough there&#x27;s plenty of low hanging fruit.<p><a href="https:&#x2F;&#x2F;aaymeloglu.github.io&#x2F;unsolved-ciphers&#x2F;" rel="nofollow">https:&#x2F;&#x2F;aaymeloglu.github.io&#x2F;unsolved-ciphers&#x2F;</a><p>But I got nothing on Daniel Bordeau, who in the past week seems to have built himself a whole code breaking factory!<p><a href="https:&#x2F;&#x2F;dbourdeau.github.io&#x2F;cyphersolver&#x2F;index.html" rel="nofollow">https:&#x2F;&#x2F;dbourdeau.github.io&#x2F;cyphersolver&#x2F;index.html</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>93po</em>:</p>
-<blockquote>Mildly interesting anecdote: when the Cyphral Distich solution popped up a few days ago, I spent about an hour with ChatGPT trying to solve it myself without looking at the proposed solution. ChatGPT opened by saying “the solution is disputed online,” and made the dispute sound fairly convincing, which struck me as odd because things like this are usually either clearly solved or clearly not.<p>After I gave up (mostly because ChatGPT had given me incomplete information needed to solve it) I checked the source of the dispute. It was a site very similar to this one and someone had an AI agent working on the same problem, publishing dozens or hundreds of pages of notes. The agent found the solution page and concluded it was wrong because many of the 32 source passages supposedly didn’t contain enough text.<p>I dug up the PDF of the book and found the mistake - whenever a passage continued onto the next page, the agent wasn’t including that continuation. The passages weren’t actually too short.<p>Annoying that ChatGPT can cite sources like this without being able to properly weigh their reliability.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>grey-area</em>:</p>
-<blockquote>Using an existing published key, which people hadn’t tried because the message was sent before the key was supposed to be used.<p>This headline is misleading.</blockquote>
-<blockquote>
-<p>↳ reply — <em>durdn</em>:</p>
-<blockquote>First, it’s LLMs can’t do cryptanalysis. They can barely solve toy substitution ciphers without hallucinating.<p>Then it’s OK, they can reproduce known attacks, but that’s just pattern matching against papers already in the training data.<p>Then it’s OK, they found previously unknown attacks on SpoC and a flaw in KINDI’s security proof, but those are obscure competition schemes nobody uses.<p>Then it’s OK, Claude found a new attack on HAWK that cuts the effective security of a NIST post-quantum signature candidate roughly in half, but HAWK isn’t deployed and a human researcher was involved.<p>Then it’s OK, Claude independently found a new cryptanalytic attack on AES that improves the previous best technique by 200–800×, but it’s only 7-round AES, not the full 10 rounds.<p>Then it’s OK, it found a practical key-recovery attack on 13-round LEA that runs in under an hour instead of requiring ~2^86 work, but LEA has 24 rounds.<p>Then it’s OK but none of this breaks a production cipher.<p>Wake me up when it breaks full AES.<p>Then—</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>grey-area</em>:</p>
-<blockquote>This particular exploit belongs something between points 2 and 3 in your list and was more about processing data with a known algorithm and known key for the dataset that nobody had tried, so I&#x27;d say it is less impressive than a lot of other results LLMs have had in cryptanalysis. I object to the headline but the article was interesting.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>davidmurdoch</em>:</p>
-<blockquote>&quot;You can&#x27;t hide secrets from the future&quot; - MC Frontalot</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>chiph</em>:</p>
-<blockquote>I had heard of MC Frontalot but never listened to any of his raps - But I should have:<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=yVm8oZx9WSM" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=yVm8oZx9WSM</a><p>Also relevant to today&#x27;s AI concerns:<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=lWnV3HVro_0" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=lWnV3HVro_0</a></blockquote>
-<p>↳ reply 2 — <em>tclancy</em>:</p>
-<blockquote>Wow, a blast from the past about the future.<p>- MC 900 Foot Jesus</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>If math is more than proof, we need to better celebrate the rest of it</title>
-      <link>https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/</link>
-      <guid isPermaLink="false">hn3-49763928</guid>
-      <pubDate>Sat, 19 Sep 2026 06:28:02 +0000</pubDate>
-      <description>234 points, 193 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/"><strong>→ Article</strong></a> <small>(terrytao.wordpress.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49763928">→ HN comments</a> &nbsp;·&nbsp; 234 points &nbsp;·&nbsp; 193 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dekhn</em>:</p>
-<blockquote>I have been losing interest in this proof-oriented approach into extremely abstract concepts (what seems to be the core of academic mathematics today).  Obviously, proofs are very attractive because they are the closest thing we have to a universal truth (at least under the assumed axioms).  Having mechanisms to reliably show a proof, and computational methods to handle complicted proofs is great.<p>But.. the navier stokes proof was the last straw for me.  People spent over a hundred years arguing whether a continuum approximation of a particle system would behave oddly.  In the mean time, other folks went ahead and completely revolutionized the world of computational fluid dynamics (with multi-billion $$$ impact on society) by just doing better numerics (Kahn-style numerical analysis).<p>Making my complaint more general: I find modern math is exploring areas that are interesting to mathematicians, but increasingly irrelevant to society.  And certainly not moving us towards &quot;human understanding&quot;.  The biologists are the ones working on that, the math folks should try working with them on neuro stuff to understand how human brains can do math at all, given their architecture.</blockquote>
-<p><strong>Top #2</strong> — <em>sweezyjeezy</em>:</p>
-<blockquote>The math field is confronting something that coders have been dealing with for a few years now, only far more violently. Today&#x27;s moat for software seems to be that AI can automate tasks but not a full job (yet). But for a large proportion of mathematicians, doing these tasks really was _the_ job. It&#x27;s the bit they wanted to do, and if they completed a sufficiently difficult set of tasks, they got tenure. Now this model is failing, they frantically need to pivot the role of humans to save their profession from funding cuts.<p>I remember when &quot;writing code was never the point&quot; became a mantra here. There was truth in it, but removing the coding has certainly taken away a lot of the texture of the work and enjoyment of the craft. Many of us feel this loss as we tech-lead teams of agents as our source of income. I am not optimistic the mathematics pivot is going to work, but I&#x27;m certain that most will be depressed with the outcome even if they succeed.<p>We are all staring at the same existential dread, just seeing it unfold slower. We&#x27;re being told that utopia is to be obsolete, and that is a jarring idea to contend with.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ipnon</em>:</p>
-<blockquote>I feel that you can see quite strongly the truth in “writing code was never the point” when you encounter inevitably at every company the guy who has been around forever but doesn’t seem to be working particularly hard. Their value is (was) no longer in writing code at a furious pace all day. It was having a coherent, intelligible and communicable theory of the software system the company is founded on.<p>I propose this thought experiment: put all living mathematicians in a very long bus. This bus crashes and they all tragically lose their lives. Can we really say mathematics simply marches onwards with AI alone? Let’s say Anthropic needs a new research result to improve Claude. Are we really already at the point where we burn tokens ad infinitum and arrive at the end of scientific progress in some timely fashion?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sweezyjeezy</em>:</p>
-<blockquote>I actually have a rather dim view of the &quot;writing code was never the point&quot; line. Not because it&#x27;s objectively wrong, but because I see it as something we&#x27;re mostly telling ourselves to feel better about the status quo. Ability to write good code has been highly celebrated (and remunerated) for decades. As it is becoming less relevant, we immediately backtrack and start lionizing the left over parts where we can still be useful instead. Consider the counterfactual - AI continued to be terrible at writing code, but weirdly better at humans at product decisions, architecture etc. I put it to you that &quot;coding was never the point&quot; has a lot less traction in this universe.<p>It also just leaves us in limbo waiting to see what happens next, and when. AI labs certainly have no intention for the higher level skills to stay in the human-only domain. The veteran developer with the coherent theory of a large stack is immensely valuable today. But they also don&#x27;t survive if a company can drop a few coders&#x27; salaries on rewriting that stack from scratch - faster, fewer bugs, more coherent, able to react to changing business requirements with more agility etc. I am not saying this is where we are, but I think there is a reasonably good chance this is where our road is leading us.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>daxfohl</em>:</p>
-<blockquote>I find myself less worried about it than at first. I think what we&#x27;ll see are that some things are low-hanging fruit and can be solved just by tireless search. Maybe half the millennium and other such high-visibility problems will fall this way.<p>Others, I think, will be beyond both human <i>and</i> AI. And so what then? Mathematicians just throw in the towel and say it&#x27;s not worth trying? Of course not. We will continue that pursuit, and as we do, new ideas will arise and new problems will need to be solved. It&#x27;s math. There is no end.<p>It&#x27;s easy to look at the current landscape and see AI ticking off solutions to problems and imagine that soon there will be nothing left. Machines replaced the need for much manual labor, but they also established a basis for an economy that provides the opportunity for <i>more</i> labor. This is the situation with math now. It will take some getting used to. There will be little-to-none pencil-to-paper working out of problems anymore, but there will always be work to do, things to solve, curiosities to unravel. And it will still be professional mathematicians who are the ones most capable of directing that effort. Because, if nothing else, they&#x27;re the ones whose curiosity is piqued by the problems. Which, let&#x27;s face it, has been 99% of the motivation for graduate-level math in the first place.<p>There&#x27;s the the old question: is math invented or discovered? I think it&#x27;s both: the problems are invented, and the solutions are discovered. In the age of AI, the discovery part will be greatly affected, but the invention part will remain firmly in the human domain.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Human brain is two separate organs, Stanford Medicine-led research finds</title>
-      <link>https://med.stanford.edu/news/all-news/2026/09/two-separate-brains.html</link>
-      <guid isPermaLink="false">hn3-49763697</guid>
-      <pubDate>Sat, 19 Sep 2026 05:48:50 +0000</pubDate>
-      <description>380 points, 141 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://med.stanford.edu/news/all-news/2026/09/two-separate-brains.html"><strong>→ Article</strong></a> <small>(med.stanford.edu)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49763697">→ HN comments</a> &nbsp;·&nbsp; 380 points &nbsp;·&nbsp; 141 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>itvision</em>:</p>
-<blockquote>What a way to oversell the discovery.<p>The reality is:<p><pre><code>    * Different brain regions have different functions: ancient knowledge.
-    * Different regions contain distinct cell types and molecular programs: also well established.
-    * Anterior and posterior brain structures may trace back to fundamentally separate progenitor lineages that were independently specified very early in evolution and development: that&#x27;s the interesting new result.
-</code></pre>
-The headline should have been: &quot;Human forebrain and hindbrain arise from distinct embryonic progenitor lineages&quot; - not that we have &quot;two organs&quot; in the brain.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>xg15</em>:</p>
-<blockquote>&gt; <i>&quot;Human forebrain and hindbrain arise from distinct embryonic progenitor lineages&quot;</i><p>I&#x27;d have never clicked that headline nor understood why this finding is important.<p>If you think the original headline is not &quot;truthful&quot; enough, at least do something like &quot;Researchers found the reason why hindbrain cells cannot be grown in a lab and found a way to overcome it&quot;<p>&gt; <i>not that we have &quot;two organs&quot; in the brain.</i><p>Depends what the definition of &quot;organ&quot; actually is. What speaks for different organs here is that the cells both have a different pathway from stem cells <i>and</i> have different evolutionary histories. That is different from other brain regions that may have separate functions but still evolved together.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>baxtr</em>:</p>
-<blockquote>Saying the truth and communicating well are orthogonal. You can do both.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>cgio</em>:</p>
-<blockquote>We should not be wary of loud truths either. Unless we push the envelope we cannot trace back to the essence. Like, as an outsider in this discussion, I am now inclined not only to assess the finding, but also the definition of an organ. The title did good work. Its refutation too. Fencing every statement in unquestionable truth does not make the pursuit of truth stronger.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>lucideer</em>:</p>
-<blockquote>Given the parallel example cited in the article of jellyfish having two spatially separate organs, &amp; the subsequent speculation that our own ancestors could also have had spacially separate anterior &amp; posterior masses, the title doesn&#x27;t really seem unreasonable in its hyperbole.<p>While it might not be perfectly accurate it&#x27;s hardly misleading.</blockquote>
-<p>↳ reply 3 — <em>jimnotgym</em>:</p>
-<blockquote>I don&#x27;t have a problem with the &#x27;two organs making one&#x27; framing. The fact that they are &#x27;symbiotic&#x27; now doesn&#x27;t change that. In fact it helps me understand two key facts.  One can&#x27;t grow out of the other,  and they work differently. Great</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bethekind</em>:</p>
-<blockquote>&gt; They identified two different brain progenitor cells. One, which expresses a gene called Otx2, is destined to become the forebrain and midbrain. The other, which expresses a gene called Gbx2, is committed to forming the hindbrain. They showed that these two cell populations never overlap; they are mutually exclusive from the earliest stages of development.<p>Very cool. Never thought the brain could have two completely different ancestors</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kazinator</em>:</p>
-<blockquote>Fun fact: the hindbrain progenitor cell is shaped like a little lizard.</blockquote>
-<p>↳ reply 2 — <em>trhway</em>:</p>
-<blockquote>and from another post on the front page right now <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49735541">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49735541</a> :<p>&quot;Nervous systems are typically defined as networks of neurons that communicate across synapses. But Burkhardt’s lab found something unique in ctenophores: Beneath the animal’s outer surface is a nerve net (pink mesh in this 3D reconstruction) whose neurons are connected by continuous cytoplasm — but with no synapses between them. “I don’t think any other animal has a nervous system like that,” Burkhardt said. Because ctenophores are one of the earliest branches of the animal family tree, the finding indicates that evolution may have crafted nervous systems twice: in ctenophores, and separately in jellyfish and all other animals.&quot;</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ksenzee</em>:</p>
-<blockquote>The really exciting thing in this article is that this research led them to a new technique for growing brain stem cells in vitro, which has been very difficult until now. If that isn&#x27;t being oversold, it&#x27;s big news. That&#x27;s going to make future research into diseases like ALS a lot easier.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>San Francisco Onion Futures Company</title>
-      <link>https://onionfutures.com/</link>
-      <guid isPermaLink="false">hn3-49763296</guid>
-      <pubDate>Sat, 19 Sep 2026 04:23:30 +0000</pubDate>
-      <description>248 points, 88 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://onionfutures.com/"><strong>→ Article</strong></a> <small>(onionfutures.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49763296">→ HN comments</a> &nbsp;·&nbsp; 248 points &nbsp;·&nbsp; 88 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cwal37</em>:</p>
-<blockquote>For those who don’t know:<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Onion_Futures_Act" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Onion_Futures_Act</a><p>(which also banned box office receipt futures)<p>A fun thing is to go on FRED and make a graph with prices from onions and, say, corn to see the differences in volatility.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>chirau</em>:</p>
-<blockquote>I looked up onions, lettuce and tomatoes (because burgers), and the volatility actually looks very similar. Am I missing something or looking at the wrong things?<p>Tomato: <a href="https:&#x2F;&#x2F;fred.stlouisfed.org&#x2F;series&#x2F;WPU01130217" rel="nofollow">https:&#x2F;&#x2F;fred.stlouisfed.org&#x2F;series&#x2F;WPU01130217</a>
-Onion: <a href="https:&#x2F;&#x2F;fred.stlouisfed.org&#x2F;series&#x2F;WPU01130216" rel="nofollow">https:&#x2F;&#x2F;fred.stlouisfed.org&#x2F;series&#x2F;WPU01130216</a>
-Lettuce: <a href="https:&#x2F;&#x2F;fred.stlouisfed.org&#x2F;series&#x2F;WPU01130215" rel="nofollow">https:&#x2F;&#x2F;fred.stlouisfed.org&#x2F;series&#x2F;WPU01130215</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>gradus_ad</em>:</p>
-<blockquote>The weather affects all crops</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>brookst</em>:</p>
-<blockquote>But isn’t the point that futures trading reduces volatility from things like weather?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mauvehaus</em>:</p>
-<blockquote>This has to have been the inspiration for Milo Minderbinder cornering the cotton market in Catch-22, right?</blockquote>
-<p>↳ reply 3 — <em>lukan</em>:</p>
-<blockquote>So this is genuine free market activism?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>haakon</em>:</p>
-<blockquote>Since this may be a legal gray area, they should host it on a Tor onion site.</blockquote>
-<blockquote>
-<p>↳ reply — <em>thedrexster</em>:</p>
-<blockquote>oooo, that&#x27;s a missed opportunity</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>shoo</em>:</p>
-<blockquote>US Department of Agriculture publishes a national potato &amp; onion report (issued daily!):<p><a href="https:&#x2F;&#x2F;www.ams.usda.gov&#x2F;mnreports&#x2F;fvdidnop.pdf" rel="nofollow">https:&#x2F;&#x2F;www.ams.usda.gov&#x2F;mnreports&#x2F;fvdidnop.pdf</a><p>Readers may wish to skip ahead to page 4, where onions are discussed.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
