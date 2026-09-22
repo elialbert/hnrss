@@ -4,7 +4,148 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 22 Sep 2026 04:30:54 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 09:48:03 +0000</lastBuildDate>
+    <item>
+      <title>Looking forward to Git 2.56 – and 3.0</title>
+      <link>https://lwn.net/SubscriberLink/1094575/2385e98583715c2b/</link>
+      <guid isPermaLink="false">hn3-49794736</guid>
+      <pubDate>Mon, 21 Sep 2026 23:16:51 +0000</pubDate>
+      <description>128 points, 56 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://lwn.net/SubscriberLink/1094575/2385e98583715c2b/"><strong>→ Article</strong></a> <small>(lwn.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49794736">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 56 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jodersky</em>:</p>
+<blockquote>It&#x27;s unfortunate that change IDs aren&#x27;t considered. There was a discussion [1]
+in 2025, and it has resurfaced a couple of times since.<p>Basically, the idea is to attribute a new kind of ID to an initial &#x27;change&#x27;. During review, or whenever a commit is rebased, the change ID is kept, whereas the commit of course changes. This allows tooling to identify all previous versions of a change, and is what enables &quot;per-commit&quot; code review à la Gerrit [2] (which IMO is a much better experience than the branch-review-squash model that GitHub normalized). It&#x27;s also used in jj, although I&#x27;m not familiar with that.<p>As of today, any tool that wants a change ID needs to somehow encode it in commit message bodies. The proposed discussion was about making a change ID a standard header field that git would natively keep across rebases.<p>[1] <a href="https:&#x2F;&#x2F;lore.kernel.org&#x2F;git&#x2F;Z_OGMb-1oV0Ex05e@pks.im&#x2F;T&#x2F;#mf941e62af35984f95db8582dbffd7f4d865daf07" rel="nofollow">https:&#x2F;&#x2F;lore.kernel.org&#x2F;git&#x2F;Z_OGMb-1oV0Ex05e@pks.im&#x2F;T&#x2F;#mf941...</a><p>[2] <a href="https:&#x2F;&#x2F;gerrit-review.googlesource.com&#x2F;Documentation&#x2F;user-changeid.html" rel="nofollow">https:&#x2F;&#x2F;gerrit-review.googlesource.com&#x2F;Documentation&#x2F;user-ch...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>schacon</em>:</p>
+<blockquote>JJ and GitButler already create and inject this into the commit headers (using the same interoperable reverse-hex format), which is recognized by Gerrit and some forges like Tangled for incremental commit based review.<p>I doubt that core Git will adopt it anytime soon as it was not discussed at this years contributor summit (last week) and doesn&#x27;t seem to be a hot topic on the ML.<p>What I would like to see is support for `git rebase` not dropping it, which is the current main issue. The `git replay` command, as well as commands based on the same sequencing code (`git history` for example) do not drop custom headers like this, so there is partial non-breakage, but several of the other history editing commands do drop custom headers.</blockquote>
+<p>↳ reply 2 — <em>stabbles</em>:</p>
+<blockquote>Yeah, &quot;standardizing&quot; change IDs would make it much easier to develop further tooling around it. In particular decentralized review is something that I&#x27;d be interested in.<p>For example, if GitHub is down, that would not be a blocker to access review comments or to do reviews. And maybe you could push your reviews to a GitLab mirror if you want a UI.</blockquote>
+<p>↳ reply 3 — <em>ncphillips</em>:</p>
+<blockquote>Having switched to jj I totally agree. Change IDs are a huge UX win.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>WCSTombs</em>:</p>
+<blockquote>`git add --resolved` is a wonderful idea, and definitely something I would start using.</blockquote>
+<p><strong>Top #3</strong> — <em>notpushkin</em>:</p>
+<blockquote>&gt; Try LWN for free for 0 month: no payment or credit card required.<p>Quite a generous offer!<p>&lt;&#x2F;aside&gt;</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Spymarks, Not Watermarks</title>
+      <link>https://brand.io/article/spymarks/</link>
+      <guid isPermaLink="false">hn3-49794615</guid>
+      <pubDate>Mon, 21 Sep 2026 23:03:49 +0000</pubDate>
+      <description>437 points, 109 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://brand.io/article/spymarks/"><strong>→ Article</strong></a> <small>(brand.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49794615">→ HN comments</a> &nbsp;·&nbsp; 437 points &nbsp;·&nbsp; 109 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>xp84</em>:</p>
+<blockquote>These are going to be very popular for intercepting images on their way to a display. Think of the advertising possibilities. Ad attribution can be &#x27;vastly improved&#x27; when both the ad and every step in the funnel are all spymarked and all of them are reliably reported on by virtue of their pixels hitting your screen.<p>First the low-end laptops and phones (and probably later, most of them) will incorporate some low-level driver that is constantly scanning for these and passing them to a helper app to phone home. I assume this is something Apple will, to their credit, refuse to do[1] but I don&#x27;t think other OEMs will have any qualms based on what they already do with their TVs.<p>[1] (though they don&#x27;t do this kind of thing out of altruism, but because their cash cow is app store rents and fat hardware margins, not third-party advertising.)</blockquote>
+<blockquote>
+<p>↳ reply — <em>qurren</em>:</p>
+<blockquote>Apple is just Stockholm Syndrome at scale. I wouldn&#x27;t trust anything they say about privacy, especially given how closed their ecosystem and hardware is.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>paweladamczuk</em>:</p>
+<blockquote>It increasingly seems to me like the only way to prevent value to be extracted from myself is to stop engaging with new tech altogether.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>opan</em>:</p>
+<blockquote>What&#x27;s sad is even if you retreat to retro computing&#x2F;gaming or only listen to old music, you&#x27;ll likely still run into people online or at meet-ups vibe coding, making ai remixes of songs or generating music videos. Not even the old stuff is safe unless you do it offline by yourself. So you go out and try to find like-minded individuals and these spaces are still infiltrated and tainted. It reminds me a bit of radiation, how everything was just tainted decades ago, they have to salvage low background steel from sunken ships to make Geiger counters because everything else is irradiated.<p>I still use IRC on the daily, but someone mentions Discord at least once a month on there, and sometimes tries to whisk people away to that side. There are also people hooking up LLMs to IRC bots and joining them to channels without permission, then when you complain or kick&#x2F;ban their bot you&#x27;re somehow treated as the rude one. It&#x27;s very hard to entirely get away from all the crap anymore.</blockquote>
+<p>↳ reply 2 — <em>Havoc</em>:</p>
+<blockquote>I’d say it’s still possible in niche areas of the web. eg hn - clearly they have an agenda but it isn’t tracking you<p>So I’m not writing off tech as a whole just the adtech companies being a lost cause.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>world2vec</em>:</p>
+<blockquote>Way offtopic but I like the light&#x2F;dark mode of that website with several very sensible choices.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>I don't want to read what you didn't write</title>
+      <link>https://blog.colinbreck.com/i-dont-want-to-read-what-you-didnt-write/</link>
+      <guid isPermaLink="false">hn3-49794330</guid>
+      <pubDate>Mon, 21 Sep 2026 22:30:41 +0000</pubDate>
+      <description>677 points, 271 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.colinbreck.com/i-dont-want-to-read-what-you-didnt-write/"><strong>→ Article</strong></a> <small>(blog.colinbreck.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49794330">→ HN comments</a> &nbsp;·&nbsp; 677 points &nbsp;·&nbsp; 271 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>hatthew</em>:</p>
+<blockquote>As I have been saying for years:<p>Writing is fundamentally the transfer of information from your brain to my brain. If you have 1000 bits of semantic information you want to transfer, you can&#x27;t give 300 bits of semantic information to an LLM and have it fill in the remaining 700, because it doesn&#x27;t know what those 700 bits are. If it&#x27;s able to guess those 700 bits correctly, then they aren&#x27;t true semantic information, and you really only have 300 bits you want to transfer. You might as well transfer those bits to me directly, rather than having the LLM add on an extra superfluous 700 bits that I then have to filter out.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>beloch</em>:</p>
+<blockquote>For a long time after the internet arrived on the scene, a lot of online news stories would reference websites, papers, polls, etc. <i>without linking to them</i>.  There are still news sources doing this today.  Sometimes such articles interpret or place context around their hidden references, but a lot of the time they just summarize.<p>Giving someone the text output of a LLM is very similar to publishing a summary without links to the referenced material.  When you were querying your LLM, you could have asked specific questions or asked for a custom focus or point of view.  Your intended audience might have questions or different concerns, but they&#x27;re unable to interact with your LLM.  What you have delivered is static and unresponsive.  It has all the disadvantages of being machine output without the advantage of being interactive, the way your LLM was for you.<p>It may have to wait until compute is cheap enough that tokens are essentially free, but we need a system to pass &quot;hyperlinks&quot; to LLM&#x27;s primed with context, ready to be interactively queried on a chosen context.  It&#x27;s being overly generous to assume that people are putting even 300 bits into a LLM for every 1000 bits of regurgitated writing they try to pass off as their own.  When people post LLM output as if it were their own, I have no choice but to assume they had <i>zero</i> knowledge of the subject, but this query taught them what they wanted to learn, and now they&#x27;re sharing that.  That&#x27;s fine, but please pass an interactive LLM link rather than static text.<p>Once we have &quot;hyperlinks&quot; for LLM sessions, perhaps we can share LLM output a little more usefully and honestly.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>whycome</em>:</p>
+<blockquote>I&#x27;ve seen professional journal pieces refer to science journal articles only to go and read the original article and find that it draws a different conclusion than what is implied by the journalist.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>TheOtherHobbes</em>:</p>
+<blockquote>It isn&#x27;t the transfer of information at all. What&#x27;s actually happening is you&#x27;re prompting experiences in a human instead of an AI using text.<p>Communication only works if you have multiple levels of representation and abstraction, including but not limited to - letter shapes, grammatical structures, style and register, stylometry, and subtext.<p>All of that is learned, and writers usually assume they can rely on that learning as the context for the text.<p>So you don&#x27;t write to &#x27;transfer information&#x27; like a network cable, you write to trigger experiences in the human version of latent space.<p>Factual information is one kind of experience. But even when that&#x27;s the goal, there are always layers of implied relationship, social register, role, status, and other implications in everything that&#x27;s written.<p>In normal communications the context - business emails, personal messages, mainstream journalism, fiction, and the rest - defines what acceptable language looks like.<p>The content fits inside that. But it <i>has</i> to fit the context, otherwise it lands in a semantic and psychological uncanny valley - like sending LinkedIn speak to a spouse on a wedding anniversary.<p>The real problem with LLM writing is that it&#x27;s good at the technical layer - the grammar and spelling - and has some insights into the rest.<p>But the default content style is marketing and ad speak. And recently it&#x27;s developed a weird and unique hybrid style which applies marketing fluff and pretension to technical content like code comments.<p>So you get one register instead of all of them. It can attempt others, but it&#x27;s still too limited to generate them fluently. <i>Sometimes</i> the results are outstanding, but often it defaults to mechanical clichés.<p>So that&#x27;s why it sucks and sounds so hollow.<p>Can it be fixed? Yes, but it&#x27;s very hard work, most people don&#x27;t have the skills, and it takes time - often too much time to be worth the effort.</blockquote>
+<p>↳ reply 3 — <em>zefalt</em>:</p>
+<blockquote>I’m not sure the 300-bit → 1,000-bit framing applies in all instances. The 300 bits may be a compressed cue to a much fuller idea. The AI can combine that cue with its prior knowledge to help reconstruct what the prompter was trying to express, with the prompter then verifying whether it’s right. Without the relevant prior knowledge for reconstruction, or the prompter for verification, it becomes much harder to know whether you’ve reconstructed the intended idea.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>zmmmmm</em>:</p>
+<blockquote>It&#x27;s funny, i push back on pull requests because there is too much description now - a 20 line change has pages and pages of generated description, rationalisation for why it is safe, defense of each design decision, analysis of risks and side effects. People are indignant, you&#x27;re rejecting my change because there is <i>too much</i> documentation?  And my response is, I don&#x27;t have time to read it and you put me in the position where I can&#x27;t afford not to - because approving the PR implies I did and accepted it. The investment to read all that for the value of a code change that I&#x27;m one prompt away from doing myself if I cared is just not high enough. So it&#x27;s rejected.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ramshanker</em>:</p>
+<blockquote>You might be surprised how many organisations&#x2F; teams now don’t even review pull requests. Claude does coding, Codex do code review, and if developer did 5 round of this before pull request, we could very well just let CI merge.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>zmmmmm</em>:</p>
+<blockquote>I&#x27;m very curious how this goes long term. I guess we will find out.<p>My instinct says that these systems will expand their complexity to fully fit the cognitive budget of the agents that coded them and then atrophy the same way human-built systems do at lower cognitive budget. Only this time, because of the larger up front budget, the complexity ceiling will be higher, and the potential  depth of the problem may be much much larger. It may mostly manifest as increasing cost over time - the agents grind for longer and longer, iterating over and over to fix all the failing tests, and the breaking point will be where it never converges and you come back to millions of dollars in budget spent and still tests are failing and effective gridlock on system changes.<p>But this may be all my human-biased fantasy that justifies still taking a role in software development.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>the_gipsy</em>:</p>
+<blockquote>Wasn&#x27;t this always the case - in enterprise software? At some point engineering pushback collapses, and the thing just gets rewritten.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Sharlin</em>:</p>
+<blockquote>Maximizing the amount of documentation was never the goal, and people who assume that have entirely misunderstood what the point of documentation is.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>earthnail</em>:</p>
+<blockquote>I&#x27;m going to be a bit contrarian here. In general, I 100% agree, just send me the prompt; however sometimes I feel an LLM can help structure thoughts. It can be a good sparring partner. If you proofread your LLM content, re-prompt until it sounds right and no longer like AI content, and feel that it actually conveys the information incredibly well, then I&#x27;m happy.<p>One of the instructions I&#x27;ve hammered into Claude is &quot;Write like a human. I don&#x27;t want this to sound like AI content. Your standard style of writing would fail miserably if it was reviewed by an English teacher. I want you to write prose that is nice to read. For example, write full sentences instead of bullet points.&quot;<p>It works wonders. Suddenly, my plan documents are something I actually understand, and something I&#x27;d be happy to share as an RFC. They still need iterating every time before they&#x27;re ready to share, but I no longer have &quot;the honest truth is&quot; and other BS in my output. It&#x27;s so refreshing for my brain to be able to actually focus on the content.<p>I&#x27;ve noticed this with my partner, too. She used Claude to draft a strategy document and felt completely overwhelmed. A classic moment of &quot;AI did all the thinking for me, but now I don&#x27;t know what I&#x27;m presenting&quot;. Once I helped her prompt Claude into writing the strategy in proper English, she understood what the AI was proposing, rejected large parts of it, iterated several times and ended up with a draft document where she edited the finishing touches herself and felt that it was truly hers. The AI was still incredibly useful: it helped her with the blank slate problem, and tremendously sped up her workflow.<p>So yeah, if you proofread and iterate on your AI&#x27;s output until you feel you&#x27;d be proud if you had written it yourself, I&#x27;m happy to read it, too.</blockquote>
+<blockquote>
+<p>↳ reply — <em>winwang</em>:</p>
+<blockquote>I&#x27;ll be even more contrarian: I don&#x27;t care if someone didn&#x27;t write it as long as it&#x27;s good (that&#x27;s the major problem). I don&#x27;t mind people using quotes when writing either. It&#x27;s just that typically people (used to) curate their words before presenting them as writing. Although I&#x27;d prefer it if they also credited&#x2F;explained what they used to write it in the case of heavy AI generation.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>resonious</em>:</p>
+<blockquote>This, really. If I am entertained and learning then I do not care where the content came from.<p>Of course Claudeish or GPTish (&quot;unusually&quot;) will easily push me away. Just like any repetitive or obnoxious tendencies that might appear in human writing.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Suspension of the de minimis administrative exemption for imports $800 or less</title>
+      <link>https://www.personalimportation.org/advocacy</link>
+      <guid isPermaLink="false">hn3-49793322</guid>
+      <pubDate>Mon, 21 Sep 2026 20:58:17 +0000</pubDate>
+      <description>155 points, 125 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.personalimportation.org/advocacy"><strong>→ Article</strong></a> <small>(personalimportation.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49793322">→ HN comments</a> &nbsp;·&nbsp; 155 points &nbsp;·&nbsp; 125 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>kimos</em>:</p>
+<blockquote>This is actually tragic.<p>I worked for an online pharmacy in Canada for many years, and it’s fraught and full of grey areas for sure. But so so many Americans count on importing generics to afford their medication. You’re talking several times the price difference for the same pills, life changing amounts of money for older people on fixed incomes with health problems. They will simply not be able to access their medication anymore.</blockquote>
+<blockquote>
+<p>↳ reply — <em>jojobas</em>:</p>
+<blockquote>Are we talking duties imposed on the generics, or generics imports outright banned?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bayarearefugee</em>:</p>
+<blockquote>goes into effect 12 days before a midterm election that is already starting to look like a blue tsunami.<p>It&#x27;s a bold strategy, Cotton. Let&#x27;s see if it pays off for &#x27;em.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>biglyburrito</em>:</p>
+<blockquote>Never interrupt your enemy when they are busy making a mistake.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tremon</em>:</p>
+<blockquote>Never assume your enemy is making a mistake either, unless you possess the gift of perfect knowledge.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>amanaplanacanal</em>:</p>
+<blockquote>Hard to see how making things more expensive for consumers is not a mistake, but I could totally be missing something.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sanp</em>:</p>
+<blockquote>Assuming there is no chicanery</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Perenti</em>:</p>
+<blockquote>The hoops you poor Americans have to jump through to get affordable health care is ridiculous in what is presented as a developed nation.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>solfox</em>:</p>
+<blockquote>The hoops are in place to ensure those at the top continue to get their take.</blockquote>
+<p>↳ reply 2 — <em>bdangubic</em>:</p>
+<blockquote>you said this as if we were developed nation :)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>MiMo v2.6</title>
       <link>https://mimo.xiaomi.com/mimo-v2-6</link>
@@ -124,6 +265,50 @@
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>The Advisory Group on Mathematics and Artificial Intelligence</title>
+      <link>https://terrytao.wordpress.com/2026/09/21/advisory-group-on-mathematics-and-artificial-intelligence/</link>
+      <guid isPermaLink="false">hn3-49791997</guid>
+      <pubDate>Mon, 21 Sep 2026 19:17:42 +0000</pubDate>
+      <description>137 points, 66 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://terrytao.wordpress.com/2026/09/21/advisory-group-on-mathematics-and-artificial-intelligence/"><strong>→ Article</strong></a> <small>(terrytao.wordpress.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49791997">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 66 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ipdashc</em>:</p>
+<blockquote>I knew mathematicians were a smart bunch, but honestly, the events of the past few weeks have really given me a new level of respect for them.<p>They might be the first community I&#x27;ve seen to experience the AI &quot;rush&quot; and (at least as presented to an outside observer) immediately come together, assess the situation, and calmly, empathetically, and rationally act. They evaluated what AI is good at and what it lacks. They&#x27;ve thought through how it&#x27;ll likely affect their field in the future. They&#x27;ve explained where the need for humans still lies, and made clear proposals for how to change their own field and for what demands to make of AI companies. Of course they&#x27;re not all on the same page, but they&#x27;re at least talking and <i>trying</i>.<p>They haven&#x27;t started worshipping the machine god and loudly claiming their whole field is solved. Nor have they flailed wildly at LLMs as if complaining enough about it will make them go away.<p>Every major statement I&#x27;ve seen come out of the math community on this matter reads as well thought-through, humble, reasoned, and deeply <i>human</i>.<p>In these days of fear, uncertainty, and obsolescence anxiety, honestly, they&#x27;ve given me some confidence that maybe we will figure this stuff out after all. Maybe we&#x27;ll learn from them. Who knows.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bananaflag</em>:</p>
+<blockquote>&gt; I knew mathematicians were a smart bunch, but honestly, the events of the past few weeks have really given me a new level of respect for them.<p>As a mathematician, I am a bit disappointed by my (admittedly illustrious) colleagues.<p>I get the need to take it slowly (and I am a quite impatient person, so I shouldn&#x27;t get to decide stuff like this), but everything said feels a bit too sour grapes for my taste.<p>Ok, maybe AI did not solve the field (I believe it will, btw), maybe there is a need for human &quot;understanding&quot;, but:<p>1) They don&#x27;t seem to consider even the <i>possibility</i> (not the certainty) that they might be wrong, that math as we know it is gone, and we cannot &quot;adapt&quot;<p>2) They seem to have been oblivious all these years about AI eventually reaching this point (at least I personally wasn&#x27;t, I predicted this stage back in 2018)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>traes</em>:</p>
+<blockquote>Regarding 1, it&#x27;s not clear what you want them to actually <i>do</i>. Would you rather they just gave up, rolled over and died instead of at least trying to rescue their field? What is to be gained from considering this?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>stuckinhell</em>:</p>
+<blockquote>No, I don&#x27;t think they are adapting well. I&#x27;ve seen 3d designer at my company adapting better on the disruption and paradigm shifts GPT-6 Astra is going to cause.<p>The 3D designers are in a tougher situation because it&#x27;s far less of abstract issue then math, and yet the results are astounding. It&#x27;s hard to believe until you see it yourself. It&#x27;s surreal.</blockquote>
+<p>↳ reply 3 — <em>ksd482</em>:</p>
+<blockquote>Agreed.<p>Their field is extremely rigorous. As rigorous as it can possibly get in that they have to prove each and every line of their work beyond any doubt. The discipline they have cultivated in their culture shows in their response to AI as well.<p>As opposed to some other fields in which rigor was either not part of the culture or was not always possible. For e.g., software engineering in terms of code quality being produced. There were some indirect signals here and there but they are all subjective.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>elffjs</em>:</p>
+<blockquote>A comment on the linked post from Burt Totaro:<p>&gt; If I thought this was a good thing to do, this would be a great group of people to do it. But I have immediate misgivings. OpenAI has had some very bad publicity, and so they are trying to exploit the trust and respect that these mathematicians command. It is unrealistic to think that this group can change the way OpenAI does business; I don’t need to tell you all the objections that people have raised to that. Is it a good idea to help their crisis management?<p><a href="https:&#x2F;&#x2F;terrytao.wordpress.com&#x2F;2026&#x2F;09&#x2F;21&#x2F;advisory-group-on-mathematics-and-artificial-intelligence&#x2F;#comment-695942" rel="nofollow">https:&#x2F;&#x2F;terrytao.wordpress.com&#x2F;2026&#x2F;09&#x2F;21&#x2F;advisory-group-on-...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>philipwhiuk</em>:</p>
+<blockquote>(FRS, UCLA professor of algebraic geometry and topology, with work influenced by the Hodge conjecture, one of the remaining Millennium Prize problems).</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>auggierose</em>:</p>
+<blockquote>&gt; We are currently facing the very specific challenge of advising OpenAI on how to coordinate the release of a large number of significant results in mathematics that they report have been produced by their internal model.<p>The only thing I want to see is the problem statements, solutions, and associated Lean proofs. Anything else is gatekeeping. What a low point for academia.</blockquote>
+<blockquote>
+<p>↳ reply — <em>SpicyLemonZest</em>:</p>
+<blockquote>I&#x27;m not sure how you&#x27;ve ended up so frustrated with an advisory group whose advice has not been given. Human mathematicians routinely delay publication of their results past the point you describe; is someone gatekeeping when they take a month to clean up their paper?<p>Or are you perhaps sublimating your own AI anxiety into confrontational assertions that other people who discuss AI aren&#x27;t as AI-pilled as you?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>auggierose</em>:</p>
+<blockquote>You can delay your own publication as long as you wish to. Bullying somebody else to delay theirs is a different thing entirely.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>qnleigh</em>:</p>
+<blockquote>OpenAI put together an advisory panel to provide guidance on how to release their results. Where do you see bullying?</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>NASA’s Mars Sample Return mission is dead</title>
       <link>https://www.science.org/content/article/nasa-s-mars-sample-return-mission-dead</link>
       <guid isPermaLink="false">hn3-49791939</guid>
@@ -154,6 +339,42 @@ The Ukrainians even offered drone defences before it started and were publically
 <blockquote>IIRC it was the people from Pakistan that did 9&#x2F;11, now these people have nuclear weapons. Iranians didn’t do any 9&#x2F;11 in USA but somehow they are not allowed nuclear weapons? How is this supposed to make sense?</blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Frontier AI on Your Own Hardware</title>
+      <link>https://timdettmers.com/2026/09/21/dlab-open-source-week/</link>
+      <guid isPermaLink="false">hn3-49791647</guid>
+      <pubDate>Mon, 21 Sep 2026 18:53:01 +0000</pubDate>
+      <description>160 points, 78 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://timdettmers.com/2026/09/21/dlab-open-source-week/"><strong>→ Article</strong></a> <small>(timdettmers.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49791647">→ HN comments</a> &nbsp;·&nbsp; 160 points &nbsp;·&nbsp; 78 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>JSavageOne</em>:</p>
+<blockquote>&gt; &quot;The prediction was that software engineers would lose their jobs first, and the recent trend went the other way: demand for software engineers is higher than ever&quot;<p>Hard to take anything the author says seriously making nonsensical claims like this. The software engineering job market has been getting worse every year since 2022 by virtually every metric. This is especially true at the entry and mid level. For example, computer engineering and computer science majors now have the #2 and #4 highest unemployment rates amongst recent graduates [1]<p>Students are smart to be cautious about the future, and it&#x27;s annoying that adults with no skin in the game so flippantly dismiss these concerns without any data to back it up.<p>[1] <a href="https:&#x2F;&#x2F;www.newyorkfed.org&#x2F;research&#x2F;college-labor-market?utm_source=chatgpt.com#--:explore:outcomes-by-major" rel="nofollow">https:&#x2F;&#x2F;www.newyorkfed.org&#x2F;research&#x2F;college-labor-market?utm...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sakopov</em>:</p>
+<blockquote>The market rebound appears to be mostly in senior roles [1] while everyone else are falling out of favor including new grads. Definitely puts the &quot;higher than ever&quot; claim in question. Indeed is looking at job postings data and I personally think this is a poor unit of measure. In my humble opinion the market isn&#x27;t anywhere near where it used to be even several years prior to the pandemic.<p>[1] <a href="https:&#x2F;&#x2F;hiringlab.indeed.com&#x2F;2026&#x2F;07&#x2F;08&#x2F;ai-and-job-postings-from-destruction-to-creation&#x2F;" rel="nofollow">https:&#x2F;&#x2F;hiringlab.indeed.com&#x2F;2026&#x2F;07&#x2F;08&#x2F;ai-and-job-postings-...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>api</em>:</p>
+<blockquote>Even before AI we were trending toward an economy with very few entry level jobs anywhere. AI is supercharging this, and I can easily now imagine a future where there&#x27;s basically zero (good) jobs for anyone who isn&#x27;t an expert.<p>So how do we get the next generation of senior professionals then?<p>This, I think, is a civilization-scale problem we will need to confront in the next 20-ish years.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>DrewADesign</em>:</p>
+<blockquote>That’s what happened in US manufacturing. It’s now 20-30 years down the line and the economically important US manufacturing sectors, like defense, are scrambling to hold onto institutional process and trade knowledge as the final remnants of the old industrial system retire. We all know how useful someone with a fresh comp sci degree and no experience is in a real dev environment is. Imagine the leads showing them the ropes graduated two years prior?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sheepscreek</em>:</p>
+<blockquote>Even for seniors, pretty sure jobs aren’t at all what they used to be. I think more and more of us are losing the little job satisfaction we had. Working on other people’s tasks with AI agents is nothing short of being a paper pusher.<p>Don’t get me wrong, as a technologist, I feel AI is the most incredible thing in the field of computer science. I love having a team of my agents for stuff I care about. For stuff <i>I</i> care about.<p>So perhaps now more than ever, it’s important to land a job you actually care about. In a field or domain you want to serve. To actually make a difference somewhere and find meaning.</blockquote>
+<p>↳ reply 3 — <em>smokel</em>:</p>
+<blockquote>The number of graduates has grown even more dramatically.  The job market not being able to keep up with that could make both your and the OP&#x27;s statements correct.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ro_bit</em>:</p>
+<blockquote>Many people in the thread are calling out AI-isms and nonsensical parts of the article. Articles like this have gotten so tiring. Is there a single place left to go on the internet where people write their own work? Or at least read it before publishing.</blockquote>
+<blockquote>
+<p>↳ reply — <em>ericd</em>:</p>
+<blockquote>Well, the guy is a professor in AI. So I&#x27;d not look for 100% human-written prose from him.<p>But I&#x27;d also not dismiss what Tim has to say. For much longer than this stuff has been super hyped, he&#x27;s reliably been one of the best sources of info on some of this stuff, especially about GPUs and how to run things locally.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>wrs</em>:</p>
+<blockquote>&gt; What has to go is the paper as the unit of achievement, the thing that gets counted and compared. If the ecosystem is the unit of research, then building something that other people can build on has to count for more than the next increment.<p>The focus on <i>building stuff</i> as the measure of accomplishment is one reason I so enjoyed being at CMU a few decades ago, so I&#x27;m very happy to see this sentiment is still expressed by the new generation of faculty.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>US halts flights at busy East Coast airports, says fiber line cut</title>
@@ -188,6 +409,72 @@ The Ukrainians even offered drone defences before it started and were publically
 <blockquote>There’s been “a new ATC system” rolling out for the last 25 years.</blockquote>
 <p>↳ reply 2 — <em>kj4211cash</em>:</p>
 <blockquote>That system wouldn&#x27;t have replaced the one that went down. It&#x27;s good to see investment in this area but that system is not going to fix much TBH.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Why does mathmain need an encrypted loader?</title>
+      <link>https://safedep.io/mathmain-encrypted-loader/</link>
+      <guid isPermaLink="false">hn3-49791378</guid>
+      <pubDate>Mon, 21 Sep 2026 18:33:44 +0000</pubDate>
+      <description>128 points, 38 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://safedep.io/mathmain-encrypted-loader/"><strong>→ Article</strong></a> <small>(safedep.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49791378">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 38 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>fn-mote</em>:</p>
+<blockquote>You need to read quite a ways before discovering that JFrog did the work of cracking the password, which enabled the rest of the analysis.<p><a href="https:&#x2F;&#x2F;research.jfrog.com&#x2F;post&#x2F;equation-of-compromise&#x2F;" rel="nofollow">https:&#x2F;&#x2F;research.jfrog.com&#x2F;post&#x2F;equation-of-compromise&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>altairprime</em>:</p>
+<blockquote>This URL has a <i>much</i> better list of package names, thank you.</blockquote>
+<p>↳ reply 2 — <em>octoberfranklin</em>:</p>
+<blockquote>I wish they wouldn&#x27;t use LLMs to write these blogposts.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>j2kun</em>:</p>
+<blockquote>Why in the world would that specific 3x3 matrix be a trigger for an attack? Are they trying to find someone doing some particular kind of numerical analysis?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zarzavat</em>:</p>
+<blockquote>Presumably it&#x27;s so it can be used as a subdependency for setting up an attack in a popular, legitimate package, e.g. via a pull request. The code in the legitimate package would not arouse suspicion at all.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>krackers</em>:</p>
+<blockquote>Now I&#x27;m curious what the target was. Are there any notable classes of programs&#x2F;problems where you&#x27;d do an LU decomposition of this specific matrix?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>gruez</em>:</p>
+<blockquote>&gt;Are there any notable classes of programs&#x2F;problems where you&#x27;d do an LU decomposition of this specific matrix?<p>It doesn&#x27;t have to be this specific matrix. If it&#x27;s some service exposed to the internet, it can be user supplied, in which case it turns into a backdoor.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ajkjk</em>:</p>
+<blockquote>Perhaps they just need a way to sneakily activate it? Or perhaps they have a target application which they know uses that. This method suggests a supply chain attack where a valid contributor to a library &#x27;accidentally&#x27; includes this package and the hack carries out before anyone notices.<p>My guess is that it&#x27;s crypto related but of course it could be anything.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>WorldMaker</em>:</p>
+<blockquote>A lot of this seems to be a reminder that the CommonJS module format should just be left to die already. Not that you can&#x27;t pull similar tricks with `await import()` in ESM, but you can&#x27;t easily grep an entire dependency for dynamic `require()` half as easily as you can can `grep import\s*\(` for dynamic import and analysis tools for static `import` keyword are easy to use&#x2F;build rather than no such thing for CommonJS.<p>Someone thought I was joking when I said I always check JSR before NPM now, because I trust ESM so much more than CommonJS.</blockquote>
+<blockquote>
+<p>↳ reply — <em>bastawhiz</em>:</p>
+<blockquote>This is only partially true: dynamic imports are syntax (like super) but that&#x27;s not a huge deterrent to hiding them. You could easily do `i = x =&gt; import(x)` to obfuscate the imports. Suddenly something looking like `await globalThis[computedValueEqualToI]` is doing imports. You still know stuff is being imported, you just have no idea what without a hell of a lot of effort, which is almost exactly the same effort as with require().</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>WorldMaker</em>:</p>
+<blockquote>`i` still shows up in my grep, though, for anything like a function call of the word `import(`. Even if it takes a search to figure out what calls `i`, you know something is fishy because `import(` is used <i>at all</i> instead of the `import` keyword. Whereas there&#x27;s no easy distinguishment of &quot;top-level&quot; static require and dynamic require, it&#x27;s <i>always</i> a function call. (You can Regex match a negative lookahead for calls that don&#x27;t include static strings, but that&#x27;s a much harder regex than the `import(` call regex I provided.)<p>(ETA: Even&#x2F;<i>especially</i> in minified code. Something like `var r = require` is rather common in Code Golfing&#x2F;minifying CommonJS so grepping all uses of require both static and dynamic is also complicated by nicknames. But ESM doesn&#x27;t minify static import <i>ever</i> and yeah dynamic import might be minified, but that still means it sticks out as a sore thumb if it exists at all even in minified shapes. Especially in minified shapes because that often means it is used <i>multiple times</i> for a minifier to decide that minifying it is worth the tax of declaring the minified nickname.)</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Apple Copland D11E4 Booting in the Browser</title>
+      <link>https://www.pagetable.com/300</link>
+      <guid isPermaLink="false">hn3-49791125</guid>
+      <pubDate>Mon, 21 Sep 2026 18:15:32 +0000</pubDate>
+      <description>140 points, 40 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.pagetable.com/300"><strong>→ Article</strong></a> <small>(pagetable.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49791125">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 40 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ChickeNES</em>:</p>
+<blockquote>&gt; DingusPPC does not take patches written with the help of AI, so maybe someone wants to re-do these fixes based on the explanations in the commit messages. (The patches for this wasm version are on this branch.)<p>Oh goodie! Another fork for my fork collection :)</blockquote>
+<p><strong>Top #2</strong> — <em>mrkpdl</em>:</p>
+<blockquote>As a long time apple fan, Copland and what may have been occupies far more of my mind than is reasonable. But I never thought I’d actually get a chance to touch it. This is awesome to see.</blockquote>
+<p><strong>Top #3</strong> — <em>codepoet80</em>:</p>
+<blockquote>I got this working a few years ago on era-appropriate hardware. It was awful -- unstable and crashy. There were glimpses of what they were trying for, but it was painfully obvious they were a long way from even the stability of 7.5. I&#x27;m sure it was a tough call, but whoever decided to axe it made the right one. Besides, if it had succeeded, they might not have bought NeXT and we might not have gotten OS X!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mulderc</em>:</p>
+<blockquote>Based on what has been reported, I don’t think it was all that tough a call to axe it. What to do after that has hard but cancelling Copeland was an obvious decision to make.</blockquote>
+<p>↳ reply 2 — <em>tapoxi</em>:</p>
+<blockquote>The decision to axe it and go with NeXT was widely attributed to Ellen Hancock (RIP)</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -272,6 +559,36 @@ The Ukrainians even offered drone defences before it started and were publically
 <blockquote>
 <p>↳ reply — <em>markdown</em>:</p>
 <blockquote>Amazon is basically a frontend for AliExpress, with some US products thrown in to keep people clicking.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>HERMES radio enables voice and data communication over vast distances</title>
+      <link>https://spectrum.ieee.org/hermes-shortwave-radio-digital-data</link>
+      <guid isPermaLink="false">hn3-49789228</guid>
+      <pubDate>Mon, 21 Sep 2026 16:14:16 +0000</pubDate>
+      <description>138 points, 59 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://spectrum.ieee.org/hermes-shortwave-radio-digital-data"><strong>→ Article</strong></a> <small>(spectrum.ieee.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49789228">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 59 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mesh</em>:</p>
+<blockquote>This is a cool project, but fyi, in the US, this would require a license to broadcast (not receive), and I am pretty sure encryption, even with a license, is not legal (again, when broadcasting from US).<p>And then only on certain bands:<p><a href="https:&#x2F;&#x2F;www.arrl.org&#x2F;files&#x2F;file&#x2F;Regulatory&#x2F;Band%20Chart&#x2F;Hambands4_Color_17x11.pdf" rel="nofollow">https:&#x2F;&#x2F;www.arrl.org&#x2F;files&#x2F;file&#x2F;Regulatory&#x2F;Band%20Chart&#x2F;Hamb...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jcrawfordor</em>:</p>
+<blockquote>I would expect this system to ultimately be used under a commercial HF license rather than an amateur license, given the feature set and that it seems to have much more in common with military systems like ALE than amateur practice. That said, because of the scarce supply of HF bandwidth, commercial HF licenses are quite restrictive in the US. For the most part, you are only allowed to apply for one if you are an infrastructure operator that needs a contingency communications capability for disaster response. That said, the FCC has permitted experimental licenses for some commercial applications like high frequency trading, so perhaps the situation will become less restrictive over time.<p>That said, commercial licenses are not per-operator like amateur licenses, so you would potentially only need one to cover the entire network. Some of this is ultimately negotiated.</blockquote>
+<p>↳ reply 2 — <em>bityard</em>:</p>
+<blockquote>Correct. Encryption (or more specifically, obscuring the meaning of a message) is generally not allowed for amateur radio stations except in very narrow circumstances. So any hams using this would have to turn the encryption off.<p>However, it looks like this stack has encryption available as an option for stations who are transmitting sensitive data and are NOT operating under an amateur license. (Probably government-sanctioned communications or emergency humanitarian efforts.)</blockquote>
+<p>↳ reply 3 — <em>_whiteCaps_</em>:</p>
+<blockquote>Going to be super pedantic here - in ham radio you don&#x27;t broadcast, you transmit.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Animats</em>:</p>
+<blockquote>There&#x27;s an existing HF service called SailMail.[1] This is email for sailboats over HF. There are about 20 fixed stations around the world maintained by the organization. Cost is $275 per vessel per year. You can use 90 minutes of connect time per week. All it does is email over the HF links. There are now some satellite options which interoperate with it, but it predates those. There&#x27;s very little infrastructure; the boat-side equipment is an SSB transceiver, and the shore stations are quite modest.<p>It was set up by Stan Honey, who invented car navigation systems (Etak) and the thing that puts the yellow line on TV views of football fields (Sportsvision). He&#x27;s into long-distance sailing, and wanted some basic comms that would work on most of the world&#x27;s oceans.<p>It&#x27;s not that advanced technically. It just works.<p>[1] <a href="https:&#x2F;&#x2F;sailmail.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;sailmail.com&#x2F;</a></blockquote>
+<p><strong>Top #3</strong> — <em>j_not_j</em>:</p>
+<blockquote>If it&#x27;s a matter of life and death, such as offshore fishing, you probably want a real commercial service.<p>Like Garmin (Iridium based texts back and forth) or Zoleo.  These are physical units that may offer texts or just a simple &quot;sos&quot; button.<p>Or a recent iPhone will communicate with Starlink, or T-Mobile offers a similar system for Android phones and is also based on Starlink.  These can exchange texts which is much more reassuring than a simple sos button.<p>Of course offerings outside the US may be limited or entirely absent.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>reaperducer</em>:</p>
+<blockquote><i>If it&#x27;s a matter of life and death, such as offshore fishing, you probably want a real commercial service.<p>Like Garmin (Iridium based texts back and forth) or Zoleo. These are physical units that may offer texts or just a simple &quot;sos&quot; button.</i><p>Prohibitively expensive, and also not available to 90% of the planet&#x27;s commercial fishermen.<p>For them, an iPhone can be an entire year&#x27;s profit.<p>The people in TFA aren&#x27;t going to be featured on The Deadliest Crab.</blockquote>
+<p>↳ reply 2 — <em>markdown</em>:</p>
+<blockquote>These are essential for remote solo hiking.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -2567,6 +2884,40 @@ Fake news always existed. Now one dude in India can flood multiple sock puppet m
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Divide by depth for instant 3D</title>
+      <link>https://gabrieloc.com/2026/09/15/perspective.html</link>
+      <guid isPermaLink="false">hn3-49769561</guid>
+      <pubDate>Sat, 19 Sep 2026 19:43:13 +0000</pubDate>
+      <description>151 points, 27 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://gabrieloc.com/2026/09/15/perspective.html"><strong>→ Article</strong></a> <small>(gabrieloc.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49769561">→ HN comments</a> &nbsp;·&nbsp; 151 points &nbsp;·&nbsp; 27 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tmoertel</em>:</p>
+<blockquote>The explanation of &quot;What&#x27;s that extra 1 for?&quot; in the column representation of 3-d coordinates (<i>x y z</i> 1) could benefit from mentioning that <i>translation</i>—moving things—is not a linear transformation (the origin is not mapped to itself) but an affine transformation. Therefore, you cannot represent translation in 3-d space with a 3x3 matrix. What you can do, though, is embed that 3-d space within a 4-d space fixed at some coordinate on its 4th dimension, typically <i>w</i>=1. Then, a translation in the original 3-d space <i>can</i> be represented as a linear transformation in the 4-d space and thus can also be represented by a 4x4 matrix multiplication. So the extra 1 is actually what allows all common 3-d operations, including translation, to be done via linear algebra and thereby harness the brutal power of matrix multiplication on modern computing devices.</blockquote>
+<blockquote>
+<p>↳ reply — <em>globalnode</em>:</p>
+<blockquote>nice intuition there, this comment prompted me to consider a simpler example, 2d embedded within 3d. does the 2d plane (embedded in 3d) go through the 3d origin (where 0 maps to 0) and is thus a linear transformation in 3d but a 2d affine transform in 2d? it feels like this is the case?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tmoertel</em>:</p>
+<blockquote>No, the 2d x-y plane in your example cannot pass through the 3d space’s origin because that would imply that you fixed the z coordinate at zero. The plane must be fixed at some nonzero z because you need to be able move x and y values by some scaled version of z to make translation happen. If z is zero, that scheme does not work.<p>Consider a transformation f where we wish to move x-y coordinates s units to the right. In 2d, we could express it as:<p>f(x, y) = (x + s, y)<p>But that transformation is affine not linear. There is no way to generate the value s as a linear combination of the inputs x and y. So, our workaround is to embed the x-y plane into 3d space at z=1. Then we can move (x,y,1) points in that plane s units to the right using this transformation:<p>f(x, y, z) = (x + s*z, y, z)<p>This new transformation is linear: it maps (0,0,0) to itself. But it maps our embedded 2d plane&#x27;s origin (0,0,1) to (s,0,1), shifting it right by s units, as we want.<p>The matrix form of that transformation is:<p><pre><code>    [[1 0 s]
+     [0 1 0]
+     [0 0 1]]
+</code></pre>
+The same scheme would work if we had embedded the plane at any fixed z=r for nonzero r. We would only have to rescale the s in the matrix to s&#x2F;r. Again, however, if r=0, this scheme will not work, as 1&#x2F;r has gone to infinity.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>aappleby</em>:</p>
+<blockquote>FWIW, if you start with &quot;The view frustum is a 90 degree pyramid with the tip cut off at z = 1 and the &#x27;end&#x27; at infinity&quot;, you can then work out how to map that to a NDC using a matrix and perspective divide.<p>I&#x27;ve used that when teaching short &quot;Graphics 101&quot; (not in the first session though) and the math comes out more intuitive than the usual &quot;here&#x27;s how to calculate a perspective matrix, don&#x27;t ask where these numbers come from&quot; version.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>psvv</em>:</p>
+<blockquote>For me learning on my own, it was even illustrative to not use a near plane and see how things behind the camera would still appear in front of it.<p>A lot of 3D graphics can be derived pretty easily just from knowing a few basics like divide by depth. I think knowing how to construct a transformation matrix from a coordinate system basis is another one -- that would remove the need to look up how to construct a perspective matrix, for example.<p>A few things like that will get you pretty far and you can kind of take the same journey of discovery as early 3D pioneers. That&#x27;s one of the best ways to learn because you&#x27;re much more likely to remember something <i>you figured out</i> compared to something you just read about.<p>It gets tricky with perspective-correct textures, but running into issues like that on your own (even if not solved on your own) is part of the fun of learning, I think.</blockquote>
+<p>↳ reply 2 — <em>Lerc</em>:</p>
+<blockquote>I tend to do it with a window.<p>Students can easily imagine the pyramid from an eye to the window frame, and that it keeps going.<p>Then I point to an object outside the window and say imagine strings going from the corners of the object to your eye.  To do this they would have to go through the window, where do they do that.  3d graphics is finding out where on the window the strings go through so you can stick a picture of thing outside onto the window and it looks exactly the same.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>jmiskovic</em>:</p>
+<blockquote>3D on 2D screen is all about giving brain enough depth cues. Having size diminish with depth is a big one. The 2nd biggest thing is occlusion, which is altogether skipped in these wireframe renderings. Another big one is fog, or impact of medium the light is traveling through, very easy to do for the basic effect. It&#x27;s basically just fading the colors to gray when more distant from camera.<p>You can have a convincing 3D with just the occlusion and fog (or even just the fog), without simulating the perspective. It&#x27;s just another artistic direction.</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Microsoft director: AI scraping 'the largest theft of labor in human history'</title>
       <link>https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-director-called-ai-scraping-the-largest-theft-of-labor-in-human-history-while-openai-head-brands-chatgpt-an-existential-threat-to-publishers-revelations-come-from-legal-briefs-filed-in-nyt-lawsuit</link>
       <guid isPermaLink="false">hn3-49768921</guid>
@@ -3421,399 +3772,6 @@ Lettuce: <a href="https:&#x2F;&#x2F;fred.stlouisfed.org&#x2F;series&#x2F;WPU0113
 </blockquote>
 <p><strong>Top #3</strong> — <em>_the_inflator</em>:</p>
 <blockquote>And what about the governments like Berlin for example? Massive data breach, and guess what happens? Nothing to those who are responsible for the breach.<p>So even though this is Korea, it is modern hypocrisy. Companies have to comply to more and more complicated regulation, while those who govern the states get a free pass.<p>If the Berlin incident remotely had happened to any private company - hell would have been loose.<p>Berlin reduced the IT budget especially regarding maintenance and security massively over the years. In fact, what came to light - CCC talk as a reference besides others - sounds so embarrassing, that all companies should get a bonus payment whenever they get hacked.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Android 17 is the first since 3.x to add new APIs without releasing to the AOSP</title>
-      <link>https://grapheneos.social/@GrapheneOS/117282080803799576</link>
-      <guid isPermaLink="false">hn3-49758736</guid>
-      <pubDate>Fri, 18 Sep 2026 19:03:09 +0000</pubDate>
-      <description>659 points, 321 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://grapheneos.social/@GrapheneOS/117282080803799576"><strong>→ Article</strong></a> <small>(grapheneos.social)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49758736">→ HN comments</a> &nbsp;·&nbsp; 659 points &nbsp;·&nbsp; 321 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bri3d</em>:</p>
-<blockquote>So, the real thing that&#x27;s happening here is:<p>* Google drop &quot;real&quot; Android source-code updates to OEMs _and_ the public every half.<p>* But they ship four Pixel updates, including documentation + SDKs.<p>* Now they added new APIs in a Pixel-only update.<p>* Google also drop security update backports to &quot;trusted&quot; OEMs monthly (which GrapheneOS have had access to for years).<p>So, there are now Pixel-exclusive app features on the Pixel SDK version which isn&#x27;t available to OEMs - but, it&#x27;s highly unlikely any app developer would actually depend on these new APIs, since Pixel marketshare is tiny to begin with. This in essence just makes Pixels a weird beta-testing device for what will come out a quarter later to &quot;normal&quot; devices, which is sort of an odd business decision, but also a weird thing to get really mad about, in my opinion (I do see what GrapheneOS are trying to do, with having OEMs saber-rattle about not getting features on the same cadence as Pixels, it just doesn&#x27;t resonate very loudly for me).<p>However, the API headline seems to bury a deeper lede; in the thread, GrapheneOS also claim that the quarterly Pixel releases contain security content which is not appearing in the monthly backports. This is quite bad and very sloppy if true, since the Pixel releases can easily be patch-diffed and exploits backed out of them. I&#x27;d be interested in seeing this enumerated in more depth.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mdwrigh2</em>:</p>
-<blockquote>&gt; * Google drop &quot;real&quot; Android source-code updates to OEMs _and_ the public every half.<p>All of the major OEM shave access to the internal source with a _very_ small delay. OEMs don&#x27;t ship these intermediate releases because they choose not to, not because Google witholds the source for them.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bri3d</em>:</p>
-<blockquote>Oh! I had thought they stopped at the same time they closed off AOSP commits - that makes this entire rabble-rousing effort _exceptionally_ silly, then; I can&#x27;t see the angle GrapheneOS are trying to push at all in that case (like, I get their side of the _concern_, but &quot;Google are shipping features to Pixels that you don&#x27;t get&quot; becomes... quite a poor argument indeed in that scenario).</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>fluidcruft</em>:</p>
-<blockquote>I don&#x27;t really see what the Pixel-only early API releases achieve except for allowing developers to work on Pixels ahead of time, but Pixels are such a small sliver of the universe that it basically just gives Google a leg up, I would assume. And if you&#x27;re on Graphene why would you care about Google&#x27;s beta edge apps?</blockquote>
-<p>↳ reply 3 — <em>teekert</em>:</p>
-<blockquote>The rattling is because of the security patches of course.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>hacker_homie</em>:</p>
-<blockquote>I&#x27;m so glad we stopped microsoft from shipping a browser with their OS in the 90s, &lt;sarcasm&#x2F;&gt;.<p>Regulate them! that is the only way.<p>Their should be a path for an AOSP build to be just as privileged as a google signed build.</blockquote>
-<p><strong>Top #3</strong> — <em>largbae</em>:</p>
-<blockquote>Alright AI maximalists, what&#x27;s the estimated token budget to remove the Google dependency?<p>GrapheneOS has the bootable AOSP and will have Google-alternative device support.<p>We probably need an equivalent to Play Services, app signing&#x2F;porting&#x2F;publishing tools.<p>With these in hand could we talk Valve into providing the scalable alternative to the play store?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>aesh2Xa1</em>:</p>
-<blockquote>GrapheneOS accepts donations and, to my knowledge, they spend it in hiring full time engineers.<p>They have replacement portions for Play Services already (attestation, an app store, and location), but it&#x27;d be interesting if they also offered something for push notifications.<p>If you have it to give you can spend your budget on a donation and fund the effort directly.</blockquote>
-<p>↳ reply 2 — <em>nextaccountic</em>:</p>
-<blockquote>The trouble is that banking apps will not work if you degoogle your phone. GrapheneOS was an attempt to make this sort of thing work, in a phone OS more secure than stock Android<p>But to be honest, many banking apps randomly stop working with GrapheneOS anyway. So if you see this...<p><a href="https:&#x2F;&#x2F;privsec.dev&#x2F;posts&#x2F;android&#x2F;banking-applications-compatibility-with-grapheneos&#x2F;" rel="nofollow">https:&#x2F;&#x2F;privsec.dev&#x2F;posts&#x2F;android&#x2F;banking-applications-compa...</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;PrivSec-dev&#x2F;banking-apps-compat-report" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;PrivSec-dev&#x2F;banking-apps-compat-report</a><p>And check the issues, it&#x27;s unpredictable whether a bank will continue to work with GrapheneOS<p>So.. if you accept GrapheneOS might not be reliable for this use case, and decide have two phones (one just for banking stuff, another for.. using), then degoogling is fine.<p>Only thing is that the banking device probably needs to be a <i>phone</i> (or tablet I guess), I don&#x27;t think you can emulate a real device good enough for it to work on something like Waydroid</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Saving another 100TB of RAM</title>
-      <link>https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/</link>
-      <guid isPermaLink="false">hn3-49758580</guid>
-      <pubDate>Fri, 18 Sep 2026 18:51:46 +0000</pubDate>
-      <description>274 points, 57 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49758580">→ HN comments</a> &nbsp;·&nbsp; 274 points &nbsp;·&nbsp; 57 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>zer0x4d</em>:</p>
-<blockquote>Incredibly happy to see this series of CF articles. I was always so proud of devs back in the days where RAM and processing were scarce and who had to get creative to fit even the most basic stuff in the budget. It seemed to me that after RAM and processing became abundant, most gave up on optimization and focused on shipping instead which meant now that even with several cores, a basic notepad or music player failed to work. In a way, RAM becoming more expensive has ushered in a new era of forced optimizations, which I&#x27;m really happy for</blockquote>
-<blockquote>
-<p>↳ reply — <em>jfengel</em>:</p>
-<blockquote>I don&#x27;t remember those days with a ton of fondness. Yes, the challenge was fun, but I really wanted to ship it and get my product in the hands of customers. Now I can spend more time thinking about what they want and less time about what the computer wants.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rstat1</em>:</p>
-<blockquote>And its this obsession with shipping things as fast as possible quality be dammed that got us basic weather apps that eat a gigabyte+ of RAM.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>CookieCrisp</em>:</p>
-<blockquote>And yet the world still turned</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dr_dshiv</em>:</p>
-<blockquote>Cloudflare is truly amazing, they have made so much possible for my main side-project at a price and performance that I can’t really take credit for (<a href="http:&#x2F;&#x2F;sourcelibrary.org" rel="nofollow">http:&#x2F;&#x2F;sourcelibrary.org</a>), I don’t care if their text was written with AI, I just wish I could get my own AI to sing so well about hashing… but wait.. today I noticed Claude trying to use hashing when a timestamp would honestly do, and now I’m really doubting myself, hmm…</blockquote>
-<blockquote>
-<p>↳ reply — <em>davidbarker</em>:</p>
-<blockquote>This is pleasant coincidence. Really like your site and it&#x27;s queued to send in my newsletter in the morning! Just happened to see your comment here while I was reading. Great work.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ricardobeat</em>:</p>
-<blockquote>These optimizations are impressive, but it gets me thinking: at what point does a company become a collection of impenetrable siloes, where nothing really does what you expect? Maybe know with AI this is less of an issue as exploring a codebase is also much faster.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>sb057</em>:</p>
-<blockquote>&gt;at what point does a company become a collection of impenetrable siloes, where nothing really does what you expect?<p>Around the year 2015.</blockquote>
-<p>↳ reply 2 — <em>BobbyTables2</em>:</p>
-<blockquote>I feel like any company whose products have RESTful interfaces are already there…<p>One wants to turn on an indicator on a remote device.  A simple Boolean value.  But we need networking, TLS, authentication plugins, certificate validation, distributed logging, containers, orchestration, HTTP client&#x2F;server, interprocess communication, daemon dependency management,  …<p>Sure, one can say each of these layers and abstractions has an important and justifiable purpose.  But one can also step back and start wondering - what the hell are we really doing???<p>At some level, it seems like each layer of abstraction has to manage others, only simply because they exist.<p>Imagine the simplicity of 1800s telegraph signaling - no software!<p>Too often we build systems with Fortune-50 style hierarchies when a 5-person team could do the whole job.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Xcode 27.1 Beta Release Notes</title>
-      <link>https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes</link>
-      <guid isPermaLink="false">hn3-49758419</guid>
-      <pubDate>Fri, 18 Sep 2026 18:39:31 +0000</pubDate>
-      <description>139 points, 102 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes"><strong>→ Article</strong></a> <small>(developer.apple.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49758419">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 102 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>yreg</em>:</p>
-<blockquote>Finally! So we have a little over a month between getting the simulator and first customers running our apps in Duo.<p>I expect that most apps will look rather broken on release, but it will be smoothed out eventually.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>james_pm</em>:</p>
-<blockquote>Fired it up to check my own app (RunnerCast) and it looks fine. The Liquid Glass menu moves from the bottom to the right side automatically both on the inner and outer screens. If you already had a layout that worked for iOS and iPadOS, things adapt fine to the inside screen and when you go split screen with two apps, the layout adapts nicely. I don&#x27;t think I&#x27;ll need to do a thing.<p>I&#x27;ve also noticed a flurry of recent app updates from some of the bigger apps (MLB, NYTimes, etc.) to switch to the Liquid Glass menu which I assume Apple strongly suggested they do prior to the Duo launch.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>yreg</em>:</p>
-<blockquote>&gt; some of the bigger apps to switch to the Liquid Glass<p>Interestingly, Instagram decided to implement a custom liquid-glass like tab bar which surely now turns to be a PITA.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>1f60c</em>:</p>
-<blockquote>It also happens to look ugly AF. Even WhatsApp gets it right.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>alwillis</em>:</p>
-<blockquote>&gt; I expect that most apps will look rather broken on release, but it will be smoothed out eventually.<p>I don’t think it&#x27;ll be &quot;most apps&quot;.<p>Apple all but told developers in June [1] to update their apps not to assume a fixed screen size.<p>One of the apps Apple&#x27;s engineers demonstrate new features was called Origami [2]. When I watched the video, it seemed pretty clear: a device that folds was in our future.<p>If you’re a developer that&#x27;s kept up with the latest iOS developments, you&#x27;ll be in good shape for the Duo.<p>But if you&#x27;re up to your eyeballs in technical debt using deprecated frameworks and APIs… it&#x27;s probably gonna be a while for you.<p>[1]: <a href="https:&#x2F;&#x2F;developer.apple.com&#x2F;videos&#x2F;play&#x2F;wwdc2026&#x2F;278" rel="nofollow">https:&#x2F;&#x2F;developer.apple.com&#x2F;videos&#x2F;play&#x2F;wwdc2026&#x2F;278</a><p>[2]: &quot;Modernize your UIKit app&quot; — <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Origami" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Origami</a></blockquote>
-<p>↳ reply 3 — <em>pjmlp</em>:</p>
-<blockquote>Unless Apple uses their stick (whip, or whatever else) to drive the developer community, I bet iOS will experience the same app fragmentation as Android does regarding various form factors, more so than between iPad, iPhone and iWatch already.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Shank</em>:</p>
-<blockquote>I&#x27;ve been testing with Xcode 27.1 on the Duo simulator and I was pleasantly surprised that nearly everything worked well, untouched. The main thing I need a real device for is knowing which buttons are easier or harder to press on the right edge, but using modern UIKit this was not that difficult. That, and taking advantage of the left&#x2F;right inner display content areas.</blockquote>
-<p><strong>Top #3</strong> — <em>Austin_Conlon</em>:</p>
-<blockquote>Apple also bundles a &#x2F;uikit-app-modernization skill which should help with adopting layouts to iPhone Duo.</blockquote>
-<blockquote>
-<p>↳ reply — <em>TheJoeMan</em>:</p>
-<blockquote>Apple’s Developer Documentation is historically pretty terrible. So I’d be curious to see if they stepped it up for the agent instructions for the new API’s.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ChrisMarshallNY</em>:</p>
-<blockquote><i>&gt; historically</i><p>Depends on how far back you go.<p>Apple&#x27;s current docs suck, and they have, for a long time (SwiftUI was so bad, that someone came up with this[0], and it was a lifesaver).<p>But I&#x27;m old enough to remember <i>Inside Macintosh</i>[1], and that was a thing of beauty.<p>Apple used to take technical documentation <i>very</i> seriously. Many of their technical writers had better tech chops, than the engineers making the stuff they wrote about.<p>[0] <a href="https:&#x2F;&#x2F;swiftui-lab.com" rel="nofollow">https:&#x2F;&#x2F;swiftui-lab.com</a><p>[1] <a href="https:&#x2F;&#x2F;vintageapple.org&#x2F;inside_o&#x2F;" rel="nofollow">https:&#x2F;&#x2F;vintageapple.org&#x2F;inside_o&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>LoganDark</em>:</p>
-<blockquote>I really wish they still did, instead of focusing so much on trying to make it <i>simple</i> and <i>obvious</i> like in SwiftUI. Objective-C was a pinnacle of computing, and ever since Swift they&#x27;ve been devolving into the pursuit of oversimplifying and abstracting away the details such that they don&#x27;t even feel necessary to teach anymore, even though as a new developer, I WANT TO KNOW THEM.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Border agents can search cellphones without a warrant or reasonable suspicion</title>
-      <link>https://lawandcrime.com/high-profile/the-government-was-entitled-trumps-border-agents-can-now-search-cellphones-without-a-warrant-probable-cause-or-reasonable-suspicion-2nd-circuit-rules/</link>
-      <guid isPermaLink="false">hn3-49758028</guid>
-      <pubDate>Fri, 18 Sep 2026 18:08:32 +0000</pubDate>
-      <description>193 points, 168 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://lawandcrime.com/high-profile/the-government-was-entitled-trumps-border-agents-can-now-search-cellphones-without-a-warrant-probable-cause-or-reasonable-suspicion-2nd-circuit-rules/"><strong>→ Article</strong></a> <small>(lawandcrime.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49758028">→ HN comments</a> &nbsp;·&nbsp; 193 points &nbsp;·&nbsp; 168 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mmh0000</em>:</p>
-<blockquote>It is insane to me that judges consistently rule that the constitution doesn&#x27;t apply because there&#x27;s a &quot;border&quot; within 100 miles.<p>The 4th Amendment says, exactly:<p><pre><code>   The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated, and no Warrants shall issue, but upon probable cause, supported by Oath or affirmation, and particularly describing the place to be searched, and the persons or things to be seized.
-</code></pre>
-I do not know how that could be unclear. My cellphone is my effect, and arguably, also a &quot;paper&quot;. Which SHALL NOT BE VIOLATED. But apparently, I&#x27;m too dumb to understand the sentence[1].<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Fourth_Amendment_to_the_United_States_Constitution#Border_search_exception" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Fourth_Amendment_to_the_United...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rtkwe</em>:</p>
-<blockquote>So the main argument is that in the time that was written and immediately afterwards we can look to see what they mean by that by how it was implemented. At the time it was understood that the government could and would search goods as they enter the country without warrants to enforce things like tariffs. I think that&#x27;s a fairly reasonable interpretation of the meaning. Where I think this goes wrong (and maybe deviates from history?) is the conflation of papers and other digital records now with physical goods, historically were people&#x27;s papers searched as they entered the country (beyond say looking through them to find hidden goods, I mean reading and examining letters and records)?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>alistairSH</em>:</p>
-<blockquote>But the 100 mile rule? That covers damn near everybody in the US (&gt;200 million, or 66%, give or take) subject to warrantless searches on the whim of whatever the police want?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>SoftTalker</em>:</p>
-<blockquote>It&#x27;s more than that, it&#x27;s being &quot;close&quot; to a border (you can argue if 100 miles is &quot;close&quot;) and not on a whim but reason to believe you recently crossed it.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Zak</em>:</p>
-<blockquote>&gt; <i>It is insane to me that judges consistently rule that the constitution doesn&#x27;t apply because there&#x27;s a &quot;border&quot; within 100 miles.</i><p>People keep misconstruing this.<p>The border search exemption only applies when someone is actually crossing a border, and it does grant broad authority to search whatever they&#x27;re carrying with them at the time. The authority to do border enforcement within a 100-mile zone around borders does not grant a broad authority to search. It does grant a <i>narrow</i> authority to do things like traffic checkpoints, but those don&#x27;t permit searches for anything smaller than a person without additional evidence.<p>I do think the ruling establishing the authority to run checkpoints other than actual border crossings was wrongly decided and harmful, but it&#x27;s not what&#x27;s at issue in this case.</blockquote>
-<p>↳ reply 3 — <em>ghusto</em>:</p>
-<blockquote>Do constitutional rights apply to non-citizens? I always thought the constitution of the USA was for USA citizens, but then I&#x27;m not from the USA and am watching all this from very far away.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>fsiefken</em>:</p>
-<blockquote>This happened to me last month in Halifax Canada, I wanted to board a transfer flight to Amsterdam, going through Boston. I was stopped as I had salts with me from a buddhist relic I couldn&#x27;t exactly identify. The machine said it contained a primary explosive (silver azide). I was ordered to give my access code to my iphone and 3 suspicious screenshots were found I made 2 years ago about the Iran&#x2F;Israel war. I said I&#x27;m interested in geo-politics and watched the news.
-I was barred from the US for life - it was said that it could have been much worse. When I wanted to go to the main airport hall a number of canadian police officers arrested me and drove me handcuffed to a cell. 
-I was asked if I wanted a lawyer and they arranged a phone call. The lawyer said I would spend to nights in a cell and then she would come to prepare my case and was strongly advised not to talk to people before that.
-I was released from my cell 7 hours later that evening after a thorough and friendly conversation with the canadian special police.
-I can understand that security don&#x27;t want to take any chances with people carrying supposed explosive powders on an airport, so the system was doing it&#x27;s protective job. That day there was a threat alert I heard later.
-A week later I heard from the person who gave me the relic (I was on retreat) that the border guard contacted them and said it was a false positive (what I suspected at the time, but I didn&#x27;t dare argue against the machine results).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>matheusmoreira</em>:</p>
-<blockquote>&gt; suspicious screenshots were found I made 2 years ago about the Iran&#x2F;Israel war<p>&gt; I was barred from the US for life<p>Getting banned for life due to wrongthink screenshots is pretty wild. No idea why screenshots would be suspicious.<p>&gt; I can understand that security don&#x27;t want to take any chances with people carrying supposed explosive powders on an airport, so the system was doing it&#x27;s protective job.<p>I&#x27;d understand rejecting your entry on that day but why would they make you <i>persona non grata</i> forever? That seems completely out of proportion.</blockquote>
-<p>↳ reply 2 — <em>dmos62</em>:</p>
-<blockquote>I commend your understanding. I would have been losing my mind with rage.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>petcat</em>:</p>
-<blockquote>Customs has always been able to search everything without a warrant or suspicion when crossing the border.  I guess this is saying that they can search the <i>digital</i> contents of physical devices&#x2F;media as well?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>otterley</em>:</p>
-<blockquote>Not everything. From the case itself:<p>&quot;To be sure, nonroutine searches, which are “more invasive
-searches, like strip searches, require reasonable suspicion.” Id. But we
-have held that “the label ‘non-routine’ should generally be reserved
-for intrusive border searches of the person (such as body-cavity
-searches or strip searches), not belongings.” United States v. Levy, 803
-F.3d 120, 123 n.3 (2d Cir. 2015) (emphasis added).&quot;</blockquote>
-<p>↳ reply 2 — <em>wrs</em>:</p>
-<blockquote>It says they can <i>manually</i> search them. According to this, the ruling explicitly doesn’t say if they can <i>digitally</i> search them.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>US Military had close call after using AI for hallucinated intelligence report</title>
-      <link>https://www.cnn.com/2026/09/18/politics/us-military-ai-false-intelligence-china-ship</link>
-      <guid isPermaLink="false">hn3-49757520</guid>
-      <pubDate>Fri, 18 Sep 2026 17:28:01 +0000</pubDate>
-      <description>420 points, 318 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.cnn.com/2026/09/18/politics/us-military-ai-false-intelligence-china-ship"><strong>→ Article</strong></a> <small>(cnn.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49757520">→ HN comments</a> &nbsp;·&nbsp; 420 points &nbsp;·&nbsp; 318 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>drtgh</em>:</p>
-<blockquote>&gt; relatively poorly understood technology<p>Poorly understood? how convenient...<p>LLMs are vectorial databases with losses that index statistically filled data, which uses a text interface to query such statistically filled data. The output is a string concatenation (statistically concatenated bit by bit).<p>When the LLMs are queried (prompted), you can get random mixed data as output, ERRORS, due to undesired indexes getting closer at one point while the string was being concatenated for the output, what affects the rest of the indexed content that will be concatenated.<p>It is intrinsic to this tech. The larger the context, the greater the probability of get mixed data. And if the provider lowers the precision of those indexes -in order to decrease hardware resources and energy consumption- such probability increases to the point where those errors are granted.<p>Even knowing that the queries can return wrong&#x2F;mixed data in the responses, errors, the companies developing this, decided to introduce a new product, that connects such LLMs outputs to the command console, latter connected to internet, raw &#x27;eval&#x27; running commands from such outputs witch obviously can contain whatever mixed random. Then we started to hear &quot;oh, it deleted my directory&quot;, etc, and it seems the next one will be &quot;a missile killed my wife&quot;, because it is a text concatenation engine with errors.<p>To name it &quot;hallucination&quot; is an euphemism... those are errors, and they are granted to happen at one moment. If they do not know this, then they ate too much marketing without doing their job, or it was a convenient contract for the pocket$ of someone.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>theptip</em>:</p>
-<blockquote>&gt; LLMs are vectorial databases<p>You use a bunch of technical-sounding words here to make it sound like you understand. But to be clear, nobody understands why the evolved weights of a NN make the decisions that they do.<p>Almost nothing is understood about the actual representations used for nontrivial concepts, decision algorithms, etc.<p>If you look at the field of mechanistic interpretability, compared to “GOFAI” like learned decision trees, an LLM is completely opaque.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>semiquaver</em>:</p>
-<blockquote>I’m shocked how many otherwise well-informed people don’t understand or agree with this very fundamental fact of <i>just</i> how little we actually understand about why LLMs work as well as they do. They figure “it’s science, of course there’s math and theory behind it.”<p>AI research is almost as purely empirical as the gradient descent loops its practitioners use to optimize their models. “Why” anything at all works is barely an afterthought.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>dwattttt</em>:</p>
-<blockquote>&gt; as purely empirical as the gradient descent loops<p>Are you suggesting that gradient descent is an empirically found and not understood technique? It was originally proposed by Cauchy in 1847, its properties are very well understood.<p>You might be referring to properties of the domains its being applied to.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>margalabargala</em>:</p>
-<blockquote>I agree with most of your comment, but...<p>&gt; To name it &quot;hallucination&quot; is an euphemism... those are errors<p>I find this and other &quot;don&#x27;t anthropomorphize the computer&quot; statements incredibly unconvincing.<p>People develop terms for things and language has always contained overloaded or &quot;literally inaccurate&quot; terms.<p>An LLM can have &quot;hallucinations&quot; in the same way a modern computer program can have &quot;bugs&quot;.</blockquote>
-<p>↳ reply 3 — <em>pftburger</em>:</p>
-<blockquote>It&#x27;s not the first time we are encountering this issue. We&#x27;ve seen it in other autonomous systems. Trains are an older one, cars are a newer one. 
-As you move out of the lower levels, the operator has a tendency to assume the system is increasingly more capable than it is. In trains, its so bad that they generate fake signals that the operator needs to respond to within a timeframe. I&#x27;d love to see this with implementations of other critical autonomous systems like this. Occasionally inject known errors into the system and expect the operator to catch them. If they don&#x27;t, well... If it was a train driver I think we would fire them. If its an intelligence operative ordering a strike? :shrugs wearliy:</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jameson</em>:</p>
-<blockquote>It reminds me of the an Soviet officer who disobeyed early warning system&#x27;s alert that US had launched four ICBMs and did not immediately relay the issue up to the chain of command.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Stanislav_Petrov" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Stanislav_Petrov</a><p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;1983_Soviet_nuclear_false_alarm_incident" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;1983_Soviet_nuclear_false_alar...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jordanb</em>:</p>
-<blockquote>Also 99 luftbaloons which was about a kid releasing some party balloons in Germany which confuses the EWS and causes WWIII.<p>Or the <i>War Games</i> movie and the Norad training mistake that inspired it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nrr</em>:</p>
-<blockquote>Pedantic clarification: The (original German) song itself didn&#x27;t mention an actor in particular who had released the balloons, just that there were 99 balloons that flew to the horizon and jet fighters being scrambled in response. The epilogue tells of the consequent whole bunch of lasting destruction as the narrator talks about their patrols.<p>The English translation &quot;99 Red Balloons&quot; is considerably different as far as the details go.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>JumpCrisscross</em>:</p>
-<blockquote>It reminds me of laughing at the stupid old Europeans starting a war because an Austrian numpty got himself shot in Serbia. Like, we almost sunk a Chinese ship because an AI thought the sour candies they were transporting were nukes is in the same category of shitheadedness. (I&#x27;m embellishing–we don&#x27;t know what was on board.)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jawiggins</em>:</p>
-<blockquote>&gt; The US military swung into action with plans to intercept the vessel, ... Military planes were in the air<p>A few months ago I listened to a talk a General (Admiral?) gave at CSIS where he said that the US purposefully announced their drone-hellscape plan for a Taiwanese invasion in order to force the PLA to reconsider their options&#x2F;success-likelihood.  I wonder if something similar could be coming of this reporting, on the face it looks like an embarrassing fumble, but it implies:<p>a) the US is able to, and regularly is, tracking and analyzing the manifests of ships between Iran and China.<p>b) the US is ready and willing to interdict and board vessels even from the PLA.<p>That these facts are now public might deter the Chinese leadership from attempting to share nuclear tech with Iran or other countries in the future.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>There's no point at which turning your brain off will work</title>
-      <link>https://danluu.com/brain-off/</link>
-      <guid isPermaLink="false">hn3-49757178</guid>
-      <pubDate>Fri, 18 Sep 2026 17:02:52 +0000</pubDate>
-      <description>177 points, 150 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://danluu.com/brain-off/"><strong>→ Article</strong></a> <small>(danluu.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49757178">→ HN comments</a> &nbsp;·&nbsp; 177 points &nbsp;·&nbsp; 150 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Arubis</em>:</p>
-<blockquote>Yes, and: the most important time to use your brain isn&#x27;t in the loop.<p>That _is_ valuable, and will remain so, but the temptation to turn it off is there because the loop is good and getting better at what it does. Once you&#x27;re in the loop, with the rare high-value exception of catching total mistakes nad redirecting, you&#x27;re mostly choosing between similar-yet-reasonable options. This isn&#x27;t so much right-vs-wrong as relativistic optimization. Letting the loop do the work will get you a mediocre result quickly, and that&#x27;s usually fine.<p>The most important time to use your brain is _before the prompt_. Once you engage with your LLM and agent, you start biasing yourself, and its reasonable suggestions constrain your visibility into other options, other worlds.<p>First, use your brain. Then write the prompt.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>xendo</em>:</p>
-<blockquote>I don&#x27;t agree. I&#x27;m recently a huge believer in Programming as Theory Building. The software creation itself is the part that makes you understand what you are building. It&#x27;s impossible to understand things before you start building them, initial prompt can help you explore, but the idea that after that you can lean back is ridiculous. Most or maybe even all successful software projects are still heavily relying on the best software engineers. That&#x27;s why anthropic and others are still hiring SDEs.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bunderbunder</em>:</p>
-<blockquote>I somewhat agree with your point, but also I find that the major agent harnesses work really hard at tricking you into leaning back and not letting a proper understanding of what you are building to develop.<p>This isn&#x27;t a new problem. I had it when working with outsource developers, too. In both cases, it seemed that just sitting back and describing what I wanted in plain English prevented me from properly wrapping my head around the problem. Which then meant I failed to develop the insight needed to find the really good improvements. Those usually consisted of identifying and removing the bits that were making things worse.[1] It&#x27;s incredibly difficult for me to think of anything other than just adding more stuff on top of what&#x27;s already there if I&#x27;m not getting my own hands dirty.<p>So I&#x27;ve been moving away from plan mode and letting the spin away on building large chunks, and back toward working in small increments and typing out the important code with my own hands. That seems to be the sweet spot. I&#x27;m still getting a productivity boost because there&#x27;s more than enough boilerplate and trivial function definitions to farm out. (Easy prompt, too: &quot;Implement `someFunctionStub`.&quot;) But I&#x27;m also not letting Plan Mode drag me back into the waterfall development pit of insanity.<p>1: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;No_Silver_Bullet" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;No_Silver_Bullet</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>shelled</em>:</p>
-<blockquote>That temptation is akin to giving in to maladaptive (day)dreaming. The problem is the dreaming, the noticing, the getting annoyed, and the feeling drained - all of these are happening at one place - being done by one entity - your brain. So how to train it to not to do that? Well, again, that same brain has to do it. What I am saying here is - our brains are extremely good at getting &quot;used to&quot;. Because it &quot;feels good&quot; to the brain - at least in that instant. So any work that&#x27;s happening on its own, feels good for most people. More the time passed in that &quot;got&#x2F;getting used to&quot; state unchecked, more difficult it is to try and bring it back to not getting used to. Or control it, in an attempt to strike a fine balance.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Arainach</em>:</p>
-<blockquote>It doesn&#x27;t help that this is being forced from above.  I agree you can&#x27;t turn off your brain, but any time I argue that AI isn&#x27;t the right tool for something management gets angry.  There is a constant push to fully automate things, regardless of what those things are.<p>Even if I agree that you have to use your brain, when my boss is literally telling me to stop questioning whether AI automation is the right answer in team meetings&#x2F;chats I&#x27;m just going to shut up and give them what they want.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bunderbunder</em>:</p>
-<blockquote>Yup. This is coming from the top, and it&#x27;s very much because the AI sales pitch that executives bought into is, &quot;Automation can help you reduce head count.&quot;<p>That means that they really don&#x27;t care if, right there in the moment, just doing the job is faster and better. What they care about is that the actual work is being done by humans, and that&#x27;s out of line with their grand vision of getting rid of humans.</blockquote>
-<p>↳ reply 2 — <em>CaptainTaboo</em>:</p>
-<blockquote>My company is doing this, too. It’s the reason I’m submitting my resignation notice next week.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>kixiQu</em>:</p>
-<blockquote>Even pre-LLM: I&#x27;ve found a lot of colleagues (mystifyingly to me, both seniors and juniors) who really want to be able to turn their brain off when doing investigations into complicated cross-system behavior (feedback loops abound), and they don&#x27;t like hearing that it can&#x27;t be collapsed into a runbook. If a drinking bird (<a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Drinking_bird" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Drinking_bird</a>) on an Enter key could do it, I could rig something up so I wouldn&#x27;t need you!</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Photon-Emission-Guided Laser Fault Injection Enables RP2350 Secure Debug</title>
-      <link>https://donjon.ledger.com/blog/rp2350-secure-debug-laser-fault-injection/</link>
-      <guid isPermaLink="false">hn3-49757050</guid>
-      <pubDate>Fri, 18 Sep 2026 16:54:18 +0000</pubDate>
-      <description>167 points, 61 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://donjon.ledger.com/blog/rp2350-secure-debug-laser-fault-injection/"><strong>→ Article</strong></a> <small>(donjon.ledger.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49757050">→ HN comments</a> &nbsp;·&nbsp; 167 points &nbsp;·&nbsp; 61 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>BitBangingBytes</em>:</p>
-<blockquote>I appreciate all the details they provide in the post. The $250k in lab gear is useful when initially discovering, exploiting and documenting attacks like this.<p>Definitely doable in a home lab for under $25k in equipment, likely under $10k.<p>Same as my replicating Colin O’Flynn’s BAM BAM attack on a MPC5566 chip, he used a ChipShouter ($5,000) and I used a PicoEMP ($50).<p><a href="https:&#x2F;&#x2F;youtu.be&#x2F;URmI1VVilek" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;URmI1VVilek</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>throwaway81523</em>:</p>
-<blockquote>Nice, thanks.  I had wondered whether the $250K in lab gear is something that a serious HW security lab would already have on hand, as opposed to specialized expenditure for just this attack.  I mean I rode in a $250K(?) motor vehicle a few days ago (the #2 SF Muni bus towards the Marina) but I didn&#x27;t have to spend a lot to ride it, since it was already deployed.  Nobody had to go out and buy it.</blockquote>
-<p>↳ reply 2 — <em>SV_BubbleTime</em>:</p>
-<blockquote>I have an application on an SPC58 that I really want to know more about. But unfortunately; it’s a dual core with lockstep. So if it could be done; I think that automatically double-pluses the budget.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>byb</em>:</p>
-<blockquote>The RP2350&#x27;s secure enclave made it particularly attractive for use as a Yubikey alternative.<p>There will always be an arms race between safe-crackers and safe-builders. Presumably the lessons learned will help make the next generation tougher to break into.</blockquote>
-<blockquote>
-<p>↳ reply — <em>octoberfranklin</em>:</p>
-<blockquote><i>There will always be an arms race between safe-crackers and safe-builders.</i><p>This is dismissive and glib.  And it&#x27;s the wrong lesson.<p>You wouldn&#x27;t say this about symmetric cryptography.  AES-encrypted ciphertexts from 25 years ago are still secure today, and nothing on the horizon is likely to change that.  No arms race.<p>The &quot;arms race&quot; exists because <i>the security model for trusted hardware is intrinsically flawed</i>.  If the attacker has physical posession of the device, your security is transient and at the mercy of the arms race.  So <i>stop doing this</i>!  Trusted hardware also has extremely negative externalities on the whole computing ecosystem.<p>(*) or 45 years, if you exclude cryptosystems (56bit single-DES) used only because of silly export laws.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jacquesm</em>:</p>
-<blockquote>That&#x27;s reminiscent of when we first found out that if you opened up dram chips you could use them for imaging. Of course the scale at which this is done is extremely impressive.</blockquote>
-<blockquote>
-<p>↳ reply — <em>xattt</em>:</p>
-<blockquote>For the curious: <a href="https:&#x2F;&#x2F;hackaday.com&#x2F;2014&#x2F;04&#x2F;05&#x2F;taking-pictures-with-a-dram-chip&#x2F;" rel="nofollow">https:&#x2F;&#x2F;hackaday.com&#x2F;2014&#x2F;04&#x2F;05&#x2F;taking-pictures-with-a-dram-...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jacquesm</em>:</p>
-<blockquote>A lot earlier than that.<p><a href="https:&#x2F;&#x2F;www.cs.uaf.edu&#x2F;2007&#x2F;fall&#x2F;cs441&#x2F;support&#x2F;dram_sensor_1984_whitehead.pdf" rel="nofollow">https:&#x2F;&#x2F;www.cs.uaf.edu&#x2F;2007&#x2F;fall&#x2F;cs441&#x2F;support&#x2F;dram_sensor_1...</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>buescher</em>:</p>
-<blockquote>Even earlier than that.  The cromemco camera and similar hobbyist projects dated from the mid-70s.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>We made Playwright 2x faster and 80% more token efficient</title>
-      <link>https://github.com/browserbase/stagehand</link>
-      <guid isPermaLink="false">hn3-49756671</guid>
-      <pubDate>Fri, 18 Sep 2026 16:25:23 +0000</pubDate>
-      <description>125 points, 34 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/browserbase/stagehand"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49756671">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 34 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>wittydeveloper</em>:</p>
-<blockquote>We built Stagehand 2 years ago (24k stars and 4M monthly npm downloads) and recently fixed its biggest flaw: round-trip latency.<p>Every action performed requires a round trip between your script and the browser (short when running locally but increased when running in the cloud). We also saw multiple posts complaining about the eager token appetite of Playwright MCP.<p>For this reason, we rebuilt Stagehand from the ground up and shipped v4, where Stagehand controls the browser from an extension automatically loaded upon your browser startup.<p>Stagehand v4 comes with batch command support, dedicated token-efficient methods `act()` and `extract()`, and a brand new architecture making it 2x faster than Playwright and 80% more token efficient.<p>You can see for yourself by looking at our benchmarks, comparing its performance across a dozen models (frontier and open weights) and tools (Codex, Claude Code, and more): <a href="https:&#x2F;&#x2F;www.stagehand.dev&#x2F;evals" rel="nofollow">https:&#x2F;&#x2F;www.stagehand.dev&#x2F;evals</a><p>Ask me anything!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Phemist</em>:</p>
-<blockquote>I&#x27;ve been using Playwright a lot and also hit on the friction between playwright&#x27;s web testing scope (e.g. no 1st class support for &quot;muted&quot; start-up of browsers, jeez) and usage for task automation all the time. This looks very interesting!<p>How does stagehand deal with complex http&#x2F;websocket request&#x2F;response and or console message filtering? <a href="https:&#x2F;&#x2F;docs.stagehand.dev&#x2F;v4&#x2F;reference&#x2F;page#on" rel="nofollow">https:&#x2F;&#x2F;docs.stagehand.dev&#x2F;v4&#x2F;reference&#x2F;page#on</a> E.g. I would like a script that tracks all communication that matches a specific filter (implemented as an anonymous function&#x2F;lambda). This filter may look at patterns in the url, but sometimes needs to do a deeper inspection of also the payload (if the url does not carry enough information in itself).<p>I&#x27;ve found playwright to be prohibitively slow at this, not only because of the round-trip latency, but just the simple fact that it needs to pump the complete response to my filter function, which then proceeds to read only a couple of bytes to make the filtering decision. There are a lot of cases where I am only interested in around 1% of the total requests processed by the filter, which makes this behaviour massively wasteful.<p>Ideally I would like to run this filter in the browser as well. It currently simply searches the first 100 bytes (usually enough) for a given substring, but a more flexible filter would be good, perhaps even a filter func that is eval&#x27;ed in the extension? From the documentation, I don&#x27;t see this use-case is currently supported. Are there any plans along these lines? :)</blockquote>
-<p>↳ reply 2 — <em>bradleyy</em>:</p>
-<blockquote>I&#x27;m using playwright to do diagnosis on customer sites, and I&#x27;m wondering some things:<p>1) Does it have full Chrome Devtools support? Like, able to diagnose where a fetch() came from, what script sets a cookie?
-2) How hard would it be to set up in an AWS Lambda (I can run Playwright without needing to run a container, which saves a lot of startup time&#x2F;cost)?<p>Always interesting to see forward work on these kinds of tools which get used so foundationally billions of times a day.</blockquote>
-<p>↳ reply 3 — <em>squidproquo</em>:</p>
-<blockquote>How does the “Token efficiency Hybrid accessibility-tree trimming” work?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>MiguelG719</em>:</p>
-<blockquote>We also just added Jev support <a href="https:&#x2F;&#x2F;github.com&#x2F;browserbase&#x2F;stagehand&#x2F;pull&#x2F;2952" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;browserbase&#x2F;stagehand&#x2F;pull&#x2F;2952</a><p>On the act&#x2F;extract&#x2F;observe evals it shows promising results being extremely efficient<p>- act: 4.3x faster, 97% fewer LLM calls. Pass rate: 97.5% -&gt; 98.3%.
-- heldout: 4.1x faster, 78% fewer LLM calls. Pass rate: 87.5% -&gt; 97.5%.
-- observe: 11.1x faster, 69% fewer LLM calls. Pass rate: 75.0% -&gt; 83.3%.
-- extract: 8.7x faster, 75% fewer LLM calls. Pass rate unchanged at 92%.<p>cost effectively 0</blockquote>
-<p><strong>Top #3</strong> — <em>ulrikrasmussen</em>:</p>
-<blockquote>Looks very useful, and I like the caching idea which I think makes it interesting for self-healing CI tests.<p>How does it determine when a cached act() fails and has to be re-evaluated by the LLM? And in particular, if the cache is saved in the cloud (Browserbase?), won&#x27;t this lead to a lot of cache churn if used in CI pipelines where different versions of the site are running against the same cache?<p>Also, is there a technical reason why the cache couldn&#x27;t just be a local file that&#x27;s checked in along with the script but must be provided by Browserbase? If it was, devs could heal failing tests locally using LLM calls, while CI runs entirely deterministically.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>US Treasuries Have Become Unappetizing for Foreign Central Banks and Governments</title>
-      <link>https://wolfstreet.com/2026/09/17/treasuries-have-become-badly-unappetizing-for-foreign-central-banks-governments/</link>
-      <guid isPermaLink="false">hn3-49756171</guid>
-      <pubDate>Fri, 18 Sep 2026 15:50:29 +0000</pubDate>
-      <description>139 points, 126 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://wolfstreet.com/2026/09/17/treasuries-have-become-badly-unappetizing-for-foreign-central-banks-governments/"><strong>→ Article</strong></a> <small>(wolfstreet.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49756171">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 126 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>1over137</em>:</p>
-<blockquote>US everything has become unappetizing for everyone outside the US.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rpdillon</em>:</p>
-<blockquote>And many of us inside the US as well, tbf.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>cyanydeez</em>:</p>
-<blockquote>We&#x27;re basically in some rendition of planet serenity, where 20% of the population absolutely is eating this shit up.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jopsen</em>:</p>
-<blockquote>Yes, but if you happen to have a few million spare dollars laying around that have become unappetizing to you, it won&#x27;t be hard to find someone who thinks they are appetizing :)</blockquote>
-<p>↳ reply 3 — <em>toomuchtodo</em>:</p>
-<blockquote>Exorbitant privilege is a gift that lasts only as long as the trust does.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Exorbitant_privilege" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Exorbitant_privilege</a><p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47635834">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47635834</a> covers this succinctly:<p>&gt; America was in practice running an empire that collected tribute from the rest of planet earth in exchange for entries in a database denominated in a currency they controlled and that was accepted everywhere. Really the only way it could go wrong is putting it under the control of someone who doesn&#x27;t understand the kayfabe...<p>from<p><i>Gold overtakes U.S. Treasuries as the largest foreign reserve asset</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47635056">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47635056</a> - April 2026 (250 comments)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Arubis</em>:</p>
-<blockquote>Dedollarizing the world economy has more net losers than the US (though that&#x27;s the obvious one).<p>It&#x27;s not without its benefits -- over the last couple decade, the US has found ways to weaponize access to USD, so if you&#x27;re not a fan of having a country other than your own able to effectively regulate or sanction you and your business, there&#x27;s some niceties here.<p>Being able to trade and invest in a stable, highly liquid, easily converted, low risk currency was a net win for most of the world for about half a century. There isn&#x27;t an obvious replacement, so we&#x27;ll just see more friction.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nostrademons</em>:</p>
-<blockquote>It&#x27;s kind of a prelude to a Thucydides Trap.<p>The problem with replacing the world reserve currency with something else is that nobody can agree on what that something else should be.  Expect to see a lot of jockeying for power as people realize the U.S. isn&#x27;t the world hegemon anymore.  Jockeying, on a state level, usually means war.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>gumby</em>:</p>
-<blockquote>&gt; The problem with replacing the world reserve currency with something else is that nobody can agree on what that something else should be.<p>It isn’t a decision made by some sort of vote, or done overnight. It’s an emergent phenomenon.  Sterling had already lost the role de facto by the time Bretton Woods blessed the role of the dollar de jure.<p>Whatever replaces the dollar will be messy because it won’t have the set of systems the dollar had at its peak (large, highly liquid markets; complete convertibility; bonds backed by huge government spending coupled with huge GDP).<p>There is really only one alternative and it’s not a great one.  It’s not China, as the government is afraid of letting go of control (thus no complete convertibility) and markets lack credibility which impairs liquidity.<p>The only other opening is unfortunately the Euro.  Large, liquid markets yes in aggregate but national markets (e.g. France, Germany) are not unified. They weren’t in the US when the dollar became the reserve currency either, but times have changed.  The bond markets are likewise not unified, so risk is higher. But they do have complete liquidity, which is the most important of all after GDP size.<p>So there will be chipping away at the dollar for years.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>JumpCrisscross</em>:</p>
-<blockquote>Nothing this article claims or shows de-dollarisation other than the editorialized headline.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>kelnos</em>:</p>
-<blockquote>Looking at the graphs in the article, I don&#x27;t think the overall picture supports the headline...</blockquote>
-<blockquote>
-<p>↳ reply — <em>thechao</em>:</p>
-<blockquote>Yeah. The headline is utterly divorced from the reality of the charts?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>iamnothere</em>:</p>
-<blockquote>How so? Foreign official holdings are flat since 2012.<p>The headline specifically refers to central bank and government holdings.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>JumpCrisscross</em>:</p>
-<blockquote>The only real dumping has happened from Japan, which is fighting to defend the yen, and China, which is obviously repositioning though to a way lesser degree than a nation dumping an adversary’s bonds would.<p>The story is just another way of saying we’re issuing more debt. Central banks aren’t reducing exposure. They just didn’t increase them with our own finances, which makes sense, our finances don’t increase their reserve requirements.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Two parallel neural ectoderm progenitors contribute to the developing brain</title>
-      <link>https://www.newscientist.com/article/2589739-our-brain-evolved-from-two-primitive-nervous-systems-that-merged/</link>
-      <guid isPermaLink="false">hn3-49755533</guid>
-      <pubDate>Fri, 18 Sep 2026 15:12:07 +0000</pubDate>
-      <description>125 points, 69 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.newscientist.com/article/2589739-our-brain-evolved-from-two-primitive-nervous-systems-that-merged/"><strong>→ Article</strong></a> <small>(newscientist.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49755533">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 69 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>rolph</em>:</p>
-<blockquote>this is not the claim made by the researchers generating this paper.<p>this is thier claim :<p>“We’ve shown for the first time that the front of the brain arises from a totally different progenitor cell than the back of the brain,” said Kyle Loh, PhD, associate professor of developmental biology. “Our discovery means that we can now grow neurons from the back of the brain, the hindbrain, in a petri dish and study their functions.”<p>in translation, the two regions of the brain develop from different expressive states of the progenitor populations.  the problem was difficulty culturing cerebellar neurons, due to a unrecognized disparity in genetic expressivity.  the neurons were being manipulated as if they were running the same config.sys, and that was not the case.  this work elucidates that fact and recognizes it as essential, to invitro culture of &quot;hindbrain&quot; neurons.<p>The findings were published in Nature Neuroscience Sept. 18. Loh is the senior author. Graduate students Carolyn Dundes and Rayyan Jokhai are co-first authors of the research.<p><a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41593-026-02433-7" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41593-026-02433-7</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>afpx</em>:</p>
-<blockquote>Does this help explain why the circuits that control emotional crying, which rely on connections that span the anterior, posterior and midbrain, develop?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jschveibinz</em>:</p>
-<blockquote>For those interested in brain evolution and practical neuroscience&#x2F;human behavior:<p>Carl Sagan&#x27;s books &quot;Broca&#x27;s Brain&quot; and &quot;The Dragons of Eden&quot; from the 70&#x27;s-80&#x27;s are good initial reads on brain composition and evolution.  The Sapolsky lectures and books are also great resources.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>esperent</em>:</p>
-<blockquote>I&#x27;d imagine the science from the 80s is very dated now, no matter how good the book is.</blockquote>
-<p>↳ reply 2 — <em>adammarples</em>:</p>
-<blockquote>The comments in the other post on this topic had an article which slammed Sagan&#x27;s book for being outdated and espousing debunked triune Brian theory. The article was called &quot;your brain is not an onion with a lizard inside&quot;.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Jimmc414</em>:</p>
-<blockquote>Original paper:<p><a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41593-026-02433-7" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41593-026-02433-7</a> (paywall)<p>New Scientist Article:<p><a href="https:&#x2F;&#x2F;www.newscientist.com&#x2F;article&#x2F;2589739-our-brain-evolved-from-two-primitive-nervous-systems-that-merged&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.newscientist.com&#x2F;article&#x2F;2589739-our-brain-evolv...</a><p><a href="https:&#x2F;&#x2F;archive.is&#x2F;1CFX9" rel="nofollow">https:&#x2F;&#x2F;archive.is&#x2F;1CFX9</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>dang</em>:</p>
-<blockquote>Thanks! I&#x27;ve changed the link above to <a href="https:&#x2F;&#x2F;www.newscientist.com&#x2F;article&#x2F;2589739-our-brain-evolved-from-two-primitive-nervous-systems-that-merged&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.newscientist.com&#x2F;article&#x2F;2589739-our-brain-evolv...</a> from <a href="https:&#x2F;&#x2F;medicalxpress.com&#x2F;news&#x2F;2026-09-human-brain.html" rel="nofollow">https:&#x2F;&#x2F;medicalxpress.com&#x2F;news&#x2F;2026-09-human-brain.html</a>.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
