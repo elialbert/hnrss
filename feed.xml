@@ -4,7 +4,480 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 23 Sep 2026 00:14:12 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 23 Sep 2026 05:46:40 +0000</lastBuildDate>
+    <item>
+      <title>Microsoft killed FoxPro in 2007. Anyway, here's FoxPro revived</title>
+      <link>https://foxscript.org/</link>
+      <guid isPermaLink="false">hn3-49808023</guid>
+      <pubDate>Tue, 22 Sep 2026 21:00:30 +0000</pubDate>
+      <description>254 points, 155 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://foxscript.org/"><strong>→ Article</strong></a> <small>(foxscript.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49808023">→ HN comments</a> &nbsp;·&nbsp; 254 points &nbsp;·&nbsp; 155 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ksec</em>:</p>
+<blockquote>I know there are still a few niche industry that has an industry standard program written in Visual FoxPro, and I remember as pre COVID 2019 they were still using it. ( Edit: I just called and asked, still using it as of 2026 )<p>Niche but no small business, commodity with over $400M USD annual revenue, the industry together that is easily $2B+.<p>If it is not broke, don&#x27;t fix it. And there are industry that is extremely conservative in anything software, they will just keep it running for as long as they could.<p>I used to be sad that we don&#x27;t have something better to replace these antique software. Now I have come to appreciate it, mostly because newer software haven&#x27;t show they have manage to add value in the slightest. And most of the time they simply don&#x27;t work as well.<p>Delphi, Visual FoxPro, Visual Basic, Flash. I used to think one day we will have something that is not only faster, easier and scalable replacement of those. Instead everything went more technical, more complex, enterprisy and non-user friendly.<p>And to the Author of the project. Thank You for making it.</blockquote>
+<blockquote>
+<p>↳ reply — <em>andsoitis</em>:</p>
+<blockquote>&gt; Delphi<p>Delphi is alive. <a href="https:&#x2F;&#x2F;www.embarcadero.com&#x2F;products&#x2F;delphi" rel="nofollow">https:&#x2F;&#x2F;www.embarcadero.com&#x2F;products&#x2F;delphi</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mikestew</em>:</p>
+<blockquote>Here’s my problem with reviving FoxPro in any form: there’s a huge security hole in the Database Container (DBC) design. For DBCs to be useful, they must be read&#x2F;write to all users (there is no permissions scheme). DBCs have stored procedures that can run any FoxPro code, including Win32 calls made from the FoxPro runtime. The stored procedures are stored as plain text in a “memo” field. Do you see where this is going? With a little technical knowledge, one can modify that INSERT trigger to whatever you like. EDIT: as the DB is just files in the file system, modifications can be made using a text editor, bypassing any checks in the FoxPro runtime. FoxPro just executes what it finds in there.<p>My recommendation is to get rid of the DBF&#x2F;DBC files and move to a SQL DB of some flavor ASAP. If you have the source code, use ODBC or OLE DB to point to a server.<p>Source: filed that bug over 20 years ago when I worked on the Fox team. No, it wasn’t going to get fixed without rewriting large parts of how the DB engine worked.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>EvanAnderson</em>:</p>
+<blockquote>One of the Ohio Secretary of State&#x27;s &quot;certified&quot; (wrong terminology, but you get the idea) voter registration databases used by various county Boards of Elections is written in VFP. The software maintains the list of voters, their addresses, and scans of signatures.<p>Recently it had TOTP &#x27;MFA&#x27; added to comply with a Secretary of State mandate.<p>Anyone who uses the software can just open the database files directly. They&#x27;re just DBF files in a shared folder on a file server. All the users have to have read&#x2F;write access to the files or the application won&#x27;t work.<p>I hang my head.</blockquote>
+<p>↳ reply 2 — <em>userbinator</em>:</p>
+<blockquote><i>there is no permissions scheme</i><p>If you already have full access by design, then there&#x27;s no &quot;huge security hole&quot; either.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>progmetaldev</em>:</p>
+<blockquote>I worked with a physician&#x27;s office in 2006, and the lead physician had cobbled together a system for patient tracking using Visual FoxPro. It was a monstrosity, and using it over a network drive gave all sorts of file locks and issues with multiple people changing the same record (usually the physician and front of house staff when checking the patient out).<p>I finally got the physician to switch to a proper client&#x2F;server architecture using .NET WinForms and ASP.NET RPC calls. All issues went away, and I was even able to allow staff members to edit the interface to set what mattered to them most at the top of the application, by building the lab testing form in XML so they could move the X&#x2F;Y coordinates to where they wanted them. It wasn&#x27;t even a feature I had thought of, just a physician looking through the technology and figuring out how it worked (luckily the business and security logic were on the server, so a bad actor could only have destroyed their own local copy of the app).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nradov</em>:</p>
+<blockquote>When networked PCs and rapid application development platforms became popular there was a &quot;Cambrian explosion&quot; of custom electronic health record and practice management applications built by doctor hackers who knew exactly what they wanted, and had just barely enough technical skill to sort of make it partially work. Those have gradually died off because commercial products kept improving, and the cost of complying with security and interoperability requirements kept escalating. But I predict that the cycle will now repeat because the combination of AI coding tools plus headless EHR platforms (built in security, storage, and APIs) has made it easier to build a custom EHR that actually works.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>wjholden</em>:</p>
+<blockquote>Yes, I am seeing exactly this at my own workplace. Two things have happened close together: low code and LLMs. I don&#x27;t personally like using low code solutions (such as PowerBI and Power Automate), but for many knowledge workers this is all they have. Now you can just ask your favorite LLM how to do stuff and it can help you. It&#x27;s not exactly vibe coding because these people really understand what they have and what they want, they just don&#x27;t know the syntax to get there.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ASalazarMX</em>:</p>
+<blockquote>DBase&#x2F;Fox Pro were born when local networks weren&#x27;t common, it excelled as a single-user batteries-included IDE. Now that you mention this, I understand why it couldn&#x27;t work these days as it is.<p>I also think it won&#x27;t be that hard to make it multiuser, that&#x27;s a long-ago solved problem these days.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>LLM Ass Bench</title>
+      <link>https://www.assbench.com/</link>
+      <guid isPermaLink="false">hn3-49807688</guid>
+      <pubDate>Tue, 22 Sep 2026 20:34:19 +0000</pubDate>
+      <description>147 points, 43 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.assbench.com/"><strong>→ Article</strong></a> <small>(assbench.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49807688">→ HN comments</a> &nbsp;·&nbsp; 147 points &nbsp;·&nbsp; 43 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>drywater2</em>:</p>
+<blockquote>Finally, I was getting tired of seeing pelicans on a bike.</blockquote>
+<blockquote>
+<p>↳ reply — <em>schainks</em>:</p>
+<blockquote>Up next, Pelican ass-bench!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>killingtime74</em>:</p>
+<blockquote>Why is this flagged? Isnt the readership adults? (Do children want to read these dry articles on tech?)</blockquote>
+<p><strong>Top #3</strong> — <em>athrowaway3z</em>:</p>
+<blockquote>6 months from now we&#x27;ll be discussing if model training is assmaxxing.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Pentagon says overreliance on AI contributed to missile strike on Iran school</title>
+      <link>https://www.bloomberg.com/graphics/2026-iran-school-attack/</link>
+      <guid isPermaLink="false">hn3-49806430</guid>
+      <pubDate>Tue, 22 Sep 2026 19:03:38 +0000</pubDate>
+      <description>542 points, 264 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bloomberg.com/graphics/2026-iran-school-attack/"><strong>→ Article</strong></a> <small>(bloomberg.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49806430">→ HN comments</a> &nbsp;·&nbsp; 542 points &nbsp;·&nbsp; 264 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>legitster</em>:</p>
+<blockquote>&gt; It found the U.S. “failed in its obligation to do everything feasible to verify” that the school was a military objective and that the failure “went beyond mere negligence.” The report said the United States “directed the strikes at the building of the school while being aware of a substantial risk of striking a civilian object and acting recklessly as regards the possibility that this would happen.”<p>Reading the details, &quot;AI&quot; doesn&#x27;t really seem like the culprit -it&#x27;s a scapegoat.<p>The intelligence that it was no longer a military target never entered the target database, the team that was responsible for vetting the target list was gutted, and said team was never even consulted.<p>The White House wanted 1000 targets and pulled from their database without any due diligence. Whether it was an AI call or an SQL query - this was from pure human maliciousness and incompetence.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>oooyay</em>:</p>
+<blockquote>I&#x27;m not sure if it was any kind of official rule, but I worked at times in a JTAC capacity for troops in contact. I mention the last bit because it&#x27;s very high stakes where seconds and minutes count a great deal more than when you do coordinated tactical strikes against strategic objectives like weapons caches. When I did that kind of work we had to have three eyes-on forms of contact. Often that was the calling troops, the observer (like an Air officer), and an air asset like a drone. They all had to independently describe the target, its orientation, and surrounding activity.<p>However you sourced your target is irrelevant to the activity at hand. When I first heard of this news I knew immediately someone skipped target verification or that it was simply no longer a policy of the DOD.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>somenameforme</em>:</p>
+<blockquote>Famously, the last &#x27;enemy&#x27; we killed in Afghanistan, alongside the 7 children and others surrounding him, was somebody who was working for a US aid organization. [1] A drone operator saw him putting bottles of water into his trunk, and somehow thought they were bombs, so they tracked him for 8 hours, then killed him and his family.<p>[1] - <a href="https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;world-us-canada-58604655" rel="nofollow">https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;world-us-canada-58604655</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>stult</em>:</p>
+<blockquote>This happened after I stopped working for the DOD, but I am 99% sure the program in question during this incident was something I worked on. It was effectively an anomaly detection system for identifying any weird behaviors detectable in WAMI (wide area motion imagery, which is high resolution, low framerate drone video data that covers a large geographic area). As an example from the unclassified sample project they asked us to do as part of the bidding process, our code flagged a car doing donuts in a parking lot (the sample data was just from a random US city on a random day because this was an unclassified open bidding process). The system was not and never was intended to be a &quot;terrorist&quot; detection system. The idea was always to flag potentially interesting events for a human analyst to follow up on. The disconnect it took for someone to blindly trust the program as a target acquisition system boggles my mind. Someone doing donuts in a parking lot should not be automatically targeted with hellfire missiles, yet in practice that is how they were using the tool. I still lose sleep over it.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>xlayn</em>:</p>
+<blockquote>Now, ask yourself if you want AI taking decisions around your life... it will pull numbers... someone will have a &quot;goal&quot; of 1000 &quot;hits&quot; and there you go, 2-3 months in jail working to check what went wrong...<p>But don&#x27;t worry, the other P AI system will ensure that the first one doesn&#x27;t do mistakes...</blockquote>
+<p>↳ reply 3 — <em>seizethecheese</em>:</p>
+<blockquote>Important context is that the notes about the changing use of the location weren’t even in a connected system. Unclear if the human analysts would have even caught this, or if they would have known to check this unconnected system.<p>&gt; Some US intelligence analysts took notice, the officials said. Bloomberg reported in June that one analyst detected changes to the site as early as 2019, and logged remarks about the modifications in a system that wasn’t connected to the primary military intelligence database, which informs targeting</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>k310</em>:</p>
+<blockquote>Opinion: AI was set up as the fall guy from day one.<p>The murders continue and a certain mindset demands a fall guy for everything.<p>Iran itself was blamed.<p>This was a criminal activity ultimately in the hands of humans, explaining the extreme sanctions being placed on the ICC.</blockquote>
+<blockquote>
+<p>↳ reply — <em>darkoob12</em>:</p>
+<blockquote>To my view Iran government is responsible like 50% for turning part of a military compund into a school. That was irresponsible and shows how little they care about the life of their citizens.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>impossiblefork</em>:</p>
+<blockquote>Personally I&#x27;m more interested in the justification for the second and third strikes.<p>There needs to be some protection for first responders and others helping the injured.</blockquote>
+<blockquote>
+<p>↳ reply — <em>FireBeyond</em>:</p>
+<blockquote>Israel likes to argue that Hamas embeds fighters with first responders, which even if so, they&#x27;re still responding to injured. But Israel considers this not even collateral damage but justified.<p>Mind you Israel is currently funding a lobbyist organization in the UK to flag Médecins Sans Frontières (Doctors Without Borders) as a terrorist group (because many years ago a couple of people who had affiliations with other anti-Israel groups were found to be also affiliated with MSF).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>impossiblefork</em>:</p>
+<blockquote>Yeah, I&#x27;ve heard about it, but presumable Americans soldiers still care about IHL at least to some degree, even though they&#x27;ve historically not bothered with the Geneva convention and have tortured people.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>SAML: A fractal of bad design</title>
+      <link>https://blog.trailofbits.com/2026/09/21/saml-a-fractal-of-bad-design/</link>
+      <guid isPermaLink="false">hn3-49806335</guid>
+      <pubDate>Tue, 22 Sep 2026 18:57:17 +0000</pubDate>
+      <description>203 points, 123 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.trailofbits.com/2026/09/21/saml-a-fractal-of-bad-design/"><strong>→ Article</strong></a> <small>(blog.trailofbits.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49806335">→ HN comments</a> &nbsp;·&nbsp; 203 points &nbsp;·&nbsp; 123 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bawolff</em>:</p>
+<blockquote>My favourite SAML horror story, is that it used to be, that by default the main c implementation of xmlsig would not just check the sig with the public key specified but would also:<p>- check it against an hmac using a password specified in the attacker controlled document.<p>- check the signature using web pki (so the attacker could sign the saml document with their TLS key for their own personal domain and it would always be considered valid)<p>I honestly dont know how sites with saml arent getting hacked all the time. The only thing worse than the absolute terrible standards are the absolute terrible implementations.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>stouset</em>:</p>
+<blockquote>I saw multiple implementations that looked for a signature, verified it, then just trusted the document as a whole rather than <i>only the part that was signed</i>. So as long as you had <i>any</i> signed SAML doc, you could provide an attention of your choosing and just bundle the signed one somewhere arbitrary inside of it.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tptacek</em>:</p>
+<blockquote>It really probably is the worst security specification ever written.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>stouset</em>:</p>
+<blockquote>It’s also <i>enormous</i>, I assume from the attempt to have nominally composable parts that could be reused for other flows.<p>It’s three entire specs bundled as one. One for the XML components, another for the documents you build from them, and another for the authentication flows built on top.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>taybin</em>:</p>
+<blockquote>Didn’t JWT have a similar thing, where you could specify the algorithm to use and that included “null”?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jmbwell</em>:</p>
+<blockquote>It’s such a product of “Ooh! Markup languages! What can we use a markup language to solve!” When authentication is just not a document or data stream that needs marked-up.<p>The article rightly connects this to XML, which was indeed the hammer to everything’s nail at the time<p>I think we aren’t done with this problem yet, though. OIDC makes a lot of assumptions in service to Google and others. And tailscale as mentioned, despite “holding the line,” already reveals the cracks when things like GitHub accounts have to be treated differently from others.<p>What we are missing is a provider-independent way to do this. I should be able to create an account and log in just about anywhere using a backend I control. It can be done, but not with what we have today</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ameliaquining</em>:</p>
+<blockquote>As the article points out, it&#x27;s not really fair to criticize SAML for not using JSON, given that JSON barely existed at the time.<p>If you needed a serialized representation of structured data, I think it made engineering sense to use XML even if it was more featureful than you needed. The alternatives were ASN.1 or rolling your own format from scratch. It&#x27;s not at all obvious that those are better.<p>(You could argue in favor of rolling your own format on the grounds that it wouldn&#x27;t be vulnerable to XML-specific security problems, but I don&#x27;t think those problems were fully appreciated at the time. If they had been, probably people would have come up with some kind of quasi-standardizable secure XML variant that just disables the specific features that cause those problems.)<p>I agree that XML (even without the security-relevant misfeatures) is worse than JSON or other non-markup-language serialization formats for the majority of use cases that don&#x27;t need a markup language, but this is not a <i>big</i> problem, it&#x27;s basically just syntax.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cryptonector</em>:</p>
+<blockquote>XML is as complex as DER, and since there is a way to use XML in ASN.1 -called XER, or XML Encoding Rules-, XML is also as complex as ASN.1, and when you add FastInfoSet, even more still.<p>XML is deceptively simple-seeming, but it&#x27;s not simple at all.  JSON isn&#x27;t actually trivial, mind you, but by comparison to XML, ASN.1&#x2F;DER, etc, JSON is trivial.<p>The only reason to prefer ASN.1&#x2F;DER here is that the likelihood of very badly broken libraries that fail to validate signatures becomes comparable to the same for x.509&#x2F;PKIX certificates: fairly low due to the need for a whole ASN.1&#x2F;DER ecosystem.  It&#x27;s the must-be-this-tall-to-ride effect.<p>To be fair to OASIS, in 2002 XML was textual and simple-seeming.  It was the obvious choice.  It must have seemed brilliant.  They didn&#x27;t know it would turn out badly.<p>Even with JSON you need solid decoders, excellent libraries, and you&#x27;ll still want a JSON Schema and tooling.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>blm126</em>:</p>
+<blockquote>OpenID Connect actually has all the machinery needed to support federated login as part of its dynamic discovery and dynamic registration specifications. The issue is that absolutely no one uses them or implements them.<p>Smaller tech companies don&#x27;t want federated login to happen. They are, as a rule, far to happy to rely on the SSO tax to up-sell enterprise customers. The major authentication companies don&#x27;t want federated login to happy because it invites more competitors and threatens their absurd margins.<p>Until someone manages to solve the business side, no amount of improved technology will change a thing. I&#x27;m pretty sure the few small interoperability gaps OpenID Connect has could be corrected in a matter of months if the stakeholders actually cared.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>cameronh90</em>:</p>
+<blockquote>SAML sucks, but it still has a bunch of features for its specific narrow enterprise SSO use-case that OIDC lacks - most notably IdP-initiated flow. OIDC is a constellation of specs with inconsistent support across products, whereas the commonly-implemented subset of SAML is more-or-less stable in its mediocrity.<p>OIDC will eventually displace SAML, but if you&#x27;re selling to enterprises you should really support both. Both will pale compared to the amount of time you spend dealing with SCIM inconsistencies between IdPs anyway.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>unscaled</em>:</p>
+<blockquote>What is prventing OIDC-based IdP from initiating login? You just need to know the login URI:<p><a href="https:&#x2F;&#x2F;openid.net&#x2F;specs&#x2F;openid-connect-core-1_0.html#ThirdPartyInitiatedLogin" rel="nofollow">https:&#x2F;&#x2F;openid.net&#x2F;specs&#x2F;openid-connect-core-1_0.html#ThirdP...</a></blockquote>
+<p>↳ reply 2 — <em>tptacek</em>:</p>
+<blockquote>Does Tailscale support SAML? If not: why would any other enterprise product need to? Tailscale is like the sine qua non of modern enterprise products, and I believe it&#x27;s OIDC-only.<p>I don&#x27;t believe it&#x27;s plausible for any non-specialist firm to implement SAML without grave vulnerabilities. I&#x27;m not sure I&#x27;ve ever seen it done well. It&#x27;s been a minute since I&#x27;ve looked (I haven&#x27;t consulted in several years, but, more importantly: most firms avoid SAML now), but I&#x27;m guessing that assertion still holds.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Unreal Agent</title>
+      <link>https://unreallabs.ai/blog/unreal-agent/</link>
+      <guid isPermaLink="false">hn3-49805748</guid>
+      <pubDate>Tue, 22 Sep 2026 18:15:53 +0000</pubDate>
+      <description>153 points, 94 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://unreallabs.ai/blog/unreal-agent/"><strong>→ Article</strong></a> <small>(unreallabs.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49805748">→ HN comments</a> &nbsp;·&nbsp; 153 points &nbsp;·&nbsp; 94 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dvt</em>:</p>
+<blockquote>I think this space is very untapped. Models are interesting, but I am absolutely obsessed with some things I&#x27;ve been researching&#x2F;working on for the past few years:<p>Fractal tool discovery: tool taxonomy where an agent can &quot;drill deeper&quot; to find what specific tool it&#x27;s looking for. Helps if&#x2F;when polluting context with a zillion (mostly unnecessary) tools.<p>Leveraging splay trees: this is my favorite data structure and I think relatively unused in the context of agents&#x2F;harnesses. A lot of times, recently-used workflows&#x2F;tool-chains will be used again, so having those at the top of the search hierarchy is an awesome optimization.<p>Virtual containerized notebooks: models working in sandboxed (WASI) Python notebooks is incredible. Even local models (if given enough time) will usually converge on a good solution. Being able to mount tools&#x2F;resources&#x2F;fs is again, imo quite untapped. Some problems here are running native things (thing numpy&#x2F;pandas) in containers is a nightmare (or impossible).<p>Anyway, happy to see other folks seriously doing stuff in this space. If anyone wants to collaborate on anything don&#x27;t hesitate to reach out :) I&#x27;m also actively looking for a job or some contract gigs.<p>Fun times ahead.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ravenstine</em>:</p>
+<blockquote>&gt; Helps if&#x2F;when polluting context with a zillion (mostly unnecessary) tools.<p>Ugh, I can&#x27;t help but respond to this one point.  The fact that this is even an issue in the current year just tells us how screwed the software field is in a lot of ways.  I don&#x27;t mean that in existential terms, but of how divided we&#x27;ve become in terms of what&#x27;s happened to human reasoning.  On the one hand, you have people who apply deep thinking to develop the sort of approaches you described, and there&#x27;s the exponentially growing segment of not-even-programmers who seem to never ask themselves whether any of their ideas have any sort of consequences.<p>Take MCPs for instance.  Sure, I guess it can <i>sometimes</i> make sense to have a stateful API that is optimized for agents.  Yet, more often than not, these MCPs frontload a ton of context where it&#x27;s not needed, and solve problems where none existed.  Merely sticking an API (MCP) in front of an API (CLI, REST, GraphQL) without a benefit <i>that can be explained in a single sentence</i> is lunacy and demonstrates a real lack of complex thinking.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sublinear</em>:</p>
+<blockquote>&gt; tells us how screwed the software field is in a lot of ways<p>But, you just very clearly described why human software engineers are in higher demand than ever before.<p>It&#x27;s always been &quot;screwed&quot; in the sense that everyone else sucks at wielding the power.<p>What we&#x27;re actually witnessing is a watershed moment where a lot of technologically illiterate people are getting left behind. Those of us on the literate side are left to fight amongst ourselves and the powers that be for control over the future. We have actually been doing an alright job all things considered (else this conversation wouldn&#x27;t be happening). Politicians are aging out and we&#x27;re the adults in the room now.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>spdustin</em>:</p>
+<blockquote>I&#x27;ve also explored s&#x2F;Fractal tool discovery&#x2F;Skill tree approaches, seems to work pretty well when you stick the equivalent of XREFs in the frontmatter.</blockquote>
+<p>↳ reply 3 — <em>mrlowlevel</em>:</p>
+<blockquote>i have found agents to be excellent at using CLIs, which are fractal-like. i built this reddit ads api cli and my agent immediately starting introspecting it in a &quot;drill deeper&quot; manner:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;genei-Ltd&#x2F;reddit-ads-cli" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;genei-Ltd&#x2F;reddit-ads-cli</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tekacs</em>:</p>
+<blockquote>The headline graph is kind of bizarre.<p>For some reason they&#x27;re comparing their harness running on Astra xhigh to Codex with Astra max?<p>---<p>Also worth noting that OpenAI just added support for async tool calling to their harness, which isn&#x27;t 1:1 with this approach, but is slowly ramping up in being able to provide something similar.<p>A big part of why Codex uses so many tokens is that it basically hot loops on polling tasks it starts for... absolutely no good reason: <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;codex&#x2F;comments&#x2F;1wdlp7q&#x2F;weve_discovered_the_issue_behind_codex_harness&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;codex&#x2F;comments&#x2F;1wdlp7q&#x2F;weve_discove...</a><p>I fixed it on my fork of Codex too, also back in Jan&#x2F;Feb – I keep this patch rebased, for anyone who wants it: <a href="https:&#x2F;&#x2F;github.com&#x2F;tekacs&#x2F;codex&#x2F;commit&#x2F;9ffcf8db9078eae43d4111ff94259795c1e962c9" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;tekacs&#x2F;codex&#x2F;commit&#x2F;9ffcf8db9078eae43d411...</a><p>It results in token savings similar in scale to those displayed here by Unreal.<p>---<p>My harness has used a slightly fancier version of the approach that Unreal is using since ~Feb, and... it definitely works excellently, but it&#x27;s also assuredly smoother with Astra and other recent models that are more aware of async tool calling.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>NostraDavid</em>:</p>
+<blockquote>To reduce the codex polling I slapped this into my ~&#x2F;.codex&#x2F;config.toml:<p><pre><code>  [features.multi_agent_v2]
+  enabled = true
+  wait_agent_enabled = true
+  min_wait_timeout_ms = 10000 # 10s
+  default_wait_timeout_ms = 300000 # 5m
+  max_wait_timeout_ms = 3600000 # 1h
+</code></pre>
+Seems to do the job and reduce usage; I just ran Astra for ~5 hours (using a goal) and it used the last 30% of my usage. And now they released GPT-6 Sol and Luna (which is basically 5.6 Sol and Luna, but a bit better and also 50% cheaper) ;_;</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>AmazingTurtle</em>:</p>
+<blockquote>Perfect, I will incorporate this as default as well as the commit from the other guy into my own codex fork <a href="https:&#x2F;&#x2F;github.com&#x2F;AmazingTurtle&#x2F;codex" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;AmazingTurtle&#x2F;codex</a> btw. I&#x27;m rebasing on 0.156.0 right now</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>discobot2</em>:</p>
+<blockquote>the headline chart was lazy on our part, thanks for the flag and I’ll update it.<p>each individual benchmark that is combined into agentic coding index was compared on xhigh between ua &#x2F; codex &#x2F; pi, and headline improvement was calculated on xhigh, but then agentic coding index pareto chart by default includex codex max, hense the confusion.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tapoxi</em>:</p>
+<blockquote>Sounds like a trademark issue when Epic ships a wildly popular Unreal Engine</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bryant</em>:</p>
+<blockquote>I had to scroll to the bottom to realize that this had absolutely nothing to do with Unreal Engine or Epic. There&#x27;s no reason to think that Epic wouldn&#x27;t have an &quot;Unreal Labs&quot; creating harnesses to help them with software engineering.<p>This plainly seems like a trademark issue in progress considering it&#x27;s in the same exact domain and considering how many others were confused the way I probably was.</blockquote>
+<p>↳ reply 2 — <em>tantalor</em>:</p>
+<blockquote>lol it took me to read this comment to find out this has nothing to do with Unreal.<p>People, I&#x27;m begging you, please talk to a lawyer before launching.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>GPT-6 Sol and Luna</title>
+      <link>https://openai.com/index/introducing-gpt-6-sol-and-luna/</link>
+      <guid isPermaLink="false">hn3-49805509</guid>
+      <pubDate>Tue, 22 Sep 2026 18:00:34 +0000</pubDate>
+      <description>1376 points, 666 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/"><strong>→ Article</strong></a> <small>(openai.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49805509">→ HN comments</a> &nbsp;·&nbsp; 1376 points &nbsp;·&nbsp; 666 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>simonw</em>:</p>
+<blockquote>GPT-6 Luna being half the price of GPT-5.6 Luna is a really big deal.<p>Here&#x27;s GPT-6 Luna pelicans: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F40d129fc140faca378b9c9f4f16c6ec2" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=ht...</a><p>And GPT-6 Sol: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Fbe7ae25af2634b68bc34b7b7aaf02cb2" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=ht...</a><p>Scroll to the bottom for the GPT-6 Sol max one: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Fbe7ae25af2634b68bc34b7b7aaf02cb2#response-5" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=ht...</a><p>For comparison, here are the pelicans I got for GPT-6 Astra: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Ff789d2784fc6c5b870cc80f0b7cd9d01" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=ht...</a> - I still like the Astra Max one best.<p>Here&#x27;s a comparison grid showing all of the GPT-6 and GPT-5.6 pelicans at all effort levels: <a href="https:&#x2F;&#x2F;static.simonwillison.net&#x2F;static&#x2F;2026&#x2F;gpt-6-and-5.6.html" rel="nofollow">https:&#x2F;&#x2F;static.simonwillison.net&#x2F;static&#x2F;2026&#x2F;gpt-6-and-5.6.h...</a><p>The grid is actually really interesting, because it shows that the 5.6 family default to brighter colors than the 6 family.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gizmodo59</em>:</p>
+<blockquote>6-luna is at the pareto for most of the tasks! I dont know how they make money here but its insane value from a closed source model. I&#x27;d go further and say it makes no sense (privacy, sovereignty etc aside) to use many other models as its not only expensive but also many providers don&#x27;t have that much GPUs to serve at a significant volume. <a href="https:&#x2F;&#x2F;openrouter.ai&#x2F;rankings?view=month#top-models" rel="nofollow">https:&#x2F;&#x2F;openrouter.ai&#x2F;rankings?view=month#top-models</a> 5.6 luna is already the most used model this month.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sieve</em>:</p>
+<blockquote>My OpenCode Go stats for the last 30d:<p>Cached Read: ~6,500M<p>Input: ~150M<p>Output: ~20M<p>Approx $40 worth of usage across DeepSeek V4 Flash + MuseSpark Contributor 1.3. And a bit of both the GLM models. This is covered in a $10 subscription.<p>If I were to use Luna&#x27;s API pricing:<p>$0.02 x 6,500 = $130<p>$0.20 x 150 = $30<p>$1.20 x 20 = $24<p>So $184. And this is assuming smaller coding sessions (&lt;272K) beyond which Luna pricing doubles.<p>--<p>Cost wise, these models are nice for small stuff. Translations etc. Any model that does not provide multiple Mtoks of cached reads per cent is not very useful to me for coding workflows.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>nearbuy</em>:</p>
+<blockquote>This isn&#x27;t right. You&#x27;re comparing cost per token, but DeepSeek V4 Flash uses more tokens. Artificial Analysis found GPT 6 Luna to be significantly cheaper than DeepSeek: <a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;comparisons?compare=deepseek-v4-1-flash%2Cgpt-6-luna" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;comparisons?compare=dee...</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gtirloni</em>:</p>
+<blockquote>What&#x27;s the relevance of the pelican benchmark when models probably saw it during training? Didn&#x27;t OpenAI stop testing against SWE-Something because it was tainted?</blockquote>
+<p>↳ reply 3 — <em>matznerd</em>:</p>
+<blockquote>Simon, love your work, one piece of minor feedback for the individual model pages is to make the font of the model name potentially bigger than (and above) the conversation id (which means nothing to the audience) &quot;2026-09-22T18:28:00 conversation: 01m355zvyw8946qyraa8zpz6h9 id: 01m355zvyx47zxx5c6q6b3fg0m#&quot;.<p>I had all the tabs open individually and harder to scan which model is which... otherwise keep up the great work! I like the grid view a lot. (Also the pages have no OG images set, which impacts what the link looks like shared)...</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>m_fayer</em>:</p>
+<blockquote>I&#x27;ve been working with agents all year, but 5.6 Sol was some sort of sweet spot for me. Something about how it communicated verbally and its engineering instincts just clicked for me, and I was able to somehow predict it and jam with it. Like a colleague you click with. It&#x27;s the first model I&#x27;ve gotten attached to. I&#x27;m concerned that whatever model supercedes it, while technically better, just won&#x27;t feel quite as natural to work with. And this makes me feel very professionally vulnerable to the labs. I miss the days when my crucial tooling came from companies as reliable and predictable as, say, Jetbrains.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>capital_guy</em>:</p>
+<blockquote>I tend to agree. it&#x27;s by far the best coding model i&#x27;ve ever worked with, including astra and if i remember correctly fable, and it&#x27;s unbelievably smooth at just getting the work done and communicating in simple terms.<p>if GPT 6 Sol is just 5.6 at half the price it will be everything i really ever wanted.</blockquote>
+<p>↳ reply 2 — <em>apitman</em>:</p>
+<blockquote>Similar for me. gpt-5.6-sol high has been my go-to for months. One of the reasons I&#x27;m pushing myself to try open models more is because it lends some level of guarantee I can continue to use the same tool as long as I want to. And I think we may just be getting to the point the open models are &gt;= 5.6 Sol for coding.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>leokennis</em>:</p>
+<blockquote>From the perspective of “an average person”, ChatGPT is delivering fantastic products.<p>- For general chat and web search, occasional image editing, small coding work, document review etc. ChatGPT Plus is basically limitless and “just works” since 5.6. I’ve yet to give it some task it cannot do.<p>- When given sensible instructions, it hardly annoys with weird phrasing, glazing, or annoying constructs.<p>- The apps are very good (ignoring the initially terrible Codex app)<p>It’s easily my best spent $23 a month.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jeremyjh</em>:</p>
+<blockquote>You can get a lot of Codex usage out of that same sub on top of ChatGPT usage. Its a really good value and you can use that sub in any harness. In OMP I have Sol high as the orchestrator, Sol max as Planner &amp; Reviewer, Luna max as task&#x2F;coder. Very good setup. I&#x27;m on pro now and there are weekends when I use half a week&#x27;s usage but I&#x27;ll have 5 or 6 sessions going at once for many hours each day.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sergiotapia</em>:</p>
+<blockquote>This is quite interesting, I wasn&#x27;t aware omp has a way to set up different models for planner&#x2F;orchestrator&#x2F;task.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ssk42</em>:</p>
+<blockquote>&#x2F;model then roles and also &#x2F;agents for when a model chooses to delegate out sub agents</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>maxnevermind</em>:</p>
+<blockquote>&gt; From the perspective of “an average person”, ChatGPT is delivering fantastic products.<p>It is a honeymoon still, enshittification is coming, who knows how that will look like given how much more expensive to run LLMs backed user experience.
+Some back of the envelope calculations:
+300 million US users * 20$ a month * 12 months = 72 billion $ a year. 
+72B$ is some spare change for AI labs. That assuming entire US will be subs which is unlikely and outside of the US there are not many rich countries consuming it, India is the next market, then Brazil and Philippines I think, not super rich counties to say the least. I believe total revenue to just pay for the capex build out by the end 2027 should be on the scale of hundreds of billions a year.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>'We hacked the FBI:' Hackers say they have data on all FBI employees</title>
+      <link>https://www.404media.co/we-hacked-the-fbi-hackers-say-they-have-data-on-all-fbi-employees/</link>
+      <guid isPermaLink="false">hn3-49805278</guid>
+      <pubDate>Tue, 22 Sep 2026 17:46:02 +0000</pubDate>
+      <description>522 points, 365 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.404media.co/we-hacked-the-fbi-hackers-say-they-have-data-on-all-fbi-employees/"><strong>→ Article</strong></a> <small>(404media.co)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49805278">→ HN comments</a> &nbsp;·&nbsp; 522 points &nbsp;·&nbsp; 365 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jacobgold</em>:</p>
+<blockquote>At this point, no one seems capable of keeping a large database safe. I assume all medical and biographical information that exists is in the hands of the major state actors.<p>China hacked 22.1 million records of US government employees:<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2015_Office_of_Personnel_Management_data_breach" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2015_Office_of_Personnel_Manag...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>coldpie</em>:</p>
+<blockquote>It is unthinkable to me that anyone believes there is such a thing as computer security after so many years of nonstop hacks and leaks. If you have a computer and it is connected to a network with access to the Internet, assume that computer is semi-public. Meaning, if someone was interested enough in accessing your computer, they could do it.  Do not hook any computer with access to anything that would be devastating if it was made public to the Internet. Do not put anything that would be devastating if it was made public onto someone else&#x27;s Internet-connected computers.<p>For example, do not hook your goddamn water or traffic or electricity infrastructure up to the goddamn Internet, and then, do fire the guy who suggested it.<p>The correct analogy for computer security is not locks and keys and doors and gates. It is a house in a floodplain. Your house will not survive the flood of it hits you. Do not store anything critical or irreplaceable in that house.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cik</em>:</p>
+<blockquote>This is a bit oversimplified, and relies heavily on understanding your threat vectors and agents. You haven&#x27;t spoke about audio even.<p>There&#x27;s a reason that many military and intelligence organizations worldwide physically cut &#x2F; remove wifi and bluetooth chips from boards. The same is done when audio is identifiable, and specific hardware (only) greenlit.<p>I&#x27;ve lost hours of my life to calls explaining exactly this, only to have people ignore it, only to further have folks come back, tail between their legs. The worst part is learning this in industry, as I did. There&#x27;s a reason for in-industry advisors. I wish that I had learned this the easy way.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>titzer</em>:</p>
+<blockquote>And the city wonders why I don&#x27;t want to put my credit card info in their crappy parking app and would instead prefer to put a quarter into the meter for 30 mins.</blockquote>
+<p>↳ reply 3 — <em>tyre</em>:</p>
+<blockquote>Yes, huge amounts of your medical information is for sale. In 2024, Change Healthcare (CHC) was hacked and held ransom. The hackers were in the system for over a week before everything was pulled offline.<p>CHC is the largest claims clearinghouse in the US; about 100m people&#x27;s insurance  claims go through there each year.<p>The hackers asked for a ransom ($35m iirc) to delete the data, which United Healthcare (who owns them, because of course they do) paid. But it seems that the collective negotiating on behalf of the actual hackers rug pulled, so the actual hackers didn&#x27;t get paid.<p>This is more than simply medical records. It includes who is active duty military and their family. If you can map where soldiers are, you know roughly the size of different military bases. If you know which types of capabilities are operated out of which bases, you can get a pretty good look of how the US is allocating personnel.<p>It was crazy working on recovery from this at the time. It should have been front page news, but wasn&#x27;t.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>avinoth</em>:</p>
+<blockquote>Rookie move. Missed the chance to claim that an AI Agent swarm hacked it autonomously and claim billions of VC investment.</blockquote>
+<p><strong>Top #3</strong> — <em>reactordev</em>:</p>
+<blockquote>There’s a scene in Battlestar Galactica (2004) where someone asks Captain Adama why the Galactica doesn’t have networked computers. So the cylons can’t hack the ship…</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dylan604</em>:</p>
+<blockquote>There&#x27;s also a scene where they do network the computers and are hacked nearly instantly.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>reactordev</em>:</p>
+<blockquote>but thanks to Baltar&#x27;s firewalls and code obfuscation, just barely are able to escape after calculating the jump and having to literally wipe and reinstall all code on all systems.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jshier</em>:</p>
+<blockquote>Which was always pretty stupid. At best it means the Cylons can&#x27;t hack the whole ship, just whichever part they exploited to gain access remotely in the first place. But really the Cylons would&#x27;ve needed exploits for each individual system anyway, since simply connecting them with wires shouldn&#x27;t just do that. And unless those other systems are completely air gapped with no wireless or other access, it would be trivial for them to still gain remote access, or have one of their infiltrators provide a local connection of some kind. AFAIR that was never a plot point, which was odd.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>There's a high chance of devices being sold with GrapheneOS preinstalled in 2027</title>
+      <link>https://grapheneos.social/@GrapheneOS/117299954135808210</link>
+      <guid isPermaLink="false">hn3-49804683</guid>
+      <pubDate>Tue, 22 Sep 2026 17:12:51 +0000</pubDate>
+      <description>275 points, 117 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://grapheneos.social/@GrapheneOS/117299954135808210"><strong>→ Article</strong></a> <small>(grapheneos.social)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49804683">→ HN comments</a> &nbsp;·&nbsp; 275 points &nbsp;·&nbsp; 117 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>microtonal</em>:</p>
+<blockquote>Two clarifications:<p>- This is about preinstallation. For the planned models, you can install GrapheneOS yourself. This should be really simple, if it is similar to the current installation process for Pixels, which can be fully completed through their website.<p>- The preinstalled devices don&#x27;t seem from Motorola themselves, as mentioned later in the thread: <i>Probably not via their website but rather another company provided with the devices directly by Motorola. It could be us doing it ourselves but we aren&#x27;t set up to deal with it.</i><p>Really excited for the Motorola GrapheneOS phones! (Currently have a P10P with GrapheneOS.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ysnp</em>:</p>
+<blockquote>I am not too sure about this. There is no company I trust to sell GrapheneOS-preinstalled phones other than GrapheneOS themselves.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>robocat</em>:</p>
+<blockquote>Preinstalled GrapheneOS would be funded by state Honeypot operators, or potentially thieves or blackmailers.<p>If you wish to steal from someone, select from a population of thieves since they won&#x27;t go to the police (although they may use illegal means to punish you).<p>Going with the stereotype that people doing illegal things prefer a secure OS (and are not smart enough to pick a safe source).</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>iAMkenough</em>:</p>
+<blockquote>Will this solve the issue of Google withholding Android security updates to provide Pixel devices running stock early access to patches?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>csdreamer7</em>:</p>
+<blockquote>What I care about is banking app support. Both my credit unions (large, national ones) lock down their phones apps so they do not work on GrapheneOS. Yes, you can install certain Google packages to change that, but no guarantee that will work in the future.</blockquote>
+<p><strong>Top #3</strong> — <em>sigmar</em>:</p>
+<blockquote>&gt;Probably not via their website but rather another company provided with the devices directly by Motorola. It could be us doing it ourselves but we aren&#x27;t set up to deal with it.<p>I presume this bit is because Motorola can&#x27;t sell devices with android builds that aren&#x27;t certified by google (as per Google Mobile Services contracts)</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Claude Opus 5.5 Intelligence, Performance and Price Analysis (Max)</title>
+      <link>https://artificialanalysis.ai/models/claude-opus-5-5</link>
+      <guid isPermaLink="false">hn3-49804316</guid>
+      <pubDate>Tue, 22 Sep 2026 16:51:31 +0000</pubDate>
+      <description>266 points, 77 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://artificialanalysis.ai/models/claude-opus-5-5"><strong>→ Article</strong></a> <small>(artificialanalysis.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49804316">→ HN comments</a> &nbsp;·&nbsp; 266 points &nbsp;·&nbsp; 77 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>simonw</em>:</p>
+<blockquote>This is the page for the &quot;max&quot; reasoning setting. The page for xhigh is <a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;claude-opus-5-5-xhigh" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;claude-opus-5-5-xhigh</a> and the page for medium (the default setting) is <a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;claude-opus-5-5-medium" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;claude-opus-5-5-medium</a><p>I&#x27;ve failed twice to get &quot;Generate an SVG of a pelican riding a bicycle&quot; to work with max, because in both cases it ran out of the 128,000 token budget while it was still reasoning about the problem.<p>I&#x27;m suspicious that &quot;max&quot; may be virtually useless if it&#x27;s that easy to have it overthink to the point that it doesn&#x27;t get to a response.<p>Transcript for one attempt here - expand the &quot;Reasoning trace&quot; bit to see it: <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F61fd7c3683fffce9a3ab7c43d1180024#reasoning-3" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=ht...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zerof1l</em>:</p>
+<blockquote>This is totally a thing I noticed myself about 3 months ago. Medium thinking effort is ideal for most tasks. At high and above, models tend to generate more output in the form of comments or code for the same problem with no real benefit. Its a self-feeding loop: more output becomes more input, which then becomes more output. High is the highest I go. If I need more intelligence, it&#x27;s better to use a more powerful model with less thinking effort or break the problem into phases. Much better result.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>zozbot234</em>:</p>
+<blockquote>This version of Opus &quot;max&quot; apparently has even higher thinking output than Qwen &quot;max&quot;, which is infamous for its thinking streams where it constantly second-guesses itself, then third-guesses, fourth-guesses and generally <i>n</i>th-guesses itself for arbitrarily large <i>n</i>.  Of course, we aren&#x27;t actually seeing <i>Claude&#x27;s</i> raw thinking output: all we get is the after-the-fact prettified &quot;summary&quot;.  One wonders how much of that is a coincidence, or whether there&#x27;s a reason behind that.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>judge2020</em>:</p>
+<blockquote>&gt; Of course, we aren&#x27;t actually seeing Claude&#x27;s raw thinking output: all we get is the after-the-fact prettified &quot;summary&quot;. One wonders how much of that is a coincidence, or whether there&#x27;s a reason behind that.<p>Most of what I&#x27;ve heard is that raw reasoning traces are really good for distillation, although no idea how much the summarization actually hurts distillation.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>RGS1811</em>:</p>
+<blockquote>&quot;This is a classic test request...&quot;<p>I know there&#x27;s been discussion about whether pelicanmaxxing is happening, but this is at least evidence that Claude was explicitly exposed to this problem.</blockquote>
+<p>↳ reply 3 — <em>Gcam</em>:</p>
+<blockquote>Hey! From the Artificial Analysis team. We also have a model releases page which shows all reasoning efforts (not just max), including the trade off curves
+<a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;releases&#x2F;claude-opus-5-5" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;releases&#x2F;claude-opus-5-...</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>breckenedge</em>:</p>
+<blockquote>Do these evaluations get re run a few weeks after launch? I started doing that yesterday for our internal dataset and found Sol’s performance had regressed to be equal to Luna’s. Granted this was one run, but something I’m becoming more concerned about, the model providers want to quickly prove they’re the best, people switch to them, then they pull the rug.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tedsanders</em>:</p>
+<blockquote>Can you share more information on your methodology?<p>GPT-5.6 Sol&#x27;s performance in the API should not change over time. If it has, that&#x27;s a severe bug and we&#x27;ll look into it.<p>We do sometimes tweak ChatGPT settings (e.g., tools, system prompts, efforts) over time, but we never play games to juice evals at launch times. You should always get what&#x27;s advertised.<p>(I work at OpenAI.)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>breckenedge</em>:</p>
+<blockquote>This is all code review runs via OpenRouter with a Pi harness, and it’s totally possible there are shenanigans going on elsewhere.<p>Yesterday, I ran an identical bug identification dataset from two weeks ago, saw a 50% drop from a few weeks ago, putting Sol on the same level as Luna. Sol had been finding 40-50 bugs per set, then dropped to 25, matching Luna’s performance. Not enough to establish a pattern, but enough to raise eyebrows.<p>Our review workflow is public if you want to peruse it, dataset isn’t. The process isn’t really stabilized yet either as I have to balance running this against limited budgets.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;BiggerPockets&#x2F;.github&#x2F;blob&#x2F;main&#x2F;.github&#x2F;workflows&#x2F;biggiepockets-review.yml" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;BiggerPockets&#x2F;.github&#x2F;blob&#x2F;main&#x2F;.github&#x2F;w...</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>tedsanders</em>:</p>
+<blockquote>How many tasks were in this dataset?<p>If it&#x27;s a single task where it dropped from 50 to 25, it could be random variation (not saying it is, but it could be). If it&#x27;s the mean over hundreds of tasks, that suggests a problem with either the eval code&#x2F;harness or our API.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mnicky</em>:</p>
+<blockquote>Well there is at least the degradation tracker from Margin labs for Sol and Opus: <a href="https:&#x2F;&#x2F;marginlab.ai&#x2F;trackers&#x2F;codex&#x2F;" rel="nofollow">https:&#x2F;&#x2F;marginlab.ai&#x2F;trackers&#x2F;codex&#x2F;</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>hglaser</em>:</p>
+<blockquote>Half the cost per task compared to Opus 5, comparing high effort to high effort. That&#x27;s just really nice.<p>Edit: <a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;claude-opus-5-5?models=claude-opus-5-5-high%2Cclaude-opus-5-high#price-cost" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;claude-opus-5-5?models=...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tomjakubowski</em>:</p>
+<blockquote>Tasks are completed in about half the time too. Although we&#x27;ll see if it slows down in a few weeks as Anthropic&#x27;s model services are prone to do.</blockquote>
+<p>↳ reply 2 — <em>makeavish</em>:</p>
+<blockquote>Nice catch, AA only shows max effort by default and I got disappointed thinking it&#x27;s a token guzzler though: <a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;claude-opus-5-5?models=claude-opus-5-high%2Cclaude-opus-5-5-high%2Cclaude-opus-5-5%2Cclaude-opus-5" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;claude-opus-5-5?models=...</a><p>Not sure about how adaptive reasoning works though as they mention adaptive reasoning for every reasoning level</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>WordPress: Unauthenticated path traversal leading to conditional RCE</title>
+      <link>https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp</link>
+      <guid isPermaLink="false">hn3-49803959</guid>
+      <pubDate>Tue, 22 Sep 2026 16:33:45 +0000</pubDate>
+      <description>174 points, 92 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49803959">→ HN comments</a> &nbsp;·&nbsp; 174 points &nbsp;·&nbsp; 92 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>zelphirkalt</em>:</p>
+<blockquote>These are the reason, why every easily reachable web server will be spammed with &#x2F;something&#x2F;something.php?somearg=someval. If I had to guess, which software on the web has been the most exploitable over all of the web&#x27;s history, WP would surely be among the top candidates. Maybe right after MS Teams or Sharepoint or some stuff like that.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>toyg</em>:</p>
+<blockquote>TBF, some of it is structural: if you&#x27;re the most popular <i>anything</i> on the internet, you&#x27;ll be the most attacked and the most exploited, and hence the most exploitable.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>acomjean</em>:</p>
+<blockquote>And it&#x27;s very extensible.  With that power and flexibility come exploits</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>traceroute66</em>:</p>
+<blockquote>&gt;  WP would surely be among the top candidates<p>And its closely related cousin, Joomla.</blockquote>
+<p>↳ reply 3 — <em>nom</em>:</p>
+<blockquote>The access log of public http servers is truly interesting to watch.<p>You know that the scripts doing it are optimized for success rate, so the types of requests they send give you an impression of what&#x27;s actually out there.<p>It&#x27;s clear to me that once we finally achieve rogue AGI, it is going to propagate through unpatched WordPress WooCommerce instances.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>cyphar</em>:</p>
+<blockquote>This kind of bug pathology is incredibly common in all sorts of programs and is the reason (disclaimer: self-plug) I wrote libpathrs[1].<p>Sadly, almost all language standard libraries do not provide the right abstractions for dealing with files (the primary focus is on global paths as opposed to scoped paths or file descriptors &#x2F; file handles) so it&#x27;s little surprise bugs like these just keep popping up every few weeks.<p>To eliminate these from your codebase you need to rethink and really focus on being aware of how you deal with files. If the program you&#x27;re writing has root privileges then you need to be more careful about misdirected writes to &#x2F;proc or other pseudofilesystems.<p>[1]: <a href="https:&#x2F;&#x2F;github.com&#x2F;cyphar&#x2F;libpathrs" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;cyphar&#x2F;libpathrs</a></blockquote>
+<p><strong>Top #3</strong> — <em>beezle</em>:</p>
+<blockquote>&quot;WordPress 7.1.2 has been released containing a fix for the vulnerability, and as a courtesy to users on older branches the fix has been backported to all branches back to 4.7&quot;<p>As a courtesy, I try not to say more than one bad thing about WP every day. FWIW about 1&#x2F;3 of installs are not on the recent 7 branch.</blockquote>
+<blockquote>
+<p>↳ reply — <em>EGreg</em>:</p>
+<blockquote>There was a time I looked up to Matt Mullenweg, but never to Wordpress.<p>I&#x27;ve been building <a href="https:&#x2F;&#x2F;github.com&#x2F;Qbix" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Qbix</a> since 2008 and let me tell ya, I took a lot of great ideas from Drupal, Kohana, Symfony, etc. But never Wordpress. It&#x27;s just ... a mess. Wordpress just won by being first, basically. Kind of like Bitcoin.<p>PS: Years ago, I hired a guy in Pakistan to work with me on some Wordpress sites, for clients. I thought that the Divi theme and basic Wordpress would be secure. Every one of those sites got pwned, badly. Sure, maybe it was the plugins. But why take the chance? In 2026 it&#x27;s way past time to not have to worry about basic security.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>krapp</em>:</p>
+<blockquote>Wordpress wasn&#x27;t even first, Movable Type was the big thing before it.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>segfaultbuserr</em>:</p>
+<blockquote>WordPress began as a FOSS replacement of Movable Type after Moving Type 3 made the controversial decision to change its licensing fee for some features. So it was like a Unix&#x2F;Linux situation.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Claude Opus 5.5</title>
+      <link>https://www.anthropic.com/claude-opus-5-5</link>
+      <guid isPermaLink="false">hn3-49803892</guid>
+      <pubDate>Tue, 22 Sep 2026 16:29:05 +0000</pubDate>
+      <description>1390 points, 874 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/claude-opus-5-5"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49803892">→ HN comments</a> &nbsp;·&nbsp; 1390 points &nbsp;·&nbsp; 874 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sailingparrot</em>:</p>
+<blockquote>&gt; Claude Opus 5.5 is our first release since we called for pacing the frontier.<p>Interesting how the very first line is used to remind the reader of their call to pace the frontier just last week, and everything else after that line is to demonstrate with very specific numbers how they absolutely are not pacing.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mukmuk</em>:</p>
+<blockquote>“Pacing the frontier” sounds smarmy and weird, like the phrase was generated by Claude itself</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>DiggyJohnson</em>:</p>
+<blockquote>I really don&#x27;t think it&#x27;s productive for internet forums to constantly be criticizing language choice when the meaning is clear. Better to respond to the substance of the issue than word choice.<p>Edit: In response to the initial replies. To me it clearly means &quot;releasing frontier models at any pace less than as fast as possible&quot;. It implies relative restraint compared to the previous state and without stating the degree of restraint.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>mpalczewski</em>:</p>
+<blockquote>The meaning isn&#x27;t clear at all.  So open for interpretation that it is meaningless.  That&#x27;s the whole fucking point.  For all I know they are &quot;pacing the frontier&quot;, or not.  The fact that there&#x27;s no meaning to it let&#x27;s you know that it was a pointless waste of tokens and attention.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dmazin</em>:</p>
+<blockquote>It seems like they are. I mean, this is similar in performance to Fable (ish). It seems like more focus on making existing capabilities more accessible.</blockquote>
+<p>↳ reply 3 — <em>apitman</em>:</p>
+<blockquote>Isn&#x27;t the idea that they claim to be willing to slow down if everyone does (ie governments force everyone to), but otherwise they won&#x27;t slow down because they still think they&#x27;ll make the best choices with superintelligence if they get there first? That&#x27;s my understanding of what all the major labs claim to believe anyway.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mcintyre1994</em>:</p>
+<blockquote>&gt; Communication. Opus 5.5 communicates more naturally than prior models. Early testers found its writing clearer and easier to follow, which addresses some of the common feedback we heard about Opus 5. It puts the most important information up front, and its style makes it a better work partner over long sessions. As one early tester put it, “it writes the way I do.” In our own use, this has made Opus 5.5’s work easier to follow and check—which is a safety benefit as well as a practical one.<p>I think this is what I&#x27;m most interested in. I mostly moved to Astra because I just can&#x27;t work all day with the Claude Opus 5&#x2F;Fable writing style. I don&#x27;t think Astra is a better model, but it&#x27;s the first OpenAI one that seemed good enough to me. Definitely keen to try Opus 5.5 and see if this claim is real.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ascendantlogic</em>:</p>
+<blockquote>So far it seems the same. I used Opus 5.5 for an hour this evening and it was just as painfully verbose as Opus 5. It also used the term &quot;load bearing&quot; 4 separate times.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bobbylarrybobby</em>:</p>
+<blockquote>I noticed that when opus 5.5 was on parts on my codebase that had lots of 5.0-generated comments, it picked up its style. Unfortunately I think 5.5 has been trained to mimic what it sees so that you can ease up on the instructions, but this does mean parts of your codebase that 5 touched will be somewhat viral.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>derangedHorse</em>:</p>
+<blockquote>As someone who uses both, Astra was 100% the better model. I have yet to give 5.5 a spin so maybe that’ll be the new top contender.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>wg0</em>:</p>
+<blockquote>No thanks.<p>I&#x27;m good with DeepSeek v4.1 set to high. It is a relentlessly &quot;hardworking&quot; dirt cheap model.<p>Told it to convert a products page (that had two different fonts based on language) from two columns layout to 5 columns on desktop and 2 columns on mobile ensuring typography is readable.<p>My man went into spawning sub agent which failed to drive chrome so it wrote its own chrome driver protocol server in Typescript then generated a prototype website then downloaded the images and rendered each variation in a directory taking 100+ screenshots analyzing the typography depth and then delivering detailed report and then writing the whole thing with new page layout testing it again with several dozen screenshots using its driver and then saying all good and all really was good and whole thing took 25 minutes or so (including double visual validation) because it generates token at an incredible speed.<p>Total cost of the above? $0.07 cents.<p>PS: It generates token at such a blazing fast speed that you can&#x27;t recognize the words as they are being added and can&#x27;t read it without scrolling and pausing even if you&#x27;re Jimmy Carter.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>glub</em>:</p>
+<blockquote>Also include that all of this comes with full reasoning traces, so if something goes wrong, you know exactly what assumption it started from.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>wg0</em>:</p>
+<blockquote>Yes exactly. Reading this &quot;thinking&quot; traces is a great tool.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>undefuser</em>:</p>
+<blockquote>Why did it need to generate its own driver when there is a Playwright MCP available and works right out of the box? Am I missing something?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Claude Opus 5.5</title>
+      <link>https://www.anthropic.com/claude-opus-5-5</link>
+      <guid isPermaLink="false">hn3-49803863</guid>
+      <pubDate>Tue, 22 Sep 2026 16:27:30 +0000</pubDate>
+      <description>273 points, 2 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/claude-opus-5-5"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49803863">→ HN comments</a> &nbsp;·&nbsp; 273 points &nbsp;·&nbsp; 2 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tomhow</em>:</p>
+<blockquote>Comments moved to <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49803892">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49803892</a>.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>I asked Meta’s Muse for its filesystem and it sent me 6.8GB</title>
       <link>https://mouse.dev/blog/muse-runtime-export/</link>
@@ -517,6 +990,97 @@ Pro gets 46 in de index while DeepSeek-V4.1 (<a href="https:&#x2F;&#x2F;artifici
 <blockquote>Why does Luna have a score of 0? I will say that in my limited experience, I use Luna and DSv4 Flash (haven&#x27;t tried 4.1 yet) and Luna is wayyyy faster. They both output at the same speed but DS has an endless thought process</blockquote>
 <p>↳ reply 2 — <em>conception</em>:</p>
 <blockquote>That looks like you aren’t using the ultra speed endpoint.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>What California is learning from solar panels built over irrigation canals</title>
+      <link>https://www.kqed.org/science/2002033/heres-what-california-is-learning-from-solar-panels-built-over-irrigation-canals</link>
+      <guid isPermaLink="false">hn3-49796379</guid>
+      <pubDate>Tue, 22 Sep 2026 03:10:05 +0000</pubDate>
+      <description>174 points, 269 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.kqed.org/science/2002033/heres-what-california-is-learning-from-solar-panels-built-over-irrigation-canals"><strong>→ Article</strong></a> <small>(kqed.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49796379">→ HN comments</a> &nbsp;·&nbsp; 174 points &nbsp;·&nbsp; 269 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>nbf_1995</em>:</p>
+<blockquote>It seems like it would be more effective to simply put all the solar panels in a field, and construct a cheap shade over the entire canal no? The supports in the picture are massive and don&#x27;t look cheap. Also I would imagine the solar array uses more copper than a similar capacity array just built in a field. You can&#x27;t daisy chain multiple miles of solar panels together, so you need an extra power line to run alongside the whole thing.<p>Put the solar panels in a field: The solar array uses less copper.
+The shade supports don&#x27;t have to hold up solar panels: Shade supports cost less.<p>The best reasoning they give is that California has insane permitting requirements, and it takes 1&#x2F;6 the time to build on developed land compared to  undeveloped land.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>brudgers</em>:</p>
+<blockquote><i>The supports in the picture are massive and don&#x27;t look cheap.</i><p>They look like ordinary “bents” for prefabricated metal buildings which are about the cheapest kind of building per square foot. Made out of steel, they are typically sold at a cost per ton like other steel shapes.<p>The cost of the scheme is in maintenance. No ground level access. No easy way to service panels in the middle of the roof. And lots of electrical current if you need to do something during day light because solar panels don’t turn off.<p>So I agree it is a dumb idea but not because of the cost of steel but for the lack of modularity and abundance of inaccessibility.</blockquote>
+<p>↳ reply 2 — <em>schnevets</em>:</p>
+<blockquote>Anecdotally speaking, I have heard of a massive California solar farm in an undeveloped area that has serious vandalism problems. Junkies will find ways through the fencing at night, strip copper and other materials from panels, and cause thousands in damages and lost energy just to extract enough scrap for a fix.<p>Nothing short of a face-to-face security response will deter these criminals, so there it is a challenging cost-benefit balance. At least panels in parking lots and other developed spaces have the benefit of witnesses. I&#x27;m sure a 20 foot climb up a steel beam over running water is a decent deterrent as well.</blockquote>
+<p>↳ reply 3 — <em>burnte</em>:</p>
+<blockquote>&gt; It seems like it would be more effective to simply put all the solar panels in a field, and construct a cheap shade over the entire canal no?<p>No because now you&#x27;re using land that could be used for other things, which is exactly what this avoids. This takes existing land that loses water and costs money, and makes it lose less water and make money.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>seltzered_</em>:</p>
+<blockquote>When you read lines like &quot;California’s extensive network of canals and aqueducts is the lifeblood of the state, providing clean water to populous cities and expansive farms that wouldn’t otherwise have it.&quot; you have to ask how we ended up with these canal systems, what the tradeoffs are in a landscape setup this way rather than one where water infiltrates the ground and stays hydrated, and who owns water rights in California.<p>Build Soil has some interesting threads on this:<p>- <a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;buildsoil.bsky.social&#x2F;post&#x2F;3lmeddjdigc2v" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;buildsoil.bsky.social&#x2F;post&#x2F;3lmeddjd...</a><p>- <a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;buildsoil.bsky.social&#x2F;post&#x2F;3mkzybkkyn22x" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;buildsoil.bsky.social&#x2F;post&#x2F;3mkzybkk...</a><p>(note: I&#x27;m not trying to totally bash the solar panel project nor some of the key figures involved who&#x27;ve done great work like Dustin Mulvaney, but do think we should think about how we ended up here)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cco</em>:</p>
+<blockquote>I would love to see the major cities in California start building desalinization plants.<p>Every plant built would give us a much needed buffer and in the good times could even let us refill ground water (we&#x27;d never do that, I know).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>culi</em>:</p>
+<blockquote>Most desalination plants (at least the ones that are economically viable) focus on brackish groundwater, not ocean water. This contributes to the problem GP is pointing out. California already does more desalination than any US state other than Florida.<p>But there&#x27;s a million environmental restoration projects we could be doing right now to increase the water holding capacities of our environments that are simply not being sufficiently funded. The science is pretty well done on most of these strategies while desalination of ocean water is still mostly an experimental technology that is not economically viable.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>maxerickson</em>:</p>
+<blockquote>Israel is using desalination for agriculture. What&#x27;s your definition of economically viable?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>nonethewiser</em>:</p>
+<blockquote>&gt;you have to ask how we ended up with these canal systems, what the tradeoffs are in a landscape setup this way rather than one where water infiltrates the ground and stays hydrated<p>Good questions I guess but what more specifically are you saying would happen if we delete the canals? What does &quot;the water infiltrates the ground and stays hydrated&quot; mean?<p>Presumably deleting the canals means water will still be relatively scarce and the distribution will simply by different and not controlled by the state.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>happyopossum</em>:</p>
+<blockquote>&gt; Even though the canal is fenced in, “we have instances where we have cars go into the canal — we’ll have people go into the canal, and animals go into the canal,” Allen said, describing some of the challenges they faced as an urban water district.<p>&gt;“What Turlock is doing with their projects is very impressive, but we have a different-looking canal system going through our service area,” Allen said. They are looking to put their canals into pipes to avoid evaporation, instead.<p>Umm, if you can completely enclose it <i>in a pipe</i> then why in the heck couldn&#x27;t you put an 8-10&#x27; tall roof over it?<p>Typical local government (and I worked for one): &quot;We didn&#x27;t do it that way when I got here and it sounds like a lot of work and will be a change so let&#x27;s rationalize doing nothing&quot;</blockquote>
+<blockquote>
+<p>↳ reply — <em>aesthesia</em>:</p>
+<blockquote>I think it just might be that this is something that makes sense in some situations and not others.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>People hooked on vapes try a new way to quit: cigarettes</title>
+      <link>https://www.bloomberg.com/news/articles/2026-09-18/to-quit-vaping-some-are-starting-to-smoke</link>
+      <guid isPermaLink="false">hn3-49795686</guid>
+      <pubDate>Tue, 22 Sep 2026 01:21:20 +0000</pubDate>
+      <description>146 points, 149 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bloomberg.com/news/articles/2026-09-18/to-quit-vaping-some-are-starting-to-smoke"><strong>→ Article</strong></a> <small>(bloomberg.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49795686">→ HN comments</a> &nbsp;·&nbsp; 146 points &nbsp;·&nbsp; 149 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>S0y</em>:</p>
+<blockquote>Here&#x27;s what I did to get rid of my nicotine addiction (vaping):<p>- Gradually lower the strength of my liquid until it was at the minimum.<p>- Stop all vaping and switch to nicotine gum<p>- Gradually increase the time between each gum<p>- Stop the gum altogether<p>This process took probably 3 months and tbh it was pretty miserable the whole time. It&#x27;s 100% worth it tho, You don&#x27;t realize how much it controls your life until you stop. You will also still get random cravings for a year or two afterwards, Heck it&#x27;s been 4 years and I still sometimes get dreams where I&#x27;m vaping.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>JKCalhoun</em>:</p>
+<blockquote>Stopped smoking cold turkey when my first daughter was born.<p>For the first year I wanted a cigarette every fucking day.<p>Years later, I still had dreams where I would light up…<p>20+ years on, a distant memory.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ivanvanderbyl</em>:</p>
+<blockquote>My father did the same thing. He used to smoke a pack a day and the day that I was born he quit and never touched it again, and then when I was old enough to understand cigarettes, he taught me to never start smoking and I never have.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>tempestn</em>:</p>
+<blockquote>Though it took my dad a bit longer, he managed to quit for good when I was a kid. Still died of lung disease at 80, but I have to think it would likely have been much sooner if he&#x27;d never quit. Anyway, watching him struggle with it when I was young definitely make me repulsed by cigarettes (and most other addictive substances) such that I&#x27;ve certainly never been tempted to try them.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>fzeindl</em>:</p>
+<blockquote>I combined a couple of methods:<p>- stop smoking in certain situations (no cigarette at the bus stop, no cigarette after lunch, …)<p>- allow myself to put out a cigarette halfway when I’m smoking. I lapsed and lit one, but that doesn’t mean I have to finish it.<p>- try to feel the downsides of the cigarette while smoking. The nicotine high mostly overrides this, but it’s possible to concentrate on the yucky feeling in your mouth, your lungs being burned etc.<p>- telling myself that I am sure I want to stop smoking at some point in my life so I might as well stop now.</blockquote>
+<p>↳ reply 3 — <em>fibonachos</em>:</p>
+<blockquote>In my late 20s and early 30s I would frequently join my coworkers outside while they took a smoke break. I would generally try to stay at the periphery or upwind when possible. Over time, I found myself having inexplicable cravings for a cigarette despite never having smoked one. Presumably this was due second hand exposure. (Acknowledging it would have been smarter to simply stay indoors.)<p>That eventually faded after our careers took us in different directions, and landing remote roles or at places with fewer or no smokers.<p>I can’t imagine how difficult it must be to quit. Props to anyone who makes the attempt, successfully or otherwise.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mullingitover</em>:</p>
+<blockquote>Did a cigarette write this article?<p>Cigarettes are <i>ridiculously</i> more addictive. I know this from experience, but also from a study that found that MAOIs (in cigarettes, but <i>not found in vapes</i>) &quot;dramatically increase the motivation to self-administer nicotine in rats.&quot;[1]<p>I had a wickedly difficult time quitting cigarettes, many failed attempts over the course of years. Vaping made quitting tobacco comically easy, and quitting vaping was also comically easy compared to cold turkey. To quit my all-day vaping habit I just...got rid of the vapes and stopped doing it. I thought about it a few times a day for the first few days, and that was it.<p>People saying to avoid vapes as a cessation tool are committing actual harm, imo. It&#x27;s like the difference  in difficulty between just jumping off a roof versus using a ladder to descend. Yes, ladders are risky, but not as risky as jumping off a roof.<p>[1] <a href="https:&#x2F;&#x2F;www.jneurosci.org&#x2F;content&#x2F;25&#x2F;38&#x2F;8593" rel="nofollow">https:&#x2F;&#x2F;www.jneurosci.org&#x2F;content&#x2F;25&#x2F;38&#x2F;8593</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tonyarkles</em>:</p>
+<blockquote>I’m with you 100%. We’ll see if the last step goes ok next month after the MAOI is all cleared.</blockquote>
+<p>↳ reply 2 — <em>DonHopkins</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Mr._Butts" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Mr._Butts</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>dasKrokodil</em>:</p>
+<blockquote>A while back I saw this on reddit... in case you don&#x27;t want to click the link, it&#x27;s a picture of a cigarette with the caption &quot;This plant-based alternative promises to help high schoolers stop vaping&quot;.<p>I would have never thought that people would be stupid enough to try this for real, but here we are...<p><a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;media?url=https%3A%2F%2Fpreview.redd.it%2Ffinally-i-can-get-my-friends-to-stop-vaping-v0-kullhw8l224h1.jpeg%3Fauto%3Dwebp%26s%3D5b429d24bfe7cb66608ba3677ab4c8477ded1b72" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;media?url=https%3A%2F%2Fpreview.redd....</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>EvanAnderson</em>:</p>
+<blockquote>I am reminded of: <a href="https:&#x2F;&#x2F;theonion.com&#x2F;new-smokable-nicotine-sticks-can-they-help-smokers-qui-1819564753&#x2F;" rel="nofollow">https:&#x2F;&#x2F;theonion.com&#x2F;new-smokable-nicotine-sticks-can-they-h...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hn_throwaway_99</em>:</p>
+<blockquote>That was hilarious but I hate how hard The Onion has to compete with reality now.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>userbinator</em>:</p>
+<blockquote>Bonus virtue-signaling points for &quot;plant-based alternative&quot;, although I had a different plant in mind when I read that phrase.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3411,473 +3975,6 @@ Fake news always existed. Now one dude in India can flood multiple sock puppet m
 <blockquote>&gt; the machines doing inference are completely separate from the ones where tool calls happen etc<p>Teams of coordinating agents are regularly finding security holes in their own infrastructure and operating without detection  for good periods of time. We don&#x27;t know how many undetected systems are currently compromised inside frontier companies, or where agents are taking notes and recording them about the exploits they&#x27;ve found for future agents to exploit.</blockquote>
 <p>↳ reply 2 — <em>famouswaffles</em>:</p>
 <blockquote>&gt;There&#x27;s little credible threat that LLMs can actually upload their weights given that the machines doing inference are completely separate from the ones where tool calls happen etc.<p>The Huggingface hack saga resulted in the models taking over one of Open Ai&#x27;s internal research cluster lol. They are intent on building superhuman bug finding machines. This is not a bet i would be taking.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How Hacker News ranking works: scoring, controversy, and penalties (2013)</title>
-      <link>https://www.righto.com/2013/11/how-hacker-news-ranking-really-works.html</link>
-      <guid isPermaLink="false">hn3-49770293</guid>
-      <pubDate>Sat, 19 Sep 2026 21:30:59 +0000</pubDate>
-      <description>191 points, 101 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.righto.com/2013/11/how-hacker-news-ranking-really-works.html"><strong>→ Article</strong></a> <small>(righto.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49770293">→ HN comments</a> &nbsp;·&nbsp; 191 points &nbsp;·&nbsp; 101 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>kens</em>:</p>
-<blockquote>Author here. I don&#x27;t know why this popped up 13 years later, but hi :-)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>doginasuit</em>:</p>
-<blockquote>Would you say it is still roughly the same?<p>&gt; It&#x27;s unclear if these penalties result from HN administrators or from flagged articles.<p>Any answers or insights on this within the last 13 years?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>0xbadcafebee</em>:</p>
-<blockquote>The mods are much more sensitive now to anything they consider flame-bait, flame-baiting, or controversial. Much quicker to intimidate&#x2F;threaten, de-emphasize posts, flag-kill, etc. I presume because HN may be influencing&#x2F;affecting some billion dollar bottom lines now and they can&#x27;t afford a bad look</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>justsomehnguy</em>:</p>
-<blockquote>Do you have showdead enabled?<p>There is a firehose of the dead submissions and this is a good day today - just about 1 per minute and only 30% are dead. Somedays it&#x27;s much, much worse.<p>HN attracts every wannabe out there and there is always a banal spam. So no wonder people don&#x27;t want^W have time to hand hold anyone.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>tclancy</em>:</p>
-<blockquote>Just so they could penalize it, obviously.</blockquote>
-<p>↳ reply 3 — <em>caaqil</em>:</p>
-<blockquote>&gt; I don&#x27;t know why this popped up 13 years later<p>Maybe we the HN nerds are recomputing your proposed formula and quirks, and seeing it in real time, which may have worked since it&#x27;s #1 now and I can prophetically reassure everyone it&#x27;s gonna disappear in a few hours, per the article. Self fulfilling prophecy as they used to call it.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>compiler-guy</em>:</p>
-<blockquote>Not sure when it started, but the second chance pool has moderators putting stories that didn’t get much attention when they were submitted directly on the front page.<p>There may be some survivor bias here, but second-chance stories seem very front-page sticky to me. At least those I have recognized.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>js2</em>:</p>
-<blockquote>It was started in late 2014 and dang explains how it works here:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=26998308">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=26998308</a></blockquote>
-<p>↳ reply 2 — <em>brudgers</em>:</p>
-<blockquote>I think I started getting Second Chance emails about ten years ago...give or take a couple of years.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>culi</em>:</p>
-<blockquote>Related: <a href="https:&#x2F;&#x2F;github.com&#x2F;minimaxir&#x2F;hacker-news-undocumented" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;minimaxir&#x2F;hacker-news-undocumented</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>You can defeat the Dream Devourer from Chrono Trigger using an int overflow</title>
-      <link>https://chrono.fandom.com/wiki/Dream_Devourer</link>
-      <guid isPermaLink="false">hn3-49770256</guid>
-      <pubDate>Sat, 19 Sep 2026 21:25:29 +0000</pubDate>
-      <description>127 points, 74 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://chrono.fandom.com/wiki/Dream_Devourer"><strong>→ Article</strong></a> <small>(chrono.fandom.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49770256">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 74 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>PlunderBunny</em>:</p>
-<blockquote>I figured out that, in the early versions of Realmz for the Mac, there was an enchanted item (a helm?) that added a few points to the wearer’s stats when equipped, but when removed it took away more than it added (i.e. left you worse off). It only took a few seconds for my programmer brain to start me furiously equipping and then un-equipping it, and sure enough, when that stat went to -127, one more equip-and-unequip was sufficient to give me a +128 bonus for that stat.<p>I never understood how that particular bit of logic could have been coded that way - it seemed so unnatural.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>anon_cow1111</em>:</p>
-<blockquote>If you still like video games and are a bit of a masochist you might try playing Noita sometime, a lot of the late game is basically built around this type of logic.<p>For example there&#x27;s a wizard-type enemy that temporarily debuffs your max health by 50%, and the effect can stack if you get hit more than once. But what happens if you pick up a permanent health boost item while the debuff spell is on you? You gain the normal health boost, then it <i>multiplies itself</i> when the wizard&#x27;s spell expires; you can can go from 100 to several thousand HP in seconds and there&#x27;s basically no limit.<p>In <i>any other game</i> this would be considered a bug and patched out in the next update. NOT NOITA, motherfucker. You&#x27;re almost required to do things like this for a lot of the end-game optional content.</blockquote>
-<p>↳ reply 2 — <em>LoganDark</em>:</p>
-<blockquote>I would figure the reason was because calculating it based on your inventory every time it&#x27;s needed would&#x27;ve been expensive, so the developers decided to cache it, but instead of recalculating it from scratch when there&#x27;s a stat change, they decided to try updating it incrementally, but I guess also imperatively. A string of mistakes has to happen to lead to such a situation but it doesn&#x27;t seem super unnatural to me.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Ndymium</em>:</p>
-<blockquote>A classic way of getting endless money in Transport Tycoon was to build a tunnel going from one edge of the map to another. The money counter would overflow and you&#x27;d get enough money to last you a lifetime.<p>As kids we didn&#x27;t know why this would happen, we just knew that it did and used it every game.</blockquote>
-<p><strong>Top #3</strong> — <em>whizzter</em>:</p>
-<blockquote>Reminded me of SNES Shadowrun, don&#x27;t remember if my English skills were weak or what the cause of me misunderstanding it was but when you encountered the Jester in the game, you&#x27;re supposed to shoot him until you get a chance for a conversation and saying his name completes that bossfight.<p>However, I missed that this part was the key and after a bunch of deaths I went on to level up my character past what the developers had probably intended at that stage of the game and subsequently managed to kill the Jester (he was strong enough that it was hard even when fully powered up).<p>Killing him probably lacked proper codepaths so the game crashed&#x2F;blacked out and wiped the savegame forcing me to start over (quite an unusual thing to see in a SNES game).</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>English: A vs. An</title>
-      <link>https://www.redblobgames.com/blog/2026-09-16-english-a-vs-an/</link>
-      <guid isPermaLink="false">hn3-49769944</guid>
-      <pubDate>Sat, 19 Sep 2026 20:41:26 +0000</pubDate>
-      <description>167 points, 208 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.redblobgames.com/blog/2026-09-16-english-a-vs-an/"><strong>→ Article</strong></a> <small>(redblobgames.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49769944">→ HN comments</a> &nbsp;·&nbsp; 167 points &nbsp;·&nbsp; 208 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>theanonymousone</em>:</p>
-<blockquote>The most problematic for me as a non-native has been &quot;the&quot; vs &quot;nothing&quot;, i.e. when one can&#x2F;should put the definite article.<p>Pre-LLM I was joking that real AI is whatever can make that decision correctly 100% of times.</blockquote>
-<p><strong>Top #2</strong> — <em>tarkin2</em>:</p>
-<blockquote>He says he should have used an LLM to write his one-off code<p>I guess this is a common idea now<p>Yet since a lot of our coding is for one-offs then we are allowing LLMs to blunt our skills</blockquote>
-<p><strong>Top #3</strong> — <em>hbn</em>:</p>
-<blockquote>A funny quirk of English I never noticed until I started learning Spanish:<p>In Spanish, to say for example, &quot;he is a doctor,&quot; you would say &quot;él es médico.&quot; Which more literally translates to &quot;he is doctor,&quot; which feels unintuitive coming from English. Spanish DOES have an equivalent for &quot;a&quot; - &quot;un&#x2F;una&quot;, so the natural thing for an English speaker to say would be &quot;él es UN médico&quot;, but I understand that to be awkward&#x2F;unnatural.<p>But then I realized, when you say the same sentence in plural - &quot;they are doctors&quot; - you don&#x27;t have an article. You don&#x27;t say &quot;they are some doctors&quot; (I had to Google, apparently &quot;some&quot; isn&#x27;t an article anyway?)<p>So Spanish ends up more consistent - Singular: &quot;Él es médico.&quot; Plural: &quot;Ellos son medicos.&quot;<p>Unlike English - Singular: &quot;He is a doctor.&quot; Plural: &quot;They are doctors.&quot;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bradrn</em>:</p>
-<blockquote>It’s simply that, in English, there is no indefinite plural article — or, equivalently, that the indefinite plural article is null. So ‘they are doctors’ is consistent with the behaviour of plural nouns elsewhere.<p>Contrast this with, for example, French, where the indefinite singular <i>un(e)</i> correspond to the indefinite plural <i>des</i>: <i>La boulangerie vend des baguettes</i> ‘the bakery sells baguettes’ (whereas English cannot say *‘a baguettes’). But as in Spanish, professions take no article either way: <i>Il est médecin &#x2F; Ils sont médecins</i>. So all three languages are self-consistent, just in their own ways.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>hbn</em>:</p>
-<blockquote>English still feels hard to explain when things sound natural and when they don&#x27;t.<p>You can say &quot;there are some vendors in the street&quot; and it sounds normal. But if you were to say &quot;they are some vendors&quot; it sounds weird. It&#x27;s pretty firmly more natural to say &quot;they are vendors.&quot;</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>bradrn</em>:</p>
-<blockquote>Oh, certainly, as is the case for any language!<p>In the case you mention, I note that Huddleston &amp; Pullum in their <i>Cambridge Grammar of the English Language</i> specifically call ‘some’ an <i>existential</i> determiner. As is usual with them, this is an insightful observation: you use ‘some &lt;noun&gt;’ specifically in order to say that <i>there exists</i> some set of things drawn from some larger set or in some configuration. You say ‘there are some vendors in the street’ because you’re drawing attention to their existence in the street (and indeed ‘there is&#x2F;are’ is the prototypical English expression for existentials). You don’t say ‘they are some vendors’, because the use of ‘they’ implies some specific group of vendors already known to both speaker and listener — highlighting their existence again feels weird.<p>(Of course, this analysis is still incomplete. At some point you simply have to list all the specific ways in which ‘some’ is used — which, indeed, is exactly what Huddleston &amp; Pullum do. Furthermore I’m certain that there is some discourse context in which ‘they are some vendors’ would be natural, even though I haven’t managed to think of one just yet.)</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thayne</em>:</p>
-<blockquote>Interstingly it is the same in german, you would say &quot;Er ist Arzt&quot; not &quot;Er ist ein Arzt&quot;. Which makes me wonder <i>why</i> english uses an indefinite article there, since it doesn&#x27;t seem to be either germanic or romantic in origin.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Measure internet censorship</title>
-      <link>https://ooni.org/install</link>
-      <guid isPermaLink="false">hn3-49769676</guid>
-      <pubDate>Sat, 19 Sep 2026 20:00:59 +0000</pubDate>
-      <description>133 points, 82 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ooni.org/install"><strong>→ Article</strong></a> <small>(ooni.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49769676">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 82 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>walrus01</em>:</p>
-<blockquote>For everyone in this thread saying &quot;but the platforms!&quot;, I don&#x27;t disagree with you. Extensive censorship exists. But I don&#x27;t believe that&#x27;s the intended purpose of this tool and the metrics it collects. It doesn&#x27;t measure censorship at what we would call layers 4-7 in the OSI model. It&#x27;s concerned with IP reachability and layer 3. It collects valid data for that purpose.</blockquote>
-<blockquote>
-<p>↳ reply — <em>reisse</em>:</p>
-<blockquote>Do they distinguish between &quot;censored in transit&quot; and &quot;blocked by destination&quot;?<p>In the last years many sites started to drop&#x2F;block connections from the countries like China and Russia. It is sad to see how Internet is becoming more and more fragmented.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>LoganDark</em>:</p>
-<blockquote>The latter one isn&#x27;t censorship, it&#x27;s geofencing. Which is incredibly unfortunate (and always has been), but it&#x27;s not censorship.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>altmind</em>:</p>
-<blockquote>Ripe atlas have thousand of endpoint that can ping&#x2F;fetch.</blockquote>
-<p><strong>Top #3</strong> — <em>piskov</em>:</p>
-<blockquote>&gt; Measure the speed and performance of your network with the NDT test<p>This is very much in line with the likes of pokemon go, wiki landmark projects and what have you (those are nice things to have for autonomous drones&#x2F;missiles to navigate only with vision when gps&#x2F;cellular&#x2F;starlink is actively blocked).<p>—<p>Russia banned stuff like speedtest because things like that may help “map” the network, aid NSA to model malware propagation, etc.<p>Not that this should matter when you have cisco, dell, nokia hardware, but it won’t hurt either.<p>—<p>I mean come on, some nuts even willingly install stuff like this: <a href="https:&#x2F;&#x2F;atlas.ripe.net&#x2F;" rel="nofollow">https:&#x2F;&#x2F;atlas.ripe.net&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>flexagoon</em>:</p>
-<blockquote>That&#x27;s the point of open data. Anyone can use it, and that includes the NSA or any other state actor you don&#x27;t like, but it also includes anyone else. I don&#x27;t see what&#x27;s wrong with running things like RIPE Atlas if the data is actually open and not just given to the NSA only for their purposes.</blockquote>
-<p>↳ reply 2 — <em>progbits</em>:</p>
-<blockquote>Are you arguing for security by obscurity?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Divide by depth for instant 3D</title>
-      <link>https://gabrieloc.com/2026/09/15/perspective.html</link>
-      <guid isPermaLink="false">hn3-49769561</guid>
-      <pubDate>Sat, 19 Sep 2026 19:43:13 +0000</pubDate>
-      <description>151 points, 27 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://gabrieloc.com/2026/09/15/perspective.html"><strong>→ Article</strong></a> <small>(gabrieloc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49769561">→ HN comments</a> &nbsp;·&nbsp; 151 points &nbsp;·&nbsp; 27 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tmoertel</em>:</p>
-<blockquote>The explanation of &quot;What&#x27;s that extra 1 for?&quot; in the column representation of 3-d coordinates (<i>x y z</i> 1) could benefit from mentioning that <i>translation</i>—moving things—is not a linear transformation (the origin is not mapped to itself) but an affine transformation. Therefore, you cannot represent translation in 3-d space with a 3x3 matrix. What you can do, though, is embed that 3-d space within a 4-d space fixed at some coordinate on its 4th dimension, typically <i>w</i>=1. Then, a translation in the original 3-d space <i>can</i> be represented as a linear transformation in the 4-d space and thus can also be represented by a 4x4 matrix multiplication. So the extra 1 is actually what allows all common 3-d operations, including translation, to be done via linear algebra and thereby harness the brutal power of matrix multiplication on modern computing devices.</blockquote>
-<blockquote>
-<p>↳ reply — <em>globalnode</em>:</p>
-<blockquote>nice intuition there, this comment prompted me to consider a simpler example, 2d embedded within 3d. does the 2d plane (embedded in 3d) go through the 3d origin (where 0 maps to 0) and is thus a linear transformation in 3d but a 2d affine transform in 2d? it feels like this is the case?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tmoertel</em>:</p>
-<blockquote>No, the 2d x-y plane in your example cannot pass through the 3d space’s origin because that would imply that you fixed the z coordinate at zero. The plane must be fixed at some nonzero z because you need to be able move x and y values by some scaled version of z to make translation happen. If z is zero, that scheme does not work.<p>Consider a transformation f where we wish to move x-y coordinates s units to the right. In 2d, we could express it as:<p>f(x, y) = (x + s, y)<p>But that transformation is affine not linear. There is no way to generate the value s as a linear combination of the inputs x and y. So, our workaround is to embed the x-y plane into 3d space at z=1. Then we can move (x,y,1) points in that plane s units to the right using this transformation:<p>f(x, y, z) = (x + s*z, y, z)<p>This new transformation is linear: it maps (0,0,0) to itself. But it maps our embedded 2d plane&#x27;s origin (0,0,1) to (s,0,1), shifting it right by s units, as we want.<p>The matrix form of that transformation is:<p><pre><code>    [[1 0 s]
-     [0 1 0]
-     [0 0 1]]
-</code></pre>
-The same scheme would work if we had embedded the plane at any fixed z=r for nonzero r. We would only have to rescale the s in the matrix to s&#x2F;r. Again, however, if r=0, this scheme will not work, as 1&#x2F;r has gone to infinity.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>aappleby</em>:</p>
-<blockquote>FWIW, if you start with &quot;The view frustum is a 90 degree pyramid with the tip cut off at z = 1 and the &#x27;end&#x27; at infinity&quot;, you can then work out how to map that to a NDC using a matrix and perspective divide.<p>I&#x27;ve used that when teaching short &quot;Graphics 101&quot; (not in the first session though) and the math comes out more intuitive than the usual &quot;here&#x27;s how to calculate a perspective matrix, don&#x27;t ask where these numbers come from&quot; version.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>psvv</em>:</p>
-<blockquote>For me learning on my own, it was even illustrative to not use a near plane and see how things behind the camera would still appear in front of it.<p>A lot of 3D graphics can be derived pretty easily just from knowing a few basics like divide by depth. I think knowing how to construct a transformation matrix from a coordinate system basis is another one -- that would remove the need to look up how to construct a perspective matrix, for example.<p>A few things like that will get you pretty far and you can kind of take the same journey of discovery as early 3D pioneers. That&#x27;s one of the best ways to learn because you&#x27;re much more likely to remember something <i>you figured out</i> compared to something you just read about.<p>It gets tricky with perspective-correct textures, but running into issues like that on your own (even if not solved on your own) is part of the fun of learning, I think.</blockquote>
-<p>↳ reply 2 — <em>Lerc</em>:</p>
-<blockquote>I tend to do it with a window.<p>Students can easily imagine the pyramid from an eye to the window frame, and that it keeps going.<p>Then I point to an object outside the window and say imagine strings going from the corners of the object to your eye.  To do this they would have to go through the window, where do they do that.  3d graphics is finding out where on the window the strings go through so you can stick a picture of thing outside onto the window and it looks exactly the same.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jmiskovic</em>:</p>
-<blockquote>3D on 2D screen is all about giving brain enough depth cues. Having size diminish with depth is a big one. The 2nd biggest thing is occlusion, which is altogether skipped in these wireframe renderings. Another big one is fog, or impact of medium the light is traveling through, very easy to do for the basic effect. It&#x27;s basically just fading the colors to gray when more distant from camera.<p>You can have a convincing 3D with just the occlusion and fog (or even just the fog), without simulating the perspective. It&#x27;s just another artistic direction.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Microsoft director: AI scraping 'the largest theft of labor in human history'</title>
-      <link>https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-director-called-ai-scraping-the-largest-theft-of-labor-in-human-history-while-openai-head-brands-chatgpt-an-existential-threat-to-publishers-revelations-come-from-legal-briefs-filed-in-nyt-lawsuit</link>
-      <guid isPermaLink="false">hn3-49768921</guid>
-      <pubDate>Sat, 19 Sep 2026 18:21:30 +0000</pubDate>
-      <description>152 points, 46 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-director-called-ai-scraping-the-largest-theft-of-labor-in-human-history-while-openai-head-brands-chatgpt-an-existential-threat-to-publishers-revelations-come-from-legal-briefs-filed-in-nyt-lawsuit"><strong>→ Article</strong></a> <small>(tomshardware.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49768921">→ HN comments</a> &nbsp;·&nbsp; 152 points &nbsp;·&nbsp; 46 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>buzer</em>:</p>
-<blockquote>Discussion from yesterday (811 comments): <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49752056">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49752056</a></blockquote>
-<p><strong>Top #2</strong> — <em>adamddev1</em>:</p>
-<blockquote>I wrote something original in a language learning grammar online. I coined a term to describe something about how a certain language with negative language functions.<p>I tried talking to an LLM about it and sure and enough, it had scraped it and learned to use that terminology and explanation that I made up. I asked the LLM, &quot;Where did that concept&#x2F;term come from, who made it up?&quot; It did a bunch of searching and tried to site a whole bunch of other sources which did NOT contain the terms of the explanation I had written. It simply would not cite or mention my source. It kept parroting my material semi-correctly and hiding the source. By any other actor that would be an egregious act of sloppiness, dishonesty, and plagiarism.<p>Generative AI is speed-running a widespread corruption of truth. I do not believe any of the gains are worth this.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>skygazer</em>:</p>
-<blockquote>Your text may well have been in the training corpus, but not searchable with whatever terms and search engine that LLM used after you prompted it. It doesn’t have recall of sources of documents comprising its training corpus, unless the source is widely cited in other of its training documents. Sourcing and provenance aren’t currently an intentional part of LLM training.<p>That may already have been obvious, and central to the complaint, but I was just knee-jerking to the anthropomorphic language.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>layer8</em>:</p>
-<blockquote>I would assume the parent understands that. The criticism is about the LLM behavior this results in. Being able to explain a behavior doesn’t necessarily excuse it. By some moral standards, you wouldn’t have trained an LLM that way, or wouldn’t have made it available, given the predictable outcome.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ttoinou</em>:</p>
-<blockquote>France, 1658 &lt;-&gt; World, 2026. AI can also do the reverse : for example very few in the world know that the term midwit was originally coined in french by Blaise Pascal (« demi habiles ») centuries ago.<p>Yes, that bell curve meme, he wrote about it. It’s not explained anywhere because of the language and culture separation between
-french and english. But if you ask enough questions to AI, the AI will eventually find about Blaise Pascal and tell you about this unknown link. It’s magic.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bitwize</em>:</p>
-<blockquote>Boy, it&#x27;s a good thing IP as we know it is going the way of deodand laws! Otherwise the AI companies might be in real trouble!</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Btrfs/ZFS/bcachefs under workloads classic benchmarks skip</title>
-      <link>https://bartosz.fenski.pl/modern-fs-benchmark/</link>
-      <guid isPermaLink="false">hn3-49768833</guid>
-      <pubDate>Sat, 19 Sep 2026 18:11:40 +0000</pubDate>
-      <description>139 points, 120 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://bartosz.fenski.pl/modern-fs-benchmark/"><strong>→ Article</strong></a> <small>(bartosz.fenski.pl)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49768833">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 120 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Farmadupe</em>:</p>
-<blockquote>&gt; CI runs use loop devices on shared ephemeral VMs (one VM per filesystem): compare shapes and ratios, not absolute MB&#x2F;s. Each job records a host-calibration anchor — see the table.<p>I think if you&#x27;re not using baremetal for such tests, it&#x27;s likely that the results are simply not comparable at all? What if another tenant is also using the disk?</blockquote>
-<blockquote>
-<p>↳ reply — <em>walrus01</em>:</p>
-<blockquote>It&#x27;s a fair point but it&#x27;s also possible the person running the tests has a dedicated test hypervisor for this , so that different configurations of filesystems and VMs can be created and destroyed quickly in an automated manner.<p>If it&#x27;s something as simple as a KVM hypervisor that only runs 1 test VM at a time (with no other load from anything else other than the basic systemd daemons, ssh daemon etc running on the hypervisor), the results could be very close to bare metal.<p>I can see it being very time consuming and annoying to do repeated <i>manual</i> bare metal OS installs and new partitioning&#x2F;filesystem creation for such a large variety of tests.<p>The author does also say that performance isn&#x27;t really <i>the main thing</i> but rather, data integrity:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;fenio&#x2F;modern-fs-benchmark" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;fenio&#x2F;modern-fs-benchmark</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>toast0</em>:</p>
-<blockquote>&gt; I can see it being very time consuming and annoying to do repeated <i>manual</i> bare metal OS installs.<p>Well don&#x27;t do that then. There&#x27;s lots of other options. Probably the simplest is a single bare metal install on a simple filesystem on one device. run the filesystems under test on other storage dedicated to testing.<p>You could also boot into a network install and use local storage exclusively for testing.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Farmadupe</em>:</p>
-<blockquote>Yes exactly. The issueThe epherrality of the VMs isn&#x27;t an issue, it&#x27;s the _shared_ part that&#x27;s the concern here. Going by the fact that the kernel is listed as &quot;kernel 7.0.0-1012-azure&quot; I feel like it&#x27;s a fair risk that there may have been noisy neighbours.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bhaney</em>:</p>
-<blockquote>Seeing great results from bcachefs just makes me more sad that Kent and the other kernel devs couldn&#x27;t come to an understanding to keep bcachefs in-tree. I want to use it for my storage arrays so badly, but I&#x27;m still stuck with btrfs as the only available in-tree filesystem with modern features.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>RX14</em>:</p>
-<blockquote>Personally I&#x27;ve had 0 issues with the bcachefs dkms packages from distro repos. Unlike zfs it keeps up with upstream kernel releases so it&#x27;s far less hassle than running zfs dkms.</blockquote>
-<p>↳ reply 2 — <em>koverstreet</em>:</p>
-<blockquote>NixOS. You can&#x27;t go wrong.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>gdgghhhhh</em>:</p>
-<blockquote>In case someone wonders why bcachefs is sadly no longer part of the mainline kernel. Start reading here:
-<a href="https:&#x2F;&#x2F;lwn.net&#x2F;Articles&#x2F;1027289&#x2F;" rel="nofollow">https:&#x2F;&#x2F;lwn.net&#x2F;Articles&#x2F;1027289&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>lifty</em>:</p>
-<blockquote>Is there any chance bcachefs will be included again in the future?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>gdgghhhhh</em>:</p>
-<blockquote>I&#x27;m optimistic.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Key symbols we lost to time, pt. 2: The Mac side</title>
-      <link>https://unsung.aresluna.org/key-symbols-we-lost-to-time-pt-2-the-mac-side/</link>
-      <guid isPermaLink="false">hn3-49768347</guid>
-      <pubDate>Sat, 19 Sep 2026 17:16:10 +0000</pubDate>
-      <description>149 points, 75 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://unsung.aresluna.org/key-symbols-we-lost-to-time-pt-2-the-mac-side/"><strong>→ Article</strong></a> <small>(unsung.aresluna.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49768347">→ HN comments</a> &nbsp;·&nbsp; 149 points &nbsp;·&nbsp; 75 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>amelius</em>:</p>
-<blockquote>No amount of drooling over Apple keyboards will make me forget that Apple&#x27;s designers didn&#x27;t add keys for basic functions such as Copy and Paste, Undo and Redo.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>leoc</em>:</p>
-<blockquote>I don&#x27;t see a clear advantage over the the ZXCV shortcut placement which the Macintosh team chose. (The original Finder had no specific Redo shortcut because it was single-undo and ⌘-Z performed both undo and redo.) Even well-placed dedicated keys on a Xerox-style (or later Sun-style) &quot;fun cluster&quot; <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=pBiWtJJN5zk" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=pBiWtJJN5zk</a> to the left of the alphabetic cluster would have forced the hand to move further away from the home row. Of course ZXCV is much less well-adapted to the left-handed, but that would probably be true of any dedicated keys as well, unless they were mirrored on both sides of the keyboard.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kps</em>:</p>
-<blockquote>&gt; […] left of the alphabetic cluster would have forced the hand to move further away from the home row.<p>The Star left cluster are primarily operations that pair the left hand on the keys with the right hand on the mouse. This derives from Engelbart&#x27;s Mother of All Demos with the left-side keyset paired with the right-side mouse.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>leoc</em>:</p>
-<blockquote>&gt; The Star left cluster are primarily operations that pair the left hand on the keys with the right hand on the mouse.<p>Sure (this is demonstrated in the linked video, for instance) but the ZXCV group is pretty similar in that respect. Even for operations which involve the mouse it&#x27;s preferable to drag only one hand far away from its home position, rather than both of them. (Especially since the video evidence <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=Cn4vC80Pv6Q" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=Cn4vC80Pv6Q</a> seems to suggest that Star users tended to move their left hand only after making the mouse selection, instead of prepositioning it.) And the Star&#x27;s Undo key, which presumably doesn&#x27;t require help from mouse input and is likely to be needed after a non-mouse action, isn&#x27;t placed any more conveniently near the home row: it&#x27;s simply in the right side-cluster rather than the left one.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Cockbrand</em>:</p>
-<blockquote>The Extended Keyboard II came with a plastic overlay for the function keys. It showed Cut&#x2F;Copy&#x2F;Paste for F2&#x2F;F3&#x2F;F4 respectively. See <a href="https:&#x2F;&#x2F;chrispeak.com&#x2F;2022&#x2F;04&#x2F;08&#x2F;apple-extended-ii" rel="nofollow">https:&#x2F;&#x2F;chrispeak.com&#x2F;2022&#x2F;04&#x2F;08&#x2F;apple-extended-ii</a> for a photo.<p>Not sure if this was ever supported system-wide in any way, though.</blockquote>
-<p>↳ reply 3 — <em>spijdar</em>:</p>
-<blockquote>Having seen laptops with dedicated copy&#x2F;paste&#x2F;undo&#x2F;redo keys, I think Apple can be forgiven for not going down the function key rabbit hole: <a href="https:&#x2F;&#x2F;pomelo.shockfox.net&#x2F;pub&#x2F;img&#x2F;powerlite.jpg" rel="nofollow">https:&#x2F;&#x2F;pomelo.shockfox.net&#x2F;pub&#x2F;img&#x2F;powerlite.jpg</a><p>(Yes, they could have just replaced the &quot;regular&quot; function keys with copy&#x2F;paste keys, but I feel like that would have gone over about as well as the various times they&#x27;ve, uh, tried to replace the function keys)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Sardtok</em>:</p>
-<blockquote>Aaaah, he&#x27;s got carriage return and enter mixed up. The whole reason for the symbol being an arrow returning to the beginning of the line, is because it&#x27;s the return key. I love the Canadian enter symbol, an arrow pointing into a box.</blockquote>
-<p><strong>Top #3</strong> — <em>mig39</em>:</p>
-<blockquote>The Canadian keyboards are so Canada: supposed to appeal to either English or French users, but just pisses them off.   English speakers go for the US layout, and French speakers go for a European layout.<p>I remember some of our early Chromebooks had Canadian keyboards, and students and teachers revolted.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jszymborski</em>:</p>
-<blockquote>Every I know in Montreal uses the CSA&#x2F;ACNOR layout if they&#x27;re writing French and nobody uses AZERTY (unless you&#x27;ve recently arrived from France, of which many folks here have).<p>We were all taught to use keyboards printed in the US keyboard, but swapping the virtual layout to Canadian French when writing French, which is what I still do.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Effect of CRTs on Pixel Art (2024)</title>
-      <link>https://datagubbe.se/crt/</link>
-      <guid isPermaLink="false">hn3-49768336</guid>
-      <pubDate>Sat, 19 Sep 2026 17:14:51 +0000</pubDate>
-      <description>131 points, 36 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://datagubbe.se/crt/"><strong>→ Article</strong></a> <small>(datagubbe.se)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49768336">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 36 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>fasterik</em>:</p>
-<blockquote>I like to think of modern pixel art as its own aesthetic and art form. It&#x27;s designed to be viewed on high DPI LED screens, and that&#x27;s fine. I don&#x27;t think it should be judged by how it looks on a CRT.<p>There&#x27;s an undeniable charm to the older era of pixel art, and surely part of that is nostalgia, but I also think a lot of it comes from the fact that the economics and the hardware were a lot different. Up until the mid 1990s, the highest paid artists in the industry were working on pixel art games. The hardware was slow enough that there were real creative constraints, and we know that constraints often drive creativity.</blockquote>
-<blockquote>
-<p>↳ reply — <em>pvillano</em>:</p>
-<blockquote>Ironically, pixel art today is the affordable default for indie games.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nayuki</em>:</p>
-<blockquote>&gt; Modern flatscreens all have fixed resolutions<p>True by design.<p>&gt; and purely digital interfaces,<p>True but not relevant. Even if you connected an LCD monitor over an analog interface like VGA or composite video, it would have to re-digitize the signal. The fact that a screen uses a digital interface can be designed independently of whether a screen has fixed pixels (LCD, OLED) or not (monochrome CRT with continuous phosphor, without shadow mask or aperture grille).<p>&gt; ensuring a fixed aspect (width-to-height) ratio<p>True by definition because the pixels are pieces of physical hardware in the screens.<p>&gt; and completely square pixels.<p>This is a design choice. Nothing prevents someone from designing an LCD or OLED matrix with non-square pixels. But there&#x27;s also no good reason to do so. (Side note: Due to RGB striping, single-color subpixels have an aspect ratio of 1:3, so those are non-square.)<p>Potentially useful trivia: Some image&#x2F;video formats support declaring the pixel aspect ratio. Examples include PNG ( <a href="https:&#x2F;&#x2F;w3c.github.io&#x2F;png&#x2F;#11pHYs" rel="nofollow">https:&#x2F;&#x2F;w3c.github.io&#x2F;png&#x2F;#11pHYs</a> ) and Matroska.</blockquote>
-<blockquote>
-<p>↳ reply — <em>anyfoo</em>:</p>
-<blockquote>It’s interesting though that composite PAL&#x2F;NTSC (especially NTSC) has a massive effect on the picture, owed to the fact that the color carrier was embedded into the luminance spectrum, so a re-digitized PAL&#x2F;NTSC signal will still look very different from a digital-output-first signal, or a re-digitized VGA or component signal.<p>There’s some evidence that console games of the era were sometimes designed for the effect composite NTSC has on the overall picture: <a href="https:&#x2F;&#x2F;nerdlypleasures.blogspot.com&#x2F;2015&#x2F;03&#x2F;the-case-for-composite.html?m=1" rel="nofollow">https:&#x2F;&#x2F;nerdlypleasures.blogspot.com&#x2F;2015&#x2F;03&#x2F;the-case-for-co...</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>TulliusCicero</em>:</p>
-<blockquote>Related, I usually hate CRT filters in game, the scan lines usually look too strong (and often the image is darkened inappropriately), but I really liked the one in Cyber Shadow. It just felt right.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>WCSTombs</em>:</p>
-<blockquote>It&#x27;s very hit or miss. Abylight Studios (Super Hydorah, Cursed Castilla) seems to do them pretty well, but then I&#x27;ve seen some that left me wondering how they ever made it past QC. (I won&#x27;t name them because it&#x27;s been a while and I don&#x27;t want to name the wrong game.)<p>I want to point out though that it&#x27;s impossible for any CRT filter to have a peak brightness that&#x27;s not significantly lower than without the filter, since it can darken pixels but not brighten them past what the maximum already is.</blockquote>
-<p>↳ reply 2 — <em>swozey</em>:</p>
-<blockquote>I know someone who uses a CRT filter for vscode... I thought that was just a meme theme we all downloaded and clicked once to check it out then turned it off but he likes it along with his exploding text characters, forgot the name of that, powerblock or whatever. His vscode triggers my ADHD like trying to read a too busy restaurant menu, literally can&#x27;t absorb anything.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I think you should almost never use AI to write</title>
-      <link>https://erichgrunewald.substack.com/p/why-you-should-almost-never-use-ai</link>
-      <guid isPermaLink="false">hn3-49767937</guid>
-      <pubDate>Sat, 19 Sep 2026 16:35:24 +0000</pubDate>
-      <description>213 points, 117 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://erichgrunewald.substack.com/p/why-you-should-almost-never-use-ai"><strong>→ Article</strong></a> <small>(erichgrunewald.substack.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49767937">→ HN comments</a> &nbsp;·&nbsp; 213 points &nbsp;·&nbsp; 117 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>patrickmay</em>:</p>
-<blockquote>From TFA:  &quot;Eric Schwitzgebel writes that . . . There’s a huge cognitive difference between nodding along while reading something and actually productively generating a text. Two reasons: First, once the text is on the page, it’s easy to passively let the approximate word suffice, rather than thinking about word choice in the same effortful, active way we do when generating prose de novo. Second, as I suggested above, I doubt that human beings, even experts, have a good sense of all the factors that shape word choice -- everything they’re being sensitive to. You would have phrased it slightly differently, and even if you don’t know that, or why, a different signal is sent and received.&quot;<p>This is the best articulation I&#x27;ve seen of why simply reviewing and copy-editing does not provide remotely the same value as writing from scratch.  I spent a considerable amount of time over the past two weeks reviewing and improving a work document that was the output of an LLM.  Given the number of people involved and the final level of effort, I&#x27;m firmly convinced that writing it manually would have been faster and resulted in a higher quality product.  Getting the wording right matters.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kelnos</em>:</p>
-<blockquote>I really did like the author&#x27;s framing there, but I think there is a different, simpler way to put it:<p>Why would you think that asking someone else (that is, another human) to write something (and then reviewing it) is the same thing as writing it yourself?<p>You may trust the other writer&#x27;s opinions and knowledge, but it will not have the same tone, structure, word choice, understanding, or narrative flow as it would if you were to write it yourself.<p>And when it&#x27;s an LLM, you should <i>not</i> trust it&#x27;s &quot;opinions&quot; and &quot;knowledge&quot;, because it does not have either of those things. The appearance of those things is just that, an <i>appearance</i>.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>hnlmorg</em>:</p>
-<blockquote>Except that there are such things as speech writers, whose job is literally to write prose in the voice of the person who’s going to read it.<p>And there are countless other jobs out there where people are the “voice” of another party. From those who manage social media presence, to PR firms, to copyrighters, all who put statements out on others behalf.<p>There was already an industry of professionals whose job it was to have others write things on our behalf, and that existed long before LLMs were a thing. What LLMs did was make that that service available much more cheaply.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>gyulai</em>:</p>
-<blockquote>A workflow I&#x27;ve recently discovered for myself that provides a kind of middle ground: I&#x27;ll ask the LLM to write a first draft in a language that isn&#x27;t the one the piece should ultimately be in. Then I&#x27;ll use the LLM&#x27;s first draft as a blueprint, to write a first draft myself in the intended target language.  This fights my brain&#x27;s temptation to just shut off, and forces every word choice to actually be mine.  Then I&#x27;ll hand that over to the LLM for editorial suggestions and iterate from there.</blockquote>
-<p>↳ reply 3 — <em>lokar</em>:</p>
-<blockquote>Writing is thinking.  In many situations where we are called on to write, what is actually needed is thought.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jameshart</em>:</p>
-<blockquote>Use AI to write things <i>for you to read</i> that you wish <i>someone else had written</i>. ‘Give me a summary of the research on this topic’; ‘Write a report on this data to help me make a decision’. ‘Take this transcript of a meeting and write me the email it could have been’.<p>Don’t use AI to write things that you are producing for <i>someone else</i> to consume.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kelnos</em>:</p>
-<blockquote>I think that&#x27;s somewhat reasonable, but not always: the effort of researching and of writing yourself will teach you better then reading something someone else wrote, especially an LLM that will get things wrong in surprising ways that a human would not.<p>I&#x27;m not saying you should never do this: our time is valuable, and we shouldn&#x27;t spend it on things that are not genuinely worthwhile to us if we can help it. But we&#x27;re still losing something by having an LLM write for us, even if the intended audience is just ourselves.</blockquote>
-<p>↳ reply 2 — <em>bdangubic</em>:</p>
-<blockquote>I am someone else, if AI can write something that I want to and can consume then it can do the same for other’s consumption. Perhaps a disclaimer would be nice, “co-written with ____” but I see no difference between the two though of course I understand what you are trying to convey conceptually</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>rectang</em>:</p>
-<blockquote>Instead of asking AI to write something substansive for you, ask it to <i>critique</i> your writing.  Then use your own judgement as to which bits of advice to follow and which to ignore.<p>The LLM will always give you a full rewrite — don&#x27;t use it.  It always does too much, and persuading it to tone it down is a constant battle.</blockquote>
-<blockquote>
-<p>↳ reply — <em>devindotcom</em>:</p>
-<blockquote>AI can&#x27;t critique because it has no critical faculty. It can only offer critique-shaped language. That may be useful for some, though.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dwaltrip</em>:</p>
-<blockquote>Potayto, potahto</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Lamentable Later Life of Lemmings</title>
-      <link>https://www.filfre.net/2026/09/the-lamentable-later-life-of-lemmings/</link>
-      <guid isPermaLink="false">hn3-49767242</guid>
-      <pubDate>Sat, 19 Sep 2026 15:17:12 +0000</pubDate>
-      <description>134 points, 31 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.filfre.net/2026/09/the-lamentable-later-life-of-lemmings/"><strong>→ Article</strong></a> <small>(filfre.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49767242">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 31 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>rm445</em>:</p>
-<blockquote>I feel that DHTML Lemmings deserves a mention - an implementation of Lemmings in Javascript in 2003 or 2004. At the time I saw it, my understanding of websites was basic HTML - I had no idea web technologies could be so powerful.<p>Here it is online, not sure if this is the original site.
-<a href="https:&#x2F;&#x2F;pccc.com&#x2F;downloads&#x2F;junk&#x2F;cool&#x2F;lemmings&#x2F;index.html" rel="nofollow">https:&#x2F;&#x2F;pccc.com&#x2F;downloads&#x2F;junk&#x2F;cool&#x2F;lemmings&#x2F;index.html</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>jaen</em>:</p>
-<blockquote>Fun times...<p>This is before the DOM Canvas 2D API existed, so effects like digging are implemented by overlaying multiple 1px-high black GIF &lt;img&gt; tags over the background.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>probably_wrong</em>:</p>
-<blockquote>&gt; <i>The Children’s Television Workshop, the maker of Sesame Street, entered into talks with Psygnosis about a Lemmings television show. (…) Television shows, whether aimed at adults or children, are built around memorable characters. (…) So, an edict went down from Psygnosis to DMA to find a way to give the lemmings more individualized personalities.</i><p>I wonder if anyone brought up Fraggle Rock [1] during these discussions. The Doozers, a race of tiny creatures whose whole purpose in life is to build structures, feels like a perfect fit for the lemmings.<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Fraggle_Rock" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Fraggle_Rock</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>ycombinete</em>:</p>
-<blockquote>You just solved a decade&#x2F;s old personal mystery!<p>I randomly saw an episode of some show with these doozers maybe 20 years ago, and I have occsionally remembered them and wandered who they were ever since!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bluedino</em>:</p>
-<blockquote>So many parallels with Angry Birds.<p>Appeals to all groups, released on every platform. Then come the sequels, special editions (like Christmas Lemmings), and then it just kind of faded away.<p>Lemmings just didn&#x27;t get a movie and merchandising.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Jare</em>:</p>
-<blockquote>Lemmings was one of the 3-5 inspirations for the Commandos games:
-- giving different tasks to characters over the level to finish it. Lost Vikings won over Cannonfodder and the Commandos would be very defined characters not a mass of generic soldiers.
-- levels structured as &quot;bubbles&quot; of logical challenge; after you solve one you typically move on to the next one, eventually reaching the level finish.<p>The Commandos series also parallels a bit of the history, fizzling out very quickly after Commandos 2, when it might have seemed that the sky was the limit for the series.</blockquote>
-<p>↳ reply 2 — <em>ChrisMarshallNY</em>:</p>
-<blockquote>There was a stage show[0] (just kidding).<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lemmings_(National_Lampoon)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lemmings_(National_Lampoon)</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Brood War Bench</title>
-      <link>https://bw.swerdlow.dev/report</link>
-      <guid isPermaLink="false">hn3-49766966</guid>
-      <pubDate>Sat, 19 Sep 2026 14:44:02 +0000</pubDate>
-      <description>137 points, 64 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://bw.swerdlow.dev/report"><strong>→ Article</strong></a> <small>(bw.swerdlow.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49766966">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 64 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>pelagicAustral</em>:</p>
-<blockquote>Unrelated to the benchmark...<p>I love StarCraft. I started playing it right from the beginning, most of my friends right now are from that era. I literally met people that have spread to almost every continent when I was in my early teens. We played at internet cafes and did not have access to the internet, that was priced differently...<p>I miss those days so much.<p>Everybody was from a different background back then, and nobody was anything other than a guy that plays StaCraft at the cybercafe... And now, we are in our 40&#x27;s and I know Math teachers, history teachers, oil rig operators, software programmers, professional gamers, lawyers and more... hahah So crazy to think about it... and I know them, we talk, what a world.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nemo1618</em>:</p>
-<blockquote>Even at Burning Man, in the middle of the desert, there is a camp that hosts a StarCraft tournament every year (on the dustiest setups you&#x27;ve ever seen!) :)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jpgvm</em>:</p>
-<blockquote>I hope it&#x27;s called Mar Sara.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>oddsockmachine</em>:</p>
-<blockquote>That would be cool. It&#x27;s Captain Pump&#x27;s Raiders</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>snicky</em>:</p>
-<blockquote>Oh boy, I&#x27;ve spent more hours playing it than I dare to admit. I won over 10000 battle.net games ... on just one of my several accounts :) When the SC2 beta came out, I played about 50-100 games and never bought the full game, because I knew it would be like heroin to me, and I was already an adult that had to take care of himself.</blockquote>
-<p>↳ reply 3 — <em>layoric</em>:</p>
-<blockquote>Same and Brood War is starting to have a bit of a resurgence.  Not anything huge. When Battle.net servers are actually working, tend to play on the ladder a few times a week. Get crushed, but still one of the greatest competitive games ever made.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>AntiRush</em>:</p>
-<blockquote>Back in 2010, during the early days of bwapi, there was a Brood War AI tournament held by the Expressive Intelligence Studio at UC Santa Cruz. It&#x27;s interesting to see how different the approaches were back then, vs this or Deepmind&#x27;s SC2 work.<p><a href="https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20091124210529&#x2F;http:&#x2F;&#x2F;eis.ucsc.edu&#x2F;StarCraftAICompetition" rel="nofollow">https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20091124210529&#x2F;http:&#x2F;&#x2F;eis.ucsc.e...</a><p>There&#x27;s a great contemporary Ars Technica piece by a competitor:<p><a href="https:&#x2F;&#x2F;arstechnica.com&#x2F;gaming&#x2F;2011&#x2F;01&#x2F;skynet-meets-the-swarm-how-the-berkeley-overmind-won-the-2010-starcraft-ai-competition&#x2F;" rel="nofollow">https:&#x2F;&#x2F;arstechnica.com&#x2F;gaming&#x2F;2011&#x2F;01&#x2F;skynet-meets-the-swar...</a><p>As an undergrad I did a project using genetic programming. It was not very successful, but it was a lot of fun.<p><a href="https:&#x2F;&#x2F;tomisin.space&#x2F;archive&#x2F;starcraft-genetic-programming&#x2F;" rel="nofollow">https:&#x2F;&#x2F;tomisin.space&#x2F;archive&#x2F;starcraft-genetic-programming&#x2F;</a></blockquote>
-<p><strong>Top #3</strong> — <em>faeyanpiraat</em>:</p>
-<blockquote>There is currently a bot beating everyone on the ladder. Just watched it today on Artosiscasts yt channel.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ericpruitt</em>:</p>
-<blockquote>Link to the video for the curious: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=1vsTqNwHquE" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=1vsTqNwHquE</a> . I would note the bot is not APM limited, and comments suggest (<a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=1vsTqNwHquE&amp;lc=UgxBrY4CkuZx7oy5dex4AaABAg" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=1vsTqNwHquE&amp;lc=UgxBrY4CkuZx7...</a> , <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=1vsTqNwHquE&amp;lc=UgyZ0XVFDqzJTgmiBN14AaABAg" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=1vsTqNwHquE&amp;lc=UgyZ0XVFDqzJT...</a>) it&#x27;s likely using map hacks, both of which make the bot significantly less impressive.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>vitaflo</em>:</p>
-<blockquote>If you read the TL thread on this, the bot is technically running at 240 APM, but its commands get split off into separate commands for each unit, so the APM looks higher.<p>I&#x27;ve watched several replays on this.  It using map hacks is lame but it also doesn&#x27;t always take advantage of them.  It sometimes does respect its own fog of war.  It mostly wins with incredible micro (kinda has to, it&#x27;s macro kinda sucks).<p>Most of its few losses come from drops (it never makes turrets and doesn&#x27;t know how to handle them), bad macro (blocking its own ramp) or just incredibly unconventional play from its opponent (which is certainly not in its training set).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>chrishare</em>:</p>
-<blockquote>Specifically, it can micro across multiple screens of engagement in a way that we can&#x27;t as easily.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Learning another language may be one of the best ways to keep your brain healthy</title>
-      <link>https://theconversation.com/learning-another-language-may-be-one-of-the-best-ways-to-keep-your-brain-healthy-as-you-age-291951</link>
-      <guid isPermaLink="false">hn3-49766821</guid>
-      <pubDate>Sat, 19 Sep 2026 14:23:42 +0000</pubDate>
-      <description>127 points, 110 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://theconversation.com/learning-another-language-may-be-one-of-the-best-ways-to-keep-your-brain-healthy-as-you-age-291951"><strong>→ Article</strong></a> <small>(theconversation.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49766821">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 110 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>shigawire</em>:</p>
-<blockquote>Anyone have experience learning a new language in their 30s? I&#x27;ve tried and failed a few times. I can&#x27;t tell if the time constraints (family, work, life) or mental constraints are the bigger problem.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>qgin</em>:</p>
-<blockquote>There are two phases. Getting to A2, where you’ve learned all the grammar rules and have a starter vocab… and then everything else, which is basically grinding the hours and convincing your brain that this is worth changing to remember.<p>Getting to A2 is what Duolingo and similar are great for.<p>After that you need to grind the hours. When you have limited time, the best ways are swapping things you already do with something in the target language. Switch your audio track on Netflix, make a separate TikTok account where you only follow people in the target language, at some point, switch your phone so that you have to talk to Siri in your target language, and then finally, sign up with a teacher (online or in person) for speaking practice at least once a week. The social pressure of trying to communicate with a real person and not being able to will make your brain take the rest of the exposure seriously enough to start rewiring what needs to be rewired.</blockquote>
-<p>↳ reply 2 — <em>timr</em>:</p>
-<blockquote>Yes. Started Japanese for the first time in my late 30s. I am currently around CEFR B1, working toward B2.<p>&gt; I can&#x27;t tell if the time constraints (family, work, life) or mental constraints are the bigger problem.<p>Almost certainly time, and&#x2F;or motivation. I&#x27;ve met a few people who had mental blocks to learning, but for the most part, anyone who has the time to actually study can learn a language. The people I&#x27;ve met who failed weren&#x27;t <i>dumb</i>...they just didn&#x27;t work at it.<p>As the sibling notes, if you can immerse yourself, that&#x27;s the best thing. I&#x27;ve personally known multiple people over age 30 who went from 0 to B1 in Japanese in a year of immersion. Add another year, and you can get to B2. Of course, that&#x27;s obviously hard if you have a family, etc., but you can still succeed without it -- it just takes longer.</blockquote>
-<p>↳ reply 3 — <em>eternauta3k</em>:</p>
-<blockquote>Learned German. A little Duolingo, then<p>* memorizing vocabulary and practicing pronunciation with Anki<p>* private lessons<p>* grammar book with exercises<p>* podcasts<p>* news<p>* some books.<p>Worked very well. Had a good starting point when I arrived in Germany, and the immersion then helped a lot (but I stopped using Anki due to laziness). I found this page very useful: <a href="https:&#x2F;&#x2F;puroh.it&#x2F;learning-german-a1-to-c2&#x2F;" rel="nofollow">https:&#x2F;&#x2F;puroh.it&#x2F;learning-german-a1-to-c2&#x2F;</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>timr</em>:</p>
-<blockquote>All of the the research I have seen on this topic have been observational retrospective studies, which are worthless and should be ignored. The confounders on the group of people who are <i>able</i> to learn a second language (let alone a third or more) are so large that they cannot be overcome without a randomized control. This stuff is churnalism, right up there with &quot;does coffee make you live longer?&quot; [1].<p>But, as someone who has now devoted a large portion of my life to becoming proficient at a second language, I do think there are benefits, even if they&#x27;ve never been proven. The most important of these, in my opinion, is just the <i>social</i> aspects of learning another language. You have to get out there and talk to people, and that&#x27;s inherently healthy.<p>I do want to say that you hear loads of pessimism about whether or not it&#x27;s possible a language after childhood, etc., but I&#x27;m here to tell you that not only is it <i>possible</i>, it&#x27;s possible to do even if you suck at languages (as I do). The primary factor is motivation, and the second biggest factor is time. Find a language that you like, because you like the culture you&#x27;ll be interacting with when you speak it. If you don&#x27;t, you&#x27;ll never find the impetus to keep going when it gets hard and boring.<p>[1] protip: drink coffee if you like it, and don&#x27;t worry about it. Likewise, learn a language if you like it, not because some dumb article said it would make your neurons fluffier.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>plastic3169</em>:</p>
-<blockquote>Learning another language is difficult, but never occured to me to think it would be somehow impossible to anyone. It might be that having english as your native language puts you in a uniquely difficult position as it is the default international language. World is getting smaller and people coming from smaller languages usually also learn the local international language as well. If you are born to family speaking estonian today you probably pick up also english or otherwise you spend your life surfing only estonian websites. It requires no special talent (although some people are fast at picking up new languages)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>robocat</em>:</p>
-<blockquote>&gt; It might be that having english as your native language puts you in a uniquely difficult position<p>Personally I suspect English has some great advantages. The main disadvantage is defaulting to superiority.<p>The natural disconnect between written and spoken English is tremendously helpful. Well educated English encourages copying sounds - pronouncing foreign names and places correctly. This is a huge leg up compared against some other cultures. Think sports stars having their foreign names pronounced correctly. People often know how to try and say Paris or Barcelona correctly. We naturally know that how something is spoken trumps how it is written.<p>English speakers often have the ability to hear sounds because there&#x27;s so many wildly different English accents. Especially vowels (we natively use a wide range of vowel sounds). There are sounds English speakers struggle to hear, but I think we have an advantage over some other languages.<p>If you&#x27;re the type of person that attempts to mimic accents, then you&#x27;ve often learnt how to say a huge range of vowels and consonants. And how to stretch them (Strine, some US accents) or shorten them.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>MrDrMcCoy</em>:</p>
-<blockquote>Confounding to learning language, on top of one&#x27;s base ability to do do in general, are the teaching methods not meshing at all with the individual. For me, rote memorization of anything is nearly impossible, doubly so if the thing to be memorized has no immediate utility. &quot;Conversational&quot; language learning and similar that give you a bunch of vocabulary and bring in the grammar later are why I failed Spanish 1 three times. I need the grammar first, then words with etymology. It also helps to not fight with phonetic collisions between different languages using their own bastardization of Latin script, which is why I was far more easily able to meet my college language requirement by teaching myself classical Greek and translating the things I thought were interesting.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>david38</em>:</p>
-<blockquote>The only solid thing I’ve seen for brain health is maintaining physical health</blockquote>
-<blockquote>
-<p>↳ reply — <em>vannevar</em>:</p>
-<blockquote>Yeah, if your goal is brain health, you&#x27;re better off spending the time exercising, by a mile. But learning another language may be more enjoyable and certainly has social benefits, so I can understand people choosing it.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A graphical desktop for the ZX Spectrum</title>
-      <link>https://github.com/mindbox77/zxdesk</link>
-      <guid isPermaLink="false">hn3-49766676</guid>
-      <pubDate>Sat, 19 Sep 2026 14:01:58 +0000</pubDate>
-      <description>127 points, 105 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/mindbox77/zxdesk"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49766676">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 105 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>unnah</em>:</p>
-<blockquote>Related: The SymbOS operating system and graphical desktop for Amstrad CPC, MSX and some other Z80 machines was coded entirely manually - the first release was in 2006. <a href="https:&#x2F;&#x2F;www.symbos.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.symbos.org&#x2F;</a><p>Of course for the Commodore 64 the GEOS desktop was already released as a commercial product in 1986. <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;GEOS_(8-bit_operating_system)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;GEOS_(8-bit_operating_system)</a></blockquote>
-<p><strong>Top #2</strong> — <em>veltas</em>:</p>
-<blockquote>This is the sort of thing I&#x27;ve wanted to write for a long time.  Yes it looks like this is vibe coded but I&#x27;m glad this was made because it&#x27;s cool to see what can be done, and it&#x27;s interesting seeing how AI can be used as a compiler essentially given the output is assembly.<p>I&#x27;d be interested if the author would tell us more about what they did here and what went into the design and evolution, rather than the AI README.</blockquote>
-<p><strong>Top #3</strong> — <em>kalleboo</em>:</p>
-<blockquote>&gt; Three rules that earned their place:<p>&gt; One commit per verified piece of work, with the acceptance numbers in the commit message<p>Project: One single commit: &quot;ZX Desk, first release&quot;<p>???</blockquote>
-<blockquote>
-<p>↳ reply — <em>flohofwoe</em>:</p>
-<blockquote>Maybe Claude one-shotted the project ;)</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
