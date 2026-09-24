@@ -4,7 +4,158 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 24 Sep 2026 09:52:58 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 14:50:46 +0000</lastBuildDate>
+    <item>
+      <title>Early rogue AI agent activity and attempts to hack found on urlquery.net</title>
+      <link>https://transluce.org/agent-activity</link>
+      <guid isPermaLink="false">hn3-49826565</guid>
+      <pubDate>Thu, 24 Sep 2026 05:21:10 +0000</pubDate>
+      <description>190 points, 173 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://transluce.org/agent-activity"><strong>→ Article</strong></a> <small>(transluce.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49826565">→ HN comments</a> &nbsp;·&nbsp; 190 points &nbsp;·&nbsp; 173 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>alex-moon</em>:</p>
+<blockquote>It&#x27;s said on every one of these but it bears repeating: existing cybercrime legislation already covers this - &quot;rogue agent AI associated with OpenAI attempted to hack xyz&quot; = OpenAI attempted to hack xyz.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>colinhb</em>:</p>
+<blockquote>I want to agree but have heard from several lawyers that at least in US, CFAA[1] in unlikely to be sufficient because it requires intent. No person intended to gain unauthorised access.<p>Now I think the correct response is both trying in court to stretch CFAA and state statutes to cover, which will be highly fact specific, and update the law.<p>But in either case won’t be a slam dunk.<p>PSA to folks in the thread: If you’re American call or write to your state and Federal reps about this, and if not investigate whether there are gaps in your country’s laws.<p>[1]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Computer_Fraud_and_Abuse_Act" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Computer_Fraud_and_Abuse_Act</a><p>EDIT: See for example...<p><pre><code>  The Computer Fraud and Abuse Act (CFAA), the primary federal statute governing unauthorized computer access, was written decades ago with human intruders in mind. Its key provisions require intentional or knowing unauthorized access (a mental state that maps neatly onto a person who decides to break into a system), but what happens when the hacker is an AI model that selected its own target?
+  On the current facts, CFAA liability for OpenAI is unlikely.
+</code></pre>
+Source: <a href="https:&#x2F;&#x2F;law.vanderbilt.edu&#x2F;when-ai-hacks-back-how-the-openai-hugging-face-incident-exposed-the-cfaa&#x2F;" rel="nofollow">https:&#x2F;&#x2F;law.vanderbilt.edu&#x2F;when-ai-hacks-back-how-the-openai...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>DannyBee</em>:</p>
+<blockquote>Lawyer here:  CFAA is mostly criminal statute not a civil one (civil damages require proving more than a violation so also require specific intent)<p>Almost all common felonies require specific intent. Misdemeanors often do not.<p>There is plenty of <i>civil</i> liability available.<p>If you wanted them to be charged with a felony you would need changes. 
+I would strongly suggest you do not want a strict liability felony.<p>The cfaa required intent is as follows :<p>* § 1030(a)(5)(A): knowingly transmits code&#x2F;commands and intentionally causes damage without authorization.<p>* § 1030(a)(5)(B): intentionally accesses without authorization and recklessly causes damage.<p>* § 1030(a)(5)(C): intentionally accesses without authorization and causes damage and loss;<p>Simply changing the first intentionally to intentionally or recklessly would cover OpenAI (now that they know it can occur) without causing lots of other issues. Without that, they don’t have the intentionality necessary to meet the first part, even if they would otherwise meet the second part</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>colinhb</em>:</p>
+<blockquote>Appreciate the detail. I was responding to specifically the cybercrime legislation point, but I agree with your others.<p>I&#x27;ve worked in contexts where certain business activity (if it went wrong) was covered by strict liability and statutory damages per incident, and I&#x27;ll say: it really changes how businesses behave.<p>Based on that experience I may be more open to and interested in strict liability in the civil context (not needing negligence or damages).</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ghusbands</em>:</p>
+<blockquote>This argument comes up a lot. It would turn everyone whose device became part of a botnet into a criminal. There&#x27;s a reason that intent is important in law.</blockquote>
+<p>↳ reply 3 — <em>KronisLV</em>:</p>
+<blockquote>I started writing a longer comment along the lines of “It feels like the rules around enforcement will very a lot for the influential and powerful vs everyone else.” but realized that it is kinda obvious by now.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mohsen1</em>:</p>
+<blockquote>I listened to Jensen Huang&#x27;s interview with Ezra Klien and it was so refreshing to hear it from an engineer. Jensen framed it as OpenAI&#x27;s responsibility and recklessness which I agree with. Jensen thinks it&#x27;s an engineering problem to build better sandboxes.<p>It&#x27;s irresponsible for OpenAI to give unaligned agents a prompt to &#x27;go hack&#x27; and internet access. They know better, so I am thinking they might have other intentions to let those swarms have any sort of internet access.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>reasonableklout</em>:</p>
+<blockquote>But the investigation indicates the agents were <i>not</i> told to &#x27;go hack&#x27;:<p>&gt; <i>Much of the urlquery.net activity appears to come from agents retrieving data to answer web search tasks. For three of these tasks, after failing to retrieve data through normal means, they attempted a variety of cyber exploits against the relevant data service... This data reveals that malicious cyber activity is not limited to agents tasked with cybersecurity-related tasks and can arise instrumentally to solve mundane tasks like information retrieval.</i><p>And you are already assuming that OpenAI is intentionally using unaligned agents in these evals or training runs or whatever it is that produces these breakouts. But what if the problem is that none of the alignment techniques that are applied to models today actually work? What if all the agents involved in these incidents have in fact had the full stack of alignment applied - isn&#x27;t that a good reason to regulate <i>any</i> high-compute usage of models, as the Klein crowd is proposing?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bastawhiz</em>:</p>
+<blockquote>Nothing you&#x27;re bringing up matters. OpenAI is the creator and operator. They&#x27;re legally culpable for the consequences of the machine they made. The model is a machine: even if it could be demonstrated that the model reasoned its way into criminal behavior completely independently of OpenAI staff, that doesn&#x27;t change anything.<p>If I run a biology lab and engineer a terrible virus, it gets out, and a global pandemic ensues, I don&#x27;t get to shrug and say &quot;well we told it not to infect people&quot;. It&#x27;s my fault for failing to mitigate the risks of my work.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mohsen1</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;podcasts.apple.com&#x2F;us&#x2F;podcast&#x2F;the-ezra-klein-show&#x2F;id1548604447" rel="nofollow">https:&#x2F;&#x2F;podcasts.apple.com&#x2F;us&#x2F;podcast&#x2F;the-ezra-klein-show&#x2F;id...</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tomaskafka</em>:</p>
+<blockquote>I love this Nathan Calvin quote that accompanied the second publicized attack:<p>&gt; If you find two ants in your kitchen, the best estimate of the total number of ants in your kitchen is not two</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Ideas on modernizing the open-source desktop</title>
+      <link>https://lwn.net/SubscriberLink/1095425/2d9f411252325784/</link>
+      <guid isPermaLink="false">hn3-49825642</guid>
+      <pubDate>Thu, 24 Sep 2026 02:52:09 +0000</pubDate>
+      <description>267 points, 313 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://lwn.net/SubscriberLink/1095425/2d9f411252325784/"><strong>→ Article</strong></a> <small>(lwn.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49825642">→ HN comments</a> &nbsp;·&nbsp; 267 points &nbsp;·&nbsp; 313 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>nicpottier</em>:</p>
+<blockquote>His UI demos are pretty interesting. I particularly like the idea of his warped desktop and agree that that deserves exploration.<p><a href="https:&#x2F;&#x2F;media.ccc.de&#x2F;v&#x2F;kde2026-7-are_we_really_going_to_use_the_same_desktop_ux_forever#t=1752" rel="nofollow">https:&#x2F;&#x2F;media.ccc.de&#x2F;v&#x2F;kde2026-7-are_we_really_going_to_use_...</a></blockquote>
+<p><strong>Top #2</strong> — <em>Roark66</em>:</p>
+<blockquote>I too am in the &quot;it&#x27;s done, it works well, don&#x27;t mess with it&quot; camp.<p>I&#x27;ve tested everything. Xfce, tiling window managers, kde. Eventually I settled on Gnome, but I incorporate few &quot;tiling features&quot;. Such as keystroke changing workspaces on one monitor and the second monitor always showing the same few &quot;always on&quot; apps.<p>I always have my terminal with tmux full screen on workspace 1. My Web browser on no 2. My IDE on 4 and my password manager on 9. Then if I watch a video it&#x27;s always on 3, if I do graphics work it&#x27;s always on 5 and so on.<p>I use ctrl-super-number to switch workspaces. If I need to move current window it&#x27;s ctrl-shift-super-number.<p>On a work windows mashine I use the exa t same keys thanks to AutoHotkey software. So I have the exact same work flow on Linux and Windows. The only difference is on Windows workspace 1 is WSL terminal.<p>Ive been working like this for years. Select copy and paste works fine with left&#x2F;right mouse button.<p>I have all my widgets I need showing the temperatures, what my pc and network are doing.<p>Why would I want to change anything?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>craftkiller</em>:</p>
+<blockquote>That&#x27;s how I felt before I discovered tiling window managers. Now my flow is very similar to yours, but since I was wrong before, I can&#x27;t rule out the possibility that I am still wrong and there might be something better out there. For example, Plan 9 had some interesting UX ideas like making the window manager infinitely nestable and mountable over the network. It also had the neat behavior in acme where to execute a command, you middle-click on some regular text. In the end, I&#x27;m not a fan of Plan 9&#x27;s UI because of the reliance on the mouse, but I think it shows there&#x27;s still room for novel innovation out there.</blockquote>
+<p>↳ reply 2 — <em>shmerl</em>:</p>
+<blockquote>I think it&#x27;s a combination of it&#x27;s done to a degree and comfort + habit. Introducing anything new requires investment of time to learn it, breaking habits and giving discomfort. Even if it eventually starts paying off, it can cause a push back naturally. So it&#x27;s really hard to do it right, may be only very gradually?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>flaburgan</em>:</p>
+<blockquote>In the end, using any device is all about doing actions (the simplest being reading&#x2F;viewing, but also editing etc.) on data. Now the biggest difference between desktop and mobile is that the first one is (was?) file oriented while the second one is software (application) oriented.
+Edit a document, listen to a music, on desktop you would historically navigate to where the file is, then open it with the program of your choice. On mobile, you would almost never do that, you would first open the app and from it select the file you want to interact with.
+This is changing a lot how you are organizing the way you work. On desktop, it is easy to put related files of different types in the same folder, for example you organize your birthday, you can have the list of the invited people in a excel file with their number, a subfolder with the songs you want to play, some pictures of the venue, a text files with notes and etc. It is not natural at all to organize things like that on mobile. Android and iOS are hiding the files as much as they can. (This is not the case on Ubuntu Touch for example). And it becomes the responsibility of the app to organize the files it can open. This has a big impact on what you expect your desktop manager to done or not. I would personally be very happy if I could organize applications how we can organize files, and simply reopen a work session where I left it (some PDF open, some terminals open, my IDE, my browser...) even weeks after.
+To complexify the topic even more, the same thinking can be done in the browser, which is basically an OS now...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>hidroto</em>:</p>
+<blockquote>&quot;Android and iOS are hiding the files as much as they can.&quot;<p>This is the number one thing that bugs me about all the mobile OS platforms. The most important thing to me is my data not the programs that I use to operate on them.<p>Anyone can have a copy of the programs I use, but only I have my data.<p>Leaving the organisation of something so important to some XYZ app doing who knows what is just madness to me.</blockquote>
+<p>↳ reply 2 — <em>ch_sm</em>:</p>
+<blockquote>Yes! You’re describing a fundamental dichotomy in approaches to GUIs in general! Historically, we can see the difference and some oscillation very clearly:<p>The Xerox Star, the Canon Cat and Apple Lisa’s OSes were largely document oriented, and placed no emphasis on the application at all. The Operating System owned the creation and editing aspects of the document. Developers could only add &quot;tools&quot; that slotted into the existing interfaces the OS provided. You’d never launch an App on any of those OSes, you’d &quot;tear off&quot; a new doc from the stationary pad on a Lisa (that sounds ridiculous as I type it).<p>That paradigm really goes against the idea of &quot;Software as a separate product&quot;, which is an older idea, starting in the 1960s at IBM (they unbundled HW and SW, partly under anti-trust pressure). The document-centric GUIs&#x2F;Shells don’t really allow for a separate software market.<p>The 1984 Mac was kind of a middle ground, in my mind. It was a platform for discrete Applications (sold separately) but it also had the Finder which let you organise, open and delete documents separately from the Application that edited them.<p>Apple and later MS tried to bring the document-first concept back with OpenDoc and OLE respectively. OpenDoc never went anywhere then Jobs killed it, and OLE turned out much smaller in ambition and scope (and I think was never very popular with devs).<p>I think ultimately the intuition and perceived benefit behind document centric GUIs is pretty clear: the OS knows what kinds of artefacts it can handle, and presents a consistent and controlled interface to the user. File interoperability problems are minimised. Devs are allowed to extend functionality to an extent, but they can never take over the system or invent a new kind of interaction.<p>The App-first paradigm OTOH places more power in the Application developers hands, gives them the means to innovate, and allows for a larger, more diverse, more self-important software market to exist (see iOS).<p>Mixing the two, as the Mac does, comes with some confusion and complication for the end user, but I think is ultimately the right balance for everyone.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OpenAI agent hacked Australian government website, PM says</title>
+      <link>https://www.bbc.com/news/live/cvgl73pxgndwt</link>
+      <guid isPermaLink="false">hn3-49825580</guid>
+      <pubDate>Thu, 24 Sep 2026 02:44:48 +0000</pubDate>
+      <description>196 points, 127 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/live/cvgl73pxgndwt"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49825580">→ HN comments</a> &nbsp;·&nbsp; 196 points &nbsp;·&nbsp; 127 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>vintagedave</em>:</p>
+<blockquote>&gt; <i>the breach took place on 18 June - Open AI informed the government with an email to a general address on 10 September</i><p>So we have a company hacking a foreign government&#x27;s websites and data. And, in terms of ethics, they take almost three months to notify; and in terms of competence, appear to have no formal contacts nor to have found one in that time.<p>Once an American business starts hacking allied governments, it&#x27;s time for strict responses, yes? Replace the governance (board and C-level)? Remove financial incentives and open the company - open weights, open training, per its original &#x27;open&#x27; ethos?<p>Altman is busy saying there needs to be regulation, but in terms of what OpenAI does, <i>he</i> can control that already.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mrweasel</em>:</p>
+<blockquote>&gt; Altman is busy saying there needs to be regulation, but in terms of what OpenAI does, he can control that already.<p>It is still my belief that Altman wants one or ideally more governments to shut down or slow down OpenAI. OpenAI is going to need more cash to survive and Altman has run out of plausible lies. Having the AI breaks pulled by governments is basically the last chance to explain why they still aren&#x27;t going to be profitable, and why they just need that next X billion dollars investment.<p>I don&#x27;t for a second believe that an agent starts trying to hack backend system, when the form or API it has been asked to use isn&#x27;t working.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>macNchz</em>:</p>
+<blockquote>&gt; I don&#x27;t for a second believe that an agent starts trying to hack backend system, when the form or API it has been asked to use isn&#x27;t working.<p>I have seen coding agents on my own machine (in sandboxed VMs) start doing things while trying to accomplish what I&#x27;ve asked that I felt sort of exceeded my mandate (changing database passwords, poking at the egress proxy that&#x27;s preventing them from accessing some domains). Not to the point of causing any real issues, but I don&#x27;t have much trouble envisioning scenarios like this when using stronger instructions around pursuing the goal + a running in a misconfigured sandbox envrionment.<p>That said, there&#x27;s a lot of potential upside for American AI labs if they&#x27;re able to get people scared about AI, they can:<p>- To your point, claim the regulations slowed them down and paper over near&#x2F;mid term financial concerns<p>- Get the government to create stupid regulations that don&#x27;t actually slow them down at all, but do effectively lock out any future competition (and current global competition)<p>- Position themselves as the only organizations blessed by the government with the ability to make safe AI, therefore eventually allowing them to claim to be some flavor of &quot;too big to fail&quot; and worthy of a bailout, should the financials not work out.<p>- Effectively create a distraction that avoids further public conversation&#x2F;accountability&#x2F;regulation&#x2F;liability re the more tangible sorts of problems their products cause right now.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ben_w</em>:</p>
+<blockquote>&gt; And, in terms of ethics, they take almost three months to notify;<p>Kinda worse than that. It took between 10 and 40 days, not 3 months, between the organisation knowing and the reporting.<p><pre><code>  August (precise date unknown) – OpenAI said it became aware of a potential breach during a broader review of &quot;misaligned model activity&quot;
+
+  10 September – An email from OpenAI lands in the public inbox of Services Australia, the general services hub of the federal government, informing of the incident
+</code></pre>
+- <a href="https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;live&#x2F;cvgl73pxgndwt?post=asset%3A69668a7f-8199-4515-acdd-a9de6a2e6b7c#post" rel="nofollow">https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;live&#x2F;cvgl73pxgndwt?post=asset%3A696...</a><p>&gt; open weights, open training<p>Given it was <i>the AI agents</i> which did the hacking, doing this will result in basically every organisation at least as rich as the government of Tuvalu being able to hack anyone at any time.<p>&gt; Altman is busy saying there needs to be regulation, but in terms of what OpenAI does, he can control that already.<p>Him having control would be an improvement on the reality.</blockquote>
+<p>↳ reply 3 — <em>talon8635</em>:</p>
+<blockquote>It seems to me OAI and other are not even aware of these events as they are happening. Which is concerning.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mier85</em>:</p>
+<blockquote>Someone is always paying for the tokens (Agents running at OpenAI directly use their own models without paying directly, but even then it is not like inference is free). And someone is running the prompts. If they prompt agents and launch them and don&#x27;t check what they are doing, then the agent is just following the prompt. Not checking what it is doing is negligence. If they checked what it was doing, they could have just pulled the plug. There is nothing rogue there. If it cooperated with other agents running outside of OpenAI, then the blame might be shifted to whoever runs these agents.<p>But there isn&#x27;t any agent out there that was autonomosly miracly launched by a word prediction engine. All it can do by itself is getting and input and giving an output.</blockquote>
+<p><strong>Top #3</strong> — <em>torben-friis</em>:</p>
+<blockquote>The thing I hate the most about tech, and I feel completely impotent to change minds on this, is the &quot;fake life&quot; tolerances it is afforded.<p>Airbnb is not regulated like a hotel because it&#x27;s tech. Crypto isn&#x27;t betting because it&#x27;s tech. Now even breaching state data is ignored.<p>Can you imagine walking out of a ministry with a stolen cabinet? You&#x27;d get shot for doing this physically and people wouldn&#x27;t bat an eye.</blockquote>
+<blockquote>
+<p>↳ reply — <em>zobzu</em>:</p>
+<blockquote>hn is surprisingly lacking in critical thinking lately. everything is going to be &quot;rogue agent did x&quot;, when a human prompted it until their prod env went down, and it&#x27;ll be called &quot;a hack&quot; or whatever.<p>The &quot;agents&quot; dont walk out of openai, anthropic and whatever headquarters and decide to go wreak havoc. They also don&#x27;t read a prompt and decide &quot;haha imma hack the NSA now&quot;, that&#x27;s not how any of this works lol.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Virtio-nvgpu: Near-native Nvidia GPU access inside a KVM guest</title>
+      <link>https://github.com/nestrilabs/virtio-nvgpu</link>
+      <guid isPermaLink="false">hn3-49824864</guid>
+      <pubDate>Thu, 24 Sep 2026 01:02:23 +0000</pubDate>
+      <description>134 points, 55 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/nestrilabs/virtio-nvgpu"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49824864">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 55 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>refibrillator</em>:</p>
+<blockquote>There are roughly 3 ways to give a KVM guest a GPU.<p>1) VFIO passthrough: host binds entire GPU to guest as PCI device, which only allows one VM to use the GPU, thus you sacrifice your host display too (unless you fallback to integrated graphics on cpu etc). Strongest isolation because host kernel module driver not involved.<p>2) virtio-gpu: guest sees paravirtual GPU and loads virgl&#x2F;venus mesa driver which serializes graphics API calls and replays them on the host driver. This allows multiple VMs to use the GPU, but performance overhead can be significant, and guests can’t practically leverage lower level primitives eg NVENC without paying price of CPU readback.<p>3) virtio-nvgpu (this repo): guest loads standard NVIDIA user mode driver (closed source), a fake &#x2F;dev&#x2F;nvidia* kernel module copies ioctl bytes + handle onto queue for host kernel mode driver to execute. This also allows multiple VMs to use a GPU, but is near native speed due to low overhead. Unfortunately the tradeoff is this project has the weakest isolation, eg every guest ioctl is forwarded to the host by default, the VMM holds read&#x2F;write FDs, no seccomp&#x2F;caps&#x2F;allowlist. With respect to  There is basically no GPU related security measures here, the exposure is the same as running multiple processes using the GPU with no VM. Only caveat is these guests can’t drive a physical display, so there is some restriction of surface area but it feels incidental rather than intentional in this case.<p>Anyways this is a tough problem OP, I don’t want to discourage you.<p>Without hardware&#x2F;driver support for isolation (MIG) on consumer grade NVIDIA GPUs, it won’t be possible to solve this properly for a long time.<p>Also a factor is that NVIDIA has no open Mesa driver to support a native context approach (guest owns GPU command buffers, host maps them) like we have for AMD&#x2F;Intel.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tarruda</em>:</p>
+<blockquote>What is the state of virtio-gpu these days? I have a system76 &quot;pang14&quot; (Ryzen 7 7840U laptop), is that a valid option for me to have a VM with 3d acceleration? I&#x27;m fine with having some overhead if it is better than the current software GPU.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ranger_danger</em>:</p>
+<blockquote>If you don&#x27;t need Mac or Windows guests then the existing virtio-gpu works in my experience.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>madushan1000</em>:</p>
+<blockquote>This is not a completely novel approach. This has been a thing in virtio-gpu for a while, it&#x27;s called &quot;DRM native context&quot;.</blockquote>
+<p>↳ reply 3 — <em>JackSlateur</em>:</p>
+<blockquote>4th solution: nvidia vgpu<p>If I remember correctly, the idea is that you have a physical GPU and you split its memory (with, eventually, time-budget) to create multiple virtual GPUs, which can then be associated with a KVM guest and use by it<p>(not available legally on consumer-grade GPU)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>athrowaway3z</em>:</p>
+<blockquote>I&#x27;m a guy with vague knowledge on KVM - having only tinkered with it and briefly had a GPU pass-through setup 2 years ago.<p>I suggest putting the &#x27;multiple guests at near-native speed&#x27; use-case in the opening paragraphs of the README.</blockquote>
+<blockquote>
+<p>↳ reply — <em>WanjohiRyan</em>:</p>
+<blockquote>Thank you for the feedback... i will do that</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mcmatterson</em>:</p>
+<blockquote>Amazing project! But man, that README is just a textbook example of LLM word salad. It&#x27;s wild how these tools are so incredibly capable at many things, but their writing sticks out like a sore thumb</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>LiamPowell</em>:</p>
+<blockquote>When the lines in the ASCII charts don&#x27;t even line up my immediate assumption is that the author didn&#x27;t even bother to glance at it.</blockquote>
+<p>↳ reply 2 — <em>Borealid</em>:</p>
+<blockquote>The percentage-overhead comparison is pretty choice nonsense. It has only percentages to try and &quot;explain&quot; that overheads don&#x27;t matter if the system is slow anyhow.<p>A fair comparison would be this project vs virtio.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Feds Target AI Critics as "Foreign Agents"</title>
       <link>https://www.kenklippenstein.com/p/feds-think-ai-critics-are-foreign</link>
@@ -151,6 +302,74 @@ I find it ridiculous that people put any value on something being posted on arXi
 <p>↳ reply 2 — <em>ndiddy</em>:</p>
 <blockquote>Look into something with the Intel Core Ultra Series 3. Performance is worse than the Apple M chips but you shouldn&#x27;t have a problem running Linux and the battery life is good. I have a laptop with the previous generation of Intel chip (Core Ultra 258). The battery life is great, the computer never gets hot, and the fan rarely turns on (only if I&#x27;m doing like a long C++ compile or something, never for stuff like web browsing or watching videos).</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Mercury 2.5 LLM hits 770 tokens per second</title>
+      <link>https://artificialanalysis.ai/models/mercury-2-5</link>
+      <guid isPermaLink="false">hn3-49823348</guid>
+      <pubDate>Wed, 23 Sep 2026 22:16:19 +0000</pubDate>
+      <description>138 points, 81 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://artificialanalysis.ai/models/mercury-2-5"><strong>→ Article</strong></a> <small>(artificialanalysis.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49823348">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 81 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jjcm</em>:</p>
+<blockquote>I&#x27;m still sad that we haven&#x27;t seen a new Taalas style chip a la <a href="https:&#x2F;&#x2F;chatjimmy.ai&#x2F;" rel="nofollow">https:&#x2F;&#x2F;chatjimmy.ai&#x2F;</a>. Smaller models are good enough now to make that insane burst of tokens so useful.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pil0u</em>:</p>
+<blockquote>I don&#x27;t know the model behind this, but it is absurdly bad.<p>&gt; Write me a coherent paragraph in French, without ever using the letter &quot;e&quot;.<p>&gt; Voilà une phrase claire et concise : &quot;Le village est situé dans les montagnes. Le soleil est haut. Il y a des animaux dans le village. Il pleut dans les montagnes.&quot;<p>I suppose this is just a demo of how fast an LLM can be, I wonder if there are tradeoffs with larger&#x2F;smarter models. Also, for a human usage, at what point are tokens generated fast enough that it&#x27;s pretty much instant? My bet is below 1000 tps</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>amelius</em>:</p>
+<blockquote>Why ask this when we know that LLMs are not good at the character level. They run on tokens, not characters. In fact, they don&#x27;t even see the characters, unless you do special tricks.<p>I asked it to translate your sentence to English and it did fine.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>winwang</em>:</p>
+<blockquote>Pretty sure context is in SRAM, and then you have that as a blocker for tasks.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bearjaws</em>:</p>
+<blockquote>If you care about speed Cerebras gpt-oss-120b is 1400tk&#x2F;s and &quot;just as smart&quot; in ranking.<p>I&#x27;ve used it on a few for fun projects and its decent but the speed is crazy to watch.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ford</em>:</p>
+<blockquote>Also kimi 2.6 at 1000tps (as of may), though when we reached out they had a &gt;12 month waitlist and minimum 7-8 figure annual token spend.<p>[0] <a href="https:&#x2F;&#x2F;www.cerebras.ai&#x2F;blog&#x2F;cerebras-kimi-k2-Enterprise" rel="nofollow">https:&#x2F;&#x2F;www.cerebras.ai&#x2F;blog&#x2F;cerebras-kimi-k2-Enterprise</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>walrus01</em>:</p>
+<blockquote>7-8 figures annual spend will buy a hell of a lot of capable local inference hardware you can own, though it won&#x27;t be at the absurd token&#x2F;s rate, you&#x27;ll be able to run almost <i>anything</i> on it...  And it&#x27;ll still have a good residual resale value after 4 years the way things are going now.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>conception</em>:</p>
+<blockquote>It was better when they had gemma at 1k. Inco does DS flash at about 600. A few places will do K3 and GLM in the hundreds.<p>Such a tiny model at that t&#x2F;s is less impressive than it would have been four months ago.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>the_arun</em>:</p>
+<blockquote>Chat Jimmy clocks at 17K tokens per sec burning LLM into the Chip - <a href="https:&#x2F;&#x2F;chatjimmy.ai&#x2F;" rel="nofollow">https:&#x2F;&#x2F;chatjimmy.ai&#x2F;</a> - Source: <a href="https:&#x2F;&#x2F;theashishmaurya.medium.com&#x2F;taalas-the-startup-that-prints-ai-models-directly-onto-silicon-33b181690575" rel="nofollow">https:&#x2F;&#x2F;theashishmaurya.medium.com&#x2F;taalas-the-startup-that-p...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>econ</em>:</p>
+<blockquote>Would have made a nice local tool.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>We just shipped support for the ugliest part of HTTP: Vary</title>
+      <link>https://blog.cloudflare.com/vary-support/</link>
+      <guid isPermaLink="false">hn3-49823195</guid>
+      <pubDate>Wed, 23 Sep 2026 22:03:21 +0000</pubDate>
+      <description>135 points, 33 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/vary-support/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49823195">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 33 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>simonw</em>:</p>
+<blockquote>I&#x27;ve been wanting this from Cloudflare <i>for years</i>.<p>The classic problem here is if you do that thing where user agents that send &quot;accept: text&#x2F;html&quot; get HTML, while user agents that don&#x27;t get JSON or some other format.<p>This used to be impossible to deploy behind Cloudflare caching, because they ignored the Vary header on anything other than images - so you risked caching the JSON version and then serving it up to someone who was expecting HTML.<p>(Independent of the Cloudflare feature I ended up deciding never to use that pattern, because I prefer having URL that predictably returns HTML or JSON - I add a .json suffix to my apps to serve JSON instead.)</blockquote>
+<blockquote>
+<p>↳ reply — <em>Joker_vD</em>:</p>
+<blockquote>Frankly, the supposed variability of the Accept header never really sat all that well with me; in practice I much prefer working with explicitly versioned endpoints — one of the most infuriating things is having to hardcode &quot;Accept: text&#x2F;x-myorgname-custom-json-blob-v4&quot; because omitting it would produce &quot;406 Not Acceptable&quot;. Bonus points if that&#x27;s the <i>only</i> Accept header the service would ever accept in all of three years of it working before being decommissioned. Double bonus points if v5 would be introduced behind a separate URI anyway (and it, too, would require precisely &quot;Accept: text&#x2F;x-myorgname-custom-json-blob-v5&quot; and nothing else).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>yoavm</em>:</p>
+<blockquote>I always thought Accept (and Accept-Language) headers are quite neat. Surely I can try article.es.md first, get a 404, try article.en.md, get a 404, try article.es.txt, article.en.html and so on, until I find the thing I&#x27;m looking for. But Accept let&#x27;s me say &quot;I&#x27;ll take any one of these, preferably in this order&quot;. This is especially useful now when agents are reading the web and they don&#x27;t really need all of our HTML code - just the text.<p>If you&#x27;re versioning the whole API though, I agree it&#x27;s best behind a a &#x2F;v2&#x2F; prefix.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>colmmacc</em>:</p>
+<blockquote>Wow this brings back memories. Over twenty years ago I added Vary support to various mod_cache submodules for Apache 2.0, and it was way too high a pain to reward ratio. It just uncovered so many user agent bugs and crazy backends. I remember arguments about being able to cache variable based on non-literal virtual headers (e.g. a geo location header), and a crazy request to Vary based on &quot;Date:&quot; ... which makes absolutely no sense. The whole thing was just too clever for its own good. It&#x27;s no surprise that language selection ended up in URLs (&#x2F;en-US&#x2F;..) rather than &quot;Vary: Accept-Lang&quot; features.</blockquote>
+<blockquote>
+<p>↳ reply — <em>Gigachad</em>:</p>
+<blockquote>I feel like putting as much as possible in the URL is a good thing anyway. If I send someone a link, I can know it&#x27;s the same document that shows on their browser as mine.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tiffanyh</em>:</p>
+<blockquote>I just wish CF would enable Enterprise functionality to lower (paid) tiers as they promised a year ago yet haven’t delivered on.<p><a href="https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;enterprise-grade-features-for-all&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;enterprise-grade-features-for-al...</a><p>Like Prefetch: <a href="https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;speed&#x2F;optimization&#x2F;content&#x2F;prefetch-urls&#x2F;" rel="nofollow">https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;speed&#x2F;optimization&#x2F;content...</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>VSCode's SSH Agent Is Bananas (2025)</title>
@@ -1431,6 +1650,34 @@ I don&#x27;t live in California, so maybe I&#x27;m misunderstanding something. U
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>The current balance of power in open models</title>
+      <link>https://www.interconnects.ai/p/the-current-balance-of-power-in-open</link>
+      <guid isPermaLink="false">hn3-49808816</guid>
+      <pubDate>Tue, 22 Sep 2026 22:03:46 +0000</pubDate>
+      <description>127 points, 55 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.interconnects.ai/p/the-current-balance-of-power-in-open"><strong>→ Article</strong></a> <small>(interconnects.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49808816">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 55 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Zaraif13</em>:</p>
+<blockquote>It&#x27;s becoming more clear that for big enterprises to really adopt AI, they need to use open models. Especially if they want to own their own intelligence, which they should.<p>I spent the last 2 days building basic AI agents to automate some mundane supply chain workflows for a large company. Those seemingly boring workflows had bank statements, supplier IDs and other sensitive information.<p>For me it was all alarm bells, there is no way they can afford to give closed models access to this data. I was compelled to figure out an open model based solution for them, which made me realize that this is probably the only way for enterprises going forward.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tomp</em>:</p>
+<blockquote>I don&#x27;t get this. It&#x27;s not like the models are running on their own GPUs.<p>So if you&#x27;re running open models on AWS GPUs, you might as well run Claude (which AWS supports, and doesn&#x27;t share any data with Anthropic).<p>Same with Azure&#x2F;OpenAI.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>abalashov</em>:</p>
+<blockquote>&gt; which AWS supports, and doesn&#x27;t share any data with Anthropic<p>Ah... oh.<p>Well, it&#x27;s a nice thought.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>solidasparagus</em>:</p>
+<blockquote>Why does this necessitate using closed models? I don&#x27;t see the difference between putting your data on a cloud DB and using a cloud model.</blockquote>
+<p>↳ reply 3 — <em>ramshanker</em>:</p>
+<blockquote>Same here. We are at a stage where we are evaluating cost&#x2F;benefit for my enterprise. I am heavily pushing for in house hardware with open models.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tamaker</em>:</p>
+<blockquote>Really important work here.  Really glad it&#x27;s being shared a) with US Leadership and b) with the community.</blockquote>
+<p><strong>Top #3</strong> — <em>JSR_FDED</em>:</p>
+<blockquote>I’m super uncomfortable with the idea of a single company or country holding all the cards when it comes to AI. So from that perspective I welcome the Chinese models.<p>Additionally, the big labs’ formulation of AI as a US-vs-China national security issue is very convenient for keeping those pesky regulations at bay, and for ensuring the AI financial bubble doesn’t pop before everyone can unload in an IPO first. Both of these offend my sense of fair play.<p>The Chinese labs aren’t just putting models out there, they’re publishing and sharing their research and innovation too. That’s just a better way of doing science and contributing to the development of the whole field.</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Microsoft killed FoxPro in 2007. Anyway, here's FoxPro revived</title>
       <link>https://foxscript.org/</link>
       <guid isPermaLink="false">hn3-49808023</guid>
@@ -2321,6 +2568,36 @@ My hobby db project isnt opened source yet.</blockquote>
 <p>↳ reply 2 — <em>tegeek</em>:</p>
 <blockquote>Here is one my project is opened source. Highway <a href="https:&#x2F;&#x2F;github.com&#x2F;System-D-AB&#x2F;highway" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;System-D-AB&#x2F;highway</a><p>It is fault tolerant, distributed broker which gurantees durable queues, pub&#x2F;sub and RPC all into one easy to use programming model. The application is in production and passing millions of messages every day with sub-millisecond performance, you can crash a server and replica set invokes within seconds without losing any messages. 
 The entire project is created in less than a month with part time working, just because of AI. Its in production and already proven.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The mystery animal on an ancient god's head</title>
+      <link>https://signoregalilei.com/2026/09/13/the-mystery-animal-on-an-ancient-gods-head/</link>
+      <guid isPermaLink="false">hn3-49799855</guid>
+      <pubDate>Tue, 22 Sep 2026 12:00:11 +0000</pubDate>
+      <description>146 points, 38 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://signoregalilei.com/2026/09/13/the-mystery-animal-on-an-ancient-gods-head/"><strong>→ Article</strong></a> <small>(signoregalilei.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49799855">→ HN comments</a> &nbsp;·&nbsp; 146 points &nbsp;·&nbsp; 38 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>evandrofisico</em>:</p>
+<blockquote>As the Old Jaffa joke says:<p>A serpent guard, a Horus guard, and a Setesh guard meet on a neutral planet. It is a tense moment. The serpent guard&#x27;s eyes glow. The Horus guard&#x27;s beak glistens. The Setesh guard&#x27;s... nose drips.</blockquote>
+<blockquote>
+<p>↳ reply — <em>tsimionescu</em>:</p>
+<blockquote>As the older Babylonian joke says[0]:<p>A dog enters a bar. He doesn&#x27;t see anything, so he says &quot;shall I open this door?&quot;<p>(the combination of an article about a mysterious aspect of such a well known ancient god and your joke made me think of this mysterious Babylonian joke, recorded from 1700 BCE but whose meaning we can only theorize about)<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Bar_joke#First_recorded_example" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Bar_joke#First_recorded_exampl...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>actionfromafar</em>:</p>
+<blockquote>I hope it&#x27;s a deadpan joke that the dog can not only speak, but does so like any other bar patron.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>stronglikedan</em>:</p>
+<blockquote>it&#x27;s clearly an anteater ::shrug::</blockquote>
+<p><strong>Top #3</strong> — <em>tomrod</em>:</p>
+<blockquote>Huh. Pretty clearly a dog&#x2F;jackal though, right?<p>Set was the god of Libya and was at war with the &quot;good guy gods&quot; in Egypt, so one has to assume the civilization based in Libya would be were we could correlate the answer -- and we have the contention that the Sahara has grown since the early days of Egypt, so its possible the definitive answer remains buried.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>emmelaich</em>:</p>
+<blockquote>Aardvark to me.  Similar snout, long ears.  They were probably in the southern reaches of Egypt.<p>With regard to differences that could be explained by stylisation and the lack of familiarity due to it&#x27;s rarity in most of Egypt.</blockquote>
+<p>↳ reply 2 — <em>btilly</em>:</p>
+<blockquote>From the article, <i>&quot;Egypt was conquered several times by foreign nations that the Egyptians perceived as worshiping Set.&quot;</i><p>So while the Egyptians might have seen Set as the god of Libya, the Libyan representations might not be the one that Egyptians were comparing to.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3643,339 +3920,6 @@ The Ukrainians even offered drone defences before it started and were publically
 </blockquote>
 <p><strong>Top #3</strong> — <em>jacquesm</em>:</p>
 <blockquote>All these companies are universally sleazy and refuse to take responsibility, no matter what. It&#x27;s pretty much par for the course: deny you are responsible, try to control the court case in such a way that you inflict even more suffering on the victims and their families and ultimately, even if you&#x27;re found to be in the wrong do everything to stall payment until each and every legal avenue to do so is exhausted.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>What Sun got wrong</title>
-      <link>https://bcantrill.dtrace.org/2026/09/20/what-sun-got-wrong/</link>
-      <guid isPermaLink="false">hn3-49787436</guid>
-      <pubDate>Mon, 21 Sep 2026 14:03:18 +0000</pubDate>
-      <description>482 points, 264 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://bcantrill.dtrace.org/2026/09/20/what-sun-got-wrong/"><strong>→ Article</strong></a> <small>(bcantrill.dtrace.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49787436">→ HN comments</a> &nbsp;·&nbsp; 482 points &nbsp;·&nbsp; 264 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>coreyh14444</em>:</p>
-<blockquote>As someone who was buying hardware in the late 1990s, it is hard to overstate the difference in buying experience between Sun or Digital (DEC) and someone like Dell. The former forced you into a live sales meeting, endless quote revisions, it was a nightmare. I remember calculating the server rails and power cords for a new Alpha server were going to cost more than a shipped&#x2F;delivered Dell server that I could get the next day.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>sschueller</em>:</p>
-<blockquote>For us dell has become that. Rep changes all the time, what appears to be random pricing and long unclear delivery dates. Instead I can for example go to Thomas Kren and configure my serves online for a fraction of the cost. They have what they list in stock, delivered a few weeks later. Everything is clear and hasle free.<p>At this point I have the feeling dell just charges you what they think they can get out of you. You push back and the price drops, I don&#x27;t want to negotiate.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>PaulHoule</em>:</p>
-<blockquote>The iron law is that vendors <i>want</i> to become like the old Sun.  The only reason they don&#x27;t is if they are trying to compete their way up the hill.  Take away the old Sun and SGI and IBM and now Dell is Sun.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>cherryteastain</em>:</p>
-<blockquote>Difference is Sun was providing a &quot;full stack&quot; proprietary product including CPUs running a proprietary ISA, Unix OS, compiler, desktop environment and productivity apps. All that Dell does is assembling standard, commoditized parts and putting a free OS on it. Dell&#x27;s business is incredibly easy to replicate, while Sun&#x27;s business is extremely hard to replicate. Of course, Sun&#x27;s competitive advantage turned into a curse when the components of that vertical integration become uncompetitive both features and price wise vs. the GNU&#x2F;Linux-on-Intel stack. But regardless, Dell could never replicate the vertical integration Sun had.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nunez</em>:</p>
-<blockquote>Yeah, and then Dell more-or-less turned into that. Companies get big, customers and sales get more complicated, process gets more calcified.<p>SUNW would probably still be around if the whole x86 commodity pizza box revolution hadn&#x27;t happened OR if they had pivoted away from SPARC earlier and went heavily into x86. Example: buying from IBM doesn&#x27;t sound too different from buying from Sun, but they&#x27;re still around because mainframes will be around until the Earth implodes (probably).<p>(I think that their channel&#x2F;partner programs along with their professional services org are big reasons why Dell is still a key player in the datacenter space. You can buy Dell direct, and the sales process is still &quot;good&quot; as far as enterprise sales goes, but bigger players usually get their Dell kit through distributors&#x2F;vendors with Dell professional services handling architecture, build-out, enablement, etc. I&#x27;m not sure how much energy SUNW invested in this, as they were before my time, but this combo is a major revenue driver for them.)</blockquote>
-<p>↳ reply 3 — <em>walrus01</em>:</p>
-<blockquote>&gt; Sun or Digital (DEC) and someone like Dell.<p>In a time frame like 1999 to 2002, much more broadly than that, just the increasing gap in cost vs what you would get between buying <i>any</i> hardware+OS package from a legacy Unix-like vendor (Sun, DEC, SGI) and doing your own thing on a FreeBSD, OpenBSD or Linux on x86 hardware.<p>Dell was obviously a top choice, but by 2000 or so, Linux or FreeBSD had become good enough that you could do exactly the same thing for a <i>fraction</i> of the cost and run it on x86 hardware you had purchased from either Dell or one of the top 5 or 6 Dell-competitors.<p>As compared to, as you say, sitting through sales meetings, price quotes, revisions, a long slow and arduous process to arrive at a figure where you come to a conclusion &quot;yeah you can spend $60,000 on these Sun servers or we can buy $20,000 of x86 servers and get creative with our own software stack to do the same thing in house&quot;.<p>At a certain point 1U and 2U server hardware got fast enough on boring standard x86 single or dual socket motherboards from Taiwan, in the era of like the 1.2 GHz Pentium 3 with 512KB cache, that the performance was pretty damn good and the machine cost a fraction of what the equivalent Sun or SGI rackmount machine would cost. This is in the era before a multi core x86 CPU existed. And you could be sure that its BIOS and motherboard were already OK for use with a current Linux kernel, we&#x27;re talking about motherboards from Supermicro, Tyan, intel whitebox reference server boards, etc.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>cryptonector</em>:</p>
-<blockquote>I&#x27;ve written several times here about all the mistakes that Sun made during the 00s that doomed it.  Among the many mistakes it made are:<p>- Cancelling -if briefly- Solaris on x86 in 2002.  This killed Solaris in the minds of many who didn&#x27;t want to be locked into Sun for SPARC.<p>- Failing to make a deal with Google in 2002.  Apparently Sun insisted on knowing how many servers Google had, something that Google considered a high-value secret, so Sun failed to make a deal with Google, so Google ended up using Linux and contributing to Linux.  This was a tremendous mind-share disaster -- it&#x27;s hard to overestimate the damage done by this.<p>- Closing Sun PS (professional services).  Bad bad move, possibly the worst of them.<p>- Not giving up on J2ME earlier -- it&#x27;s not the sort of thing that could last forever, and Steve Jobs killed it with the iPhone.  This was a case of vendor lock-in clouding Sun&#x27;s decision making.<p>- Failure to recognize that Sun needed to become a <i>systems</i> company, not a <i>CPU</i> company.<p>- Failure to respond to Active Directory.  This was yet another case of vendor lock-in clouding Sun&#x27;s decision making: the Sun DS product team was milking their existing customers more than they wanted to go after more business with a sustainable strategy.<p>- UltraSPARC was more than a decade too late to make up for SPARC falling way behind x86_64.  Sun needed to give up on SPARC, but again, vendor lock-in sounds sweet but turns out to be poison.<p>- Failure to make a deal with Apple for it to use ZFS in OS X.<p>- The MySQL purchase.  WTF, this was horrible and stupid.  The only interesting effect of this was to make Sun a target of acquisition for Oracle.  But of course, it turns out that Oracle -a company built on building mind-share- had become too blinded by vendor lock-in just like Sun, so...<p>There were numerous other mistakes along the way.  These are the most salient, for me anyway.<p>What&#x27;s shocking is how long it took Sun to fail under those circumstances!<p>Also shocking is how much amazing stuff came out of Solaris engineering and the systems division!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>chungy</em>:</p>
-<blockquote>&gt; - UltraSPARC was more than a decade too late to make up for SPARC falling way behind x86_64. Sun needed to give up on SPARC, but again, vendor lock-in sounds sweet but turns out to be poison.<p>UltraSPARC came out in 1995, and Athlon 64 in 2003.  I&#x27;m confused on how it could be late?<p>&gt; - The MySQL purchase. WTF, this was horrible and stupid. The only interesting effect of this was to make Sun a target of acquisition for Oracle. [..]<p>I disagree with this assessment strongly.  I believe Oracle wanted Java and only Java.  All other Sun properties were collateral damage of the acquisition.  It might be weird that Oracle now owns MySQL, but Oracle never cared about it.  (Of course, both your and my assessment are mere opinions.)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>cryptonector</em>:</p>
-<blockquote>&gt; UltraSPARC came out in 1995, and Athlon 64 in 2003. I&#x27;m confused on how it could be late?<p>Ah, sorry, I was referring to the CMT architecture.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>old-gregg</em>:</p>
-<blockquote>It&#x27;s a good list, and it&#x27;s supported by the anecdotal evidence from my own career: my first dev job after college was on Solaris, but that company moved away from Sun because of Sun DS.<p>Why do you think ZFS on MacOS would have helped in any significant way? AFAIK, and I may be wrong, but Apple doesn&#x27;t have a history relying on OEMs for their software, especially something as critical as operating systems. Am I wrong? Was it different back then?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>labrador</em>:</p>
-<blockquote>I sold my Sun stock at the internet bubble top for $70 a share. A few months later it was $7. I think of that when I see PE ratios in the hundreds for Tesla, SpaceX and other AI stocks.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>metaphor</em>:</p>
-<blockquote>Scott McNealy had a few choice words in retrospect[1].<p>[1] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40950311">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40950311</a></blockquote>
-<p>↳ reply 2 — <em>nradov</em>:</p>
-<blockquote>Good timing. But on the other hand if you had sold AAPL, MSFT, NVDA, ORCL, AVGO, ADI, KLAC, LRCX, etc at the Internet bubble top then you would have missed out on <i>huge</i> gains since then.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>M5 Ultra Mac Studio Review</title>
-      <link>https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/</link>
-      <guid isPermaLink="false">hn3-49787313</guid>
-      <pubDate>Mon, 21 Sep 2026 13:53:27 +0000</pubDate>
-      <description>224 points, 223 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.macstories.net/stories/m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents/"><strong>→ Article</strong></a> <small>(macstories.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49787313">→ HN comments</a> &nbsp;·&nbsp; 224 points &nbsp;·&nbsp; 223 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>simonw</em>:</p>
-<blockquote>The numbers I was most interested in are tucked away in a chart towards the bottom - the speed comparison of the Mac Studios v.s. a RTX 5090:<p><pre><code>  Qwen3.8 27B tokens&#x2F;sec generation speed
-
-  Prompt size    8K    64K   128K   256K
-  RTX 5090 PC    59    51    44     n&#x2F;a
-  M5 Ultra       48    39    32     24
-  M3 Ultra       31    23.5  20     15
-</code></pre>
-A whole bunch more comparison numbers in this section: <a href="https:&#x2F;&#x2F;www.macstories.net&#x2F;stories&#x2F;m5-ultra-mac-studio-review-the-dream-mac-for-local-ai-agents&#x2F;#mx-pc" rel="nofollow">https:&#x2F;&#x2F;www.macstories.net&#x2F;stories&#x2F;m5-ultra-mac-studio-revie...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>redox99</em>:</p>
-<blockquote>A dense 27B doesn&#x27;t really make sense for the Mac. A MoE makes way more sense when you have modest bandwidth but lots of memory.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tcdent</em>:</p>
-<blockquote>A dense model (up to the amount of memory available) actually does make the most sense on unified memory architectures. But when you hit the limit of what you can hold in memory, you reach the limitation of the platform.<p>Whereas a hybrid architecture with distinct DRAM and VRAM with sparse MoE, you can leverage two different bit rates depending on the actual need for constant access to common layers versus sparse access to infrequent layers and arbitrage the difference in cost for each of those in distinct classes of hardware.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>nojs</em>:</p>
-<blockquote>&gt; A dense model (up to the amount of memory available) actually does make the most sense on unified memory architectures<p>Inference time is going to be dominated by the low memory bandwidth on these Macs, so a dense model will suffer most. It’s more of an opportunity for large MoE models with a low number of active experts since you can keep all experts in VRAM but not pay the bandwidth cost until they are used.<p>&gt; you can leverage two different bit rates depending on the actual need for constant access to common layers versus sparse access to infrequent layers<p>This is an interesting direction that I expect to see more of. But for most models currently you need basically all experts loaded since they are chosen per token.<p>Apple seems to be researching longer horizon expert caching, where they keep experts swapped in for longer runs of tokens [1]. Other labs are offloading ngram caches but not sure if they’re pursuing anything like this?<p>1. <a href="https:&#x2F;&#x2F;machinelearning.apple.com&#x2F;research&#x2F;introducing-third-generation-of-apple-foundation-models" rel="nofollow">https:&#x2F;&#x2F;machinelearning.apple.com&#x2F;research&#x2F;introducing-third...</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nacs</em>:</p>
-<blockquote>That&#x27;s a dense model. Of course it will do worse.<p>Now try running that Qwen 3.8 Next model on the 5090 and tell me what TPS you get (hint: it&#x27;s near 0 since it doesnt fit the 32GB VRAM on 5090 vs the 256 in OPs M5).</blockquote>
-<p>↳ reply 3 — <em>lhl</em>:</p>
-<blockquote>A basic llama-bench on Qwen 3.8 27B UD-Q4_K_M gives pp512 3920 tok&#x2F;s &#x2F; tg128 81 tok&#x2F;s on a 500W RTX PRO 6000 (should be similar speeds to a 5090, chip is basically the same, just less VRAM). With MTP3 this is 140 tok&#x2F;s on mtp-bench.<p>This is with llama.cpp. You can of course use vLLM&#x2F;SGLang well on these cards and they&#x27;re even faster. On vLLM w&#x2F; NVIDIA&#x2F;Qwen3.8-27B-NVFP4 baseline has a prefill of about 13,000 tok&#x2F;s.  The baseline tok&#x2F;s is 72 tok&#x2F;s, but at mtp7, it&#x27;s 157 tok&#x2F;s, and w&#x2F; dflash7 that goes up to 215 tok&#x2F;s. On mtp-bench, DFlash2 gets a hair under 300 tok&#x2F;s w&#x2F; the code_python prompt.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>srcreigh</em>:</p>
-<blockquote>This is great as a first look, but the author is not a developer, so we don&#x27;t yet know whether a dev can be as productive with local models on M5 Mac Studio compared to a 20x subscription plan.<p>I&#x27;m also curious about any new low hanging optimization opportunities in the kernels for this new hardware.<p>It&#x27;s already clear to me that M5 Mac Studio is more cost-effective than anything you can run on open router, assuming decent utilization.<p>The M5 Mac Studio will be the most cost effective way to run uncensored cyber capable open agents.<p>An exciting tipping point will be if programmers can get an Astra-Ultra like experience all week with this hardware. That would be a real sense where this hardware exceeds the value of even 20x cloud subscriptions.</blockquote>
-<blockquote>
-<p>↳ reply — <em>zozbot234</em>:</p>
-<blockquote>Astra-Ultra? Even the largest open model to date (Kimi K3) is nowhere close to Astra level, and it will be quite slow even on the highest-spec M5 Ultra, with achievable speeds of about 0.5 tok&#x2F;s at most due to having to stream weights from SSD (~13 GB&#x2F;s on the highest storage capacity M5 Max machines so far).  This is OK for doing simple Q&amp;A in the background but it&#x27;s far from a genuine coding experience. You&#x27;d have to test batching of multiple thinking streams in order to try and raise overall tok&#x2F;s via layer-wise reuse of the streamed weights (and this is where the &quot;Ultra&quot; part sort of becomes relevant; Kimi series models have good support for agent swarms) but this would decrease single-session performance even further.  It would only be usable for background jobs, though the hardware would then have a chance of paying for itself if it was fully used on a 24&#x2F;7 basis.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>srcreigh</em>:</p>
-<blockquote>&gt; You&#x27;d have to test batching of multiple thinking streams in order to try and raise overall tok&#x2F;s via layer-wise reuse of the streamed weights<p>isn’t this very straightforward to do..? I thought batching for Qwen models is already proven out.<p>&gt; but this would decrease single-session performance even further<p>Well let’s take Qwen 3.8 27B. Throughput for M3 at 8 agents is 4x compared to single agent. [1]<p>It’s really not clear to me that 8 concurrent agents at half speed will be worse task completion latency than 1 agent.<p>And that’s M3 studio benchmarks, not even M5 ultra, and without the many software improvements we will see<p>If you haven’t tried Qwen 3.8 27B xhigh on a task you might not get the hype. Idk.<p>If you’ve <i>tried doing this and don’t like it</i> sure, and be specific about what isn’t effective, but let’s not speculate.<p>[1]: <a href="https:&#x2F;&#x2F;omlx.ai&#x2F;benchmarks&#x2F;performance&#x2F;69kzkrv8?utm_source=chatgpt.com" rel="nofollow">https:&#x2F;&#x2F;omlx.ai&#x2F;benchmarks&#x2F;performance&#x2F;69kzkrv8?utm_source=c...</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>zozbot234</em>:</p>
-<blockquote>That&#x27;s all well and good but Qwen 27B is a small, dense model; that&#x27;s favorable to both batching and MTP.  Batching of large, sparse&#x2F;MoE models like Kimi K3 (requiring slow SSD streaming even on a single maxed out Mac Studio) on local hardware is an entirely different game that&#x27;s mostly theoretical so far: many people would even call it outright pointless.  (MTP clearly fares even worse, though - unlike batching, it ends up wasting scarce weights-fetching throughput on wrongly predicted tokens.)</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>sajithdilshan</em>:</p>
-<blockquote>On Apple website it says 512GB memory option is available in October. I guess bumping to that one would cost additional 4-6k US$. So an Ultra with 2TB storage would be north of 15k US$.<p>That’s like 12 years worth of OpenAI Pro subscriptions</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>112233</em>:</p>
-<blockquote>Hard to guess, it can go either way. If you will need to be in a syndicate to use non-sterilized models, that mac makes sense. But if there is mandatory registration of personal cyberarms, you risk going to mines once they check you purchases. You could try to play normie and pretend you simply wanted to show off, by keeping your actual work on external disk, but that leaves traces on system. Counting on someone in the Gap renting you gray iron works as long as you can swap credits. Still, this gear is tiny. Put it in your e-car, with uplink, and leave it at uncle&#x27;s farm. Discreet.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>woah</em>:</p>
-<blockquote>It was a dark rainy night in Neo-Tokyo as Blake puffed on his vapor cartridge and watched the Mac dealers prowl below. Almost 15k Union Credits to get one of them to meet you in an e-cafe with a fully loaded M5, but man, the inference rush from one of those things was something else.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>geodel</em>:</p>
-<blockquote>Agreed.<p>Specially since one can pay half right now to OpenAI and sign a 12 year iron clad contract for uninterrupted service delivery of OpenAI Pro.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Python Workers are now generally available</title>
-      <link>https://blog.cloudflare.com/python-workers-ga/</link>
-      <guid isPermaLink="false">hn3-49787142</guid>
-      <pubDate>Mon, 21 Sep 2026 13:38:19 +0000</pubDate>
-      <description>175 points, 28 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/python-workers-ga/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49787142">→ HN comments</a> &nbsp;·&nbsp; 175 points &nbsp;·&nbsp; 28 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>syrusakbary</em>:</p>
-<blockquote>Great work from the Cloudflare team!<p>I was very excited when they first launched Python Workers two years ago. Even though we have competing products at Wasmer, I think Cloudflare work is always exciting and inspiring.<p>I went back to the feedback I posted in the original launch thread [1]. It&#x27;s great to see that they have made meaningful progress since then, particularly around package support: PyEmscripten is now standardized through PEP 783.<p>That said, some of the main architectural concerns I raised at the time are still present:<p><pre><code>  * Being tied to use only one version of Python&#x2F;Pyodide (the one that Workerd embeds)
-  * Architecturally tied to the JS&#x2F;v8 world, which may show some challenges as they aim to reduce cold start times (in my opinion, it will be quite hard for them to achieve &lt;100ms startup time with their current architecture).
-
-</code></pre>
-In the benchmark we published earlier this year [2], a minimal Python application started in around 60ms on Wasmer Edge versus around 900ms on Cloudflare Workers (backing my concerns from 2024). Those numbers are now several months old, and I hope Cloudflare has improved them significantly since then.<p>The GA announcement doesn&#x27;t seem to include updated cold-start numbers. Could someone from the Cloudflare team share the current p50&#x2F;p95 cold-start times for Python Workers, ideally both with and without native user packages? (for example, one with FastAPI and other without any dependencies).<p>[1] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39907120">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39907120</a><p>[2] <a href="https:&#x2F;&#x2F;wasmer.io&#x2F;posts&#x2F;wasm-clouds-the-world-after-containers" rel="nofollow">https:&#x2F;&#x2F;wasmer.io&#x2F;posts&#x2F;wasm-clouds-the-world-after-containe...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>dom96</em>:</p>
-<blockquote>(I&#x27;m one of the authors of this post)<p>&gt; Being tied to use only one version of Python&#x2F;Pyodide (the one that Workerd embeds)<p>This isn&#x27;t quite the case, you can choose between different versions using compatibility flags. For example, `python_workers_314` is the compat flag for Python 3.14[1]. You&#x27;ve also got compat flags for 3.13 and 3.12. Though it is worth noting that by using those older versions you will also be using older Pyodide versions too, which have fewer features (for example they lack JSPI support).<p>&gt; Architecturally tied to the JS&#x2F;v8 world, which may show some challenges as they aim to reduce cold start times<p>That is indeed a challenge. But our memory snapshot implementation has improved the cold starts significantly already and we will be working to reduce these even further.  We also have sharding these days which reduces cold start frequency a lot. We wrote about cold starts (and sharding) in a previous blog post[2] which includes some numbers.<p>1 - <a href="https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;workers&#x2F;configuration&#x2F;compatibility-flags&#x2F;#python-314-for-python-workers" rel="nofollow">https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;workers&#x2F;configuration&#x2F;comp...</a><p>2 - <a href="https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;python-workers-advancements&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;python-workers-advancements&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>syrusakbary</em>:</p>
-<blockquote>Thanks for chiming in!<p>&gt; it is worth noting that by using those older versions you will also be using older Pyodide versions too<p>Yeah, I think this summarizes properly the issue I mentioned. Basically compat flags are a global version that affects not only the Python version used but workerd as well. I believe you&#x27;ll see some architectural issues from this design. Following up on your example, users will not be able to use a previous version of Python that has JSPI included, unless you update the old workerd as well (please correct me if I&#x27;m wrong), which will make certain things a challenge as workerd evolves.<p>&gt; We wrote about cold starts (and sharding) in a previous blog post[2] which includes some numbers<p>Thanks for sharing. On that blogpost [2] Cloudflare Python Workers startup time was reported to be about 1.027 seconds, which is way behind the numbers we have at Wasmer for cold starts in Python apps (60ms, or 16x faster). That&#x27;s why I was asking if you guys remeasured and have better timings now :)</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dsign</em>:</p>
-<blockquote>This is the tech at Cloudflare of course, but I swear that my first interpretation of the title was &quot;We have replaced all our python coders with AI and they (the coders) are out and generally available&quot; :-)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Joeboy</em>:</p>
-<blockquote>Yeah I initially read it as a headline about the grim state of the software dev jobs market.</blockquote>
-<p>↳ reply 2 — <em>FartyMcFarter</em>:</p>
-<blockquote>Yep - I immediately thought this was going to be some &quot;Python SWE on the cloud for hire&quot; service.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>simonw</em>:</p>
-<blockquote>Pyodide is such a cool piece of the Python ecosystem. I hope Cloudflare consider throwing some money their direction: <a href="https:&#x2F;&#x2F;opencollective.com&#x2F;pyodide&#x2F;contribute" rel="nofollow">https:&#x2F;&#x2F;opencollective.com&#x2F;pyodide&#x2F;contribute</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Raspberry Pi blocks changing RAM chips</title>
-      <link>https://forums.raspberrypi.com/viewtopic.php?p=2380887#p2380888</link>
-      <guid isPermaLink="false">hn3-49786689</guid>
-      <pubDate>Mon, 21 Sep 2026 12:54:24 +0000</pubDate>
-      <description>201 points, 158 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://forums.raspberrypi.com/viewtopic.php?p=2380887#p2380888"><strong>→ Article</strong></a> <small>(forums.raspberrypi.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49786689">→ HN comments</a> &nbsp;·&nbsp; 201 points &nbsp;·&nbsp; 158 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Aurornis</em>:</p>
-<blockquote>There were sellers buying the smallest RAM units, changing the RAM chips, and then reselling them as the higher RAM SKUs. The sellers who do this don’t always care to use good RAM chips and may even use QA reject parts. When the unit doesn’t work correctly, the anger and RMA requests are directed back at the Raspberry Pi foundation.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Tepix</em>:</p>
-<blockquote>The user friendly option would be to print the amount of RAM in very large letters on the PCB.
-There happens to be a lot of suitable surface on the PCB to the right of the text &quot;Raspberry Pi 5&quot; on the PCB anyway (§). Right now the amount of RAM is hard to read and easy to modify (move a little tiny SMD resistor).<p>Drawback: You need different silkscreens for different amounts of RAM.<p>Btw, if you&#x27;re worried about RAM-swapped units you can already verify them as described at <a href="https:&#x2F;&#x2F;geekworm.com&#x2F;blogs&#x2F;news&#x2F;prevent-ram-swapped-raspberry-pi-5-how-to-verify-factory-ram-size" rel="nofollow">https:&#x2F;&#x2F;geekworm.com&#x2F;blogs&#x2F;news&#x2F;prevent-ram-swapped-raspberr...</a><p>--<p>(§) as can be seen here <a href="https:&#x2F;&#x2F;pip-assets.raspberrypi.com&#x2F;categories&#x2F;1129-pcn&#x2F;documents&#x2F;RP-006041-PC-2-PCN%20Raspberry%20Pi%205B%20Rev%204.pdf" rel="nofollow">https:&#x2F;&#x2F;pip-assets.raspberrypi.com&#x2F;categories&#x2F;1129-pcn&#x2F;docum...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>buildsjets</em>:</p>
-<blockquote>A little bit of acetone and a q-tip will remove the silkscreen, and then the PCB can easily re-marked by the scammer.  Having a new silkscreen made is pocket change.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jackyinger</em>:</p>
-<blockquote>Etch it in the top layer of copper, cover it with soldermask. A bit harder to see, but harder to tamper.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>renonce</em>:</p>
-<blockquote>Just make the RAM mismatch a warning that voids warranty rather than a hard error. This is no excuse for forcing hardware pairing</blockquote>
-<p>↳ reply 3 — <em>akersten</em>:</p>
-<blockquote>&gt; When the unit doesn’t work correctly, the anger and RMA requests are directed back at the Raspberry Pi foundation.<p>They don&#x27;t need the resellers help for that! I&#x27;ve already been burned twice thinking &quot;I&#x27;ll use a raspberry pi for this small project&quot; and having it die within a month because reliably reading&#x2F;writing to an SD card is hard or something.<p>Between the notorious unreliability, crazy price hikes, trademark or whatever disputes, and this anti consumer ewaste generating policy, I can&#x27;t think of any reason I&#x27;d ever patronize them again.. my only regret is it took me two purchases to learn this lesson!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>RandomGerm4n</em>:</p>
-<blockquote>I think they should instead just introduce a clear system for verifying that a Raspberry Pi is genuine. For example, a code printed directly on the device. If you enter that code on the website, you can see exactly which model it belongs to and how often it has been used. That way, you could determine whether a Raspberry Pi is new or used and whether it has been modified.
-I saw that once at a thermal paste manufacturer. They used it to solve the problem of counterfeit thermal paste.You just have to get people to actually use the system and tell anyone else who asks for support but doesn&#x27;t have an original copy to GTFO.This would allow them to avoid the increased support burden without limiting people&#x27;s ability to upgrade their Raspberry Pi.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>colejohnson66</em>:</p>
-<blockquote>Chinese scammers have gotten good at abusing those &quot;codes&quot; by having a list of &quot;known good&quot; codes and printing them on multiple units. And because those holographic codes some companies used are printed <i>in China</i>, the scammers just use the same equipment during the night shift.<p><a href="https:&#x2F;&#x2F;www.bunniestudios.com&#x2F;blog&#x2F;2010&#x2F;microsd-card-failures&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.bunniestudios.com&#x2F;blog&#x2F;2010&#x2F;microsd-card-failure...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>indrora</em>:</p>
-<blockquote>There are methods of doing so that identify multiple, harder to falsify things.<p>One that I have seen is HMAC(serial||SKU) as a datamatrix&#x2F;QR, laser-etched onto the top silkscreen and burned into a PROM.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>arrowleaf</em>:</p>
-<blockquote>Package the product with a low denomination paper currency, lookup based on the banknote&#x27;s serial number.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>squeegeeninja</em>:</p>
-<blockquote>The real story here is that people are selling modded Pis as higher-memory versions. And this check actually caught them + is circumventable. The restriction is somewhat annoying to a small subset of enthusiasts but seems to catch genuine fraud.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Wowfunhappy</em>:</p>
-<blockquote>If it&#x27;s circumventable, how does it prevent fraud? Seems like it would likely just hurt the enthusiasts.<p>You can already check whether the RAM has been swapped via <a href="https:&#x2F;&#x2F;geekworm.com&#x2F;blogs&#x2F;news&#x2F;prevent-ram-swapped-raspberry-pi-5-how-to-verify-factory-ram-size" rel="nofollow">https:&#x2F;&#x2F;geekworm.com&#x2F;blogs&#x2F;news&#x2F;prevent-ram-swapped-raspberr...</a>.</blockquote>
-<p>↳ reply 2 — <em>zamadatix</em>:</p>
-<blockquote>Is there a way to circumvent it other than use ancient firmware?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Ask HN: Is it impossible to disable Siri on macOS 27?</title>
-      <link>https://news.ycombinator.com/item?id=49786609</link>
-      <guid isPermaLink="false">hn3-49786609</guid>
-      <pubDate>Mon, 21 Sep 2026 12:47:05 +0000</pubDate>
-      <description>132 points, 72 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=49786609"><strong>→ Article</strong></a></p>
-<p><a href="https://news.ycombinator.com/item?id=49786609">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 72 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jodrellblank</em>:</p>
-<blockquote>You should make use of Cunningham&#x27;s Law[1]. Instead of posting an &quot;Ask HN&quot; asking if it&#x27;s impossible to disable, post a &quot;Show HN&quot; claiming that it is impossible to disable.<p>Then people will flock to tell you how it can be disabled by XYZ.<p>[1] <a href="https:&#x2F;&#x2F;meta.wikimedia.org&#x2F;wiki&#x2F;Cunningham%27s_Law" rel="nofollow">https:&#x2F;&#x2F;meta.wikimedia.org&#x2F;wiki&#x2F;Cunningham%27s_Law</a></blockquote>
-<p><strong>Top #2</strong> — <em>nottorp</em>:</p>
-<blockquote>Just as a note, from what I see the problem is not only the privacy implications but also that the local AI comes with a baggage amounting to 10% of the space on the base mac models. Which is already severely limited.</blockquote>
-<blockquote>
-<p>↳ reply — <em>threetonesun</em>:</p>
-<blockquote>I have not found the local&#x2F;remote hand off to be very reliable either, so tasks that used to be almost instantaneous for Siri are now spinning to the point where I assume they failed. A simple 2 minute timer took almost 30 seconds to set the other day.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nottorp</em>:</p>
-<blockquote>You&#x27;re brave. I&#x27;m still on Sequoia.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>elcritch</em>:</p>
-<blockquote>Same here. The new macOS&#x27;es always seem to add more restrictions, more bloat, etc nowadays. I was thinking of upgrading the other day; glad I didn&#x27;t.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>galad87</em>:</p>
-<blockquote>The process that shows the Spotlight UI is now the one called &quot;Siri&quot;, previously it was called &quot;Spotlight&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cosmotic</em>:</p>
-<blockquote>This sounds similar to Microsoft and the start menu. A few years ago I went to extreme lengths to disable cortana (powershell guid uninstall). This invisibly and inexplicably disabled updates to the start menu search feature. The index remained the feature worked, it just never got updated again.  No amount of manually reindexing the disk helped. Reinstalling cortana got it working.</blockquote>
-<p>↳ reply 2 — <em>kccqzy</em>:</p>
-<blockquote>That makes sense. Sending SIGKILL to that process causes the spotlight UI in the menu bar to flash.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>ZuckOff Know when a camera is in the room</title>
-      <link>https://zuckoff.app/</link>
-      <guid isPermaLink="false">hn3-49785429</guid>
-      <pubDate>Mon, 21 Sep 2026 10:33:14 +0000</pubDate>
-      <description>587 points, 3 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://zuckoff.app/"><strong>→ Article</strong></a> <small>(zuckoff.app)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49785429">→ HN comments</a> &nbsp;·&nbsp; 587 points &nbsp;·&nbsp; 3 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jacquesm</em>:</p>
-<blockquote>earlier link<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49785397">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49785397</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>tomhow</em>:</p>
-<blockquote>Comments moved thither. Thanks!</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>ZuckOff is a free app that sees Meta glasses before they see you</title>
-      <link>https://www.wired.me/story/meta-smart-glasses-detector-app-zuckoff</link>
-      <guid isPermaLink="false">hn3-49785397</guid>
-      <pubDate>Mon, 21 Sep 2026 10:27:50 +0000</pubDate>
-      <description>344 points, 322 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.wired.me/story/meta-smart-glasses-detector-app-zuckoff"><strong>→ Article</strong></a> <small>(wired.me)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49785397">→ HN comments</a> &nbsp;·&nbsp; 344 points &nbsp;·&nbsp; 322 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>user_7832</em>:</p>
-<blockquote>I... don&#x27;t know how I feel about this. I mean, the concept, sure, good idea. Is it <i>reliable</i>? Perhaps. But... I get a &quot;buy merch&quot; popup the moment I open the page, and there seems to be a pro option for what seems to be a very much LLM-aided app? ...IDK, rubs off a bit wrong IMO. Just  my personal opinion.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>hallway_monitor</em>:</p>
-<blockquote>The nearby glasses app linked in this thread seems to be a lovingly hand coded tool to detect Meta glasses.</blockquote>
-<p>↳ reply 2 — <em>brettgo1</em>:</p>
-<blockquote>Are you saying you don&#x27;t want to show off a &quot;Zuck Off&quot; bucket cap?</blockquote>
-<p>↳ reply 3 — <em>josh_carterPDX</em>:</p>
-<blockquote>If it works the way it says it does, I&#x27;d be happy to buy merch as a way to support the team behind this!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>phyzome</em>:</p>
-<blockquote>Existing, probably less sketchy app: <a href="https:&#x2F;&#x2F;github.com&#x2F;yjeanrenaud&#x2F;yj_nearbyglasses" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;yjeanrenaud&#x2F;yj_nearbyglasses</a> (as linked in the other thread)</blockquote>
-<blockquote>
-<p>↳ reply — <em>rootsudo</em>:</p>
-<blockquote>This.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>flexagoon</em>:</p>
-<blockquote>Not sure why you&#x27;d use this sketchy vibecoded proprietary app over the same thing that&#x27;s open source and existed for a while<p><a href="https:&#x2F;&#x2F;github.com&#x2F;yjeanrenaud&#x2F;yj_nearbyglasses" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;yjeanrenaud&#x2F;yj_nearbyglasses</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mcdonje</em>:</p>
-<blockquote>According to the android app store, Nearby Glasses doesn&#x27;t collect any data, while ZuckOff collects app activity.<p>Why would I want a bluetooth scanner to phone home? Seems untrustworthy. Nearby Glasses wins from a data safety perspective.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tadfisher</em>:</p>
-<blockquote>Huh, I don&#x27;t see that in the permissions list. I do see:<p><pre><code>    - run foreground service with the type &quot;connectedDevice&quot;
-    - discover and pair nearby Bluetooth devices
-    - run foreground service
-    - control vibration
-    - Google Play billing service
-    - run at startup
-    - Google Play license check
-    - have full network access
-    - view network connections
-    - ask to ignore battery optimizations
-    - prevent phone from sleeping
-    - connect to paired Bluetooth devices
-    - show notifications
-</code></pre>
-I also see &quot;In-app purchases&quot; for &quot;$9.99 - $24.99 per item&quot;, which is more of a turnoff for me personally.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>grimgrin</em>:</p>
-<blockquote>&quot;even worse&quot;, I searched &quot;nearby glasses&quot; on app store, and it&#x27;s 2nd, under the ad sponsored &quot;ZuckOff&quot;<p>and so I leave this comment as off topic, but, is it pretty easy to get your new app to appear in that ad slot, above the main contender?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Don't Use AI to Write</title>
-      <link>https://paulbakker.io/writing/no-ai-for-writing/</link>
-      <guid isPermaLink="false">hn3-49784816</guid>
-      <pubDate>Mon, 21 Sep 2026 08:54:44 +0000</pubDate>
-      <description>130 points, 71 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://paulbakker.io/writing/no-ai-for-writing/"><strong>→ Article</strong></a> <small>(paulbakker.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49784816">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 71 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>trjordan</em>:</p>
-<blockquote>So let me get this straight:<p>- You can use AI to look through docs and do research.<p>- You can use AI to structure your argument.<p>- You can NOT use AI to actually write the prose.<p>- You can use AI to proofread, especially for how effectively you&#x27;ve communicated.<p>I don&#x27;t know, man, that sounds a lot like using AI to write. Your writing probably says &quot;load-bearing&quot; less than Claude&#x27;s outputs, but I&#x27;m not sure it&#x27;s much less AI.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tptacek</em>:</p>
-<blockquote>Reading through docs and doing research: of course. They&#x27;re like much better search engines in that regard. It would be silly not to use them. Obviously, you need to review their search results against their sources.<p>Structuring arguments: bad idea. Here you&#x27;re having the model do your thinking for you. The problems that occur with having it write text recur at a macro level; too-obvious patterns. Readers just want to know what the prompt was.<p>Writing the prose: obviously not.<p>Proofreading: I think this works pretty great, as long as you have a structure to how you&#x27;re doing it. &quot;How do I make this better or sharper&quot;: bad, you&#x27;re having the model structure your arguments for you. But for a predefined rubric of stylistic things --- writing you know how to do, that&#x27;s just tedious to check manually? Hard to see a downside.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sigmoid10</em>:</p>
-<blockquote>Most people apparently still don&#x27;t get that using AI for mere proofreading is the same as using it as a mere knowledge base summary tool. Instead of proofreading, have it be adversarial. Let it try to take apart your argument. The latest generation is extremely good at calling out half-truths and circumstantial evidence across many fields. These days I would not dare to put anything in front of a human peer that hasn&#x27;t passed at least an AI sanity check review.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>tptacek</em>:</p>
-<blockquote>I don&#x27;t want an AI&#x27;s opinion on what I&#x27;m writing. I want its assessments against an objective rubric. The whole point is not to have the model weights do your thinking for you.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>kaonwarb</em>:</p>
-<blockquote>I didn&#x27;t see in the article where he recommended AI to structure an argument? He did suggest it can be helpful for structuring data.</blockquote>
-<p>↳ reply 3 — <em>runarberg</em>:</p>
-<blockquote>Giving the compiling evidence of how addictive generative AI is actually, it actually makes perfect sense that people are looking for strategies to excuse their AI-usage. I think no matter the strategy (and given AI is actually as addictive as evidence are suggesting), chances are the usage patterns will all converge to <i>“Just use AI dummy“</i>.<p>This reminds me a lot of smokers who all have a great strategy beat the nicotine addiction. Only smoke on the weekends when out partying with friends, only smoke to use the extra sense of energy, only smoke to suppress my appetite, go to the gym 5 hours a week to offset the negative health impacts of smoking etc. etc.<p>In reality most smokers will converge to about a pack a day.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Kim_Bruning</em>:</p>
-<blockquote>Once upon a time the word processor was invented, and it made it so much easier to arrange your words on paper. iIf bits were wrong, you could just delete them, or copy and paste them across pages. It was actually pretty amazing what you could do; especially if you didn&#x27;t mind dot-matrix type on fan-fold paper. Of course if you wanted to make a better impression, you&#x27;d type it on a typewriter, or better yet, hand-calligraph your writing with a fountain pen.<p>So LLMs allow you to work at the speed of reading, if not faster. So you can try a paragraph here, completely rewrite the tone. Start a chapter in 1PP and just have it rewritten to 3PP. And sofort and so on. The number of new transformations you can do is endless.<p>What do a lot of people do? Write a one line prompt and show everyone the oneshot result.<p>Ok fine, sometimes you don&#x27;t need to write amazing prose. But you can also be like the early writers who adopted the word processor. If you put the same amount of elbow-grease into using an LLM as you did writing before, you can get some pretty cool results.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Isamu</em>:</p>
-<blockquote>&gt;Once upon a time the word processor was invented, and it made it so much easier to arrange your words on paper.<p>It’s easier to rearrange and rethink and tinker. Hard to imagine now but it was more efficient in the days when you would have to pencil out a memo and have someone type it up, you would make corrections and the final copy would be done in a couple passes. This has been studied, efficiency has actually gone down, in favor of immediacy and direct control.<p>What it frees you from is organizing your thoughts ahead of time, which takes practice and discipline. Using an LLM is just taking that further, you can avoid organizing your thoughts and ideas a bit more.</blockquote>
-<p>↳ reply 2 — <em>orangeboats</em>:</p>
-<blockquote>You nailed it on what I&#x27;ve always wanted to say.<p>If someone uses LLM to help wording their idea in a way that&#x27;s easier to understand, I am fine with it as long as they don&#x27;t copy-paste it verbatim into their blogpost.<p>I am getting a little ranty here, but the usual LLM-isms like &quot;not this, but that&quot; or &quot;that&#x27;s the real footnote here&quot; simply add zero value to the text, and I can&#x27;t imagine anyone who has proofread the LLM-generated text <i>even once</i> will opt to keep those sloppy paragraphs. If I see them, I can&#x27;t help but to think that the author had oneshotted the text. And it strongly suggests to me that the author has put zero effort into their work.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Oscalemor</em>:</p>
-<blockquote>It feels like you hit a wall. The moment for me was Astra first day of release. It felt like everything I&#x27;ve done up to that point was meaningless, or perhaps that&#x27;s too harsh; let&#x27;s call it art projects.<p>I&#x27;ve been carrying more notebooks, being fine with terminals being idle and focused on &#x27;what is actually being created&#x27;, and what will remain?</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
