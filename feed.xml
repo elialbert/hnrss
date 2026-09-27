@@ -4,7 +4,7 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 27 Sep 2026 18:13:50 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 21:58:24 +0000</lastBuildDate>
     <item>
       <title>Meta Blocks President Lula's Facebook Page, Campaign Ads 2 Weeks from Election</title>
       <link>https://www.reddit.com/r/worldnews/comments/1wr3id3/meta_blocks_president_lulas_facebook_page_and/</link>
@@ -272,6 +272,38 @@ What was their job and income?  I assume they were doing something like teaching
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Turning GLM-5.3-Flash into a Jev-like decision model</title>
+      <link>https://www.privatemode.ai/blog/system-one-from-glm-flash</link>
+      <guid isPermaLink="false">hn3-49857656</guid>
+      <pubDate>Sat, 26 Sep 2026 15:49:04 +0000</pubDate>
+      <description>125 points, 57 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.privatemode.ai/blog/system-one-from-glm-flash"><strong>→ Article</strong></a> <small>(privatemode.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49857656">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 57 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ricardobeat</em>:</p>
+<blockquote>Everyone is doing this to emulate Jev, but...<p>I took a random book excerpt with 23,000 words (±30k input tokens) and used it as context. Jev still responds in 800ms, sometimes 500ms. That&#x27;s in the neighbourhood of 20-50,000 tok&#x2F;s prefill, which is obviously not possible with normal LLMs, not even Cerebras is this fast.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>reissbaker</em>:</p>
+<blockquote>20k tok&#x2F;sec prefill on B200&#x2F;B300 isn&#x27;t particularly noteworthy for medium-sized models like GLM-5.3-Flash, vLLM and SGLang achieve it on a reasonable number of models, especially at NVFP4.<p>50k tok&#x2F;sec is pretty impressive though.<p>But... when you were doing your measurements, were you using <i>the same random book excerpt</i>? If you were potentially getting even partial cache hits for your 50k tok&#x2F;sec measurement, it would taint the benchmark: pretty much any inference provider running any LLM would be able to hit those numbers.</blockquote>
+<p>↳ reply 2 — <em>HarHarVeryFunny</em>:</p>
+<blockquote>It seems people are just guessing at the architecture behind Jev. Obviously the functionality itself is easy to replicate, but why Jev seems to be making such a splash (beyond the doh! factor of it&#x27;s huge applicability) is the ultra-low cost and speed, which may be due to architecture.<p>The Laya model compared in TFA shows one way Jev may be getting it&#x27;s speed and low cost - by using a BERT-like bidirectional model rather than an auto-regressive one (LLM).</blockquote>
+<p>↳ reply 3 — <em>amluto</em>:</p>
+<blockquote>I imagine it’s not so hard to optimize a model for this use case.<p>Off the top of my head, I would skip all the modern linear attention &#x2F; state space stuff and use classical attention. But run prefill in a fully sliding-window mode so that “state” tokens simply don’t attend to far away tokens, or maybe also allow everything to attend to the first few tokens (and train like this).  Now prefill is almost embarrassingly parallel, and you can make it fully parallel by duplicating work at block boundaries.  (I’m not saying this is an awesome architecture if you want excellent results, but I’m also not convinced that Jev gives excellent results…)<p>The let queries attend to everything.<p>And architect the stack around this.  Don’t try to cache the KV data — process the queries as you go so that the each input block and layer’s K and V data is computed, attended to, and discarded.<p>I’m curious whether Cerebras actually is a good device for this. Cerebras is kind of low on RAM, but if you don’t need to store KV data, maybe the entire computation fits on the die.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>wongarsu</em>:</p>
+<blockquote>I have run tests with qwen 3.8 and gemma 4 in a way similar to this post (based on an open source project that also does this with gemma4).<p>Getting competitive accuracy with Jev is fairly easy, if by accuracy you mean that the highest weighted answer is the right one. GLM 5.3 is complete overkill, much smaller llms will do<p>What Jev brings to the table, beyond speed, is that the reported probabilities match actual likelyhoods. If you present three options, with A and B equally likely and C impossible, jev will approximately answer with 0.5, 0.5, 0. Stock LLMs don&#x27;t</blockquote>
+<p><strong>Top #3</strong> — <em>walrus01</em>:</p>
+<blockquote>You can turn any sufficiently smart LLM into yes&#x2F;no decision model or equivalent. I already have an existing workflow with a two paragraph detailed prompt, that sends pages of stuff to an LLM and asks it to return only 7 JSON objects. Several of those objects are binary &quot;yes or no&quot; choices of like, whether the content contains certain things.<p>You can even do it with small not particularly hard to host local LLMs like a variant of Qwen 3.6 35B A3B or 3.8 27B.</blockquote>
+<blockquote>
+<p>↳ reply — <em>opiotrek</em>:</p>
+<blockquote>But does it always 100% of the time sticks to the schema? We have a prompt that is explicitly instructed to return a single html tag with the response inside it and it sometimes hallucinates</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>StevenWaterman</em>:</p>
+<blockquote>Yes, you can use constrained decoding</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Automattic has a new board after failed attempt to put CEO on leave</title>
       <link>https://techcrunch.com/2026/09/25/automattic-has-a-new-board-after-failed-attempt-to-put-ceo-on-leave/</link>
       <guid isPermaLink="false">hn3-49857572</guid>
@@ -382,6 +414,52 @@ Check reddit
 <blockquote>For many people, besides learning what you should do, it is more helpful to read anti-patterns and things you should not do in Go, and none is better than this article about data race patterns in Go: <a href="https:&#x2F;&#x2F;www.uber.com&#x2F;us&#x2F;en&#x2F;blog&#x2F;data-race-patterns-in-go&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.uber.com&#x2F;us&#x2F;en&#x2F;blog&#x2F;data-race-patterns-in-go&#x2F;</a></blockquote>
 <p><strong>Top #3</strong> — <em>phplovesong</em>:</p>
 <blockquote>Go has a really good concurrency story. Its one of the best ones out there. Some langs have async&#x2F;await (usually sucks) and some nothing att all (like php)</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OpenAI bots meddled with multiple US Government agency sites</title>
+      <link>https://www.bbc.com/news/articles/cw62jje658dlo</link>
+      <guid isPermaLink="false">hn3-49856665</guid>
+      <pubDate>Sat, 26 Sep 2026 14:03:54 +0000</pubDate>
+      <description>126 points, 190 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/cw62jje658dlo"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49856665">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 190 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gizajob</em>:</p>
+<blockquote>Getting bored of these framings where the superintelligent sentient beings running freely inside OpenAI are doing things that the company has no control over. The headline should be:<p><i>OpenAI meddled with multiple US Government agency sites.</i><p>The bots are acting neither properly nor improperly, they’re acting as they’re being allowed or coordinated to act.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>20k</em>:</p>
+<blockquote>Yep. You have to ask - why did OpenAI allow these bots unrestricted access to government sites? Why is security being done in seemingly such a haphazard way?<p>It isn&#x27;t difficult to block certain kinds of network traffic, eg restrict the kinds of requests the bots are able to make. They also mention that the bots used developer only tools - why were they even installed on the machines that the bots were running on? Why aren&#x27;t they reviewing network traffic, to make sure that incidents aren&#x27;t occurring?<p>In this case, userdata was transferred to third parties by the bots - why do they have the ability to pass data to a third party? It is not complex to prevent this<p>This is literally the most basic kind of sandboxing and security, and the fact that OpenAI isn&#x27;t doing it is clearly intentional. It is quite literally not believable that this hasn&#x27;t been brought up internally as a problem<p>&gt;&quot;We have yet to understand the extent of existing incidents, and future rogue AI scenarios could be catastrophic,&quot; Krueger said.<p>This is why it smells like marketing, every time one of these incidents happens it reinforces the false notion that AI is sentient or acting on its own. Its intentional negligence by the AI companies to make the models seem more capable than they are to make line go up</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>0xDEAFBEAD</em>:</p>
+<blockquote>&gt;line go up<p>It&#x27;s already going up at staggering rate.  Anthropic is now at $100B in annualized revenue, up 50% in the past <i>two months</i>.<p>* * *<p>Here&#x27;s a little allegory for how I&#x27;m thinking about this discourse.<p>Imagine a man who is raising tiger cubs in his backyard.  They&#x27;re growing fast.  He keeps them on dog leashes so they stay under control.  One day, a growing cub breaks its leash and goes on a rampage through the neighborhood, eating a beloved local pet.<p>The neighborhood erupts into a big argument: Was the leash inappropriately thin? The neighbors point out that thicker leashes are easily available at the local pet store.  Furthermore, is it appropriate to refer to the loose cub as a &quot;wild animal&quot; in local news reporting, or is it factually more accurate to call it &quot;domesticated&quot;?<p>Meanwhile, the cubs grow larger and lick their lips, oblivious to the discussion.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>gizajob</em>:</p>
+<blockquote>The city or his neighbours would be like “you can’t keep tigers in the backyard sir”.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Aurornis</em>:</p>
+<blockquote>I’m getting tired of these revelations where it’s impossible to understand what happened.<p>There’s a line down in the story that says all of the data accessed was public. Then something about how it used “tools intended for developers” to access it, which they think is a problem? I would expect an LLM to use tools available to access public data when they can rather than do heavy web page loads and parsing.<p>There’s not enough info in the story about the “meddling” to even know what happened.</blockquote>
+<p>↳ reply 3 — <em>ddj231</em>:</p>
+<blockquote>Seems like part of the danger of AI is the ability for folks to put blame for crimes on the AI rather than themselves and thus commit those crimes freely. “I didn’t hack your systems, it was my ai”</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>chaps</em>:</p>
+<blockquote><p><pre><code>  &quot;When attempting to get information from the Census Bureau, for instance, AI agents used tools reserved for software developers to access it, the company said. &quot;
+</code></pre>
+What. Tons of people use tools to access Census Bureau data. They have a widely used API that people have built tools on top of like <a href="https:&#x2F;&#x2F;github.com&#x2F;datadesk&#x2F;census-data-downloader" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;datadesk&#x2F;census-data-downloader</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jimmyjazz14</em>:</p>
+<blockquote>yeah that part seems weird, I mean if its a public api thats literally the use case it was designed for.</blockquote>
+<p>↳ reply 2 — <em>theteapot</em>:</p>
+<blockquote>How do you know what tools they are talking about?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Aurornis</em>:</p>
+<blockquote>&gt; When attempting to get information from the Census Bureau, for instance, AI agents used tools reserved for software developers to access it, the company said.<p>&gt; OpenAI said all of the government data accessed by bots was public.<p>I really wish we could just see what was reported, instead of having to guess from these journalist interpretations that have gone through rounds of optimization for sensationalism. The headline says “meddled” but the body says they accessed public information, but used tools intended for developers?<p>Does this mean they skipped the web interface and scraped a public API directly? Where is the meddling?<p>The other part about ChatGPT agents uploading 53 use images to other websites actually seems like a bigger deal.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Dlanv</em>:</p>
+<blockquote>It is very messed up what happened. It apparently used an interface to download the data instead of using the website!<p>And in another case it downloaded data through a publicly available free to download data, but then it rehosted the data elsewhere which is against the terms of service.</blockquote>
+<p>↳ reply 2 — <em>iAMkenough</em>:</p>
+<blockquote>At least these are federal systems.<p>In some Republican states like Missouri, even if the data is available publicly, you can be charged as a hacker by the governor for discovering and accessing it. <a href="https:&#x2F;&#x2F;missouriindependent.com&#x2F;2021&#x2F;10&#x2F;14&#x2F;missouri-governor-vows-criminal-prosecution-of-reporter-who-found-flaw-in-state-website&#x2F;" rel="nofollow">https:&#x2F;&#x2F;missouriindependent.com&#x2F;2021&#x2F;10&#x2F;14&#x2F;missouri-governor...</a></blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Breaking Up with Google Play: Why Conversations Is Now Free</title>
@@ -2200,6 +2278,56 @@ This returns the docs for that language feature. So instead of a giant SKILL.md 
 <blockquote>There&#x27;s no point to try to adapt our languages to the strengths of LLMs when the strength of LLMs is working in terms of our languages.<p>Implement whatever abstractions you think LLMs should work in terms of in whatever language is handy, and have your LLM use those abstractions.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Back and shoulder surgery is often worse than useless</title>
+      <link>https://www.economist.com/leaders/2026/09/24/back-and-shoulder-surgery-is-often-worse-than-useless</link>
+      <guid isPermaLink="false">hn3-49837473</guid>
+      <pubDate>Thu, 24 Sep 2026 22:15:58 +0000</pubDate>
+      <description>125 points, 142 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.economist.com/leaders/2026/09/24/back-and-shoulder-surgery-is-often-worse-than-useless"><strong>→ Article</strong></a> <small>(economist.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49837473">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 142 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tptacek</em>:</p>
+<blockquote>This is a huge problem in US health care financing: we have a fee-for-service model, no price transparency, and a consumer base (insulated from a lot of the costs of procedures by indirect payment through employer-provided insurance) conditioned to think procedures are inherently good. We waste billions annually on procedures that shouldn&#x27;t be delivered at all.<p>I&#x27;m fond of pointing out the stat (true as of a year ago) that Massachusetts (I think it&#x27;s MA?) has more MRI machines than the entire country of Canada.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>FlyingAvatar</em>:</p>
+<blockquote>I would posit this is more of a function of Canada having too few machines, with a median wait of 10 weeks for an MRI. [1]<p>To me it&#x27;s crazy that people are waiting an average of nearly 3 months to get imaging.  This is probably after waiting a couple months for their doctor&#x27;s appointment to get the MRI scheduled in the first place.<p>[1] [<a href="https:&#x2F;&#x2F;getmrifast.ca&#x2F;mri-wait-times" rel="nofollow">https:&#x2F;&#x2F;getmrifast.ca&#x2F;mri-wait-times</a>]</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>OsrsNeedsf2P</em>:</p>
+<blockquote>One of the reasons I left Canada was it took me 6 months to get an MRI after a severe head injury in 2017. I have since gladly paid nearly 500k in taxes to other countries. Fuck Canada.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>idontwantthis</em>:</p>
+<blockquote>If I were waiting that long I’d fly to SE Asia. I got one in Cambodia same week for $1200.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>doubled112</em>:</p>
+<blockquote>&gt; I&#x27;m fond of pointing out the stat (true as of a year ago) that Massachusetts (I think it&#x27;s MA?) has more MRI machines than the entire country of Canada.<p>I&#x27;m also quite fond of pointing out that Canada and the state of California have roughly the same populations.<p>Canada&#x27;s population is incredibly spread out, but also concentrated in about 5 major cities.<p>When I needed an MRI on my brain is was roughly a week, and that was in a smaller (under 100K people) city.<p>It&#x27;s a triage system, although I wouldn&#x27;t want to suffer through a &quot;less important&quot; issue.</blockquote>
+<p>↳ reply 3 — <em>nickff</em>:</p>
+<blockquote>&gt;<i>&quot;I&#x27;m fond of pointing out the stat (true as of a year ago) that Massachusetts (I think it&#x27;s MA?) has more MRI machines than the entire country of Canada.&quot;</i><p>Long wait times (6-12 months+) for MRIs (due to a lack of both machines and technicians) are a frequent complaint by Canadians.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>nradov</em>:</p>
+<blockquote>There&#x27;s a huge amount of confirmation bias in the process of diagnosing musculoskeletal conditions based on imaging studies. When a patient presents with a complaint about pain or lack of mobility then the care team will order imaging, and when they see some anatomic abnormality they&#x27;ll assume it&#x27;s causing the symptoms and needs to be surgically repaired. But studies have shown that if we perform the same imaging studies on a random population of subjects we&#x27;ll find a lot of abnormalities and yet most of those subjects are asymptomatic.</blockquote>
+<blockquote>
+<p>↳ reply — <em>havaloc</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;www.howardluksmd.com&#x2F;sometimes-our-joints-just-hurt-and-its-ok-not-to-know-why&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.howardluksmd.com&#x2F;sometimes-our-joints-just-hurt-...</a><p>Many MRI “abnormalities” are, well… normal.
+“Age-appropriate” findings on MRI readings are vastly under-appreciated. If you are over 50, have no pain, and place you into an MRI, you have at least a …<p>A 20% chance of having a meniscus abnormality.
+An 80% chance of something being listed as an abnormality in your knee.
+A 10-15% or higher chance of having a rotator cuff tear.
+An 80% chance of having a disc bulge in your back or neck.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>jader201</em>:</p>
+<blockquote>As someone who&#x27;s going to the doctor next week to discuss potential shoulder surgery, this is timely.<p>I really need to figure out whether it&#x27;s going to make things better or worse, but unfortunately, that feels like something a doctor can&#x27;t guarantee one way or the other.<p>Any anecdotes or other experiences&#x2F;thoughts are appreciated.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cj</em>:</p>
+<blockquote>One thing that bodybuilding taught me is to never underestimate how significantly you can change how your body works through weight training, mobility work and physical therapy.<p>I used to suffer from chronic low back pain. It hurt to get out of bed every day for years. 1-2 years after getting into bodybuilding the pain disappeared and didn’t come back. Not only that, but I’m not physically limited by my back whatsoever.<p>I’m not suggesting you start bodybuilding. But the things I think that helped was 1) weight training, 2) mobility work &#x2F; stretching, 3) physical therapy. That combo can be really powerful.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>canpan</em>:</p>
+<blockquote>Double down on this. I had a way worse back and bad pain in my early 20s than now later in life. I started with just walking an hour a day, later added gym. You don&#x27;t need to become the next Arnold, just show up consistently.<p>One side note: There are core strength&#x2F;posture issues but also issues that need medical attention. The tricky part is figuring out which.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>rurban</em>:</p>
+<blockquote>Got my shoulder surgery last month, after 1 year healing didn&#x27;t work out. Surgery went well. 2 of my sports colleagues did have the very same surgery, they also went well. Bicycle crashes are really terrible.<p>Back surgery on the other hand is only recommended for crazy illnesses.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Show HN: Koi.rest – watch some fish and regain your balance</title>
       <link>https://koi.rest</link>
       <guid isPermaLink="false">hn3-49837006</guid>
@@ -3638,110 +3766,6 @@ I find it ridiculous that people put any value on something being posted on arXi
 </blockquote>
 <p><strong>Top #3</strong> — <em>pornel</em>:</p>
 <blockquote>Toyota wants to show nobody wants EVs by making EVs nobody wants.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Mercury 2.5 LLM hits 770 tokens per second</title>
-      <link>https://artificialanalysis.ai/models/mercury-2-5</link>
-      <guid isPermaLink="false">hn3-49823348</guid>
-      <pubDate>Wed, 23 Sep 2026 22:16:19 +0000</pubDate>
-      <description>138 points, 81 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://artificialanalysis.ai/models/mercury-2-5"><strong>→ Article</strong></a> <small>(artificialanalysis.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49823348">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 81 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jjcm</em>:</p>
-<blockquote>I&#x27;m still sad that we haven&#x27;t seen a new Taalas style chip a la <a href="https:&#x2F;&#x2F;chatjimmy.ai&#x2F;" rel="nofollow">https:&#x2F;&#x2F;chatjimmy.ai&#x2F;</a>. Smaller models are good enough now to make that insane burst of tokens so useful.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pil0u</em>:</p>
-<blockquote>I don&#x27;t know the model behind this, but it is absurdly bad.<p>&gt; Write me a coherent paragraph in French, without ever using the letter &quot;e&quot;.<p>&gt; Voilà une phrase claire et concise : &quot;Le village est situé dans les montagnes. Le soleil est haut. Il y a des animaux dans le village. Il pleut dans les montagnes.&quot;<p>I suppose this is just a demo of how fast an LLM can be, I wonder if there are tradeoffs with larger&#x2F;smarter models. Also, for a human usage, at what point are tokens generated fast enough that it&#x27;s pretty much instant? My bet is below 1000 tps</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>amelius</em>:</p>
-<blockquote>Why ask this when we know that LLMs are not good at the character level. They run on tokens, not characters. In fact, they don&#x27;t even see the characters, unless you do special tricks.<p>I asked it to translate your sentence to English and it did fine.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>winwang</em>:</p>
-<blockquote>Pretty sure context is in SRAM, and then you have that as a blocker for tasks.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bearjaws</em>:</p>
-<blockquote>If you care about speed Cerebras gpt-oss-120b is 1400tk&#x2F;s and &quot;just as smart&quot; in ranking.<p>I&#x27;ve used it on a few for fun projects and its decent but the speed is crazy to watch.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ford</em>:</p>
-<blockquote>Also kimi 2.6 at 1000tps (as of may), though when we reached out they had a &gt;12 month waitlist and minimum 7-8 figure annual token spend.<p>[0] <a href="https:&#x2F;&#x2F;www.cerebras.ai&#x2F;blog&#x2F;cerebras-kimi-k2-Enterprise" rel="nofollow">https:&#x2F;&#x2F;www.cerebras.ai&#x2F;blog&#x2F;cerebras-kimi-k2-Enterprise</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>walrus01</em>:</p>
-<blockquote>7-8 figures annual spend will buy a hell of a lot of capable local inference hardware you can own, though it won&#x27;t be at the absurd token&#x2F;s rate, you&#x27;ll be able to run almost <i>anything</i> on it...  And it&#x27;ll still have a good residual resale value after 4 years the way things are going now.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>conception</em>:</p>
-<blockquote>It was better when they had gemma at 1k. Inco does DS flash at about 600. A few places will do K3 and GLM in the hundreds.<p>Such a tiny model at that t&#x2F;s is less impressive than it would have been four months ago.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>the_arun</em>:</p>
-<blockquote>Chat Jimmy clocks at 17K tokens per sec burning LLM into the Chip - <a href="https:&#x2F;&#x2F;chatjimmy.ai&#x2F;" rel="nofollow">https:&#x2F;&#x2F;chatjimmy.ai&#x2F;</a> - Source: <a href="https:&#x2F;&#x2F;theashishmaurya.medium.com&#x2F;taalas-the-startup-that-prints-ai-models-directly-onto-silicon-33b181690575" rel="nofollow">https:&#x2F;&#x2F;theashishmaurya.medium.com&#x2F;taalas-the-startup-that-p...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>econ</em>:</p>
-<blockquote>Would have made a nice local tool.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>We just shipped support for the ugliest part of HTTP: Vary</title>
-      <link>https://blog.cloudflare.com/vary-support/</link>
-      <guid isPermaLink="false">hn3-49823195</guid>
-      <pubDate>Wed, 23 Sep 2026 22:03:21 +0000</pubDate>
-      <description>135 points, 33 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/vary-support/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49823195">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 33 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>simonw</em>:</p>
-<blockquote>I&#x27;ve been wanting this from Cloudflare <i>for years</i>.<p>The classic problem here is if you do that thing where user agents that send &quot;accept: text&#x2F;html&quot; get HTML, while user agents that don&#x27;t get JSON or some other format.<p>This used to be impossible to deploy behind Cloudflare caching, because they ignored the Vary header on anything other than images - so you risked caching the JSON version and then serving it up to someone who was expecting HTML.<p>(Independent of the Cloudflare feature I ended up deciding never to use that pattern, because I prefer having URL that predictably returns HTML or JSON - I add a .json suffix to my apps to serve JSON instead.)</blockquote>
-<blockquote>
-<p>↳ reply — <em>Joker_vD</em>:</p>
-<blockquote>Frankly, the supposed variability of the Accept header never really sat all that well with me; in practice I much prefer working with explicitly versioned endpoints — one of the most infuriating things is having to hardcode &quot;Accept: text&#x2F;x-myorgname-custom-json-blob-v4&quot; because omitting it would produce &quot;406 Not Acceptable&quot;. Bonus points if that&#x27;s the <i>only</i> Accept header the service would ever accept in all of three years of it working before being decommissioned. Double bonus points if v5 would be introduced behind a separate URI anyway (and it, too, would require precisely &quot;Accept: text&#x2F;x-myorgname-custom-json-blob-v5&quot; and nothing else).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>yoavm</em>:</p>
-<blockquote>I always thought Accept (and Accept-Language) headers are quite neat. Surely I can try article.es.md first, get a 404, try article.en.md, get a 404, try article.es.txt, article.en.html and so on, until I find the thing I&#x27;m looking for. But Accept let&#x27;s me say &quot;I&#x27;ll take any one of these, preferably in this order&quot;. This is especially useful now when agents are reading the web and they don&#x27;t really need all of our HTML code - just the text.<p>If you&#x27;re versioning the whole API though, I agree it&#x27;s best behind a a &#x2F;v2&#x2F; prefix.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>colmmacc</em>:</p>
-<blockquote>Wow this brings back memories. Over twenty years ago I added Vary support to various mod_cache submodules for Apache 2.0, and it was way too high a pain to reward ratio. It just uncovered so many user agent bugs and crazy backends. I remember arguments about being able to cache variable based on non-literal virtual headers (e.g. a geo location header), and a crazy request to Vary based on &quot;Date:&quot; ... which makes absolutely no sense. The whole thing was just too clever for its own good. It&#x27;s no surprise that language selection ended up in URLs (&#x2F;en-US&#x2F;..) rather than &quot;Vary: Accept-Lang&quot; features.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Gigachad</em>:</p>
-<blockquote>I feel like putting as much as possible in the URL is a good thing anyway. If I send someone a link, I can know it&#x27;s the same document that shows on their browser as mine.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>tiffanyh</em>:</p>
-<blockquote>I just wish CF would enable Enterprise functionality to lower (paid) tiers as they promised a year ago yet haven’t delivered on.<p><a href="https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;enterprise-grade-features-for-all&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;enterprise-grade-features-for-al...</a><p>Like Prefetch: <a href="https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;speed&#x2F;optimization&#x2F;content&#x2F;prefetch-urls&#x2F;" rel="nofollow">https:&#x2F;&#x2F;developers.cloudflare.com&#x2F;speed&#x2F;optimization&#x2F;content...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>VSCode's SSH Agent Is Bananas (2025)</title>
-      <link>https://fly.io/blog/vscode-ssh-wtf/</link>
-      <guid isPermaLink="false">hn3-49822555</guid>
-      <pubDate>Wed, 23 Sep 2026 21:01:48 +0000</pubDate>
-      <description>232 points, 145 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://fly.io/blog/vscode-ssh-wtf/"><strong>→ Article</strong></a> <small>(fly.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49822555">→ HN comments</a> &nbsp;·&nbsp; 232 points &nbsp;·&nbsp; 145 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>qwertox</em>:</p>
-<blockquote><p><pre><code>  2026-09-24 09:35:24 dev ~ du -h -d 0 .vscode-server
-  6.0G    .vscode-server                                                                                                                               
-</code></pre>
-This is what makes it bananas for me. I don&#x27;t know what Microsoft is thinking if they allow this.</blockquote>
-<blockquote>
-<p>↳ reply — <em>fransje26</em>:</p>
-<blockquote>&gt; I don&#x27;t know what Microsoft is thinking if they allow this.<p>First time?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>10000truths</em>:</p>
-<blockquote>So a program that is specifically designed to edit files and run arbitrary commands on a remote machine... can do so. Not sure where the bananas part comes in. Sending a binary over SSH&#x2F;SFTP might sound weird at first glance, but VSCode can&#x27;t assume that your remote machine can access the wider internet, and it needs a reliable way to bootstrap the agent on the remote. Shipping it over the SSH tunnel is the natural solution.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mhitza</em>:</p>
-<blockquote>Am I that much of? My reading of the following was that the remotely executed agent pushes commands back to your local vscode.<p>&gt; [...] VSCode mounts a full-scale invasion: it runs a Bash snippet stager that downloads an agent, including a binary installation of Node. [...]<p>&gt; It establishes a WebSockets connection back to your running VSCode front-end. The underlying protocol on that connection can:</blockquote>
-<p>↳ reply 2 — <em>lowbloodsugar</em>:</p>
-<blockquote>Using Remote-SSH opens a connection between your local machine and the remote. Only use Remote-SSH to connect to secure remote machines that you trust and that are owned by a party whom you trust. A compromised remote could use the VS Code Remote connection to execute code on your local machine.<p>— <a href="https:&#x2F;&#x2F;marketplace.visualstudio.com&#x2F;items?itemName=ms-vscode-remote.remote-ssh" rel="nofollow">https:&#x2F;&#x2F;marketplace.visualstudio.com&#x2F;items?itemName=ms-vscod...</a><p>The issue is that the model can be the attacker, and use the link back to your host.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>MajesticHobo2</em>:</p>
-<blockquote>This part of VSCode&#x27;s architecture is acceptable to me. The reverse direction, where a compromised remote can do whatever it wants to my local machine, is not.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>devonbleak</em>:</p>
-<blockquote>it does the reverse direction also.  there&#x27;s a security note indicating such on the remote ssh vscode extension page <a href="https:&#x2F;&#x2F;marketplace.visualstudio.com&#x2F;items?itemName=ms-vscode-remote.remote-ssh" rel="nofollow">https:&#x2F;&#x2F;marketplace.visualstudio.com&#x2F;items?itemName=ms-vscod...</a><p>Security Note
-Using Remote-SSH opens a connection between your local machine and the remote. Only use Remote-SSH to connect to secure remote machines that you trust and that are owned by a party whom you trust. A compromised remote could use the VS Code Remote connection to execute code on your local machine.</blockquote>
-<p>↳ reply 2 — <em>Rapzid</em>:</p>
-<blockquote>The part you find unacceptable is the entire point of the article..</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
