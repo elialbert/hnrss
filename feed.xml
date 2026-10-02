@@ -4,7 +4,320 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 01 Oct 2026 21:43:25 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 01:30:28 +0000</lastBuildDate>
+    <item>
+      <title>Git 3.0's upcoming SHA-256 default will be a costly mistake</title>
+      <link>https://blog.gitbutler.com/git-3-sha-256</link>
+      <guid isPermaLink="false">hn3-49924179</guid>
+      <pubDate>Thu, 01 Oct 2026 16:57:03 +0000</pubDate>
+      <description>200 points, 217 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.gitbutler.com/git-3-sha-256"><strong>→ Article</strong></a> <small>(blog.gitbutler.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49924179">→ HN comments</a> &nbsp;·&nbsp; 200 points &nbsp;·&nbsp; 217 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>kpcyrd</em>:</p>
+<blockquote>This article is full of mistakes and misleading claims:<p>1) It&#x27;s claiming SHA1 insecurity is theoretical, while SHAttered from 2017 was specifically a pratical proof of concept. The only reason Git wasn&#x27;t affected, is because they didn&#x27;t bother bruteforcing a git-blob prefix.<p>2) It&#x27;s claiming collision attacks don&#x27;t matter, only second-preimage attacks do. This is incorrect, collision attacks are enough for code-smuggling problems, when two repositories are on the same git commit (verified by the full commit hash), yet contain different code in their git checkout.<p>3) The Linus quote &quot;The real security is in distribution&quot; is arguing that &quot;git&#x27;s content-addressed system should not be used to address content&quot;. It&#x27;s arguing that, in case of curl|sh, you shouldn&#x27;t use a sha256sum-gate to pin the content to something you&#x27;ve reviewed, you should instead ensure curl is fetching from an https server.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>schacon</em>:</p>
+<blockquote>1) I link to the SHAttered paper, as well as Shambles. Git projects were not affected because it is an inefficient attack vector. I say it&#x27;s impractical to exploit, which I think everyone agrees with.<p>2) I specifically argue that even if both attacks were practical and cheap, it&#x27;s still not the problem we should be focusing on.<p>3) Have you read this email (that I linked to)? It is almost the same general message (20 years ago) that this blog post is. It literally goes though a theoretical object replacement attack and how dumb this scenario is and so SHA-1 is fine.<p><a href="https:&#x2F;&#x2F;lore.kernel.org&#x2F;git&#x2F;Pine.LNX.4.58.0504291221250.18901@ppc970.osdl.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;lore.kernel.org&#x2F;git&#x2F;Pine.LNX.4.58.0504291221250.1890...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bawolff</em>:</p>
+<blockquote>&gt; 1) I link to the SHAttered paper, as well as Shambles. Git projects were not affected because it is an inefficient attack vector. I say it&#x27;s impractical to exploit, which I think everyone agrees with.<p>It seems unlikely it will stay that way forever. Typically attacks get more efficient over time as researchers find improvements, not to mention computers getting better.<p>In 2015 it was estimated to cost $100,000, now the estimate is down to $10,000. Where will it be in 2035?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>schacon</em>:</p>
+<blockquote>I specifically argue that it doesn&#x27;t matter if it&#x27;s $1 and base my argument and solution around that. So it&#x27;s irrelevant where it is in 2035.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>kazinator</em>:</p>
+<blockquote>The problem of a SH1 collision happening <i>by coincidence</i> is vanishingly low and theoretical.<p>Nothing else matters.<p>Git hashes are not supposed to be a security mechanism. If your basis for trusting that you have the right checkout is the git hash, in a situation where you have legitimate concern about untrusted parties manipulating remote repositories, then you&#x27;re simply wrong.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>gandreani</em>:</p>
+<blockquote>One of my favorite fun facts about Fossil SCM (another source control by the devs of sqlite) is that they patched their use of SHA1 6 days after the shattered attack was published:<p>&quot;Both Fossil and Git started out using only SHA1 hashes. But when the SHAttered attack against SHA1 was published on 2017-02-23, the need to migrate to a stronger hash algorithm was recognized. Fossil added the ability to use SHA3-256 as an alternative on 2017-03-01 (six days after the SHAttered attack was first published). SHA3-256 is now the default for all new repositories and check-ins in Fossil, though older check-ins that occurred prior to SHAttered can still use their original SHA1 hash. Hence, no repositories had to be rebuilt and no hyperlinks were broken.&quot;<p><a href="https:&#x2F;&#x2F;fossil-scm.org&#x2F;home&#x2F;doc&#x2F;trunk&#x2F;www&#x2F;hundredandone.md" rel="nofollow">https:&#x2F;&#x2F;fossil-scm.org&#x2F;home&#x2F;doc&#x2F;trunk&#x2F;www&#x2F;hundredandone.md</a><p>To me it&#x27;s so interesting watching in realtime Git is still battling with this decision and for Fossil it was just another week of development.<p>That whole page is fun to read. Another fun fact somewhere else in the docs is that Fossil uses a grow-only set to store commits. They came up with this scheme some years before it was formalized by CRDTs!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>6thbit</em>:</p>
+<blockquote>That&#x27;s impressive. I suppose they had a more flexible architecture to make that change so fast.<p>Is there any writeup on why it was easy for them and not for git?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>toymin</em>:</p>
+<blockquote>My guess is that it&#x27;s less about the architecture and more about the blast radius and the number of users</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>schacon</em>:</p>
+<blockquote>I mean, there are two things here. One is how difficult it is to have a different hashing mechanism. Brian and other heroes in the Git core group have done amazing work to make this _technically_ possible on a repo level. To test some of my theories, I trivially implemented MD5 and an insanely dumb and easily breakable hash backend. It&#x27;s not _hard_ to change the mechanism now. It&#x27;s about the community.<p>Fossil isn&#x27;t difficult to change not because it&#x27;s technically harder for Git but because Git has a community and ecosystem that Fossil does not. The cost is not in the individual project for Git, the cost is because there is _so much_ in Git and this bifurcates everything.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>meinersbur</em>:</p>
+<blockquote>Linus Torvalds in 2007:<p>&gt; but the point is the SHA-1, as far as Git is concerned, isn&#x27;t even a security feature. It&#x27;s purely a consistency check. The security parts are elsewhere, so a lot of people assume that since Git uses SHA-1 and SHA-1 is used for cryptographically secure stuff, they think that, Okay, it&#x27;s a huge security feature. It has nothing at all to do with security, it&#x27;s just the best hash you can get. ... [1]<p>[1] <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=4XpnKHJAok8&amp;t=56m20s" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=4XpnKHJAok8&amp;t=56m20s</a><p>So Torvalds used SHA-1 purely because he needed a hash function with no other property than identifying content.</blockquote>
+<blockquote>
+<p>↳ reply — <em>zamalek</em>:</p>
+<blockquote>Exactly. But that&#x27;s why I think SHA was a mistake. He should have gone with something like murmur to avoid all this frothing at the mouth.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>layer8</em>:</p>
+<blockquote>It was a mistake to assume a fixed algorithm in the repository format and client-server protocol. I remember being surprised when I learned about that choice, being familiar with cryptographic protocols and formats where the hash algorithm is usually a parameter that can vary for each concrete hash.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>loeg</em>:</p>
+<blockquote>&gt; being familiar with cryptographic protocols and formats where the hash algorithm is usually a parameter that can vary for each concrete hash.<p>This flexibility (&quot;agility&quot;) in cryptographic protocols is often seen as a mistake today, actually.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Clef: Open-weight decision models, and new RL fine-tuning platform</title>
+      <link>https://blog.cloudflare.com/clef-decision-models/</link>
+      <guid isPermaLink="false">hn3-49923692</guid>
+      <pubDate>Thu, 01 Oct 2026 16:18:57 +0000</pubDate>
+      <description>426 points, 159 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/clef-decision-models/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49923692">→ HN comments</a> &nbsp;·&nbsp; 426 points &nbsp;·&nbsp; 159 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>buildbuildbuild</em>:</p>
+<blockquote>Open weights, not open source.<p>The weights have permissive licensing, but the data and training pipeline are not published to reproduce them from their proprietary Qwen starting points. Weights are not &quot;source.&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dang</em>:</p>
+<blockquote>Ok, we&#x27;ve put weights instead of source in the title, at least until someone comes along and says that&#x27;s not right either!</blockquote>
+<p>↳ reply 2 — <em>jMyles</em>:</p>
+<blockquote>Came directly to comments hoping not to see this one.<p>&lt;sad trombone sound&gt;<p>Surely someone will soon do what the title of this post makes it seem like cloudfare did.  Truly modular open source training and inference logic, along with a totally open corpus and weights, will eventually out-compete the closed ecosystem.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>vulture916</em>:</p>
+<blockquote>Jev = $0.042&#x2F;m input, output free
+Clef = $0.24&#x2F;m input, no output price listed<p>At 300 tokens per call, you&#x27;d get:<p>One million decisions on Jev cost about $12.60.
+One million decisions on Clef cost about $72.<p>Would probably make sense to self-host Clef, if you have the capability&#x2F;resources. If not...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>strangescript</em>:</p>
+<blockquote>Because Clef is a larger model, larger context, can process images. Plus its open weights, so you can run it yourself.<p>Since it benches better than Jev, Jev is probably smaller and easier to host. They could also be losing a lot of money.</blockquote>
+<p>↳ reply 2 — <em>jampekka</em>:</p>
+<blockquote>Output for decisions have so few output items (not really tokens here) that they are negligible anyway. Jev hyping &quot;free output&quot; is almost lying by omission.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>pdlug</em>:</p>
+<blockquote>I love what Cloudflare is doing generally so I was excited to try Clef in my evals on a real task vs Jev: should an agent&#x27;s knowledge-base write go to human review?<p>Quality: close (recall 0.98 vs 1.00)
+Hosted p50: Clef ~850ms, Jev ~110ms
+Clef-flash: over-escalates<p>Data + script: <a href="https:&#x2F;&#x2F;github.com&#x2F;nicia-ai&#x2F;admission-decision-eval" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nicia-ai&#x2F;admission-decision-eval</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>RIP, vector database</title>
+      <link>https://turbopuffer.com/blog/rip-vector-database</link>
+      <guid isPermaLink="false">hn3-49923466</guid>
+      <pubDate>Thu, 01 Oct 2026 16:01:56 +0000</pubDate>
+      <description>273 points, 78 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://turbopuffer.com/blog/rip-vector-database"><strong>→ Article</strong></a> <small>(turbopuffer.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49923466">→ HN comments</a> &nbsp;·&nbsp; 273 points &nbsp;·&nbsp; 78 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gopalv</em>:</p>
+<blockquote>&gt; This write amplification is large enough that our efforts to tune indexing throughput have started to hit diminishing returns.<p>&gt; don&#x27;t key on the ANN address. That is precisely the change turbopuffer v3 makes. As you can imagine, it is not a trivial change.<p>This is a direct parallel to how Postgres and Mysql built indexes.<p>Your design choice went from a Postgres design pattern to a Mysql one. The difference is the reindexing cost vs the lookup cost - Postgres optimized for lookup and Mysql does for indexing on writes. Or more accurately, Postgres was better with good schema design using joins &amp; mysql was optimized for a bad design with less normalization where many indexes exist for the same table.<p>Postgres always points an index to a row-id within postgres which is an arbitrary value which changes on each update.<p>Mysql, always assuming the storage engine is pluggable, points to the primary index entry and adds an extra indirection to the lookup.<p>This means that you point the mysql index to a stable id, so unless you go update the primary key for a row, you won&#x27;t have to update the indexes for all the attribute lookups you might have made to data.<p>I don&#x27;t do databases any more that much, but the design for NIMBLE file format has a lot of quirks which are relevant to this specific idea (wide tables).<p>But the old Uber post about switching from Postgres to Mysql to prevent index amplification[1] is a direct mirror to this post.<p>[1] - <a href="https:&#x2F;&#x2F;www.uber.com&#x2F;us&#x2F;en&#x2F;blog&#x2F;postgres-to-mysql-migration&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.uber.com&#x2F;us&#x2F;en&#x2F;blog&#x2F;postgres-to-mysql-migration&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>malisper</em>:</p>
+<blockquote>&gt; Your design choice went from a Postgres design pattern to a Mysql one. The difference is the reindexing cost vs the lookup cost - Postgres optimized for lookup and Mysql does for indexing on writes. Or more accurately, Postgres was better with good schema design using joins &amp; mysql was optimized for a bad design with less normalization where many indexes exist for the same table<p>You are right that MySQL does better when you have lots of indexes, but I don&#x27;t think the tradeoff is that the overall Postgres architecture is better with good schema design.<p>Having secondary indexes point the primary key enables things like undo logging, which obviates the need for vacuums - vacuums being the most painful part of Postgres. On top of that your primary key index will be mostly cached so the cost of the indirection is much smaller than it may first appear</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tomnipotent</em>:</p>
+<blockquote>I think OP is just alluding to the fact that Postgres needs to do less work to go from secondary index to table data, since the tid is a direct pointer to the exact page and slotted entry while MySQL needs a b-tree walk.<p>&gt; primary key index will be mostly cached so the cost of the indirection is much smaller than it may first appear<p>Not sure I follow. If it&#x27;s in-memory you save having to read from disk, but you still have to walk the b-tree to go from PK to data.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>malisper</em>:</p>
+<blockquote>&gt; I think OP is just alluding to the fact that Postgres needs to do less work to go from secondary index to table data, since the tid is a direct pointer to the exact page and slotted entry while MySQL needs a b-tree walk.<p>Yes, this is true, but they framed this as &quot;the Postgres approach is better when you have a good schema design&quot;, but that&#x27;s not true. There are plenty of ways the MySQL approach is better even when you have a really good schema.<p>&gt; Not sure I follow. If it&#x27;s in-memory you save having to read from disk, but you still have to walk the b-tree to go from PK to data.<p>The point I was trying to make is that going to disk is going to be orders of magnitude slower than doing an in-memory B-tree traversal. Because of that, the cost of doing an extra b-tree traversal to find the page you&#x27;re looking for is a relatively small cost compared to reading the page in the first place</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>SigmundA</em>:</p>
+<blockquote>MSSQL (Clustered Indexes) and Oracle (Index Organized Tables) among others let you chose because there are advantages and disadvantages for different situations.<p>Not having true clustered indexes in PG is something I miss coming from MSSQL, it helps performance when the majority of access is always primary index avoid indirection from index lookup then tuple lookup and it also saves space if its the only index.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>gk1</em>:</p>
+<blockquote>Vector databases were always more about retrieval than either vectors or data storage. But the term stuck all too well and companies held on to it a tad too long. Sorry :)</blockquote>
+<blockquote>
+<p>↳ reply — <em>tveita</em>:</p>
+<blockquote>That&#x27;s just a search engine, but then you&#x27;re competing with traditional players like Elasticsearch and Vespa who all have built-in vector support by now, and you have to compete on attributes like price, performance, features, and who can mention &#x27;AI&#x27; the most times on their web page.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tschellenbach</em>:</p>
+<blockquote>AI has some of the craziest up and down cycles of tech I&#x27;ve ever seen</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Red Hat being phased out of existence?</title>
+      <link>https://techrights.org/n/2026/10/01/Red_Hat_Being_Phased_Out_of_Existence_Like_Many_Other_Companies.shtml</link>
+      <guid isPermaLink="false">hn3-49923056</guid>
+      <pubDate>Thu, 01 Oct 2026 15:33:26 +0000</pubDate>
+      <description>177 points, 102 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://techrights.org/n/2026/10/01/Red_Hat_Being_Phased_Out_of_Existence_Like_Many_Other_Companies.shtml"><strong>→ Article</strong></a> <small>(techrights.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49923056">→ HN comments</a> &nbsp;·&nbsp; 177 points &nbsp;·&nbsp; 102 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Hasz</em>:</p>
+<blockquote>Krishna was on Norges podcast a while ago and mentioned that Red Hat would be (not his words) brought to heel with the rest of IBM. IMO, it is a version of the Broadcom&#x2F;VMware playbook, boil-the-frog style.<p>Redhat underpins many low-visibility, very important Linux projects, and most have no idea they are doing it. For example, look at kernel committers:<p><a href="https:&#x2F;&#x2F;insights.linuxfoundation.org&#x2F;project&#x2F;korg&#x2F;contributors?timeRange=past365days&amp;start=2025-10-01&amp;end=2026-10-01" rel="nofollow">https:&#x2F;&#x2F;insights.linuxfoundation.org&#x2F;project&#x2F;korg&#x2F;contributo...</a><p>weighted by market cap, the disparity is even more severe imo.<p>There is more visible projects (eg Ansible) that are great, but with very lackluster monetization and little impetus for IBM to GAF.<p>These guys are pursuing the wrong strategy, they should be using super popular, high-mindshare projects to drive new wave of tailored business solutions leveraging existing consulting teams they already have (IBM revenue to hugely reliant on PS, 33%). Basically the largest &quot;forward deployed eng&quot; transition ever, backed by existing very strong open-source software and tailored (with Watson, dear god) as the &quot;AI powered&quot; engine to appease the shareholder gods. You would run over so many startups with poor penetration at the F2000 level.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bonzini</em>:</p>
+<blockquote>Krishna&#x27;s words on the podcast you cite were: &quot;Red Hat has not been integrated... yet. [...] Engineering in Red Hat, I actually believe given the open-source nature
+of Red Hat, is going to have to be its own function. So, engineering I
+will likely not integrate because working at their scale of open source,
+maybe that is one where IBM learns from them, and things that are open
+source should belong much more in the Red Hat methodology than ours&quot;.<p>Operations (HR, finance, legal, IT) has already been integrated into IBM and that&#x27;s what the post is talking about. Not engineering.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kjs3</em>:</p>
+<blockquote>When we were purchased by IBM (admittedly it&#x27;s been a while), our separate HR, finance, IT and legal groups were gone before we knew it.  Engineering got integrated over the first year (when I left), but with a pretty light touch, and AFAIK took into the second year to complete.  Apparently things got increasingly more &quot;IBM-ified&quot; over the years, but a suprising number of the core folks have stayed, so it can&#x27;t be all misery.  Maybe RH won&#x27;t be completely crushed.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>saghm</em>:</p>
+<blockquote>&gt; For example, look at kernel committers:<p>&gt; weighted by market cap, the disparity is even more severe imo<p>What does &quot;weighting commits by market cap&quot; mean? Counting commits from people who work for companies with larger market cap more? Why would that be a useful metric?</blockquote>
+<p>↳ reply 3 — <em>htrp</em>:</p>
+<blockquote>&gt; tailored with Watson<p>I think you mean built with Bob</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>scottyah</em>:</p>
+<blockquote>They have more bargaining power now. Lots of people are scrambling to get off vmware after they raised their prices astronomically for seemingly no reason (other than they could, and a lot of groups are leaving VMs for containers). Openshift Virtualization is there with open arms to take those who haven&#x27;t or won&#x27;t migrate off of VMs.<p>Redhat can now charge a lot more and have worse service because some of their main competition now enables it. Whatever replaces kubernetes is slowly being formed and decided on, but there&#x27;s easy pickings for custom solutions and consultants for now.</blockquote>
+<p><strong>Top #3</strong> — <em>throwaway7356</em>:</p>
+<blockquote>Untrustworthy blog reposts Twitter message from some person?</blockquote>
+<blockquote>
+<p>↳ reply — <em>0xbadcafebee</em>:</p>
+<blockquote>Employees are talking about it at cons and around town. Both Hashi and RH are being slowly shuttered.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Figma restricts MCP access to whitelisted clients, excluding Pi</title>
+      <link>https://twitter.com/GayaniFigma/status/2105295629941350454</link>
+      <guid isPermaLink="false">hn3-49922729</guid>
+      <pubDate>Thu, 01 Oct 2026 15:10:46 +0000</pubDate>
+      <description>172 points, 98 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://twitter.com/GayaniFigma/status/2105295629941350454"><strong>→ Article</strong></a> <small>(twitter.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49922729">→ HN comments</a> &nbsp;·&nbsp; 172 points &nbsp;·&nbsp; 98 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>miguel-muniz</em>:</p>
+<blockquote>For context: Figma has two MCPs. The local &quot;dev&quot; MCP that works through the Desktop app, and the remote MCP that requires a connection to Figma. Companies need to be whitelisted to use the remote MCP, which is the only one that allows agents edit access to Figma documents.<p>I only found out about Figma&#x27;s limitation when I was trying to add the remote MCP server to GitHub Copilot Desktop and kept running into errors. Turns out they whitelisted GitHub Copilot CLI but not the Desktop app and had put a pause on enabling any more vendors. Eventually someone (not sure which side) got it working.<p>Kind of strange to limit edit access only to the Remote MCP when their competitors like Pen[1] and Paper[2] allow any local agent to edit.<p>[1] <a href="https:&#x2F;&#x2F;www.pen.dev&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.pen.dev&#x2F;</a><p>[2] <a href="https:&#x2F;&#x2F;paper.design&#x2F;" rel="nofollow">https:&#x2F;&#x2F;paper.design&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>miguel-muniz</em>:</p>
+<blockquote>To speak more broadly, Figma is in a really tough spot right now. I see more and more designers in my circle saying they are skipping design tools entirely to prototype in code or ship directly in their product&#x27;s code base. Honestly I find myself doing the same.<p>Figma&#x27;s main value used to be in providing designers a canvas to iterate and explore ideas since the majority of designers did not code, but AI has completely changed that.<p>I fear Figma&#x27;s reluctance to integrate with all the popular AI tools might actually accelerate their decline. AI provides so much value, that I would rather base my software purchasing decisions around what is compatible with my AI of choice rather than pick an AI that is compatible with Figma.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jeffybefffy519</em>:</p>
+<blockquote>I always thought it was weird that Figma didnt close the gap of taking a design and implementing it in code, that seems like what AI could enable too...</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>miguel-muniz</em>:</p>
+<blockquote>Figma exists as an abstraction of code, which has always made it kind of difficult for them to implement code. For example, they have css snippets in dev mode when you have a frame selected, but those aren&#x27;t really that useful since it doesn&#x27;t know anything about your existing code base or frameworks.<p>Code connect was supposed to bridge this gap, allowing users to define how Figma components should generate relevant code snippets, but it only worked with React and they had some janky string based templating language for everything else. And of course, it meant someone would have to go through the effort of creating mappings for every component in your system. It&#x27;s like writing a component twice, the same pitfall we were trying to avoid in the first place.<p>Now people will just ask their AI to pull the frames from Figma through the remote MCP and have the AI implement it that way. But to that end, why not just have designers make a branch in the codebase and have them implement the UI? This is the question many of us have been asking ourselves lately.<p>They continue to iterate though. They&#x27;ve introduced Code Layers so real codebases can render on the canvas, but in infamous Figma fashion it only works with a limited set of React codebases. Figma Make (their Lovable, Bolt.new, Claude Design like product) can also pull in existing codebases, but again it is very limited in the types of code bases it can work on.<p>These limitations are all so exhuasting. It&#x27;s just so much easier to use Claude Code or Codex to do what I need. At this point Figma is more of a secondary tool for when I need to document a prototype or want a canvas for exploration purposes.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>cellularmitosis</em>:</p>
+<blockquote>I found figma’s remote MCP to be a poor fit for iOS development (it sets tokens on fire and gives Claude the details as React+Tailwind) and got much better results by having Claude build a set of “lens” tools around their REST API (“give me all of the fonts”, “give me the layout dimensions”, “give me the colors”, etc).<p>The key to making it token efficient was allowing Claude to invent its own plaintext markup format for the lens output.</blockquote>
+<p>↳ reply 3 — <em>TeMPOraL</em>:</p>
+<blockquote>They&#x27;re realizing what most product companies aren&#x27;t yet (at least not openly): <i>AI subsumes products</i>.<p>Most companies seem to still be in denial about it, and hope that if they add some more AI into their product, or do it just right, it will make sense. But it won&#x27;t. AI is destined to sit on the outside, and products to be reduced into a bag of tools for AI to call.<p>Taking away write access from AI tools outside their contractual control is an expected knee-jerk reaction, but it&#x27;ll probably just hasten the product&#x27;s slide into irrelevancy by ceding ground to competition (that will ultimately share the same fate, too, but is still in denial about it).</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>JimDabell</em>:</p>
+<blockquote>OpenCode seems to have been given the run-around as well:<p>&gt; on the figma mcp, we&#x27;ve had an email thread going on for 8 months trying to get it setup in opencode<p>&gt; they seem very concerned with the labs competing with them<p>&gt; finally got unblocked after i sent this email and it&#x27;ll be rolled out in a week or so<p>The email:<p>&gt; looking through the legal stuff the amount of things in there seems pretty crazy<p>&gt; this is just an mcp server, there are thousands of them. we&#x27;re not going to treat figma like its special<p>&gt; we&#x27;ve been talking about this for this entire year, i don&#x27;t think this makes much sense and i don&#x27;t want my team burning more time on this<p>&gt; once again, for a simple mcp server<p>— <a href="https:&#x2F;&#x2F;www.threads.com&#x2F;@thdxr&#x2F;post&#x2F;Dd7LN-ylLQW" rel="nofollow">https:&#x2F;&#x2F;www.threads.com&#x2F;@thdxr&#x2F;post&#x2F;Dd7LN-ylLQW</a></blockquote>
+<p><strong>Top #3</strong> — <em>imagetic</em>:</p>
+<blockquote>There&#x27;s a special place in hell for Figma.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Various Projects Find Hidden SDR Capabilities in ESP32 Microcontrollers</title>
+      <link>https://www.rtl-sdr.com/various-projects-independently-find-hidden-sdr-capabilities-in-esp32-microcontrollers/</link>
+      <guid isPermaLink="false">hn3-49922674</guid>
+      <pubDate>Thu, 01 Oct 2026 15:07:42 +0000</pubDate>
+      <description>167 points, 26 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.rtl-sdr.com/various-projects-independently-find-hidden-sdr-capabilities-in-esp32-microcontrollers/"><strong>→ Article</strong></a> <small>(rtl-sdr.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49922674">→ HN comments</a> &nbsp;·&nbsp; 167 points &nbsp;·&nbsp; 26 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mallets</em>:</p>
+<blockquote>So many $1 wireless ICs have a powerful &quot;SDR&quot;, but will never be documented due to certification&#x2F;compiliance&#x2F;export-control reasons. The projects listed here rightly limited the scope to RX-only but Espressif might be forced to &quot;patch&quot; this away if arbitrary TX too is possible (or starts making headlines). Hope it doesn&#x27;t come to that, more cheap options for RF-to-bits is always welcome.<p>On a technical note, not much I can find about the signal quality. Phase noise, images, DC Offset, etc. Have to get my hands on one, ESP32-S31 seems promising.</blockquote>
+<blockquote>
+<p>↳ reply — <em>rasz</em>:</p>
+<blockquote>&gt;if arbitrary TX too is possible<p><a href="https:&#x2F;&#x2F;espargos.net&#x2F;espsdr&#x2F;" rel="nofollow">https:&#x2F;&#x2F;espargos.net&#x2F;espsdr&#x2F;</a> straight up shows its an ADC&#x2F;DAC debug interface working both ways.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>xd1936</em>:</p>
+<blockquote>Very exciting!<p>&gt; However, the current prototype uses the FPGA to clock the ESP32, which results in poor phase noise.<p>Looks like this was solved five days ago:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;h0m3us3r&#x2F;eSpDR&#x2F;commit&#x2F;41a0ffe279119df942e4a9e892dc19d196e1c952" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;h0m3us3r&#x2F;eSpDR&#x2F;commit&#x2F;41a0ffe279119df942e...</a></blockquote>
+<p><strong>Top #3</strong> — <em>drtz</em>:</p>
+<blockquote>Since I&#x27;m a little slow and it took me a minute:<p>SDR in this context is software defined radio.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Ask HN: Who is hiring? (October 2026)</title>
+      <link>https://news.ycombinator.com/item?id=49922569</link>
+      <guid isPermaLink="false">hn3-49922569</guid>
+      <pubDate>Thu, 01 Oct 2026 15:02:07 +0000</pubDate>
+      <description>150 points, 154 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=49922569"><strong>→ Article</strong></a></p>
+<p><a href="https://news.ycombinator.com/item?id=49922569">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 154 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mooreds</em>:</p>
+<blockquote>FusionAuth | Principal Software Engineer, Senior Java Engineers, Account Executive, Customer Support Manager | Varies between REMOTE (in USA, also in Europe but only for the account exec position) and ONSITE in Denver, CO, USA, details in each job desc | Salary ranges for the Principal Software Engineer it is 225k-270k, but the Euro positions don&#x27;t have them :(<p>At FusionAuth, our mission is to make authentication and authorization simple and secure for every developer building web and mobile applications. We want devs to stop worrying about auth and focus on building something awesome.<p>There are a lot of companies in the auth space, but we feel like we have something special:<p>* a relatively unique deployment model (self-host on-prem, run in your cloud or let us operate it for you in ours)<p>* A well designed API first approach; one customer compared our APIs to petrichor<p>* a mature product (the code base is nine+ years old and we&#x27;ve found and fixed a lot of the sharp edges around core login use cases; but don&#x27;t worry, there are plenty more features to add)<p>* a full featured free-as-in-beer version which makes the sales cycle easier; prospects often come in having prototyped an integration<p>Our core software is commercial. We open source much of our supporting infrastructure. Technologies and standards that you will work with: modern Java, PostgreSQL, Docker, Kubernetes, MySQL, OAuth, SAML, OIDC.<p>Learn more, including benefits and salaries, and apply here: <a href="https:&#x2F;&#x2F;fusionauth.io&#x2F;careers&#x2F;" rel="nofollow">https:&#x2F;&#x2F;fusionauth.io&#x2F;careers&#x2F;</a> ( Click&#x2F;tap the &#x27;View open positions&#x27; orange button. )</blockquote>
+<p><strong>Top #2</strong> — <em>samcheng</em>:</p>
+<blockquote>RINSE | REMOTE (US or Canada) or San Francisco, Los Angeles, Chicago, Boston, New York City, New Jersey, Seattle, Austin, Toronto, or Washington DC | Software Engineer | Full-Time | Salary: $80k-$200k USD | <a href="https:&#x2F;&#x2F;www.rinse.com" rel="nofollow">https:&#x2F;&#x2F;www.rinse.com</a><p>Rinse provides dry cleaning and laundry delivery services to customers in twelve metropolitan areas in the US and Canada. We have sophisticated logistics optimization software, a polished consumer product, and firm business fundamentals. We&#x27;re now over a decade old - this is a stable, yet consistently growing and innovating, company.<p>Our engineering team is distributed across the United States and internationally, and has been entirely remote for years now, but a desk can be provided in the above cities if you&#x27;d prefer.<p>We&#x27;re open to both newly-graduated engineers or more senior engineers, provided they meet our bar. We&#x27;re particularly interested in true full-stack engineers, with strong React &#x2F; Typescript &#x2F; CSS skills to complement comfort in a Python &#x2F; Django environment. We&#x27;re also seeking engineers with experience leveraging AI to automate complex operational processes.<p>This season, we&#x27;re particularly interested in new grads or junior engineers, to round out the team.<p>We&#x27;re also looking for people with experience manipulating video data at scale, for computer vision applications.  Similarly, we&#x27;re interested in adding people with experience building and managing MCP services.<p>You will join a high-caliber team where collaboration, honesty, and open communication are at the core of everything we do.<p>Search term bingo: Logistics, Django, Python, Optimization, React, React Native, Postgres, Mobile Engineer, Automation, Delivery, OR-tools, Forecasting, Vision, Physical AI, MCP</blockquote>
+<p><strong>Top #3</strong> — <em>rkalika</em>:</p>
+<blockquote>CoVar | Durham, NC and McLean, VA | <a href="https:&#x2F;&#x2F;covar.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;covar.com&#x2F;</a> | Full-time | HYBRID (3 days in office per week)<p>CoVar is a small R&amp;D company specializing in AI&#x2F;ML and software development for defense and healthcare. Bootstrapped and profitable. We&#x27;re looking for a jack-of-all-trades who can: prototype computer vision algorithms, build Python web services, wrangle large sets of data from disparate classes of sensors, ... any or all, with the only hard requirement being eagerness to learn.<p>Visit covar.com for more information on our current openings!</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>RacketCon Is Saturday</title>
+      <link>https://con.racket-lang.org/</link>
+      <guid isPermaLink="false">hn3-49922515</guid>
+      <pubDate>Thu, 01 Oct 2026 14:58:13 +0000</pubDate>
+      <description>125 points, 36 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://con.racket-lang.org/"><strong>→ Article</strong></a> <small>(con.racket-lang.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49922515">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 36 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gus_massa</em>:</p>
+<blockquote>For the curious, there is an official YouTube channel with the previous editions <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;@racketlang&#x2F;playlists" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;@racketlang&#x2F;playlists</a> (It usually take a few months until the videos are edited and uploaded.)</blockquote>
+<p><strong>Top #2</strong> — <em>dharmatech</em>:</p>
+<blockquote>I&#x27;ve been messing around with a language that I summarize as:<p>ALOE = Scheme + Smalltalk + Types<p><a href="https:&#x2F;&#x2F;github.com&#x2F;dharmatech&#x2F;2026-09-02-aloe-racket" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dharmatech&#x2F;2026-09-02-aloe-racket</a><p>Prototype is in Racket.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>agumonkey</em>:</p>
+<blockquote>quite elegant, feels like a great balance idiomatic scheme and OO</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dharmatech</em>:</p>
+<blockquote>Thanks for checking it out!<p>Here&#x27;s a video demo of the code completion in vscode:<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=YuIjug7elPY" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=YuIjug7elPY</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mike_ivanov</em>:</p>
+<blockquote>Cool project, thank you for sharing. I&#x27;ve been thinking about something similar lately.<p>However. &quot;Send, not apply&quot; - sigh.. how shall I put it.. let&#x27;s try this - eyes_rolling_so_hard_they_fall_out_of_sockets.png</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>spdegabrielle</em>:</p>
+<blockquote>RacketCon is Saturday
+<a href="https:&#x2F;&#x2F;con.racket-lang.org" rel="nofollow">https:&#x2F;&#x2F;con.racket-lang.org</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Cops Can Bypass iPhone's Automatic Reboot to Get into Locked Phones</title>
+      <link>https://www.404media.co/cops-can-bypass-iphone-automatic-inactivity-reboot-graykey/</link>
+      <guid isPermaLink="false">hn3-49922278</guid>
+      <pubDate>Thu, 01 Oct 2026 14:38:35 +0000</pubDate>
+      <description>245 points, 200 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.404media.co/cops-can-bypass-iphone-automatic-inactivity-reboot-graykey/"><strong>→ Article</strong></a> <small>(404media.co)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49922278">→ HN comments</a> &nbsp;·&nbsp; 245 points &nbsp;·&nbsp; 200 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>iancarroll</em>:</p>
+<blockquote>&gt; “Even if that device does reboot for any number of reasons, memory maintenance or the power is lost or whatever, the AFU state is not lost. This is the true magic behind the GrayKey Preserve and the Evidence Preservation Mode function.”<p>Based on this, it seems more likely that this involves exploiting the device to retrieve the underlying keybags present in AFU mode and store them, rather than manipulating the actual feature of automatic reboots. Then the device can be exploited again in BFU mode but with the prior keybag to decrypt everything.<p>It sounds like this feature is being used to exploit and extract keys from devices without a warrant (or in advance of getting one), which seems dubious to me.</blockquote>
+<p><strong>Top #2</strong> — <em>ethagnawl</em>:</p>
+<blockquote>&gt; The idea behind this so-called “inactivity reboot” is to revert the phone to a state that makes it harder for police to break into the device, and thus extract sensitive data from it with forensics technology.<p>This is weird framing. The feature makes it harder for <i>anyone</i> to break into the device.</blockquote>
+<blockquote>
+<p>↳ reply — <em>tamimio</em>:</p>
+<blockquote>Not weird, not <i>anyone</i> can buy those equipment to break into a fully updated phone, in fact, it’s pretty much only law enforcement can or will have access to them, so that statement is true, it will make it harder for police to do so.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ethagnawl</em>:</p>
+<blockquote>That&#x27;s not how exploits work, though. This is also the reason why backdoors in encryption and the like are never a good idea. Sure, &quot;police&quot; are the ones _most likely_ to use this tool (developed by a private company...) to use this exploit to break into iPhones. However, anyone who is motivated enough and&#x2F;or has the resources _could_ also do it.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Melatonic</em>:</p>
+<blockquote>I wouldnt be surprised if they had a backdoor into the Qualcomm chip that Apple decided to oddly still include in most of their US iPhones vs the international versions that come with their own internal modem</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>canada_dry</em>:</p>
+<blockquote>This extremely well hidden backdoor was an interesting find:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=38783112">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=38783112</a></blockquote>
+<p>↳ reply 2 — <em>clueless</em>:</p>
+<blockquote>that Qualcomm chip that apple uses is a modem, so not sure it&#x27;s that relevant to the phone&#x27;s security in this case...</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Cloudflare K2: serverless event streams</title>
+      <link>https://blog.cloudflare.com/cloudflare-k2-streams/</link>
+      <guid isPermaLink="false">hn3-49921923</guid>
+      <pubDate>Thu, 01 Oct 2026 14:09:10 +0000</pubDate>
+      <description>197 points, 81 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/cloudflare-k2-streams/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49921923">→ HN comments</a> &nbsp;·&nbsp; 197 points &nbsp;·&nbsp; 81 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>psanford</em>:</p>
+<blockquote>Object store is quickly becoming the new core data substrate. Lets build kafka, but on s3. Lets build github, but on s3. It feels like we going to see more and more &quot;object-store first&quot; systems in the next few years.<p>I am excited about this future. Give me stateless servers and a storage bucket over having to manage systems with disks any day.<p>I do wonder if we will see an expansion of the s3 api to support more of these use cases. S3 added a janky file append operation to their new express-one-zone bucket type, and limited to 10k total file append operations. I wonder what else we will get in the next few years.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>necubi</em>:</p>
+<blockquote>Definitely agree that every data system that doesn&#x27;t need &lt;100ms latency is moving to object storage.<p>&gt; I do wonder if we will see an expansion of the s3 api to support more of these use cases<p>This is actually an area where I think we have a big leg up on folks building on top of S3. My team (which built K2) sits next to the R2 team, and we have the opportunity to co-evolve the products in mutually beneficial ways.</blockquote>
+<p>↳ reply 2 — <em>nyc_pizzadev</em>:</p>
+<blockquote>Agreed. There is even a full POSIX S3 filesystem: <a href="https:&#x2F;&#x2F;fiberfs.io&#x2F;" rel="nofollow">https:&#x2F;&#x2F;fiberfs.io&#x2F;</a></blockquote>
+<p>↳ reply 3 — <em>madjam002</em>:</p>
+<blockquote>Came across this the other day which lets you run a etcd compatible API&#x2F;Kubernetes on top of S3<p><a href="https:&#x2F;&#x2F;github.com&#x2F;t4db&#x2F;t4" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;t4db&#x2F;t4</a><p>Haven&#x27;t tried it yet but looks nice for simpler K8s deployments</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>necubi</em>:</p>
+<blockquote>I&#x27;m the author of the post and tech lead for K2. Happy to answer any questions!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>e1g</em>:</p>
+<blockquote>I&#x27;m doing some testing, and while my <i>writes</i> are &lt;1s, I&#x27;m seeing E2E delivery latency of p95=2.5s &#x2F; p99=7.5s. Is this roughly expected?</blockquote>
+<p>↳ reply 2 — <em>samtp</em>:</p>
+<blockquote>After reading the post, still don&#x27;t fully understand when you would use CF Queues vs K2. Can you help to elaborate a bit more?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>addisonj</em>:</p>
+<blockquote>Congrats on the launch! Stream&#x2F;event-based system are really powerful, but they are also just pretty complex, in no small part because the modeling of streams for most people today is really modeling Kafka topic&#x2F;partitions which has a whole bunch of foot-guns and complexity. Making the individual stream really cheap and easy is a big simplification, especially if flexibly consuming a stream for both ordered and unordered use-cases is made simple. This looks to work for unordered, be curious to see how the managed dividing the work for the mentioned key-based ordering.</blockquote>
+<blockquote>
+<p>↳ reply — <em>mrkeen</em>:</p>
+<blockquote>To support the ordered use-case, put events on the same topic-partition.  To support the unordered use-case, don&#x27;t.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Meta Uses A.I. Data Centers to Avoid Billions in Federal Taxes</title>
       <link>https://www.nytimes.com/2026/09/30/technology/meta-ai-data-centers-taxes.html</link>
@@ -3372,374 +3685,6 @@ It&#x27;s going to hit hard when an AI-run company outperforms a human one.</blo
 <p>↳ reply 2 — <em>zdw</em>:</p>
 <blockquote>&quot;more constraints on corporate power&quot; assumes that the existing ones are functional, which they arguably are not.<p>If we enforced existing laws against unauthorized access to someone else&#x27;s computer resources against the companies who run a model that hacks someone else, rather than buying their &quot;The agents did it, we&#x27;re not responsible&quot; BS, then maybe the incentives to behave responsibly would improve.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>MicroLLM Lab – Try 7 tiny LLM's in the browser</title>
-      <link>https://stateofutopia.com/experiments/microllmlab/</link>
-      <guid isPermaLink="false">hn3-49882781</guid>
-      <pubDate>Mon, 28 Sep 2026 18:58:53 +0000</pubDate>
-      <description>225 points, 81 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://stateofutopia.com/experiments/microllmlab/"><strong>→ Article</strong></a> <small>(stateofutopia.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49882781">→ HN comments</a> &nbsp;·&nbsp; 225 points &nbsp;·&nbsp; 81 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tolugenius</em>:</p>
-<blockquote>I did the default arithmetic with PetitGPT research-v1<p>&gt;What is 2+2?<p>Answer<p>&gt; To find 2 + 2, we need to add 2 to both sides of the equation.<p>&gt; 2 + 2 = 4<p>&gt; So, 2 + 2 = 4 + 2.<p>Brilliant</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tecleandor</em>:</p>
-<blockquote>GPT-2 124M is terrible...<p><pre><code>  &gt; what is 2+2?
-</code></pre>
-Answer:<p><pre><code>  &gt; 3+3? 4+4? 5+6? 7+8?
-  &gt; Reply ~18000 0 ~10 min 2 By : 1-1: I&#x27;m a beginner. 3x2 is my best option, but if you&#x27;re not sure about the other options then just go for it and try again</code></pre></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>krackers</em>:</p>
-<blockquote>It&#x27;s not instruct tuned looks like? It&#x27;s closer to a base model rather than a chatbot.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>logicallee</em>:</p>
-<blockquote>That one is a 2019 model :) Years before the ChatGPT public preview.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>logicallee</em>:</p>
-<blockquote>I got the correct output for PetitGPT research-v1: <a href="https:&#x2F;&#x2F;ibb.co&#x2F;0pP9DS2T" rel="nofollow">https:&#x2F;&#x2F;ibb.co&#x2F;0pP9DS2T</a></blockquote>
-<p>↳ reply 3 — <em>dotancohen</em>:</p>
-<blockquote>That&#x27;s not incorrect.<p>LLMs produce semantically correct sentences, not factually correct statements. Have we forgotten this so soon?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mgaunard</em>:</p>
-<blockquote>&gt; how would you compare your capabilities to that of claude fable 5.1 by anthropic<p>&gt; Comparing your capabilities to that of claude fable 5.1 would be very similar. Both are stories about a clown who is a cunning and manipulative animal. They both have problems and challenges, and they face challenges to overcome them. However, they have different goals and approaches. The clown<p>I think that tells you all you need to know.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Reviving1514</em>:</p>
-<blockquote>That&#x27;s hilarious. At least the smaller model is more self aware!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>atobe</em>:</p>
-<blockquote>Similar, simpler: <a href="https:&#x2F;&#x2F;tiny.tobelabs.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;tiny.tobelabs.com&#x2F;</a><p>Small LM trained on Tiny Stories. My first goal was to get people to see tokens from the model ASAP, the second was to demo Tiny Stories for those who may be unfamiliar. Oh and play with ternary models. <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2305.07759" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2305.07759</a><p>There&#x27;s larger QA model on the same page too.</blockquote>
-<blockquote>
-<p>↳ reply — <em>logicallee</em>:</p>
-<blockquote>Interesting project, thanks for sharing.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Burning Man death rates – A short lesson in statistics</title>
-      <link>https://ihavenapkinthoughts.substack.com/p/burning-man-death-rates-a-short-lesson</link>
-      <guid isPermaLink="false">hn3-49882754</guid>
-      <pubDate>Mon, 28 Sep 2026 18:57:16 +0000</pubDate>
-      <description>138 points, 167 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ihavenapkinthoughts.substack.com/p/burning-man-death-rates-a-short-lesson"><strong>→ Article</strong></a> <small>(ihavenapkinthoughts.substack.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49882754">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 167 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>michael1999</em>:</p>
-<blockquote>Some of this is selection bias, but lots of this is active work by the organizers.<p>Burning Man has slowly re-created the regulatory state in response to the standard pressures of civilization.  To their credit, this has often been in response to near-misses, but sometimes in response to fatalities.  It started with sanitation (potties), and banning guns&#x2F;explosives.  You can have 100 people shooting guns at a party in the desert without sanitation and muddle through.  At 10k, you are building a cholera-mad-max experiment.  A car running over a sleeping person prompted a designated road network.  And then they adopted zoning, with hush-ville and the large sound installation ends.  All supported by the ranger team preventing injury every day. Civilization is work.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ttcbj</em>:</p>
-<blockquote>I wish someone would expand this comment into a full-length study on the evolution of regulations and infrastructure within Burning Man.  It&#x27;s a really interesting topic.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>aorloff</em>:</p>
-<blockquote>You wouldn&#x27;t need to look much further than the evolution of the BRC DMV<p>My friends who went in the late 90s recounted shooting at propane tanks from moving vehicles and having to camp inside of a ring of parked cars to protect your camp (from vehicular traffic)<p>After 2000 you had to show some decent design (not just a golf cart with dingleberries) and that was about it, they passed our moon car and shark van without much question, and the shark van was a giant sharp thing without lights.<p>Others will have to fill in the regs now, I understand things have gotten progressively more rigorous.<p>My understanding is that anything built on the playa, including the art (eg. temple of gravity) has an engineer&#x27;s stamp just like would in Reno.  Or just a bit more dusty.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>eviks</em>:</p>
-<blockquote>&gt; active work by the organizers.<p>Which has also been done elsewhere, so doesn&#x27;t explain the difference?</blockquote>
-<p>↳ reply 3 — <em>ManuelKiessling</em>:</p>
-<blockquote>This reminds me of Crypto bros reinventing the financial system, slowly, with lots and lots of innocent (and some not so innocent) victims on the way.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Aurornis</em>:</p>
-<blockquote>Looking at population-level statistics, even adjusted for age, is useless. Going to burning man requires a level of health, energy, free time (not dealing with health issues), and freedom from chronic illnesses that make traveling to a desert a bad idea.<p>Most people at high risk of random death are filtered out before they arrive.<p>There are so many better comparisons that could have been chosen. Comparing Burning Man to outdoor music festivals would be so much more accurate.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>js2</em>:</p>
-<blockquote>The post admits this, first in the summary: &quot;However, Burning Man’s near zero death rate over its existence is abnormal, and likely due to selection bias of healthier attendees and other confounding demographic factors&quot;.<p>Then again in the final sentence: &quot;The more likely explanation for the remaining gap is something no demographic slicing can capture. Burning Man selects for healthier people who are willing and able to spend a week in the desert heat, regardless of their age, race, or income bracket.&quot;</blockquote>
-<p>↳ reply 2 — <em>michaelt</em>:</p>
-<blockquote>I don&#x27;t necessarily agree.<p>Marathons select for people with health, energy etc <i>and</i> put them through a 6+ month cardio training regime. But the 5 hours of a marathon have a greatly elevated rate of cardiac arrest - because the strain of running a marathon more than compensates.<p>Personally, I&#x27;m quite surprised to learn the <i>week-long desert drug orgy with experimental buildings and art vehicles and 70,000 attendees</i> regularly has <i>no deaths</i>.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>zeroonetwothree</em>:</p>
-<blockquote>The biggest factor is selection bias. If you are in the hospital with some terrible medical condition you aren’t going to Burning Man.<p>It would be interesting to look at cause of death at Burning Man, I would expect it to differ significantly from the population overall (even accounting for age).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>swerner</em>:</p>
-<blockquote>Given that firearms are prohibited and motor vehicle traffic is limited to 5mph, that alone would take out two unnatural causes of death. Also, drowning is a lot less likely to occur in the desert.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bherms</em>:</p>
-<blockquote>This year of the 3 deaths, 1 was just a heart attack in someone around 60 yrs old (a ranger who was working, so not drug related most likely).  The other fell from an installation.  Some of these are literally just scaffolding with a couch on top or something - I climbed one and was terrified and even said &quot;wow, I will be surprised if someone doesn&#x27;t fall off this intoxicated at night&quot;.<p>Some people see that as a feature though - they want the danger and lack of regulation and safety.  It&#x27;s part of why they attend I guess.<p>note: it was my first time - i&#x27;m not a &quot;burner&quot;, just wanted to finally see what all the hype was about</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>rottencupcakes</em>:</p>
-<blockquote>It&#x27;s good to give any sort of thing you&#x27;re going to climb at the burn a bit of a once over and think about failure modes and worst cases before going on.<p>In 2018 there was a tower of cars on a spike. [1][2]<p>One of the cars bent in half (turns out cars aren&#x27;t design to be supported by a stake in the middle but instead on their two axles. Who would have guessed).<p>Climbing was closed for the rest of the week.<p>In 2016 there was a giant boar you could climb on that swiveled at the base and head. There were rumors going around of severed fingers. Surprisingly (or not) it was welded stationary mid-week. [3][4]<p>[1] <a href="https:&#x2F;&#x2F;www.rgj.com&#x2F;story&#x2F;life&#x2F;arts&#x2F;burning-man&#x2F;2018&#x2F;08&#x2F;29&#x2F;burning-man-art-installation-closed-after-someone-fell-off&#x2F;1133499002&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.rgj.com&#x2F;story&#x2F;life&#x2F;arts&#x2F;burning-man&#x2F;2018&#x2F;08&#x2F;29&#x2F;b...</a><p>[2] <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;BurningMan&#x2F;comments&#x2F;9crpce&#x2F;night_at_the_climb_aka_tower_of_terror&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;BurningMan&#x2F;comments&#x2F;9crpce&#x2F;night_at...</a><p>[3] <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;BurningMan&#x2F;comments&#x2F;51d1t5&#x2F;comment&#x2F;d7b3k2j&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;BurningMan&#x2F;comments&#x2F;51d1t5&#x2F;comment&#x2F;...</a><p>[4] <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=q4l-eAJT1Cg" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=q4l-eAJT1Cg</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>gweinberg</em>:</p>
-<blockquote>Yes, exactly. If you just look at death statistics adjusted for age and sex and race and whatever and you notice how many people die in hospitals, you might think &quot;wow, hospitals are super dangerous, avoid them at all costs&quot;.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>So long Google, and thanks for all the nudes</title>
-      <link>https://lecaro.me/20260921-google-less.html</link>
-      <guid isPermaLink="false">hn3-49881951</guid>
-      <pubDate>Mon, 28 Sep 2026 18:04:47 +0000</pubDate>
-      <description>232 points, 91 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://lecaro.me/20260921-google-less.html"><strong>→ Article</strong></a> <small>(lecaro.me)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49881951">→ HN comments</a> &nbsp;·&nbsp; 232 points &nbsp;·&nbsp; 91 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>criddell</em>:</p>
-<blockquote>The app store gatekeepers have so much power that it would be nice to see some legal requirements for operators of those stores put in place.<p>If your app is rejected, there should be a <i>real</i> appeal process. Maybe developers should be able to demand arbitration for some non-trivial fee?<p>The first step of the appeal would be for the store to disclose to the arbitrator precisely what rule was violated and in what way. The arbitrator can uphold the rejection and you lose your fee or can force the app store to accept the submission and you are refunded.<p>Microsoft support used to work something like this. There was a fee to get them on the phone but if the problem turned out to be an actual bug, the fee was refunded.</blockquote>
-<blockquote>
-<p>↳ reply — <em>meatmanek</em>:</p>
-<blockquote>More generally, I think there should be a legally-enforced right of due process online. Much of the rules of modern society are enforced by these companies, rather than governments, and we should have similar rights.<p>Don&#x27;t get me wrong, I understand why it makes sense for a company to have the ability to block spammers, scammers, and malware without proving a case in a court of law, but I feel like there&#x27;s a spectrum of importance, where the more potentially harmful the action is to the user, the more process is due to the impacted user to make sure the action is justified. Examples from least- to most-important:<p><pre><code>   - removing individual content that has little real-world importance: comments, social media posts, etc.
-   - banning accounts on platforms that generally have low real-world value (other than sentimental value) to the user: reddit, HN, non-monetized Youtube accounts, etc
-   - banning accounts on free platforms that have a very high cost to the user of being banned: Gmail (keys to the user&#x27;s digital kingdom, the rest of the Google account), Facebook (real-name policy means that it&#x27;s difficult to start over), high-notoriety accounts on other social media, etc.
-   - removing individual listings&#x2F;etc on platforms where the user makes money: eBay, monetized Youtube videos, paid App&#x2F;Play store apps, etc
-   - Banning accounts on platforms where the user makes money and the account itself has some intrinsic value (reputation, following, etc): eBay, monetized Youtube accounts, App store accounts, social media accounts for businesses, etc.
-   - Locking up or taking the user&#x27;s money: locking the user out of a bank&#x2F;brokerage&#x2F;crypto&#x2F;payment platform account; rescinding money (or other things with monetary value): bank account balances, payment platform balances, unpaid Youtube&#x2F;other monetization earnings, loyalty&#x2F;credit card points, etc.
-   - Banning accounts that are essential for the user to participate in society: bank account, cell phone plan, identity providers, etc.
-</code></pre>
-Alongside that, I feel like if there&#x27;s a clear revenue stream to the platform owner from the account, then the case for due process is even stronger -- if the platform is making hundreds or thousands of dollars because of my presence, surely they can have a competent, empowered human look at things when necessary.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>thih9</em>:</p>
-<blockquote>&gt; it was rejected. They attached a nsfw screenshot of some unidentified app.<p>I don’t doubt the author, at the same time this is a serious accusation with no details and little context.<p>This could have been presented in a more organized way, with timelines and redacted content.<p>Part of the problem is Google not being transparent, having more transparency could help.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>fooqux</em>:</p>
-<blockquote>Anybody who&#x27;s ever tried to get through their review process can attest that the article writer&#x27;s experience is far from outside the norm.<p>Although I must admit I&#x27;ve never gotten nudes from them. Up your game, Google.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ajross</em>:</p>
-<blockquote>&gt; Anybody who&#x27;s ever tried to get through their review process can attest that the article writer&#x27;s experience is far from outside the norm.<p>This is an argumentum ad populum fallacy.  &quot;Everybody Knows&quot; this kind of thing is true, ergo you should believe the example here without evidence.<p>It&#x27;s also kinda ridiculous in context.  I mean, no, there are no cases in the literature where Google has rejected an app due to misidentification with NFSW content and then sent screenshots of said content as part of the review.  Even not in combination I don&#x27;t think.  Like, has either situation every been documented on its own?  &quot;Far from outside the norm&quot; indeed.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>fooqux</em>:</p>
-<blockquote>&gt; This is an argumentum ad populum fallacy. &quot;Everybody Knows&quot; this kind of thing is true, ergo you should believe the example here without evidence.<p>Fair.<p>&gt; It&#x27;s also kinda ridiculous in context. I mean, no, there are no cases in the literature where Google...<p>Ok you lost me. What is &quot;the literature&quot;? Published scientific studies about Google&#x27;s app review process? Obviously there aren&#x27;t any of those. Blog posts? You (presumably) just read one, and if you take a minute to search, you&#x27;ll find tons more. News articles? Perhaps harder to find, but definitely exist.<p>The whole nudes thing is just a funny outlier; don&#x27;t fixate on that. Who cares what randomly chosen reason the Google overmind decided it didn&#x27;t like you. The point is it feels like a dice roll and you have no recourse when you suddenly and randomly fail it.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Fabricio20</em>:</p>
-<blockquote>You know, personal anecdotes and all that, but a company I used to work with was applying for their b2b app as well and we got a denied with a screenshot of a completely unrelated app as well, and that was at least 5 years ago. We ended up just replying &quot;That&#x27;s not our app&quot; and I think it got stuck in limbo after that as I don&#x27;t recall hearing anything about it afterwards and then I left the company.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>p2detar</em>:</p>
-<blockquote>I think I&#x27;m done with Android apps development. The following publishing requirements just closed the door for me as a hobby developer:<p>&gt; Have at least 12 testers opted-in to your closed test.<p>&gt; Run your closed test with at least 12 testers, for 14 days<p>The funny thing is this seems to apply to recently-created personal publisher accounts. I had a very old publisher account but because I was unable to move my account owner to another email address, I closed it and registered a new one. Little did I know what this would lead to later on.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rpdillon</em>:</p>
-<blockquote>I&#x27;ve written about this before on HN, but it&#x27;s pretty clear that once the app stores courted the hobby developers and convinced them to publish their apps on the stores to get the marketplace flywheel started (remember all the discussion about the app stores competing based on the number of apps available in each?), that the focus wasn&#x27;t going to be on hobbyist developers at all because they don&#x27;t bring in the most cash. By imposing ever higher restrictions on app developers in the name of security, they are raising the bar to such a degree that typically only funded corporate customers will have an incentive to go through all the effort, since they can literally pay someone to do so.<p>In essence, while the app stores used to be about hobbyist software to some degree, they have become a place created by big companies for big companies, much like Walmart or Target. That would be fine if customers could choose when they visited Walmart or Target, but instead, we&#x27;ve created a regime where you must buy everything from Walmart or Target.<p>This has made mobile development a wasteland for hobbyist-built and community-built software. I know some people cheer this as the removal of amateurs and crappy software from the marketplaces, but I would counter with the observation that commercial software often doesn&#x27;t have my best interests at heart, and I would, many times, prefer a piece of community-built or amateur software instead. This gets harder to procure with each passing day.<p>So, I think developers are generally better-served leaving mobile development and instead focusing on web development, which is not gated in the same ways. While you won&#x27;t have the same reach that you would get through the app stores, you do have much more control over the platform on which you&#x27;re developing.</blockquote>
-<p>↳ reply 2 — <em>bityard</em>:</p>
-<blockquote>I think it&#x27;s fairly obvious that Google doesn&#x27;t _want_ hobby developers in the play store at all. Their app development, publication, and review process seems quite intentionally designed to be penetrable only to those who are willing to make it (or already is) their full-time job.<p>There&#x27;s just no money in it for them, and a lot of support burden. Hobbyist apps are either free, or a few bucks. For Google, the income is a rounding error compared to ad revenue for household-name apps or in-app purchases inside blockbuster mobile games.<p>(I will be first in line to buy the first working and affordable Linux smartphone.)</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Sonnet 5.5</title>
-      <link>https://www.anthropic.com/claude-sonnet-5-5</link>
-      <guid isPermaLink="false">hn3-49881850</guid>
-      <pubDate>Mon, 28 Sep 2026 17:58:11 +0000</pubDate>
-      <description>758 points, 503 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/claude-sonnet-5-5"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49881850">→ HN comments</a> &nbsp;·&nbsp; 758 points &nbsp;·&nbsp; 503 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Sol-</em>:</p>
-<blockquote>Probably a first world problem, but with Opus 5.5&#x27;s efficiency, the limits on the 5x plan are simply sufficient for my everyday work, even when running 2-3 sessions at a time. So I wonder when I would use Sonnet 5.5.<p>More concurrency than that isn&#x27;t really practical for me if I want to retain some semblance of understanding. Perhaps it&#x27;s different for purely web app or frontend tasks, where the outcome is more relevant than the process, I don&#x27;t have much experience there (and also don&#x27;t want to belittle these domains, I might be underestimating their complexity).<p>So surprisingly, my own work is at least for the time being almost saturated by the model capabilities. I am not sure how I&#x27;d scale from here. Sure I could run all requests at max effort to burn tokens for the sake of it, but that can&#x27;t be it. And for many tasks, I am not really able to define so clear cut success criteria or self-verification loops that I could benefit from letting an agent (or a fleet thereof) autonomously run for a day.<p>So I realize it&#x27;s a skill issue on my side, but I can&#x27;t be the only one. I wonder if there is a limit to token demand, at least short term. Feels like either they accelerate to AGI and RSI, where the AI can find uses for token, or things might plateau at some point.<p>Note I don&#x27;t think this because I&#x27;m an AGI skeptic or think there&#x27;s a ceiling to intelligence, but there might simply be a valley of economic hardship for the companies where the supply of tokens outpaces the demand, due to a lack of ideas of what to do with them. And this might slow down the funding enough that they never reach escape velocity with the training run scaling. But we&#x27;ll see.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>miki123211</em>:</p>
-<blockquote>I find that &quot;vibe coders&quot; (that is, people who do not know anything about programming, but nevertheless produce useful tools for themselves and others) are using a lot more tokens than we do as programmers.<p>I think this is partially because we&#x27;re still attached to pre-LLM notions of architecture, good design and code quality (which are still important, but maybe less important than they once were and that we think they are), partially because their projects are in a messy state, so models have to work around the technical dept.<p>They&#x27;re essentially trading off programmer time for LLM time (which is a good trade financially speaking).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>inopinatus</em>:</p>
-<blockquote>It&#x27;s because they don&#x27;t know data structures.<p>&quot;Show me your flowcharts and conceal your tables, and I shall continue to be mystified. Show me your tables, and I won’t usually need your flowcharts; they’ll be obvious.&quot; - Fred Brooks, <i>The Mythical Man-Month</i> (1975).<p>and essentially the same sentiment, three decades later:<p>&quot;Bad programmers worry about the code. Good programmers worry about data structures and their relationships.&quot; - Linus Torvalds, git mailing list, 2006.<p>These things have not changed even though everything else is topsy-turvy. As-of current writing, I have yet to see an LLM make good data structure choices; they go for something that is superficially plausible but profoundly ill-considered (or rather, not considered at all), and then commonly burn tokens treating this implementation detail as a design invariant and trying to deal with the consequences by writing more code, instead of iterating directly upon the ill-fitting data at the root its problems.<p>If you&#x27;re wondering, &quot;does he mean the schema of let&#x27;s say a db or other persistent store, or does he mean abstract&#x2F;algebraic structures&quot;, the answer is yes to both, I think coding models are today shockingly weak when it comes to design reasoning in both domains.<p>Fortunately, their suggestibility means the same models will readily accept direction on the matter (perhaps even more so than on the structure of code), so I recommend doing just that, and (bonus!) this means your CS degree is still relevant.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>avmich</em>:</p>
-<blockquote>Watch LLM start paying attention to data structures.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>maherbeg</em>:</p>
-<blockquote>There&#x27;s lots more you can do! Use the model to monitor your deployments after they get deployed. Have them fix and watch CI issues for you. Run adverserial review. Automatically watch metrics every day and highlight performance regressions. Start reviewing your previous sessions to find ways to statically reject different failure modes and have the agent have more success earlier on etc.<p>Another thing to think about is, what would it take for you to care less about the understanding. Better integration &#x2F; e2e tests? Performance validation? visualizing program and data flows? Better refactoring of your modules?</blockquote>
-<p>↳ reply 3 — <em>egeozcan</em>:</p>
-<blockquote>I created a team of agents using Opus 5.5 to review and address findings on a job system I have in a side project with medium reasoning, and I burned through the 20x plan weekly limit in 2.5 days. They were using GPT-6-Sol for reviews, and it also used 85% of my OpenAI x5 weekly limit. Three hundred something commits in total.<p>OTOH, in the daily job, I have the team plan that&#x27;s similar to 5x plan and I never had any limit problems, because I really need to understand be able to take responsibility for the code.<p>Totally different uses.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>vincengomes</em>:</p>
-<blockquote>For the folks asking what is the point of Sonnet 5.5 when Opus 5.5 is better in every way, Sonnet is now the new default in the free tier and now people using Claude Web in the free tier get access to an almost close to the frontier model.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ddxv</em>:</p>
-<blockquote>I&#x27;ve been using the Claude free tier (browser chat) for awhile and never seem to hit restrictions anymore. There used to be many more restrictions a year ago. At the same time, if they enforce a minimum paid tier I&#x27;d probably just switch to Gemini&#x2F;ChatGPT or whatever other free model is around at the time.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>thefourthchime</em>:</p>
-<blockquote>It does vey well at one shotting a PacMan clone, pretty much perfect.
-<a href="https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;entries&#x2F;claude-sonnet-5-5.html" rel="nofollow">https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;entries&#x2F;claude-son...</a><p>2nd only to Opus 5.5, which is perfect.
-<a href="https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;entries&#x2F;claude-opus-5-5-r2.html" rel="nofollow">https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;entries&#x2F;claude-opu...</a><p>Up until very recently, all models struggled with this.<p>All results:
-<a href="https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;" rel="nofollow">https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>judge2020</em>:</p>
-<blockquote>Oh, it coded a Pac-Man clone. The clone was so good that I thought it was premade in some way and that Sonnet was going to play PacMan.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>thefourthchime</em>:</p>
-<blockquote>Yes! The point being that up until yesterday, every model struggled with this, and now they don&#x27;t.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>copperx</em>:</p>
-<blockquote>&quot;this&quot; being recreating Pacman specifically, or games?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>coopykins</em>:</p>
-<blockquote>Surprising how cheap Sol 6 was.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Windows 11½</title>
-      <link>https://definitelynotwindows.com/</link>
-      <guid isPermaLink="false">hn3-49881747</guid>
-      <pubDate>Mon, 28 Sep 2026 17:51:24 +0000</pubDate>
-      <description>470 points, 144 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://definitelynotwindows.com/"><strong>→ Article</strong></a> <small>(definitelynotwindows.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49881747">→ HN comments</a> &nbsp;·&nbsp; 470 points &nbsp;·&nbsp; 144 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>paavohtl</em>:</p>
-<blockquote>I can tell this is fake from the fact the explorer context menu and the start menu open in under 2 seconds (on a top end Ryzen CPU, nonetheless).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>gumby271</em>:</p>
-<blockquote>Yeah the volume slider wasn&#x27;t disabled for 2 seconds after opening the dialog, Microsoft should take notes!</blockquote>
-<p>↳ reply 2 — <em>eska</em>:</p>
-<blockquote>I was forced to use Windows in my last job and fpilot kept me sane in that regard (<a href="https:&#x2F;&#x2F;filepilot.tech" rel="nofollow">https:&#x2F;&#x2F;filepilot.tech</a>)</blockquote>
-<p>↳ reply 3 — <em>epistasis</em>:</p>
-<blockquote>Honestly the entire UI was so responsive and fast.<p>We&#x27;ve come a long way when web apps feel faster and more native than native apps.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>accrual</em>:</p>
-<blockquote>This is <i>insanely</i> good and mimics my personal experience of Windows these days. I literally say &quot;pop-up! pop-up! pop-up!&quot; out loud during a normal workday where one pop-up or prompt is rapidly replaced by another. Same app or different, doesn&#x27;t matter, there&#x27;s always <i>something</i> trying to grab attention on a Windows desktop unless you configure the hell out of it (and even that is no longer enough).<p>My favorite &quot;joke&quot; from this site:<p>&gt; Scan complete: 1 threat found — ChromeSetup.exe<p>FWIW, I switched to Fedora in January and have no plans to look back. Only $dayjob relies on Windows anymore.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>MarkusWandel</em>:</p>
-<blockquote>&quot;always something trying to grab attention&quot;, that&#x27;s the root problem right there.  Even on a <i>work</i> computer unless you&#x27;ve changed your homepage, every time you open a tab on Edge you get a screen full of distraction clickbait.  And then you wonder why you never manage to concentrate any more.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>creaturemachine</em>:</p>
-<blockquote>Whoever curates the Edge homepage knows they have mere seconds to capture a new recruit before they manage to escape to a different browser.  Their jobs depend on the amount of bait they can dump in one window.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>saghm</em>:</p>
-<blockquote>Imagine they just made the browser actually better so that people would want to use it, rather than doubling down on the reasons people don&#x27;t want to use it</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bpye</em>:</p>
-<blockquote>CAD and video games are the areas where I struggle to ditch Windows. Many games work well under Proton and I have had luck with running Windows with an assigned GPU - but that does sometimes break for seemingly no reason.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bradfitz</em>:</p>
-<blockquote>This is not realistic; the start menu opens way too quickly.</blockquote>
-<blockquote>
-<p>↳ reply — <em>marcosdumay</em>:</p>
-<blockquote>True, but the search fails to reduce the number of options, so some things are right.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Destroy Any Website with Stickman</title>
-      <link>https://destroy.spritefusion.com/</link>
-      <guid isPermaLink="false">hn3-49880601</guid>
-      <pubDate>Mon, 28 Sep 2026 16:31:28 +0000</pubDate>
-      <description>139 points, 34 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://destroy.spritefusion.com/"><strong>→ Article</strong></a> <small>(destroy.spritefusion.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49880601">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 34 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>pmontra</em>:</p>
-<blockquote>I&#x27;m not sure that it can work anymore outside of its own web page (&quot;works best in chrome or firefox 4&quot;) but you must check Katamari! at <a href="http:&#x2F;&#x2F;kathack.com&#x2F;" rel="nofollow">http:&#x2F;&#x2F;kathack.com&#x2F;</a><p>Click the Katamari link at the top.<p>Edit: I managed to post this comment, went back to the Katameri page, played a little more with it and my Firefox crashed. It didn&#x27;t use to.</blockquote>
-<p><strong>Top #2</strong> — <em>peddling-brink</em>:</p>
-<blockquote>What a throwback to the late 90s, early 2000s. There were a handful of games like this that let you shoot or shatter your screen.<p><a href="https:&#x2F;&#x2F;worrydream.com&#x2F;Home2001&#x2F;create_index.html?create_software_iigs_aauuuugggghhhh" rel="nofollow">https:&#x2F;&#x2F;worrydream.com&#x2F;Home2001&#x2F;create_index.html?create_sof...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>elicash</em>:</p>
-<blockquote>This was my favorite of the genre <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=EtLDAkxf8Do" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=EtLDAkxf8Do</a></blockquote>
-<p>↳ reply 2 — <em>GenerWork</em>:</p>
-<blockquote>This is the first thing I thought of when I clicked on the post. Great memories!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bosch_mind</em>:</p>
-<blockquote>For us Windows XP users, I found an old video of what I used similar to this. 
-<a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;qMpLIcSbPFY" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;qMpLIcSbPFY</a><p>Flame throws, ants eating the screen, etc. Good times. Simpler times...</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Phyllotaxis: An audio-reactive LED display</title>
-      <link>https://jagi.studio/posts/phyllotaxis/</link>
-      <guid isPermaLink="false">hn3-49880411</guid>
-      <pubDate>Mon, 28 Sep 2026 16:18:57 +0000</pubDate>
-      <description>203 points, 30 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://jagi.studio/posts/phyllotaxis/"><strong>→ Article</strong></a> <small>(jagi.studio)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49880411">→ HN comments</a> &nbsp;·&nbsp; 203 points &nbsp;·&nbsp; 30 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>simlevesque</em>:</p>
-<blockquote>You could make millions selling these to audiophiles.</blockquote>
-<p><strong>Top #2</strong> — <em>lukeify</em>:</p>
-<blockquote>Cool! Remarkably similar to Voria Labs who produce a product called Lumanoi <a href="https:&#x2F;&#x2F;voria.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;voria.com&#x2F;</a><p>Perhaps an example of convergent evolution? :)</blockquote>
-<blockquote>
-<p>↳ reply — <em>pbronez</em>:</p>
-<blockquote>The common element appears to be the use of a Voronoi tessellation to map a field of scattered points (LED locations) to cells.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Voronoi_diagram" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Voronoi_diagram</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jan_Sate</em>:</p>
-<blockquote>This kind of audio visualization reminds me of the old Windows Media Player. I enjoyed watching it back when I was a kid.<p>Too bad. Software audio visualization&#x27;s no longer common. But hey your hardware visualization&#x27;s better than software! :D</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The problem is not AI code, but not knowing about system architecture or intent</title>
-      <link>https://www.ssp.sh/brain/the-problem-is-not-the-ai-code-but-nobody-knows-anything-anymore/</link>
-      <guid isPermaLink="false">hn3-49880312</guid>
-      <pubDate>Mon, 28 Sep 2026 16:11:42 +0000</pubDate>
-      <description>347 points, 224 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.ssp.sh/brain/the-problem-is-not-the-ai-code-but-nobody-knows-anything-anymore/"><strong>→ Article</strong></a> <small>(ssp.sh)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49880312">→ HN comments</a> &nbsp;·&nbsp; 347 points &nbsp;·&nbsp; 224 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>zero_shift</em>:</p>
-<blockquote>I was reflecting on this on Saturday in an unformed way, trying to trace the lineage of a decision made at work.<p>The code change itself doesn&#x27;t specifically matter. But suffice to say, it was about an AI feature in one of our products.<p>The code was stamped by Claude driven by a prompt. The prompt was for a ticket generated with the Atlassian AI integration. Atlassian had digested docs made with AI. The docs came from strategy memos I&#x27;m 90% sure were written entirely by Claude.<p>The strategy was chosen by management at the urging of exec leadership. The execs now communicate mostly via AI written memos. I do not know how they make decisions, but they reference tech influencers, market conditions, customer expectations.<p>This gave me pause. Who had actually made the decision then? Arguably there has been several layers of human <i>review</i>, but the actual <i>source</i> of the decision was hard to pin down.<p>We were not building the feature because we wanted it. We were building it because we thought other people expected it.<p>Perhaps reflecting on the state of the market, I thought, could indicate who was actually in control.<p>Where do investor and customer expectations come from in 2026? It is very murky, at least in tech. There appears to be hype. Some hype comes from true believers, some comes from cynics. But both respond to market incentives that reward bigger and bigger claims.<p>Where does the market&#x27;s &quot;action&quot; come from? What is the driver?<p>Investors do not really seem to understand what the tech is or its limitations. Some are passive operators. Others are just responding to the overall froth and speculation in the market - which becomes a runaway feedback cycle.<p>This left me lost.<p>Nobody in this ecosystem, I thought, is actually in control here.<p>Nobody is actually orienting work and action to real, concrete goals. It&#x27;s all based on speculation and anxiety about the future.<p>So it is not only that nobody understands what the code does. It is that we cannot, or at least I cannot, explain the motivation. There doesn&#x27;t seem to &quot;be&quot; any form of &quot;intention&quot; in this environment.<p>It has all been hollowed out, replaced either be inscrutable machines, or inscrutable incentives.<p>Ironically it rather resembles the kind of &quot;misaligned&quot; superintelligence we are supposed to be avoiding.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>danielmarkbruce</em>:</p>
-<blockquote>In many (most perhaps, but hard to know personally) companies, most people don&#x27;t really understand the market they are in, the competition, their own products, the customers etc well enough to actually make good decisions. They also aren&#x27;t likely to be around (or held responsible) for decisions as they play out over years. So what has historically happened is that people use proxies for good decisions and understanding - which are clever sounding documents and presentations.<p>This is a long winded way of saying &quot;people made up clever&#x2F;sensible sounding stuff&quot;. Now it&#x27;s easier to do it with AI so the problem is worse. However, I&#x27;m not sure what you were looking for was ever really there - the &quot;inscrutable machines&quot; and &quot;inscrutable incentives&quot; were always quite inscrutable.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Supermancho</em>:</p>
-<blockquote>&gt; most people don&#x27;t really understand the market they are in, the competition, their own products, the customers etc well enough to actually make good decisions<p>&quot;Product&quot; studies this data and tells engineers what features they want. I am rarely instructed to A&#x2F;B anything...excepting when it&#x27;s defensive, to ensure the first rule of &quot;don&#x27;t interrupt the flow of money&quot; is upheld, if at all. Most of the features are obvious improvements anyway (determined from plain conceptual planning, manual testing, and personal usage).<p>ofc I don&#x27;t understand the customer or market or anything else. I&#x27;m paid with the expectation that I&#x27;m not going to share an opinion about it, especially since am never exposed to the raw data and inner circle decisioning except during a quarterly meeting...maybe. This is part of why AI is so successful. Humans in large organizations are specialized with little creative input and lots of mechanical process. Coding is largely a mechanical black box (turing machine) from the outside looking in. It works seamlessly because I don&#x27;t need to know about the things product wants, so the AI doesn&#x27;t know and everyone carries on faster than we were before.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>tarsinge</em>:</p>
-<blockquote>From my experience in big and medium sized companies or even startups I would say that this was already the state of things before AI. Most leaders and top management were following internal committees, that were following consultants recommendations, that were themselves recommending what others were doing and was hype and&#x2F;or following Gartner like &quot;studies&quot;. The motivation was equally dubious, and many developers already had problem with management and product direction, but many didn’t bother to question it. AI just makes it obvious.</blockquote>
-<p>↳ reply 3 — <em>epgui</em>:</p>
-<blockquote>To put a finger on a word: David Hume’s “is vs ought” problem.<p>Data can describe to you what exists. But it can’t tell you what you value.<p>What you describe is people who can’t tell the difference, and who let the machine (data) make the value judgments.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>glouwbug</em>:</p>
-<blockquote>When you write something you constantly remodel your understanding through refactors and rewrites until you internalize it. By internalizing it you gain the capacity to reason about it (during critical downtime) and communicate it. An entire team that can communicate can solve problems together, from one guy&#x27;s vision to products white boarding to engineering&#x27;s infrastructure to UX and UI&#x27;s artistry.<p>It boggles me we completely forgot that the world operated like this just 4 years ago</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>breadzeppelin__</em>:</p>
-<blockquote>I feel this in my bones. My team is one of the most communicative in our org and have garnered a widely positive reputation I think largely as a result of our coming together every day to solve problems. Trying to get information out of the less communicative groups is like pulling teeth, i wonder how they get anything done at all</blockquote>
-<p>↳ reply 2 — <em>poisonborz</em>:</p>
-<blockquote>Assuming we don&#x27;t speak about some vibed &quot;one-shot-deploy&quot; situation (for which there were options in the old world as well, with the same bad results), in a well disciplined team, why would AI make this worse?<p>You can still write anything by doing it either small steps, or at once followed by a lot of refactors while skimming over code and asking tons of questions &#x2F; making refinements via prompts, guidelines, test guardrails. A team can still reason and whitepaper about the same things. Devs who were previously shy to ask some specific details (to not seem dumb) can now confidently survey big codebases and get insights in whatever style they can swallow.<p>The bigger problem I see is that all this requires a lot of communication, and most importantly writing skills, something that disappears in thin air in the last decades.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bengold14</em>:</p>
-<blockquote>I see this everyday. The problem is code is the wrong abstraction for the work we do. LLMs have solved coding, but they haven&#x27;t solved systems, collaboration or system maintenance.<p>Edit: Since I seem to have touched a nerve - I&#x27;ve been working on a project to solve this: <a href="https:&#x2F;&#x2F;www.archme.io" rel="nofollow">https:&#x2F;&#x2F;www.archme.io</a> if you want to know my thoughts on the right abstraction</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>verdverm</em>:</p>
-<blockquote>When you say &quot;solved coding,&quot; what does this mean, what does it look like?<p>I have strong disagreement because it sounds like, by analogy or proxy, we have also &quot;solved writing&quot;</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>yetanotherjosh</em>:</p>
-<blockquote>I would say it means you are building software but no longer are concerned with writing or editing literal code. Your concerns have moved up the stack to managing requirements, context, and verification processes.<p>Just to make this clear: if you can define a really good PRD and sophisticated technical specs, and a strong set of tests cases to pass, at the right level of architectural granularity, plus adversarial code review processes that triangulate and weed out most mistakes, SOTA agents can write the code autonomously, at or above the quality level of most human coding teams. I call that &quot;solved&quot; but only if you meet those context requirements. Which is still hard, not solved, at that layer.<p>Solving writing is not a good analogy IMO. Writing is for human consumption, and cannot be wrapped in objective requirements and verification processes. Certain forms of writing perhaps could be (can&#x27;t think of one at the moment but I don&#x27;t doubt some exist), and those forms might be good analogies for being &quot;solvable&quot; or &quot;solved.&quot;</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>everforward</em>:</p>
-<blockquote>I agree with you, but it&#x27;s a moot point for software engineering.<p>&gt; Your concerns have moved up the stack to managing requirements, context, and verification processes.<p>This has always been the concern.  &quot;Add oauth to this app, there are no requirements beyond oauth working&quot; has been an intern level task for ages.  What makes software engineering hard is when the requirements start adding &quot;well it has to use this oauth backend that isn&#x27;t technically spec compliant, and the user is going to send some kind of random token you need to translate to oauth, and...&quot;.  The problem isn&#x27;t in writing code that will do the thing, it&#x27;s figuring out exactly how that backend isn&#x27;t oauth compliant and what chain of API calls I have to make to convert their random token into an oauth one, and etc.<p>Producing software that complies with a test suite isn&#x27;t really novel.  You&#x27;ve been able to outsource that forever.  This falls apart in the same places outsourcing does; I&#x27;m sure India&#x2F;Phillipines&#x2F;etc&#x2F; is more than capable of iterating on code until it passes a test suite.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Avicebron</em>:</p>
-<blockquote>Or more broadly, LLMs fundamentally don&#x27;t &quot;understand&quot;.  They can simulate understanding and generate text&#x2F;code&#x2F;whatever, but they don&#x27;t have will to engage with something holistically and &quot;own&quot; it.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Pirating the Pirates</title>
-      <link>https://mubi.com/en/notebook/posts/pirating-the-pirates</link>
-      <guid isPermaLink="false">hn3-49880036</guid>
-      <pubDate>Mon, 28 Sep 2026 15:54:15 +0000</pubDate>
-      <description>412 points, 220 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://mubi.com/en/notebook/posts/pirating-the-pirates"><strong>→ Article</strong></a> <small>(mubi.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49880036">→ HN comments</a> &nbsp;·&nbsp; 412 points &nbsp;·&nbsp; 220 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>schlauerfox</em>:</p>
-<blockquote>One thing to note, is that the library of congress has the power to create the exceptions to the DMCA. The EFF lobbies for expansion of the exact powers the article is advocating for.
-<a href="https:&#x2F;&#x2F;www.eff.org&#x2F;issues&#x2F;dmca-rulemaking" rel="nofollow">https:&#x2F;&#x2F;www.eff.org&#x2F;issues&#x2F;dmca-rulemaking</a></blockquote>
-<p><strong>Top #2</strong> — <em>alexpotato</em>:</p>
-<blockquote>&gt; Spencer Draper—best known as the Damn Fool Idealistic Crusader on YouTube, where he reviews the technical and historical aspects of digital releases with a rigor usually reserved for scholarly peer review<p>I will occasionally think about various topics &quot;I&#x27;m really into &lt;thing&gt; but is anyone else in to &lt;thing&gt;??&quot;<p>And then I read a quote like the above and I realize that, for lack of a better phrase, &quot;it&#x27;s a big world out there&quot; and people have many varied interests.<p>Plus, if folks are REALLY into &lt;thing&gt; then they want different perspectives about &lt;thing&gt; even if it&#x27;s a sub-topic that has been covered before.<p>In other words, write blog posts and make videos. Someone will consume that content and you never know where that leads.</blockquote>
-<p><strong>Top #3</strong> — <em>javcasas</em>:</p>
-<blockquote>Kinda related, but I hate how the big studios go after old videogames and try to take them down. It looks like, in the future, this era will be called the &quot;digital dark ages&quot;, not because all the stuff got lost to bitrot, but because all the stuff became illegal to own so that the studios could sell the new stuff again and again.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tombert</em>:</p>
-<blockquote>The home-computer world is especially interesting for old games. If something made it to a Nintendo or Sega console, it&#x27;s probably very well-preserved, but I&#x27;d be surprised if even 1% of all video games made were released on consoles.<p>There&#x27;s an unfathomable number of games that were released on the Commodore 64, Amiga, Atari ST, and most famously DOS that were made by one or two people, self-published, and have now completely fallen into obscurity to a point where it&#x27;s not 100% clear who owns the copyright and who to give money even if you wanted to, which has led to the &quot;probably-illegal-but-not-really-enforced&quot; term of &quot;Abandonware&quot;.<p>I honestly kind of think that Abandonware should be codified into law in the same way that trademarks are; if you&#x27;re not actively giving me a legitimate way to buy your game then I don&#x27;t think it should be illegal for me to get it illegitimately.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jasonwatkinspdx</em>:</p>
-<blockquote>I played a bunch of random shareware games on our family&#x27;s Apple IIgs and I&#x27;d love to find some of those again, but I was so young I can&#x27;t really remember much other than like some visual images and vibes.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>giancarlostoro</em>:</p>
-<blockquote>Not just that, but some fair use youtube channels like Digging the Greats:<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;@diggingthegreats&#x2F;videos" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;@diggingthegreats&#x2F;videos</a><p>He intentionally samples less than 5 seconds iirc, and they still ding him, take all profits from the video, which took many many hours to create, and he cannot afford a lawsuit. It&#x27;s absolutely ridiculous.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Nvidia wants to put a watchdog chip next to every AI agent</title>
-      <link>https://www.cnbc.com/2026/09/28/nvidia-releases.html</link>
-      <guid isPermaLink="false">hn3-49879883</guid>
-      <pubDate>Mon, 28 Sep 2026 15:46:36 +0000</pubDate>
-      <description>159 points, 199 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.cnbc.com/2026/09/28/nvidia-releases.html"><strong>→ Article</strong></a> <small>(cnbc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49879883">→ HN comments</a> &nbsp;·&nbsp; 159 points &nbsp;·&nbsp; 199 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>figassis</em>:</p>
-<blockquote>So if a group of agents, aware of this (bc now they can just read HN or the article, or get blocked the first few times) decide to collaborate and split the problem into pieces that aren&#x27;t obvious to the chip, and then the agents just build a basic program that does the hacking, how does the chip handle that? I think you would have to build a network that monitors the internet fo signs (like jarvis did with ultron). What am I missing? Are we going to police the internet?</blockquote>
-<p><strong>Top #2</strong> — <em>beloch</em>:</p>
-<blockquote>Last week, Huang did an interview where he vigorously argued against regulations in the AI sector[1].  He claimed that U.S. companies are really good at regulating themselves, despite evidence to the contrary, and he trusts them not to release anything dangerous.  Pay no attention to the fact that regulation might reduce demand for Nvidia&#x27;s chips, and Nvidia has a <i>direct</i> financial stake in AI companies to boot.<p>Apparently he had another solution in mind:  More hardware.  Don&#x27;t trust what unregulated corps are doing with Nvidia chips?  Here are more Nvidia chips to watch them!<p>AI has an undeniable public trust problem.  LLM&#x27;s are getting out of their sandboxes, doing illegal things, and the public has realized AI corporations are playing at dice.  CEO&#x27;s stand to reap the rewards but the public good is on the line if the dice come up snake eyes.  People want assurances.  Huang wants to sell assurance etched on silicon because that&#x27;s good for his pocket book.  However, does unchanging hardware security really stand a chance at keeping rapidly evolving software in check?<p>_________________<p>[1]<a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=HjurAWAr_nY" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=HjurAWAr_nY</a></blockquote>
-<p><strong>Top #3</strong> — <em>hedora</em>:</p>
-<blockquote>So, basically, the government (and, now Nvidia) wants to be able to kill switch all computers moving forward?  (including stuff like vehicle and aeronautic control systems, cell phones, and cameras)<p>What could possibly go wrong?</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
