@@ -4,7 +4,175 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 07 Oct 2026 08:29:25 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 16:17:48 +0000</lastBuildDate>
+    <item>
+      <title>Hackers obtain counterfeit TLS certificates for Google and other large services</title>
+      <link>https://arstechnica.com/security/2026/10/hackers-obtain-counterfeit-tls-certificates-for-google-and-other-large-services/</link>
+      <guid isPermaLink="false">hn3-49988230</guid>
+      <pubDate>Wed, 07 Oct 2026 04:37:05 +0000</pubDate>
+      <description>133 points, 44 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arstechnica.com/security/2026/10/hackers-obtain-counterfeit-tls-certificates-for-google-and-other-large-services/"><strong>→ Article</strong></a> <small>(arstechnica.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49988230">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 44 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Borealid</em>:</p>
+<blockquote>This sounds like something that HPKP ( <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;HTTP_Public_Key_Pinning" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;HTTP_Public_Key_Pinning</a> ) could have prevented and CAA records ( <a href="https:&#x2F;&#x2F;letsencrypt.org&#x2F;docs&#x2F;caa&#x2F;" rel="nofollow">https:&#x2F;&#x2F;letsencrypt.org&#x2F;docs&#x2F;caa&#x2F;</a> ) could not. But HPKP is deprecated.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>w3ll_w3ll_w3ll</em>:</p>
+<blockquote>CAA records (with ACME account bindings) can prevent this.<p>HPKP was deprecated because it was too dangerous to be deployed in production.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>iso1631</em>:</p>
+<blockquote>Not when you simply remove the CAA record from the DNS entry</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>geocar</em>:</p>
+<blockquote>You can&#x27;t &quot;simply&quot; do that: a long cache period pins CAA. Of course that makes it the same, and with the same problems.<p>What I&#x27;d like to see is the ability to use and utilise multiple TLS certificates and host keys on the same session so that all the keys could be rotated&#x2F;phased <i>in-band</i> with cross-signing providing the authority.<p>Seeing <i>any</i> mere change in the signers faster than (say) 30 days should allow the browser&#x2F;client-stack to generate a warning that &quot;google.com may be actively under attack please call this number on the old certificate, codeword banana-alpha-lima-lima-sigma&quot;. No need to cross-publish the keys, just cross-sign and don&#x27;t forget what you&#x27;ve seen previously.<p>The browser would be able to take policy of simply never trust a certificate whose signer has changed (since phasing is possible), and it wouldn&#x27;t then need to consult more public oracles (DNS, certificate transparency, etc, that leak privacy).<p>I&#x27;d also like to get that webauthn hooked back into TLS client certificates: If we had 1997 again instead of passkeys that <i>also</i> would&#x27;ve stopped this.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>airza</em>:</p>
+<blockquote>The problem is that there is no out-of-band mechanism for update like other devices.<p>If your CA certs are bad on your mobile application, you can push an out-of-band update via the device&#x27;s app store.<p>If your CA certs are bad on a website you access via your browser, the means of updating them is... the browser. You can&#x27;t get new certs without using a TLS connection you didn&#x27;t want to trust anyway.</blockquote>
+<p>↳ reply 3 — <em>formerly_proven</em>:</p>
+<blockquote>Google Chrome has a static, preloaded pin set for Google&#x27;s own web properties, I guess these minor ccTLDs were not covered by that.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>iso1631</em>:</p>
+<blockquote>So looks like<p>1) Top level CC DNS entries were hacked<p>2) CAA entries were removed (I assume google had them -- they do now CAA 0 issue &quot;pki.goog&quot;<p>3) These were then used to verify issuing certificates against major CAs (letsencrypt etc) - for example by creating a new CNAME record for DNS verification<p>Looking at google.as specifically shows Let&#x27;s Encrypt issuing a certificate on 2026-09-27<p><a href="https:&#x2F;&#x2F;ctlogs.dev&#x2F;search?q=google.as" rel="nofollow">https:&#x2F;&#x2F;ctlogs.dev&#x2F;search?q=google.as</a><p>Google normally issues certificates with &quot;Google Trust Services&quot;, presumably their in house CA which all browsers trust, but the only way to limit issuing to Google is with the CAA record.<p>If you hijack DNS, you hijack certificate issuing. As several CAs exist with no business relationship to identify the real person asking for the certificate, you can do this anonymously. (If CAs required verification then you&#x27;d just have to chain this with the stolen credentials of someone who uses that CA so wouldn&#x27;t be a major obstacle)<p>From what I can tell (and the article conflates this with the diginoir so implies it), this was NOT a compromise of a Certificate Authority</blockquote>
+<p><strong>Top #3</strong> — <em>rswail</em>:</p>
+<blockquote>The affected country ccTLDs are:<p>AS: American Samoa<p>GH: Greenland<p>SL: Sierra Leone</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tyilo</em>:</p>
+<blockquote>.gh is Ghana, not Greenland</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>rswail</em>:</p>
+<blockquote>oops :)<p>I misread.<p>Thanks for the correction.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Tangurena2</em>:</p>
+<blockquote>.GL is Greenland.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;.gl" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;.gl</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Strands Decider 2B: a small, open-source, decision model</title>
+      <link>https://strandsagents.com/blog/introducing-strands-decider/</link>
+      <guid isPermaLink="false">hn3-49987076</guid>
+      <pubDate>Wed, 07 Oct 2026 02:02:11 +0000</pubDate>
+      <description>249 points, 69 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://strandsagents.com/blog/introducing-strands-decider/"><strong>→ Article</strong></a> <small>(strandsagents.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49987076">→ HN comments</a> &nbsp;·&nbsp; 249 points &nbsp;·&nbsp; 69 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>adenta</em>:</p>
+<blockquote>At this point I can&#x27;t wait for a comedian to release a decision model backed by humans.<p>Meet Jerry- it&#x27;s literally a guy named Jerry answering your questions.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Balooga</em>:</p>
+<blockquote>Oh! You probably want ChatTJB [1]<p>[1] - <a href="https:&#x2F;&#x2F;chattjb.org&#x2F;about" rel="nofollow">https:&#x2F;&#x2F;chattjb.org&#x2F;about</a></blockquote>
+<p>↳ reply 2 — <em>melvinram</em>:</p>
+<blockquote>Your comment made me chuckle.<p>Jerry, &quot;The Decider&quot; <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=r8VbzrZ9yHQ" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=r8VbzrZ9yHQ</a></blockquote>
+<p>↳ reply 3 — <em>jeremycarter</em>:</p>
+<blockquote>RACE HIM JERRY!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>gsnedders</em>:</p>
+<blockquote>What I don’t get from this article is why strands-decider-2b v10 and strands-decider-2b v11 are shown as “other systems”, and with v11 notably outperforming v19 — why are these other systems, and why is v11 not the path taken?</blockquote>
+<p><strong>Top #3</strong> — <em>mattvr</em>:</p>
+<blockquote>Why is everyone calling binary choices `noul`? Does this have some meaning or is it just copying Jev’s API?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>WASDx</em>:</p>
+<blockquote>The new OpenAI Decisions API calls it &quot;predicate&quot;. Also calling the API &quot;decisions&quot; rather than &quot;system one&quot;. Usually I don&#x27;t like inventing new standards but I hope the OpenAI schema takes over. We don&#x27;t need this hype terminology.</blockquote>
+<p>↳ reply 2 — <em>hiimkeks</em>:</p>
+<blockquote>My guess is if you pronouce this &quot;nool&quot; it sounds similar to &quot;bool&quot;, and it&#x27;s a slice of the name &quot;Bernoulli&quot; because the models generate Bernoulli distributions</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Couple was swatted 55 times in 2 years over a post about Norm Macdonald</title>
+      <link>https://www.cbc.ca/radio/asithappens/milwaukee-swatting-couple-9.7370118</link>
+      <guid isPermaLink="false">hn3-49986892</guid>
+      <pubDate>Wed, 07 Oct 2026 01:42:24 +0000</pubDate>
+      <description>131 points, 124 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.cbc.ca/radio/asithappens/milwaukee-swatting-couple-9.7370118"><strong>→ Article</strong></a> <small>(cbc.ca)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49986892">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 124 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>joshumax</em>:</p>
+<blockquote>&gt; On Aug. 3, 2022, one officer sent a memo to the acting police captain requesting the couple&#x27;s home be marked as a &quot;swatter house.&quot; The captain declined, saying it could cause a &quot;complacency issue for responding officers.”<p>You&#x27;d think they&#x27;d be more concerned about constantly wasting time and resources to constantly send out SWAT to some random couple&#x27;s house twice a week.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>autoexec</em>:</p>
+<blockquote>I think they&#x27;ll just take any excuse to LARP as soldiers, play with guns, and bully people. They know they don&#x27;t have to worry about facing any consequences for their actions so they can do whatever they like.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>aleksandrm</em>:</p>
+<blockquote>So much this. I don&#x27;t know if ever had a &quot;serious&quot; police force, maybe we did or didn&#x27;t. But surely we don&#x27;t anymore, what we have know is a joke.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>black6</em>:</p>
+<blockquote>Art mirrors reality. The Keystone Kops were en vogue in the nineteen teens.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>0cf8612b2e1e</em>:</p>
+<blockquote>SWAT team had a KPI target to meet. Not enough calls and they get less military surplus gear.</blockquote>
+<p>↳ reply 3 — <em>ndiddy</em>:</p>
+<blockquote>The cops know it&#x27;s fake, but they enjoy driving over and yelling and waving guns around, so they don&#x27;t care. From another news article about this guy (<a href="https:&#x2F;&#x2F;www.tmj4.com&#x2F;about-us&#x2F;lighthouse&#x2F;people-have-died-this-way-milwaukee-couple-swatted-55-times-calls-for-policy-change-after-575k-settlement" rel="nofollow">https:&#x2F;&#x2F;www.tmj4.com&#x2F;about-us&#x2F;lighthouse&#x2F;people-have-died-th...</a>):<p>&gt; Exclusive body camera video obtained by TMJ4 shows officers arriving at the couple&#x27;s home on multiple occasions, even as both officers and the couple acknowledged the calls were fake.<p>&gt; In one exchange captured on body camera, an officer can be heard telling a colleague, &quot;This guy keeps getting swatted.&quot; In another, a body camera recording from inside a squad car captures an officer describing the address as &quot;a known swatting location.&quot;<p>&gt; Despite that awareness, officers continued to respond, at times with a full tactical presence. Body camera video shows one officer pointed a gun at the couple&#x27;s door on their fourth response in a single day.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>viraptor</em>:</p>
+<blockquote>This has a side story from some years ago of Patrick trying to act against the forums organising the swatting... and Cloudflare sending lawyers to explain how they can&#x27;t help with anything, even though it&#x27;s their customers. Cloudflare spent actual money on lawyers to ensure someone continues to be swatted. Something to keep in mind next time you choose a vendor. It&#x27;s not only the police and the individual swatters that are a problem here.</blockquote>
+<p><strong>Top #3</strong> — <em>valleyer</em>:</p>
+<blockquote>At some point, the responding local police should be held criminally liable.  A tiny brass badge should not shield you from having to comply with society&#x27;s laws.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>blooalien</em>:</p>
+<blockquote>&gt; At some point, the responding local police should be held criminally liable.<p>At <i>some</i> point, the people <i>doing</i> the &quot;swatting&quot; (false police call) should be held criminally liable, maybe even for attempted murder by cop.  There&#x27;s <i>definitely</i> a crime being committed there.  I&#x27;m 100% sure that calling the cops on someone and making a false report is against at least one or two (or maybe even several) laws.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pdonis</em>:</p>
+<blockquote>I&#x27;m guessing the calls were anonymous, and the police didn&#x27;t bother tracing the numbers.<p>Which does raise the question: why is it SOP for the police to send a SWAT team to a random house based on nothing but an anonymous phone call? At the very least it should take some kind of statement from an actual identified human who can be held accountable if it turns out to be a hoax.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>vachina</em>:</p>
+<blockquote>High trust society and high HDI.<p>Act now (to reduce potential loss of life) and verify later</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>autoexec</em>:</p>
+<blockquote>Having that badge should cause you to be held to a higher level of accountability. Abusing the power given to you by being an officer should mean receiving much more severe consequences.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>ESP32-C3 Adblock</title>
+      <link>https://github.com/M-Abozaid/esp32-c3-adblock</link>
+      <guid isPermaLink="false">hn3-49986862</guid>
+      <pubDate>Wed, 07 Oct 2026 01:39:21 +0000</pubDate>
+      <description>167 points, 63 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/M-Abozaid/esp32-c3-adblock"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49986862">→ HN comments</a> &nbsp;·&nbsp; 167 points &nbsp;·&nbsp; 63 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>muti</em>:</p>
+<blockquote>Weird how the readme talks about hash collisions, but not in the way I would expect. Two blocked domains with the same hash isn&#x27;t a problem, they both need to be blocked.<p>Where hash collisions matter is false positives, e.g. if hash(google.com) = hash(adserver.com). There does appear to be a web dashboard and &#x2F;unblock api so should be straightforward to resolve.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zamadatix</em>:</p>
+<blockquote>Yeah, I think they have it backwards. As you say, regardless of how many entries you have locally, the collision risk comes from false positive hash matches not from worrying if the positive hashes collide.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>4gotunameagain</em>:</p>
+<blockquote>I think they have it right.<p>If you have N entries where N &gt;&gt; 1, the probability of an arbitrary value colliding with the existing ones is Pcol(N+1) which is approx Pcol(N).</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>zamadatix</em>:</p>
+<blockquote>Edit: Skip to 4gotunameagain&#x27;s reply, this probably doesn&#x27;t contain anything helpful to read.<p>The math is correct, but it&#x27;s the math for the question:<p><pre><code>  blockHashes.has(hash(domainInBlockList1) == hash(domainInBlockList2)
+</code></pre>
+While the thing they probably want to check the collision math for is:<p><pre><code>  blockHashes.has(hash(domainNotInList))
+</code></pre>
+As that&#x27;s the risk you do the wrong action due to a hash collision. Importantly, the 2nd calculation is not going to be bounded by the size of your block list, it&#x27;s going to be bounded by the number of domains overall.<p>The former question isn&#x27;t really useful - you can have a 100 entry blocklist with 100 collisions and it still works the same as if it had 0 collision since the action on all 100 is the same. That&#x27;s more a problem for generating unique IDs per hash whereas this is flipped around because it&#x27;s about classification.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>close04</em>:</p>
+<blockquote>&gt; Two blocked domains with the same hash isn&#x27;t a problem, they both need to be blocked.<p>This is a problem if the second one is actually a major useful domain. If HN and adserver have the same hash, you have a problem. This could be described as a false positive for HN.<p>&gt; Where hash collisions matter is false positives, e.g. if hash(google.com) = hash(adserver.com)<p>This sounds like the same issue I describe above where you need to use Google but block adserver. Otherwise it&#x27;s only a problem if you implemented allow lists, right? This is when you explicitly allow Google and implicitly allow adserver along with it because of the hash collision.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>yoavm</em>:</p>
+<blockquote>If you&#x27;re ever thinking about getting an ESP32-C3, do yourself a favor and get the variant that you can connect an external antenna to. The normal C3 has a built-in antenna that is extremely weak, making it useless for most things I was planning using it for.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>n8henrie</em>:</p>
+<blockquote>You can find instructions for making and soldering on a small antenna to the common &quot;mini&quot; dev board that reportedly helps quite a bit</blockquote>
+<p>↳ reply 2 — <em>z2</em>:</p>
+<blockquote>And make sure to read the reviews as there are apparently fraudulent versions out there that don&#x27;t include the 4MB flash chip. That said I took a gamble on a bunch of $2 C3 super minis, and they&#x27;ve had surprisingly adequate signal strength for indoor applications, even in the basement. (-60&#x27;s dBm)</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>BLKNSLVR</em>:</p>
+<blockquote>I&#x27;m a bit of a paranoid freak that likes lists, so I&#x27;ve got a PiHole that has a total list of 14-16M blocked domains.<p>Great idea, and good for casual blocking, but I&#x27;m almost moving to an &quot;allow list&quot; mindset. This solution would probably work better for that, I wonder if the good parts of the internet would fit into an 140k list.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>reader9274</em>:</p>
+<blockquote>Do you host your lists somewhere you can share?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>BLKNSLVR</em>:</p>
+<blockquote>I&#x27;m currently (very slowly, in the small gaps between &#x27;life&#x27;) setting up a site the host the lists and also explains them and their usage.<p>Since it&#x27;s not ready, it&#x27;ll be best if I point you to the sources I&#x27;ve aggregated from:<p><a href="https:&#x2F;&#x2F;firebog.net&#x2F;" rel="nofollow">https:&#x2F;&#x2F;firebog.net&#x2F;</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;hagezi&#x2F;dns-blocklists" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;hagezi&#x2F;dns-blocklists</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;StevenBlack&#x2F;hosts" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;StevenBlack&#x2F;hosts</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;jerryn70&#x2F;GoodbyeAds" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;jerryn70&#x2F;GoodbyeAds</a><p>Link to my in-progress list file hosting: <a href="https:&#x2F;&#x2F;lists.uninvitedactivity.com&#x2F;DNS&#x2F;" rel="nofollow">https:&#x2F;&#x2F;lists.uninvitedactivity.com&#x2F;DNS&#x2F;</a><p>00_Tiers directory:<p>I&#x27;ve aggregated the lists into four tiers: Base, Recommended, Aggressive, and Paranoid. And I&#x27;ve got two sets of these, one that includes Newly Registered Domains (Full directory), and one that doesn&#x27;t include NRDs (NoNRD directory, because NRDs are ... heavy: Paranoid list with NRDs: 9.1 million records, without NRDs: 3.7 million records).<p>11_Allow directory:<p>A bunch of allow lists sourced from: <a href="https:&#x2F;&#x2F;discourse.pi-hole.net&#x2F;t&#x2F;commonly-whitelisted-domains&#x2F;212" rel="nofollow">https:&#x2F;&#x2F;discourse.pi-hole.net&#x2F;t&#x2F;commonly-whitelisted-domains...</a>. I also use this list for an Allow list: <a href="https:&#x2F;&#x2F;github.com&#x2F;anudeepND&#x2F;whitelist" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;anudeepND&#x2F;whitelist</a><p>21_SpecificTopics directory:<p>Aggregation of lists under the topic that matches the file name. Fake News list needs to be updated as it contains a _way_ overbroad list that I need to remove from the aggregation.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>oso2k</em>:</p>
+<blockquote>Tbh, for the ESP32-C3’s perf, an allow list would likely save RAM and CPU time.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>AnyPS5: Port PS5 binaries to PC without emulation (87% system libraries mapped)</title>
       <link>https://github.com/boykopovar/AnyPS5</link>
@@ -349,6 +517,92 @@ That <a href="https:&#x2F;&#x2F;api.openai.com&#x2F;v1&#x2F;decisions" rel="nofo
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Utah to let AI examine patients and prescribe medication without human oversight</title>
+      <link>https://www.techspot.com/news/114111-utah-become-first-state-ai-examine-patients-prescribe.html</link>
+      <guid isPermaLink="false">hn3-49981197</guid>
+      <pubDate>Tue, 06 Oct 2026 17:01:52 +0000</pubDate>
+      <description>131 points, 123 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.techspot.com/news/114111-utah-become-first-state-ai-examine-patients-prescribe.html"><strong>→ Article</strong></a> <small>(techspot.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49981197">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 123 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>slg</em>:</p>
+<blockquote>What is the actual benefit here?  If we believe the doctor&#x27;s oversight is required, the AI introduces a dangerous potential for error.  If we don&#x27;t think a doctor&#x27;s oversight is required, the medication shouldn&#x27;t require a prescription in the first place.  What positive value does the AI actually add that isn&#x27;t circumventing a legal requirement that we decided to put in place?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>toddmorey</em>:</p>
+<blockquote>AI is already being used to guide care outcomes and overrule doctors via “utilization management”.<p>I am a big believer in AI for drug discovery. But AI applied to patient care will never be used to benefit the patient or increase quality of care.<p>Cost reductions will be absorbed for profits. The medical industry has already aggressively implemented AI automation (imaging, automated note taking, etc) and in that period, costs have only increased.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jjice</em>:</p>
+<blockquote>I generally agree with you, but one thing I _hope_ AI can lead to is me being able to actually consult something resembling a medical professional. It&#x27;s so difficult to get time with my doctor, and when I do, I get swept out the door ASAP.<p>My hour long yearly physical takes 15 minutes and my miscellaneous questions get brushed off. I have some sort of eczema on my hand and he told me to use lotion. After telling him I do, he said to keep doing it. It had been six months then and now 18 months. Problem is still there.<p>Just today I finally found a dermatologist. Soonest appointment I could get from the ones I called is May of 2027.<p>At a certain point, I hope LLMs can provide at least basic medical help reliably because I can&#x27;t get the opportunity to ask a doctor to begin with.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>hattmall</em>:</p>
+<blockquote>Have you tried telehealth? Obviously some stuff needs in person but I&#x27;ve been reasonably pleased, never felt rushed and the doctors just seem to generally have a far more pleasant demeanor.  Dermatology is also one of the areas where it works really well.<p>That being said, have you tried more than just basic lotion? Butenafine clears a lot of fungal issues. High content zinc oxide diaper paste is also very useful. There&#x27;s a brand from Dollar Tree that&#x27;s very popular but triple paste is another option. The heavy zinc oxide coating cures a wide array of skin issues.<p>Wash your hands with nizoral then moisturizer with something like Okeefes or just the ZO cream.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Aurornis</em>:</p>
+<blockquote>The program is limited to a few prescriptions. I searched their website and found this about their AI prescription platform:<p>&gt; Only topical acne medications from a restricted list: tretinoin, adapalene, clindamycin with benzoyl peroxide, benzoyl peroxide, and azelaic acid, some combined with niacinamide or topical spironolactone. Each plan includes a morning and an evening treatment. The pilot does not include oral or systemic medications, hormonal therapies, or isotretinoin.<p>So it&#x27;s a short list of topical creams. Several of them are already available over the counter. Benzoyl peroxide creams are on the shelf of your nearest grocery store. Some of them are available in higher strengths via prescription only and should be reserved for only severe or refractory cases after escalation. A lot of people go straight for the highest strength they can find on the shelf, so having a prescription gate for the stronger stuff can be justified.<p>Others on the list like tretinoin are currently prescription only. That one is a strong chemical that will burn your skin if you don&#x27;t read the instructions about to apply and also makes you prone to sunburn. A lot of people don&#x27;t read the instructions, they just apply the cream and see what happens. Having a provider, even if it&#x27;s AI, do something to force them to understand the risks can be arguably justified. Tretinoin is also a risk to fetal development, so having a provider ask if female patients are on birth control is important. That said it is OTC in some other countries, so there&#x27;s an argument that it should be OTC here as well.<p>The AI doctor is not allowed to prescribe anything really serious. It&#x27;s a combination of prescription versions of OTC creams and a few topicals that benefit from some light provider instructions. Having a $5 option to get them with the serious cases shunted to actual doctors is not a bad tradeoff.</blockquote>
+<p>↳ reply 3 — <em>matt_heimer</em>:</p>
+<blockquote>People can be uneducated about medication, acetaminophen overdose is a leading cause of acute liver failure in the United States. A little bit of a barrier and forced information about the concern might not be a bad thing but it doesn&#x27;t require a doctor. A lot of medication probably falls in the same category but is on the other side of the prescription fence.<p>And doctors aren&#x27;t infallible, AI (and rule based systems) can act as an extra safeguard for them as long as they don&#x27;t blindly trust it.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>grahamburger</em>:</p>
+<blockquote>The title is rather misleading, I think. FTA:<p>&quot;The process works when a 
+person signs up for Nolla Health&#x27;s $4.99-per-month app and uses it to scan their face. After completing a medical history and personal information form, the AI analyzes their skin...&quot;<p>Utah is not allowing any general form of no-human-in-the-loop healthcare, but has temporarily allowed this company to operate.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>w10-1</em>:</p>
+<blockquote>&gt; title is rather misleading<p>Your summary is misleading.  Acne is diagnosed, prescriptions are written and applied, initially with Dr review and then only 10% reviewed by doctors.<p>Medicines are topical and said to have mild side effects - so I guess no retinoids (or accutane pills).<p>fwiw, physician assistants generally work under a doctor, who&#x27;s supposed to review about that many of their cases.</blockquote>
+<p>↳ reply 2 — <em>saagarjha</em>:</p>
+<blockquote>Why though</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>xp84</em>:</p>
+<blockquote>This is the type of reform that has been difficult to achieve in the US (And I presume other high-regulation, Western countries).<p>We usually regulate a one-size-fits-all approach to everything in medicine. An M.D. (or whatever NPs have?) is required to prescribe medicines, even medicines which are just the same or slightly stronger formulations of OTC medications like a 400mg Ibuprofen or a 1% hydrocortisone cream. Compare this to Mexico, where you can buy many of our &quot;prescription-only&quot; meds OTC.<p>A lot of healthcare issues are just not high-stakes. Requiring a doctor in these cases doesn&#x27;t help the average patient, because the average patient would rather ignore the problem, or now, ask ChatGPT how to treat it with OTC options, than deal with the mess of scheduling doctor appointments, dealing with insurance (or in Canada, long wait times to see the doctor for free), only to get just 5 minutes with the actual doctor who may not even listen to you.<p>I know it&#x27;s a tough pill to swallow for doctors, and I recognize that it&#x27;s not doctors who chose the terrible healthcare system we have or decided that they should have 5-10 minutes with a patient. But I do think we need to change the rules for things that have little risk of causing harm but a great chance of improving the aggregate outcomes by increasing access to healthcare.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>California closed the Montana license plate loophole</title>
+      <link>https://www.thedrive.com/news/heres-how-california-closed-the-montana-license-plate-loophole</link>
+      <guid isPermaLink="false">hn3-49981186</guid>
+      <pubDate>Tue, 06 Oct 2026 17:00:59 +0000</pubDate>
+      <description>133 points, 361 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.thedrive.com/news/heres-how-california-closed-the-montana-license-plate-loophole"><strong>→ Article</strong></a> <small>(thedrive.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49981186">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 361 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>waltwalther</em>:</p>
+<blockquote>Interesting and somewhat related:  Youtuber Cody Detwiler (whistlindiesel) was arrested last year and charged with multiple tax evasion felonies for using the Montana loophole to register his vehicles.<p>According to Detwiler, Tennessee did not bother to notify him in advance that he was in violation.  Instead, they sent heavily armed men to his place of business, handcuffed him, and took him to jail.  His bond was $20000.<p>Detwiler spoke out publicly on his Youtube channel about the arrest, claiming that he was targeted specifically because his celebrity status would bring attention to Tennessee&#x27;s position on the loophole. Shortly afterward, Detwiler was arrested a second time at the airport while returning from a trip abroad, and charged with a separate Montana loophole violation.<p>Detwiler says that Tennessee authorities visited his accountant months before he was charged, asked her specific information about his vehicles being registered in Montana, and told her not to let Detwiler know about they were investigating him.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cactacea</em>:</p>
+<blockquote>&gt; According to Detwiler, Tennessee did not bother to notify him in advance that he was in violation. Instead, they sent heavily armed men to his place of business, handcuffed him, and took him to jail. His bond was $20000.<p>Why should white collar crime deserve a lighter touch? This wasn&#x27;t a no-knock raid in the middle of the night.</blockquote>
+<p>↳ reply 2 — <em>dekhn</em>:</p>
+<blockquote>So that I understand correctly: a person broke the law, the legal system used legal methods to deal with it, and he complained because he&#x27;s a celebrity?
+<a href="https:&#x2F;&#x2F;xkcd.com&#x2F;1494&#x2F;" rel="nofollow">https:&#x2F;&#x2F;xkcd.com&#x2F;1494&#x2F;</a></blockquote>
+<p>↳ reply 3 — <em>Theodores</em>:</p>
+<blockquote>Everyone wants to drive their Lambo on the moon with Montana plates thanks to social media clowns, and it has been this way since the blockchain craze of a few years ago.<p>I wonder if the Montana plates &#x27;loophole&#x27; would be as well &#x27;exploited&#x27; had it not been for the fictional world of YouTube.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>kart23</em>:</p>
+<blockquote>pretty sure in a lot of these cases it’s already illegal, enforcing the law is another matter. someone actually has to pull over the montana plate owner, then the state has to sue them for tax evasion, build the case, etc. Thats just not gonna happen. ideally there would be a nationwide standard for registration and taxes.<p>also the new hot thing in california is to have dealer plates on your million dollar car. you never register it, never pay taxes, but it’s still legal to drive. you just need to own a dealership, but on paper again that’s not hard if you’re rich</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>saghm</em>:</p>
+<blockquote>It&#x27;s wild that buying a car dealership that you have no need for other than to avoid taxes is somehow considered more reasonable than just, like, paying the taxes.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>joquarky</em>:</p>
+<blockquote>These kind of people are bored from already having every material possession they could ever want; so they turn to playing these kind of games to impress their peers.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>TheJoeMan</em>:</p>
+<blockquote>I once saw an SUV at the country club with “Manufacturer” plates. There’s always a higher peak…</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Melatonic</em>:</p>
+<blockquote>I thought dealers had to have plates with numbers now ?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>JumpCrisscross</em>:</p>
+<blockquote>Huh, similar situation in Italy: “Tens of thousands of Italian drivers have purchased Polish number plates for their cars and motorbikes in an elaborate scheme to evade road taxes and pay lower insurance premiums.<p>An estimated 60,000 motorists — mostly in and around Naples — have been enticed by the promise of 70 per cent savings on road tax and insurance fees to transfer ownership of their vehicles to shell companies in Poland and register the vehicles there, according to an industry group.<p>Now with Italy’s general election looming, Giorgia Meloni’s rightwing coalition has announced “the elimination” of the unpopular annual road tax that helped spawn the evasion schemes. The bollo auto will be cut for an estimated 14.5mn small and midsized vehicles — a giveaway that will cost Italy’s already strained public coffers an estimated €2.4bn in lost revenue next year” [1].<p>[1] <a href="https:&#x2F;&#x2F;www.ft.com&#x2F;content&#x2F;74e70f0c-3788-4343-93d7-9c8740ee28b6?syn-25a6b1a6=1" rel="nofollow">https:&#x2F;&#x2F;www.ft.com&#x2F;content&#x2F;74e70f0c-3788-4343-93d7-9c8740ee2...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Tade0</em>:</p>
+<blockquote>This problem is older and existed already before the pandemic, but instead of Polish plates it was German&#x2F;French, as those countries didn&#x27;t have such expensive insurance and it was easy to have a foreign branch of a company register one&#x27;s company car.<p>The first crackdown was also before the pandemic and being Polish and in-and-out of Italy I fully expected to get caught in the crossfire, but that never happened.<p>Apparently I was driving too much like a tourist - indicators and all.<p>That being said a few people from the local Polish community got into trouble, but it always first due to driving into a <i>Zona a Traffico Limitato</i> with a car that shouldn&#x27;t be there - plates notwithstanding.</blockquote>
+<p>↳ reply 2 — <em>w3ll_w3ll_w3ll</em>:</p>
+<blockquote>Paying bollo is not the main reason. Bollo is around 100-200€ a year.
+Third Party Insurance for cars is mandatory and in Naples, due to high level of fraud, it can amount to 1500-2000€ a year.
+Using a Polish insurance, or a fake Polish insurance, is the main reason to get a Polish license plate.<p>Luckily the loop hole is being closed by the Polish authorities after it became popular.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>OpenTPU – An open-source AI accelerator, developed by AI</title>
       <link>https://github.com/FeSens/openTPU</link>
       <guid isPermaLink="false">hn3-49980715</guid>
@@ -505,6 +759,42 @@ By expanding to use AI, I expect that the amount of <i>programming work</i> will
 <p>↳↳ reply — <em>cromka</em>:</p>
 <blockquote>These comments should be barred from HN, just like &quot;HN is turning into Reddit&quot; is. Which is quite ironic, because the ubiquitous, reductive, low-effort &quot;AI slop&quot; comments make Reddit super annoying.</blockquote>
 </blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>What is Codemode</title>
+      <link>https://lucumr.pocoo.org/2026/10/6/codemode/</link>
+      <guid isPermaLink="false">hn3-49978333</guid>
+      <pubDate>Tue, 06 Oct 2026 13:41:03 +0000</pubDate>
+      <description>138 points, 60 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://lucumr.pocoo.org/2026/10/6/codemode/"><strong>→ Article</strong></a> <small>(lucumr.pocoo.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49978333">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 60 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ssivark</em>:</p>
+<blockquote>Between this and the Cloudflare post, this is a lot of words and no simple system level picture. Here&#x27;s what I think is going on:<p>1. Homoiconicity: Harness mechanics are kludgy and we need proper homoiconicity to uniformly handle code (tool calls) and data (&quot;natural language&quot;) as token streams.<p>2. Actor semantics: for isolation, encapsulation and concurrency.<p>3. Object capabilities: injected references and no ambient authority. Capabality-based reflection&#x2F;introspection is a clean way to discover interfaces and affordances.<p>&quot;Code mode&quot; or whatever is basically rediscovering this by hacking outward from LLM token streams, instead of from system design principles based on decades of computer science. It is the beginning of treating an LLM as a programming-language runtime participant (any takers for <i>eval&#x2F;apply</i>?) rather than as a text&#x2F;token generator with the harness as an ad-hoc interpreter.<p>If existing implementations of code mode don&#x27;t already support all this, I anticipate they will keep piling on hacks till they get to this point.<p>----<p>I think it was Dan Ingalls who said <i>&quot;An operating system is a collection of things that don&#x27;t fit into a language. There shouldn&#x27;t be one.&quot;</i>. I see the same for harnesses -- they&#x27;re awkward middle children which fit neither in an LLM nor in the programming environment.<p>Maybe the answer is to partner LLMs with Common Lisp or Scheme fibers &#x2F; Spritely Goblins or Erlang BEAM and be done!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nextaccountic</em>:</p>
+<blockquote>It&#x27;s actually about context management. Calling a MCP tool will load a potentially huge json on your context window, maybe triggering a compaction. Using a subagent for that is less bad, but still expensive (and you wouldn&#x27;t run every tool call on a subagent)<p>But if you had a mcp client cli, you can just pipe it to jq or whatever and extract what you need. or chain multiple tool calls into a single one. None of this will make the agent receive the intermediate text passed between those (the agent might want to save the intermediate results into temporary files however)<p>But shell scripting sucks. Javascript or Python is better suited for handling json and things like that. That&#x27;s what is being called codemode.<p>Ok so.. it makes a lot of sense to integrate agents and programming languages. But right now, harnesses are more or less interchangeable and you can hop to another one very quickly. The more coupling between all those moving parts, the hard will lock-in hit. (just picture the mess that is Claude Code having a severe lock in on the ecosystem)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>CuriouslyC</em>:</p>
+<blockquote>A little nit here, bash isn&#x27;t the most elegant language, but shell languages have a very nice feature that makes them easier for Agents to write: they&#x27;re executed left to right, in the same order the tokens are generated. Python&#x2F;Javascript can execute out of token order (e.g. foo(bar(baz(bak(bat))))), which is more error prone. Additionally, shell is very terse and designed for duct-taping things together.<p>I think something like nushell is probably a better direction than trying to use python&#x2F;javascript as a shell.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>nextaccountic</em>:</p>
+<blockquote>Maybe shell scripting doesn&#x27;t suck (for agents). It sucks for people because it&#x27;s very error prone (even though it&#x27;s my favorite language actually), and my guess is that something like Typescript will measurably decrease tool call error rate just because the compiler can catch type errors etc. But, maybe bash is so &quot;in distribution&quot; that this doesn&#x27;t matter</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>lukebuehler</em>:</p>
+<blockquote>I agree. Harnesses are quickly becoming the next systems programming frontier. The OS analogy is apt and often made--just like browsers have been compared to becoming &quot;platforms&quot; and &quot;OSes&quot;. Another analogy that is obvious is threads&#x2F;processes and agents and sub-agents: all the concurrency, shared resource  access, cooperative multitasking, etc problems are emerging again.<p>It will take some time to shake out, but lots of old ideas are new again. Personally, I&#x27;m mining lisp machines, homoiconicity, actor models, and other ideas for my harness designs.</blockquote>
+<p>↳ reply 3 — <em>v9v</em>:</p>
+<blockquote>&gt; Maybe the answer is to partner LLMs with Common Lisp<p>Autolith (<a href="https:&#x2F;&#x2F;autolith.rocks&#x2F;" rel="nofollow">https:&#x2F;&#x2F;autolith.rocks&#x2F;</a>) and some other CL-based harnesses allow the LLM to modify their own harness within the session.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>skybrian</em>:</p>
+<blockquote>This seems to come down to object model and tooling differences between sandboxed JavaScript and sandboxed Unix. You can make Unix commands do whatever you like, including special commands to send things back to the coding agent. But the output of a Unix command is arbitrary text (by default) and the AI will have to pipe things into some other command when there’s a lot of output. In the coding harness I use, I see OpenAI’s LLMs writing a lot of pipelines, often processing the output with python. Also the whole thing needs to run in a VM.<p>A JavaScript sandbox works somewhat differently since the output is an <i>object</i>. Tools are functions that naturally return objects. Composing functions and async calls work differently. If a function returns a very large object, the coding harness could be smarter about presenting the result to the LLM. Maybe JacaScript works better than bash for calling mcp APIs?<p>But you can have both! The LLM can get direct access to a JavaScript sandbox, which in turn provides an API to access a Linux sandbox. This seems to be what pi is doing with code mode?</blockquote>
+<p><strong>Top #3</strong> — <em>ohgodhelpplease</em>:</p>
+<blockquote>If you&#x27;re like me and you&#x27;re still wondering what &quot;codemode&quot; is after reading the article and comments:<p>It&#x27;s giving the harness a small js sandbox to compose tool calls and manipulate the data they return before reading it into context.</blockquote>
+<blockquote>
+<p>↳ reply — <em>imtringued</em>:</p>
+<blockquote>Yes codemode is just replacing bash with sandboxed JavaScript.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3489,205 +3779,6 @@ what was assumed to be a lack of effort, laziness and&#x2F;or defiance.<p>This i
 <p>↳ reply 2 — <em>zug_zug</em>:</p>
 <blockquote>Seems like a character attack that has no bearing on the question of whether external safety intervention is necessary</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Competitive Programmer's Handbook (2018) [pdf]</title>
-      <link>https://cses.fi/book/book.pdf</link>
-      <guid isPermaLink="false">hn3-49944049</guid>
-      <pubDate>Sat, 03 Oct 2026 13:24:01 +0000</pubDate>
-      <description>134 points, 29 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://cses.fi/book/book.pdf"><strong>→ Article</strong></a> <small>(cses.fi)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49944049">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 29 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dang</em>:</p>
-<blockquote>Related. Others?<p><i>Competitive Programmer&#x27;s Handbook (2017) [pdf]</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=17605395">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=17605395</a> - July 2018 (14 comments)<p><i>Competitive Programmer&#x27;s Handbook (2017) [pdf]</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=16952222">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=16952222</a> - April 2018 (121 comments)<p><i>A Competitive Programmer&#x27;s Handbook</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=14115826">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=14115826</a> - April 2017 (157 comments)<p><i>Competitive programmers handbook</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=13762408">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=13762408</a> - March 2017 (2 comments)</blockquote>
-<p><strong>Top #2</strong> — <em>xendo</em>:</p>
-<blockquote>This one is quite difficult, it sacrifices some readability for cleverness and conciseness. I find Algorithmic Thinking by Zingaro much more approachable but almost as dense.</blockquote>
-<blockquote>
-<p>↳ reply — <em>gwbas1c</em>:</p>
-<blockquote>I think if you always follow the same abbreviations, they&#x27;ll be readable to you.<p>Remember, these are throwaway programs; not something that you need to worry about someone else maintaining, or something you need to worry about opening up 5 years later.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>sashank_1509</em>:</p>
-<blockquote>In the past this book was interesting since getting good at it did somewhat help you become a better programmer. At the very least, your typing and ability to write a first implementation with fewer bugs improved as you practiced competitive programming, to some extent even your ability to problem solve and come up with good architectures improved.<p>That’s all out of the window now. If we are really in “do we even read the code?” territory, then this is just a hobby to do for fun, and doesn’t matter for any real world work. But even if we read the code, but most code is written by prompting and iterating with agents, I don’t know if this will be helpful at all.</blockquote>
-<blockquote>
-<p>↳ reply — <em>tudorconstantin</em>:</p>
-<blockquote>In the past few months, all of the technical interviews I had involved some form of live coding exercises. Some with hard leetcode level problems even though the positions I interview for are backend&#x2F;fullstack web engineering, not some kind of high performance algorithms enhancements and implementation jobs (like HFT trading or low level libraries).
-I encountered this so often nowadays that I am now allocating a few hours per week for algo problem solving to keep my coding skills polished because the AI is writing my code in my day to day job also</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Infidel goes wild</title>
-      <link>https://blog.zarfhome.com/2026/10/infidel-goes-wild</link>
-      <guid isPermaLink="false">hn3-49943637</guid>
-      <pubDate>Sat, 03 Oct 2026 12:19:40 +0000</pubDate>
-      <description>164 points, 33 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.zarfhome.com/2026/10/infidel-goes-wild"><strong>→ Article</strong></a> <small>(blog.zarfhome.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49943637">→ HN comments</a> &nbsp;·&nbsp; 164 points &nbsp;·&nbsp; 33 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>kqr</em>:</p>
-<blockquote>Someone commented that it&#x27;s fun to see Zarf is still around, so I want to take the opportunity to say that the entire community around text adventures is likewise still thriving, most visibly on the IntFiction.org forums.<p>People seem to look at text adventures as relics of a specific era, and it&#x27;s true that it&#x27;s hard to make money off of them these days, but there are several high-quality releases per year, and the quality seems to only go up. These games are often playable for free, because they&#x27;re released for competitions that stipulate the submission must be free.<p>-----<p>It can be a little hard to get into text adventures, because the parser interface is designed to accept inputs according to a specific convention (all three of &quot;cut tapestry&quot;, &quot;cut the tapestry&quot;, &quot;look behind tapestry. cut it.&quot; would work, but it&#x27;s not a guarantee &quot;slice tapestry&quot; would, and almost never would &quot;cut hanging fabric&quot; work).<p><i>This convention must be learned</i>. Despite the marketing in the 1980&#x27;s, it does not come naturally to people. Learning that convention means forcing yourself through a few games. But once you have learned that convention, an ocean of games open up to be played, many of them very enjoyable. I highly recommend taking the time to grind through a few games to get familiar with the convention.<p>I recommend not starting with the old classics because they were in part made to be frustrating and difficult and played over a long time. Instead, look at modern text adventures that follow more recent advances in game design. A good source is the Interactive Fiction Database, with e.g. a search like this: <a href="https:&#x2F;&#x2F;ifdb.org&#x2F;search?searchfor=tag%3AParser+published%3A2005-2026+%23reviews%3A8-+rating%3A4-&amp;searchgo=Search+Games" rel="nofollow">https:&#x2F;&#x2F;ifdb.org&#x2F;search?searchfor=tag%3AParser+published%3A2...</a><p>-----<p>Text adventures are also a nice way to dip one&#x27;s toes into game development. They force the developer to think about game design without having to spend time or money on graphics or music.<p>We are spoiled choice when it comes to development systems for text adventures these days. Most popular development systems consist of two parts: programming language, and separately, standard library. The library half contains generic definitions of things like rooms, scenery items that cannot be picked up, clothing that can be worn, animals that can be interacted with but not talked to, etc. (The exception is perhaps Inform 7, which tightly couples its compiler to the standard library. In the case of the others, one is fairly free to swap out the standard library for anything else.)<p>Examples include:<p>- Inform 7 lets developers write code in a weird subset of English. Some people swear by it, but people who come from programming backgrounds sometimes find it hard to learn. It does have a great IDE though, with automapping, an index of all objects, a &quot;Skein&quot; that records a game tree and lets one play it back and check for inconsistencies, etc.<p>- Inform 6 is a completely different language, reading more like object-oriented code. There is an alternative standard library called PunyInform which lets you make tiny games that run well on old hardware. (But which can also be used as a creative constraint.) It doesn&#x27;t have the same level of tooling, but it&#x27;s been around for a long time and is well supported on many platforms. The compiler is a simple, dependency-free C program one runs `cc -O2 -o inform *.c` to compile.<p>- Dialog is a newer language and library for making text adventures that&#x27;s stable, but receives frequent updates still. It&#x27;s inspired by the rules-based approach of Inform 7, but uses a more consistent, programmer-friendly syntax. It&#x27;s got a kick-ass debugger that reloads definitions live and supports a highly iterative development cycle. There&#x27;s also a recent, partly vibe-coded &quot;Dialog Tool&quot; made for it that gives it an Inform 7-like Skein functionality.<p>Then there are others I haven&#x27;t tried, like TADS, which, like Inform 6, is closer to traditional programming. The original Infocom games were written in Lisp macros that got translated into the Lisp-like ZIL language. These days, we have an extremely well-documented open source implementation of ZIL, too.<p>In case anyone is curious, I have written two articles introducing Inform 6 and Dialog respectively as general programming languages outside of their use for text adventures. (But this is not a recommended use case. Just a fun way to learn where the language ends and the standard library picks up.)<p>- <a href="https:&#x2F;&#x2F;entropicthoughts.com&#x2F;advent-of-code-on-z-machine" rel="nofollow">https:&#x2F;&#x2F;entropicthoughts.com&#x2F;advent-of-code-on-z-machine</a><p>- <a href="https:&#x2F;&#x2F;entropicthoughts.com&#x2F;advent-of-code-in-dialog" rel="nofollow">https:&#x2F;&#x2F;entropicthoughts.com&#x2F;advent-of-code-in-dialog</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>noelwelsh</em>:</p>
-<blockquote>&gt; I recommend not starting with the old classics because they were in part made to be frustrating and difficult and played over a long time. Instead, look at modern text adventures that follow more recent advances in game design.<p>A timely comment for me. I tried the linked Planetfall game, and gave up after a little bit of wandering around and nothing happening. Apparently I was supposed to just putter about for longer until the game really started with the emergency event, which got me thinking about game design in these early games.<p>Some of these games really liked to give you a combinatorial search problem dressed up as a game. In Colossal Cave Adventure, one of the first puzzles is to get a bird into a cage, so you can use the bird to scare away a snake. The bird is scared of a rod you find earlier, so you have to drop the rod in a different room before you get the bird (and then go back and get the rod). Now none of this makes any sense. The expectation is that you have nothing better to do then just try different combinations until you find what works. In a way it&#x27;s asking you to play a meta-game, rather than the game.<p>This reminds me of Sword of the Samurai [1], a Fighting Fantasy book I had the misfortune to read when I was a lot younger. It was fiendishly difficult if you actually played by the rules. Partly this is because the combat was really hard (see the linked review) but also because there were just so many choices where the book gives no hints what is a good choice to make. For example, right at the end there is fight between you and your buddies versus four baddies. Each one of your buddies can take out a specific baddy, but there is no indication which is which. So the book is really designed with the expectation that you&#x27;re constantly going to cheat. This meta-game of bookmarking each decision point and exploring the decision tree before committing is the actual game that the book is written for, and it has a lot of content to explore if you realise this is the game you should play.<p>So yeah, game design has come a long way :-)<p>[1]: <a href="https:&#x2F;&#x2F;fightingfantasy.net&#x2F;articles&#x2F;the-parallax-walkthroughs&#x2F;sword-of-the-samurai-the-parallax-walkthrough" rel="nofollow">https:&#x2F;&#x2F;fightingfantasy.net&#x2F;articles&#x2F;the-parallax-walkthroug...</a></blockquote>
-<p>↳ reply 2 — <em>AndrewStephens</em>:</p>
-<blockquote>Amazing comment. The only thing I’ll add is that the annual competition for interactive fiction is on now. It covers both choice-based game as well as traditional parser games.<p>Many of the games are quite short, perfect for dipping your toes in this kind of thing.<p><a href="https:&#x2F;&#x2F;ifcomp.org&#x2F;ballot#browse" rel="nofollow">https:&#x2F;&#x2F;ifcomp.org&#x2F;ballot#browse</a></blockquote>
-<p>↳ reply 3 — <em>sehugg</em>:</p>
-<blockquote>Dialog is pretty fun, kind of like a lite Prolog. It compiles to Z-code or its own VM (Å-machine) which can run on C-64 and Apple II.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>gertlex</em>:</p>
-<blockquote>I&#x27;ve been gradually reading the Digital Antiquarian&#x27;s series of posts [0] about history of computer games. Many of these feature links to try out these games (I haven&#x27;t yet gotten to games that were released after I was born)... with user setup required (take this disk image, run it in a Apple II emulator, etc). The history so far has heavily featured text based simple parser adventure games.<p><i>This</i> might be the way in which I finally try one of these games out. Though, I&#x27;m betting my attention won&#x27;t last long.<p>[0] <a href="https:&#x2F;&#x2F;www.filfre.net&#x2F;the-digital-antiquarian-e-book-library&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.filfre.net&#x2F;the-digital-antiquarian-e-book-librar...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>IceCreamJonsey</em>:</p>
-<blockquote>I think Zarf&#x27;s Visible Zorker implementation of Suspended is the best way to play it. He incorporated the map into the game itself, it&#x27;s so good.<p><a href="https:&#x2F;&#x2F;eblong.com&#x2F;infocom&#x2F;visi&#x2F;suspended&#x2F;" rel="nofollow">https:&#x2F;&#x2F;eblong.com&#x2F;infocom&#x2F;visi&#x2F;suspended&#x2F;</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>kwertyoowiyop</em>:</p>
-<blockquote>Let every 1980s game programmer who never shipped a memory-trashing bug raise their hand.<p>I thought so! :-)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>taneq</em>:</p>
-<blockquote>Back in 1999 I somehow managed to make my project du jour (a text editor) crash Windows 95 so hard that after rebooting it popped up a message telling you to reinstall Windows. :D</blockquote>
-<p>↳ reply 2 — <em>morkalork</em>:</p>
-<blockquote>I&#x27;m definitely guilty of writing some sick memory-trashjng bugs when I was first getting started as an intern. The best one had my team lead and a staff engineer puzzling over what the hell was going on. The second best one had someone hunting down my email and messaging me months after the internship ended just to cuss me out haha. Perhaps it is better I don&#x27;t work in C anymore.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Type Safe Generic Data Structures in C (2025)</title>
-      <link>https://danielchasehooper.com/posts/typechecked-generic-c-data-structures/</link>
-      <guid isPermaLink="false">hn3-49943479</guid>
-      <pubDate>Sat, 03 Oct 2026 11:57:20 +0000</pubDate>
-      <description>136 points, 105 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://danielchasehooper.com/posts/typechecked-generic-c-data-structures/"><strong>→ Article</strong></a> <small>(danielchasehooper.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49943479">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 105 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>lor_louis</em>:</p>
-<blockquote>I wrote a summarizing article on type safe container types a while back, but
-with some C23 specific changes and a few tweaks to work better for complex types.<p><a href="https:&#x2F;&#x2F;louissven.xyz&#x2F;article&#x2F;how_I_do_container_types_in_C.md" rel="nofollow">https:&#x2F;&#x2F;louissven.xyz&#x2F;article&#x2F;how_I_do_container_types_in_C....</a><p>Feel free to flag&#x2F;delete if this isn&#x27;t the place.</blockquote>
-<blockquote>
-<p>↳ reply — <em>rramadass</em>:</p>
-<blockquote>Thanks for sharing.<p>It is really nice that you studied both Martin Uecker and Daniel Hooper&#x27;s techniques and tweaked them to suit your ideas&#x2F;taste.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>tniemi</em>:</p>
-<blockquote>That `(1 ? (item) : (list)-&gt;payload)` was a neat trick. It gets optimized away, but the type comparison happens before that.<p>Still feels a bit like a party trick, but if it works...</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>JdeBP</em>:</p>
-<blockquote>It&#x27;s somewhat of a forced trick nowadays, I think.<p>I actually thought from the title before I read the article that it was going to use _Generic, as in something like _Generic((item),__typeof__((list)-&gt;payload):...) .</blockquote>
-<p>↳ reply 2 — <em>Xirdus</em>:</p>
-<blockquote>Expressions that compile but never evaluate are bread and butter in C++ template metaprogramming.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>dang</em>:</p>
-<blockquote>Related. Others?<p><i>I write type-safe generic data structures in C</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=44425461">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=44425461</a> - June 2025 (182 comments)<p><i>Type-safe generic data structures in C</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=26735655">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=26735655</a> - April 2021 (52 comments)</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Escalation of War in Ethiopia</title>
-      <link>https://www.africanistperspective.com/p/on-the-escalation-of-war-in-ethiopia</link>
-      <guid isPermaLink="false">hn3-49943451</guid>
-      <pubDate>Sat, 03 Oct 2026 11:54:24 +0000</pubDate>
-      <description>138 points, 149 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.africanistperspective.com/p/on-the-escalation-of-war-in-ethiopia"><strong>→ Article</strong></a> <small>(africanistperspective.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49943451">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 149 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>csense</em>:</p>
-<blockquote>Interestingly, Ethiopia wasn&#x27;t always poor and backward.  Back in the classical era, Ethiopia (then known as Axum or Aksum) was a major power [1].<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kingdom_of_Aksum" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kingdom_of_Aksum</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andruby</em>:</p>
-<blockquote>Civilizations flourish and falter. Mesopotamia, Babylonia, Egyptians, Romans,   …<p>Given (enough) time, it’ll also happen to the ones at the peak now.</blockquote>
-<p>↳ reply 2 — <em>miohtama</em>:</p>
-<blockquote>Same is for Songhai empire, a great power most Western people have never heard of<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Songhai_Empire" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Songhai_Empire</a></blockquote>
-<p>↳ reply 3 — <em>Merhawie</em>:</p>
-<blockquote>Aksum ≠ Ethiopia. Aksum was a major power of its time, but the Ethiopia of today is very different.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>macleginn</em>:</p>
-<blockquote>I am glad that this topic gets more attention, but the article itself doesn&#x27;t provide any real analysis and could use some proof-reading. In its current shape, it&#x27;s borderline engagement farming.</blockquote>
-<p><strong>Top #3</strong> — <em>jt2190</em>:</p>
-<blockquote>Wars are expensive, and the money has to come from somewhere:<p>&gt; Lots of countries — including Egypt (the Nile&#x2F;wider Red Sea supremacy), Eritrea (Ethiopia’s desire for access to the sea), Sudan (Ethiopian support for the RSF), Somalia (historical enmity&#x2F;Ethiopian support for Somaliland), and Saudi Arabia (as benefactor of Egypt&#x2F;Sudan&#x2F;Eritrea axis) — have good reasons to keep Addis Ababa weak and preoccupied with unending domestic wars. These dynamics, coupled with the geography of war in Ethiopia mean that Addis Ababa will struggle to keep arms and fighters from easily moving across its borders with Sudan and Eritrea.<p>&gt; On its part, the Ethiopian state will likely continue to enjoy support from the United Arab Emirates; and maintain the capacity to produce the weapons needed to keep rebels at bay. Ominously, divisions among elites in Tigray and other regions mean that the rebellion may not clear the threshold needed to incentivize a quick resolution either militarily or at the negotiating table. Therefore, slow-burning, but still catastrophically deadly conflicts may be on the cards.<p>&gt; …<p>&gt; Notably, a prolonged conflict will likely also be significantly civilianized. Careful to avoid being overstretched, the Ethiopian state may decide to deputize regional militias and other violence entrepreneurs in its fights against subnational armed groups. To this end, it will lean heavily on divisions across armed groups and within the regional states that have witnessed rebellions.<p>Part of a unifying the nation will be convincing these players that they will do better with a peaceful, stable Ethiopia.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Aleph Alpha Kolibri: How the sovereign German LLM works</title>
-      <link>https://tej.as/blog/aleph-alpha-kolibri</link>
-      <guid isPermaLink="false">hn3-49943034</guid>
-      <pubDate>Sat, 03 Oct 2026 10:43:51 +0000</pubDate>
-      <description>408 points, 11 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://tej.as/blog/aleph-alpha-kolibri"><strong>→ Article</strong></a> <small>(tej.as)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49943034">→ HN comments</a> &nbsp;·&nbsp; 408 points &nbsp;·&nbsp; 11 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dang</em>:</p>
-<blockquote>We&#x27;ve merged (most of) the comments into this thread, which is currently on the frontpage:<p><i>Kolibri: A Sovereign Open-Weight Model</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49942706">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49942706</a> - Oct 2026 (46 comments)</blockquote>
-<p><strong>Top #2</strong> — <em>driverdan</em>:</p>
-<blockquote>IMO the announcement is better <a href="https:&#x2F;&#x2F;aleph-alpha.com&#x2F;en&#x2F;blog&#x2F;kolibri-has-landed-a-sovereign-open-weight-model&#x2F;" rel="nofollow">https:&#x2F;&#x2F;aleph-alpha.com&#x2F;en&#x2F;blog&#x2F;kolibri-has-landed-a-soverei...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dang</em>:</p>
-<blockquote>It&#x27;s here: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49942706">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49942706</a>. I&#x27;m currently merging the threads.</blockquote>
-<p>↳ reply 2 — <em>rpdillon</em>:</p>
-<blockquote>Agree, and both are on the front page. Also, Show HN is usually for your own project, but this appears to be a blog post about someone else&#x27;s project (albeit &quot;a good friend&quot;).</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>wingman-jr</em>:</p>
-<blockquote>While it&#x27;s not perhaps clear to me that this is a true Show HN, I enjoyed the writeup and it&#x27;s good to see our German colleagues across the pond taking a good shot at this. I also appreciated the brief description on the Merlin-Arthur protocol - seems like a clever way to try to tackle the &quot;I don&#x27;t know&quot; problem.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Kolibri: A Sovereign Open-Weight Model</title>
-      <link>https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/</link>
-      <guid isPermaLink="false">hn3-49942706</guid>
-      <pubDate>Sat, 03 Oct 2026 09:36:04 +0000</pubDate>
-      <description>399 points, 254 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/"><strong>→ Article</strong></a> <small>(aleph-alpha.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49942706">→ HN comments</a> &nbsp;·&nbsp; 399 points &nbsp;·&nbsp; 254 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>kkm</em>:</p>
-<blockquote>Thank you Aleph Alpha team for making it open.<p>We as many other’s were curious to try and benchmark it.<p>On that note, as a small gesture of support, we’ve hosted and made Kolibri-1 free for anyone to try for the next few days.<p>No GPU. No setup. Just try it.
-tesseracted.com&#x2F;kolibri-1-chat&#x2F;<p><a href="https:&#x2F;&#x2F;x.com&#x2F;konarkmodi&#x2F;status&#x2F;2106373678589960260?s=46" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;konarkmodi&#x2F;status&#x2F;2106373678589960260?s=46</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>trvz</em>:</p>
-<blockquote>Friendly note: your website&#x27;s font at its current size is pretty bad on a non-retina display before zooming in.</blockquote>
-<p>↳ reply 2 — <em>moritzwarhier</em>:</p>
-<blockquote>It&#x27;s been surprisingly good at the things I threw at it (history, culture and conversing, web search)!</blockquote>
-<p>↳ reply 3 — <em>tharkun__</em>:</p>
-<blockquote>Not impressed. I asked it how to run itself (giving it the Huggingface link) on limited RAM i.e. less than stated as needed and on llama.cpp and true to what we read about &quot;it will tell you when it doesn&#x27;t know&quot; that&#x27;s almost all I got: It doesn&#x27;t know, it told me I should go click on tabs in the Huggingface interface for more information. This was with extended thinking on.<p>No, I&#x27;m not gonna do that, I asked <i>you</i> to do that Mr Kolibri.<p>Also feedback on that interface: It&#x27;s very annoying while answering. It almost immediately shows a list of sources, which on my screen fill up all the space and then when it starts answering it keeps those in view but also scrolls down the tiny part of actual text its outputting but I can&#x27;t scroll up to start reading from the top, coz it keeps scrolling. I have to wait until it&#x27;s completely done generating its output.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>andai</em>:</p>
-<blockquote>&gt;We trained Kolibri with abstention data and with our Merlin-Arthur protocol. As a result, it is trained to say &quot;I don&#x27;t know&quot; when the answer isn&#x27;t in the context.<p><a href="https:&#x2F;&#x2F;aleph-alpha.com&#x2F;en&#x2F;blog&#x2F;bounding-hallucinations-merlin-arthur-protocols-for-mutual-information-bounds-in-language-models&#x2F;" rel="nofollow">https:&#x2F;&#x2F;aleph-alpha.com&#x2F;en&#x2F;blog&#x2F;bounding-hallucinations-merl...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>swozey</em>:</p>
-<blockquote>Gemini gives me a lot of hard-no responses, and I think to myself, &quot;well can you find out? what am i paying you for&quot; usually<p>Gemini: Here&#x27;s a list of links to check</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>amoshebb</em>:</p>
-<blockquote>Qwen3.8 27B beats Kolibri 79.9 vs 70.8 in German in Kolibri&#x27;s harness on Kolibri&#x27;s benchmark.<p>Also, once the Cohere takeover is complete will they still be able to use this &quot;sovereign&quot; claim despite being 90% owned and 100% operated out of Toronto?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andy99</em>:</p>
-<blockquote>Yeah I think a model has to be actually good to claim sovereignty, as in competitive enough that people want to use it. Chinese and US LLMs are the only ones in these categories right now. Mistral and Cohere have the same problem, yes they are made in different countries but they are not competitive. They (France and Canada in this case) would be better off just downloading Chinese LLMs, even if they get cut off they still have the weights.<p>I’m most familiar with Canada, where sovereign is usually just an excuse to overpay someone connected for an inferior product with no strategic value.</blockquote>
-<p>↳ reply 2 — <em>Loquebantur</em>:</p>
-<blockquote>Well, it&#x27;s still independent from the USA and China.<p>The main problems with big corp AI are due to control of access in the first place and control of what they output.<p>When you make your industry reliant on such choke points, you render yourself the opposite of &quot;sovereign&quot; for sure. Having multiple independent suppliers at least mediates that.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>An Update on Orion for Linux and Windows</title>
-      <link>https://blog.kagi.com/update-orion-linux-windows</link>
-      <guid isPermaLink="false">hn3-49941447</guid>
-      <pubDate>Sat, 03 Oct 2026 04:53:57 +0000</pubDate>
-      <description>144 points, 80 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.kagi.com/update-orion-linux-windows"><strong>→ Article</strong></a> <small>(blog.kagi.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49941447">→ HN comments</a> &nbsp;·&nbsp; 144 points &nbsp;·&nbsp; 80 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>RandomGerm4n</em>:</p>
-<blockquote>I&#x27;ve never understood what niche Orion is supposed to fill. People who value privacy would be more likely to use an open-source browser. Firefox and Brave already serve that purpose. Maybe it&#x27;s less important to Mac users, but on Linux, a proprietary browser is a major deal-breaker for most people. Plus, it&#x27;s less convenient if the browser isn&#x27;t simply included in the repository as a result. Orion should have been developed as open source from the start, with community involvement. Kagi can still benefit from this, though, by serving as the default search engine in exchange for funding the development, and by having the Kagi Assistant directly integrated into the platform.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>shakow</em>:</p>
-<blockquote>&gt; I&#x27;ve never understood what niche Orion is supposed to fill<p>For me, as battery-efficient as Safari, but with better chrome and access to ffox extensions ecosystem.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jorvi</em>:</p>
-<blockquote>Chromium-based browsers actually have had better battery life than Safari for 2 years (!) now[0]. And perform better. Which is a real egg on Apple&#x27;s face.<p>The only reason to use Safari is because you&#x27;re knee-deep in the Apple ecosystem, otherwise something like Chrome, Edge or Brave just makes more sense.<p>[0]<a href="https:&#x2F;&#x2F;birchtree.me&#x2F;blog&#x2F;everyone-says-chrome-devastates-mac-battery-life-but-does-it-i-tested-for-36-hours-to-find-out&#x2F;" rel="nofollow">https:&#x2F;&#x2F;birchtree.me&#x2F;blog&#x2F;everyone-says-chrome-devastates-ma...</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>sosborn</em>:</p>
-<blockquote>&gt; But this is not to tell every Safari user that they are irrational or wrong in any way for using Safari over Chrome (or any other browser, for that matter). Does Safari use more battery than Chrome? In these tasks it sure seems to, but it’s not by a massive amount, potentially costing you about 0.5% of your battery life every hour. Is that enough for you to switch browsers if you prefer Safari’s UI or reliability or privacy options? I suspect not.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sestep</em>:</p>
-<blockquote>For me the answer is quite simple: it&#x27;s the only browser on iOS that lets you run Chrome extensions and Firefox add-ons.</blockquote>
-<p>↳ reply 3 — <em>ibejoeb</em>:</p>
-<blockquote>In addition to what other have said about extensions, ad blocking, no telemetry,  and some nice features like tab management, it works in the Apple ecosystem. If you use a mac and an iphone, you get the native sync services for history, bookmarks, passwords, etc. Makes sense that they&#x27;re focusing on that.<p>Developing internally initially, as opposed to making it open source, was probably the only practical way for a small team with a specific goal to get there. I don&#x27;t see any problem turning it over to community development for secondary platforms. If it gets adoption, great. If it fizzles out on linux and windows, nothing is lost.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>petepete</em>:</p>
-<blockquote>So as a non-Apple-using Kagi subscriber since Beta, I kind of wish they&#x27;d just concentrate on search - the thing I&#x27;m paying for.<p>Yes, it&#x27;s good, and I&#x27;ll keep using it for the foreseeable future, but it&#x27;s not an unassailable lead.</blockquote>
-<p><strong>Top #3</strong> — <em>WhyNotHugo</em>:</p>
-<blockquote>It&#x27;s ironic (and sad) that they&#x27;d both abandon it and open source it at the same time — open sourcing a browser is key step in expecting it to gain any adoption on Linux, but abandoning it kinda kills motivation for anyone to contribute.<p>As other said: the target audience of the Linux version was never clear.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
