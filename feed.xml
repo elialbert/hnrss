@@ -4,7 +4,141 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 08 Oct 2026 08:45:36 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 16:19:55 +0000</lastBuildDate>
+    <item>
+      <title>OpenAI Withdraws 3 Math Papers</title>
+      <link>https://github.com/openai/math/blob/main/history.md</link>
+      <guid isPermaLink="false">hn3-50003107</guid>
+      <pubDate>Thu, 08 Oct 2026 08:08:37 +0000</pubDate>
+      <description>333 points, 316 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/openai/math/blob/main/history.md"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50003107">→ HN comments</a> &nbsp;·&nbsp; 333 points &nbsp;·&nbsp; 316 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>chubot</em>:</p>
+<blockquote>So were the 3 withdrawn proofs the ones without Lean verification?<p>If so, why did they mix proofs that were verified with Lean, and proofs in natural language?<p>I was wondering that while reading Aaronson&#x27;s blog:<p><a href="https:&#x2F;&#x2F;scottaaronson.blog&#x2F;?p=10169" rel="nofollow">https:&#x2F;&#x2F;scottaaronson.blog&#x2F;?p=10169</a><p><i>Or at least, we’re pretty sure that it’s a proof! There’s a Lean certificate, as there are for some of the other 372 breakthrough results (not all of them). But it also appears that no human has understood just about any of these proofs yet</i><p>It seems that the obvious thing to do would be to release in TWO parts: the ones that are verified, and the ones that might have some good ideas but also might have some mistakes.  Presumably the latter would be much more epxensive for humans to verify.</blockquote>
+<p><strong>Top #2</strong> — <em>ijustlovemath</em>:</p>
+<blockquote>I think that on closer inspection, a lot of these fully AI generated proofs will fall apart. Even in Lean, you can build theories which compile but nonetheless state something different than what you actually intend. It&#x27;s just that the volume of proof is so staggeringly large that it will probably take years before we find the issues, a la abc conjecture</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>returningfory2</em>:</p>
+<blockquote>I feel this comment is based on a misunderstanding of how Lean works. In Lean you don&#x27;t need to inspect the proof. There is no &quot;closer inspection&quot;. All the human needs to verify is that the statement of the theorem is translated correctly from natural language to Lean. That usually covers a very small surface of the Lean code.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>persedes</em>:</p>
+<blockquote><p><pre><code>  &gt; All the human needs to verify is that the statement of the theorem is translated correctly from natural language to Lean. That usually covers a very small surface of the Lean code.
+</code></pre>
+That&#x27;s exactly what the navier stokes paper posted yesterday pointed out where the LLM bends the Lean code to make it &quot;compile&quot;, because the NL might be wrong to begin with or because it missed a detail:<p><a href="https:&#x2F;&#x2F;arxiv.org&#x2F;html&#x2F;2610.08144v1#S2" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;html&#x2F;2610.08144v1#S2</a><p>For complex &#x2F; tedious proofs I can easily see how small details like this can lead to a valid lean proof (or valid &quot;code&quot;), but missing the important details that got lost.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>AnotherGoodName</em>:</p>
+<blockquote>Yeah the one i glanced was the ‘matrix multiplication is nlogn^0.9999999 for many more 9s’ therefore less than nlogn<p>The proof explicitly hand-waves some complexity by assuming lookup tables to avoid some calculations which isn’t actually possible since it’s dealing with such large numbers and it only works on incredibly large numbers.<p>The complexity being so close to nlogn and the handwaving by assuming lookup tables in parts should be a really really obvious smell. At the very least worthy of holding back from the broader announcement.<p>It us proven in lean as-is with these assumptions and it’s not one of the ones retracted but those assumptions are doing some heavy lifting. I think it’s worth adding back in those ‘by using a lookup tables for x’ complexities and seeing if we really are below nlogn on that one.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ThePhysicist</em>:</p>
+<blockquote>I find the paper about beating O(n log n) for integer multiplication also quite fishy, not sure but it seems like too good to be true, I feel like there must be a subtle flaw in that. Maybe that&#x27;s just me hating these small numbers in the paper, but it seems wrong, unnatural even! I would be similarly skeptical about a physics paper that claims to be able to exceed the speed of light by a tiny fraction. There&#x27;s no reason n log n is the natural limit here but I see a few good intuitions so having something else that can&#x27;t be represented in an elegant form seem very &quot;unmathematical&quot; to me.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>AnotherGoodName</em>:</p>
+<blockquote>Yes i talked about that in a different thread here. It has fishy ‘assume we have a lookup table for x’ assumptions in it. These are relevant to the main body of the loop. The numbers it deals with are outside of any possible lookup table capability (not enough atoms in the universe for such a table).<p>The lean proof uses these assume ‘a lookup table’ assumptions. The paper smells with the nlogn^0.99999999 (many more nines actually) and unbelievably close to nlogn statement and then the literal talk of lookup tables pushes it over the edge clearly for me.<p>Maths can generate weird numbers out of nowhere but it really really looks like an nlogn result with some tricks to get past leen to me</blockquote>
+<p>↳ reply 2 — <em>mtlmtlmtlmtl</em>:</p>
+<blockquote>I&#x27;m not familiar with the paper you mention. But it&#x27;s also worth pointing out that afaik the n log n algorithm itself isn&#x27;t particularly practical. It&#x27;s one of these &quot;galactic algorithms&quot; that is asymptotically more optimal, but is so complicated that it&#x27;s only a real improvement for comically large n. And that&#x27;s without even considering the mental overhead of implementing and maintaining the thing.<p>Of course, that&#x27;s not to say the research is necessarily useless. It&#x27;s still theoretically interesting to find &quot;better&quot; algorithms if only to shed some light on lower bounds, and so on. And who knows, maybe the line of research could lead to more practical algorithms later on.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The people holding up the internet</title>
+      <link>https://sheets.works/data-viz/holding-up-the-internet</link>
+      <guid isPermaLink="false">hn3-50002494</guid>
+      <pubDate>Thu, 08 Oct 2026 06:41:35 +0000</pubDate>
+      <description>151 points, 61 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://sheets.works/data-viz/holding-up-the-internet"><strong>→ Article</strong></a> <small>(sheets.works)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50002494">→ HN comments</a> &nbsp;·&nbsp; 151 points &nbsp;·&nbsp; 61 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>brynet</em>:</p>
+<blockquote>With my OpenBSD developer hat on, getting new hardware in the hands of developers is really important, many of us are hacking on 5-10 year old thinkpads that need replacing.<p><a href="https:&#x2F;&#x2F;www.openbsd.org&#x2F;want.html" rel="nofollow">https:&#x2F;&#x2F;www.openbsd.org&#x2F;want.html</a><p>The OpenBSD foundation is ~23% away from its fundraising goal for 2026, which helps support developer hackathons and project infrastructure, etc.<p><a href="https:&#x2F;&#x2F;www.openbsdfoundation.org&#x2F;campaign2026.html" rel="nofollow">https:&#x2F;&#x2F;www.openbsdfoundation.org&#x2F;campaign2026.html</a><p>Shamelessly, if I may add a personal plea, in addition to funding the open source projects you use, if you can, please do consider directly supporting individual contributors&#x2F;developers personally who work on those projects, many are volunteers and even a small monthly contribution could mean the difference.<p><a href="https:&#x2F;&#x2F;brynet.ca&#x2F;wallofpizza.html" rel="nofollow">https:&#x2F;&#x2F;brynet.ca&#x2F;wallofpizza.html</a><p><a href="https:&#x2F;&#x2F;dir.floss.fund&#x2F;view&#x2F;@brynet.ca" rel="nofollow">https:&#x2F;&#x2F;dir.floss.fund&#x2F;view&#x2F;@brynet.ca</a></blockquote>
+<p><strong>Top #2</strong> — <em>smashed</em>:</p>
+<blockquote>I&#x27;m not sure I like this form of content. It&#x27;s hard to read and confusing on mobile for little gains. The article seemed interesting though.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>rpozarickij</em>:</p>
+<blockquote>Out of curiosity I asked Codex to build a version of this article that can be read&#x2F;scrolled in a normal way while preserving the original graphics&#x2F;text. Codex built it in about 10min with GPT-6.1 Sol High (consumed 8% of my 5h quota). It even thought of adding a dark&#x2F;light mode switcher which is useful too. It still needs a few prompts of minor polishing, but already more readable to me.</blockquote>
+<p>↳ reply 2 — <em>aembleton</em>:</p>
+<blockquote>If you use Reader View in your browser, its much easier to read.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>beej71</em>:</p>
+<blockquote>Depressingly, one has to wonder what the replacement cost is in hours and tokens. For most companies, hitting 85% as good as the original is plenty.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Classic PC demoscene productions running natively in the browser</title>
+      <link>https://treylorswift.github.io/demoscene-recomp/web/</link>
+      <guid isPermaLink="false">hn3-50002426</guid>
+      <pubDate>Thu, 08 Oct 2026 06:29:25 +0000</pubDate>
+      <description>140 points, 130 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://treylorswift.github.io/demoscene-recomp/web/"><strong>→ Article</strong></a> <small>(treylorswift.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50002426">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 130 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>velo_aprx</em>:</p>
+<blockquote>I understand that it might be nice to be able to play old demos in your browser, and its fine, but...<p>Please keep AI away from the demoscene.<p>Ive been active in the demoscene for almost 30 years, its a big part of my life, and i am truly worried people using AI to build tools and code demos will destroy it by removing the very reason why its interesting. I want to be impressed by real peoples knowledge, skill and creativity. Not your ability to prompt.<p>Mostly, i hate the AI remaster option. It was never intended to look or sound like that.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>freecodeio</em>:</p>
+<blockquote>it&#x27;s as if someone took the &quot;everything you touch turns to gold&quot; and replaced gold with sh*t and said &quot;yeah this is a good power to have&quot;</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>doubled112</em>:</p>
+<blockquote>The reverse Midas touch.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ashleyn</em>:</p>
+<blockquote>Some might call it, the Mierdas touch.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dr_win</em>:</p>
+<blockquote>It&#x27;s over. Move on. <a href="https:&#x2F;&#x2F;x.com&#x2F;kloss_xyz&#x2F;status&#x2F;2107696042053431360" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;kloss_xyz&#x2F;status&#x2F;2107696042053431360</a></blockquote>
+<p>↳ reply 3 — <em>myth_drannon</em>:</p>
+<blockquote>It was similar with GPUs and people got over it. It&#x27;s all about art and creativity whatever you are using shaders or AI prompts</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Retr0id</em>:</p>
+<blockquote>&gt; The demo is run on an x86 emulator that records every block of code the CPU actually executes, over the whole demo.<p>&gt; That recording is translated into C - the original instructions, one for one, with the exact cycle timing of the emulated machine.<p>What&#x27;s the advantage of this approach vs cycle-accurate emulation? (I&#x27;d guess it can go faster, due to compiler optimization?)<p>&gt; The result is checked against the emulator event for event: every interrupt, port access and frame at the same moment of emulated time.<p>It&#x27;s funny how LLMs leak their test procedure docs into user-facing output.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>vardump</em>:</p>
+<blockquote>Cycle accurate emulation helps little with this era PC demos, because back in 1993 PC hardware performance variation was already massive. From 386SX-16 to Pentium 66 MHz, that&#x27;s over 20x difference in performance.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>EvanAnderson</em>:</p>
+<blockquote>&gt; Cycle accurate emulation helps little with this era PC demos, because back in 1993 PC hardware performance variation was already massive.<p>Absolutely<p>&quot;How much of the sword emerged from the water&quot; in Second Reality was a good measurement of CPU speed and video card performance, for example.<p>I remember seeing stuff in demos on my friend&#x27;s Pentium Pro machine that I never saw on my 486SX-25 because routines ran faster and you could see more of the effect (since some demos were sync&#x27;d to the music and would move on irrespective of the progress of the effects). Heck-- just replacing my video card made a huge difference with some demos.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>rmnclmnt</em>:</p>
+<blockquote>&gt; It&#x27;s funny how LLMs leak their test procedure docs into user-facing output.<p>You have to constantly fight so hard to not get this. And for the past few months it seems most people do not even care to remove it and have proper user facing docs</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>futurecat</em>:</p>
+<blockquote>a couple of days ago I posted this: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49982323">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49982323</a><p>State of the Art was ported to the browser as well.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>“Math 2.0” will need to value mathematical progress more holistically</title>
+      <link>https://mathstodon.xyz/@tao/117395269325940185</link>
+      <guid isPermaLink="false">hn3-50002008</guid>
+      <pubDate>Thu, 08 Oct 2026 05:14:14 +0000</pubDate>
+      <description>511 points, 512 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mathstodon.xyz/@tao/117395269325940185"><strong>→ Article</strong></a> <small>(mathstodon.xyz)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50002008">→ HN comments</a> &nbsp;·&nbsp; 511 points &nbsp;·&nbsp; 512 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>loveparade</em>:</p>
+<blockquote>I&#x27;m a lot more skeptical. I&#x27;m not a mathematician, but from my use of LLMs a very clear pattern of what they are good and bad at has emerged. They are extremely good at combining large amounts of information, and it seems this is what the current AI results in mathematics are. There are so many subfieleds of math with ties to each other, so many papers and niche results, that no human could ever read, comprehend, connect and organize that information in their brains. Pretty much all of it was created by humans. And there is real value in doing this and creating new results from what we&#x27;ve already discovered.<p>But there also is another type of discovery that requires taking a step back and looking at the problem from a different angle. If you are an engineer, how often has an LLM told you (without you explicitly prompting for it): Wait, what you are doing here doesn&#x27;t really make sense, there exists a much more elegant abstraction that nobody has thought of, let&#x27;s remove all that code, let&#x27;s tackle the problem in a different way by thinking from first principles. Pretty much never. But in science a lot of the biggest discoveries have come from this kind of first principle thinking, questioning existing work and approaches and going <i>against</i> what already exists, not combining all existing data which is likely to be just a local optimum.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>fidotron</em>:</p>
+<blockquote>LLMs are inexplicably good at working within any tight feedback loop to coerce the desired solution. This is precisely why proof assistants + LLMs are non intuitively successful.<p>This is also why they&#x27;re so good at creating three.js or Blender work when the output is so easily constrained to &quot;Look exactly like that&quot;. I recently posted <a href="https:&#x2F;&#x2F;www.ambionix.com&#x2F;blog&#x2F;introducing-the-czp-1&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.ambionix.com&#x2F;blog&#x2F;introducing-the-czp-1&#x2F;</a> on here, and the audio engine in that was developed in that way.<p>It is true that it would be astounding to find if anyone has seen a LLM produce any useful generalization of anything resulting in a simplification. They seem to have a direct tendency to do the opposite. The brutal reality is humans have also undervalued this capability for a long time (I think the Poincare&#x2F;Hilbert debate is relevant) to the point we are also taught that generalizations are, generally, bad and wrong.</blockquote>
+<p>↳ reply 2 — <em>slibhb</em>:</p>
+<blockquote>&gt;  If you are an engineer, how often has an LLM told you (without you explicitly prompting for it): Wait, what you are doing here doesn&#x27;t really make sense, there exists a much more elegant abstraction that nobody has thought of, let&#x27;s remove all that code, let&#x27;s tackle the problem in a different way by thinking from first principles. Pretty much never.<p>You have to ask for this. As in &quot;I&#x27;m not sure about this approach due to X, Y, and Z. Can you think of something more elegant?&quot; It works!<p>But also, how many people actually need to do the kind of &quot;deep&quot; work you&#x27;re claiming LLMs can&#x27;t do? Most people aren&#x27;t contributing to the frontier of anything. I&#x27;m not.<p>Finally, I think you&#x27;re appealing to a fuzzy distinction. The difference between a &quot;genuinely new idea&quot; and an idea that &quot;combines existing ideas in a new way&quot; just isn&#x27;t very well defined. In retrospect, a lot of the most revolutionary idea look like a combination of many, smaller, prior ideas.</blockquote>
+<p>↳ reply 3 — <em>modeless</em>:</p>
+<blockquote>&gt; a very clear pattern of what they are good and bad at has emerged. They are extremely good at combining large amounts of information<p>This has not been a pattern at all. Many have <i>speculated</i> that they would be good at this, but in the past they actually weren&#x27;t! They were unable to synthesize their encyclopedic knowledge of everything into cross-disciplinary new discoveries, without explicit prompting about the kinds of knowledge to combine. They were <i>surprisingly</i> bad at this!<p>These math proofs are the first evidence I know of for LLMs actually taking advantage of the fact that they have more knowledge than any one human could have to combine multiple different directions in unprecedented ways to solve real problems. This is new, and exciting.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>shubhamjain</em>:</p>
+<blockquote>A very balanced perspective, and the concerns he raises are reasonable. He acknowledges that AI is going to transform mathematics, but simply dumping proofs on the math community and expecting others to do the grunt work of verifying, refining, and expanding on them is hardly a productive way to advance the field.<p>There seems to be more interest in hitting some arbitrary benchmark (we proved X unsolved problems) than in genuinely contributing to mathematics. But what else is to be expected? It&#x27;s become a maniacal race with too much money. Too much effort is being invested in proving that the exponential curve is still holding.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lenkite</em>:</p>
+<blockquote>&gt; but simply dumping proofs on the math community and expecting others to do the grunt work of verifying, refining, and expanding on them is hardly a productive way to advance the field.<p>I assume this will increase the job market for mathematicians though right ? Tens of thousands of dumped proofs will mean math majors will need to be hired for review.</blockquote>
+<p>↳ reply 2 — <em>kuboble</em>:</p>
+<blockquote>I wonder if top labs will soon abandon math progress like they did go and chess.<p>In example of go where I&#x27;m more familiar Google deep mind poured large resources to get a super human performance first, establish superiority and abandon it. The community then built their own tools starting from reproducing their papers.<p>I think similar thing might happen to math. Nobody outside of math cares too much about Hamiltonian cycles in some bizarre graphs or proving lower bounds on complexity of some problem.<p>Once those results stop being worthy of mainstream media attention, they will abandon math and the progress will be done by mathemicians guiding the models and the community will likely establish some new rules about what makes a valuable contribution. Merely solving not yet solved problem might not be it anymore.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>bsenftner</em>:</p>
+<blockquote>The future of &quot;math&quot; is not just solving, but communicating what was solved, and why that solving is important. &quot;Math&quot; as a discipline is only ever been half created, they abandoned explaining themselves like it was beneath them. Well, now in &quot;Math 1.0 finally whole&quot; they will be explaining what they did to the rest of us. If you can&#x27;t explain you are not really there.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>curt15</em>:</p>
+<blockquote>That&#x27;s what math has always been about, even if not everyone is necessarily as talented a communicator as someone like Thurston -- who was himself an exponent of computational tools in math research:<p>&gt;I think of mathematics as having a large component of psychology, because of its strong dependence on human minds. Dehumanized mathematics would be more like computer code, which is very different. Mathematical ideas, even simple ideas, are often hard to transplant from mind to mind....Translation in the direction conceptual -&gt; concrete and symbolic is much easier than translation in the reverse direction, and symbolic forms often replaces the conceptual forms of understanding....<p><a href="https:&#x2F;&#x2F;mathoverflow.net&#x2F;questions&#x2F;43690&#x2F;whats-a-mathematician-to-do" rel="nofollow">https:&#x2F;&#x2F;mathoverflow.net&#x2F;questions&#x2F;43690&#x2F;whats-a-mathematici...</a></blockquote>
+<p>↳ reply 2 — <em>mxkopy</em>:</p>
+<blockquote>This is an entitled take. The usefulness of a thing has nothing to do with how easily communicable it is. That is the whole premise of specialization and becoming an expert. People go in-depth on things so they can say “trust me on this” and so you don’t have to. You are advocating for a tyranny of the illiterate.<p>Also, this reads like you didn’t like math classes. That sucks, but it’s no basis for societal organization</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Margaret Hamilton has died</title>
       <link>https://news.mit.edu/2026/margaret-hamilton-computing-pioneer-dies-1007</link>
@@ -282,6 +416,43 @@ Reasoning trace: This is the classic pelican-on-bicycle SVG test.<p>Opus 5.5 had
 <p>↳ reply — <em>fransje26</em>:</p>
 <blockquote>It&#x27;s the &quot;intelligent UI&quot; you didn&#x27;t know you wanted..</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>In Vienna and Beijing, the first (thorium) nuclear clocks begin to tick</title>
+      <link>https://www.nytimes.com/2026/10/07/science/first-nuclear-clocks-thorium-229.html</link>
+      <guid isPermaLink="false">hn3-49996406</guid>
+      <pubDate>Wed, 07 Oct 2026 17:59:34 +0000</pubDate>
+      <description>147 points, 44 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.nytimes.com/2026/10/07/science/first-nuclear-clocks-thorium-229.html"><strong>→ Article</strong></a> <small>(nytimes.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49996406">→ HN comments</a> &nbsp;·&nbsp; 147 points &nbsp;·&nbsp; 44 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dgacmu</em>:</p>
+<blockquote>The actual journal article, since NYT didn&#x27;t bother linking to it: <a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41586-026-11084-4" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41586-026-11084-4</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>adrian_b</em>:</p>
+<blockquote>There are 2 Nature articles, for the 2 independent teams who have built such 
+nuclear clocks with thorium 229.<p>This is the other article, from the Chinese team:<p><a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41586-026-11122-1" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41586-026-11122-1</a><p>While both teams have used fluorite crystals doped with Th229, which was the most obvious choice for the active medium, they have used different kinds of optical frequency multipliers in order to generate the ultraviolet light required to probe the thorium nuclei.<p>For now, the frequency multiplication method used by the Chinese team is superior, allowing a greater output power, which ensures a better signal-to-noise ratio.<p>The team from Austria intends to use a better frequency multiplier in the future, to increase their output power, and they are evaluating several methods, one of which is the 4-wave mixing in cadmium vapor, already demonstrated by the Chinese team.</blockquote>
+<p>↳ reply 2 — <em>Havoc</em>:</p>
+<blockquote>It&#x27;s unfortunately not a case of bothering but rather intent: Keep the user on the site even at cost of quality</blockquote>
+<p>↳ reply 3 — <em>ourmandave</em>:</p>
+<blockquote><i>To address some of the most pressing open questions in fundamental physics, such as the origin and properties of dark matter...<p>Owing to unknown nuclear parameters, precise values of these sensitivity factors cannot at present be calculated, but it is predicted that they will exceed those of the most sensitive atomic clock transitions by several orders of magnitude.</i><p>So when you achieve FTL, the Vulcans show up.<p>Who (or what) shows up when you solve the riddle of dark matter?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>austin-cheney</em>:</p>
+<blockquote>According to Wikipedia thorium is probably created from neutron stars or supernovae making it one of the rarest elements in the galaxy. But, it’s quite abundant on Earth, maybe 3x as abundant as Uranium on earths crust. Because of this abundance it is, along with Radon, the primary constituent of earths natural background radiation.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>fnordpiglet</em>:</p>
+<blockquote>Iron is the last element that can form through a sustaining fusion process. All elements above iron are formed in super nova or neutron star collisions. Specifically gold and platinum are thought to be formed primarily in neutron star collisions<p>Reality is amazing!!</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fch42</em>:</p>
+<blockquote>While it&#x27;s correct that fusion stops producing energy once the fusion product is iron, it is not true that all elements beyond iron are only produced in cataclysmic events (supernovae &#x2F; neutron star collisions).<p>Stars can function as &quot;breeder reactors&quot;, where the natural
+flow of neutrons produced as intermediate &#x2F; side effect of the various fusion reactions going on in a later-stage-life star get absorbed by nuclei and then (by beta decay) produce beyond-iron elements. This is called the &quot;s-Process&quot; (slow), and responsible for a large range of elements into the Lanthanides or so. And stellar winds, or the planetary nebula stage at the end, will return some of this to the interstellar medium.<p>It&#x27;s correct that the heaviest &quot;naturally present&quot; elements require the so-called &quot;r-Process&quot;, heavy overabundance of neutrons &#x2F; extremely high neutron flow as in supernovae, or direct fusion of beyond-iron nuclei as in neutron star collisions.<p>There is rather active research happening here, both astronomical (trying to detect various nuclei from x ray spectroscopy of cataclysmic events) and theoretical (because r-Process cannot be simulated in labs since the neutron fluxes needed are not within our reach).<p>That said, it remains
+true that many &quot;transition groups&quot; elements are bred via s-Process in relatively-ordinary stars.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>fsh</em>:</p>
+<blockquote>The nuclear clock uses 229Th though which has an 8000 year half life and does not occur in nature at all.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>jhoho</em>:</p>
+<blockquote>Much better use than for toothpaste.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Doramad_Radioactive_Toothpaste" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Doramad_Radioactive_Toothpaste</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Docker Agent</title>
@@ -1479,6 +1650,34 @@ That <a href="https:&#x2F;&#x2F;api.openai.com&#x2F;v1&#x2F;decisions" rel="nofo
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Adobe Creative Suite Cleanroom Port to Rust</title>
+      <link>https://github.com/storytold/photocraft</link>
+      <guid isPermaLink="false">hn3-49981449</guid>
+      <pubDate>Tue, 06 Oct 2026 17:20:00 +0000</pubDate>
+      <description>126 points, 75 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/storytold/photocraft"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49981449">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 75 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Youden</em>:</p>
+<blockquote>Interesting but for photography at least, there&#x27;s a massive hole: RAW support. What they&#x27;ve implemented is very limited and basic, nothing like parity with Lightroom or Photoshop. Just try loading a RAW photo into Lightroom&#x2F;Photoshop and put the window next to Lightcraft&#x2F;Photocraft - the results are completely different and not in a good way. Lightcraft&#x27;s image looks like an amateur attempt at RAW processing from first principles, without any of the most basic colour profiles and adjustments that Lightroom applies. Photocraft doesn&#x27;t even offer RAW processing, it just dumps the raster straight in.<p>I&#x27;d treat this as completely new, far from complete software heavily inspired by the Adobe Suite, rather than a &quot;port&quot;.<p>But maybe folks who use workflows that don&#x27;t involve RAW photos have better luck.</blockquote>
+<blockquote>
+<p>↳ reply — <em>theseamusjames</em>:</p>
+<blockquote>I also built one of these photoshop clones. It has raw support. I use it for Fuji raw editing. I&#x27;ve been building it with Claude for 6 months now.<p><a href="https:&#x2F;&#x2F;lopsy.art" rel="nofollow">https:&#x2F;&#x2F;lopsy.art</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>egeozcan</em>:</p>
+<blockquote>How many painting applications have been built by LLMs I wonder?<p>I also let it build one btw: <a href="https:&#x2F;&#x2F;egeozcan.github.io&#x2F;ketchup&#x2F;" rel="nofollow">https:&#x2F;&#x2F;egeozcan.github.io&#x2F;ketchup&#x2F;</a> (not a PS clone, more amateur painting oriented)</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>theseamusjames</em>:</p>
+<blockquote>Yeah, it&#x27;s a really well defined problem space with quantifiable outcomes, so LLMs are very well suited to it.<p>For lopsy, the biggest issue I ran into was combinatorial bugs: certain sequences of tools and actions would cause a bug to occur that wasn&#x27;t obvious from isolated tool testing. I solved it by having Claude generate complete projects, full documents with novel concepts chosen randomly, built in the browser with playwright. This continues to expose so much more than individual unit&#x2F;tool tests, and I have an automated loop that addresses them. (And a bonus from that: I use the outputs to make tutorials to show what the tool can do).</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>freeone3000</em>:</p>
+<blockquote>In two of its test cases, it changes the PSD on save so much that an <i>export render</i> differs. No RAW support. No folder sync or plugins. Limited brush support. It’s like the author never actually used their vibe-coded output and just decided it looked good enough.</blockquote>
+<p><strong>Top #3</strong> — <em>pcglue</em>:</p>
+<blockquote>I was able to use Photocraft and Claude to do something that the plain generative image AI in ChatGPT couldn&#x27;t.  I had two photos of the same location, one with 3 people, one with 1 person.  I took the photos with the people strategically standing where the photos could be easily be combined without the people interfering with one another.  A month ago, I tried using ChatGPT to combine the people into one photo.  Its attempts never looked right.  It always changed the faces of everyone.  Today, I tried using Claude and this Photocraft MCP server to do this.  After 3 quick tries over 5 minutes, it did it. The 2 additional tries were to have it fix some lighting differences.  Thanks to the person who created this!<p>Yes, I could have definitely done it myself, but that&#x27;s besides the point.  It wasn&#x27;t important&#x2F;urgent enough for me to spend 20-30 minutes to do it (yet).  But I was curious enough to play with this to have it done this way.</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Utah to let AI examine patients and prescribe medication without human oversight</title>
       <link>https://www.techspot.com/news/114111-utah-become-first-state-ai-examine-patients-prescribe.html</link>
       <guid isPermaLink="false">hn3-49981197</guid>
@@ -1710,6 +1909,91 @@ I’ve explored this stuff with CLIP and it’s interesting how image (but also 
 </blockquote>
 <p>↳ reply 2 — <em>minimaxir</em>:</p>
 <blockquote>Numbers update on my hypothetical tool after Opus 5.5 added support for image and audio input (plus video support via ffmpeg, why not) using my M3 Pro:<p>- Text: 78 embeddings&#x2F;second on small texts<p>- Image: 4 embeddings&#x2F;second<p>- Audio: 6 embeddings&#x2F;second for 30 second chunks (which is how the encoder works)<p>- Video: 0.2 embeddings&#x2F;second per minute of video (not entirely surprising since the encoder does 1fps).<p>Not bad numbers for a local laptop running a model this large, although the M3 Pro is a few years old and I suspect a M5 Ultra will 5x them at minimum.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The Slow Formation of Durable Software</title>
+      <link>https://newsletter.dancohen.org/archive/the-slow-formation-of-durable-software/</link>
+      <guid isPermaLink="false">hn3-49980346</guid>
+      <pubDate>Tue, 06 Oct 2026 15:54:24 +0000</pubDate>
+      <description>157 points, 51 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://newsletter.dancohen.org/archive/the-slow-formation-of-durable-software/"><strong>→ Article</strong></a> <small>(newsletter.dancohen.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49980346">→ HN comments</a> &nbsp;·&nbsp; 157 points &nbsp;·&nbsp; 51 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>nickledave</em>:</p>
+<blockquote>For folks who are wondering:<p>This post is about Zotero.
+<a href="https:&#x2F;&#x2F;www.zotero.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.zotero.org&#x2F;</a><p>If you are not an academic, you might not know Zotero.<p>It is such a pleasure to use. Every app should be like this.<p>I read everything in it, including books I&#x27;m going through right now from <a href="https:&#x2F;&#x2F;teachyourselfcs.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;teachyourselfcs.com&#x2F;</a><p>It also does an amazing job of taking snapshots of posts. I use it all the time to grab posts from HackerNews so I can mark them up.<p>And it automagically syncs everywhere across devices and lets me store way too many files on the web like the ADD packrat I am, without breaking a sweat.<p>In short, this software just works, and it works well.
+So when somebody behind Zotero talks about how to develop software, I listen.<p>And it&#x27;s a fun post with some history. You should save this post to Zotero, and then read it.</blockquote>
+<blockquote>
+<p>↳ reply — <em>Almondsetat</em>:</p>
+<blockquote>What I dislike about Zotero is that it&#x27;s a pain in the ass to self host. In my department I could spin up a local Zotero server for our PhD students and give them basically unlimited sync, but it&#x27;s really finnicky</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pajamasam</em>:</p>
+<blockquote>I&#x27;ve been wanting to try it. In what way is it finnicky?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Almondsetat</em>:</p>
+<blockquote>It is not supported natively (you can use a webdav server but it doesn&#x27;t sync everything) and the third party options don&#x27;t have the level of stability I&#x27;d need</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>adamddev1</em>:</p>
+<blockquote>&gt; But that slow formation led to software that was durable rather than ephemeral, with a strong foundation that could be built upon.<p>People say that agentic development is great because you can churn out so much so fast. But that doesn&#x27;t mean that any of it will be truly good and reliable.<p>The things that are truly insightful and solid end up being used exponentially more, which makes the linear cost of extra development time (asymptotically) insignificant in the cost&#x2F;benefit equation.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>RunSet</em>:</p>
+<blockquote>The emphasis on quantity while neglecting quality calls to mind a passage from EWD1175[0]:<p>&gt; My second warning remark is that I shall refuse to discuss the academic enterprise in financial terms. The first reason is that the habit of trying to understand, explain, or justify in financial terms is unhealthy: it creates the ethics of the best-seller society in which saleability is confused with quality. The other day we had to discuss the professional quality of one of our colleagues, in whose favour it was then mentioned that one of his Ph.D.s had earned lots and lots of money in the computer business, and few people seemed to notice how ridiculous a recommendation this was. We also know that the financial success of a product can be totally independent of its quality (as everyone who remembers for instance the commercially successful IBM360 should know). The second reason for my refusal is that the value of money is a very fuzzy notion, so fuzzy in fact, that efforts to understand in financial terms always lead to greater confusion. [Remember this, for it is quite likely that this afternoon will give you the opportunity to observe the phenomenon. Note that money need not be mentioned explicitly for the nonsense to emerge, a reference to &quot;the taxpayer&quot; can do the job. The role of &quot;the taxpayer&quot; then invariably leads to the conclusion that of State Universities at least the undergraduate curriculum has to be second- or third-rate.] The final reason for my refusal is that the habit appeals to the quantitative mind and I come from a culture in which the primarily quantitative mind does not evoke admiration. [A major reason that we considered Roman Catholics to belong to a lower class was precisely their quantitative bent: they always counted, number of faithful, number of days in purgatory, you name it.....]<p>[0] <a href="https:&#x2F;&#x2F;www.cs.utexas.edu&#x2F;~EWD&#x2F;transcriptions&#x2F;EWD11xx&#x2F;EWD1175.html" rel="nofollow">https:&#x2F;&#x2F;www.cs.utexas.edu&#x2F;~EWD&#x2F;transcriptions&#x2F;EWD11xx&#x2F;EWD117...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>senderista</em>:</p>
+<blockquote>The aside at the end seems a bit odd given the certainly &quot;quantitative&quot; bent of the Dutch Calvinist merchant class...</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>danmaz74</em>:</p>
+<blockquote>The trade-off between quality and speed of development has always been a tenet of software engineering. Agentic coding changes the equation a lot, but the equation is still there.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>peterbell_nyc</em>:</p>
+<blockquote>I love great software and agree that great software is evolved - not built. The whole point of building v0.1 is to figure out what&#x27;s wrong and should be fixed in v0.2<p>At the same time, there are broadly three motions in the loop:
+- thinking&#x2F;discussing (what should it do)
+- building (Make it do that)
+- using (Seeing whether that is actually what it SHOULD do)<p>And then of course you repeat until you run out of time, money, patience, volition, etc. For some software there is a terminal state - it truly does exactly what it should. For most you&#x27;re always reaching for it.<p>LLMs definitely accelerate 2 and potentially can help accelerate 1 and 3. As such cycle time can be reduced. It still may take 100 turns to get what you want, but I&#x27;d be surprised if the clock time for the 100 turns would be unchanged using AI.</blockquote>
+<blockquote>
+<p>↳ reply — <em>skydhash</em>:</p>
+<blockquote>&gt; LLMs definitely accelerate 2 and potentially can help accelerate 1 and 3.<p>People that do think of using LLMs to accelerate 2 usually don’t think enough about 1. And from what I’ve seen, they quickly get tired of 3.<p>Most quality software I’ve seen usually starts from a small subset for the cycle and then incrementally add to it. LLM projects usually rush the building part and do too big of a job and it’s become cumbersome to design (sunken cost) and evaluate (too many variables). If you want to build shelters, you start with a small hut, not with a cathedral.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The Early History of Smalltalk (1993)</title>
+      <link>https://worrydream.com/EarlyHistoryOfSmalltalk/</link>
+      <guid isPermaLink="false">hn3-49979845</guid>
+      <pubDate>Tue, 06 Oct 2026 15:19:57 +0000</pubDate>
+      <description>125 points, 87 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://worrydream.com/EarlyHistoryOfSmalltalk/"><strong>→ Article</strong></a> <small>(worrydream.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=49979845">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 87 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Jtsummers</em>:</p>
+<blockquote>Some prior discussions on this:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=31062369">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=31062369</a> - April 20, 2022 (45 comments)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=25012425">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=25012425</a> - Nov 7, 2020 (28 comments)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=17913668">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=17913668</a> - Sept 4, 2018 (69 comments)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=9907556">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=9907556</a> - July 18, 2015 (5 comments)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=9588316">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=9588316</a> - May 22, 2015 (5 comments)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7926141">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7926141</a> - June 21, 2014 (10 comments)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=1311282">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=1311282</a> - May 1, 2010 (17 comments)</blockquote>
+<p><strong>Top #2</strong> — <em>wslh</em>:</p>
+<blockquote>Just yesterday I was talking with a friend who works at Instantiations [1]. They were founded in 1988, and still ship a new release every year of Smalltalk. What I find fascinating is that customers are actively building on it and seem happy.<p>[1] <a href="https:&#x2F;&#x2F;www.instantiations.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.instantiations.com&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>WillAdams</em>:</p>
+<blockquote>I really wish that there was a license&#x2F;version&#x2F;build marketed to hobbyists:<p>&gt;Call or Email for Pricing<p>and the upgrade pricing is four figures (per set per year I&#x27;m guessing?).<p>Ages ago, I actually bought a Smalltalk for Windows compiler, but never got around to doing anything with it (which I regret) --- I suppose I should try Dolphin SmallTalk....</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Paradigm2020</em>:</p>
+<blockquote>Dad is true Smalltalk believer, used to use visual age, instantiations etc but is a happy user of pharo nowadays which is free, opensource and under active development so could give that one a try.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mwnorman2</em>:</p>
+<blockquote>Whenever this story (and all the related stories about PARC) re-surface, I am (writing now in late 2026) mostly sad about the incredible language that should have &#x27;won&#x27; .. well .. everything!<p>The term &#x27;footgun&#x27; unfortunately matches all too well: something so great, so powerful yet most of the time, even in the hands of well-intended folks, proceeds to shoot oneself in the foot. I was for more than a decade a professional Smalltalk developer (Telecommunications, Financial&#x2F;Derivatives) but we were replaced by technically inferior systems, mostly Java, JavaScript and even VisualBasic. The HR person at the Financial company explained (after my exit interview!) that for the cost of a single Smalltalk developer, they could hire 4 or 5 lesser experienced programmers (less cognizant of how systems actually worked!). The HR folks preferred these hires: more selection, cheaper . etc. Sigh!<p>Am I a horrible person to enjoy so much (schadenfreude!) the upcoming AI&#x2F;LLM footgun massacre?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pjmlp</em>:</p>
+<blockquote>Blame IBM and other Smalltalk vendors.<p>They were the ones that almost on day one pivoted their Smalltalk offerings into Java.<p>Eclipse still has the Visual Age Smalltalk object browser.<p>If you look into OS&#x2F;2 documentation, and SOM (OS&#x2F;2 version of COM), you will find out Smalltalk on OS&#x2F;2 had a role similar to .NET on Windows.<p>I think AI is the revenge of Lisp, dealing with Python without JIT, and the whole 4 GLs, CASE tooling that tried to automate programming in the 1990&#x27;s, this time around it goes.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bch</em>:</p>
+<blockquote>&gt; I think AI is the revenge of Lisp, dealing with Python without JIT, and the whole 4 GLs, CASE tooling that tried to automate programming in the 1990&#x27;s, this time around it goes.<p>Perhaps it’s because I haven’t had a coffee yet, but I’m not following&#x2F;parsing this last paragraph - can you expand?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>pjmlp</em>:</p>
+<blockquote>Sure.<p>Lisp was the AI language, alongside Prolog (see Japan&#x27;s 5th generation computing project).<p>Instead of having nice Interlisp-D and Symbolics machines with their graphical tooling, hot code reloading and machine code generation,  we got Jupiter notebooks and C&#x2F;C++&#x2F;Fortran libraries on a pure interpreted language [0].<p>Additionally in the 1990&#x27;s there were several efforts to move into the next level of programming, with more human like languages, CASE tooling, RUP method (with UML), most of them failed, SQL is one of the survivors, think its declarative nature.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Programming_language_generations#Fourth_generation_(4GL)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Programming_language_generatio...</a><p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Computer-aided_software_engineering" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Computer-aided_software_engine...</a><p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Rational_unified_process" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Rational_unified_process</a><p>So while not all of those ideas caught on as expected, now we get to program in natural language, use Markdown waterfall plans for agents, integrate them with Web services, seat reading email and Internet surfing until their activities are ready for review.<p>In low code&#x2F;no code cloud platforms like Workato, Boomi and co, classical programming is already past tense.<p>[0] - Granted now JIT is being part of CPython roadmap, and there are some nice IDEs for Python actually.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>CrimsonRain</em>:</p>
+<blockquote>You&#x27;re not a horrible person to enjoy that. However, the schadenfreude is only in your head. 2026 is the most amazing year of building software in human history, so far.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3528,261 +3812,6 @@ I&#x27;m with OP - a company that wants to insert itself in the middle of everyb
 </blockquote>
 <p><strong>Top #3</strong> — <em>giantg2</em>:</p>
 <blockquote>The law seems overly broad with &quot;may be viewed by another person&quot;. Most of these laws have the intent of not causing public panic with regards to posts that others may see, not stuff that one assumed was private. This is further supported by the definition of threat, which is generally defined as requiring malicious intent.<p>I would think a good lawyer could get this charge dropped. I would like to see what judge approved the warrant and how they felt the elements were met.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Nearly 200 people under observation after Irkutsk lab worker dies from plague</title>
-      <link>https://www.themoscowtimes.com/2026/10/02/nearly-200-people-under-observation-after-irkutsk-lab-worker-dies-from-plague-a93857</link>
-      <guid isPermaLink="false">hn3-49960084</guid>
-      <pubDate>Mon, 05 Oct 2026 02:31:45 +0000</pubDate>
-      <description>267 points, 252 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.themoscowtimes.com/2026/10/02/nearly-200-people-under-observation-after-irkutsk-lab-worker-dies-from-plague-a93857"><strong>→ Article</strong></a> <small>(themoscowtimes.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49960084">→ HN comments</a> &nbsp;·&nbsp; 267 points &nbsp;·&nbsp; 252 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>robmusial</em>:</p>
-<blockquote>I literally just finished Annie Jacobsen&#x27;s book &#x27;Biological War: A Scenario&#x27; last week where the central plot point is an accidental release of modified form of pneumonic plague from a lab in Siberia. Very coincidental timing, especially since it made me wonder how often labs like these have accidents and we never hear about them because it is cleaned up without issue.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>petcat</em>:</p>
-<blockquote>&gt; made me wonder how often labs like these have accidents and we never hear about them because it is cleaned up without issue.<p>Did anyone ever confirm if the lab in Wuhan China was the originator of COVID?  I remember that was a rumor but never heard if there was anything to it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>lumost</em>:</p>
-<blockquote>I recently heard a scientist use a phrase something along the lines of “when two extraordinarily improbably events occur together, there is probably a connection”.<p>We’ll never know if the lab in Wuhan originated the virus. But it is awfully strange that the first patients of a novel pandemic coronavirus were workers at a lab conducting gain of function research on coronavirus.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jacobolus</em>:</p>
-<blockquote>This is not an accurate description. The first identified patients were people working in or living near a &quot;wet market&quot; where (among other things) various wild animals were sold. It&#x27;s plausible that someone was infected somewhere else and the market was only the site of a &quot;superspreader event&quot; (rather than the earliest jump from some other animal to humans), but further details are speculative, informed by indirect phylogenetic evidence rather than direct forensic evidence.<p>It&#x27;s not unusual&#x2F;unexpected that there were labs working on coronavirus research in several major Chinese cities: the 2002 SARS outbreak, which began in southern China and caught researchers and public health officials off guard, led to significant investment in the study of coronaviruses.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Mobius01</em>:</p>
-<blockquote>How did you enjoy the book? I did like her nuclear war volume, but it could have used some editing.</blockquote>
-<p>↳ reply 3 — <em>DJBunnies</em>:</p>
-<blockquote>How’d it turn out, are we boned?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>helsinkiandrew</em>:</p>
-<blockquote>So breaks a test tube of live bacteria at an “anti-plague institute”, possible infects 100 colleagues, then when she developed plague like symptoms is taken to hospital and possibly infects 100 patients.<p>I think they need to investigate their safety protocols<p>&gt; She reportedly told medical staff that she had accidentally broken a test tube containing live bacteria while collecting samples for testing.<p>&gt; At least 197 people who may have had contact with her were reportedly placed under medical isolation, including more than 100 in hospital wards.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>hliyan</em>:</p>
-<blockquote>Was this a glass test tube? I understand why glass is probably the best material for the inner lining of containers that hold biological material, but I&#x27;m surprised that there aren&#x27;t better solutions for hazardous material (e.g. an unbreakable, transparent polymer outer coating).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>doodlesdev</em>:</p>
-<blockquote>I believe the biggest reason to use glass is that it doesn&#x27;t react with much stuff, but I&#x27;ve yet to see an explanation for why your idea wouldn&#x27;t work. I imagine there could be problems with autoclaves (i.e. degradation of the polymer) and fear of chemical leaching.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sajithdilshan</em>:</p>
-<blockquote>Why on earth would she have contact with 197 people after she got exposed to bacteria? She should have immediately triggered safety protocols</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>poilcn</em>:</p>
-<blockquote>This information that she &quot;broke a tube&quot; is tabloid bs.<p>Non-tabloid version is that she didn&#x27;t catch it in the lab, she got ill &quot;while being on a research trip to Buryatia region near the border where sources of the disease were found&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>no-name-here</em>:</p>
-<blockquote>OP article claims the former. Is there a better source for the latter?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>amdsn</em>:</p>
-<blockquote>So far I have seen claims of her contracting it doing fieldwork in Buryatia only in telegram groups with no sources. The head of Buryatia Tsydenov released a statement saying she had not been there and that the republic doesn&#x27;t have animals that carry it.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>rollulus</em>:</p>
-<blockquote>In absence of sources, the latter sounds like government cover-up bs to me.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Powerless F1 drivers frustrated by Bahrain F1 software glitch</title>
-      <link>https://www.motorsport.com/f1/news/horrible-totally-unacceptable-powerless-f1-drivers-frustrated-by-bahrain-f1-software-glitch/10861968/</link>
-      <guid isPermaLink="false">hn3-49959869</guid>
-      <pubDate>Mon, 05 Oct 2026 01:54:08 +0000</pubDate>
-      <description>268 points, 228 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.motorsport.com/f1/news/horrible-totally-unacceptable-powerless-f1-drivers-frustrated-by-bahrain-f1-software-glitch/10861968/"><strong>→ Article</strong></a> <small>(motorsport.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49959869">→ HN comments</a> &nbsp;·&nbsp; 268 points &nbsp;·&nbsp; 228 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jey</em>:</p>
-<blockquote>Seems wild that they can code and deploy an update of a critical-seeming component in the field like that. I thought such a firmware update would need extensive QA in the lab, along with root causing why this bug slipped through their processes anyway.<p>But maybe that&#x27;s the difference between shipping a controller for F1 versus shipping one for an industrial or consumer product? shrug.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>atmosx</em>:</p>
-<blockquote>&gt; Seems wild that they can code and deploy an update of a critical-seeming component in the field like that. I thought such a firmware update would need extensive QA in the lab, along with root causing why this bug slipped through their processes anyway.<p>These cars are in a perpetual Q&amp;A state, they are getting modified between races. That&#x27;s true for the &quot;big teams&quot;, small teams don&#x27;t have the resources, they&#x27;re just &quot;happy to be there&quot;. That&#x27;s why it&#x27;s possible to see stories like Brawn GP[^1]. That&#x27;s what makes the sport fascinating, because the overtakes are not as much as one would hope for a ~2-3 hours race. But every little thing counts. In the last race 1st and 2nd had ~103ms diff or something like that for example, which is something that didn&#x27;t happen for 15-20 years (maybe more).<p>[^1]: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=jd3miTpvUmI" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=jd3miTpvUmI</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>OtherShrezzing</em>:</p>
-<blockquote>&gt; That&#x27;s true for the &quot;big teams&quot;, small teams don&#x27;t have the resources, they&#x27;re just &quot;happy to be there&quot;.<p>This isn&#x27;t really the case anymore. There&#x27;s a budget cap, and all of the teams are financially sound most of the time. While the poorer teams might bring fewer upgrades in a year, they still bring upgrades all year long, and R&amp;D is a continuous process in every F1 factory these days. Smaller teams also get additional R&amp;D, compute, and testing time compared to the big teams.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>gpderetta</em>:</p>
-<blockquote>Indeed. Haas is the only team that failed to hit the budget cap (while still being significantly ahead of AM and Williams).</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>LeoPanthera</em>:</p>
-<blockquote>It seems they simply disabled a bunch of power limits. Probably just settings, rather than an actual code update.</blockquote>
-<p>↳ reply 3 — <em>tiffanyh</em>:</p>
-<blockquote>F1 are effectively prototype cars.<p>Every GP is a slightly different car running bleeding edge tech and code.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>joshstrange</em>:</p>
-<blockquote>&gt; &quot;too much technology&quot;<p>Perhaps F1 cars (I know nothing about them) are not drive-by-wire like many&#x2F;most consumer cars but it&#x27;s always funny quotes like this (or other like it in the article). I feel confident they don&#x27;t have any issues with their engine timing computer (standard for decades and I can&#x27;t imagine the F1 cars don&#x27;t have an equivalent).<p>&quot;Technology&quot; is all fine until you run into a bug (which is inevitable).</blockquote>
-<p><strong>Top #3</strong> — <em>charles_f</em>:</p>
-<blockquote>&gt; Cadillac&#x27;s Sergio Perez, [...] was less kind. &quot;It felt like you were in a rental kart and you ran out of time,&quot; the Mexican explained. &quot;You were putting your foot down and accelerating and nothing was coming.<p>You know the problem is really bad if even Cadillac drivers notice the difference.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Self-hosted HTTP tunnels with SSH and Nginx</title>
-      <link>https://vincent.bernat.ch/en/blog/2026-http-over-ssh</link>
-      <guid isPermaLink="false">hn3-49958569</guid>
-      <pubDate>Sun, 04 Oct 2026 22:25:10 +0000</pubDate>
-      <description>174 points, 37 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://vincent.bernat.ch/en/blog/2026-http-over-ssh"><strong>→ Article</strong></a> <small>(vincent.bernat.ch)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49958569">→ HN comments</a> &nbsp;·&nbsp; 174 points &nbsp;·&nbsp; 37 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>antoniomika</em>:</p>
-<blockquote>A number of years ago, I created a fully open source (MIT) project called sish [0] that does just this.<p>sish is a SSH server written specifically for tunneling. You get all of the benefits of SSH, but also automatic TLS, a web console of requests a tunnel has received, and various other features. You can also tunnel more than just HTTP(S). You can tunnel websockets, TCP connections, and even have internal alias connections for using ProxyJump within the tunnel. All stateless and all protected with SSH auth.<p>If you’re not interested in self hosting, there’s a hosted version at tuns.sh [1] that has multi region support and a few other cool features (including UDP tunneling) as part of the pico.sh [2] membership ($2&#x2F;mo). Happy to answer any questions in this space!<p>[0] <a href="https:&#x2F;&#x2F;github.com&#x2F;antoniomika&#x2F;sish" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;antoniomika&#x2F;sish</a><p>[1] <a href="https:&#x2F;&#x2F;tuns.sh" rel="nofollow">https:&#x2F;&#x2F;tuns.sh</a><p>[2] <a href="https:&#x2F;&#x2F;pico.sh" rel="nofollow">https:&#x2F;&#x2F;pico.sh</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pbreit</em>:</p>
-<blockquote>sish does get a mention: &quot;Some only require a plain SSH client but rely on a specific SSH server, like sish.:</blockquote>
-<p>↳ reply 2 — <em>joshstrange</em>:</p>
-<blockquote>Thank you, I’ve been using sish for the past month or so to expose my dev severs over the network when it time to review changes. It means I can review from my second laptop or my phone as if I were sitting at the computer running the dev server.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>toomim</em>:</p>
-<blockquote>For this stuff, I&#x27;m most excited about https over iroh.<p>- <a href="https:&#x2F;&#x2F;github.com&#x2F;aflin&#x2F;iroh-webproxy" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;aflin&#x2F;iroh-webproxy</a><p>- <a href="https:&#x2F;&#x2F;github.com&#x2F;n0-computer&#x2F;iroh-proxy-utils" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;n0-computer&#x2F;iroh-proxy-utils</a><p>No port forwarding.  No public IP required.  No special proxy to set up.<p>Iroh already runs public relays.  Your two computers will signal through those, and then port-knock and form a direct connection to each other, perfectly encrypted.<p>We just need to define a new https:&#x2F;&#x2F; url, like ... let&#x27;s call it &quot;irohttps:&#x2F;&#x2F;&quot; maybe, so then you could contact my laptop with &quot;irohttps:&#x2F;&#x2F;&lt;hash&gt;&#x2F;path?query&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Muromec</em>:</p>
-<blockquote>&gt;and then port-knock and form a direct connection to each other, perfectly encrypted.<p>so... ICE&#x2F;TURN&#x2F;STUN ? Sorry I forgot which one of them actually works, but they do work</blockquote>
-<p>↳ reply 2 — <em>_def</em>:</p>
-<blockquote>iroh-ssh works today: <a href="https:&#x2F;&#x2F;github.com&#x2F;rustonbsd&#x2F;iroh-ssh" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;rustonbsd&#x2F;iroh-ssh</a><p>Not perfectly, but good enough for port forwarding web interfaces through cgnat</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>aliasxneo</em>:</p>
-<blockquote>This is one of the core things I&#x27;ve been working towards with DNTLS [1]. I love the idea of tunnels, especially for sharing between private parties. The SaaS providers (Tailscale, Cloudflare, etc.) have done a good job making it really easy on their infra, but it really blurs the line of &quot;self-hosted&quot; to me. Ideally we end up with solutions like this that can be run entirely without an intermediary.<p>[1]: <a href="https:&#x2F;&#x2F;dntls.substack.com&#x2F;p&#x2F;the-new-internet" rel="nofollow">https:&#x2F;&#x2F;dntls.substack.com&#x2F;p&#x2F;the-new-internet</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>In the wake of Tippett Studios’ closure, a digital archive appears online</title>
-      <link>https://filmstories.co.uk/news/tippett-studios-in-the-wake-of-its-closure-a-digital-archive-of-animated-materials-appears-online/</link>
-      <guid isPermaLink="false">hn3-49957812</guid>
-      <pubDate>Sun, 04 Oct 2026 21:01:28 +0000</pubDate>
-      <description>197 points, 25 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://filmstories.co.uk/news/tippett-studios-in-the-wake-of-its-closure-a-digital-archive-of-animated-materials-appears-online/"><strong>→ Article</strong></a> <small>(filmstories.co.uk)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49957812">→ HN comments</a> &nbsp;·&nbsp; 197 points &nbsp;·&nbsp; 25 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>virtualritz</em>:</p>
-<blockquote>I recall my first live action blockbuster I got a vfx job on, &quot;Charlotte&#x27;s Web&quot;.<p>Rising Sun Pictures (RSP) in Australia had pitched for Templeton, the rat. But Templeton had already been given to Tippet.<p>So RSP got the option to either take Charlotte, the spider, or get no work on the show at all. A scary proposition for a company of 20 people at the time that only done hard-surface work and no creatures until then. They hired a lot of people in a short period and I was lucky to be one of them.<p>The work coming out of Tippet we saw in the first dailies of Templeton intercut with our work was jaw-dropping. [1]<p>I also remember feeling weirdly proud to work on a show that had Tippet involed because of Star Wars ofc. But more so because of Starship Troopers which I love. I can&#x27;t think of any other movie that manages to be an in-your-face critique of facism while at the same time scoring as a &quot;quality&quot; popcorn flic.<p>I recall Tippet&#x27;s test footage for the Arachnids being on the Softimage showreel years before that movie was released. [2]<p>[1] <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=DYFQ9vVqiMA" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=DYFQ9vVqiMA</a><p>[2] <a href="https:&#x2F;&#x2F;youtu.be&#x2F;IPcFGleYsgs?t=73" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;IPcFGleYsgs?t=73</a></blockquote>
-<p><strong>Top #2</strong> — <em>ctippett</em>:</p>
-<blockquote>I wonder what will come of the domain tippett.com. Hopefully Phil gets to hold on to it despite the bankruptcy, he&#x27;s had it since 1995!<p>I can&#x27;t imagine anyone else being interested in it...</blockquote>
-<p><strong>Top #3</strong> — <em>rietta</em>:</p>
-<blockquote>I did not previously know about this closure or the auction. However, I am super sad to learn this was a Chapter 11 bankruptcy and not just an intentional retirement.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Turn off Apple Intelligence on macOS 27 and get its disk space back</title>
-      <link>https://github.com/omlahore/RemoveMacAI</link>
-      <guid isPermaLink="false">hn3-49957116</guid>
-      <pubDate>Sun, 04 Oct 2026 19:42:25 +0000</pubDate>
-      <description>508 points, 319 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/omlahore/RemoveMacAI"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49957116">→ HN comments</a> &nbsp;·&nbsp; 508 points &nbsp;·&nbsp; 319 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ryandrake</em>:</p>
-<blockquote>Reminds me of all the de-crufting you&#x27;ve always needed to do when you install Windows. Looks like we&#x27;ve gotten to the point on macOS too, where you need to run third party scripts on a new OS installation to gain back control of your system resources and remove unwanted crapware.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>2muchcoffeeman</em>:</p>
-<blockquote>On windows you got garbage like trial versions of Blah software.<p>This is a fully functioning feature that people don’t like for what ever reason.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>2III7</em>:</p>
-<blockquote>Fully functional feature consuming multiple gigabytes of storage and has questionable functional value. Maybe people don&#x27;t want bloated AI crap on their desktops?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>2muchcoffeeman</em>:</p>
-<blockquote>I’m not making any judgement on whether you should or should not like the feature.<p>I’m stating that the Windows problem was very different. Your machine would be loaded up with software for various vendors that the manufacturer did deals with to lower the price of the machine. They were all trials.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>drooopy</em>:</p>
-<blockquote>Not gonna lie, I would like a &quot;Black Edition&quot; of macOS. There is a decent OS buried under tons of rubble.</blockquote>
-<p>↳ reply 3 — <em>GeekyBear</em>:</p>
-<blockquote>&gt; Reminds me of all the de-crufting you&#x27;ve always needed to do when you install Windows.<p>To be like Windows, Apple would have to constantly change the OS so that the workarounds no longer function.<p>How many times did users find a way to enable local user accounts on Windows, only to have Microsoft force online accounts on them again?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>frr149</em>:</p>
-<blockquote>And don&#x27;t forget about the 40 gb of background videos</blockquote>
-<p><strong>Top #3</strong> — <em>hypfer</em>:</p>
-<blockquote>This is stuff on the level of O&amp;O ShutUp10.
-Which is a good tool, but also, a Windows tool for very (back in the day) Windows-specific nonsense.<p>What&#x27;s going on at Apple product strategy?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>userbinator</em>:</p>
-<blockquote>It&#x27;s interesting to see more customisation tools appearing for macOS, as just a few years ago I was looking for ways to strip down the OS (CI related), and while such info was widely available in the Windows world, to the point that customised &quot;distros&quot; are available, it was nearly nonexistent for macOS; only the Hackintosh community had some useful articles on how things worked.<p>Could the rise of LLMs and vibe-coding have motivated people who otherwise wouldn&#x27;t bother?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>gumby</em>:</p>
-<blockquote>It’s hard to strip it down these days as the OS image and its core, immutable filesystem cannot be edited.  Admittedly this helps keep idiots from destroying their filesystem and also blocks many malware attacks on the system, but, for example. I don’t believe you can delete the chess program.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>userbinator</em>:</p>
-<blockquote><i>and its core, immutable filesystem cannot be edited</i><p>That&#x27;s a half-truth at best; I can just open the disk image in a hex editor if nothing else understands the format.<p>Hackintoshers have figured out how to add&#x2F;modify drivers etc. It&#x27;s certainly not without obstacles, but that&#x27;s still very far from &quot;impossible&quot;. If I remember correctly, you need to re-snapshot the FS and tell the bootloader to boot from it.<p>(And necessarily, ignoring the countless cries of &quot;it can&#x27;t be done&quot; was how I was able to accomplish my goal... I knew that it was possible since I could edit any bit of the FS; figuring out which files I could remove and patch was the hard and undocumented part.)</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>neya</em>:</p>
-<blockquote>Apple was late to the AI party. Usually, that&#x27;s their strategy - let everyone else innovate, when the ecosystem is mature, steal it and claim it as their own. That worked well for decades. But, the pace of AI is too fast to pull this trick off again, so now they&#x27;re in panic mode. So they do what every shitty corporate does - shove AI down everyone&#x27;s throat, whether they want it or not. Which is ironically against their founder&#x27;s motto - build stuff that people want.<p>I&#x27;m not sure there were enough people looking at finder and thinking &quot;I wish I could talk to an AI to open a file on my desktop which I could&#x27;ve simply double clicked on anyway&quot;</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Improper redaction reveals Google Data Center water and electricity usage</title>
-      <link>https://www.1011now.com/2026/09/30/more-questions-than-answers-about-lincolns-google-data-center-water-electricity-usage/</link>
-      <guid isPermaLink="false">hn3-49957068</guid>
-      <pubDate>Sun, 04 Oct 2026 19:37:05 +0000</pubDate>
-      <description>352 points, 456 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.1011now.com/2026/09/30/more-questions-than-answers-about-lincolns-google-data-center-water-electricity-usage/"><strong>→ Article</strong></a> <small>(1011now.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49957068">→ HN comments</a> &nbsp;·&nbsp; 352 points &nbsp;·&nbsp; 456 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>aliasxneo</em>:</p>
-<blockquote>I lived in a smaller rural town near a Google datacenter. During my career there I had routinely come across some outlandish accusations made about our water&#x2F;power usage from the locals. But for obvious reasons I could never dispute them. I remember we hired a local who&#x27;d grown up in the town and he was &quot;really surprised&quot; when he started to see what we were doing to remain efficient.<p>The current data center craze just feels like the same thing but on a bigger scale.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>BearOso</em>:</p>
-<blockquote>The disparity is that older data centers were for storing and serving data. They have a lot of bandwidth and storage, but aren&#x27;t consuming much energy. Plus, they are there to provide quicker access to data, to provide a service to actual people.<p>New AI data centers are obviously compute-oriented instead. That means they consume a lot more power, like hundreds of megawatts. For perspective, on average a U.S. household uses only 1.2KW. Because of this, cooling needs are significantly increased, and while water usage is often overblown, noise volume is a major problem. At (<i>edit</i>) 10m, it often exceeds the 90dB threshold for hearing loss.<p>Then there&#x27;s the fact that millions of dollars of GPUs are inside these things, so security means lots of bright lights at all times of day.<p>These are just problems with the physical presence of a data center, not to mention the electric bill hikes, land value loss, environmental effects, etc. And there&#x27;s no obvious positives to one going up. No new jobs. No tax money because it&#x27;s often elided with incentives from bribing local officials.<p>With all the negatives and seemingly no benefits, ask yourself who wants these data centers, and why? If the only way to improve AI is using more and more compute like this, what is the end-game?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>oogali</em>:</p>
-<blockquote>Bright lighting is typically an artifact of the commercial property insurance policy in effect (namely, &quot;Protective Safeguards&quot;). It&#x27;s asking you to demonstrate that you&#x27;ve done enough to create a barrier towards theft&#x2F;loss.<p>It doesn&#x27;t have to be really bright lighting but that&#x27;s the easiest thing to satisfy the underwriter&#x27;s request, and as a result, the cheapest to implement.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thayne</em>:</p>
-<blockquote>My biggest problem with the data centers getting built around me are that they are building new natural gas power plants to power them, that will be greenhouse gases and decrease local air quality. I would be a lot more ok with it if they were using wind or solar. And maybe built it somewhere that didn&#x27;t have a water shortage.</blockquote>
-<p>↳ reply 3 — <em>motoboi</em>:</p>
-<blockquote>I can’t actually understand the incapacity of the richest country on the world to build infrastructure. Why would people be fighting over resources like that when you can just build a hell lot of wind, solar and gas plants along with batteries and whatnot.<p>From what we see on the TV is not that people in rural areas in the US  are concerned with the environment. It’s just that they fear energy will become more expensive.<p>As a non American, I find this incomprehensible.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>yeag123</em>:</p>
-<blockquote>As other commenters have pointed out, 13.3 million gallons = ~40.8 acre-feet and this being Nebraska, the obvious comparison is agriculture (Corn and Soybeans being the main crop).<p>The average Nebraska farm is 989 acers[1] as of 2022 and uses roughly ~1,200 acre-feet of water (or roughly 390 million gallons) per year[2]. So a single average Nebraska farm uses roughly 30 times the water the Lincoln data center uses per year. There are 44,479 farms&#x2F;ranches covering 44 million acres, which accounts for over 90% of the state&#x27;s total land area.<p>Until I looked this up, I didn&#x27;t appreciate the scale of water usage in farming (even in a state like Nebraska that gets a large amount of rainfall compared to Central or Southern California). I hope that the current data center environmental focus continues to shed light on our industrial water and electrical usage.<p>[1]<a href="http:&#x2F;&#x2F;farmflavor.com&#x2F;nebraska&#x2F;nebraska-crops-livestock&#x2F;top-nebraska-agriculture-facts&#x2F;" rel="nofollow">http:&#x2F;&#x2F;farmflavor.com&#x2F;nebraska&#x2F;nebraska-crops-livestock&#x2F;top-...</a>
-[2]<a href="https:&#x2F;&#x2F;cropwatch.unl.edu&#x2F;2024&#x2F;2023-irrigation-and-water-management-data-now-available&#x2F;" rel="nofollow">https:&#x2F;&#x2F;cropwatch.unl.edu&#x2F;2024&#x2F;2023-irrigation-and-water-man...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>goda90</em>:</p>
-<blockquote>The most fair comparison of water use would include evaporated vs soaked into the ground vs run off into rivers vs contained in the final product. As far as I&#x27;m aware, data centers are 100% evaporated while farms are going to be some percentage lower than that(though still high). Evaporating extra water can be detrimental to an area if the rainfall isn&#x27;t high enough, while soaking into the ground is fairly good.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>onion2k</em>:</p>
-<blockquote><i>As far as I&#x27;m aware, data centers are 100% evaporated while farms are going to be some percentage lower than that(though still high).</i><p>Newer data centres use closed loop electric (refrigeration) cooling instead of induced draft open loop evaporative cooling.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>tptacek</em>:</p>
-<blockquote>So, basically, not a meaningful amount of water at all. Credit to the story authors for taking the time to frame what 13MM gallons actually works out to.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mrb</em>:</p>
-<blockquote>Yes. As another comparison point, 13 million gallons per year amounts to 24 gallons per minute which is about 5 (five) bathtub faucets running 24&#x2F;7&#x2F;365.<p>The water bill alone would be only $100k&#x2F;yr assuming average US domestic rate of $8 per 1000 gallons.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rtpg</em>:</p>
-<blockquote>Median US household water usage is 130 gallons per day according to Wiki.[0]<p>So ~280 households worth of water? Though the US seems to be on the high end, using 3x more than Japan and 4x more than France (according to a random website)[1]<p>To state the obvious most people are not running big faucets all the time, and in fact are using way less.<p>It seems like a bit of a self-own to not just use household or per-capita usage here to prove a point though.<p>[0]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Residential_water_use_in_the_U.S._and_Canada" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Residential_water_use_in_the_U...</a>
-[1]: <a href="https:&#x2F;&#x2F;www.worldometers.info&#x2F;water&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.worldometers.info&#x2F;water&#x2F;</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>maccard</em>:</p>
-<blockquote>I live in a country of 5 million people and we lose 40 times that a year to leaks.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A browser-native classic Visual Basic VB6 IDE</title>
-      <link>https://wieslawsoltes.github.io/VB6/</link>
-      <guid isPermaLink="false">hn3-49956681</guid>
-      <pubDate>Sun, 04 Oct 2026 18:49:17 +0000</pubDate>
-      <description>165 points, 63 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://wieslawsoltes.github.io/VB6/"><strong>→ Article</strong></a> <small>(wieslawsoltes.github.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49956681">→ HN comments</a> &nbsp;·&nbsp; 165 points &nbsp;·&nbsp; 63 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>badsectoracula</em>:</p>
-<blockquote>Looks good functionality wise, you can even &quot;compile&quot; an app to a HTML file. This is exactly how something like this should work :-).<p>However, appearance-wise it looks very noisy&#x2F;distorted with some crooked elements (especially window buttons) and missing visual parts (mainly bevel edges). I made a screenshot with comments for it[0].<p>I guess this was made with AI which isn&#x27;t that great at making stuff pixel-level unless you explicitly told it to check reference images <i>and</i> be pixel level precise, so i&#x27;d recommend firing up a VM with WinXP in classic theme mode (or even better, 86Box running Windows 95 or Windows 98) and grabbing a bunch of screenshots.<p>Also i found some bugs:<p>1. You cannot click on non-visual controls (or disabled controls) to select them (e.g. timer). You can still use the rect selection to select them and drag them around by resizing via the handles but clicking on them selects the form.<p>2. Adding a control doesn&#x27;t update the controls list in the editor unless you double click a control <i>without</i> a handler (i.e. the form, as long as you remove the Form_Load handler). Even after the controls are updated, if the event list has only one event, you cannot have the editor add by selecting it (i guess because it is already the selected item and you don&#x27;t receive an event about selecting it).<p>I tried to make a simple pong game but it seems no key or mouse motion events are implemented yet so all i did was to make a bouncing OptionButton :-P.<p>[0] <a href="http:&#x2F;&#x2F;runtimeterror.com&#x2F;pages&#x2F;iv&#x2F;images&#x2F;5ffbf1494821c77a3fed6ecd5ef38223.png" rel="nofollow">http:&#x2F;&#x2F;runtimeterror.com&#x2F;pages&#x2F;iv&#x2F;images&#x2F;5ffbf1494821c77a3fe...</a></blockquote>
-<p><strong>Top #2</strong> — <em>waldrews</em>:</p>
-<blockquote>The property grid control is still the greatest general purpose UI of all time.  Define your classes with some attributes and it just works.  It was all downhill from there with web and mobile.</blockquote>
-<p><strong>Top #3</strong> — <em>sijmen</em>:</p>
-<blockquote>Slick! Thanks for bringing back some memories of how i got into programming; by automating math-homework in visual basic.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The technology to eradicate mosquito-borne disease exists</title>
-      <link>https://worksinprogress.co/issue/mosquitoes-are-a-choice/</link>
-      <guid isPermaLink="false">hn3-49956290</guid>
-      <pubDate>Sun, 04 Oct 2026 18:06:04 +0000</pubDate>
-      <description>223 points, 176 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://worksinprogress.co/issue/mosquitoes-are-a-choice/"><strong>→ Article</strong></a> <small>(worksinprogress.co)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=49956290">→ HN comments</a> &nbsp;·&nbsp; 223 points &nbsp;·&nbsp; 176 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ortusdux</em>:</p>
-<blockquote>Reminds me of the novel Everything is Tuberculosis, which explores the idea that we have a cure for the leading cause of death from infectious disease and &quot;that the disease is no longer primarily caused by the bacteria, but instead by human choices.&quot;<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Everything_Is_Tuberculosis" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Everything_Is_Tuberculosis</a></blockquote>
-<p><strong>Top #2</strong> — <em>Jackevansevo</em>:</p>
-<blockquote>I&#x27;ve had Dengue fever, it&#x27;s no joke, this is great news.<p>I&#x27;m super prone to getting bitten so having to apply insect repellent and restrict myself to wearing certain clothes is such a pain.</blockquote>
-<p><strong>Top #3</strong> — <em>talon8635</em>:</p>
-<blockquote>No chance this is bungled and causes problems worse than the ones we are hoping to fix.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
