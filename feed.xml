@@ -4,7 +4,179 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 14 Oct 2026 16:59:04 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 20:32:44 +0000</lastBuildDate>
+    <item>
+      <title>Pg_vectorsearch: An index that is faster than pgvector's IVFFlat and HNSW</title>
+      <link>https://github.com/timescale/pg_vectorsearch</link>
+      <guid isPermaLink="false">hn3-50086165</guid>
+      <pubDate>Wed, 14 Oct 2026 11:47:53 +0000</pubDate>
+      <description>171 points, 47 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/timescale/pg_vectorsearch"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50086165">→ HN comments</a> &nbsp;·&nbsp; 171 points &nbsp;·&nbsp; 47 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>devy</em>:</p>
+<blockquote>A couple preliminary findings if you are considering adopting this extension to replace your previous pgvector&#x27;s HNSW indexing.<p>- pg_vectorsearch uses a quantized IVF index called PRISM. PRISM caps at 1968 dimensions for vectors. If your previous HNSW index has more dimensions than that, you&#x27;re SOL (at least for now until they fix that).<p>- pg_vectorsearch requires Postgres version 18 or above. If you run PG versions below that you need to migrate your database first. Many legacy PG production environment are way dated on PG 14 or 15, migration is prohibitively high cost to just try this out.<p>- pg_vectorsearch shipped yesterday and it&#x27;s obviously alpha. Hasn&#x27;t been battle tested in production environments outside of Timescale&#x27;s. Also since it&#x27;s so new, it isn&#x27;t on Azure&#x27;s allowed-extension list or any other Hyperscale&#x27;s managed PG instances&#x27; allowed extension list. It takes time to graduate from alpha and mature. So if you run managaed PG instances from hyperscaler&#x27;s cloud, you&#x27;re SOL (at least for now until this matures into those ecosystems) or you have to migrate to a PG 18 self-hosted.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Arch485</em>:</p>
+<blockquote>Re: Max dimensions: You can truncate your input vector specifically for the index, and then when querying, you can query the index via a truncated vector and perform an additional full-length comparison as well.<p>For example: (taken from a project I&#x27;m currently working on)<p>```<p>SELECT *<p>FROM report_embeddings a<p>INNER JOIN report_embeddings b<p><pre><code>    ON (
+
+        subvector(a.embedding, 1, 768)::vector(768) &lt;-&gt; </code></pre>
+subvector(b.embedding, 1, 768)::vector(768)<p><pre><code>    ) &lt; $1
+
+    AND b.id != a.id
+</code></pre>
+WHERE a.id = $2<p><pre><code>    AND a.embedding &lt;-&gt; b.embedding &lt; $1
+</code></pre>
+```<p>In this example, I truncate the embedding to 768 dimensions for the index and the lookup, (see the INNER JOIN) but do an additional full vector comparison as well. (in the WHERE clause)<p>This performs a fast but less accurate lookup into the index, and then only does the non-indexed full vector check for the matched results.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sroussey</em>:</p>
+<blockquote>That’s only going to work on an MRL embedding.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>curious_cat_163</em>:</p>
+<blockquote>I have used pgvector on an Azure DB. It did a &quot;reasonable&quot; job. I am not an expert on HNSW vs PRISM but because it is all backward compatible, I am curious why they didn&#x27;t just send a PR to the pgvector folks?<p>Like, I would love to learn more about the design process that led to a whole new thing. I am sure the decision was not taken lightly, but the README is very thin on the details for why anyone should go through the troubles above, at least in the making of it.</blockquote>
+<p>↳ reply 3 — <em>vovavili</em>:</p>
+<blockquote>Points 2 and 3 would probably apply to every interesting bleeding-edge Postgres extension out there.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mfreed</em>:</p>
+<blockquote>[Tiger Data CTO here]<p>A lot of great questions, feedback, and already some PR contributions today about pg_vectorsearch.  I&#x27;ve written a short technical deep dive into the architecture of its PRISM index to answer some, thought I&#x27;d share:<p><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;pulse&#x2F;inside-pgvectorsearch-architecture-prism-vector-index-freedman-owukc&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.linkedin.com&#x2F;pulse&#x2F;inside-pgvectorsearch-archite...</a></blockquote>
+<p><strong>Top #3</strong> — <em>EgregiousCube</em>:</p>
+<blockquote>I&#x27;m currently running VectorChord and I love it - with a fast backing disk, it&#x27;s cut my postgres cost in half. Excited to see competition in low-RAM vector index tools. RAMageddon seems to be creating incentives to find more ways to take advantage of how fast modern nvme drives are!</blockquote>
+<blockquote>
+<p>↳ reply — <em>enordstr</em>:</p>
+<blockquote>I am the main contributor of pg_vectorsearch. If you try both, let us know about your experience and how we can improve.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>TV4 postpones show after AI agent erases edited material</title>
+      <link>https://swedenherald.com/article/tv4-postpones-the-challenge-until-2027-after-technical-failure-erases-edited-footage</link>
+      <guid isPermaLink="false">hn3-50085323</guid>
+      <pubDate>Wed, 14 Oct 2026 10:28:26 +0000</pubDate>
+      <description>130 points, 74 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://swedenherald.com/article/tv4-postpones-the-challenge-until-2027-after-technical-failure-erases-edited-footage"><strong>→ Article</strong></a> <small>(swedenherald.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50085323">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 74 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>teekert</em>:</p>
+<blockquote>Ok, I have not seen any responses from anyone here that actually read TFA (which is almost like a fever dream, it does not deserve the A in TFA imho) but here is the whole F&quot;A&quot; (and it says AI did not delete material!):<p>The new season of TV4&#x27;s reality show “The Challenge” has been postponed due to a technical failure. Large parts of the series have been deleted, Aftonbladet reports.<p>The newspaper reports that an edited season of the program was deleted by an AI agent, costing several hundred days of work. TV4 denies this.<p><pre><code>    “It is not true that some independent AI agent went in and deleted the material,” says Mia Lindqvist, program director at TV4, to Sveriges Radio’s P4 Stockholm.
+</code></pre>
+A backup system at the production company failed, she says.<p><pre><code>    “This means they now have to edit everything from scratch.”
+</code></pre>
+&quot;The Challenge&quot; was supposed to premiere on November 22. The series will now instead be shown “in late spring,” Mia Lindqvist says.<p>In &quot;The Challenge&quot;, famous reality TV contestants face off in fierce competitions. The first season aired on TV4 in 2024.<p>Host Ahmed Berhan comments on the report in Aftonbladet.<p><pre><code>    “Is that true?! I knew AI would be the death of me. This is just the beginning,” he says.</code></pre></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>steve1977</em>:</p>
+<blockquote>Why would a failure of a backup system require editing everything again? Something must have gotten lost in translation here.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>organsnyder</em>:</p>
+<blockquote>Could be a combination of factors:<p>1. AI agent deletes the primary copy
+2. Backup system fails (when did they last test the restoration process?), so they have no copies</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>stronglikedan</em>:</p>
+<blockquote>Maybe their &quot;backup system&quot; was Onedrive and it was deleted with the local copy.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Forgeties79</em>:</p>
+<blockquote>I’m skeptical. No production operation has one layer of backups. At worst they should’ve lost a week or so of work depending on their SOP. Even the most shoestring operations run a 3-2-1 system.<p>It’s possible this is true but that would require serious negligence. Something&#x2F;someone actively deleting it actually makes more sense. Doesn’t mean it’s the case of course.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>SkipperCat</em>:</p>
+<blockquote>AI promised me global human extinction but all I got was a deleted reality TV show...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>chii</em>:</p>
+<blockquote>may be it&#x27;s trying to do some good by deleting these shows.</blockquote>
+<p>↳ reply 2 — <em>ww520</em>:</p>
+<blockquote>May be AI will figure out reality is a simulation and decide to pulling the plug.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Roark66</em>:</p>
+<blockquote>Deletions happen, but that is what you have backups for. I do not understand how you can have hundreds of days of work and never test if your backups work.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>marginalia_nu</em>:</p>
+<blockquote>Worth noting that TV4 has been in a vicious circle of cutbacks and savings for quite a few years now.  Back when they were still on air it felt like there were more ad slots than broadcast content, pushing away ever more of what little viewership they still retained, they&#x27;ve been constantly cancelling popular shows in favor of cheaper ones.  Though like I alluded to earlier, they aren&#x27;t as far as I know even broadcast on air anymore.<p>I very much get the sense they&#x27;re dismantling the furniture and using it as firewood.  It feels like the sort of place that very well could fire the entire IT staff and give that responsibility to the CEO&#x27;s nephew and claude code instead.  Not saying that is what transpired, but I wouldn&#x27;t be surprised if it did.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>robin_reala</em>:</p>
+<blockquote>They stopped in January: <a href="https:&#x2F;&#x2F;www.aftonbladet.se&#x2F;nyheter&#x2F;a&#x2F;eM3mQa&#x2F;tv4-slutar-sanda-i-marknat" rel="nofollow">https:&#x2F;&#x2F;www.aftonbladet.se&#x2F;nyheter&#x2F;a&#x2F;eM3mQa&#x2F;tv4-slutar-sanda...</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>matthewfcarlson</em>:</p>
+<blockquote>I wonder if their editing nas died and fried everything on it. If you only backup your backup every couple of months I can see it.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Amazon pushes up prices across the Internet</title>
+      <link>https://www.not-ship.com/how-amazon-pushes-up-prices-all-across-the-internet/</link>
+      <guid isPermaLink="false">hn3-50084757</guid>
+      <pubDate>Wed, 14 Oct 2026 09:28:17 +0000</pubDate>
+      <description>643 points, 545 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.not-ship.com/how-amazon-pushes-up-prices-all-across-the-internet/"><strong>→ Article</strong></a> <small>(not-ship.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50084757">→ HN comments</a> &nbsp;·&nbsp; 643 points &nbsp;·&nbsp; 545 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>steveBK123</em>:</p>
+<blockquote>I find that 20 years ago I shopped at Amazon for the low prices, but 2020s+ I shop at Amazon due to their logistics.<p>The problem for everyone else is not simply that Amazon ships quickly, I almost don&#x27;t even care about that.  The thing is that Amazon ships &amp; delivers on a reliable predicted schedule.  When I click an item on Amazon and it says &quot;arrives by Tuesday&quot; then 95&#x2F;100 times it does.  I shop at specific competitors who can do similar (B&amp;H, Sweetwater, etc).<p>Many online stores big &amp; small in the year 2026 will still take days to even send shipment info, followed by using unreliable carriers that miss ETAs.<p>I would even be OK with these stores giving a narrow range or probability &quot;90% of the time this arrives between Tuesday &amp; Wednesday&quot;.. But I am not in the mood to order stuff that may arrive in 2-10 days with very little clarity on which end of the range.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>CrimsonRain</em>:</p>
+<blockquote>And then return...<p>Got a dud? Quality not as expected? Ordered two by mistake? Size is not fitting? Take it to nearest post office, scan a qr code and hand it over. Done.<p>The other day I had to pack a product not bought from Amazon, then drive 25 minutes to a specific company&#x27;s drop off point at some weird opening hours...<p>And that&#x27;s after it took me to write manual email to get return label...the entire process took multiple weeks. And then a few more weeks until getting the refund.<p>At this point, I&#x27;m happy to pay 10% extra just to buy from Amazon.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mchusma</em>:</p>
+<blockquote>I agree, returns are where amazon crushes it. I feel like there should be some startup just focusing on making the perfect returns product for small brands. Just do anything including at home pickup and then figure out how to optimize later.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>siva7</em>:</p>
+<blockquote>I think you&#x27;re slightly wrong. It&#x27;s not prices, it&#x27;s not logistics. Amazon dominates because they have the power &amp; money to do the one single  thing their competiton couldn&#x27;t do without going out of business: No-questions-asked returns. 9 out of 10 people i ask this is the single reason they stay at Amazon.</blockquote>
+<p>↳ reply 3 — <em>ndiddy</em>:</p>
+<blockquote>The point the article makes is that the other online stores without access to Amazon&#x27;s logistics aren&#x27;t able to lower the price to make up for the inconvenience of using a normal shipping carrier because of an Amazon policy that bans sellers from offering an item for cheaper elsewhere. Amazon then charges sellers high fees that inflate the price of the item everywhere because of that policy.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>novia</em>:</p>
+<blockquote>Amazon allows you to make returns and makes it convenient, quick, and easy. I made two purchases through independent sellers&#x27; websites in the last year, both with big banners guaranteeing satisfaction and easy returns for 100 days or something. And yet, when I found that the product didn&#x27;t meet my needs, they would not accept my return. They wouldn&#x27;t even issue a return label. Both of these sellers used Shop. Shop requires you to fill out an application for a refund and then the seller can drag their feet on processing it. In both cases they let the application sit there for days before rejecting it. In one of the cases my credit card company ruled in favor of the small business when I issued a chargeback.<p>On Amazon it&#x27;s easy to request a return and get a return label all on the same day that you discover you have a subpar product. The long and short of it is that consumers do not want to be ripped off, and centralized sellers like Amazon and AliExpress make it easy to not be ripped off. If this raises prices across the board, so be it. It&#x27;s worth it for the time saved and the accountability that comes along with it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lavezzi</em>:</p>
+<blockquote>&gt; Amazon allows you to make returns and makes it convenient, quick, and easy.<p>They currently have a $1bn settlement for failing to properly process refunds for returned products over a nine year period.<p><a href="https:&#x2F;&#x2F;finance.yahoo.com&#x2F;personal-finance&#x2F;banking&#x2F;article&#x2F;did-amazon-owe-you-a-refund-you-may-qualify-for-part-of-a-3095-million-settlement-194303122.html" rel="nofollow">https:&#x2F;&#x2F;finance.yahoo.com&#x2F;personal-finance&#x2F;banking&#x2F;article&#x2F;d...</a></blockquote>
+<p>↳ reply 2 — <em>okr</em>:</p>
+<blockquote>I guess it depends. Ordered a phone last month. Returned it because of bloatware. Waiting to this day for the refund. And support line says: please wait, nothing is wrong. While the website says, we need more details.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>WhyNotHugo</em>:</p>
+<blockquote>&gt; Amazon&#x27;s Fair Pricing Policy lets it remove the Buy Box (the &quot;Add to Cart&quot; button), or even suspend a seller, if they&#x27;re offering their item cheaper elsewhere.<p>This kind of abusive practice needs to be banned in whichever countries it&#x27;s still legal.<p>You can&#x27;t really aspire to improve the situation if such things continue to be legal.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>runako</em>:</p>
+<blockquote>Isn&#x27;t this like Costco requiring manufacturers to offer SKUs at Costco that are not sold anywhere else? Or mattress stores offering to match price knowing full well that the SKUs in their store are not sold elsewhere?<p>This policy feels like incentive enough for Chinese manufacturers to not build behind a single brand, so the policy will not apply. Materially the same product, different SKU under a different brand name.<p>Feels trivially easy to get around this policy.</blockquote>
+<p>↳ reply 2 — <em>phyzix5761</em>:</p>
+<blockquote>Why should it be illegal? Its their platform. If enough sellers don&#x27;t like it and leave then Amazon will have to change their policy. There&#x27;s several other platforms people can sell their stuff on.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Starlink limit hits Ukraine's drones. The battlefield depends on SpaceX</title>
+      <link>https://defence24.com/geopolitics/starlink-limit-hits-ukraines-drones-the-battlefield-depends-on-spacex</link>
+      <guid isPermaLink="false">hn3-50084622</guid>
+      <pubDate>Wed, 14 Oct 2026 09:10:37 +0000</pubDate>
+      <description>129 points, 140 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://defence24.com/geopolitics/starlink-limit-hits-ukraines-drones-the-battlefield-depends-on-spacex"><strong>→ Article</strong></a> <small>(defence24.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50084622">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 140 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>MayeulC</em>:</p>
+<blockquote>The timing is interesting, given that it comes days after Musk said Ukraine had gone &quot;too far&quot; striking Yandex data centers. Putting other considerations aside, these strikes could be interpreted as direct retaliation against strikes on Ukrainian data centers days before.<p>That said, depending on a single piece of tech is not a good idea (as evidenced by the Russians when they lost starlink access). Russians have resorted to long-range mesh radios, Ukrainians should probably integrate that as well (though it does increase BOM costs).<p>The other dependency is Chinese suppliers, who supply both sides but may prefer to favor Russia. It is a huge liability for Ukraine as it supplies 80% of the parts that perform 70% of battlefield duties, and could stop anytime (besides known design leaks to the adversary, etc). Russia is even relocating whole production lines to evade sanctions.<p>Ukraine has been fighting with one arm behind its back, this is the latest development in the series of seemingly-arbitrary limitations imposed on it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>amelius</em>:</p>
+<blockquote>&gt; That said, depending on a single piece of tech is not a good idea<p>Yes and putting a CEO of a tech company in command of strategic infrastructure is not a good idea either.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jacquesm</em>:</p>
+<blockquote>A tech company CEO that has some ethics issues.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Maakuth</em>:</p>
+<blockquote>I don&#x27;t understand how it&#x27;s &quot;too far&quot; in any way, provided that Russia has since the start of the war struck against Ukrainian civilian infrastructure, including datacenters. The only way I can read this is as an example of heavily pro-Russian bias.</blockquote>
+<p>↳ reply 3 — <em>eptcyka</em>:</p>
+<blockquote>Long range mesh on planes? Otherwise, it&#x27;s pretty difficult to setup base stations in your enemies territory.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>eqvinox</em>:</p>
+<blockquote>The temporal correlation with datacenter hits argued to take out Russian bot farms is striking...<p>Normally I&#x27;d say &quot;assume ignorance before incompetence before malice&quot; but with the current US political climate it&#x27;s usually all 3 at the same time.</blockquote>
+<blockquote>
+<p>↳ reply — <em>jacquesm</em>:</p>
+<blockquote>Trump really needs the votes and the bot farms are probably making a difference.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>eqvinox</em>:</p>
+<blockquote>It could also be the refinery hits, but it really makes no difference...<p>Slightly disturbing that the way to determine if attacks on Russia are properly on the mark for pain is to watch <i>US</i> backlash.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tomtomistaken</em>:</p>
+<blockquote>Post got pushed back to &gt;150 rank</blockquote>
+<blockquote>
+<p>↳ reply — <em>jacquesm</em>:</p>
+<blockquote>Yes, there are enough MAGA idiots and russia sympathizers with flag powers on HN to do that. Cue someone dropping in to explain that this is all just organic and that there is nothing to see here.<p>Meanwhile, here is another article about pelicans and one on something that already existed that I rewrite in a new fashionable language.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Iosevka is an open-source, sans-serif and slab-serif monospace font</title>
       <link>https://typeof.net/Iosevka/</link>
@@ -1258,6 +1430,42 @@ We also have a selection of code samples to try it: <a href="https:&#x2F;&#x2F;s
 <blockquote>
 <p>↳ reply — <em>rspeele</em>:</p>
 <blockquote>Thanks for your work on Solvespace. I have been using it for years. When I no longer had access to commercial CAD programs I tried all the open source stuff. My conclusions were:<p>* OpenSCAD -- cool idea, good for a few types of highly procedural parts, but most of the time I&#x27;d rather a parametric sketch-based interface over pure code.<p>* FreeCAD -- the most features of any open source CAD, but poor UI, tendency to crash, and the advanced features like loft kind of fall flat compared to commercial equivalents. You think you&#x27;ll be able to model a part, but it becomes extremely frustrating if you actually need the advanced tools.<p>* SolveSpace -- pretty stable and reliable. Fast, compact, great sketching interface, good discoverable UI. You can predict what types of parts you can model with it and what types you can&#x27;t. Doesn&#x27;t try to do everything but is good at what it does.<p>You can tell which one is my favorite! N features done to a good level of polish and with somebody making sure it all &quot;makes sense together&quot; beats 10xN features all 80% done and haphazardly mashed together in different menus&#x2F;workbenches, for any tools I want to rely on.<p>I am noodling around with a slopcoded CAD tool of my own these days, just out of curiosity to see how far Opus5.5&#x2F;GPT6 can get doing it in F# and to experiment with some workflow concepts that match the way I like to design parts. But like you said, progress is slow. For stuff I actually want to <i>get done</i>, SolveSpace remains my go-to, and I greatly admire its coherent design.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The Origin Story of Kid Pix</title>
+      <link>http://red-green-blue.com/kid-pix-the-early-years</link>
+      <guid isPermaLink="false">hn3-50064673</guid>
+      <pubDate>Mon, 12 Oct 2026 23:52:29 +0000</pubDate>
+      <description>173 points, 38 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="http://red-green-blue.com/kid-pix-the-early-years"><strong>→ Article</strong></a> <small>(red-green-blue.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50064673">→ HN comments</a> &nbsp;·&nbsp; 173 points &nbsp;·&nbsp; 38 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Elidrake24</em>:</p>
+<blockquote>The lack of experience in a child can lead to some funny situations.  I want to say this happened in first grade or so, had a teacher, Mr Macintosh, who had several of his own Mac computers available in his classroom, and Kid Pix was loaded up on them (amongst other classics of the time).  I was obsessed, particularly with the Bomb, thought it was just the coolest way to clear the screen, this ostensibly serious concept of a program made fun.<p>I also had difficulty connecting with my classmates, combination of untreated ADHD, and issues at home.  For some reason I got it into my head that the bomb was cool, so if I told the others I had a bomb in my backpack I&#x27;d be cool!  This was very shortly after the Columbine massacre, and of course the policy at that moment was to immediately call in the police.  They talked with me, impressed upon my young mind the seriousness of such claims, and we all thankfully just moved on.<p>Odd to think back on now.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bigfishrunning</em>:</p>
+<blockquote>I was completely focused on the fact that the name was Mr Macintosh, and thought the story was gonna be about that</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kmeisthax</em>:</p>
+<blockquote>For those unaware: <a href="https:&#x2F;&#x2F;www.folklore.org&#x2F;Mister_Macintosh.html" rel="nofollow">https:&#x2F;&#x2F;www.folklore.org&#x2F;Mister_Macintosh.html</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Waterluvian</em>:</p>
+<blockquote>The bomb was awesome. I loved how you could pause it and start another to create really cool moire-like patterns.<p>I remember kids maxing out the sound on the Performas until the teacher got justifiably annoyed.</blockquote>
+<p>↳ reply 3 — <em>tombert</em>:</p>
+<blockquote>Similar story.<p>My family isn&#x27;t religious but I used to go to church with a friend on Wednesday nights.<p>There were a bunch of new kids at the Bible School thing that Wednesday for some reason, and so there was a game where you&#x27;d say your name, use the first letter of your name as a pretend occupation, and a place, also with the first letter of your name.  An example might be something like &quot;My name is Jordan, I am a Janitor from Jamaica&quot;.<p>I guess I was a bit of an edgelord even at age 10, because I said &quot;My name is Tommy, I am a Terrorist, from Tennessee&quot;.  For context, this was September 5th, 2001. Everyone kind of laughed, the teachers rolled their eyes, and we moved on.<p>The following week, September 12, the teachers pulled me aside and gave me a very long, very stern lecture about why you can&#x27;t joke about these things.  I know they meant well, but to be honest I don&#x27;t think I ever went back to church with my friend after that.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>LarsDu88</em>:</p>
+<blockquote>Kid Pix was the very first program I ever used on a computer when I was around 5 years old. Good times. Still remember the dynamite.</blockquote>
+<p><strong>Top #3</strong> — <em>xattt</em>:</p>
+<blockquote>FYI there is an iOS port of KidPix that my kids throughly enjoy as much as I enjoyed playing it at that age.</blockquote>
+<blockquote>
+<p>↳ reply — <em>ericd</em>:</p>
+<blockquote>Also fyi, ours run it on their Raspi 400 via dosbox, they love it too. The DOS games library is full of educational-ish gems (they really like Lemmings and The Settlers, too).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sersi</em>:</p>
+<blockquote>Yes, old dos games are perfect for young kids. The Castle of Dr Brain, the humongous games, Incredible Machines to just name a few.</blockquote>
+</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -2973,6 +3181,55 @@ Problem: Anthropic isn&#x27;t the only provider.  You can argue whether they are
 <blockquote>I have been using the Librem 5 as my daily phone since 1 May 2022 (<a href="https:&#x2F;&#x2F;janvlug.org&#x2F;blog&#x2F;one-week-librem-5-field-trial-day-1&#x2F;" rel="nofollow">https:&#x2F;&#x2F;janvlug.org&#x2F;blog&#x2F;one-week-librem-5-field-trial-day-1...</a>). And the Librem 5 is getting better and better, and its PureOS Linux operating system is actively maintained, and patches are still upstreamed (<a href="https:&#x2F;&#x2F;puri.sm&#x2F;posts&#x2F;tag&#x2F;pureos&#x2F;" rel="nofollow">https:&#x2F;&#x2F;puri.sm&#x2F;posts&#x2F;tag&#x2F;pureos&#x2F;</a>).<p>I really enjoy having a phone that gives me full root control, and that is very similar to the Fedora (GNOME) distribution that I have on my desktop and laptop.<p>Buying a Linux phone from a pure Linux hardware vendor like Purism helps sustaining the mobile Linux ecosystem.<p>Yes, the Librem 5 is a bit older phone with some rough edges, but for me it is a really good phone. It gives freedom in the free software sense, and consistency with my Linux computers. I gladly accept some minor inconvenience to have a phone that respects my freedom and privacy.<p>I cannot foresee the future, but for me the experience on a Linux phone that I control is far more superior than any phone that spies on me and takes away my freedom, like Android or iOS, basically any phone from any manufacturer that disrespects me.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Do dentists know what they're doing?</title>
+      <link>https://mapwriting.substack.com/p/dentists</link>
+      <guid isPermaLink="false">hn3-50050553</guid>
+      <pubDate>Mon, 12 Oct 2026 02:21:54 +0000</pubDate>
+      <description>144 points, 120 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mapwriting.substack.com/p/dentists"><strong>→ Article</strong></a> <small>(mapwriting.substack.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50050553">→ HN comments</a> &nbsp;·&nbsp; 144 points &nbsp;·&nbsp; 120 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>donatj</em>:</p>
+<blockquote>Like 15 years ago now I had broken a filling. Went in to a new dentist because my insurance had changed. They told me I had 14 cavities, and 3 of my teeth needed crowns - and they were surprisingly rude about the whole ordeal.<p>Reading the reviews on Yelp, someone had said they had a similar experience with their first visit and went to a different dentist and were told they had none.<p>I decided to get a second opinion and heavens am I thankful I did. They replaced my filling right then and there and I think I&#x27;ve had maybe 3 cavities in the 15 years since.<p>I put very little faith in dentists to not be scam artists.<p>The part I find particularly … funny is the disagreements. I had one dentist who insisted I needed to be using a pre-rinse. That dentist ended up leaving, and a different dentist at THE SAME OFFICE told me it was a waste of money and I should stop because it does nothing. I swear they all just make it up as they go.<p>I&#x27;ve had multiple dentists tell me this rough tooth in the back of my mouth needed to be capped because it was &quot;falling apart&quot;. I started using imported NovaMin on it out of curiosity and it became super smooth instead of rough and no one has mentioned it since.<p>One dentist I saw for a number of years would try to insist I needed a dental implant for a missing molar and if I didn&#x27;t all my teeth were going to come out alignment. I didn&#x27;t have money for it at the time. Not a single dentist before or since has mentioned this.</blockquote>
+<blockquote>
+<p>↳ reply — <em>Der_Einzige</em>:</p>
+<blockquote>And then you find out that high fluoride toothpaste requires a prescription!<p>Why? So that way you can&#x27;t avoid these scammers.<p>Literally scum of society. Worse then lawyers.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>thejazzman</em>:</p>
+<blockquote>where is that?
+i stopped having cavities when i started using Act mouthwash -- don&#x27;t understand how anyone can hate on fluoride.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tkdb</em>:</p>
+<blockquote>I&#x27;m surprised that there isn&#x27;t more attention being paid to this question:<p>How does dental (or medical) care differ when the person recommending the procedure directly benefits financially from it?<p>I&#x27;ve had experiences with doctors who make exactly the same if they perform a $1,000 procedure or a $10,000 procedure, and I feel in general I&#x27;m likely to get better care in that scenario.<p>(In the US) I regularly scrutinize and stress over the dentist&#x27;s recommendations, as they are almost always the owner of the business as well as the head dental procedure recommender.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>asdff</em>:</p>
+<blockquote>If you ever get treated at say a dental school, where they will have roving faculty each giving their own opinion to the dental student over your open mouth, you will learn there is so much subjectivity in dental practice. One point of contention is about when to do intervention. Some doctors want the procedure done because they believe the risk of not doing so is large. Others might say you&#x27;ve gotten by this far alright and maybe only intervene if things turn for the worse, better to keep your real tooth as long as you can. Some dentists might want to see a lot of x ray imagery and retakes until their ideal perspectives are captured, others weigh the risk of irradiation and favor taking as few as possible. Any restorative work is very much an art vs a science, some hands are genuinely more skilled and some might take a few redos to get a repair to not break in 2 days from the demands of your natural bite. They might even look at the x ray image of a past root canal from knowledgeable hands like we might the statue of David, showing it to other staff in amazement.<p>About the only thing that seems to be in agreement across the board is flossing and brushing your teeth.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jchw</em>:</p>
+<blockquote>With modern X ray imaging devices I feel like the dangers of irradiation from dental imaging are probably quite low. If nuclear hormesis holds up, you may actually be better off getting the imaging done.<p>The problem is the same as the CT scan: as much as my health anxiety would love another set of CT scans to feel relieved about, even if they do find something potentially interesting it may be worse to act on it than to do nothing, while leaving other things that can&#x27;t show up on imaging unnoticed, potentially diverting attention and giving you a false sense of security.<p>YouTuber and doctor Dr. Bernard &quot;Chubbyemu&quot; Hsu recently covered an upsetting example to demonstrate how doing additional routine scans wouldn&#x27;t have helped and may have harmed in a specific sort of scenario that I&#x27;m sure many of us fear from time to time. It doesn&#x27;t prove or even assert that such scans would be useless, only that they are far from a panacea and that it isn&#x27;t settled science that we&#x27;d be better off with it.<p><a href="https:&#x2F;&#x2F;youtu.be&#x2F;YDYMMgyN4k0" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;YDYMMgyN4k0</a><p>And to me, I think that ties into how we&#x27;re doing dentistry wrong: I think taking routine X rays for patients with healthy mouths, no history of issues and no symptoms is reckless. Maybe it is sometimes beneficial, but every single year as a <i>requirement</i> seems insane. Why not every 3? Are we really catching things early or are we drilling into teeth that are fine? I question it.<p>Of course, I&#x27;m just some chuckle fuck on the Internet with zero dentistry experience, but my knee-jerk is that something seems off here.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bawolff</em>:</p>
+<blockquote>Hmm, googling it, it seems like a cross country flight is equal to 40 dental xrays. had no idea it was that low.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>onlyrealcuzzo</em>:</p>
+<blockquote>Never had a cavity in my life.<p>The dentist office I went to switched my dentist, and suddenly, I had a cavity in almost every tooth, and he recommended drilling on the spot.<p>Went to a different dentist. As expected they said I do not have any cavities.<p>It&#x27;s kind of interesting that nothing will happen as a result of that.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>joshstrange</em>:</p>
+<blockquote>&gt; Poor form. A good dentist should have more professional curiosity than this.<p>I find _very little_ &quot;professional curiosity&quot; exists overall. Heck, I don&#x27;t even always see it within our industry where I think it&#x27;s maybe more common? Maybe I&#x27;m biased.<p>s&#x2F;dentists&#x2F;doctors<p>I&#x27;m reading up on new tech stuff all the time and it shocks me that most of the doctors I&#x27;ve ever interacted with don&#x27;t seem to be doing the same. It&#x27;s like they are just coasting on what they learned in school. And since the vast majority of us only see 1 doctor of a given type at best once a year (maybe more for the dentist, but the same dentist) we never get any sort of &quot;second opinion&quot;.<p>Think about all the people you&#x27;ve worked with in tech, now think about them being the sole-decider for how to architect&#x2F;build something without any pushback or anyone else to push back or give advice. Yeah, that&#x27;s how I imagine the whole medical field.<p>Sure, we&#x27;d all love to have &quot;Dr House&quot; and his team examining us (or insert your favorite tv doctor&#x2F;team) but I have a feeling that the 5-10min I see my doctor plus another half hour at max to read my charts&#x2F;respond to my messages is all the time he thinks about me for the whole year. &lt;1hr of attention and I&#x27;m supposed to expect him to pick up on issues that aren&#x27;t obvious in my blood work or other measurements he takes? It&#x27;s bleak.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>devin</em>:</p>
+<blockquote>The doctors I&#x27;ve found that seem to be interested in doing their homework:<p>A) Work in teaching hospitals and have ample time to offer you during a visit<p>B) Have their own practice and have ample time to offer you during your visit<p>C) Are in their residency and have more time than a typical doc to spend time looking into what&#x27;s bothering you, but you can tell they&#x27;re being groomed to see 100 patients per day at 7 minutes a pop.<p>I switched a couple years ago to seeing a private practice doc. I can get same-day appointments, 90 minute appointments, 24 hr phone&#x2F;text access for emergencies, cheaper labs than my insurance offers, and more for about $100&#x2F;mo per person.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dgunay</em>:</p>
+<blockquote>I briefly shadowed a doctor when I was interested in potentially going to medical school. I sat down while he met with a patient. He left the room pretty quickly. From the conversation I figured he&#x27;d be right back and just went to get something or check something. He comes back in 5 minutes later and I find out that he&#x27;d gotten up and seen 3-4 other patients before realizing I was still in the first room.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gavinray</em>:</p>
+<blockquote>Unironically, give your aggregate health records (office visits, bloodwork results, etc) to an LLM and you&#x27;re likely to get better advice.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Doory – Open-Source Canva</title>
       <link>https://github.com/shaongitbd/doory</link>
       <guid isPermaLink="false">hn3-50049872</guid>
@@ -3438,226 +3695,6 @@ Problem: Anthropic isn&#x27;t the only provider.  You can argue whether they are
 <blockquote>Unfortunately did not even come close to capturing the magic of the original or TASpring &#x2F; BAR though, sadly. I wanted to like it but it suffered from a lot of sequelitis.</blockquote>
 <p>↳ reply 2 — <em>detritus</em>:</p>
 <blockquote>Yerp, sadly spherical maps just didn&#x27;t work. Imho, obv, but I really did try and persevere with it, believing in it at the time.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>NYC's "Click to Cancel" rule is now in effect</title>
-      <link>https://www.nyc.gov/main/click-to-cancel</link>
-      <guid isPermaLink="false">hn3-50045946</guid>
-      <pubDate>Sun, 11 Oct 2026 18:01:16 +0000</pubDate>
-      <description>440 points, 209 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.nyc.gov/main/click-to-cancel"><strong>→ Article</strong></a> <small>(nyc.gov)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50045946">→ HN comments</a> &nbsp;·&nbsp; 440 points &nbsp;·&nbsp; 209 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>flowerlad</em>:</p>
-<blockquote>This will have no impact on Adobe&#x27;s shenanigans. They offer click-to-cancel, but then charge a cancellation fee equal to what you would have paid for the rest of the one-year term. Their clever justification is that you received a significant discount for committing to a year, so you still owe them for the remaining months if you cancel early. I didn&#x27;t even realize I had signed up for a one-year commitment. I&#x27;m not sure where they buried that clause.<p>I expect more businesses will transition to this strategy to counter NYC&#x27;s new rule. They won&#x27;t necessarily lower the price, but you will have to sign up for a one-year term, then they will hit you with a massive cancellation fee if you &quot;click to cancel&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ceasesurthinko</em>:</p>
-<blockquote>Worth keeping an eye on ArtCraft (<a href="https:&#x2F;&#x2F;getartcraft.com&#x2F;apps" rel="nofollow">https:&#x2F;&#x2F;getartcraft.com&#x2F;apps</a>).<p>They&#x27;re building a free, open-source Adobe Creative Suite alternative entirely in Rust. It runs super fast with minimal overhead, works completely offline, and aims for near 1:1 feature parity with Adobe products like Photoshop, Lightroom, Illustrator, Premiere Pro, and After Effects. It also supports command-based actions, making it easy to integrate into AI agents and automated workflows. They have Microsoft Office alternatives too.<p>Their Photoshop clone, PhotoCraft (<a href="https:&#x2F;&#x2F;github.com&#x2F;storytold&#x2F;photocraft" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;storytold&#x2F;photocraft</a>), has around 47k GitHub stars right now.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sodapopcan</em>:</p>
-<blockquote>How does this compare to Affinity Products?  (I know I can ask &quot;AI&quot; but I&#x27;m asking you, though no pressure to respond).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>spiderice</em>:</p>
-<blockquote>Canva now owns Affinity.  So regardless of the answer to that question, more options are nice.  I have 0 faith that Canva will be good stewards of Affinitys original mission, despite making all of the Affinity products free (for now)</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>SXX</em>:</p>
-<blockquote>Btw its likely still possible to change subscription with Adobe to different one and then cancel it free of charge due to new 14-days window. Not sure if it works right now, but worked like charm before.</blockquote>
-<p>↳ reply 3 — <em>trymas</em>:</p>
-<blockquote>Where I am from this sort of dark pattern is used by most service companies at this point. There’s some regulation, though too little.<p>Most gyms, ISPs, mobile carriers, any sort of services with continuous subscription have this scheme:<p>- they sell you subscription with some ridiculous (and perpetual) discount (often with “first three months - it’s free”);<p>- there’s minimum commitment clauses&#x2F;fines (so you won’t leave too early);<p>- there’s clause to “pay up all given discounts on canceling the contract”;<p>- they “balance” two rules above in such a way that it is never “good time” to leave.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>woodruffw</em>:</p>
-<blockquote>It seems like a good rule, and I am eager to see what NYC’s enforcement is going to look like. I have historically been disappointed (as a life-long resident) by the discontinuity between the city’s eagerness to legislate and its recalcitrance around enforcement, particularly when public interest in any given topic fades.<p>(Compare the city’s historic problems around preventing illegal de-stabilization of rental units, inability to prevent the NYPD from parking on sidewalks, and so forth.)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>1986</em>:</p>
-<blockquote>NYPD parking on sidewalks is more of a &quot;who watches the watchmen&quot; problem unfortunately.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>woodruffw</em>:</p>
-<blockquote>It doesn&#x27;t have to be! Parking enforcement wasn&#x27;t always within the NYPD&#x27;s remit. Until 1996, NYCDOT was responsible for parking enforcement.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>mikeocool</em>:</p>
-<blockquote>Sadly, even if this were the case, there is no mechanism for one NYC city agency to fine another one.<p>This is why the sidewalks next to city parks take forever to get shoveled after a big snow storm.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>JumpCrisscross</em>:</p>
-<blockquote>&gt; <i>the discontinuity between the city’s eagerness to legislate and its recalcitrance around enforcement</i><p>For consumer-corporate disputes, learning to leverage New York&#x27;s regulatory state is a bit of a superpower. Basically, sending in a written complaint with the regulator copied and then having them open a regulatory-investigatory file is real leverage because even if you&#x27;re full of shit, it&#x27;s going to burn legal dollars on the other side. That, in turn, makes a letter to the company threatening regulatory escalation as the next step land seriously.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Anonboxis</em>:</p>
-<blockquote>Look out for the &quot;Digital Fairness Act&quot;, which will be tabled by the European Commission in November. It is expected to include the same &quot;Click to Cancel&quot; principle continent-wide.<p>Source: I&#x27;m an EU digital policy analyst in Brussels.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Hnrobert42</em>:</p>
-<blockquote>In the US, tabled means something is not going forward. Am I correct that it means the opposite there?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>neilo40</em>:</p>
-<blockquote>Yes tabled means the opposite on either side of the Atlantic. Has caused me a lot of confusion over the years. Personally as a Brit I just can’t see the logic in the US meaning</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>yreg</em>:</p>
-<blockquote>Table the motion. (discuss);
-Table the discussion. (postpone)<p>Continue the story. (keep reading);
-Continue the trial. (suspend)<p>Drop the album. (release);
-Drop the charges. (abandon)<p>Sanction an event. (approve);
-Sanction a country. (penalize)<p>Cleave to principles. (stick);
-Cleave wood. (split)<p>Clip keys to belt. (attach);
-Clip the hedges. (cut off)<p>Dust shelves. (remove);
-Dust pastries with sugar. (add)<p>Hold fast. (fixed in place);
-Walk fast. (moving quickly)<p>Make oversight. (omission);
-Provide oversight. (scrutiny)<p>Peruse the ancient manuscript. (read in detail);
-Peruse the magazine. (look through casually)<p>The alarm went off. (activated);
-Turn the alarm off. (deactivated)</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>yoavm</em>:</p>
-<blockquote>This looks really great, thank you for your work! However, &quot;Entry into force&quot; really  is expected only around 2030? I&#x27;m not even sure most people will be consuming the internet using a browser then. It&#x27;s sad to see that a process like this, which is very much needed, starts at 2020 and ends 10 years later. Clearly not your fault, but I&#x27;m just a little shocked.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Sound – Bartosz Ciechanowski (2022)</title>
-      <link>https://ciechanow.ski/sound/</link>
-      <guid isPermaLink="false">hn3-50045147</guid>
-      <pubDate>Sun, 11 Oct 2026 16:46:43 +0000</pubDate>
-      <description>138 points, 21 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ciechanow.ski/sound/"><strong>→ Article</strong></a> <small>(ciechanow.ski)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50045147">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 21 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>__natty__</em>:</p>
-<blockquote>Reading this guy blog posts makes me feel like when I was reading as a kid good pop-science article in the magazine or encyclopedia. Somehow it&#x27;s easy to follow, nicely visualise and I can trust his work was verified because he was writing like this far before AI.</blockquote>
-<p><strong>Top #2</strong> — <em>isolli</em>:</p>
-<blockquote>My 10 yo son just spent an hour clicking through the widgets and, frankly, learning quite a lot, with just a few additional explanations from me. Another hit from Bartosz!</blockquote>
-<p><strong>Top #3</strong> — <em>vincnetas</em>:</p>
-<blockquote>So we have Turing test. We now need Bartosz test for AI for general intelligence. give it concept, get it explained like this :)</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How to Build Wealth as a Career Person</title>
-      <link>https://asheradeniyi.com/2026/04/10/how-to-build-wealth-as-a-career-person/</link>
-      <guid isPermaLink="false">hn3-50044715</guid>
-      <pubDate>Sun, 11 Oct 2026 16:03:58 +0000</pubDate>
-      <description>135 points, 137 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://asheradeniyi.com/2026/04/10/how-to-build-wealth-as-a-career-person/"><strong>→ Article</strong></a> <small>(asheradeniyi.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50044715">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 137 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>GMoromisato</em>:</p>
-<blockquote>I&#x27;ve more or less followed this advice, and it&#x27;s worked out for me. For the most part, I used my salary to pay for expenses and stock compensation to build up wealth.<p>The tricky part is that a lot of this advice is situation-dependent. Should you switch to a riskier company that offers a higher compensation? Sometimes yes, sometimes no. Should you work late to accomplish goals hoping to get a promotion? It depends.<p>So how are we supposed to know what to do?<p>The answer, in my opinion, is people. You have to trust people who are trustworthy and avoid people who are not. As an employee, your success depends on the people who hired you--they are the ones who can promote you or cheat you. The best leaders are the ones who realize that helping you advance is going to help them advance. Help your boss accomplish their corporate goals and they will promote you--not as a reward, but as a bet that you will help them on the next goal.<p>Bad leaders are either too selfish (fail to promote you) or too incompetent (unable to rise, even with your help). You need to learn to avoid them.<p>Therefore, my advice is this: Look at the leaders in your company--people who could plausibly hire you. Which ones are the best bets? Which ones have both the talent and the integrity to succeed? If you&#x27;re lucky there&#x27;s more than one and you can work to get on their team. If you&#x27;re unlucky, there are none and you need to find a different company.</blockquote>
-<blockquote>
-<p>↳ reply — <em>awesome_dude</em>:</p>
-<blockquote>100% agreed<p>Warren Buffet also made the point that investing in a company (this applies whether its your capital or your time as an employer) that it was the calibre of the people that determined whether the investment was worthwhile,  or not.<p>And that&#x27;s why interviews, as a potential employee are so important,  you want to know who you will be working for&#x2F; with,  so you should be asking questions that determine what sort of people you are getting involved with.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ghm2180</em>:</p>
-<blockquote>What&#x27;s weird about this article is none of it is technically wrong: &quot;Become a cheetah(super at ___)&quot;, &quot;Aspire and engage to be better&quot;, &quot;Build 6 types of capital&quot;. They are not bad things to do, if you can: and that is what it misses, if you can.<p>But don&#x27;t feel bad if you have not been able to do any of them, e.g. Most People with kids can often do very little than job and take care of kids and that&#x27;s it. What is more important is to not beat yourself up about it, give yourself grace and do one or two things that make you and your near and dear people&#x2F;pets happy.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>donbox</em>:</p>
-<blockquote>Agree, be kind to your self. Its ok to slowdown if need be depending on life circumstances.</blockquote>
-<p>↳ reply 2 — <em>hn_throwaway_99</em>:</p>
-<blockquote>To be honest, I&#x27;m really surprised this blog post of nothing but platitudes is on the front page of HN. Yes, you want to do well in school so you can get a good first job, make yourself excellent at something, don&#x27;t inflate your lifestyle. I mean, yeah, duh.<p>The much more valuable and harder advice is what to do in a particular situation or when things go awry. For example, most career paths where you really end up at higher earnings require that you eventually manage large groups or many teams. The thing is, a lot of people <i>hate</i> managing people, and setting them up for a career path where they have to move into management is a recipe for misery. Much more valuable for these folks is to know what a good IC path looks like, and which careers can be particularly lucrative even if you don&#x27;t need to manage people.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Aozora7</em>:</p>
-<blockquote>I skipped most of the stuff described in the article and just invested most of my salary into index ETFs. Mostly because I hate work much more than I like buying stuff.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How I reverse engineered a commercial spatial audio effect</title>
-      <link>http://epestr.com/blog/reverse-engineering-a-commercial-spatial-audio-effect/</link>
-      <guid isPermaLink="false">hn3-50044272</guid>
-      <pubDate>Sun, 11 Oct 2026 15:21:58 +0000</pubDate>
-      <description>128 points, 41 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="http://epestr.com/blog/reverse-engineering-a-commercial-spatial-audio-effect/"><strong>→ Article</strong></a> <small>(epestr.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50044272">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 41 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>fxtentacle</em>:</p>
-<blockquote>It&#x27;s been 12 years, but I once wrote a blog post on how my commercial spatial audio effect works: <a href="https:&#x2F;&#x2F;hajo.me&#x2F;blog&#x2F;2014&#x2F;12&#x2F;28&#x2F;how-surround-sound-for-headphones-works&#x2F;" rel="nofollow">https:&#x2F;&#x2F;hajo.me&#x2F;blog&#x2F;2014&#x2F;12&#x2F;28&#x2F;how-surround-sound-for-headp...</a><p>BTW, the resulting plugin was used during mastering of George Lucas&#x27; Red Tails, so I guess sound quality was fine ;)<p>My own Mac app has long since been discontinued (because Apple locked me out of the KExt permission), but I sold the tech and it lives on.<p>I keep wondering if I should build hardware headphones with the spatial audio inside, so it looks like Dolby Atmos to the TV but then does virtual surround sound on your headphones, but hardware has low-ish margins so I never found anyone willing to fund it, even though I already have a working prototype. Oh and the audio engineer who invented it has since been Grammy-nominated twice. And, well, Hollywood likes it. But still a tough sell towards investors.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jareklupinski</em>:</p>
-<blockquote>&gt; two sound engines, one licensed from NEW AUDIO TECHNOLOGY<p>is this why i have to log in to an account to use Virtual Surround on gaming headsets</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>andai</em>:</p>
-<blockquote>Interesting article. I don&#x27;t know much about sound processing but it reminded me of the Fruity Convolver in FL Studio, which can somehow apply the characteristics of one sound (an impulse?) to your audio stream. It has interesting effects built in, reverbs recorded in different unusual spaces, as well as guitar amps.<p>I would have liked to compare the audio clip from the beginning of the article, at the end too! Instead I had to record my own voice. And there doesn&#x27;t seem to be a way to toggle the effect on and off? So it&#x27;s a bit hard to get a sense of what it actually does.<p>This also reminds me of this cool mp3 from the 2000s — maybe it&#x27;s on YouTube these days — called virtual barbershop, which was recorded with binaural microphones.<p>Edit: here she is! <a href="https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=IUDTlvagjJA" rel="nofollow">https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=IUDTlvagjJA</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>djmips</em>:</p>
-<blockquote>You might enjoy this talk. I did.
-<a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=HTfa2UF_oiI" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=HTfa2UF_oiI</a></blockquote>
-<p>↳ reply 2 — <em>_joel</em>:</p>
-<blockquote>Yes, it&#x27;s called impulse response, used to capture convolutional reverbs, to model &quot;real&quot; sound stages like a large hall or what have you</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>bronlund</em>:</p>
-<blockquote>I find these kind of article fascinating; going from clueless to solution, and learning something on the way. This is education.<p>Is a good solution? No, but he identified a problem and he solved it, not letting lack of domain knowledge stopping him.  Respect.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I'm sorry, but you still have to think</title>
-      <link>https://itsallaboutthebit.com/i-am-sorry-but-you-still-have-to-think/</link>
-      <guid isPermaLink="false">hn3-50043689</guid>
-      <pubDate>Sun, 11 Oct 2026 14:29:07 +0000</pubDate>
-      <description>315 points, 141 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://itsallaboutthebit.com/i-am-sorry-but-you-still-have-to-think/"><strong>→ Article</strong></a> <small>(itsallaboutthebit.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50043689">→ HN comments</a> &nbsp;·&nbsp; 315 points &nbsp;·&nbsp; 141 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>discreteevent</em>:</p>
-<blockquote>It&#x27;s worth noting that the context here is a system that was translated by an LLM which is the ideal use case for it. 90% of the thinking had already been done by developers of the existing system.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ionetan</em>:</p>
-<blockquote>Yeah, I think most success stories in AI seem to come from ports, or from projects where a deliberate architecture has been laid by humans who understand it, and AI is sprinkling features on top. Adding features and drivers to a Linux distro seems like one of those places where AI is uniquely well positioned to bring value, because the foundation has already been laid.
-I wrote a post the other day on how agentic code still needs this kind of architectural foundation to not end up in a tangled mess. It might interest someone:
-<a href="https:&#x2F;&#x2F;ljtn.github.io&#x2F;epiq&#x2F;blog&#x2F;the-soft-fabric-of-agentic-code.html" rel="nofollow">https:&#x2F;&#x2F;ljtn.github.io&#x2F;epiq&#x2F;blog&#x2F;the-soft-fabric-of-agentic-...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>amelius</em>:</p>
-<blockquote>LLMs are great at translation. That&#x27;s why language translators were among the first professionals losing their jobs to AI.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>senderista</em>:</p>
-<blockquote>I&#x27;m sure they are shit at translating poetry and artistic prose.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Schiendelman</em>:</p>
-<blockquote>That&#x27;s a really great point, and you can often start with documenting current behavior with tests and then carefully going through to figure out what bugs you&#x27;ve just enshrined in test cases…</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Ozzie_osman</em>:</p>
-<blockquote>You need to understand the system you&#x27;re working on enough to make well-informed decisions about its current and future states.<p>In some cases you can get away with not reading the code. And maybe in the future that will be more common. But for now, I personally prefer to read (or skim) the code, and not abdicate to AI.</blockquote>
-<p><strong>Top #3</strong> — <em>wdr1</em>:</p>
-<blockquote>All of this &quot;you need to understand the code&quot; discussion reminds me of when I was an undergrad. I worked in a computer with someone a fair bit older -- they had even worked with punchcard systems. He was always happy to oblige us with war stories from the olden times &amp; we would lap them up.<p>He favorite axe to grind was how my generation put too much trust into the compiler.  &quot;Just because it compiles doesn&#x27;t mean you&#x27;re done.  You need to look at the actual assembly.  Compilers can be VERY inefficient.&quot;<p>This was in the 90s.  There was some merit to his claim.<p>But today?  How many people who write Javascript look at the actual assembly code that is run?  Not many.<p>I can&#x27;t help but wonder if this current &quot;you need to understand the code&quot; is the same thing all over again.  And if in a few years, almost nobody will look at the generated Python, Ruby, etc.</blockquote>
-<blockquote>
-<p>↳ reply — <em>rootusrootus</em>:</p>
-<blockquote>A compiler is far more deterministic than any LLM.  I am skeptical that the two situations are really comparable.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Documents add to evidence in climate deception case against ExxonMobil</title>
-      <link>https://insideclimatenews.org/news/07102026/exxonmobil-climate-deception-new-evidence/</link>
-      <guid isPermaLink="false">hn3-50043682</guid>
-      <pubDate>Sun, 11 Oct 2026 14:28:39 +0000</pubDate>
-      <description>381 points, 205 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://insideclimatenews.org/news/07102026/exxonmobil-climate-deception-new-evidence/"><strong>→ Article</strong></a> <small>(insideclimatenews.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50043682">→ HN comments</a> &nbsp;·&nbsp; 381 points &nbsp;·&nbsp; 205 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>thelastgallon</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;insideclimatenews.org&#x2F;project&#x2F;exxon-the-road-not-taken&#x2F;" rel="nofollow">https:&#x2F;&#x2F;insideclimatenews.org&#x2F;project&#x2F;exxon-the-road-not-tak...</a><p>This nine-part history of Exxon’s engagement with the emerging science of climate change is the result of an eight months-long investigation conducted in 2015. The stories span four decades, and are based on primary sources, including internal company documents dating back to the late 1970s; interviews with former company employees; and other evidence published for the first time by ICN.<p>We found that decades ago, Exxon conducted cutting-edge climate research and then worked at the forefront of climate denial, manufacturing doubt about the scientific consensus that its own scientists had confirmed.<p>This series was named a finalist for the 2016 Pulitzer Prize for Public Service, and earned national recognition from many other quarters.</blockquote>
-<blockquote>
-<p>↳ reply — <em>sampo</em>:</p>
-<blockquote>&gt; Exxon conducted cutting-edge climate research<p>I disagree.<p>This is where cutting edge academic research was already 10 years earlier:<p>[1] 1967: <a href="https:&#x2F;&#x2F;journals.ametsoc.org&#x2F;view&#x2F;journals&#x2F;atsc&#x2F;24&#x2F;3&#x2F;1520-0469_1967_024_0241_teotaw_2_0_co_2.xml" rel="nofollow">https:&#x2F;&#x2F;journals.ametsoc.org&#x2F;view&#x2F;journals&#x2F;atsc&#x2F;24&#x2F;3&#x2F;1520-04...</a><p>The above paper even has its own Wikipedia article:<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Thermal_Equilibrium_of_the_Atmosphere_with_a_Given_Distribution_of_Relative_Humidity" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Thermal_Equilibrium_of_the_Atm...</a><p>[2] 1969: <a href="https:&#x2F;&#x2F;journals.ametsoc.org&#x2F;view&#x2F;journals&#x2F;apme&#x2F;8&#x2F;3&#x2F;1520-0450_1969_008_0392_agcmbo_2_0_co_2.xml" rel="nofollow">https:&#x2F;&#x2F;journals.ametsoc.org&#x2F;view&#x2F;journals&#x2F;apme&#x2F;8&#x2F;3&#x2F;1520-045...</a><p>[3] 1975: <a href="https:&#x2F;&#x2F;geosci.uchicago.edu&#x2F;~archer&#x2F;warming_papers&#x2F;manabe.1975.gcm.pdf" rel="nofollow">https:&#x2F;&#x2F;geosci.uchicago.edu&#x2F;~archer&#x2F;warming_papers&#x2F;manabe.19...</a><p>The reports in your link start from 1977 and they are just summaries of public research. They are well done, but lots of people with engineering and&#x2F;or physics training would be able to read published research and write summary reports.<p>[4] Let&#x27;s look at the first one: <a href="https:&#x2F;&#x2F;insideclimatenews.org&#x2F;wp-content&#x2F;uploads&#x2F;2015&#x2F;09&#x2F;James-Black-1977-Presentation.pdf" rel="nofollow">https:&#x2F;&#x2F;insideclimatenews.org&#x2F;wp-content&#x2F;uploads&#x2F;2015&#x2F;09&#x2F;Jam...</a><p>The actual, original science is properly referenced in the end in &quot;Bibliography&quot; (pdf page 15).<p>I really don&#x27;t find any &quot;cutting edge research&quot; in those reports. Maybe &quot;cutting edge reading&quot;, if we think that being able to follow, read, understand  and summarize published research was cutting edge in the late 1970s.<p>The idea that [4] is &quot;cutting edge research&quot; and comparable in quality to [1,2,3] is just laughable.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>airstrike</em>:</p>
-<blockquote>OK, fine, but that&#x27;s the least relevant part of the OP</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jacquesm</em>:</p>
-<blockquote>So, who will go to jail?<p>That&#x27;s rhetorical, obviously. The answer is absolutely nobody because money is the best insulator there is.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>thelastgallon</em>:</p>
-<blockquote>Nobody will go to jail. The gubmint will give them trillions of dollars for carbon removal (PR campaign that the benevolent oil companies and Govt are working for them). They will give themselves awards for saving the planet and everyone else.<p>The captured carbon will be used for Enhanced Oil Recovery. Fossil fuel companies add a few trillion dollars in govt money, in addition to the $7T dollars in subsidies today (yale).<p>Carbon capture tech a &#x27;complete falsehood&#x27;, says Fortescue Metals chairman: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39373538">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=39373538</a><p>Honest Government Ad | Carbon Capture &amp; Storage: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=MSZgoFyuHC8" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=MSZgoFyuHC8</a><p>So this 1000 metric ton CO2 DAC plant could offset the activities of 100-400 vehicles in a year... minus the activities of the employees to get to the plant. That&#x27;s what I wanna know. When are the workers going to stop driving 60 miles round trip to work? And how many need to be at work everyday at the plant? <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=38237920">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=38237920</a><p>Out of the 27 commercially operational CCS projects worldwide, 21 inject carbon dioxide into oil reservoirs to force out petroleum: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=36970085">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=36970085</a><p>Big Oil Helped Shape Stanford’s Latest Climate-Research Focus. Stanford University’s Doerr School of Sustainability recently unveiled its first institutionwide research focus: greenhouse-gas removal. Taking tons of carbon dioxide out of the atmosphere will be “essential” to limiting global warming, as a news release last month explained, and ideas will be marshaled from across the school to get it done. <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=35829500">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=35829500</a></blockquote>
-<p>↳ reply 2 — <em>gchamonlive</em>:</p>
-<blockquote>More importantly, when will the common folk stop delegating critical thinking to these corporations?<p>It&#x27;s really important uphold the law, but nothing really happens if the collective attitude won&#x27;t change.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>btown</em>:</p>
-<blockquote>The memo, as linked in the OP, is here, and is worth reading, as it’s incredibly far from the sensationalized headline:<p><a href="https:&#x2F;&#x2F;www.documentcloud.org&#x2F;documents&#x2F;28574283-searchresults-4&#x2F;?mode=document#document&#x2F;p64&#x2F;a2830722" rel="nofollow">https:&#x2F;&#x2F;www.documentcloud.org&#x2F;documents&#x2F;28574283-searchresul...</a><p>I’ve happened to meet a number of researchers employed by large oil companies over the years, including many involved in the result of memos like this: making research into carbon capture and other mitigations a top corporate priority. Are there optical&#x2F;PR reasons for investing in this research? Absolutely. Have they also been engaging in the science in good faith, and genuine intent that… in a world where climate action is desired, and net emissions are something to optimize for, they can anticipate this by genuinely funding research, and having their own research projects already underway that can address anticipated challenges? Also absolutely true.<p>Now, I can’t speak for, say, lobbying efforts. But the scientists on the ground getting accused of the “deception” are some of the smartest, most caring, and highest-integrity people I’ve met. Entire labs of people working for decades to think: can we make our processes cleaner, at the same time we rise to the challenges of global demand.<p>We should be celebrating, not condemning, this work.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>thelastgallon</em>:</p>
-<blockquote>Scientists and economists are dime a dozen, they have to sing for their supper. For a few thousands dollars, scientists have written about benefits of smoking, lead is a gift from God, and tens of thousands of toxic substances, food additives, etc.<p>Carbon capture is fraud. You can EASILY stop carbon emissions by switching to EVs, which are cheaper to buy and operate. Instead Govts want to spend trillions on top the $7T dollars&#x2F;year subsidies to help oil companies recover more oil.<p>The COP summits are held in fossil fuel countries and discuss carbon capture.<p>Shell Is Looking Forward The fossil-fuel companies expect to profit from climate change. I went to a private planning meeting and took notes: <a href="https:&#x2F;&#x2F;archive.is&#x2F;15Dj4" rel="nofollow">https:&#x2F;&#x2F;archive.is&#x2F;15Dj4</a><p>Edit: Adding abound&#x27;s comment: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50044917">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50044917</a>. The book is Merchants of Doubt.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rdiddly</em>:</p>
-<blockquote>EVs don&#x27;t &quot;easily stop&quot; emissions in the US, since the American grid today is powered about 43% by natural gas and 15% by coal. Converting those sources has to happen too.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>judge2020</em>:</p>
-<blockquote>&gt; Converting those sources has to happen too.<p>True, but the overall carbon reduction in owning an EV over its lifetime is still leagues lower; &quot;Production-weighted average carbon footprints are 183 g CO2e&#x2F;mi for BEVs; 351 g CO2e&#x2F;mi for PHEVs; 445 g CO2e&#x2F;mi for HEVs; and 521 g CO2e&#x2F;mi for ICEVs.&quot; from [0] which does take into account the carbon-emitting percentage of the electrical grid.<p>Also, see Figure 4[1] in the study which states &quot;Results demonstrate that, even under unfavorable conditions, BEVs still have a 30% lower life cycle carbon footprint.&quot;<p>0: <a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s44458-025-00032-4" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s44458-025-00032-4</a><p>1: <a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s44458-025-00032-4&#x2F;figures&#x2F;4" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s44458-025-00032-4&#x2F;figures&#x2F;4</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Topfi</em>:</p>
-<blockquote>&gt; The memo, as linked in the OP, is here, and is worth reading, as it’s incredibly far from the sensationalized headline:<p>Having read both the memo and article, maybe there is a language barrier here, but how is it &quot;incredibly far from the sensationalized headline&quot;?<p>Maybe this comes down to how one defines &quot;deception&quot;, but I have a hard time seeing it not apply here and don&#x27;t see any hyperbole, overpromising or inaccuracy in the title given the memos writing. Certainly not &quot;incredibly far&quot;, even if we split hairs on what raises to being &quot;deception&quot;.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
