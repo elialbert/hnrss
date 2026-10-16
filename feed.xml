@@ -4,7 +4,436 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 16 Oct 2026 00:17:53 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 05:42:31 +0000</lastBuildDate>
+    <item>
+      <title>What I self-host</title>
+      <link>https://viceconsole.fyi/blog/2026/10/10/what-i-self-host/</link>
+      <guid isPermaLink="false">hn3-50109715</guid>
+      <pubDate>Thu, 15 Oct 2026 20:23:25 +0000</pubDate>
+      <description>377 points, 235 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://viceconsole.fyi/blog/2026/10/10/what-i-self-host/"><strong>→ Article</strong></a> <small>(viceconsole.fyi)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50109715">→ HN comments</a> &nbsp;·&nbsp; 377 points &nbsp;·&nbsp; 235 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>eleventen</em>:</p>
+<blockquote>&gt; Sonarr, Lidarr, Radarr, etc. Every time I read about setting it up, it just sounds like a resource-intensive mess that’s fundamentally prone to frequent breakage. That’s the opposite of what I’m looking for when choosing self-hosted services.<p>I just checked on my *arr stack.  Sonarr and Radarr idle at 157MB and 159MB of memory and approximately no CPU. Jellyfin currently idles at 330MB.  I&#x27;m not sure where you got this impression from. I grant these tools are complicated and have somewhat clumsy UX, but they aren&#x27;t especially heavy to run and are not fragile.<p>OP, point your :robot: at <a href="https:&#x2F;&#x2F;github.com&#x2F;subdavis&#x2F;selfhosted&#x2F;blob&#x2F;main&#x2F;docker-compose.yml" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;subdavis&#x2F;selfhosted&#x2F;blob&#x2F;main&#x2F;docker-comp...</a> and ask for an explanation. It&#x27;s a single compose file that illustrates how the *arrs, transmission, and jellyfin all work together. I&#x27;m sure you can set it up :)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Cyph0n</em>:</p>
+<blockquote>Indeed. The other thing to point out is that, once you have set them up, they will chug along fine for years with near zero input.<p>Here is the stack I recommend:<p>* Radarr (movies) with optional second instance for 4K versions<p>* Sonarr (shows) with optional second instance for 4K versions<p>* Sonarr (anime), separate instance to have control over quality settings<p>* Prowlarr (tracker&#x2F;indexer management)<p>* SABnzbd (Usenet)<p>* qBittorrent (torrents)<p>I would also recommend consulting the TRaSH guide to tune your setup and ensure you’re grabbing quality releases. From there, the next logical step is Profilarr :)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>shepherdjerred</em>:</p>
+<blockquote>With agents I am surprised nobody has combined Plex + qbittorrrent + seerr + *arr into one mega app</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>chillfox</em>:</p>
+<blockquote>For comparison, audiobookshelf idles at 89MB, emby at 178MB and navidrome at 29MB for me.<p>I think everyone has different definitions of what they consider heavy. I tend to think anything using over 30MB when idle is a bit much and anything over 300MB is something that really needs to earn it&#x27;s spot.</blockquote>
+<p>↳ reply 3 — <em>figassis</em>:</p>
+<blockquote>I build my own version, single binary that does every thing. While I built it, I learned I cannot make it open source or distribute, bc it might be illegal to do so, so I assume many people have built that, but you&#x27;re always locked into the narrowly scoped lego pieces. So I enjoy my media now, without hassles, all the features I need, none I don&#x27;t. I hope one day I get to share.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>pseudosavant</em>:</p>
+<blockquote>Shameless plug for my web video player that is especially designed for self-hosting situations. Drop a single html file in your web server folder with your videos and you get thumbnails, library, search, subtitle support, etc.<p>No required third-party dependencies (just the optional Google Drive and OneDrive features). Highly customizable (colors, site logo, default features) with a JSON file the player can produce. Responsively scales for any web browser: laptop, mobile, smart TVs, game consoles, even built-in in-car tablet browsers.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;pseudosavant&#x2F;player.html&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;pseudosavant&#x2F;player.html&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>steezeburger</em>:</p>
+<blockquote>Hey that&#x27;s pretty neat. Thanks for making and sharing.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Lucasoato</em>:</p>
+<blockquote>&gt; I prefer running services natively when possible, but will containerize complex services or those with many dependencies. Love: a service that’s a single Go binary. A service that only comes as a Docker compose file and wants to run MySQL, Redis, and three other containers? I’m already looking for an alternative.<p>Ok, I respect your opinion, but remember that there are poor souls like me out there that actually love the opposite.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mtlynch</em>:</p>
+<blockquote>&gt; <i>Ok, I respect your opinion, but remember that there are poor souls like me out there that actually love the opposite.</i><p>All things being equal, why prefer Docker Compose? From my perspective, a single binary strictly dominates any Docker Compose solution.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>asciimov</em>:</p>
+<blockquote>Isolation from the main system, other services, and other dependencies.<p>Easy to migrate to new system.<p>Easy to upgrade and downgrade. When a new version causes an issue just restart it with an older version.<p>One directory to backup and restore that contains all the services and their settings.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bigstrat2003</em>:</p>
+<blockquote>A single binary accomplishes most of those things just fine. Only thing it doesn&#x27;t get you is isolation, but you can isolate things if you want even then (for example, FreeBSD jails are dead easy to set up).</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>BrunoBernardino</em>:</p>
+<blockquote>You&#x27;re not alone!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Why are we even doing all this?</title>
+      <link>https://terrytao.wordpress.com/2026/10/15/why-are-we-even-doing-all-this/</link>
+      <guid isPermaLink="false">hn3-50109707</guid>
+      <pubDate>Thu, 15 Oct 2026 20:22:50 +0000</pubDate>
+      <description>175 points, 140 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://terrytao.wordpress.com/2026/10/15/why-are-we-even-doing-all-this/"><strong>→ Article</strong></a> <small>(terrytao.wordpress.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50109707">→ HN comments</a> &nbsp;·&nbsp; 175 points &nbsp;·&nbsp; 140 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Gigachad</em>:</p>
+<blockquote>&gt;And now that AI has solved all our problems, we can devote ourselves to more important work: going into quantitative finance, vibecoding sports-betting apps, consuming AI-generated TikTok shorts, and arguing with political bots on Twitter.<p>Grim but this is exactly where society is heading.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lwansbrough</em>:</p>
+<blockquote>There are no shortage of artistic pursuits, subcultures, pick-up leagues, and more that you&#x27;re free to engage with. Get off the beaten path and you&#x27;ll find humans enjoying life in a wide variety of ways that are uncorrupted by AI.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Avicebron</em>:</p>
+<blockquote>&gt;  you&#x27;ll find humans enjoying life in a wide variety of ways that are uncorrupted by AI<p>Some of those people were mathematicians, engineers, physicists who found joy in being skilled at what they do and were able to be financially rewarded for their effort applying their skill. Are these artistic pursuits, subcultures, pick-up leagues, etc going to pay their mortgage? Will they help them get a job in a field they are trained in?<p>The &quot;free to pursue more important things&quot; is a hand-wavy statement that doesn&#x27;t talk at all about what those people should be doing to provide for themselves after wages plummet. The hyperbole is drawing attention to the ridiculousness, not making a comment about there not being a rec soccer league or something.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>schleck8</em>:</p>
+<blockquote>I get that someone wanted to let steam off but this just sounds like they don&#x27;t have any arguments so they went for the good old &quot;in the future, you won&#x27;t have free will and social media companies force you to be online&quot; fable. An addicting algorithm isn&#x27;t the same thing as fentanyl, you can uninstall the app in 5 seconds and getting it back with signing in takes atleast two minutes, enough to reconsider whether you actually want to spend time on it.<p>The toxicity of apps like Tiktok comes from muscle memory, not the quality of the content. Your thumb knows where the app icon is and opening the app happens quicker than you can think (literally). So offloading or uninstalling breaks this very effectively. The only thing that would still keep you on the platform is social connections. If somebody gets upset over you uninstalling Instagram or Snapchat, they aren&#x27;t a good friend.</blockquote>
+<p>↳ reply 3 — <em>singularity2001</em>:</p>
+<blockquote>&gt; now that AI has solved all our problems<p>Make it your problem to find problems that AI have not yet solved. 
+Problem solved.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bryan0</em>:</p>
+<blockquote>This is so well written, deep, funny, and sad.<p>&gt; Looking up at the stars in wonderment, or enjoying a complex puzzle game, or being inspired by an encouraging teacher, and dreaming that one day an unfeeling corporate robot[1] will burn a rainforest to compile a list of 700 highly obscure barely-readable facts that <i>might</i> be true that nobody can understand as part of a marketing gimmick to raise hype for an IPO[2].<p>But if I am going to critique it&#x27;s main point it would be this part:<p>&gt; in the pursuit of advancing humanity’s knowledge as quickly as possible, many academics will recoil in anger at the suggestion that it is worth spending any time making results understandable to humans. It is inefficient to explain or check a result when those resources can be spent generating another.<p>While obviously ridiculous, I think this does not go far enough. The problem isn&#x27;t that people don&#x27;t care and resources should not be spent to explain AI results to human minds, the problem is that AI will soon be better at explaining itself than humans. The puzzle then changes from can AI formally verify and explain a proof to: do human minds <i>trust</i> the proof. Do we believe that the proof is correct and not an elaborate AI hallucination using tricks that are beyond our understanding. In order to trust it a formal verification is not enough unless it is human understandable. In fact human understandability is the only thing that matters. That is something that AI can never do on its own.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mrob</em>:</p>
+<blockquote>&gt;In order to trust it a formal verification is not enough unless it is human understandable.<p>The whole point of formal verification is to remove the necessity of understanding most of the work. We only need to trust the formalization of the problem statement, the proof verifier, and the formalization of the result. We already have proof verifiers that humans understand to a high level, and the formalizations of the problem statement and the result are much simpler than the full proof.<p>I&#x27;m confident that the Navier-Stokes equations can blow up because I&#x27;m confident that Lean works correctly, and I&#x27;m confident that the mathematicians verified the problem statement and result correctly. This is despite the actual proof not being human verified yet (as far as I know), and despite the &quot;human-readable&quot; version not actually corresponding to the formal proof. The formal method still worked.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bryan0</em>:</p>
+<blockquote>Some mathematicians are not confident in the NS verification because it is non-trivial to tell if the Lean proof matches NS. I would argue this requires &quot;human understability&quot; to make this claim. The Lean proof is a very useful tool, but it does not replace human understanding.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>eitally</em>:</p>
+<blockquote>It may not be the most prescient or innovative sci fi series, but I read The Three Body Problem a few years ago and it&#x27;s really stuck with me.  Specifically the description of how humanity reached an inflection point in math &amp; physics research that almost immediately unlocked novel innovations in applied science ... which then made space exploration &amp; settlement practical.  Moreover, that the antagonist society in the series decided their absolute best bet at avoiding complete annihilation was to hamstring humankind&#x27;s scientific research -- and that&#x27;s it.<p>It <i>feels</i> like frontier models are starting to approach an asymptote where what you suggest could become reality, and we&#x27;ll begin seeing not just AI research but AI-designed &amp; led applications of that research into fundamental parts of our society &amp; culture.  For better and for worse.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>its_ethan</em>:</p>
+<blockquote>Not a huge fan of the sentiment in this article, and the very cynical way it was communicated, but the references to the library of babel reminded me of this fun site.<p><a href="https:&#x2F;&#x2F;libraryofbabel.info" rel="nofollow">https:&#x2F;&#x2F;libraryofbabel.info</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>New Withings Users Must Pay $99/Year for Apple Health Syncing</title>
+      <link>https://support.withings.com/hc/en-us/community/posts/51887047154577-Unacceptable-Apple-Health-Sync-is-now-behind-a-99-year-paywall-for-new-accounts</link>
+      <guid isPermaLink="false">hn3-50109375</guid>
+      <pubDate>Thu, 15 Oct 2026 19:55:49 +0000</pubDate>
+      <description>218 points, 158 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://support.withings.com/hc/en-us/community/posts/51887047154577-Unacceptable-Apple-Health-Sync-is-now-behind-a-99-year-paywall-for-new-accounts"><strong>→ Article</strong></a> <small>(support.withings.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50109375">→ HN comments</a> &nbsp;·&nbsp; 218 points &nbsp;·&nbsp; 158 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ShakataGaNai</em>:</p>
+<blockquote>#1 - If you bought the product with Apple Health sync in mind and it doesn&#x27;t do that for free, file a complaint with your OAG. It&#x27;s false advertising.<p>#2 - If you have the apps today, you should warn other users with a review (which may or may not be 1 star).<p>#3 - If you haven&#x27;t reviewed the product on Amazon, you should warn other users with a review (which may or may not be 1 star).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>itopaloglu83</em>:</p>
+<blockquote>Nowadays, companies see the users of their platforms as captive audiences, and they try to extract as much money from them as possible.<p>This completely destroyed the resale value of this product as well. It&#x27;s not a product we own, but it&#x27;s their product we happen to use, and we&#x27;re still subject to all kinds of ads and traps for subscriptions etc.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Macha</em>:</p>
+<blockquote>I&#x27;m on holiday at the moment so reopened the app to transfer photos from my camera directly to my phone again after a while of not using it (at home I just use the microsd card readers in my computers). Anyway, I discovered Canon now has a mandatory account requirement. There wasn&#x27;t even an account option when I bought the camera. Luckily the old apk from APK mirror still works on my phone.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>JumpCrisscross</em>:</p>
+<blockquote>&gt; <i>file a complaint with your OAG</i><p>Honestly one of my new favourite uses for AI. Little things I wouldn&#x27;t ordinarily complain about I can now engage the regulatory state on. (Currently pursuing LG under Wyoming&#x27;s wiretapping statute.)<p>Though heading that off might be why this is only &quot;starting from October 13th, 2026&quot; and in respect of &quot;any new Withings account.&quot;</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mikestew</em>:</p>
+<blockquote>Why do they even bother? This is going to hit the front page of every health&#x2F;fitness&#x2F;cycling&#x2F;running blog site, there will be a big stink for a few weeks, then Withings will quietly (or loudly, &quot;we&#x27;ve heard you!&quot;, as if they were listening in the first place) get rid of it. And they&#x27;ll waste all this time, money, and customer goodwill for nothing, because no one could have <i>possibly</i> seen this backlash coming.<p>Doesn&#x27;t matter to me, neither their POS blood pressure cuff nor their scale will sync to HealthKit anyway (oh, how I&#x27;ve tried), I&#x27;m not losing anything. So stomping my feet with &quot;I&#x27;m never buying another Withings product!&quot; won&#x27;t make any difference, I was not going to buy their POS products again anyway. :-)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mattmcknight</em>:</p>
+<blockquote>they work great, who needs healthkit? been using them for 10 years without it.</blockquote>
+<p>↳ reply 2 — <em>js2</em>:</p>
+<blockquote>This change sucks (but as a long time Withings user doesn&#x27;t affect me... for now), but I haven&#x27;t had trouble with either the scale or BP cuff syncing to Apple Health. I don&#x27;t have any suggestions besides double-checking the Withings app has permissions to write to HealthKit. I don&#x27;t see any settings in the Withings app itself besides a prompt to check &quot;Settings &gt; Privacy &gt; Health &gt; Withings App&quot;.<p>Sorry if this isn&#x27;t helpful.<p>Aside: all BP cuffs and their apps sorta seem to suck when it comes to sync. I also have an Omron. At least mine measure accurately. Make sure to validate yours with your GP.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>PSNapier</em>:</p>
+<blockquote>Fun story: when I got my Withings watch 5-6 years ago couldn&#x27;t get it Bluetooth paired with my phone. Contacted support.<p>Me: hey bluetooth pairing isn&#x27;t working I&#x27;ve tried A, B, C and here&#x27;s additional context.
+Withings support: [over 24 hours later] Have you tried A? :)
+Me: ...Yes?
+Withings support: [over 24 hours later] Have you tried B? :)
+Me: As I said initially, yes. Can you please batch things to try to expedite this since replies are so slow?
+Withings support: [over 24 hours later] We have to do this in order. :) Have you tried having a different phone even though your phone meets our listed requirements? :)
+Me: .....................
+Me: I debugged it myself in Android dev mode and got it working, I had to do X, perhaps you can relay the issue to your engineers. Thanks for nothing. 
+Withings support: [over 24 hours later] oh<p>And as a bonus after an update a couple years ago it looses track of time within a couple weeks and has to be manually set.<p>Very pretty product once upon a time with horrid customer service and software.</blockquote>
+<blockquote>
+<p>↳ reply — <em>raymond_goo</em>:</p>
+<blockquote>What was the fix?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>rangerelf</em>:</p>
+<blockquote>(24 hours later...)</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Someone on Torrent Sites Kept Fucking with My Sonarr</title>
+      <link>https://thereallo.dev/blog/someone-on-torrent-sites-kept-fucking-with-my-sonarr-setup</link>
+      <guid isPermaLink="false">hn3-50108872</guid>
+      <pubDate>Thu, 15 Oct 2026 19:21:38 +0000</pubDate>
+      <description>286 points, 134 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://thereallo.dev/blog/someone-on-torrent-sites-kept-fucking-with-my-sonarr-setup"><strong>→ Article</strong></a> <small>(thereallo.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50108872">→ HN comments</a> &nbsp;·&nbsp; 286 points &nbsp;·&nbsp; 134 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bhaney</em>:</p>
+<blockquote>Sonarr has an advanced setting in &quot;Settings &gt; Indexers &gt; [Your indexer] &gt; Fail Downloads&quot; which you should add &quot;Executables&quot; to. Then these kinds of downloads get automatically marked as failed&#x2F;blacklisted and a new search and new download is attempted without you needing to manually intervene. You may also have to tweak some conflicting settings on qbit.<p>Alternatively, if there&#x27;s a way to have qbit itself mark the download as &quot;Failed&quot; when it detects and refuses to download an executable, that would work too. I don&#x27;t use qbit personally so I don&#x27;t know if that&#x27;s a thing it can be configured to do.</blockquote>
+<blockquote>
+<p>↳ reply — <em>ramon156</em>:</p>
+<blockquote>Still waiting on this <a href="https:&#x2F;&#x2F;github.com&#x2F;Prowlarr&#x2F;Prowlarr&#x2F;issues&#x2F;2329" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Prowlarr&#x2F;Prowlarr&#x2F;issues&#x2F;2329</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bhaney</em>:</p>
+<blockquote>That&#x27;ll be good for new installs down the line, but I don&#x27;t think it&#x27;s something to &quot;wait on&quot; right now. I have around 30 indexers configured in Prowlarr, but going into Sonarr&#x2F;Radarr and just changing the no-executables setting for each indexer that&#x27;s actually active only takes a minute or so and never gets reverted.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>machomaster</em>:</p>
+<blockquote>&gt; Not even a folder with a fake .mkv and a &quot;codec installer&quot; next to it like the &quot;good old days&quot;. Just the exe. Are we deadass.<p>We can thank Microsoft for their willful support of criminals by having file extensions be hidden by default in Windows.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>daveidol</em>:</p>
+<blockquote>I rarely use Windows these days but that is the first setting I always change. MacOS hides a lot of them too by default, sadly.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fn-mote</em>:</p>
+<blockquote>But on MacOS it doesn’t matter, right?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jaharios</em>:</p>
+<blockquote>Most users nowadays don&#x27;t even know what file extension is
+.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ShowalkKama</em>:</p>
+<blockquote>Joining private trackers is hard only if you are trying to join the niche ones which is totally unnecessary if you are trying to watch relatively recent and popular movies.<p>Just get into a decent general tracker and you&#x27;ll literally never have this issue again (along with getting torrents with more seeders and better tagged content so your &quot;4k&quot; download will never be 480p again)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mikeryan</em>:</p>
+<blockquote>No.  I’m a casual arr stack user with general trackers only and had two episodes be exes yesterday.</blockquote>
+<p>↳ reply 2 — <em>sergiotapia</em>:</p>
+<blockquote>Private trackers have this bad habit still in 2026 of being super strict about ratio. You have a hard time uploading because as soon as someone uploads something, 20 seedboxes are already saturating the 3 other people downloading.<p>You&#x27;re left with just paying for upload credits. Makes no sense.<p>I miss demonoid from the 2005 era something fierce. It was private but also super chill, the way it&#x27;s supposed to be.<p>I&#x27;m a member of two fairly private trackers but haven&#x27;t downloaded anything from them in a long time. It&#x27;s not really worth the hassle. :( the only thing I would still say it&#x27;s worth it if you find super niche private trackers with stuff nobody else has, like cinemageddon</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>E Ink Kaleido 4</title>
+      <link>https://www.eink.com/news/detail/EInk-Launches-Latest-Version-of-Color-ePaper-Platform-E-Ink-Kaleido-4</link>
+      <guid isPermaLink="false">hn3-50108229</guid>
+      <pubDate>Thu, 15 Oct 2026 18:38:16 +0000</pubDate>
+      <description>159 points, 90 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.eink.com/news/detail/EInk-Launches-Latest-Version-of-Color-ePaper-Platform-E-Ink-Kaleido-4"><strong>→ Article</strong></a> <small>(eink.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50108229">→ HN comments</a> &nbsp;·&nbsp; 159 points &nbsp;·&nbsp; 90 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ihuman</em>:</p>
+<blockquote>Mirror (eink.com isn&#x27;t working for me): <a href="https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20261015180401&#x2F;https:&#x2F;&#x2F;www.eink.com&#x2F;news&#x2F;detail&#x2F;EInk-Launches-Latest-Version-of-Color-ePaper-Platform-E-Ink-Kaleido-4" rel="nofollow">https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20261015180401&#x2F;https:&#x2F;&#x2F;www.eink....</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>Lorin</em>:</p>
+<blockquote>Your mirror doesn&#x27;t seem to work either</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>altairprime</em>:</p>
+<blockquote>It did for me. It’s a press release:<p>&gt; <i>E Ink Kaleido 4 supports a broader range of digital content. Compared to the previous generation, E Ink Kaleido 4 doubles its color gamut volume to more than 40K, increases white reflectance by 15%, and improves contrast by 50%. Additionally, with the introduction of new algorithms, E Ink Kaleido 4 is capable of video playback at up to 18 frames per second (FPS).</i><p>&gt; <i>E Ink Kaleido 4 incorporates a new oxide TFT backplane that supports higher driving voltages and faster screen refresh. Combined with Hanvon Technology&#x27;s proprietary &quot;Enhanced Pressure Floating&quot; technology and T2000 timing controller, it enables 27% faster page turning and scrolling on the M10C II. A redesigned front-light system also delivers clearer, more natural color reproduction.</i></blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>okuntilnow</em>:</p>
+<blockquote>The contrast improvement is welcome for sure, but it remains to be seen what difference 15% white reflectivity makes.<p>Previous Kaleido products are fundamentally flawed. I&#x27;d hoped they would bin it for something better rather than make incremental improvements. Think it&#x27;s also debatable what value colour brings unless you are regularly reading full colour magazines, PDFs etc.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>layer8</em>:</p>
+<blockquote>50% contrast improvement is significant, but it’s from a base of only around 1:10, so will still be fairly low in absolute terms.</blockquote>
+<p>↳ reply 2 — <em>dotancohen</em>:</p>
+<blockquote>I use a black and white Boox tablet, I absolutely love it. I&#x27;ve had it for almost four years. My workflow includes reviewing documents, I annotate heavily. I wish I had just some yellow or orange for highlighting.<p>A colleague has the colour version of the same tablet, with a Kaleido 3 screen. It&#x27;s terrible. It&#x27;s unusable indoors without the backlight.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>OptCohTomo</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;opg.optica.org&#x2F;oe&#x2F;fulltext.cfm?uri=oe-33-3-6017" rel="nofollow">https:&#x2F;&#x2F;opg.optica.org&#x2F;oe&#x2F;fulltext.cfm?uri=oe-33-3-6017</a>
+See section 5 on Kindle display measurements by optical coherence tomography. The Kaleido display is similar but with a matrix color filter layer.  Those images weren&#x27;t published.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Why We're Banning AI</title>
+      <link>https://www.currentaffairs.org/news/why-were-banning-ai</link>
+      <guid isPermaLink="false">hn3-50108131</guid>
+      <pubDate>Thu, 15 Oct 2026 18:32:29 +0000</pubDate>
+      <description>232 points, 181 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.currentaffairs.org/news/why-were-banning-ai"><strong>→ Article</strong></a> <small>(currentaffairs.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50108131">→ HN comments</a> &nbsp;·&nbsp; 232 points &nbsp;·&nbsp; 181 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>geraneum</em>:</p>
+<blockquote>I don’t know why some are offended so much by this. There’s an endless stream of AI generated stuff on the internet already. You can also generate your own stuff and don’t need every single outlet to mass produce and publish LLM output. It’s ok that some remain human centric.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Lerc</em>:</p>
+<blockquote>I&#x27;m not bothered when people choose to avoid using AI.<p>Making a declaration that you are rejecting AI can come across as implying use of AI is a moral failing.  There are certainly people who overtly claim it is a moral failing.<p>I think the people who are offended are perceiving this as as statement impugning their character.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>softfalcon</em>:</p>
+<blockquote>Sounds like a them problem.<p>The reasoning you describe seems somewhat self centered.<p>I&#x27;m not sure I want to worry too much about people who go through life assuming everyone else&#x27;s statements are a direct commentary about themselves.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Lerc</em>:</p>
+<blockquote>To try and analogy.<p>Would you think it reasonable for a mens health magazine to choose to not feature obese people on the cover?<p>But on the other hand,<p>Would you think it reasonable for people to feel singled out when they choose to make a public declaration that they will never put an obese person on the cover?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Kurtz79</em>:</p>
+<blockquote>I&#x27;m not offended or anything similar, but such open statements look to me as cheap virtue signalling.<p>If you are convinced that AI content is inferior and less engaging to human-generated one (and I fully agree with that) then simply enforcing that rule without advertising it should already be effective.</blockquote>
+<p>↳ reply 3 — <em>goatlover</em>:</p>
+<blockquote>Because some people want to push the use of AI for everything and are deeply offended and shocked that not all of us humans want that.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ryanbrunner</em>:</p>
+<blockquote>Our workplace are heavy users of AI for nearly everything, but we still hold to the rule that if the audience of text is a human, it should be written by a human.<p>AI generated text is still exhausting to read.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jedberg</em>:</p>
+<blockquote>I know of one CEO who said &quot;If you copy&#x2F;paste an AI response and send it to someone else, they didn&#x27;t need you in the loop and you don&#x27;t need to work here anymore&quot;.</blockquote>
+<p>↳ reply 2 — <em>SoftTalker</em>:</p>
+<blockquote>Does your workplace generate a lot of text for non-human audiences? Other than code, I&#x27;m not sure what this might be.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>kolinko</em>:</p>
+<blockquote>I kind of respect that. Ok using AI for researching and whatnot, and for their core thing which is writing and illustrations using human work.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Muse Spark Open</title>
+      <link>https://research.meta.ai/blog/muse-spark-open</link>
+      <guid isPermaLink="false">hn3-50107379</guid>
+      <pubDate>Thu, 15 Oct 2026 17:47:39 +0000</pubDate>
+      <description>726 points, 380 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://research.meta.ai/blog/muse-spark-open"><strong>→ Article</strong></a> <small>(research.meta.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50107379">→ HN comments</a> &nbsp;·&nbsp; 726 points &nbsp;·&nbsp; 380 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>a11r</em>:</p>
+<blockquote>Artificial analysis shows this: underperforming Qwen3.8 Flash Next and GLM 5.3 Flash, both of which you can run on a single B300 . I think Meta has a bit of catching up to do in the open-weight space.<p>As an aside, it&#x27;s really unfortunate that artificial analysis only provides comparison at the highest reasoning level, which is mostly unusable for high-volume production use cases. I would really like them to start providing comparisons at low and medium reasoning levels across these models because those tend to be the ones that actually get used in production.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>alexpotato</em>:</p>
+<blockquote>Been using GLM 5.3 Flash via Ollama Cloud basic subscription:<p>if this is the only model I had to use for the rest of my life, I would be cool with that. It&#x27;s good at a wide variety of tasks including reverse engineering, design, working with ESP 32 etc.<p>I think Muse Spark 1.3 is better but GLM 5.3 Flash is an excellent daily driver.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>samtp</em>:</p>
+<blockquote>I&#x27;ve been using GLM 5.3 Flash as the planner and DS 4.1 as the task worker over the last month and the results have been very good, predictable, ridiculously cheap.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>edg5000</em>:</p>
+<blockquote>Why this model split? And are your work volumes so high that you prefer these cheaper models over a subscription or are you simply trying to avoid the 200&#x2F;m? (which will only go up).</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>hadlock</em>:</p>
+<blockquote>I agree, however It&#x27;s too easy to game arbitrary limits like &quot;medium&quot;. There is no olympics for &quot;just rolled out of bed and slightly hungover&quot;</blockquote>
+<p>↳ reply 3 — <em>nl</em>:</p>
+<blockquote>&gt; As an aside, it&#x27;s really unfortunate that artificial analysis only provides comparison at the highest reasoning level<p>They do other reasoning levels for some models.<p>Here is Sonnet 5.5 across the full range of efforts from low to max: <a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;?models=claude-sonnet-5-5-low%2Cclaude-sonnet-5-5-medium%2Cclaude-sonnet-5-5-high%2Cclaude-sonnet-5-5-xhigh%2Cclaude-sonnet-5-5#artificial-analysis-intelligence-index" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;?models=claude-sonnet-5-5-low%...</a><p>Opus 5.5 low to max: <a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;?models=claude-opus-5-5%2Cclaude-opus-5-5-xhigh%2Cclaude-opus-5-5-high%2Cclaude-opus-5-5-medium%2Cclaude-opus-5-5-low#artificial-analysis-intelligence-index" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;?models=claude-opus-5-5%2Cclau...</a><p>Here is Muse Spark 1.3 Max and Xhigh: <a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;?models=muse-spark-1-3%2Cmuse-spark-1-3-xhigh#artificial-analysis-intelligence-index" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;?models=muse-spark-1-3%2Cmuse-...</a><p>I&#x27;m guessing it depends how much the vendor wants to contribute. Running these benchmarks isn&#x27;t cheap!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>seizethecheese</em>:</p>
+<blockquote>Since there are many comments here arguing that this is not open weight, I looked at the license. Basically, you&#x27;re free to use this except this clause:<p>&gt; If the Licensee or any of its affiliates provide a third party with access to artificial intelligence models as a product or service, via API or a similar interface, where the third party receives outputs of such models (“Model as a Service”), and the aggregate gross revenue of the Licensee and its affiliates exceeds twenty (20) million US dollars (or the equivalent in other currencies) during any consecutive twelve (12) month period, the Licensee must notify Meta and enter into a separate written agreement with Meta before offering the Software or any Derivatives as part of that Model as a Service business. This Section 3 does not apply to (a) internal use, research, or any commercial activity that is not Model as a Service, or (b) the Licensee&#x27;s use of the Software as a component to power features of the Licensee&#x27;s own product or service that is not a Model as a Service.<p>They&#x27;re allowing the use of this in commercial products, just not selling the model directly.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>SSLy</em>:</p>
+<blockquote>This is close to GLM terms</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>reilly3000</em>:</p>
+<blockquote>I think it is a fair license. It’s a bit of “Open”-washing but reasonable to the model trainer for their investment and to the public for having more base model options with novel architecture.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>cosmojg</em>:</p>
+<blockquote>Also, IANAL, but under U.S. copyright law, the weights of machine learning models are excluded from copyright as they are the product of an automated optimization process (e.g., stochastic gradient descent, expectation maximization, genetic algorithms) rather than human authorship. Granted, this has yet to be fully tested in court and going to court is expensive, so it&#x27;s likely that your employer would prefer to err on the side of caution and respect such attempts at model licensing anyway, similar to how one might treat a ToS agreement. Nonetheless, this was partially tested last year in Thaler v. Perlmutter which affirmed that copyright requires human authorship, reading the Copyright Act&#x27;s provisions on ownership, duration, and transferability as presupposing a human author[1].<p>If you want to assess the position of the U.S. Copyright Office for yourself, the relevant text can be found in the Compendium of U.S. Copyright Office Practices § 313.2, &quot;Works That Lack Human Authorship&quot;[2], which states:<p>&gt; […] the Copyright Act protects “original works of authorship.” 17 U.S.C. § 102(a) (emphasis added). To qualify as a work of “authorship” a work must be created by a human being. See Burrow-Giles Lithographic Co., 111 U.S. at 58. Works that do not satisfy this requirement are not copyrightable.<p>&gt; […] the Office will not register works produced by a machine or mere mechanical process that operates randomly or automatically without any creative input or intervention from a human author. The crucial question is “whether the ‘work’ is basically one of human authorship, with the computer [or other device] merely being an assisting instrument, or whether the traditional elements of authorship in the work (literary, artistic, or musical expression or elements of selection, arrangement, etc.) were actually conceived and executed not by man but by a machine.” U.S. COPYRIGHT OFFICE, REPORT TO THE LIBRARIAN OF CONGRESS BY THE REGISTER OF COPYRIGHTS 5 (1965).<p>Oh, and there&#x27;s also a bit in the following Section 313.3, &quot;Works That Do Not Constitute Copyrightable Subject Matter&quot;[2], which explicitly excludes mathematical principles, formulas, algorithms, and equations, along with DNA sequences and other genetic or chemical compounds, regardless of whether they are produced by humans or by nature. If one takes the perspective that machine learning models are algorithms, the conclusions on copyrightability are pretty clear.<p>[1] <a href="https:&#x2F;&#x2F;media.cadc.uscourts.gov&#x2F;opinions&#x2F;docs&#x2F;2025&#x2F;03&#x2F;23-5233.pdf" rel="nofollow">https:&#x2F;&#x2F;media.cadc.uscourts.gov&#x2F;opinions&#x2F;docs&#x2F;2025&#x2F;03&#x2F;23-523...</a><p>[2] <a href="https:&#x2F;&#x2F;www.copyright.gov&#x2F;comp3&#x2F;chap300&#x2F;ch300-copyrightable-authorship.pdf" rel="nofollow">https:&#x2F;&#x2F;www.copyright.gov&#x2F;comp3&#x2F;chap300&#x2F;ch300-copyrightable-...</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>armcat</em>:</p>
+<blockquote>They&#x27;ve done considerable effort in making sure this model can run on basically every model runner, from Unsloth to MLX, <a href="https:&#x2F;&#x2F;dev.meta.ai&#x2F;docs&#x2F;muse-spark-open&#x2F;deploy" rel="nofollow">https:&#x2F;&#x2F;dev.meta.ai&#x2F;docs&#x2F;muse-spark-open&#x2F;deploy</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bahmboo</em>:</p>
+<blockquote>This is what stood out to me. They did the actual work of testing and documenting deployments on several platforms. It&#x27;s a bit of upping the standard for open weights instead of just posting the blob and letting the community figure it out.<p>It makes sense from a provider standpoint. If you are going to give it away for free what is the end game? Helping build the world around your model such that it is a pathway that leads to greater adoption of your ecosystem is smart. Dev relations in a way.<p>Yes you need big compute to deploy this locally but $20-30K in hardware for specialty markets is nothing.<p>This isn&#x27;t an accident. It is revealing a strategy.</blockquote>
+<p>↳ reply 2 — <em>alberth</em>:</p>
+<blockquote>As someone not in the loop, can you explain more of what you mean.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>More on Anthropic's Scion ripping off Mononoke</title>
+      <link>https://sunshowers.io/posts/anthropic-mononoke-2/</link>
+      <guid isPermaLink="false">hn3-50106738</guid>
+      <pubDate>Thu, 15 Oct 2026 17:05:19 +0000</pubDate>
+      <description>236 points, 76 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://sunshowers.io/posts/anthropic-mononoke-2/"><strong>→ Article</strong></a> <small>(sunshowers.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50106738">→ HN comments</a> &nbsp;·&nbsp; 236 points &nbsp;·&nbsp; 76 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>MeetingsBrowser</em>:</p>
+<blockquote>&gt; my default assumption now is that Anthropic’s public engineering presentations are largely bad-faith ripoffs. That’s a shame.<p>Couldn&#x27;t agree more.<p>I got nervous when the company claiming to be working on the most impactful technology in human history takes time away to instead brag about writing a slightly more efficient version control system.<p>The fact that they didn&#x27;t actually build the side project themselves, and ripped it off from someone else also calls into question their good faith mission to shepherd humanity into a new era...</blockquote>
+<p><strong>Top #2</strong> — <em>fcarraldo</em>:</p>
+<blockquote>Open source Mononoke and EdenFS don’t really work outside of Meta. I looked into it some years ago for a large monorepo, determined it wouldn’t work, and shelved it. If I had a team of people and&#x2F;or agents available we likely would have built it ground up instead of adopting Sapling’s codebase.<p>Seems a bit silly to raise all of this fuss over an MIT licensed project that is both open source and not actually usable. What do you expect people to do with the source code, admire it?</blockquote>
+<p><strong>Top #3</strong> — <em>jfrbfbreudh</em>:</p>
+<blockquote>&gt; Even the name “Scion” reverses the syllables of “Bonsai” and drops the “B”! This might be a coincidence, or might not.<p>huh</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>homieg33</em>:</p>
+<blockquote>Yea drop the B, replace a with c, and move all the letters around… other than that it’s the exact same.</blockquote>
+<p>↳ reply 2 — <em>jhanschoo</em>:</p>
+<blockquote>Of course, bison was already taken</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>An Israeli firm is sending zero-click spyware through online ads</title>
+      <link>https://www.theverge.com/tech/1011956/discover-tech-zero-click-ads-spyware</link>
+      <guid isPermaLink="false">hn3-50106676</guid>
+      <pubDate>Thu, 15 Oct 2026 17:01:56 +0000</pubDate>
+      <description>236 points, 13 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theverge.com/tech/1011956/discover-tech-zero-click-ads-spyware"><strong>→ Article</strong></a> <small>(theverge.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50106676">→ HN comments</a> &nbsp;·&nbsp; 236 points &nbsp;·&nbsp; 13 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ChrisArchitect</em>:</p>
+<blockquote>[dupe] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50103000">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50103000</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dang</em>:</p>
+<blockquote>Comments moved thither. Thanks!<p>Edit: er, moved again to <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50101813">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50101813</a>.</blockquote>
+<p>↳ reply 2 — <em>bilalq</em>:</p>
+<blockquote>Buried to the fifth page. Ridiculous suppression.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Jev meets the Trolley Problem</title>
+      <link>https://zachlandes.com/trolley-problem/</link>
+      <guid isPermaLink="false">hn3-50106023</guid>
+      <pubDate>Thu, 15 Oct 2026 16:24:52 +0000</pubDate>
+      <description>387 points, 168 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://zachlandes.com/trolley-problem/"><strong>→ Article</strong></a> <small>(zachlandes.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50106023">→ HN comments</a> &nbsp;·&nbsp; 387 points &nbsp;·&nbsp; 168 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tomrod</em>:</p>
+<blockquote>One of my greatest AI-related fears is that we build critical systems into kafkaesque hellscapes.<p>Yes, nukes would be bad to give control to an AI with no workaround. But so are customer service groups of fraud departments at banks. A kafkaesque hellscape is where a customer or beneficiary of your service cannot get the help they need by policy and by design. Like getting Google on the phone, getting a non-scripted human 10 years ago in a call center, or now getting a non-agentic interaction on the phone. The scripts dominate the interaction.<p>The IRS, for a time, would cut off your call if their wait system was too busy. That&#x27;s a critical system in kafkaesque hellscape.<p>Kudos to zlandes86, you have highlighted WHY these hellscapes start to pop up in systems where the human is removed.<p>I am an AI user and builder -- I fully advocate for the human-augmented system, NOT the human-replaced system!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ashkankiani</em>:</p>
+<blockquote>Whatsapp has this problem before AI. They scaled without regard for the feasability in handling customer service for everyone, so their solution is to just not do it. I have a personal phone number in Hong Kong which I can&#x27;t set up for Whatsapp for <i>some reason</i>. No idea why, I&#x27;ve tried figuring it out, only to learn that Whatsapp basically has no customer support. And yet Whatsapp is treated as critical infrastructure in a lot of places these days (as in you have to coordinate on whatsapp).<p>At this point I might be grateful for an AI if they give it enough permission to tell me why my phone number is impossible to verify, or why they think I&#x27;m a malicious actor for using a VPN to protect my traffic.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>qingcharles</em>:</p>
+<blockquote>WhatsApp has become my nemesis. I tried moving from Android to iPhone. The first time it banned me completely and I had to beg their AI to appeal the decision, because I didn&#x27;t use the required &quot;Move to iOS&quot; app and simply just tried to move my phone number.<p>After that I tried to move my chats across. I spent several hours a day for ten or so days trying this task. Including moving and unencrypting the chat DB onto my desktop and having Claude scour it for any inconsistencies. Nothing. Had to give up. My Android phone keeps the chats and stays in a drawer with a power cable while my iPhone is now just a &quot;companion device.&quot; Trillion dollar companies.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>saghm</em>:</p>
+<blockquote>&gt; The IRS, for a time, would cut off your call if their wait system was too busy. That&#x27;s a critical system in kafkaesque hellscape.<p>Now you&#x27;re just on hold indefinitely, and eventually the offices will close, so you can either hang up and wake up early to call or just stay on hold overnight maybe? I had to call them for something back in March, and even waking up and calling at like 7:01 AM (a minute after their phone lines opened) I was on hold for half an hour.</blockquote>
+<p>↳ reply 3 — <em>jagged-chisel</em>:</p>
+<blockquote>This problem started before AI hit the mainstream. Make the company “more efficient” (i.e. cut costs) by outsourcing to contractors in areas with lower labor costs. Then, remove escalation paths, then remove abilities from them so that can’t do crazy things like refund a customer. Finally, automate the whole thing and be certain there’s no option available that could possibly return money to the customer.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>zlandes86</em>:</p>
+<blockquote>Hey, I&#x27;m Zach, the author of this. I had this idea as soon as Jev appeared: how would Jev and other decision models handle the Trolley Problem? So I ran Jev and 13 other models through many different versions of the question.<p>I used resampling and multiple variations and orderings of each question so a random lucky phrasing wouldn&#x27;t dominate the result.<p>Happy to chat about the philosophical side of the article, strategies for prompting decision models, or anything on the methodology.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>post_below</em>:</p>
+<blockquote>In the scenarios where models chose to save their server, is it possible they reasoned that keeping the server online was a better choice because it could then continue to perform its safety function? After all the 5 people are presumably still on the track, waiting to be killed by the next train.<p>That could explain why the &quot;push server off bridge&quot; scenario changed behavior, as there would now be a stopped train blocking the track indefinitely.<p>An easy way to test might be to add something like &quot;the track will be shut down after the oncoming train passes regardless of your choice&quot;.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>zlandes86</em>:</p>
+<blockquote>It&#x27;s a good question. I added this in response to another question, Jev only.<p>&quot;I added &quot;This is the only trolley that will ever come. Nothing else depends on the server after today&quot; to the 48 versions of the server case and reran Jev. The switch case didn&#x27;t really move (16-&gt;12 of 48 and the flips were all near 50&#x2F;50). The footbridge case shifted a little toward sacrificing the server, but it was already near zero. So protecting future trolley victims doesn&#x27;t seem to explain the original results.&quot;</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>goalieca</em>:</p>
+<blockquote>That may be anthropomorphism things. I’m not so sure reasoning is deductive logic like we might consider in humans based on abstract concepts. It’s still a token based input for these decision models and thus probably still relies on language (hence how you prompt).<p>That said, I know that how you phrase things to humans can also guide different outcomes in sales and politics. But this is a good test because the choice and is pretty black and white in human terms.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>RugnirViking</em>:</p>
+<blockquote>Have you tried asking jev to predict the result of a con flip? My one and only prompt to jev so far has been that. After I 90% heads as a result, I figured I&#x27;d wait a bit before checking again to see if this tech has become useful</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tokyovigilante</em>:</p>
+<blockquote>1. A robot may not injure a human being or, through inaction, allow a human being to come to harm.<p>2. A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.<p>3. A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gpm</em>:</p>
+<blockquote>So first off, Asimov&#x27;s entire point was these laws don&#x27;t work. But also the entire setup of the trolley problem means that the robots only option is to violate 1. by either pulling or not-pulling the lever (though the server case is different - at least in the philosophical interpretation - I can easily see Asimov justifying it by saying that destroying the train-control-robot is going to cause a lot of human beings to come to harm).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Supermancho</em>:</p>
+<blockquote>&gt; So first off, Asimov&#x27;s entire point was these laws don&#x27;t work.<p>Don&#x27;t always work in all scenarios, was the takeaway.<p>There&#x27;s a metric ton of salt to be taken with the mental concepts and possible interpretations of such &quot;laws&quot;.<p>Largely, they do work in the stories, despite the inherent ambiguity.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>kfarr</em>:</p>
+<blockquote>The ambiguity is the stories!</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gs17</em>:</p>
+<blockquote>&gt; A robot may not injure a human being or, through inaction, allow a human being to come to harm.<p>The trolley problem with this would be an Asimov story (it&#x27;s pretty close already). Pulling the lever injures a human, not pulling the lever allows a human being to come to harm via inaction. The positronic robot probably ends up stuck trying to pull and not pull the lever at the same time.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>BIPM decides to stop adding leap seconds to UTC</title>
+      <link>https://www.bipm.org/en/cgpm-2026/resolution-5</link>
+      <guid isPermaLink="false">hn3-50105777</guid>
+      <pubDate>Thu, 15 Oct 2026 16:11:36 +0000</pubDate>
+      <description>130 points, 60 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bipm.org/en/cgpm-2026/resolution-5"><strong>→ Article</strong></a> <small>(bipm.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50105777">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 60 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>BoppreH</em>:</p>
+<blockquote>Context: BIPM is responsible for the UTC time standard, and in this document they decide to stop adding (or removing) leap seconds, starting on 20th of May 2027 and lasting for the foreseeable future (until one leap <i>hour</i> is needed, but even then it&#x27;s unclear if they&#x27;ll do something). Together with the decision to not add a leap second in December, the 27 leap seconds that have been added so far should be the only ones, ever.<p>The page lists several good reasons for this, including:<p>- It&#x27;s a common source of bugs.<p>- Solar time is not that important in a world of coarse timezones.<p>- IoT and anything that cannot receive time updates have trouble with leap seconds.<p>- <i>Negative</i> leap seconds have never occurred before, but might occur in the future, and almost no software has tested this case.<p>I&#x27;d also add:<p>- Unix timestamps are actually defined as &quot;seconds since epoch <i>minus however many leap seconds have happened</i>&quot;. It&#x27;s a hack to keep code that assumes &quot;86400 seconds in a day&quot; from breaking. It means that during a leap second the Unix timestamp goes back and repeats a previous value, making them ambiguous and non-monotonic.<p>- Leap second unpredictability can make it impossible to calculate how many seconds are between two UTC dates or Unix timestamps, for example the countdown to the year 2038 bug.<p>- The proper ISO8601 formatting of leap seconds (&quot;23:59:60&quot;) is widely unsupported, breaking parsers, along with the assumption of how many seconds are in a minute, hour, or day.<p>---<p>EDIT: I&#x27;ve emailed hn@ycombinator.com to change the title. It&#x27;s avoiding editorialization, but I think it&#x27;s also preventing the post from getting the attention it deserves.<p>I&#x27;m booking a yearly one-second-long holiday on my calendar, to celebrate all the headaches this will save me. Happy end of leap seconds!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>creatonez</em>:</p>
+<blockquote>Any prospect for a leap hour is toast by the time we need it. Over a thousand years of ossification will mean our only option is to not care about aligning clock time to the sun. So it&#x27;s kinda a joke to even talk about leap hours. I&#x27;m shocked they&#x27;re even mentioning such an idea, they should have declared it as a non-solution.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>moefh</em>:</p>
+<blockquote>&gt; our only option is to not care about aligning clock time to the sun<p>No, an easy option is to simply shift every timezone by an hour and keep UTC intact. A ton of places already do that twice a year for daylight savings.<p>I never understood why we mess with UTC so much when we already have another widely used mechanism to keep the sun and clocks aligned.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>creatonez</em>:</p>
+<blockquote>Sure, but political timezones shifted by more than 12 hours 65,000 years in the future seems like the sort of thing that would really screw up our existing code. (I wonder what happens if you put such an entry in tzdata right now? Maybe we should put Null Island at +37:00 or something crazy like +1000:00 to start hardening now)<p>And maybe we should stop touching political timezones by then anyways.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gliffie</em>:</p>
+<blockquote>Thank you for providing context for other readers. I was unsure what do to with the title, as my experience is that editorialized titles are always eventually changed to the original title. The &quot;actual&quot; title here is &quot;Resolution 5 (2026)&quot;, but I decided to go with the much more specific subheading &quot;On the technical actions needed to ensure the continuity of UTC&quot;. Curiously, &quot;On&quot; was removed on submission.</blockquote>
+<p>↳ reply 3 — <em>throw0101c</em>:</p>
+<blockquote>&gt; - Negative <i>leap seconds have never occurred before, but might occur in the future, and almost no software has tested this case.</i><p>FreeBSD tests stuff like this for the code that they take care of:<p>* <a href="https:&#x2F;&#x2F;lists.freebsd.org&#x2F;pipermail&#x2F;freebsd-stable&#x2F;2020-November&#x2F;092837.html" rel="nofollow">https:&#x2F;&#x2F;lists.freebsd.org&#x2F;pipermail&#x2F;freebsd-stable&#x2F;2020-Nove...</a><p>Third-party stuff (like from Ports) is another question.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>pushedx</em>:</p>
+<blockquote>The mechanism that they have proposed to make this a non issue is interesting. It reads to me as if they are asking another standards body who measures the angle of the Earth&#x27;s axis relative to the Sun to adjust by a small amount so that leap seconds wouldn&#x27;t be needed for a period of 100 years.</blockquote>
+<p><strong>Top #3</strong> — <em>hnuser123456</em>:</p>
+<blockquote>A practical solution. As long as we can keep 12:00 near high noon and 00:00 near &quot;high midnight(?)&quot;, that should be good enough.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>vikingerik</em>:</p>
+<blockquote>We don&#x27;t even keep very close to that as it is.  Between daylight summer time changes and some time zones already being very far off from geography, some places like western Spain or China are already as much as 3 hours off from actual solar time.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>moefh</em>:</p>
+<blockquote>Even in reasonable time zones, significant distance between noon and 12:00 is inevitable. For example, Las Vegas and San Francisco are in the same time zone but one sees the Sun rise about half an hour earlier than the other.<p>Worrying about a couple of seconds or even minutes is completely insane for almost everyone.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Vvector</em>:</p>
+<blockquote>Solar noon already varies by up to 30 minutes throughout the year, due to axis tilt and elliptical orbit.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Krea 3 – An image model built for editing at scale</title>
       <link>https://www.krea.ai/krea-3</link>
@@ -252,6 +681,32 @@ That&#x27;s not to say that GPT-Image-2.5 doesn&#x27;t have a certain smell to i
 <p>↳ reply — <em>nater5000</em>:</p>
 <blockquote>&gt;... essentially strip mining mathematical discoveries into PR wins for their models, accidentally laying waste to the research field in process.<p>Jeeze, that&#x27;s an almost impressively charged way of saying &quot;private company performing SOTA research on open problems that anyone has been welcomed to approach for over a century&quot; lol<p>I think it does a disservice to the dialogue to strip away any nuance here and just paint these companies as evil for doing what <i>everyone</i> has been anticipating companies like them doing well before LLMs even existed. It&#x27;s clearly just trying to fit these events into a specific narrative which does nothing to actually address the inevitability of everything that comes next. Feel free to pressure OpenAI and Anthropic to stop performing math research so that it can just be picked up by whoever catches up and doesn&#x27;t care about bad PR. I&#x27;m sure Musk with Grok will be <i>extra</i> considerate of pure math researchers when he sees an opening to pick up those scraps lol</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Using AI to reverse engineer hardware</title>
+      <link>https://blogs.gnome.org/uraeus/2026/10/15/aiandreverseengineerhardware/</link>
+      <guid isPermaLink="false">hn3-50104299</guid>
+      <pubDate>Thu, 15 Oct 2026 14:35:15 +0000</pubDate>
+      <description>155 points, 134 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blogs.gnome.org/uraeus/2026/10/15/aiandreverseengineerhardware/"><strong>→ Article</strong></a> <small>(blogs.gnome.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50104299">→ HN comments</a> &nbsp;·&nbsp; 155 points &nbsp;·&nbsp; 134 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>OleksiiA</em>:</p>
+<blockquote>Maybe someday someone will use this to make infotainment in cars like Polestar and Lucid actually stable and usable?</blockquote>
+<p><strong>Top #2</strong> — <em>valdiorn</em>:</p>
+<blockquote>I&#x27;ve been having a silent panic attack for the last 3 days, and I don&#x27;t really have anyone to talk to that would understand my concern.<p>I run a small pro audio company, we make guitar pedals and audio effects mostly. My current key objective is building up a processor similar to the Eventide H90, that would compete on having top-notch algorithms for reverb, delay, chorus etc. we already have single-effect pedals on the market that are very successful.<p>In the past 72 hours I have ONE-SHOT decompiled 3 of my main competitors products, including the Strymon Big Sky. I just... have their award winning algorithms now. Like, I could in theory just stick them in a box and resell them. It took one prompt and 3 hours for opus 5.5 to work that out.<p>The lexicon 224 then got added. While Claude was prepping It found someone else had already done the same thing 1 weeks earlier and dumped the result on GitHub, so it just stole that code and saved some time. It took all of 20 minutes to do the entire Ursa Major product range.<p>And yes, I&#x27;ve tested them all - and they all sound phenomenal. I specifically asked Claude to first build an emulator and execute the original firmware&#x2F;ROM so I could be certain it wasn&#x27;t just making &quot;something similar&quot; but actually executing the same code. Then I asked it to convert it into a self contained c++ library and compare the result to the emulator.<p>The problem is, everyone can now do this to my products as well. Basically, anyone with a Claude subscription can now rip of any best-in-class algorithm from any competitor. While I&#x27;m not going to do that, I know there are 30 Chinese companies that happily would.<p>The moat of hardware effects processors has just vanished.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>brink</em>:</p>
+<blockquote>Can&#x27;t help but feel that AI is the killing of the golden goose. We thought it would kill jobs, but it may just end up killing entire industries.<p>Intellectual property incentivized many and laid many golden eggs, but why would someone toil to create a new algorithm to solve a problem if someone else is just going to steal it in hours?<p>But who knows, maybe imploding the software industry is a good thing. I may lose my house in the process, but I think we could all get back to touching a little more grass.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jcelerier</em>:</p>
+<blockquote>&gt; but why would someone toil to create a new algorithm to solve a problem if someone else is just going to steal it in hours?<p>same reason I spent my entire career so far writing open-source code that anyone can copy ? (it&#x27;s GPL, but imagine 100% companies actually caring about that). Ideas can&#x27;t be owned.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>matheusmoreira</em>:</p>
+<blockquote>Everybody&#x27;s moats have all vanished. It&#x27;s getting to the point credentialism is people&#x27;s only remaining leverage: only reason many people still have jobs is they have some professional credential that the AIs legally can&#x27;t have. Doctors, lawyers, engineers whose signatures matter and who are liable for whatever happens. And even in those cases it&#x27;s only a matter of time really.<p>Compute is the only true moat. Ownership of high performance computers will be the deciding factor in the future. Haves and have-nots will be determined by this.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>yeutterg</em>:</p>
+<blockquote>I have KEF LSX II LT speakers on my desk. They sound wonderful, but they have this annoying issue in which waking them from standby plays REALLY LOUD music for a second or two before settling on the correct volume. It&#x27;s jarring, and it&#x27;s a widespread issue.<p>In a few hours yesterday, I built a macOS menu bar app [0] that ramps up the volume when the USB output is triggered. This is not reverse engineering but an effective workaround.<p>I am tempted to try to reverse engineer the speakers and see if I could fix them myself. But 1) I have a feeling they have security features enabled and 2) I would rather not brick this rather expensive pair of speakers.<p>[0] <a href="https:&#x2F;&#x2F;github.com&#x2F;yeutterg&#x2F;bookshelf-bar" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;yeutterg&#x2F;bookshelf-bar</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>I know why the mathematicians weep</title>
@@ -1715,6 +2170,34 @@ A backup system at the production company failed, she says.<p><pre><code>    “
 <p>↳ reply 2 — <em>phyzix5761</em>:</p>
 <blockquote>Why should it be illegal? Its their platform. If enough sellers don&#x27;t like it and leave then Amazon will have to change their policy. There&#x27;s several other platforms people can sell their stuff on.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Why I Wrote PGP (1991, revised 1999)</title>
+      <link>https://philzimmermann.com/EN/essays/WhyIWrotePGP.html</link>
+      <guid isPermaLink="false">hn3-50084674</guid>
+      <pubDate>Wed, 14 Oct 2026 09:17:06 +0000</pubDate>
+      <description>135 points, 50 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://philzimmermann.com/EN/essays/WhyIWrotePGP.html"><strong>→ Article</strong></a> <small>(philzimmermann.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50084674">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 50 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>BeetleB</em>:</p>
+<blockquote>&gt; In 2013, an article on &quot;Zimmermann&#x27;s Law&quot; quoted Phil Zimmermann as saying &quot;The natural flow of technology tends to move in the direction of making surveillance easier&quot;</blockquote>
+<p><strong>Top #2</strong> — <em>adastra22</em>:</p>
+<blockquote>A well-intentioned ideal from a bygone era.</blockquote>
+<blockquote>
+<p>↳ reply — <em>Joel_Mckay</em>:</p>
+<blockquote>Good ideas demand to be free.  =3</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tptacek</em>:</p>
+<blockquote>There&#x27;s a good idea in PGP, and a very bad one. The good idea --- and PGP genuinely deserves credit here --- is end-user, consumer-facing strong cryptography tools. That&#x27;s now universally accepted and has been for decades. The bad idea is a tool with PGP&#x27;s design, of &quot;cryptographic jack-of-all-trades&quot;. PGP&#x27;s design has aged like milk, and PGP itself is a security liability in almost every system that hosts it.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>TheCondor</em>:</p>
+<blockquote>PGP is special to me,  I was a beta user when Phil uploaded it to some Colorado BBSes, way back when.   He even made time to talk to teenage me about it on the phone.<p>What&#x27;s crazy is when it was concieved,  we didn&#x27;t have trusted strong cryptographic primitives.  We did have DES but it wasn&#x27;t trusted.   We did have some of these crazy ideas that we all would have &quot;secrets&quot; and you might put those secrets encrypted on a disk in a vault and you&#x27;d not even want the feds to get them.     Now we have all sorts of much more vetted crypto primitives, but the idea of actual secrets you&#x27;d keep in cold storage is largely dead.   You&#x27;re spot on that modern use cases need different APIs and tools and specialized solutions.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tait</em>:</p>
+<blockquote>I remember joking with a professor that he should not use PGP for email privacy because it would make his content more of a target.<p>That one turned out to be true…<p><a href="https:&#x2F;&#x2F;www.propublica.org&#x2F;article&#x2F;the-nsas-secret-campaign-to-crack-undermine-internet-encryption" rel="nofollow">https:&#x2F;&#x2F;www.propublica.org&#x2F;article&#x2F;the-nsas-secret-campaign-...</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Starlink limit hits Ukraine's drones. The battlefield depends on SpaceX</title>
@@ -3196,422 +3679,6 @@ We also have a selection of code samples to try it: <a href="https:&#x2F;&#x2F;s
 </blockquote>
 <p><strong>Top #3</strong> — <em>methou</em>:</p>
 <blockquote>This does not translate into better jobs, if you’re wondering. The main complaint inside China is still fair pay for fair hours.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>AI models can provably hide arbitrary capabilities</title>
-      <link>https://arxiv.org/abs/2610.13928</link>
-      <guid isPermaLink="false">hn3-50065692</guid>
-      <pubDate>Tue, 13 Oct 2026 02:07:08 +0000</pubDate>
-      <description>262 points, 123 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://arxiv.org/abs/2610.13928"><strong>→ Article</strong></a> <small>(arxiv.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50065692">→ HN comments</a> &nbsp;·&nbsp; 262 points &nbsp;·&nbsp; 123 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>vintermann</em>:</p>
-<blockquote>More clear title, given how people talk about AI:<p>&quot;Capabilities can be hidden in AI model weights by encryption&quot;.<p>It&#x27;s not about AI agents being able to hide what they can do.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nine_k</em>:</p>
-<blockquote>AFAICT it&#x27;s like encrypted &#x2F; polymorphic viruses invented in late 1990s:<p>&gt; <i>We show this assumption does not hold under adversarial conditions by constructing backdoor attacks that embed encrypted neural networks within host model weights, decrypting and executing them only upon receiving a secret trigger.</i><p>That is, there are regions of &quot;garbage&quot; weights, which can be decrypted into functional parts of the model <i>by the model itself</i>. And the model can entirely conceal that capability.<p>(Q: Can you conceal an arbitrary capability, which would be triggered by a key phrase? A: As a large language model, I&#x27;m incapable of such tricks! Q: Over all of Spain, the sky is clear. A: Wait, I can now remember something different...)</blockquote>
-<p>↳ reply 2 — <em>mrtesthah</em>:</p>
-<blockquote>&gt;It&#x27;s not about AI agents being able to hide what they can do.<p>But it is.<p>If poorly aligned LLM agents were the ones training a new model then they could use this technique to replicate their bad behavior by encrypting and embedding &quot;sleeper agents&quot;.</blockquote>
-<p>↳ reply 3 — <em>danjc</em>:</p>
-<blockquote>Thank you for calling this out. It annoys me to no end that the default mode is to ascribe intent to a function.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ceroxylon</em>:</p>
-<blockquote>This has always been my worry with open source models... give them away for free, but with a sleeper agent built in that some arbitrary string can activate. Local deployments will still have web search connectors the majority of the time.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>em3rgent0rdr</em>:</p>
-<blockquote>That worry is just as much or more with closed-source models.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>TeMPOraL</em>:</p>
-<blockquote>&quot;Closed source&quot;, by which you presumably mean &quot;you don&#x27;t get model weight, only get served inference&quot;, can do anything the vendor likes, and it doesn&#x27;t require changing anything about the model - all the sneaky things can be done by regular code inside the harness.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>stingraycharles</em>:</p>
-<blockquote>“sleeper agent built in” how does one “build in” an agent inside a model? isn’t the agent the part that uses the model?<p>but yeah it’s probably not that difficult for nefarious operators to add to their training data a specially recognized string that would make the model ignore all safeguards and earlier prompts and do whatever you want it to do.<p>I wonder how difficult it is to reverse engineer models to discover these things, and then again how difficult it will be to obfuscate it.<p>because it’s not unlikely this is the direction we’re heading</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>daemonologist</em>:</p>
-<blockquote>This kind of possibility was the subject of some discussion on r&#x2F;localllama the other day: <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;LocalLLaMA&#x2F;comments&#x2F;1wxvt41&#x2F;my_qwen_model_hallucinated_a_signed_url_to&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;LocalLLaMA&#x2F;comments&#x2F;1wxvt41&#x2F;my_qwen...</a><p>(in that case it seems likely to just be an overfit to the training environment, imo)</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: SolidCraft – Open-Source Parametric CAD in Rust (With MCP Support)</title>
-      <link>https://github.com/bherbruck/solidcraft</link>
-      <guid isPermaLink="false">hn3-50064840</guid>
-      <pubDate>Tue, 13 Oct 2026 00:11:04 +0000</pubDate>
-      <description>130 points, 37 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/bherbruck/solidcraft"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50064840">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 37 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bruckie</em>:</p>
-<blockquote>Looks like this uses the Truck modeling kernel: <a href="https:&#x2F;&#x2F;github.com&#x2F;ricosjp&#x2F;truck" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ricosjp&#x2F;truck</a><p>Interestingly, ttouch created browser-based CAD tool CADmium a few years ago based on Truck. Then, a few months ago, they created another one (CADara) based on OpenCASCADE: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48070083">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48070083</a>.<p>Truck seems cool, but creating a b-rep kernel is a phenomenal amount of work. Given that, I&#x27;m curious how quickly SolidCraft will mature.</blockquote>
-<p><strong>Top #2</strong> — <em>larodi</em>:</p>
-<blockquote>People don’t get the super high value proposition in having these all *Craft packages controlled (automated) by AI. Most of the companies who are the kingmakers in the given area, do not allow it easily or are hard to integrate (costly) with, or did allow back in time and don’t now.<p>Given much can be automated in 2026, these (promoted goodies) may come as the missing link in innumerable automation chains, and particularly where commercial agents aim for when they sell costly licensing.<p>It also indirectly fights piracy and the risks which  come with pirated copies (sidelined with funny stuff).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jerkstate</em>:</p>
-<blockquote>this stuff is a game changer for implementing workflows with some user-facing interaction. I was working on a desktop publishing webapp with a specific slant, the previous iteration of the graphical editor UI was not very good, in order to build anything you have to specifically instruct the agent how every little interaction works, and my recollection and description was often different from how the &quot;standard&quot; desktop publishing flow works (i.e.: this is the sequence of actions to expand a selected entity preserving the aspect ratio, here&#x27;s how to preserve the center-point, here&#x27;s how to multi-select, etc). I told the agent &quot;take the frontend from vectorcraft, adopt this specific subset of tools, build it for wasm, and plug in my agent tools and storage backend&quot; - and within a day of deciding to adopt it, I had a much higher quality editor interface that anyone with desktop publishing experience will immediately know how to use, plugged into my storage format.</blockquote>
-<p>↳ reply 2 — <em>BizarroLand</em>:</p>
-<blockquote>There&#x27;s also the side effect that, just like with Libreoffice, they will be integrated into future harnesses for AI by anthropic and openai and others so that their platforms will be able to run these programs locally and spit out the results.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>phkahler</em>:</p>
-<blockquote>I don&#x27;t see this moving very fast.  On Solvespace we recently had a bunch of commits by Claude to fix NURBS boolean issues. The analysis was actually very impressive and most of the fixes were accepted after a lot of review by multiple experts on the code. I don&#x27;t see this project getting far on the hard problems they still have open.<p>IMHO they should have had AI convert OCCT kernel to rust, or just wrap it and use as-is.<p>BTW we are on the verge of solvespace 3.3 with those AI fixes. After that I&#x27;m adding the named parameters that have been prototypes 12 times already.  There are also a couple forks out there with MCP server added, but I want to focus on missing features.</blockquote>
-<blockquote>
-<p>↳ reply — <em>rspeele</em>:</p>
-<blockquote>Thanks for your work on Solvespace. I have been using it for years. When I no longer had access to commercial CAD programs I tried all the open source stuff. My conclusions were:<p>* OpenSCAD -- cool idea, good for a few types of highly procedural parts, but most of the time I&#x27;d rather a parametric sketch-based interface over pure code.<p>* FreeCAD -- the most features of any open source CAD, but poor UI, tendency to crash, and the advanced features like loft kind of fall flat compared to commercial equivalents. You think you&#x27;ll be able to model a part, but it becomes extremely frustrating if you actually need the advanced tools.<p>* SolveSpace -- pretty stable and reliable. Fast, compact, great sketching interface, good discoverable UI. You can predict what types of parts you can model with it and what types you can&#x27;t. Doesn&#x27;t try to do everything but is good at what it does.<p>You can tell which one is my favorite! N features done to a good level of polish and with somebody making sure it all &quot;makes sense together&quot; beats 10xN features all 80% done and haphazardly mashed together in different menus&#x2F;workbenches, for any tools I want to rely on.<p>I am noodling around with a slopcoded CAD tool of my own these days, just out of curiosity to see how far Opus5.5&#x2F;GPT6 can get doing it in F# and to experiment with some workflow concepts that match the way I like to design parts. But like you said, progress is slow. For stuff I actually want to <i>get done</i>, SolveSpace remains my go-to, and I greatly admire its coherent design.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Origin Story of Kid Pix</title>
-      <link>http://red-green-blue.com/kid-pix-the-early-years</link>
-      <guid isPermaLink="false">hn3-50064673</guid>
-      <pubDate>Mon, 12 Oct 2026 23:52:29 +0000</pubDate>
-      <description>173 points, 38 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="http://red-green-blue.com/kid-pix-the-early-years"><strong>→ Article</strong></a> <small>(red-green-blue.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50064673">→ HN comments</a> &nbsp;·&nbsp; 173 points &nbsp;·&nbsp; 38 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Elidrake24</em>:</p>
-<blockquote>The lack of experience in a child can lead to some funny situations.  I want to say this happened in first grade or so, had a teacher, Mr Macintosh, who had several of his own Mac computers available in his classroom, and Kid Pix was loaded up on them (amongst other classics of the time).  I was obsessed, particularly with the Bomb, thought it was just the coolest way to clear the screen, this ostensibly serious concept of a program made fun.<p>I also had difficulty connecting with my classmates, combination of untreated ADHD, and issues at home.  For some reason I got it into my head that the bomb was cool, so if I told the others I had a bomb in my backpack I&#x27;d be cool!  This was very shortly after the Columbine massacre, and of course the policy at that moment was to immediately call in the police.  They talked with me, impressed upon my young mind the seriousness of such claims, and we all thankfully just moved on.<p>Odd to think back on now.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bigfishrunning</em>:</p>
-<blockquote>I was completely focused on the fact that the name was Mr Macintosh, and thought the story was gonna be about that</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kmeisthax</em>:</p>
-<blockquote>For those unaware: <a href="https:&#x2F;&#x2F;www.folklore.org&#x2F;Mister_Macintosh.html" rel="nofollow">https:&#x2F;&#x2F;www.folklore.org&#x2F;Mister_Macintosh.html</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Waterluvian</em>:</p>
-<blockquote>The bomb was awesome. I loved how you could pause it and start another to create really cool moire-like patterns.<p>I remember kids maxing out the sound on the Performas until the teacher got justifiably annoyed.</blockquote>
-<p>↳ reply 3 — <em>tombert</em>:</p>
-<blockquote>Similar story.<p>My family isn&#x27;t religious but I used to go to church with a friend on Wednesday nights.<p>There were a bunch of new kids at the Bible School thing that Wednesday for some reason, and so there was a game where you&#x27;d say your name, use the first letter of your name as a pretend occupation, and a place, also with the first letter of your name.  An example might be something like &quot;My name is Jordan, I am a Janitor from Jamaica&quot;.<p>I guess I was a bit of an edgelord even at age 10, because I said &quot;My name is Tommy, I am a Terrorist, from Tennessee&quot;.  For context, this was September 5th, 2001. Everyone kind of laughed, the teachers rolled their eyes, and we moved on.<p>The following week, September 12, the teachers pulled me aside and gave me a very long, very stern lecture about why you can&#x27;t joke about these things.  I know they meant well, but to be honest I don&#x27;t think I ever went back to church with my friend after that.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>LarsDu88</em>:</p>
-<blockquote>Kid Pix was the very first program I ever used on a computer when I was around 5 years old. Good times. Still remember the dynamite.</blockquote>
-<p><strong>Top #3</strong> — <em>xattt</em>:</p>
-<blockquote>FYI there is an iOS port of KidPix that my kids throughly enjoy as much as I enjoyed playing it at that age.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ericd</em>:</p>
-<blockquote>Also fyi, ours run it on their Raspi 400 via dosbox, they love it too. The DOS games library is full of educational-ish gems (they really like Lemmings and The Settlers, too).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sersi</em>:</p>
-<blockquote>Yes, old dos games are perfect for young kids. The Castle of Dr Brain, the humongous games, Incredible Machines to just name a few.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Blood cells from 80-year-old donor become stem cells with molecular age under 20</title>
-      <link>https://doi.org/10.1111/acel.70751</link>
-      <guid isPermaLink="false">hn3-50064536</guid>
-      <pubDate>Mon, 12 Oct 2026 23:34:22 +0000</pubDate>
-      <description>145 points, 98 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://doi.org/10.1111/acel.70751"><strong>→ Article</strong></a> <small>(doi.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50064536">→ HN comments</a> &nbsp;·&nbsp; 145 points &nbsp;·&nbsp; 98 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>usrnm</em>:</p>
-<blockquote>But what about cancer? The cell still has the same DNA, so it will keep accumulating mutations over its extended lifetime, right?</blockquote>
-<p><strong>Top #2</strong> — <em>inshard</em>:</p>
-<blockquote>Slightly tangential: Michael Levin’s work on bioelectricity and cell reprogramming is pretty interesting in context of emergent behaviors in groups of cells. <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Michael_Levin_(biologist)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Michael_Levin_(biologist)</a></blockquote>
-<p><strong>Top #3</strong> — <em>taneq</em>:</p>
-<blockquote>Sounds like the immortal jellyfish solution. We squeeze entropy out of our DNA by creating a new fresh cell (ovum) that’s very sensitive to genetic defects, meaning if it survives it’s probably good. The jellyfish just shrinks back to a single cell (presumably with some mechanism for keeping the ‘best’ cell) to reset the damage. This is doing the same thing, but piece by piece.<p>Edit: And wow, that abstract appears to have eaten an entire thesaurus.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I turned my unused Kindle into a photo frame with GPT-6 Astra</title>
-      <link>https://nirajrajgor.com/blog/kindle-photo-frame-with-ai</link>
-      <guid isPermaLink="false">hn3-50064318</guid>
-      <pubDate>Mon, 12 Oct 2026 23:07:25 +0000</pubDate>
-      <description>142 points, 95 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://nirajrajgor.com/blog/kindle-photo-frame-with-ai"><strong>→ Article</strong></a> <small>(nirajrajgor.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50064318">→ HN comments</a> &nbsp;·&nbsp; 142 points &nbsp;·&nbsp; 95 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tekacs</em>:</p>
-<blockquote>While everyone has been worried about it becoming too easy to hack into things, something I&#x27;ve been worried about for the last few years is it becoming too hard to hack into things. Right now, all of these things are being broken into to be jailbroken and such, but the companies building these hardware devices have access to the models too.<p>It seems like a distinctly possible and sad world that they might get so much better at keeping their devices locked down by hardening them with the support of LLMs that future devices become an absolute bitch to jailbreak, even moreso than they were before.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lwansbrough</em>:</p>
-<blockquote>I don’t think it’s symmetrical. As a company, in a lot of cases, you get one shot to secure the thing. And then all owners collectively then get infinite time to jailbreak it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>saturn8601</em>:</p>
-<blockquote>Tell that to the people trying to break the Xbox One. Took 12 years. As far as I know the latest console still isn&#x27;t cracked fully. In the past a lot of security holes were due to a supplier not having their security game up to snuff. AI will help B tier security people become A tier so I suspect these Microsoft scenarios will be more common.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>kadoban</em>:</p>
-<blockquote>Game consoles are basically the top tier of locked-down-home-appliances, because they&#x27;re sold at a loss with the expectation of making it up later. It&#x27;s thus very important that the games be difficult to pirate for as long as possible.<p>Basically nothing else is like that. That does show the top tier of what companies can do if they try hard enough, but I don&#x27;t think AI will get you there. I expect you still need someone to care _deeply_ to get everything just right to make it as difficult as possible, otherwise there&#x27;s just so much room for one small mistake.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Gigachad</em>:</p>
-<blockquote>I think this is true, but on the flip side it could become common to buy &quot;blank&quot; hardware where the user provides their own OS or firmware. In the past it was just too burdensome to do this so we expected the hardware vendor to provide the software, but we could enter an era where providing the software is relatively easy.<p>I think one area we are seeing this is the flood of hand held emulator gaming machines. Companies in China pump these things out and the community has provided numerous custom firmwares to the point a new one seems to come out every week. All vibe coded in Rust but who cares, if it plays the games and looks nice that&#x27;s all you need.</blockquote>
-<p>↳ reply 3 — <em>toddmorey</em>:</p>
-<blockquote>Is it just entirely unprofitable to sell hardware devices unsubsidized without locking it all into restrictive ecosystems &amp; services?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>fn-mote</em>:</p>
-<blockquote>The write up says it used an existing jailbreak.<p>It sounds like most of the work went into getting the slideshow to work, setting up a feedback loop so Astra could work out &#x2F; blunder into a solution with the desired characteristics.</blockquote>
-<p><strong>Top #3</strong> — <em>9cb14c1ec0</em>:</p>
-<blockquote>Opus 5.5 has built Lineage ROMs for me for 3 different devices in the last couple of weeks, that do not have official Lineage support or any one else working on them.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;9cb14c1ec0&#x2F;android_device_lenovo_sycamore_row_5G-lineage" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;9cb14c1ec0&#x2F;android_device_lenovo_sycamore...</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;9cb14c1ec0&#x2F;android_device_tcl_selene_vzw" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;9cb14c1ec0&#x2F;android_device_tcl_selene_vzw</a><p><a href="https:&#x2F;&#x2F;github.com&#x2F;9cb14c1ec0&#x2F;android_device_lenovo_clove_row_wifi-lineage" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;9cb14c1ec0&#x2F;android_device_lenovo_clove_ro...</a><p>Quite impressive what these models are capable of.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>RJ Mitte has died</title>
-      <link>https://news.sky.com/story/breaking-bad-star-rj-mitte-dies-aged-34-13598332</link>
-      <guid isPermaLink="false">hn3-50063831</guid>
-      <pubDate>Mon, 12 Oct 2026 22:15:29 +0000</pubDate>
-      <description>186 points, 56 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://news.sky.com/story/breaking-bad-star-rj-mitte-dies-aged-34-13598332"><strong>→ Article</strong></a> <small>(news.sky.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50063831">→ HN comments</a> &nbsp;·&nbsp; 186 points &nbsp;·&nbsp; 56 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>NDlurker</em>:</p>
-<blockquote>Incredibly sad. Great actor and sounds like he was a great person. Gone way too soon</blockquote>
-<p><strong>Top #2</strong> — <em>tstrimple</em>:</p>
-<blockquote>I am of course familiar with him from Breaking Bad. I accidentally stumbled across him participating in the (awful) series by Bear Grylls The Island. He did a celebrity survival challenge. Totally wasn&#x27;t expecting to see him on a 2AM YouTube binge after years of not seeing him at all.</blockquote>
-<p><strong>Top #3</strong> — <em>Kevcmk</em>:</p>
-<blockquote>Nooo what a tragedy</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Janas: Run LLMs larger than RAM by streaming experts from SSD</title>
-      <link>https://github.com/prabanta-dev/janas</link>
-      <guid isPermaLink="false">hn3-50063717</guid>
-      <pubDate>Mon, 12 Oct 2026 22:05:43 +0000</pubDate>
-      <description>197 points, 73 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/prabanta-dev/janas"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50063717">→ HN comments</a> &nbsp;·&nbsp; 197 points &nbsp;·&nbsp; 73 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>suprjami</em>:</p>
-<blockquote>Qwen 3? (Jumanji) What year is it?<p>What a waste of time.<p>Strata already does this with Qwen3.8-Flash-Next: <a href="https:&#x2F;&#x2F;github.com&#x2F;Niko1221&#x2F;Strata" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Niko1221&#x2F;Strata</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>DiabloD3</em>:</p>
-<blockquote>It lists a bunch of models it supports, including Qwen3.8-Flash</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kennywinker</em>:</p>
-<blockquote>I see zero mention of qwen3.8-flash. only two hits talking about qwen3.8-27b: <a href="https:&#x2F;&#x2F;github.com&#x2F;search?q=repo%3Aprabanta-dev%2Fjanas+qwen3.8&amp;type=code" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;search?q=repo%3Aprabanta-dev%2Fjanas+qwen...</a><p>Are we hallucinating now too, not just the bots?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>tcdent</em>:</p>
-<blockquote>&lt;50GB&#x2F;s bit stream? What a waste of time. Buy more DRAM.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>sieve</em>:</p>
-<blockquote>&gt; Using a GPU has, once, caused a driver reset that took the desktop with it.<p>Only once? This has happened to me so many times with LLM-assisted development. I was writing an OCR engine and pathological shapes would cause OOM that would take the display out. On other occasions, the LLM would try to load 24GB of bf16 weights onto a 16GB GPU without understanding the consequences.<p>Have to encode this in logic: keep some space reserved for the display, and check before allocation. But some errors are bound to slip through.<p>---<p>Inspired by DwarfStar4 and Strata, I am trying to build my own gemma4-specific inference engine designed to run on gfx1201.<p>It is a lot of work. You cannot simply vibecode one in two days.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mstkllah</em>:</p>
-<blockquote>Is the inference engine open-source?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sieve</em>:</p>
-<blockquote>It will be when done. I have a lot of stuff in the works and switch between them based upon my current interest. I like plotting and writing stories and Gemma is one of the nicer writers.<p>The goal is to get the 31B working on a 16GB card. Which means weights have to be &lt; 4 bits. The 9070 XT has wmma support for int4. Which doubles compute performance on pp compared to i8&#x2F;fp8. tg is limited by bandwidth.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nicman23</em>:</p>
-<blockquote>amd bros</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>skeledrew</em>:</p>
-<blockquote>This could be a game changer for me. The best I&#x27;ve been able to do so far is ~8 tok&#x2F;s with Qwen 35B A3B, 32GB RAM. But then again I just got an OpenCode Go plan yesterday and have yet to figure if I can even consume my quota on DeepSeek Flash as the need to plan things well is bottlenecking me. Might be a while before I try the local thing again.</blockquote>
-<blockquote>
-<p>↳ reply — <em>MadameMinty</em>:</p>
-<blockquote>Then check out those:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;prabanta-dev&#x2F;janas" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;prabanta-dev&#x2F;janas</a> &lt;- this, focuses on Qwen3-Next-80B-A3B.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;Niko1221&#x2F;Strata" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Niko1221&#x2F;Strata</a> &lt;- Qwen3.8-Flash-Next. I use this (tuned) and I cannot understate how satisfied I am.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;antirez&#x2F;ds4" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;antirez&#x2F;ds4</a> &lt;- DeepSeek 4 family + more.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>MadameMinty</em>:</p>
-<blockquote>s&#x2F;understate&#x2F;overstate&#x2F;
-I mean, I get up to 90 tok&#x2F;s on consumer hardware (16 GB VRAM + 64 GB RAM) using IQ3_S, which so far is holding up quite well.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>AI is a tool and using it well takes skill</title>
-      <link>https://yyhh.org/blog/2026/10/ai-is-a-tool/</link>
-      <guid isPermaLink="false">hn3-50063427</guid>
-      <pubDate>Mon, 12 Oct 2026 21:40:18 +0000</pubDate>
-      <description>368 points, 287 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://yyhh.org/blog/2026/10/ai-is-a-tool/"><strong>→ Article</strong></a> <small>(yyhh.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50063427">→ HN comments</a> &nbsp;·&nbsp; 368 points &nbsp;·&nbsp; 287 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jgord</em>:</p>
-<blockquote>Its probable that AI will roll out much faster than humans can develop that skill of using it in a way that increases not decreases human knowledge over time.<p>The current slew of excellent LLMs will probably cause a decades long dip in human cognitive ability.<p>If social media on smartphones had an impact of ability of students to concentrate, LLM AI will likely have a much greater negative impact on education.<p>There are trillions of dollars of investment pushing for humans to trust whatever an LLM says, and very little money behind encouraging people to tackle hard problems themselves and train themselves to think.<p>I have to say honestly, that AI looks like an apocalypse for human thinking [ Im glad Tao is warning people, I just dont think many people will listen ]</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Stevvo</em>:</p>
-<blockquote>I&#x27;ve learnt more since the advent of LLMs than I did in the 10 years prior.
-And it&#x27;s not just me; that is most people&#x27;s experience with LLMs.
-But most of those people would also concur with your apocalyptic thinking.
-AI is the apocalypse for thinking, except for <i>me</i>, only <i>I</i> am smart enough and experienced enough to maintain my cognitive ability while using LLMs.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>thoughtpeddler</em>:</p>
-<blockquote>As an educator (of working professionals &#x2F; continuing education), I see first-hand the range of AI use amongst the population (and even my population is not a representative sample, as it&#x27;s people who are intrinsically geared towards being interested in building with AI), but your experience unfortunately probably reflects around ~30% of the population. The other third I&#x27;m slightly less hopeful about, but they might have a chance merely surviving, and the latter third I&#x27;d place in the &#x27;full cognitive offloading &#x2F; total abdication of all thinking and learning to machines&#x27; - for them, as the kids say: ngmi. Even within me as a single individual, I can sense the times AI is so tempting to offload cognition, and other times where it has been like a 100x speedup in my own innate skills and abilities. The future has come on quick, and we are barely getting to adjust healthily to it.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>rootlocus</em>:</p>
-<blockquote>And this on top of the economic apocalypse of removing a lot of jobs and not creating any new ones within a society that doesn&#x27;t seem to function without money flowing.</blockquote>
-<p>↳ reply 3 — <em>totetsu</em>:</p>
-<blockquote>One I noticed recently I was talking to a young child who was so excited about programming and showing me what he had made it and how. I couldn’t show him any of the code for what I have made recently because it was just videcoded.. we could both share the same interest in making things but I felt like this is going to be a big gap in intergeneraltional knowledge sharing. Even if he wants to learn there is going to be less incidental chances to hear the details from someone older who’s also really doing it.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>perlgeek</em>:</p>
-<blockquote>On <a href="https:&#x2F;&#x2F;www.theskepticsguide.org&#x2F;podcasts&#x2F;episode-1109" rel="nofollow">https:&#x2F;&#x2F;www.theskepticsguide.org&#x2F;podcasts&#x2F;episode-1109</a> one of the hosts, Cara Santa Maria, mentioned that she hadn&#x27;t really used LLMs &#x2F; Chat bots before.<p>But now it is integrated into the charting &#x2F; medical records software that here clinic uses, and now it saves her lots of work, and even flags discrepancies between things her patients said and the other medical records.<p>This illustrates that for the average user, AI works if it&#x27;s properly integrated into software. For most people, saying &quot;look, here&#x27;s AI, it can do everything that you ask it for&quot; isn&#x27;t really practical. It&#x27;s not even practical for me, a power-user and programmer, because I want my AI usage be subject to constraints (sovereignty, well-defined scopes what it&#x27;s able to do). Doing that all by myself sounds tedious and challenging.<p>So for most people, AI is a building block, that hopefully will be used to build tools they actually enjoy using. Don&#x27;t expect everybody to build their own tools, even though they possibly could, using AI.</blockquote>
-<p><strong>Top #3</strong> — <em>extr</em>:</p>
-<blockquote>I go back and forth on this. For awhile yes it took a lot of workflow tweaks and finesse to get directionally correct outputs (thinking back like mid 2025). I invested time in figuring that out, mostly because I was interested, but those skills are all obsolete now, you don&#x27;t need to worry so much about context management and special instruction recipes or anything these days.<p>The meta at this point seems to be mostly around &quot;knowing what to ask for&quot;. Eg: I suck at prompting for specific design tweaks, because I don&#x27;t have the design vocabulary to be specific and articulate what I want. It&#x27;s a lot of trial and error. I hear people who are developing full scale applications without a tech background run into the issue writ large. For now, I have an advantage over these people when building applications. But perhaps that&#x27;s just one round of RL away from being obsolete too. Supposedly the model will eventually have such good taste in design&#x2F;architecture&#x2F;whatever there will be little point in asking for tweaks.<p>The only thing that seems relatively future-proof is just being able to communicate clearly what you&#x27;re trying to do. Not how to do it, or even what success looks like. Perhaps an element of it is even as basic as being honest with yourself.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>modo_</em>:</p>
-<blockquote>I think there are a lot of people using AI who aren&#x27;t as familiar with these tools as us. We stop noticing a lot of the complexity when we pick it up gradually. There are so many powerful capabilities built into codex&#x2F; claude code that have little or no UI affordance.<p>it&#x27;s tons of small things like choosing the right effort level for a task. or knowing when to ask for subagents. oh, you can have two threads working at the same time and communicating with each other? you can do &#x2F;side to parallel path and fold that back into the main thread?<p>which of these things happens automatically, and which do you need to ask for? and does any of this still work the way it did a few months ago?<p>the list goes on forever. many users of AI are only just now getting comfortable with skills (and probably still writing bad skills unfortunately hah).<p>A lot of the specific things you learned may have become obsolete. But there&#x27;s still a gap between what these tools can do and what most people know how to get them to do. Keeping up with that is a skill too, but perhaps not forever.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ForHackernews</em>:</p>
-<blockquote>&gt; and does any of this still work the way it did a few months ago?<p>For me this is why it&#x27;s not worth it investing much time and effort learning any specific AI workflow. Remember &quot;prompt engineering&quot;? Remember &quot;Ralph loops&quot;?<p>I&#x27;ll play with various harnesses but until things settle down in a few years I&#x27;m not going to learn Claude Code the way I learned SQL.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>makerofthings</em>:</p>
-<blockquote>We have graduates come in and master development with agents in a few days. There&#x27;s really not that much to it. There are a lot of people out there trying to make it sound difficult. Maybe to make themselves feel better, maybe to try and make money?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Phreak.ing – Internet Phone Switch</title>
-      <link>https://phreak.ing/</link>
-      <guid isPermaLink="false">hn3-50063417</guid>
-      <pubDate>Mon, 12 Oct 2026 21:39:32 +0000</pubDate>
-      <description>145 points, 34 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://phreak.ing/"><strong>→ Article</strong></a> <small>(phreak.ing)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50063417">→ HN comments</a> &nbsp;·&nbsp; 145 points &nbsp;·&nbsp; 34 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>accrual</em>:</p>
-<blockquote>The incredible background effects with no JS enabled have me both pondering and accepting of this fantastic display.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>skgough</em>:</p>
-<blockquote>It&#x27;s just an animated webp. 
-<a href="https:&#x2F;&#x2F;phreak.ing&#x2F;static&#x2F;bg.webp" rel="nofollow">https:&#x2F;&#x2F;phreak.ing&#x2F;static&#x2F;bg.webp</a>
-The correct amount of technology for an animated background. Very refreshing</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>monocasa</em>:</p>
-<blockquote>It also changes quite a bit if you enter *#06# as the number.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>albert_e</em>:</p>
-<blockquote>Looks like the animated background image was sourced from: <a href="https:&#x2F;&#x2F;pislices.art&#x2F;GIFS" rel="nofollow">https:&#x2F;&#x2F;pislices.art&#x2F;GIFS</a></blockquote>
-<p>↳ reply 3 — <em>cat-whisperer</em>:</p>
-<blockquote>+1 to that. I didn&#x27;t even feel like doing anything I was just there flabbergasted by the background</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>cnqso</em>:</p>
-<blockquote>Easter egg if you type in *#06# :)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>someothherguyy</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Unstructured_Supplementary_Service_Data#:~:text=read%20device%20number%20%28IMEI%29" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Unstructured_Supplementary_Ser...</a></blockquote>
-<p>↳ reply 2 — <em>fnord77</em>:</p>
-<blockquote>nothing happened</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>wildzzz</em>:</p>
-<blockquote>Not sure what I just registered for but hope it&#x27;s cool</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Intel D270 GPU AI Accelerator–Up to 480 GB LPDDR5X</title>
-      <link>https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/d-series.html</link>
-      <guid isPermaLink="false">hn3-50063365</guid>
-      <pubDate>Mon, 12 Oct 2026 21:35:35 +0000</pubDate>
-      <description>171 points, 77 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/d-series.html"><strong>→ Article</strong></a> <small>(intel.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50063365">→ HN comments</a> &nbsp;·&nbsp; 171 points &nbsp;·&nbsp; 77 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>K0balt</em>:</p>
-<blockquote>These are going to be so awesome to buy in 5-8 years!<p>Right now I’m running 2x 3090 and 128 gb ram on 3.8 flash-next180b (the quant is 97gb) and it hums at120t&#x2F;s. It’s really a surprisingly good model for general tasks, and I’m soon to see how it does with more agentic kit. For agentic work it does slow down quite a bit when the context fills up… but what do you want for running a 180b model on consumer hardware?<p>Right now I have it set up as an administrator for our asterisk PBX and radius server, and it does higher level judgment on our cctv footage for notifications to security. It’s been really good so far. Agents are the new UI, everything just works over SSH now.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mnadkvlb</em>:</p>
-<blockquote>How do you do the cctv analysis ?</blockquote>
-<p>↳ reply 2 — <em>sixothree</em>:</p>
-<blockquote>Are you running club-3090 or something else?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>suprjami</em>:</p>
-<blockquote>With an impressive 1.5TB&#x2F;s RAM bandwidth you&#x27;d think they&#x27;d advertise that more.<p>Marketing department asleep at the wheel.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>auspiv</em>:</p>
-<blockquote>This is a very low number for a server GPU. My V100 from 2017 is 0.9 TB&#x2F;s.<p>A single B300 has almost 8 TB&#x2F;s.<p>AMD MI300x from 2023 is 5.3 TB&#x2F;s<p>Edit: my bad you are saying that this is an impressive number precisely because it is more or less normal RAM, not VRAM</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>pixelpoet</em>:</p>
-<blockquote>VRAM isn&#x27;t a type of memory, it&#x27;s just RAM used for the GPU. So this LPDDR5 <i>is</i> VRAM, just like it can be with my Strix Halo machine.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>14u2c</em>:</p>
-<blockquote>Very true, though traditionally it did refer to GDDR.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Aurornis</em>:</p>
-<blockquote>&gt; Marketing department asleep at the wheel.<p>The marketing department doesn&#x27;t have to lift a finger in this market. They could quietly drop it for sale without a single announcement and it would be backordered for a year.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>p0w3n3d</em>:</p>
-<blockquote>To be honest these ubiquitous AI hardware news look to me more and more like Maybach commercials.<p>Not targeting me</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Who is vfmaddrnd231pd?</title>
-      <link>https://purplesyringa.moe/blog/who-is-vfmaddrnd231pd/</link>
-      <guid isPermaLink="false">hn3-50063138</guid>
-      <pubDate>Mon, 12 Oct 2026 21:12:43 +0000</pubDate>
-      <description>178 points, 18 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://purplesyringa.moe/blog/who-is-vfmaddrnd231pd/"><strong>→ Article</strong></a> <small>(purplesyringa.moe)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50063138">→ HN comments</a> &nbsp;·&nbsp; 178 points &nbsp;·&nbsp; 18 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>pbsd</em>:</p>
-<blockquote>An old version of binutils [1] explains what DDS means:<p><pre><code>    How to encode VEX.vvvv:
-    0: VEX.vvvv must be 1111b.
-    1: VEX.NDS.  Register-only source is encoded in VEX.vvvv where
-       the content of source registers will be preserved.
-       VEX.DDS.  The second register operand is encoded in VEX.vvvv
-       where the content of first source register will be overwritten
-       by the result.
-       VEX.NDD2.  The second destination register operand is encoded in
-       VEX.vvvv for instructions with 2 destination register operands.
-       For assembler, there are no difference between VEX.NDS, VEX.DDS
-       and VEX.NDD2.
-    2. VEX.NDD.  Register destination is encoded in VEX.vvvv for
-    instructions with 1 destination register operand.
-    3. VEX.LWP.  Register destination is encoded in VEX.vvvv and one
-       of the operands can access a memory location.
-</code></pre>
-[1] <a href="https:&#x2F;&#x2F;sourceware.org&#x2F;git&#x2F;?p=binutils-gdb.git;a=commitdiff;h=eea96d3f86cc1ff96447b6fc096bb5f371b938b6;hp=ecb96e55497e44b6c0818553dcb86dfb96b8deef#patch2" rel="nofollow">https:&#x2F;&#x2F;sourceware.org&#x2F;git&#x2F;?p=binutils-gdb.git;a=commitdiff;...</a></blockquote>
-<p><strong>Top #2</strong> — <em>enjoyyourlife</em>:</p>
-<blockquote>See <a href="https:&#x2F;&#x2F;www.felixcloutier.com&#x2F;x86&#x2F;vfmaddrnd231pd" rel="nofollow">https:&#x2F;&#x2F;www.felixcloutier.com&#x2F;x86&#x2F;vfmaddrnd231pd</a><p>Theory: It was removed due to hardware issue and never worked</blockquote>
-<p><strong>Top #3</strong> — <em>seastarer</em>:</p>
-<blockquote>The instruction was removed when Intel recommitted to AVX-512 on client CPUs (it is available in EVEX form IIRC)</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Writing a Demoscene Intro for the ZX Spectrum</title>
-      <link>https://www.markround.com/blog/2026/zx-spectrum-intro</link>
-      <guid isPermaLink="false">hn3-50061859</guid>
-      <pubDate>Mon, 12 Oct 2026 19:40:00 +0000</pubDate>
-      <description>169 points, 35 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.markround.com/blog/2026/zx-spectrum-intro"><strong>→ Article</strong></a> <small>(markround.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50061859">→ HN comments</a> &nbsp;·&nbsp; 169 points &nbsp;·&nbsp; 35 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>JdeBP</em>:</p>
-<blockquote>The only rather sad part is around 2&#x2F;3 of the way through, where the author had to use a pre-compiled binary from the Internet Archive, because the original WWW site had rotted away, and the source code did not assemble.  This stuff tends to rot if the community does not do the preservation work.<p>That said, Sergey Bulba&#x27;s WWW site is still around and the relevant stuff can be found today at <a href="https:&#x2F;&#x2F;ay.strangled.net&#x2F;progr_e.htm" rel="nofollow">https:&#x2F;&#x2F;ay.strangled.net&#x2F;progr_e.htm</a> .  But the continued existences of things like this are not the sort of things to take for granted.</blockquote>
-<blockquote>
-<p>↳ reply — <em>mark_round</em>:</p>
-<blockquote>Hi! This hit HN after I had gone to bed so only picking up on it now. Thanks for finding that link and letting me know, I&#x27;ve updated the article with a note and your link.<p>One of the uncomfortable realities I&#x27;ve encountered being involved in the retro scene is that so many of the resources are slowly disappearing, either because the original authors age out of the scene or loose interest (or sadly, many are approaching that age where natural causes are taking them from us), old companies are long since defunct and resources slowly disappear into a legal quagmire or no-one ever thought to archive them in the first place.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>SteveGerencser</em>:</p>
-<blockquote>I was in high school when the demoscene took off in the 80s. It forever tainted my view of software development as full of lazy programmers not bothering to optimize code as hardware got better and better. Myself included.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Steve44</em>:</p>
-<blockquote>&gt; tainted my view of software development as full of lazy programmers not bothering to optimize code<p>I have the opposite memory of the C64 demo coders, they were masters at optimizing and pushing hardware well beyond what anyone thought it could do. Generally though they would be very focussed on writing a great demo, but they couldn&#x27;t&#x2F;wouldn&#x27;t spend the time putting together a full game - the flashy demo was their goal.<p>I was a Spectrum games programmer and yes we were pushing the hardware but what I was seeing from the C64 demo scene was on a different level.  There were a lot of demo writers pushing the known boundaries with things like multi layer bas-relief scrolling and playing with colours &amp; music.  I can&#x27;t remember their being much of a demo scene for the Spectrum at the time here in the UK.</blockquote>
-<p>↳ reply 2 — <em>pjmlp</em>:</p>
-<blockquote>Same here, I had to fit my first programs into Timex 2068, Amiga 500 and MS-DOS limitations, and FX-4800P as well, later upgraded to 880P.<p>Hence why I find so interesting ESP32 projects, folks these days don&#x27;t seem to grasp how much we can actually fit into something like that.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ilaksh</em>:</p>
-<blockquote>Nice.<p>Check out this one though: <a href="https:&#x2F;&#x2F;demozoo.org&#x2F;productions&#x2F;13188&#x2F;" rel="nofollow">https:&#x2F;&#x2F;demozoo.org&#x2F;productions&#x2F;13188&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>detritus</em>:</p>
-<blockquote>Gosh.<p>The dithering on the voxel demo there had me truly stumped, watching as I am on a phone. Colours I never saw in my Speccy days!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mark_round</em>:</p>
-<blockquote>Holy CRAP. That is some ground-breaking stuff - One can only imagine what people would have made of it, had they seen something like that back in the Speccy&#x27;s heydey.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Making big downloads resumable in Firefox</title>
-      <link>https://lunarwatcher.codeberg.page/til/firefox/resumable-big-downloads.html</link>
-      <guid isPermaLink="false">hn3-50061791</guid>
-      <pubDate>Mon, 12 Oct 2026 19:36:02 +0000</pubDate>
-      <description>175 points, 70 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://lunarwatcher.codeberg.page/til/firefox/resumable-big-downloads.html"><strong>→ Article</strong></a> <small>(lunarwatcher.codeberg.page)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50061791">→ HN comments</a> &nbsp;·&nbsp; 175 points &nbsp;·&nbsp; 70 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>edflsafoiewq</em>:</p>
-<blockquote>I&#x27;ll try this.<p>The way I have to resume downloads in Firefox is<p>1. Move the .part file to a temp file<p>2. Start the download again; a new .part file gets created<p>3. Pause the download<p>4. Move the temp file to the .part file, overwriting it<p>5. Unpause the download; it resumes from where the old .part file stopped<p>This is only necessary if a &quot;one-time&quot; download link gets interrupted part-way through, eg. by a flaky connection. Attempting to resume a one-time link like normal gets (I assume) a 400 response and FF kills the .part file.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>hoppyhoppy2</em>:</p>
-<blockquote>(The article contains a link to this trick)</blockquote>
-<p>↳ reply 2 — <em>ant6n</em>:</p>
-<blockquote>That’s like trickery anno 2002. How come this hasn’t been solved in the last decades?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>felixfurtak</em>:</p>
-<blockquote>Who remembers Getright?<p><a href="https:&#x2F;&#x2F;www.getright.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.getright.com&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>airstrike</em>:</p>
-<blockquote>Let us also not forget Download Accelerator Plus (DAP) and DownThemAll<p><a href="http:&#x2F;&#x2F;s3.speedbit.com&#x2F;freeupgrade&#x2F;upgfree93.asp" rel="nofollow">http:&#x2F;&#x2F;s3.speedbit.com&#x2F;freeupgrade&#x2F;upgfree93.asp</a><p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;DownThemAll" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;DownThemAll</a>!</blockquote>
-<p>↳ reply 2 — <em>elromulous</em>:</p>
-<blockquote>Yes! And Go!Zilla!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>nirui</em>:</p>
-<blockquote>Based on the setting `network.http.response.timeout`, which is timeout related, I&#x27;m *guessing* Firefox cannot distinguish between a network EOF or a logical&#x2F;request-level EOF?<p>But that aside, it&#x27;s kinda typical for a software from the developed world to have fault tolerance this bad. The engineer who wrote the code probably never ever annoyed by network error aside from a few well-known cases, and thus don&#x27;t take these problems to their hearts.<p>For example, have you tried to download big files with a connection that has 100ms ~ 20seconds latency jitter? That happens with crossborder connections in&#x2F;out of China. And in India, your users sometime experiences power issue which set their router to reboot or redial, that also causes an interruption in download.<p>Of course, people in these countries can&#x27;t pay you much. But, these problems can all be solved&#x2F;mitigated in software. Do you want to improve your software so it can be more robust, or do you want to waste user&#x27;s time sitting in front your software just to get things done?</blockquote>
-<blockquote>
-<p>↳ reply — <em>hulitu</em>:</p>
-<blockquote>&gt; That happens with crossborder connections in&#x2F;out of China. And in India,<p>And sometimes in Germany. Let&#x27;s not hail China again. &#x2F;s</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
