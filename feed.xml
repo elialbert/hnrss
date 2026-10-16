@@ -4,7 +4,122 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 16 Oct 2026 19:51:30 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 22:43:45 +0000</lastBuildDate>
+    <item>
+      <title>Show HN: Gemini 4 Argon plays StarCraft</title>
+      <link>https://starskirmish.com/bench/v0-2/</link>
+      <guid isPermaLink="false">hn3-50118688</guid>
+      <pubDate>Fri, 16 Oct 2026 14:18:44 +0000</pubDate>
+      <description>176 points, 78 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://starskirmish.com/bench/v0-2/"><strong>→ Article</strong></a> <small>(starskirmish.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50118688">→ HN comments</a> &nbsp;·&nbsp; 176 points &nbsp;·&nbsp; 78 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>cgearhart</em>:</p>
+<blockquote>Is there anything interesting to learn from the agent written bots? Or are they just inferior versions of the best bots because the time limit is so short? Is there any indication that they’re trained on the code from the human written bots (like, do they magically “guess” creating functionality that requires experimental feedback or domain experience?) How much are the bots on rails applying the same techniques every time?<p>I think those kinds of questions would be more interesting than the raw win&#x2F;loss ratios.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>__cayenne__</em>:</p>
+<blockquote>Dan Gant (author of Purple Wave) has written about some of this.<p>I did a 48 hour test with GPT-6 Astra and Claude Opus 5.5 and we saw some interesting uses of Psionic Storm.<p>I&#x27;ve open sourced some of GPT-Astra&#x27;s work (below). It actually did an interesting amount of changes in strategy over time as it&#x27;s opponents became more difficult.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;llmskirmish&#x2F;starskirmish-hillclimb" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;llmskirmish&#x2F;starskirmish-hillclimb</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dudeinhawaii</em>:</p>
+<blockquote>To echo this, this is where Astra begins to stand out as a larger model and Opus begins to show certain cracks. I find Astra more adaptive, even as Opus is more capable in most coding&#x2F;execution&#x2F;tool-use domains. Fable-5.1 would be interesting here as it would presumably have a similar &quot;large model&quot; expansive reasoning and adaptation.<p>Anecdotally, in game benchmarks I&#x27;ve run, OpenAI models seem particularly adept at finding the meta game and exploiting it...</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dgant</em>:</p>
+<blockquote>Adapted from what I wrote on this previously: <a href="https:&#x2F;&#x2F;x.com&#x2F;dgant&#x2F;status&#x2F;2106880240907620731" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;dgant&#x2F;status&#x2F;2106880240907620731</a><p>The unsexy perspective on StarCraft is that it&#x27;s a game about logistics. You need to keep making things, not get supply blocked, fit all your buildings, not get your units trapped, and then bring all your units to a fight at a good time and at the same time.<p>Astra and Opus both cleared this bar pretty quickly, both settling on one-base Dragoon + Observer play, taking expansions pretty late, on 3 Gateways. This strategy is fine against everything and great against nothing, letting you win against anyone that you can out-execute. StarSkirmish gives agents access to the FastApproximation combat simulation library, which makes better combat predictions than the B-tier bots do, and let their bots win by trading armies better against them.<p>But the A-tier bots (Locutus and BananaBrain) are already strong at execution, and Astra wasn&#x27;t making progress against them. It switched to a proxy 2-gate Zealot rush. This worked well on a map pool with mostly 2-player maps (so you can place the Gateways very close to your opponent). But it&#x27;s also an astute choice for a new bot because it doesn&#x27;t require you to be good at anything in StarCraft that happens after the first four minutes!<p>It&#x27;s also smart as a variance-maximizing strategy. In many games, if your opponent is superior, you want the game to be decided by as few events as possible. Because with a bad coin, you&#x27;re more likely to win 1 of 2 flips than 10 of 20. Proxy 2-gate shortens the game and the number of interactions required to win.<p>It&#x27;s also advantageous given the format, where you get unlimited tries to win a series against each tier&#x27;s opponents. If you can make the games a coin flip, and then take more coin flips, you can clear a tier even with an overall poor winrate. I do think this aspect of StarSkirmish is worth addressing in the future.<p>Astra&#x27;s proxy gates beat the A-tier bots, and it moved up to StarSkirmish&#x27;s S-tier (Stardust and PurpleWave, though really I&#x27;d consider BananaBrain completely our peer in ability).<p>A brief aside about bot tournaments: The AIIDE conference and historically the COG tournaments had every bot play hundreds of games against one another, and ranked then on overall winrate. I have never liked this because it does not resemble human StarCraft (where players play a best-of-N series), unbalances the races (Zerg vs. Zerg is more volatile and winrates should be closer to 50%), and creates some twisted incentives. One of those incentives is ensuring you beat weaker opponents 100% of the time instead of merely 95%, which means defaulting to reliable-but-weaker strategies to beat weaker opponents, and having a large bag of available strategies to find something which exploits trickier opponents.<p>And in this iteration of StarSkirmish, where benchmark bots are mostly unable to store data between games, Stardust ran one basic conservative strategy almost every game. This weakens Stardust, but meant that Astra&#x27;s proxy gates were unlikely to win. So Astra had to do something very uncomfortable for a coding agent: Go back to the drawing board and try something completely different.<p>Astra completely switched gears, landing on a strategy that PurpleWave also likes to use against Stardust: Use Dark Templar to secure an expansion. This is particularly effective against Stardust, who does not use Shuttles + Reavers, and thus does not gain utility from the Robotics Facility it requires to make Observers.<p>From there Astra progressed slowly, but discovered a shared weakness of PurpleWave and Stardust: Both of us  are designed to dodge Psionic Storms, but that feature was broken in both our bots simultaneously (for unrelated reasons!).<p>So Astra&#x27;s Dark Templar opening transitioned smoothly into a two-base timing attack with Dragoons and High Templar. It moved out as soon as it had three storms banked up. By this time Stardust or PurpleWave had usually contained the passive Astra and taken a third base, getting an economic advantage that had not yet translated into an army advantage. Astra&#x27;s passivity meant that armies had not traded and were very large. This, with the broken Storm dodging, made its Psionic Storms devastating.<p>As with the proxy gate rush, this two-base timing simplified the game and allowed Astra to minimize interactions and decisionmaking, so it could just optimize its play for a narrow set of situations. As long as it executed the push well, it was in great shape to win. It did not need to skirmish. The game states it had to handle did not vary much. Simplifying the game against sophisticated bots was a pragmatic approach.<p>It nevertheless took most of the 50 hour contest for Astra to convert this plan into a winning evaluation run. By then it had learned to make Reavers and ferry them with Shuttles, but I suspect it was not doing this well enough to gain an advantage. Its winrates appeared to very gradually improve over this window, but I couldn&#x27;t tell from the stream what it had changed.<p>After eventually passing an S-tier, Astra had a few hours to try to beat Pluto. This was plainly an impossible task for it, but I was surprised to see Astra suddenly stagnate with few changes in approach.<p>Astra&#x27;s build order was pretty flawed, cutting workers needlessly for no advantage. It was a survivable error against Stardust forced to use its defensive &quot;seal-clubbing&quot; strategy, and against PurpleWave (which without learning data was constantly at risk of throwing an eval with goofy cheeses like its half-baked cannon rush). But against Pluto, Astra consistently hit the five minute mark with fewer workers, less army, no expansion, and often permanently trapped in its base. This was no less true in its 1000th game against Pluto as its first.<p>Astra&#x27;s approach to StarSkirmish was in some ways unsexy: It simplified the game, won mainly in games where it could keep the game state simple, and against top opponents either steamrolled or got dissected in a short window at time. But winning StarCraft has always been more about bland fundamentals than fancy tricks, and I always love re-learning lessons about how the game actually is versus how we are tempted to perceive it.</blockquote>
+<p>↳ reply 3 — <em>serf</em>:</p>
+<blockquote>none of these games really require a lot of experimental feedback, the goals are well stated and known; experiments may drive optimization if thats the question.<p>as far as the on rails comment : there&#x27;s no good way to know the provenance of an LLM output, but the LLM made bots generally look like very small, modular, sometimes functionalized versions of the human equivalents; the difference being that the LLM is calling the funtions often rather than a conditional loop in a main().<p>a factorio bot I worked on when Astra was first getting previewed was essentially a directory of very small argument-receiving functional and self-supporting programs that had very limited scope, and an agents.md file that directed the LLM  to where such capabilities existed to preempt a directory search every compaction&#x2F;context-swap.<p>so you&#x27;d have things like &quot;python walk.py N 40&quot; for 40 units of northern travel. a watchdog that waited for HP to drop or movement to become inhibited, etc.<p>My very first experience with LLM driven bot development in the GPT3 days created huge unmaintainmable monoliths that kind of worked due to TDD but were essentially spaghetti. LLMs have been trending away from those paradigms into small self-encapsulated programs. probably because those are less abusive to ctx count and produce better results since they lose&#x2F;compact less.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>djoldman</em>:</p>
+<blockquote>&gt; ... runs each model in its lab&#x27;s 1st party CLI harness at the highest reasoning setting it offers.<p><pre><code>  Anthropic (Claude models): Claude Code
+  OpenAI (GPT models): Codex
+  Google (Gemini models): Antigravity CLI
+  Meta (Muse models): Muse Code
+</code></pre>
+&gt; The CLIs&#x27; web search and web fetch tools are turned off, and the agent has no other internet access. The CLI is installed before the clock starts, and the hour counts from when the agent starts. There is no submit tool: the harness collects the bot when the time runs out.<p>One thing we&#x27;re learning is that harness is HUGE. The difference in performance for the same underlying model can change dramatically across:<p>1. harnesses<p>2. allowed tools (no web search&#x2F;fetch - how does the model refer to documentation?)<p>3. thinking levels</blockquote>
+<p><strong>Top #3</strong> — <em>MichaelNolan</em>:</p>
+<blockquote>So this benchmark has the LLMs writing a bit to play StarCraft. Somewhat similar there was a post here a while back that had the LLMs playing StarCraft directly - <a href="https:&#x2F;&#x2F;broodbench.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;broodbench.com&#x2F;</a> and <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49766966">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=49766966</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Apple ML Research: Muse Spark Open with MLX on Mac Studio</title>
+      <link>https://machinelearning.apple.com/research/mlx-distributed-inference</link>
+      <guid isPermaLink="false">hn3-50118320</guid>
+      <pubDate>Fri, 16 Oct 2026 13:43:48 +0000</pubDate>
+      <description>244 points, 109 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://machinelearning.apple.com/research/mlx-distributed-inference"><strong>→ Article</strong></a> <small>(machinelearning.apple.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50118320">→ HN comments</a> &nbsp;·&nbsp; 244 points &nbsp;·&nbsp; 109 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ks2048</em>:</p>
+<blockquote>So, Meta will spend millions&#x2F;billions on building open-weight models and then people will send Apple $20,000 to run them. Seems like a good deal for Apple.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>loeg</em>:</p>
+<blockquote>How big is the local LLM market?  I have trouble imagining Apple will move enough units to make $20k&#x2F;ea worth it for them as a business segment.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Lalabadie</em>:</p>
+<blockquote>I think the bet is that it will get bigger, both at the consumer level, and with orgs eventually discovering ready-made solutions for having their own on-prem inference.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>GeekyBear</em>:</p>
+<blockquote>How many 5080 16 Gig cards would you have to buy to run the same model, and what would that cost?</blockquote>
+<p>↳ reply 3 — <em>reilly3000</em>:</p>
+<blockquote>They have the best strategy of bigtechco: let others figure out the squishier layers while they focus on selling the best hardware. Privacy has incredible value to a lot of individuals and industries. $20-80k in hardware that *appreciates* the moment you buy it is a reasonable investment for a lot of SMBs, and still less than a single Nvidia rig. Privacy pays.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>liuliu</em>:</p>
+<blockquote>FWIW, single M5 Ultra with 256GiB runs DeepSeek 4.1 Flash 0910 just fine (~3200 tok&#x2F;s prefill, ~45 tok&#x2F;s). M5 Max w&#x2F; 128GiB runs GLM 5.3 Flash also fine.<p>I also benchmarked both on quality benchmarks (MathArena Apex &#x2F; GPQA Diamond etc) to make sure the quality is what you get from the official numbers.</blockquote>
+<p><strong>Top #3</strong> — <em>tony_cannistra</em>:</p>
+<blockquote>Not exactly your average &quot;desk&quot;, but still neat.<p><pre><code>  In this post, we show how to run the latest frontier-class model — Muse Spark Open, with nearly a trillion parameters — right from your desk, using the latest version of MLX, released today. On a cluster of four Mac Studios, Muse Spark Open generates over 36 tokens per second (see Figure 1), well above average human reading speed. Beginning on a single Mac Studio (up to 512GB of unified memory), then scaling out across multiple Macs with the RDMA over Thunderbolt driver, below we share an overview of the range of models you can now run on Mac Studio.</code></pre></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>I Love Software Rendering</title>
+      <link>https://www.jamesfmackenzie.com/2026/10/13/i-love-software-rendering/</link>
+      <guid isPermaLink="false">hn3-50117746</guid>
+      <pubDate>Fri, 16 Oct 2026 12:52:08 +0000</pubDate>
+      <description>273 points, 180 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.jamesfmackenzie.com/2026/10/13/i-love-software-rendering/"><strong>→ Article</strong></a> <small>(jamesfmackenzie.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50117746">→ HN comments</a> &nbsp;·&nbsp; 273 points &nbsp;·&nbsp; 180 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Waterluvian</em>:</p>
+<blockquote>Ah the software rendering era. Where I gained 10fps by adding a sound card.</blockquote>
+<blockquote>
+<p>↳ reply — <em>fwsgonzo</em>:</p>
+<blockquote>I&#x27;m interested in hearing more</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hypercube33</em>:</p>
+<blockquote>In the first waves of multimedia PCs - the CPU was tasked with doing sound, networking, hard drive control, etc. - pretty much all of the cost savings came from having minimal hardware for the auxiliary components and doing it all in drivers.<p>A common &quot;Trick&quot; was to buy cards that had essentially their own processors to handle this stuff - SoundBlasters, 3Com nics, IDE drive controllers that had their own processor (hell, even up to their own OS) since that freed the CPU up for doing actual work - gaming. Even an external or other<p>CPUs were a bottle neck but most people didnt tax the single core machines doing most daily work (office work, browsing the web) so it was fine, but once you load up a game that needs sound, 3d, networking, disk access all at once it would start stealing clock cycles trying to do all of that in one place.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>BugsJustFindMe</em>:</p>
+<blockquote>This should really be titled &quot;I love pixelated textures&quot;.<p>&gt; &quot;<i>3D cards smoothed textures with bilinear filtering</i>&quot;<p>You can just not do that.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bartread</em>:</p>
+<blockquote>I&#x27;m going to guess if you did it on the video card and simply disabled those enhancements it would be considerably more energy efficient than doing it on the CPU as well which (a) means your laptop battery lasts longer on a charge, and (b) also opens up the possibility of not needing a particularly powerful CPU in order to juice the resolution, because the video hardware is doing the work for you.<p>From a programming perspective I do completely get the desire to have the CPU do all the work though - if you want absolutely everything under your control it&#x27;s easier, and especially if your game is single-threaded.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>delta_p_delta_x</em>:</p>
+<blockquote>I&#x27;ve mentioned this elsewhere, but nowadays, anything you see out of an HDMI&#x2F;DP&#x2F;eDP cable comes out of a GPU. Modern OSs make it <i>impossible</i> to do &#x27;software rendering&#x27; any more; it&#x27;s just that much faster and that much more efficient, even if it is harder to program directly. Even IPMI BMCs have a tiny GPU doing stuff.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>shadowgovt</em>:</p>
+<blockquote>It&#x27;s also because at this point the operating systems themselves use the accelerated graphics architecture for things like window compositing, because that also turned out to be faster. And it&#x27;s much easier to do cute little visual effects like wiggles and window distorts if those entities are actually 3D rendered graphics objects.<p>Even the standard desktop experience is a 3D graphics application these days.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sorenjan</em>:</p>
+<blockquote>It&#x27;s just like how pixelated 2D graphics is called &quot;8-bit&quot; now.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>delta_p_delta_x</em>:</p>
+<blockquote>This isn&#x27;t software rendering, it&#x27;s called turning off spatial anti-aliasing. You can still do that in the modernest of modern games. Software rendering went out of the window because the CPU tends to have other things to do whilst playing the game besides only multiplying 4x4 matrices, which was shifted to the shader cores of GPUs. The look-and-feel that the author is discussing including shadow and texture LUTs can also be done on GPUs by passing the tables in to shaders as constant read-only storage buffers; that is not specific to software rendering. It bears mentioning that many modern software renderers (LLVMpipe&#x2F;Lavapipe, OpenSWR, WARP) are basically full D3D&#x2F;OpenGL&#x2F;Vulkan devices in their own right, including shader compilers.<p>Also, modern spatial anti-aliasing works by multisampling within a pixel (or even neighbouring pixels) and taking the average, rather than filtering across singly-sampled pixels, which massively reduces the quality. Not to mention temporal and machine learning AA techniques including DLSS, XeSS, FSR, and all the TAA implementations in many games.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>eska</em>:</p>
+<blockquote>His definition of software rendering is<p><pre><code>  In a software-rendered game, the CPU draws every pixel. There’s no 3D card involved: the game works out each frame in its own code and writes it straight to video memory
+</code></pre>
+I think that’s the standard definition. If you mean that this style can be achieved with graphics hardware then that’s a different argument and why your first sentence is deemed contentious</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>delta_p_delta_x</em>:</p>
+<blockquote>&gt; If you mean that this style can be achieved with graphics hardware<p>I really ought to have been more specific with my first sentence to ward off any hair-splitting.<p>The author claimed to love software rendering, but the examples given to highlight the supposed positives of software rendering can all be achieved on GPUs. If the author had instead highlighted the ability to easily debug and inspect the inner workings of the rasterisation pipeline with a software renderer, that might have been a much more relevant argument.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>swinglock</em>:</p>
+<blockquote>He says he likes the look, that&#x27;s subjective and doesn&#x27;t need arguments. You wanted to read another, technical article.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>seritools</em>:</p>
+<blockquote>yup, it should be renamed to &quot;I Love GL_NEAREST_MIPMAP_NEAREST&quot;</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>The Folders Programming Language</title>
       <link>https://danieltemkin.com/esolangs/folders</link>
@@ -1288,6 +1403,42 @@ People mistakenly transform #1 into #2 unconditionally, not realising that this 
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>The engineering that allows articulated buses to bend</title>
+      <link>https://www.theautopian.com/you-wont-believe-the-incredible-engineering-that-allows-articulated-buses-to-bend/</link>
+      <guid isPermaLink="false">hn3-50097843</guid>
+      <pubDate>Thu, 15 Oct 2026 01:02:05 +0000</pubDate>
+      <description>125 points, 60 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theautopian.com/you-wont-believe-the-incredible-engineering-that-allows-articulated-buses-to-bend/"><strong>→ Article</strong></a> <small>(theautopian.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50097843">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 60 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>happytoexplain</em>:</p>
+<blockquote>I like watching the other half of the bus while riding these. It&#x27;s a cool effect, seeing the whole &quot;room&quot; oscillate through the &quot;doorway&quot;, while I feel like I&#x27;m standing still.<p>Edit: The article has a video of this effect near the bottom.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>havnagiggle</em>:</p>
+<blockquote>The trains around Munich, Germany were fantastic for that effect. 15+ cars long with wide, open pivots.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>rob74</em>:</p>
+<blockquote>I agree that it looks impressive (you just have to catch a time where the train is mostly empty to be able to see end to end), but 15 cars is a bit exaggerated. The U-Bahn trains have 6 cars, the current S-Bahn EMUs have 4 cars (up to three of them can be coupled, but you can&#x27;t pass from one unit to the next). But the new S-Bahn trains scheduled to be delivered from the end of 2028 will be 200 meters long and have 13 cars (Siemens is apparently not superstitious) where you can indeed walk (and look) from one end to the other: <a href="https:&#x2F;&#x2F;press.siemens.com&#x2F;global&#x2F;en&#x2F;pressrelease&#x2F;germanys-most-modern-s-bahn-trains-munich" rel="nofollow">https:&#x2F;&#x2F;press.siemens.com&#x2F;global&#x2F;en&#x2F;pressrelease&#x2F;germanys-mo...</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ortusdux</em>:</p>
+<blockquote>My college years did not include all that many hangovers, but I distinctly remember not enjoying this effect one morning.</blockquote>
+<p>↳ reply 3 — <em>doginasuit</em>:</p>
+<blockquote>The best part is sitting in the swivel part and having the whole bus bend around you.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>netsharc</em>:</p>
+<blockquote>Just 2 days ago: one of these buses had an accident that left the front part twisted 180 degrees in relation to the rear: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=flbaRmGKzPY" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=flbaRmGKzPY</a><p>The Munich bus-trailer in action: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=4IUE-yA8R1A" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=4IUE-yA8R1A</a></blockquote>
+<p><strong>Top #3</strong> — <em>adrianmonk</em>:</p>
+<blockquote>When I got to where they explained the benefits of having the engine at the very back and the instability of having the back part push the front, I tried to guess how they solved it. I guessed a fancy drive shaft with universal joints so the engine in the back half could drive wheels in the front half.<p>I guessed wrong. I still like my idea, but their solution is simpler and probably more efficient and more durable too.</blockquote>
+<blockquote>
+<p>↳ reply — <em>simondotau</em>:</p>
+<blockquote>A more modern solution would be to use electric motors on multiple axles, the power coming from a generator or battery.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ryukafalz</em>:</p>
+<blockquote>The bus version of an EMU train</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>LFM2.5-24B-A2B: Built for fast on-device agents</title>
       <link>https://www.liquid.ai/blog/lfm2-5-24b-a2b</link>
       <guid isPermaLink="false">hn3-50097369</guid>
@@ -2388,6 +2539,37 @@ WHERE a.id = $2<p><pre><code>    AND a.embedding &lt;-&gt; b.embedding &lt; $1
 <p>↳ reply — <em>enordstr</em>:</p>
 <blockquote>I am the main contributor of pg_vectorsearch. If you try both, let us know about your experience and how we can improve.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>AI-assisted PCB design for KiCad 10</title>
+      <link>https://github.com/mixelpixx/Konnect</link>
+      <guid isPermaLink="false">hn3-50085553</guid>
+      <pubDate>Wed, 14 Oct 2026 10:51:37 +0000</pubDate>
+      <description>126 points, 47 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/mixelpixx/Konnect"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50085553">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 47 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>rutierut</em>:</p>
+<blockquote>After the OAI demo, like many others, I tried to use KiCAD through computer-use. This doesn&#x27;t produce great results.<p>I have found the best results through a mix of Happy[0], this repo, and computer use to fill in the blanks.<p>It is _really_ good at the stackup and part config, but creates some absolutely terrible routes. It will snake tiny traces through some SMD pins even though there is plenty of space available outside of the component. When it hits an obstacle, instead of creating 2 45 degree turns, it does 10~30 small ones creating some sort of weird crooked arc.<p>I have produced a couple of boards for testing this way and they are generally functional.<p>I have tried KiCadRoutingTools[1] as well which does seem to create routes that make more sense.<p>Anyone any better experiences with these or similar tools?<p>[0] <a href="https:&#x2F;&#x2F;github.com&#x2F;aklofas&#x2F;kicad-happy" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;aklofas&#x2F;kicad-happy</a>
+[1] <a href="https:&#x2F;&#x2F;github.com&#x2F;drandyhaas&#x2F;KiCadRoutingTools" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;drandyhaas&#x2F;KiCadRoutingTools</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mapontosevenths</em>:</p>
+<blockquote>Why bother with computer use at all? Did you DRC it?<p>I did this months before that OpenAI demo, and produced a product that many people are using without knowing it was an AI designed PCB.<p>It ran using kicad completely headlessly from a terminal with a bit of python and DRC&#x27;d it in a loop until it passed. I sent it to PCBWay and it worked the first go.  It did take a bit, but if you just set a goal and let &#x27;er rip the LLM gets there in the end.<p>Would a real EE vomit if they looked at it? Maybe. Does it work? Absolutely.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ryandrake</em>:</p>
+<blockquote>I think “it works” is a very low standard for any creative work you set out to do, professionally or as a hobby. Possibly the lowest standard. We should aim higher in all things.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>oscillonoscope</em>:</p>
+<blockquote>Anyone can build a bridge that stands, it takes an engineer to build one that barely stands.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ofrzeta</em>:</p>
+<blockquote>I can&#x27;t comment on the quality but Konnect was using freerouting to do the routing <a href="https:&#x2F;&#x2F;www.freerouting.app&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.freerouting.app&#x2F;</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ckemere</em>:</p>
+<blockquote>I’ve had really good results recently with Fable 5.1. The typical process that it uses for routing is to pin a few key traces (using the kicad python api) and then use freerouting for the others. I’ve also noticed that if I push hard for “carefully designed” routes, eg for a 38 pin connector, it will write code and make much better looking results.<p>I’d say that at the moment it still requires you to look at its results and point out their weaknesses and&#x2F;or route a couple of traces yourself and then hand it back.<p>This project from a couple of weeks ago is a great example. I’m new to ST MCUs: in addition to the PCB, Claude brought up the firmware and driver. <a href="https:&#x2F;&#x2F;github.com&#x2F;ckemere&#x2F;hub-imu" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ckemere&#x2F;hub-imu</a></blockquote>
+<p><strong>Top #3</strong> — <em>the__alchemist</em>:</p>
+<blockquote>I will give this a try! I feel like AI should be able to automate this process (Schematic and&#x2F;or PCB). I made a new design 2 months ago; tried to get Claude and COdex to do the schematic in KiCad, and they were not effective. Made a mess of it for an initial build, and edits later. I didn&#x27;t bother with the component placement and routing.<p>I did find LLMs to be very effective on answering questions about routing, part selection, and identifying problems; was using a new MCU (Atmosic) with some unusual power circuitry, and got a working board first go. LLMs also crushed getting it working with rust (Very likely I am the first person to program an Atmosic MCU in rust); found a debugger that would work (NXP MCU-Link; the St-Linkv3s I normally use won&#x27;t work for this, and the official recommended part is very expensive). The LLMs wrote a probe-RS configuration for it, linking scripts etc.<p>The LLMs also, under close direction, wrote a minimal HAL subset for I2C, SPI, power management, clocks, and BLE. I pointed it to my STM32 HAL as an API guide, set up the basic data structures, and pointed it to the Atmosic SDK (In C). It connected the dots, and produced a working HAL with a familiar API.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>TV4 postpones show after AI agent erases edited material</title>
@@ -3585,183 +3767,6 @@ It&#x27;s gone by gcc 1.21:<p><pre><code>    #if 0
 </blockquote>
 <p>↳ reply 2 — <em>lowbloodsugar</em>:</p>
 <blockquote>I mean, how would this be an upgrade?<p>I have a $12k Trinnov processor that’s quite good at audio, handles 4k@120 and 8k. $299 Apple TV still can’t pass through audio or do anything better than 4k@60?<p>I didn’t get to spend $12k on a Trinnov by overpaying for the little things. Apple is high. I don’t know who this is for.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Apple HomeView</title>
-      <link>https://www.apple.com/apple-homeview/</link>
-      <guid isPermaLink="false">hn3-50071017</guid>
-      <pubDate>Tue, 13 Oct 2026 13:02:12 +0000</pubDate>
-      <description>585 points, 721 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.apple.com/apple-homeview/"><strong>→ Article</strong></a> <small>(apple.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50071017">→ HN comments</a> &nbsp;·&nbsp; 585 points &nbsp;·&nbsp; 721 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>schmichael</em>:</p>
-<blockquote>The weird thing about this product is that its biggest competitor is &quot;an old ipad.&quot; I feel like most of their target customer base already has an old ipad that&#x27;s better suited for what this does in every way. Old ipads:<p>1. Have a battery so you&#x27;re not tied to a cord. Even old poor batteries are better than no battery.<p>2. Have apps! How does this not support apps?!<p>3. Have a huge range of 3rd party products and hacks and 3D models to wall mount it or stands for it<p>4. Are kitchen-safe (splatter proof, far fewer holes than this product, movable out of the way)<p>5. Also support siri and facetime and everything this device does AFAICT<p>I&#x27;m guessing they realized this and made sure it&#x27;s priced lower than the cheapest <i>new</i> iPad, but it will be interesting to see if the price difference can compete with the old iPads most of their customers have in drawers or already on walls.<p>Maybe the purpose-built nature will be a reasonable enough differentiator, but I&#x27;m not sure it&#x27;s focused enough for that. It&#x27;s both a passive information station and for calls? It&#x27;s for recipes which implies you put it in the kitchen, but it looks like a nightmare to clean with all those holes? It&#x27;s also a very small screen when you have to read the recipe from a distance because it has no battery. I can&#x27;t move my stove to it, and I definitely don&#x27;t want it too near a stove or sink!<p>The multiple users feature is a really neat trick, but I would kill to have this for <i>all</i> Apple devices. Let me hand my kid my phone and it automatically switches to kid mode!<p>Please Apple don&#x27;t lock multiple users to stationary devices like HomeView!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>BurritoAlPastor</em>:</p>
-<blockquote>I can’t believe nobody’s brought this up yet, but the HomeView fundementally exists for one reason: to be a Matter hub for smarthome stuff. No iPad – or any portable Apple device - can be configured as a home hub for managing Matter-protocol devices. There’s no significant advantage to a HomeView over an iPad <i>if you don’t have any Matter devices</i>.<p>That’s why this device has multi-user support: you’re only supposed to have one of them, which everyone uses. The Apple TV also has good multi-user support, because Apple doesn’t expect you to connect one Apple TV per user to your television.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>turtlebits</em>:</p>
-<blockquote>Any portable device as a Matter hub would be pretty useless.<p>The Apple TV and Homepod mini already support Matter.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ssl-3</em>:</p>
-<blockquote>How so?  A Matter controller just needs to be powered on and exist somewhere on the [wireless] LAN to do its job.<p>An old iPad on a stand on the table in the breakfast nook is conceptually fine as a Matter controller until someone picks it up and leaves with it, or unplugs it and lets it run out of battery.<p>Apple forbids this kind of use because it defiles the majesty of their garden and its walls (or something), but that&#x27;s just Apple doing Apple things.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Gareth321</em>:</p>
-<blockquote>Yeah all this device proves is they can easily enable user profiles on iPads and iPhones but they choose not to because fuck you give us more money.</blockquote>
-<p>↳ reply 3 — <em>jdminhbg</em>:</p>
-<blockquote>Old iPads are better than this in every way except for the way that matters most in a shared family device, then? I&#x27;d love for Apple to add multi-user support to iPadOS and think it&#x27;s way past time they did, but it&#x27;s not going to be a simple software update. This device has on-chip support for multiple FaceID accounts so it can distinguish them securely.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Brendinooo</em>:</p>
-<blockquote>Props to Apple for making this. Always cool to see them try stuff. That said:<p>I watched their video demo with the family getting ready in the morning: there are some interesting ideas here but imo if this doesn&#x27;t get reasonably full access to the App Store then it&#x27;s a no-go for me. Like: FaceTime while cooking, sure, but those calls tend to happen on Messenger and Snapchat for us. Music in the kitchen, sure, but I run Plexamp. My kids are always stealing my iPad to run the Toybox 3D printer; this would be a great thing for them to use.<p>And so on.<p>My house has a bunch of spots on the wall where an old intercom system used to live: it&#x27;d obviously be a budget buster to buy a bunch of these to fit in those slots but even if you did, you&#x27;d need Apple to provide an intercom solution (a la the Watch&#x27;s Walkie-Talkie?) or you&#x27;re...out of luck.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>danudey</em>:</p>
-<blockquote>&gt; this doesn&#x27;t get reasonably full access to the App Store then it&#x27;s a no-go for me<p>From their page:<p>&quot;Additional apps. HomeView supports compatible third-party audio and video apps from your iPhone for a familiar experience across devices&quot;<p>This implies that Plexamp could be supported, and possibly Messenger and Snapchat calls, but it&#x27;s too early to tell.<p>&gt; My house has a bunch of spots on the wall where an old intercom system used to live: it&#x27;d obviously be a budget buster to buy a bunch of these to fit in those slots but even if you did, you&#x27;d need Apple to provide an intercom solution (a la the Watch&#x27;s Walkie-Talkie?) or you&#x27;re...out of luck.<p>Apple Home already provides this. It&#x27;s not a full voice chat, but you can tap a thing and say something and it&#x27;ll broadcast it to the rest of the house; in my case, that&#x27;s two HomePods Mini, but it&#x27;s easy to assume it will include this as well.<p>If you&#x27;re just looking to say &quot;Hey kids, dinner&#x27;s ready&quot; or &quot;We have to leave in 15 minutes&quot; to the entire house then that circumstance is handled already; if you want to have a back-and-forth conversation with someone in another room, though, it doesn&#x27;t do that (yet?).</blockquote>
-<p>↳ reply 2 — <em>notfried</em>:</p>
-<blockquote>It makes sense they&#x27;d eventually do that. The Apple TV didn&#x27;t launch with an App Store, and it took 8 years after its first generation to get an App Store! I&#x27;d guess Apple sees that most apps wouldn&#x27;t make sense for the HomeView, and they&#x27;ll likely restrict what categories of apps can launch on it.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>xd1936</em>:</p>
-<blockquote>Through the incredible power of Siri AI™, you can now get a &quot;I didn&#x27;t understand that. Do you want to search the web for &#x27;turn on the kitchen lights&#x27;?&quot; response faster than ever before.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kriz9</em>:</p>
-<blockquote>I don&#x27;t think this joke works anymore. Siri uses Gemini now.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>joshstrange</em>:</p>
-<blockquote>Correct, it&#x27;s not faster. Now it&#x27;s slower to the point you aren&#x27;t sure if it&#x27;s ever going to work, then it comes back with some error.<p>Sure, it stopped being quite a stupid as before but it&#x27;s not the nirvana they were promising, checks notes, 3+ years ago.<p>So it doesn&#x27;t have the same issues as old Siri, just new issues.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>edot</em>:</p>
-<blockquote>Yes, it’s insanely slow now. So bad, I unenrolled from the beta. I mostly use Siri for reminders and alarms and somehow it was spending upwards of 5 seconds on the new Siri AI to do these tasks. Unusable.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Sir_Twist</em>:</p>
-<blockquote>&quot;Here&#x27;s what I found on the web for &#x27;Open the pod bay doors.&#x27;&quot;</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>It took me nine years to hack my Xbox 360</title>
-      <link>https://kennedn.com/blog/posts/glitching/</link>
-      <guid isPermaLink="false">hn3-50070661</guid>
-      <pubDate>Tue, 13 Oct 2026 12:33:18 +0000</pubDate>
-      <description>140 points, 36 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://kennedn.com/blog/posts/glitching/"><strong>→ Article</strong></a> <small>(kennedn.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50070661">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 36 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>MayeulC</em>:</p>
-<blockquote>This blogpost makes the point that the advent of the Raspberry Pi microcontroller made it easier to interface with a variety of hardware.<p>And it is true, but the capability was already quite cheap in 2017 and before: fx2 chips can do quite a lot, for instance.<p>I hope Bunnie&#x27;s Baochip BIO approach will take off in microcontrollers, making that sort of feature more ubiquitous. You can do a lot of things with an ESP32 for instance, but the RP2040 still has an edge for I&#x2F;O.<p>Also missed the opportunity to mention that the RP2350 itself had its protection defeated by fault injection.<p>Lastly, side channels and fault injection attacks are highly viable for mid-2010 and earlier hardware, but chip designs are hardening against them, for instance forcing a reboot when a glitch is detected. This makes current and next-generation chips harder to attack (see the laser fault injection on RP2350, though this is also being hardened against). It&#x27;s probably a good thing to some extent (make it harder to duplicate my credit card), but I mourn the loss of control over my own HW.<p>Incidentally, tinkering with the first gen Xbox (which is the security equivalent of a swiss cheese) taught me a lot about software, networking and electronics when I was younger. I hope that future generations will still get to tinker like that.</blockquote>
-<blockquote>
-<p>↳ reply — <em>monocasa</em>:</p>
-<blockquote>For a while, the PRU blocks in the beaglebone&#x27;s SoC were popular for similar reasons, but those were an order of magnitude more expensive.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>merpkz</em>:</p>
-<blockquote>What did Microslop change in Xbox One that prevented it from being exploited much in the same way? Afaik Xbone is still undefeated in terms of security, either because it&#x27;s so good or because it&#x27;s just uninteresting console to own</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Gigachad</em>:</p>
-<blockquote>The most powerful security feature on the Xbox was killing the brand so no one even bothered hacking it. Pretty much all of the games were released on Windows anyway.<p>They did implement a lot of new security tech but it would have been hacked much much sooner if there was any incentive to do it.</blockquote>
-<p>↳ reply 2 — <em>xav_authentique</em>:</p>
-<blockquote>It has been defeated, but through hardware attacks (voltage glitching mostly). The author did an very interesting presentation about the process at reverseconf: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=FTFn4UZsA5U&amp;t" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=FTFn4UZsA5U&amp;t</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>david-gpu</em>:</p>
-<blockquote>Tangential history: to this day there&#x27;s still DNA of the Xenos GPU from the XBox 360 inside every Snapdragon GPU (Adreno).<p>Way back around 2008, AMD was bleeding money after its acquisition of ATI. They wanted to divest of their Handheld division, which was the business unit that was producing chips for smartphones. From what I heard through the grapevine, Qualcomm was interested only in some part of it, particularly the GPU IP, but AMD wanted to sell the whole thing, and eventually lowered the price enough that Qualcomm sealed the deal. I was just a nobody, so take that with a grain of salt.<p>At the time the purchase was finalized in 2009, the GPU was a miniaturized version of the Xenos GPU from the XBox 360; all the basic parts were there, but the tile memory (GMem) was colocated with the rest of the GPU instead of being in a separate chip. That&#x27;s what was marketed as the Adreno 200 GPU. It was a pretty quirky shader architecture where each clock issued two instructions: a SIMD vec4, and a scalar op, in VLIW manner, not superscalar. A lot of the time utilization was poor because the compiler couldn&#x27;t find a way to pack two useful instructions in that manner. But I digress.<p>Back to the Qualcomm acquisition. It was a very tense period for the workers. Our salaries at AMD had been frozen for a while, and Qualcomm refused to bump our pay. I wish we, the workers, had built a common front to negotiate, but we didn&#x27;t. As part of the contract, AMD was not allowed to hire us back, so most of us went along and got swallowed into Qualcomm reluctantly.<p>Qualcomm had been working on their own GPU design for a number of years, largely through people they had poached from S3 Graphics, IIRC. Anyhow, they had not been able to actually ship their own IP and were still entirely reliant on AMD&#x27;s GPU designs, so the acquisition made a lot of sense to them. Qualcomm&#x27;s latest GPU IP was called QShader, and it featured a remarkably sane scalar-based unified architecture; it was a very significant improvement in programmability.<p>After the acquisition there was a slow process of merging QShader with AMD&#x27;s Xenos derivative, with the goal of producing a hybrid that would eventually be marketed as Adreno 300. In essence, they took the fixed-function blocks from Xenos, from its command processor to its texture units, while the shading processor was brought in from QShader. That first Adreno 300 (codenamed &quot;Oxili&quot;) was a momumental effort from all involved, and while it had some teething problems, it was the foundation for all future Adreno GPUs in Snapdragon chips. And, hey, it even made it to Mars! [0].<p>Twenty years later and Adreno GPUs still ship with that Xenos-style tile-based rendering architecture. I can&#x27;t believe that Andy Gruber, the chief architect behind it, doesn&#x27;t have a Wikipedia page.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Ingenuity_(helicopter)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Ingenuity_(helicopter)</a>
-[1]</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Wanted to download an ISO, ended up writing a kernel exploit</title>
-      <link>https://blog.dfb.sh/blog/eap770-root-for-two-zeros/</link>
-      <guid isPermaLink="false">hn3-50070625</guid>
-      <pubDate>Tue, 13 Oct 2026 12:30:08 +0000</pubDate>
-      <description>233 points, 124 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.dfb.sh/blog/eap770-root-for-two-zeros/"><strong>→ Article</strong></a> <small>(blog.dfb.sh)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50070625">→ HN comments</a> &nbsp;·&nbsp; 233 points &nbsp;·&nbsp; 124 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Shank</em>:</p>
-<blockquote>&gt; The connection was a bit janky, a video would occasionally start buffering, but it didn&#x27;t bother me much.<p>This is truly bonkers! Please, if you buy hardware that does not work correctly from day 1, return it. If you do not vote with your wallet these companies will never learn and will never adjust their practices. Rewarding TP-Link by keeping their terrible hardware does nothing.<p>&gt; I contacted support in June because the website only had firmware for v2. They couldn&#x27;t find v1 in their database and asked for photos of the device and box<p>!!</blockquote>
-<blockquote>
-<p>↳ reply — <em>alias_neo</em>:</p>
-<blockquote>Step one is not to buy TP-Link routers.<p>I know people have limited budgets, but having seen the code that sits on these devices and how poor quality and easily exploited it is, time and time again, I&#x27;ll never buy TP-Link (amongst others) again.<p>For a while I collected a graveyard of routers that had been abandoned by the manufacturers (and contained serious vulnerabilities), with the intention of writing them all up one day; next thing you know I have two children rapidly reaching double-digit ages, and much better things to do with my life than write about how shitty the code is on actual products we buy every day.<p>I switched, about 7-8 years ago to a Protectli box running Coreboot and OPNSense and haven&#x27;t looked back; I use Ubiquiti APs and switches. I&#x27;m not saying they&#x27;re the best, but anything used in corporate&#x2F;enterprise is going to have better support (if not better code quality).<p>The great thing about Ubiquiti APs for me is that each new WiFi generation (or two) I can just buy a few more, snap the existing APs off of the various ceilings they&#x27;re attached to, snap on the new ones, adopt them, and away we go.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>emilburzo</em>:</p>
-<blockquote>Or, buy a TP-Link router and flash it with OpenWrt. Best of both worlds.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>alias_neo</em>:</p>
-<blockquote>I did that once or twice, but I got fed up of finding the correct hardware revision of a particular router that supports OpenWRT, and I much prefer OPNSense anyway, and it runs on commodity hardware that you have full control over.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>amluto</em>:</p>
-<blockquote>I’m surprised you didn’t use your shiny exploit to get enough access to write a startup script or give yourself root.  Or patch the driver :)<p>(I’ve had Astra suggest binary patches things when I don’t even ask it to.)<p>re: the DMA API, it’s been a while since I’ve poked at it (and I’ve only really poked seriously on x86 Xen PV), but I think there are explicit APIs for cache maintenance, and you drivers may also be able to ask for more coherent mappings depending on hardware.  You’re certainly not expected to stick arch-specific flush operations in.</blockquote>
-<p><strong>Top #3</strong> — <em>myself248</em>:</p>
-<blockquote>Checksum offload, recalculating a bad checksum after corrupting the data, is really insidious.<p>Shows that trust in TCP can be badly misplaced -- in this case the trouble was cache coherency, but lack of ECC RAM or other electrical gremlins could easily corrupt packets too (and NIC buffer RAM is never ECC afaik), and blindly trusting TCP checksums would eat your data every time.<p>(Side note, doesn&#x27;t &#x27;zfs send&#x27; blindly trust TCP checksums?)<p>Props to Rsync and SSH and Wireguard and everything else that went beyond the call of duty to keep your data safe, with varying levels of alertness.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>aaronmdjones</em>:</p>
-<blockquote>&gt; (Side note, doesn&#x27;t &#x27;zfs send&#x27; blindly trust TCP checksums?)<p>No.<p><a href="https:&#x2F;&#x2F;openzfs.github.io&#x2F;openzfs-docs&#x2F;Basic%20Concepts&#x2F;Data%20Storage&#x2F;Checksums.html" rel="nofollow">https:&#x2F;&#x2F;openzfs.github.io&#x2F;openzfs-docs&#x2F;Basic%20Concepts&#x2F;Data...</a><p>&gt; End-to-end checksums are a key feature of ZFS and an important differentiator for ZFS over other RAID implementations and filesystems. Advantages of end-to-end checksums include:<p>&gt; [...]<p>&gt; - checksums on ZFS replication streams, zfs send and zfs receive, ensure the data received is not corrupted by intervening storage or transport mechanisms<p>Edit: Also, as Asmod4n points out in a sibling comment, neither zfs send nor zfs recv actually transmit or receive any data. They just generate a data stream that you are then responsible for handling somehow (piping to e.g. ssh, redirection to a file, etc).</blockquote>
-<p>↳ reply 2 — <em>Vacyyyy</em>:</p>
-<blockquote>&gt; Streams are checksummed, so corruption introduced by the network or by intermediate storage is detected on receive.<p><a href="https:&#x2F;&#x2F;openzfs.github.io&#x2F;openzfs-docs&#x2F;Basic%20Concepts&#x2F;Operations&#x2F;Send%20and%20Receive.html" rel="nofollow">https:&#x2F;&#x2F;openzfs.github.io&#x2F;openzfs-docs&#x2F;Basic%20Concepts&#x2F;Oper...</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A Dynamic and Distributed Virtual GPU Cloud Built on Idle Apple Silicon Devices</title>
-      <link>https://machinelearning.apple.com/research/distributed-gpu-cloud</link>
-      <guid isPermaLink="false">hn3-50070593</guid>
-      <pubDate>Tue, 13 Oct 2026 12:26:36 +0000</pubDate>
-      <description>203 points, 89 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://machinelearning.apple.com/research/distributed-gpu-cloud"><strong>→ Article</strong></a> <small>(machinelearning.apple.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50070593">→ HN comments</a> &nbsp;·&nbsp; 203 points &nbsp;·&nbsp; 89 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>yardie</em>:</p>
-<blockquote>If you&#x27;ve been around Macs long enough this is very much in Apple&#x27;s wheelhouse. They already do something similar with Final Cut Pro rendering, Logic Pro, Grand Central Dispatch, and XCode distributed CI&#x2F;CD. Apple HQ is probably sitting on 1000s of nodes, high powered MBPs, iMacs, that could do lots of inference work overnight.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Grand_Central_Dispatch" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Grand_Central_Dispatch</a><p>[1] <a href="https:&#x2F;&#x2F;developer.apple.com&#x2F;documentation&#x2F;dispatch" rel="nofollow">https:&#x2F;&#x2F;developer.apple.com&#x2F;documentation&#x2F;dispatch</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>nsagent</em>:</p>
-<blockquote>Reminds me of Incredibuild.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>javiramos</em>:</p>
-<blockquote>and Folding@home</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>sdoering</em>:</p>
-<blockquote>Pardon me not understanding what this is about?<p>Basically SETI for AI workloads? At least, this is the impression the landingpage left me with.<p>I am a bit lost, tbh.</blockquote>
-<p><strong>Top #3</strong> — <em>luizfelberti</em>:</p>
-<blockquote>This reminds me of this blog post[0] where they intercept calls to the CUDA API from one host to execute them in a separate host, essentially giving GPUs to VMs that have none, and allowing one GPU to serve multiple instances.<p>[0]: <a href="https:&#x2F;&#x2F;loopholelabs.io&#x2F;blog&#x2F;ollama-remote-gpu" rel="nofollow">https:&#x2F;&#x2F;loopholelabs.io&#x2F;blog&#x2F;ollama-remote-gpu</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Firefox Enterprise</title>
-      <link>https://www.firefox.com/en-US/enterprise/</link>
-      <guid isPermaLink="false">hn3-50070302</guid>
-      <pubDate>Tue, 13 Oct 2026 12:00:42 +0000</pubDate>
-      <description>527 points, 218 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.firefox.com/en-US/enterprise/"><strong>→ Article</strong></a> <small>(firefox.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50070302">→ HN comments</a> &nbsp;·&nbsp; 527 points &nbsp;·&nbsp; 218 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>solatic</em>:</p>
-<blockquote>Folks here don&#x27;t understand how big of a market this is. Island just raised a $400 million Series F at $6.4 billion valuation: <a href="https:&#x2F;&#x2F;www.island.io&#x2F;press&#x2F;island-announces-400-million-series-f-bringing-valuation-to-6-4-billion" rel="nofollow">https:&#x2F;&#x2F;www.island.io&#x2F;press&#x2F;island-announces-400-million-ser...</a><p>Mozilla is also very, very far behind in this race. But the potential is real. Enterprises have both the budget and the motivation to care about DLP (including preventing employees from copy&#x2F;pasting sensitive data into AI chat apps), VPN-less access to private intranet apps (including to contractors on BYOD), preventing access to sites that distract employees and have zero business value (pornography, gambling, etc.)...<p>If you care about an open web browser, you should care about it having a sustainable revenue model. Enterprise browsers are <i>exactly that revenue model</i>. The question is not whether this is a good idea; the question is whether Mozilla can catch up.</blockquote>
-<blockquote>
-<p>↳ reply — <em>peterrojas</em>:</p>
-<blockquote>Yep, we know how much work we need to here (I work at Mozilla leading new products and this is in my portfolio). We&#x27;re being very deliberate about how we go after the opportunity and are focusing right on enterprises (in Europe to start) that can take advantage of what we can offer now, while we move quickly to add new features and capabilities to address a broader audience. I think we can get there!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>DoctorOW</em>:</p>
-<blockquote>As a Firefox user, I hope this works. As someone who works in IT, people are going to try and install Chrome at all costs and your ticket queues will be clogged with people saying a computer is broken or has no internet access if it doesn&#x27;t have Chrome on it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nine_k</em>:</p>
-<blockquote>For general-purpose use this may be true. For specialized Web-based tools, like access to medical or legal systems, not as much: the users are conditioned to work with a specific browser (many remember MSIE-only apps), and are used to the idea that their workstation has all kinds of Internet access limitations, along with a corporate policy that expressly forbids arbitrary browsing.<p>[Edited: typo]</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>j45</em>:</p>
-<blockquote>The browser familiarity might have been more true 15-30 years ago.<p>The installation of any software and management of it is norhing tnew in the corporate world.<p>Chrome may be chrome.  Chrome is not the default on windows computers in corporations.  Edge usually is.<p>After it&#x27;s installed, professionals much more now know today how to remember which icon to select and run.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mdip</em>:</p>
-<blockquote>I&#x27;ve found this to be one of those issues that just seems completely normal when you first hear it but when you dig into the actual users, the &quot;why&quot; starts to get lost.<p>My anec-data on the subject seems to imply it affects a very specific segment of people: The &quot;I only use a (usually Windows) computer at work&quot; folks.  The odd part of that is that almost all of them seem to own iPhones or iPads (specifically <i>not</i> Android devices) and since they use these devices, exclusively, outside of work and one can assume they&#x27;re probably opening Safari for browsing, why do they have such a strong association that Chrome <i>must</i> be &quot;the browser.&quot;  This segment, though, seems to make up a large majority of &quot;knowledge workers&quot; outside of IT.<p>Now, like probably a lot of us here, I&#x27;m the tech support for everyone who knows I &quot;play with computers professionally.&quot;  One of the first things I do is remove the Chrome and Edge icon from the task bar[0] and add Firefox with a small set of extensions that generally keep me from having to revisit them due to malware.  I usually just tell them &quot;The button you use to get on the Internet changed but it&#x27;s the same.&quot;  ... and Bob&#x27;s your uncle.  I return a year later, the same Firefox icon is in the same place, updated several versions and all is well.  They all vaguely knew they were using something different before, some knew it was called Chrome or Edge, but &quot;the icon changed&quot; is all I&#x27;ve had to say for probably a decade since the two browsers&#x27; core functionality is close enough that they generally cover every site the older generation would be expected to visit.<p>It feels like a variation of &quot;they&#x27;ve got enough knowledge to be dangerous.&quot;<p>[0] I don&#x27;t think I&#x27;ve ever seen my parents, aunts&#x2F;uncles, extended older family every try to find a program through that menu that pops up when you click the button that used to be called the &quot;Start&quot; button. :)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>nicoburns</em>:</p>
-<blockquote>This was needed. A lot of large businesses ban Firefox because they don&#x27;t have these kind of controls. I can&#x27;t test Firefox on my work computer because company policy prevents it being installed. And that kind of thing <i>really</i> hurts Firefox.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>m-p-3</em>:</p>
-<blockquote>There are already some controls in place available, but they are often platform-specific (GPOs on Windows, Configuration Profiles on macOS) than can be pushed through Active Directory, Intune, Ivanti, etc, but this does remove some friction and configuration gaps where you can centrally manage those policies in a single location.<p>You&#x27;ll still likely need to push something like an enrollment token for Chrome (ex: <a href="https:&#x2F;&#x2F;support.google.com&#x2F;chrome&#x2F;a&#x2F;answer&#x2F;9301891" rel="nofollow">https:&#x2F;&#x2F;support.google.com&#x2F;chrome&#x2F;a&#x2F;answer&#x2F;9301891</a> ), but then the rest is done through the Firefox Enterprise console.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nijave</em>:</p>
-<blockquote>I thought you could push a non user writable config that could control pretty much everything since... Forever?<p>Along with that, push extensions to add DLP bits, etc</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>anvuong</em>:</p>
-<blockquote>That&#x27;s weird. I used to work in a very secure facility (think actual air-gapped supercomputers where network access is building-LAN only) and Firefox was the only approved browser.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
