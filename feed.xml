@@ -4,7 +4,23 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 17 Oct 2026 11:31:05 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 15:23:11 +0000</lastBuildDate>
+    <item>
+      <title>Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware</title>
+      <link>https://llmspeed.dev/</link>
+      <guid isPermaLink="false">hn3-50127979</guid>
+      <pubDate>Sat, 17 Oct 2026 04:36:53 +0000</pubDate>
+      <description>171 points, 54 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://llmspeed.dev/"><strong>→ Article</strong></a> <small>(llmspeed.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50127979">→ HN comments</a> &nbsp;·&nbsp; 171 points &nbsp;·&nbsp; 54 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Jabdoa2</em>:</p>
+<blockquote>By running vllm at work I learned that you will usually outperform benchmarks which you will find on the internet. Mostly by running proper parameter tuning. So you get impressive numbers. Still in reality those numbers do not tell the whole truth. We found that real usage is more 60k-140k prompt with a few k of output for realistic agentic coding workloads. Most of the time that will give you half to a third of decode throughput vs the benchmark. It also becomes much more about cache aware routing and kv cache management (how to offload and restore). Because prefilling 60-140k will simply take too long for interactive work.</blockquote>
+<p><strong>Top #2</strong> — <em>thadk</em>:</p>
+<blockquote>It is nice to have simulated confirmation of the M4 Max 128gb limitations on Gemma4 31B vs Gemma4 26B A4B at Q4:<p>Time to first token (TTFT) on 5,687 tokens, like pasting a short code block into the prompt, takes 36 seconds vs 4.7 seconds. It also breaks down the seconds for each step like KV and prefilling.<p>Gemma4 31B TTFT on the M5 Max 128gb with same setup is showing as 19 seconds.</blockquote>
+<p><strong>Top #3</strong> — <em>adrian17</em>:</p>
+<blockquote>A random number I checked feels kinda optimistic, or there&#x27;s something wrong with my setup; Gemma 26B-A4B on a 16GB 5060Ti is reported to get 21-88tok&#x2F;s with Q4_K_M, meanwhile I can just barely eke out 70tok&#x2F;s with Q3 (which fully fits in vram), and 40tok&#x2F;s with Q4 (with recently-merged MoE cache on llama-cpp). I guess the average fits, but the peak feels implausible.<p>No clue about details, but Sebastian Raschka&#x27;s site reports its kv cache usage at 210kB per token, which is like 6x more than this site claims (&quot;0.273 GB per 8k&quot;). Also, the site claims qwen 27b to use 2x more memory per token than gemma, which is the opposite from what I know.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Butlerian Jihad</title>
       <link>https://dune.fandom.com/wiki/Butlerian_Jihad</link>
@@ -956,6 +972,40 @@ I think that’s the standard definition. If you mean that this style can be ach
 <p>↳ reply 2 — <em>sfblah</em>:</p>
 <blockquote>The corpses that this thing generates will be astonishing.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Thank You, Deno</title>
+      <link>https://www.vlt.io/blog/competition-keeps-javascript-moving</link>
+      <guid isPermaLink="false">hn3-50112331</guid>
+      <pubDate>Fri, 16 Oct 2026 00:52:40 +0000</pubDate>
+      <description>125 points, 33 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.vlt.io/blog/competition-keeps-javascript-moving"><strong>→ Article</strong></a> <small>(vlt.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50112331">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 33 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>crabmusket</em>:</p>
+<blockquote>&gt; Deno 1.0 shipped in 2020 on the original terms, &amp; then spent the next four years walking them back one piece at a time. First the deps.ts convention, one file that re-exported every URL: a manifest in all but name. Then lock.json, an integrity hash per URL: a lockfile. Then import maps, so you could write bare specifiers again.<p>I object to two of these categorisations.<p>deps.ts was a convention, not a built-in runtime feature. If you want to follow the convention, that&#x27;s fine. It&#x27;s just a regular old typescript file!<p>Import maps were not Deno walking back, but implementing a web platform feature. Parity with browser JS was a standout feature of Deno from the beginning. This was walking <i>forwards</i> if anything.<p>However, broadly, the story is indeed one of Deno moving away from its opinionated roots towards pragmatism (drop-in replacement for Node).</blockquote>
+<blockquote>
+<p>↳ reply — <em>BrunoBernardino</em>:</p>
+<blockquote>Thanks for calling that out, it also stood out to me as &quot;falsy&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tracker1</em>:</p>
+<blockquote>I&#x27;m really sad about the announcement and that the Deno runtime as it was is going away.  I&#x27;ll definitely be following and likely using an active fork if it presents one.<p>I&#x27;ve been using Deno a lot for straight shell scripting.  Being able to link directly to dependencies and run without a separate install step or node_modules directory is huge.  The fact that it&#x27;s a single binary download and can self update is so nice too.<p>I&#x27;m not sure if these features are similar for Bun or not.  I&#x27;m just sad about the whole thing.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>NetOpWibby</em>:</p>
+<blockquote>There&#x27;s a fork-in-progress called &quot;Dodo,&quot; the Discord server is quickly filling up. <a href="https:&#x2F;&#x2F;github.com&#x2F;denoland&#x2F;deno&#x2F;issues&#x2F;37030#issuecomment-6204786931" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;denoland&#x2F;deno&#x2F;issues&#x2F;37030#issuecomment-6...</a><p>Dodo aims to be a drop-in replacement.<p>Then there&#x27;s Ende, my fork, and I ripped out Node compatibility, Deploy, KV, Jupyter, &amp;c. <a href="https:&#x2F;&#x2F;ende.sh" rel="nofollow">https:&#x2F;&#x2F;ende.sh</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Defletter</em>:</p>
+<blockquote>TIL that &amp;c means etc. I just spent more time than I&#x27;d like to admit googling for &quot;&amp;c&quot; thinking it was some kind of FFI functionality or something xD</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>satvikpendem</em>:</p>
+<blockquote>&amp; is literally a combination of the letters e and t, for et, et cetera.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ameliaquining</em>:</p>
+<blockquote>Bun supports this if your dependencies are npm packages: <a href="https:&#x2F;&#x2F;bun.sh&#x2F;docs&#x2F;runtime&#x2F;auto-install" rel="nofollow">https:&#x2F;&#x2F;bun.sh&#x2F;docs&#x2F;runtime&#x2F;auto-install</a><p>It is also a single self-contained binary and has a self-updater.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>egeozcan</em>:</p>
+<blockquote>Thank you deno!<p>You are added to the list of projects I thought would really become essential to my work but slowly faded away. Another one, for example is rethinkdb.<p>At least Deno actually caused some movement in the node world, just like io.js.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>RPKI now protects 70% of internet routes</title>
@@ -3633,66 +3683,6 @@ Sounds like with it, it would have been much easier to find.</blockquote>
 <p>↳ reply 2 — <em>d3Xt3r</em>:</p>
 <blockquote>There&#x27;s already an alternative, it&#x27;s called Linux.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Why is every rationalist blog post way too long?</title>
-      <link>https://alexwennerberg.com/blog/2026-10-13-long.html</link>
-      <guid isPermaLink="false">hn3-50083028</guid>
-      <pubDate>Wed, 14 Oct 2026 06:02:16 +0000</pubDate>
-      <description>158 points, 125 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://alexwennerberg.com/blog/2026-10-13-long.html"><strong>→ Article</strong></a> <small>(alexwennerberg.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50083028">→ HN comments</a> &nbsp;·&nbsp; 158 points &nbsp;·&nbsp; 125 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>axus</em>:</p>
-<blockquote>I don&#x27;t know if nicotine is good for you, but I&#x27;ve enjoyed all the parodies at <a href="https:&#x2F;&#x2F;morewrong.lol&#x2F;" rel="nofollow">https:&#x2F;&#x2F;morewrong.lol&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>orf</em>:</p>
-<blockquote>This is an amazing site<p>&gt; Pascal’s Mugging and Why I Gave an Escort My Son’s College Fund<p><a href="https:&#x2F;&#x2F;morewrong.lol&#x2F;?post=pascals-mugging-college-fund" rel="nofollow">https:&#x2F;&#x2F;morewrong.lol&#x2F;?post=pascals-mugging-college-fund</a></blockquote>
-<p>↳ reply 2 — <em>andybak</em>:</p>
-<blockquote>How come I hadn&#x27;t already seen that? Thank you.</blockquote>
-<p>↳ reply 3 — <em>jacquesm</em>:</p>
-<blockquote>Hehe, that got a chuckle out of me, it&#x27;s a bit like that HN parody site.<p>That has some serious n-gate vibes (<a href="http:&#x2F;&#x2F;n-gate.com&#x2F;" rel="nofollow">http:&#x2F;&#x2F;n-gate.com&#x2F;</a>)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>novok</em>:</p>
-<blockquote>It&#x27;s autistic &#x2F; adhd hyperverbosity.  Rationalists are a social group of neurodiverse people and attract neurodiverse people as a result.<p>&gt;  adding layers of detail and nuance rather than interrogating the one or two assumptions they make at the start<p>This is a fundamentally neurotypical assumption.  NDs have a hard time understanding the shared context of their audience, so they splay out all the detail to compensate. Earlier in their lives they tried &#x27;just interrogating the one or two assumptions&#x27; but because they are not able to infer context nobody understands them because they are off the mark. They also enjoy diving into a huge amount of detail and exploring every nook and cranny to potentially find something new.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>drdaeman</em>:</p>
-<blockquote>&gt; NDs have a hard time understanding the shared context of their audience<p>Or they understand that this “shared context” is a myth that doesn’t exist in reality. Plenty of situations where everybody just nods “yea, right” and then walks away with a different idea because they’ve been looking at it from a different perspective&#x2F;set of assumptions.</blockquote>
-<p>↳ reply 2 — <em>jaggederest</em>:</p>
-<blockquote>&gt; NDs have a hard time understanding the shared context of their audience, so they splay out all the detail to compensate<p>I would say this is fascinatingly true of AI as well, and probably one of the reasons I (and maybe other ND folks?) work with it so well, cringey slop word choice aside.<p>I was joking a few years ago that if the AI was trained on the internet, the corpus included massive overrepresentation with ND style writing.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>nfw2</em>:</p>
-<blockquote>&quot;The idea that something may be true, valuable, or good merely because it is common sense or inherited tradition is anathema to them&quot;<p>This is reasonable though. Tradition and common sense suggest value perhaps more than rationalists think, but if tradition and common sense have value, there is an underlying reason.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Georgelemental</em>:</p>
-<blockquote>But even if we don&#x27;t know the underlying reason, they are still valuable by dint of having survived for so long</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nfw2</em>:</p>
-<blockquote>Not knowing an underlying reason isn&#x27;t the same as denying that reason&#x27;s existence</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Felix Rieseberg Homepage</title>
-      <link>https://felixrieseberg.com/</link>
-      <guid isPermaLink="false">hn3-50082470</guid>
-      <pubDate>Wed, 14 Oct 2026 04:42:33 +0000</pubDate>
-      <description>258 points, 99 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://felixrieseberg.com/"><strong>→ Article</strong></a> <small>(felixrieseberg.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50082470">→ HN comments</a> &nbsp;·&nbsp; 258 points &nbsp;·&nbsp; 99 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dsunds</em>:</p>
-<blockquote>&quot;I have no idea how to use Blender&quot;<p>Right now we are using AI to automate the tools we&#x27;ve built for ourselves.
-I&#x27;ve been wondering, who builds tools now if AI are the primary users?
-Will AI agents build and publish tools for the greater good? Or will vendors hold back AI generated composable modules as a competitive advantage.<p>Similarly for languages, I wonder if or when AI generates machine code and skips all our higher order languages we&#x27;ve built for human needs.</blockquote>
-<blockquote>
-<p>↳ reply — <em>TeMPOraL</em>:</p>
-<blockquote>&gt; <i>I&#x27;ve been wondering, who builds tools now if AI are the primary users?</i><p>AI already builds tools for itself as part of solving a problem. I expect these to get more sophisticated with time.<p>&gt; <i>Will AI agents build and publish tools for the greater good? Or will vendors hold back AI generated composable modules as a competitive advantage.</i><p>Oh they definitely will - it&#x27;ll be their last ditch attempt at staying relevant, after they get over denial phase and realize that <i>products</i> are already being subsumed by general AI systems, and reduced to bag of tools agents can use.<p>But then, for any given bag of tools, how hard will it be for an agent to build a clean-room version of it, instead of paying the vendor? This is the end of software companies as we know them.<p>&gt; <i>Similarly for languages, I wonder if or when AI generates machine code and skips all our higher order languages we&#x27;ve built for human needs.</i><p>That&#x27;s currently too big a target to hit - the weight of all pretraining, and existing infrastructure, will keep programming languages alive for a while (human languages, that&#x27;s another topic - there&#x27;s not as much baggage for agent-to-agent communication).<p>It will take time. We&#x27;ve only started the co-evolution process very recently: we built agent-optimized wrappers around CLI tools and APIs, and around now that should&#x27;ve percolated into training data for the current or next generation of models. I imagine over time, the tools and agent preferences will co-evolve towards an equilibrium.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mlsu</em>:</p>
-<blockquote>It&#x27;s pretty bleak that this guy chose to display rainy&#x2F;dark&#x2F;VHS&#x2F;analogue&#x2F;nihilistic penguin as the central motif here. There&#x27;s certainly a lot to unpack.<p>Oh well, at least the site itself is technically excellent.</blockquote>
-<p><strong>Top #3</strong> — <em>ashkankiani</em>:</p>
-<blockquote>Given their current role, it finally explains a lot of things about why I don&#x27;t like Anthropic&#x27;s UIs.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
