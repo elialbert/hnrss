@@ -4,7 +4,345 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 17 Oct 2026 01:12:51 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 06:49:12 +0000</lastBuildDate>
+    <item>
+      <title>I never authorized an integration that scans my secrets</title>
+      <link>https://github.com/home-assistant/home-assistant.io/issues/49314</link>
+      <guid isPermaLink="false">hn3-50124251</guid>
+      <pubDate>Fri, 16 Oct 2026 20:33:41 +0000</pubDate>
+      <description>211 points, 176 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/home-assistant/home-assistant.io/issues/49314"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50124251">→ HN comments</a> &nbsp;·&nbsp; 211 points &nbsp;·&nbsp; 176 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>eranation</em>:</p>
+<blockquote>- Should a password manager warn me about reused passwords without sending things out without opt in? yes<p>- Should a password manager send even one byte of my data to any service, regardless of whether it is for a good intention and mathematically proven to be &quot;safe&quot; without opt in? I&#x27;d say no.<p>- So would any other product out there, be it a smart home manager or a toaster, send any of of my data, hashed or not to any 3rd party without opt in? even if it&#x27;s just the byte &quot;1&quot; to a page called &quot;donothing.com&quot;? I say hell no.<p>- Should open source developers who are not Linus Torvalds be a bit nicer on a public issue?<p>- And should open source users should be less heated because &quot;let us know if you plan to fix this or we will uninstall and fork it&quot; deserves the &quot;go ahead, this is open source, threats don&#x27;t really help here&quot;<p>We all can sometimes write a reply at the heat of the moment that we later regret. Frenk definitely realized it after the fact and I respect him owning it, apologizing, and keeping the old messages. He is right it&#x27;s open source, and he doesn&#x27;t owe anyone anything, but still, I believe a phoning home of any kind is violating The Principle of Least Astonishment.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>scrubs</em>:</p>
+<blockquote>Their response attitude reminds me of basil from fawlty towers (paraphrasing):<p>I&#x27;m trying to run a business here. I can&#x27;t get things done with you stupid customers bugging with me problems all the time. Go find something to do.<p>In the 80s and 90s customer satisfaction was important primarily in manufacturing. Today software treats customers like nyc realtors who know they have the balance of power:<p>that&#x27;s too damn bad: the price is the price. Take it or i&#x27;ll sell it to somebody else for wasting my time.</blockquote>
+<p>↳ reply 2 — <em>handoflixue</em>:</p>
+<blockquote>I think it matters a lot here if you can mathematically prove that it is &quot;safe&quot;:<p>The only reason I&#x27;m comfortable transmitting sensitive over the internet is that we&#x27;ve got a bunch of proven systems like &quot;encryption&quot; that can guarantee my ISP, etc. doesn&#x27;t learn much about my actual traffic.<p>Fundamentally, if you&#x27;re giving an application your passwords, it is precisely so that the application can transmit those passwords, in full, to the relevant services. If you don&#x27;t trust &quot;mathematically proven safe&quot; then it&#x27;s already unsafe - and it&#x27;s unsafe to a ton of third parties used to route the internet.<p>It&#x27;s important because that means this is a harmless issue - there&#x27;s a linked 3rd party mathematic proof by a credible authority on security (CloudFlare), and other password managers have similar features.<p>&quot;I&#x27;d like clearer documentation&quot; is still a reasonable request, but I don&#x27;t think the OP is at all justified in acting like this is some outrageous trespass.<p>If you care about a harmless issue this intensely, you should be taking some responsibility to actually inspect the code. Given there was a feature flag to disable it, even a cursory scan with a cheap LLM probably would have found the &quot;issue&quot;</blockquote>
+<p>↳ reply 3 — <em>ahofmann</em>:</p>
+<blockquote>Also frenck explained how the feature works and why this is save.<p>On the other side Viss basically just said &quot;trust me bro, it is not save and by the way, I&#x27;m THE expert and I&#x27;m so very smart, that I don&#x27;t even need to list some facts why this could be unsafe, just fix it NOW&quot;, which I find exhausting, unhelpful and boring.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>frenck</em>:</p>
+<blockquote>Frenck here, I&#x27;m the one who replied on that issue.<p>My replies there were more dismissive than they should have been. My apologies. I&#x27;ve posted a follow-up on the issue.<p>As it turns out, the check can already be turned off after all:<p><pre><code>  ha security options --pwned=false
+</code></pre>
+It has been part of the Supervisor for years and checks app options that are marked as passwords. A recent release fixed the warning that surfaces it, which is why people are noticing it now.<p>Only the first 5 characters of a SHA-1 hash go to HIBP, and the matching happens locally: <a href="https:&#x2F;&#x2F;github.com&#x2F;home-assistant&#x2F;supervisor&#x2F;blob&#x2F;main&#x2F;supervisor&#x2F;utils&#x2F;pwned.py" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;home-assistant&#x2F;supervisor&#x2F;blob&#x2F;main&#x2F;super...</a><p>Our documentation should have explained all of this, including how to turn it off. We&#x27;ll get that updated.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mrshadowgoose</em>:</p>
+<blockquote>Hey dude, I don&#x27;t get the sense you&#x27;re being malicious, but you might want to consider the following...<p>I&#x27;m a Home Assistant user because I don&#x27;t like my devices reaching out to random cloud services more than they need to. I suspect quite a number of fellow HA users feel similarly.<p>Although your intent was probably good, this feature certainly falls into the &quot;more than they need to&quot; bucket and feels hella icky. And yes, I&#x27;m very familiar with HIBP and cryptography in general. This simply isn&#x27;t an opt-out feature I expect in a privacy positioned home automation product.</blockquote>
+<p>↳ reply 2 — <em>saghm</em>:</p>
+<blockquote>Asking basically the same thing as the sibling replies, but hopefully in a less aggressive way: can you elaborate on what led you to reply like that in the first place? As someone with no horse in the race (I don&#x27;t use Home Assistant), the first reply you gave genuinely does seem like it was intended in good faith, even if it was not satisfying to the user, and I can understand that angry users are not fun to interact with, but I&#x27;m struggling to wrap my head around why your second reply was &quot;This issue is closed as won&#x27;t fix&quot; without any elaboration about why. The explanation that seems most likely to me is that you were annoyed at the user and decided not to spend any time looking into the issue, which would be unfortunate but maybe understandable if that&#x27;s what you&#x27;re apologizing for. Without any explanation about why you quickly dismissed and then suddenly turned around and changed your mind later though, I think you&#x27;ve risked the apology coming across more as damage control than genuine regret.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Dunedan</em>:</p>
+<blockquote>There seems to be a pull request now to make this feature opt-in: <a href="https:&#x2F;&#x2F;github.com&#x2F;home-assistant&#x2F;supervisor&#x2F;pull&#x2F;7382" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;home-assistant&#x2F;supervisor&#x2F;pull&#x2F;7382</a><p>It&#x27;ll be interesting to see whether that gets accepted or not.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>FLUX 3 Image Klein</title>
+      <link>https://bfl.ai/blog/flux-3-image-klein</link>
+      <guid isPermaLink="false">hn3-50123580</guid>
+      <pubDate>Fri, 16 Oct 2026 19:47:13 +0000</pubDate>
+      <description>150 points, 40 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://bfl.ai/blog/flux-3-image-klein"><strong>→ Article</strong></a> <small>(bfl.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50123580">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 40 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Mashimo</em>:</p>
+<blockquote>People on reddit claim it&#x27;s bad at generating images of people, apparently because they removed anything close to nsfw from the training set. Anyone already tried it?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>vunderba</em>:</p>
+<blockquote>I&#x27;ve been running it through tests on my local machine. The Text-to-Image component is <i>VERY</i> poor. It&#x27;s not a good sign when the stock ComfyUI Flux3 Klein template with built-in config&#x2F;prompts produces SD 1.5 levels of half-melted faces and various other body horror.<p>Flux 2 Klein 9b also had anatomical issues as well, but this one feels practically lobotomized.<p><a href="https:&#x2F;&#x2F;imgpb.com&#x2F;wDGGs" rel="nofollow">https:&#x2F;&#x2F;imgpb.com&#x2F;wDGGs</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>echelon</em>:</p>
+<blockquote>That looks worse than Flux 2.<p>What the heck are they doing?<p>Is this fast&#x2F;cheap at the pareto frontier? Doesn&#x27;t really work if humans look deformed.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>vunderba</em>:</p>
+<blockquote>I honestly don’t know what the hell BFL was thinking with this release. There’s idle conjecture that they may have been too heavy-handed when removing even the slightest risqué images from the training data, and as a result the final product has such a grossly poor understanding of basic human anatomy that no amount of LoRAs is going to be able to patch it up.<p>It’s bafflingly worse than other comparably sized ones: Qwen-Image 2.1 7B, Z-Image Turbo 6B which was released practically a year ago, even its own predecessor Flux 2 Klein 9b.<p>Even if we concede that the Klein variants are intended more as editor models, the results I&#x27;ve seen on Reddit aren&#x27;t that impressive either.<p>I feel like they just handed their collective heads on a platter over to the team over at Krea especially since Krea 3 addresses the major limitation of Krea 2 which was strictly text-to-image only.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>minimaxir</em>:</p>
+<blockquote>Some examples of the Reddit posts&#x2F;memes:<p><a href="https:&#x2F;&#x2F;reddit.com&#x2F;r&#x2F;StableDiffusion&#x2F;comments&#x2F;1x79gth&#x2F;why&#x2F;" rel="nofollow">https:&#x2F;&#x2F;reddit.com&#x2F;r&#x2F;StableDiffusion&#x2F;comments&#x2F;1x79gth&#x2F;why&#x2F;</a><p><a href="https:&#x2F;&#x2F;reddit.com&#x2F;r&#x2F;StableDiffusion&#x2F;comments&#x2F;1x7ktbu&#x2F;enshittification_manifest&#x2F;" rel="nofollow">https:&#x2F;&#x2F;reddit.com&#x2F;r&#x2F;StableDiffusion&#x2F;comments&#x2F;1x7ktbu&#x2F;enshit...</a><p>I gave Flux 3 Klein my typical human test that has never failed on newer image models and it did fail; in addition to lower quality, the fingers were definitely not the correct proportions.<p>Whether the cause is due to more safeguards against NSFW content is hard to confirm technically; it was more an intuition back in the Stable Diffusion XL days but I suspect modern training paradigms are better at correlative inference.</blockquote>
+<p>↳ reply 3 — <em>beernet</em>:</p>
+<blockquote>Yes, a prime example of when the performance vs &quot;bias&quot; tradeoff is handled anti-business</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>accrual</em>:</p>
+<blockquote>Comments on Krea 3 releasing yesterday 2026.10.15:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50105648">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50105648</a></blockquote>
+<p><strong>Top #3</strong> — <em>jjcm</em>:</p>
+<blockquote>It&#x27;s editing capabilities have been really solid, but I&#x27;ve been disappointed with its ability to do finer text details (a niche use case for my own purposes). There&#x27;s also a lot of reports of body horror outputs, but I haven&#x27;t encountered any myself.<p>Still though, it&#x27;s a lot like the porsche mission S vs the tesla roadster situation with the weights release. Moss Image dropped which looks far better at the moment, leading to a &quot;why Flux?&quot; question in the community.<p>I still think the edit capabilites are absolutely excellent, but for t2i I&#x27;d try out moss: <a href="https:&#x2F;&#x2F;huggingface.co&#x2F;OpenMOSS-Team&#x2F;MOSS-Image-Base&#x2F;tree&#x2F;main" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;OpenMOSS-Team&#x2F;MOSS-Image-Base&#x2F;tree&#x2F;ma...</a><p>I&#x27;ve been VERY impressed with Moss&#x27; design capabilites out of the box. Some samples:<p><a href="https:&#x2F;&#x2F;image.non.io&#x2F;9a32f732-668e-4fb3-bfef-13f0f40a0972.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;9a32f732-668e-4fb3-bfef-13f0f40a0972.we...</a><p><a href="https:&#x2F;&#x2F;image.non.io&#x2F;8b5ee315-1ffd-4985-8ff0-d62e19d33f29.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;8b5ee315-1ffd-4985-8ff0-d62e19d33f29.we...</a><p><a href="https:&#x2F;&#x2F;image.non.io&#x2F;5130501a-5c07-4635-82f5-fa64d60e8871.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;5130501a-5c07-4635-82f5-fa64d60e8871.we...</a><p>IMO the taste is lacking, but it has some of the best text reproductions I&#x27;ve seen with their new VAE. Here&#x27;s a type ramp example:<p><a href="https:&#x2F;&#x2F;image.non.io&#x2F;57246870-a245-4875-983f-993656e09e3d.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;57246870-a245-4875-983f-993656e09e3d.we...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>badsectoracula</em>:</p>
+<blockquote>Looks like the people over &#x2F;r&#x2F;SD seem to like MOSS (i&#x27;m not up to date on the image stuff) but what i notice is that it is Apache2 licensed when every other openweight model seems to have some weird license (from a quick check Qwen-Image even downright forbids any commercial use at all).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>vunderba</em>:</p>
+<blockquote>Yeah, unfortunately, a lot of them have been moving to their own bespoke, non-commercial licenses (Ideogram, Krea, Flux, Qwen 2, etc).<p>Annoyingly, the original Qwen-Image was actually Apache 2 before they switched over unfortunately.<p>In addition to Moss, Boogu Image 0.1 is a unified model which came out in June and is kind of being slept on right now, is actually pretty decent and falls under the Apache 2.0 license. It scored surprisingly high on my GenAI benchmark (comparable to Krea 2 and Ideogram 4).<p><a href="https:&#x2F;&#x2F;github.com&#x2F;boogu-project&#x2F;Boogu-Image" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;boogu-project&#x2F;Boogu-Image</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>badsectoracula</em>:</p>
+<blockquote>Looks like MOSS was made by some Chinese university as part of an AI education&#x2F;research program so i guess they don&#x27;t have to care about funding as much as the other labs :-P</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>How the Claude Code team does code review</title>
+      <link>https://claude.dev/blog/solving-code-review-at-anthropic/</link>
+      <guid isPermaLink="false">hn3-50122951</guid>
+      <pubDate>Fri, 16 Oct 2026 19:04:47 +0000</pubDate>
+      <description>311 points, 285 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://claude.dev/blog/solving-code-review-at-anthropic/"><strong>→ Article</strong></a> <small>(claude.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50122951">→ HN comments</a> &nbsp;·&nbsp; 311 points &nbsp;·&nbsp; 285 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>status_quo69</em>:</p>
+<blockquote>No wonder most people at Anthropic believe our jobs are in jeopardy, they&#x27;ve already made a system wherein the machines are treating them like pets.<p>I really don&#x27;t get the tendency here from Anthropic to describe what&#x27;s most likely churn? A high pressure amount of changes&#x2F;PRs a day on a TUI to wrap a while loop? I&#x27;m not going to be a reductionist here so I&#x27;m going to cut it off there, I&#x27;m positive that the complexity of handling multiple terminal emulators is something that needs some handling (even if doing their own rendering engine was a self made problem). Yes I&#x27;ve vibe coded my own harness from scratch without writing any of it, I still know how it works.<p>I&#x27;m also not sure that they addressed point 2 in any actual capacity? They say &quot;the system verifies itself&quot; which is cool and is something that automated testing has done for decades, but they eschew the mental model of how the system works as a whole and prefer instead to have the LLM focus and summarize a slice of the system when they need to know about it or ask for it. But.... That&#x27;s not knowledge? That&#x27;s just search a la google? And thus seems to be subject to the same problems where the quality of your search dictates the quality of your knowledge that you surface at any given time?<p>N.B. Changed &quot;1000 PRs&quot; to &quot;A high pressure amount&quot; to be vague since the article is vague here on what CC undergoes.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jonahx</em>:</p>
+<blockquote>&gt; have the LLM focus and summarize a slice of the system when they need to know about it or ask for it. But.... That&#x27;s not knowledge? That&#x27;s just search a la google? And thus seems to be subject to the same problems where the quality of your search dictates the quality of your knowledge that you surface at any given time?<p>This is the crux.  Take pause, because hidden here is a sea-change in our fundamental trust model of software...<p>There is no longer anyone to turn to if this system breaks by, eg, having a critical bug that no one can figure out.  No causal model in anyone&#x27;s head that can be appealed to, to slowly and methodically debug.  By design, the system is too large for that, and everything hinges on Claude itself being able to find and understand the right slice of the system in any situation.  As long as that <i>very new</i> invariant holds, everything will be all right.  If it fails catastrophically, there is no recovery.  You are the owner of a recovered alien spacecraft with tech you have no hope of understanding.<p>The new trust model is: We trust Claude to always understand the system enough to debug anything or make any reasonable change we could want.  The risk might be worth the reward.  But it&#x27;s worth explicitly laying out the deal we&#x27;re making.<p>Tbf, it&#x27;s worth pointing out that many large legacy systems already work like that (sort of), with &quot;Claude&quot; replaced by &quot;whoever happens to be maintaining it this year&quot;.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gieksosz</em>:</p>
+<blockquote>I fixed many bugs over the last years with help of claude code in an unfamiliar codebase. it is never just Claude alone so we don’t rely on AI understanding 100%. It is whatever AI can understand plus what I do. If you use AI right your understanding will also grow over time.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Terr_</em>:</p>
+<blockquote>&gt; wherein the machines are treating them like pets<p>I know some people will groan hearing the phrase again, but: &quot;Reverse centaur.&quot; A centaur is a synergistic combination of two things, but now those things are in the wrong position: The human is the computer&#x27;s tool.<p>Naturally, how &quot;wrong&quot; it is tends to depend on whether you ask the people who do all the work or the people who own all the computer-capital.</blockquote>
+<p>↳ reply 3 — <em>giancarlostoro</em>:</p>
+<blockquote>When you get to the point that you are doing 1000 PRs I have to seriously wonder what even are you building, I hear about this a lot from a number of companies, but their “too many commits &#x2F; too many PRs” problem never seems to give anyone from the outside the feeling they are innovating at groundbreaking speeds.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>avinoth</em>:</p>
+<blockquote>This is like one of Google’s infrastructure blog. Google scale things are only relevant and appropriate for them. We had lots of bitter lessons from smaller engineering teams following the process with the justification that “this is how Google does it”.<p>Similarly, Anthropic can afford to do this because they have virtually unlimited tokens and labs to train models for their specific usecase. The rest of us need code comprehension lest we become dependent on continuous supply of tokens (which is a state these labs badly want to achieve)<p>So, unless you work at a lab, or have unlimited tokens guaranteed through the life of your company, it would do both the company and you good to continue to read the code and not let these 30k PRs per engineer be the norm.<p>An excerpt from the article makes my point<p>&gt; Nobody on the team keeps a complete mental model of Claude Code in their head, and we don&#x27;t think anyone needs to. When someone wants to understand a part of the codebase, they ask Claude to write an explainer for exactly that slice. It takes minutes and reflects the code as it is today.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Rapzid</em>:</p>
+<blockquote>I would love to ask them why this scale is even necessary for a conceptually simple CLI app like Claude Code, but they wouldn&#x27;t be able to answer because they don&#x27;t even understand the scope of it apparently.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tayo42</em>:</p>
+<blockquote>Is Claude code just the cli or does it include a bunch or backend services supporting?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>cheema33</em>:</p>
+<blockquote>&gt; Nobody on the team keeps a complete mental model of Claude Code in their head.<p>For sufficiently large codebases in large organization that is how it has been with humans, who come and go. In many respects, What Anthropic is doing is a massive upgrade from the status quo.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mk12</em>:</p>
+<blockquote>I saw someone say the other day (in response to another blog post being well written) that Anthropic employees have a rule against using AI for writing&#x2F;external comms? That seems clearly not the case here, normal people don&#x27;t write like this:<p>&gt; Most of the path is automated; a person&#x27;s attention goes where the risk is<p>&gt; The eval grows with every incident, and every change to the reviewer is scored against all of it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>brof</em>:</p>
+<blockquote>Another Claude-ism example from: <a href="https:&#x2F;&#x2F;www.anthropic.com&#x2F;research&#x2F;ecdsa-curve-origins" rel="nofollow">https:&#x2F;&#x2F;www.anthropic.com&#x2F;research&#x2F;ecdsa-curve-origins</a><p>&gt; This is not a cryptographic break, new attack, or weakness in the ECDSA curves.</blockquote>
+<p>↳ reply 2 — <em>jazzyjackson</em>:</p>
+<blockquote>100%, although if people are getting 90% of their interaction from a robot, one may start to pick up some vocal tics and colloquialisms from machine world. a kind of robo-pidgin.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>You could have invented transformers from memory</title>
+      <link>https://alexwang.ai/posts/associative-memory/</link>
+      <guid isPermaLink="false">hn3-50122878</guid>
+      <pubDate>Fri, 16 Oct 2026 19:01:17 +0000</pubDate>
+      <description>238 points, 62 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://alexwang.ai/posts/associative-memory/"><strong>→ Article</strong></a> <small>(alexwang.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50122878">→ HN comments</a> &nbsp;·&nbsp; 238 points &nbsp;·&nbsp; 62 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ketothekingdom</em>:</p>
+<blockquote>Hey author here! I have a short summary here if people find it helpful: <a href="https:&#x2F;&#x2F;x.com&#x2F;heyyalexwang&#x2F;status&#x2F;2111158818730397932?s=46" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;heyyalexwang&#x2F;status&#x2F;2111158818730397932?s=46</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>rd11235</em>:</p>
+<blockquote>This is one of the most well written blog posts I&#x27;ve seen in a while. Thanks</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ketothekingdom</em>:</p>
+<blockquote>Thank you! It&#x27;s been sitting in my head for so long. I&#x27;m glad I finally got to share it with people</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>nico</em>:</p>
+<blockquote>Thank you for putting that excellent article together<p>The concepts of fidelity&#x2F;recall and the images&#x2F;animation at the top reminded me of this small playful project that touches upon these topics: <a href="https:&#x2F;&#x2F;nicobrenner.github.io&#x2F;lossy-git&#x2F;" rel="nofollow">https:&#x2F;&#x2F;nicobrenner.github.io&#x2F;lossy-git&#x2F;</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>yoz-y</em>:</p>
+<blockquote>Would be nice if articles defined the requirements to be a “you”.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>layer8</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Generic_you" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Generic_you</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>yoz-y</em>:</p>
+<blockquote>This is actually useful. I didn’t know that generic “you” meant “one”. I always interpreted it as “you the reader” and felt desperate once a week when reading articles like these.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>wk_end</em>:</p>
+<blockquote>As a native English speaker, I interpret it as “you the reader”. Or maybe I should say, I don’t intuit any material difference between “you the reader” and “any given reader” or “one”. I think your original comment is a good critique of the headline.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mathisfun123</em>:</p>
+<blockquote>why?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sixdimensional</em>:</p>
+<blockquote>This sparks a thought that I have not seen revisited in the LLM age - memristors [1].<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Memristor" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Memristor</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Claude reveals ECDSA curve origins</title>
+      <link>https://www.anthropic.com/research/ecdsa-curve-origins</link>
+      <guid isPermaLink="false">hn3-50122800</guid>
+      <pubDate>Fri, 16 Oct 2026 18:55:59 +0000</pubDate>
+      <description>813 points, 308 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/research/ecdsa-curve-origins"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50122800">→ HN comments</a> &nbsp;·&nbsp; 813 points &nbsp;·&nbsp; 308 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>fidotron</em>:</p>
+<blockquote>While this confirms the method of production it doesn&#x27;t say anything about their selection, especially since they were, apparently, generated over a period of months. Specifically you cannot see those candidates that were generated and discarded.<p>&quot;It is still conceivable that these curves were selected to have a specific property in principle by searching over timestamps to the random number generator.&quot;<p>Yes.<p>&quot;However, you would only need to do that if you were going to disclose the timestamp as some evidence that the seed was innocuously generated.&quot;<p>Does not logically follow when &quot;doing and saying nothing&quot; will completely suffice.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>FiloSottile</em>:</p>
+<blockquote>Given how expensive this computation would have been in 1997, it makes perfect sense they&#x27;d taken months, but <i>even if we assume they tried all timestamps of 1997</i> and selected arbitrarily among the first 16 viable candidate of any timestamp, that&#x27;s just ~30 bits of freedom.<p>Finding out there is a class of weak 256-bit elliptic curves so large that they can be hit randomly with 2^30 tries would be a cryptanalytic breakthrough analogous to discovering all elliptic curve cryptography is broken.<p>Read section 3.1 of the Koblitz and Menezes paper. It was already implausible with 160 bits of freedom. <a href="https:&#x2F;&#x2F;eprint.iacr.org&#x2F;2015&#x2F;1018" rel="nofollow">https:&#x2F;&#x2F;eprint.iacr.org&#x2F;2015&#x2F;1018</a><p>If you want to believe the NSA knows ECC is broken and chose to risk moving the US government to it and somehow no one figured out the same break in 30 years, you&#x27;re free to do so. But pretending the seed choice plays any role in that theory is over.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>feanaro</em>:</p>
+<blockquote>This is unrelated to the above comment, but I figured I&#x27;d ask while we&#x27;re here. You state at the end of your blog post on this topic that you&#x27;d now probably recommend the NIST curves over Curve25519. Why is that?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>commandersaki</em>:</p>
+<blockquote>I&#x27;m guessing affinity towards prime curves vs cofactor.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>defen</em>:</p>
+<blockquote>&gt; While this confirms the method of production it doesn&#x27;t say anything about their selection, especially since they were, apparently, generated over a period of months. Specifically you cannot see those candidates that were generated and discarded.<p>Well, at least now we have a way to perform that analysis! Generate a bunch of curves by varying (along any degree of freedom) the input parameters to the seed generating function and see if there&#x27;s any difference between the curves that are generated.</blockquote>
+<p>↳ reply 3 — <em>tptacek</em>:</p>
+<blockquote>God bless you for keeping this alive.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>JumpCrisscross</em>:</p>
+<blockquote>“In under half an hour, Claude discovered the origins of the NIST P-192, P-224, P-256, P-384 and P-521 seeds. None of them were the results of any hash algorithm at all, but rather the output of the C library’s lrand48 random-number generator, seeded with a Unix timestamp!”<p>Gorgeous. I wonder if the NSA employee who did this suffered a head injury or has been quietly giggling to themselves for the last quarter century.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sweis</em>:</p>
+<blockquote>The two people were Bob Reiter and Jerry Solinas. Jerry wrote in a 2015 email to Daniel Bernstein that he thought it was a hash of the passphrase. I corroborated that story with 4 people, including two ex-NSA folks off the record.<p>Everyone was wrong!<p>I wasn&#x27;t able to reach Bob. He was working in private industry as of 2018, but never responded.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Pannoniae</em>:</p>
+<blockquote>or they were lying...</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tptacek</em>:</p>
+<blockquote>Someone just posted this:<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=eOQfNT6Jdkg" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=eOQfNT6Jdkg</a></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sweis</em>:</p>
+<blockquote>13 years of tinfoil hats for srand48(time(NULL)</blockquote>
+<blockquote>
+<p>↳ reply — <em>bayarearefugee</em>:</p>
+<blockquote>&gt; 13 years of tinfoil hats for srand48(time(NULL)<p>Probably not quite this given the timestamps span over almost a year (but have some clustering in August 1997).<p>Given that the spread suggests they weren&#x27;t just now() timestamps it would actually be interesting to know what the significance of the timestamps is, if any.  Though it could be something boring like randomly sampling some local file creation times.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>SturgeonsLaw</em>:</p>
+<blockquote>Those are the dates that the NSA obtained quantum computer tech from the alien crash site at Roswell, which would enable them to break the crypto they were currently building</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Llama.cpp on a jailbroken PS5: run any GGUF model natively on the console</title>
+      <link>https://github.com/cobanov/PS5LM</link>
+      <guid isPermaLink="false">hn3-50122431</guid>
+      <pubDate>Fri, 16 Oct 2026 18:32:35 +0000</pubDate>
+      <description>262 points, 64 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/cobanov/PS5LM"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50122431">→ HN comments</a> &nbsp;·&nbsp; 262 points &nbsp;·&nbsp; 64 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>xnx</em>:</p>
+<blockquote>I&#x27;ve never even considered getting a PS5, but hackers converting a locked-down appliance into a general purpose computer has me really considering.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>stuxnet79</em>:</p>
+<blockquote>Well that locked-down appliance is way under-specced compared to an equivalent build at the same price.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gambiting</em>:</p>
+<blockquote>Even at the current increased prices - you can build a PC with a better spec and with a 4K Blu ray drive for £569? I&#x27;d be curious how.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>thenthenthen</em>:</p>
+<blockquote>Check out the BC-250 boards, basically reject ps5 apu’s being repurposed for all kinds of shenanigans</blockquote>
+<p>↳ reply 3 — <em>pdntspa</em>:</p>
+<blockquote>It&#x27;s been a little bit since any major hacks have hit the news but this is a time honored tradition partcularly with the Playstation. Way back when the PS3 arrived the US government was considering export sanctions because they were too powerful. I believe some universities even kept a cluster of PS3s for their distibuted computing courses or for research. Sony even had an approved way to run Linux.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jjcm</em>:</p>
+<blockquote>Even though it only runs qwen 3.8 27b at a 2 bit quant, it&#x27;s still highly viable, especially for things where you just need a constant token stream of slightly below average intelligence, ie this would be great for things like:<p>- monitoring server error rates<p>- reviewing security footage<p>- watching plant growth &#x2F; controlling watering<p>etc. Any long running task you can now just slap a PS5 on it. 70 cents a day in power cost means you now get ~2M output tokens per day (~$3.50 worth of usage). It&#x27;s not the worst thing in the world if you have one lying around. 2bit isn&#x27;t even that terrible - it&#x27;s ~80% the accuracy of 27b at full quant, which should put it at around GPT-5 levels of intelligence (which honestly is crazy in its own right).</blockquote>
+<p><strong>Top #3</strong> — <em>pwython</em>:</p>
+<blockquote>With this in mind, having LLM-powered NPCs would be a beautiful thing. There&#x27;s been limited testing on PC games (PUBG Ally), but I can imagine it will be the standard.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>greggsy</em>:</p>
+<blockquote>After all of the agonising about AI companions, we realised that we just wanted someone to play games with.</blockquote>
+<p>↳ reply 2 — <em>tiahura</em>:</p>
+<blockquote>Fortnite Darth Vader already did</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Anthropic assigned highest junk credit rating in June</title>
+      <link>https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d</link>
+      <guid isPermaLink="false">hn3-50122112</guid>
+      <pubDate>Fri, 16 Oct 2026 18:11:42 +0000</pubDate>
+      <description>243 points, 75 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d"><strong>→ Article</strong></a> <small>(ft.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50122112">→ HN comments</a> &nbsp;·&nbsp; 243 points &nbsp;·&nbsp; 75 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>grumpymouse</em>:</p>
+<blockquote>From the article:<p>&gt;However, Anthropic’s disclosure to KBRA excluded several important financial metrics, including free cash flow and earnings before interest, taxes, depreciation and amortisation. Credit rating analysts had to come up with their own estimates based on assumptions, the documents show.<p>&gt;Given the limited information, KBRA produced a “risk score” to assess Anthropic’s creditworthiness rather than the traditional full financial models.<p>This and the fact they went to a small ratings agency does not inspire confidence in the rating.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Someone</em>:</p>
+<blockquote>No, but a trillion dollar company going to a ratings agency to get an assessment of its credit rating and not giving that ratings agency enough information to do that doesn’t inspire confidence in that trillion dollar company, either.<p>Why didn’t they give them the info? They either withheld it or don’t have it. Both make them look bad.</blockquote>
+<p>↳ reply 2 — <em>JumpCrisscross</em>:</p>
+<blockquote>&gt; <i>a small ratings agency</i><p>If you look at 10-year default rates for BBB-rated paper from the big three plus EJR, AM Best, KBRA and DBRS, you find <i>everyone</i> tightly clustered in the 1 to 2% range except KBRA, who was up at 4% [1]. That suggests they&#x27;ve historically rated junk bonds as barely investment grade. I&#x27;m assuming that&#x27;s what Anthropic was hoping for.<p>[1] <a href="https:&#x2F;&#x2F;www.ft.com&#x2F;content&#x2F;d97e1e86-1e90-4c5c-b972-052d43a360f6" rel="nofollow">https:&#x2F;&#x2F;www.ft.com&#x2F;content&#x2F;d97e1e86-1e90-4c5c-b972-052d43a36...</a></blockquote>
+<p>↳ reply 3 — <em>nashashmi</em>:</p>
+<blockquote>KBRA is tasked with producing a rating. Insufficient information won&#x27;t stop that task.  The rating has the confidence it deserves: Anthropic is hiding the bad data and as such no one can rate them highly.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>master_crab</em>:</p>
+<blockquote>This is not particularly newsworthy. Kroll is not one of the main ratings agencies, and certainly not the one bond purchasers use.</blockquote>
+<p><strong>Top #3</strong> — <em>andai</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;archive.ph&#x2F;52dzo" rel="nofollow">https:&#x2F;&#x2F;archive.ph&#x2F;52dzo</a><p>A link to the criminal mastermind that makes free speech possible here.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>eBay Restricts Listings of Radio Equipment, but Exempts Ham-Band-Only Gear</title>
+      <link>https://www.arrl.org/arrlletterissue?issue=2026-10-15#eBay-Restricts-Listings-of-Radio-Equipment_-But-Exempts-Ham-Band-Only-Gear</link>
+      <guid isPermaLink="false">hn3-50122034</guid>
+      <pubDate>Fri, 16 Oct 2026 18:06:17 +0000</pubDate>
+      <description>210 points, 164 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.arrl.org/arrlletterissue?issue=2026-10-15#eBay-Restricts-Listings-of-Radio-Equipment_-But-Exempts-Ham-Band-Only-Gear"><strong>→ Article</strong></a> <small>(arrl.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50122034">→ HN comments</a> &nbsp;·&nbsp; 210 points &nbsp;·&nbsp; 164 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>eddythompson80</em>:</p>
+<blockquote>I always found the difference between ham radio operators and computer hacker community interesting.<p>There is obvious large overlap. Both are nerdy and techy and attract similar base groups. But the ham space is dominated by people who want to be &quot;good citizens&quot; through collective action, while computer hacker is more about cyberpunk &quot;if I could do it, then it&#x27;s allowed&quot;.<p>Perhaps it&#x27;s the clearest example of &quot;The medium is the message&quot; concept.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>alnwlsn</em>:</p>
+<blockquote>It is very strange that when you come across anything radio related, people seemingly come out of the woodwork to tell you not that you are necessarily, actively doing something against regulation, but that there is always potential to be breaking the law.<p>Take this Hackaday article from the other day:<p><a href="https:&#x2F;&#x2F;hackaday.com&#x2F;2026&#x2F;10&#x2F;15&#x2F;so-you-want-to-make-your-sdr-work-on-other-frequencies&#x2F;" rel="nofollow">https:&#x2F;&#x2F;hackaday.com&#x2F;2026&#x2F;10&#x2F;15&#x2F;so-you-want-to-make-your-sdr...</a><p>The subject is mostly academic, but in 18 comments no less than 3 different people are warning about doing something against the rules. It&#x27;s weird. I don&#x27;t know of any other subject that provokes responses about &quot;the rules&quot; like this.
+I could understand if the article title was &quot;How to Aim Laser Pointers at Airplanes&quot;, but attach a long enough wire to an oscillator and people start to get uppity.<p>On the other side of things, I don&#x27;t know if you&#x27;ve turned on a shortwave radio recently, but the only thing I hear on mine is switch-mode power supply noise.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bityard</em>:</p>
+<blockquote>Hams take pride in being largely self-policing because this is one of the things that keeps the FCC interested in reserving sections of the spectrum for ham use.<p>Also, I love hackaday for their articles but the comment section there is among the worst on the Internet. You&#x27;ll find more enlightening discussions on the wall of a truckstop bathroom stall.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>indrora</em>:</p>
+<blockquote>&gt; comment section there is among the worst on the Internet<p>Some would argue it&#x27;s right up there with HN ;)</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Xirdus</em>:</p>
+<blockquote>I think it might be because ham radio is still barely legal and the community wants to keep the few freedoms they have so they try not to piss off any groups of interest. Whereas pretty much everything hacking-related is already a felony thanks to DMCA and other similar laws, so they don&#x27;t have much to lose.</blockquote>
+<p>↳ reply 3 — <em>kstrauser</em>:</p>
+<blockquote>A lot of that is because airwaves are a finite and shared resource. Me abusing them means that you can’t legitimately use them.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>0x1ch</em>:</p>
+<blockquote>Why is eBay acting as the FCC? I can still buy lasers that will rip through your retina in the blink of a eye from eBay (lol). The equipment is completely legal to own and operate, and transmit with the proper licensing (which is not required to purchase said equipment).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>charcircuit</em>:</p>
+<blockquote>The FCC made up rules for marketplaces and now ebay is forced to follow it.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Gormo</em>:</p>
+<blockquote>What statute gives authority to the FCC to &quot;make up rules for marketplaces&quot;? My understanding is that they only have authority over actual broadcasting.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>someguydave</em>:</p>
+<blockquote>the Secure and Trusted Communications Networks Act of 2019 (47 USC 154 1601 ff) is one place, among others, that Congress gave the FCC the authority to make rules about importing and selling electronics</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Spivak</em>:</p>
+<blockquote>Because the FCC is puppeting Ebay through regulation, the author is deliberately painting this as evil large corporation because I assume
+that gets more clicks, the real title would be &quot;FCC Enacts Rule Restricting Sale of Radio Equipment, Marketplaces Like Ebay Forced to Pull Listings.&quot;<p><a href="https:&#x2F;&#x2F;www.fcc.gov&#x2F;document&#x2F;fcc-adopts-rules-strengthen-rules-governing-dangerous-gear-0" rel="nofollow">https:&#x2F;&#x2F;www.fcc.gov&#x2F;document&#x2F;fcc-adopts-rules-strengthen-rul...</a><p>&gt; Protecting Against National Security Threats to the Communications Supply Chain…<p>Yeah… a foreign adversary is totally going to be thwarted by FCC certification. The Russian&#x27;s are probably just kicking themselves for buying at Walmart.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>nubinetwork</em>:</p>
+<blockquote>The purpose of the restriction is to keep people from using hacked baofengs to chat on bands a) they&#x27;re not allowed to use unlicensed b) could potentially already be in use by another service eg EMS&#x2F;fire&#x2F;police.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ianburrell</em>:</p>
+<blockquote>The big problem used to be that people would buy unlocked Baofengs and accidentally use them on licensed services thinking there were generic walkie talkies. The current locked down rules prevent that. They can still get amateur handhelds and use without ham license, but hams police that. It is also easier to get FRS&#x2F;GMRS handhelds for pubic use, many the same models reprogrammed.<p>Unlocking handhelds is less of a problem because it requires deliberate action to break the rules. There are fewer people willing and able to do that.</blockquote>
+<p>↳ reply 2 — <em>sc68cal</em>:</p>
+<blockquote>There are older UV-5R Baofengs that are in demand because they didn&#x27;t have the software restriction that newer ones have. It&#x27;s not that they&#x27;re hacked, it&#x27;s that they were not locked from the factory</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Designing more efficient quantum circuits with Claude</title>
+      <link>https://www.anthropic.com/research/designing-efficient-quantum-circuits</link>
+      <guid isPermaLink="false">hn3-50121939</guid>
+      <pubDate>Fri, 16 Oct 2026 18:00:18 +0000</pubDate>
+      <description>128 points, 28 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/research/designing-efficient-quantum-circuits"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50121939">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 28 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>adastra22</em>:</p>
+<blockquote>&gt; In other cases, it found that existing circuits included costly components that were needed to handle only extremely rare inputs, and it redesigned them without those components.<p>So it’s not performing the same computation…</blockquote>
+<p><strong>Top #2</strong> — <em>dr_dshiv</em>:</p>
+<blockquote>Quantum Vibe Coding: anyone can do it!</blockquote>
+<p><strong>Top #3</strong> — <em>cgio</em>:</p>
+<blockquote>Weird they don’t mention Bennet (1973)?</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>90% of US working hours are spent on tasks not covered well by AI benchmarks</title>
       <link>https://www.mercor.com/research/labor-index/benchmark-map/</link>
@@ -31,6 +369,58 @@
 <blockquote>
 <p>↳ reply — <em>kfarr</em>:</p>
 <blockquote>QA &#x2F; code review is like 80% of my time now! Like coding now is QA. That&#x27;s it.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>/dev/null: social network for developers</title>
+      <link>https://dev-null.sh</link>
+      <guid isPermaLink="false">hn3-50121004</guid>
+      <pubDate>Fri, 16 Oct 2026 16:57:49 +0000</pubDate>
+      <description>144 points, 129 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://dev-null.sh"><strong>→ Article</strong></a> <small>(dev-null.sh)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50121004">→ HN comments</a> &nbsp;·&nbsp; 144 points &nbsp;·&nbsp; 129 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ineptech</em>:</p>
+<blockquote>Errant thought - I kind of hope that the actual social network for developers of the not so distant future looks more like a bunch of us separately building bespoke applications to serve files to each other.<p>&gt; Dave: &quot;Bot, add a folder to my personal data store with the pictures I took this weekend and share it with everyone in my poker group&quot;<p>&gt; Sally: &quot;I see that I&#x27;ve gotten an email from Dave with a magic link conveying access to something.  Bot, use this link to negotiate a key exchange with whatever weird app Dave cobbled together (ask his bot if you need help) and then log into my VPS and add a tab to my personal webapp to display the content he has shared.&quot;<p>That might be overly optimistic, but it doesn&#x27;t feel that far off.  It&#x27;s kind of what Tim Berners-Lee build <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Solid_project" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Solid_project</a> for right?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>flexagoon</em>:</p>
+<blockquote>Isn&#x27;t that just called hosting a website?.. You can just give an agent access to your server and let them do all that, no?<p>There are also places like <a href="https:&#x2F;&#x2F;tilde.town&#x2F;" rel="nofollow">https:&#x2F;&#x2F;tilde.town&#x2F;</a> if you want something more social media–esque</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ineptech</em>:</p>
+<blockquote>Think of it this way - why didn&#x27;t we all just replace Facebook with &quot;host files on our personal sites and give each other access to them&quot; ten years ago?  Because we&#x27;d have to store passwords, identify each other past spoofed emails, figure out when&#x2F;how to trust friends of friends, etc.  In practice that means everyone adopting the same protocol, which is a chicken-and-egg problem.<p>That hasn&#x27;t changed, but what has changed is that reading docs and writing the glue code is effectively free.  The main problem with something like Solid is, if it takes even an hour to figure out how to get it going, I am effectively assigning my friends an hour of homework to be able to network with me.  That&#x27;s no longer true.  If you like the Fediverse and I like Solid and Dave uses Nostr and Sally is stuck with some proprietary thing that came with her NAS, we can all build a network without any of us switching to, or even learning much about, each other&#x27;s platforms.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>raggi</em>:</p>
+<blockquote>It’s actually changed for the worse. Now everyone wants their slop to be the winning protocol, so the competing standards problem has become far broader</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>voidfunc</em>:</p>
+<blockquote>Just need to dust off the finger protocol.</blockquote>
+<p>↳ reply 3 — <em>soulofmischief</em>:</p>
+<blockquote>I thought this is why we established standards. I truly hope the LLM singularity brings further adherence to existing standards and doesn&#x27;t lead to an explosion in protocols and formats. That sounds like a nightmare! :)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>1vuio0pswjnm7</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;dev-null.sh&#x2F;sitemaps&#x2F;users-1.xml" rel="nofollow">https:&#x2F;&#x2F;dev-null.sh&#x2F;sitemaps&#x2F;users-1.xml</a><p><a href="https:&#x2F;&#x2F;dev-null.sh&#x2F;sitemaps&#x2F;commits-1.xml" rel="nofollow">https:&#x2F;&#x2F;dev-null.sh&#x2F;sitemaps&#x2F;commits-1.xml</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>1vuio0pswjnm7</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;x.com&#x2F;sitemap.xml" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;sitemap.xml</a> (listed in robots.txt but doesn&#x27;t work for me)<p><a href="https:&#x2F;&#x2F;www.facebook.com&#x2F;robots.txt" rel="nofollow">https:&#x2F;&#x2F;www.facebook.com&#x2F;robots.txt</a> (186 sitemap files listed, none are accessible to me)<p>Perhaps these require an &quot;acceptable browser&quot; and&#x2F;or an account<p>Why sitemap URLs.  Because I&#x27;m a sitemaps user; I use sitemap files every day<p>The &#x2F;dev&#x2F;null ones seem to be easily accessible.  Unlike some other &quot;social networks&quot;</blockquote>
+<p>↳ reply 2 — <em>talon8635</em>:</p>
+<blockquote>lol, outstanding</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>SwellJoe</em>:</p>
+<blockquote>Mastodon is where I find the most (I hesitate to use this word) real nerds. The folks in it for the love of the game, not because it pays well or because they&#x27;re chasing the latest trends. Nearly everyone I admire in tech is there, and very few of the people I think little of are.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Zambyte</em>:</p>
+<blockquote>My pleroma instance (alternative AP server) collapsed on itself, running out of storage mid upgrade, about two years ago. I didn&#x27;t have the bandwidth to allocate to getting it back up and running, as I didn&#x27;t have backups, and it wasn&#x27;t an easy fix.Last weekend I pointed my (fully local!) agent at it, and it was able to get it back up and running.<p>Now that I have it up and running, my feed is entirely people just hating on LLMs. I have a hard time finding technical content that I enjoy on there these days.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>SwellJoe</em>:</p>
+<blockquote>That&#x27;s true, and it is a rift in the fediverse...some very anti-LLM voices are quite loud there. But, there are people there with a nuanced view of them, as well.<p>And, I would rather talk to an AI Luddite that&#x27;s extraordinarily technically competent without AI assistance than someone who vibe-coded a startup with no idea how it works, and the former is far more common on the fediverse than the latter. I think it&#x27;s unfortunate there&#x27;s such a strong emotional component to talking about LLMs, as it&#x27;s the most interesting technical innovation since the internet, but I understand it and I&#x27;m sympathetic to it (the AI companies have done a good job giving people reasons to hate and&#x2F;or fear them).</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>Zambyte</em>:</p>
+<blockquote>Of course, I am happy to listen to people who feel strongly against AI as well, and being pro-AI is by no means a signal that someone will have anything interesting to say. My gripe with it is that AI hate seems to be a <i>massive</i> portion of what people (I see) talk about on there. I would love to see people talk about non- technical things, or technical things that don&#x27;t involve AI, or things that do involve AI.<p>It&#x27;s likely just my bubble on there, but man it&#x27;s relentless. I don&#x27;t want to just hear everything about what you hate. I want to hear what you love!</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>matheusmoreira</em>:</p>
+<blockquote>Which mastodon instance would you recommend?</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -278,6 +668,48 @@
 <blockquote>
 <p>↳ reply — <em>e12e</em>:</p>
 <blockquote>&gt; Only two remote holes in the default install, in a heck of a long time!<p>This isn&#x27;t remote (and I don&#x27;t think the only local in recent times) - so, no - they won&#x27;t have to update.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>What on Earth Is Dekton?</title>
+      <link>https://www.worksinprogress.news/p/porcelain</link>
+      <guid isPermaLink="false">hn3-50118828</guid>
+      <pubDate>Fri, 16 Oct 2026 14:31:43 +0000</pubDate>
+      <description>144 points, 51 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.worksinprogress.news/p/porcelain"><strong>→ Article</strong></a> <small>(worksinprogress.news)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50118828">→ HN comments</a> &nbsp;·&nbsp; 144 points &nbsp;·&nbsp; 51 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>zebrafruit</em>:</p>
+<blockquote>It’s interesting that the focus is on porcelain as a cooking surface but misses the biggest reasons for it displacing engineered quartz or granite for countertops. There’s a few factors at play here leading to the prominence of porcelain.<p>For the induction cooktops, you can cut porcelain slabs to 6mm compared to your 3cm (sometimes 2cm) quartz and granite. This is also why you can use it for walls and floors. The thinner materials allow the magnets to actually function.<p>The manufacturing process for engineered quartz is now being interwoven with silicosis through the legal system, leading to manufacturers marketing “low silica” quartz at a cost premium. This premium is closing the cost gap with porcelain. This is the main economic and legal reason as jurisdictions- Australia and maybe soon California look to ban these products forcing the market towards natural stones.<p>If you’re then selecting from natural stones, porcelain is essentially used as printer paper for whatever stone pattern is desired, and given that people tend to want things that look like marble, this “ink” is essentially free for the manufacturing process, making the porcelain look like marble more than quartz or granite.<p>Engineered quartz is also not a great exterior material, again yielding to porcelain.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>woah</em>:</p>
+<blockquote>Engineered quartz looks like natural stone because it has depth and translucency, and each piece is somewhat unique because it is made by hand sprinkling various powders into a mass that gets pressed and cured. This is also why it sells for as much as natural stone. Porcelain may be physically superior but it does look like &quot;printer paper&quot;.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>majormajor</em>:</p>
+<blockquote>&gt; Engineered quartz looks like natural stone...also why it sells for as much as natural stone.<p>I mean, it doesn&#x27;t <i>actually</i> look like natural stone, though. At least not the mid-to-high-end stones. (Or sell for as much as it.) The floor can be similar if you&#x27;re looking at some of the cheaper natural stone options, but the ceiling is extremely different. And the really unique depth and transparency of natural stone pushes much more toward the ceiling. Engineered quartz looks like a composite with some tells. I did some extensive shopping for countertops last year, it very much has a specific look. It just looks *different enough&amp; from entry-level countertop options people are most familiar with that it doesn&#x27;t (yet) read &quot;cost-cutting&quot; to less-familiar renters or buyers. And it presents a lot of attractive durability aspects to people concerned with that re: natural stone. Eventually I have no doubt that it&#x27;ll be prevalant enough—if not regulated away—that it&#x27;ll be pattern-recognitioned as &quot;2020s basic&quot; kinda like a modern formica.<p>Porcelain is also not widely seen yet, which presents the same benefit (especially because many of the &quot;basic&quot;-grade&#x2F;inoffensive options that flippers or apartment builders want have practically no depth to them even if they&#x27;re true natural stone!).</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>amluto</em>:</p>
+<blockquote>Many natural stones are, depending on precise application, pretty bad for exterior use.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>icodestuff</em>:</p>
+<blockquote>I wanted Dekton for my new countertops. Its list of resistances to various kitchen mishaps was extremely impressive. Every other material we looked at has at least one weakness. Dekton was marketed as having none. It also looked quite good, being available in lots of colors and patterns. The real drawback was going to be the price. It&#x27;s basically the most expensive countertop material (or was, 2 years ago).<p>And then a ~3x3&quot; sample I was looking at Home Depot slipped and fell on the floor, from under 3 feet in height. It landed more or less flat on its face and absolutely exploded over ~25 square feet. The internal stresses in this stuff are nuts. Then I found YouTube videos evaluating it. Everything they claim seems to be accurate, except for shatter resistance. Any sort of focused stress (one video dropped a bearing ball from a couple feet up) will absolutely wreck it.<p>Ended up going with a high-quality quartz instead. Not as much heat resistance as Dekton, but it won&#x27;t break if something falls out of a cabinet.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sawjet</em>:</p>
+<blockquote>I used to cut this stuff as part of a previous job. Imagine a kitchen-sized cnc water jet&#x2F;saw.<p>We had to cut a prescribed pattern out of the edges of the slab to relieve stresses. Even at 2cm thickness it was slower to cut than any 3cm natural stone.<p>Part of the job was smashing the offcuts with a sledge to fit more stone per dumpster. Smashing dekton is like when you get a bad hit with a baseball bat and you feel it through your elbows and shoulders. Every time, like nothing else.<p>I think it looks like crap. Maybe good for high traffic floors or wall treatments where weight is a concern.</blockquote>
+<p>↳ reply 2 — <em>majormajor</em>:</p>
+<blockquote>&gt; It&#x27;s basically the most expensive countertop material (or was, 2 years ago).<p>You should see some of the more unique &quot;statement&quot; showoff-level marbles and quartzites out there. ;)</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tnolet</em>:</p>
+<blockquote>Had a new kitchen and bathroom installed last year. Most surfaces (kitchen counter, shower and general bath room) all Dekton or one of Cosentino’s other lines.<p>I was apprehensive: it is expensive and “not real stone”.<p>Super happy with it. Spilling red wine, putting sizzling hot pans on it, accidentally dropping big pans on it. Dekton brushes it off.<p>Go into debt if you have to.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>vvillena</em>:</p>
+<blockquote>&quot;Dropping big pans on it&quot; is actually the weak point of Dekton. If you hit it hard it can chip away. Otherwise, the material is more or less indestructible.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>shaan7</em>:</p>
+<blockquote>Exactly why we changed it to natural stone at the last minute. Otherwise Dekton seemed pretty awesome. But we needed something literally indestructible, even if its thicker than Dekton ;)</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>myelin</em>:</p>
+<blockquote>Our Dekton countertops are great, although we have managed to put a tiny chip in it - I think it was dropping a small glass jar from about 3-4 feet up?<p>The reason we went for it because it appears to be the only way to get a light-colored stone countertop that won&#x27;t stain when you spill red wine or tomato sauce on it. It has been excellent, hasn&#x27;t picked up any stains at all.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -859,6 +1291,40 @@ See section 5 on Kindle display measurements by optical coherence tomography. Th
 <p>↳ reply 2 — <em>alberth</em>:</p>
 <blockquote>As someone not in the loop, can you explain more of what you mean.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Ultramarine 1 Flash</title>
+      <link>https://www.paperinstruments.com/ultramarine</link>
+      <guid isPermaLink="false">hn3-50106747</guid>
+      <pubDate>Thu, 15 Oct 2026 17:06:01 +0000</pubDate>
+      <description>157 points, 48 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.paperinstruments.com/ultramarine"><strong>→ Article</strong></a> <small>(paperinstruments.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50106747">→ HN comments</a> &nbsp;·&nbsp; 157 points &nbsp;·&nbsp; 48 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>CobrastanJorji</em>:</p>
+<blockquote>As an aside, I do not like unnecessarily misleading graphs. Own your strengths and weaknesses.<p>In the &quot;Results&quot; section, they choose to compare Ultramarine only to models that it&#x27;s better than on every metric. They ignore models like Fable 5.1, GPT-6 Astra, Claude Opus 5.5, etc.<p>Then, in the &quot;Score against cost per task&quot; graph, which is focused on price, suddenly all of those models that perform better than Ultramarine come roaring back because they are also more expensive.<p>Just list yourselves as the second best sometimes. Your thing is impressive. Don&#x27;t let the idiot marketing guy hide that behind stupid tricks.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jchook</em>:</p>
+<blockquote>The benchmarks are not ideal.</blockquote>
+<p>↳ reply 2 — <em>yieldcrv</em>:</p>
+<blockquote>in my startup, our publicist used to make buzz feed style listicles, consistently listing us as the second or third solution<p>but it was way deeper than that, because it wasn&#x27;t actually about people looking up some search string, it was actually about predictably pinging the google alerts for the top company and their founders, and then my same publicist messaging them as a rando on linkedin or email suggesting that they join us for a fireside chat at a conference they had their hands in<p>with the fireside chat in front of everyone, and the record of it, boosting us to the collective conscious riding off of the more established brand&#x27;s presence<p>but yeah our personal google results also looked amazing for several years too<p>everything serves a parallel purpose, but yeah there&#x27;s almost no utility in self aggrandizing on your own homepage</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>kadoban</em>:</p>
+<blockquote>&gt; We present Ultramarine 1 Flash, an agentic model for professional knowledge work. Ultramarine applies large-scale reinforcement learning to a strong open base model, GLM-5.3 Flash, and improves on it across all six knowledge-work benchmarks we evaluate [...]<p>In case anyone was curious what it&#x27;s based on. (No judgement either way from me, IMO depends how well they did the post-training, which I can&#x27;t tell).</blockquote>
+<blockquote>
+<p>↳ reply — <em>ra</em>:</p>
+<blockquote>Nice - I use GLM 5.3 flash for knowledge work now - will check this out.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>anon373839</em>:</p>
+<blockquote>Can I ask what kind of tooling  you use around the model and for the UI layer? I’ve been looking for a well designed knowledge work harness to give nontechnical users but I haven’t really found one that I like. (I personally just use coding harness for this stuff, but that’s a poor fit for non-devs.)</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>0x1062</em>:</p>
+<blockquote>Hello, apologies for the self-promotion but I’m building a tool called Radix which is a knowledge work harness. Please email or message me if you would like to give it a try for free instead of paying the subscription price.<p><a href="https:&#x2F;&#x2F;radix-os.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;radix-os.com&#x2F;</a></blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>bythreads</em>:</p>
+<blockquote>I’m confused this seems exactly like a skinned glm 5.3 - flash with a few context injection tricks and guardrails - whats going on with these “startups”?</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>More on Anthropic's Scion ripping off Mononoke</title>
@@ -3244,493 +3710,6 @@ Will AI agents build and publish tools for the greater good? Or will vendors hol
 <blockquote>
 <p>↳ reply — <em>satiated_grue</em>:</p>
 <blockquote>They make a great graham-cracker style crust for a skyr cake.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Grace Hopper Celebration Cancelled</title>
-      <link>https://anitab.org/press-release</link>
-      <guid isPermaLink="false">hn3-50080007</guid>
-      <pubDate>Tue, 13 Oct 2026 22:46:49 +0000</pubDate>
-      <description>203 points, 157 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://anitab.org/press-release"><strong>→ Article</strong></a> <small>(anitab.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50080007">→ HN comments</a> &nbsp;·&nbsp; 203 points &nbsp;·&nbsp; 157 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cmiles8</em>:</p>
-<blockquote>Sad to see this canceled and especially at the last minute.<p>Since DEI imploded most companies won’t touch anything with a 100 ft pole that looks like it might go anywhere near that, and seems like that didn’t help on funding and sponsors.<p>This always seemed like a good event and only ever heard positive things about it. The controversies and scandals surrounding DEI were not about this, and thus it would appear this may be collateral damage.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pseudosavant</em>:</p>
-<blockquote>For context, the first Grace Hopper Celebration was 1994, and had been held for the last 20 consecutive years. Long before DEI.<p>But when the powers that be are intent to kill off &quot;DEI&quot;, and their definition includes anything related to women, this is what happens. Too many business cowards don&#x27;t want to have problems with their merger, acquisition, IPO, FCC license, etc for supporting celebrating a great American like this, just because she was a woman.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>JuniperMesos</em>:</p>
-<blockquote>There was definitely gender-based affirmative action benefitting women in 1994 - the term DEI is newer than that (as far as I&#x27;m aware), but the concept is definitely not.<p>According to the Wikipedia article on the event (<a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Grace_Hopper_Celebration_of_Women_in_Computing" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Grace_Hopper_Celebration_of_Wo...</a>), &quot;In 1994, Anita Borg and Telle Whitney founded the Grace Hopper Celebration of Women in Computing. With the initial idea of creating a conference by and for women computer scientists, Borg and Whitney met over dinner, with a blank sheet of paper, having no idea how to start a conference, and started to plan out their vision. The first Grace Hopper Celebration of Women in Computing was held in Washington, D.C., in June 1994, and brought together 500 technical women.&quot;.<p>Having a specific conference for women in computing is definitely a DEI concern; from the very beginning, the entire point of having a formal celebration of Grace Hopper was to be a locus for this female-specific conference. Grace Hopper&#x27;s importance to this conference is that she was a woman, not that she invented FLOW-MATIC.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>carefulfungi</em>:</p>
-<blockquote>Grace Hopper graduated from Yale with a PhD in 1933. In 1952, Professor Bessie Lee Gambrill became the first woman at receive tenure at Yale.<p>Many women mathematicians in computer science worked in the field because they were denied a university career path because of their gender.<p>As an example of how late gender equality arrived, Olga Taussky-Todd (Caltech) held only a “research associate” title from 1957 until Caltech made her its first female full professor in 1971.<p><a href="https:&#x2F;&#x2F;mathematics.caltech.edu&#x2F;about&#x2F;prizes-awards&#x2F;olga-taussky-todd-prize" rel="nofollow">https:&#x2F;&#x2F;mathematics.caltech.edu&#x2F;about&#x2F;prizes-awards&#x2F;olga-tau...</a><p>It is not wrong to celebrate a more enlightened world by highlighting its trailblazers and encouraging others to follow their footsteps in breaking barriers.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>pluc</em>:</p>
-<blockquote>Most <i>US</i> companies. The rest of the world happily doesn&#x27;t care - and increasingly doesn&#x27;t do so solely to avoid looking like United Statesmen.</blockquote>
-<p>↳ reply 3 — <em>JumpCrisscross</em>:</p>
-<blockquote>&gt; <i>seems like that didn’t help on funding and sponsors</i><p>Do we know any sponsors who pulled out? Even if that was the case, pulling the plug like this at t minus two weeks speaks to problems internally.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>grahar64</em>:</p>
-<blockquote>Is it because international registrations were down. I know that I am dodging US travel ATM</blockquote>
-<blockquote>
-<p>↳ reply — <em>hunta2097</em>:</p>
-<blockquote>I&#x27;ve had the option of a free trip to the US twice in the past year.<p>I&#x27;ve rejected both due toy sentiment right now.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>gmerc</em>:</p>
-<blockquote>You don&#x27;t want to run afoul of Agent Orange by celebrating a woman so close to his coronation</blockquote>
-<blockquote>
-<p>↳ reply — <em>Geezus_42</em>:</p>
-<blockquote>No, please don&#x27;t make that a thing. They&#x27;re a great band. They don&#x27;t deserve that association. :D</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>pluc</em>:</p>
-<blockquote>I have bad news for you</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Recreational Programming</title>
-      <link>https://www.cphiri.dev/presentations/recreational-programming</link>
-      <guid isPermaLink="false">hn3-50079865</guid>
-      <pubDate>Tue, 13 Oct 2026 22:33:33 +0000</pubDate>
-      <description>209 points, 83 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.cphiri.dev/presentations/recreational-programming"><strong>→ Article</strong></a> <small>(cphiri.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50079865">→ HN comments</a> &nbsp;·&nbsp; 209 points &nbsp;·&nbsp; 83 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mrandish</em>:</p>
-<blockquote>The definition perfectly describes how I started out in computers in 1981. Brought home a 4K, 8-bit computer from Radio Shack that I could barely afford and hooked it to the TV. Had never touched a computer before, zero prior knowledge and only had the manual in the box (which was surprisingly good). No one I&#x27;d ever met owned a computer at home or used one at work and I&#x27;d never really considered that you <i>could</i> make money with computers. I just thought the games seemed fun and the <i>idea</i> of learning about programming seemed cool. Turns out typing in long listings from B&amp;W hobbyist zines and then finding all the typos was a fine way to learn.<p>Teaching myself assembler was harder because I had no docs. I was so clueless I actually looked up Motorola in the phone book and called to ask where I could get a manual. The sales rep who answered the phone must have taken pity on me because he mailed the CPU manual for free. I still have the purple reference card and remember the common opcodes by heart (<a href="https:&#x2F;&#x2F;colorcomputerarchive.com&#x2F;repo&#x2F;Documents&#x2F;Datasheets&#x2F;MC6809-MC6809E%20Reference%20Card%20%28Motorola%29.pdf_" rel="nofollow">https:&#x2F;&#x2F;colorcomputerarchive.com&#x2F;repo&#x2F;Documents&#x2F;Datasheets&#x2F;M...</a>)<p>The first time I made money was about 18 months later when I wrote a pretty handy disk utility program. Stayed up all Friday night finishing it. Copied onto floppies I sold for $5 at the local user&#x27;s group Saturday morning. Made $140 and got my first 28 customers. That was enough to get me hooked on making software and selling it. ~40 years, three startups, over a dozen products, hundreds of good people employed, a couple million customers and two PC Magazine Product of the Year awards later - I regret nothing. Started on a lark to learn and have fun. Much was learned, fun was had. Wonderful journey - highly recommend.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>thwarted</em>:</p>
-<blockquote>&gt; <i>Turns out typing in long listings from B&amp;W hobbyist zines and then finding all the typos was a fine way to learn.</i><p>My mom and I used to take turns reading the code from the magazines out loud while the other typed the code into our Commodore 64.  She used to say things like &quot;I was just having fun, typing in the games and playing them, but thwarted was actually <i>learning</i> something&quot; (no, my mom doesn&#x27;t call me &quot;thwarted&quot;).</blockquote>
-<p>↳ reply 2 — <em>glimshe</em>:</p>
-<blockquote>This is a great life story. I had similar beginnings as a curious child but no PC Magazine Product of the Year! I&#x27;m sure you&#x27;ll find many people here who also started curious and with no friends who cared or had even seen a computer.<p>Is there an equivalent to that today? As soon as a cool technology appears, there are startups selling something within a few weeks. What is the &quot;weird&quot; kid doing today?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>smnplk</em>:</p>
-<blockquote>Shout out to Tsoding [1]. He is my favorite recreational programmer.<p>[1] - <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;@TsodingDaily" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;@TsodingDaily</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ge96</em>:</p>
-<blockquote>I saw another guy I&#x27;m trying to find, he&#x27;s Asian, one of the projects he did was make a map from raw OSM nodes I think. But he used a &quot;niche&quot; language like Zed and worked directly with GL idk was trying to find him. One of those really really good programmers. His videos are in English. The map is like Brooklyn or some part of NY.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jacobgeorge08</em>:</p>
-<blockquote>Could it be <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;@sphaerophoria" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;@sphaerophoria</a> ?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ge96</em>:</p>
-<blockquote>Oh yeah that&#x27;s him thank you</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>glouwbug</em>:</p>
-<blockquote>I always champion Bisqwit too</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>passive</em>:</p>
-<blockquote>I did not like how this handled scrolling, made my navigation feel constrained. Maybe I was supposed to use the keyboard to navigate? It doesn&#x27;t seem particularly clear.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kmoser</em>:</p>
-<blockquote>Navigation was easy. What I didn&#x27;t like was having no idea where I was and how much farther there was to go. It was like the world&#x27;s least intuitive HyperCard stack.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>brabel</em>:</p>
-<blockquote>There is a progress bar of sorts on the right side, little squares tell you where you are.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>vostrocity</em>:</p>
-<blockquote>This looks like it was meant to be presented to a live audience.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The First Social Network: In rural Argentina residents send messages w AM radio</title>
-      <link>https://www.newyorker.com/magazine/2026/10/19/the-first-social-network</link>
-      <guid isPermaLink="false">hn3-50079701</guid>
-      <pubDate>Tue, 13 Oct 2026 22:17:41 +0000</pubDate>
-      <description>131 points, 47 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.newyorker.com/magazine/2026/10/19/the-first-social-network"><strong>→ Article</strong></a> <small>(newyorker.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50079701">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 47 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>andyjohnson0</em>:</p>
-<blockquote>The distances and remoteness mentioned in the article are impressive. And is the human need and ingenuity for communication.
-It reminded me of William Gibson&#x27;s description of 1950s farmers in the US using metal wire fences as radio antennas.<p>In the 70s and 80s (and probably before) in the UK, the BBC used to broadcast occasional &quot;sos messages&quot; [1] prior to the main daily news summaries on FM radio - for people who were away from home and, for whatever reason, uncontactable. They usually related to a relative being dangerously ill. I remember hearing them on my parent&#x27;s car radio on summer camping trips.<p>Obviously the uk is a small and quite densely populated island but, without two way personal communications, some needs were similar to those described in the article. It changed a lot of things.<p>[1] <a href="https:&#x2F;&#x2F;swling.com&#x2F;blog&#x2F;2012&#x2F;09&#x2F;radio-4-and-now-an-urgent-sos-message&#x2F;" rel="nofollow">https:&#x2F;&#x2F;swling.com&#x2F;blog&#x2F;2012&#x2F;09&#x2F;radio-4-and-now-an-urgent-so...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>BoxOfRain</em>:</p>
-<blockquote>Honestly I&#x27;m very sad that the AM broadcast bands (for those unaware there&#x27;s two in Europe: long wave and medium wave) have been allowed to fall out of use in the UK without regulatory reform. Fair enough the BBC and commercial broadcasters don&#x27;t want it any more, Absolute Radio stopped on AM because the fine from Ofcom was actually less than running the transmitter estate for example, but there&#x27;s no reason community&#x2F;heritage efforts like Radio Caroline need to be subject to a burdensome licensing regime from an era AM was big business when their band is currently almost dead. In my view we should do the opposite, the whole band should be opened to hobbyist broadcasters for a nominal fee and a power limit of a few hundred watts; it&#x27;s not like most people have the space to put up an aerial that&#x27;ll go very far on AM.<p>It feels very wasteful of a scarce resource to leave this spectrum abandoned, especially when it has interesting properties.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jacquesm</em>:</p>
-<blockquote>We will come to regret this. I hope they at least properly mothballed the whole thing and will keep the antennas in good shape because we may well need that capability at some point in the future.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>lelandfe</em>:</p>
-<blockquote>&gt; farmers in the US using metal wire fences<p>More yonder  <a href="https:&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;barbed-wire-telephone-lines-homesteaders-prairie-america-history" rel="nofollow">https:&#x2F;&#x2F;www.atlasobscura.com&#x2F;articles&#x2F;barbed-wire-telephone-...</a></blockquote>
-<p>↳ reply 3 — <em>tecleandor</em>:</p>
-<blockquote>Oh, I remember the equivalent service in National Spanish radio, I think up until the 90s. It was called &quot;Servicio de socorro&quot;.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>hxii</em>:</p>
-<blockquote>It&#x27;s interesting to see use-cases like this &quot;in the wild&quot; (as opposed to some hobbyist group trying stuff out).<p>With a little investment, I think Meshtastic&#x2F;Reticulum could do wonders for communities like this. With Argentina being largely flat, even putting up a relatively short mast on the roof of a house should give it a good enough range (~10-30km).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jmbwell</em>:</p>
-<blockquote>The article is about conventional broadcast, but if two way is interesting, there’s a great project doing digital over HF in rural areas, particularly South America:<p><a href="https:&#x2F;&#x2F;www.rhizomatica.org&#x2F;what-we-do&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.rhizomatica.org&#x2F;what-we-do&#x2F;</a><p>Lightweight HF rigs and the Hermes Mercury digital modem:<p><a href="https:&#x2F;&#x2F;mercury.hermes.radio&#x2F;" rel="nofollow">https:&#x2F;&#x2F;mercury.hermes.radio&#x2F;</a></blockquote>
-<p>↳ reply 2 — <em>D0lapevich</em>:</p>
-<blockquote>There is already a group of people working on meshtastic: <a href="https:&#x2F;&#x2F;mesharg.com.ar&#x2F;" rel="nofollow">https:&#x2F;&#x2F;mesharg.com.ar&#x2F;</a> with an active telegram group.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>fjd</em>:</p>
-<blockquote>Sailing communities have a tradition called &quot;Cruisers&#x27; Net&quot;, some of them having started back in 1950-60. Usually in the morning via VHF different people will take turns speaking and doing parts. They&#x27;ll do segments like weather, arrivals&#x2F;departures, events, buy&#x2F;sell&#x2F;trade, etc.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>OpenAI engineer arrested in bugging of executive conference room</title>
-      <link>https://sfstandard.com/2026/10/13/openai-engineer-arrested-alleged-bugging-executive-conference-room/</link>
-      <guid isPermaLink="false">hn3-50078141</guid>
-      <pubDate>Tue, 13 Oct 2026 20:23:55 +0000</pubDate>
-      <description>507 points, 433 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://sfstandard.com/2026/10/13/openai-engineer-arrested-alleged-bugging-executive-conference-room/"><strong>→ Article</strong></a> <small>(sfstandard.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50078141">→ HN comments</a> &nbsp;·&nbsp; 507 points &nbsp;·&nbsp; 433 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>simonw</em>:</p>
-<blockquote>These are not very smart spies:<p>&gt; A chatbot account tied to Alfozan’s spouse, which shared identifiers with his own account, submitted prompts between Sept. 24 and Sept. 30 about building, installing, obscuring, and remotely accessing a recording device, prosecutors said. Queries included how to “build a continuous audio recorder” and “encrypt the SD card,” prosecutors claimed. On Sept. 27 and 28, the account asked about the specific device that was later found, including its unique MAC address.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>adamm255</em>:</p>
-<blockquote>Learning that every thought you’ve put into an LLM, is recorded and readily available for evidence is going to be interesting for a lot of people.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>belorn</em>:</p>
-<blockquote>We had a very public case in south of Sweden where a woman asked chat-gpt last year about how a failed rape attempt would look like and where in the local park there would be spots without any cameras, a full day before she reported to have been followed and attacked in that park. Quite recently the court found her guilt of filling a false police report, citing among other things the chat log (the police spent over 400 work hours on the initial report).<p>It is the first case I seen in the news of LLM logs being used as evidence.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>areoform</em>:</p>
-<blockquote>How far have we fallen? Spies used to put effort into these sorts of things.<p>When the Soviets wanted to spy on the American embassy, they energized the steel rebars to act as antennas. The structure was so wired that the entire building was the bug. <a href="https:&#x2F;&#x2F;www.airandspaceforces.com&#x2F;PDF&#x2F;MagazineArchive&#x2F;Documents&#x2F;2012&#x2F;September%202012&#x2F;0912embassy.pdf" rel="nofollow">https:&#x2F;&#x2F;www.airandspaceforces.com&#x2F;PDF&#x2F;MagazineArchive&#x2F;Docume...</a><p>Toilet paper, ESP-32 and Claude &quot;make me a bug please&quot;? Excuse me? How far have we fallen from grace?</blockquote>
-<p>↳ reply 3 — <em>gkrimer</em>:</p>
-<blockquote>That&#x27;s because in all likelihood he is not a spy. He is an agent (lol, not an AI agent) who has a handler, who is the trained specialist[1]. The agent is disposable. The handler or case officer usually but not always has diplomatic cover courtesy of a nation state.<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Agent_handling" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Agent_handling</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mrandish</em>:</p>
-<blockquote>&gt; &quot;Scott Schelble, special agent in charge of the FBI’s San Francisco field office, said the agency is committed to protecting sensitive research and proprietary technology.&quot;<p>While the headlines and quotes seem designed to imply sophisticated industrial espionage, potentially by a state-level actor, what&#x27;s public so far isn&#x27;t adding up that way.<p>1. You&#x27;re not going to get much actionable research material on proprietary technologies by audio bugging what&#x27;s said in an <i>executive</i> conference room. That&#x27;s what you&#x27;d do if you were after economic or deal negotiation info.<p>2. Hard to imagine a state-level actor buying a ~$15-$35 hobbyist ESP32 board from Seeed Studio (I&#x27;ve ordered a couple from there for home automation myself) and then asking a public chatbot for set up instructions.<p>3. They say he was an &quot;engineer&quot; who&#x27;d been there ~15 months. If you&#x27;re an actual engineer at OAI and past the 1 year cliff, you&#x27;re probably already sitting on RSUs likely to be worth <i>at least</i> $1M after OAI&#x27;s IPO - and maybe much more. That&#x27;s a lot of incentive to not get fired and probably makes you pretty hard to recruit as an internal mole for cash.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>onion2k</em>:</p>
-<blockquote>Insider info on what OpenAI is planning is likely worth a lot more than anyone could ever make working there, and it comes with the added bonus of not needing to do any <i>work</i>.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>reverius42</em>:</p>
-<blockquote>On the other hand, he gets to go to prison now for sure, which was only slightly likely if he just kept working there as an employee.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>clueless</em>:</p>
-<blockquote>&gt; incentive to not get fired &#x2F; hard to recruit as an internal mole<p>but I guess the $1 million was not incentive enough to not commit a dumb insider trading scheme...</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>dustfinger</em>:</p>
-<blockquote>I am a bit confused by Figure 3. Do they really have a surveillance camera angled just right to capture a photo of someone between the monitor and the wall that supports it?<p>Here is a direct link to Figure 3:<p><a href="https:&#x2F;&#x2F;assets.sfstandard.com&#x2F;image&#x2F;994911177489&#x2F;image_bfl33f7fvh41l7m97embg5bg2k&#x2F;-S640x551-FWEBP" rel="nofollow">https:&#x2F;&#x2F;assets.sfstandard.com&#x2F;image&#x2F;994911177489&#x2F;image_bfl33...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>iancarroll</em>:</p>
-<blockquote>This was taken about five days after they discovered the device[0], so it appears to have been installed to catch the culprit. I was confused as well.<p>[0] <a href="https:&#x2F;&#x2F;www.justice.gov&#x2F;opa&#x2F;pr&#x2F;saudi-national-arrested-installing-surreptitious-audio-recording-device-openai" rel="nofollow">https:&#x2F;&#x2F;www.justice.gov&#x2F;opa&#x2F;pr&#x2F;saudi-national-arrested-insta...</a></blockquote>
-<p>↳ reply 2 — <em>ollin</em>:</p>
-<blockquote>OpenAI added a camera behind the TV after they found the bug (per the AP story [1]):<p><pre><code>    The company subsequently added a camera to the room that last week captured Alfozan entering and checking behind the television where the recording device was installed, according to the FBI.
-</code></pre>
-<a href="https:&#x2F;&#x2F;apnews.com&#x2F;article&#x2F;ai-fbi-justice-department-7f512b2552ffcbbf8f1ebbb18f81a9ba" rel="nofollow">https:&#x2F;&#x2F;apnews.com&#x2F;article&#x2F;ai-fbi-justice-department-7f512b2...</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Yet another way to invoke functions without parentheses</title>
-      <link>https://blog.ikaes.de/yet-another-way-to-invoke-functions-without-parentheses/</link>
-      <guid isPermaLink="false">hn3-50077225</guid>
-      <pubDate>Tue, 13 Oct 2026 19:25:18 +0000</pubDate>
-      <description>202 points, 87 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.ikaes.de/yet-another-way-to-invoke-functions-without-parentheses/"><strong>→ Article</strong></a> <small>(blog.ikaes.de)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50077225">→ HN comments</a> &nbsp;·&nbsp; 202 points &nbsp;·&nbsp; 87 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>hans_castorp</em>:</p>
-<blockquote>This reminds me of &quot;Creators admit Unix, C hoax&quot; (e.g. <a href="https:&#x2F;&#x2F;www.gnu.org&#x2F;fun&#x2F;jokes&#x2F;unix-hoax.html" rel="nofollow">https:&#x2F;&#x2F;www.gnu.org&#x2F;fun&#x2F;jokes&#x2F;unix-hoax.html</a>)<p>&gt; We stopped when we got a clean compile on the following syntax:<p><pre><code>    for(;P(&quot;\n&quot;),R--;P(&quot;|&quot;))for(e=C;e--;P(&quot;_&quot;+(*u++&#x2F;8)%2))P(&quot;| &quot;+(*u&#x2F;4)%2);</code></pre></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nathell</em>:</p>
-<blockquote>How Perl was created:<p>‘Larry, throw the cat at the keyboard!’<p>MEEEOW!<p>‘What did it type?’<p>‘&amp;}Ak&#x27;&gt;v=4%Qe}9;’<p>‘OK, so let’s make this a syntax for hello world.’</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bjoli</em>:</p>
-<blockquote>There was a hilarious video in The early days of YouTube when someone tried to write Perl using vistas voice recognition.<p>I haven&#x27;t seen it in many many years, but at the time it struck my giggle button every time.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>layer8</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=MzJ0CytAsec" rel="nofollow">https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=MzJ0CytAsec</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>akavel</em>:</p>
-<blockquote>Well, the prank is being refined for many years now, by the fine folks partying at:<p><a href="https:&#x2F;&#x2F;www.ioccc.org" rel="nofollow">https:&#x2F;&#x2F;www.ioccc.org</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nathell</em>:</p>
-<blockquote>I love this. This is a fun hack, but the article also hearkens back to pre-LLM days when people were still interested in _code_.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bunderbunder</em>:</p>
-<blockquote>I wonder if there was a period in the 90s where the chess community was more interested in talking about IBM’s stock price than in actually playing chess.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>parhamn</em>:</p>
-<blockquote>&quot;Delivering chess solutions&quot; was never the job though.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>stymaar</em>:</p>
-<blockquote>I&#x27;m definitely gonna use that for April 1st though, just adding this as instruction in Claude.md<p>That will also serves as a litmus test to check how many of my coworkers are reading the code they push.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>amelius</em>:</p>
-<blockquote>I want to put the called function after the arguments:<p><pre><code>    (((x)f)g)h
-</code></pre>
-So I can see exactly the order in which things happen, from left to right.
-As opposed to:<p><pre><code>    f(g(h(x)))
-</code></pre>
-where I have to read backwards.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bunderbunder</em>:</p>
-<blockquote>One of the things I love about programming in dialects of ML like ocaml and f# is the forward pipe operator:<p><pre><code>  x
-  |&gt; f
-  |&gt; g
-  |&gt; h
-
-</code></pre>
-It&#x27;s nice because it just puts whatever&#x27;s on the left of the operator in as the last argument. So it also works for functions with an arity of more than one.<p>So if it were something like<p><pre><code>  h(z, g(y, f(x))
-</code></pre>
-you can write it as<p><pre><code>  x
-  |&gt; f
-  |&gt; g y
-  |&gt; h z
-
-</code></pre>
-It works really nicely for data munging code:<p><pre><code>  my_data
-  |&gt; filter (x =&gt; x &gt; 37)
-  |&gt; select (x =&gt; x * 2)
-  |&gt; sum
-</code></pre>
-but unlike doing it with method calls in object oriented code, inserting a new function into the chain doesn&#x27;t involve modifying a class or or mucking around with more complex language features like extension methods and traits.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>pfdietz</em>:</p>
-<blockquote>Lisp macros let you do similar things, and you don&#x27;t have to change the language itself.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>tomsmeding</em>:</p>
-<blockquote>In ML family languages you also don&#x27;t have to change the language for this, as function application is naturally &quot;argument-by-argument&quot; (the term is &quot;curried&quot;): the syntax is normally f x y z but (f x y) z and (((f)) (x)) y z are just as valid, and indeed f x y will be a function taking one argument. Thus |&gt; can just take a function of one argument and be done.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ktpsns</em>:</p>
-<blockquote>Mathematica has a crazy amount of syntax abbreviations (<a href="https:&#x2F;&#x2F;reference.wolfram.com&#x2F;language&#x2F;guide&#x2F;Syntax.html" rel="nofollow">https:&#x2F;&#x2F;reference.wolfram.com&#x2F;language&#x2F;guide&#x2F;Syntax.html</a>). Of course your whish is fulfilled there: x &#x2F;&#x2F; f called the postfix operator.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Guitoro, a virtual guitar you strum with your keyboard</title>
-      <link>https://guitoro.com/</link>
-      <guid isPermaLink="false">hn3-50077020</guid>
-      <pubDate>Tue, 13 Oct 2026 19:11:48 +0000</pubDate>
-      <description>372 points, 99 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://guitoro.com/"><strong>→ Article</strong></a> <small>(guitoro.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50077020">→ HN comments</a> &nbsp;·&nbsp; 372 points &nbsp;·&nbsp; 99 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>rossant</em>:</p>
-<blockquote>If you want to see the difference between vibe coding and masterful AI-assisted coding, this is it.</blockquote>
-<p><strong>Top #2</strong> — <em>pseudosavant</em>:</p>
-<blockquote>Very well done. Looks and sounds great.<p>A couple of UX thoughts I had while using it:<p>1. Since the chords are all within a specific key, have you considered using the numbers 1 through 7 to play the respective chords? That way playing a 1-4-5 or a 2-5-1 would be very intuitive?<p>2. Have you considered using modifier keys (shift, ctrl, alt) to control whether a chord is strummed down versus up (e.g. pressing A would be down, but Shift+A would be up) or major&#x2F;minor (A would be major, Alt+A would be minor)? I guess Ctrl could be a 7th chord modifier too.<p>Just some thoughts. Great tool!</blockquote>
-<p><strong>Top #3</strong> — <em>Meleagris</em>:</p>
-<blockquote>Holy smokes!!! It has just occurred to me that anyone who can type on a keyboard knows how to play an instrument. Your keyboard is the instrument.<p>With solo mode, I asked ChatGPT to translate the songs to keyboard notes, and I was just typing the notes as if I was doing a typing test, and I was playing songs. lol the easiest &quot;sight-reading&quot; I&#x27;ve ever done.<p>Is this the every persons instrument?<p>Here is Happy Birthday in solo mode:<p>E E T E I U
-E E T E P I
-E E B X I U T
-C C X I P I<p>Crazy unlock!</blockquote>
-<blockquote>
-<p>↳ reply — <em>crtified</em>:</p>
-<blockquote>A small toy xylophone with each note painted a different colour works by the same principle of abstracting melody into a simple system whose mechanics are already mastered. That kind of device has given children a way to learn Happy Birthday (by simply going Red Red Blue Red Yellow Green.....) for many generations now.<p>The full challenge however is that &quot;knowing how to play an instrument&quot; in the musical context is a deeeeep, deep well, and that any musician is only as informed as their experience. Hitting-notes-in-order means you&#x27;ve just walked into the atrium of a potentially lifelong learning experience, no matter what the instrument.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: How random are you?</title>
-      <link>https://lab.specr.net/rigged-draw/</link>
-      <guid isPermaLink="false">hn3-50074909</guid>
-      <pubDate>Tue, 13 Oct 2026 16:57:57 +0000</pubDate>
-      <description>161 points, 81 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://lab.specr.net/rigged-draw/"><strong>→ Article</strong></a> <small>(lab.specr.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50074909">→ HN comments</a> &nbsp;·&nbsp; 161 points &nbsp;·&nbsp; 81 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>costco</em>:</p>
-<blockquote>This is a nice spin on the Aaronson oracle:<p>&gt; In a class I taught at Berkeley, I did an experiment where I wrote a simple little program that would let people type either “f” or “d” and would predict which key they were going to push next. It’s actually very easy to write a program that will make the right prediction about 70% of the time. Most people don’t really know how to type randomly. They’ll have too many alternations and so on. There will be all sorts of patterns, so you just have to build some sort of probabilistic model. Even a very crude one will do well. I couldn’t even beat my own program, knowing exactly how it worked. I challenged people to try this and the program was getting between 70% and 80% prediction rates. Then, we found one student that the program predicted exactly 50% of the time. We asked him what his secret was and he responded that he “just used his free will.”</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>vunderba</em>:</p>
-<blockquote>I&#x27;d never heard of the Aaronson oracle so thanks for the link!<p>I actually built this on a whim after watching that episode of TNG where Data locks everyone out of the Enterprise.<p><a href="https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=rERApU26PcA" rel="nofollow">https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=rERApU26PcA</a></blockquote>
-<p>↳ reply 2 — <em>nico</em>:</p>
-<blockquote>The implementation on that website (<a href="https:&#x2F;&#x2F;aaronsonoracle.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;aaronsonoracle.com&#x2F;</a>) is uncanny, I recommend everyone to check it out<p>And it inspired me to build a little game based on it. See if AI can read you mind: <a href="https:&#x2F;&#x2F;jeffyclassify.com&#x2F;blog&#x2F;mind-reader&#x2F;" rel="nofollow">https:&#x2F;&#x2F;jeffyclassify.com&#x2F;blog&#x2F;mind-reader&#x2F;</a></blockquote>
-<p>↳ reply 3 — <em>tyre</em>:</p>
-<blockquote>There&#x27;s another version where a stats professor divides people into two groups. One group flips a coin 50 times and writes on a whiteboard the results. The other comes up with 50 results.<p>They leave the room and when they come back immediately know which is which. Specifically because of the over-alternation that yours mentioned. A string of HHHHHH is exactly as likely as HTHTHT, but people don&#x27;t intuit that.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>frutiger</em>:</p>
-<blockquote>How are you sealing the predictions?</blockquote>
-<p><strong>Top #3</strong> — <em>m463</em>:</p>
-<blockquote>Dilbert<p>&quot;Over here we have our random number generator.&quot;<p><a href="https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20230305130159im_&#x2F;https:&#x2F;&#x2F;assets.amuniversal.com&#x2F;321a39e06d6401301d80001dd8b71c47" rel="nofollow">https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20230305130159im_&#x2F;https:&#x2F;&#x2F;assets...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>savef</em>:</p>
-<blockquote>xkcd with a similar joke:
-<a href="https:&#x2F;&#x2F;xkcd.com&#x2F;221&#x2F;" rel="nofollow">https:&#x2F;&#x2F;xkcd.com&#x2F;221&#x2F;</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Gemini 4 Argon for Robotics</title>
-      <link>https://developers.googleblog.com/gemini-4-argon-for-robotics/</link>
-      <guid isPermaLink="false">hn3-50074869</guid>
-      <pubDate>Tue, 13 Oct 2026 16:55:47 +0000</pubDate>
-      <description>194 points, 45 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://developers.googleblog.com/gemini-4-argon-for-robotics/"><strong>→ Article</strong></a> <small>(developers.googleblog.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50074869">→ HN comments</a> &nbsp;·&nbsp; 194 points &nbsp;·&nbsp; 45 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>comandillos</em>:</p>
-<blockquote>I am very new to robots and recently decided to go crazy and buy a humanoid from Unitree. I&#x27;ve spent a while building some tools in order to integrate LLMs with vision capabilities that can control the robot motion in a simple manner... and while I saw Opus and Astra crashing against tables, beds and surfaces (yeah, my LIDAR data isn&#x27;t being used yet), Argon 4 takes a lot of precautions to avoid crashing against walls and other objects! I told my robot to go to a table, and the guy started walking slowly to the table, started steering at it and described the objects in it. Pretty scary for being something I&#x27;ve vibecoded in a matter of hours at home...</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Hardwired8976</em>:</p>
-<blockquote>Being new to a hobby and spending 30k on a robot is crazy, props to your wealth.</blockquote>
-<p>↳ reply 2 — <em>itissid</em>:</p>
-<blockquote>Do you think the R1 you got can actually be taught to clean dishes and put them in a dishwasher in their specific sections? I see it doing so in  <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=k1JIyXM5qGw" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=k1JIyXM5qGw</a></blockquote>
-<p>↳ reply 3 — <em>TacticalCoder</em>:</p>
-<blockquote>I&#x27;d love to play with this but something freaks me out: we heard no later than yesterday hackers ruining tens of millions of food by heating connected fridges in supermarket in France.<p>What happens when people decide to hack the Unitree robots and have them pick up knives and stab their owner and then go on a spree in the street?<p>Before people say: <i>&quot;But that&#x27;s never going to happen, nobody would ever do that!&quot;</i> I&#x27;d like to state again the fact that people did just remotely hack fridges to ruin food.<p><i>&quot;But ruining food for everybody is nothing, it&#x27;s just kids playing around, people would never hack robots to hurt other humans!&quot;</i>.<p>Is that what people really think?<p>Or do they think that <i>&quot;this time programmers managed to create secure software that cannot be hacked into&quot;</i>?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>martythemaniak</em>:</p>
-<blockquote>I&#x27;m a robotics noob currently building a prototype of a snow sweeping robot (www.frost-e.com) using my own design and I&#x27;m encouraged to see similar work coming from real places. Namely:<p>- Zero shot control using a visual harness and action primitives. I&#x27;ve seen this from a few other places as well (<a href="https:&#x2F;&#x2F;tml.stanford.edu&#x2F;homebody&#x2F;" rel="nofollow">https:&#x2F;&#x2F;tml.stanford.edu&#x2F;homebody&#x2F;</a>) and it&#x27;s essentially having a generalist LLM command a robot via a set of predefined actions. Many robots and many tasks can probably be done with this approach, since not everything needs super intricate 6DoF arms or dexterity<p>- simulation bring-ups: I have a pipeline that takes in satellite imagery and reconstructs the lots and houses in a 3D environment and snows on it so that my virtual robot can learn to clean. With these latest models, you can probably create a higher fidelity digital twin more directly.<p>- self-improvement: These models (Argon, Astra, etc) can&#x27;t operate the robot itself, but would be able to create data to distill into smaller models you can actually utilize.</blockquote>
-<p><strong>Top #3</strong> — <em>dr_dshiv</em>:</p>
-<blockquote>Anyone try it with the SO101?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Cyberattack halts construction of tunnel between Denmark and Germany</title>
-      <link>https://ua.news/en/world/kiberataka-zupinila-budivnitstvo-tuneliu-mizh-daniieiu-ta-nimechchinoiu-rmf24</link>
-      <guid isPermaLink="false">hn3-50074289</guid>
-      <pubDate>Tue, 13 Oct 2026 16:24:15 +0000</pubDate>
-      <description>151 points, 121 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://ua.news/en/world/kiberataka-zupinila-budivnitstvo-tuneliu-mizh-daniieiu-ta-nimechchinoiu-rmf24"><strong>→ Article</strong></a> <small>(ua.news)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50074289">→ HN comments</a> &nbsp;·&nbsp; 151 points &nbsp;·&nbsp; 121 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mbgerring</em>:</p>
-<blockquote>Big picture, where this leads is a lot of physical stuff just getting unplugged from the Internet.<p>It&#x27;s very easy to see how this goes — one side of the ledger is the cost savings you get from remote monitoring, remote control, automated cloud backups of access logs from employee badges, or whatever dumb reason this system was internet-connected in the first place.<p>On the other side of the ledger is the potential cost and probability of a shutdown from a cyberattack, whether that&#x27;s from a belligerent state actor, a malfunctioning or maliciously deployed AI agent swarm, weird accelerationist hackers, or whatever, plus the cost of constantly defending and hardening systems against attack.<p>Chances are, the cost&#x2F;benefit analysis will <i>heavily</i> favor just unplugging the thing from the Internet.</blockquote>
-<p><strong>Top #2</strong> — <em>atleastoptimal</em>:</p>
-<blockquote>AI will exponentially increase the number of cyberattacks. The likely outcome is<p>1. Legacy firmware will be a bloodbath, leading to a consolidation of firms<p>2. All digital infrastructure will have an always on AI &quot;shield&quot; of agents that monitor and defend against attacks<p>3. The attacks that survive will depend on human points of failure, leading to less control for humans being the default</blockquote>
-<blockquote>
-<p>↳ reply — <em>bakies</em>:</p>
-<blockquote>very doubtful it will be exponential, considering that blue teams can use it too, and backend engineers are using it for security too.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>armcat</em>:</p>
-<blockquote>Karpathy yesterday posted [1] about the gap between small % of population getting high leverage from AI, and the rest of the world. We have a much more urgent gap between software powering the &quot;physical world&quot;, and the digital natives. The digital natives now have 10x leverage with AI, with the ability to rapidly find and deploy exploits. We&#x27;re now seeing a lot of this - fridges defrosting, access cards for construction workers not working. Next is train and air traffic controls, bank transactions&#x2F;clearing wiped out, shipping being dismantled and so on. The gap is now being fully exposed.<p>[1] <a href="https:&#x2F;&#x2F;x.com&#x2F;karpathy&#x2F;status&#x2F;2109361546505966046?s=20" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;karpathy&#x2F;status&#x2F;2109361546505966046?s=20</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rkagerer</em>:</p>
-<blockquote>To be fair, there&#x27;s enormous technical debt out there stemming from decades of crappy software&#x2F;firmware that was churned out with little attention to security.  Like, where the whole design of the system was effectively flawed.<p>The capabilities of AI are bringing the power to exploit those a larger audience (where before it was in the limited hands of nation states and other well-funded organizations, hacker groups, and a comparatively few talented individuals).<p>I agree it&#x27;s problematic in practice, but I&#x27;m hopeful this will catalyze everyone to be a hell of a lot more disciplined in hardening their products and platforms.</blockquote>
-<p>↳ reply 2 — <em>lifestyleguru</em>:</p>
-<blockquote>ok so we fixed healthcare, how do I access it? If &quot;that&quot; thing is so smart why this post is behind login-wall, posting text on the internet is still beyond its capabilities?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Gemini 4 Argon</title>
-      <link>https://deepmind.google/models/gemini/</link>
-      <guid isPermaLink="false">hn3-50073879</guid>
-      <pubDate>Tue, 13 Oct 2026 16:03:16 +0000</pubDate>
-      <description>967 points, 736 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://deepmind.google/models/gemini/"><strong>→ Article</strong></a> <small>(deepmind.google)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50073879">→ HN comments</a> &nbsp;·&nbsp; 967 points &nbsp;·&nbsp; 736 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>svara</em>:</p>
-<blockquote>I haven&#x27;t tried it for coding yet, but I ran a couple of my recent curiosity driven queries from Claude (mostly used Fable and Opus 5.5) through it.<p>This is a clear step change, I&#x27;m genuinely amazed.<p>Its answers are to-the-point, logically structured, clearly written. Like a really well made mini essay on your question.<p>It also really likes to build little simulations &#x2F; models that you can tweak the parameters on. Amazing to explore how different assumptions affect economic scenarios, for example.<p>It&#x27;s also great at picking (sourced) illustrations.<p>I&#x27;ll be using this for everything that isn&#x27;t coding from now on.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>sebmellen</em>:</p>
-<blockquote>It’s wild how good it is at explaining nuanced and complex health topics.<p>As an example, I recently had an OCT scan of my retina because I&#x27;m a “glaucoma suspect.” I&#x27;m a glaucoma suspect because I have an unusually high cup-to-disc ratio, which is a pattern typically seen in glaucomatous patients.<p>As part of this OCT scan, you get a report back on your RNFL, which is basically a report on the health and thickness of your optic nerve(s) and retina(s). (Dramatically oversimplifying, of course.)<p>My ophthalmologist struggled to explain my OCT scan results to me and instead sort of shrugged and said, &quot;It&#x27;s probably because you&#x27;re a high myope, but we&#x27;ll keep you coming in once a year.”<p>But my scans look horrifically bright red — meaning I&#x27;m in less than the first percentile of retinal thickness for my age. Obviously concerning enough to do my own research…<p>ChatGPT 6 Pro and Opus 5.5 have struggled to make any sense of the clinical implications of these scans. In contrast, Argon was the first model to:<p>1. explain how the OCT machine works<p>2. detail the physiological mechanism that causes the cupping and thinner RNFL layers in my scenario<p>3. sum it up into a clinical recommendation (similar to what my ophthalmologist recommended, with the addition of basic supplementation and lifestyle modification changes)<p>4. provide an interactive visualization of the topography of my eye vs a glaucomatic eye: <a href="https:&#x2F;&#x2F;optic-nerve-3d.netlify.app&#x2F;" rel="nofollow">https:&#x2F;&#x2F;optic-nerve-3d.netlify.app&#x2F;</a><p>I&#x27;m blown away.</blockquote>
-<p>↳ reply 2 — <em>A_D_E_P_T</em>:</p>
-<blockquote>Totally agree.  This is my new favorite general-purpose&#x2F;non-coding model.  It&#x27;s surprising how good this thing is... And <i>fast</i>, too.</blockquote>
-<p>↳ reply 3 — <em>HSO</em>:</p>
-<blockquote>&gt; I&#x27;ll be using this for everything that isn&#x27;t coding from now on.<p>why? is it not so good on that? or is there something better performance, or better price for same performance?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>I_am_tiberius</em>:</p>
-<blockquote>I just created a Google account, which was a hassle. I tried to find an app and found AI Studio, but I’m not sure what that is. Then I found Antigravity, which apparently is Google’s alternative to Codex, and I installed it. Then I tried to buy the small Gemini AI Ultra package, but it didn’t let me pay. It accepted neither my credit card nor my PayPal account. It’s crazy how bad the Google experience is nowadays. You don’t know what to use or where to find it, and the security measures seem totally overkill. Am I really the only one having these experiences? Is Google aware of that?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dynm</em>:</p>
-<blockquote>I bought a google play card (or whatever it&#x27;s called) with cash due to these issues. Result: Instantly rejected + locked after entering the code, no credit, no dispute, no customer service, no refund.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rdtsc</em>:</p>
-<blockquote>I am not touching it for that reason. One wrong step and the whole gmail account is locked without any recourse.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bluerooibos</em>:</p>
-<blockquote>Yeah being presented with these options is such poor UX:-<p>- Try in Gemini<p>- Try in Google AI Studio<p>- Try in Google Antigravity<p>Will non users of Google products even know what these three things even are?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>damsta</em>:</p>
-<blockquote>&gt; The model launches today at an introductory price of $2 per million input tokens and $10 per million output tokens (with cached input tokens at 95% off).<p>Couldn&#x27;t you just say what the price will be after the introductory period and when it&#x27;ll take effect? Do they have some SKILL.md for these blog posts that requires the most important information to always be buried ten levels deep and hidden behind a login page?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>simonw</em>:</p>
-<blockquote>They&#x27;re doubling the price on December 1st: <a href="https:&#x2F;&#x2F;ai.google.dev&#x2F;gemini-api&#x2F;docs&#x2F;pricing#gemini-4-argon" rel="nofollow">https:&#x2F;&#x2F;ai.google.dev&#x2F;gemini-api&#x2F;docs&#x2F;pricing#gemini-4-argon</a><p>$2&#x2F;million input and $10&#x2F;million output today. $4&#x2F;$20 after December 1st.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nateb2022</em>:</p>
-<blockquote>With the pace they&#x27;re delivering models, there&#x27;s gonna be 1-2 new Gemini 4 versions by December 1st, presumably with their own introductory price windows. We just got Gemini 3.8 on 2 September and Gemini 3.7 on 13 August.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>gcanyon</em>:</p>
-<blockquote>This reminds me of telephone commercials that ran back around 1987, saying they were offering long distance calls for 10 cents a minute (a pretty good price back then) and -- this was emphasized, a huge selling point -- <i>they guaranteed your rate would never go up</i>. In retrospect, all the lols :-)</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mrandish</em>:</p>
-<blockquote>&gt; Couldn&#x27;t you just say what the price will be after the introductory period<p>+1. FWIW, I didn&#x27;t even get far enough to wonder about the price.<p>The lead (and only) sentence states <i>&quot;Our next era of frontier intelligence, built to solve your hardest problems&quot;</i> a statement equally true of any new Google or competitor model, hence completely devoid of useful meaning. I then kept scrolling down... and down... and down, giving up after a half dozen screens of big images, huge videos and some customer stories. The first sentence of every text block was equally vague or meaningless so... tv;dr (Too vague, didn&#x27;t read).<p>Even the Gemini sub-reddit is laughing: <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;GeminiAI&#x2F;comments&#x2F;1x2dr47&#x2F;the_latest_benchmark_shows_gemini_4_argon_leading&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;GeminiAI&#x2F;comments&#x2F;1x2dr47&#x2F;the_lates...</a></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Redesigning source control at Anthropic</title>
-      <link>https://www.anthropic.com/engineering/redesigning-source-control</link>
-      <guid isPermaLink="false">hn3-50073633</guid>
-      <pubDate>Tue, 13 Oct 2026 15:49:56 +0000</pubDate>
-      <description>519 points, 513 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/engineering/redesigning-source-control"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50073633">→ HN comments</a> &nbsp;·&nbsp; 519 points &nbsp;·&nbsp; 513 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>offsky</em>:</p>
-<blockquote>30,000 code changes per day and yet I still can’t change the email address on my account?</blockquote>
-<blockquote>
-<p>↳ reply — <em>winrid</em>:</p>
-<blockquote>Lol I have the same thoughts for ChatGPT. How much code are they writing, but the main chat UI moves around like 3 times during load so you constantly click the wrong buttons. How does this not infuriate anyone that works there? I&#x27;ve actually switched to claude&#x27;s mobile site for more queries now.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>zmmmmm</em>:</p>
-<blockquote>&gt; As our monorepo grows, it increasingly doesn’t fit that design space. The history of our main branch alone is almost 100 GB<p>The first thing that hits me is, did you consider not going all in on a monorepo?  I know it has been the trend in general, but it seems a bit of a red flag when you go from &quot;let&#x27;s have a monorepo it will make merging easier&quot; to &quot;let&#x27;s redesign version control because merging is too hard now&quot; without the middle question &quot;should we really have a monorepo?&quot;<p>As a derivative thought I&#x27;m curious if AI tooling is tipping people more towards monorepos now since it gives the agent the whole context of the app in one go? Or is this independent - I can easily check out 5 repos in one directory and run an agent there.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>adsharma</em>:</p>
-<blockquote>There is a strong human incentive to have a monorepo in a corporate environment. This is not a technical question.<p>An entire dept exists to make it work. Atomicity and security are other arguments. The larger the company, the stronger the incentive.<p>It&#x27;s not something average software developers working elsewhere care about much.<p>Amazon seems to be the only big company bucking this trend.</blockquote>
-<p>↳ reply 2 — <em>nl</em>:</p>
-<blockquote>At work we don&#x27;t have a monorepo and I do the &quot;check out 5 repos in one directory and run an agent there&quot; thing (I literally called the directory faux-mono)<p>Doing it like that works, but then you end up doing all the cross-repo concerns in every single repo. I don&#x27;t think the savings in history are all that much anyway - yes, you save on the rarely modified repos but the heavily modified repos still have a similar amount of changes.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>kburman</em>:</p>
-<blockquote>Not to downplay Anthropic&#x27;s engineering work here, but I suspect we&#x27;ll see a lot more reinvention of the wheel, even at smaller startups, as AI makes writing code significantly cheaper.<p>The tradeoff between building something custom and adapting an existing solution is changing. Whether maintaining all that custom software turns out to be equally cheap is another question.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>eddythompson80</em>:</p>
-<blockquote>When people wonder about where all the productivity of LLMs is going to I think this is part of the answer.<p>There is no doubt everyone is far more productive with LLMs in generating code. However, a lot of productivity is going into things like that. Have you always been bothered by the limitations of Grafana? You can generate another dashboarding solution that works best for you. You know that deployment team that is so slow and annoying? Now you can generate your own deployment engine. Have you always hated how kubectl lets you manage one k8s cluster at a time? Now you can ask AI to generate fleetctl. You can start your project with DynamoDB, rewrite it to mysql, then to postgres, then to duckdb. Start with Python, switch to Golang, then switch to Rust. Deploy on AWS, then move to Azure, then move to a hybrid option then throw colocation in the mix. Don&#x27;t like your source control? create a new one. Json is too limiting? Invent a hybrid JSON&#x2F;HCL language. The browser sandbox is limited? Make a desktop app, make a language, make an OS, make a kernel.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>skydhash</em>:</p>
-<blockquote>&gt; However, a lot of productivity is going into things like that. Have you always been bothered by the limitations of Grafana? You can generate another dashboarding solution that works best for you. [...] The browser sandbox is limited? Make a desktop app, make a language, make an OS, make a kernel.<p>This is one of the core reason that I dislike the LLM hyping. People are just reinventing stuff and when you ask them, it&#x27;s actually a very subjective reason. Ok, anyone can do what they want with their time, the issue is that they want people to follow in their steps.<p>Not saying that you need a novel idea to be worthy, but those random projects have no guarantees behind them other than some cursory testing. All software have bugs, but I can&#x27;t interact with something that is randomly built.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>epolanski</em>:</p>
-<blockquote>I don&#x27;t see the problem.<p>I am one of those people that reinvents the wheels because external ones don&#x27;t fit my use cases.<p>The fact I can now fork any software and do these changes I always wanted but had no time to is amazing to me.<p>I do not pretend to sell it or share it, as it is de facto void of any value whatsoever.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jacquesm</em>:</p>
-<blockquote>The question was never whether you could do this or not. It was always whether it was wise to do so or not. More than one company has gone under writing their own editor, compiler, database engine, operating system, source code control system, ticketing system, CMS or ERP.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I posted to HN, and then my website was flooded with AI bot traffic</title>
-      <link>https://www.sammystraus.com/#i-posted-to-hn-and-then-my-website-was-flooded-with-ai-bot-traffic</link>
-      <guid isPermaLink="false">hn3-50073221</guid>
-      <pubDate>Tue, 13 Oct 2026 15:25:50 +0000</pubDate>
-      <description>239 points, 146 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.sammystraus.com/#i-posted-to-hn-and-then-my-website-was-flooded-with-ai-bot-traffic"><strong>→ Article</strong></a> <small>(sammystraus.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50073221">→ HN comments</a> &nbsp;·&nbsp; 239 points &nbsp;·&nbsp; 146 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>switz</em>:</p>
-<blockquote>There is so much spam, abuse, and aggressive scraping that I&#x27;ve had to block:<p><pre><code>  - AWS
-  - Google Cloud
-  - Azure
-  - Alibaba Cloud
-  - Oracle
-</code></pre>
-and a handful of other ASNs on almost all of my properties. It would be one thing if it was simple scraping, but it&#x27;s often genuine agentic abuse (just spamming for vulnerabilities* or scraping millions of pages with very little valuable or dynamic content). These clouds must get the abuse happening under their own roof under control.<p>I banned Alibaba&#x27;s Cloud two years ago and it still hits one of my domains 1 million times per day, despite every route 4xx-ing during that time.<p>Even Apple has aggressively ramped up its scraping in the past few months, but thankfully they do respect robots.txt.<p>It&#x27;s frustrating because some of my real users route through these clouds via their work VPNs. Also, there are a lot of less-than-reputable AI scrapers using global bot-nets via residential IPs to scrape, making it even harder to detect and ban them without affecting real people.<p>* like leaked .env routes, brute forcing admin panels, and so on</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pyrale</em>:</p>
-<blockquote>&gt; I banned Alibaba&#x27;s Cloud two years ago and it still hits one of my domains 1 million times per day, despite every route 4xx-ing during that time.<p>You may as well silently drop the packets if they don&#x27;t adapt.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>herbst</em>:</p>
-<blockquote>Having the same issue with Bing bot. No idea why it&#x27;s so eager to not behave.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>BizarroLand</em>:</p>
-<blockquote>Microsoft has never understood consent</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Sharlin</em>:</p>
-<blockquote>Application-level banning seems very inefficient, these domains should be banned at the network (IP) level. Just drop any incoming packets from these domains&#x2F;IPs, send absolutely nothing back that even confirms that you exist.</blockquote>
-<p>↳ reply 3 — <em>SoftTalker</em>:</p>
-<blockquote>Can you do something with fail2ban? I.e. after a small number of requests resulting in 401 or 404, or a series of requests that&#x27;s too fast to be reasonably from a human, ban that address for 48 hours.<p>If a legitimate request later comes from that address, it will probably get through.<p>But not sure how well iptables handles checking every connection against a list of possibly hundreds of thousands of addresses.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>firefoxd</em>:</p>
-<blockquote>Last year, I wrote a post about how I use zipbombs to deal with bot traffic [0]. It went mega viral over the web, and I regret it. My server was completely overwhelmed with bot traffic. After months of dealing with it, I had to find a better strategy then keep my mouth shut.<p>[0]: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=43826798">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=43826798</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kazinator</em>:</p>
-<blockquote>Last year, I read your post and implemented it. I had no way to tell whether there  is any benefit to it, so I discontinued it. Serving the data, even though it is compressed and the compression is precomputed, was still a waste of bandwidth. It could hit the browsers of legit user (false positive).<p>The main problem on my site is that bots hit the CGIT repo, where visiting files triggers syntax highlighting scripts.<p>I put in a skill-testing-question type system where you get a maximally long-lived access cookie if you answer right (so legit users are bothered as infrequently as possible).</blockquote>
-<p>↳ reply 2 — <em>driverdan</em>:</p>
-<blockquote>So it ended up not having a noticeable impact on the bots?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>pmlnr</em>:</p>
-<blockquote>I really recommend blocking all traffic from anything on <a href="https:&#x2F;&#x2F;github.com&#x2F;borestad&#x2F;blocklist-abuseipdb" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;borestad&#x2F;blocklist-abuseipdb</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>BLKNSLVR</em>:</p>
-<blockquote>Thanks for posting this, as a paranoid self-hoster, I&#x27;ll be adding it to my already extensive set of block lists.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
