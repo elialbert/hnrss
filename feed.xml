@@ -4,7 +4,92 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 18 Oct 2026 13:53:07 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 17:13:01 +0000</lastBuildDate>
+    <item>
+      <title>Parser Combinators</title>
+      <link>https://t3.at/blog/2026-10-17-parser-combinators/</link>
+      <guid isPermaLink="false">hn3-50139067</guid>
+      <pubDate>Sun, 18 Oct 2026 08:19:53 +0000</pubDate>
+      <description>155 points, 60 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://t3.at/blog/2026-10-17-parser-combinators/"><strong>→ Article</strong></a> <small>(t3.at)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50139067">→ HN comments</a> &nbsp;·&nbsp; 155 points &nbsp;·&nbsp; 60 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>BoppreH</em>:</p>
+<blockquote>If you&#x27;re on Python and your problem is too big for a single regex, but too small for a full-blown parser like in the article, I can recommend the built-in re.Scanner[0]. It&#x27;s a regex-based tokenizer[1] (so no recursive parsing) in the `re` module, that for reasons is completely missing from any official documentation.<p>You give it a pattern for each token type, and a function to process each match, and you get back a list of processed tokens.<p>Importantly, it processes the list in one pass and ensures the matches are contiguous, where a naive `re.findall` with capture groups will ignore unmatched characters. You also get a reference to the running scanner, so you can record the location of the match for reporting errors.<p><pre><code>    import re
+
+    # Initialize the scanner.
+    scanner = re.Scanner([
+      (r&quot;\d+&quot;,   lambda scanner, token: (&#x27;COUNT&#x27;, int(token))),
+      (r&quot;\w+&quot;,   lambda scanner, token: (&#x27;ANIMAL&#x27;, token.removesuffix(&#x27;s&#x27;))),
+      (r&quot;[,. ]&quot;,     None), # None -&gt; skip token.
+    ])
+
+    # Scan a sample string.
+    results, remainder = scanner.scan(&quot;45 pigeons, 23 cows, 11 spiders.&quot;)
+
+    # Ensure we parsed the whole thing.
+    assert not remainder
+
+    print(results)
+    # [(&#x27;COUNT&#x27;, 45),
+    #  (&#x27;ANIMAL&#x27;, &#x27;pigeon&#x27;),
+    #  (&#x27;COUNT&#x27;, 23),
+    #  (&#x27;ANIMAL&#x27;, &#x27;cow&#x27;),
+    #  (&#x27;COUNT&#x27;, 11),
+    #  (&#x27;ANIMAL&#x27;, &#x27;spider&#x27;)]
+</code></pre>
+[0]: <a href="https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;693818&#x2F;252218" rel="nofollow">https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;693818&#x2F;252218</a><p>[1]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lexical_analysis#Tokenization" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lexical_analysis#Tokenization</a></blockquote>
+<p><strong>Top #2</strong> — <em>marginalia_nu</em>:</p>
+<blockquote>I don&#x27;t understand why this can&#x27;t be on a single page.  Makes it really hard to refer back to earlier &quot;chapters&quot; as you get new information when it&#x27;s a slideshow.  Can&#x27;t search either.<p>Seems like we&#x27;re needlessly reintroducing limitations from the paper medium that don&#x27;t exist in digital media for weird aesthetic reasons?</blockquote>
+<blockquote>
+<p>↳ reply — <em>MattRix</em>:</p>
+<blockquote>I get your argument, but I liked it! Something about isolating each segment makes it feel more readable. Perhaps in an ideal world every article like this would allow the reader to switch between &quot;slideshow&quot; and &quot;single page&quot; view, since the same content would work for both.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>akst</em>:</p>
+<blockquote>I think this is really cool website and love this topic<p>But I think you might want to test this page on smaller screens, just very limited screen real estate for the content of interest, the top right half lots of padding, the scrollable content basically has 1&#x2F;3 of the available screen space, the left hand side kind of has another 1&#x2F;3<p>Look your website your vision, I get it and I respect your trying something different with the UI but if your goal here is to communicate your ideas, as a reader I&#x27;d appreciate having more screen space for the content, when I clicked on the link to see this specific post I&#x27;m just not interested in your other posts (or at least until I&#x27;ve read the one I went out of my way to read).<p>FWIW, I&#x27;m using a macbook air right now.</blockquote>
+<blockquote>
+<p>↳ reply — <em>schindlabua</em>:</p>
+<blockquote>Thanks for the feedback. The idea was to create something between a youtube video and a blog post and something you can consume in bite-sized pieces. I&#x27;d like the visuals to do most of the talking but I guess parser combinators came out with a lot of text anway. I&#x27;ll try to tighten up the UI some and get a smaller phone for testing.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>doginasuit</em>:</p>
+<blockquote>I really enjoyed it and I look forward to trying out the ideas.<p>I think you are close to every effective presentation format, but the cramped space for the text was the biggest friction. The moving visuals, as helpful as they are, also became a little distracting as I was trying to absorb the meaning of the text. You could solve both issues with a toggle to hide or expand the visual.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>DeepSeek search and fetch – $0.75 per 1000 successful requests</title>
+      <link>https://api-docs.deepseek.com/guides/search/</link>
+      <guid isPermaLink="false">hn3-50138531</guid>
+      <pubDate>Sun, 18 Oct 2026 06:50:36 +0000</pubDate>
+      <description>419 points, 205 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://api-docs.deepseek.com/guides/search/"><strong>→ Article</strong></a> <small>(api-docs.deepseek.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50138531">→ HN comments</a> &nbsp;·&nbsp; 419 points &nbsp;·&nbsp; 205 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>nikvdp</em>:</p>
+<blockquote>What are people actually using these hosted search providers for? For personal use I&#x27;ve found using searxng-ai-kit [1] (disclaimer: I&#x27;m the author) or similar tools to be far more cost effective (free!). oh-my-pi uses a similar method and will scrape search results for you out of the box, no api key or search provider needed.<p>[1]: <a href="https:&#x2F;&#x2F;github.com&#x2F;nikvdp&#x2F;searxng-ai-kit" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nikvdp&#x2F;searxng-ai-kit</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>karmakaze</em>:</p>
+<blockquote>I ran into a thing running a local dense LLM on DSH (without DeepSeek API key) that doesn&#x27;t use many MoE experts with vast knowledge. It ends up doing a lot of searching. In the end my local AI is as free as electricity but I pay for the searches.<p>The search providers I pay likely don&#x27;t pay their sources. Some others (that I don&#x27;t use) don&#x27;t even have the original text only providing summaries. Some offer both.</blockquote>
+<p>↳ reply 2 — <em>hobofan</em>:</p>
+<blockquote>Any organization that wants reliable latency, data processing guarantees (it&#x27;s a big leak vector for company secrets), etc., will use such a search provider over the solutions you outlined.<p>Especially for chat-like use-cases (in contrast to coding), latency is a lot more critical, especially if you kick off a small single query question. On antother axis, scrape-reliabilty is important for a deep research job that will fire ~10+ web searches and ~100+ web fetches.<p>e.g. in our chat platform[0], we offer first party MCP servers for web search[1] and web access[2] which work decently well, but some of our customers that prioritize quality over cost, they go with dedicated providers like LinkUp[3]<p>[0]: <a href="https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;erato" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;erato</a><p>[1]: <a href="https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;web-search-mcp" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;web-search-mcp</a><p>[2]: <a href="https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;web-access-mcp" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;web-access-mcp</a><p>[3]: <a href="https:&#x2F;&#x2F;www.linkup.so&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.linkup.so&#x2F;</a></blockquote>
+<p>↳ reply 3 — <em>Havoc</em>:</p>
+<blockquote>I have a searxng instances but stopped using it after doing a comparison vs actual search provider APIs.<p>searxng gets rate limited fast and the results are inconsistent depending on what providers it can reach at any given time &#x2F; isn&#x27;t captcha&#x27;d out.<p>Meanwhile there are multiple providers with generous free tiers so no point in feeding LLMs inferior data<p>Also did a couple of side by side tests asking LLMs directly which feed results it prefer for some sample technical searches. Exa and tavily #1, brave #2, searx last</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>thombles</em>:</p>
+<blockquote>For comparison that’s $5 with Brave Search API and $12 with Kagi API</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>loehnsberg</em>:</p>
+<blockquote>Kagi MCP works really well imo also within DeepSeek Harness. Just looking at cost neglects the possible difference in quality. How good is that DeepSeek web search&#x2F;fetch?</blockquote>
+<p>↳ reply 2 — <em>ece</em>:</p>
+<blockquote>$4 with Exa, $1.50 with SERP API</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>vitorsr</em>:</p>
+<blockquote>Meant as a comparison given the discrepant pricing points:<p>I pay the Exa premium for semantic retrieval with far higher SNR, plus the academic index [1].<p>A field like objective can be up to 4096 characters [2] versus ori_question which is limited to 128 here.<p>[1] <a href="https:&#x2F;&#x2F;exa.ai&#x2F;blog&#x2F;publications-search">https:&#x2F;&#x2F;exa.ai&#x2F;blog&#x2F;publications-search</a><p>[2] <a href="https:&#x2F;&#x2F;exa.ai&#x2F;docs&#x2F;reference&#x2F;search">https:&#x2F;&#x2F;exa.ai&#x2F;docs&#x2F;reference&#x2F;search</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>smusamashah</em>:</p>
+<blockquote>Have you seen this <a href="https:&#x2F;&#x2F;sciencemadereadable.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;sciencemadereadable.com&#x2F;</a> it has free rate limited api end point too.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Show HN: Sphinx – A hook that quizzes you on your AI's code before shipping</title>
       <link>https://sphinx-six-theta.vercel.app/</link>
@@ -3461,93 +3546,6 @@ People mistakenly transform #1 into #2 unconditionally, not realising that this 
 <blockquote>It’s great, they’re embracing even more the “everything’s a plugin” principle that has been pushed by other harnesses like Deepseek. Shoutout to all the AI model companies out there: if your subscription can’t be used on open code, I’ll buy something else.<p>Many of the workarounds I had to develop for the v1 now come as native features in v2 (i.e. session rebinding to other folders), now the only thing that was missing is the ability of plugins to read the response you’re writing (useful if you want to have the double-Esc feature like in claude code).</blockquote>
 <p><strong>Top #3</strong> — <em>moretti</em>:</p>
 <blockquote>Does opencode support anything similar to claude code&#x27;s auto mode (<a href="https:&#x2F;&#x2F;code.claude.com&#x2F;docs&#x2F;en&#x2F;permission-modes#eliminate-prompts-with-auto-mode" rel="nofollow">https:&#x2F;&#x2F;code.claude.com&#x2F;docs&#x2F;en&#x2F;permission-modes#eliminate-p...</a>)?<p>I&#x27;d like to switch to opencode, But &quot;yolo mode&quot; feels risky and manually approving every command the model runs kills the flow</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Anthropic's Scion is heavily inspired by Mononoke</title>
-      <link>https://sunshowers.io/posts/anthropic-mononoke/</link>
-      <guid isPermaLink="false">hn3-50094694</guid>
-      <pubDate>Wed, 14 Oct 2026 20:30:54 +0000</pubDate>
-      <description>371 points, 137 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://sunshowers.io/posts/anthropic-mononoke/"><strong>→ Article</strong></a> <small>(sunshowers.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50094694">→ HN comments</a> &nbsp;·&nbsp; 371 points &nbsp;·&nbsp; 137 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>BryantD</em>:</p>
-<blockquote>From the Anthropic announcement:<p>“Source control for huge monorepos has prior art, notably Google’s Piper and Meta’s Sapling, so we were able to build Scion with their hard-won lessons in mind.”<p>Mononoke is a component of Sapling, as I understand it. In fact, the repo link provided in this article links to a subdirectory of the Sapling repo. I’m not totally sure I understand the complaint.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>WhitneyLand</em>:</p>
-<blockquote>If I credit my newly introduced car as inspired by Corvette, then sure, it might be ok not to mention the engine (Mononoke is the server part of Sapling)<p>However if my new car&#x27;s engine is a near copy of the one in the Corvette, and my announcement gushes about the engine using the same terms the Corvette design team invented...<p>Then can you see how a mention might be nice?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bloppe</em>:</p>
-<blockquote>Sounds like they did get a mention</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>WhitneyLand</em>:</p>
-<blockquote>They didn’t mention Mononoke.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>tcdent</em>:</p>
-<blockquote>To me, this sounds like it&#x27;s less about the technology, whether it&#x27;s open source or not, and more about the people in the room that are influencing the design, direction, and implementation of it. All of which are very likely to have previous positions at major companies responsible for the products mentioned.<p>Perhaps if there is any ambiguity, it&#x27;s intentional on the part of caution around intellectual property provenance.</blockquote>
-<p>↳ reply 3 — <em>sunshowers</em>:</p>
-<blockquote>The level of inspiration goes well beyond &quot;hard-won lessons&quot;. Something like Lore (slop design document aside) can claim that level of inspiration. Here the data model is a direct copy, down to the terminology.<p>To be uncharitable, this is marketing for Anthropic&#x27;s impending IPO.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>MeetingsBrowser</em>:</p>
-<blockquote>When Fable first released, I had it &quot;one shot&quot; a project using an initial spec and a team of agents. I was blown away with how good the results were.<p>And then I noticed some links to images from random small github projects and realized somewhere along the way agents had searched for existing projects and copied almost everything.<p>I wonder if something similar happened here on a larger scale.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bushido</em>:</p>
-<blockquote>GitHub is to agents what StackOverflow was to developers back in the day (in a meme kinda way).<p>More seriously, I&#x27;m curious if you checked on the licensing of said codebases, were they permissive or strong copyleft?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>NewJazz</em>:</p>
-<blockquote>Lolol nobody is checking that shit. Do most people prompting AIs even understanf what copyleft is?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>hetspookjee</em>:</p>
-<blockquote>I think a lot is memory really. For fun you can try pointing just about any model against the older kaggle challenges and it’ll come up with more or less the winning solution from memory. It’s here where you see a Gemma 27b perform about the same as opus 5.5</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>alper</em>:</p>
-<blockquote>I thought the Anthropic project did read as a tall order to be completed inside a company from scratch.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Yandex outage: data shows that instead of going dark, malicious bots moved</title>
-      <link>https://blog.cloudflare.com/yandex-outage/</link>
-      <guid isPermaLink="false">hn3-50094673</guid>
-      <pubDate>Wed, 14 Oct 2026 20:29:13 +0000</pubDate>
-      <description>259 points, 90 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/yandex-outage/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50094673">→ HN comments</a> &nbsp;·&nbsp; 259 points &nbsp;·&nbsp; 90 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>gruez</em>:</p>
-<blockquote>Buried lede:<p>&gt;across Cloudflare&#x27;s network, there was no evidence that the strikes knocked social media manipulation offline or otherwise disrupted malicious activity on the Internet.<p>This directly refutes the popular memes going around that russian trolls magically went offline because of the attack.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>onlyrealcuzzo</em>:</p>
-<blockquote>Does Cloudflare have much if anything to do with X&#x2F;Twitter and Facebook&#x2F;Instagram and TikTok, or even Reddit?<p>Presumably these bots make up a very small percentage of traffic in comparison to how much they make up in terms of comments.<p>And I doubt they have visibility on the most popular social networks.<p>The reason these bots are able to succeed is because the average person comments and votes so little that there&#x27;s huge volatility between a power user and an average user.  Power users are also not <i>that</i> rare, so it&#x27;s hard to determine who&#x27;s a power user and who&#x27;s a bot (though most power users probably are bots).<p>You can make up a significant portion of comments and votes (especially on a topic) with a <i>VERY</i> small amount of the total viewing traffic.</blockquote>
-<p>↳ reply 2 — <em>jrochkind1</em>:</p>
-<blockquote>The popular memes that were based on people&#x27;s assumptions or guesses or stories based on... cloudflare own tweets!<p><a href="https:&#x2F;&#x2F;x.com&#x2F;cloudflareradar&#x2F;status&#x2F;2108122893028671604" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;cloudflareradar&#x2F;status&#x2F;2108122893028671604</a><p><a href="https:&#x2F;&#x2F;x.com&#x2F;CloudflareRadar&#x2F;status&#x2F;2110113211059994638" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;CloudflareRadar&#x2F;status&#x2F;2110113211059994638</a><p>Which cloudflare also doesn&#x27;t mention, that their vague and misleading tweet was responsible for these rumors that they are now trying to quash too. Tweets starting October 8th and continuing. That they&#x27;re getting around to being like, yeah guys that data didn&#x27;t mean that a week later.<p>This is how &quot;news&quot; and &quot;facts&quot; work in 2026.</blockquote>
-<p>↳ reply 3 — <em>jmuguy</em>:</p>
-<blockquote>Anyone that actually uses Cloudflare and manages their own bot traffic saw those graphs getting passed around and cringed.  It has been an interesting thing to watch though as it was disseminated, echoed, and remixed with all sorts of &quot;evidence&quot; of this or that engagement dropping.<p>Russian state actors and propaganda networks literally using Yandex&#x27;s ASN is like the CIA calling you from a payphone in the lobby of Langley.<p>Now you could say that parts of their infrastructure were hosted in there, and I&#x27;m sure it was, but the &quot;bot&quot; traffic narrative was pretty stupid.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Bender</em>:</p>
-<blockquote>Just anecdotally I still see as many bots as always.  Embrace the bots, have fun with them.<p><pre><code>    # nginx rule to Awaken AWS GuardDuty and GCP SCC, maybe get them to fix a few VMs, enable on all non-wordpress sites after testing in dev&#x2F;qa
-    location ~* &#x2F;(xmlrpc|wp-login\.php|wp-admin) { log_not_found off; access_log off; return 301 http:&#x2F;&#x2F;169.254.169.254$request_uri; }</code></pre></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jmuguy</em>:</p>
-<blockquote>I really ought to do something like this rather than just allowing our logs to endlessly fill with requests for wp-admin.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Bender</em>:</p>
-<blockquote>Another version if this if the 301 is too much is to just close the connection then have a daemon or cron job shove their IP into a NFTables ipset or blackhole route them.  Be sure to have exclusion elements so one can not block their own gateway or corporate SNAT groups.<p><pre><code>    location ~* &#x2F;(xmlrpc|wp-login\.php|wp-admin) { set $ban 1; return 444 &#x27;&#x27;; }
-
-    # grep banip &#x2F;etc&#x2F;nginx.conf
-    log_format banip &#x27;$remote_addr&#x27;;
-
-    # grep banip &#x2F;etc&#x2F;nginx&#x2F;http.d&#x2F;some-server.conf
-    access_log &#x2F;var&#x2F;log&#x2F;nginx&#x2F;ban.log banip if=$ban;</code></pre></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>za_creature</em>:</p>
-<blockquote>&lt;send friend request&gt;</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>taeric</em>:</p>
-<blockquote>Does anyone have the numbers on social media participation?  I don&#x27;t think anyone thought that their ability to execute media influencing activities was completely shutdown, but it did seem that social media was a lot quieter for a time.<p>Easy hypothesis would be that they were (probably accidentally) reliant on the news scraping bots to find where to focus responses and such.  Would be like realizing a lot of US things do down when AWS&#x27; us-east goes down.  It isn&#x27;t literally where everything is hosted.  A lot of things have accidental dependencies that go through there, though.</blockquote>
-<blockquote>
-<p>↳ reply — <em>iamnothere</em>:</p>
-<blockquote>This BlueSky user claims to track social media bots&#x2F;information warfare accounts and has not seen any drop: <a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;antibot4navalny.bsky.social&#x2F;post&#x2F;3mxrlpxb4b22m" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;antibot4navalny.bsky.social&#x2F;post&#x2F;3m...</a><p>There is certainly information warfare happening, but it doesn’t appear that this is the likely host—or perhaps they have good redundancy.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
