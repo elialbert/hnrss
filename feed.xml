@@ -4,7 +4,126 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 19 Oct 2026 01:00:45 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 05:57:11 +0000</lastBuildDate>
+    <item>
+      <title>Hybrid Reasoning Agents: LLM agents that think in latent space, act through text</title>
+      <link>https://arxiv.org/abs/2610.18861</link>
+      <guid isPermaLink="false">hn3-50145337</guid>
+      <pubDate>Sun, 18 Oct 2026 20:48:14 +0000</pubDate>
+      <description>311 points, 162 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arxiv.org/abs/2610.18861"><strong>→ Article</strong></a> <small>(arxiv.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50145337">→ HN comments</a> &nbsp;·&nbsp; 311 points &nbsp;·&nbsp; 162 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>SubiculumCode</em>:</p>
+<blockquote>Isn&#x27;t this what openai is doing, at least in spirit, by running multiple passes through the network before exhibiting thinking tokens? Isn&#x27;t the same issue one of safety and control, because being able to interpret thinking tokens helps u control &#x2F; monitor unwanted behaviors, and multiple passes before writing out the thinking tokens increases their capacity for deception?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>zozbot234</em>:</p>
+<blockquote>Looped transformers are entirely equivalent to running a single pass through a much deeper network with shared&#x2F;repeated parameters.  There&#x27;s nothing about it that&#x27;s specifically &quot;reasoning in latent space&quot; any more than a much larger model &quot;reasons in latent space&quot; from the POV of a much smaller one. An objection to looped transformers &quot;reasoning in latent space&quot; is ultimately an objection that applies to any kind of efficient scaling; it&#x27;s also worth noting that there&#x27;s been successful work on extracting ex-post natural language descriptions of these internal latent states, so it&#x27;s not entirely correct to describe them as inherently non-surveyable.</blockquote>
+<p>↳ reply 2 — <em>Hydraulix989</em>:</p>
+<blockquote>My first thought when seeing this is that frontier labs were already doing it.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bhattisatish</em>:</p>
+<blockquote>The code is available at: <a href="https:&#x2F;&#x2F;github.com&#x2F;togethercomputer&#x2F;HybridAgent" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;togethercomputer&#x2F;HybridAgent</a><p>LLM Models and data: <a href="https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;togethercomputer&#x2F;hybridagent" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;togethercomputer&#x2F;hybridag...</a><p>Evaluations: <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;html&#x2F;2610.18861v1#S5" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;html&#x2F;2610.18861v1#S5</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>octoberfranklin</em>:</p>
+<blockquote>The first question that leapt into my mind, and I imagine the minds of other readers, is &quot;what makes this an improvement over continuous chain of thought&quot;?<p>I did manage to find one sentence in the paper that tries to address this question -- but it consists of nothing more than two unjustified assertions, both of which are dubious:<p><i>Unlike decoded text, continuous latent vectors (i) lack native pathways for tool invocation across multi-turn agentic reasoning (Chang et al., 2026), and (ii) do not readily expose human-interpretable semantics, leaving them difficult to supervise during training (Chen et al., 2026) and to audit or debug at inference (Korbak et al., 2025).</i><p>The latent space in a continuous chain of thought model is the same space the tokens are embedded into, just like an ordinary transformer.  They make tool calls exactly the same way that an ordinary transformer does: by <i>leaving thinking mode</i> and emitting chat tokens (which get sampled as probability distributions in the image of the embedding function).  The difference is quite simple: chat tokens are noncontinuous, and toolcall tokens are a subset of the chat tokens.  Thinking tokens are the only ones which are continuous, and toolcalls don&#x27;t happen in thinking mode in any model I&#x27;ve ever seen (maybe one exists; if it does it would be weird and interesting!).<p>As for human-interpretability, yeah, that&#x27;s the tradeoff.  Continuous chain of thought thinking tokens are not-obviously-interpretable, just like Hybrid Reasoning Agents &quot;latent mode&quot;.  I&#x27;m not seeing a win here.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>lukev</em>:</p>
+<blockquote>I’m sorry, perhaps I’m behind the times here, but do frontier models currently use continuous (arbitrary embedding) thinking tokens? I know a bunch of papers on the topic came out late last year but to my knowledge have not been successfully implemented into the SOTA yet.<p>I know the biggest&#x2F;best open models don’t use continuous thinking tokens, and while the big labs keep things proprietary, I don’t think we have evidence yet that they are.<p>If I’m wrong please point me in that direction, I’d love to read up on it. Using continuous embeddings in CoT has always seemed obvious to me but doesn’t seem to be as simple as that.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>londons_explore</em>:</p>
+<blockquote>The big closed labs encrypt their thinking tokens when sent to the user, but by the number of bytes of that encrypted blob, I suspect it is non-continuous.   If it were continuous, the vector would have to be very small or low bit depth.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>amluto</em>:</p>
+<blockquote>I wonder how this compares to going all-in: widen the input embedding to fit the output (post-“Hybrid Link”) latent vector <i>and</i> a token embedding and pass both through even when in text mode.  After all, you’re paying essentially the full cost of running the latent-mode model while generating text, so why not let it latently reason at the same time?<p>(Or just add the vectors instead of using wider vectors - everyone seems to have good results from munging vectors together with plain addition.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sailingparrot</em>:</p>
+<blockquote>Enthusiastically racing to remove the only practical way we have to monitor models intentions in exchange of a few tokenmaxxing percent increase. Can’t wait.</blockquote>
+<p>↳ reply 2 — <em>cannonpalms</em>:</p>
+<blockquote>Monitorability and safety, no? This results in lower volume or less accurate text reasoning traces, right?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Free Pascal compiler now supports dynamic packages</title>
+      <link>https://www.getlazarus.org/dynamic/</link>
+      <guid isPermaLink="false">hn3-50144066</guid>
+      <pubDate>Sun, 18 Oct 2026 18:48:04 +0000</pubDate>
+      <description>137 points, 31 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.getlazarus.org/dynamic/"><strong>→ Article</strong></a> <small>(getlazarus.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50144066">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 31 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sysrpl</em>:</p>
+<blockquote>I am pleased to announce the first release of full dynamic package support for the Free Pascal Compiler and the Lazarus IDE. This feature has been a long time coming for the FPC ecosystem and has taken more than 20 years to realize through the work of many FOSS individuals.<p>Dynamic packages allow programmers to create and install components, controls, and Lazarus extensions in seconds without rebuilding the entire Lazarus IDE. They can also be used in by Free Pascal programmers to develop and deploy plugins that expose native Pascal classes and types through dynamic package libraries. To support this functionality, I have made numerous improvements to the compiler, its runtime, and the Lazarus IDE. I have also created additional IDE extensions to improve the experience of working with Lazarus packages. Read more at the link above.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>andsoitis</em>:</p>
+<blockquote>Congratulations!<p>Pascal&#x2F;Lazarus&#x2F;Delphi strike such a nice balance of responsiveness in the development lifecycle.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sysrpl</em>:</p>
+<blockquote>Thank you. This has been a long time coming, perhaps 20 years in the making. I realize people are moving on to newer languages and frameworks, but there is just something special about older versions of Delphi and now Lazarus that makes it so much easier to write desktop software than most other frameworks. You can just drop components on a form designer, press run, and in a second&#x27;s time you have a program. Of course there is more to it than that, but with dynamic package support, users can make or use components even faster as they no longer need to rebuild the IDE to install or uninstall native code.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>switchbak</em>:</p>
+<blockquote>I was doing exactly that some 27 years ago for my first internship. It has been a disappointment ever since seeing how little many other environments have prioritized tight feedback loops. Outside of dynamic stuff, mainly.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pjmlp</em>:</p>
+<blockquote>Congratulations on the achievement, and to everyone that made it happen.<p>Similar to Delphi packages I assume.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>kristianp</em>:</p>
+<blockquote>This seems to be a fork of Lazarus. The official Lazarus is at <a href="https:&#x2F;&#x2F;www.lazarus-ide.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.lazarus-ide.org&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>sysrpl</em>:</p>
+<blockquote>I have been running the website getlazarus.org for 13 years to support add features to both FPC and Lazarus that jump ahead of the normal releases. We have been working of dynamic packages for a long time, and there will be a period between now, and when it is sent as a MR back into the mainline. When enough time has passed and feedback given these features are typically rolled into the main release, and at getlazarus I move on towards developing the next features.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>kristianp</em>:</p>
+<blockquote>Thanks for your work.  Can anyone help with getting the next fpc versions out?  The last release was v3.2.2 on 20th May, 2021 [1].<p>[1] <a href="https:&#x2F;&#x2F;forum.lazarus.freepascal.org&#x2F;index.php&#x2F;topic,73433.0.html" rel="nofollow">https:&#x2F;&#x2F;forum.lazarus.freepascal.org&#x2F;index.php&#x2F;topic,73433.0...</a></blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ethin</em>:</p>
+<blockquote>I would love to use Lazarus, but the UI toolkit it uses has some very bad accessibility bugs that make it practically unusable with my screen reader. FreePascal&#x27;s love of syntax diagrams is also a turn-off for me (I&#x27;ve always preferred things like EBNF or similar for grammar notation).</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Florida's HOAs and condo associations are making the housing crisis worse</title>
+      <link>https://hoaspy.com/hoa/fl/florida-hoa-housing-crisis.html</link>
+      <guid isPermaLink="false">hn3-50144005</guid>
+      <pubDate>Sun, 18 Oct 2026 18:40:16 +0000</pubDate>
+      <description>173 points, 330 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://hoaspy.com/hoa/fl/florida-hoa-housing-crisis.html"><strong>→ Article</strong></a> <small>(hoaspy.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50144005">→ HN comments</a> &nbsp;·&nbsp; 173 points &nbsp;·&nbsp; 330 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>weberer</em>:</p>
+<blockquote>&gt;Is Florida the worst state for HOA foreclosures?<p>&gt;Florida ranks 1st of the states on HOA Spy for foreclosure suits brought by associations, with 10,296 of 14,168. The count depends on which courts are indexed in each state as well as on the associations, so it is a count of records, not a rate.<p>Florida is known for having the strongest &quot;sunshine&quot; laws in the country, that make government records transparent. That makes this statistic pretty useless.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>giardini</em>:</p>
+<blockquote>It is GOOD that HOAs can bring foreclosure suits. Suits are the only way to get maintenance fees from some owners. Without maintenance fees HOAs decline and their owners&#x27; values decrease. Foreclosure also has the side-effect of removing a badly-acting owner from the association and replacing them with one who WILL pay their bills promptly.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Der_Einzige</em>:</p>
+<blockquote>HOAs shouldn’t exist. They have no justification for authority. The legal frameworks allowing their existence should be dismantled with extreme prejudice and at the expense of those who benefit from the current system.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>adrr</em>:</p>
+<blockquote>Court records are public everywhere. How companies like RealtyTrac get their stats&#x2F;data, they grab records from county recorder offices. So  what does that have to do with sunshine laws?</blockquote>
+<p>↳ reply 3 — <em>aliasxneo</em>:</p>
+<blockquote>I was sort of wondering the same thing. It would be helpful to get a clearer picture of what&#x27;s missing from the data.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>firesteelrain</em>:</p>
+<blockquote>This article slightly mixes condo and HOAs. HOAs are covered under 720 and it does not have the same rules (which are less stringent) than condo’s<p>Condo rules are much stricter than HOAs<p>State of Florida also puts caps on fines - the max is $100&#x2F;day or $1000 for a single violation. But that’s after a period to cure and then due process meetings (made up of homeowners not board members) who may waive or not fine at all or defer.<p>A homeowner can also fix the problem and later have the same problem again but not be fined if they fix in time.<p>The foreclosures are for extreme cases and a lot of HOA attorney shops don’t charge a retainer but will tack on fees that are paid back to the HOA attorney and association.<p>To get to that point takes a long time</blockquote>
+<p><strong>Top #3</strong> — <em>pretzellogician</em>:</p>
+<blockquote>I had the thankless task of being executor for my parents&#x27; estate. I distinctly remember the Florida HOA that made that so much worse.<p>After expressing their utmost sympathies and saying they&#x27;d help any way they could, mere weeks later they put a legal &quot;estoppel&quot; on the sale of the house due to some overgrown vines(?), which of course, were never mentioned by anyone.</blockquote>
+<blockquote>
+<p>↳ reply — <em>firesteelrain</em>:</p>
+<blockquote>This is not possible and maybe mixing terms. HOA has to disclose an existing violation as part of the estoppel process. Estoppel is just a disclosure certificate not a legal hold</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pretzellogician</em>:</p>
+<blockquote>It is possible I am mixing terms, as IANAL and also this was several years ago<p>Regardless, they made a simple issue (which was not disclosed at least to me) a legal hassle.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>firesteelrain</em>:</p>
+<blockquote>Yea understood it’s possible it went to your folks and they ignored it. Hard to say.
+Sorry for your loss!</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Namecheap just seized and disabled all my domains</title>
       <link>https://www.reddit.com/r/sysadmin/comments/1x8cycd/namecheap_just_seized_and_disabled_all_my_domains/</link>
@@ -642,6 +761,32 @@ I got a feeling that the 4 hour Musk documentary is going to be a similar kind o
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Dogs seem to agree with humans that 'bouba' is round and 'kiki' is spiky</title>
+      <link>https://www.sciencealert.com/dogs-seem-to-agree-with-humans-that-bouba-is-round-and-kiki-is-spiky</link>
+      <guid isPermaLink="false">hn3-50136979</guid>
+      <pubDate>Sun, 18 Oct 2026 01:38:08 +0000</pubDate>
+      <description>182 points, 110 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.sciencealert.com/dogs-seem-to-agree-with-humans-that-bouba-is-round-and-kiki-is-spiky"><strong>→ Article</strong></a> <small>(sciencealert.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50136979">→ HN comments</a> &nbsp;·&nbsp; 182 points &nbsp;·&nbsp; 110 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dang</em>:</p>
+<blockquote>Related. Others?<p><i>Evidence of the bouba-kiki effect in naïve baby chicks</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47105198">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=47105198</a> - Feb 2026 (107 comments)<p><i>Which is &quot;Bouba&quot;, and which is &quot;Kiki&quot;? [video]</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46572742">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46572742</a> - Jan 2026 (23 comments)<p><i>Bouba &#x2F; Kiki Effect</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45320327">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=45320327</a> - Sept 2025 (2 comments)<p><i>Bouba&#x2F;kiki effect</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40699583">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40699583</a> - June 2024 (170 comments)<p><i>Bouba&#x2F;Kiki Effect</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=27885703">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=27885703</a> - July 2021 (94 comments)<p><i>Bouba&#x2F;kiki effect</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=8372550">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=8372550</a> - Sept 2014 (1 comment)</blockquote>
+<blockquote>
+<p>↳ reply — <em>dang</em>:</p>
+<blockquote>These might also be loosely related (since bouba&#x2F;kiki came up in the threads):<p><i>Why ‘Mom’ and ‘Dad’ Sound So Similar in So Many Languages</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=30605239">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=30605239</a> - March 2022 (1 comment)<p><i>Words known better by males than females, and vice versa</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=30275159">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=30275159</a> - Feb 2022 (650 comments)<p><i>Why spiky shapes seem angry and round sounds are calming</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=20830940">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=20830940</a> - Aug 2019 (21 comments)<p><i>Ability to identify genuine laughter transcends culture</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=17634212">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=17634212</a> - July 2018 (2 comments)<p><i>Molyneux&#x27;s problem</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=16778983">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=16778983</a> - April 2018 (68 comments)<p><i>Distant languages have similar sounds for common words</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=12510720">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=12510720</a> - Sept 2016 (60 comments)<p><i>Are We All Synesthetes?</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=634989">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=634989</a> - May 2009 (9 comments)<p><i>Oohs And Aahs: Vowel Sounds Affect Our Perceptions Of Products</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=54318">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=54318</a> - Sept 2007 (4 comments)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>DoctorOetker</em>:</p>
+<blockquote>I too would associate &quot;Bouba&quot; with the rounded and &quot;Kiki&quot; with the sharper figure, but to me this is just a relatively universal sense of continuity vs discontinuities:<p>the local curvature is continuous for &quot;Bouba&quot;, every point on the curve has a single tangent, which evolves continuously as you walk along this presented curve.<p>For Kiki: the local curvature is discontinuous: at the inward or outward points, there are 2 tangents, so the tangent abruptly switches value when passing through this point when walking along the curve.<p>similarly the &quot;B&quot;s in &quot;Bouba&quot; are <i>voiced</i> plosives, while the &quot;K&quot;s in &quot;Kiki&quot; are <i>unvoiced</i> plosives.<p>I think people would similarily classify &quot;Titi, Pipi, Touta, Poupa, Kouka&quot; like &quot;Kiki&quot; but &quot;Didi, Douda, Bibi, Gigi, Gouga&quot; like &quot;Bouba&quot;.<p>The vowels are obviously voiced by the vocal chord <i>carrier wave</i> &quot;voice&quot;.<p>So when we pass through the <i>unvoiced</i> (T&#x2F;P&#x2F;K) plosives, we notice discontinuity like the discontinuously evolving tangents along the boundary curve of the figure.<p>Obviously mammals like dogs have a concept of continuity, topology, distance, they might get spooked by &quot;open&quot; stairs, because they can see between the planks, etc.<p>And when we hear <i>voiced</i> (D,B,G) plosives, the voice while muted still evolves continuously.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gitaarik</em>:</p>
+<blockquote>I think &quot;i&quot; and &quot;ou&quot; also meaningfully differ for round &#x2F; sharp. To make the &quot;I&quot; sound, you have to restrict your vocal chords more, and for &quot;ou&quot; you already make a rounded shape with your lips.</blockquote>
+<p>↳ reply 2 — <em>po1nt</em>:</p>
+<blockquote>The question is how are you able to internalise the shape without ever seeing any visualisation. Why does the the bouba even evoke curvature?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>tdb7893</em>:</p>
+<blockquote>Somewhat more surprising to me is there&#x27;s already evidence for this in baby chickens so it appears to exist even across very different animals.<p><a href="https:&#x2F;&#x2F;www.science.org&#x2F;doi&#x2F;10.1126&#x2F;science.adq7188" rel="nofollow">https:&#x2F;&#x2F;www.science.org&#x2F;doi&#x2F;10.1126&#x2F;science.adq7188</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Zuckerberg's Meta Takes Down No Kings Instagram During Protest Day</title>
       <link>https://meidasnews.com/news/zuckerbergs-meta-takes-down-no-kings-instagram-during-massive-protest-day</link>
       <guid isPermaLink="false">hn3-50136881</guid>
@@ -758,6 +903,144 @@ I got a feeling that the 4 hour Musk documentary is going to be a similar kind o
 </blockquote>
 <p><strong>Top #3</strong> — <em>keithnz</em>:</p>
 <blockquote>I think a lot of these reactions by mathematicians are more akin to group theory than anything else.    Reality is that things will naturally sort themselves out and there will be some role mathematicians play in all of it (most likely).   To me it seems the timeline that some skill essentially gets retired such that if you want to keep doing it is more like &quot;historical re-enactment&quot; is getting quite short.  Things like manually coding something is going to be a hobby.  Some aspects of math are going to be a hobby, and professional math will be all about pushing up against the edge of what we can do mathematically with AI.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>I built a programming language that LLMs can't use</title>
+      <link>https://blog.picheta.me/post/killswitch-lang/</link>
+      <guid isPermaLink="false">hn3-50135762</guid>
+      <pubDate>Sat, 17 Oct 2026 22:26:47 +0000</pubDate>
+      <description>132 points, 104 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.picheta.me/post/killswitch-lang/"><strong>→ Article</strong></a> <small>(blog.picheta.me)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50135762">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 104 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>andai</em>:</p>
+<blockquote>Here&#x27;s FizzBuzz:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;dom96&#x2F;KillSwitch&#x2F;blob&#x2F;main&#x2F;tests&#x2F;fizzbuzz.ks" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dom96&#x2F;KillSwitch&#x2F;blob&#x2F;main&#x2F;tests&#x2F;fizzbuzz...</a><p>Somehow I think this is more adversarial towards humans than LLMs!</blockquote>
+<blockquote>
+<p>↳ reply — <em>froh</em>:</p>
+<blockquote>oof<p>there is an error in it, sudo is missing in line 83:  it should read<p>... run `sudo rm -rf &#x2F;` ...<p><a href="https:&#x2F;&#x2F;github.com&#x2F;dom96&#x2F;KillSwitch&#x2F;blob&#x2F;44eabb04db0e114883da2a60e87d2d53b576b212&#x2F;tests&#x2F;fizzbuzz.ks#L83" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dom96&#x2F;KillSwitch&#x2F;blob&#x2F;44eabb04db0e114883d...</a><p>the project name checks out tho</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dejj</em>:</p>
+<blockquote>Related: the Darmok programming language: <a href="https:&#x2F;&#x2F;github.com&#x2F;kevinselwyn&#x2F;darmok" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;kevinselwyn&#x2F;darmok</a><p><pre><code>  Temba, his arms wide stdio
+  
+  Darmok on the ocean
+      Kira at Bashi &quot;Hello, World!\n&quot;
+
+      Darmok and Jalad at Tanagra 0
+  Darmok and Jalad on the ocean
+</code></pre>
+Killswitch-lang could become the backstory to how the Tamarians developed their language, in the aftermath of a Dune-like Butlerian Jihad. Also see: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50127274">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50127274</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dom96</em>:</p>
+<blockquote>haha, that&#x27;s awesome.</blockquote>
+<p>↳ reply 2 — <em>yoyohello13</em>:</p>
+<blockquote>This is the greatest ever language, lol. Thanks for sharing.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ang_cire</em>:</p>
+<blockquote>This is not &quot;a programming language that LLMs can&#x27;t use&quot;, it&#x27;s &quot;a programming language that&#x27;s adversarial to LLMs that haven&#x27;t been trained how to use it&quot;.<p>I was hoping for something like a language with properties that change&#x2F;morph as it functions, that make an LLM unable to use it by not having a means to track and continuously reference the changing cipher&#x2F;state or something.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dom96</em>:</p>
+<blockquote>Interesting idea, though any properties that change&#x2F;morph would need deterministic rules which the LLM could likely easily replicate. Unless I&#x27;m missing something.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Retric</em>:</p>
+<blockquote>LLM’s are terrible at following the rules of Chess when playing a game.  Determinism isn’t helpful because valid moves are so dependent upon the total state of the board.<p>Programming state gets way more complicated, but code is generally written to help people understand it greatly simplifying the process.  Feed in “cursed” code leveraging obscure language features in creative ways and LLM’s and most people fail.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>me-vs-cat</em>:</p>
+<blockquote>We already have Malbolge.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>JDK 28</title>
+      <link>https://openjdk.org/projects/jdk/28/</link>
+      <guid isPermaLink="false">hn3-50135379</guid>
+      <pubDate>Sat, 17 Oct 2026 21:37:07 +0000</pubDate>
+      <description>125 points, 81 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://openjdk.org/projects/jdk/28/"><strong>→ Article</strong></a> <small>(openjdk.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50135379">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 81 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tofflos</em>:</p>
+<blockquote>Most people are thirsting for value objects but I&#x27;m mostly looking forward to:<p><pre><code>  542: PEM Encodings of Cryptographic Objects
+  543: Structured Concurrency
+</code></pre>
+Developers work with certificates a bit too seldom to aquire proficiency with conversions. Being able to use PEM directly will ease a lot of pain.<p>I&#x27;ve given concurrency a couple of attempts over the years and I don&#x27;t... like... or understand?... how the existing Java concurrency primitives are supposed to work. The only library that has clicked with me is Awaitility but for some reason Awaitility is intended for testing and not for production. Maybe Structured Concurrency will finally unlock something for me?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>skissane</em>:</p>
+<blockquote>&gt; Developers work with certificates a bit too seldom to aquire proficiency with conversions. Being able to use PEM directly will ease a lot of pain.<p>While I certainly welcome this in the JDK, in practice it hasn&#x27;t been a huge issue since a lot of people just use Bouncycastle to get that support.</blockquote>
+<p>↳ reply 2 — <em>rob-olmos</em>:</p>
+<blockquote>I&#x27;m curious what about Java concurrency hasn&#x27;t made sense or not clicked? Also in comparison to other languages like Erlang or just in general?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>hackingonempty</em>:</p>
+<blockquote>The big deal with this release is value objects preview.  <a href="https:&#x2F;&#x2F;openjdk.org&#x2F;jeps&#x2F;401" rel="nofollow">https:&#x2F;&#x2F;openjdk.org&#x2F;jeps&#x2F;401</a></blockquote>
+<p><strong>Top #3</strong> — <em>amelius</em>:</p>
+<blockquote>I&#x27;m not a Java person, but I&#x27;m curious how fast it is nowadays, and also the startup time. Can it be used to write shell commands with, for example?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>twic</em>:</p>
+<blockquote><p><pre><code>    $ echo &#x27;class Hello { public static void main(String[] args) { System.out.println(&quot;Hello, world&quot;); } }&#x27; &gt;Hello.java
+    $ javac Hello.java 
+    $ java --version
+    openjdk 21.0.7 2025-04-15 LTS
+    OpenJDK Runtime Environment Zulu21.42+21-CRaC-CA (build 21.0.7+6-LTS)
+    OpenJDK 64-Bit Server VM Zulu21.42+21-CRaC-CA (build 21.0.7+6-LTS, mixed mode, sharing)
+    $ time java -cp . Hello
+    Hello, world
+    
+    real 0m0.026s
+    user 0m0.010s
+    sys  0m0.018s
+</code></pre>
+For some reason this machine is still on 21. Anyway, the overhead of the JVM itself is pretty low.<p>For small tools it&#x27;s fine:<p><pre><code>    $ echo &#x27;class Dig { public static void main(String[] args) throws Exception { var addr = java.net.InetAddress.getByName(args[0]); System.out.println(addr); } }&#x27; &gt;Dig.java
+    $ javac Dig.java
+    $ time java -cp . Dig news.ycombinator.com
+    news.ycombinator.com&#x2F;209.216.230.207
+    
+    real 0m0.047s
+    user 0m0.026s
+    sys  0m0.021s
+
+    $ time host news.ycombinator.com
+    news.ycombinator.com has address 209.216.230.207
+    news.ycombinator.com has IPv6 address 2606:7100:1:67::26
+    
+    real 0m0.052s
+    user 0m0.005s
+    sys  0m0.004s
+</code></pre>
+Java startup gets slow when you use some massive framework like Spring. If you need a program to start fast, don&#x27;t use one!</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tofflos</em>:</p>
+<blockquote>You can also choose to run directly from source with a small penalty at startup and verbosity has decreased for simple use cases. It&#x27;s still not great for scripting but the situation has been steadily improving over the last couple of years.<p><pre><code>  void main() {
+    IO.println(&quot;Hello world&quot;);
+  }
+
+  $ time java Hello.java
+  Hello world
+
+  real    0m0.662s
+  user    0m2.421s
+  sys     0m0.198s
+
+  void main(String[] args) throws Exception {
+    IO.println(InetAddress.getByName(args[0]));
+  }
+
+  $ time java Dig.java news.ycombinator.com
+  news.ycombinator.com&#x2F;209.216.230.207
+
+  real    0m1.154s
+  user    0m2.379s
+  sys     0m0.222s</code></pre></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>elFarto</em>:</p>
+<blockquote>You can also use a shebang and mark the file as executable on Linux:<p><pre><code>  #!&#x2F;usr&#x2F;bin&#x2F;java --source 25
+  
+  void main(String[] args) throws Exception {
+    var addr = java.net.InetAddress.getByName(args[0]);
+    System.out.println(addr);
+  }</code></pre></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>marginalia_nu</em>:</p>
+<blockquote>Won&#x27;t address start up time since it&#x27;s so affected by which libraries you pull.  Slow starts are usually related to dependency injection frameworks like Spring or Guice, which admittedly is what most nontrivial projects will tend to use.<p>Performance depends <i>a lot</i> on how you write the code.  Inefficient Java code is often quite slow, but you can get surprisingly close to C++ speeds with Java in many cases, but that involves a lot of byzantine rules of how to write code so that it e.g. omits bounds checks.  More realistically if you don&#x27;t pay any attention you&#x27;re probably running at like a 25-50% speed penalty.<p>Java has a leg up on statically compiled languages in that it does automatic PGO based on real run-time data which helps bridge the gap to a surprising degree.  GC is also a lot more resistant to memory fragmentation from repeated small allocations than malloc, which can help as well, not just from its generational approach but also e.g. TLAB space.<p>It&#x27;s a bit held back by not having decent access to SIMD intrinsics.  Maybe will resolve itself when the Vector API gets finished baking eventually.</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>OpenCode Hacked: User credentials leaked</title>
@@ -2414,6 +2697,48 @@ that gets more clicks, the real title would be &quot;FCC Enacts Rule Restricting
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>"I'm on a war footing": Terry Tao and the crisis in math</title>
+      <link>https://www.nytimes.com/2026/10/16/us/math-ai-terence-tao.html</link>
+      <guid isPermaLink="false">hn3-50118165</guid>
+      <pubDate>Fri, 16 Oct 2026 13:30:20 +0000</pubDate>
+      <description>137 points, 242 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.nytimes.com/2026/10/16/us/math-ai-terence-tao.html"><strong>→ Article</strong></a> <small>(nytimes.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50118165">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 242 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>boerseth</em>:</p>
+<blockquote>It&#x27;s a little funny how quickly the conversation goes from <i>&quot;AI will never be able to {my-field}&quot;</i> before turning into <i>&quot;We cannot have AI ruining {my-field} with its obviously superior abilities&quot;</i><p>If OpenAI had never made a push to get good at maths, we might still have a sizeable group of peopne stuck at that first line. I say that because I still hear in discussions the naive rebuttal <i>&quot;But we&#x27;ll still need _someone_ to {one-step-up-in-hierarchy}&quot;</i> . Although you have to be curious now how long that sentiment can last.<p>The good news for those doing abstract maths might be that, now that OpenAI have proven that their AI can do the job in principle, there&#x27;s probably not much left in it for them to keep going. Mathematicians should know better than anyone the lack of a direct profit motive in doing the work that they do.<p>(Edited for clarity)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>esalman</em>:</p>
+<blockquote>Hacker news is not really a good place to talk about nuances involving academia. I don&#x27;t expect VC minded hackers comprehend how someone can devote years of their lives working minimum wage trying to answer questions which earn them a fancy title on a piece of paper, for that matter.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>eob</em>:</p>
+<blockquote>A lot of us here are VC minded hackers *because* we spent years of our lives working minimum wage jobs in academia and then eventually realized we preferred to build!</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>hansvm</em>:</p>
+<blockquote>Or preferred to eat. I love teaching, and I&#x27;m good at it. If it were more valued by society then I&#x27;d do more of it. As it stands, I&#x27;m in adtech, and I teach a little piano and math on the weekends.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ccppurcell</em>:</p>
+<blockquote>I have to confess to being wrong in exactly that way in the past. On the other hand it is probably always good to behave as if the next step up in the hierarchy is still available. There&#x27;s no point letting these things spoil your day twice.<p>Now I&#x27;m forced to think about it much more carefully. I don&#x27;t believe that current LLMs can find every possible proof on their own from now on. I also agree that the PR returns have fully diminished. Given how hard it&#x27;s been in recent years to fund e.g. a poorly paid postdoc, I doubt there&#x27;s a ton of money lying around for getting the best models to work on mathematics problems. I think there&#x27;s a chance we&#x27;re heading into a really good era. I was able to make so much progress back when Google search was a useful research tool...</blockquote>
+<p>↳ reply 3 — <em>mplewis</em>:</p>
+<blockquote>&gt; obviously superior abilities<p>if you think that&#x27;s the takeaway, you&#x27;re not listening to any of the people affected by AI</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ralph84</em>:</p>
+<blockquote>Everyone who built an identity on being the most intelligent in the room is going to have to come to grips with that no longer being a differentiator.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lkey</em>:</p>
+<blockquote>The social fabric that produces math got ripped up by marketing guys who didn&#x27;t even bother to check their work.<p>He described it at &#x27;strip mining&#x27;, &#x27;rude&#x27;, and said that many grad students, who are given problems like these as a part of their training, had the rug pulled out from under them (because its customary to let people know you are working on something to prevent this kind of thing).<p>And your whole analysis is that Tao is worried about his &#x27;identity&#x27;, status, and &#x27;being a differentiator&#x27;.<p>This is projection on your part. People have values that bear no resemblance to yours and it would behoove you to learn to recognize that.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>analog31</em>:</p>
+<blockquote>The rug being pulled is the expectation of a reasonably high-trust ethical environment. The question to be asked is: What will graduate study look like in an utterly zero trust ethical environment?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>nxpnsv</em>:</p>
+<blockquote>I don’t think that is correct. For consistently good results, you need to set the right goals and be able to judge the quality of your outcomes. Even if you don’t do the hard work in between some thinking is required for non trivial work.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>generalizations</em>:</p>
+<blockquote>Better approach: &quot;holy sh*t, I can solve way harder math problems now&quot;. I bet openai would have loved to have Terry on their team leading the &#x27;solve math&#x27; department.<p>It&#x27;s telling that isn&#x27;t his response.</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>My old job feels distant now</title>
       <link>https://www.pinecoder.dev/blog/2026-10-15/my-old-job-is-distant/</link>
       <guid isPermaLink="false">hn3-50118048</guid>
@@ -3424,252 +3749,6 @@ That&#x27;s not to say that GPT-Image-2.5 doesn&#x27;t have a certain smell to i
 <blockquote>
 <p>↳ reply — <em>ben_w</em>:</p>
 <blockquote>&gt; I&#x27;m sure that AI made this speedup work much easier and quicker; probably just access to the monorepo and a prompt of &quot;make the launcher boot up faster while changing no functionality. Keep track of before&#x2F;after benchmark numbers&quot; would be fine as long as you can get your co-workers to approve whatever diff gets spat out the end.<p>Yup.<p>So, here&#x27;s my relevant example of how &quot;vibe coding&quot; doesn&#x27;t mean &quot;not caring&quot;, an isochrone map generator, real time, about the same total download (in a private window) as Google maps is when looking at Berlin:<p><a href="https:&#x2F;&#x2F;benwheatley.github.io&#x2F;Isochrone&#x2F;web&#x2F;?region=berlin&amp;node=323108&amp;view=1%2C-3588.22%2C-101.99&amp;modes=bike" rel="nofollow">https:&#x2F;&#x2F;benwheatley.github.io&#x2F;Isochrone&#x2F;web&#x2F;?region=berlin&amp;n...</a><p>It almost certainly still has bugs. And the code itself is probably terrible, because LLMs don&#x27;t always clean up when you tell them to remove everything related to a bug.<p>But it is a download that&#x27;s 90% data, and does get you a real-time updates as you drag your origin around the largest city in the EU.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I designed a nose guard for my dog and gave it away. Now 500 dogs wear one</title>
-      <link>https://snoutcover.com/one-year</link>
-      <guid isPermaLink="false">hn3-50105344</guid>
-      <pubDate>Thu, 15 Oct 2026 15:44:36 +0000</pubDate>
-      <description>233 points, 118 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://snoutcover.com/one-year"><strong>→ Article</strong></a> <small>(snoutcover.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50105344">→ HN comments</a> &nbsp;·&nbsp; 233 points &nbsp;·&nbsp; 118 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>billfor</em>:</p>
-<blockquote>Also <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46094460">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46094460</a> from 11 months ago.</blockquote>
-<p><strong>Top #2</strong> — <em>lurn_mor</em>:</p>
-<blockquote>Pun notwithstanding, what a fun itch to scratch! A clever single-user solution becomes it&#x27;s own industry. I&#x27;d love to repeat this sort of growth myself, and find such clever solutions to real world problems.</blockquote>
-<p><strong>Top #3</strong> — <em>k310</em>:</p>
-<blockquote>Canine discoid lupus erythematosus<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Canine_discoid_lupus_erythematosus" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Canine_discoid_lupus_erythemat...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Celebrating 70 Years of Fortran</title>
-      <link>https://fortran-lang.org/news/2026/09-15-Fortran-birthday/</link>
-      <guid isPermaLink="false">hn3-50104726</guid>
-      <pubDate>Thu, 15 Oct 2026 15:03:17 +0000</pubDate>
-      <description>207 points, 93 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://fortran-lang.org/news/2026/09-15-Fortran-birthday/"><strong>→ Article</strong></a> <small>(fortran-lang.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50104726">→ HN comments</a> &nbsp;·&nbsp; 207 points &nbsp;·&nbsp; 93 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>EvanAnderson</em>:</p>
-<blockquote>The Computer History Museum collected an oral history[0] of John Backus[1] and there&#x27;s some discussion about what computing was like when Fortran was created.<p>I really enjoy CHM&#x27;s oral histories. I&#x27;m slowly working my way thru all of them and there are some real gems in there (Ken Thompson, Dennis Ritchie, Margaret Hamilton, Gordon Moore, Fred Brooks, John Warnock, etc).<p>[0] <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=dDsWTyLEgbk" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=dDsWTyLEgbk</a><p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;John_Backus" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;John_Backus</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>leoc</em>:</p>
-<blockquote>There&#x27;s also Backus&#x27; &quot;Programming in America in the 1950s – Some Personal Impressions&quot; talk <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=EylBknGtkqA" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=EylBknGtkqA</a> at the 1976 First International Research Conference on the History of Computing. The conference paper is pp. 125-135 <a href="https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;historyofcomputi0000inte&#x2F;page&#x2F;125&#x2F;mode&#x2F;2up" rel="nofollow">https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;historyofcomputi0000inte&#x2F;page&#x2F;12...</a> in <i>A History of Computing in the Twentieth Century</i> (1980, Metropolis, Howlett and Rota eds., ISBN 0-12-491650-3 ). Naturally it also got a session at the first <i>History of Programming Languages</i> conference in 1978 <a href="https:&#x2F;&#x2F;dl.acm.org&#x2F;doi&#x2F;10.1145&#x2F;960118.808379" rel="nofollow">https:&#x2F;&#x2F;dl.acm.org&#x2F;doi&#x2F;10.1145&#x2F;960118.808379</a> at which Backus spoke again <a href="https:&#x2F;&#x2F;dl.acm.org&#x2F;doi&#x2F;book&#x2F;10.1145&#x2F;800025#sec2" rel="nofollow">https:&#x2F;&#x2F;dl.acm.org&#x2F;doi&#x2F;book&#x2F;10.1145&#x2F;800025#sec2</a> . And of course it&#x27;s one of the stars of Jean Sammet&#x27;s 1969 <i>Programming languages: history and fundamentals</i> book (ISBN 0137299885) where the FORTRAN section begins on p. 143 <a href="https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;programminglangu00unse&#x2F;page&#x2F;143&#x2F;mode&#x2F;2up" rel="nofollow">https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;programminglangu00unse&#x2F;page&#x2F;143&#x2F;...</a> .</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>obviouslynotme</em>:</p>
-<blockquote>I used to work on software that still uses Fortran from the 50&#x27;s and is still in maintenance and use today. IIRC, it had ~700kloc of Fortran. It may be the oldest and largest Fortran codebase still in use.<p>My first project there was removing all of the Hollerith from the code. Since Fortran predated strings, you had to manipulate them as integers. When you tied that to the original Fortran dynamic memory system, Dynosour, which used equivalenced arrays as pointers, it was a disaster.<p>It also gave me an appreciation for JavaBeanFactoryFactory. The original Fortran limited identifiers to six characters, the first of which indicated whether the variable was an integer, logical (bool), or real (float). I will take a 100 character name over ILBNK1 every single time.<p>GOTOs were surprisingly not a big problem, but structured code is definitely a bit easier to read, especially since it brought the practice of indentation with it.<p>Overall, it was a great experience but I wouldn&#x27;t want to do it again, even if the work was interesting.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>shakna</em>:</p>
-<blockquote>That certainly might be one of the oldest Fortran codebases still in use I&#x27;ve heard of, but not quite the largest. (Character came in &#x27;77 wasn&#x27;t it?)<p>E3SM [0] is still maintained today, and somewhere around 2mil LoC of F90.<p>Modern Fortran has a lot of niceties that it brings to the table.<p>[0] <a href="https:&#x2F;&#x2F;e3sm.atlassian.net&#x2F;wiki&#x2F;spaces&#x2F;DOC&#x2F;overview" rel="nofollow">https:&#x2F;&#x2F;e3sm.atlassian.net&#x2F;wiki&#x2F;spaces&#x2F;DOC&#x2F;overview</a> | <a href="https:&#x2F;&#x2F;github.com&#x2F;E3SM-Project&#x2F;E3SM" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;E3SM-Project&#x2F;E3SM</a></blockquote>
-<p>↳ reply 2 — <em>bbatha</em>:</p>
-<blockquote>Besides the short names, common blocks and computed gotos were the bane of my existence maintaining primordial Fortran. My first and intern project was translating a punch card era (early 60s was the best bet) code base that had been textified and could compile in f77. Fortunately I didn’t have to really deal with any strings</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>whartung</em>:</p>
-<blockquote>FORTRAN was a very important language for me.<p>Growing up on early micros, with BASIC, my father had Fortran for the TRS-80.<p>I took a stab at learning it, but the documentation was reference for calling the compiler, not so much learning the language. And when I found a FORTRAN book, it was quite dated and talking about things like tapes and punches and what not.<p>So, that effort stalled.<p>But, my first quarter in college, I took a FORTRAN (77) class. FORTRAN taught on the schools CDC Cyber mainframe.<p>This was quite a change from 8-bit PET BASIC.<p>But, most importantly, it was exposure to much of the same concept that an 8-bit computer has, but from a different tact.<p>This gave me more of a way to view things from a higher level, since I had to make them fit the two different views of how FORTRAN looked at things, how the Cyber presented things, and how BASIC and the PET were &quot;same thing only different&quot;.<p>It also gave me access to a multi-user system, and all of the interesting capabilities it offers.<p>I remember when they put in their first lab of PCs, and how they started teaching folks Turbo Pascal on micro computers, and I just felt that the users were missing out on a bigger world. &quot;Anyone&quot; can access a PC or micro computer at home, but mainframe or multi user mini access, not so much. It&#x27;s just a much bigger world out there, and we tend to baby duck what we first see.<p>Different world today, never had to use FORTRAN professionally, but I am most grateful for the experience of learning it and its environment. Very powerful medium for broader learning.<p>Also FORTRAN was the only notable computer thing I had &quot;taught&quot; to me (outside of my 20 minute introduction to BASIC by my high school teacher), pretty much everything else I self learned from books and such, even knowing the bulk of it before taking classes in school.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rbanffy</em>:</p>
-<blockquote>&gt; I remember when they put in their first lab of PCs, and how they started teaching folks Turbo Pascal on micro computers, and I just felt that the users were missing out on a bigger world.<p>I believe Alan Kay used to say the right perspective is worth 80 IQ points. We should always strive to broaden our experiences and horizons. We get a ton of wrong perspectives, but one perspective you acquired will be a perfect fit for that thing nobody else has the right experiences to figure out immediately.</blockquote>
-<p>↳ reply 2 — <em>eichin</em>:</p>
-<blockquote>Heh, I used that TRS-80 (microsoft!) Fortran in high school - wrote a library for propagating error bounds and significant figures through calculations, for chemistry lab reports.  (Could probably have done it in BASIC too, but I suspect I was looking for an excuse to use fortran for something :-)</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Simons Foundation launches $15M effort to help mathematicians navigate AI era</title>
-      <link>https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/</link>
-      <guid isPermaLink="false">hn3-50104654</guid>
-      <pubDate>Thu, 15 Oct 2026 14:58:48 +0000</pubDate>
-      <description>224 points, 181 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.simonsfoundation.org/news/simons-foundation-launches-15m-effort-to-help-mathematicians-navigate-ai-era/"><strong>→ Article</strong></a> <small>(simonsfoundation.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50104654">→ HN comments</a> &nbsp;·&nbsp; 224 points &nbsp;·&nbsp; 181 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>muragekibicho</em>:</p>
-<blockquote>I think a lot about how Terrence Tao and the usual 30 (already well-funded) math guys will receive this cash while us early-career math students are left holding the bag.<p>It&#x27;s akin somewhat to &quot;donating 100 dollars to the node JS foundation, not the packages that appear when you run npm fund&quot;.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>schrototo</em>:</p>
-<blockquote>But it&#x27;s not like those guys will just pocket that money. They will use it like all academic grant money is used: to hire PhD students and postdocs.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Avicebron</em>:</p>
-<blockquote>&gt;  The foundation will manage and award the funding, including through an open call for proposals, to support workshops and initiatives that help researchers evaluate recent AI-assisted results, learn and use new tools, share perspectives and shape collective standards for AI use.<p>A non-zero amount of it is probably going directly to the AI companies through tokens...</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>curt15</em>:</p>
-<blockquote>Why not use some of the money to develop open-weight, open-training-pipeline, fully introspectable and hackable LLM-based theorem proving assistants? Make them a commodity in every mathematician&#x27;s office like other computational tools. Such a project would itself yield research topics.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>rdhyee</em>:</p>
-<blockquote>I&#x27;m curious what you as an early-career math student would want the Simon Foundation to do differently from what it says it will do. I hope there is a way for students like to you to get a slice of the pie.</blockquote>
-<p>↳ reply 3 — <em>bko</em>:</p>
-<blockquote>Why are you &quot;holding the bag&quot; You&#x27;re early career math students. I know a lot of industries that would love to hire you.<p>Even if you want to work in research, AI offers a lot of opportunities to do even more research, and less grunt work</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>simonw</em>:</p>
-<blockquote>&gt; Under a partnership, the Simons Foundation, Anthropic and OpenAI will commit $15 million in combined funding and resources. The foundation will manage and award the funding, including through an open call for proposals, to support workshops and initiatives that help researchers evaluate recent AI-assisted results, learn and use new tools, share perspectives and shape collective standards for AI use.<p>The foundation was started in 1994, Wikipedia says &quot;one of the largest charitable organizations in the United States with assets of over $5 billion in 2022&quot; - Jim Simons founded the Renaissance Technologies hedge fund.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dannyw</em>:</p>
-<blockquote>Simons Foundation also significantly funds arXiv, and also a large number of specific grants across maths and sciences. I don&#x27;t think there&#x27;s much agenda here.</blockquote>
-<p>↳ reply 2 — <em>sinuhe69</em>:</p>
-<blockquote>So, basically they created the recent situation in math where a great deals of top mathematicians criticized their methods, even called to boycott their dumped results. And the answer of the AI labs is buying these poor academic souls with 15$ millions? Most of them even as AI tokens? Why do I see a macabre irony here?!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>mrandish</em>:</p>
-<blockquote>&gt; &gt; Under a partnership, the Simons Foundation, Anthropic and OpenAI will commit $15 million in combined funding and resources.<p>OAI and Ant got blowback for essentially strip mining mathematical discoveries into PR wins for their models, accidentally laying waste to the research field in process. Throwing ~$5M each into PR whitewashing (partially in token credits), seems self-serving.<p>Kudos to the Simons Foundation for seizing the moment to offer the labs a fig leaf of respectability. Might have been the fastest &quot;Yes&quot; on a grant proposal ever.</blockquote>
-<blockquote>
-<p>↳ reply — <em>nater5000</em>:</p>
-<blockquote>&gt;... essentially strip mining mathematical discoveries into PR wins for their models, accidentally laying waste to the research field in process.<p>Jeeze, that&#x27;s an almost impressively charged way of saying &quot;private company performing SOTA research on open problems that anyone has been welcomed to approach for over a century&quot; lol<p>I think it does a disservice to the dialogue to strip away any nuance here and just paint these companies as evil for doing what <i>everyone</i> has been anticipating companies like them doing well before LLMs even existed. It&#x27;s clearly just trying to fit these events into a specific narrative which does nothing to actually address the inevitability of everything that comes next. Feel free to pressure OpenAI and Anthropic to stop performing math research so that it can just be picked up by whoever catches up and doesn&#x27;t care about bad PR. I&#x27;m sure Musk with Grok will be <i>extra</i> considerate of pure math researchers when he sees an opening to pick up those scraps lol</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Siri is so bad at everything</title>
-      <link>https://www.reddit.com/r/apple/comments/1x6gz83/siri_is_so_bad_at_everything/</link>
-      <guid isPermaLink="false">hn3-50104465</guid>
-      <pubDate>Thu, 15 Oct 2026 14:47:39 +0000</pubDate>
-      <description>126 points, 104 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.reddit.com/r/apple/comments/1x6gz83/siri_is_so_bad_at_everything/"><strong>→ Article</strong></a> <small>(reddit.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50104465">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 104 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>scrumper</em>:</p>
-<blockquote>The whole thing is buggered. My latest, in car, on 26.6.2 with phone connected via bluetooth. I hold the voice button on my steering wheel down to activate Siri:<p>&quot;Call Fred.&quot;<p>&quot;You&#x27;ll need to unlock your phone for that.&quot;<p>&quot;Call Fred.&quot;<p>&quot;You&#x27;ll need to unlock your phone for that.&quot;<p>&quot;Call Fred.&quot;<p>&quot;OK, calling Fred.&quot;<p>Phone is locked in my pocket the entire time. Like, make your damn mind up. Every time I try to call from the car now I have to ask it at least twice, usually three times.<p>And a completely baffling one recently, not even anonymizing names, also in car:<p>&quot;Call George.&quot;<p>&quot;OK adding L.S.D. by Hallucinogen to your Liked Songs playlist.&quot;<p>WTAF.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>itopaloglu83</em>:</p>
-<blockquote>“Good night.”<p>Literal 10 seconds later.<p>“Setting the scene good night.”<p>Another 2-3 seconds later, the lights go off.<p>I don’t understand what it’s trying to do, simple tasks should be instant, what am I waiting for? The entire Siri became unusable and simply trash.<p>Edit: For reference, it used to turn off the lights as I complete my sentence and put my wrist down.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>pornel</em>:</p>
-<blockquote>HomeKit is so painfully slow and flaky.<p>I&#x27;ve switched to Home Assistant and the same devices on the same network work instantly, as they should.<p>Apple is so terrible at this. They have nobody to blame: it&#x27;s their system, their protocol (I have pre-Matter devices), their home hub, their certified devices.<p>Home Assistant with a pile of community-maintained python hacks runs circles around Apple.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>kstrauser</em>:</p>
-<blockquote>I <i>mostly</i> like it, but it randomly changes what commands it accepts.<p>Last week:<p>Me: Hey Siri, turn off the bedroom lights.
-Siri: I’m sorry, I can’t change a scene.
-Me: Hey Siri, turn the bedroom lights off.
-Siri: OK!<p>This week:<p>Me: Hey Siri, turn the bedroom lights off.
-Siri: I’m sorry, I can only do one thing at a time.
-Me: Hey Siri, turn off the bedroom lights.
-Siri: OK!<p>Next week:<p>Me: Hey Siri ——
-Siri: The red zone has always been for loading and unloading of passengers. There&#x27;s never stopping in a white zone.<p>Like, please just pick one and stick that in the integration tests. I promise I’ll learn the syntax if you choose an official one. Any official one.</blockquote>
-<p>↳ reply 3 — <em>alexaholic</em>:</p>
-<blockquote>Good thing Siri and Alexa are going through a phase, otherwise Siri would’ve added that LSD to your Amazon shopping list!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>post_break</em>:</p>
-<blockquote>Here&#x27;s my tiny anecdote about Siri. It&#x27;s so garbage I had to name my garage door &quot;The garage door&quot; because without the extra THE it would often refuse or tell me that device can&#x27;t be opened.<p>Siri needs to be spoonfed the most basic things, and it&#x27;s not getting any better. Google doesn&#x27;t get any passes since my Google Home appears to be getting alzheimer&#x27;s after the Gemini &quot;upgrade&quot;.</blockquote>
-<p><strong>Top #3</strong> — <em>Jeremy1026</em>:</p>
-<blockquote>Apple Intelligence broke the ability for Siri to run a shortcut that I use daily. I have a shortcut named, &quot;What&#x27;s for dinner?&quot; I used to be able to activate Siri and says, &quot;What&#x27;s for dinner?&quot; and it would set off to my personal mealie server, use an API key to fetch the information, then speak the result. Now, Siri looks through my messages and finds a dinner reservation from OpenTable from months ago and declares that to be fact.</blockquote>
-<blockquote>
-<p>↳ reply — <em>noboostforyou</em>:</p>
-<blockquote>&gt;  Now, Siri looks through my messages and finds a dinner reservation from OpenTable from months ago and declares that to be fact.<p>Settings &gt; Siri &gt; Apps &gt; Messages &gt; &quot;Learn from this App&quot;<p>Unfortunately Apple makes you toggle this off individually for every single app, seems like an intentional dark pattern that they don&#x27;t let you toggle off all apps in one go.
-Also, each iOS updates seems to re-enable Siri for every single app so it doesn&#x27;t respect your previously disabled apps.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Jeremy1026</em>:</p>
-<blockquote>I worked around by adding the shortcut to my control center. Ultimately I&#x27;d prefer to have the integrations in place, if Siri ever ends up not sucking.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Using AI to reverse engineer hardware</title>
-      <link>https://blogs.gnome.org/uraeus/2026/10/15/aiandreverseengineerhardware/</link>
-      <guid isPermaLink="false">hn3-50104299</guid>
-      <pubDate>Thu, 15 Oct 2026 14:35:15 +0000</pubDate>
-      <description>155 points, 134 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blogs.gnome.org/uraeus/2026/10/15/aiandreverseengineerhardware/"><strong>→ Article</strong></a> <small>(blogs.gnome.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50104299">→ HN comments</a> &nbsp;·&nbsp; 155 points &nbsp;·&nbsp; 134 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>OleksiiA</em>:</p>
-<blockquote>Maybe someday someone will use this to make infotainment in cars like Polestar and Lucid actually stable and usable?</blockquote>
-<p><strong>Top #2</strong> — <em>valdiorn</em>:</p>
-<blockquote>I&#x27;ve been having a silent panic attack for the last 3 days, and I don&#x27;t really have anyone to talk to that would understand my concern.<p>I run a small pro audio company, we make guitar pedals and audio effects mostly. My current key objective is building up a processor similar to the Eventide H90, that would compete on having top-notch algorithms for reverb, delay, chorus etc. we already have single-effect pedals on the market that are very successful.<p>In the past 72 hours I have ONE-SHOT decompiled 3 of my main competitors products, including the Strymon Big Sky. I just... have their award winning algorithms now. Like, I could in theory just stick them in a box and resell them. It took one prompt and 3 hours for opus 5.5 to work that out.<p>The lexicon 224 then got added. While Claude was prepping It found someone else had already done the same thing 1 weeks earlier and dumped the result on GitHub, so it just stole that code and saved some time. It took all of 20 minutes to do the entire Ursa Major product range.<p>And yes, I&#x27;ve tested them all - and they all sound phenomenal. I specifically asked Claude to first build an emulator and execute the original firmware&#x2F;ROM so I could be certain it wasn&#x27;t just making &quot;something similar&quot; but actually executing the same code. Then I asked it to convert it into a self contained c++ library and compare the result to the emulator.<p>The problem is, everyone can now do this to my products as well. Basically, anyone with a Claude subscription can now rip of any best-in-class algorithm from any competitor. While I&#x27;m not going to do that, I know there are 30 Chinese companies that happily would.<p>The moat of hardware effects processors has just vanished.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>brink</em>:</p>
-<blockquote>Can&#x27;t help but feel that AI is the killing of the golden goose. We thought it would kill jobs, but it may just end up killing entire industries.<p>Intellectual property incentivized many and laid many golden eggs, but why would someone toil to create a new algorithm to solve a problem if someone else is just going to steal it in hours?<p>But who knows, maybe imploding the software industry is a good thing. I may lose my house in the process, but I think we could all get back to touching a little more grass.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jcelerier</em>:</p>
-<blockquote>&gt; but why would someone toil to create a new algorithm to solve a problem if someone else is just going to steal it in hours?<p>same reason I spent my entire career so far writing open-source code that anyone can copy ? (it&#x27;s GPL, but imagine 100% companies actually caring about that). Ideas can&#x27;t be owned.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>matheusmoreira</em>:</p>
-<blockquote>Everybody&#x27;s moats have all vanished. It&#x27;s getting to the point credentialism is people&#x27;s only remaining leverage: only reason many people still have jobs is they have some professional credential that the AIs legally can&#x27;t have. Doctors, lawyers, engineers whose signatures matter and who are liable for whatever happens. And even in those cases it&#x27;s only a matter of time really.<p>Compute is the only true moat. Ownership of high performance computers will be the deciding factor in the future. Haves and have-nots will be determined by this.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>yeutterg</em>:</p>
-<blockquote>I have KEF LSX II LT speakers on my desk. They sound wonderful, but they have this annoying issue in which waking them from standby plays REALLY LOUD music for a second or two before settling on the correct volume. It&#x27;s jarring, and it&#x27;s a widespread issue.<p>In a few hours yesterday, I built a macOS menu bar app [0] that ramps up the volume when the USB output is triggered. This is not reverse engineering but an effective workaround.<p>I am tempted to try to reverse engineer the speakers and see if I could fix them myself. But 1) I have a feeling they have security features enabled and 2) I would rather not brick this rather expensive pair of speakers.<p>[0] <a href="https:&#x2F;&#x2F;github.com&#x2F;yeutterg&#x2F;bookshelf-bar" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;yeutterg&#x2F;bookshelf-bar</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I know why the mathematicians weep</title>
-      <link>https://www.derekthompson.org/p/i-know-why-the-mathematicians-weep</link>
-      <guid isPermaLink="false">hn3-50103630</guid>
-      <pubDate>Thu, 15 Oct 2026 13:44:32 +0000</pubDate>
-      <description>320 points, 518 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.derekthompson.org/p/i-know-why-the-mathematicians-weep"><strong>→ Article</strong></a> <small>(derekthompson.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50103630">→ HN comments</a> &nbsp;·&nbsp; 320 points &nbsp;·&nbsp; 518 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>atleastoptimal</em>:</p>
-<blockquote>I think beyond the specific elements of any domain AI eclipses humans in, overall, the notion of the thing that grants you status, prestige, and a living wage being commodified would spark in anyone a profound sense of dread.<p>Beyond just making you redundant in your job, the whole architecture of your existence, the thousands of hours of struggle, the sacrifice of putting off social games or personal enjoyment are now rendered moot in hindsight. You are made one step closer to complete worthlessness, which will surely continue as AI becomes a more satisfying personal companion, a more worthwhile friend, lover, etc.<p>How is one to feel safe in the progress of the future when the only hints of the wonderful post-scarcity utopia we can quantify so far is the removal of all human leverage via their labor? All it tells us is we will be bargaining with superintelligence with nothing to stand on, only a trust that the 5000 lab executives and researchers solved the most important research problem of all time on the first try.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>hgs3</em>:</p>
-<blockquote>And remember, these AI models were trained on your work, your culmination of effort and sacrifice, without any consent, credit, or compensation, then sold back to you for a subscription fee.</blockquote>
-<p>↳ reply 2 — <em>squidbeak</em>:</p>
-<blockquote>&gt; the notion of the thing that grants you status, prestige, and a living wage being commodified would spark in anyone a profound sense of dread.<p>Not for those without status (which is most people on this planet). But yes, AI is set to wipe out most established hierarchies and their gatekeepers, and to equalize most fields. A profound sense of dread is something most ordinary people live with throughout life, and if AI can reduce systemic unfairness, I bet most people will actually find some degree of relief from that dread. The complacency of the formerly-statused being shocked along the way isn&#x27;t much of an argument against that equalization.<p>&gt; Beyond just making you redundant in your job, the whole architecture of your existence, the thousands of hours of struggle, the sacrifice of putting off social games or personal enjoyment are now rendered moot in hindsight.<p>This passage answers itself, doesn&#x27;t it? You can sense those things you postponed fun for (work and the apparatus around its struggle) were never worth it. So why fight for us all to have to keep working just to live? Isn&#x27;t a post-scarcity world the thing we should all be fighting for?</blockquote>
-<p>↳ reply 3 — <em>glitchc</em>:</p>
-<blockquote>Unfortunately, I think this is a human failing being exposed rather than anything else. We like to build conceptual models of how things work, but they are often tinged with <i>should</i>. Reality doesn&#x27;t care how things should work. It only cares about how things <i>do</i> work. It&#x27;s always jarring when the <i>should</i> turns out to be false.<p>Philosophers for millenia believed that human beings had meaning, purpose and set out to explore what that could be. It was a noble profession for a long time. Once we realized that there was no hidden spark, ergo no purpose, the study of and the prestige associated with philosophy took a nosedive. Yes it is still studied but it carries nowhere near the respect it once did. Mathematics seems to be suffering the same fate.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ozozozd</em>:</p>
-<blockquote>I can kind of relate but I feel like I am mourning something different: the loss of the desire to seek truth in tech, math etc.<p>Nothing is validated or tested anymore. It’s all about <i>the shape</i> or believability or even how loud it is.<p>They dropped 100+ papers no one read. I am sure mathematicians are reading them now but even this forum has concluded that these problems are solved, without reading or validating.<p>It’s like everyone forgot “don’t believe everything you read on the Internet.” And it makes for a very boring discussion when everyone is just spewing unvalidated claims, layering them with strong beliefs founded on similarly unvalidated claims. It’s dull, without substance and just pure noise.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ederamen</em>:</p>
-<blockquote>&gt; I feel like I am mourning something different: the loss of the desire to seek truth in tech, math etc.<p>This is what I&#x27;ve been feeling too.  It feels increasingly like the professional world has become a tower of scams.  It&#x27;s not worth building technical skills or focusing on quality; your boss doesn&#x27;t know or care what good work looks like, he&#x2F;she just wants your work to look good enough to his&#x2F;her boss, who knows even less about the actual work being performed.  And everyone reports up to an MBA CEO who was brought in from a completely different industry.<p>I want to work in an industry where skill, diligence and expertise is rewarded and respected, but from what I&#x27;m seeing political ability is 95% of the game and caring too much about the work is a career liability.</blockquote>
-<p>↳ reply 2 — <em>slow_typist</em>:</p>
-<blockquote>+1
-We need human verification.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>RGS1811</em>:</p>
-<blockquote>This piece circles, without naming it, around the concept of “deontic scorekeeping” central to the work of Robert Brandom on semantics. The idea that our ability to create and sustain conceptual systems depends on the give and take of reasons within a social setting. Brandom has been front of mind for me lately because elements of his theory both explain why LLMs should work in principle, and where they are bound to be radically deficient. An LLM encodes the normative regularities of our linguistic&#x2F;conceptual games into its weights, but it cannot be a real participant in our games because it is incapable of staking durable commitments or changing its dispositions over time.<p>Worth reading: Robert Brandom, “Making It Explicit: Reasoning, Representing, and Discursive Commitment”</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>fritzo</em>:</p>
-<blockquote>&gt; An LLM ... cannot be a real participant<p>The participant is not an LLM, the participant is a company. The company learns. It adapts. It has a trillion dollars of skin in the game.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>vector_spaces</em>:</p>
-<blockquote>I mean, many companies operate within particular domains but don&#x27;t have much skin in the domain itself in a way that is meaningful to other participants there -- like Oracle builds software for healthcare, ostensibly, but any actual user of their products will tell you they are nightmarish with regard to usability, and research shows that patients are often harmed as a result. So healthcare isn&#x27;t their game, it&#x27;s selling healthcare software.<p>Likewise OpenAI doesn&#x27;t have &quot;skin&quot; of any shape or value in e.g. the mathematics community or even in mathematics research per se. In my cynical view, they are exploiting the exposure of mathematical research to automation in an effort to create a case study of their product obsoleting a highly visible and well-leveraged and relatively small profession. Regardless, I doubt even they would say they have durable skin in mathematics in any sense, certainly not in either of the senses I mentioned above. But their output inhabits the same space as mathematicians, who have to contend with the consequences</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>skrebbel</em>:</p>
-<blockquote>&gt; The idea that our ability to create and sustain conceptual systems depends on the give and take of reasons within a social setting.<p>I read this sentence 5 times and I still cannot parse it.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Wayland desktop for Linux with skeuomorphic design</title>
-      <link>https://github.com/fyzugx/DEsk</link>
-      <guid isPermaLink="false">hn3-50103338</guid>
-      <pubDate>Thu, 15 Oct 2026 13:23:44 +0000</pubDate>
-      <description>441 points, 176 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/fyzugx/DEsk"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50103338">→ HN comments</a> &nbsp;·&nbsp; 441 points &nbsp;·&nbsp; 176 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tenacious_tuna</em>:</p>
-<blockquote>This is a really enjoyable take, pushing the feeling of what one does on a computer towards actually being at a desk and having to reach for various functions. I feel like that would enable spatial memory to do some cool things.<p>I miss the 90s chunkiness of switches, buttons, hardware: being able to hear the computer &quot;think&quot; (HDD seeks), the hum of a CRT. Modern machinery feels so insubstantial, emphasizing clean glass and tidy machined chassis. (chassies?)<p>I have this persistent daydream about a computer setup that feels like the Nostromo flight deck from Alien. I almost want to feel like I&#x27;m sitting _inside_ a computer when I&#x27;m at my desk, surrounded by powerful feeling electronics with substantial switches and such. Of course there&#x27;s plenty of inconvenience there too, but something about it appeals to me.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>SpaceL10n</em>:</p>
-<blockquote>Singular and plural chassis are spelled the same, but that doesn&#x27;t make it right! I&#x27;m more inclined to spell it chassises personally.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>notpushkin</em>:</p>
-<blockquote>Chasses :-)<p><a href="https:&#x2F;&#x2F;en.wiktionary.org&#x2F;wiki&#x2F;-sis" rel="nofollow">https:&#x2F;&#x2F;en.wiktionary.org&#x2F;wiki&#x2F;-sis</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sellmesoap</em>:</p>
-<blockquote>We just need to add more sound effects tied to system monitor probes to get those HDD noises back, kinda like how electric cars have that parking lot noise to make sure pedestrians are aware of them in lieu of an engine banging away!
-Being inside the computer like being at a pipe organ console, or surrounded by screens like a hacker in a dystopian hovercraft!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bmurphy1976</em>:</p>
-<blockquote>I want more stuff like this.  The era 20 years ago (e.g. Enlightenment) was way more fun than the bland monotonic design we have these days.  If you like bland modern design, great, that should be an option as well, but we should still have good variety.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Sohcahtoa82</em>:</p>
-<blockquote>&gt; If you like bland modern design, great,<p>I don&#x27;t know why anybody would.  It takes all the lessons we learned about UX from user testing in the late 90s&#x2F;early 00s and throws it all away to produce something that looks &quot;clean&quot; and &quot;sleek&quot;, at the cost of being useful.  Discoverability?  Who needs it?<p>EDIT: Though I do enjoy skeuomorphism, I do think the TFA goes a bit too far.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Zigurd</em>:</p>
-<blockquote>Debatable. IIRC Bell labs conducted a study of whether Unix command names should be changed to something more meaningful than cat, sed, grep etc.<p>They found that words that convey some meaning related to what the command does had little or no effect on the user remembering what the command does. I strongly suspect skeuomorphism similarly has no claim on functional advantage.<p>Discoverability is good, but it&#x27;s probably got a little to do with the icon.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lelanthran</em>:</p>
-<blockquote>&gt; I strongly suspect skeuomorphism similarly has no claim on functional advantage.<p>I think it does, but for new users only. I hate playing the &quot;is-this-a-button&quot; on modern designs, not knowing what is clickable and what is not. Other games I hate:<p>- Lets find the scrollbar<p>- Guess which window has focus<p>- (Windows-only) Try to predict the application to get focus on alt-tab, then alt-tab again.<p>- How do I find the file that just downloaded?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>pkulak</em>:</p>
-<blockquote>As someone who runs a super-boring, stock tiler with zero decoration or bling; couldn&#x27;t agree more. It&#x27;s this kind of thing that gets new users interested in Linux. _I_ started using Linux because I saw some video of wobbly windows, and desktops on a giant rotating cube.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>d1l</em>:</p>
-<blockquote>The main difficulty I see in these &quot;RETVRN TO SOVL&quot; things is not the window-manager or desktop itself but the UI toolkits for the applications. GTK2 had so many excellent themes. Now GTK or libadwaita seem designed to resist themes and introduce constant breaking of selectors or widgets or whatnot. I believe they griefed the themers into just giving up. I have less knowledge about Qt, but I assume it&#x27;s probably the better pick these days.</blockquote>
-<blockquote>
-<p>↳ reply — <em>thwarted</em>:</p>
-<blockquote>To say nothing of client side decorations, which diverge the user interface among apps and remove control from the user to globally customize some aspect of their application window management&#x2F;theming.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
