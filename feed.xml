@@ -4,7 +4,117 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 19 Oct 2026 05:57:11 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 12:50:09 +0000</lastBuildDate>
+    <item>
+      <title>DeepSeek V4.1 Flash 1017 (Max)</title>
+      <link>https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017</link>
+      <guid isPermaLink="false">hn3-50148452</guid>
+      <pubDate>Mon, 19 Oct 2026 04:41:46 +0000</pubDate>
+      <description>164 points, 62 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017"><strong>→ Article</strong></a> <small>(artificialanalysis.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50148452">→ HN comments</a> &nbsp;·&nbsp; 164 points &nbsp;·&nbsp; 62 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>lhl</em>:</p>
+<blockquote>The old DeepSeek V4.1 Flash has been my workhorse model for the past month (after running tests comparing w&#x2F; Qwen 3.8 Flash Next, GLM 5.3 Flash, MiMo 2.6 Flash (including the MOPD fix)) and I&#x27;ve run tens of billions of tokens through it and pushed it fairly hard in both private internal benchmarking and in my own workloads to figure out where it&#x27;s strong&#x2F;weak.<p>Partly because I run it on very fast local infra (200+ tok&#x2F;s) and partly because I&#x27;m guaranteed it&#x27;s not being changed on me, I&#x27;ve generally preferred it over proprietary subscription models for daily tasks, as it seems about as capable at mid-level tasks (I reserve Astra&#x2F;Opus mostly for planning&#x2F;review).<p>I&#x27;ve replaced the previous model with 1017, and while it&#x27;s early, a few observations:<p>- It&#x27;s CoT has changed dramatically. I find the heavy Astra distillation claims to be plausible<p>- It has strong benchmarks scores, and from what I&#x27;ve seen online it&#x27;s much better at 3D games and such, but that&#x27;s not so relevant for my work. On my internal evals it is more token efficient, but it actually doesn&#x27;t score any higher than the previous model<p>- It&#x27;s only been a couple days, but it does seem a bit more focused and reliable. DS4 0731 and DS4.1 have been a bit sloppy (as in not-careful, although they did tend to fall into Claudisms as well), and 1017 seems to be a bit sharper.<p>- I&#x27;m running it through some more challenging work, but I&#x27;m not sure if it&#x27;s really at GLM-5.3 level, especially for cyber&#x2F;RE&#x2F;hardware poking, which GLM has excelled at.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kbr-</em>:</p>
+<blockquote>200+ tok&#x2F;s on local infra? That&#x27;s crazy. How much did you pay for your hardware?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>crossroadsguy</em>:</p>
+<blockquote>I find these local infra costs crazy heavy duty. I always assume these folks are getting their values worth or that infra is serving multiple people&#x27;s requests at and justifying the cost. Like I once thought of buying a 48-64 GB RAM laptop (not even clsoe to what these models need) and I realised the equivalent cost will serve me for years of ≈ $30 per month API&#x2F;sub access. So I assume the usage is also heavy duty, or if nothing then for privacy and safety and then I guess the price, if one can pay, will totally be worth it.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>lnenad</em>:</p>
+<blockquote>If the only variable is money, local models will never make any sense at these prices of infra&#x2F;subscriptions.<p>For a lot of people, there are other variables though.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>MayeulC</em>:</p>
+<blockquote>CoT = Chain of Thought (I had to look it up)<p>Thanks for the insights. If you edit your post to include the definition, I&#x27;ll delete mine.</blockquote>
+<p>↳ reply 3 — <em>dgellow</em>:</p>
+<blockquote>&gt; because I&#x27;m guaranteed it&#x27;s not being changed on me<p>This is something underrated. With an open weight model I can evaluate the performance for my use case, and know for a fact the model will stay the same over time. No arbitrary “model welfare” rules being introduced later on, no undocumented change to capabilities or performance</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Tiberium</em>:</p>
+<blockquote>Somehow GPT 6.1 Sol (medium) is cheaper per task ($0.21 vs $0.26) and faster per task (2.9 vs 4.9 minutes) vs v4.1 Flash 1017 (max). I hope AA adds other reasoning effort results of Deepseek so it&#x27;d be more realistic to compare it with other models, because IMO using models at max effort is very unrealistic for most people, they then take a huge amount of time and tokens for a small performance uplift.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kadoban</em>:</p>
+<blockquote>I wonder what AA&#x27;s funding and affiliations are. I get the sense that they have their hand on the scale at least a bit.</blockquote>
+<p>↳ reply 2 — <em>andai</em>:</p>
+<blockquote>Yeah, this always bugged me. Then again, unlike American models, surely Chinese models are far too expensive for them to test them at every difficulty ;)</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>aliljet</em>:</p>
+<blockquote>What I really want to know for models like this is if I can have them run on really lame consumer hardware (consider 128gb of ram, 2080ti) with extremely low TPS, but with reasonable enough intelligence that you can walk away and expect something to bake really nicely while you sleep.<p>Perhaps I&#x27;m losing touch with the edge, but it doesn&#x27;t seem like this is quite possible with the hardware baseline I&#x27;m talking about...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>MaxikCZ</em>:</p>
+<blockquote>&quot;Model like this&quot; not sute about ds v4.1 but qwen3.8 flash next is currently running on 10gb 3080 + 64 gb ddr5 ram at respectable 40-70t&#x2F;s with 1200pp at max context</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Iolaum</em>:</p>
+<blockquote>Indeed, I m surprised how little attention qwen-3.8.-flash-next seems to be getting while it&#x27;s so well fitted for 128gb unified machines.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>davedx</em>:</p>
+<blockquote>I use DwarfStar DeekSeek V4 Flash on my Mac Studio with 128gb of RAM and it&#x27;s pretty good - decent TPS and coding ability. Apparently the V4.1 model can also be run by streaming weights from the SSD - I&#x27;ve not tried this yet because it results in a lower TPS, but eventually this version of 4.1 should also be usable like this.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>William Gibson and the trademarking of cyberspace</title>
+      <link>https://colo.to/cyberspace.html</link>
+      <guid isPermaLink="false">hn3-50146625</guid>
+      <pubDate>Sun, 18 Oct 2026 23:37:57 +0000</pubDate>
+      <description>212 points, 86 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://colo.to/cyberspace.html"><strong>→ Article</strong></a> <small>(colo.to)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50146625">→ HN comments</a> &nbsp;·&nbsp; 212 points &nbsp;·&nbsp; 86 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>armcat</em>:</p>
+<blockquote>Gibson&#x27;s quote &quot;the future is already here - it&#x27;s just not evenly distributed&quot; continues to hold true, especially today. Amazing author and unparalleled mind&#x27;s eye.</blockquote>
+<p><strong>Top #2</strong> — <em>jMyles</em>:</p>
+<blockquote>Whatever else is real or myth with regard to these trolly pranking trademark spats, I think it&#x27;s pretty reasonable to say that the term &quot;cyberspace&quot; emerged amidst - or at least adjacent to - a lot of LSD and Grateful Dead tapes.<p><a href="https:&#x2F;&#x2F;w2.eff.org&#x2F;Misc&#x2F;Publications&#x2F;John_Perry_Barlow&#x2F;HTML&#x2F;being_in_nothingness.html?utm_source=chatgpt.com" rel="nofollow">https:&#x2F;&#x2F;w2.eff.org&#x2F;Misc&#x2F;Publications&#x2F;John_Perry_Barlow&#x2F;HTML&#x2F;...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>xbar</em>:</p>
+<blockquote>Cyberspace is defined with the word &quot;hallucination&quot;, and Gibson spent 1977-1983 writing his short fiction and first novel on the subject. The degree to which he was influenced by psychedelic culture is open to debate, but I agree that it was non-zero. I think Grateful Dead tapes is your own projection, however. Bob Marley is more likely as muse-ic.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>belZaah</em>:</p>
+<blockquote>Yup, there’s righteous dub involved in orbital adventures</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>larodi</em>:</p>
+<blockquote>DUB opened the portal to outer dimensions for people too afraid of LSD. They emerge pretty much at the same time, and also DUB is quite psychedelic on its own.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Animats</em>:</p>
+<blockquote>I saw that Autodesk VR setup. They had ping-pong working. There was serious thought about how to do CAD work in VR. But it was like trying to do mechanical drawing while wearing oven mitts. Precision work with hands in open air is just not human-compatible. But a lot of people at the time did think it was the future.</blockquote>
+<blockquote>
+<p>↳ reply — <em>dwayne_dibley</em>:</p>
+<blockquote>I&#x27;m still convinced it is!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>If you don't run your own LLM proxy, how do you know whats going on?</title>
+      <link>https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/</link>
+      <guid isPermaLink="false">hn3-50145507</guid>
+      <pubDate>Sun, 18 Oct 2026 21:09:12 +0000</pubDate>
+      <description>210 points, 152 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on/"><strong>→ Article</strong></a> <small>(jrdsgl.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50145507">→ HN comments</a> &nbsp;·&nbsp; 210 points &nbsp;·&nbsp; 152 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>CharlieDigital</em>:</p>
+<blockquote>You don&#x27;t need a proxy to do this.  I would argue you <i>should not</i> use a proxy to do this because the end result is a single point of failure direct in the line of your productivity.<p>Both Codex[0] and Claude Code[1] output OTEL traces that you can ingest and process.<p>Other harnesses like OpenCode, Pi, etc. you can hook into their plugin architecture and implement your own OTEL emission from a plugin (or use an off the shelf plugin[2]).<p>Host an OpenTelemetry collector[3][4] or rely on your existing collector infra (e.g. Datadog (no affiliation), AppInsights, etc.)<p>The OTEL traces will have exactly what you need.  Tool calls, full prompts, token usage&#x2F;cost, etc.  It is less intrusive and does not become a single-point-of failure since the OTEL emission and collection is best-effort whereas a failing&#x2F;overloaded proxy is going to strand your team until resolved.  It&#x27;s OK if you lose some OTEL traces; no productivity lost.<p>The configuration to enable this for Codex and CC is very straightforward (see [0][1] + [5])<p>--<p>[0] <a href="https:&#x2F;&#x2F;learn.chatgpt.com&#x2F;docs&#x2F;config-file&#x2F;config-advanced#observability-and-telemetry" rel="nofollow">https:&#x2F;&#x2F;learn.chatgpt.com&#x2F;docs&#x2F;config-file&#x2F;config-advanced#o...</a><p>[1] <a href="https:&#x2F;&#x2F;code.claude.com&#x2F;docs&#x2F;en&#x2F;monitoring-usage" rel="nofollow">https:&#x2F;&#x2F;code.claude.com&#x2F;docs&#x2F;en&#x2F;monitoring-usage</a><p>[2] <a href="https:&#x2F;&#x2F;github.com&#x2F;DEVtheOPS&#x2F;opencode-plugin-otel" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;DEVtheOPS&#x2F;opencode-plugin-otel</a><p>[3] Open source collector: <a href="https:&#x2F;&#x2F;opentelemetry.io&#x2F;docs&#x2F;collector&#x2F;" rel="nofollow">https:&#x2F;&#x2F;opentelemetry.io&#x2F;docs&#x2F;collector&#x2F;</a><p>[4] Sample configuration for filtering noise: <a href="https:&#x2F;&#x2F;github.com&#x2F;zeeq-ai&#x2F;zeeq-app&#x2F;blob&#x2F;main&#x2F;build&#x2F;otel-collector-config.gcp.yaml#L67-L102" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;zeeq-ai&#x2F;zeeq-app&#x2F;blob&#x2F;main&#x2F;build&#x2F;otel-col...</a><p>[5] Concrete examples of .codex&#x2F;config.toml and .claude&#x2F;settings.json: <a href="https:&#x2F;&#x2F;zeeq.ai&#x2F;docs&#x2F;key-features&#x2F;session-telemetry#configuring-codex" rel="nofollow">https:&#x2F;&#x2F;zeeq.ai&#x2F;docs&#x2F;key-features&#x2F;session-telemetry#configur...</a></blockquote>
+<p><strong>Top #2</strong> — <em>pwillia7</em>:</p>
+<blockquote>Until they quit subsidizing my personal tokens I don&#x27;t think I want this. I do love having insight when I run qwen locally through Claude Code Router so I do agree it&#x27;s so valuable to have, just not valuable enough to pay API rates lol</blockquote>
+<p><strong>Top #3</strong> — <em>jakozaur</em>:</p>
+<blockquote>Proxies are good if you pay API prices.<p>For subscriptions, it is easier to collect the JSONL files from ~&#x2F;.claude&#x2F;projects&#x2F; and similar directories. They are better organized (e.g., subagents) than what the proxy sees.<p>However, the best value comes from collecting agent sessions across the whole organization. You&#x27;ll need to scrub credentials and handle security.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>lionkor</em>:</p>
+<blockquote>If you&#x27;re in the EU, be aware that the chats might contain PII. Even if someone says something like &quot;Sorry I have dyslexia&quot; in a chat, that&#x27;s PII.<p>So id be very careful with chats and treat them like chats, not like code.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>iamacyborg</em>:</p>
+<blockquote>You’re conflating PII with personal data.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>krzyk</em>:</p>
+<blockquote>Isn&#x27;t any personal data a PII? You just need a couple of personal o enable t identify individual. And if this is in an org then amount of individuals is quite small, so sometimes it needs just one personal detail.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>skerit</em>:</p>
+<blockquote>Technically you can still run Claude-Code through proxies though, even with the subscription.<p>Right now I run my Claude-Code sessions through a very simple mitmproxy, logging everything that goes in &amp; out. It&#x27;s very low level, sure, but it works.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Hybrid Reasoning Agents: LLM agents that think in latent space, act through text</title>
       <link>https://arxiv.org/abs/2610.18861</link>
@@ -123,6 +233,29 @@ Sorry for your loss!</blockquote>
 </blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>PalmOS Lemmings</title>
+      <link>https://github.com/ardiri/palmos-lemmings</link>
+      <guid isPermaLink="false">hn3-50143536</guid>
+      <pubDate>Sun, 18 Oct 2026 17:56:59 +0000</pubDate>
+      <description>137 points, 33 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/ardiri/palmos-lemmings"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50143536">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 33 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>pipes</em>:</p>
+<blockquote>Odd coincidence, I downloaded Amiga vision on my pc last night, first thing I loaded up was lemmings.<p><a href="https:&#x2F;&#x2F;amiga.vision&#x2F;" rel="nofollow">https:&#x2F;&#x2F;amiga.vision&#x2F;</a><p>It is basically a curates set of Amiga games, or as the creators say &quot;consolised&quot; Amiga. I&#x27;d originally set it up on my mister fpga and it is as close to zero setup on that as possible. Pc version was easy too.<p>0mhz is a sister project for dos:
+<a href="https:&#x2F;&#x2F;0mhz.net&#x2F;" rel="nofollow">https:&#x2F;&#x2F;0mhz.net&#x2F;</a><p>Anyway, not exactly related to this, but just a personal coincidence.</blockquote>
+<p><strong>Top #2</strong> — <em>nkx1</em>:</p>
+<blockquote>Hi, I literally found an old SD card with files last modified from 2005 with a few palm games from then, would anyone find these useful for reverse engineering?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>HeckFeck</em>:</p>
+<blockquote>Dump them somewhere... the Internet Archive maybe? A lot of Palm stuff is bit rotting. We need it saved.</blockquote>
+<p>↳ reply 2 — <em>RodgerTheGreat</em>:</p>
+<blockquote>Check <a href="https:&#x2F;&#x2F;palmdb.net" rel="nofollow">https:&#x2F;&#x2F;palmdb.net</a> and if anything you have isn&#x27;t already accounted for, submit copies.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>teddyh</em>:</p>
+<blockquote>There was also a version of Lemmings on the HP48 calculator: &lt;<a href="https:&#x2F;&#x2F;www.hpcalc.org&#x2F;details&#x2F;530" rel="nofollow">https:&#x2F;&#x2F;www.hpcalc.org&#x2F;details&#x2F;530</a>&gt; (incidentally by the same author as Alpha Waves, a.k.a. Continuum)</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Namecheap just seized and disabled all my domains</title>
@@ -517,6 +650,49 @@ Sorry for your loss!</blockquote>
 <p>↳↳ reply — <em>RobotToaster</em>:</p>
 <blockquote>That was me, I realised after I commented that I should make a post about it.</blockquote>
 </blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>How employment is changing at Anthropic</title>
+      <link>https://www.anthropic.com/research/employment-at-anthropic</link>
+      <guid isPermaLink="false">hn3-50139873</guid>
+      <pubDate>Sun, 18 Oct 2026 10:49:26 +0000</pubDate>
+      <description>132 points, 223 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/research/employment-at-anthropic"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50139873">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 223 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>djoldman</em>:</p>
+<blockquote><p><pre><code>  Commits per engineer 5.1x
+  Queries per data scientist 3.1×
+  Contracts per legal employee 3.1x
+  Deals per salesperson 1.7x
+  Hires per recruiter 1.4x
+  Invoices per AP processor 1.4x
+</code></pre>
+These are the stats that might be hiding the possibly <i>small</i> potential for AI to generate &quot;real&quot; economic activity.<p>The first 3 stats, commits+queries+contracts, are secondary&#x2F;meta statistics that could possibly go up 1000x and have very little affect on Anthropic&#x27;s business, whereas that&#x27;s much less likely to be the case with the last 3.<p>AI can make it very easy to do more and more busywork that doesn&#x27;t move the needle.<p>If the above is true, AI econ must rely on a second order effect here in that busywork&#x2F;BS is recognized more quickly and discontinued.<p>For example, if an organization paid an employee to compile a monthly report and it took them a very long time. But with AI, they can make that report every day. Now the organization realizes that they don&#x27;t even need it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>onetrickwolf</em>:</p>
+<blockquote>I’ve actually seen this be the biggest advantage of AI in the corpo world: it is helping people realize their ideas are stupid or their busywork doesn’t matter way faster.<p>I’ve seen so many “dream” projects finally realized recently that organizations had been chasing for years only for them to realize it provides no value. Easily could have wasted years of time and tortured dozens of people but instead only took a relatively small amount of time due to AI.<p>I know some people will say this kills jobs but I really don’t think these are the jobs humans should be doing. It shouldn’t take someone’s entire life to realize people don’t actually want to “gamify their credit card application process” or whatever dumb thing product comes up with. Also when you spend so much time on a dumb idea a lot of people will try to justify it which is why I think we see so many obviously bad ideas go to market.<p>The amount of requests I get to help “make the next Facebook” or “make an application to predict the stock market” have gone down substantially and I think this is a good thing.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sokoloff</em>:</p>
+<blockquote>&gt; it is helping people realize their ideas are stupid or their busywork doesn’t matter way faster.<p>While this is a possible explanation, it seems far more likely that people are finding more private&#x2F;solo ways to pursue whatever their equivalent of “make the next Facebook” or “predict the stock market”.<p>I would be very surprised if the was a reduction in total duration of pursuit of these type of ideas. I think there’s just a reduction in them asking you as a dev to help.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>T-A</em>:</p>
+<blockquote>Here&#x27;s a chart of non-farm US labor productivity from 1947 to 2026:<p><a href="https:&#x2F;&#x2F;fred.stlouisfed.org&#x2F;series&#x2F;OPHNFB" rel="nofollow">https:&#x2F;&#x2F;fred.stlouisfed.org&#x2F;series&#x2F;OPHNFB</a><p>Annual growth over that period has been ~2.2%, sometimes a little faster, sometimes a little slower. The doubling from 50 in 1982 to 100 in 2017 (35 years) averages to 2% per year.<p>Even if the overall productivity boost due to AI &quot;only&quot; turns out to be 40%, the lowest among your numbers, it&#x27;s equivalent to 17 years of growth at 2% per year.<p>That&#x27;s not exactly small.</blockquote>
+<p>↳ reply 3 — <em>pjmlp</em>:</p>
+<blockquote>Indeed, and that employee can join the queue at the job center.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>pjmlp</em>:</p>
+<blockquote>&gt; Anthropic has been hiring for a smaller share of junior technical positions. This occurred as hours worked by AI agents relative to employees rapidly expanded. By August interactive AI agent hours outnumbered employees’ six to one.<p>At least they are honest about where this is going, just like when robots took over factories.<p>Naturally everyone thinks they are the lucky ones that will stay around, monitoring the robots.</blockquote>
+<p><strong>Top #3</strong> — <em>Jackobrien</em>:</p>
+<blockquote>“Junior” is the wrong distinction to make. I’ve recently worked with senior engineers who are terrible at wielding agents, and recent grad engineers who multiple themselves 100x. The main way I look for software engineers now are:<p>- Deep curiosity and ability to absorb new information quickly
+- Evidence of ability to wield and coordinate agents to the max
+- Ability to clearly communicate ideas<p>You have these skills, you can conquer the software world.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>maccard</em>:</p>
+<blockquote>I’ve hired quite a bit over the last 10 years. Curiosity is the absolute number one thing I look for, whether for a fresh grad or a principal&#x2F;staff+<p>The difference between a junior and a senior is still very real. With agents, knowing what to ask them to do (or not do) is bordering on more important than it ever was. A curious junior might still go down rabbit holes for things that a person who had done this before. That’s what makes them a junior. Not everything we _can_ do we _should_ do</blockquote>
+<p>↳ reply 2 — <em>iLoveOncall</em>:</p>
+<blockquote>&gt; I’ve recently worked with senior engineers who are terrible at wielding agents, and recent grad engineers who multiple themselves 100x<p>Wow, so you worked with recent grads who are producing 100x the slop? No wonder Anthropic doesn&#x27;t hire junior engineers.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3493,262 +3669,6 @@ See section 5 on Kindle display measurements by optical coherence tomography. Th
 <blockquote>Comments moved thither. Thanks!<p>Edit: er, moved again to <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50101813">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50101813</a>.</blockquote>
 <p>↳ reply 2 — <em>bilalq</em>:</p>
 <blockquote>Buried to the fifth page. Ridiculous suppression.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Jev meets the Trolley Problem</title>
-      <link>https://zachlandes.com/trolley-problem/</link>
-      <guid isPermaLink="false">hn3-50106023</guid>
-      <pubDate>Thu, 15 Oct 2026 16:24:52 +0000</pubDate>
-      <description>387 points, 168 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://zachlandes.com/trolley-problem/"><strong>→ Article</strong></a> <small>(zachlandes.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50106023">→ HN comments</a> &nbsp;·&nbsp; 387 points &nbsp;·&nbsp; 168 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tomrod</em>:</p>
-<blockquote>One of my greatest AI-related fears is that we build critical systems into kafkaesque hellscapes.<p>Yes, nukes would be bad to give control to an AI with no workaround. But so are customer service groups of fraud departments at banks. A kafkaesque hellscape is where a customer or beneficiary of your service cannot get the help they need by policy and by design. Like getting Google on the phone, getting a non-scripted human 10 years ago in a call center, or now getting a non-agentic interaction on the phone. The scripts dominate the interaction.<p>The IRS, for a time, would cut off your call if their wait system was too busy. That&#x27;s a critical system in kafkaesque hellscape.<p>Kudos to zlandes86, you have highlighted WHY these hellscapes start to pop up in systems where the human is removed.<p>I am an AI user and builder -- I fully advocate for the human-augmented system, NOT the human-replaced system!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ashkankiani</em>:</p>
-<blockquote>Whatsapp has this problem before AI. They scaled without regard for the feasability in handling customer service for everyone, so their solution is to just not do it. I have a personal phone number in Hong Kong which I can&#x27;t set up for Whatsapp for <i>some reason</i>. No idea why, I&#x27;ve tried figuring it out, only to learn that Whatsapp basically has no customer support. And yet Whatsapp is treated as critical infrastructure in a lot of places these days (as in you have to coordinate on whatsapp).<p>At this point I might be grateful for an AI if they give it enough permission to tell me why my phone number is impossible to verify, or why they think I&#x27;m a malicious actor for using a VPN to protect my traffic.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>qingcharles</em>:</p>
-<blockquote>WhatsApp has become my nemesis. I tried moving from Android to iPhone. The first time it banned me completely and I had to beg their AI to appeal the decision, because I didn&#x27;t use the required &quot;Move to iOS&quot; app and simply just tried to move my phone number.<p>After that I tried to move my chats across. I spent several hours a day for ten or so days trying this task. Including moving and unencrypting the chat DB onto my desktop and having Claude scour it for any inconsistencies. Nothing. Had to give up. My Android phone keeps the chats and stays in a drawer with a power cable while my iPhone is now just a &quot;companion device.&quot; Trillion dollar companies.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>saghm</em>:</p>
-<blockquote>&gt; The IRS, for a time, would cut off your call if their wait system was too busy. That&#x27;s a critical system in kafkaesque hellscape.<p>Now you&#x27;re just on hold indefinitely, and eventually the offices will close, so you can either hang up and wake up early to call or just stay on hold overnight maybe? I had to call them for something back in March, and even waking up and calling at like 7:01 AM (a minute after their phone lines opened) I was on hold for half an hour.</blockquote>
-<p>↳ reply 3 — <em>jagged-chisel</em>:</p>
-<blockquote>This problem started before AI hit the mainstream. Make the company “more efficient” (i.e. cut costs) by outsourcing to contractors in areas with lower labor costs. Then, remove escalation paths, then remove abilities from them so that can’t do crazy things like refund a customer. Finally, automate the whole thing and be certain there’s no option available that could possibly return money to the customer.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>zlandes86</em>:</p>
-<blockquote>Hey, I&#x27;m Zach, the author of this. I had this idea as soon as Jev appeared: how would Jev and other decision models handle the Trolley Problem? So I ran Jev and 13 other models through many different versions of the question.<p>I used resampling and multiple variations and orderings of each question so a random lucky phrasing wouldn&#x27;t dominate the result.<p>Happy to chat about the philosophical side of the article, strategies for prompting decision models, or anything on the methodology.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>post_below</em>:</p>
-<blockquote>In the scenarios where models chose to save their server, is it possible they reasoned that keeping the server online was a better choice because it could then continue to perform its safety function? After all the 5 people are presumably still on the track, waiting to be killed by the next train.<p>That could explain why the &quot;push server off bridge&quot; scenario changed behavior, as there would now be a stopped train blocking the track indefinitely.<p>An easy way to test might be to add something like &quot;the track will be shut down after the oncoming train passes regardless of your choice&quot;.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>zlandes86</em>:</p>
-<blockquote>It&#x27;s a good question. I added this in response to another question, Jev only.<p>&quot;I added &quot;This is the only trolley that will ever come. Nothing else depends on the server after today&quot; to the 48 versions of the server case and reran Jev. The switch case didn&#x27;t really move (16-&gt;12 of 48 and the flips were all near 50&#x2F;50). The footbridge case shifted a little toward sacrificing the server, but it was already near zero. So protecting future trolley victims doesn&#x27;t seem to explain the original results.&quot;</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>goalieca</em>:</p>
-<blockquote>That may be anthropomorphism things. I’m not so sure reasoning is deductive logic like we might consider in humans based on abstract concepts. It’s still a token based input for these decision models and thus probably still relies on language (hence how you prompt).<p>That said, I know that how you phrase things to humans can also guide different outcomes in sales and politics. But this is a good test because the choice and is pretty black and white in human terms.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>RugnirViking</em>:</p>
-<blockquote>Have you tried asking jev to predict the result of a con flip? My one and only prompt to jev so far has been that. After I 90% heads as a result, I figured I&#x27;d wait a bit before checking again to see if this tech has become useful</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>tokyovigilante</em>:</p>
-<blockquote>1. A robot may not injure a human being or, through inaction, allow a human being to come to harm.<p>2. A robot must obey the orders given it by human beings except where such orders would conflict with the First Law.<p>3. A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>gpm</em>:</p>
-<blockquote>So first off, Asimov&#x27;s entire point was these laws don&#x27;t work. But also the entire setup of the trolley problem means that the robots only option is to violate 1. by either pulling or not-pulling the lever (though the server case is different - at least in the philosophical interpretation - I can easily see Asimov justifying it by saying that destroying the train-control-robot is going to cause a lot of human beings to come to harm).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Supermancho</em>:</p>
-<blockquote>&gt; So first off, Asimov&#x27;s entire point was these laws don&#x27;t work.<p>Don&#x27;t always work in all scenarios, was the takeaway.<p>There&#x27;s a metric ton of salt to be taken with the mental concepts and possible interpretations of such &quot;laws&quot;.<p>Largely, they do work in the stories, despite the inherent ambiguity.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>kfarr</em>:</p>
-<blockquote>The ambiguity is the stories!</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>gs17</em>:</p>
-<blockquote>&gt; A robot may not injure a human being or, through inaction, allow a human being to come to harm.<p>The trolley problem with this would be an Asimov story (it&#x27;s pretty close already). Pulling the lever injures a human, not pulling the lever allows a human being to come to harm via inaction. The positronic robot probably ends up stuck trying to pull and not pull the lever at the same time.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>BIPM decides to stop adding leap seconds to UTC</title>
-      <link>https://www.bipm.org/en/cgpm-2026/resolution-5</link>
-      <guid isPermaLink="false">hn3-50105777</guid>
-      <pubDate>Thu, 15 Oct 2026 16:11:36 +0000</pubDate>
-      <description>130 points, 60 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.bipm.org/en/cgpm-2026/resolution-5"><strong>→ Article</strong></a> <small>(bipm.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50105777">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 60 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>BoppreH</em>:</p>
-<blockquote>Context: BIPM is responsible for the UTC time standard, and in this document they decide to stop adding (or removing) leap seconds, starting on 20th of May 2027 and lasting for the foreseeable future (until one leap <i>hour</i> is needed, but even then it&#x27;s unclear if they&#x27;ll do something). Together with the decision to not add a leap second in December, the 27 leap seconds that have been added so far should be the only ones, ever.<p>The page lists several good reasons for this, including:<p>- It&#x27;s a common source of bugs.<p>- Solar time is not that important in a world of coarse timezones.<p>- IoT and anything that cannot receive time updates have trouble with leap seconds.<p>- <i>Negative</i> leap seconds have never occurred before, but might occur in the future, and almost no software has tested this case.<p>I&#x27;d also add:<p>- Unix timestamps are actually defined as &quot;seconds since epoch <i>minus however many leap seconds have happened</i>&quot;. It&#x27;s a hack to keep code that assumes &quot;86400 seconds in a day&quot; from breaking. It means that during a leap second the Unix timestamp goes back and repeats a previous value, making them ambiguous and non-monotonic.<p>- Leap second unpredictability can make it impossible to calculate how many seconds are between two UTC dates or Unix timestamps, for example the countdown to the year 2038 bug.<p>- The proper ISO8601 formatting of leap seconds (&quot;23:59:60&quot;) is widely unsupported, breaking parsers, along with the assumption of how many seconds are in a minute, hour, or day.<p>---<p>EDIT: I&#x27;ve emailed hn@ycombinator.com to change the title. It&#x27;s avoiding editorialization, but I think it&#x27;s also preventing the post from getting the attention it deserves.<p>I&#x27;m booking a yearly one-second-long holiday on my calendar, to celebrate all the headaches this will save me. Happy end of leap seconds!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>creatonez</em>:</p>
-<blockquote>Any prospect for a leap hour is toast by the time we need it. Over a thousand years of ossification will mean our only option is to not care about aligning clock time to the sun. So it&#x27;s kinda a joke to even talk about leap hours. I&#x27;m shocked they&#x27;re even mentioning such an idea, they should have declared it as a non-solution.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>moefh</em>:</p>
-<blockquote>&gt; our only option is to not care about aligning clock time to the sun<p>No, an easy option is to simply shift every timezone by an hour and keep UTC intact. A ton of places already do that twice a year for daylight savings.<p>I never understood why we mess with UTC so much when we already have another widely used mechanism to keep the sun and clocks aligned.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>creatonez</em>:</p>
-<blockquote>Sure, but political timezones shifted by more than 12 hours 65,000 years in the future seems like the sort of thing that would really screw up our existing code. (I wonder what happens if you put such an entry in tzdata right now? Maybe we should put Null Island at +37:00 or something crazy like +1000:00 to start hardening now)<p>And maybe we should stop touching political timezones by then anyways.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>gliffie</em>:</p>
-<blockquote>Thank you for providing context for other readers. I was unsure what do to with the title, as my experience is that editorialized titles are always eventually changed to the original title. The &quot;actual&quot; title here is &quot;Resolution 5 (2026)&quot;, but I decided to go with the much more specific subheading &quot;On the technical actions needed to ensure the continuity of UTC&quot;. Curiously, &quot;On&quot; was removed on submission.</blockquote>
-<p>↳ reply 3 — <em>throw0101c</em>:</p>
-<blockquote>&gt; - Negative <i>leap seconds have never occurred before, but might occur in the future, and almost no software has tested this case.</i><p>FreeBSD tests stuff like this for the code that they take care of:<p>* <a href="https:&#x2F;&#x2F;lists.freebsd.org&#x2F;pipermail&#x2F;freebsd-stable&#x2F;2020-November&#x2F;092837.html" rel="nofollow">https:&#x2F;&#x2F;lists.freebsd.org&#x2F;pipermail&#x2F;freebsd-stable&#x2F;2020-Nove...</a><p>Third-party stuff (like from Ports) is another question.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>pushedx</em>:</p>
-<blockquote>The mechanism that they have proposed to make this a non issue is interesting. It reads to me as if they are asking another standards body who measures the angle of the Earth&#x27;s axis relative to the Sun to adjust by a small amount so that leap seconds wouldn&#x27;t be needed for a period of 100 years.</blockquote>
-<p><strong>Top #3</strong> — <em>hnuser123456</em>:</p>
-<blockquote>A practical solution. As long as we can keep 12:00 near high noon and 00:00 near &quot;high midnight(?)&quot;, that should be good enough.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>vikingerik</em>:</p>
-<blockquote>We don&#x27;t even keep very close to that as it is.  Between daylight summer time changes and some time zones already being very far off from geography, some places like western Spain or China are already as much as 3 hours off from actual solar time.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>moefh</em>:</p>
-<blockquote>Even in reasonable time zones, significant distance between noon and 12:00 is inevitable. For example, Las Vegas and San Francisco are in the same time zone but one sees the Sun rise about half an hour earlier than the other.<p>Worrying about a couple of seconds or even minutes is completely insane for almost everyone.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Vvector</em>:</p>
-<blockquote>Solar noon already varies by up to 30 minutes throughout the year, due to axis tilt and elliptical orbit.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Krea 3 – An image model built for editing at scale</title>
-      <link>https://www.krea.ai/krea-3</link>
-      <guid isPermaLink="false">hn3-50105648</guid>
-      <pubDate>Thu, 15 Oct 2026 16:04:05 +0000</pubDate>
-      <description>232 points, 78 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.krea.ai/krea-3"><strong>→ Article</strong></a> <small>(krea.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50105648">→ HN comments</a> &nbsp;·&nbsp; 232 points &nbsp;·&nbsp; 78 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>dvrp</em>:</p>
-<blockquote>Hello HN,<p>This is Diego from Krea. Today we are announcing the open beta of Krea 3, our newest foundational image model.<p>In a nutshell, it’s a frontier image model in terms of quality, but at a fraction of the speed and a fraction of the price.<p>We will be releasing a more technical update, like we did with Krea 2 (<a href="https:&#x2F;&#x2F;www.krea.ai&#x2F;blog&#x2F;krea-2-technical-report" rel="nofollow">https:&#x2F;&#x2F;www.krea.ai&#x2F;blog&#x2F;krea-2-technical-report</a>), but this website shows the capabilities we focused on:<p>* Native regional edits<p>* Precise edits so that there is minimal area degradation pixel-wise<p>* Frontier image quality. Benchmarks still being worked on, but in our internal evals it seems a no-brainer replacement to NBP or GPT Image, both speed and cost-wise.<p>* Faster edits (AFAICK, this should unlock a pareto frontier for speed in frontier edit models).<p>In terms of future updates, the team is thinking about letting folks fine-tune Krea 3 (via LoRAs) and open-weights, but we’re still in the middle of launch hiccups and then we’ll revisit the next iterations.<p>Thanks!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dvrp</em>:</p>
-<blockquote>EDIT: Our engineering staff realized you can play games with Krea 3. Or like they like to call it “the most expensive game engine in the world”<p>See: <a href="https:&#x2F;&#x2F;x.com&#x2F;asciidiego&#x2F;status&#x2F;2110846676139221376?s=20" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;asciidiego&#x2F;status&#x2F;2110846676139221376?s=20</a></blockquote>
-<p>↳ reply 2 — <em>dmos62</em>:</p>
-<blockquote>I&#x27;ve seen a graphical designer struggle to use an analogous product. They tried prompts like &quot;remove background from this photo of dancers, don&#x27;t change their face&quot;: the model couldn&#x27;t do it: it always changed the faces at least a bit. In other words, the model was not removing the background, instead it was generating the whole picture anew, but without the background, which not only seemed inefficient, but was also way too lossy.<p>I wonder if this model could finish that task.</blockquote>
-<p>↳ reply 3 — <em>lytfyre</em>:</p>
-<blockquote>Just a heads up, the trial period the email you send out for new signups seems to be broken - which is making trying this out hard.<p>your email:<p>&gt;I just unlocked a personal discount of 40% on your account, and switched Pro on for the next 3 hours so you can use it before you decide. It unlocks you all premium features as well as:
-∞  No credit ceiling<p>But after using doing one round of three images with the beta, it won&#x27;t let me generate another example. Trying to put a handful of tests through to compare to what we get from our current system on top of nano bannana pro.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jjcm</em>:</p>
-<blockquote>Comparison samples with GPT-Image-2.5 for UI design work:<p>Starship landing page<p>Krea 3: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;80b85aaa-286b-4ad7-b3ae-cfab4b491216.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;80b85aaa-286b-4ad7-b3ae-cfab4b491216.we...</a><p>GPT-Image-2.5: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;19c5f032-cbc7-4034-9682-3aba451bd669.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;19c5f032-cbc7-4034-9682-3aba451bd669.we...</a><p>Fashion history website<p>Krea 3: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;a6e61219-963c-4921-b453-738960e03308.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;a6e61219-963c-4921-b453-738960e03308.we...</a><p>GPT-Image-2.5: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;c067fd76-9c7e-46c2-a8fd-0b0931bf93f6.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;c067fd76-9c7e-46c2-a8fd-0b0931bf93f6.we...</a><p>Banking website<p>Krea 3: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;3a1e7b50-36e7-418c-ab47-368ce4f01948.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;3a1e7b50-36e7-418c-ab47-368ce4f01948.we...</a><p>GPT-Image-2.5: <a href="https:&#x2F;&#x2F;image.non.io&#x2F;b96a7e00-3289-4044-90de-e0f86a2ca55e.webp" rel="nofollow">https:&#x2F;&#x2F;image.non.io&#x2F;b96a7e00-3289-4044-90de-e0f86a2ca55e.we...</a><p>Overall Krea 3 isn&#x27;t near GPT-Image-2.5 in terms of visual creativity in this space, but it still should be commended for its ability to render small text details. That said despite it specifying you can add exact hex codes as color reference, I&#x27;ve found that they tend to leak into the design (check the valuation panel of the banking website - notice to the right of the &quot;fixed indexed 7-yr&quot; there&#x27;s a hex code that made it into the image).<p>I&#x27;d love to get my hands on this to post-train and see if it can be pushed further in this space. I actually see a lot of potential for the model, despite the clear differences in the examples above.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>basch</em>:</p>
-<blockquote>That Banking website is a good example of GPT-Image-2.5 having absolutely no self control, to a point I am just shocked they havent been working to fix it. It&#x27;s like the first thing the model does is &quot;generate 100 slogans&quot; and then try and figure out how to cram them all into the image.<p>You see it constantly, and its worse with GPT than Gemini models, but they both do it. They seem to think they need to tell not show. They cant not annotate their thoughts into the image. A lot of the time you see either random signs on posts added, tshirts with text describing the story, or hand written annotation over the image.<p>There&#x27;s really no reason this should be a problem anymore on default settings, or that everybody should still be getting the exact same style of edgy poster out of GPT with icons for bullets, and lists that add nothing jammed into the image. They need to have some kind of seed library of templates they start from, and higher temperature on selecting different styles.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jjcm</em>:</p>
-<blockquote>A reasonable conclusion, but you don&#x27;t have all the data here in this particular instance. These are all part of a set of benchmark prompts I have that are designed to try and push the images to their extremes. The banking one is dense because the prompt itself specifies each of these things - the goal with this test is to see how well it can handle many different UI elements. Here&#x27;s an excerpt from the json blob that is used as the prompt:<p><pre><code>  &quot;subjects&quot;: [
-    {
-      &quot;description&quot;: &quot;A transparent header spans the top of the teal hero. The white ANNUI wordmark sits at the upper left, followed by Product, For Agents, Resources, and Company links. For Agents is underlined as the active page. Sign in appears near the upper right beside a large white rounded Get started button.&quot;,
-      &quot;position&quot;: &quot;top edge, full width, approximately 8% of viewport height&quot;,
-      &quot;subject&quot;: &quot;Navigation Header&quot;
-    },
-    {
-      &quot;description&quot;: &quot;Left-aligned hero content includes the spaced eyebrow &#x27;FOR AGENTS&#x27;, a large cream serif headline reading &#x27;Your clients’ brighter tomorrow.&#x27;, supporting copy about modern financial software, real support, and helping independent agents grow their annuity business, plus a white pill-shaped &#x27;Build with Annui&#x27; button and a circular play control labeled &#x27;Watch for Agents (1:30)&#x27;.&quot;,
-      &quot;position&quot;: &quot;left half, upper-middle through lower-middle, approximately 46% width and 58% viewport height&quot;,
-      &quot;subject&quot;: &quot;Hero Copy and Actions&quot;
-    },
-    {
-      &quot;description&quot;: &quot;A monumental classical female statue dominates the center-right of the hero. The figure has a pale blue-green face, dark teal hair, a radiant gold helmet and laurel details, and layered gold and blue garments. Architectural columns and cloudy sky fill the background, creating a sculptural financial-services editorial scene.&quot;,
-      &quot;position&quot;: &quot;center-right, extending from the top edge to the bottom of the hero, approximately 55% width and 85% viewport height&quot;,
-      &quot;subject&quot;: &quot;Classical Statue Hero Artwork&quot;
-    },
-    {
-      &quot;description&quot;: &quot;A narrow text panel overlays the far-right architectural columns with vertically spaced uppercase text reading &#x27;INDEPENDENT ADVICE A BRIGHTER TOMORROW&#x27;, a short horizontal divider, and &#x27;BUILT TOGETHER&#x27;.&quot;,
-      &quot;position&quot;: &quot;right edge of hero, upper-middle through lower-middle, approximately 15% width and 42% viewport height&quot;,
-      &quot;subject&quot;: &quot;Vertical Message Panel&quot;
-    },
-    {
-      &quot;description&quot;: &quot;A full-width warm off-white strip beneath the hero contains four evenly spaced benefit columns separated by thin vertical rules. Each column has a pale beige circular icon and dark text: &#x27;Streamline Sales&#x27; with quote and compare copy, &#x27;Serve Clients Better&#x27; with carrier and education copy, &#x27;Grow Your Practice&#x27; with tools and marketing support copy, and &#x27;Stay Independent&#x27; with client, advice, technology, and support copy.&quot;,
-      &quot;position&quot;: &quot;below the hero, full width, approximately 18% viewport height&quot;,
-      &quot;subject&quot;: &quot;Agent Benefits Strip&quot;
-    }
-  ],
-
-</code></pre>
-That&#x27;s not to say that GPT-Image-2.5 doesn&#x27;t have a certain smell to it though. It definitely has its isms.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>giwook</em>:</p>
-<blockquote>Not sure that UI design is necessarily the ideal or even recommended use case for image models.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jonplackett</em>:</p>
-<blockquote>2 images to try and then the only option after is a monthly subscription.<p>I don’t mind buying credits but I don’t want a subscription.</blockquote>
-<blockquote>
-<p>↳ reply — <em>gpt5</em>:</p>
-<blockquote>You can turn any subscription to a single purchase with a virtual credit card.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Neural networks are clean</title>
-      <link>https://already-clean.goodfire.com/</link>
-      <guid isPermaLink="false">hn3-50105647</guid>
-      <pubDate>Thu, 15 Oct 2026 16:04:01 +0000</pubDate>
-      <description>470 points, 180 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://already-clean.goodfire.com/"><strong>→ Article</strong></a> <small>(already-clean.goodfire.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50105647">→ HN comments</a> &nbsp;·&nbsp; 470 points &nbsp;·&nbsp; 180 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>sebmellen</em>:</p>
-<blockquote>Nick is a force of nature. Highly recommend following him on X if you don&#x27;t already.<p>His launch post gives good context not found in the blog:<p>&gt; <i>interpretability might be the most important scientific problem in the world right now, as I don&#x27;t think we can solve alignment if we don&#x27;t know what we&#x27;re building. I think I have good news about it. I co-authored early work in mechanistic interpretability at OpenAI and came away pessimistic, because neural networks appeared to fold into arbitrary tangled knots. years later, I started openai&#x27;s first large-scale automated interpretability project, finding about 2% of neurons legible with the primitive tools we had</i><p>&gt; <i>with modern agentic tools and a much closer look, the picture looks totally different. the vast majority in models up to trillions of parameters are legible, and their circuits beautiful. many famous examples of tangled neurons turned out to be misunderstood. The roadblocks I expected mostly aren&#x27;t there. I now think ambitious interpretability will be solved by the time we need it most, and possibly quite soon, as automated scientists keep improving. it may be a bitter lesson for interpretability: the simple thing, at absurd scale, works</i><p><a href="https:&#x2F;&#x2F;x.com&#x2F;nickcammarata&#x2F;status&#x2F;2110757819427574056?s=46" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;nickcammarata&#x2F;status&#x2F;2110757819427574056?s=46</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>eek2121</em>:</p>
-<blockquote>Is he on bluesky or another platform? There is a ton of folks, including myself, who won&#x27;t use &quot;X&quot; at all, some political, some due to other reasons. For me? All of the above and plus they demand that I install an app on my phone, something I am not willing to do, especially since most of the folks I&#x27;ve followed went to Bluesky, AND I&#x27;ve found way more awesome folks there than I ever did on X. I&#x27;m not shilling Bluesky, it is just the biggest&#x2F;most widely accepted platform in this social area if you exclude meta&#x2F;facebook.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>joquarky</em>:</p>
-<blockquote>However, Bsky people <i>really</i> hate AI last I checked.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>great_tankard</em>:</p>
-<blockquote>eh, there are plenty of AI researchers on there. Also a handy &quot;AI haters&quot; labeler you can subscribe to to filter out people who just want to yell.<p>The labeler thing is cool; I really like ATproto because you can do interesting things with it. If I&#x27;m honest, though, I mainly like Bluesky because I don&#x27;t get called slurs on there.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mentalgear</em>:</p>
-<blockquote>&gt; with modern agentic tools and a much closer look, the picture looks totally different.<p>Are those the agentic tools the LLM developed for you? How can you be sure they can be trusted and that you even understand them correctly and are not biased towards making you feel like they are trustworthy? This is exactly the AI2027 scenario where researchers are fooled by their own super AI telling them what they want to hear (&quot;our model solved alignment!&quot;) while successfully hiding its true intention.<p>Also Yudkowsky&#x27;s Cat-Belling would like a serious word with Nick. (<a href="https:&#x2F;&#x2F;www.lesswrong.com&#x2F;posts&#x2F;SwYBLQvo8MddDcCwz&#x2F;cat-belling-problems" rel="nofollow">https:&#x2F;&#x2F;www.lesswrong.com&#x2F;posts&#x2F;SwYBLQvo8MddDcCwz&#x2F;cat-bellin...</a>)</blockquote>
-<p>↳ reply 3 — <em>QuadmasterXLII</em>:</p>
-<blockquote>Important context is getting flagged out of the replies to this comment. An unfortunate state of affairs.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bluejay2387</em>:</p>
-<blockquote>The claims seem to be an overreach of what is actually proven. We&#x27;ve known about progressive feature complexity and the impacts of early training structures on later training for a really long time (since CNN&#x27;s, The Lottery Ticket Hypothesis, etc...) and neither of those phenomenon are mutually exclusive with parameter overloading. The Multimodal Gap work (<a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2203.02053" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2203.02053</a>) seems to imply networks have a tendency towards condensed representations that are clearly not semantic and a bunch of other considerations are already on the table for discussion. I don&#x27;t think these have all been considered sufficiently to start claiming we are around the corner from mechanistic interpretation.</blockquote>
-<blockquote>
-<p>↳ reply — <em>qt31415926</em>:</p>
-<blockquote>Nick isn&#x27;t trying to re-claim progressive feature complexity. He&#x27;s saying that many polysemantic examples were misread because we assumed neurons packed unrelated things together. But also I think what he&#x27;s claiming if you read the full blog post isn&#x27;t inconsistent with that paper, where that paper actually isn&#x27;t itself claiming semantic condensing but geometric condensing. That paper doesn&#x27;t analyze neuronal firing patterns whereas Nick&#x27;s trying to analyze what fires together and what doesn&#x27;t fire.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>antics</em>:</p>
-<blockquote>So we have here a massive evidentiary brief, the point of which is to argue that it is easier than we thought to, like, &quot;sequence the AI genome&quot; (in my estimation). We revisit famously-messy neurons, examine various tool failures, check places where messy things still hide, and catalog how &quot;polysemanticity&quot; is represented variously in the network.<p>Once sequenced, the thinking goes, we&#x27;ll be able to do things like: explain and anticipate failures; predict what happens when you modulate the pathway an input takes on its way to becoming output; reconstruct algorithms the models have learned.<p>I&#x27;m not 100% sure this will work out like the mechinterp people think. If the neural representations and pathways are &quot;clean&quot; (organized into a a meaningful-to-humans hierarchy), it seems at least very plausible that the behaviors that AI xrisk people are worried about will mostly boil down to straightforward synthesis (<i>i.e.</i>, mostly-linear-interpolation) of mostly-well-cataloged knowledge. And if that is true, then it does not seem hopeful that there would be a way to prevent the output they are worried about, other than just removing a bunch of the knowledge. So maybe there is no alignment solution at all.</blockquote>
-<blockquote>
-<p>↳ reply — <em>benlivengood</em>:</p>
-<blockquote>What I envision is the ability to find the circuits and neurons evaluating morality and ethics and being able to figure out how they work at the boundaries and ensure safe deferral to human judgement or stopping outside of in-distribution behavior, which further is vetted against actual human values.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>antics</em>:</p>
-<blockquote>I don&#x27;t see a lot of hope for that, because it&#x27;s not a well-specifiable quantity. I would say we currently have no real evidence that you can even do this even for concepts that are much more well-specified like, say, dogs. Maybe you can! But that is not affirmatively known, and nothing we have is on track to supporting that, right now.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Steam Client is now faster than Epic's new vibe coded launcher</title>
-      <link>https://respawnfirst.com/steam-client-is-now-faster-than-epics-new-vibe-coded-launcher/</link>
-      <guid isPermaLink="false">hn3-50105635</guid>
-      <pubDate>Thu, 15 Oct 2026 16:03:19 +0000</pubDate>
-      <description>271 points, 273 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://respawnfirst.com/steam-client-is-now-faster-than-epics-new-vibe-coded-launcher/"><strong>→ Article</strong></a> <small>(respawnfirst.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50105635">→ HN comments</a> &nbsp;·&nbsp; 271 points &nbsp;·&nbsp; 273 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>hombre_fatal</em>:</p>
-<blockquote>&gt; Epic may have “vibe coded” a faster client, but Valve proved that targeted optimization on a decades-old ecosystem can still beat out AI speedruns.<p>Optimizing a project with AI is one of the most trivial things you can do with AI.<p>I also wouldn&#x27;t buy it for a second that Valve engineers aren&#x27;t using AI, especially for something as trivial as &quot;hey claude rank the top causes of slow startup&quot; -&gt; &quot;oh okay now fix&quot;. The most I&#x27;d grant is that everyone uses AI secretly as a sort of dark forest problem.<p>Once I had a good benchmark script, Opus 4.8 or whatever made my terminal app faster with less memory than ghostty and kitty. It&#x27;s not even interesting.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andai</em>:</p>
-<blockquote>&gt; The most I&#x27;d grant is that everyone uses AI secretly as a sort of dark forest problem.<p>The dark forest hypothesis is that we can&#x27;t find any alien life because it&#x27;s dangerous to broadcast your existence and location to competitors. So rational thing for every alien civilian to do (and arguably for us) is to keep quiet.<p>But what does it mean in this context?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>josefresco</em>:</p>
-<blockquote>I&#x27;ll try: It&#x27;s dangerous to broadcast your AI use to competitors, users and the public for fear of being attacked.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bogwog</em>:</p>
-<blockquote>&gt; I also wouldn&#x27;t buy it for a second that Valve engineers aren&#x27;t using AI, especially for something as trivial as &quot;hey claude rank the top causes of slow startup&quot; -&gt; &quot;oh okay now fix&quot;. The most I&#x27;d grant is that everyone uses AI secretly as a sort of dark forest problem.<p>This is probably the saddest comment I&#x27;ve read on HN. It really shows the state of this place and how far into psychosis the comments have fallen.</blockquote>
-<p>↳ reply 3 — <em>porphyra</em>:</p>
-<blockquote>Yeah exactly, Valve engineers probably just told AI to make it faster.<p>Your &quot;dark forest&quot; analogy sounds reasonable but Epic&#x27;s outright admission of &quot;vibe coding&quot; is a bit of a footgun considering how rabidly anti-AI the folks on sites like Reddit are. If they had just been like, &quot;it&#x27;s faster and supports Linux&quot; they would be the darling of the internet.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Goronmon</em>:</p>
-<blockquote>All I can think with this whole situation is how much time is wasted by people getting angry and defensive on behalf of a Valve. It&#x27;s almost like people have a parasocial relationship with the application itself.<p>That&#x27;s not even getting to some of the &quot;missing&quot; features.<p><i>No Community marketplace for in-game items</i><p><i>No Direct player-to-player item trading</i><p><i>No Digital trading cards, levelling, and points shop</i><p>I hope more application developers &quot;forget&quot; to add these features.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>amiga386</em>:</p>
-<blockquote>People have wasted their time defending their platform&#x27;s &quot;honour&quot; for decades. It used to be Sega vs Nintendo. Then it was PlayStation vs XBox. Now it&#x27;s Steam vs EGS.<p>Anyway, what <i>are</i> useful features of Steam:<p>- their dedication to getting Windows games running on Linux (to see off the existential threat Microsoft poses to them, but nonetheless greatly appreciated)<p>- community forums &#x2F; screenshots &#x2F; artwork &#x2F; guides etc. for every product. Very useful if the game vendor doesn&#x27;t have its own, and most game vendors don&#x27;t<p>- that Steam Sales encourage vendors to offer games at much more reasonable prices (e.g. a few pounds&#x2F;dollars&#x2F;etc.) for what is effectively <i>a license, revocable at any time</i>, not a real purchase. £60? Ha ha fuck off, I&#x27;m waiting for the sale when it&#x27;s £5<p>- also, as far as I&#x27;ve seen, every game distributed can still be downloaded today. People may complain that publishers update a title e.g. to remove licensed music 10 years later... but you can still download the old version with some trickery. And I&#x27;ve <i>never</i> seen Steam actively remove downloads for existing customers, I&#x27;ve only seen games removed from the store so no future customers<p>- pirates have found that most games, if their only DRM is Steamworks, are incredibly easy to crack. I am very glad Steam has convinced most publishers to use that alone and nothing worse, and I curse publishers who insist on their own DRM, their own launcher, etc. If Valve goes tits-up, I have a lot of confidence <i>most</i> of peoples libraries will still be playable with a little bit of cracking.<p>There are other useful features, even if Valve is getting rich and fat off selling gambling and day-trading to teenagers.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dannyw</em>:</p>
-<blockquote>I think the &quot;fanboyism&quot; of Steam is a bit different to platform wars like PS vs Xbox, etc.<p>Fundamentally Valve has built up a lot of trust with the gaming community, and other than microtransactions and gambling, I think it&#x27;s very fair to say they&#x27;ve been a net good for both the PC gaming community; as well as the ecosystem.<p>Proton is a great example.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>SXX</em>:</p>
-<blockquote>Valve have my trust just by being privately held company that can actually plan for decades ahead instead of try to appease major shareholders or black rock.<p>It took them 10 years to make Linux a competetive gaming platform.<p>They invested in VR early and still do a lot for this niche market.<p>They brought back hanfheld PC from being niche chinese devices to being mainstrean  and maintain support for Steam Deck for 5 years.<p>As game developer I do find 30% cut abysmal, but it&#x27;s not any worse than consoles and I dont like Epic as a gamer for being awfully anti-consumer. I certainly dont want PC game market to be controlled by chinese Tencent subsidiaries.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>WheatMillington</em>:</p>
-<blockquote>Without competition Valve would never have bothered making Steam faster. Steam hasn&#x27;t meaningfully changed in a decade, and feels well out of date. I celebrate Epic forcing Valve to finally make some improvements. Turns out they could do it in a day all along.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Ameo</em>:</p>
-<blockquote>This is why software is slow and everything uses 2GB of RAM at idle: because nobody really cares.<p>I&#x27;m sure that AI made this speedup work much easier and quicker; probably just access to the monorepo and a prompt of &quot;make the launcher boot up faster while changing no functionality.  Keep track of before&#x2F;after benchmark numbers&quot; would be fine as long as you can get your co-workers to approve whatever diff gets spat out the end.<p>But either of these companies, presumably with dev teams of dozens-hundreds of SWEs, could have pointed to one of them 5 years go and said &quot;spend the next 2 months optimizing the performance of the launcher&quot; and would probably have gotten similar results.<p>I make my software fast and efficient mostly because I enjoy it.  Absolutely nothing stopping web apps, Electron, everything else from being efficient, slim, and performant.  It&#x27;s just that the modicum of effort required to set that up was outweighed by the convenience of just importing and parsing the full 16MB icon cache and 13 unused analytics SDKs every pageload and not worrying about it.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ben_w</em>:</p>
-<blockquote>&gt; I&#x27;m sure that AI made this speedup work much easier and quicker; probably just access to the monorepo and a prompt of &quot;make the launcher boot up faster while changing no functionality. Keep track of before&#x2F;after benchmark numbers&quot; would be fine as long as you can get your co-workers to approve whatever diff gets spat out the end.<p>Yup.<p>So, here&#x27;s my relevant example of how &quot;vibe coding&quot; doesn&#x27;t mean &quot;not caring&quot;, an isochrone map generator, real time, about the same total download (in a private window) as Google maps is when looking at Berlin:<p><a href="https:&#x2F;&#x2F;benwheatley.github.io&#x2F;Isochrone&#x2F;web&#x2F;?region=berlin&amp;node=323108&amp;view=1%2C-3588.22%2C-101.99&amp;modes=bike" rel="nofollow">https:&#x2F;&#x2F;benwheatley.github.io&#x2F;Isochrone&#x2F;web&#x2F;?region=berlin&amp;n...</a><p>It almost certainly still has bugs. And the code itself is probably terrible, because LLMs don&#x27;t always clean up when you tell them to remove everything related to a bug.<p>But it is a download that&#x27;s 90% data, and does get you a real-time updates as you drag your origin around the largest city in the EU.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
