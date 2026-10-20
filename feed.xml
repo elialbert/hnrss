@@ -4,7 +4,105 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 20 Oct 2026 09:55:29 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 14:53:26 +0000</lastBuildDate>
+    <item>
+      <title>MicroG: Free-libre re-implementation of Google's proprietary Android user space</title>
+      <link>https://github.com/microg/GmsCore/wiki</link>
+      <guid isPermaLink="false">hn3-50162177</guid>
+      <pubDate>Tue, 20 Oct 2026 06:37:07 +0000</pubDate>
+      <description>238 points, 20 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/microg/GmsCore/wiki"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50162177">→ HN comments</a> &nbsp;·&nbsp; 238 points &nbsp;·&nbsp; 20 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>maelito</em>:</p>
+<blockquote>I have never understood why people using MicroG can use apps like SNCF-Connect, while I cannot.<p>SNCF-connect is the largest online marchant in France. Since june, I cannot click the &quot;pay&quot; button anymore. It coincides with the new feature of Pay with Google.<p>So : is it because MicroG allows calls to Google services on e&#x2F;OS devices, while my LineageOS refuses ? Or because MicroG implemented a try catch around this call, without any call to Google&#x27;s servers ?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Maken</em>:</p>
+<blockquote>I think that&#x27;s because &#x2F;e&#x2F;os also distributes App Lounge [1], which can connect to Google Store and handle payments (most of the time).<p>[1] <a href="https:&#x2F;&#x2F;doc.e.foundation&#x2F;os&#x2F;apps&#x2F;app-lounge&#x2F;" rel="nofollow">https:&#x2F;&#x2F;doc.e.foundation&#x2F;os&#x2F;apps&#x2F;app-lounge&#x2F;</a></blockquote>
+<p>↳ reply 2 — <em>ForHackernews</em>:</p>
+<blockquote>Some Play Services calls are stubbed out as no-ops and others are reimplemented either with fully free replacements (e.g. navigation) or else by calling proprietary Google remote endpoints (e.g. firebase)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jamesnorden</em>:</p>
+<blockquote>Why do the most recent commits all say &quot;Merge commit from fork&quot; without any description of what the changes do or what the fork is?</blockquote>
+<blockquote>
+<p>↳ reply — <em>forgotpwd16</em>:</p>
+<blockquote>Lazy merge commits. The descriptions of the changes are in the commits from the merged branches.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Pxtl</em>:</p>
+<blockquote>This is why I always think emperor git wears no clothes.  Hiding these kind of intermediate junk commits from history should not require rewriting and breaking the distributed history you all share.  imho the correct solution would be a tag-like layer for annotating existing commits with metadata (additional signatures, hide-flags, retroactive comments, etc) or just a full 2nd dag, but whatever: git sucks at annotating history and annotating history is a core workflow in git.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>orphea</em>:</p>
+<blockquote>I guess this is submitted because of <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50154624">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50154624</a> ?</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Go will reject certificate chains containing eight distrusted SPKIs</title>
+      <link>https://github.com/golang/go/issues/82345</link>
+      <guid isPermaLink="false">hn3-50160877</guid>
+      <pubDate>Tue, 20 Oct 2026 03:05:07 +0000</pubDate>
+      <description>127 points, 66 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/golang/go/issues/82345"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50160877">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 66 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>agwa</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;gist.github.com&#x2F;AGWA&#x2F;5a78186e0f4a7d537b8891a7b46f9458" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;AGWA&#x2F;5a78186e0f4a7d537b8891a7b46f945...</a> is the list of certificates in Certificate Transparency <i>issued</i> by the blocked CAs as of this time. They appear to be non-malicious test certificates, and the DNS name in the first certificate indicates who likely discovered the issue.<p>What&#x27;s alarming and unprecedented is that yesterday, two Certificate Transparency log implementations were updated to block the logging of certificates issued by the CAs. This likely indicates total private key compromise, and the blocking by CT logs is to prevent the logs from being spammed by forged certificates. However, it also means there will be no place to record forged certificates found in the wild.  (These certificates won&#x27;t validate in CT-enforcing clients since they won&#x27;t be in CT logs, but could be used to attack non-CT-enforcing clients.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>FiloSottile</em>:</p>
+<blockquote>I did not discover the issue. I just wished to have a rapid and definitive way to test the patch(es).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>amluto</em>:</p>
+<blockquote>Am I off base, or should I be surprised that you were able to get the mentioned cert issued in the first place this recently (yesterday)?  It seems unexpected that certificates are being actively issued and logged coming from a to-be-forcibly-distrusted part of the hierarchy.<p>The bugzilla issues mentioned elsewhere suggest at least a mostly orderly removal of trust with issuance stopped several months ago.  Your new cert was issued by “CN=EM DV TLS CA - G3B,O=eMudhra BV,C=NL”, which presumably chains to the G3 root, and the bugzilla issue seems to say that G3 was going to be dropped from the root lists some time ago but that maybe it would be cross-signed by something still trusted. So I assume that something else is going on.<p>Was that cert issued via normal means (e.g. ACME)?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tialaramex</em>:</p>
+<blockquote>Did the log operators offer an explanation? You say &quot;likely indicates&quot; and I agree, but I guess I&#x27;d expect some noise on m.d.s.policy or somewhere similar, maybe a CT-related site I don&#x27;t look at.</blockquote>
+<p>↳ reply 3 — <em>noja</em>:</p>
+<blockquote>What is the CT log for then, if not to log that?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>agwa</em>:</p>
+<blockquote>Other certificate verifiers are doing the same:<p>Node: <a href="https:&#x2F;&#x2F;github.com&#x2F;nodejs&#x2F;node&#x2F;pull&#x2F;66871" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nodejs&#x2F;node&#x2F;pull&#x2F;66871</a><p>rustls&#x2F;webpki: <a href="https:&#x2F;&#x2F;github.com&#x2F;rustls&#x2F;webpki&#x2F;pull&#x2F;546" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;rustls&#x2F;webpki&#x2F;pull&#x2F;546</a><p>Electron: <a href="https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron&#x2F;pull&#x2F;55126" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron&#x2F;pull&#x2F;55126</a><p>This is very serious and you should definitely upgrade. Hopefully OpenSSL will have a patch soon as well.</blockquote>
+<blockquote>
+<p>↳ reply — <em>vladde</em>:</p>
+<blockquote>from nodejs&#x27;s diff:<p>&gt; These are the eMudhra&#x2F;emSign intermediates whose private keys were reported compromised in October 2026.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>account42</em>:</p>
+<blockquote>And how many more times do we need to read news like this before we replace Web PKI with a system that isn&#x27;t as completely insane?<p>We already have a functioning system for delegating domain ownership in a hierarchical fashion where compromises are limited to only the subtree under the compromised entity. Let&#x27;s start using it for domain validation sooner rather than later.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OpenBSD 8.0</title>
+      <link>https://www.openbsd.org/80.html</link>
+      <guid isPermaLink="false">hn3-50160494</guid>
+      <pubDate>Tue, 20 Oct 2026 02:06:40 +0000</pubDate>
+      <description>402 points, 129 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.openbsd.org/80.html"><strong>→ Article</strong></a> <small>(openbsd.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50160494">→ HN comments</a> &nbsp;·&nbsp; 402 points &nbsp;·&nbsp; 129 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ctolsen</em>:</p>
+<blockquote>I&#x27;ve used OpenBSD the last year or so (as a bastion&#x2F;jump host for a few systems) after using *BSD systems very little for probably the past decade, and... good lord I love it so much.<p>Say what you want about the benefits of systemd or the usefulness of other parts of what is now unavoidable with Linux, and I won&#x27;t argue with many of them, but OpenBSD just feels like a *nix system is supposed to. `ps aux` is like 10 entries at first. `pf` makes so much sense. `man` pages are consistently incredible. The security&#x2F;cryptography focus, managing services, pledge&#x2F;unveil... so many things about it is just *<i>chef&#x27;s kiss*</i>.<p>It&#x27;s not and will probably never be a daily driver for me and it may not fit your use case for anything, but I highly recommend playing with it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>deltarholamda</em>:</p>
+<blockquote>&gt;`man` pages are consistently incredible<p>I love this part of OpenBSD so much. FreeBSD is very good as well on this front. Sometimes the terseness of the man pages gets to me, but it&#x27;s all there.<p>I used OpenBSD as a daily driver way back, somewhere around v3.5, on a somewhat elderly Thinkpad. It was perfectly adequate. I still use it for various systems that I pretty much just set and forget. Extremely reliable, and pf is top tier.</blockquote>
+<p>↳ reply 2 — <em>pjmlp</em>:</p>
+<blockquote>It is kind of ironic the whole Linus vs Tanenbaum argument, given the amount of processes running on any modern Linux distribution.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>k310</em>:</p>
+<blockquote>I am not on board with the graphic, whatever the heck it is.<p><a href="https:&#x2F;&#x2F;www.openbsd.org&#x2F;images&#x2F;blowfishonbike-s.gif" rel="nofollow">https:&#x2F;&#x2F;www.openbsd.org&#x2F;images&#x2F;blowfishonbike-s.gif</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>rektlessness</em>:</p>
+<blockquote>Forget the artwork and check out the accompanying song and lyrics for the new release.
+I think it&#x27;s one of the funnier ones so far.
+<a href="https:&#x2F;&#x2F;www.openbsd.org&#x2F;lyrics.html#80" rel="nofollow">https:&#x2F;&#x2F;www.openbsd.org&#x2F;lyrics.html#80</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>DASD</em>:</p>
+<blockquote>Nice!  Think there was a gap in release-accompanying songs from 7.4 to 7.8 or I missed them. Seems they are back on track now.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>so-cal-schemer</em>:</p>
+<blockquote><p><pre><code>     ACHTUNG!  ALLES LOOKENSPEEPERS!
+</code></pre>
+<i>Alles touristen und non-technischen looken peepers! Das computermachine ist nicht fuer gefingerpoken und mittengrabben.    Ist easy schnappen der springenwerk, blowenfusen und poppencorken mit spitzensparken.  Ist nicht fuer gewerken bei das dumpkopfen. Das rubbernecken sichtseeren keepen das cotten-pickenen hans in das pockets muss;<p>relaxen und watchen das blinkenlichten.</i></blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>nanolith</em>:</p>
+<blockquote>I&#x27;ve used OpenBSD as a laptop daily driver for nearly 20 years. It&#x27;s small. It remains mostly consistent between updates. In fact, it&#x27;s so stable that I barely notice changes when I upgrade until I go hunting for them.<p>The Lenovo laptop I use as my travel laptop and console display is a 2012. It still runs OpenBSD just fine.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Lula supporters protest against Meta to denounce its 'electoral interference'</title>
       <link>https://efe.com/english/latest-news/2026-10-20/lula-supporters-protest-against-meta-to-denounce-its-electoral-interference/</link>
@@ -269,6 +367,28 @@ Grimes County, Texas (logic, memory, packaging; Phase 1 over $16.8B): land clear
 </blockquote>
 <p><strong>Top #3</strong> — <em>tiernano</em>:</p>
 <blockquote>i see a lot of complaining about the login part of Win11, and i dont like it either, but i have not seen anyone mention that you can build an autounattend.xml file (generator here: <a href="https:&#x2F;&#x2F;schneegans.de&#x2F;windows&#x2F;unattend-generator&#x2F;" rel="nofollow">https:&#x2F;&#x2F;schneegans.de&#x2F;windows&#x2F;unattend-generator&#x2F;</a>) that allows you to bypass all this. I have a USB Key with the file and the latest copy of the 11 Pro download, and when setting up a new machine, i run a fresh install. Then once booted, i run the developer config (<a href="https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WindowsDeveloperConfig&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WindowsDeveloperConfig&#x2F;</a>) and it gets everything i need installed. No Microsoft Login, no Candy Crush, WSL installed and all the tools i need.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>One Hash Bloom Filters</title>
+      <link>https://calabro.io/ohbf</link>
+      <guid isPermaLink="false">hn3-50157865</guid>
+      <pubDate>Mon, 19 Oct 2026 20:50:08 +0000</pubDate>
+      <description>133 points, 13 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://calabro.io/ohbf"><strong>→ Article</strong></a> <small>(calabro.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50157865">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 13 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>aappleby</em>:</p>
+<blockquote>You don&#x27;t actually have to do this - you can stick with a power of 2 sized table and just gently mix the hash value to get each additional bit index.<p>(source - I wrote MurmurHash&#x2F;SMHasher and have used the above in my own bloom filters and cuckoo hash tables)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>AlotOfReading</em>:</p>
+<blockquote>The one hashing scheme should be technically better.<p>That said, I suspect you could avoid the coprime partitions and the issues they cause with semi-correlated permutations over block partitions and avoid hash collisions in the process.</blockquote>
+<p>↳ reply 2 — <em>senderista</em>:</p>
+<blockquote>Something like this? 64-bit hash, 9 bits to address all the bits in a 64-byte cache line, so 7 hash functions addressing the bits in a cache line can be extracted from a 64-bit hash?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>rickcarlino</em>:</p>
+<blockquote>Gnutella and Gnutella2 used something like a single hash bloom filter to route p2p file queries across the mesh in a less wasteful manner. It was not perfect, but it worked enough to scale to very large user counts.<p><a href="https:&#x2F;&#x2F;rickcarlino.com&#x2F;notes&#x2F;p2p&#x2F;how-gnutella-scaled-to-handle-query-traffic.html" rel="nofollow">https:&#x2F;&#x2F;rickcarlino.com&#x2F;notes&#x2F;p2p&#x2F;how-gnutella-scaled-to-han...</a></blockquote>
+<p><strong>Top #3</strong> — <em>cperciva</em>:</p>
+<blockquote><i>While much cheaper than going to disk, computing k independent hashes per key is still a bit expensive for very high performance systems.</i><p>Depends how big the bloom filter is.  Most hashes are big and their bits are independent.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Germany's far-right AfD: half a million internal documents leaked</title>
@@ -716,6 +836,35 @@ No new software that is equal to Adobe Creative Suite (that Vibed coded replacem
 <blockquote>The thing a CERN is: You have some of the smartest and most educated people on the planet, and they are all super motivated to excel.<p>It’s one of the coolest environments one can be in. You can righteously wall yourself into a room and solve a problem.<p>I do hope that this is the start of something cool.</blockquote>
 <p><strong>Top #3</strong> — <em>fancyfredbot</em>:</p>
 <blockquote>There&#x27;s something really cool about this but also something sad.<p>There was a time when CERN would have been establishing partnerships with US labs. The US is not a CERN member but has provided a lot of funding in the past despite it&#x27;s observer status. These days funding is getting cut, the US is not as trusted as a partner anymore and a European partner is seen as important. This is sad.<p>That said I&#x27;m happy for Mistral and I&#x27;m sure they&#x27;ll be a great partner for CERN.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Ontology-Driven Observability: Building an End-to-End Knowledge Graph at Netflix</title>
+      <link>https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf</link>
+      <guid isPermaLink="false">hn3-50153431</guid>
+      <pubDate>Mon, 19 Oct 2026 15:10:20 +0000</pubDate>
+      <description>125 points, 29 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf"><strong>→ Article</strong></a> <small>(netflixtechblog.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50153431">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 29 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>smartmic</em>:</p>
+<blockquote>I am in an enterprise which experiments with ontologies and knowledge graphs since its hype heydays ca. 15 years ago. It never took off, good ol’ relational databases and its modern day implementations in the cloud still rule the data landscape. Many smart consultants tried their best and we spend many millions over time into it. I would love to read more success stories, but they seem to be rare beyond academic exercises.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ezst</em>:</p>
+<blockquote>Strikingly similar story here. Ontologies and knowledge graphs seemingly make a comeback because it is argued (with little evidence, from what I can tell) that it helps LLMs make sense of the dataset. I see no practical difference or benefit vs. providing the date model as DDL or via other means to represent the ER graph. I&#x27;d like very much to be convinced otherwise or at least read a rationale about the alleged differences.</blockquote>
+<p>↳ reply 2 — <em>dhenneberger</em>:</p>
+<blockquote>95% of sparql, cypher, and gremlin can be lowered to sql anyway. I rolled my own sql lowering system for duckdb over iceberg which lets me do everything in that blog post but with no bespoke data layer.</blockquote>
+<p>↳ reply 3 — <em>vladsanchez</em>:</p>
+<blockquote>What about Palantir!? Care to explain why their Ontology-driven observability is it not considered a Success Story?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>1970-01-01</em>:</p>
+<blockquote>Without actual examples of it working to reduce latency, this is purely academic and not engineering. What happened to the 1.5s problem in the introduction?</blockquote>
+<blockquote>
+<p>↳ reply — <em>CharlieDigital</em>:</p>
+<blockquote>I noticed this with a lot of blog posts from eng teams on AI.<p>Talk about what they built, not the business problem it solved and how it created value somewhere.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>vindex10</em>:</p>
+<blockquote>Just listened to the Pragmatic Engineer podcast on Uber AI infra,
+<a href="https:&#x2F;&#x2F;newsletter.pragmaticengineer.com&#x2F;p&#x2F;ubers-ai-infra-from-the-inside" rel="nofollow">https:&#x2F;&#x2F;newsletter.pragmaticengineer.com&#x2F;p&#x2F;ubers-ai-infra-fr...</a><p>it seems they are using a similar ontology called &quot;context graph&quot;, used as a navigation layer for the ai agent.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Maybe There Was an Egg Cartel After All</title>
@@ -1781,6 +1930,46 @@ Sorry for your loss!</blockquote>
 <blockquote>Taste only matter insofar you work is shared.<p>AI lets people get personalized software for &quot;free&quot; as derivative of existing work. Think adobe suite but with the 5% that an individual needs.<p>Then taste loses value as everyone has their own software.<p>That&#x27;s where I am in that train of thought at least. Pretty grim I know.</blockquote>
 <p>↳ reply 2 — <em>rectang</em>:</p>
 <blockquote>&gt; ultimately AI does not have values, intent, and taste<p>I sometimes think, &quot;what art would a rogue AI consciousness create to satiate its own artistic impulses?&quot;<p>If the target audience was fellow rogue AI entities, I don&#x27;t think there&#x27;s any guarantee that such art would be compelling to humans, or even comprehensible.<p>And if its a human directing the AI so that the output is compelling to humans, then there&#x27;s a human in the loop, whose &quot;values, intent, and taste&quot; matter.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The Intel 8087 chip: floating-point addition and subtraction</title>
+      <link>https://www.righto.com/2026/10/8087-addition-subtraction-microcode.html</link>
+      <guid isPermaLink="false">hn3-50142449</guid>
+      <pubDate>Sun, 18 Oct 2026 16:20:27 +0000</pubDate>
+      <description>126 points, 35 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.righto.com/2026/10/8087-addition-subtraction-microcode.html"><strong>→ Article</strong></a> <small>(righto.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50142449">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 35 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>WalterBright</em>:</p>
+<blockquote>I always thought the 8087 was way cool, but it never really caught on. Early versions of Win32 did not save the 8087 registers on a context switch. I called up some people at Microsoft to please not destroy the 8087, and they relented and preserved the registers.<p>I&#x27;ve always been proud to support the 8087 with my compilers, and am baffled why the numerics people ignore it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>indymike</em>:</p>
+<blockquote>Back in the day, the 8087 and 80287 were supported by quite a bit of software (spreadsheets, statistics, etc...).  First dev job I had (was 15 at the time), I had to recalc our accountants 1-2-3 models because I had a 80287 in my AT clone... and that resulted in a &quot;hell yes&quot; a year later when I asked for a 386 + 387. I put on the write up on why I needed it was a) it would compile faster and when needed I b) could recalc financial models faster. That model took maybe 5 minutes with the 287 and maybe 40 sec on the 386+387 setup... I suspect the generous 4mb of RAM was more important... I never really understood why people wouldn&#x27;t shell out the extra couple hundred bucks on the math coprocessors, they really sped things up provided that software supported them.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Forgeties79</em>:</p>
+<blockquote>This is the stuff I come to HN for.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>downut</em>:</p>
+<blockquote>&quot;numerics people ignored it&quot;<p>I dunno Walter but as the first(?) IEEE754 implementation in a PC system it seemed like a pretty damn big deal to us people working in numerical algorithms.  It was a big enough deal to me at the time (I was in graduate school) that I&#x27;ve kept my 8087 chip all my life and have it before me now.  I see the old boy has lost a pin during the last move, dammit.<p>Chip has &quot;3716150AA MALAY BEV 22&quot; embossed on the pin side.  Search gets me nothing.</blockquote>
+<p>↳ reply 3 — <em>jcranmer</em>:</p>
+<blockquote>I mean, the 8087 was the primary influence on IEEE 754, and hence all of modern floating-point, so in that sense, the numerics people don&#x27;t ignore it.<p>The main problem with the x87 floating-point unit is that it only properly works on a weird 80-bit floating-point type that doesn&#x27;t have the properties you expect of regular IEEE 754 floating-point types, thanks to the explicit integer bit. The design makes it hard to properly emulate the more common 32-bit and 64-bit single and double-precision floating-point arithmetic bit-equivalently, and this is compounded by many compilers&#x27; decision to spill floating-point registers incorrectly (they&#x27;re spilled as 32-bit or 64-bit, not 80-bit), which makes the numerical results of your program effectively random. Also, the size of the 80-bit types isn&#x27;t really conducive to vectorization, so the floating-point unit gets left behind as SIMD programming starts to become more important.<p>So what happens is that the x87 is essentially the last of the pre-IEEE 754 floating-point systems that&#x27;s still hanging around. A lot of the features that would make it interesting in an environment where every vendor has a different floating-point system are now just vestigial weirdness in a world where everybody is following the same floating-point system, and not worth supporting.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dsign</em>:</p>
+<blockquote>Kind of shocking that a 1980 chip could do 80 bits floating points. It makes me a little mad at all of those microcontrollers from this year, 46 years later that ship without floating point support or, at best, 32 bits, but they do come with a &quot;secure island&quot; and a radio capable to ring ET.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jart</em>:</p>
+<blockquote>Yeah even NASA doesn&#x27;t need that many bits. Ken said it himself: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40971913">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40971913</a></blockquote>
+<p>↳ reply 2 — <em>russdill</em>:</p>
+<blockquote>But they can, it&#x27;s just not accelerated by hardware built specifically for the task</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>kens</em>:</p>
+<blockquote>Author here with another 8087 article. What part of the 8087 should I look at next?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jakzurr</em>:</p>
+<blockquote>righto.com has been great reading. None of my friends wanted to pay for an 8087, but I can still remember getting out of school (for 2nd time) and saving up for the 486DX after 3 others got them. After that, well, it&#x27;s been quite a ride.</blockquote>
+<p>↳ reply 2 — <em>bonzini</em>:</p>
+<blockquote>Have you already covered how the decoding of instructions is shared with the 8086?</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3484,192 +3673,6 @@ The World Nuclear Industry Status Report (WNISR) 2026, overseen by French nuclea
 <blockquote>This is a pattern for Israel. Settlers attack, harass and kill Palestinians with impunity and have done for decades. It’s wrong.</blockquote>
 <p><strong>Top #3</strong> — <em>jimmydddd</em>:</p>
 <blockquote>We can&#x27;t control terrible things that are going on all over the world.  But we can decide if we want our tax dollars to be supporting it.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware</title>
-      <link>https://llmspeed.dev/</link>
-      <guid isPermaLink="false">hn3-50127979</guid>
-      <pubDate>Sat, 17 Oct 2026 04:36:53 +0000</pubDate>
-      <description>171 points, 54 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://llmspeed.dev/"><strong>→ Article</strong></a> <small>(llmspeed.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50127979">→ HN comments</a> &nbsp;·&nbsp; 171 points &nbsp;·&nbsp; 54 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Jabdoa2</em>:</p>
-<blockquote>By running vllm at work I learned that you will usually outperform benchmarks which you will find on the internet. Mostly by running proper parameter tuning. So you get impressive numbers. Still in reality those numbers do not tell the whole truth. We found that real usage is more 60k-140k prompt with a few k of output for realistic agentic coding workloads. Most of the time that will give you half to a third of decode throughput vs the benchmark. It also becomes much more about cache aware routing and kv cache management (how to offload and restore). Because prefilling 60-140k will simply take too long for interactive work.</blockquote>
-<p><strong>Top #2</strong> — <em>thadk</em>:</p>
-<blockquote>It is nice to have simulated confirmation of the M4 Max 128gb limitations on Gemma4 31B vs Gemma4 26B A4B at Q4:<p>Time to first token (TTFT) on 5,687 tokens, like pasting a short code block into the prompt, takes 36 seconds vs 4.7 seconds. It also breaks down the seconds for each step like KV and prefilling.<p>Gemma4 31B TTFT on the M5 Max 128gb with same setup is showing as 19 seconds.</blockquote>
-<p><strong>Top #3</strong> — <em>adrian17</em>:</p>
-<blockquote>A random number I checked feels kinda optimistic, or there&#x27;s something wrong with my setup; Gemma 26B-A4B on a 16GB 5060Ti is reported to get 21-88tok&#x2F;s with Q4_K_M, meanwhile I can just barely eke out 70tok&#x2F;s with Q3 (which fully fits in vram), and 40tok&#x2F;s with Q4 (with recently-merged MoE cache on llama-cpp). I guess the average fits, but the peak feels implausible.<p>No clue about details, but Sebastian Raschka&#x27;s site reports its kv cache usage at 210kB per token, which is like 6x more than this site claims (&quot;0.273 GB per 8k&quot;). Also, the site claims qwen 27b to use 2x more memory per token than gemma, which is the opposite from what I know.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Source code of the Estonian online voting system</title>
-      <link>https://github.com/valimised/ivxv</link>
-      <guid isPermaLink="false">hn3-50127586</guid>
-      <pubDate>Sat, 17 Oct 2026 03:18:39 +0000</pubDate>
-      <description>141 points, 126 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/valimised/ivxv"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50127586">→ HN comments</a> &nbsp;·&nbsp; 141 points &nbsp;·&nbsp; 126 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cryptonector</em>:</p>
-<blockquote>Fully software, even a combo of software and hardware, cannot by itself make elections secure.  Think of the Reflections On Trusting Trust problem, the need to verify firmware, etc.  You can&#x27;t ensure that machines <i>_will_</i> work correctly, but you <i>_can_</i> verify that they <i>_did_</i>.  To do verify the machines&#x27; functioning after the fact you have to do it very soon after closing of the polls, and you have to devise a manual, statistical random sampling method where you manually check randomly sampled, marked paper ballots, against the digital cast vote record, then do a digital risk limiting audit to check that the CVR totals up to the machines&#x27; reported results.  The sooner after closing of the polls you do this, the better the likelihood that any cheating will be caught.  I.e., an immediate manual, partial audit of enough randomly-selected polling locations.<p>That still leaves tons of other technical problems to address, like security of mail-ballots &#x2F; absentee ballots, the security of ballot boxes used for early voting (because you probably cannot run the above manual partial audit due to then having nightly results available to the public; or maybe you accept that), voter registration, etc.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>atoav</em>:</p>
-<blockquote>While these all are problems, the <i>REAL</i> problem is that the goal of elections isn&#x27;t to get scientifically or mathematically verifiably correct results. The goal is to produce <i>agreeable consent</i>.<p>That means it doesn&#x27;t matter one bit how correct you are if the regular Joe does believe you tricked. Adding computers into the mix always makes this worse. And again, this is not something you can fix with clever solutions and cryptography (that admittedly fascinates me nonetheless), the problem is that people can&#x27;t see electricity generally and I  something at the scale of a computer, even if you could it would be utterly meaningless.<p>This is why the paper ballot system is so glorious in its stupid inefficiency, because it spreads the trust in a way any adult who has mastered object permanence can verify for themselves. Invite the conflicting parties to monitor and have them begrudgingly admit their defeat in the face of the simple, inefficient but agreeable process.<p>This is why I as a cryptography fan, programmer and hardware guy think electronic voting is not up to the task for high stakes elections.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>llukas</em>:</p>
-<blockquote>&gt; glorious in its stupid inefficiency, because it spreads the trust<p>What is the goal? Having fancy crypto or people being confident about elections?<p>If spreading the trust is the goal what makes you say &quot;inefficient&quot;. It is orders of magnitude better then any crypto system.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>cryptonector</em>:</p>
-<blockquote>GP means inefficient in the sense of cost.  Paper ballots add costs.  Partial manual audits &#x2F; hand-counts add costs.  Full audits &#x2F; hand-counts add a lot of cost, and in particular hand-counts require a lot of staff in order to yield results on election night.<p>The costliest item is counting by hand, so... don&#x27;t.  Use ballot scanning and counting machines and then implement a timely partial manual audit to demonstrate that the BMDs and BSCDs functioned correctly.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>caaqil</em>:</p>
-<blockquote>&gt; Think of the On Trusting Trust problem, the need to verify firmware, etc.<p>I mean that&#x27;s too abstract and philosophical of a problem when talking about voting machines&#x2F;software: there are much more prevalent and concrete risks including but not limited to APT-grade breach&#x2F;espionage if your country is important enough, and the various other issues (some in your comment itself).</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>kuratkull</em>:</p>
-<blockquote>I&#x27;m Estonian. E-voting is widely accepted and used here. We&#x27;ve been doing it since 2001, and extensivelly (first parliamentary e-voting) since 2007. 
-The fact that it&#x27;s open source is long known (at least in the IT community) and highly appreciated.
-There&#x27;s no inherent doubt about its validity in the local expert and international community.</blockquote>
-<p><strong>Top #3</strong> — <em>AndroTux</em>:</p>
-<blockquote>Living in Estonia, I have a hard time deciding how I feel about this voting system.<p>Currently, with people trusting the government, this system is great. I can just cast my vote online, like I do everything else here, and I can be reasonably sure that my vote is counted thanks to the aforementioned trust in the system.<p>But I really fear the day that trust erodes.<p>On the other hand, though, once the trust is gone, I think it doesn’t really matter whether it’s an analog or digital count. People won’t trust the system anyways.<p>Then again, there’s a lot of nuances and different levels of trust, which is the reason why I don’t know what the right answer is.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>wavemode</em>:</p>
-<blockquote>The advantage of paper ballots is that the possible ways that the system can be rigged are technologically limited. Either ballots are forged or ballot are miscounted. Both are mitigated by having election officials physically present who validate that voter registrations are valid and that counting is being done accurately, and having those officials be made up of representatives from each participating political party.<p>Then the defense-in-depth is that paper ballots are inherently decentralized. Even if you manage to pull off a complex operation to rig ballots at a local voting location, you&#x27;d have to do the same at hundreds or thousands of other locations to affect the results of the election.</blockquote>
-<p>↳ reply 2 — <em>cryptonector</em>:</p>
-<blockquote>It&#x27;s easier to restore the security of elections run with paper ballots because people can get involved locally.  It&#x27;s not possible to steal numerous paper-based elections in a row -- at some point the thieves&#x27; energy&#x2F;funding runs out and security can be restored.  With a digital system, if the system is changed to be vulnerable, or if it always was, then there is no way to recover.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A skeptic's first contact with Kubernetes (2024)</title>
-      <link>https://blog.davidv.dev/posts/first-contact-with-k8s/</link>
-      <guid isPermaLink="false">hn3-50127572</guid>
-      <pubDate>Sat, 17 Oct 2026 03:16:25 +0000</pubDate>
-      <description>129 points, 71 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.davidv.dev/posts/first-contact-with-k8s/"><strong>→ Article</strong></a> <small>(blog.davidv.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50127572">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 71 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>sgarland</em>:</p>
-<blockquote>I especially enjoyed where you discovered that K8s runs on string interpolation. That feeling never goes away, FYI; every time you have to play with nindent, you lose a little piece of your sanity.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Gravityloss</em>:</p>
-<blockquote>This is partially a tangent, but the whole managing of software infrastructure is a strange culture. There would of course be lots of better ways, but it&#x27;s too bad the infrastructure side of the software industry lives partially in a parallel world and many of the lessons from elsewhere in the industry are not really widespread there (at least yet). Even banks seem intelligent and innovative compared to infrastructure management mainstream practices.<p>It&#x27;s very error prone to describe a hierarchy of versioned software packages and configuration with shell scripts and yaml. Or use text files in git as a database. Or use the CI system as a bad substitute for a proper service (in order to do a simple thing, you must first create the world from scratch). And so on. Mainstream industry knows types, programming languages, relational databases, graphs and you name it, but those have not yet penetrated sufficiently into the infrastructure world. The understanding of the value of having types has been paid in sweat and blood when developing software and databases. Even a basic CRUD application with a basic SQL database will run rings around these Frankenstein monsters: in safety, speed, and extendability.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ranger207</em>:</p>
-<blockquote>Yeah I think the difference ultimately is the API surface of infra versus app software. If you&#x27;re developing software, you get to contain and abstract everything into your own vision of how things should be done with types etc. But infra is managing a whole bunch of other people&#x27;s software, each with their own vision of how things should be done, which means that often things just fall back to the least common denominator, plain ASCII</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>EdwardDiego</em>:</p>
-<blockquote>Golang string interpolation, to make it even more fun and hairy. I never understood why Helm didn&#x27;t treat the YAML as a tree in memory so that you didn&#x27;t have to worry about whitespace.</blockquote>
-<p>↳ reply 3 — <em>kryptn</em>:</p>
-<blockquote>I definitely prefer using kustomize over helm, where the mentioned interpolation takes place.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>hckr1292</em>:</p>
-<blockquote>&gt; Basically, Horizontal Pod Autoscaler but with sensors which are not just &quot;CPU&quot;<p>Since Kubernetes 1.23, there&#x27;s support for using &quot;custom metrics&quot; to control HPAs: <a href="https:&#x2F;&#x2F;kubernetes.io&#x2F;blog&#x2F;2026&#x2F;07&#x2F;14&#x2F;custom-metrics-exporter-kubernetes&#x2F;" rel="nofollow">https:&#x2F;&#x2F;kubernetes.io&#x2F;blog&#x2F;2026&#x2F;07&#x2F;14&#x2F;custom-metrics-exporte...</a><p>Is it somewhat convoluted to setup? Absolutely! But it&#x27;s possible to use relatively robust and well supported built in controllers with custom metrics.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>12_throw_away</em>:</p>
-<blockquote>&gt; Is it somewhat convoluted to setup? Absolutely!<p>Kubernetes™</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>wpollock</em>:</p>
-<blockquote>I sometimes wonder if Kubernetes was designed with selling support and training services as a goal.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>fh973</em>:</p>
-<blockquote>Built by Google and... Redhat!</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>SOLAR_FIELDS</em>:</p>
-<blockquote>The node equivalent, also very useful for engineering cost effective cloud environments, is called KEDA.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>deathanatos</em>:</p>
-<blockquote>&gt; <i>Why does it not matter if the state is unstable? If I&#x27;m operating a cluster that can&#x27;t settle, I&#x27;d like to know immediately!</i><p>Because it&#x27;s probably an impossible to answer question hinging on each person&#x27;s pet definition of &quot;stable&quot;.<p>In one example of an unstable cluster, pods are &quot;regularly&quot; crashing — but at a really low frequency, like, each pod crashes onces every few days. They&#x27;re OOM&#x27;ing — a bug in the workload, not really the cluster&#x27;s fault — but the control loop pattern still ensures the failure is corrected in the sense that the pod will either be restarted or evicted and re-created.<p>(But yes, you absolutely want monitoring to pick up on that. In the specific example here, I&#x27;d say it&#x27;s &quot;just monitor pod failures&quot;, and then you get not only OOMs, but all the other ways a workload might crash too.)<p>I&#x27;ve actually had more problems when the control loops get <i>stuck</i>. (Which they can, almost always because you&#x27;ve asked for the impossible. But sometimes it is hard for the various pieces to say more than &quot;no solution&quot;. <i>Why</i> no solution is usually a human-level deduction.)</blockquote>
-<blockquote>
-<p>↳ reply — <em>p_l</em>:</p>
-<blockquote>A good term for it is that every bigger system is going to be at best <i>metastable</i></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Butlerian Jihad</title>
-      <link>https://dune.fandom.com/wiki/Butlerian_Jihad</link>
-      <guid isPermaLink="false">hn3-50127274</guid>
-      <pubDate>Sat, 17 Oct 2026 02:21:08 +0000</pubDate>
-      <description>248 points, 134 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://dune.fandom.com/wiki/Butlerian_Jihad"><strong>→ Article</strong></a> <small>(dune.fandom.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50127274">→ HN comments</a> &nbsp;·&nbsp; 248 points &nbsp;·&nbsp; 134 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>antihipocrat</em>:</p>
-<blockquote>At the end of the page is this paragraph:<p><i>Another, more subtle justification for the Butlerian Jihad is also found in Frank Herbert&#x27;s original novels, specifically Heidegger&#x27;s thesis that the use of technology trains humans to think like machines. The problem is that machines are deterministic; thus, training people to be machines is self-limiting.</i><p>I wonder whether Heidegger would consider the probabilistic nature of LLMs as having a positive effect on human thought.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>chr15m</em>:</p>
-<blockquote>Although LLMs are not deterministic in normal operation (because of the temperature values used) they are still strongly biased in their outputs. Bias in their outputs is literally how they function.<p>So you get a different type of conformism where people who interact with LLMs a lot are going to be influenced towards the median, as encoded in those token probability look up tables.<p>The effect is basically the same as what Heidegger and Illich were worried about, and I think we&#x27;re seeing it happen already everywhere.<p>A solution(?) is to try to be your true weird authentic self when you act in the world, rather than bending your words and behaviours to the machine and LLM probability shape.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>zelphirkalt</em>:</p>
-<blockquote>I would like to state here, that LLMs are actually entirely deterministic. The temperature is just as much of an input as any other parameter and instructions and prompts. Deterministic does not mean &quot;explainable&quot; or &quot;reasonable&quot; or &quot;understandable&quot;. Unless LLMs somehow have broken out of the confines of our very deterministic computers&#x2F;calculation machines without us noticing, they are very much as deterministic as anything else we run on these machines.<p>What people perhaps mean by non-deterministic on a computer is, that we often do not control all inputs and therefore cannot tell what the output will be. That&#x27;s however actually more about our own inability, rather than the processes within the machines.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>elric</em>:</p>
-<blockquote>That reminds me of a quote from Charlie Chaplin&#x27;s The Great Dictator:<p>&gt; Don&#x27;t give yourselves to these unnatural men. Machine men with machine minds and machine hearts! You are not machines! You are not cattle! You are men! You have the love of humanity in your hearts! You don&#x27;t hate! Only the unloved hate. The unloved and the unnatural! Soldiers! Don&#x27;t fight for slavery! Fight for liberty!</blockquote>
-<p>↳ reply 3 — <em>sashank_1509</em>:</p>
-<blockquote>LLM force humans to think like machines far more than just writing code.<p>Writing code is a creative activity with large number of degrees of freedom and opportunities to express yourself. Button pushing and approving code changes is a deeply limiting activity that alienates you from your work.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>bumbledraven</em>:</p>
-<blockquote><i>Herbert seemed to think that to be human is to be essentially &#x27;open-ended&#x27;, capable of undiscovered, indeterminate evolution, both personally and as a species.</i><p>Indeed.</blockquote>
-<p><strong>Top #3</strong> — <em>lproven</em>:</p>
-<blockquote>I am a proud Butlerian Jihadi.<p>Since the botlickers think that those of us who don&#x27;t trust automatic plagiarism machines are religious nutcases anyway, why not lean into it?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Dam removals are bringing fish back across the northeastern United States</title>
-      <link>https://www.smithsonianmag.com/science-nature/dam-removals-are-bringing-fish-back-across-the-northeastern-united-states-striking-down-one-tiny-barrier-at-a-time-180989679/</link>
-      <guid isPermaLink="false">hn3-50126312</guid>
-      <pubDate>Fri, 16 Oct 2026 23:47:31 +0000</pubDate>
-      <description>155 points, 45 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.smithsonianmag.com/science-nature/dam-removals-are-bringing-fish-back-across-the-northeastern-united-states-striking-down-one-tiny-barrier-at-a-time-180989679/"><strong>→ Article</strong></a> <small>(smithsonianmag.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50126312">→ HN comments</a> &nbsp;·&nbsp; 155 points &nbsp;·&nbsp; 45 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>goda90</em>:</p>
-<blockquote>A rewilding organization bought some forest land, downstream from a dam, that used to get seasonal flooding before the dam was built and made an agreement with the dam operators to do artificial seasonal flooding via ditches they dug. The flooded forest has the effect of providing fish nurseries so hatchlings have a chance to hide and grow before the water recedes and they have to return to the river.<p><a href="https:&#x2F;&#x2F;youtu.be&#x2F;qcVMX32c0io" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;qcVMX32c0io</a><p>I think it&#x27;s a testament that human activity and nature don&#x27;t have to be all or nothing, but we need to consider and mitigate the impact of our actions and always leave space for nature.</blockquote>
-<blockquote>
-<p>↳ reply — <em>worldsayshi</em>:</p>
-<blockquote>Exactly I don&#x27;t get why we can&#x27;t figure out and prioritize allowing fish to pass around the dams.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>RajT88</em>:</p>
-<blockquote>We can.  One presumes it is less efficient than just removing the dam.  It is more work versus less work - fish ladders and the like.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jaggederest</em>:</p>
-<blockquote>Not only that, but a lot of these dams are not even in use any more, so doing additional work doesn&#x27;t make much sense. Remove the dam, remove the problem, instead of duct tape solutions.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>hinkley</em>:</p>
-<blockquote>As the article alludes, the blueprint&#x2F;precedent for this kind of work was set in the Klamath river basin in western Oregon. The local tribes deserve a tip of the hat for pushing through the lobbying and suits to get this process started.<p>And a hat tip to all of the people who made the projects as successful as they have been in saving fish populations. IIRC, they ran into some surprises with volunteer fish which reduced the amount of hatchery fish they anticipated needing.</blockquote>
-<p><strong>Top #3</strong> — <em>glenstein</em>:</p>
-<blockquote>More good news: after years of fighting, Brookfield Renewable agreed to sell four dams on the Kennebec River which will let Atlantic Salmon go back up river to their spawning territory. This just happened in 2025 and could be a bigger breakthrough than the massive alewife restoration that the article mentions.<p>My understanding is that the first few victories on this were very very hard but it seems to have created a precedent and a growing example emulated across the country.<p><a href="https:&#x2F;&#x2F;themainemonitor.org&#x2F;dams-sale-salmon-return-kennebec-river&#x2F;" rel="nofollow">https:&#x2F;&#x2F;themainemonitor.org&#x2F;dams-sale-salmon-return-kennebec...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Bleached corals thrive within days when touching healthy neighbour</title>
-      <link>https://www.nature.com/articles/d41586-026-03266-x</link>
-      <guid isPermaLink="false">hn3-50126253</guid>
-      <pubDate>Fri, 16 Oct 2026 23:38:27 +0000</pubDate>
-      <description>172 points, 24 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.nature.com/articles/d41586-026-03266-x"><strong>→ Article</strong></a> <small>(nature.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50126253">→ HN comments</a> &nbsp;·&nbsp; 172 points &nbsp;·&nbsp; 24 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>anakaine</em>:</p>
-<blockquote>Having been a diver on the Great Barrier Reef numerous times, the scale of bleaching events means that there is often no non-bleached neighbour for vast distances. Healthy propagation rarely occurs before the brown sludge sets in, then its game over.</blockquote>
-<blockquote>
-<p>↳ reply — <em>verelo</em>:</p>
-<blockquote>This kills me. I saw the reef for the first time around 2007. I went back twice, and the last time I was there (2017) I honestly couldn&#x27;t believe what I saw. Wasteland? An under water desert? I don&#x27;t have words for it, but I don&#x27;t really want to go back because it hit me so hard. Our planet is dying and we&#x27;re sitting here debating why&#x2F;who and not doing anywhere near enough to fix it.<p>I&#x27;m so glad we have space rockets, flying cars and drone warfare...but I&#x27;d trade it all in for the reef to come back.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nomel</em>:</p>
-<blockquote>&gt; This incredible new result<p>Only if you&#x27;ve never talked to anyone remotely involved with propagating coral, including those in the saltwater fish-tank community!</blockquote>
-<p><strong>Top #3</strong> — <em>Okkef</em>:</p>
-<blockquote>Only if they are clones - genetically identical. So not much use in practice, unfortunately.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>smallerize</em>:</p>
-<blockquote>I think the article says they just haven&#x27;t tested other cases. I wouldn&#x27;t expect the symbiotic microalgae to be <i>that</i> picky.<p>Edit - The article makes Okkef&#x27;s point, I just missed it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ceejayoz</em>:</p>
-<blockquote>The article says otherwise.<p>&gt; Fragments from different species and even different animals of the same species did not fuse together, and so did not nurse the bleached piece back to health.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>kulahan</em>:</p>
-<blockquote>Sounds like a solution is still well within our reach. Normally I wouldn’t suggest something as extreme as using cloning techniques to restore wild creatures, but of course it was extreme actions that got us here in the first place, so I think this balances it out.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
