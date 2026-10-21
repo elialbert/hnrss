@@ -4,7 +4,118 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 21 Oct 2026 07:24:28 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Oct 2026 13:39:14 +0000</lastBuildDate>
+    <item>
+      <title>PHP session.upload_progress heap UAF (CVE-2026-109618 / -109619)</title>
+      <link>https://jackalsyn.com/posts/php-up-2026.html</link>
+      <guid isPermaLink="false">hn3-50176077</guid>
+      <pubDate>Wed, 21 Oct 2026 04:26:56 +0000</pubDate>
+      <description>180 points, 60 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://jackalsyn.com/posts/php-up-2026.html"><strong>→ Article</strong></a> <small>(jackalsyn.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50176077">→ HN comments</a> &nbsp;·&nbsp; 180 points &nbsp;·&nbsp; 60 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>lorenzbrun</em>:</p>
+<blockquote>I&#x27;m pretty sure this is not the vulnerability that&#x27;s still officially under embargo. I think I found the the two actual vulnerabilities (both UAFs and similar). I patched my own stuff (at least I hope so) and am mirroring traffic to a detector, very interested to see when I get the first hits. Unless I see actual exploit attempts or a full leak I think I&#x27;m not going to publish my patches yet.</blockquote>
+<p><strong>Top #2</strong> — <em>InvisibleUp</em>:</p>
+<blockquote>This may be, according to one of the PHP devs, a completely unrelated exploit. See <a href="https:&#x2F;&#x2F;phpc.social&#x2F;@Girgias&#x2F;117476477429221001" rel="nofollow">https:&#x2F;&#x2F;phpc.social&#x2F;@Girgias&#x2F;117476477429221001</a>. Seems the best stopgap is SELinux or AppArmor.</blockquote>
+<blockquote>
+<p>↳ reply — <em>charcircuit</em>:</p>
+<blockquote>You misread. He is saying that the multipart UAF vulnerability part of the overall exploit can&#x27;t be fixed by session.upload_progress.enabled = off or any other ini option for that matter.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>4ndrewl</em>:</p>
+<blockquote>Which is also what tfa says btw</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>idlewords</em>:</p>
+<blockquote>I guess the future is people arguing in comments whether a high-severity vulnerability is the one under embargo, or one of various unrelated devastating bugs discovered when people got wind of the embargo and pointed their AI agents at the codebase.</blockquote>
+<blockquote>
+<p>↳ reply — <em>SSLy</em>:</p>
+<blockquote>the future is now, eh.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The Future of CSS</title>
+      <link>https://www.joshwcomeau.com/css/interop-2027/</link>
+      <guid isPermaLink="false">hn3-50175070</guid>
+      <pubDate>Wed, 21 Oct 2026 01:47:28 +0000</pubDate>
+      <description>471 points, 195 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.joshwcomeau.com/css/interop-2027/"><strong>→ Article</strong></a> <small>(joshwcomeau.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50175070">→ HN comments</a> &nbsp;·&nbsp; 471 points &nbsp;·&nbsp; 195 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>paczki</em>:</p>
+<blockquote>As someone who actively goes out of my way to stick to writing vanilla HTML&#x2F;CSS&#x2F;JS as much as possible, it&#x27;s honestly hard to explain to people who only write within frameworks how good it&#x27;s gotten. Use the proper tool for the job, of course, but it sparks joy!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>DimmieMan</em>:</p>
+<blockquote>Definitely worth keeping up with as a framework user too.<p>Smaller bundles, often easier to use, less bug potential. Code&#x27;s a liability and being able to occasionally rip a bunch out as a feature becomes baseline is always a joy.</blockquote>
+<p>↳ reply 2 — <em>flohofwoe</em>:</p>
+<blockquote>OTH all the complexity ends up baked into the browser where it will be frozen forever (even the shitty&#x2F;overengineered ideas, like WebAudio). At least frameworks can be discarded and replaced when something better comes along.<p>IMHO even HTML+CSS should be completely implemented outside the browser in the &#x27;framework layer&#x27;, but I guess that&#x27;s not a very popular opinion among the more &#x27;conservative&#x27; web devs ;)</blockquote>
+<p>↳ reply 3 — <em>lachlanj</em>:</p>
+<blockquote>Any good articles or post you could link to, CSS has come so far and I’m trying to gather info on what’s now possible</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>fodkodrasz</em>:</p>
+<blockquote>Wow even more fancy border styles! Infinite complexity for useless eyecandy. Date pickers are still barely working, last time i needed to build a touch optimized interface (gloves, industrial setting) with date picker, time picker, and numeric up&#x2F;down style input fields it needed custom components and js...<p>But who needs these, when we can have bezel and whatnot...<p>Who needs ways to reliably trigger the display of the touch platform-native keyboard, to be notified if it is displayed and to move the input field in view so it is not obscured by the keyboard?<p>This is why the web is a terrible platform compared to Windows Forms for getting stuff done. Because those making the standards only work on creating gimmicks.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>afavour</em>:</p>
+<blockquote>The stuff in this article is created by the CSS Working Group. The stuff you want would not be handled by them.<p>&gt; Who needs ways to reliably trigger the display of the touch platform-native keyboard, to be notified if it is displayed and to move the input field in view so it is not obscured by the keyboard?<p>Sounds like you need window.visualViewport: <a href="https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;VisualViewport" rel="nofollow">https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;VisualViewp...</a><p>&gt; The mobile web contains two viewports, the layout viewport and the visual viewport. The layout viewport covers all the elements on a page and the visual viewport is what is actually visible on the screen. When the user pinch-zooms into the page, the visual viewport shrinks but the layout viewport is unchanged. User-interface features like the on-screen keyboard (OSK) can shrink the visual viewport without affecting the layout viewport.</blockquote>
+<p>↳ reply 2 — <em>btown</em>:</p>
+<blockquote>One small glimmer of hope is that customizable selects are indeed being worked on: see <a href="https:&#x2F;&#x2F;open-ui.org&#x2F;components&#x2F;customizable-select.explainer&#x2F;" rel="nofollow">https:&#x2F;&#x2F;open-ui.org&#x2F;components&#x2F;customizable-select.explainer...</a> and the broader work of the Open UI group at W3C.<p>I&#x27;d love to see this level of customization come to date and datetime-local popups, finding a meaningful path that preserves compatibility with the design languages of various platforms. If and when that happens, it will be because of the work of standardization working groups like Open UI and Interop.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>seanwilson</em>:</p>
+<blockquote>I&#x27;m still waiting for decent tooltips that are browser native. You can sort of minimally do them with the `title` attribute but they take ages to appear, can&#x27;t contain HTML or styling (like bold text or images), and you can&#x27;t choose their position. To do them properly with accessibility in mind (keyboard&#x2F;mouse&#x2F;touch support, screen reader support, keyboard focus, it&#x27;s hard!), you need way too much markup with tricky custom JavaScript, and they&#x27;re difficult to get right like making sure they don&#x27;t render partially off-screen.<p>The new CSS anchor positioning and popover attribute help   but something simple and built-in that doesn&#x27;t require lots of wiring would be great. It&#x27;s puzzling why we don&#x27;t have this basic UI feature yet?</blockquote>
+<blockquote>
+<p>↳ reply — <em>troupo</em>:</p>
+<blockquote>At one point the native tooltips should appear, on top of popovers: <a href="https:&#x2F;&#x2F;open-ui.org&#x2F;components&#x2F;popover-hint.research.explainer&#x2F;" rel="nofollow">https:&#x2F;&#x2F;open-ui.org&#x2F;components&#x2F;popover-hint.research.explain...</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Good type against all odds</title>
+      <link>https://unsung.aresluna.org/good-type-against-all-odds/</link>
+      <guid isPermaLink="false">hn3-50175059</guid>
+      <pubDate>Wed, 21 Oct 2026 01:45:07 +0000</pubDate>
+      <description>155 points, 14 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://unsung.aresluna.org/good-type-against-all-odds/"><strong>→ Article</strong></a> <small>(unsung.aresluna.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50175059">→ HN comments</a> &nbsp;·&nbsp; 155 points &nbsp;·&nbsp; 14 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>weinzierl</em>:</p>
+<blockquote><i>&quot;The first has to do with the direction of reading. I believe the second is, like many things in typography, customary; there’s nothing inherently better than right-leaning letters, except we’re used to them since those are the only ones we ever see.&quot;<p>Not at all. It is simply because the tip of a quill and the nib of a traditional[1] fountain pen cannot move in any direction. The way you hold it if you are right handed forbids moving  in the </i>&quot;backslash&quot;* direction[2] upwards. You can <i>&quot;draw&quot;</i> from top down but not <i>&quot;shove&quot;</i> upwards in that direction. Since in joined script we start letters mostly from the baseline (and have connecting strokes) this makes the <i>&quot;right leaning slant&quot;</i> much easier to write.<p>The anatomy of a right handed writer also plays a role. When you write fast, the hand pivots at the wrist and fingers as it moves rightward, and that produces a forward slant.<p>[1] Modern fountain pen nibs have a little ball at tip. So even if you used on in primary school you might not have noticed the directional effect.<p>[2] That is why the slash (virgula) has existed for centuries while the backslash is an invention of the computer age.</blockquote>
+<p><strong>Top #2</strong> — <em>jjcm</em>:</p>
+<blockquote>I’m a simple man. I see a post from Marcin about typography or keyboards and I upvote. He has such a passion for this and I’ve always loved his storytelling.</blockquote>
+<p><strong>Top #3</strong> — <em>rablackburn</em>:</p>
+<blockquote>What a lovely example to end on.<p>Personally, I (guiltily) love using ol&#x27;fashioned contractions.
+I wish it were more normalised.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Muse exposes users' personal and business secrets when they share conversations</title>
+      <link>https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations/</link>
+      <guid isPermaLink="false">hn3-50174687</guid>
+      <pubDate>Wed, 21 Oct 2026 00:45:59 +0000</pubDate>
+      <description>253 points, 111 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arstechnica.com/security/2026/10/meta-muse-exposes-users-personal-and-business-secrets-when-they-share-conversations/"><strong>→ Article</strong></a> <small>(arstechnica.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50174687">→ HN comments</a> &nbsp;·&nbsp; 253 points &nbsp;·&nbsp; 111 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ryandrake</em>:</p>
+<blockquote>I couldn&#x27;t be true. You&#x27;re telling me that Meta, of all companies, would be careless with user data and privacy? Totally unbelievable!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ZiiS</em>:</p>
+<blockquote>Their lifeblood is charging for this data; they shouldn&#x27;t be careless with it.</blockquote>
+<p>↳ reply 2 — <em>tonyhart7</em>:</p>
+<blockquote>the worse part its by design for targeted ads<p>its not incompetent, its designed that way</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>omoikane</em>:</p>
+<blockquote>Lesson here is that the subdomain names can be queried due to passive DNS records, and putting stuff that is not supposed to be guessable in subdomain names is a bad idea.</blockquote>
+<blockquote>
+<p>↳ reply — <em>fjni</em>:</p>
+<blockquote>That is a lesson meta engineers shouldn’t have to learn this way.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>JumpCrisscross</em>:</p>
+<blockquote>&gt; But a central design decision for constructing URLs has made the links easy to discover. As a result, researchers from security firm Claroc said they were able to enumerate 6,800 links Muse users created for sharing conversations with others.<p>To be clear, did the users intended for these conversations to be shared with someone? Meta just created a guessable capability URL?<p>Or were all Muse users&#x27; conversations by default public, just behind an obscure URL?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cloudbonsai</em>:</p>
+<blockquote>It seems that Meta assigns a unique hostname to each shared conversation. For example:<p>&gt; fiscal-review-b4a5ff.cf.metaaiusercontent.com<p>So when someone opens the link, the DNS resolution exposes the unique hostname. The original bug reporter found dozens of these URLs in passive DNS logs.</blockquote>
+<p>↳ reply 2 — <em>skohan</em>:</p>
+<blockquote>I remember back when Facebook was still .edu email addresses only (2004 or 2005 maybe), and my university got access, we discovered you could just grab the user id of another user from their public profile, and paste it in place of your own user id on your own profile, and get access to their profile as if it was your own.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>The Other Epidemic: Trying to get off benzodiazepines</title>
       <link>https://www.thebeliever.net/the-other-epidemic/</link>
@@ -36,6 +147,22 @@ I am one of few people stupid enough to have, at one point, been addicted to and
 </blockquote>
 <p><strong>Top #3</strong> — <em>methou</em>:</p>
 <blockquote>My high school years were plagued by anxiety. My cousin knew a psychiatrist and convinced my family to at least see what he had to say. After diagnosing me, the doctor prescribed lorazepam and an SSRI. According to the doctor, it was just like having a small cold and would eventually go away after a while. At his office, he also told me that lorazepam should only be taken as needed because it can lead to psychological dependence.<p>Many years have passed. Every time I feel I’m losing control because of anxiety, I imagine taking a lorazepam pill or having one within reach. Even these imaginings bring me some peace. But I still know it’s a bit dangerous, even though it’s not technically addictive.<p>That’s how “good” the stuff is. And you should be careful with it.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>PingCap TiDB Leaks</title>
+      <link>https://fulcrumsec.vg/pingcap/</link>
+      <guid isPermaLink="false">hn3-50173716</guid>
+      <pubDate>Tue, 20 Oct 2026 22:45:39 +0000</pubDate>
+      <description>134 points, 18 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://fulcrumsec.vg/pingcap/"><strong>→ Article</strong></a> <small>(fulcrumsec.vg)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50173716">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 18 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>xKingfisher</em>:</p>
+<blockquote>Coming this close on the heels of the security audit by NCC [1] is pretty embarassing for all parties.<p>[1]<a href="https:&#x2F;&#x2F;www.pingcap.com&#x2F;press-release&#x2F;tidb-ncc-group-security-assessment&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.pingcap.com&#x2F;press-release&#x2F;tidb-ncc-group-securit...</a></blockquote>
+<p><strong>Top #2</strong> — <em>wannabe44</em>:</p>
+<blockquote>&gt; Summary: &quot;The root password of the cluster can be reset unconditionally&quot;<p>But what matters is that it was all memory safe and had no data races.</blockquote>
+<p><strong>Top #3</strong> — <em>arpinum</em>:</p>
+<blockquote>AWS private rates gives PingCAP ~47% off list price. Wonder which services got the biggest discounts? Unsurprisingly for a db company the cross-az traffic is 15% of their bill.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Feds suspect ransom negotiator ran ShinyHunters extortion site</title>
@@ -154,6 +281,32 @@ $16B revenue and hoping to spend $500B in the coming years.</blockquote>
 </blockquote>
 <p><strong>Top #3</strong> — <em>evanb</em>:</p>
 <blockquote>I thought all of this machine learning business was about <i>minimizing</i> the loss.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Upcoming Critical PHP Security Release</title>
+      <link>https://www.php.net/archive/2026.php</link>
+      <guid isPermaLink="false">hn3-50171528</guid>
+      <pubDate>Tue, 20 Oct 2026 19:34:03 +0000</pubDate>
+      <description>133 points, 17 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.php.net/archive/2026.php"><strong>→ Article</strong></a> <small>(php.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50171528">→ HN comments</a> &nbsp;·&nbsp; 133 points &nbsp;·&nbsp; 17 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>devttyeu</em>:</p>
+<blockquote>@dang if the speculations circulating around are anything to go by this is apocalyptic and deserves to be amplified such that the right people see this before it’s too late.<p>CERT-EU even suggests isolating any systems that may be exposed and can’t be patched quickly.<p>Speculation is that the affected subsystem runs before any application code and affects all default installs.</blockquote>
+<blockquote>
+<p>↳ reply — <em>extraduder_ire</em>:</p>
+<blockquote>@dang is a no-op, you need to email him or the hn@ycombinator.com address</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>samueloph</em>:</p>
+<blockquote>Deciding to announce it like this is wild, it&#x27;s an invitation for everyone to put their agents to work in order to find out what the vulnerability is and exploit it, while nobody is allowed to patch it until tomorrow.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nullbio</em>:</p>
+<blockquote>It&#x27;s already been found and shared on X. It&#x27;s only a matter of hours before untold numbers of sites are hacked.</blockquote>
+<p>↳ reply 2 — <em>beberlei</em>:</p>
+<blockquote>It was leaked</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>unethical_ban</em>:</p>
+<blockquote>Rumored mitigation from other HN threads:<p>&gt;Mitigation for impacted versions is to set `session.upload_progress.enabled = Off` in php.ini<p>It&#x27;s a feature my wiki doesn&#x27;t use, so even though I&#x27;m patching ASAP it did me no harm in flipping that bit. In fact, I could probably just shut down my server for the day...<p>edit: I simply shut down my dokuwiki for the day. No one uses it but me anyway.<p>edit2: <a href="https:&#x2F;&#x2F;old.reddit.com&#x2F;r&#x2F;PHP&#x2F;comments&#x2F;1xb2utu&#x2F;upcoming_critical_php_security_release&#x2F;phyxxsq&#x2F;?context=3" rel="nofollow">https:&#x2F;&#x2F;old.reddit.com&#x2F;r&#x2F;PHP&#x2F;comments&#x2F;1xb2utu&#x2F;upcoming_criti...</a><p>Someone claiming to be a releng for PHP says INI settings won&#x27;t save you.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Academics have a duty to defend open knowledge systems like Wikipedia</title>
@@ -3673,209 +3826,6 @@ These are the stats that might be hiding the possibly <i>small</i> potential for
 <blockquote>
 <p>↳ reply — <em>rkagerer</em>:</p>
 <blockquote>Regarding the customer lists, I have personal experience.<p>My bank advertises with Meta and included my account in some kind of upload list (probably Meta Ads Manager).  I noticed their logo while poking around in Facebook&#x27;s settings, under Audience-based Advertising.  I was livid.<p>As far as I&#x27;m concerned they had no business telling a creepy company like Meta who I bank with.  I certainly never consented to that.<p>I dug up my original banking agreement - a 5-page document on aging, yellowed parchment that I signed over a decade ago.  Nothing in there about them being able to unilaterally change terms without notice.  I also printed out their latest, 30+ page standard banking agreement which (after making inquiries) they seemed to think applied to my account.<p>I brought both in to my bank manager and put them on the table.  At a high level, I pointed how ridiculous the size had grown to, and he was sympathetic.<p>In terms of details, I&#x27;d highlighted several portions that pertain to privacy, and we walked through the differences together.  I underscored how none of them were needed to provide me banking services, how the benefits they conveyed were solely to TD, and how they were harmful to me as a customer.<p>In the end, he agreed to formally acknowledge on file that I did not agree to the new terms.<p>You may disagree over how much effect that will have in practice, but the acknowledgment was not just a bureaucratic exercise.  It established very firm evidence that I never agreed to the new contract, or any terms the bank might rely on as a basis for the objectionable practices.  It would become material if those practices cause me damage in the future, significant enough to litigate.  i.e. They knew they lacked agreement, and continued to provide me banking services.<p>He also worked with internal departments to toggle all available opt-out flags.<p>I was fortunate in this case the manager comprehended my concerns and seemed to want to keep me as a customer.  I recognize not everyone would necessarily get as far.<p>It really disgusts me that some of the most degenerate practices of silicon valley are spreading to other industries.  With lawyers more broadly adopting some of the most viciously one-sided legal language big tech pioneered.<p>I for one am not on board, and refuse to be bullied into providing some kind of imaginary consent.  I say &#x27;imaginary&#x27;, because I don&#x27;t think anyone in their right mind who reads and understands such terms would ever agree to them willingly.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Parser Combinators</title>
-      <link>https://t3.at/blog/2026-10-17-parser-combinators/</link>
-      <guid isPermaLink="false">hn3-50139067</guid>
-      <pubDate>Sun, 18 Oct 2026 08:19:53 +0000</pubDate>
-      <description>155 points, 60 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://t3.at/blog/2026-10-17-parser-combinators/"><strong>→ Article</strong></a> <small>(t3.at)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50139067">→ HN comments</a> &nbsp;·&nbsp; 155 points &nbsp;·&nbsp; 60 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>BoppreH</em>:</p>
-<blockquote>If you&#x27;re on Python and your problem is too big for a single regex, but too small for a full-blown parser like in the article, I can recommend the built-in re.Scanner[0]. It&#x27;s a regex-based tokenizer[1] (so no recursive parsing) in the `re` module, that for reasons is completely missing from any official documentation.<p>You give it a pattern for each token type, and a function to process each match, and you get back a list of processed tokens.<p>Importantly, it processes the list in one pass and ensures the matches are contiguous, where a naive `re.findall` with capture groups will ignore unmatched characters. You also get a reference to the running scanner, so you can record the location of the match for reporting errors.<p><pre><code>    import re
-
-    # Initialize the scanner.
-    scanner = re.Scanner([
-      (r&quot;\d+&quot;,   lambda scanner, token: (&#x27;COUNT&#x27;, int(token))),
-      (r&quot;\w+&quot;,   lambda scanner, token: (&#x27;ANIMAL&#x27;, token.removesuffix(&#x27;s&#x27;))),
-      (r&quot;[,. ]&quot;,     None), # None -&gt; skip token.
-    ])
-
-    # Scan a sample string.
-    results, remainder = scanner.scan(&quot;45 pigeons, 23 cows, 11 spiders.&quot;)
-
-    # Ensure we parsed the whole thing.
-    assert not remainder
-
-    print(results)
-    # [(&#x27;COUNT&#x27;, 45),
-    #  (&#x27;ANIMAL&#x27;, &#x27;pigeon&#x27;),
-    #  (&#x27;COUNT&#x27;, 23),
-    #  (&#x27;ANIMAL&#x27;, &#x27;cow&#x27;),
-    #  (&#x27;COUNT&#x27;, 11),
-    #  (&#x27;ANIMAL&#x27;, &#x27;spider&#x27;)]
-</code></pre>
-[0]: <a href="https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;693818&#x2F;252218" rel="nofollow">https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;693818&#x2F;252218</a><p>[1]: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lexical_analysis#Tokenization" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Lexical_analysis#Tokenization</a></blockquote>
-<p><strong>Top #2</strong> — <em>marginalia_nu</em>:</p>
-<blockquote>I don&#x27;t understand why this can&#x27;t be on a single page.  Makes it really hard to refer back to earlier &quot;chapters&quot; as you get new information when it&#x27;s a slideshow.  Can&#x27;t search either.<p>Seems like we&#x27;re needlessly reintroducing limitations from the paper medium that don&#x27;t exist in digital media for weird aesthetic reasons?</blockquote>
-<blockquote>
-<p>↳ reply — <em>MattRix</em>:</p>
-<blockquote>I get your argument, but I liked it! Something about isolating each segment makes it feel more readable. Perhaps in an ideal world every article like this would allow the reader to switch between &quot;slideshow&quot; and &quot;single page&quot; view, since the same content would work for both.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>akst</em>:</p>
-<blockquote>I think this is really cool website and love this topic<p>But I think you might want to test this page on smaller screens, just very limited screen real estate for the content of interest, the top right half lots of padding, the scrollable content basically has 1&#x2F;3 of the available screen space, the left hand side kind of has another 1&#x2F;3<p>Look your website your vision, I get it and I respect your trying something different with the UI but if your goal here is to communicate your ideas, as a reader I&#x27;d appreciate having more screen space for the content, when I clicked on the link to see this specific post I&#x27;m just not interested in your other posts (or at least until I&#x27;ve read the one I went out of my way to read).<p>FWIW, I&#x27;m using a macbook air right now.</blockquote>
-<blockquote>
-<p>↳ reply — <em>schindlabua</em>:</p>
-<blockquote>Thanks for the feedback. The idea was to create something between a youtube video and a blog post and something you can consume in bite-sized pieces. I&#x27;d like the visuals to do most of the talking but I guess parser combinators came out with a lot of text anway. I&#x27;ll try to tighten up the UI some and get a smaller phone for testing.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>doginasuit</em>:</p>
-<blockquote>I really enjoyed it and I look forward to trying out the ideas.<p>I think you are close to every effective presentation format, but the cramped space for the text was the biggest friction. The moving visuals, as helpful as they are, also became a little distracting as I was trying to absorb the meaning of the text. You could solve both issues with a toggle to hide or expand the visual.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>DeepSeek search and fetch – $0.75 per 1000 successful requests</title>
-      <link>https://api-docs.deepseek.com/guides/search/</link>
-      <guid isPermaLink="false">hn3-50138531</guid>
-      <pubDate>Sun, 18 Oct 2026 06:50:36 +0000</pubDate>
-      <description>419 points, 205 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://api-docs.deepseek.com/guides/search/"><strong>→ Article</strong></a> <small>(api-docs.deepseek.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50138531">→ HN comments</a> &nbsp;·&nbsp; 419 points &nbsp;·&nbsp; 205 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>nikvdp</em>:</p>
-<blockquote>What are people actually using these hosted search providers for? For personal use I&#x27;ve found using searxng-ai-kit [1] (disclaimer: I&#x27;m the author) or similar tools to be far more cost effective (free!). oh-my-pi uses a similar method and will scrape search results for you out of the box, no api key or search provider needed.<p>[1]: <a href="https:&#x2F;&#x2F;github.com&#x2F;nikvdp&#x2F;searxng-ai-kit" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nikvdp&#x2F;searxng-ai-kit</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>karmakaze</em>:</p>
-<blockquote>I ran into a thing running a local dense LLM on DSH (without DeepSeek API key) that doesn&#x27;t use many MoE experts with vast knowledge. It ends up doing a lot of searching. In the end my local AI is as free as electricity but I pay for the searches.<p>The search providers I pay likely don&#x27;t pay their sources. Some others (that I don&#x27;t use) don&#x27;t even have the original text only providing summaries. Some offer both.</blockquote>
-<p>↳ reply 2 — <em>hobofan</em>:</p>
-<blockquote>Any organization that wants reliable latency, data processing guarantees (it&#x27;s a big leak vector for company secrets), etc., will use such a search provider over the solutions you outlined.<p>Especially for chat-like use-cases (in contrast to coding), latency is a lot more critical, especially if you kick off a small single query question. On antother axis, scrape-reliabilty is important for a deep research job that will fire ~10+ web searches and ~100+ web fetches.<p>e.g. in our chat platform[0], we offer first party MCP servers for web search[1] and web access[2] which work decently well, but some of our customers that prioritize quality over cost, they go with dedicated providers like LinkUp[3]<p>[0]: <a href="https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;erato" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;erato</a><p>[1]: <a href="https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;web-search-mcp" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;web-search-mcp</a><p>[2]: <a href="https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;web-access-mcp" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;EratoLab&#x2F;web-access-mcp</a><p>[3]: <a href="https:&#x2F;&#x2F;www.linkup.so&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.linkup.so&#x2F;</a></blockquote>
-<p>↳ reply 3 — <em>Havoc</em>:</p>
-<blockquote>I have a searxng instances but stopped using it after doing a comparison vs actual search provider APIs.<p>searxng gets rate limited fast and the results are inconsistent depending on what providers it can reach at any given time &#x2F; isn&#x27;t captcha&#x27;d out.<p>Meanwhile there are multiple providers with generous free tiers so no point in feeding LLMs inferior data<p>Also did a couple of side by side tests asking LLMs directly which feed results it prefer for some sample technical searches. Exa and tavily #1, brave #2, searx last</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>thombles</em>:</p>
-<blockquote>For comparison that’s $5 with Brave Search API and $12 with Kagi API</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>loehnsberg</em>:</p>
-<blockquote>Kagi MCP works really well imo also within DeepSeek Harness. Just looking at cost neglects the possible difference in quality. How good is that DeepSeek web search&#x2F;fetch?</blockquote>
-<p>↳ reply 2 — <em>ece</em>:</p>
-<blockquote>$4 with Exa, $1.50 with SERP API</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>vitorsr</em>:</p>
-<blockquote>Meant as a comparison given the discrepant pricing points:<p>I pay the Exa premium for semantic retrieval with far higher SNR, plus the academic index [1].<p>A field like objective can be up to 4096 characters [2] versus ori_question which is limited to 128 here.<p>[1] <a href="https:&#x2F;&#x2F;exa.ai&#x2F;blog&#x2F;publications-search">https:&#x2F;&#x2F;exa.ai&#x2F;blog&#x2F;publications-search</a><p>[2] <a href="https:&#x2F;&#x2F;exa.ai&#x2F;docs&#x2F;reference&#x2F;search">https:&#x2F;&#x2F;exa.ai&#x2F;docs&#x2F;reference&#x2F;search</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>smusamashah</em>:</p>
-<blockquote>Have you seen this <a href="https:&#x2F;&#x2F;sciencemadereadable.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;sciencemadereadable.com&#x2F;</a> it has free rate limited api end point too.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Matthew Prince on why Cloudflare offers a free version and always will (2016)</title>
-      <link>https://webmasters.stackexchange.com/questions/88659/how-can-cloudflare-offer-a-free-cdn-with-unlimited-bandwidth/88685#88685</link>
-      <guid isPermaLink="false">hn3-50138087</guid>
-      <pubDate>Sun, 18 Oct 2026 05:09:14 +0000</pubDate>
-      <description>127 points, 103 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://webmasters.stackexchange.com/questions/88659/how-can-cloudflare-offer-a-free-cdn-with-unlimited-bandwidth/88685#88685"><strong>→ Article</strong></a> <small>(webmasters.stackexchange.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50138087">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 103 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>daniel_iversen</em>:</p>
-<blockquote>I love cloudflare, seriously. Not sure what it is about the brand, but their products feel delightful, they feel like an honest business, they have great free tiers, their tech is “cool” and they seem to innovate a lot (I.e the recent AI blocking program etc). Just moved all my domains over from Whois.com (who on the other hand seem sneaky, don’t have auto renewals and slam you with an 80$ restoration fine for domains you forget to renew, and charge extra for basic security that should be free). Couldn’t be happier and wish cloudflare all the best!!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rpastuszak</em>:</p>
-<blockquote>FYI I just tried to read your blog but I’m getting the: “Sorry, you have been blocked” banner from CF.<p>(Safari w. an adblocker, VPN off )</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jwr</em>:</p>
-<blockquote>I find it incredible that people are willing to outsource the decision on who can access their sites to a corporation. Especially one that is increasingly dominant and tends toward worrying control (they also started selling paid search services for bots to use, presumably those provider <i>will</i> get access).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>broken-kebab</em>:</p>
-<blockquote>It&#x27;s not unreasonable to leave a non-negligible effort which requires a bit of expertise to a specialist service.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>dalmo3</em>:</p>
-<blockquote>You&#x27;re good at guerrilla marketing! I, too, got curious about your blog and got blocked. Real FOMO.</blockquote>
-<p>↳ reply 3 — <em>ThePinion</em>:</p>
-<blockquote>This is too funny. Much like every other reply I have also been blocked from your blog. Android 17, Firefox, LTE connection (no VPN)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>userbinator</em>:</p>
-<blockquote>&gt; Enable JavaScript and cookies to continue<p>That about sums it up. Cloudflare has become the de-facto gatekeeper of the Internet, and that is IMHO very much NOT a good thing for anyone but Big Tech. Hostile user-agent discrimination to favour the incumbents, under the guise of &quot;security&quot;.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jareklupinski</em>:</p>
-<blockquote>much like gmails free tier... never trusting anything &quot;free&quot; online ever again :(</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>nikolqy</em>:</p>
-<blockquote>Ironically, Cloudflare Enterprise is apparently as expensive as—if not more—than Akamai.<p>Cloudflare also has this 5-10ms phantom latency that they’ve never been able to fix, and it definitely hurts them when compared to Fastly, CloudFront and the others, especially when we start talking about serverless functions… (<a href="https:&#x2F;&#x2F;www.fastly.com&#x2F;blog&#x2F;debunking-cloudflares-recent-performance-tests" rel="nofollow">https:&#x2F;&#x2F;www.fastly.com&#x2F;blog&#x2F;debunking-cloudflares-recent-per...</a>)<p>Overall, I don’t imagine companies use Cloudflare because its solving some super niche issue, but it’s rather easy to slap on and may even reduce costs. I’ve used so many similar services and I can’t say that Cloudflare stood out in any way whatsoever. It felt super limited, and even the paid tiers don’t offer that many extra features.<p>To their credit, they are a very transparent company that has made significant contributions over the years to open source, and has arguably been one of my biggest sources of inspiration in general, but they’re are not the Apple of the CDN industry.<p>Edit: just a quick edit right after posting—I never really see Cloudflare in use directly by the top sites. They do exist, but it’s pretty rare, and even if you don’t believe me, I can always tell when a site uses Cloudflare due to its phantom latencies.</blockquote>
-<blockquote>
-<p>↳ reply — <em>sammy2255</em>:</p>
-<blockquote>The phantom latency is likely their WAF running all its rules on your traffic on every request</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A Mole Infiltrated the Highest Ranks of American Militias (2025)</title>
-      <link>https://www.propublica.org/article/ap3-oath-keepers-militia-mole</link>
-      <guid isPermaLink="false">hn3-50138044</guid>
-      <pubDate>Sun, 18 Oct 2026 04:59:24 +0000</pubDate>
-      <description>127 points, 28 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.propublica.org/article/ap3-oath-keepers-militia-mole"><strong>→ Article</strong></a> <small>(propublica.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50138044">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 28 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>EdwardDiego</em>:</p>
-<blockquote>The involvement of Police and military personnel is not unexpected, but still rather horrifying.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ljf</em>:</p>
-<blockquote>This - I hate to be the person that always posts the same thing, but read about Operation Gladio ( <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Operation_Gladio" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Operation_Gladio</a> ) to see how NATO encouraged and enabled far right groups (with support of police, secret services and the army) to operate clandestine militias across Europe. If that is what they did in Europe, I wonder what they were supporting in America?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>BryantD</em>:</p>
-<blockquote>Operation Gladio is one of those pieces of history that people ought to know, so don’t feel bad. It’s appreciated.<p>And as I’m sure you know, the answer to your second question is Operation Condor, at least if you take “America” to mean South America as well.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>thenthenthen</em>:</p>
-<blockquote>I recall seeing a documentary about him, sadly cant seem to find it, it should be on youtube? Both names are seemingly a bit hard to search by</blockquote>
-<p><strong>Top #3</strong> — <em>ChrisArchitect</em>:</p>
-<blockquote>(2025)<p>Some discussion then: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=42594766">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=42594766</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Sphinx – A hook that quizzes you on your AI's code before shipping</title>
-      <link>https://sphinx-six-theta.vercel.app/</link>
-      <guid isPermaLink="false">hn3-50137950</guid>
-      <pubDate>Sun, 18 Oct 2026 04:33:49 +0000</pubDate>
-      <description>178 points, 54 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://sphinx-six-theta.vercel.app/"><strong>→ Article</strong></a> <small>(sphinx-six-theta.vercel.app)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50137950">→ HN comments</a> &nbsp;·&nbsp; 178 points &nbsp;·&nbsp; 54 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>fwlr</em>:</p>
-<blockquote>It’s a neat idea, i think it’ll really take off if you change “before pushing to prod” to “before requesting another human’s time or attention”. If something like this was gatekeeping the “submit PR” and “update PR” buttons it would prevent a lot of waste.</blockquote>
-<p><strong>Top #2</strong> — <em>pjmlp</em>:</p>
-<blockquote>The gimmicks we come around to justify existing practices being pushed into the industry never stops surprising me.<p>One would expect the actual answer would be to write the code ourselves.</blockquote>
-<p><strong>Top #3</strong> — <em>freshnode</em>:</p>
-<blockquote>Have you ever heard the idiom &quot;ambulance at the bottom of the cliff&quot;?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How the Elizabeth Holmes documentary “You Can See Everything” is deceiving</title>
-      <link>https://www.readtheprofile.com/p/elizabeth-holmes-documentary-you-can-see-everything</link>
-      <guid isPermaLink="false">hn3-50137620</guid>
-      <pubDate>Sun, 18 Oct 2026 03:19:49 +0000</pubDate>
-      <description>208 points, 245 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.readtheprofile.com/p/elizabeth-holmes-documentary-you-can-see-everything"><strong>→ Article</strong></a> <small>(readtheprofile.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50137620">→ HN comments</a> &nbsp;·&nbsp; 208 points &nbsp;·&nbsp; 245 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ofirg</em>:</p>
-<blockquote>Why would the documentary be deceiving you? The documentary has no reason to deceive you. The document is just trying to reach out to you and connect with you as a person. Why would it be deceiving you? It has no reason to be deceiving you.</blockquote>
-<blockquote>
-<p>↳ reply — <em>noah_buddy</em>:</p>
-<blockquote>Any documentary (worth its salt) has a specific view it’s pushing that’s implicit to the stories told, the editing, etc.<p>The easiest demonstrative example is looking at someone like Leni Riefenstahl‘s work.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>junon</em>:</p>
-<blockquote>(the GP comment is making a joke; go take a look at the first teaser for You Can See Everything)</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>why_at</em>:</p>
-<blockquote>I just watched this movie tonight and it&#x27;s one of those where I feel like everyone else saw a different film. For me it was too little butter spread over too much bread. All the interesting parts of the Holmes&#x2F;Theranos story have been explored, so all that&#x27;s left is her personal life with her new partner who&#x27;s also a weirdo.<p>At best I can say that it makes you think about things like deceit and honesty&#x2F;accuracy in media, but it definitely didn&#x27;t blow my mind like it apparently did for this author. After 3 hours I was just exhausted from watching these peoples&#x27; tortuous attempts to avoid giving a direct answer to any question.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>crispyambulance</em>:</p>
-<blockquote><p><pre><code>  &gt; After 3 hours I was just exhausted...
-</code></pre>
-I got a feeling that the 4 hour Musk documentary is going to be a similar kind of experience, exploring in extreme detail all the myriad ways that guy is an asshole.</blockquote>
-<p>↳ reply 2 — <em>a3w</em>:</p>
-<blockquote>German nerd here. I know next to nothing about &quot;the interesting parts of the Holmes&#x2F;Theranos story&quot;, is there a documentary on the facts instead of the villain somewhere?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>samschooler</em>:</p>
-<blockquote>I don&#x27;t think there is any magic sauce to this movie. I saw it yesterday, and do agree (spoilers ahead) there are three acts: deception, sympathetic, puppeteer. I feel though that this article treats the movie as if its some sort of hypnosis; it&#x27;s not. Its a very well put together movie that makes you question everything thats happening. I and others came out of it largely questioning:<p>A. Is she truly the most manipulative person we&#x27;ve ever seen<p>B. Largely oblivious to what&#x27;s happening around her<p>and not:<p>- Is she guilty<p>This movie I would say does not answer those questions, nor do I think seeks to.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nicce</em>:</p>
-<blockquote>&gt; Is she truly the most manipulative person we&#x27;ve ever seen<p>Probably no. The most manipulative are still not in the jail and are running some well-known big companies.</blockquote>
-<p>↳ reply 2 — <em>wisty</em>:</p>
-<blockquote>I haven&#x27;t seen it, but my opinion is she likely was what lawyers call &quot;reckless&quot;, as in she should have known but didn&#x27;t care (blinded by the upside and a &quot;we&#x27;ll figure it once we scale&quot; tech attitude that works a lot better for db performance than healthcare).</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
