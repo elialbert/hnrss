@@ -4,7 +4,129 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Thu, 22 Oct 2026 13:40:56 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 18:26:48 +0000</lastBuildDate>
+    <item>
+      <title>Faster than earcut: triangulating 3.7M map polygons in 489 ms</title>
+      <link>https://globus.software/blog/2026/10/16/cutting-map-polygons/</link>
+      <guid isPermaLink="false">hn3-50193170</guid>
+      <pubDate>Thu, 22 Oct 2026 09:31:18 +0000</pubDate>
+      <description>168 points, 33 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://globus.software/blog/2026/10/16/cutting-map-polygons/"><strong>→ Article</strong></a> <small>(globus.software)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50193170">→ HN comments</a> &nbsp;·&nbsp; 168 points &nbsp;·&nbsp; 33 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>amelius</em>:</p>
+<blockquote>Should mention the mother of all triangulators:<p><a href="https:&#x2F;&#x2F;www.cs.cmu.edu&#x2F;~quake&#x2F;triangle.html" rel="nofollow">https:&#x2F;&#x2F;www.cs.cmu.edu&#x2F;~quake&#x2F;triangle.html</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>n4r9</em>:</p>
+<blockquote>Have used (a dotnet wrapper of) this to generate colour-coded round area polygons for municipal waste collections for many years now. works flawlessly and fast.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mourner</em>:</p>
+<blockquote>Hey Evgen, Earcut author here — thanks for the writeup and a really cool library! I need to see if there are any tricks to borrow for Earcut&#x27;s JS version. :)<p>One thing to note is that I deliberately had to reject some of the potential optimizations to keep the library small, so that bundle size doesn&#x27;t blow up — for most practical applications (e.g. Mapbox GL JS), it&#x27;s already fast enough (and 4.1k min&#x2F;gz). Curious how big the WASM build of Earstrip is.<p>On the C++ side, Mapbox now uses a hybrid approach where small polygons are processed with earcut.hpp, while big and complex polygon switch to a different algorithm based on monotone decomposition, because while it has higher constants in algorithmic complexity, it scales much better with input size.</blockquote>
+<blockquote>
+<p>↳ reply — <em>molind</em>:</p>
+<blockquote>Hey! Thanks for Leaflet, earcut and all your other work. I hope some of these ideas turn out useful. Take a look at the branch-free dent count: it&#x27;s what let us outperform earcut, and it&#x27;s a big part of why the wasm build is that fast.
+The wasm module is 27 KB gzipped, about 41 KB with the base64 wrapper in the npm package.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mistercow</em>:</p>
+<blockquote>I&#x27;ve wondered for a long time why ear clipping + optimizations has won on triangulation over stuff like Seidel&#x27;s trapezoidal method, which has O(nlog*n) time complexity and handles holes naturally. I know big-O isn&#x27;t everything, but that&#x27;s essentially linear versus quadratic, and it seems like we care about triangulating more and more complex polygons as time goes on.<p>Is it just a triangle quality thing? Does Seidel lead to too many hard to deal with slivers?</blockquote>
+<blockquote>
+<p>↳ reply — <em>mourner</em>:</p>
+<blockquote>Very high constants and high implementation complexity — I attempted it and gave up before coming up with earcut (Seidel was both slower and less robust on typical map data). Maybe worth another attempt — working on algorithmic libraries is much easier now thanks to LLM-driven validation&#x2F;optimization loops.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>CVE-2026-111943: Compromised Intermediate Certificate Authority</title>
+      <link>https://nvd.nist.gov/vuln/detail/cve-2026-111943</link>
+      <guid isPermaLink="false">hn3-50192900</guid>
+      <pubDate>Thu, 22 Oct 2026 08:51:31 +0000</pubDate>
+      <description>329 points, 118 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://nvd.nist.gov/vuln/detail/cve-2026-111943"><strong>→ Article</strong></a> <small>(nvd.nist.gov)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50192900">→ HN comments</a> &nbsp;·&nbsp; 329 points &nbsp;·&nbsp; 118 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>keks24</em>:</p>
+<blockquote>Gentoo Linux users are adviced to update the package &quot;app-misc&#x2F;ca-certificates&quot; to version &quot;20260816.3.125&quot; or higher!:<p><pre><code>    # emerge --sync
+    # emerge --ask --oneshot --verbose &quot;&gt;=app-misc&#x2F;ca-certificates-20260816.3.125&quot;
+</code></pre>
+To check via &quot;curl&quot;:<p><pre><code>    $ curl --url=&quot;https:&#x2F;&#x2F;dv-g3b-emudhra.we-have-a-problem.com&#x2F;&quot;
+    $ curl --url=&quot;https:&#x2F;&#x2F;dv-g3b-aaa-emudhra.we-have-a-problem.com&#x2F;&quot;
+</code></pre>
+They should return:<p><pre><code>    curl: (60) SSL certificate OpenSSL verify result: unable to get local issuer certificate (20)
+    More details here: https:&#x2F;&#x2F;curl.se&#x2F;docs&#x2F;sslcerts.html
+
+    curl failed to verify the legitimacy of the server and therefore could not
+    establish a secure connection to it. To learn more about this situation and
+    how to fix it, please visit the webpage mentioned above.
+</code></pre>
+---<p>* GLSA 202610-01: <a href="https:&#x2F;&#x2F;security.gentoo.org&#x2F;glsa&#x2F;202610-01" rel="nofollow">https:&#x2F;&#x2F;security.gentoo.org&#x2F;glsa&#x2F;202610-01</a><p>* <a href="https:&#x2F;&#x2F;emudhra.we-have-a-problem.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;emudhra.we-have-a-problem.com&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>jrmg</em>:</p>
+<blockquote>I feel like you shouldn’t have to ask for a non-default version of the package at this point.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>vanschelven</em>:</p>
+<blockquote>Python users may need to take their own separate steps, see this discussion:<p><a href="https:&#x2F;&#x2F;discuss.python.org&#x2F;t&#x2F;information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident&#x2F;109576" rel="nofollow">https:&#x2F;&#x2F;discuss.python.org&#x2F;t&#x2F;information-for-python-users-re...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>albert_e</em>:</p>
+<blockquote>&gt; Failure to do so could result in monster-in-the-middle (MITM) attacks against TLS clients, including python.org and pypi.org .<p>Monster?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>jl6</em>:</p>
+<blockquote>Gender-neutral variant of man-in-the-middle. They should have just used something less controversial like master-in-the-middle.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>thwarted</em>:</p>
+<blockquote>&quot;master&quot; is <i>less</i> controversial?</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>asqueella</em>:</p>
+<blockquote>This seems to be about ‘go’ proactively blocking emudhra certs even though the system trust store is out of date?   <a href="https:&#x2F;&#x2F;pkg.go.dev&#x2F;vuln&#x2F;GO-2026-6809" rel="nofollow">https:&#x2F;&#x2F;pkg.go.dev&#x2F;vuln&#x2F;GO-2026-6809</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>philipwhiuk</em>:</p>
+<blockquote>&quot;proactively&quot; doing some work.<p>The problem is Golang has it&#x27;s own trust store. So you don&#x27;t benefit from OS patching.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sspiff</em>:</p>
+<blockquote>That&#x27;s not the case, Go uses the system store with an additional revoke&#x2F;deny list in crypto&#x2F;x509 because it allows updating a deployed application on an out of date or slow moving platform or OS.<p>This CVE is literally just &quot;versions of the Go deny list don&#x27;t contain the eMuhdra revokation yet&quot;. Older versions of Go will still deny certs signed through the compromised certificate if the system store already has the update.<p>It&#x27;s an or situation, not and.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>thwarted</em>:</p>
+<blockquote>&gt; <i>Go uses the system store with an additional revoke&#x2F;deny list in crypto&#x2F;x509 because it allows updating a deployed application on an out of date or slow moving platform or OS.</i><p>Reminder: Neither the CVE nor the linked go alert seem to say that you have to recompile and redeploy your application with the new go version in order to take advantage of this change. Just updating the tool chain and go stdlib isn&#x27;t enough, because this stuff gets baked into the resultant binary. This is unlike, say, python, Ruby, or java where updating the runtime <i>may be</i> sufficient, depending on your development and deployment model.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Jailbreaking the Switch 2</title>
+      <link>https://pepsipu.com/blog/2026-10-switch2-jailbreak-ns2jb/</link>
+      <guid isPermaLink="false">hn3-50192536</guid>
+      <pubDate>Thu, 22 Oct 2026 08:01:52 +0000</pubDate>
+      <description>548 points, 201 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://pepsipu.com/blog/2026-10-switch2-jailbreak-ns2jb/"><strong>→ Article</strong></a> <small>(pepsipu.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50192536">→ HN comments</a> &nbsp;·&nbsp; 548 points &nbsp;·&nbsp; 201 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>hturan</em>:</p>
+<blockquote>Incredible all around.<p>If this is true decrypted `fs` r&#x2F;w, I wouldn&#x27;t be surprised if we start seeing Switch 2 game dumps appear in a few hours. Given the world of recomps&#x2F;decomps we now live in, that would mean console exclusives playable on arbitrary hardware (a worst-case scenario for Nintendo). We&#x27;ve already seen things like Tears of the Kingdom running at 60fps natively on an iPhone.<p>Giving LLMs arms and eyes via KVM (or webcam) is a very strong paradigm for this sort of hardware work, as it allows things to be parallelised and run 24&#x2F;7. Highly recommend people play with this more (to less nefarious ends!) when working on firmware&#x2F;hardware for external devices.<p>Worth noting too that this would have easily fetched &gt;$50k via Nintendo&#x27;s HackerOne (<a href="https:&#x2F;&#x2F;hackerone.com&#x2F;nintendo" rel="nofollow">https:&#x2F;&#x2F;hackerone.com&#x2F;nintendo</a>).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ecliptik</em>:</p>
+<blockquote>I work with Claude to port games to DOS and build new Classic Macintosh apps [1][2][3] using real hardware.<p>For a while I was doing the SDcard swap thing; but realized with a usb4vc[4] (hands), a vga&#x2F;hdmi usb capture dongle (eyes&#x2F;ears), an old Wemo switch (on&#x2F;off&#x2F;reboot) and ftp&#x2F;appleshare (files&#x2F;logs) I could have Claude do it all for me.<p>Claude made me vcctrl[5] that ties all of it together, including an mcp, skills and a webkvm.<p>1. <a href="https:&#x2F;&#x2F;github.com&#x2F;ecliptik&#x2F;doskutsu" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ecliptik&#x2F;doskutsu</a><p>2. <a href="https:&#x2F;&#x2F;github.com&#x2F;ecliptik&#x2F;flynn" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ecliptik&#x2F;flynn</a><p>3. <a href="https:&#x2F;&#x2F;github.com&#x2F;ecliptik&#x2F;talkip" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ecliptik&#x2F;talkip</a><p>4. <a href="https:&#x2F;&#x2F;github.com&#x2F;dekuNukem&#x2F;USB4VC" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dekuNukem&#x2F;USB4VC</a><p>5. <a href="https:&#x2F;&#x2F;github.com&#x2F;ecliptik&#x2F;vcctrl" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ecliptik&#x2F;vcctrl</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bm5k</em>:</p>
+<blockquote>Since the switch 2 has mouse capabilities with the joy con, maybe we can port som classic Mac games to switch &lt;&#x2F;daydream&gt;</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gcoakes</em>:</p>
+<blockquote>I&#x27;m working on a IoT device at work and have been the &quot;hands in the lab&quot; for my agent this week. It&#x27;s been a really weird experience. Making changes to the update&#x2F;recovery process, so I have to validate several permutations of fault injection (i.e.: abrupt power loss during update step X while on starting version Y).<p>I would love to give it unattended &quot;hands&quot;. I just thought it was more time efficient to do it manually rather than spend days trying to figure out how to automate SD card pull&#x2F;plug. X and Y are relatively small, and I expect this validation to be too costly to do at a regular cadence in CI. I can trivially use a MCCI USB-C switch for the power though.<p>Tips would be appreciated if anyone here has thoughts.</blockquote>
+<p>↳ reply 3 — <em>freeAgent</em>:</p>
+<blockquote>I really wanted a Switch 2, but when it became clear that all games were essentially rentals and could be shut down&#x2F;off at Nintendo’s whim, I decided I couldn’t have one. Perhaps the need to compete with piracy again will make Nintendo more consumer-friendly. Probably not, but one can dream.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>rootsudo</em>:</p>
+<blockquote>I don&#x27;t understand, how are people using codex for this sort of research? Whenever I try to do bug bounty, research, etc it locks down and I have the &quot;blue&quot; tier access&#x2F;daylight whatever it&#x27;s called.<p>For example I tried to investigate some CVE&#x27;s on older android roms and it downright was refusing it. It was okay when doing it on... Microsoft and to submit a microsoft bug bounty but android was no go.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>torben-friis</em>:</p>
+<blockquote>I think &quot;I want to do stuff to hardware I own&quot;, without potential for remote anything, is probably a much easier sell.</blockquote>
+<p>↳ reply 2 — <em>ChaseRensberger</em>:</p>
+<blockquote>no shortage of answers to this question but the common&#x2F;short explanation is<p>- it says codex but not what model, it could have been an abliterated model or something more open to this sorta thing<p>- convince the model youre not doing the thing youre doing (a bunch of ways to go about this, some short and some long)<p>its probably possible to convince any model to do any thing if youre clever enough about your approach, kinda just the way this stuff works. General intelligence = infinite ways to direct it.<p>also tbh it coulda just been fine with it since the user owns the hardware and phrased it in a non malicious way.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>valgaze</em>:</p>
+<blockquote>Perfection:<p><pre><code>  The JetKVMs allow Codex to send controller inputs to the  Switches over USB and receive video output over HDMI. We also need a way to press the power button—when the Switch 2 crashes, it needs a button press to restart.
+
+  That’s what the Bluetooth light switch flicker from Amazon is for. When the lever comes down, it presses the power button. Once the power button is fully pressed, the rest of the lever’s torque lifts the mechanism.</code></pre></blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>OpenAI CLI</title>
       <link>https://github.com/openai/openai-cli</link>
@@ -685,6 +807,38 @@ So probably not vulnerable if no public projects exist - ie self hosted has an n
 <p>↳ reply 2 — <em>flumpcakes</em>:</p>
 <blockquote>I&#x27;m going to hazard a guess and suggest that the Saudi Investment Fund is invested in many things that would not be considered polite in Saudi society.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>New plastic pollution discovered: 'Plasticorals' coral rubble fused with plastic</title>
+      <link>https://www.oist.jp/news-center/news/2026/9/18/new-form-plastic-pollution-discovered-shores-vulnerable-coral-reefs</link>
+      <guid isPermaLink="false">hn3-50183512</guid>
+      <pubDate>Wed, 21 Oct 2026 16:20:37 +0000</pubDate>
+      <description>125 points, 60 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.oist.jp/news-center/news/2026/9/18/new-form-plastic-pollution-discovered-shores-vulnerable-coral-reefs"><strong>→ Article</strong></a> <small>(oist.jp)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50183512">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 60 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bmk44</em>:</p>
+<blockquote>Reminds me of the classic George Carlin bit:<p>&quot;The planet will be here for a long, long, LONG time after we’re gone, and it will heal itself, it will cleanse itself, ’cause that’s what it does. It’s a self-correcting system. The air and the water will recover, the earth will be renewed. And if it’s true that plastic is not degradable, well, the planet will simply incorporate plastic into a new paradigm: the earth plus plastic. The earth doesn’t share our prejudice toward plastic. Plastic came out of the earth. The earth probably sees plastic as just another one of its children. Could be the only reason the earth allowed us to be spawned from it in the first place. It wanted plastic for itself. Didn’t know how to make it. Needed us. Could be the answer to our age-old egocentric philosophical question, “Why are we here?”</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>autoexec</em>:</p>
+<blockquote>&gt;  It’s a self-correcting system. The air and the water will recover, the earth will be renewed.<p>Sadly this really isn&#x27;t the case, and there are a lot of things we can do that will permanently fuck the planet. It can&#x27;t be certain that we will kill ourselves off before we cross some tipping point that will eventually turn the Earth into just another lifeless rock in our solar system.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fuoqi</em>:</p>
+<blockquote>Well, &quot;permanently fuck the planet&quot; can be a matter of perspective. The great oxidation event &quot;fucked up&quot; the planet for anaerobic life, but we would not exist without it, so it was a huge blessing for us. Even human CO2 emissions could be viewed as a huge blessing for biosphere in the far future since it releases captured carbon (&quot;the currency of life&quot;) thus significantly delaying the timeline of atmospheric CO2 depletion to levels at which photosynthesis becomes impossible.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>theplumber</em>:</p>
+<blockquote>So you are telling me that after eons, people will rise again as Lego figurines?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dialogbox</em>:</p>
+<blockquote>&gt; And if it’s true that plastic is not degradable<p>I believe it&#x27;s matter of time for having lifeforms degrading plastic. When trees appeared, there was nothing can degrade dead trees for a long time. And that became fossil fuels. So plastic would be degraded eventually. And some amount of it buried deep enough would be another kind of fossil fuels.</blockquote>
+<p>↳ reply 3 — <em>sublinear</em>:</p>
+<blockquote>Yes, and this era of comedy is thankfully over. Carlin became quite preachy in his later years. He has way better material.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ah27182</em>:</p>
+<blockquote>I think its inevitable that something (either from humans or nature) will figure out how to digest plastic. Similar to the Devonian Wood Crisis.</blockquote>
+<p><strong>Top #3</strong> — <em>tim333</em>:</p>
+<blockquote>By the way on the coral front, for the Great Barrier Reef &quot;in terms of coral cover, the past five years were the best on record&quot; <a href="https:&#x2F;&#x2F;financialpost.com&#x2F;opinion&#x2F;bjorn-lomborg-the-great-barrier-reef-refuses-to-die-on-schedule" rel="nofollow">https:&#x2F;&#x2F;financialpost.com&#x2F;opinion&#x2F;bjorn-lomborg-the-great-ba...</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Today's PHP security release, and how we're strengthening security</title>
@@ -3153,6 +3307,33 @@ I think it&#x27;s one of the funnier ones so far.
 <blockquote>I needed a good screen, but I hate google. So I&#x27;ve just turn off internet and use my PC as the source. Thankfully, I don&#x27;t nitpick on browser vs native app quality (and thank god for Kodi), else I&#x27;d be fuming and cussing at Google everyday. Or doing exactly this.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Drupal is now light-years ahead of its reputation</title>
+      <link>https://dri.es/state-of-drupal-presentation-september-2026</link>
+      <guid isPermaLink="false">hn3-50158408</guid>
+      <pubDate>Mon, 19 Oct 2026 21:38:02 +0000</pubDate>
+      <description>125 points, 126 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://dri.es/state-of-drupal-presentation-september-2026"><strong>→ Article</strong></a> <small>(dri.es)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50158408">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 126 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>hinkley</em>:</p>
+<blockquote>The only time I ever allowed myself to have the PHP is a security nightmare conversation at work, I came in the very next morning to find the lone PHP supporter was having to patch the drupal instance he supported because it had been hacked and defaced. I tried not to be smug about it because the timing made it look like maybe I was the culprit, and I was still new there.<p>But he never mentioned PHP again which was just fine with me.<p>In trust situations we have a sort of unspoken concept of Original Sin. Essentially once someone has made a security blunder of epic proportions, we can not trust that this is an isolated incident instead of a pervasive one. If The Rot Starts at the Head is true, then how can any amount of rework ever make you trust the thing again?<p>I looked at the security patch that Drupal applied, and I’m no PHP reader but I was sure I found the same antipattern in two other places in the code that were not patched. I only looked for an hour. There have been years and years of low effort CERT advisories since. From a user standpoint, if you’re not deep into Sunk Cost, this looks like throwing good money after bad. Only rationalization ever makes it seem like a good deal.</blockquote>
+<p><strong>Top #2</strong> — <em>sheepscreek</em>:</p>
+<blockquote>No matter how amazing Drupal is today, it cannot match the simplicity of a &quot;marketer&quot; opening Codex&#x2F;Claude desktop app and writing a prompt:<p><pre><code>    &quot;I need to market XYZ can you please take these assets and write a compelling one pager landing page&quot;
+    &quot;Now can you add signups? Then keep adding to a Google sheet whenever someone new signs up..&quot;
+    &quot;Can you make an admin page for me - so I can easily send out updates to the people in my list, I use
+    ABC service for my marketing emails&quot;
+</code></pre>
+Heck, OpenAI will even publish and host it for you on your domain (using Sites).<p>That is one afternoon&#x27;s worth of work vs. hiring a contractor, designer, multiple rounds of iterations over weeks, and having multiple points of delays and failurs. There is no match.</blockquote>
+<p><strong>Top #3</strong> — <em>1shooner</em>:</p>
+<blockquote>It isn&#x27;t quite as bad as when the codebase was switched to Symfony, but the Drupal project has just kind of abandoned it&#x27;s core presentation system in favor of the new Canvas tool, and compatibility with the rest of the core seems like an afterthought. So now you have at least 3 competing display configuration solutions, which don&#x27;t necessarily work together, or entirely work alone.<p>It&#x27;s a situation entirely inline with Drupal&#x27;s reputation: they couldn&#x27;t just get it right, and now serious Drupal teams don&#x27;t know which way to go in the ecosystem.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tylershuster</em>:</p>
+<blockquote>They haven&#x27;t abandoned the core presentation system entirely. I mean, maybe Dries has, but he&#x27;s not quite the tyrant that Matt is (was?). I agree that it&#x27;s confusing, and I don&#x27;t like Canvas, but I also don&#x27;t use it.</blockquote>
+<p>↳ reply 2 — <em>talon8635</em>:</p>
+<blockquote>It still is symfony…</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>OpenBSD 8.0 release will have inteldrm/radeondrm/amdgpu drivers from Linux 6.18</title>
       <link>https://bsd.network/@brynet/117407035545900963</link>
       <guid isPermaLink="false">hn3-50158138</guid>
@@ -3636,164 +3817,6 @@ No new software that is equal to Adobe Creative Suite (that Vibed coded replacem
 </blockquote>
 <p><strong>Top #3</strong> — <em>somehowadev</em>:</p>
 <blockquote>It&#x27;s almost a running joke at my company that around 15:00 UTC we&#x27;re going to get the weekly Github actions outage.<p>I&#x27;m assuming it&#x27;s something to do with the USA users getting their first work in?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Ukraine claims first drone evacuation of wounded soldier</title>
-      <link>https://www.nbcnews.com/world/ukraine/ukraine-first-drone-evacuation-wounded-soldier-frontlines-hexacopter-rcna604310</link>
-      <guid isPermaLink="false">hn3-50153664</guid>
-      <pubDate>Mon, 19 Oct 2026 15:31:34 +0000</pubDate>
-      <description>175 points, 135 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.nbcnews.com/world/ukraine/ukraine-first-drone-evacuation-wounded-soldier-frontlines-hexacopter-rcna604310"><strong>→ Article</strong></a> <small>(nbcnews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50153664">→ HN comments</a> &nbsp;·&nbsp; 175 points &nbsp;·&nbsp; 135 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>1970-01-01</em>:</p>
-<blockquote>If they can pull them out, they can also drop fresh ones down.<p>Not sure if that is better than just using a helicopter however.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>traceroute66</em>:</p>
-<blockquote>&gt; Not sure if that is better than just using a helicopter however.<p>Anyone who has done first responder training should have had it drilled into their skulls to remember the number one rule .... &quot;do not add yourself to the injury list&quot;.<p>If you&#x27;re operating in a war-zone its kind of the same thing.  Send in a helicopter to drop off one or more guys and you are also sending in bare minimum of one extra person but realistically almost certainly three extra people (two at the front and one at the back to watch the people jumping out).<p>Also drones are probably somewhat cheaper than helicopters.  Both to buy and to operate.</blockquote>
-<p>↳ reply 2 — <em>xmcp123</em>:</p>
-<blockquote>There’s no way anyone is getting a helicopter anywhere near that front line.<p>Transporting wounded soldiers has become a significant problem in recent years.</blockquote>
-<p>↳ reply 3 — <em>maxdo</em>:</p>
-<blockquote>Because it&#x27;s not America with Vietnam&#x2F; Iraq war mindset.<p>Helicopters are extremely vulnerable for drone interceptors. With Recent developments, the an interceptor can fly up to 600 km&#x2F;h. It can also wait for you on the balloon.<p>Overall, piloted aviation, it&#x27;s almost a dead end with all the recent capabilities.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>vzaliva</em>:</p>
-<blockquote>It reaffirms that Ukrainians are:<p>1. very advanced with drones
-2. caring about their soldiers<p>Disclaimer: I am a proud Ukrainian.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>theonething</em>:</p>
-<blockquote>Slava Ukraini!</blockquote>
-<p>↳ reply 2 — <em>AndrewKemendo</em>:</p>
-<blockquote>The stuff the front line hackers are doing is incredibly impressive</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>skeledrew</em>:</p>
-<blockquote>NGL, reading this gave me the feels...<p>Also, next wartime invention: air mines.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andrewflnr</em>:</p>
-<blockquote>Loitering munitions are already a thing. You just need to combine that concept with interceptor drones. Actually I&#x27;m not sure autonomous interceptors are a thing yet, so that might be the blocker.</blockquote>
-<p>↳ reply 2 — <em>collingreen</em>:</p>
-<blockquote>This is a thing already</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>CERN and Mistral sign a statement of intent to establish a strategic partnership</title>
-      <link>https://home.cern/cern-and-mistral-join-forces-to-accelerate-ai-for-science/</link>
-      <guid isPermaLink="false">hn3-50153630</guid>
-      <pubDate>Mon, 19 Oct 2026 15:28:24 +0000</pubDate>
-      <description>304 points, 57 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://home.cern/cern-and-mistral-join-forces-to-accelerate-ai-for-science/"><strong>→ Article</strong></a> <small>(home.cern)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50153630">→ HN comments</a> &nbsp;·&nbsp; 304 points &nbsp;·&nbsp; 57 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>timbaboon</em>:</p>
-<blockquote>Man, when I was doing my PhD at CERN the most far out thing that we were generally allowed to use was boosted decision trees :) getting anything other than that approved for any Higgs-related analysis was… not a thing.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>blueplanet200</em>:</p>
-<blockquote>Using neural nets for signal background separation was pretty standard in ~2012 when the Higgs discovery was published. Was also pretty standard for CDF + DZero papers that came out before the LHC turned on.<p><a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1207.7214" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1207.7214</a> - The original ATLAS Higgs discovery paper uses neural nets to identify photons. It also uses a neural net b-tagger to improve the H-&gt;WW signal to noise ratio.<p><a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1303.0763" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1303.0763</a> - used neural nets extra tt+jets noise
-<a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1503.05066" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1503.05066</a> - used neural nets for signal&#x2F;background separation.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>timbaboon</em>:</p>
-<blockquote>Yep, you’re right about this. I worked on some of these things, but for the actual analysis it was generally all cut-based.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>blueplanet200</em>:</p>
-<blockquote>&gt; actual analysis<p>Um, I believe I have linked you to &quot;actual analysis&quot; where techniques used are more exotic than boosted decision trees.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>KeplerBoy</em>:</p>
-<blockquote>You needed approval to try different methods for data analysis?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>niemandhier</em>:</p>
-<blockquote>The thing a CERN is: You have some of the smartest and most educated people on the planet, and they are all super motivated to excel.<p>It’s one of the coolest environments one can be in. You can righteously wall yourself into a room and solve a problem.<p>I do hope that this is the start of something cool.</blockquote>
-<p><strong>Top #3</strong> — <em>fancyfredbot</em>:</p>
-<blockquote>There&#x27;s something really cool about this but also something sad.<p>There was a time when CERN would have been establishing partnerships with US labs. The US is not a CERN member but has provided a lot of funding in the past despite it&#x27;s observer status. These days funding is getting cut, the US is not as trusted as a partner anymore and a European partner is seen as important. This is sad.<p>That said I&#x27;m happy for Mistral and I&#x27;m sure they&#x27;ll be a great partner for CERN.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Code is clay now</title>
-      <link>https://www.albertodenia.com/writing/code-is-clay-now</link>
-      <guid isPermaLink="false">hn3-50153531</guid>
-      <pubDate>Mon, 19 Oct 2026 15:19:45 +0000</pubDate>
-      <description>157 points, 99 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.albertodenia.com/writing/code-is-clay-now"><strong>→ Article</strong></a> <small>(albertodenia.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50153531">→ HN comments</a> &nbsp;·&nbsp; 157 points &nbsp;·&nbsp; 99 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>lez</em>:</p>
-<blockquote>&quot;So we have this new material in our hands.&quot;
-No. It&#x27;s in the hands of few corporations who we repeatedly beg.</blockquote>
-<p><strong>Top #2</strong> — <em>jameskilton</em>:</p>
-<blockquote>Code always was, it&#x27;s supposed to be malleable. It&#x27;s why it&#x27;s long been said that code is a liability, not an asset. It&#x27;s the data you generate with that code that&#x27;s your asset. You can always rewrite the code.<p>We, in general, are just very bad at letting code ossify, or for this metaphor, dry out and crumble. AI does not solve this problem and I fully expect to see situations where AI generated code becomes so hard to work with that even LLMs prefer to throw it away and start fresh again.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nomel</em>:</p>
-<blockquote>Code was malleable only to a developer with great code comprehension. In my experience, this was actually <i>very</i> rare. I think part of the reason is, you don&#x27;t get any recognition for modifying a few lines of someone else&#x27;s code compared to &quot;I created this <i>new</i> library&#x2F;app to solve this problem for our org!&quot;.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>TheCapeGreek</em>:</p>
-<blockquote>Not just comprehension, but authority.<p>We tend to forget in tech-oriented forums that most of us are bound to those who pay our salaries, and for many developers that payment is to be focused on revenue-generating, or client-focused work.<p>Developing advanced comprehension <i>and being able to use it</i> for long-term system stability are unfortunately not always paired in the daily work.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>kvgr</em>:</p>
-<blockquote>Thats what doesn&#x27;t sit with me with clean code. Too many layers dependent on each other, so changes require too much code change and time.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>tkdb</em>:</p>
-<blockquote>Someone who writes code without LLMs is now an artisan software developer.<p>An artisan is (by definition) someone who creates manually, using traditional methods. Before there are automated or higher tech means of creating the same output, artisans don&#x27;t exist, they are just craftspeople or tradespeople.<p>A factory worker, or factory owner, can care deeply about the quality of the product, and can be &quot;in the loop&quot; as you write about, but they are in the loop with the factory equipment vs. in the loop in manually crafting the product.<p>I don&#x27;t think I&#x27;m refuting or in any real disagreement with you, in fact I may be here pushing artisan pedantry because I didn&#x27;t see the literal use of the term coming through strongly enough.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Ontology-Driven Observability: Building an End-to-End Knowledge Graph at Netflix</title>
-      <link>https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf</link>
-      <guid isPermaLink="false">hn3-50153431</guid>
-      <pubDate>Mon, 19 Oct 2026 15:10:20 +0000</pubDate>
-      <description>125 points, 29 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf"><strong>→ Article</strong></a> <small>(netflixtechblog.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50153431">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 29 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>smartmic</em>:</p>
-<blockquote>I am in an enterprise which experiments with ontologies and knowledge graphs since its hype heydays ca. 15 years ago. It never took off, good ol’ relational databases and its modern day implementations in the cloud still rule the data landscape. Many smart consultants tried their best and we spend many millions over time into it. I would love to read more success stories, but they seem to be rare beyond academic exercises.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ezst</em>:</p>
-<blockquote>Strikingly similar story here. Ontologies and knowledge graphs seemingly make a comeback because it is argued (with little evidence, from what I can tell) that it helps LLMs make sense of the dataset. I see no practical difference or benefit vs. providing the date model as DDL or via other means to represent the ER graph. I&#x27;d like very much to be convinced otherwise or at least read a rationale about the alleged differences.</blockquote>
-<p>↳ reply 2 — <em>dhenneberger</em>:</p>
-<blockquote>95% of sparql, cypher, and gremlin can be lowered to sql anyway. I rolled my own sql lowering system for duckdb over iceberg which lets me do everything in that blog post but with no bespoke data layer.</blockquote>
-<p>↳ reply 3 — <em>vladsanchez</em>:</p>
-<blockquote>What about Palantir!? Care to explain why their Ontology-driven observability is it not considered a Success Story?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>1970-01-01</em>:</p>
-<blockquote>Without actual examples of it working to reduce latency, this is purely academic and not engineering. What happened to the 1.5s problem in the introduction?</blockquote>
-<blockquote>
-<p>↳ reply — <em>CharlieDigital</em>:</p>
-<blockquote>I noticed this with a lot of blog posts from eng teams on AI.<p>Talk about what they built, not the business problem it solved and how it created value somewhere.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>vindex10</em>:</p>
-<blockquote>Just listened to the Pragmatic Engineer podcast on Uber AI infra,
-<a href="https:&#x2F;&#x2F;newsletter.pragmaticengineer.com&#x2F;p&#x2F;ubers-ai-infra-from-the-inside" rel="nofollow">https:&#x2F;&#x2F;newsletter.pragmaticengineer.com&#x2F;p&#x2F;ubers-ai-infra-fr...</a><p>it seems they are using a similar ontology called &quot;context graph&quot;, used as a navigation layer for the ai agent.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Maybe There Was an Egg Cartel After All</title>
-      <link>https://www.politico.com/news/magazine/2026/10/18/egg-prices-conspiracy-affordability-issue-01100411</link>
-      <guid isPermaLink="false">hn3-50152970</guid>
-      <pubDate>Mon, 19 Oct 2026 14:31:11 +0000</pubDate>
-      <description>199 points, 125 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.politico.com/news/magazine/2026/10/18/egg-prices-conspiracy-affordability-issue-01100411"><strong>→ Article</strong></a> <small>(politico.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50152970">→ HN comments</a> &nbsp;·&nbsp; 199 points &nbsp;·&nbsp; 125 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Ajedi32</em>:</p>
-<blockquote>So after the surge in prices from normal market forces, they tried to keep prices up by placing high bids on eggs that they never intended to actually purchase. This briefly worked, then the market re-asserted itself and prices cratered. Now, after the fact, the justice department is investigating the bidding shenanigans. Is that a fair summary of the situation?<p>I guess the thing I&#x27;m confused about is how bidding above market rates for eggs didn&#x27;t just result in these companies being stuck with a bunch of eggs that they grossly overpaid for? How did the scheme actually work?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dpark</em>:</p>
-<blockquote>It sounds like the exchange consumes bids, not just closed transactions. So these companies were basically publishing fraudulent bids that never completed.<p>I can’t tell from the article if they were bidding on each others eggs or bidding on other farmers eggs and then canceling.</blockquote>
-<p>↳ reply 2 — <em>skybrian</em>:</p>
-<blockquote>They buy a relatively small number of eggs at a high price, but the price of the transaction is an input into an index that the larger market uses.</blockquote>
-<p>↳ reply 3 — <em>deathanatos</em>:</p>
-<blockquote>&gt; <i>This briefly worked, then the market re-asserted itself and prices cratered. Now, after the fact, the justice department is investigating</i><p>No, the price drops at the exact moment the DoJ starts looking into it.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>BashiBazouk</em>:</p>
-<blockquote>&quot;and not even for the lovingly cared-for, cage-free variety&quot;<p>Which oddly did not increase in price much. I was in a discussion once on a forum and brought up that eggs around me (PNW) were still in the $6 for 18 when everyone else was complaining about $10 for a dozen. Next time I bought eggs, the ones I buy were the same price as always but the normal white eggs were in fact $10 a dozen...</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dhruvmittal</em>:</p>
-<blockquote>I had the same experience on the east coast-- farmers market eggs continued to be $5-$8&#x2F;doz (depending on size) even as the normal white eggs raced to $10. I think the &quot;conventional wisdom&quot; was that these small farmers weren&#x27;t hit by the flu in the way that the big industrial farmers were, and that their living conditions made them hardier or less susceptible. I guess I now assume that these small farms relying on direct sales were simply oblivious to the bidding shenanigans.</blockquote>
-<p>↳ reply 2 — <em>bee_rider</em>:</p>
-<blockquote>Which wouldn’t be that odd if the conspiracy theory was true (since your local farms presumably wouldn’t be invited to the price-fixing meetings).</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>SamBam</em>:</p>
-<blockquote>&gt; [Urner Barry] also collects bids that egg producers make for each other’s surplus inventory on an exchange called Egg Clearinghouse, Inc. [It] takes in those bids even before they lead to any sale, as a signal of demand.<p>&gt; they had the ability to create the illusion of [consumer demand] through bids on the surplus exchange for purchases they had no intent of completing<p>This seems like a system tailor-made for collision. It seems like the consumer protection agency should force changes. Too bad they&#x27;ve been made toothless.</blockquote>
-<blockquote>
-<p>↳ reply — <em>SoftTalker</em>:</p>
-<blockquote>Yes, non-binding bids that are not actual sales should not signal anything.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
