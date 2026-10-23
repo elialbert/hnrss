@@ -4,7 +4,215 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 23 Oct 2026 01:22:28 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 07:18:43 +0000</lastBuildDate>
+    <item>
+      <title>Local Wikipedia: Wikipedia, but only for things a half hour walk from you</title>
+      <link>https://edjefferson.com/localwiki/</link>
+      <guid isPermaLink="false">hn3-50202285</guid>
+      <pubDate>Thu, 22 Oct 2026 23:01:18 +0000</pubDate>
+      <description>128 points, 25 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://edjefferson.com/localwiki/"><strong>→ Article</strong></a> <small>(edjefferson.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50202285">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 25 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>noduerme</em>:</p>
+<blockquote>This is super cool! Just punched in my zip code, and hit &quot;random article&quot; three times, and came up with three weird stories I didn&#x27;t know about the history of places within a few blocks of me in Portland, Oregon. What an awesome idea for travelers!</blockquote>
+<p><strong>Top #2</strong> — <em>vintagedave</em>:</p>
+<blockquote>Like others, I agree this is very cool.<p>I live somewhere pretty remote, and every article it suggests is an entry for a nearby village, which is usually a sentence long. There are other interesting things nearby: could it have some kind of variance function, so it looks specifically for a variety of content?<p>Here I am, seeing something cool and immediately asking for changes. Spirit of the internet ;) Genuinely, it is a wonderful idea, and I admire the concept and that you did it.</blockquote>
+<p><strong>Top #3</strong> — <em>pastel8739</em>:</p>
+<blockquote>Awesome, I found that possibly the first bookstore cafe was in Palo Alto on Cal Ave! <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Printers_Inc._Bookstore" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Printers_Inc._Bookstore</a><p>It&#x27;s cool, but a bit sad, to discover establishments that used to exist nearby but don&#x27;t any longer. It&#x27;s not easy to do that otherwise.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>LLMs are making formal software verification feasible at a much larger scale</title>
+      <link>https://www.anthropic.com/research/formal-verification</link>
+      <guid isPermaLink="false">hn3-50202217</guid>
+      <pubDate>Thu, 22 Oct 2026 22:54:43 +0000</pubDate>
+      <description>296 points, 164 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/research/formal-verification"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50202217">→ HN comments</a> &nbsp;·&nbsp; 296 points &nbsp;·&nbsp; 164 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>malisper</em>:</p>
+<blockquote>For those skeptical, I&#x27;ve had decent success using formal verification for my Rust rewrite of Postgres. I wrote a compiler that can translate both Rust and C code into Lean. Once those two functions are in Lean, I have an LLM write a Lean proof that they behave identically.<p>So far, I&#x27;ve proven that about 12% of the code behaves the same when executed single-threaded. That works out to roughly 70k lines of C code. This has found very minor differences in behavior, such as how floating-point operations across platforms can produce different results.<p>I&#x27;m working on figuring out how to scale this up, but I don&#x27;t see any fundamental limitation that would prevent this from scaling up further.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>remywang</em>:</p>
+<blockquote>Every verification needs a spec, and in this case the spec is the Postgres implementation. I think we can and should do a lot better than taking 2.6 million lines of C code as the spec.<p>In general, the spec must be human readable, and I believe to achieve that we must do away with SQL. Putting aside the thousands of pages of SQL standard, even the core subset has a gnarly semantics due to issues like nulls.<p>A simpler semantics is one of the main motivations behind Prela [1], and despite its simplicity, we now know it’s powerful enough to express thousands of queries in the wild [2], as well as run doom [3].<p>[1]: <a href="https:&#x2F;&#x2F;prela-lang.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;prela-lang.org&#x2F;</a><p>[2]: <a href="https:&#x2F;&#x2F;github.com&#x2F;remysucre&#x2F;prela&#x2F;tree&#x2F;sqlstorm" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;remysucre&#x2F;prela&#x2F;tree&#x2F;sqlstorm</a><p>[3]: <a href="https:&#x2F;&#x2F;github.com&#x2F;remysucre&#x2F;prela&#x2F;tree&#x2F;doom&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;remysucre&#x2F;prela&#x2F;tree&#x2F;doom&#x2F;</a></blockquote>
+<p>↳ reply 2 — <em>weinzierl</em>:</p>
+<blockquote>Have you heard of Aeneas? In case you did, what are your opinions in it? Specifically, why you didn&#x27;t choose it for your project.</blockquote>
+<p>↳ reply 3 — <em>remywang</em>:</p>
+<blockquote>&gt; I wrote a compiler that can translate both Rust and C code into Lean<p>How do you verify this compiler is correct? To do that, I think you at least need a formal semantics for both C and Rust in Lean, both sound like Herculean efforts</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>yazaddaruvala</em>:</p>
+<blockquote>I think somewhat of the opposite will actually occur. LLMs won’t formally verify LLM generated imperative style code. We (including agentic development) will move on from imperative languages, skipping functional and move to deterministic declarative languages.<p>Likely, a proliferation of experimental languages all somewhat akin to Typescript for SQL with significantly more nuanced operators to tersely capture the same outcomes as imperative languages.<p>They’ll compile down to be able to run performantly for game development or even for the Linux kernel (as if Linus would ever agree lol) but also they’ll be able to run on distributed execution engines with effectively a shared memory space, etc.<p>Allows for significantly more terse artifacts. Lower chance of hallucination, fewer output tokens, fewer thinking loop iterations and concise enough for humans to review (for domains that need it).<p>On top of that, additional theorem like syntax to drastically limit the ability of functions, etc. likely some sort of higher level effect system for verification. Used for many things like “constant time compilation for crypto functions”, and also “ensure acid compliance” for writes and reads in a local context, and things like “ensure only once delivery” for functions on a distributed execution engine.<p>At which point every program will be formally verified by default. You could think of it as AdaErlangSQL+++</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>computably</em>:</p>
+<blockquote>What you&#x27;re describing is a language that can effectively take a high-level design doc (limited to a formal language representing a pseudo-English-subset) and compile to almost arbitrarily complex, formally verifiable systems. I say systems because you&#x27;re also implying these could essentially orchestrate distributed systems.<p>Which, if that were really possible, would be pretty good evidence of AGI. Or, at least, the end of 6-7 figure software engineer salaries. Conversely, I think it&#x27;s a pipe dream. Writing a compiler that actually works well across such a broad range of hugely complex behaviors would itself be absurdly complex.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>yazaddaruvala</em>:</p>
+<blockquote>AGI will accelerate it, but way before agentic development I learned this was the future when I worked at Amazon. I no longer have access to the internal talks about it (amazing to watch) but here is a public link worth reading:<p><a href="https:&#x2F;&#x2F;aws.amazon.com&#x2F;blogs&#x2F;storage&#x2F;how-automated-reasoning-helps-us-innovate-at-s3-scale&#x2F;" rel="nofollow">https:&#x2F;&#x2F;aws.amazon.com&#x2F;blogs&#x2F;storage&#x2F;how-automated-reasoning...</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gobdovan</em>:</p>
+<blockquote>Depends really. I tried some experiments towards a pretty uniform relational language for expressing ordinary logic, temporal logic, requirements etc. It does work, but there&#x27;s some unexpected obstacles.<p>You&#x27;d think performance would be easy to achieve because you&#x27;d just write clear, high-level declarative facts and LLM + good optimiser + proof certification system will get you there in terms of performance. But you&#x27;ll be surprised that relational&#x2F;declarative specification gives you so much behaviour &#x27;for free&#x27; that choosing what to actually compute from those relations is a very deliberate choice. It starts to look like finding an imperative-like path of demand through the relations. It seems that you get exactly the same problems but one level up.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>passive</em>:</p>
+<blockquote>This seemed like a high possibility, but since our adoption of LLMs in software so far has mostly been to throw out best practices, I am skeptical that it will lead us to expanded verification.<p>It&#x27;s like Bezos talking about how we&#x27;re going to have 3 day work weeks while he makes his employees piss in a bottle.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>scruple</em>:</p>
+<blockquote>Automated proofs do sound very neat but I think they&#x27;ll be constrained to a vanishingly small set of already paranoid domains like cryptography, aerospace, etc. Everywhere else is going to spend the dividends on shipping more unvetted code faster, we&#x27;re just trading discipline for velocity.</blockquote>
+<p>↳ reply 2 — <em>vikramkr</em>:</p>
+<blockquote>Llm adoption has just accelerated people&#x27;s tendencies. Slop generators generate more slop. They&#x27;re also finding and fixing bugs that have existed for decades. The societal incentives towards slop we will have to figure out but that&#x27;s not new - for folks not on that wavelength and for when we get over that impulse at some point it&#x27;s good if it can also do this. Just in general so sure does write a hell of a lot of tests. If it gets good at it this could pretty easily just become part of the agent loop and we get whatever wins we can from that.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Jared Kushner Hacked Phone Reveals Secret Negotiations, Millions in Transactions</title>
+      <link>https://www.vanityfair.com/story/jared-kushner-hacked-phone-secret-negotiations</link>
+      <guid isPermaLink="false">hn3-50201259</guid>
+      <pubDate>Thu, 22 Oct 2026 21:24:41 +0000</pubDate>
+      <description>394 points, 169 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.vanityfair.com/story/jared-kushner-hacked-phone-secret-negotiations"><strong>→ Article</strong></a> <small>(vanityfair.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50201259">→ HN comments</a> &nbsp;·&nbsp; 394 points &nbsp;·&nbsp; 169 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>consumer451</em>:</p>
+<blockquote>Finally, after eight hours and 357 points, 169 comments with healthy discussion - we have the inevitable flagging.<p>I slightly know how this all works, and I still love HN. In any case, I hope everyone who flagged this [0] feels better now after squelching the discussion. It was already pushed far off the frontpage and it was only on &#x2F;active. I guess that wasn&#x27;t enough. The crazy thing is that I bet we would all get along over beers, <i>vodka</i>, or tea.<p>[0] доброе утро</blockquote>
+<blockquote>
+<p>↳ reply — <em>tasuki</em>:</p>
+<blockquote>This is why I read <a href="https:&#x2F;&#x2F;hckrnews.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;hckrnews.com&#x2F;</a> top 20 - things like this stick there. Also feeds me less noise and requires less F5 than the ever-changing HN homepage :)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>cf100clunk</em>:</p>
+<blockquote><a href="http:&#x2F;&#x2F;archive.today&#x2F;FHGAt" rel="nofollow">http:&#x2F;&#x2F;archive.today&#x2F;FHGAt</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>hmartin</em>:</p>
+<blockquote>This page has been blocked in accordance with current legislation.
+Access to this information resource is restricted based on Federal Law No. 149-FZ of July 27, 2006, &quot;On Information, Information Technologies, and Information Protection.&quot;
+If you believe that the inclusion of this page of the internet resource you need in the &quot;Unified Register...&quot; or &quot;Domain Name Registry...&quot; was in error or violates your legal rights, please contact the authorized agency directly using the contact information on the registry website.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ghm2180</em>:</p>
+<blockquote>Russian network ingress&#x2F;egress?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>shagie</em>:</p>
+<blockquote>Archive.today is directing a DDoS attack against my blog <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46843805">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46843805</a> (8 months ago, 366 points, 178 comments)<p>Ask HN: Weird archive.today behavior? <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46624740">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46624740</a> (9 months ago, 140 points, 71 comments)</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>zmmmmm</em>:</p>
+<blockquote>You have to think the current administration is completely and totally owned by foreign interests at this point.<p>The question is, what do you do as the new administration coming in? Presumably you assume every system and every person is compromised all the way down, like a compromised server - clean wipe and re-install.<p>One would assume that, like any good hacker, the current set would be heavily focused on ensuring they can survive a reboot &#x2F; wipe. The question is, what would they be doing to achieve that?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>rnd0</em>:</p>
+<blockquote>&gt;The question is, what do you do as the new administration coming in?<p>I&#x27;m not assuming that there will be another administration, everything points to the US continuing down the road it&#x27;s on.</blockquote>
+<p>↳ reply 2 — <em>BLKNSLVR</em>:</p>
+<blockquote>&gt; You have to think the current administration is completely and totally owned by foreign interests at this point.<p>The internal dismantling of the US Government, and &#x27;the identity of the US&#x27; in general, that this administration has performed must be beyond the wildest dreams of those who were on the other side of the Cold War.<p>Despite &#x27;losing&#x27; the Cold War, Putin appears to have managed to arrange for the US to also lose, somehow, after the war was over.<p>It&#x27;s fascinating.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>A complete bypass of eMudhra’s 1FA OTP login system</title>
+      <link>https://mastodon.catgirl.cloud/@49016/117475976434068995</link>
+      <guid isPermaLink="false">hn3-50199757</guid>
+      <pubDate>Thu, 22 Oct 2026 19:14:01 +0000</pubDate>
+      <description>172 points, 53 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mastodon.catgirl.cloud/@49016/117475976434068995"><strong>→ Article</strong></a> <small>(mastodon.catgirl.cloud)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50199757">→ HN comments</a> &nbsp;·&nbsp; 172 points &nbsp;·&nbsp; 53 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bragr</em>:</p>
+<blockquote>The anti AI scraping on this site doesn&#x27;t work that well. I&#x27;m being served non-sense text about buttplugs. I&#x27;m human, I swear.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Muromec</em>:</p>
+<blockquote>That was proof of soul check and you passed</blockquote>
+<p>↳ reply 2 — <em>evulhotdog</em>:</p>
+<blockquote>I got the same, on a residential internet service. No idea what the trigger is, worked on my phone though.</blockquote>
+<p>↳ reply 3 — <em>ronsor</em>:</p>
+<blockquote>anti-AI scraping is often anti-privacy in practice, as any effective implementation requires invasive browser inspection to detect scrapers.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>buildbot</em>:</p>
+<blockquote>So basically anyone who used this CA is screwed if someone knows your email?</blockquote>
+<blockquote>
+<p>↳ reply — <em>gruez</em>:</p>
+<blockquote>Only if they&#x27;re lazy and went with the &quot;download key and certificate (and we&#x27;ll generate the keys for you)&quot; option. Otherwise at least how it&#x27;s supposed to work is that you give a CA a certificate signing request (CSR) containing your public key, they sign it and hand back your certificate. The certificate itself doesn&#x27;t contain anything sensitive, because it&#x27;s the same thing that your server presents to clients. But people are lazy and might not know how to generate a csr locally, hence the aforementioned option. And of course if they&#x27;re too lazy to generate a csr locally, they&#x27;re probably also too lazy to keep backups, so you can be sure that eMudhra keeps a copy in case they deleted it from their downloads folder.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pdpi</em>:</p>
+<blockquote>With this exploit, what&#x27;s stopping me from sending my own CSR for your domain?</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>hoherd</em>:</p>
+<blockquote>The number the tool found was 1861. The e-mailed OTP code was 1858. What am I missing?</blockquote>
+<blockquote>
+<p>↳ reply — <em>molticrystal</em>:</p>
+<blockquote>I noticed that as well. Figured it was a concurrency issue, and they have a follow-up message that you can see if you click on the OP of the Mastodon thread that confirmed my guess: <a href="https:&#x2F;&#x2F;mastodon.catgirl.cloud&#x2F;@49016&#x2F;117476097901925573" rel="nofollow">https:&#x2F;&#x2F;mastodon.catgirl.cloud&#x2F;@49016&#x2F;117476097901925573</a><p>&gt;(yes the code is off by a few. its bc the poc is shit and to speed it up it uses 8 connections at the same time. it just stops the counter once it has a hit so its off by ~4 lmfao. you could easily fix this but cba today)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Hedra is a 3D open world game I wrote from scratch while in highschool</title>
+      <link>https://github.com/maxilevi/project-hedra/tree/pre-ai</link>
+      <guid isPermaLink="false">hn3-50199389</guid>
+      <pubDate>Thu, 22 Oct 2026 18:44:36 +0000</pubDate>
+      <description>178 points, 31 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/maxilevi/project-hedra/tree/pre-ai"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50199389">→ HN comments</a> &nbsp;·&nbsp; 178 points &nbsp;·&nbsp; 31 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>maxilevi</em>:</p>
+<blockquote>I started this game almost 10 years ago in high school as a way to learn OpenGL. Scope creep quickly took over, and it eventually became a full 3D game and engine with animations, rendering effects, dynamic terrains, etc, with ~100k lines of code and native Linux and Windows support.<p>Thought I&#x27;d share it! With AI coding now, it feels like a relic of another era. Crazy to imagine writing 100k lines by hand today!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>adamddev1</em>:</p>
+<blockquote>Very cool and thanks for sharing! It&#x27;s inspiring to see that yes, one person can build something like this. And of course it does NOT have that immediate AI feel. Just a glance and you can feel that it is a true, original work of art. It&#x27;s also sad to think that so many will not be learning as much as you did thinking this all out and coding by hand.<p>I think we need to keep pushing back against this idea that &quot;now it&#x27;s the AI coding era, everything gets coded with AI.&quot; Let&#x27;s keep building things, especially passion projects carefully by hand and normalizing this. Lots of us are still coding without AI.</blockquote>
+<p>↳ reply 2 — <em>aoguerrero</em>:</p>
+<blockquote>I got the game and it runs smooth on my aging PC, I really enjoyed playing it.<p>I really appreciate the amount of effort and skill put on this, because I tried many times to get into the 3D gaming programming and OpenGL and I found it far from my skills and patience.<p>Is a truly piece of art, made with passion for programming, thanks for that!</blockquote>
+<p>↳ reply 3 — <em>pjmlp</em>:</p>
+<blockquote>Kudos for achieving it, and extra brownie points for the effort to go with C# instead the more common options.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>panza</em>:</p>
+<blockquote>Very humbling to see that this was created in high school and without AI.<p>Side note: it&#x27;s interesting to see how &#x27;wrote from scratch&#x27; or &#x27;hand written&#x27; is used in 2026. I&#x27;ve seen it used to mean literally everything, while others might mean they wrote the core of the engine + some SDL sprinkled throughout. And now, it could just mean &#x27;didn&#x27;t use AI at all&#x27;.</blockquote>
+<blockquote>
+<p>↳ reply — <em>serf</em>:</p>
+<blockquote>yeah.<p>my mind is still stuck in an era where &quot;written from scratch&quot; means no packages and pure language.<p>people older than me scoff at the concept of how easy it is to be given an already working compiler..<p>&#x27;computers&#x27; probably have one of the most diverse fanbases as far as age and expectation goes of nearly anything around, and we&#x27;re definitely entering a new era.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>skyberrys</em>:</p>
+<blockquote>I appreciate your low-poly aesthetic. I bet you and like half this website have written a video game in highschool. You have found the right group to tell about it.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>AI and the Enclosure of the Scientific Commons</title>
+      <link>https://arxiv.org/abs/2610.27251</link>
+      <guid isPermaLink="false">hn3-50199230</guid>
+      <pubDate>Thu, 22 Oct 2026 18:28:16 +0000</pubDate>
+      <description>131 points, 77 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://arxiv.org/abs/2610.27251"><strong>→ Article</strong></a> <small>(arxiv.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50199230">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 77 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>abetusk</em>:</p>
+<blockquote>It&#x27;s hard to imagine what kind of contortions someone would have to go through to come to this conclusion.<p>Not one word of copyright length, which is now effectively over a century long. Not one word of some of the most successful AI models being open source.<p>Commons encirclement, as the author is describing, has been happening since source code was labelled art instead of engineering and since lobbying efforts have been extending copyright terms. My view is that AI technology are trampling over the encirclement, which is why so many people are upset.</blockquote>
+<p><strong>Top #2</strong> — <em>bennettnate5</em>:</p>
+<blockquote>&gt; The scientific literature can be viewed as an &quot;information commons:&quot; an intangible resource that &quot;no one owns<p>Springer would like a word</blockquote>
+<blockquote>
+<p>↳ reply — <em>einpoklum</em>:</p>
+<blockquote>Well, they might also like a word with all of the scientists and students who make sure their papers are available online, despite Springer&#x27;s draconic requirements. But that word is no longer heeded. Well, for the most part.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>stellar678</em>:</p>
+<blockquote>The discussion of open source was pretty anemic. The author seems to think open source is only GPL copyleft. In reality the vast majority of open source is permissively licensed, and the development was funded by for-profit companies. That seems like a crucial thing to consider when discussing how our information commons has come to be.<p>Near the end they include a paragraph claiming we should interpret this piece as being about more than self-interest and resistance to change, but it doesn&#x27;t really feel like the piece offered a taste of what that &quot;more&quot; is.<p>The most thought-provoking part for me was considering that AI companies have used pretty much all available data for training while &quot;they spend more and more money to create proprietary training data&quot;. That seems to break a sort of intuitive social contract - like, well you all used everyone&#x27;s knowledge. Send yours back out too.<p>Grant from 3brown1blue released a video exploring the economics and mechanics that enable careers in math, in light of the AI company releases over the last couple weeks. Overall it was a lot more hopeful, and it didn&#x27;t need to strain awkwardly like this piece to apply an ill-fitting historical framework like enclosure. Worth checking out: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=LKrwhjOI8Nc" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=LKrwhjOI8Nc</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OpenShell – A safe, private runtime for fleets of autonomous AI agents</title>
+      <link>https://github.com/NVIDIA/OpenShell</link>
+      <guid isPermaLink="false">hn3-50198675</guid>
+      <pubDate>Thu, 22 Oct 2026 17:44:06 +0000</pubDate>
+      <description>371 points, 187 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/NVIDIA/OpenShell"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50198675">→ HN comments</a> &nbsp;·&nbsp; 371 points &nbsp;·&nbsp; 187 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>fennecbutt</em>:</p>
+<blockquote>I&#x27;ve been using iron proxy recently for a project I just started, it does network restrictions by domain etc with plenty of options, credential swapping and more.<p>I have no affiliation with it, but it solved most of what I need in one go when I was stressing out about it.<p>Only real problem remaining if you truly want to be able to trust agents is how to prevent data (in my case codebases the agent works on) exfiltration a la HF incident.<p>We can restrict network to trusted domains, but there&#x27;s always a chance an agent could be extra slippery especially if prompt injected and doing something like pushing data out a few characters at a time.<p>In my case I&#x27;m also giving it gh access and having to deeply check things like: can it manage to fork public repos and embarrass us by submitting prs, could it open issues, etc.<p>But that&#x27;s kind of solved by proxying the heck out of gh rather than giving it direct (or wrapping it or whatever) for additional controls that gh themselves don&#x27;t provide.<p>I&#x27;m still musing over the &quot;it could send data to an allowed domain in a way we don&#x27;t expect that exfiltrates something&quot;...</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>skybrian</em>:</p>
+<blockquote>It seems like some kind of network logging would be useful? Even if you don&#x27;t catch it, you&#x27;d want to know what it did.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>fennecbutt</em>:</p>
+<blockquote>Yeah agree.<p>In other comments I&#x27;ve mused about capturing data to be compared to the secret dataset, I&#x27;m sure it&#x27;d be possible to hash or something so that the proxy&#x2F;sandbox doesn&#x27;t have the data but can check it, or because it&#x27;s not an agent it can call of to the data store for that.<p>Then you can just collect sequential blocks of data the agent sends out that match to sequences in the dataset. The longer the matching sequence the heavier it weights it. Single byte matches are almost always incidental, but individually sent bytes over time that line up with a n byte sequence in the source data is sus. And larger sequences of bytes send in one go that line up are immediately sus. If the weight ends up too high the agent is paused&#x2F;walled off and an investigation called for.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>igorhvr</em>:</p>
+<blockquote>I think matchlock ( <a href="https:&#x2F;&#x2F;github.com&#x2F;jingkaihe&#x2F;matchlock" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;jingkaihe&#x2F;matchlock</a> ) is the right design for this context (at least for secrets and keys) - a combination of virtual machines (not just containers, it is built on top of firecracker) with credential swapping just like iron proxy - the agents do not have access to the secrets at all but they receive placeholders instead and their network calls are intercepted and secrets are injected when the network requests happen... still does not solve the exfiltration problem you mentioned, though.</blockquote>
+<p>↳ reply 3 — <em>Aeroi</em>:</p>
+<blockquote>what about using a small decision model as anomaly detection or scanner. something like mouse-1.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>prennert</em>:</p>
+<blockquote>From the pitch at GTC, the idea is not just to limit what each individual agent can do, but to also to ensure that the collective permissions do not exceed what you want agents to do.<p>Apparently agents will collude to break out of their individual sandboxes by delegating tasks to other agents that have the required permissions. This is a problem with agent fleets, because you need them to coordinate on their tasks. So you need to them to communicate.<p>A naive approach to prevent agents from doing something you dont want to do is a separation of powers, which individual permissions limited to each agents task. Say one agent to find and extract raw data, one to process it and write a report and one to publish it. If one of the agent decides that needs to publish the raw data, then chances are that they will collude to make that happen, even though no single agent has the permissions to achieve that goal.<p>OpenShell tries to fix this by monitoring the collective permissions set of the agent fleet, and by maintaining very granular permissions for each agent.<p>This was presented together with Sentry, which is something like a on-chip hardware firewall (BlueField) that sits between the chip agent run-time runs on, and the host. This improves safety by removing the ability of agents to modify their own OpenShell policies.</blockquote>
+<p><strong>Top #3</strong> — <em>smallnix</em>:</p>
+<blockquote>&gt; Agents are most useful when they can read files, install packages, call APIs, and use credentials. OpenShell gives them that capability without giving them unrestricted access to your data, secrets, or network.<p>To me this obfuscates an oxymoron: the more access you give the agent the more capable it becomes. You can&#x27;t have you cake and eat it, this tool allows to strike a balance I guess. But the blurp reads like it can do it all, but now secure. That can&#x27;t be true.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>A farewell to Arc browser</title>
       <link>https://arc.net/</link>
@@ -3606,218 +3814,6 @@ So some kind of power failure happened to bring down one zone. Unfortunate, but 
 <p><strong>Top #3</strong> — <em>GreenWatermelon</em>:</p>
 <blockquote>Relevant: Deepseek reports its Revenue per GPU per hour at off peak prices (38$) [reddit link] <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;DeepSeek&#x2F;comments&#x2F;1xanexq&#x2F;deepseek_even_opensourced_their_revenue_per_gpu&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;DeepSeek&#x2F;comments&#x2F;1xanexq&#x2F;deepseek_...</a><p>Also cool (from the translated screenshot since original is in Chineese <a href="https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;2095560295930508953" rel="nofollow">https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;2095560295930508953</a>)<p>&gt; the DeepSeek V4.1 Flash inference system has established
 three goals<p>&gt; 1-..... 2-..... 3. Supports retaining KVCache for more than 72 hours<p>This is awesome</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>MicroG: Free-libre re-implementation of Google's proprietary Android user space</title>
-      <link>https://github.com/microg/GmsCore/wiki</link>
-      <guid isPermaLink="false">hn3-50162177</guid>
-      <pubDate>Tue, 20 Oct 2026 06:37:07 +0000</pubDate>
-      <description>238 points, 20 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/microg/GmsCore/wiki"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50162177">→ HN comments</a> &nbsp;·&nbsp; 238 points &nbsp;·&nbsp; 20 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>maelito</em>:</p>
-<blockquote>I have never understood why people using MicroG can use apps like SNCF-Connect, while I cannot.<p>SNCF-connect is the largest online marchant in France. Since june, I cannot click the &quot;pay&quot; button anymore. It coincides with the new feature of Pay with Google.<p>So : is it because MicroG allows calls to Google services on e&#x2F;OS devices, while my LineageOS refuses ? Or because MicroG implemented a try catch around this call, without any call to Google&#x27;s servers ?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Maken</em>:</p>
-<blockquote>I think that&#x27;s because &#x2F;e&#x2F;os also distributes App Lounge [1], which can connect to Google Store and handle payments (most of the time).<p>[1] <a href="https:&#x2F;&#x2F;doc.e.foundation&#x2F;os&#x2F;apps&#x2F;app-lounge&#x2F;" rel="nofollow">https:&#x2F;&#x2F;doc.e.foundation&#x2F;os&#x2F;apps&#x2F;app-lounge&#x2F;</a></blockquote>
-<p>↳ reply 2 — <em>ForHackernews</em>:</p>
-<blockquote>Some Play Services calls are stubbed out as no-ops and others are reimplemented either with fully free replacements (e.g. navigation) or else by calling proprietary Google remote endpoints (e.g. firebase)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jamesnorden</em>:</p>
-<blockquote>Why do the most recent commits all say &quot;Merge commit from fork&quot; without any description of what the changes do or what the fork is?</blockquote>
-<blockquote>
-<p>↳ reply — <em>forgotpwd16</em>:</p>
-<blockquote>Lazy merge commits. The descriptions of the changes are in the commits from the merged branches.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Pxtl</em>:</p>
-<blockquote>This is why I always think emperor git wears no clothes.  Hiding these kind of intermediate junk commits from history should not require rewriting and breaking the distributed history you all share.  imho the correct solution would be a tag-like layer for annotating existing commits with metadata (additional signatures, hide-flags, retroactive comments, etc) or just a full 2nd dag, but whatever: git sucks at annotating history and annotating history is a core workflow in git.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>orphea</em>:</p>
-<blockquote>I guess this is submitted because of <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50154624">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50154624</a> ?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Tiny possum and glider thought extinct for 6000 years found in remote West Papua</title>
-      <link>https://www.bbc.com/news/articles/cp814l80pw2o</link>
-      <guid isPermaLink="false">hn3-50162044</guid>
-      <pubDate>Tue, 20 Oct 2026 06:20:54 +0000</pubDate>
-      <description>127 points, 24 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/news/articles/cp814l80pw2o"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50162044">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 24 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>swiftcoder</em>:</p>
-<blockquote>Really cool. I hope they succeed in establishing native rights to the forest before the logging companies make them extinct again.</blockquote>
-<p><strong>Top #2</strong> — <em>nkoren</em>:</p>
-<blockquote>Okay, here&#x27;s a West Papua mystery which the internet needs to become as interested in as I am. It was one of those random things that the Youtube algorithm pushed to me when it only had a few thousand views, and I can&#x27;t stop thinking about it since: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=VpNKDCo23iM" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=VpNKDCo23iM</a><p>tl;dr: very passionate young man develops a special interest in the Thylacine (Tasmanian Tiger), and becomes convinced (not without some evidence) that it might still be alive in Western Papua. So he spends two and a half years preparing to Indiana Jones it into the mountains of Western Papua, and the video ends with him saying &quot;I went&quot;. Cut to black. No part 2 was ever posted.<p>Damn, I really want to know how that story finishes. (I fear that &quot;I went&quot; actually meant &quot;I&#x27;m going right now&quot;, with the intention that he would post part 2 upon his return. Which appears not to have happened.)</blockquote>
-<p><strong>Top #3</strong> — <em>culi</em>:</p>
-<blockquote>Cogito, who does some of the most astounding and in-depth research on global histories, just came out with an incredible documentary about the history of West Papua that changed the way I see it forever. I highly recommend it (and most of Cogito&#x27;s work. Even his extensive citations are worth spending time with)<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=ZWp5904RkJY" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=ZWp5904RkJY</a><p>This is an area where raising the West Papua can give you 15 years in prison.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>No More Icons in Every Menu by Default</title>
-      <link>https://blog.jim-nielsen.com/2026/icons-in-every-menu/</link>
-      <guid isPermaLink="false">hn3-50161346</guid>
-      <pubDate>Tue, 20 Oct 2026 04:27:08 +0000</pubDate>
-      <description>169 points, 118 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.jim-nielsen.com/2026/icons-in-every-menu/"><strong>→ Article</strong></a> <small>(blog.jim-nielsen.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50161346">→ HN comments</a> &nbsp;·&nbsp; 169 points &nbsp;·&nbsp; 118 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>paxy</em>:</p>
-<blockquote>This Apple devotion is really something else..<p>Looking at all their design missteps and corrections in recent releases my only takeaway is that they are making it up as they go along just like the rest of us.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bunderbunder</em>:</p>
-<blockquote>I think it might be somewhat generational. There was a time when Apple famously put a lot of effort into HCI research and experimentation, and prioritized it above so many other concerns. When Apple chose to do UI differently from everyone else, it was a strong indication that they made the decision based on empirical research and not just making it up as they go along like everyone else. A single menu bar at the top of the screen, for example, was chosen because they found that users could locate and click on them much faster than they could menus at the top of the window. I can’t remember exactly how much but I think it was something like 1&#x2F;3 - 1&#x2F;2 as much time.<p>But that was in a different millennium.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>chihuahua</em>:</p>
-<blockquote>&gt; But that was in a different millennium.<p>Exactly. There may have been a reason for the single menu bar back in 1984 when the Mac had a 9-inch screen. But it doesn&#x27;t work very well on my 43-inch screen where the menu bar may be a few feet away from a small window in the lower right hand corner.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>andai</em>:</p>
-<blockquote>&gt; they are making it up as they go along just like the rest of us.<p>&quot;Everything around you that you call life was made up by people that are no smarter than you. And you can change it. And you can change it. You can influence it. You can build your own things that other people can use.&quot; —Steve Jobs<p>Full clip slightly longer, worth watching.<p><a href="https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=kYfNvmF0Bqw" rel="nofollow">https:&#x2F;&#x2F;youtube.com&#x2F;watch?v=kYfNvmF0Bqw</a></blockquote>
-<p>↳ reply 3 — <em>herpdyderp</em>:</p>
-<blockquote>There are a lot of us that <i>aren&#x27;t</i> making it up as we go. There is plenty of knowledge and experience on how to do these things and Apple <i>used</i> to be the king of it. For some reason they started throwing it all away with Liquid Glass.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>kevin_thibedeau</em>:</p>
-<blockquote>&gt; John Gruber wrote about this reversion back in June, including the fact that Apple’s new Human Interface Guidelines specifically call out Tahoe’s approach to menus as an example of what not to do on macOS.<p>Apple knew this was bad 20 years ago. They just don&#x27;t bother to read their own documentation:<p>Apple Human Interface Guidelines (2008) [1] p. 170:<p>&gt; If you do include icons in your menus, include them only for menu items for which they add significant value; <i>don’t include them for every menu item.</i> A menu that includes too many icons (or poorly designed ones) can appear cluttered and be hard to read.<p>[1] <a href="https:&#x2F;&#x2F;acko.net&#x2F;files&#x2F;zoomer&#x2F;apple-hig-2008.pdf" rel="nofollow">https:&#x2F;&#x2F;acko.net&#x2F;files&#x2F;zoomer&#x2F;apple-hig-2008.pdf</a></blockquote>
-<p><strong>Top #3</strong> — <em>netsharc</em>:</p>
-<blockquote>The conclusion is too forgiving...<p>&gt; They designed it, shipped it, lived with it for a year, then publicly changed their guidance on it. To me, that’s a lot more persuasive than simply saying, “Apple doesn’t do this.”<p>&gt; Choosing not to do something you’ve never done is one thing.<p>&gt; Choosing not to do something you’ve done is experience.<p>A more persuasive sales pitch for me to consider Apple products would be if the company had judgement not to ship such a hot mess of a sloppy product in the first place...</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>happytoexplain</em>:</p>
-<blockquote>In any other context I would agree with you, but in software, the point the author is making is quite true.<p>MS would include superfluous icons because they observe it in other software and can&#x27;t think for themselves, or they would omit superfluous icons because it never occurred to them in the first place.<p>Everything Apple does is carefully considered, good and bad.<p>I take the latter every time, because I understand how bad things are in software. I know it&#x27;s unrealistic to be as choosy as I want to be.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Wowfunhappy</em>:</p>
-<blockquote>Apple&#x27;s own design guidelines originally said not to do the thing they did (and which they are now once again saying not to do).<p>Couldn&#x27;t Apple have just, like, talked to the people who originally wrote the guidelines? Why do they need to re-invent the wheel? Will Apple forget again in another 15 years and need to re-run the experiment, taking us all along as test subjects?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sssilver</em>:</p>
-<blockquote>&gt; A more persuasive sales pitch for me to consider Apple products would be if the company had judgement not to ship such a hot mess of a sloppy product in the first place...<p>When I read a sentence like this, I have to remind myself that this is Apple products we&#x27;re talking about.<p>What other company do you feel surpasses Apple in terms of &quot;judgement not to ship such a hot mess of a sloppy product in the first place&quot;?<p>Is there any consumer electronics company today that ships products that are in any way <i>less of a slop</i> than Apple?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Go will reject certificate chains containing eight distrusted SPKIs</title>
-      <link>https://github.com/golang/go/issues/82345</link>
-      <guid isPermaLink="false">hn3-50160877</guid>
-      <pubDate>Tue, 20 Oct 2026 03:05:07 +0000</pubDate>
-      <description>127 points, 66 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/golang/go/issues/82345"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50160877">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 66 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>agwa</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;gist.github.com&#x2F;AGWA&#x2F;5a78186e0f4a7d537b8891a7b46f9458" rel="nofollow">https:&#x2F;&#x2F;gist.github.com&#x2F;AGWA&#x2F;5a78186e0f4a7d537b8891a7b46f945...</a> is the list of certificates in Certificate Transparency <i>issued</i> by the blocked CAs as of this time. They appear to be non-malicious test certificates, and the DNS name in the first certificate indicates who likely discovered the issue.<p>What&#x27;s alarming and unprecedented is that yesterday, two Certificate Transparency log implementations were updated to block the logging of certificates issued by the CAs. This likely indicates total private key compromise, and the blocking by CT logs is to prevent the logs from being spammed by forged certificates. However, it also means there will be no place to record forged certificates found in the wild.  (These certificates won&#x27;t validate in CT-enforcing clients since they won&#x27;t be in CT logs, but could be used to attack non-CT-enforcing clients.)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>FiloSottile</em>:</p>
-<blockquote>I did not discover the issue. I just wished to have a rapid and definitive way to test the patch(es).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>amluto</em>:</p>
-<blockquote>Am I off base, or should I be surprised that you were able to get the mentioned cert issued in the first place this recently (yesterday)?  It seems unexpected that certificates are being actively issued and logged coming from a to-be-forcibly-distrusted part of the hierarchy.<p>The bugzilla issues mentioned elsewhere suggest at least a mostly orderly removal of trust with issuance stopped several months ago.  Your new cert was issued by “CN=EM DV TLS CA - G3B,O=eMudhra BV,C=NL”, which presumably chains to the G3 root, and the bugzilla issue seems to say that G3 was going to be dropped from the root lists some time ago but that maybe it would be cross-signed by something still trusted. So I assume that something else is going on.<p>Was that cert issued via normal means (e.g. ACME)?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>tialaramex</em>:</p>
-<blockquote>Did the log operators offer an explanation? You say &quot;likely indicates&quot; and I agree, but I guess I&#x27;d expect some noise on m.d.s.policy or somewhere similar, maybe a CT-related site I don&#x27;t look at.</blockquote>
-<p>↳ reply 3 — <em>noja</em>:</p>
-<blockquote>What is the CT log for then, if not to log that?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>agwa</em>:</p>
-<blockquote>Other certificate verifiers are doing the same:<p>Node: <a href="https:&#x2F;&#x2F;github.com&#x2F;nodejs&#x2F;node&#x2F;pull&#x2F;66871" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;nodejs&#x2F;node&#x2F;pull&#x2F;66871</a><p>rustls&#x2F;webpki: <a href="https:&#x2F;&#x2F;github.com&#x2F;rustls&#x2F;webpki&#x2F;pull&#x2F;546" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;rustls&#x2F;webpki&#x2F;pull&#x2F;546</a><p>Electron: <a href="https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron&#x2F;pull&#x2F;55126" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;electron&#x2F;electron&#x2F;pull&#x2F;55126</a><p>This is very serious and you should definitely upgrade. Hopefully OpenSSL will have a patch soon as well.</blockquote>
-<blockquote>
-<p>↳ reply — <em>vladde</em>:</p>
-<blockquote>from nodejs&#x27;s diff:<p>&gt; These are the eMudhra&#x2F;emSign intermediates whose private keys were reported compromised in October 2026.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>account42</em>:</p>
-<blockquote>And how many more times do we need to read news like this before we replace Web PKI with a system that isn&#x27;t as completely insane?<p>We already have a functioning system for delegating domain ownership in a hierarchical fashion where compromises are limited to only the subtree under the compromised entity. Let&#x27;s start using it for domain validation sooner rather than later.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>OpenBSD 8.0</title>
-      <link>https://www.openbsd.org/80.html</link>
-      <guid isPermaLink="false">hn3-50160494</guid>
-      <pubDate>Tue, 20 Oct 2026 02:06:40 +0000</pubDate>
-      <description>402 points, 129 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.openbsd.org/80.html"><strong>→ Article</strong></a> <small>(openbsd.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50160494">→ HN comments</a> &nbsp;·&nbsp; 402 points &nbsp;·&nbsp; 129 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ctolsen</em>:</p>
-<blockquote>I&#x27;ve used OpenBSD the last year or so (as a bastion&#x2F;jump host for a few systems) after using *BSD systems very little for probably the past decade, and... good lord I love it so much.<p>Say what you want about the benefits of systemd or the usefulness of other parts of what is now unavoidable with Linux, and I won&#x27;t argue with many of them, but OpenBSD just feels like a *nix system is supposed to. `ps aux` is like 10 entries at first. `pf` makes so much sense. `man` pages are consistently incredible. The security&#x2F;cryptography focus, managing services, pledge&#x2F;unveil... so many things about it is just *<i>chef&#x27;s kiss*</i>.<p>It&#x27;s not and will probably never be a daily driver for me and it may not fit your use case for anything, but I highly recommend playing with it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>deltarholamda</em>:</p>
-<blockquote>&gt;`man` pages are consistently incredible<p>I love this part of OpenBSD so much. FreeBSD is very good as well on this front. Sometimes the terseness of the man pages gets to me, but it&#x27;s all there.<p>I used OpenBSD as a daily driver way back, somewhere around v3.5, on a somewhat elderly Thinkpad. It was perfectly adequate. I still use it for various systems that I pretty much just set and forget. Extremely reliable, and pf is top tier.</blockquote>
-<p>↳ reply 2 — <em>pjmlp</em>:</p>
-<blockquote>It is kind of ironic the whole Linus vs Tanenbaum argument, given the amount of processes running on any modern Linux distribution.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>k310</em>:</p>
-<blockquote>I am not on board with the graphic, whatever the heck it is.<p><a href="https:&#x2F;&#x2F;www.openbsd.org&#x2F;images&#x2F;blowfishonbike-s.gif" rel="nofollow">https:&#x2F;&#x2F;www.openbsd.org&#x2F;images&#x2F;blowfishonbike-s.gif</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rektlessness</em>:</p>
-<blockquote>Forget the artwork and check out the accompanying song and lyrics for the new release.
-I think it&#x27;s one of the funnier ones so far.
-<a href="https:&#x2F;&#x2F;www.openbsd.org&#x2F;lyrics.html#80" rel="nofollow">https:&#x2F;&#x2F;www.openbsd.org&#x2F;lyrics.html#80</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>DASD</em>:</p>
-<blockquote>Nice!  Think there was a gap in release-accompanying songs from 7.4 to 7.8 or I missed them. Seems they are back on track now.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>so-cal-schemer</em>:</p>
-<blockquote><p><pre><code>     ACHTUNG!  ALLES LOOKENSPEEPERS!
-</code></pre>
-<i>Alles touristen und non-technischen looken peepers! Das computermachine ist nicht fuer gefingerpoken und mittengrabben.    Ist easy schnappen der springenwerk, blowenfusen und poppencorken mit spitzensparken.  Ist nicht fuer gewerken bei das dumpkopfen. Das rubbernecken sichtseeren keepen das cotten-pickenen hans in das pockets muss;<p>relaxen und watchen das blinkenlichten.</i></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>nanolith</em>:</p>
-<blockquote>I&#x27;ve used OpenBSD as a laptop daily driver for nearly 20 years. It&#x27;s small. It remains mostly consistent between updates. In fact, it&#x27;s so stable that I barely notice changes when I upgrade until I go hunting for them.<p>The Lenovo laptop I use as my travel laptop and console display is a 2012. It still runs OpenBSD just fine.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Lula supporters protest against Meta to denounce its 'electoral interference'</title>
-      <link>https://efe.com/english/latest-news/2026-10-20/lula-supporters-protest-against-meta-to-denounce-its-electoral-interference/</link>
-      <guid isPermaLink="false">hn3-50159993</guid>
-      <pubDate>Tue, 20 Oct 2026 00:53:52 +0000</pubDate>
-      <description>260 points, 154 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://efe.com/english/latest-news/2026-10-20/lula-supporters-protest-against-meta-to-denounce-its-electoral-interference/"><strong>→ Article</strong></a> <small>(efe.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50159993">→ HN comments</a> &nbsp;·&nbsp; 260 points &nbsp;·&nbsp; 154 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>__rito__</em>:</p>
-<blockquote>Meta (Instagram) certainly pushes one side in India. I am sure of it.<p>I didn&#x27;t quite believe its involvement with things in Myanmar where media, people vowed left and right of Meta&#x27;s involvement.<p>But seeing it now firsthand, I certainly believe it.<p>- Accounts, posts from one cabal being pushed to your feed even if you don&#x27;t follow any of them.<p>- If you open a fresh account, the accounts from those cabal are recommended at top.<p>- Relentlessly showing posts from one side and promoting them like hell.<p>Suspected bot activities. There were posts that are sans merit clearly, but Insta pushed it and had the unvelievable amount of likes, like Messi would have, had he posted his wedding reels.<p>I don&#x27;t have publishable evidence, but I ask you to trust me. Human to human.<p>I read newspapers, I don&#x27;t trust megaliked reels. But most don&#x27;t nowaday, and I saw real people fall to blatant lies and propaganda. It&#x27;s real. You can say anything, but I am convinced fully.</blockquote>
-<blockquote>
-<p>↳ reply — <em>jordanb</em>:</p>
-<blockquote>&gt; Meta (Instagram) certainly pushes one side in India. I am sure of it.<p>Watching all the techbros trying to crowd the stage to get in the shot with Modi when he went to SF was a precursor to them all crowding around Trump.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>leosanchez</em>:</p>
-<blockquote>[Meta apologises to India for restricting PM Modi&#x27;s post](<a href="https:&#x2F;&#x2F;www.reuters.com&#x2F;world&#x2F;india&#x2F;meta-apologises-india-restricting-pm-modis-post-2026-08-05&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reuters.com&#x2F;world&#x2F;india&#x2F;meta-apologises-india-re...</a>)</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>smallerfish</em>:</p>
-<blockquote>Even though I&#x27;ve shilled the book before, it&#x27;s an opportune thread to repeat the recommendation: if you haven&#x27;t, read Careless People. For much of her career at Facebook, the author worked for Joel Kaplan, who was VP of Global Public Policy and is now Chief Global Affairs Officer. She&#x27;s not particularly complimentary.</blockquote>
-<p><strong>Top #3</strong> — <em>rayiner</em>:</p>
-<blockquote>Brazil’s law requires Meta to take down certain posts by politicians. How does such a law not inevitably lead to the loser of the election complaining about “interference.”<p>Everyone really need to go back and read the work of America’s founding generation. The founders understood the importance of structural and procedural rules versus substantive rules. A structural rule is some thing like: no politician can use Facebook, or alternatively, Facebook isn’t allowed to censor any candidate for political office. Such rules can be implemented with little room for debate.<p>A substantive rule by contrast requires some person to make a substantive judgment about particular content. Such rules turn that decision maker into a gatekeeper. And as a practical matter, nobody trusts such decision makers to render impartial decisions. This is why, in the U.S., judges largely police procedure and legal instructions, while substantive decisions about guilt or liability are made by randomly selected juries. In the U.S., a highly educated federal judge isn’t even trusted to decide guilt for a misdemeanor that could put a single individual in prison for more than six months. Meanwhile other countries trust random people at companies to make decisions that could swing entire elections and affect millions of people. It’s lunacy.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>piva00</em>:</p>
-<blockquote>&gt; A structural rule is some thing like: no politician can use Facebook, or alternatively, Facebook isn’t allowed to censor any candidate for political office. Such rules can be implemented with little room for debate.<p>Except there&#x27;s debate all the time in the USA stemming from this originalist tradition from the founders&#x27; intent.<p>Like: the First Ammendment, there was debate about the role of money, is it speech? Culminating with Citizens United which is absolute lunacy.<p>The American system isn&#x27;t objectively better by any means, it&#x27;s just the one you&#x27;re used to.</blockquote>
-<p>↳ reply 2 — <em>tpm</em>:</p>
-<blockquote>&gt; Everyone<p>Why should everyone care about founders of a different country that&#x27;s not even working particularly well at this time.<p>&gt; while substantive decisions about guilt or liability are made by randomly selected juries<p>A system gamed as easily as any other one.<p>&gt; Meanwhile other countries trust random people at companies<p>They don&#x27;t trust them to do the right thing, which is why there is a law telling them what to do. The alternative is to ban privately-owned social networks (either all of them or at least those that don&#x27;t follow the laws).</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Why Windows 11 still ships with Windows 95's memory manager hidden inside it</title>
-      <link>https://www.windowslatest.com/2026/10/19/why-windows-11-still-ships-with-windows-95s-memory-manager-hidden-inside-it/</link>
-      <guid isPermaLink="false">hn3-50159726</guid>
-      <pubDate>Tue, 20 Oct 2026 00:14:03 +0000</pubDate>
-      <description>132 points, 92 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.windowslatest.com/2026/10/19/why-windows-11-still-ships-with-windows-95s-memory-manager-hidden-inside-it/"><strong>→ Article</strong></a> <small>(windowslatest.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50159726">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 92 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>LASR</em>:</p>
-<blockquote>Whatever one might think of Windows and Microsoft, the idea that you can still run apps that are 30+ years old is incredible.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pureagave</em>:</p>
-<blockquote>I worked on device connectivity in Windows core OS division in the Longhorn&#x2F;Vista push.  I came from the Linux and SunOS world before that.  It was simply crazy at the dedication and effort put in to make Windows backwards compatible with whatever old broken and poorly behaving USB and printer device.  We would have no-named cheap web cams that didn&#x27;t function to USB spec but &quot;worked&quot; in Windows 98 that needed to work in Vista while still implementing new secure driver models that broke all cheap device assumptions.  It was a long hard trek to get all those devices working.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nercht12</em>:</p>
-<blockquote>On behalf of those of us who play old Windows games on newer PCs, esp Vista, thank you!</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nostrademons</em>:</p>
-<blockquote>My kid&#x27;s a big fan of original StarCraft, which is now going on 28 years old.<p>I think you need an emulator to run Civ1, though.  My kid was asking if we could try it and I&#x27;m like &quot;I don&#x27;t think I can find that on Steam...&quot;</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>zamalek</em>:</p>
-<blockquote>By the way, the compatibility posture is now theoretical. I recently pointed out that Black and White was on archive.org to a friend. It didn&#x27;t work on their Windows 11.<p>(It did work under Wine with a  few small tweaks that I can&#x27;t remember)</blockquote>
-<p><strong>Top #3</strong> — <em>Dwedit</em>:</p>
-<blockquote>Why show a screenshot of a different game (SimCity 2000) when discussing SimCity?</blockquote>
-<blockquote>
-<p>↳ reply — <em>jonathanlydall</em>:</p>
-<blockquote>You can see my other comment, but short version is that I think it’s just content for the sake of content without the person actually really understanding the topic much more than most of their readers.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
