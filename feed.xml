@@ -4,7 +4,64 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 24 Oct 2026 05:37:03 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 10:43:31 +0000</lastBuildDate>
+    <item>
+      <title>Twelve years of distributed SQLite</title>
+      <link>https://philipotoole.com/twelve-years-of-distributed-sqlite/</link>
+      <guid isPermaLink="false">hn3-50217500</guid>
+      <pubDate>Sat, 24 Oct 2026 01:16:58 +0000</pubDate>
+      <description>211 points, 29 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://philipotoole.com/twelve-years-of-distributed-sqlite/"><strong>→ Article</strong></a> <small>(philipotoole.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50217500">→ HN comments</a> &nbsp;·&nbsp; 211 points &nbsp;·&nbsp; 29 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>AgentME</em>:</p>
+<blockquote>The comparison between rqlite and Litestream was interesting. (rqlite uses a consensus algorithm between nodes to keep them synced and allow changing the primary node, while Litestream just syncs itself to S3 so another node could take over with the data from there.)<p>I fully expected the article to mention how that&#x27;s about the same relationship between Cloudflare Durable Objects (which D1 is based on) and celld, an open source reimplementation of Cloudflare Durable Objects which writes to S3. But then the article treats D1 with a very sudden disinterest and goes nowhere with it.</blockquote>
+<p><strong>Top #2</strong> — <em>piterrro</em>:</p>
+<blockquote>Having used D1 in production - it&#x27;s not very reliable. There was a comment on HN from one of D1 devs [1] saying that D1 is a sql wrapper on top of durable objects that mimicks sqlite distributed like nature.<p>&gt; I&#x27;ll let you in on a sort of dirty secret:
+It&#x27;s almost always better to use Durable Objects storage, rather than D1. Even if you only want a single global database, it&#x27;s better to implement that as a singleton Durable Object, than by using D1. Because that&#x27;s all D1 itself actually is: a singleton Durable Object that exposes an API to its SQLite database. It&#x27;s just a wrapper.<p>[1] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48611834">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48611834</a></blockquote>
+<p><strong>Top #3</strong> — <em>vikrantrathore</em>:</p>
+<blockquote>Its funny, when I was reading part time parliament paper (paxos) and while learning zig and odin language created a pure paxos library and then the first application for that library was to build a multi-master sqlite. The two approaches I took are very different in case of zig I build zaxonlite (<a href="https:&#x2F;&#x2F;github.com&#x2F;insanai&#x2F;zaxonlite" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;insanai&#x2F;zaxonlite</a>) and have a benchmark on it that includes rqlite. It uses WAL replication as strategy. The second attempt I tried in odin is sqlodin (<a href="https:&#x2F;&#x2F;github.com&#x2F;insanai&#x2F;sqlodin" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;insanai&#x2F;sqlodin</a>), in this the system does not use WAL but run sql query on each node, as result subset of sql query in sqlite are not supported.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Evolving Threat: http2shell is an RCE in Node, Python, and more</title>
+      <link>https://nitter.click/AikidoSecurity/status/2113759110625906950?__galadriel=lPmlGl9id4oAd5UeBwMhlYKArHyr6lR2IDGujPwB5HV2kQ1aLoPWFd5A9sGuzNcmrp8fUso8qygmHcKTDZ8MNHWqQ3bDJcycV87xp_0VypzQLYj6O_RRHlZuQqj33oASGY2YLSoAiMjeOZN40h7Stf8AG7DPrGZbAPVKUXy36HoMudRbvwF3_r2uYNmfJMhpKzywQDM6Ab8</link>
+      <guid isPermaLink="false">hn3-50216791</guid>
+      <pubDate>Fri, 23 Oct 2026 23:30:17 +0000</pubDate>
+      <description>168 points, 88 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://nitter.click/AikidoSecurity/status/2113759110625906950?__galadriel=lPmlGl9id4oAd5UeBwMhlYKArHyr6lR2IDGujPwB5HV2kQ1aLoPWFd5A9sGuzNcmrp8fUso8qygmHcKTDZ8MNHWqQ3bDJcycV87xp_0VypzQLYj6O_RRHlZuQqj33oASGY2YLSoAiMjeOZN40h7Stf8AG7DPrGZbAPVKUXy36HoMudRbvwF3_r2uYNmfJMhpKzywQDM6Ab8"><strong>→ Article</strong></a> <small>(nitter.click)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50216791">→ HN comments</a> &nbsp;·&nbsp; 168 points &nbsp;·&nbsp; 88 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mirashii</em>:</p>
+<blockquote>I feel as though this should be googlebrotli2shell, not http2shell. Google deserves to take a bit of a reputational hit for this. This is a basic memory safety violation, from the same organization that does wuffs, that promotes Rust for memory safety, that has Carbon. zstd has high quality rust implementations and is from roughly the same time.<p>On top of that, the brotli library saw no releases for almost a full year, with the fix for this vulnerability being committed back in February. Google builds from main for all their projects, so were unaffected, but open source releases are a complete afterthought. Over 100 commits with miscellaneous fixes left languishing until a security incident forces a release.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>CodesInChaos</em>:</p>
+<blockquote>&gt; zstd has high quality rust implementations<p>On the decompression side yes, on the compression side the first good zstd rust port was announced <i>yesterday</i>. Until then, brotli was better supported in Rust than zstd.<p>But I agree, decompression libraries should be (mostly) memory safe nowadays, since that side is both easier to implement and more likely to be vulnerable.</blockquote>
+<p>↳ reply 2 — <em>pjmlp</em>:</p>
+<blockquote>Looking at the repo, some of the languages have their own safe implementations though, they don&#x27;t use the C implementation directly.<p>However I guess testing isn&#x27;t that great, probably.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ataraxia937</em>:</p>
+<blockquote>This one again feels overblown, at least for servers. I just checked an org of over 200 GitHub repos. Node, Python, and C#. None of them are vulnerable... because none of them actually call the Brotli decoder. It&#x27;s just not enabled by default on the server side, by the platforms themselves. This is much like the PHP bugs, where specific conditions have to be in play before you&#x27;re actually vulnerable.<p>For clients? Sure, that&#x27;s a bigger risk. Patch them. But bad guys aren&#x27;t attacking your clients unless the clients connect to them. Don&#x27;t stay up late to fix this.<p>(And yes, .NET is included here, because Microsoft&#x27;s Brotli module is a binding for Google&#x27;s vulnerable reference implementation.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>guac</em>:</p>
+<blockquote>Doesn&#x27;t node&#x27;s fetch call the decoder automatically for `br` responses? So any attacker controlled content that a server fetch&#x27;s may be vulnerable?</blockquote>
+<p>↳ reply 2 — <em>babuskov</em>:</p>
+<blockquote>How did you check? Is there are PoC or some kind of command to run?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>rvanlaar</em>:</p>
+<blockquote>It looks like brotli &lt;= 1.2.0 is vulnerable.<p>The python package has already been updated to 1.2.1. <a href="https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;brotli&#x2F;1.2.1&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;brotli&#x2F;1.2.1&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>Gigachad</em>:</p>
+<blockquote>This is the fix commit <a href="https:&#x2F;&#x2F;github.com&#x2F;google&#x2F;brotli&#x2F;commit&#x2F;b418fa81c48262a86a95332b0bc6d62c30aa78b6" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;google&#x2F;brotli&#x2F;commit&#x2F;b418fa81c48262a86a95...</a><p>Another day another out of bounds access in C code.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ks2048</em>:</p>
+<blockquote>Can someone point the heart of this fix? I see a bunch of change of naming of constants, etc</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>red75prime</em>:</p>
+<blockquote>As far as I understand it&#x27;s line 1978: `goto saveStateAndReturn;`. Early return that prevents further processing.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>CVE Tracker</title>
       <link>https://cve.0xosprey.com/</link>
@@ -166,6 +223,72 @@ British vs American sensibilities, I expect.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Air Purifiers as White Noise Machines</title>
+      <link>https://www.jefftk.com/p/air-purifiers-as-white-noise-machines</link>
+      <guid isPermaLink="false">hn3-50212507</guid>
+      <pubDate>Fri, 23 Oct 2026 17:28:36 +0000</pubDate>
+      <description>134 points, 121 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.jefftk.com/p/air-purifiers-as-white-noise-machines"><strong>→ Article</strong></a> <small>(jefftk.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50212507">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 121 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>logged4upvoting</em>:</p>
+<blockquote>I&#x27;ve been using the air purifier as a white noise machine for 5 years and I couldn&#x27;t be happier. Currently sitting in a room with PM2.5 at 1 µg&#x2F;m³<p>I bought the Ikea (FÖRNUFTIG) because I was worried that lesser known brands on Amazon might go out of business, making it hard to find replacement filters later</blockquote>
+<p><strong>Top #2</strong> — <em>senderista</em>:</p>
+<blockquote>An air purifier is the best noise machine for me, much better than the white noise machines with the tinny speakers. Even the brown noise setting on those isn&#x27;t nearly deep enough to let me sleep.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>olyjohn</em>:</p>
+<blockquote>The bigger the fan the better, IMO. I really love those cheap square box fans... It&#x27;s hard to beat that deep, low hum that small speakers and small fans just can&#x27;t replicate.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dylan604</em>:</p>
+<blockquote>There are 20&quot; square box fans that have a built in slot for a 20x20x1 filter. It&#x27;s advertised as having a slightly more powerful motor. It is a good noise machine while also getting the added benefit of filtered air instead of just noise</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>rootusrootus</em>:</p>
+<blockquote>Totally agree.  I&#x27;ve never liked the speaker generators.  The old school DOHM models are way better because they do not use a speaker, they have a fan inside.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>arjie</em>:</p>
+<blockquote>What are people&#x27;s target AQIs? I have indoor monitors in our high-rise building in SF and live 100 m from the freeway and we have:<p><pre><code>    PM2.5: 2.6 µg&#x2F;m³
+    PM10: 0.5 µg&#x2F;m³
+    VOC index: ~97
+    CO₂: ~505 ppm
+</code></pre>
+That&#x27;s the baseline. When we&#x27;re cooking, like now, it&#x27;s:<p><pre><code>    PM2.5: 10.8 µg&#x2F;m³ (AQI ~46)
+    PM10: 17.5 µg&#x2F;m³
+    VOC index: 122
+    CO₂: 572 ppm
+</code></pre>
+None of those seem particularly concerning. We have a gas range, and 15 min past the end of cooking everything is fine. I must imagine that most people don&#x27;t live right next to the freeway so they probably have even better air quality except during wildfire season.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gpm</em>:</p>
+<blockquote>CO2 - I&#x27;m thrilled with anything less than 800 ppm (half justified by being the lowest number I&#x27;ve ever seen a study suggest <i>might</i> have health effects, half justified by being at a point where I personally don&#x27;t notice that I&#x27;m more drowsy).<p>PM2.5 - My impression is the health risks here are more cumulative exposure (and include things I&#x27;d like to go without in my life, like alzheimers) and a pretty straight line of &quot;lower is better all the way to zero&quot;. The WHO&#x27;s guideline is mean exposure of 5 µg&#x2F;m³ so I guess I&#x27;d adopt that if I had to put a number on it. (But it&#x27;s a mean, I wouldn&#x27;t worry about briefly exceeding it)<p>PM10 - No real opinion (I&#x27;d rather worry about PM2.5)<p>VOC index - I&#x27;m not sure this is a standardized thing, but the version I&#x27;ve come across is an index <i>relative to the average that particular sensor has seen in the last 24 hours</i>. So there&#x27;s no standard possible here.<p>---<p>As for a gas range I would worry about NOX considering the studies with them causing and aggravating asthma. That said your CO2 levels are low so I suspect you might have sufficient ventilation that this isn&#x27;t a huge issue for you (especially if that ventilation is in the form of a fume hood over your stove that you actually use).</blockquote>
+<p>↳ reply 2 — <em>amluto</em>:</p>
+<blockquote>VOC index means literally nothing.  (I&#x27;ve read the datasheet, implemented some kludges to log raw data, and contemplated the formulas.  The data is high-pass filtered.  You literally cannot conclude anything about a single measurement if you assume the sensor is somehow magically perfect.  You might conclude that there is more VOC (or less -- not all VOCs have the same <i>sign</i> in their effect) when cooking than when not cooking.)<p>I target 0 PM2.5, but this only necessarily makes sense as a target if you have the ability to filter your home&#x27;s supply air.  And a good vent hood should be able to avoid any detectable bump while cooking (although a vent hood without filtered makeup air may cause a bump due to increased infiltration of exterior air).</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Can we replace a $150k Looker with a bucket of HTML files?</title>
+      <link>https://david.lequin.dev/blog/bi-software-is-dead/</link>
+      <guid isPermaLink="false">hn3-50212320</guid>
+      <pubDate>Fri, 23 Oct 2026 17:15:03 +0000</pubDate>
+      <description>129 points, 76 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://david.lequin.dev/blog/bi-software-is-dead/"><strong>→ Article</strong></a> <small>(david.lequin.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50212320">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 76 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bushido</em>:</p>
+<blockquote>&gt; A BI tool is mostly a way to turn a query into a picture, and a picture now costs about $0.50 of tokens. It gets hard to justify a $150k licence for that part<p>That is an awfully simplified view of BI. In my experience, most companies struggle to define what is important, what needs to be measured, and how those measurements should be used to improve business.<p>While businesses try to work these details out, they try getting their analysts to in the author&#x27;s words print out good pictures. But the BI tools really exist to make it easy for analysts to navigate hairy internal situations.<p>Producing a picture or HTML more easily is not going to solve the decisioning problem. If anything it might make it worse.<p>In the end, it&#x27;s going to cost a lot more than 50 cents a picture.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tomwphillips</em>:</p>
+<blockquote>Agreed.<p>For ages the data industry has obsessed over tooling when really the biggest impact comes from the organisational&#x2F;people aspects - achieving consensus on metrics, dimensions, key entities. In short, governance. You can&#x27;t buy that you like can a SaaS product.</blockquote>
+<p>↳ reply 2 — <em>abirch</em>:</p>
+<blockquote>I have loved D3 for more than a decade but I&#x27;d never recommend it to a client because maintenance requires a large learning curve. Not any more, ${YourAIAgent} + D3 is awesome.</blockquote>
+<p>↳ reply 3 — <em>flowerlad</em>:</p>
+<blockquote>&gt; most companies struggle to define what is important, what needs to be measured<p>Today that’s just a chat session, see <a href="https:&#x2F;&#x2F;reportr.com" rel="nofollow">https:&#x2F;&#x2F;reportr.com</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>phone_book</em>:</p>
+<blockquote>Over a decade ago i worked at a company with a BI tool that was exactly this, minus the AI of course. it was just PHP pages backed by embedded SQL built by a non engineer. anytime someone wanted a different slice of data, the person just copied an existing page and swapped out the sql and the column names. URL query string was used for the different parameters of the SQL statement, i forget if it was open to sql injection but it was an internal tool only. even after implementing a BI tool everyone still used the PHP pages because it was faster and easier to just bookmark the specific page you want with the data you wanted.<p>much like low code tools, most people dont want to mess with self serve BI. AI might help with that but i think the tool in the article opens the door for people creating slightly different versions of the same thing. also, claude is awful at visualizations. every one i see looks the same, crammed full of bad charts and too much text, poor color choices, and no real value in terms of story. still, this is an interesting implementation of that concept.</blockquote>
+<p><strong>Top #3</strong> — <em>SeanAnderson</em>:</p>
+<blockquote>Ayeee! We&#x27;re actively doing this right now at my company. One of the more clever engineers has tackled replacing a $300k&#x2F;yr Looker subscription, which we&#x27;ve paid for a decade, with a homegrown implementation sponsored by Claude.<p>And it seems like we&#x27;re succeeding! To be fair, we weren&#x27;t making good use of Looker&#x27;s features and so the problem was easier than expected... but the core idea was validated in a couple of weeks, we&#x27;ve had just one person on the project part-time for a couple of months, and we told Looker (well, Google) we won&#x27;t be renewing yesterday.<p>We&#x27;re just doing a 1:1 conversion to start with the hope that our customers barely notice the change. Afterward, we&#x27;ll re-envision our dashboards with the new found flexibility of not serving them via iframe.<p>Crazy times!</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Kimi K3.1 Pro and K3.1 Pro Highspeed</title>
       <link>https://www.kimi.ai/blog/kimi-k3-1-pro</link>
       <guid isPermaLink="false">hn3-50212065</guid>
@@ -198,6 +321,80 @@ British vs American sensibilities, I expect.</blockquote>
 <p>↳ reply 2 — <em>SkiFire13</em>:</p>
 <blockquote>From that link:<p>&gt; reasonably priced when comparing to other models of similar price<p>???</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>UUIDv7: Timestamps aren’t time-ordered and other oddities</title>
+      <link>https://alexsci.com/blog/uuidv7-is-weird/</link>
+      <guid isPermaLink="false">hn3-50211746</guid>
+      <pubDate>Fri, 23 Oct 2026 16:39:45 +0000</pubDate>
+      <description>150 points, 120 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://alexsci.com/blog/uuidv7-is-weird/"><strong>→ Article</strong></a> <small>(alexsci.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50211746">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 120 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ricardobeat</em>:</p>
+<blockquote>This is a misunderstanding of the purpose of UUIDv7. The whole point is to keep rows physically close, so you can very quickly extract an entire time range from a number of database shards, with minimal reads and compute. And be able to generate them without a centralized server. That&#x27;s all there was to it, and something you&#x27;d only worry about when serving billions of records every hour.<p>They are also <i>not</i> supposed to be used as public IDs, just like you wouldn&#x27;t use auto-incrementing IDs that way.<p>(I wrote a library for this 13y ago [1], around the time Twitter, Instagram et al started reaching enough scale to think about this kind of optimization)<p>[1] <a href="https:&#x2F;&#x2F;github.com&#x2F;ricardobeat&#x2F;unik" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ricardobeat&#x2F;unik</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>grey-area</em>:</p>
+<blockquote>If they’re not supposed to be public ids, what advantage do they have over serial integers for a central db (the vast majority of the web runs this way).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tibbar</em>:</p>
+<blockquote>Others have mentioned their difficulty in distributed systems; but even for traditional enterprise workloads, serial IDs don&#x27;t scale very well. They force all writes through a single, transactional bottleneck, so you can&#x27;t shard your data. UUIDv7 and friends lets you guarantee that records get a unique identifier without that coordination cost. There are also scenarios where you need to have access to an ID before the write to the database succeeds.<p>Of course, lot of event&#x2F;log data never hits a relational database at a all.. it gets piped right to a data lake. But those records still need IDs, too.<p>Many years ago, I was working at a small shop that used Oracle databases. We had different tenants for different customers. However, we still wanted records across different tenants to have unique IDs, so (as I recall) all writes to all tenants phoned out to a central sequence generating function. This became a major source of latency for us. This is jut one of many ways that serial IDs become annoying if you&#x27;re doing anything other than running a 1990&#x27;s-style RBDMS on a single server.<p>Anyway, once you try to solve this problem, there are lots of schemes that give you (almost certainly) unique IDs without coordination. Whether you pick UUIDv4 or v7 etc.etc depends on other factors. But one nice feature of UUIDv7 is that it is kinda, sorta serial, which is helpful for e.g. partitioning to work well.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>l5870uoo9y</em>:</p>
+<blockquote>Do you then maintain a separate column with a UUID for public ids?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>hackingonempty</em>:</p>
+<blockquote>&gt; If you need to list things ordered by creation time very often, it’s useful if the primary index gives that behavior, removing the need for another index.<p>I thought the main reason UUIDv7 was created with a time component is to keep temporally related rows together in the index pages.  Randomly distributed row ids seem OK until the entire index no longer fits in RAM.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>NyxWulf</em>:</p>
+<blockquote>It&#x27;s not just index pages.  Generally databases write records into pages, which are then grouped into extents.  If the primary key gives an ordering you can create new pages and start filling them up in an orderly fashion.  If it&#x27;s random, you are doing random inserts into pages everywhere all the time, then you start running out of room in pages and have to start splitting them.  UUIDv7 solves the most painful parts of this problem in general and is a much better option for a Primary Key than UUIDv1-4.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>srcreigh</em>:</p>
+<blockquote>&gt; Generally<p>Except for Postgres</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>thayne</em>:</p>
+<blockquote>Postgresql uses pages too. The records aren&#x27;t kept in any kind of order, but the indexes are. So uuidv7 is still useful for postgresql because it means inserts are less likely to be spread across many pages in the primary index.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pkulak</em>:</p>
+<blockquote>Yeah, this is 99% of the benefit for me. And it&#x27;s not theoretical. My company saw performance issues using pure random IDs with MySQL way back in 2015; and consequently rolled our own UUIDv7 that we&#x27;re still using to this day.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>btown</em>:</p>
+<blockquote>One of my favorite things about UUIDv7: the package <a href="https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid7&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid7&#x2F;</a> does <i>not</i> implement compliant UUIDv7s, it&#x27;s from a wholly incompatible draft format. That was not a fun debugging session.<p><a href="https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid-utils&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid-utils&#x2F;</a> is what you want :)<p><a href="https:&#x2F;&#x2F;github.com&#x2F;stevesimmons&#x2F;uuid7&#x2F;issues&#x2F;1" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;stevesimmons&#x2F;uuid7&#x2F;issues&#x2F;1</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nextaccountic</em>:</p>
+<blockquote>&gt; the package <a href="https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid7&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid7&#x2F;</a> does not implement compliant UUIDv7s,<p>This package should be removed from pypi or somehow give warnings</blockquote>
+<p>↳ reply 2 — <em>cpburns2009</em>:</p>
+<blockquote>&gt; &quot;... 48 bits of randomness&quot;<p>That&#x27;s an awful waste for a 128 bit object!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>How is music possible</title>
+      <link>https://www.henrikkarlsson.xyz/p/music</link>
+      <guid isPermaLink="false">hn3-50211719</guid>
+      <pubDate>Fri, 23 Oct 2026 16:38:17 +0000</pubDate>
+      <description>135 points, 89 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.henrikkarlsson.xyz/p/music"><strong>→ Article</strong></a> <small>(henrikkarlsson.xyz)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50211719">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 89 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>triMichael</em>:</p>
+<blockquote>I&#x27;ve had a theory for a while now that music is related to Kolmogorov complexity, or in other words how compressible it is. Random noise that we find unpleasant is very incompressible. On the other hand, simple sound patterns that we find boring such as Do Re Mi is very compressible. What we call music sits in the middle, and is maximizing the amount of signal. In this way, we can view humans as information seeking machines, which is why we like music.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tsimionescu</em>:</p>
+<blockquote>While this might explain certain aspects of music, it doesn&#x27;t explain the strong emotional reaction that music produces, even without lyrics. Kolmogorov complexity can&#x27;t explain why Ode to Joy evokes so different feelings from Requiem, and why these feelings generally persist if you play the same notes with the same timings on very different instruments.</blockquote>
+<p>↳ reply 2 — <em>LEDThereBeLight</em>:</p>
+<blockquote>It is this way with all art. If you ask someone to describe a work which is “good art” or “well designed”, it usually takes longer to describe than things which are considered too simple (easily compressed) and also longer to describe than things which are considered too random (easily compressed). But not all things which take this Goldilocks amount of words to describe are considered well designed, just some of them. So art is also more than that.</blockquote>
+<p>↳ reply 3 — <em>4dregress</em>:</p>
+<blockquote>Add in that it only works for us in conditions that approximate Earths atmosphere.<p>If you could hear music on the surface of Mars without a space suit, I’m pretty sure it would sound quite different.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>andai</em>:</p>
+<blockquote>The article mentioned this study:<p><i>The minor third communicates sadness in speech, mirroring its use in music</i><p><a href="https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;20515223&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;20515223&#x2F;</a><p>This reminded me of how I keep hearing that major doesn&#x27;t <i>really</i> sound happy, and minor doesn&#x27;t <i>really</i> sound sad, it&#x27;s purely cultural. (But Bouba <i>does</i> really sound round... :)<p>That doesn&#x27;t sound right to me, but in that case maybe the speech thing is cultural too? It would be interesting to test it in other cultures. (Preferably ones that haven&#x27;t been exposed to western music, if there still is such a thing!)</blockquote>
+<blockquote>
+<p>↳ reply — <em>otabdeveloper4</em>:</p>
+<blockquote>Rock and metal bangers are all in minor, and they&#x27;re certainly not &quot;sad&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>recursive</em>:</p>
+<blockquote>Otherwise unspecified &quot;major chords&quot; are generally assumed to be major triads, and thus not tetrachords at all, which require four notes.  I tried finding this section in the sources, but I couldn&#x27;t find it.  I wonder what&#x27;s meant by this.  Could it really mean that major triads are less pleasant than all tetrachords?  That&#x27;s surprising, since many tetrachords <i>contain</i> major triads.<p>&gt; Major chords (which is what people who grew up hearing Western music tend to rate as positive), the Kalash instead describe as “strange,” rating them as less pleasant to listen to than “the most dissonant [of] all the possible tetrachords possible within the octave”.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Today, we hacked what we'd set out to hack: the iPhone</title>
@@ -3550,236 +3747,6 @@ Excerpt -
 Across 6,237 working programs, exactly ten failed a security check. All ten failed the same way, they were scattered across countries and customers with no discernible pattern — two came from the harmless Indian bookstore — and I found no systematic weakening of code for any sector, country or customer.
 ```
 public free link - <a href="https:&#x2F;&#x2F;medium.com&#x2F;ai-advances&#x2F;do-chinese-ai-models-like-deepseek-and-qwen-write-weaker-code-for-some-customers-84cfa7444b24?sk=a7ee5f003ddfbdd604c1b121275cee0a" rel="nofollow">https:&#x2F;&#x2F;medium.com&#x2F;ai-advances&#x2F;do-chinese-ai-models-like-dee...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Whatever Happened to Fire Escapes</title>
-      <link>https://practical.engineering/blog/2026/10/20/whatever-happened-to-fire-escapes</link>
-      <guid isPermaLink="false">hn3-50178455</guid>
-      <pubDate>Wed, 21 Oct 2026 10:14:43 +0000</pubDate>
-      <description>168 points, 130 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://practical.engineering/blog/2026/10/20/whatever-happened-to-fire-escapes"><strong>→ Article</strong></a> <small>(practical.engineering)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50178455">→ HN comments</a> &nbsp;·&nbsp; 168 points &nbsp;·&nbsp; 130 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Ensorceled</em>:</p>
-<blockquote>Everything related to fires got better: more and better smoke and CO detectors, interior sprinklers, regulations around flammable clothes, bedding and mattresses, reduced smoking rates, increased awareness, faster response times, closure of firetrap rooming houses (fwiw: closing rooming houses contributes to the homelessness problem), better apartment inspections ...<p>We don&#x27;t really need multiple exits in case of fire because fires are occurring less often and people are getting plenty of warning.<p>We&#x27;re facing the issue in Ontario where firefighters are bored out of their minds and are being used as first responders for anything and everything.  They show up to random fender benders.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>scottLobster</em>:</p>
-<blockquote>Ha, in the US but I had an issue with my chimney where there a strong smoke smell in the basement and an inexplicable hot spot on the back of my fireplace (no fire had been lit recently, and what creosote there was wasn&#x27;t ignited).  Not knowing what else to do, I called the fire deparment&#x27;s non-emergency line and explained the situation.<p>They sent THREE full fire engines with sirens blaring and like 30 guys in full gear to my house, chief came out too.  All to smash out the back of the fireplace and dispose of some smoldering embers that had collected behind it.<p>Seemed like an overreaction, now I&#x27;m wondering if they were just bored and decided to use me as a training exercise. Granted I&#x27;m also just some goober on the phone, they&#x27;re under no obligation to assume I&#x27;ve reasonably assessed the situation.<p>Re the &quot;fire&quot;: Turns out the original builders of my chimney skimped on bricks, and left a gap between the back of the fireplace and the exterior wall that shouldn&#x27;t have been there.  We were using the fireplace on the weekends, so some embers that cooled on their way up the chimney and fell back down collected in the gap, and decided to cook off a couple of days later.  Weather was getting warmer, so instead of going up the chimney the resulting smoke down-drafted back into the house.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nostrademons</em>:</p>
-<blockquote>This seems like the kinda event that could very well have been disastrous, where a real fire response was actually warranted.  The Oakland Hills firestorm of 1991 was caused by embers from a fire that had been put out the previous day but reignited in hot weather.  Killed 25 people, injured 150, and destroyed over 3000 homes.  One of the homes destroyed was the creator of SimCity, and so it also spawned the Oakland fire disaster scenario in SimCity 2000, as well as serving as the inspiration for <i>The Sims</i>.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>syngrog66</em>:</p>
-<blockquote>Will Wright impacted?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>sllabres</em>:</p>
-<blockquote><i>We don&#x27;t really need multiple exits</i> in case of fire because fires are occurring less often and people are getting plenty of warning.<p>I think this is <i>much</i> to broad.<p>Even the film does not suggest eliminating multiple exits; rather, it points out that it took a long time to replace external fire escapes with better alternatives. Specifically, internal, fireproof staircases that offer greater protection and are used regularly and therefore familiar to those fleeing.<p>When the redundancy is gone (not available, blocked, insufficient spaced) this can quickly lead to a disaster. Here are some recent examples<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2026_Crans-Montana_bar_fire" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;2026_Crans-Montana_bar_fire</a><p>[2] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kiss_nightclub_fire" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kiss_nightclub_fire</a><p>[3] <a href="https:&#x2F;&#x2F;gpe.wikipedia.org&#x2F;wiki&#x2F;2023_Johannesburg_building_fire" rel="nofollow">https:&#x2F;&#x2F;gpe.wikipedia.org&#x2F;wiki&#x2F;2023_Johannesburg_building_fi...</a></blockquote>
-<p>↳ reply 3 — <em>tempest_</em>:</p>
-<blockquote>They are also often out there narcaning people when paramedics are not available (which I am sure they are not super pumped about).<p>Honestly I am not really upset about that. Train them to support the community in other ways while they hang out waiting for a fire. People are always raging that police cant handle mental health incidents, train them for that (heh I am sure firefighters would not be pumped about that but you get the idea).</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>lbriner</em>:</p>
-<blockquote>Interesting article.<p>I went to a Victorian era school in London and it had one of those cast iron fire escapes going from the ground up to the 2nd floor (3rd floor to the Americans) and it was a good deal of fun to play on!<p>In my last year of school, it was cut off completely and not replaced. Hmm, weird. Apparently it was unsafe and someone decided it wasn&#x27;t needed because there were two other stairwells.<p>Fast-forwards to after my graduation and returning to work at the school as a teacher. The top floor is out of bounds to everyone. Why? The fire escape is missing :-)</blockquote>
-<blockquote>
-<p>↳ reply — <em>Symbiote</em>:</p>
-<blockquote>During a real fire at my school, also in the UK, a cast iron fire escape partially collapsed.  I don&#x27;t remember any mention of injuries, and it was replaced with a new, steel staircase within a few weeks.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>sgarman</em>:</p>
-<blockquote>I liked this HN post from 2018 <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=35885982">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=35885982</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Eight Bits of Trust; eMudhra's CA keys cracked in milliseconds</title>
-      <link>https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/</link>
-      <guid isPermaLink="false">hn3-50177916</guid>
-      <pubDate>Wed, 21 Oct 2026 09:08:08 +0000</pubDate>
-      <description>678 points, 321 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/"><strong>→ Article</strong></a> <small>(scotthelme.co.uk)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50177916">→ HN comments</a> &nbsp;·&nbsp; 678 points &nbsp;·&nbsp; 321 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jasonjayr</em>:</p>
-<blockquote>&gt; It&#x27;s fortunate that the steps required here aren&#x27;t particularly complicated for the devices you can update, and the advice essentially boils down to &#x27;update them&#x27;. The problem is the devices you can&#x27;t update or update easily.<p>&gt;    Update everything that ships a CA bundle: your OS ca-certificates package, certifi, Node, Homebrew, and rebuild your container images once the base images pick up the change.<p>&gt;    Devices you can&#x27;t update are the hard part. Routers, printers, TVs, appliances with frozen firmware will trust these certificates until expiry, which is July 2039...<p>Quick -- we need to MITM all the smart TVs so they can be jailbroken in one fell swoop!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>__MatrixMan__</em>:</p>
-<blockquote>Devices that are smart enough to talk to the internet but not smart enough to let the user install their own certs should not exist.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tonyhart7</em>:</p>
-<blockquote>&quot;let the user install their own certs should not exist&quot;<p>are you sure that this is not opening to more attack vector ?????</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>__MatrixMan__</em>:</p>
-<blockquote>Yes. We&#x27;re giving the user the ability to protect themselves from the vendor.<p>Your logic only makes sense if the user is your enemy.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>panarky</em>:</p>
-<blockquote>It&#x27;s easy enough to apt upgrade, and curl shows it&#x27;s not vulnerable.<p>But what about python pip and node and bun which bundle their own certs?<p>And then you&#x27;ll have a compiled binary like Claude Code, which was built with bun, and has its vulnerable certificates bundled in, ignoring the system certs.</blockquote>
-<p>↳ reply 3 — <em>ezoe</em>:</p>
-<blockquote>These devices are already very weak and many of them even do non-TLS updates with no signing check anyway.<p>If it has been so weak already, it can&#x27;t be weaker.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jlmorton</em>:</p>
-<blockquote>In retrospect, having 100 trusted certificate authorities might have been excessive.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tclancy</em>:</p>
-<blockquote>In retrospect, not having a tiny competency check may have been an oversight.</blockquote>
-<p>↳ reply 2 — <em>Scott_Helme_</em>:</p>
-<blockquote>That really depends how you define &quot;trusted certificate authorities&quot;.<p>If you&#x27;re talking about root certs then it&#x27;s almost 350 currently trusted by at least one major operator.<p>If you include intermediates, you&#x27;re talking more than 3,600!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>irusensei</em>:</p>
-<blockquote>Okay hear me out. People are complaining about unpatcheable IOT device and thats indeed concerning. But can’t we use the bad keys to generate seemingly value certificates that can be used to jailbreak these devices?<p>EDIT: seems its already happening? <a href="https:&#x2F;&#x2F;x.com&#x2F;otomir23&#x2F;status&#x2F;2112697830687047918" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;otomir23&#x2F;status&#x2F;2112697830687047918</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Scott_Helme_</em>:</p>
-<blockquote>Yeah this is absolutely possible, and while they are a few good opportunities like this, it also means that someone else can decrypt all of your traffic in the same way.</blockquote>
-<p>↳ reply 2 — <em>reisse</em>:</p>
-<blockquote>Yeah, it&#x27;s happening in the wild already. Seen more cases like that.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The 1.5°C goal of the Paris Agreement is no longer viable</title>
-      <link>https://unric.org/en/unep-emissions-gap-report-2026-1-5-degree-overshoot/</link>
-      <guid isPermaLink="false">hn3-50177911</guid>
-      <pubDate>Wed, 21 Oct 2026 09:07:49 +0000</pubDate>
-      <description>584 points, 715 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://unric.org/en/unep-emissions-gap-report-2026-1-5-degree-overshoot/"><strong>→ Article</strong></a> <small>(unric.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50177911">→ HN comments</a> &nbsp;·&nbsp; 584 points &nbsp;·&nbsp; 715 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mbgerring</em>:</p>
-<blockquote>I’m 38 years old, and I’ve worked in climate tech for the last 12 years. In my relatively short lifetime, and my relatively short career, I have seen the environment for political action, and funding for climate solutions, fluctuate maybe half a dozen times.<p>The physics, however, don’t change, and neither does the task in front of us.<p>I just spent ten months finding a job, the longest and most difficult job search of my career. It was hard because the macro environment is terrible, but also because I insisted on finding a role working on clean energy hardware.<p>At a time when basically all VC funding, and in many ways the entire productive capacity of the economy, is shifting to AI, it would have been smarter in some respects to just pivot to AI. I sat out the crypto bubble too, in which some of my peers made a lot of money by working on projects that were either useless, or straightforward scams.<p>We crossed the 1.5 degree threshold because the money can’t help itself. The slow, steady work of transitioning away from fossil fuels is never going to be as profitable, as quickly, as the various forms of gambling and addiction that have driven the tech industry for most of my lifetime.<p>But you, individually, can make the choice to keep your eye on the ball. You can commit to working on this problem until it’s done, no matter what. You can choose to find the others to organize and prepare, so that the ideas closest at hand when the next crisis comes are yours.<p>It’s the best solution I’ve come up with so far, and in spite of the challenges, it’s still working.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>palata</em>:</p>
-<blockquote>&gt; You can commit to working on this problem until it’s done, no matter what.<p>My opinion is that the very first things people should do are:<p>1. Get a little bit informed. It doesn&#x27;t require a PhD, it could be done instead of a fraction of the time they spend scrolling bullshit on their smartphone.<p>2. Accept the situation. Too many are in denial, with variants of &quot;it&#x27;s not that bad&quot; or &quot;it&#x27;s because those in power are stupid, I would certainly fix the world&quot; or &quot;it&#x27;s because of foreigners&quot;.<p>3. Vote accordingly.<p>It&#x27;s too easy to say &quot;we don&#x27;t have any viable candidates&quot; and &quot;I don&#x27;t understand why they haven&#x27;t fixed the problem yet, they must be stupid (somehow implying that &quot;in all likelihood I would have solved it by now&quot;)&quot;.<p>In relatively-functional democracies, the reason the people doesn&#x27;t have viable candidates is because the people does not vote for competent people. Either because they vote for competent <i>politicians</i> (with modern politics being about getting elected, not exactly solving big problems) or because they proudly vote for extremists (which is of course even worse).<p>In a democracy, the people <i>is</i> the government. When the people says &quot;the government is stupid&quot;, it reflects on the people. Maybe they&#x27;re right: the government is stupid, because the people is stupid and elects stupid people, and that&#x27;s why we&#x27;re screwed.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mbgerring</em>:</p>
-<blockquote>I went from voting to electoral campaigns to the kind of activism that gets you arrested to working in climate as an engineer. I landed here because the first three were insufficient. I still support and encourage all of it, but the best you can get from voting is creating a better regulatory and funding environment for the necessary engineering and implementation work.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lukan</em>:</p>
-<blockquote>&quot;to the kind of activism that gets you arrested &quot;<p>Glueing to the streets and alike?<p>I never found that to be helpful. Preventing chopping down forests to open new coal strip mining on the other hand .. I would be with you.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>littlecranky67</em>:</p>
-<blockquote>I think it is fundamentally a demographic problem. We have a growing aging population in the worst-offending western countries, soon to be the majority voters (in some countries we are approaching 50% voters above age of 50). Wealth and fortune tend to come with age, so the same group sits on the assets needed to make a change (and are the worst offenders regarding CO2 production). At the same time, this group cares the least about the future livability of the planet, as the worst symptoms will only start to show when they have already passed away.<p>That is a fundamental problem that you will not solve by asking youger folks, who are actually affected and have all reason to agree and comply, to make a change.</blockquote>
-<p>↳ reply 3 — <em>sporkland</em>:</p>
-<blockquote>&gt; At a time when basically all VC funding, and in many ways the entire productive capacity of the economy, is shifting to AI,<p>Really enjoyed this snippet of your post.  Not sure why, but being in the weeds with it, it had never really looked like this is an industrial revolution style retooling of how we work, with the pain and benefits that come along with it.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>pelagicAustral</em>:</p>
-<blockquote>I would not say people have given up. The problem is that this search for saving the planet and humanity all together is hard to understand for the common folk, much in the same way other banners that have been imposed on people in the past 2 decades.<p>Common people want to go to work and know that they have a working transport system, that they can walk in between a few streets and feel safe, that they can have enough money for a mortgage and to feed themselves and their families.<p>None of these things are exactly addressed by putting solar panels, and wind farms all around, especially when the cost of fuel keep rising. When the security of the grid on a once thought-of super-power like UK is constantly put in question.<p>The common people doesnt care much about these topics and explanations because they don’t have time for it, because they do still need to get on with life. It’s generally youth and retirees the ones gluing themselves to the pavement, have you noticed? whats in common in these two groups is they can both still afford to be idealists.<p>Then you turn on the TV and see how much damage is being done to the environment in other regions, and so, why do I need to suck it up in my jumper all winter then? Why am I the one using paper straws that break before I finish my drink?<p>This whole thing was always a tough sale, but it’s gotten even harder in the current political climate.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tnecio</em>:</p>
-<blockquote>&gt; None of these things are exactly addressed by putting solar panels, and wind farms all around, especially when the cost of fuel keep rising.<p>Don&#x27;t want to nitpick but this touches on a topic I think worth discussing. I feel that for many people, investments in green energy are a needless sacrifice we do for the sake of the environment (and a naive sacrifice at that since other countries can just keep on emitting their greenhouse gases anyway). It follows, since we invest in green this must have its costs elsewhere like in higher gas prices and obviously then people ask -- why should we keep doing this when we are hit with economic downturn?<p>But really green energy is all about the unaccounted for future costs. We can burn fossil fuels now but we are going to be in a whole lot of trouble when they become more expensive and dealing with their side effects (climate change) will become expensive as well. Green energy is a solution - you don&#x27;t need to care about high fuel prices and what happens in Middle East if you can get all energy from the sun and wind.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>presentation</em>:</p>
-<blockquote>Well the solution is just that green energy is already cost competitive with fossil fuels, so we just need to let the market do its thing and have people buy the cheap thing, which is increasingly green energy.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mbil</em>:</p>
-<blockquote>Your point about plastic straws reminded me of this interesting article Just Bury Your Trash [0]. There’s an argument to be made that recycling many types materials (except metal) is not worth it. Eg since recycled plastic is more expensive than virgin plastic, it might be better if the money we collectively spend on it could be redirected to something that’s more beneficial to the environment.<p>And while others have pointed out that plastic straw bans are not about climate change, I suspect many people think they are, lumping together “climate change”, “the environment”, and “pollution” into a monolithic thing. “I’m doing my part” with a plastic straw then as they eat beef, drive an SUV, and fly to vacation (disclaimer I do some of those things).<p>[0] <a href="https:&#x2F;&#x2F;worksinprogress.co&#x2F;issue&#x2F;just-bury-your-trash" rel="nofollow">https:&#x2F;&#x2F;worksinprogress.co&#x2F;issue&#x2F;just-bury-your-trash</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>js8</em>:</p>
-<blockquote>Unfortunately, even if we exceed and then bring temperature back to 1.5 degree over preindustrial, the damage has already been done. Many ecosystems and species will be lost, and many of the feedbacks (for example arctic sea ice) have hysteresis in them which will not get us to the same state even though nominally our temperature will be lower again. And because of hysteresis, larger reduction in CO2 might be required to get us back to 1.5 degrees.<p>That&#x27;s why all this CO2 capture and drawdown using some kind of unspecified, new technology, is such a distraction. Ideally we shouldn&#x27;t release the carbon in the first place.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>palata</em>:</p>
-<blockquote>&gt; the damage has already been done<p>&quot;I lost a finger, the damage has already been done. No need saving my arm, you can go ahead and cut it&quot;.<p>Unless you meant &quot;Damage has already been done, there is a lot we won&#x27;t get back. And that&#x27;s exactly why we should now fight to preserve what we can&quot;?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>js8</em>:</p>
-<blockquote>That&#x27;s not what I am saying at all, I am just pointing out that venturing to 2 degrees (or more) and back to 1.5 degrees incurs the cost. Maybe it&#x27;s well-known at this point, and I am just stating the obvious; but it&#x27;s not my general impression.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>palata</em>:</p>
-<blockquote>I am not sure what you are saying then, with this:<p>&gt; Unfortunately, even if we exceed and then bring temperature back to 1.5 degree over preindustrial, the damage has already been done.<p>We won&#x27;t be able to get back to 1.5, and in fact the way it&#x27;s going we&#x27;re still <i>accelerating</i> our emissions, so it will get a lot worse.<p>Now, <i>if we could</i> get back to 1.5, it would <i>most definitely</i> be better than <i>not getting back</i> to it. So &quot;the damage has already been done&quot; is wrong.<p>If we managed to keep it at 2 instead of higher, it would <i>most definitely</i> be better than <i>not keeping it at 2</i>. So &quot;the damage has already been done&quot; is wrong.<p>If we managed to keep it at 3 instead of higher, ... you get my point.<p>What&#x27;s happening is that we&#x27;ve already caused damage that will hurt, and we are now actively working towards causing <i>more damage</i> that will <i>hurt more</i>. The faster we get our shit together, the less it will hurt. There is no &quot;it&#x27;s too late, it&#x27;s done&quot;. There is &quot;it will be painful&quot; and &quot;it will be more painful&quot; and &quot;it will be a lot more painful&quot; all the way down.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>luplex</em>:</p>
-<blockquote>&quot;the damage has already been done&quot; is dangerous wording, because it implies that we won&#x27;t cause more damage. However, we will cause way more damage than has already been done!</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Using LLM for confidence scoring is a bad idea</title>
-      <link>https://rumple.github.io/blog/2026/10/20/asking-llm-for-confidence.html</link>
-      <guid isPermaLink="false">hn3-50176082</guid>
-      <pubDate>Wed, 21 Oct 2026 04:27:51 +0000</pubDate>
-      <description>130 points, 78 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://rumple.github.io/blog/2026/10/20/asking-llm-for-confidence.html"><strong>→ Article</strong></a> <small>(rumple.github.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50176082">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 78 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cityofdelusion</em>:</p>
-<blockquote>Confidence scoring is fine when you provide the right context, like everything else LLM related. I use grading scripts for things that can be measured directly so the LLM just operates on it. For things less well-defined, I use a grading matrix with explicit criteria on what constitutes an A to F grade, usually with an assumption of an A grade that drops depending on specific findings.<p>If you are asking about confidence and somehow it can’t be defined either mathematically or in a grading rubric, then you the implementer need to start asking yourself the questions, because then you got a target that you don’t even know how to measure. The LLM isn’t even the problem at this point because another human would also just be going off gut feeling and vibing a number that may or may not be accurate.</blockquote>
-<p><strong>Top #2</strong> — <em>orbital-decay</em>:</p>
-<blockquote>Of course an LLM does have a latent concept of its own confidence that is internally consistent, and is perfectly able to articulate it, the author just chose the worst possible way to ask. Using a 0-100 scale for <i>anything</i> is a bad idea with both LLMs and people. Instead of rating it 0-100, split your problem into many dimensions&#x2F;axes and give each a small and <i>meaningful</i> enum or just a less granular numerical scale (ideally just a binary choice). Then apply weighted scoring to the result. You&#x27;ll be surprised how much better it becomes at meaningfully expressing its confidence this way.<p>YouTube removed the 1-5 scale for the same reason, people have no idea what to do with it.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lynndotpy</em>:</p>
-<blockquote>I would also like a source for this, I do not believe it is true and founded that &quot;an LLM has a latent concept of its own confidence that is internally consistent&quot;.<p>LLMs generally cannot report the outputs of their own activation functions. Taking the output of softmax as if it were a probability score is considered a first-year PhD student misconception.</blockquote>
-<p>↳ reply 2 — <em>geraneum</em>:</p>
-<blockquote>&gt; Of course an LLM does have a latent concept of its own confidence that is internally consistent, and is perfectly able to articulate it<p>Can you provide credible reference for this?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ricardobeat</em>:</p>
-<blockquote>Items 1-5 at the end of the article basically describe a supervised learning process. Data + labelling, updating weights, calibration.<p>Yes, using an LLM for confidence scoring while generating prose is a bad idea. I expected a mention of decision models here, as that exactly what they are trained for.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>PHP session.upload_progress heap UAF (CVE-2026-109618 / -109619)</title>
-      <link>https://jackalsyn.com/posts/php-up-2026.html</link>
-      <guid isPermaLink="false">hn3-50176077</guid>
-      <pubDate>Wed, 21 Oct 2026 04:26:56 +0000</pubDate>
-      <description>180 points, 60 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://jackalsyn.com/posts/php-up-2026.html"><strong>→ Article</strong></a> <small>(jackalsyn.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50176077">→ HN comments</a> &nbsp;·&nbsp; 180 points &nbsp;·&nbsp; 60 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>lorenzbrun</em>:</p>
-<blockquote>I&#x27;m pretty sure this is not the vulnerability that&#x27;s still officially under embargo. I think I found the the two actual vulnerabilities (both UAFs and similar). I patched my own stuff (at least I hope so) and am mirroring traffic to a detector, very interested to see when I get the first hits. Unless I see actual exploit attempts or a full leak I think I&#x27;m not going to publish my patches yet.</blockquote>
-<p><strong>Top #2</strong> — <em>InvisibleUp</em>:</p>
-<blockquote>This may be, according to one of the PHP devs, a completely unrelated exploit. See <a href="https:&#x2F;&#x2F;phpc.social&#x2F;@Girgias&#x2F;117476477429221001" rel="nofollow">https:&#x2F;&#x2F;phpc.social&#x2F;@Girgias&#x2F;117476477429221001</a>. Seems the best stopgap is SELinux or AppArmor.</blockquote>
-<blockquote>
-<p>↳ reply — <em>charcircuit</em>:</p>
-<blockquote>You misread. He is saying that the multipart UAF vulnerability part of the overall exploit can&#x27;t be fixed by session.upload_progress.enabled = off or any other ini option for that matter.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>4ndrewl</em>:</p>
-<blockquote>Which is also what tfa says btw</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>idlewords</em>:</p>
-<blockquote>I guess the future is people arguing in comments whether a high-severity vulnerability is the one under embargo, or one of various unrelated devastating bugs discovered when people got wind of the embargo and pointed their AI agents at the codebase.</blockquote>
-<blockquote>
-<p>↳ reply — <em>SSLy</em>:</p>
-<blockquote>the future is now, eh.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Using Claude to reduce the attack surface of code</title>
-      <link>https://www.anthropic.com/research/attack-surface-reduction</link>
-      <guid isPermaLink="false">hn3-50175779</guid>
-      <pubDate>Wed, 21 Oct 2026 03:36:43 +0000</pubDate>
-      <description>128 points, 84 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/research/attack-surface-reduction"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50175779">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 84 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>petermora</em>:</p>
-<blockquote>Recently I watched this presentation of a kernel developer about the &quot;Mythos&#x27; 79 kernel vulnerabilities&quot;: <a href="https:&#x2F;&#x2F;youtu.be&#x2F;NnV_cWeoo5Q?t=257" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;NnV_cWeoo5Q?t=257</a><p>He claims that most of these vulnerabilities are not an issue at all, or have been fixed earlier, etc. I can clearly see the improvement of the AI models, but based on this youtube video it&#x27;s very plausible that these AI labs rush to announce a result without further understanding of the underlying problems. I wonder what&#x27;s the quality here in this article.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ActionHank</em>:</p>
-<blockquote>That&#x27;s the weird thing with LLMs, they know just enough about a topic to fool anyone without much knowledge on the subject, seemingly even frontier labs.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dijit</em>:</p>
-<blockquote>&gt; they know just enough about a topic to fool anyone without much knowledge on the subject<p>There are <i>humans</i> like this and they are some of the most catastrophic people to have on a project, I actively avoid them.<p>I&#x27;m sure LLMs are different.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>square_usual</em>:</p>
-<blockquote>I don&#x27;t get what your point is WRT this article. They aren&#x27;t announcing a result? They&#x27;re describing a technique they used in real projects to prevent new vulnerabilities, including a change that is merged into OpenSSL. What is the &quot;rush to announce a result&quot; here? What are you saying they don&#x27;t understand?</blockquote>
-<p>↳ reply 3 — <em>Rapzid</em>:</p>
-<blockquote>Well Anthropic seems to have taken to &quot;bragging&quot; recently that they don&#x27;t write, read, or review code anymore.<p>God, I&#x27;d hate to be on the receiving end of their bug&#x2F;issue submissions.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>joshstrange</em>:</p>
-<blockquote>So rich to have them post this when just this morning I had to switch to GLM 5.3 so I could mitigate the PHP CVEs (both Claude and Codex balked at the early investigation work). Once I was further along I was able to switch back to Claude to implement the fix but it refused to look at any POC&#x27;s or test them against my dev servers, so freaking annoying.<p>The only things worse than the CVE getting dropped in our laps with little warning was having Claude run into its safeguards which slowed my progress in actually protecting our customers.<p>Last week Claude (and Codex) also refused to help write unit tests around existing code because it touched on authentication. I was able to ladder between them past everywhere they got stuck but today I went straight to GLM after hitting safeguards.</blockquote>
-<p><strong>Top #3</strong> — <em>ethin</em>:</p>
-<blockquote>I would believe Anthropic about how Claude reduces attack surfaces if they weren&#x27;t simultaneously nannying everyone about how they supposedly don&#x27;t want their models used for cybersecurity because... Reasons. And if you do want that access, you have to verify your identity, and do a bunch of other things, all of which goes against &quot;reducing&quot; the &quot;attack surface&quot;. If they really gave a damn about cybersecurity, this cybersecurity filter wouldn&#x27;t exist, period.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ben_w</em>:</p>
-<blockquote>&gt; If they really gave a damn about cybersecurity, this cybersecurity filter wouldn&#x27;t exist, period.<p>Golden guns don&#x27;t keep you safe from silver bullets.<p>These models are obviously getting used to commit acts which would be criminal if done with intent (<a href="https:&#x2F;&#x2F;www.felonybench.com" rel="nofollow">https:&#x2F;&#x2F;www.felonybench.com</a>), handing everyone a digital version of a machine gun means everyone catches strays.<p>Worse: every capability the SOTA models demonstrate is available in an open weight model 3 months later, so we&#x27;re all catching strays already, and it&#x27;s only the exact policies you&#x27;re unhappy about which gave critical infrastructure any prep time.<p>And recall, absent demonstrations of capabilities (and sometimes even with demonstrations), lots of people respond dismissively to these warnings; before OpenAI had actually hacked into HuggingFace, people thought it was &quot;science fiction&quot; that an AI would find and exploit novel zero-days in its own sandbox.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ethin</em>:</p>
-<blockquote>This doesn&#x27;t work. Even if you use agents that are 3 months behind, they will still find the vulnerabilities Mythos or Claude Opus would find, it would just take them a bit longer to do it. As such there is little reason for these cybersecurity filters to exist. They don&#x27;t actually prevent people from finding vulnerabilities; it just slows people in finding them because they have to use less capable models, and by extension that makes cybersecurity postures worse. You can&#x27;t ever get rid of the arms race between defender and attacker. Anthropic acting all nanny-ish doesn&#x27;t at all help the situation -- if anything, I would argue, it just makes it significantly worse. Especially when the filters will have significant false positives (e.g., they will trigger for local things that are completely unrelated to hacking at all, because somehow that&#x27;s super duper dangerous).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ben_w</em>:</p>
-<blockquote>&gt; They don&#x27;t actually prevent people from finding vulnerabilities; it just slows people in finding them because they have to use less capable models,<p>That&#x27;s the point. Slowing people down. Hackers aren&#x27;t &quot;not people&quot;.<p>&gt; You can&#x27;t ever get rid of the arms race between defender and attacker.<p>Yes you can, and by doing exactly what you&#x27;re complaining about:<p><pre><code>   And if you do want that access, you have to verify your identity, and do a bunch of other things
-</code></pre>
-That&#x27;s the thing which gives defenders an advantage. A 3-month advantage, or could have been if the US government hadn&#x27;t blocked it for a non-trivial fraction of the gap.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>y-curious</em>:</p>
-<blockquote>I’m very frustrated by this, for the record. But they have the atom bomb, and we want to borrow their tech for nuclear power. They don’t trust us. This familiar geopolitical quagmire isn’t resolved on the global scale, so I don’t expect these flawed companies to do it any better.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
