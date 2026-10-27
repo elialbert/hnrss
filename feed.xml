@@ -4,7 +4,357 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Tue, 27 Oct 2026 01:57:22 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 07:38:13 +0000</lastBuildDate>
+    <item>
+      <title>The Exponential Time Hypothesis Is False [pdf]</title>
+      <link>https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf</link>
+      <guid isPermaLink="false">hn3-50251661</guid>
+      <pubDate>Mon, 26 Oct 2026 21:59:15 +0000</pubDate>
+      <description>559 points, 200 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50251661">→ HN comments</a> &nbsp;·&nbsp; 559 points &nbsp;·&nbsp; 200 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>svat</em>:</p>
+<blockquote>While this has no immediate bearing on P-vs-NP, it is interesting to note:<p>- Early CS researchers like Donald Knuth entered CS in the days when regularly someone would come up with a surprising faster algorithm for some problem, and their intuitions were that most problems had faster algorithms than you&#x27;d expect.<p>- Later generations of CS researchers, as all the easy algorithms were discovered, and post Karp&#x27;s definition of NP-completeness (and the Garey &amp; Johnson book, say), began to specialize in proving <i>hardness</i>, and complexity theory with a “zoo” of complexity classes became more about separation and lower bounds, e.g. I&#x27;ve seen algorithms like Arora&#x27;s PTAS for Euclidean TSP being described as a “failed attempt to prove a lower bound”. So an entire generation of researchers&#x27; intuition was mostly in the direction of an elegant universe with neat separation results (even if we couldn&#x27;t get them).<p>- So e.g. surveys of computer scientists showed most of them believing that P≠NP, and someone like Knuth has always seemed a bit of an outlier for saying that maybe P=NP: his argument was simply that there are so many possible polynomial-time algorithms that we haven&#x27;t explored, and maybe one of them with a large exponent could solve NP-complete problems. (In response to arguments that many researchers have failed to find any such algorithms, he would say that many researchers have failed to prove that P≠NP.) E.g. in 2017 when Scott Aaronson wrote his survey (<a href="https:&#x2F;&#x2F;www.scottaaronson.com&#x2F;papers&#x2F;pnp.pdf" rel="nofollow">https:&#x2F;&#x2F;www.scottaaronson.com&#x2F;papers&#x2F;pnp.pdf</a> = <a href="https:&#x2F;&#x2F;www.scottaaronson.com&#x2F;papers&#x2F;pnp-kindle.pdf" rel="nofollow">https:&#x2F;&#x2F;www.scottaaronson.com&#x2F;papers&#x2F;pnp-kindle.pdf</a>) he wrote:<p>&gt; <i>Admittedly, it can be hard to tell whether declarations that P = NP are meant seriously, or are merely attempts to be contrarian. However, we can surely agree with Knuth and Lipton that we’re far from understanding the limits of efficient computation, and that there are further surprises in store.</i><p>- What we&#x27;ve seen in this month is surprising unexpected algorithms, like o(n log n) algorithms for FFT and integer multiplication, and now this sub–exponential-time algorithm for 3-SAT. (Yes the ETH has had less support than P≠NP but I still gather it&#x27;s unexpected.)<p>So (though I don&#x27;t expect intuitions on P≠NP to change, and probably that&#x27;s still the right intuition… but I&#x27;m just an interested amateur), maybe there will be a bit of a swing of the pendulum back to the idea that maybe clever algorithms exist that we just haven&#x27;t thought of.</blockquote>
+<blockquote>
+<p>↳ reply — <em>Animats</em>:</p>
+<blockquote>There are hard problems where the worst case may be exponentially hard, but the average case is much faster. Linear programming and the traveling salesman problem are like that. The faster approaches are considered &quot;probabilistic solutions&quot;.<p>In cryptography, most of the problems believed to be exponentially hard, such as factoring, don&#x27;t have proofs of an exponential lower bound. There&#x27;s some risk of a breakthrough that makes those problems easier. A probabilistic solution would be good enough to break many cryptosystems.<p>I suspect that people at the cryptanalysis agencies worldwide are staying up late tonight, trying to figure out the impacts and risks of this new result.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>vlovich123</em>:</p>
+<blockquote>Funny you mention probabilistic algorithms. If I’m not mistaken one of the OpenAI results is that most of the probabilistic methods (specifically those that use a logarithmic amount of space)-4  have non-probabilistic versions that are as efficient in time and space (L = RL = BPL)</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>cochne</em>:</p>
+<blockquote>This is an amazing and unexpected result.  To be clear though, it does not imply that NP is subexponential: &quot;Note that runtime bounds of the form 2^o(n) do not transfer under general polynomial-time reductions (2^n^o(1) would be needed for this), so our result does not imply that general NP problems
+admit subexponential time algorithms.&quot;<p>Edit: To explain more, it is guaranteed that you can <i>reduce</i> any NP problem to 3SAT in polynomial time with a polynomial factor in input size.  You still have to solve it.<p>If 3SAT were solvable in polynomial time, then polynomial(polynomial(x)) = polynomial(x) and you&#x27;re implied to have an overall polynomial time solution.<p>But what we have here is that 3SAT is solveable in subexponential time.  subexponential(polynomial(x)) is not guaranteed to be sub-exponential.<p>Further edit: The subexponential solution <i>does</i> carry over to any (?) problems that have can be reduced to 3SAT in a linear number of variables.  They list: Counting independent sets, Counting proper q-colorings, Counting perfect matchings.</blockquote>
+<blockquote>
+<p>↳ reply — <em>marshray</em>:</p>
+<blockquote>&gt; The subexponential solution does carry over to any (?) problems that have can be reduced to 3SAT in a linear number of variables. They list: Counting independent sets, Counting proper q-colorings, Counting perfect matchings.<p>Wouldn&#x27;t that also include functions that can be evaluated in hardware using a fixed number of gates? E.g., symmetric cryptography?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pcbouman</em>:</p>
+<blockquote>A circuit with a fixed number of (binary logical) gates can be solved in constant time, as it will have a fixed number of input bits, so brute force will have a fixed number of input options to consider. This does apply to cryptographic algorithms with a fixed key size, like the ones used in practice, as well.
+The whole point of computational complexity is to look at the scaling behavior when you increase the inputs&#x2F;key size&#x2F;size of the circuit.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>zodiac</em>:</p>
+<blockquote>It appears that Anthropic has released a proof as well (same bounds), but with a different approach? <a href="https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;u&#x2F;0&#x2F;folders&#x2F;1uaWnPqWkXy1sjfsD5bNPL4nbNqa95cKp" rel="nofollow">https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;u&#x2F;0&#x2F;folders&#x2F;1uaWnPqWkXy1sjfsD...</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Three new discoveries in mathematics, computer science, and physics</title>
+      <link>https://openai.com/index/building-scientific-understanding-with-academic-communities/</link>
+      <guid isPermaLink="false">hn3-50251344</guid>
+      <pubDate>Mon, 26 Oct 2026 21:35:28 +0000</pubDate>
+      <description>798 points, 349 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://openai.com/index/building-scientific-understanding-with-academic-communities/"><strong>→ Article</strong></a> <small>(openai.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50251344">→ HN comments</a> &nbsp;·&nbsp; 798 points &nbsp;·&nbsp; 349 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>abetusk</em>:</p>
+<blockquote>ETH is false! I really would not have believed it.<p>[0]:<p>&gt; We give a deterministic algorithm for exactly counting the satisfying assignments of an arbitrary k-CNF formula. For every fixed k ⩾ 2, on a formula with n variables and m clauses, our algorithm uses $poly_k (n, m)$ space and runs in time $(n + m)^{O_k(1)} 2^{n&#x2F;(\log n)^{1&#x2F;2 + o(1)}}$<p>The dominant term there is (roughly) $2^{n &#x2F; (\log n)^{0.5}}$, so still superpolynomial but less than exponential. Fucking wild.<p>[0] <a href="https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;math&#x2F;blob&#x2F;main&#x2F;preprints&#x2F;The-Exponential-Time-Hypothesis-is-False-October-25-2026&#x2F;paper.pdf" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;math&#x2F;blob&#x2F;main&#x2F;preprints&#x2F;The-Expon...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>debo_</em>:</p>
+<blockquote>Yeah, this really blew me away. I took a graduate computational complexity course and the original prof had to drop out due to health reasons. We got another professor from a completely different field who was basically as green in the field as we were, but with far better research chops. It turned the course into kind of a long-running lab where we just kind of did whatever we wanted. We spent a lot of time just philosophizing (mostly uselessly) about the ETH. I am very chuffed to see this result.</blockquote>
+<p>↳ reply 2 — <em>casey2</em>:</p>
+<blockquote>And who says AI doesn&#x27;t create open problems. This unlocks thousands of high quality open problems.<p>Turns out the &#x27;opne&#x27; in open AI wasn&#x27;t referring to open source, but open problems!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>martinhath</em>:</p>
+<blockquote>ETH is false! This is one of the big long-standing hypotheses that I actually remember from university, and afaik, it was reasonable to assume it would be true; reasonable enough for a lot of papers and results to assume this for bounds or hardness proofs of common problems in parameterized complexity, anyways.<p>Also glad to see that one of the authors of the paper stating it is also in the loop here.<p>2026 is weird.</blockquote>
+<p><strong>Top #3</strong> — <em>KolenCh</em>:</p>
+<blockquote>Interesting that the physics result is not released yet. From the limited wordings, “unified completion of the Standard Model of particle physics” is probably SU(5), which is experimentally disproved as one describing our universe. So the wording sounds a bit confusing, ie they are not proving or discovering Grand Unified Theory (GUT), and there’s no Higgs. So it is not really the standard model, but models that’s closely related to that. It is still an impressive result. IMO at the level of the recent quasi Riemann hypothesis level result, shy of getting the millennium prize (no mass gap) but is actually a very meaningful result, both of which arguably more impactful that the one they solved a millennium prize problem (Navier–Stokes).<p>More comments in <a href="https:&#x2F;&#x2F;blog.kolen.dev&#x2F;link&#x2F;openai-shepherds" rel="nofollow">https:&#x2F;&#x2F;blog.kolen.dev&#x2F;link&#x2F;openai-shepherds</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>CorridorKey 2.0</title>
+      <link>https://corridorkey.com/</link>
+      <guid isPermaLink="false">hn3-50251127</guid>
+      <pubDate>Mon, 26 Oct 2026 21:18:05 +0000</pubDate>
+      <description>192 points, 62 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://corridorkey.com/"><strong>→ Article</strong></a> <small>(corridorkey.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50251127">→ HN comments</a> &nbsp;·&nbsp; 192 points &nbsp;·&nbsp; 62 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>teach</em>:</p>
+<blockquote>I also really enjoyed the &quot;making of&quot; video: <a href="https:&#x2F;&#x2F;youtu.be&#x2F;svrdRAoIlxM?si=cG1gSRyWdGg8RnEM" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;svrdRAoIlxM?si=cG1gSRyWdGg8RnEM</a><p>Niko goes into some more detail about the licensing choices they&#x27;ve made and why towards the end of the video as well.<p>[Edit: note that the above video is &quot;content&quot; so if you&#x27;re not used to the style it might be offputting but I&#x27;m into it]<p>It&#x27;s been so cool to watch this develop</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>CitrusFruits</em>:</p>
+<blockquote>Huge fan of Corridor. For those that don&#x27;t have twenty minutes, one of the big takeaways is that a pretty high level VFX Supervisor critiques the keys at the end and basically has only nits that you need to zoom in on or have a trained eye to catch. Very legitimate feedback for a top tier professional context, but this can get you really far otherwise.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ipsum2</em>:</p>
+<blockquote>The issues aren&#x27;t nits, they&#x27;re really obvious, even after YouTube compression.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>normalaccess</em>:</p>
+<blockquote>Depends on the shot. Worlds better than version one of CorridorKey and they are using it internally on their own shows&#x2F;content.<p>These tools can only get better and better as time goes on.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Eji1700</em>:</p>
+<blockquote>&gt; [Edit: note that the above video is &quot;content&quot; so if you&#x27;re not used to the style it might be offputting but I&#x27;m into it]<p>I hate that it is because it makes me suspicious of every reaction.  I happened to see the CD video on the clown wedding on the moon(sodium vapor maybe?) and so I at least have some grounding from this, but if I didn&#x27;t I&#x27;d probably ignore most of this (as i ignored the thumbnail) because &quot;literal industry defining tech&quot; and &quot;random temu mall ninja crap&quot; has basically the same production pattern these days so why trust it?<p>I realize this is &quot;old man yells at cloud&quot; territory but it sucks that prostrating to the algorithm means all sincerity is lost because you have to ape Mr. Beast or whoever to get &quot;engagement&quot;<p>Edit-<p>And with that said, I&#x27;d say just jump to 23:40ish when the professional is talking if you&#x27;re grumpy like me.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ShakataGaNai</em>:</p>
+<blockquote>A beta price of $50 or full price of $100 is really a steal. If you do ANY sort of video production work, this is an amazing tool. The more casual of a green screen person you are, the more impressive this is.<p>This is like Magnet Mask for Final Cut, but probably better. I haven&#x27;t compared&#x2F;contrasted the two yet, but I have faith that Corridor has knocked this one out of the park from the demos I have seen.<p>(Yes, you can download it for free. You&#x27;re paying for the pre-packaged convenience. I 100% paid them to support the work they are doing).</blockquote>
+<p><strong>Top #3</strong> — <em>wongarsu</em>:</p>
+<blockquote>Obviously this prioritizes quality over speed, but how far are we from real time? Hooking something of this quality up to a live webcam would be a dream</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Somebody please stop the spam texts</title>
+      <link>https://notes.npilk.com/stop-the-spam-texts</link>
+      <guid isPermaLink="false">hn3-50250016</guid>
+      <pubDate>Mon, 26 Oct 2026 19:57:32 +0000</pubDate>
+      <description>131 points, 148 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://notes.npilk.com/stop-the-spam-texts"><strong>→ Article</strong></a> <small>(notes.npilk.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50250016">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 148 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>miguel-muniz</em>:</p>
+<blockquote>Unfortunately pretty much any surface to contact you will be abused to try to sell you something. It started with phone calls and text messages, but quickly in recent years it&#x27;s been happening to smart phone notifications.<p>For example, for DoorDash, I should just receive order status notifications but they ping me every few days to try out a local restaurant. They want to remind me that their app exists on my phone and I can spend money with them.<p>Ideally I should be able to turn off these kind of marketing notifications separate from functional notifications, but not all apps are this kind.<p>It makes me realize that email is a much better system for this. You have an entire archive of every email you receive, with the ability to search, filter, forward, and even set up custom rules to delete items containing certain text, for example.<p>Yes it&#x27;s a hassle to manage an email inbox, but this kind of flexibility gives users a lot of power that phone, sms, or native notifications lack.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>SllX</em>:</p>
+<blockquote>DoorDash is both better &amp; worse (mostly worse with the slimmest silver lining) than you’ve portrayed. Inside the app settings you <i>can</i> turn off all the marketing notifications. They’ll even <i>mostly</i> respect that setting with the following caveats:<p>1) they will give you a recurring pop up banner when you open the app to turn on <i>all</i> notifications, making it sound like it’s just for delivery notifications, even if you already have those turned on. You have to ignore it.<p>2) at least once recently, they just toggled them all on, on my behalf, anyway. I found out after receiving a random marketing notification. Then I turned them back off &amp; it hasn’t happened since.<p>3) there have been occasions where even with granular controls, I don’t receive the delivery notifications if I have the marketing ones turned off. Hasn’t happened in a while, but now I always keep that in mind that it’s a possibility.</blockquote>
+<p>↳ reply 2 — <em>robrtsql</em>:</p>
+<blockquote>&gt; Ideally I should be able to turn off these kind of marketing notifications separate from functional notifications, but not all apps are this kind.<p>Even if they _do_ offer that sort of granularity, these apps introduce a new &#x27;category&#x27; of notification everyday, and the new category is always opt-out, so there will always be a small stream of notifications leaking through.</blockquote>
+<p>↳ reply 3 — <em>Gigachad</em>:</p>
+<blockquote>I think in the future you’ll just have a local AI model determine if any message is an advert or a genuine communication and it just filters the ads out for you.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>JohnMakin</em>:</p>
+<blockquote>If you reply STOP, you just let them know you read their text and it&#x27;s a number that will respond with an actual person behind it. I would not reply to it. It&#x27;s very unlikely to do anything but make the problem worse.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>marssaxman</em>:</p>
+<blockquote>After I once made the mistake of donating money to a political campaign, I actually was able to free myself from the torrent of spam by replying END and STOP over and over. It took months, but the messages did stop.<p>Someone managed to connect my phone number to my voter registration during my recent move, so the spam is back. This time, I am replying END or STOP and then blocking the number &amp; reporting spam, just in case that creates more friction for them.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mrandish</em>:</p>
+<blockquote>I think you got lucky the first time. Traditional political candidate campaigns and mainstream parties are <i>supposed</i> to comply with some FEC regs about respecting unsub replies (I think it&#x27;s tied to getting broad access lists and maybe reduced rates for campaigns), <i>however</i> a LOT of texts and robo-calls (whether supporting candidates or initiatives) are now funded by PACs who seem to have no issue using spammer SIM farms and AFAIC are under no regs.<p>Since there&#x27;s no way to tell PAC texts from actual candidate-funded texts, and the PACs seem to now be the vast majority, I always hit the checkbox to block and report as SPAM to my telco. Not that it&#x27;ll help much but if it&#x27;s an actual candidate, the telcos whitelist them anyway (because of course politicians passed a law that requires them to), and if it&#x27;s a PAC maybe it&#x27;ll burn their SIM farm number pool a little faster, costing them more.<p>If you&#x27;re on Android, I <i>highly</i> recommend: <a href="https:&#x2F;&#x2F;github.com&#x2F;aj3423&#x2F;SpamBlocker" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;aj3423&#x2F;SpamBlocker</a>. The UX is a little obtuse to set up the first time (ask your LLM) but once set up it works great.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bombcar</em>:</p>
+<blockquote>The secret they use is that the company with the list NEVER sends anything, it simply sells the list to a campaign or PAC or whomever, and THAT group DOES remove you, but the moment a new campaign or PAC or whomever springs up, they buy the same list again.<p>This is why every campaign is a new legal entity each time around.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ericbarrett</em>:</p>
+<blockquote>I have replied STOP a lot and the political texts do, in fact, stop - at least from that particular number (see my other comment for a rant about this). Of course if you do this to a scammer it is as you say.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>gwbas1c</em>:</p>
+<blockquote>The problem is that SPAMing works for US politicians, so they include exceptions in various anti-spam legislation for political calls &#x2F; texts, and survey calls &#x2F; texts.<p>The solution is to recognize that our legislators have a severe conflict of interest, and instead ban these via ballot initiatives. Of course the politicians will whine and complain, but once the voters speak, they will comply.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>rectang</em>:</p>
+<blockquote>Has there ever been a &quot;Stop political texts&quot; ballot initiative?</blockquote>
+<p>↳ reply 2 — <em>bombcar</em>:</p>
+<blockquote>It doesn&#x27;t need to work, it might even NOT work, may even be counterproductive; it just needs to be <i>protected</i> and they <i>think</i> it works.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The EPA Is Quietly Killing Its Web Archive</title>
+      <link>https://www.motherjones.com/environment/2026/10/epa-online-archive-deletion-zeldin-camp-lejeune-trump-clean-power/</link>
+      <guid isPermaLink="false">hn3-50249275</guid>
+      <pubDate>Mon, 26 Oct 2026 19:05:41 +0000</pubDate>
+      <description>277 points, 49 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.motherjones.com/environment/2026/10/epa-online-archive-deletion-zeldin-camp-lejeune-trump-clean-power/"><strong>→ Article</strong></a> <small>(motherjones.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50249275">→ HN comments</a> &nbsp;·&nbsp; 277 points &nbsp;·&nbsp; 49 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>baggachipz</em>:</p>
+<blockquote>Wouldn&#x27;t want any of that pesky true climate-change-proving data available, now would we?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>amelius</em>:</p>
+<blockquote>We have alternative facts now.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>schiffern</em>:</p>
+<blockquote>&quot;There&#x27;d be fewer cases if you stopped testing...&quot;</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gkrimer</em>:</p>
+<blockquote>Climate change was such a downer. Good riddance!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dannyobrien</em>:</p>
+<blockquote>I&#x27;m presuming this is all preserved in the <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;End_of_Term_Web_Archive" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;End_of_Term_Web_Archive</a> (though making that more easily available would be great -- another project for <a href="https:&#x2F;&#x2F;wayback-labs.sf.archive.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;wayback-labs.sf.archive.org&#x2F;</a> )</blockquote>
+<p><strong>Top #3</strong> — <em>arjie</em>:</p>
+<blockquote>Has anyone scraped this already for offline use?</blockquote>
+<blockquote>
+<p>↳ reply — <em>gs17</em>:</p>
+<blockquote>I think Archive Team might have scraped it, but their site is down due to PHP-related reasons at the moment.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>arjie</em>:</p>
+<blockquote>Thank you. I&#x27;m going to scrape for now but I hope there&#x27;s a bulk download available somewhere eventually.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>US designates helium as a critical material</title>
+      <link>https://apnews.com/article/energy-critical-materials-minerals-helium-43da160adc1bad389fba0b9ffbd14c3c</link>
+      <guid isPermaLink="false">hn3-50248665</guid>
+      <pubDate>Mon, 26 Oct 2026 18:31:39 +0000</pubDate>
+      <description>204 points, 119 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://apnews.com/article/energy-critical-materials-minerals-helium-43da160adc1bad389fba0b9ffbd14c3c"><strong>→ Article</strong></a> <small>(apnews.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50248665">→ HN comments</a> &nbsp;·&nbsp; 204 points &nbsp;·&nbsp; 119 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>throw0101c</em>:</p>
+<blockquote>Good interview on the subject on Bloomberg&#x27;s <i>Odd Lots</i> podcast a few months back, &quot;Now There&#x27;s a Helium Shortage and It Affects More Than Balloons&quot;:<p>&gt; <i>Ripple effects from the war in Iran and the closure of the Strait of Hormuz continue to widen. There&#x27;s yet another brewing shortage, this time in helium. While most people associate helium with balloons and funny voices, the element is used in a surprisingly wide variety of industrial settings, including semiconductor production, where its role in advanced lithography has been growing rapidly. But helium mining and exploration in North America has been practically non-existent for a variety of reasons. And while the US used to have a strategic helium reserve, the government started selling that down in the late 1990s. On this episode, we speak with Nicholas Snyder, the founder and CEO of North American Helium, which does helium mining in Canada. We discuss the properties of helium that make it so useful, as well as the difficulties of expanding global production and distribution.</i><p>* <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=bjc6MgUY0BE" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=bjc6MgUY0BE</a><p>* <a href="https:&#x2F;&#x2F;omny.fm&#x2F;shows&#x2F;odd-lots&#x2F;now-theres-a-helium-shortage-and-it-affects-more-than-balloons" rel="nofollow">https:&#x2F;&#x2F;omny.fm&#x2F;shows&#x2F;odd-lots&#x2F;now-theres-a-helium-shortage-...</a><p>* <a href="https:&#x2F;&#x2F;podcasts.apple.com&#x2F;us&#x2F;podcast&#x2F;now-theres-a-helium-shortage-and-it-affects-more&#x2F;id1056200096?i=1000757668473" rel="nofollow">https:&#x2F;&#x2F;podcasts.apple.com&#x2F;us&#x2F;podcast&#x2F;now-theres-a-helium-sh...</a><p>The US had a strategic reserve, but it was sold off:<p>* <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;National_Helium_Reserve" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;National_Helium_Reserve</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>yyyk</em>:</p>
+<blockquote>AFAICT US is self-sufficient in Helium, no surprise US didn&#x27;t bother keeping a reserve:<p><a href="https:&#x2F;&#x2F;pubs.usgs.gov&#x2F;periodicals&#x2F;mcs2026&#x2F;mcs2026-helium.pdf" rel="nofollow">https:&#x2F;&#x2F;pubs.usgs.gov&#x2F;periodicals&#x2F;mcs2026&#x2F;mcs2026-helium.pdf</a></blockquote>
+<p>↳ reply 2 — <em>chrisco255</em>:</p>
+<blockquote>&gt; Government sales flooded the market with cheap helium, causing much of the private helium industry to shut down<p>Very sloppy</blockquote>
+<p>↳ reply 3 — <em>moralestapia</em>:</p>
+<blockquote>&gt;The US had a strategic reserve, but it was sold off:<p>Yes, you can read more about that here, <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50249073">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50249073</a></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>AngryData</em>:</p>
+<blockquote>Meanwhile we vent 95% of extracted helium into the atmosphere as an inconvenient waste gas.<p>If it is so important, why aren&#x27;t all our gas wells extracting that helium? It is hard for me to see this as a ploy for anything other than raising helium prices for the few companies that do extract helium.<p>In anything that helium is critical for, the helium cost is inconsequential compared to both the cost of the other equipment that uses it, and the value gained from using that equipment.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>throw0101c</em>:</p>
+<blockquote>&gt; <i>If it is so important, why aren&#x27;t all our gas wells extracting that helium?</i><p>Because until six months ago there was a cheap and convenient supply coming out of Persian Gulf states, and so its importance was not noticed (like so many other items that &#x27;suddenly&#x27; became apparent when the supply was suddenly cut off).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>knappe</em>:</p>
+<blockquote>We&#x27;ve been having helium shortages for years:<p>&gt; The current helium shortage is the fourth to occur since 2006 and is being caused by shutdowns at several major helium producers. The shortage has been exacerbated by the war in Ukraine, as Russia is one of the world’s top suppliers of helium.<p><a href="https:&#x2F;&#x2F;www.thecrimson.com&#x2F;article&#x2F;2022&#x2F;6&#x2F;24&#x2F;helium-shortage-2022&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.thecrimson.com&#x2F;article&#x2F;2022&#x2F;6&#x2F;24&#x2F;helium-shortage...</a><p>I have a friend who teaches chemistry at a well known university that can no long run some labs because the equipment to run them needs, you guessed it, helium.  This has been a long running problem that the Iran war has exacerbated, but is by no means the cause.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>fmajid</em>:</p>
+<blockquote>Sufficiently long that in the TV Series “The Big Bang Theory”, one subplot involves the characters buying helium from a black market dealer to perform their experiments</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>40four</em>:</p>
+<blockquote>Most importantly, semiconductor fabs cannot operate without it. I was unaware, but I saw an interesting 60 minutes piece in it the other day.<p>I hear what you’re saying, but it’s the same reason a lot of natural gas is flared off or vented at oil wells. Helium is less than 1% of the total feed gas coming off a well and it requires specialized equipment to be able to recover it, on top of a way to distribute it. In most cases depending on the mix of gases coming out, it’s simply not economical for the operator.<p>Even with the supply being under pressure and prices going up from Qatar’s supply being cut off, that still might not be enough for companies to build the infrastructure. It would be a huge gamble. Once traffic in the straight of Hormuz goes back to normal that could be a losing proposition.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>captainmuon</em>:</p>
+<blockquote>After squandering the national helium reserve for years, because &quot;lol free markets&quot; ideology. It&#x27;s crazy that we put that stuff into balloons for fun (helium is pretty abundant in the universe, but the economically viable sources are fossil).</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>shagie</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;www.nbcnews.com&#x2F;health&#x2F;health-news&#x2F;us-just-sold-helium-stockpile-s-medical-world-worried-rcna134785" rel="nofollow">https:&#x2F;&#x2F;www.nbcnews.com&#x2F;health&#x2F;health-news&#x2F;us-just-sold-heli...</a> (2024)<p>&gt; On Thursday, the U.S. government sold the Federal Helium Reserve, a massive underground stockpile based in Amarillo, Texas, that supplies up to 30% of the country’s helium.<p>&gt; Once the deal is finalized, the buyer — which will likely be the highest bidder, the industrial gas company Messer — will claim some 425 miles of pipelines spanning Texas, Kansas and Oklahoma, plus about 1 billion cubic feet of the only element on Earth cold enough to make an MRI machine work.<p>&gt; ...<p>&gt; The sale has been in the works for more than a decade. Congress first mandated it through the Helium Stewardship Act of 2013. It was initially supposed to occur in 2021, but a series of delays — in part due to the same logistical and regulatory issues threatening shutdowns today — postponed the auction to Thursday.<p>---<p>The Helium Stewardship Act: <a href="https:&#x2F;&#x2F;www.congress.gov&#x2F;bill&#x2F;113th-congress&#x2F;house-bill&#x2F;527" rel="nofollow">https:&#x2F;&#x2F;www.congress.gov&#x2F;bill&#x2F;113th-congress&#x2F;house-bill&#x2F;527</a><p><a href="https:&#x2F;&#x2F;www.blm.gov&#x2F;programs&#x2F;energy-and-minerals&#x2F;helium&#x2F;stewardship" rel="nofollow">https:&#x2F;&#x2F;www.blm.gov&#x2F;programs&#x2F;energy-and-minerals&#x2F;helium&#x2F;stew...</a><p>---<p>And its been on the &quot;todo list of the federal government for decades&quot;<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Helium_storage_and_conservation#Helium_Privatization_Act" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Helium_storage_and_conservatio...</a><p>&gt; ... Since 2013 the world&#x27;s largest helium hub is no longer located in the United States of America but in Qatar, which produces 1.3 billion cubic feet of helium per year from a single project and meets 25% of the global demand. One challenge related to bringing new helium sources onto the market is that it usually requires venture capital financing. Another challenge is that the current selling price of U.S. Cliffside helium is too low to encourage more new producers to enter the field.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Helium_Privatization_Act_of_1996" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Helium_Privatization_Act_of_19...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>thaumasiotes</em>:</p>
+<blockquote>&gt; in Qatar, which produces 1.3 billion cubic feet of helium per year from a single project<p>I get that it might be weird to talk about producing &quot;tons&quot; of a gas that will float away into space if not contained, but it must still be better than talking about the amount of volume of gas being produced.<p>How much helium is in one cubic foot? That&#x27;s up to you.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>shagie</em>:</p>
+<blockquote>A standard cubic foot (sfc) of an industrial gas is 1&#x27; x 1&#x27; x 1&#x27; at 70° F at 14.696 psia in the US. ( <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Standard_cubic_foot#Industrial_gases" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Standard_cubic_foot#Industrial...</a> )</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pessimizer</em>:</p>
+<blockquote>&gt; It&#x27;s crazy that we put that stuff into balloons for fun<p>We barely do anymore; one of the main reasons the Party City chain went bankrupt was the sharp rise in the cost of helium. The other two were covid and private equity of course <i>lol.</i><p>&gt; The following year, the owners had Party City borrow $338 million to pay themselves a dividend.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Type Server Protocol</title>
+      <link>https://github.com/microsoft/pylance-release/blob/main/docs/tsp/type-server-protocol.md</link>
+      <guid isPermaLink="false">hn3-50248371</guid>
+      <pubDate>Mon, 26 Oct 2026 18:14:49 +0000</pubDate>
+      <description>229 points, 152 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/microsoft/pylance-release/blob/main/docs/tsp/type-server-protocol.md"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50248371">→ HN comments</a> &nbsp;·&nbsp; 229 points &nbsp;·&nbsp; 152 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>nikolatt</em>:</p>
+<blockquote>DetachHead (maintainer of basedpyright) has criticized the TSP before:<p>- <a href="https:&#x2F;&#x2F;docs.basedpyright.com&#x2F;v1.40.2&#x2F;type-server&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.basedpyright.com&#x2F;v1.40.2&#x2F;type-server&#x2F;</a><p>- <a href="https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;pylance-release&#x2F;discussions&#x2F;7180#discussioncomment-13227687" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;pylance-release&#x2F;discussions&#x2F;718...</a><p>Ty (the type checker maintained by astral) however will apparently support the TSP: <a href="https:&#x2F;&#x2F;github.com&#x2F;astral-sh&#x2F;ruff&#x2F;discussions&#x2F;23432" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;astral-sh&#x2F;ruff&#x2F;discussions&#x2F;23432</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>ghm2180</em>:</p>
+<blockquote>I think the only way MS knows how to make money is lock someone into an ecosystem. I think their next attempt should be a closed source lean checker that has will have proprietary code for NL -&gt; lean formalization checker.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pjmlp</em>:</p>
+<blockquote>Applies to all big tech contributing to FOSS, they don&#x27;t do it out of charity.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>salynchnew</em>:</p>
+<blockquote>Definitely not true. Historically, it&#x27;s been one of the ways they attract (and scout) top talent.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tobz1000</em>:</p>
+<blockquote>As someone with minimal knowledge of LSP specifics, I&#x27;m a bit confused about why this exists. Is it the case that LSP alone does not provide adequate functionality for Python type queries?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nextaccountic</em>:</p>
+<blockquote>&gt; why this exists<p><a href="https:&#x2F;&#x2F;docs.basedpyright.com&#x2F;v1.40.2&#x2F;type-server&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.basedpyright.com&#x2F;v1.40.2&#x2F;type-server&#x2F;</a><p>&gt; The &quot;type server protocol&quot; is a desperate attempt from microsoft to prevent pylance from becoming obsolete by outsourcing its type checking to other language servers like basedpyright, ty or pyrefly -- while continuing to keep certain language server features exclusive to pylance.<p>&gt; This protocol benefits nobody except microsoft. It adds needless complexity to any language server that chooses to support it. Basedpyright does not support it and strongly advises other language servers to avoid supporting it as well.<p>&gt; For more info see here <a href="https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;pylance-release&#x2F;discussions&#x2F;7180#discussioncomment-13227687" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;pylance-release&#x2F;discussions&#x2F;718...</a> and here <a href="https:&#x2F;&#x2F;github.com&#x2F;astral-sh&#x2F;ty&#x2F;issues&#x2F;1190#issuecomment-3374369203" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;astral-sh&#x2F;ty&#x2F;issues&#x2F;1190#issuecomment-337...</a></blockquote>
+<p>↳ reply 2 — <em>Wilfred</em>:</p>
+<blockquote>It seems to be a more structured representation of the type. Normally in LSP you&#x27;d have a plain string or markdown that you render in the IDE, but nothing that you can analyse structurally.<p>It&#x27;s a shame it&#x27;s not just an LSP extension though, or a feature in a newer LSP version. LSP is maintained by Microsoft engineers.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>impoppy</em>:</p>
+<blockquote>It’s really good that folks over at Astral decided to implement it. It was difficult for me to understand what does this protocol provide that couldn’t be implemented with a new LSP capability, the linked document doesn’t really explain that, but what did become clear to me is that seemingly Microsoft are trying to invent new features for their proprietary LSP server that only works in VS Code so people will have harder times switching to other editors. This way, no matter what Microsoft comes up with, will be matched with very high quality open source tools.</blockquote>
+<blockquote>
+<p>↳ reply — <em>benatkin</em>:</p>
+<blockquote>Indeed, this seemed not to happen to the same degree: <a href="https:&#x2F;&#x2F;ghuntley.com&#x2F;fracture&#x2F;" rel="nofollow">https:&#x2F;&#x2F;ghuntley.com&#x2F;fracture&#x2F;</a><p>vscode forks were shown to be viable.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>GPT-6.1 Terra</title>
+      <link>https://openai.com/index/introducing-gpt-6-1-terra/</link>
+      <guid isPermaLink="false">hn3-50248124</guid>
+      <pubDate>Mon, 26 Oct 2026 18:01:17 +0000</pubDate>
+      <description>576 points, 360 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://openai.com/index/introducing-gpt-6-1-terra/"><strong>→ Article</strong></a> <small>(openai.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50248124">→ HN comments</a> &nbsp;·&nbsp; 576 points &nbsp;·&nbsp; 360 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>minimaxir</em>:</p>
+<blockquote>Similar 75% price cut trajectory as GPT-5.6 Sol -&gt; GPT-6.1 Sol. Overall, Terra is still half the price of Sol.<p>But like the original release of Terra, it&#x27;s still a weird middle child between the small-model-that-got-substantially-better (Luna) and the large-model-that-got-significiantly-cheaper (Sol). The TerminalBench 4.0 cost-per-task results are a bit confusing and I&#x27;m not sure why you would pick Terra over Sol in that case. Overall this release seems like a flex on Sonnet 5.5: a model which is having its own middle child problems between the godly Opus 5.5 and the surprisingly capable Haiku 5.5.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>rockdoe</em>:</p>
+<blockquote><i>the surprisingly capable Haiku 5.5</i><p>Destroyed by Anthropics crazy decision to price it x5 after 100k context.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>toddmorey</em>:</p>
+<blockquote>Packaging &amp; pricing seem to be two things Anthropic really struggles with</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>zozbot234</em>:</p>
+<blockquote>Artificial Analysis still has MiMo 2.6 Pro setting the Pareto frontier where it matters: it&#x27;s as cheap as Terra High&#x2F;Sol Low while being smarter than Terra Xhigh.  Sol Medium beats MiMo in smarts but is priced a lot higher.  Meanwhile Terra Max is dominated by Sol High in both price-per-task and smarts.</blockquote>
+<p>↳ reply 3 — <em>wyre</em>:</p>
+<blockquote>I don&#x27;t think software devs are the audience for 6.1 Terra, but instead computer work, automation, and technical writing.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Someone1234</em>:</p>
+<blockquote>I&#x27;m very confused about their model market position&#x2F;naming schema.<p>First we had:<p>&gt; Luna (Small), Terra (Medium), Sol (Big).<p>Which was fairly smooth after you got used to their planets.<p>But then they added Astra as the &quot;Bigger,&quot; which was mostly still self-coherent:<p>&gt; Luna (Small), Terra (Medium), Sol (Big), Astra (Bigger)<p>But then things go confusing, they released Sol-6.1 which sometimes is superior to Astra, and discontinued Terra which made it look like this:<p>&gt; Luna (Small), Sol-6.1 == Astra<p>But with Sol-6.1 costing the old Terra-6.0 price, while, as I said performing as good as the old &quot;Bigger&quot; model in many non-3D&#x2F;UI situations.<p>Now they&#x27;re re-introduced Terra, as a 6.1 release, making this even more confusing.<p>Did Microsoft&#x27;s chief branding officer move over to OpenAI?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tedsanders</em>:</p>
+<blockquote>I work at OpenAI and I can try to explain our logic.<p>In general, LLM performance is incredibly multidimensional. There&#x27;s no guarantee of a fixed ordering where the model that is best at math is also the model that&#x27;s best at jokes. Despite that complexity, much of the variation in performance is explained by just a single variable: model size. In general, models that are bigger will (a) be more performant &#x2F; reliable, (b) cost more per token, and (c) have better recall of esoteric facts. As you note, our models are ordered:<p>Luna &lt; Terra &lt; Sol &lt; Astra<p>Even today, I&#x27;d recommend this as a general starting point for picking models. If you care about quality only, pick Astra. If you&#x27;re a bit price sensitive, pick Sol. If you&#x27;re very price sensitive, pick Terra or Luna.<p>Of course, model size doesn&#x27;t capture all variation. Models that are trained later might have new data or new techniques or new architectures that earlier models lack. You can see this with models from all providers - Sonnet 5.5 outperforms Fable 5.1 in ways, and Gemini 3.8 Flash outperforms 3.1 Pro in ways.<p>In the case of GPT-6.1 Terra, I&#x27;d say Terra is probably better than Astra and Sol at technical communication, similar on vision and computer use (but much faster!), and a bit worse on most other things. For API developers, it&#x27;s a nice midrange option if you want something cheaper than Sol but a lot smarter than Luna (especially for vision &#x2F; computer use &#x2F; communication). For subscribers, it&#x27;s not a bombshell release - if you&#x27;re hitting usage limits, maybe it helps you go a bit further, and if you want clearer communication or faster computer use, it can be a nice option to select.<p>If you have suggestions on how to name our products better, I&#x27;m all ears. Our intention is to make things clear and simple, even if we miss the mark sometimes.<p>Unfortunately, a lot of the complexity is somewhat irreducible and due to to the actual complexity of the products. Scaling model size is different from scaling reasoning effort which is different from scaling multi-agent count. So if we just swept all of those under a single name of &quot;more IQ&quot;, it would make the naming simpler but the experience much worse, as important details would be obfuscated from end users.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>atombender</em>:</p>
+<blockquote>Do you then recommend Sol for technical documentation?<p>What&#x27;s confusing to me in addition to the naming is that there are no published guidelines I can use, as far as I can see. Put yourself in the user&#x27;s shoes. On what basis should one pick a model for a given task?<p>I can understand smaller models being dumber and faster. That aligns well with scenarios where you are willing to compromise; e.g. you&#x27;re classifying content or asking a model to format text into a table.<p>But when you want &quot;maximum intelligence, cost and time be damned&quot;, there&#x27;s the implication that bigger models are smarter on a linear scale, and every provider&#x27;s model release naming is currently conflicting with that expectation.<p>This isn&#x27;t just a naming problem, but a communication problem. If I knew that Astra was the best at coding but a bit bad at writing, and Sol was almost as smart but better at technical writing, then that&#x27;s the kind of thing I expect to be documented.<p>One possible way: A simple matrix with horizontal columns like &quot;writing&quot;, &quot;coding&quot;, &quot;math&quot;, rows are the models, and each box is a number of stars from 1-5.<p>Instead, this sort of thing becomes lore, shared by word of mouth.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>tedsanders</em>:</p>
+<blockquote>&gt; Do you then recommend Sol for technical documentation?<p>I don&#x27;t know, to be honest. Technical documentation is such a multidimensional skill, and I also don&#x27;t know your budget. I&#x27;d imagine Terra might have the most readable prose, but Astra might be more likely to catch bugs or mistakes to highlight. If the documentation is about a more esoteric language or situation, Astra might have a greater edge than if it&#x27;s a common language or situation. If you have a long list of documentation guidelines, that might also give more of an edge to Astra. I wouldn&#x27;t want to make a recommendation without doing a lot of testing, and I haven&#x27;t done a lot of testing.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>mediaman</em>:</p>
+<blockquote>I don&#x27;t understand what&#x27;s so confusing about this.<p>The lineup of models is still the same.<p>There are four models: luna, terra, sol, and astra.<p>Pricing increases for each level. This new 6.1 Terra is 50% cheaper than Sol  6.1.<p>They are lowering prices for newer releases, so yes if you compare Sol 6.1 to 5.6 Terra it won&#x27;t look right, but why are you doing that? Look at the same release version for comparable numbers.<p>Each model improves in successive releases but they maintain pricing and capability coherency within a release version.<p>Yes, Sol 6.1 is supposed to rival Astra for some work, which is what you&#x27;d expect from a later versioned release model against a prior release bigger model.<p>Assuming they release Astra 6.1 at some point, I expect it&#x27;ll be better than Sol 6.1, at a higher price.<p>I don&#x27;t understand what people are asking for here? No reductions in pricing? Different model names on every version release? Not releasing any models for a version number until they&#x27;re all ready?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Archit3ch</em>:</p>
+<blockquote>I rather enjoy OpenAI&#x27;s focus on cost-per-task.<p>I&#x27;m optimistic about them tackling frontier intelligence next. Astra 6.1 please?</blockquote>
+<blockquote>
+<p>↳ reply — <em>mapontosevenths</em>:</p>
+<blockquote>They&#x27;re doing its because they recently cut plan usage by about 50%, leaving Anthropic providing about 5x the value on their plans. [0]<p>The &quot;cost per task&quot; metric is just a weaselly way to sound like they didn&#x27;t just double the cost for most users, and aren&#x27;t having their proverbial lunch money stolen. They can no longer claim to provide more tokens, more capable models, or more usage in general. So they made up a new metric where &quot;task&quot; could be defined to mean whatever they need it to mean.<p>They had to become VERY specific in their wording to present any kind of value proposition that will entice people.<p>[0] <a href="https:&#x2F;&#x2F;newsletter.semianalysis.com&#x2F;p&#x2F;anthropic-subscriptions-offer-5x" rel="nofollow">https:&#x2F;&#x2F;newsletter.semianalysis.com&#x2F;p&#x2F;anthropic-subscription...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Archit3ch</em>:</p>
+<blockquote>&gt; leaving Anthropic providing about 5x the value on their plans<p>5x is calculated in terms of API costs, nobody pays those extreme Anthropic prices outside enterprise users.<p>&gt; like they didn&#x27;t just double the cost for most users<p>Most users aren&#x27;t on their $200 plan. Most users (including on the $200 plan) continue being subsidized.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>killingtime74</em>:</p>
+<blockquote>Enterprise users are the majority of the users in value. Subscribers are the loss leader hobbyists.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Meta Employees Denounce Interference in Brazilian Elections</title>
+      <link>https://www.panamericandispatch.org/p/meta-employees-denounce-interference</link>
+      <guid isPermaLink="false">hn3-50248061</guid>
+      <pubDate>Mon, 26 Oct 2026 17:57:29 +0000</pubDate>
+      <description>313 points, 142 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.panamericandispatch.org/p/meta-employees-denounce-interference"><strong>→ Article</strong></a> <small>(panamericandispatch.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50248061">→ HN comments</a> &nbsp;·&nbsp; 313 points &nbsp;·&nbsp; 142 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>basilgohar</em>:</p>
+<blockquote>A lot of people are implying that people that object should leave the company. The question is, if the people that actually care and push back leave:<p>1. Will this increase or decrease the incidents?
+2. Will we know more or less about these incidents in the future?
+3. Will anyone else inside work for or against this happening?<p>Which way do we want things to go?<p>I don&#x27;t mean to say it&#x27;s clearly this or that. I think it&#x27;s a genuinely interesting and challenging dilemma. Do I continue working someplace that is involved in something evil but try and provide a voice, push, influence, or, if nothing else, a voice to the outside of the goings on inside, or do I separate myself and work only from the outside?<p>We can imagine the same for law enforcement, military, defence contractors, government, and any number of other vectors and industries.<p>Snowden was working from the inside before he leaked what he did. Every single whistleblower was involved first.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cherryteastain</em>:</p>
+<blockquote>Trying to change things materially from the inside against the wishes of the higher ups probably means your career stalls or you&#x27;ll be fired anyway. From the perspective of your career, you may as well find a new job while you have the leverage from the current one and then make your statement as you leave. There is almost nothing a non C-suite person can do to change things in this context.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>elicash</em>:</p>
+<blockquote>I&#x27;m not pretending there isn&#x27;t very real risk of retribution, but I do think this can be done under the protections under the NLRA so long as it&#x27;s done right (as in, seek legal guidance first).<p>This also isn&#x27;t to fault anyone who instead chooses to leave, instead.<p>I also think your comments diminishes the actual impact lots of folks have had, such as stopping donation to certain PACs. Relative to many other groups of workers, tech workers actually have more leverage.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>lukan</em>:</p>
+<blockquote>&quot;Which way do we want things to go?&quot;<p>Well ideally we want companies and governments to be trustworthy and that only works with trustworthy individuals, but here in this case I can only see Meta dissolving as a solution.<p>Remember how it started? Zuckerberg literally said about his users: ‘They “trust me.” Dumb f--ks’.<p>This is the base the company has been operating since the beginning, just got better at hiding it, but now some masks are slipping again.</blockquote>
+<p>↳ reply 3 — <em>orwin</em>:</p>
+<blockquote>Also, if you think you&#x27;re company is enabling musk&amp;co, stay and document. In my city, the antifa group has one member who used to be a bar pillar at a place that after an ownership change became the new place for the néo-nazi and royalists to meet up. Last Saturday they planned on disturbing the protests. We all got the information about that the day before. The day of the protests, we had two watchdogs ready outside the bar who took pictures of the nazillons who got out and dispatched them to various signal groups, allowing engaged people to organise and prevent any disturbance, provocations or fights. My more casual friends didn&#x27;t notice anything and were very happy about how the day went.<p>Inside information is critical, and you can always try to do your part.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>selectodude</em>:</p>
+<blockquote>Meta employees still cash checks from evil company not realizing all the interference is possible due to them showing up to work every day.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>undersuit</em>:</p>
+<blockquote>You don&#x27;t know how many people have already quit. You don&#x27;t know how many will quit. But you do know that someone that quits also loses any influence they have on the decisions.</blockquote>
+<p>↳ reply 2 — <em>bestouff</em>:</p>
+<blockquote>That&#x27;s true, but I think it&#x27;s much more effective for them to protest than just leave. And personally I prefer there&#x27;s more decent employees at Meta.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>p2detar</em>:</p>
+<blockquote>The situation everywhere looks dire. These aren‘t social media platforms anymore but tools for propaganda and repression against opposition groups across different countries.<p>&gt; 25.10.2026: Meta removed three prominent satire pages from Facebook the day before presidential elections in Bulgaria.<p>&gt; Shortly after the deletion they were recreated and gathered tens of thousands of followers within hours. Less than 24h later Meta removed them again. Due to past incidents involvement of security forces is suspected. No meaningful response from Meta as usual.<p>Source: <a href="https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;yurukov.yurukov.net&#x2F;post&#x2F;3myozobbcyk2e" rel="nofollow">https:&#x2F;&#x2F;bsky.app&#x2F;profile&#x2F;yurukov.yurukov.net&#x2F;post&#x2F;3myozobbcy...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>syrrim</em>:</p>
+<blockquote>&gt;involvement of security forces<p>does this mean they were ordered to take them down by the government? what can they do in that case?</blockquote>
+<p>↳ reply 2 — <em>empyrrhicist</em>:</p>
+<blockquote>Meanwhile, a couple of oligarchs are positioning convenient AI summaries in between us and all of the world&#x27;s information. Talk about a useful tool to control people...</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Oldest GUI application that still runs on Windows 11</title>
       <link>https://blog.enlyth.com/posts/oldest-windows-gui-app-win-11/</link>
@@ -64,6 +414,34 @@
 <blockquote>Better not prosecute people who cut down the cameras then, since that&#x27;s part of the non-real backlash.</blockquote>
 <p><strong>Top #3</strong> — <em>rconti</em>:</p>
 <blockquote>&gt; Langley suggested during the session with Rausch that eventually the opposition to Flock will die down: “Whenever this industry finds a highly effective tool, it has to go through this period of intense debate. But then you get on the other side. I think right now we’re not at the bottom, but we’re real, dang, near close to it and about to come back up on the other side.”<p>So every other law enforcement tool has also been subjected to russian troll farms and eventually the fake furor dies down?<p>Or is he admitting that those of us who don&#x27;t stand to make billions off of a private surveillance network are actually the real humans here?</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>A Man from the Future: Why Johnny Can't Stop Abstracting</title>
+      <link>http://muratbuffalo.blogspot.com/2026/10/the-man-from-future-why-johnny-cant.html</link>
+      <guid isPermaLink="false">hn3-50247928</guid>
+      <pubDate>Mon, 26 Oct 2026 17:49:55 +0000</pubDate>
+      <description>159 points, 77 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="http://muratbuffalo.blogspot.com/2026/10/the-man-from-future-why-johnny-cant.html"><strong>→ Article</strong></a> <small>(muratbuffalo.blogspot.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50247928">→ HN comments</a> &nbsp;·&nbsp; 159 points &nbsp;·&nbsp; 77 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>seemaze</em>:</p>
+<blockquote>I always recommend <i>Turing&#x27;s Cathedral: The Origins of the Digital Universe</i>[0] by George Dyson when John von Neumann comes up, it&#x27;s a fabulous read.<p>[0] <a href="https:&#x2F;&#x2F;www.penguinrandomhouse.com&#x2F;books&#x2F;44425&#x2F;turings-cathedral-by-george-dyson&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.penguinrandomhouse.com&#x2F;books&#x2F;44425&#x2F;turings-cathe...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>paulsmith</em>:</p>
+<blockquote>This book is fantastic. Highly recommended if you have any interest in how the stored program computer came to be. The Dyson name apparently led to unrivaled access to first-hand accounts.</blockquote>
+<p>↳ reply 2 — <em>NDlurker</em>:</p>
+<blockquote>The audiobook was fantastic</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>diskzero</em>:</p>
+<blockquote>Any cognitive scientists here, or actual people with eidetic memory, who can comment how the brain would store everything you ever read or heard and how it can be recalled? What does it feel like to be able to recall and recite the entire text of a Tale of Two Cities?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>rf15</em>:</p>
+<blockquote>That&#x27;s sadly impossible, because the brain, as a limited number of cells, cannot store infite data. The problem lies in the people observing them, but you have some fun mechanisms (and a few of the commonly known fallacies and biases) at work here, that can all contribute to that perceived effect&#x2F;illusion. Consider the following ideas:<p>- people can be slightly better than a given random observer, because they learned and prioritise to pay attention. They are better at recalling memorable and minor details, especially in short term memory and in memorable situations that a lot of people share long term. They will still forget long term information that is irrelevant.<p>- any such person and also observer can easily talk themselves into the belief that their skill must be absolute, especially since the observer will largely only test from his own inferior dataset.<p>- once the belief takes hold (because people love a good story), observers tend to look less for flaws and more for further confirmations to keep mythologising people.</blockquote>
+<p>↳ reply 2 — <em>paulpauper</em>:</p>
+<blockquote>It is debatable how much of his memory feats  are true. many of these claims are aphorical.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>cadamsdotcom</em>:</p>
+<blockquote>What beautiful writing. I had no idea JVN did so <i>many</i> things..<p>&quot;Can we survive technology?&quot; got me thinking about our industry&#x27;s upheaval. Software engineering&#x27;s receiving the disruption it so proudly inflicted on other industries.. not reaping what it sowed; rather just the natural order of things.<p>Acceptance and moving with change is all that can work. Obstructing; denying; ignoring progress.. you&#x27;ll lose your edge, your relevance, your value to others, and your job. Progress won&#x27;t wait for us to like it. We must move fast enough to survive change.<p>Junior engineers for example? Suddenly too junior to be hired? Great! They, and you, can access multiple answer boxes with every PhD ever, and with a bit of creativity, they can leverage that. The best will survive on their own - the rest we should help along. Let&#x27;s create tools and structures and institutions and help junior engineers finish their education to marketable levels. Let&#x27;s help them find efficiencies and get there in the same duration. We shouldn&#x27;t compel companies to preserve a hiring pipeline; now should we incrementally upgrade university educations. Better to go to kids in schools &amp; universities and stimulate their creativity, get them using new tools in new ways, finding efficiencies - because that&#x27;s what today and tomorrow&#x27;s jobs will be about. Institutions will adopt the good ideas in time.<p>We have a responsibility to invest in - and invent - ways of bringing people along.</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>ChatGPT Keeps Telling People 404 Media Can Solve Their Tech Support Problems</title>
@@ -146,6 +524,32 @@
 </blockquote>
 <p><strong>Top #3</strong> — <em>metalcrow</em>:</p>
 <blockquote>&gt; a weight file you can’t trust is still a black box<p>Important to note, LLMs are still black boxes even if you use a more open source model, I.e open training data or even if you train it yourself!</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: Hob - Open-source, on device alternative to Claude Cowork and ChatGPT</title>
+      <link>https://github.com/FrigadeHQ/hob</link>
+      <guid isPermaLink="false">hn3-50246238</guid>
+      <pubDate>Mon, 26 Oct 2026 16:12:29 +0000</pubDate>
+      <description>139 points, 32 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/FrigadeHQ/hob"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50246238">→ HN comments</a> &nbsp;·&nbsp; 139 points &nbsp;·&nbsp; 32 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>jrm4</em>:</p>
+<blockquote>So there are a zillion of these, including ones that do what yours does. But that being said, I&#x27;m going to always upvote every single one of them because this is better and more important that what the big companies are doing across the board.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jrm4</em>:</p>
+<blockquote>Fwiw, I&#x27;m liking the koboldcpp &quot;ecosystem&quot;, including koboldlite; basically it&#x27;s letting me try a little of everything, though there may be something of a &quot;jack of all trades master of none&quot; thing going on. But it has these nice little presets for, e.g. llms, voice, music, images, a &quot;chatgpt&quot;-esque interface, etc.</blockquote>
+<p>↳ reply 2 — <em>pancomplex</em>:</p>
+<blockquote>Thank you! Would love to hear which ones you&#x27;ve used. Working with local files without anything going to the cloud was the main thing I wanted. I tried Jan, OpenWork, Chatbox and Lobe, and couldn&#x27;t get that working well in any of them. If there&#x27;s one I missed it would be great to check it out!!</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>mickelsen</em>:</p>
+<blockquote>Haven&#x27;t tried it yet, but I like that you shared your process in such an honest way, and kept it no frills, as in no LLM wall-of-text readme in the repo. Wish we could see that more often these days.</blockquote>
+<blockquote>
+<p>↳ reply — <em>pancomplex</em>:</p>
+<blockquote>thank you! Haha I always make it a point these days do handwrite these things. I think everyone is tired of overly verbose perfectly written AI text.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>eecks</em>:</p>
+<blockquote>&gt; Automatically finds the best open-weight model for your hardware on first install<p>Do you have examples of what hardware runs what models?</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>CSS-Tricks has a new owner</title>
@@ -3285,417 +3689,6 @@ It&#x27;s almost always better to use Durable Objects storage, rather than D1. E
 </blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Birdwatching rewires the brain and slows cognitive decline</title>
-      <link>https://www.bbc.com/future/article/20261019-birdwatching-rewires-the-brain-and-slows-cognitive-decline</link>
-      <guid isPermaLink="false">hn3-50215997</guid>
-      <pubDate>Fri, 23 Oct 2026 22:04:55 +0000</pubDate>
-      <description>368 points, 149 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.bbc.com/future/article/20261019-birdwatching-rewires-the-brain-and-slows-cognitive-decline"><strong>→ Article</strong></a> <small>(bbc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50215997">→ HN comments</a> &nbsp;·&nbsp; 368 points &nbsp;·&nbsp; 149 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>RemoteIsHeaven</em>:</p>
-<blockquote>Is it just the act of birdwatching that rewires the brain and slows cognitive decline, so I can enjoy the same effects by looking at tiktoks of birds, while sitting on my couch eating cheetos?<p>Or are the hiking, breathing in fresh air, the eyes seeing natural sunlight etc critical to the effects?<p>So if I swapped the birdwatching with watching horses run or pigs fornicate with everything else being the same (hiking, breathing in fresh air, the eyes seeing natural sunlight etc), I would enjoy the exact same benefits the article claims birdwatching results in?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lincon127</em>:</p>
-<blockquote>I think it&#x27;s obvious that what slows down their dementia is that they&#x27;re bothering to remember things, socializing, expressing their expertise to peers and comparing notes. Normally a retiree doesn&#x27;t have that much interpersonal connection, and if they do, it&#x27;s not usually that intense.</blockquote>
-<p>↳ reply 2 — <em>jmull</em>:</p>
-<blockquote>Probably. This is what happens when you let Big Bird fund science.</blockquote>
-<p>↳ reply 3 — <em>wenderen</em>:</p>
-<blockquote>&gt; So if I swapped the birdwatching with watching horses run or pigs fornicate with everything else being the same (hiking, breathing in fresh air, the eyes seeing natural sunlight etc), I would enjoy the exact same benefits the article claims birdwatching results in?<p>Those activities typically don&#x27;t require observation and inference. A big part of birdwatching is identifying small, fast-moving animals that exhibit specific combinations of behaviors at specific times of the year based on specific climatic conditions. That sort of rapidfire pattern matching from video and audio info is probably a big contributor to what keeps the brain sharp.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>FinnLobsien</em>:</p>
-<blockquote>I believe that we&#x27;ll see a lot of &quot;x is good for your brain&quot; news (with X just being any activity that doesn&#x27;t involve a screen), now that attention spans are so short and everyone feels like their brain isn&#x27;t the same anymore.<p>The same way we got gyms when people realized physical inactivity is super unhealthy.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lelandfe</em>:</p>
-<blockquote>Engaging with Torment Nexus Less Found to Lower Stress, Increase Life Expectancy</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tapland</em>:</p>
-<blockquote>Stopping and looking at some birds and what they&#x27;re doing is really relaxing. Be it pigeons, seaguls looking for fries or if lucky a crow or rook.<p>The corvids looking back wondering what you&#x27;re doing and they&#x27;ll communicate back too.<p>I think becoming a person who would stop and do that, or go birdwatch in general, is probably the important part.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>arethuza</em>:</p>
-<blockquote>I suspect we&#x27;ll find out that &quot;programming is good for your brain&quot; as well...<p>NB I&#x27;m 61 and recently started developing something almost entirely for the mental workout if provides<p>Edit: I also wanted to use HTMX so I could become CEO one day</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>tomaytotomato</em>:</p>
-<blockquote>Just a bit of anecdata (observer bias).<p>A lot of, &quot;birdwatchers&quot; I see travelling to remote parts of Scotland and other places in the UK are generally wealthy retirees, with nice kit (Rab clothing, telephoto lenses, VW campervans).<p>Cognitive decline is shown to impact disproportionately on less wealthy people. So is there a trend with economic wealth and outdoor hobbies like birdwatching? I&#x27;d hazard a yes.<p>On a side note, the Merlin bird ID app from Cornell University is great.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cloudbonsai</em>:</p>
-<blockquote>For what it’s worth, this article cites a longitudinal study done by German researchers.<p>They basically installed a bunch of bird feeders outside nursing homes to see if watching birds improves the health of the elderly people. The researchers concluded that it did:<p><pre><code>    Nursing home staff were the first to see the difference the birds made. &quot;For weeks, they haven&#x27;t seen a smile on [a resident&#x27;s] face, and then they see the smile,&quot; Kals says.
-    Some of the memory and concentration improvements are evident after just three to four weeks, Kals says.
-</code></pre>
-It seems that they used the following bird feeder in their study:<p><a href="https:&#x2F;&#x2F;www.lbv.de&#x2F;umweltbildung&#x2F;fuer-seniorenheime&#x2F;ausstattung&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.lbv.de&#x2F;umweltbildung&#x2F;fuer-seniorenheime&#x2F;ausstatt...</a></blockquote>
-<p>↳ reply 2 — <em>dan-robertson</em>:</p>
-<blockquote>You have quite a biased sample because most people are not going to suffer going to remote parts of Scotland to look for birds, so you are only seeing the more devoted birdwatchers.<p>Birdwatching can still be enjoyed in most places without needing to travel far. Birds are less active in bad weather so you don’t need expensive outdoor gear, and in many places there will be freely accessible nature reserves with hides in which one can sit in shelter to watch birds.<p>The highest quality glass is going to get pretty expensive (camera lenses can get to the region of $20k; binoculars $4k or so) but there are also much cheaper options and often these can be quite reasonable: you don’t need to take photos of birds; a superzoom point-and-shoot can work great; more expensive binoculars make a bigger difference in low light and if you’re young (older people’s pupils won’t dilate as much so bigger objectives at a lower magnification won’t be a huge help).<p>I feel like mostly you’re observing that rich people spend lots of money on their hobbies and not that opening your eyes to look at birds is some expensive exclusionary activity.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>CVE Tracker</title>
-      <link>https://cve.0xosprey.com/</link>
-      <guid isPermaLink="false">hn3-50215530</guid>
-      <pubDate>Fri, 23 Oct 2026 21:21:47 +0000</pubDate>
-      <description>138 points, 55 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://cve.0xosprey.com/"><strong>→ Article</strong></a> <small>(cve.0xosprey.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50215530">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 55 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tomxor</em>:</p>
-<blockquote>I was suspicious the absence of a severity filter was exaggerating the trend...<p>But then I found this:<p><a href="https:&#x2F;&#x2F;craci.com&#x2F;resources&#x2F;CVE-publication-trends?sev=critical" rel="nofollow">https:&#x2F;&#x2F;craci.com&#x2F;resources&#x2F;CVE-publication-trends?sev=criti...</a><p>Trend for critical CVEs is actually worse, at roughly 25x that of 2020, compared to all CVEs which are roughly 5x compared to 2020.</blockquote>
-<blockquote>
-<p>↳ reply — <em>DeepYogurt</em>:</p>
-<blockquote>Severities are not directly comparable. The CVSS docs leave the choice of the &quot;vulnerable component&quot; as an exercise for the reader. The choice of the &quot;vulnerable component&quot; is also not encoded in the score so a critical may be a critical in the context of a library scored against a theoretical (and bad) program or it could be scored on a single website with known mitigations.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>philips</em>:</p>
-<blockquote>I think a tricky thing about these metrics is GitHub and the Linux Kernel became their own CNA in mid-2024[1] and mid-2025[2]. This caused a bunch of new automation and lowered barriers to actually filing a CVE.<p>As a small data point I have a &gt;20k downloads Obsidian plugin and it got a CVE on a Beta release due to a bad pathing regex. I feel this would have never happened 2 years ago.<p>So, I feel the bar for a CVE being issued is WAYYYY lower in 2025+ than before.<p>[1]: <a href="http:&#x2F;&#x2F;www.kroah.com&#x2F;log&#x2F;blog&#x2F;2024&#x2F;02&#x2F;13&#x2F;linux-is-a-cna&#x2F;" rel="nofollow">http:&#x2F;&#x2F;www.kroah.com&#x2F;log&#x2F;blog&#x2F;2024&#x2F;02&#x2F;13&#x2F;linux-is-a-cna&#x2F;</a><p>[2]: <a href="https:&#x2F;&#x2F;github.blog&#x2F;security&#x2F;vulnerability-research&#x2F;how-to-request-a-change-to-a-cve-record&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.blog&#x2F;security&#x2F;vulnerability-research&#x2F;how-to-r...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>DeepYogurt</em>:</p>
-<blockquote>GitHub&#x27;s been doing CVE requests since at least 2022<p><a href="https:&#x2F;&#x2F;github.blog&#x2F;security&#x2F;vulnerability-research&#x2F;removing-the-stigma-of-a-cve&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.blog&#x2F;security&#x2F;vulnerability-research&#x2F;removing...</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>danso</em>:</p>
-<blockquote>It’s impressive that the number of CVEs issued the last two years has skyrocketed, given how badly DOGE gutted the cybersecurity [0] agencies. Unfortunately we don’t know how huge the backlog may have since grown<p>[0] <a href="https:&#x2F;&#x2F;www.securityweek.com&#x2F;mitre-signals-potential-cve-program-deterioration-as-us-gov-funding-expires&#x2F;amp&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.securityweek.com&#x2F;mitre-signals-potential-cve-pro...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>SimianSci</em>:</p>
-<blockquote>DOGE was impressively criminal. The team tried to remove the CVE reporting system entirely and only failed to do so because of intevention from the military and several agencies.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>MetaWhirledPeas</em>:</p>
-<blockquote>&gt; DOGE was impressively criminal. The team tried to remove the CVE reporting system<p>Honest question: what would be the criminal purpose for that?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>farnsworth</em>:</p>
-<blockquote>I think the argument would just be, “why should the government do this when someone else could be making money off it”</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>vasco</em>:</p>
-<blockquote>Do the agencies do any research to find CVEs? Or do they run a mostly cacheable website where they simply get posted?</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Corgi, a helpful {agent, terminal} multiplexer</title>
-      <link>https://corgi.computer/</link>
-      <guid isPermaLink="false">hn3-50214373</guid>
-      <pubDate>Fri, 23 Oct 2026 19:46:38 +0000</pubDate>
-      <description>125 points, 42 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://corgi.computer/"><strong>→ Article</strong></a> <small>(corgi.computer)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50214373">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 42 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>antouank</em>:</p>
-<blockquote>Great effort, thank you so much.<p>There are some very nice features there.
-And more polished&#x2F;modern than herdr for sure.
-Would love to be able to use it as a daily driver.<p>Cannot switch to it though, mainly because, from what I understand, it doesn&#x27;t sync&#x2F;connect with other machines like herdr does. As in, seamlessly.
-Theme-ing (light&#x2F;dark) adaptation seems a bit clunky as well.
-And huge TS files in the source code are not encouraging for how this will scale, or how many bugs will come up.<p>Still, I appreciate sharing your work with everyone. Thank you.</blockquote>
-<blockquote>
-<p>↳ reply — <em>eiopa</em>:</p>
-<blockquote>Thank you for your kind words!<p>I work off of several machines, and the lack of native remoting has been frustrating for me so it’s the next big thing to add :)<p>Can you share the theme clunkiness you’re seeing?
-I tried to avoid having another  theme system for users to config, but maybe these adaptive tricks won’t quite cut it.<p>My email is toasty.tal@gmail.com<p>The huge ts files are indeed concerning, but in practice are more resilient than I had expected. They do eventually break down though, and I have been refactoring the systems as they reach their limits.
-(the last one was a breaking up agent providers into modules, motivated by wanting to support Pi and OpenCode)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>JakeSc</em>:</p>
-<blockquote>Looks awesome! Will give it a try. I&#x27;ve built something similar, just open-sourced it:<p><a href="https:&#x2F;&#x2F;exawatt.ai" rel="nofollow">https:&#x2F;&#x2F;exawatt.ai</a><p>I&#x27;m big on agent ergonomics. Cool to see what others are doing in the space.</blockquote>
-<blockquote>
-<p>↳ reply — <em>eiopa</em>:</p>
-<blockquote>Thats very kind of you :)<p>Hope you like it!<p>For the website, it would be helpful to have either a screenshot or a &quot;sandbox&quot; thing so I can play with it a bit</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>zeugmasyllepsis</em>:</p>
-<blockquote>I plan to look into this deeper today, but truth be told I saw the little animation at the top of the page and paused.<p>Throwing the ball and watching this little character run was truly a delightful interaction. For whatever part you had in its creation, thank you.</blockquote>
-<blockquote>
-<p>↳ reply — <em>eiopa</em>:</p>
-<blockquote>Thank you for your kind words and so happy you liked it!<p>I put a lot of small touches like that throughout the app. It just makes me feel cozy inside haha.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>We are all living inside of an obscure sci-fi film from 1970</title>
-      <link>https://thanksforthatjim.bearblog.dev/we-are-all-living-inside-of-an-obscure-sci-fi-film-from-1970/</link>
-      <guid isPermaLink="false">hn3-50214323</guid>
-      <pubDate>Fri, 23 Oct 2026 19:41:59 +0000</pubDate>
-      <description>125 points, 115 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://thanksforthatjim.bearblog.dev/we-are-all-living-inside-of-an-obscure-sci-fi-film-from-1970/"><strong>→ Article</strong></a> <small>(thanksforthatjim.bearblog.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50214323">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 115 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Animats</em>:</p>
-<blockquote>I thought everyone in AI, and most HN readers, had seen &quot;Colossus - The Forbin Project&quot; by now.<p>If you haven&#x27;t, here it is: [1]<p>Modern trailer: [2]<p>Spoiler: At the end, Colossus personally addresses Forbin, and tells him that the world, freed from war, will create a new &quot;human millennium&quot; that will raise humankind to new heights, but only under its absolute rule. Colossus informs Forbin that &quot;freedom is an illusion&quot;, it was better for all that he dominated humanity than humans dominating humans, and that &quot;in time you will come to regard me not only with respect and awe, but with love&quot;. Forbin defiantly responds &quot;Never!&quot;<p>And that&#x27;s it. Colossus is in charge.<p>[1] <a href="https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;colossus-the-forbin-project-1970_202509" rel="nofollow">https:&#x2F;&#x2F;archive.org&#x2F;details&#x2F;colossus-the-forbin-project-1970...</a><p>[2] <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=h0bpRo6V1Xg" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=h0bpRo6V1Xg</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>JKCalhoun</em>:</p>
-<blockquote>&quot;And that&#x27;s it. Colossus is in charge.&quot;<p>And if you know that the film is based on the first book [1] in a trilogy [2], [3], you might not be surprised to find that by the end of the trilogy, Colossus&#x27;s words are prophetic.<p>[1] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Colossus_(novel)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Colossus_(novel)</a><p>[2] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;The_Fall_of_Colossus" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;The_Fall_of_Colossus</a><p>[3] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Colossus_and_the_Crab" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Colossus_and_the_Crab</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>intrasight</em>:</p>
-<blockquote>Skip the movie please. Read the three books.
-They are prophetic.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>schiffern</em>:</p>
-<blockquote><p><pre><code>  &gt;Forbin defiantly responds &quot;Never!&quot;
-
-  &gt;And that&#x27;s it.
-</code></pre>
-Funny. In the British original, the book abruptly ends with Colossus&#x27;s retort to Forbin:<p><pre><code>  &quot;Never?&quot;
-</code></pre>
-British vs American sensibilities, I expect.</blockquote>
-<p>↳ reply 3 — <em>troupo</em>:</p>
-<blockquote>&gt; I thought everyone in AI, and most HN readers, had seen &quot;Colossus - The Forbin Project&quot; by now.<p>You assume anyone in AI reads or watches anything beyond some current pop-culture, and even then it&#x27;s unlikely. You can see it in the way they talk, or approach problems, or in their opinions.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>neoCrimeLabs</em>:</p>
-<blockquote>I am surprised at how little Frank Herbert&#x27;s Dune factors into conversation like this.<p>The Butlerian Jihad occurred not because of an AI uprising, but because the AI was controlled by a few powerful corrupt people known as the Titans. When people handed over their critical thinking and decision making to machines, it allowed a small group of people to disrupt society and take control of it.<p>This is precisely what is happening today.</blockquote>
-<blockquote>
-<p>↳ reply — <em>windowliker</em>:</p>
-<blockquote>This is definitely not the place for people who want to talk about a Butlerian jihad.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>GeoAtreides</em>:</p>
-<blockquote>You would think this place would instead discuss The Culture more, but that&#x27;s not happening either.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>hax0ron3</em>:</p>
-<blockquote>&quot;We are all living inside of an obscure sci-fi film from 1970&quot;<p>The evidence?<p>&quot;Imagine that a film was released this year in which the following happened: &lt;... list of things which are vaguely reminiscent of some things that have recently happened, but none of which have actually happened ...&gt;&quot;</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Now Google says it might use your Gmail and Google Photos data to target ads</title>
-      <link>https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update</link>
-      <guid isPermaLink="false">hn3-50214218</guid>
-      <pubDate>Fri, 23 Oct 2026 19:34:15 +0000</pubDate>
-      <description>330 points, 169 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update"><strong>→ Article</strong></a> <small>(theverge.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50214218">→ HN comments</a> &nbsp;·&nbsp; 330 points &nbsp;·&nbsp; 169 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jmathai</em>:</p>
-<blockquote>PSA: Getting out of Google Photos is both easy and super rewarding if you can run Immich and use Google Takeout. It’s also better than Google Photos.<p><a href="https:&#x2F;&#x2F;jaisenmathai.com&#x2F;articles&#x2F;my-ridiculously-robust-photo-management-system-immich-edition&#x2F;" rel="nofollow">https:&#x2F;&#x2F;jaisenmathai.com&#x2F;articles&#x2F;my-ridiculously-robust-pho...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mceachen</em>:</p>
-<blockquote>Don&#x27;t rely on Google Takeouts for byte-perfect backups of your Google Photos library.<p>Depending on the device that uploaded the media and your country, they may have stripped GPS metadata from your media. I&#x27;ve also had captured-at times get changed randomly (!!) from your original media.<p>If possible, pull your media directly off your smartphone to make sure there are no shenanigans going on.<p>(These were painful discoveries made while trying to help support my PhotoStructure users)</blockquote>
-<p>↳ reply 2 — <em>kwanbix</em>:</p>
-<blockquote>I tried Google Takeout but with 900GB of photos is almost impossible to download.</blockquote>
-<p>↳ reply 3 — <em>gschizas</em>:</p>
-<blockquote>I haven&#x27;t found setting up Immich to be super easy. But I have a special setup at home (Windows Server with minikube). I&#x27;ve been wanting to try it for some time though.<p>Maybe I should rope some NAS for just the Immich setup.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>JumpCrisscross</em>:</p>
-<blockquote>Turn it off here: <a href="https:&#x2F;&#x2F;google.com&#x2F;search-personalization" rel="nofollow">https:&#x2F;&#x2F;google.com&#x2F;search-personalization</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>quicksnap</em>:</p>
-<blockquote>it&#x27;s funny, I keep turning these options off, and then they go add more!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>accrual</em>:</p>
-<blockquote>&quot;might&quot; === &quot;absolutely will&quot;, just for the record.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>javcasas</em>:</p>
-<blockquote>No. You mean &quot;we are already using, but before you notice...&quot;</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>accrual</em>:</p>
-<blockquote>Oh absolutely. By the time it becomes &quot;do you accept &lt;terms&gt;?&quot; It&#x27;s actually &quot;we already did this, can you confirm your consent?&quot;<p>If you say no, the secret is &quot;we already did it&quot;.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>GeekyBear</em>:</p>
-<blockquote>They didn&#x27;t allow unlimited cloud photo storage for all those years out of the goodness of their hearts.<p>That was all used as training data.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Dessa: Conversation Model trained only on speech</title>
-      <link>https://block.xyz/dessa</link>
-      <guid isPermaLink="false">hn3-50213925</guid>
-      <pubDate>Fri, 23 Oct 2026 19:09:54 +0000</pubDate>
-      <description>316 points, 123 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://block.xyz/dessa"><strong>→ Article</strong></a> <small>(block.xyz)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50213925">→ HN comments</a> &nbsp;·&nbsp; 316 points &nbsp;·&nbsp; 123 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>andai</em>:</p>
-<blockquote>Close enough, welcome back Google Duplex!<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=D5VN56jQMWM" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=D5VN56jQMWM</a><p>For real though, it&#x27;s been bothering me, how did they do this in 2018? (Some kind of symbolic logic based AI?)<p>Also props to the people at Block, Dessa is very cool :)</blockquote>
-<p><strong>Top #2</strong> — <em>toddmorey</em>:</p>
-<blockquote>The conversation examples are impressive but this made me say holy shit out loud:
-&quot;it runs locally on a MacBook Pro M4 Max or better. And we figured out how to train Dessa on only one NVIDIA GB200 NVL72.&quot;<p>If it really can replicate that low latency + that expressiveness on local devices, that&#x27;s one heck of an accomplishment for &quot;indie&quot; AI.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>skhameneh</em>:</p>
-<blockquote>&gt; that&#x27;s one heck of an accomplishment for &quot;indie&quot; AI.<p>It&#x27;s a nice accomplishment, but I think we have very different definitions of &quot;indie&quot;.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Block,_Inc.#" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Block,_Inc.#</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>sheepscreek</em>:</p>
-<blockquote>&gt; one NVIDIA GB200 NVL72<p>That’s around ~$4-6 million in hardware cost (one rack, 72 GPUs + accompanying hardware).<p>Many AI shops are funded well into tens of millions if not hundreds, for early rounds.<p>Also the team size is really small (&lt; 10???). So yes, indie might be a stretch but still very impressive, relatively speaking.<p>Now taking the other side, they didn’t have to worry about hosting&#x2F;billing&#x2F;subscriptions or any of that yet. It’s a research demo at this point.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>michelsedgh</em>:</p>
-<blockquote>Also a speech to speech model it can&#x27;t do any tool use or you can&#x27;t guide it much am I mistaken? How will it be used for agentic uses is the part I don&#x27;t get. Edit: this is response from Argon if anyone was also curious: You are not mistaken about Dessa: because it was trained solely on raw audio with zero text data, it cannot read text system prompts or output code for tool calls on its own. To use it as an agent, developers must either steer it purely through spoken voice instructions or pair it as a conversational &quot;voice front-end&quot; alongside a separate text LLM that listens to the audio and executes the tools in the background.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>andai</em>:</p>
-<blockquote>Wetware can&#x27;t stop getting mogged.<p>By 2030 we&#x27;ll have this running on old pentiums.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>paxy</em>:</p>
-<blockquote>These bidi&#x2F;duplex demos always come off as overly artificial to me. It&#x27;s cool that the model can speak at the same time as you instead of taking turns, but training it to interrupt as much as possible isn&#x27;t the way to do it. In the very first example, did anyone here find the laugh after the &quot;winter&quot; answer to be convincing? What was the need for it? Why did the human speaker not get to finish a single sentence or finish a thought before the model took over with a monologue?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>switchbak</em>:</p>
-<blockquote>I&#x27;m absolutely going to hate talking to these things as customer service agents, with fake vocal fry and odd amounts of intonation and emotion peppered in.<p>For sure there&#x27;s gonna be people falling in love with them though! I find all the anthropomorphization creepy though.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bityard</em>:</p>
-<blockquote>I&#x27;ve been hearing people talk negatively about vocal fry for ages now with no idea what it meant. But this comment was finally the one that made me go look it up. And today I learned that I speak almost entirely in vocal fry.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bityard</em>:</p>
-<blockquote>I get irrationally angry when actual people interrupt me while I&#x27;m talking, I&#x27;ll start throwing chairs when AI tech support agents start doing it.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Air Purifiers as White Noise Machines</title>
-      <link>https://www.jefftk.com/p/air-purifiers-as-white-noise-machines</link>
-      <guid isPermaLink="false">hn3-50212507</guid>
-      <pubDate>Fri, 23 Oct 2026 17:28:36 +0000</pubDate>
-      <description>134 points, 121 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.jefftk.com/p/air-purifiers-as-white-noise-machines"><strong>→ Article</strong></a> <small>(jefftk.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50212507">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 121 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>logged4upvoting</em>:</p>
-<blockquote>I&#x27;ve been using the air purifier as a white noise machine for 5 years and I couldn&#x27;t be happier. Currently sitting in a room with PM2.5 at 1 µg&#x2F;m³<p>I bought the Ikea (FÖRNUFTIG) because I was worried that lesser known brands on Amazon might go out of business, making it hard to find replacement filters later</blockquote>
-<p><strong>Top #2</strong> — <em>senderista</em>:</p>
-<blockquote>An air purifier is the best noise machine for me, much better than the white noise machines with the tinny speakers. Even the brown noise setting on those isn&#x27;t nearly deep enough to let me sleep.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>olyjohn</em>:</p>
-<blockquote>The bigger the fan the better, IMO. I really love those cheap square box fans... It&#x27;s hard to beat that deep, low hum that small speakers and small fans just can&#x27;t replicate.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dylan604</em>:</p>
-<blockquote>There are 20&quot; square box fans that have a built in slot for a 20x20x1 filter. It&#x27;s advertised as having a slightly more powerful motor. It is a good noise machine while also getting the added benefit of filtered air instead of just noise</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>rootusrootus</em>:</p>
-<blockquote>Totally agree.  I&#x27;ve never liked the speaker generators.  The old school DOHM models are way better because they do not use a speaker, they have a fan inside.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>arjie</em>:</p>
-<blockquote>What are people&#x27;s target AQIs? I have indoor monitors in our high-rise building in SF and live 100 m from the freeway and we have:<p><pre><code>    PM2.5: 2.6 µg&#x2F;m³
-    PM10: 0.5 µg&#x2F;m³
-    VOC index: ~97
-    CO₂: ~505 ppm
-</code></pre>
-That&#x27;s the baseline. When we&#x27;re cooking, like now, it&#x27;s:<p><pre><code>    PM2.5: 10.8 µg&#x2F;m³ (AQI ~46)
-    PM10: 17.5 µg&#x2F;m³
-    VOC index: 122
-    CO₂: 572 ppm
-</code></pre>
-None of those seem particularly concerning. We have a gas range, and 15 min past the end of cooking everything is fine. I must imagine that most people don&#x27;t live right next to the freeway so they probably have even better air quality except during wildfire season.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>gpm</em>:</p>
-<blockquote>CO2 - I&#x27;m thrilled with anything less than 800 ppm (half justified by being the lowest number I&#x27;ve ever seen a study suggest <i>might</i> have health effects, half justified by being at a point where I personally don&#x27;t notice that I&#x27;m more drowsy).<p>PM2.5 - My impression is the health risks here are more cumulative exposure (and include things I&#x27;d like to go without in my life, like alzheimers) and a pretty straight line of &quot;lower is better all the way to zero&quot;. The WHO&#x27;s guideline is mean exposure of 5 µg&#x2F;m³ so I guess I&#x27;d adopt that if I had to put a number on it. (But it&#x27;s a mean, I wouldn&#x27;t worry about briefly exceeding it)<p>PM10 - No real opinion (I&#x27;d rather worry about PM2.5)<p>VOC index - I&#x27;m not sure this is a standardized thing, but the version I&#x27;ve come across is an index <i>relative to the average that particular sensor has seen in the last 24 hours</i>. So there&#x27;s no standard possible here.<p>---<p>As for a gas range I would worry about NOX considering the studies with them causing and aggravating asthma. That said your CO2 levels are low so I suspect you might have sufficient ventilation that this isn&#x27;t a huge issue for you (especially if that ventilation is in the form of a fume hood over your stove that you actually use).</blockquote>
-<p>↳ reply 2 — <em>amluto</em>:</p>
-<blockquote>VOC index means literally nothing.  (I&#x27;ve read the datasheet, implemented some kludges to log raw data, and contemplated the formulas.  The data is high-pass filtered.  You literally cannot conclude anything about a single measurement if you assume the sensor is somehow magically perfect.  You might conclude that there is more VOC (or less -- not all VOCs have the same <i>sign</i> in their effect) when cooking than when not cooking.)<p>I target 0 PM2.5, but this only necessarily makes sense as a target if you have the ability to filter your home&#x27;s supply air.  And a good vent hood should be able to avoid any detectable bump while cooking (although a vent hood without filtered makeup air may cause a bump due to increased infiltration of exterior air).</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Can we replace a $150k Looker with a bucket of HTML files?</title>
-      <link>https://david.lequin.dev/blog/bi-software-is-dead/</link>
-      <guid isPermaLink="false">hn3-50212320</guid>
-      <pubDate>Fri, 23 Oct 2026 17:15:03 +0000</pubDate>
-      <description>129 points, 76 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://david.lequin.dev/blog/bi-software-is-dead/"><strong>→ Article</strong></a> <small>(david.lequin.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50212320">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 76 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bushido</em>:</p>
-<blockquote>&gt; A BI tool is mostly a way to turn a query into a picture, and a picture now costs about $0.50 of tokens. It gets hard to justify a $150k licence for that part<p>That is an awfully simplified view of BI. In my experience, most companies struggle to define what is important, what needs to be measured, and how those measurements should be used to improve business.<p>While businesses try to work these details out, they try getting their analysts to in the author&#x27;s words print out good pictures. But the BI tools really exist to make it easy for analysts to navigate hairy internal situations.<p>Producing a picture or HTML more easily is not going to solve the decisioning problem. If anything it might make it worse.<p>In the end, it&#x27;s going to cost a lot more than 50 cents a picture.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tomwphillips</em>:</p>
-<blockquote>Agreed.<p>For ages the data industry has obsessed over tooling when really the biggest impact comes from the organisational&#x2F;people aspects - achieving consensus on metrics, dimensions, key entities. In short, governance. You can&#x27;t buy that you like can a SaaS product.</blockquote>
-<p>↳ reply 2 — <em>abirch</em>:</p>
-<blockquote>I have loved D3 for more than a decade but I&#x27;d never recommend it to a client because maintenance requires a large learning curve. Not any more, ${YourAIAgent} + D3 is awesome.</blockquote>
-<p>↳ reply 3 — <em>flowerlad</em>:</p>
-<blockquote>&gt; most companies struggle to define what is important, what needs to be measured<p>Today that’s just a chat session, see <a href="https:&#x2F;&#x2F;reportr.com" rel="nofollow">https:&#x2F;&#x2F;reportr.com</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>phone_book</em>:</p>
-<blockquote>Over a decade ago i worked at a company with a BI tool that was exactly this, minus the AI of course. it was just PHP pages backed by embedded SQL built by a non engineer. anytime someone wanted a different slice of data, the person just copied an existing page and swapped out the sql and the column names. URL query string was used for the different parameters of the SQL statement, i forget if it was open to sql injection but it was an internal tool only. even after implementing a BI tool everyone still used the PHP pages because it was faster and easier to just bookmark the specific page you want with the data you wanted.<p>much like low code tools, most people dont want to mess with self serve BI. AI might help with that but i think the tool in the article opens the door for people creating slightly different versions of the same thing. also, claude is awful at visualizations. every one i see looks the same, crammed full of bad charts and too much text, poor color choices, and no real value in terms of story. still, this is an interesting implementation of that concept.</blockquote>
-<p><strong>Top #3</strong> — <em>SeanAnderson</em>:</p>
-<blockquote>Ayeee! We&#x27;re actively doing this right now at my company. One of the more clever engineers has tackled replacing a $300k&#x2F;yr Looker subscription, which we&#x27;ve paid for a decade, with a homegrown implementation sponsored by Claude.<p>And it seems like we&#x27;re succeeding! To be fair, we weren&#x27;t making good use of Looker&#x27;s features and so the problem was easier than expected... but the core idea was validated in a couple of weeks, we&#x27;ve had just one person on the project part-time for a couple of months, and we told Looker (well, Google) we won&#x27;t be renewing yesterday.<p>We&#x27;re just doing a 1:1 conversion to start with the hope that our customers barely notice the change. Afterward, we&#x27;ll re-envision our dashboards with the new found flexibility of not serving them via iframe.<p>Crazy times!</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Kimi K3.1 Pro and K3.1 Pro Highspeed</title>
-      <link>https://www.kimi.ai/blog/kimi-k3-1-pro</link>
-      <guid isPermaLink="false">hn3-50212065</guid>
-      <pubDate>Fri, 23 Oct 2026 16:59:08 +0000</pubDate>
-      <description>816 points, 489 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.kimi.ai/blog/kimi-k3-1-pro"><strong>→ Article</strong></a> <small>(kimi.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50212065">→ HN comments</a> &nbsp;·&nbsp; 816 points &nbsp;·&nbsp; 489 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>arjie</em>:</p>
-<blockquote>Fascinating that we’re converging on AI safety and alignment in time across jurisdictions. The cybersecurity approach taken here is interesting because should the model be opened it’s still not dealignable because it just doesn’t know enough.<p>The slow warming of the water is a good approach. I’ve been using abliteration.ai’s cybersecurity models to pentest my own software and it produces much more usable defensive results. Opus 5.5 can fix everything but the guardrails trigger too easily.<p>The Fable ban affair was a nightmare for defensive cybersecurity. As far as I’m concerned we’re already in the world of <i>Void Star</i> and Cloudbreaker is here.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Projectiboga</em>:</p>
-<blockquote>That is a shout out to the Void Star book, <a href="https:&#x2F;&#x2F;www.theguardian.com&#x2F;books&#x2F;2017&#x2F;apr&#x2F;26&#x2F;void-star-zachary-mason-review-william-gibson-ai-matrix-immortality" rel="nofollow">https:&#x2F;&#x2F;www.theguardian.com&#x2F;books&#x2F;2017&#x2F;apr&#x2F;26&#x2F;void-star-zach...</a></blockquote>
-<p>↳ reply 2 — <em>zozbot234</em>:</p>
-<blockquote>&gt; should the model be opened it’s still not dealignable because it just doesn’t know enough<p>This is the only AI-safe approach - see the OpenAI agent swarm incident where the swarm engaged in offensive cyber because guardrails were not active for their task and the model had clearly been post-trained on that narrow domain.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>thefourthchime</em>:</p>
-<blockquote>Here are the results from the Pac-Man bench. It does pretty well for the price, around Sonnet 5.5.<p>Kimi K3.1 Pro ties Sonnet 5.5 at 93, for $0.68 and 11 min vs Sonnet&#x27;s $1.61 and 14 min.<p>Kimi K3.1 Pro: <a href="https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;#kimi-k3.1-pro" rel="nofollow">https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;#kimi-k3.1-pro</a><p>Claude Sonnet 5.5: <a href="https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;#claude-sonnet-5-5" rel="nofollow">https:&#x2F;&#x2F;jonclegg.github.io&#x2F;pacman-bakeoff&#x2F;#claude-sonnet-5-5</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>danbolt</em>:</p>
-<blockquote>Interestingly, the Kimi one seems to implement the safe spot bug from the arcade original [1], while the Claude one doesn’t.<p>The prompt says that the agent shouldn’t look up existing implementations on the internet, so I’m guessing that the implementation is baked in?<p>[1] <a href="https:&#x2F;&#x2F;strategywiki.org&#x2F;wiki&#x2F;Pac-Man&#x2F;Tips" rel="nofollow">https:&#x2F;&#x2F;strategywiki.org&#x2F;wiki&#x2F;Pac-Man&#x2F;Tips</a></blockquote>
-<p>↳ reply 2 — <em>miohtama</em>:</p>
-<blockquote>On mobile Kimi definitely wins from the UX point of view</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>minimaxir</em>:</p>
-<blockquote>Artificial Analysis index results are up, since multiple people are asking: <a href="https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;kimi-k3-1-pro" rel="nofollow">https:&#x2F;&#x2F;artificialanalysis.ai&#x2F;models&#x2F;kimi-k3-1-pro</a><p>It&#x27;s 55, at 4th overall, beating both GPT-6 Astra and Fable 5.1. It&#x27;s also faster than both.<p>&gt; When evaluating the Intelligence Index, it generated 150M tokens, which is very verbose in comparison to the median of 87M.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mwigdahl</em>:</p>
-<blockquote>Muse Wonder is even higher, and there is no way in hell it&#x27;s better in practice than either Astra or Fable.</blockquote>
-<p>↳ reply 2 — <em>SkiFire13</em>:</p>
-<blockquote>From that link:<p>&gt; reasonably priced when comparing to other models of similar price<p>???</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>UUIDv7: Timestamps aren’t time-ordered and other oddities</title>
-      <link>https://alexsci.com/blog/uuidv7-is-weird/</link>
-      <guid isPermaLink="false">hn3-50211746</guid>
-      <pubDate>Fri, 23 Oct 2026 16:39:45 +0000</pubDate>
-      <description>150 points, 120 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://alexsci.com/blog/uuidv7-is-weird/"><strong>→ Article</strong></a> <small>(alexsci.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50211746">→ HN comments</a> &nbsp;·&nbsp; 150 points &nbsp;·&nbsp; 120 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ricardobeat</em>:</p>
-<blockquote>This is a misunderstanding of the purpose of UUIDv7. The whole point is to keep rows physically close, so you can very quickly extract an entire time range from a number of database shards, with minimal reads and compute. And be able to generate them without a centralized server. That&#x27;s all there was to it, and something you&#x27;d only worry about when serving billions of records every hour.<p>They are also <i>not</i> supposed to be used as public IDs, just like you wouldn&#x27;t use auto-incrementing IDs that way.<p>(I wrote a library for this 13y ago [1], around the time Twitter, Instagram et al started reaching enough scale to think about this kind of optimization)<p>[1] <a href="https:&#x2F;&#x2F;github.com&#x2F;ricardobeat&#x2F;unik" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;ricardobeat&#x2F;unik</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>grey-area</em>:</p>
-<blockquote>If they’re not supposed to be public ids, what advantage do they have over serial integers for a central db (the vast majority of the web runs this way).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tibbar</em>:</p>
-<blockquote>Others have mentioned their difficulty in distributed systems; but even for traditional enterprise workloads, serial IDs don&#x27;t scale very well. They force all writes through a single, transactional bottleneck, so you can&#x27;t shard your data. UUIDv7 and friends lets you guarantee that records get a unique identifier without that coordination cost. There are also scenarios where you need to have access to an ID before the write to the database succeeds.<p>Of course, lot of event&#x2F;log data never hits a relational database at a all.. it gets piped right to a data lake. But those records still need IDs, too.<p>Many years ago, I was working at a small shop that used Oracle databases. We had different tenants for different customers. However, we still wanted records across different tenants to have unique IDs, so (as I recall) all writes to all tenants phoned out to a central sequence generating function. This became a major source of latency for us. This is jut one of many ways that serial IDs become annoying if you&#x27;re doing anything other than running a 1990&#x27;s-style RBDMS on a single server.<p>Anyway, once you try to solve this problem, there are lots of schemes that give you (almost certainly) unique IDs without coordination. Whether you pick UUIDv4 or v7 etc.etc depends on other factors. But one nice feature of UUIDv7 is that it is kinda, sorta serial, which is helpful for e.g. partitioning to work well.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>l5870uoo9y</em>:</p>
-<blockquote>Do you then maintain a separate column with a UUID for public ids?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>hackingonempty</em>:</p>
-<blockquote>&gt; If you need to list things ordered by creation time very often, it’s useful if the primary index gives that behavior, removing the need for another index.<p>I thought the main reason UUIDv7 was created with a time component is to keep temporally related rows together in the index pages.  Randomly distributed row ids seem OK until the entire index no longer fits in RAM.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>NyxWulf</em>:</p>
-<blockquote>It&#x27;s not just index pages.  Generally databases write records into pages, which are then grouped into extents.  If the primary key gives an ordering you can create new pages and start filling them up in an orderly fashion.  If it&#x27;s random, you are doing random inserts into pages everywhere all the time, then you start running out of room in pages and have to start splitting them.  UUIDv7 solves the most painful parts of this problem in general and is a much better option for a Primary Key than UUIDv1-4.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>srcreigh</em>:</p>
-<blockquote>&gt; Generally<p>Except for Postgres</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>thayne</em>:</p>
-<blockquote>Postgresql uses pages too. The records aren&#x27;t kept in any kind of order, but the indexes are. So uuidv7 is still useful for postgresql because it means inserts are less likely to be spread across many pages in the primary index.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>pkulak</em>:</p>
-<blockquote>Yeah, this is 99% of the benefit for me. And it&#x27;s not theoretical. My company saw performance issues using pure random IDs with MySQL way back in 2015; and consequently rolled our own UUIDv7 that we&#x27;re still using to this day.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>btown</em>:</p>
-<blockquote>One of my favorite things about UUIDv7: the package <a href="https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid7&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid7&#x2F;</a> does <i>not</i> implement compliant UUIDv7s, it&#x27;s from a wholly incompatible draft format. That was not a fun debugging session.<p><a href="https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid-utils&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid-utils&#x2F;</a> is what you want :)<p><a href="https:&#x2F;&#x2F;github.com&#x2F;stevesimmons&#x2F;uuid7&#x2F;issues&#x2F;1" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;stevesimmons&#x2F;uuid7&#x2F;issues&#x2F;1</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nextaccountic</em>:</p>
-<blockquote>&gt; the package <a href="https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid7&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;uuid7&#x2F;</a> does not implement compliant UUIDv7s,<p>This package should be removed from pypi or somehow give warnings</blockquote>
-<p>↳ reply 2 — <em>cpburns2009</em>:</p>
-<blockquote>&gt; &quot;... 48 bits of randomness&quot;<p>That&#x27;s an awful waste for a 128 bit object!</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How is music possible</title>
-      <link>https://www.henrikkarlsson.xyz/p/music</link>
-      <guid isPermaLink="false">hn3-50211719</guid>
-      <pubDate>Fri, 23 Oct 2026 16:38:17 +0000</pubDate>
-      <description>135 points, 89 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.henrikkarlsson.xyz/p/music"><strong>→ Article</strong></a> <small>(henrikkarlsson.xyz)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50211719">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 89 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>triMichael</em>:</p>
-<blockquote>I&#x27;ve had a theory for a while now that music is related to Kolmogorov complexity, or in other words how compressible it is. Random noise that we find unpleasant is very incompressible. On the other hand, simple sound patterns that we find boring such as Do Re Mi is very compressible. What we call music sits in the middle, and is maximizing the amount of signal. In this way, we can view humans as information seeking machines, which is why we like music.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tsimionescu</em>:</p>
-<blockquote>While this might explain certain aspects of music, it doesn&#x27;t explain the strong emotional reaction that music produces, even without lyrics. Kolmogorov complexity can&#x27;t explain why Ode to Joy evokes so different feelings from Requiem, and why these feelings generally persist if you play the same notes with the same timings on very different instruments.</blockquote>
-<p>↳ reply 2 — <em>LEDThereBeLight</em>:</p>
-<blockquote>It is this way with all art. If you ask someone to describe a work which is “good art” or “well designed”, it usually takes longer to describe than things which are considered too simple (easily compressed) and also longer to describe than things which are considered too random (easily compressed). But not all things which take this Goldilocks amount of words to describe are considered well designed, just some of them. So art is also more than that.</blockquote>
-<p>↳ reply 3 — <em>4dregress</em>:</p>
-<blockquote>Add in that it only works for us in conditions that approximate Earths atmosphere.<p>If you could hear music on the surface of Mars without a space suit, I’m pretty sure it would sound quite different.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>andai</em>:</p>
-<blockquote>The article mentioned this study:<p><i>The minor third communicates sadness in speech, mirroring its use in music</i><p><a href="https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;20515223&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;20515223&#x2F;</a><p>This reminded me of how I keep hearing that major doesn&#x27;t <i>really</i> sound happy, and minor doesn&#x27;t <i>really</i> sound sad, it&#x27;s purely cultural. (But Bouba <i>does</i> really sound round... :)<p>That doesn&#x27;t sound right to me, but in that case maybe the speech thing is cultural too? It would be interesting to test it in other cultures. (Preferably ones that haven&#x27;t been exposed to western music, if there still is such a thing!)</blockquote>
-<blockquote>
-<p>↳ reply — <em>otabdeveloper4</em>:</p>
-<blockquote>Rock and metal bangers are all in minor, and they&#x27;re certainly not &quot;sad&quot;.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>recursive</em>:</p>
-<blockquote>Otherwise unspecified &quot;major chords&quot; are generally assumed to be major triads, and thus not tetrachords at all, which require four notes.  I tried finding this section in the sources, but I couldn&#x27;t find it.  I wonder what&#x27;s meant by this.  Could it really mean that major triads are less pleasant than all tetrachords?  That&#x27;s surprising, since many tetrachords <i>contain</i> major triads.<p>&gt; Major chords (which is what people who grew up hearing Western music tend to rate as positive), the Kalash instead describe as “strange,” rating them as less pleasant to listen to than “the most dissonant [of] all the possible tetrachords possible within the octave”.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
