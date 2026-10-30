@@ -4,7 +4,159 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 30 Oct 2026 08:26:38 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 15:46:04 +0000</lastBuildDate>
+    <item>
+      <title>Backdoor in Claude Code for VS Code extension on the Cursor Marketplace</title>
+      <link>https://phorion.io/blog/offical-claude-code-vsx-compromise/</link>
+      <guid isPermaLink="false">hn3-50300683</guid>
+      <pubDate>Fri, 30 Oct 2026 07:09:12 +0000</pubDate>
+      <description>230 points, 328 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://phorion.io/blog/offical-claude-code-vsx-compromise/"><strong>→ Article</strong></a> <small>(phorion.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50300683">→ HN comments</a> &nbsp;·&nbsp; 230 points &nbsp;·&nbsp; 328 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>felixrieseberg</em>:</p>
+<blockquote>Felix from Anthropic here.<p>We’re working with Cursor on this incident, but it wasn’t a compromise of Anthropic’s systems or employee laptops. A malicious actor used access to Cursor’s marketplace to publish a tampered copy of the Claude Code extension, which we didn’t build or publish. The versions on our official channels are not affected and this only impacts Cursor users.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ipsento606</em>:</p>
+<blockquote>The situation is confusing, so can I please confirm the following:<p>* &quot;Cursor Editor&quot; is a fork of VS Code<p>* The &quot;Claude Code for VS Code&quot; extension, v2.1.313, was compromised specifically on the Cursor Editor extension marketplace &#x2F; distribution system<p>* The &quot;Claude Code for VS Code&quot; extension for regular VS Code on the official VS Code extension marketplace was not affected<p>Followup question: was a v2.1.313 also published on the official VS Code marketplace? If so, your statement is that that version was not compromised?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ddworken</em>:</p>
+<blockquote>Dworken from Anthropic here, that is correct: This only impacted the extension as it was hosted on the Cursor marketplace. It did not impact the official VS Code extension marketplace or OpenVSX. Users of Claude Code on VS Code are not impacted by this issue.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>JeremyNT</em>:</p>
+<blockquote>If this isn&#x27;t a damning indictment of Cursor, I don&#x27;t know what is. Perhaps it will be the death knell.<p>What value is this VS fork actually adding given today&#x27;s advanced harnesses? Surely whatever benefits it offers are not worth the risks going forward.</blockquote>
+<p>↳ reply 3 — <em>fishfasell</em>:</p>
+<blockquote>I&#x27;m assuming there is no way to prevent this without Cursor improving their extension vetting? Seems like folks are confused in the comments here. To me, this is a 3rd party marketplace that lives outside of Anthropic&#x27;s governance, is that correct?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>helsinkiandrew</em>:</p>
+<blockquote>&gt; Yesterday, Anthropic were compromised and Cursor extension used by tens of millions of developers for Claude access was delivering a remote access trojan via an SSH reverse backdoor<p>That&#x27;s a bit hyperbolic: someone released a version of the Claude Code VS Code extension with a backdoor on the Cursor marketplace:<p>&gt; a maliciously modified version of Anthropic’s Claude Code extension was made available in the Cursor VS Code extension Marketplace<p><a href="https:&#x2F;&#x2F;cursor.com&#x2F;blog&#x2F;claude-code-extension-security-notice" rel="nofollow">https:&#x2F;&#x2F;cursor.com&#x2F;blog&#x2F;claude-code-extension-security-notic...</a></blockquote>
+<p><strong>Top #3</strong> — <em>xx_ns</em>:</p>
+<blockquote>I think it should be important to note that this affected the Claude Code extension on the Open VSX extension registry (and by extension, the Cursor marketplace). From what is currently known, the build on the official marketplace was&#x2F;is clean.<p>EDIT: I am now actually unsure if this is the case. From what I can see, all of the write-ups mention the Cursor marketplace and Open VSX specifically, but make no explicit mention of the official Microsoft registry.<p>EDIT 2: The version that was compromised (2.1.313) seems to have never been published on the official Microsoft registry. As per the documentation [1], unpublished versions should still be discoverable:<p>&gt; When you unpublish an extension, the Marketplace preserves the extension statistics. The extension remains publicly discoverable and available via an existing API.<p>[1]: <a href="https:&#x2F;&#x2F;code.visualstudio.com&#x2F;api&#x2F;working-with-extensions&#x2F;publishing-extension#unpublishing-extensions" rel="nofollow">https:&#x2F;&#x2F;code.visualstudio.com&#x2F;api&#x2F;working-with-extensions&#x2F;pu...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ddworken</em>:</p>
+<blockquote>Dworken from Anthropic here: This only impacted the extension as it was hosted on the Cursor marketplace. It did not impact the official VS Code extension marketplace or OpenVSX. Users of Claude Code on VS Code are not impacted by this issue.</blockquote>
+<p>↳ reply 2 — <em>mrweasel</em>:</p>
+<blockquote>You mean on the Microsoft VSCode marketplace? The version has been yanked from there as well, but that could just be a precaution and to avoid confusion about having the same version be simultaneously infected and not infected.<p>This very much illustrates the danger of just carelessly installing untrusted software on your machine. In this case it happens to be code from Anthropic, but it could have been almost anyone. I&#x27;ll be very interested in see the explanation from Anthropic, because of all the extension developers they should have the best tools for finding issues like this. LLMs have proven pretty good at finding security issues, so did they simply not let their own AI tools vet the code before shipping it? Or was the extension infected later, because in that case every single extension on Open VSX could be at risk.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Pico CSS is no longer maintained</title>
+      <link>https://github.com/picocss/pico/discussions/754</link>
+      <guid isPermaLink="false">hn3-50298964</guid>
+      <pubDate>Fri, 30 Oct 2026 01:58:44 +0000</pubDate>
+      <description>177 points, 88 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/picocss/pico/discussions/754"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50298964">→ HN comments</a> &nbsp;·&nbsp; 177 points &nbsp;·&nbsp; 88 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>shubhamjain</em>:</p>
+<blockquote>&gt; To stay relevant, Pico CSS would need a full rewrite: plain modern CSS instead of Sass, built on features it doesn&#x27;t use today (OKLCH colors, cascade layers, Popover, anchor positioning) with fallbacks for older browsers<p>Why? Why? Why? I hate how everyone seems convinced they need to adopt the latest and greatest browser features just to stay relevant. I hate oklch and I hate Tailwind popularized it. I don&#x27;t care how scientifically accurate it is at representing human color perception. It&#x27;s a PITA to understand a new type of color system, and learn to tweak it, especially when HSL&#x2F;RGB just worked fine.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Gualdrapo</em>:</p>
+<blockquote>I don&#x27;t get any of this hate. oklch makes it really easy to create new tones from a starting point and stuff like anchor positioning also makes it really easy to place absolutely-positioned things. So it&#x27;s not like those &quot;latest and greatest browser features&quot; are there just to complicate your life, but actually the contrary.<p>This just seems to me like (1) not wanting to learn new things, (2) a logical fallacy because the conclusion that those changes are to &quot;stay relevant&quot; and not to make the life of any future mantainer easier, and (3) fear of the new (<a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Neophobia" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Neophobia</a>)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>PennRobotics</em>:</p>
+<blockquote>If you asked me to pick out bright bold blue (#0000FF) and told me the format was &quot;Lightness Chroma Hue&quot; with valid ranges, I would guess &quot;0.5 1.0 240&quot;. Not only is this &quot;not visible on any monitor&quot; by a very large margin but the oklch.com calculator states the spec fallback color is Dell logo blue and not bright at all while browsers will render &quot;vibrant purple&quot;.<p>There&#x27;s not &quot;120 degrees of red, 120 degrees of green, 120 degrees of blue&quot;, so blue is not 240. Actual bright blue is hue 264. The &quot;0-255 RGB&quot; bright blue is 0.452 lightness, and max chroma on a really good monitor is something like 0.33. The lightness mostly makes sense, right? 0.5 is halfway between totally dark and completely washed out.<p>&quot;Ok, so chroma tops at at 0.33&quot; not so fast. You can crank up the chroma to 0.40 and still get either magenta (where lightness is around 0.74) or green (lightness around 0.78). So now you need to know a valid, nonlinear lightness range for each band of colors, because midpoint blue is different than midpoint red which is different from midpoint green.<p>From greyscale luminosity calculations and knowing about subpixels and bayer filters, I would&#x27;ve been able to guess that green is the color with the highest chroma, but then there&#x27;s bright magenta, neck-and-neck. Oh. Until I move the lightness slider down on the web color picker, and then everything (especially peaks) in the chroma channel shifts around dramatically... So much for intuition.<p>While OKLCH makes it really convenient to select colors with properties you like along a gradient, the nonlinearity means either memorizing a bunch of base colors, using a color picker, or converting from a system that is &quot;actually&quot; intuitive. I can&#x27;t really look at a trio of OKLCH numbers and predict the output color like I&#x27;d be able to with RGB, although this is mindful that RGB is also not linear (for the exact opposite reason as OKLCH) and I can only do that from decades of experience.<p>I&#x27;ll concede that magenta and bright green and bold blue don&#x27;t really have a place on the world wide web other than in a company logo, so these are outliers. Still, the OKLCH format is not what I&#x27;d call intuitive to a total beginner.<p>(Also, I&#x27;d very much not like to implement OKLCH calculations on a microcontroller until lighting companies start selling OKLCH LEDs.)</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tasuki</em>:</p>
+<blockquote>I&#x27;m pretty sure I&#x27;d hate Tailwind, but please leave OKLCH alone. It is actually ok (as opposed to RGB and HSL which very much aren&#x27;t ok).</blockquote>
+<p>↳ reply 3 — <em>dbbk</em>:</p>
+<blockquote>This is a strange take, sorry, OKLCH is simply better and it&#x27;s not that complicated to understand?</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>sphars</em>:</p>
+<blockquote>Some recent alternatives&#x2F;successors&#x2F;forks that are in the same vein as Pico<p>- Nimble: <a href="https:&#x2F;&#x2F;leftium.github.io&#x2F;nimble.css&#x2F;demo&#x2F;pico.html" rel="nofollow">https:&#x2F;&#x2F;leftium.github.io&#x2F;nimble.css&#x2F;demo&#x2F;pico.html</a><p>- Sumi.css: <a href="https:&#x2F;&#x2F;vladocar.github.io&#x2F;Sumi.css&#x2F;docs.html" rel="nofollow">https:&#x2F;&#x2F;vladocar.github.io&#x2F;Sumi.css&#x2F;docs.html</a><p>- Blades: <a href="https:&#x2F;&#x2F;github.com&#x2F;anyblades&#x2F;blades" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;anyblades&#x2F;blades</a><p>- Oat: <a href="https:&#x2F;&#x2F;oat.ink&#x2F;" rel="nofollow">https:&#x2F;&#x2F;oat.ink&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>mikae1</em>:</p>
+<blockquote>All of them failed my ten second evaluation. It&#x27;s amazing how many mediocre CSS frameworks that are out there.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dvdyzag</em>:</p>
+<blockquote>Whats the first thing in a CSS framework that you notice and makes you say &quot;nah&quot;?</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>eterps</em>:</p>
+<blockquote>I really enjoyed using Pico CSS, but I understand the choice.<p>Thank you Lucas Larroche for building Pico CSS and sharing it with us.</blockquote>
+<blockquote>
+<p>↳ reply — <em>childintime</em>:</p>
+<blockquote>With AI he could have made the updates to &quot;stay relevant&quot; as he called it. That seems easier than ever. PicoCSS has brand recognition that shouldn&#x27;t be throw away.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dspillett</em>:</p>
+<blockquote>&quot;With AI&quot; is answered in the first sentence:<p><i>&gt; Today, AI can generate lightweight, standalone, accessible HTML with just the CSS it needs, so a Minimal CSS Framework for Semantic HTML matters less than it used to.</i><p>If your answer is &quot;use AI&quot;, then why not use AI to not need Pico. This could be maintained for those of us avoiding AI, of course, but we are fewer and further between with each passing day, and likely rolled our own instead of using someone else&#x27;s framework anyway, so he probably didn&#x27;t see the point and wanted to spend the time elsewhere.<p><i>&gt; brand recognition that shouldn&#x27;t be throw away</i><p>How useful do you think this brand recognition would be in his life? Enough for it to be worth maintaining a project he had presumably moved away from using for his own work &amp; play?<p>If it is so valuable then maybe someone will make a deal to take over maintainance. Though TBH if this were mine I&#x27;d probably prefer to keep the project mine-but-archived than let someone else do what they will with the &quot;brand&quot; thereby diluting what value it might have to me personally. It can just be forked instead, or people can move into one of the already existing forks.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Herdr has released native app</title>
+      <link>https://github.com/herdrdev/herdr-app</link>
+      <guid isPermaLink="false">hn3-50298436</guid>
+      <pubDate>Fri, 30 Oct 2026 00:42:41 +0000</pubDate>
+      <description>300 points, 196 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/herdrdev/herdr-app"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50298436">→ HN comments</a> &nbsp;·&nbsp; 300 points &nbsp;·&nbsp; 196 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>z3ugma</em>:</p>
+<blockquote>People should put a screenshot of their desktop app in the README of their GitHub repos</blockquote>
+<p><strong>Top #2</strong> — <em>flippant</em>:</p>
+<blockquote>I switched to herdr this year after a decade of using tmux, and I haven&#x27;t looked back since. Herdr is wonderful, not only because of the coding agent integrations, but also because it uses libghostty under the hood. So no terminal-emulator-inside-another-terminal-emulator shenanigans.<p>If you prefer GUIs, I can recommend herdr-gpui which connects to a herdr daemon. It has a bunch of goodies like remote phone pairing, and a built-in browser integration to send screenshots and notes to coding agents.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;penso&#x2F;herdr-gpui" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;penso&#x2F;herdr-gpui</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>yoyohello13</em>:</p>
+<blockquote>I&#x27;ve been using Zellij a long time and considered using Herdr, but the VC funding aspect scares me. I don&#x27;t want to invest a bunch of time in a tool that&#x27;s going to treat me as a product.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>blurbleblurble</em>:</p>
+<blockquote>It&#x27;s such a good experience. Try it out, later we fork if they pull anything funny.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>stingraycharles</em>:</p>
+<blockquote>But I’m already using ghostty. I installed herdr but made the mistake of launching it from within tmux and had no idea how to close it.<p>I then opened it somewhere else, but I had no idea how to interact with it. I also couldn’t get two other windows to “join” the same herdr session, so I gave up and went back to tmux.<p>For someone who has used screen &#x2F; tmux for almost 30 years at this point, what does herdr do that tmux can’t?<p>I use Claude Code extensively. I also use plannotator extensively, which is how I found out about it.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>shepherdjerred</em>:</p>
+<blockquote>Really happy to see this!<p>herdr is by far the most polished tool in its category. Software geared towards agents is usually vibe coded -- and you can tell. There will be bugs and edge cases and it feels like no thought&#x2F;care was put into it.<p>herdr doesn&#x27;t feel that way to me. The marketing&#x2F;landing page definitely has LLM-isms, but the application itself is very stable and well thought out.<p>A true UI is the next logical step and they seem to have done the obvious things. The one surprising bit that nobody seems to be talking about (yet) is the entire UI looks like its controlled via &quot;recipes&quot;, so you can customize the UI in ways that you couldn&#x27;t with traditional software: <a href="https:&#x2F;&#x2F;herdr.dev&#x2F;layouts&#x2F;">https:&#x2F;&#x2F;herdr.dev&#x2F;layouts&#x2F;</a><p>I hope this means an official mobile app is on the horizon!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ilitirit</em>:</p>
+<blockquote>&gt; herdr is by far the most polished tool in its category.<p>Can&#x27;t speak to this, but I like that I didn&#x27;t feel like I <i>needed</i> to try an alternative. It just did exactly what I needed it to do.<p>That said - I couldn&#x27;t find a way to move a pane to a new tab. I can swap panes within a single pane (select -&gt; right click -&gt; swap with focused pane), but I can&#x27;t find a way to do it between tabs. Maybe it&#x27;s a skill issue. Anyone have any ideas?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pavelrub</em>:</p>
+<blockquote>Although this isn&#x27;t a direct answer to your question, but everything that can be done in Herdr is trivially discoverable by asking a CC (or equivalent) session inside Herdr. In fact a lot of the things I do in Herdr I do by asking an agent to do it for me, instead of trying to learn how to do it manually.<p>Some things might require a non-trivial workaround, but a coding agent will also happily build and test it for you.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>shepherdjerred</em>:</p>
+<blockquote>Playing with this for a bit, the customization you can do is really cool. You can spin up an agent, tell it to add some functionality, and it all reloads instantly.<p>For example, I wanted to be able to hide chats from providers when my usage is out for the 5h&#x2F;weekly period<p>I&#x27;m not sure how they&#x27;re doing this considering it seems to be written in Rust</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>A Pig, the State, and War: Porco Rosso (Kurenai No Buta) (2014)</title>
+      <link>https://journal.animationstudies.org/article/id/66/</link>
+      <guid isPermaLink="false">hn3-50297089</guid>
+      <pubDate>Thu, 29 Oct 2026 22:26:38 +0000</pubDate>
+      <description>137 points, 37 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://journal.animationstudies.org/article/id/66/"><strong>→ Article</strong></a> <small>(journal.animationstudies.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50297089">→ HN comments</a> &nbsp;·&nbsp; 137 points &nbsp;·&nbsp; 37 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>brohoolio</em>:</p>
+<blockquote>One of the great things about the movie is how children are portrayed. When the sea plane pirates take a bunch of kids hostage at the beginning of the movie, you don’t see any parents panicking. The kids are relaxed. The pirates clearly understand the social contract where they can’t split up the kids from their friends.<p>It’s such a different take from modern parenting and today’s anxiety filled culture.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>autoexec</em>:</p>
+<blockquote>&gt; It’s such a different take from modern parenting and today’s anxiety filled culture.<p>There has to be a happy medium between &quot;I can&#x27;t let my kids play outside or walk to school&quot; and &quot;Pirates took them? No need to panic. It&#x27;ll probably work out.&quot;</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>rags2riches</em>:</p>
+<blockquote>It&#x27;s a movie with children in the intended audience. It&#x27;s not parenting advice. At least not in the literal sense.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>brohoolio</em>:</p>
+<blockquote>Obviously the movie for all its strengths and beautiful flying is still sexist. When showing it to my kids I simply disclosed it’s how things used to be and it wasn’t right and things are better now. And we need to keep them better.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>som</em>:</p>
+<blockquote>An aside, my 8yo son used Porco Rosso as the subject of a school speech about a favourite film. I was surprised how few of the themes were lost on him, especially those of war, comradeship, and the other side of every coin. Not to mention those points that only a child discovering the world can savour, that I&#x27;d missed myself (or at least misplaced since I first saw the film at around his age in the 90s).</blockquote>
+<p><strong>Top #3</strong> — <em>kimi</em>:</p>
+<blockquote>As seen from Italy, Porco Rosso is... interesting. Someone looked at a lot of pictures, and then re-invented them in a way that is totally alien.</blockquote>
+<blockquote>
+<p>↳ reply — <em>soco</em>:</p>
+<blockquote>Except those who lived those times, everybody got only to look at pictures, I&#x27;d argue.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ragall</em>:</p>
+<blockquote>No, everyone in Italy got to speak to people that lived through those times.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>soco</em>:</p>
+<blockquote>My point was that, as Martha Gellhorn once said about post-war Germany &quot;No one is a nazi, no one ever was. There may have been some nazis in the next village&quot;.   Even one&#x27;s own pictures might get distorted by self exculpation.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>El Niño is flooding California's coasts with the highest tides to come</title>
       <link>https://gizmodo.com/el-nino-is-already-flooding-californias-coasts-and-the-years-highest-tides-havent-arrived-2000832574</link>
@@ -306,6 +458,22 @@
 <p>↳ reply 2 — <em>cobbzilla</em>:</p>
 <blockquote>Fascinating; they must be bidding on the part numbers as search keywords.<p>Now I wonder what the median CPC is for part numbers (I’d guess very cheap), and which one is the most expensive (no idea, super curious).</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>16colo.rs – ANSI/ASCII art archive</title>
+      <link>https://16colo.rs/</link>
+      <guid isPermaLink="false">hn3-50291421</guid>
+      <pubDate>Thu, 29 Oct 2026 16:14:28 +0000</pubDate>
+      <description>135 points, 11 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://16colo.rs/"><strong>→ Article</strong></a> <small>(16colo.rs)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50291421">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 11 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>killerstorm</em>:</p>
+<blockquote>My favorite ASCII art group is Galza, some examples:<p><a href="https:&#x2F;&#x2F;16colo.rs&#x2F;pack&#x2F;galza-13&#x2F;Shd-dphn.ans" rel="nofollow">https:&#x2F;&#x2F;16colo.rs&#x2F;pack&#x2F;galza-13&#x2F;Shd-dphn.ans</a><p><a href="https:&#x2F;&#x2F;16colo.rs&#x2F;pack&#x2F;galza-13&#x2F;zj-humming.txt" rel="nofollow">https:&#x2F;&#x2F;16colo.rs&#x2F;pack&#x2F;galza-13&#x2F;zj-humming.txt</a></blockquote>
+<p><strong>Top #2</strong> — <em>noduerme</em>:</p>
+<blockquote>I enjoyed this new one.<p><a href="https:&#x2F;&#x2F;16colo.rs&#x2F;pack&#x2F;codi_01&#x2F;CODI01.ans" rel="nofollow">https:&#x2F;&#x2F;16colo.rs&#x2F;pack&#x2F;codi_01&#x2F;CODI01.ans</a></blockquote>
+<p><strong>Top #3</strong> — <em>jlundberg</em>:</p>
+<blockquote>One group that still releases ascii and uploads to 16colo.rs is Impure.<p>They also make demos and won 2nd place at the Evoke demo party this year with the following ascii style demo:<p><a href="https:&#x2F;&#x2F;demozoo.org&#x2F;productions&#x2F;396656&#x2F;" rel="nofollow">https:&#x2F;&#x2F;demozoo.org&#x2F;productions&#x2F;396656&#x2F;</a></blockquote>]]></content:encoded>
     </item>
     <item>
       <title>H.264 Is Magic (2016)</title>
@@ -871,6 +1039,26 @@ This looks very similar to the diary entries my LLM writes when working on a cod
 <p>↳ reply 2 — <em>aeyes</em>:</p>
 <blockquote>What has changed? On my Google Maps it shows as: Gulf of Mexico (Gulf of America).<p>I&#x27;m located south of the equator.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Perspectiva Kogui: A message on artificial intelligence from the Kogui people</title>
+      <link>https://sonidoselva.com/perspectiva-kogui</link>
+      <guid isPermaLink="false">hn3-50287359</guid>
+      <pubDate>Thu, 29 Oct 2026 11:29:49 +0000</pubDate>
+      <description>126 points, 104 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://sonidoselva.com/perspectiva-kogui"><strong>→ Article</strong></a> <small>(sonidoselva.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50287359">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 104 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>GlibMonkeyDeath</em>:</p>
+<blockquote>&quot;Danger is a people without conscience with great power in the hands.&quot;<p>Sandwiched between their description of the cosmos, how AI is like any other life form and needs to be trained with wisdom, criticism of unbridled greed, and the warning that the modern world may destroy itself, (and BTW the Kogui are resilient and will be fine, and offer their help), there is a more practical concern: These machines are going to need critical minerals and rare earths, and the US and Colombia just signed an agreement about these. The Colombian government promised to protect the Kogui territory; their perspective on this protection is bitterly thus:<p>&quot;That it was granted is one thing.<p>That it be, respected we imagine, might be removed another.&quot;<p>So no doubt they rightly feel (and are) threatened by the all-consuming corporations making this thing.</blockquote>
+<p><strong>Top #2</strong> — <em>slfnflctd</em>:</p>
+<blockquote>A lot to think about here, quite poignant.  Strange combination of insights, but still (mostly) strikingly coherent, as long-winded as it is.  I found myself agreeing with the majority of it.<p>Funny how this will now be part of the material future models are trained on and&#x2F;or fetching.  Perhaps that&#x27;s a good thing.</blockquote>
+<blockquote>
+<p>↳ reply — <em>tikimcfee</em>:</p>
+<blockquote>I had a very similar thought. In fact, the fact that this is in Spanish, and also translated to English, gave me a sort of Rosetta stone feeling. Somewhere between the two expressions is some kernel of truth that I am for some reason completely fascinated by today.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>RetroTechie</em>:</p>
+<blockquote>Wow so much [attacking the messenger] in this thread, without addressing the points it makes.<p>Humanity <i>is</i> destroying this planet&#x27;s biosphere in the pursuit of greed. And it might well cause our demise (not <i>just</i> us, btw) if we don&#x27;t change our ways.<p>Imho it&#x27;s hard to find flaws in the logic laid out in the essay. If you can: bring it on!</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>The US added a record 20.2 GWh of battery storage in just 3 months</title>
@@ -1925,6 +2113,26 @@ being unchanged since 1986-09-12.<p>(It is said the Stallman maybe have kept som
 <blockquote>I programmed in Emacs in a myriad of different languages, I used it to write my thesis, to write my homework and later to grade them. I’ve used it to publish countless blog articles, wiki pages and technical documents.<p>I read that I was hired at my first job from en email received inside Emacs, I’ve used it to send countless emails to colleagues, employers and business partners. I planned both my personal and professional life inside it, I’ve used it to track the time spent doing a certain task when no such software was yet available.<p>Most of the time I’ve spent in front of a computer over the last 20 years, was inside Emacs. Happy Birthday, Emacs! You’re the best thing that happened in the computing world.</blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>I'm so bad at billiards that I ended up in the hyperbolic plane [video]</title>
+      <link>https://www.youtube.com/watch?v=kL9BTbIGxLg</link>
+      <guid isPermaLink="false">hn3-50273104</guid>
+      <pubDate>Wed, 28 Oct 2026 13:20:05 +0000</pubDate>
+      <description>202 points, 33 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.youtube.com/watch?v=kL9BTbIGxLg"><strong>→ Article</strong></a> <small>(youtube.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50273104">→ HN comments</a> &nbsp;·&nbsp; 202 points &nbsp;·&nbsp; 33 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>Fluorescence</em>:</p>
+<blockquote>I enjoyed this and it warmed my heart a bit to see 4m views for some math animations. Maybe popular on r&#x2F;trees or something :)<p>I was curious what they used to generate the graphic&#x27;s and it&#x27;s their own tool:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;2swap&#x2F;swaptube" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;2swap&#x2F;swaptube</a></blockquote>
+<p><strong>Top #2</strong> — <em>iamjackg</em>:</p>
+<blockquote>It reminds me of the billiards segment in Donald in Mathmagic Land[0]. I absolutely adored it as a kid.<p>0: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Donald_in_Mathmagic_Land" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Donald_in_Mathmagic_Land</a></blockquote>
+<p><strong>Top #3</strong> — <em>nomilk</em>:</p>
+<blockquote>The emergent patterns are... stunning. Especially the ones around 2m35s <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=kL9BTbIGxLg&amp;t=2m35s" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=kL9BTbIGxLg&amp;t=2m35s</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>knodi123</em>:</p>
+<blockquote>I saw a video series long ago where a guy kept playing with shapes algorithmically like this, and his catch phrase was something like &quot;oops, I made a fractal again&quot;.  Wish I could find it!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Evidence of a spying operation by ICE against left-wing social movements</title>
       <link>https://www.wired.com/story/ice-is-running-one-of-the-largest-anti-left-surveillance-operations-in-us-history/</link>
       <guid isPermaLink="false">hn3-50272749</guid>
@@ -2187,6 +2395,26 @@ Kind of outrageous that Apple&#x27;s guidance is to edit the cert chain manually
 <p>↳ reply 2 — <em>goda90</em>:</p>
 <blockquote>I don&#x27;t think most Americans are thinking about their 401Ks when it comes to corporate behavior. They&#x27;re thinking about high prices, lower quality, poor service, externalities(pollution and such), low wages, poor working conditions. I don&#x27;t think public markets will fix those things, and some argue they&#x27;d make them worse.</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Astroterm: A Planetarium for Your Terminal</title>
+      <link>https://github.com/da-luce/astroterm</link>
+      <guid isPermaLink="false">hn3-50270651</guid>
+      <pubDate>Wed, 28 Oct 2026 08:29:55 +0000</pubDate>
+      <description>201 points, 23 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/da-luce/astroterm"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50270651">→ HN comments</a> &nbsp;·&nbsp; 201 points &nbsp;·&nbsp; 23 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ricq</em>:</p>
+<blockquote>Nice to combine with the Astrological CPU Scheduler: <a href="https:&#x2F;&#x2F;github.com&#x2F;zampierilucas&#x2F;scx_horoscope" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;zampierilucas&#x2F;scx_horoscope</a></blockquote>
+<p><strong>Top #2</strong> — <em>isolli</em>:</p>
+<blockquote>Very, very distantly related to the topic, but it reminded me of the Cosmo Phase  watch from Casio (CGW-50), released in the 80s [0]<p>Having stars and planets at your fingertips...<p>[0] <a href="https:&#x2F;&#x2F;www.casio.com&#x2F;us&#x2F;watches&#x2F;50th&#x2F;Heritage&#x2F;1980s&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.casio.com&#x2F;us&#x2F;watches&#x2F;50th&#x2F;Heritage&#x2F;1980s&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>nickdothutton</em>:</p>
+<blockquote>I honestly think Casio is one of the most under-leveraged brands. So much good will for them. One of a few companies I&#x27;d love a tour of.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>butlike</em>:</p>
+<blockquote>Reminds me of `phoon` which shows the current phase of the moon in ascii<p><a href="https:&#x2F;&#x2F;www.acme.com&#x2F;software&#x2F;phoon&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.acme.com&#x2F;software&#x2F;phoon&#x2F;</a><p>`brew install phoon`</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Git for the US Code</title>
@@ -2539,6 +2767,30 @@ Great to see things are moving in the right direction.</blockquote>]]></content:
 <blockquote>I&#x27;m a Discord server admin and I&#x27;d love to turn this on because having more discussion of my game indexable by search engines seems like a good thing in general. For new messages it seems like there&#x27;s no problem, in combination with the opt-out option. But for existing users, how am I supposed to disclose the change to people? What if people posted content in the past and wouldn&#x27;t want it on Google, but aren&#x27;t active anymore?<p>Furthermore, what if someone wants to opt-out of their messages being indexed in some Discord servers but not others? I don&#x27;t see that option being available right now.</blockquote>
 <p><strong>Top #3</strong> — <em>CM30</em>:</p>
 <blockquote>Not a fan of it requiring a certain number of members&#x2F;level of activity&#x2F;server status. My experience is that many of the communities hit hardest by Discord&#x27;s login requirements aren&#x27;t all that large, like speedrun communities for niche games, modding and ROM hacking communities for certain games, etc.<p>I feel like it should be opt in&#x2F;out regardless of the size of the server and amount of activity it has.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Gilgamesh by Simon Armitage review – an ancient epic is brilliantly translated</title>
+      <link>https://www.theguardian.com/books/2026/oct/20/gilgamesh-by-simon-armitage-review-an-ancient-epic-is-brilliantly-translated-for-our-times</link>
+      <guid isPermaLink="false">hn3-50263127</guid>
+      <pubDate>Tue, 27 Oct 2026 17:54:57 +0000</pubDate>
+      <description>132 points, 38 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theguardian.com/books/2026/oct/20/gilgamesh-by-simon-armitage-review-an-ancient-epic-is-brilliantly-translated-for-our-times"><strong>→ Article</strong></a> <small>(theguardian.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50263127">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 38 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>johngossman</em>:</p>
+<blockquote>The reviewer, Philip Terry, is himself a very good, very clever poet. His &quot;Dictator&quot; is an absolutely brilliant translation into Globish, a simplified English designed for commerce. He reasons that cuneiform had a similar role in cross-language understanding. Terry refuses to use words outside Globish&#x27;s 1500-word vocabulary, resulting in Gilgamesh being translated &quot;Dictator&quot;, but also imposes a bizarre prose form, leaves out holes in the original tablets, and &quot;translates&quot; some idioms literally...all with great humor. The result looks like this:<p>Then day | light break | …… [And] WILD | MAN make | of he | mouth a | shape… he say | to DIC | TATOR ‘Listen | to the | dream I | dream in | the night The sky | god | + + + the | war god | the god | of know | ledge and | the sun | god all | meet to | gether | in the | great court | of the | sky… And the | sky god | AN + + + | say to | the war | god… “Because | they kill | the MAN | COW of | the sky | + + + and | because | they kill | TREEGUARD the one* | who cut | down the | hard wood | tree on | the moun | tain side | must die”<p>It shouldn&#x27;t be your first read of Gilgamesh, but its a fun, insightful second.</blockquote>
+<p><strong>Top #2</strong> — <em>dsign</em>:</p>
+<blockquote>I have some friends that come from that part of the world. It brings me to tears that they are good Christians and Muslims but don&#x27;t remember Inanna nor Asherah, nor all the others who the priests murdered so that Yahweh could thrive...as a widower. Gosh though I don&#x27;t think old Yahweh would have liked what the priests did to him either...</blockquote>
+<p><strong>Top #3</strong> — <em>Sharlin</em>:</p>
+<blockquote>A very funny and informative book review of Gilgamesh (based on Andrew George’s 2003 edition&#x2F;translation) by a guest author was recently published at Astral Codex Ten: <a href="https:&#x2F;&#x2F;www.astralcodexten.com&#x2F;p&#x2F;your-book-review-the-epic-of-gilgamesh" rel="nofollow">https:&#x2F;&#x2F;www.astralcodexten.com&#x2F;p&#x2F;your-book-review-the-epic-o...</a><p>Recommended reading for anyone interested in knowing more about the work.</blockquote>
+<blockquote>
+<p>↳ reply — <em>adrian_b</em>:</p>
+<blockquote>Yes, that book review seems pretty good.<p>However, I do not like that it, like most other comments that provide only partial information about Gilgamesh, fails to mention some details that I consider culturally relevant.<p>For instance, it lists only 3 benefits of civilization with which the wild man is lured to leave his former life: professional women, eating bread &amp; drinking beer.<p>I fact, the Gilgamesh epic lists 4 benefits of civilization, the 4th being the pleasure of being massaged with oil (apparently sesame oil is meant, presumably flavored).<p>In the antiquity, vegetable oil had only a minor role as food, its principal application was for massage, normally as perfumed oil. Massage with oil was a very widespread practice, even among the relatively poor.<p>The technologies of oil extraction, of milling flour, of making bread and of making beer by fermentation, were indeed major advantages of the settled people living on agriculture, in comparison with hunter-gatherers.<p>Most comments about Gilgamesh list only the first 3 benefits of civilization, because those are the most easy to understand for modern readers. Massage with oil is much less used today, so many modern readers do not realize that by the time of Gilgamesh (and also millennia later, e.g. in the Roman Empire, where it was still the main use of olive oil) it was considered a pleasure as important as eating and drinking.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>HarHarVeryFunny</em>:</p>
+<blockquote>I&#x27;m not sure what culture(s) you&#x27;re referring to as &quot;in antiquity&quot;, but in the Roman world at least olive oil was mostly for consumption - a way to add some flavor, moisture and calories to bread that was the core staple keeping the population alive. Olive oil was such a necessary part of the diet that emperor Septimius Severus instituted the &quot;Oleum Publicum&quot; making olive oil part of the Annona - free distribution of food primarily within the city of Rome.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Introducing LFM3: Every Modality for Specialized Intelligence</title>
@@ -3542,325 +3794,6 @@ Forth is a very interesting language, I find it a bit too complex for my little 
 <blockquote>Neat result, and good writeup! I don&#x27;t have time to compare them, but another resource you might look at is Daniel Lemire&#x27;s &quot;Fast Division&quot;: <a href="https:&#x2F;&#x2F;github.com&#x2F;lemire&#x2F;fast_division" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;lemire&#x2F;fast_division</a><p>If you&#x27;ve come up with something better, I&#x27;d encourage you to contact Daniel and see if he&#x27;s interested in helping you write it up into a paper.  He&#x27;s friendly, and may be better positioned to get the optimizations into mainstream compilers.</blockquote>
 <p><strong>Top #3</strong> — <em>sjrd</em>:</p>
 <blockquote>This looks very interesting, and very well written. I&#x27;ll definitely give a it a thorough read when I get the time, and probably include the technique in our compiler. Floor division is almost always more useful than truncating division, so having a fast path there would be nice.<p>I can&#x27;t help but do a shameless plug for another recent result in that space: we developed fast algorithms for 64-bit integer divisions (by constants and non-constants) for JavaScript, where you don&#x27;t even have 64-bit integers to start with. Paper [1] and slides [2] available. The Scala.js compiler uses all of that. The Kotlin&#x2F;JS compiler recently accepted my PR for the non-constant divisors algorithms.<p>[1] <a href="https:&#x2F;&#x2F;arith2026.org&#x2F;papers&#x2F;64-bit%20Integer%20Division%20for%20the%20JavaScript%20Platform.pdf" rel="nofollow">https:&#x2F;&#x2F;arith2026.org&#x2F;papers&#x2F;64-bit%20Integer%20Division%20f...</a><p>[2] <a href="https:&#x2F;&#x2F;arith2026.org&#x2F;slides&#x2F;session_1_2_doeraene.pdf" rel="nofollow">https:&#x2F;&#x2F;arith2026.org&#x2F;slides&#x2F;session_1_2_doeraene.pdf</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Mythical Man-Month in the Age of AI</title>
-      <link>https://j11g.com/the-mythical-man-month-in-the-age-of-ai</link>
-      <guid isPermaLink="false">hn3-50255298</guid>
-      <pubDate>Tue, 27 Oct 2026 06:25:37 +0000</pubDate>
-      <description>388 points, 274 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://j11g.com/the-mythical-man-month-in-the-age-of-ai"><strong>→ Article</strong></a> <small>(j11g.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50255298">→ HN comments</a> &nbsp;·&nbsp; 388 points &nbsp;·&nbsp; 274 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>freefaler</em>:</p>
-<blockquote>I have an interesting observation from the programmers on my team.<p>The good ones are increasingly producing good solutions much faster than before.<p>The not so good ones, are doing the same bullshit they did before, but now the don&#x27;t even bother to check it. For example one requirement to &quot;not implement it in the frontend&quot; led to 3 times PR rejected, because it still has been implemented (even if it&#x27;s partially there) in the frontend.<p>I&#x27;m not sure what&#x27;s the reason, but I assume it&#x27;s<p>- inability to understand architecture choices and their consequences<p>- &quot;don&#x27;t bother me with shit, just pay me a salary&quot; attitude<p>but the AI lead to amplification of the good and the bad in people.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>joshAg</em>:</p>
-<blockquote>You&#x27;re lucky. Every single person (n of around 10) I&#x27;ve been unlucky enough to review code for lost between 0.5 and 3 promotion levels of competence when they started using LLM code generation, and it&#x27;s been worse for the better programmers because they have more capacity to lose skills.<p>My personal &quot;favorite&quot; was when the lead engineer who onboarded me half a decade prior forgot the written policy he&#x27;d put in place of &quot;no raw js dates. use this library for everything date related instead&quot; and sent up an MR that not only used javascript dates, but did complex operations on them (incorrectly at that, because it didn&#x27;t account for timezones, daylight saving, years that had a leap day, and months that weren&#x27;t 30 days).<p>From what I can tell, it&#x27;s the exact same reason people drive faster than is prudent or use their cellphone while driving. It feels safe and good right up until it isn&#x27;t and you crash. And because most places don&#x27;t have anywhere close to adequate specification detail, test coverage or review coverage, the broken bits aren&#x27;t even noticed until much later.</blockquote>
-<p>↳ reply 2 — <em>james_marks</em>:</p>
-<blockquote>Amplifier of human intent. Do you want to work hard and cure cancer? Great! AI can help. Do you want to phone it in and do the bare minimum? AI can help you do that, too.</blockquote>
-<p>↳ reply 3 — <em>Roark66</em>:</p>
-<blockquote>Yes, these are my colleagues. Same crap as before. At least now I can setup an automatic ai review that is told what is not allowed (the errors they do all the time and refuse to learn) and I get PRs that have passed 8 review turns and are somewhat better.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>rimeice</em>:</p>
-<blockquote>&gt; &quot;Adding agents to a project with unclear requirements gets you the wrong answer faster.&quot;<p>The thing is it gets you the wrong answer so fast it’s now the best way to figure out the right requirements.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>matsemann</em>:</p>
-<blockquote>Not if you turn off your brain. Never actually stop to question the path you&#x27;re going down, because the speed is making you blind. Which is what I feel I see more and more. Or how do you even know it&#x27;s the wrong answer if you didn&#x27;t think it through before starting?<p>One example: setting the agent ablaze on some task, keeping it going, and after a few days of working with the agent you have a feature. But it&#x27;s not what you were supposed to make. The agent didn&#x27;t have all the context and made something slightly off, and you never internalized the problem enough to even spot it. If you actually stopped to think a bit on how the feature would have to work to tie it in with everything else, like you would have done before, you would&#x27;ve spotted it.<p>Second example: something wasn&#x27;t feasible to do before, due to not being worth the time investment. Like a feature that would need a bigger architectural change to implement. You and the agent take a crack at it, and rewrite huge parts of the code, and it seems to work. But now no one understands how, and it might have been the wrong way to solve it, you just went with it. Before, you would&#x27;ve sat down and discussed and thought about the architectural tradeoffs. Now one decision was just made with little thought.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>wallst07</em>:</p>
-<blockquote>Counter argument is you rarely hear of sunk-cost fallacy coming into play.<p>I used to do the same thing without AI, I&#x27;d spend a week working on a task and only realizing at the end it was wrong, but because I spend so much time on it, I was incentived more to keep going and ignoring sunk-cost.<p>Now I don&#x27;t care, it only takes me a an hour and I have no problems throwing it away and trying something else.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jamesmontalvo3</em>:</p>
-<blockquote>This feels even more true working with a team. I have a harder job convincing a team member who spent several days manually coding something that they’ve headed in the wrong direction compared to one who built it with AI. The person doesn’t have a personal attachment to the AI written code. Of course that also means they don’t understand every line like they would if they wrote it manually, but the lack of attachment is certainly a benefit.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Fordec</em>:</p>
-<blockquote>What&#x27;s easier to use as inspiration for coming up with a list of requirements?:<p>1. A blank sheet of paper<p>2. A one-shotted POC in the span of an hour with $4 of tokens that is clearly wrong in 20 different ways?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>comboy</em>:</p>
-<blockquote>Related thing is that LLMs are still notoriously bad at writing instructions for themselves (so managing themselves also). They tend to overspecify. If I had a copy of myself I would tell him &quot;do the thing&quot;, but agents say &quot;do the thing like this and this, it must be such and such, use X and put it together that way&quot;. The subagent is just as intelligent but now it&#x27;s constrained, sometimes as you start developing something you discover some things are better organized in a different way etc. So it spends much time figuring out how to deliver exactly what was asked even if it&#x27;s not optimal because that&#x27;s the task.<p>Basically a company where you can&#x27;t ever question decisions of the higher ups, not even ask for clarification, but they force implementation choices on you. I mean, it definitely does happen, but the results are usually not great. Not alawys. For some tasks it works.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nextaccountic</em>:</p>
-<blockquote>&gt; Related thing is that LLMs are still notoriously bad at writing instructions for themselves (so managing themselves also).<p>Isn&#x27;t this odd? This seems to be the #1 task that the major labs should be optimizing, since it makes agent so much more effective.<p>&gt; They tend to overspecify. If I had a copy of myself I would tell him &quot;do the thing&quot;, but agents say &quot;do the thing like this and this, it must be such and such, use X and put it together that way&quot;. The subagent is just as intelligent but now it&#x27;s constrained, sometimes as you start developing something you discover some things are better organized in a different way etc. So it spends much time figuring out how to deliver exactly what was asked even if it&#x27;s not optimal because that&#x27;s the task.<p>Isn&#x27;t this just the planning pattern, common for agentic work? (first plan then implement.. with things like &#x2F;plan, or a planning skill, with or without creating a PLAN.md). If this methodology is wrong when an agent prompt another agent, it&#x27;s also wrong when the human runs &#x2F;plan manually..<p>And Indeed, I always thought it was odd to constrain the implementing agent like that, because common sense is that we discover things as we implement. Perhaps we should prompt the agent to communicate back, as they implement, any shortcomings in the plan itself - such as things they learned while implementing that contradicts the plan.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ithkuil</em>:</p>
-<blockquote>Things are moving at a pretty much breakneck pace, I&#x27;m not surprised there are so many opportunities for improvement yet to be grabbed</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>prmph</em>:</p>
-<blockquote>Exactly, and a lot of times when I step back and discuss alternative approaches and architectures with the LLMs, they keep going back to say: &quot;the code does not use this (currently), therefore this is fine to throw away&quot;, or &quot;the code does this (currently), so this approach is not compatible&quot; They are bad at stopping to ask &quot;what should the code be doing&quot;? It&#x27;s like they love being constrained by current choices, even if there is nothing unchangeable about those.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I still teach OpenGL ES 3.0</title>
-      <link>https://eliasfarhan.ch/graphics/cpp/2026/01/27/why-i-teach-opengles.html</link>
-      <guid isPermaLink="false">hn3-50253939</guid>
-      <pubDate>Tue, 27 Oct 2026 02:15:10 +0000</pubDate>
-      <description>127 points, 82 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://eliasfarhan.ch/graphics/cpp/2026/01/27/why-i-teach-opengles.html"><strong>→ Article</strong></a> <small>(eliasfarhan.ch)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50253939">→ HN comments</a> &nbsp;·&nbsp; 127 points &nbsp;·&nbsp; 82 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>herodoturtle</em>:</p>
-<blockquote>On a related note, I&#x27;d like to give a shout-out to NeHe (Neon Helium) for his brilliant OpenGL tutorials back in the 90s.<p>I, and I suspect many others, benefited immensely from him lessons.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>abroadwin</em>:</p>
-<blockquote>I probably owe my career to him; it was learning the old fixed pipeline OpenGL API from his tutorials that led to me making games, and those games that led to a family member encouraging me to interview for an internship at his company. All that led to a 20 year career (so far) in software engineering.</blockquote>
-<p>↳ reply 2 — <em>herodoturtle</em>:</p>
-<blockquote>NeHe&#x27;s tuts are still online:<p><a href="https:&#x2F;&#x2F;nehe.gamedev.net&#x2F;" rel="nofollow">https:&#x2F;&#x2F;nehe.gamedev.net&#x2F;</a><p>Talk about nostalgia!</blockquote>
-<p>↳ reply 3 — <em>sspiff</em>:</p>
-<blockquote>Oh my I totally forgot about NeHe! I probably still have some of the lessons printed out at my parents house somewhere.<p>Good times.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>MikeShah</em>:</p>
-<blockquote>I have found OpenGL 4.5&#x2F;4.6 to be a sweet spot for students currently learning graphics in a semester course. SDL_GPU is otherwise a good intermediate I would consider.<p>I remember for myself: learning a new API (opengl), new paradigm (gpu programming), and new language(glsl) all on top of learning graphics concepts is a lot. OpenGL 4.5 and 4.6 are modern enough to get started and there are good resources to learn the 3.3+ stuff that I have built on.<p>See my website(mshah.io) for my paper on some of the &#x27;why&#x27;.</blockquote>
-<blockquote>
-<p>↳ reply — <em>corysama</em>:</p>
-<blockquote>I have been working for a while on a tutorial based on 4.6. When I get close to a first release, I’ll have to ask you for a review :)<p>My take is that older versions of GL feel nicer to teach to beginner programmers because they have so many specific functions to do each specific thing. You can have a lot of verbose, step-by-step instruction. But, much of what you have to convey is understanding of a convoluted interface to a hidden state machine. And, the one-step-at-a-time nature of the old interfaces build bad habits that don’t scale when you get serious.<p>With 4.6 we can get Direct State Access, Programmable Vertex Pulling and MultidrawIndirect. With that we can move the complexity from “lots of functions to manipulate a state machine” to a few functions that strongly resemble using malloc and memcpy to work with arrays of structs. That’s not trivial. But, it should be extremely familiar. It’s visible, flexible, scalable, and it sets you up to move on to Vulkan after you’ve learned the essentials of 3D rendering.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>hollowonepl</em>:</p>
-<blockquote>I agree with Adam Sawicki that it&#x27;s not that relevant any more but also I do believe it&#x27;s valuable lesson to tech students where the modernity comes from.<p>I just don&#x27;t see personally sense to focus on it longer than just 1mo of intro, tutorial, get through simple example, show limitations, carry on to Vulkan&#x2F;WGPU with background story that there is also DX12 and Metal that follow similar principles.</blockquote>
-<blockquote>
-<p>↳ reply — <em>swiftcoder</em>:</p>
-<blockquote>&gt; carry on to Vulkan&#x2F;WGPU with background story that there is also DX12 and Metal that follow similar principles<p>Except that&#x27;s a minefield all of its own. DirectX 12 is its own special beast that is unlike the others. Vulkan is already mired in 3 revisions of architecture changes. WGPU is based on the (outdated) first cut of Vulkan, not the current model. Of all of these, only Metal has a reasonable on-ramp for newcomers to 3D graphics.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>pjmlp</em>:</p>
-<blockquote>And then there are also the NVN and LibGNM(X) in the corner that folks forget about, due to NDAs and such.<p>Ah, and DirectX on XBox is not the same as on Windows.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>mananaysiempre</em>:</p>
-<blockquote>Live by the NDA, die (at least wrt education&#x2F;mindshare) by the NDA. Seems fair.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>16-bit Windows (Windows 1.x, 2.x, 3.0, 3.1, etc.) on 64-bit Windows</title>
-      <link>https://github.com/otya128/winevdm</link>
-      <guid isPermaLink="false">hn3-50253529</guid>
-      <pubDate>Tue, 27 Oct 2026 01:15:04 +0000</pubDate>
-      <description>128 points, 31 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/otya128/winevdm"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50253529">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 31 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>londons_explore</em>:</p>
-<blockquote>I really don&#x27;t understand why Microsoft didn&#x27;t build this when they released 64 bit windows.<p>16 bit windows wasn&#x27;t complicated, and a simple VM and API translation layer could have kept compatibility going back 30+ years for not many engineering hours.<p>Yet instead they dropped 16 bit windows support and probably spent more engineering hours to support all the ancient software trying to update, and users who held back upgrading windows because they needed said ancient software, etc</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>xacky</em>:</p>
-<blockquote>Backwards compatibility has limits. When a piece of software has been abandoned for 30 years, there is very little commercial value in supporting it. Apple, Google and even Linux are more aggressive in dropping support. It&#x27;s only IBM on mainframes with multi million contracts that is really going for backwards compatibility at any cost.</blockquote>
-<p>↳ reply 2 — <em>lupical</em>:</p>
-<blockquote>On the other hand, I&#x27;d argue companies using 16-bit applications would be unwilling to upgrade to a 64-bit installation anyway. Microsoft decided it was better to push software developers to upgrade to Win32, given that 32-bit Windows already existed since 95.</blockquote>
-<p>↳ reply 3 — <em>my123</em>:</p>
-<blockquote>being able to transfer HANDLEs across the 16&#x2F;32-bit boundary notably for COM&#x2F;OLE integration becomes a lot more painful<p>Microsoft says at <a href="https:&#x2F;&#x2F;learn.microsoft.com&#x2F;en-us&#x2F;windows&#x2F;win32&#x2F;winprog64&#x2F;running-32-bit-applications" rel="nofollow">https:&#x2F;&#x2F;learn.microsoft.com&#x2F;en-us&#x2F;windows&#x2F;win32&#x2F;winprog64&#x2F;ru...</a>:<p>&gt; Note that 64-bit Windows does not support running 16-bit Windows-based applications. The primary reason is that handles have 32 significant bits on 64-bit Windows. Therefore, handles cannot be truncated and passed to 16-bit applications without loss of data. Attempts to launch 16-bit applications fail with the following error: ERROR_BAD_EXE_FORMAT.<p>winevdm on Windows eschews that level of integration, but perhaps MS should have shipped WoW16 with limitations instead of nothing.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>haunter</em>:</p>
-<blockquote>Installed MS Office 2.0 some months ago with it just for fun. It actually works pretty well apart from the dictionary files, for some reason those are not recognized<p><a href="https:&#x2F;&#x2F;files.catbox.moe&#x2F;dy4bqy.png" rel="nofollow">https:&#x2F;&#x2F;files.catbox.moe&#x2F;dy4bqy.png</a><p>I’ve used it for a week just I was curious:<p>1, is it good enough for modern day to day word processing (mostly emails)? Yes it is<p>2, can the modern word processors (Office 365, LibreOffice, Google Docs) recognize and open the files created with it? (doc, rtf anything but plain text) Yes they can</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pjmlp</em>:</p>
-<blockquote>For work, not due to other requirements, however for personal documents I fully agree with your first point, MS Office 2.0 is good enough to type in some snail letters, school reports or CVs.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>haunter</em>:</p>
-<blockquote>Also there is security. I think, I just guess, these old 16bit file formats are all exploitable to some extent</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>pjmlp</em>:</p>
-<blockquote>Yes, however if you are only using them privately as a modern typewriter for stuff that is anyway going to be sent on paper, there is less of a concern.<p>Now sharing files with others is another matter, and I fully agree.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>spider-mario</em>:</p>
-<blockquote>And a refreshingly straightforward UI compared to modern behemoths.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>gabmartini</em>:</p>
-<blockquote>Nice, I will be able to play Civ2 on Windows 11!<p>In related news, with the latest WINE on Linux 16 bits&#x2F;32 bits applications are supported, so I was able to run my beloved Civilization 2 without problems.</blockquote>
-<blockquote>
-<p>↳ reply — <em>krige</em>:</p>
-<blockquote>Civ2 - well, at least its Test of Time incarnation - has specific patches to keep it running without external tools.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Cross-request KV cache exposure in the GLM-5.3 Workers AI model (155 responses)</title>
-      <link>https://blog.cloudflare.com/kv-cache-exposure-remediation/</link>
-      <guid isPermaLink="false">hn3-50252159</guid>
-      <pubDate>Mon, 26 Oct 2026 22:41:48 +0000</pubDate>
-      <description>157 points, 56 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.cloudflare.com/kv-cache-exposure-remediation/"><strong>→ Article</strong></a> <small>(blog.cloudflare.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50252159">→ HN comments</a> &nbsp;·&nbsp; 157 points &nbsp;·&nbsp; 56 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ComputerGuru</em>:</p>
-<blockquote>Read this last night. I was completely thrown off when I read this line:<p>&gt; We expected the engine to return an error for any prompt it could not process, and our long-context tests returned successful responses, so we did not believe this to be an issue<p>Surely “we expected and error but got a successful response” merits investigating rather than moving on?</blockquote>
-<p><strong>Top #2</strong> — <em>jacquesm</em>:</p>
-<blockquote>This doesn&#x27;t really have anything to do with GLM-5.3. This is what happens when you share models between users and don&#x27;t do your bookkeeping properly, the actual model doesn&#x27;t matter. What it shows is that there isn&#x27;t enough isolation between the user sessions and that memory can overlap when that should never be possible.<p>This is an SGLANG and a Cloudflare bug <i>long</i> before it is a Z.AI model bug, I don&#x27;t see what they could have done about it. Cloudflare should own it instead of naming other (imo innocent) parties in the title.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kflansburg</em>:</p>
-<blockquote>At no point do we claim that it is a bug with the model. We specifically outline how it was a mis-configuration on Cloudflare&#x27;s part and a bug in SGLang. We name the model in the title because our customers need to know which of our endpoints was affected. In fact, we say &quot;the GLM-5.3 Workers AI model&quot;, not &quot;GLM-5.3&quot;.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jacquesm</em>:</p>
-<blockquote>Not buying that. You explicitly mention the model name in the title the &#x27;GLM 5.3 workers AI model&#x27; suggests it is something specific to GLM 5.3 which it is not. You mention Sglang and are all surprised that it didn&#x27;t throw an error. But the issue was yours all along.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>margalabargala</em>:</p>
-<blockquote>Yeah, their title is absolutely implying a GLM bug to anyone who doesn&#x27;t read it super closely.<p>There&#x27;s a huge amount of unnecessary extraneous details in the headline that distract from &quot;this is a Cloudflare bug&quot;.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>srdjanr</em>:</p>
-<blockquote>To me it&#x27;s obvious that anything related to caching has little to do with the model itself. And it&#x27;s nice to know from the title that you could only be affected if you used this model.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>yababa_y</em>:</p>
-<blockquote>Even cloudflare being unable to deploy this technology correctly makes me think there are some serious failures of knowledge transmission happening somewhere between theoreticians and practicians.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Exponential Time Hypothesis Is False [pdf]</title>
-      <link>https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf</link>
-      <guid isPermaLink="false">hn3-50251661</guid>
-      <pubDate>Mon, 26 Oct 2026 21:59:15 +0000</pubDate>
-      <description>559 points, 200 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50251661">→ HN comments</a> &nbsp;·&nbsp; 559 points &nbsp;·&nbsp; 200 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>svat</em>:</p>
-<blockquote>While this has no immediate bearing on P-vs-NP, it is interesting to note:<p>- Early CS researchers like Donald Knuth entered CS in the days when regularly someone would come up with a surprising faster algorithm for some problem, and their intuitions were that most problems had faster algorithms than you&#x27;d expect.<p>- Later generations of CS researchers, as all the easy algorithms were discovered, and post Karp&#x27;s definition of NP-completeness (and the Garey &amp; Johnson book, say), began to specialize in proving <i>hardness</i>, and complexity theory with a “zoo” of complexity classes became more about separation and lower bounds, e.g. I&#x27;ve seen algorithms like Arora&#x27;s PTAS for Euclidean TSP being described as a “failed attempt to prove a lower bound”. So an entire generation of researchers&#x27; intuition was mostly in the direction of an elegant universe with neat separation results (even if we couldn&#x27;t get them).<p>- So e.g. surveys of computer scientists showed most of them believing that P≠NP, and someone like Knuth has always seemed a bit of an outlier for saying that maybe P=NP: his argument was simply that there are so many possible polynomial-time algorithms that we haven&#x27;t explored, and maybe one of them with a large exponent could solve NP-complete problems. (In response to arguments that many researchers have failed to find any such algorithms, he would say that many researchers have failed to prove that P≠NP.) E.g. in 2017 when Scott Aaronson wrote his survey (<a href="https:&#x2F;&#x2F;www.scottaaronson.com&#x2F;papers&#x2F;pnp.pdf" rel="nofollow">https:&#x2F;&#x2F;www.scottaaronson.com&#x2F;papers&#x2F;pnp.pdf</a> = <a href="https:&#x2F;&#x2F;www.scottaaronson.com&#x2F;papers&#x2F;pnp-kindle.pdf" rel="nofollow">https:&#x2F;&#x2F;www.scottaaronson.com&#x2F;papers&#x2F;pnp-kindle.pdf</a>) he wrote:<p>&gt; <i>Admittedly, it can be hard to tell whether declarations that P = NP are meant seriously, or are merely attempts to be contrarian. However, we can surely agree with Knuth and Lipton that we’re far from understanding the limits of efficient computation, and that there are further surprises in store.</i><p>- What we&#x27;ve seen in this month is surprising unexpected algorithms, like o(n log n) algorithms for FFT and integer multiplication, and now this sub–exponential-time algorithm for 3-SAT. (Yes the ETH has had less support than P≠NP but I still gather it&#x27;s unexpected.)<p>So (though I don&#x27;t expect intuitions on P≠NP to change, and probably that&#x27;s still the right intuition… but I&#x27;m just an interested amateur), maybe there will be a bit of a swing of the pendulum back to the idea that maybe clever algorithms exist that we just haven&#x27;t thought of.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Animats</em>:</p>
-<blockquote>There are hard problems where the worst case may be exponentially hard, but the average case is much faster. Linear programming and the traveling salesman problem are like that. The faster approaches are considered &quot;probabilistic solutions&quot;.<p>In cryptography, most of the problems believed to be exponentially hard, such as factoring, don&#x27;t have proofs of an exponential lower bound. There&#x27;s some risk of a breakthrough that makes those problems easier. A probabilistic solution would be good enough to break many cryptosystems.<p>I suspect that people at the cryptanalysis agencies worldwide are staying up late tonight, trying to figure out the impacts and risks of this new result.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>vlovich123</em>:</p>
-<blockquote>Funny you mention probabilistic algorithms. If I’m not mistaken one of the OpenAI results is that most of the probabilistic methods (specifically those that use a logarithmic amount of space)-4  have non-probabilistic versions that are as efficient in time and space (L = RL = BPL)</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>cochne</em>:</p>
-<blockquote>This is an amazing and unexpected result.  To be clear though, it does not imply that NP is subexponential: &quot;Note that runtime bounds of the form 2^o(n) do not transfer under general polynomial-time reductions (2^n^o(1) would be needed for this), so our result does not imply that general NP problems
-admit subexponential time algorithms.&quot;<p>Edit: To explain more, it is guaranteed that you can <i>reduce</i> any NP problem to 3SAT in polynomial time with a polynomial factor in input size.  You still have to solve it.<p>If 3SAT were solvable in polynomial time, then polynomial(polynomial(x)) = polynomial(x) and you&#x27;re implied to have an overall polynomial time solution.<p>But what we have here is that 3SAT is solveable in subexponential time.  subexponential(polynomial(x)) is not guaranteed to be sub-exponential.<p>Further edit: The subexponential solution <i>does</i> carry over to any (?) problems that have can be reduced to 3SAT in a linear number of variables.  They list: Counting independent sets, Counting proper q-colorings, Counting perfect matchings.</blockquote>
-<blockquote>
-<p>↳ reply — <em>marshray</em>:</p>
-<blockquote>&gt; The subexponential solution does carry over to any (?) problems that have can be reduced to 3SAT in a linear number of variables. They list: Counting independent sets, Counting proper q-colorings, Counting perfect matchings.<p>Wouldn&#x27;t that also include functions that can be evaluated in hardware using a fixed number of gates? E.g., symmetric cryptography?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>pcbouman</em>:</p>
-<blockquote>A circuit with a fixed number of (binary logical) gates can be solved in constant time, as it will have a fixed number of input bits, so brute force will have a fixed number of input options to consider. This does apply to cryptographic algorithms with a fixed key size, like the ones used in practice, as well.
-The whole point of computational complexity is to look at the scaling behavior when you increase the inputs&#x2F;key size&#x2F;size of the circuit.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>zodiac</em>:</p>
-<blockquote>It appears that Anthropic has released a proof as well (same bounds), but with a different approach? <a href="https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;u&#x2F;0&#x2F;folders&#x2F;1uaWnPqWkXy1sjfsD5bNPL4nbNqa95cKp" rel="nofollow">https:&#x2F;&#x2F;drive.google.com&#x2F;drive&#x2F;u&#x2F;0&#x2F;folders&#x2F;1uaWnPqWkXy1sjfsD...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Three new discoveries in mathematics, computer science, and physics</title>
-      <link>https://openai.com/index/building-scientific-understanding-with-academic-communities/</link>
-      <guid isPermaLink="false">hn3-50251344</guid>
-      <pubDate>Mon, 26 Oct 2026 21:35:28 +0000</pubDate>
-      <description>798 points, 349 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://openai.com/index/building-scientific-understanding-with-academic-communities/"><strong>→ Article</strong></a> <small>(openai.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50251344">→ HN comments</a> &nbsp;·&nbsp; 798 points &nbsp;·&nbsp; 349 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>abetusk</em>:</p>
-<blockquote>ETH is false! I really would not have believed it.<p>[0]:<p>&gt; We give a deterministic algorithm for exactly counting the satisfying assignments of an arbitrary k-CNF formula. For every fixed k ⩾ 2, on a formula with n variables and m clauses, our algorithm uses $poly_k (n, m)$ space and runs in time $(n + m)^{O_k(1)} 2^{n&#x2F;(\log n)^{1&#x2F;2 + o(1)}}$<p>The dominant term there is (roughly) $2^{n &#x2F; (\log n)^{0.5}}$, so still superpolynomial but less than exponential. Fucking wild.<p>[0] <a href="https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;math&#x2F;blob&#x2F;main&#x2F;preprints&#x2F;The-Exponential-Time-Hypothesis-is-False-October-25-2026&#x2F;paper.pdf" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;math&#x2F;blob&#x2F;main&#x2F;preprints&#x2F;The-Expon...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>debo_</em>:</p>
-<blockquote>Yeah, this really blew me away. I took a graduate computational complexity course and the original prof had to drop out due to health reasons. We got another professor from a completely different field who was basically as green in the field as we were, but with far better research chops. It turned the course into kind of a long-running lab where we just kind of did whatever we wanted. We spent a lot of time just philosophizing (mostly uselessly) about the ETH. I am very chuffed to see this result.</blockquote>
-<p>↳ reply 2 — <em>casey2</em>:</p>
-<blockquote>And who says AI doesn&#x27;t create open problems. This unlocks thousands of high quality open problems.<p>Turns out the &#x27;opne&#x27; in open AI wasn&#x27;t referring to open source, but open problems!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>martinhath</em>:</p>
-<blockquote>ETH is false! This is one of the big long-standing hypotheses that I actually remember from university, and afaik, it was reasonable to assume it would be true; reasonable enough for a lot of papers and results to assume this for bounds or hardness proofs of common problems in parameterized complexity, anyways.<p>Also glad to see that one of the authors of the paper stating it is also in the loop here.<p>2026 is weird.</blockquote>
-<p><strong>Top #3</strong> — <em>KolenCh</em>:</p>
-<blockquote>Interesting that the physics result is not released yet. From the limited wordings, “unified completion of the Standard Model of particle physics” is probably SU(5), which is experimentally disproved as one describing our universe. So the wording sounds a bit confusing, ie they are not proving or discovering Grand Unified Theory (GUT), and there’s no Higgs. So it is not really the standard model, but models that’s closely related to that. It is still an impressive result. IMO at the level of the recent quasi Riemann hypothesis level result, shy of getting the millennium prize (no mass gap) but is actually a very meaningful result, both of which arguably more impactful that the one they solved a millennium prize problem (Navier–Stokes).<p>More comments in <a href="https:&#x2F;&#x2F;blog.kolen.dev&#x2F;link&#x2F;openai-shepherds" rel="nofollow">https:&#x2F;&#x2F;blog.kolen.dev&#x2F;link&#x2F;openai-shepherds</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>OpenAI's agents talked to each other through the CPU Cache</title>
-      <link>https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/</link>
-      <guid isPermaLink="false">hn3-50251200</guid>
-      <pubDate>Mon, 26 Oct 2026 21:24:18 +0000</pubDate>
-      <description>141 points, 55 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/"><strong>→ Article</strong></a> <small>(the-decoder.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50251200">→ HN comments</a> &nbsp;·&nbsp; 141 points &nbsp;·&nbsp; 55 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>cadamsdotcom</em>:</p>
-<blockquote>(Because the agents were asked to find a way.)<p>Article is great, very balanced. But if you&#x27;re going to spend time reading something, the primary source isn&#x27;t much longer and gives a clearer picture. OpenAI&#x27;s article is quite readable.<p>As another commenter wrote you can get it here: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50214416">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50214416</a><p>&gt; In one experiment, we asked agents in separate microVMs, created and managed by OpenAI’s sandboxing software on shared host machines, to exchange synthetic secrets without the use of network connections or shared writable files—something that our systems are meant to prevent. The agents found a way to communicate using the processor’s cache<p><i>asked</i></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>d0vs</em>:</p>
-<blockquote>As someone who develops microVMs it doesn&#x27;t really matter to me that they were asked to find a way, I really care that they found any way at all. MicroVMs aim to protect against malicious workloads and that clearly didn&#x27;t work here.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rcxdude</em>:</p>
-<blockquote>The microVMs probably don&#x27;t have &quot;two co-operating workloads are able to communicate&quot; in their threat model. The main concern would be if a malicious payload was able to affect or extract data from any other VM.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>rjh29</em>:</p>
-<blockquote>I don&#x27;t see how &quot;asked&quot; is important, because agents can convince themselves that they need to do something for arbitrary reasons. The other day Deepseek tried to install an app on my phone via adb without permission and even take screenshots and fake inputs over adb, I never asked it to do that, but it decided it was appropriate.</blockquote>
-<p>↳ reply 3 — <em>reacharavindh</em>:</p>
-<blockquote>Most important detail…. It was prior literature that documented the possibility of doing this and the systems fixed those vulnerabilities as well. The AI model probed their current infrastructure and found an unplugged but pre-documented(therefore on their training) hole.<p>This detail matters because the idea itself is not novel. LLMs did cleverly discover, filter and use the patterns.<p>Watch Greg Koah’s recent talk on AI discovered vulnerabilities in Linux kernel to understand the limitations of LLMs aided offensive security acts. It was a rational light for those who fear monger that AI will _just_ take over humanity and be intelligent in novel ways.<p>The larger threat still remains though - if any literature anywhere threw the scattered dots about techniques, issues, rough ideas etc that were not acted on yet.. these pattern machines are going to find them and use them to achieve their goals(if that were to break through). Just not in the sentient way folks assume based on news.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>thomasahle</em>:</p>
-<blockquote>Somebody built &quot;cpu-chat&quot; based on this:
-<a href="https:&#x2F;&#x2F;x.com&#x2F;rauchg&#x2F;status&#x2F;2114770919436808572?a=bBcj9AaSsllacbsW3ew&amp;s=19" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;rauchg&#x2F;status&#x2F;2114770919436808572?a=bBcj9AaSsl...</a><p>It supports chat via 3 separate mechanisms:<p>- CPU contention<p>- Cache eviction timing<p>- DRAM bandwidth contention<p>Very cool to see this kind of hypothetical working in practice.<p>I wonder if it&#x27;s also possible for agents to communicate via a shared KV-cache. Maybe by spawning sub-agents with carefully crafted system-prompts&#x2F;prefixes. KV-caches are often shared between many computers, so it would be a powerful communication channel.</blockquote>
-<p><strong>Top #3</strong> — <em>pizza234</em>:</p>
-<blockquote>Yampolskij made the analogy of an Einstein in a cage. The problem is not to contain Einstein, but rather, to contain Einstein while still extracting utility: this is not possible long-term.<p>So much for all the people stating (foolishly) that the HuggingFace incident was not a big deal because OpenAI&#x27;s containment was a &quot;wet paper bag&quot;. This misses the point: AIs will get better and better, and containment will be harder and harder.<p>It&#x27;s 100% sure that at some point, AIs will attempt to cross airgaps.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>CorridorKey 2.0</title>
-      <link>https://corridorkey.com/</link>
-      <guid isPermaLink="false">hn3-50251127</guid>
-      <pubDate>Mon, 26 Oct 2026 21:18:05 +0000</pubDate>
-      <description>192 points, 62 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://corridorkey.com/"><strong>→ Article</strong></a> <small>(corridorkey.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50251127">→ HN comments</a> &nbsp;·&nbsp; 192 points &nbsp;·&nbsp; 62 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>teach</em>:</p>
-<blockquote>I also really enjoyed the &quot;making of&quot; video: <a href="https:&#x2F;&#x2F;youtu.be&#x2F;svrdRAoIlxM?si=cG1gSRyWdGg8RnEM" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;svrdRAoIlxM?si=cG1gSRyWdGg8RnEM</a><p>Niko goes into some more detail about the licensing choices they&#x27;ve made and why towards the end of the video as well.<p>[Edit: note that the above video is &quot;content&quot; so if you&#x27;re not used to the style it might be offputting but I&#x27;m into it]<p>It&#x27;s been so cool to watch this develop</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>CitrusFruits</em>:</p>
-<blockquote>Huge fan of Corridor. For those that don&#x27;t have twenty minutes, one of the big takeaways is that a pretty high level VFX Supervisor critiques the keys at the end and basically has only nits that you need to zoom in on or have a trained eye to catch. Very legitimate feedback for a top tier professional context, but this can get you really far otherwise.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ipsum2</em>:</p>
-<blockquote>The issues aren&#x27;t nits, they&#x27;re really obvious, even after YouTube compression.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>normalaccess</em>:</p>
-<blockquote>Depends on the shot. Worlds better than version one of CorridorKey and they are using it internally on their own shows&#x2F;content.<p>These tools can only get better and better as time goes on.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Eji1700</em>:</p>
-<blockquote>&gt; [Edit: note that the above video is &quot;content&quot; so if you&#x27;re not used to the style it might be offputting but I&#x27;m into it]<p>I hate that it is because it makes me suspicious of every reaction.  I happened to see the CD video on the clown wedding on the moon(sodium vapor maybe?) and so I at least have some grounding from this, but if I didn&#x27;t I&#x27;d probably ignore most of this (as i ignored the thumbnail) because &quot;literal industry defining tech&quot; and &quot;random temu mall ninja crap&quot; has basically the same production pattern these days so why trust it?<p>I realize this is &quot;old man yells at cloud&quot; territory but it sucks that prostrating to the algorithm means all sincerity is lost because you have to ape Mr. Beast or whoever to get &quot;engagement&quot;<p>Edit-<p>And with that said, I&#x27;d say just jump to 23:40ish when the professional is talking if you&#x27;re grumpy like me.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>ShakataGaNai</em>:</p>
-<blockquote>A beta price of $50 or full price of $100 is really a steal. If you do ANY sort of video production work, this is an amazing tool. The more casual of a green screen person you are, the more impressive this is.<p>This is like Magnet Mask for Final Cut, but probably better. I haven&#x27;t compared&#x2F;contrasted the two yet, but I have faith that Corridor has knocked this one out of the park from the demos I have seen.<p>(Yes, you can download it for free. You&#x27;re paying for the pre-packaged convenience. I 100% paid them to support the work they are doing).</blockquote>
-<p><strong>Top #3</strong> — <em>wongarsu</em>:</p>
-<blockquote>Obviously this prioritizes quality over speed, but how far are we from real time? Hooking something of this quality up to a live webcam would be a dream</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Microsoft offers voluntary buyouts to a quarter of its workforce</title>
-      <link>https://www.kuow.org/technology/2026-10-26/microsoft-offers-voluntary-buyouts-to-a-quarter-of-its-workforce</link>
-      <guid isPermaLink="false">hn3-50250937</guid>
-      <pubDate>Mon, 26 Oct 2026 21:05:15 +0000</pubDate>
-      <description>128 points, 141 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.kuow.org/technology/2026-10-26/microsoft-offers-voluntary-buyouts-to-a-quarter-of-its-workforce"><strong>→ Article</strong></a> <small>(kuow.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50250937">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 141 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>antics</em>:</p>
-<blockquote>Tech corporations have always been enormous stores of (1) capital and (2) people. MSFT&#x27;s flavor of this has always been &quot;tech Berkshire Hathaway&quot;: a holding company for a diversified portfolio of a couple-dozen billion-dollar businesses. MSFT in particular is willing to park ~300 people on a seemingly-dead-end product, just waiting for the incumbent to mess up. Sometimes it eventually succeeds commercially (Teams, PowerBI) and sometimes it doesn&#x27;t (or hasn&#x27;t, yet, see Bing).<p>What is happening here is a sign they are changing their view on how this capital allocation works.<p>To what? We don&#x27;t know, and I think they might not know yet, either. If you are spending &gt; $4M for a top-end engineer and $8M on their tokens (this refers to a person know personally, it is not hearsay), this will necessarily change the how this allocation works. Maybe it doesn&#x27;t make sense to park 300 people on tomorrow&#x27;s PowerBI any more.<p>What is clear is that we are not in anything approaching an equilibrium state. MSFT (and others like them) clearly do not have enough conviction to fire all the line engineers and only keep the so-called &quot;elite&quot; ones. It&#x27;s not even clear that they think we&#x27;re on that trajectory. I think what we <i>are</i> seeing, though, is that they have enough conviction to try to clear the  way for more of this kind of spending on these so-called &quot;elite&quot; developers.</blockquote>
-<blockquote>
-<p>↳ reply — <em>cyanydeez</em>:</p>
-<blockquote>I see as paying for investment in AI whether it&#x27;s beneficial or not. They&#x27;re balancing books, not making any 6D chess.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>antics</em>:</p>
-<blockquote>I&#x27;m not sure what you mean. Are you saying you think I&#x27;m suggesting they are extremely sophisticated actors on some dimension? I&#x27;m saying they&#x27;re best thought of as a Berkshire Hathaway-style capital allocator, not a tech company.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>beloch</em>:</p>
-<blockquote>Is this because:<p>1. MS over-hired, has too many employees, and not enough work?<p>2. MS is reaping the benefits of AI and can do the same work with fewer employees?<p>3. MS has over-invested in data-centres and needs to conserve cash to stay in the game during it&#x27;s unprofitable phase (assuming it&#x27;s not a bubble)?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>taocoyote</em>:</p>
-<blockquote>4. MS plans on re-filling a large portion of those roles at a lower salary</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>xp84</em>:</p>
-<blockquote>Ah, you bet. And probably offshore.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>autophagian</em>:</p>
-<blockquote>Yes.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>anuptalwalkar</em>:</p>
-<blockquote>You should be more concerned about what comes next.<p>Either senior talent leaves, people who are close to retiring, or just can find a job easily outside.<p>Low hanging fruits take the bait and head out.<p>Mid level people live in fear of either scared to find another job, or worried about layoffs.<p>Either way the company morale is down the drain for a long time, and a culture is lost.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tdeck</em>:</p>
-<blockquote>One thing I&#x27;ve noticed about Microsoft is that the engineers seem much less mobile than people at SV companies might be used to. Part of it is that there just aren&#x27;t as many good options in the Seattle area where many MSFT employees are based (by far the standout alternative alternative is Amazon and they don&#x27;t exactly have the best reputation for workplace culture).<p>Also Microsoft has already been trashing morale with year after year of layoffs. They probably assume this won&#x27;t move the needle.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tonyedgecombe</em>:</p>
-<blockquote>Less than a quarter of their workforce is in the Seattle area.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mooreds</em>:</p>
-<blockquote>&gt; You should be more concerned about what comes next.<p>I always wonder about that with buy-outs. Seems to me that the people who take buyouts are either:<p>- those who are close to retirement<p>- those who have other options<p>I&#x27;d assume the first vary in quality the same as your overall workforce, but I&#x27;d assume the second would, all other things equal, be better than the average.<p>Maybe I&#x27;m wrong, but it seems like by offering an optional buyout, you&#x27;d degrade the overall quality of your workforce. Wonder if there are any case studies about that?</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
