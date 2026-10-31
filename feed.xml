@@ -4,7 +4,129 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 31 Oct 2026 18:24:29 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 22:23:27 +0000</lastBuildDate>
+    <item>
+      <title>Jepsen: ParticleDB 1.1.4</title>
+      <link>https://jepsen.io/analyses/particledb-1.1.4</link>
+      <guid isPermaLink="false">hn3-50316100</guid>
+      <pubDate>Sat, 31 Oct 2026 13:39:52 +0000</pubDate>
+      <description>148 points, 81 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://jepsen.io/analyses/particledb-1.1.4"><strong>→ Article</strong></a> <small>(jepsen.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50316100">→ HN comments</a> &nbsp;·&nbsp; 148 points &nbsp;·&nbsp; 81 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>the_duke</em>:</p>
+<blockquote>Brutal!<p>&gt; ParticleDB 1.1.4 claimed to be a Postgres-compatible database ... Instead, we found a library of confusion<p>&gt; exhibited frequent, profound transactional anomalies in essentially every way we could measure. We routinely observed the loss of committed writes, internal consistency violations, G1a (Aborted Read), G1b (Intermediate Read), and P4 (Lost Update). In the append workload, successfully appended values would routinely disappear from later reads of a given key. Our test suite inferred every kind of cyclic anomaly including G0, G1c, G-Single, and G2-item, but many of these can be attributed to more basic issues, like write loss. These issues occurred with a single server and without faults, and affected every transaction mode, interface, and WAL mode tested</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nikez96</em>:</p>
+<blockquote>I&#x27;m part of the ParticleDB team. We took these findings seriously and have spent the past few months addressing them and strengthening our testing. We now run sustained Jepsen workloads daily alongside our own test suites. We&#x27;ve also narrowed the supported transaction modes to focus development and testing on core correctness.<p>Our recent Jepsen runs have not surfaced any transactional anomalies in the supported modes that provide isolation guarantees. We&#x27;ve also fixed the issues highlighted in the report through newer releases, along with additional issues we identified through our testing. We&#x27;re expanding regression coverage to catch issues earlier, before release. We&#x27;ve also introduced agentic testing to explore additional edge cases that traditional test suites might miss. This work has helped guide our development and testing, and we&#x27;re working on benchmarking now as well.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>sciurus</em>:</p>
+<blockquote>&gt;  We now run sustained Jepsen workloads daily alongside our own test suites.<p>Why would anyone believe you when you say this? From the report:<p>&quot;Orkes said they ran Jepsen’s existing Postgres test harness to find and resolve issues in ParticleDB prior to this work. However, that same test harness failed immediately when run against ParticleDB 1.1.4. Orkes also stated they tested ParticleDB with SQLancer, which generates far more complex queries than the ones we tested. It is therefore perplexing that nearly every feature we tested exhibited glaring errors, and that our findings seemed to come as a surprise.<p>Most databases have a test suite which exercises at least basic examples of each feature, and it is customary to run those tests before release, if not continuously. Where were those tests for ParticleDB? How does one add support for NOT NULL constraints without a test which tries to insert at least one NULL value? What development process adds a CHARACTER(10) type without trying to write a string of (e.g.) five characters?<p>Our findings suggest structural deficiencies in the ParticleDB QA process. Perhaps tests were not run prior to release. Perhaps the test suite was run, but failed to exercise basic functionality. Perhaps engineers entrusted Large Language Models with the work of testing.&quot;</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>random3</em>:</p>
+<blockquote>I wonder if it’s vibe coded by amateurs</blockquote>
+<p>↳ reply 3 — <em>jarym</em>:</p>
+<blockquote>Writing databases is an EXTREMELY fun learning endeavour but it is truly difficult to do correctly.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>amluto</em>:</p>
+<blockquote>I’ve come to learn an interesting dichotomy in software:<p>Some software is correct by construction, in the sense that the overall design makes sense and the cases that don’t work are generally local bugs.<p>Some software is incorrect by construction, and it tends to work by some combination of luck and by carefully working around the incorrect design in most or all code paths that could expose the incorrectness.  (AI can be quite effective at finding the relevant places to insert workarounds.)<p>ParticleDB sounds like the latter category.  Plenty of large projects have portions that are in one category and portions that are in another.<p>As an aside, for the last day or two, I’ve been contemplating that the Linux kernel’s handling of folio pinning seems to be in the incorrect-by-construction category. Good times.  No, I haven’t found a hard-to-fix bug that I would credibly characterize as a security or likely accidental corruption issue [0], but this seems mostly like luck.<p>[0] I do appear to have re-discovered a bug that some massive Anthropic dump from a couple months ago also found, and it’s getting fixed.  If your application does “fixed” io_uring I&#x2F;O or certain types of iommu-based or maybe RDMA on a memfd, you might plausibly encounter it on rare occasions. I didn’t bother making a reproducer.</blockquote>
+<p><strong>Top #3</strong> — <em>wofo</em>:</p>
+<blockquote>&gt; Given the severity and extent of the safety errors we found, and the process which produced them, Jepsen recommends users halt further deployment of ParticleDB and migrate to other databases as soon as possible. Consider checking and&#x2F;or rebuilding database state from more reliable sources, if available.<p>I guess that&#x27;s what happens when you vibecode a database...</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Prospero: A new coding harness for a more civilized age</title>
+      <link>https://nullprogram.com/blog/2026/10/31/</link>
+      <guid isPermaLink="false">hn3-50315226</guid>
+      <pubDate>Sat, 31 Oct 2026 11:54:59 +0000</pubDate>
+      <description>176 points, 116 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://nullprogram.com/blog/2026/10/31/"><strong>→ Article</strong></a> <small>(nullprogram.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50315226">→ HN comments</a> &nbsp;·&nbsp; 176 points &nbsp;·&nbsp; 116 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>brainless</em>:</p>
+<blockquote>Nice to see a gui coding agent. I use tui agents all the time but I am building a gui one. I use Claude Code, Codex, opencode and a couple other but I do not like the DX&#x2F;UX.<p>I often want click a part of the wall of text (from agent) and search for related text, open them up on the side or so. I want to open a linked file. I want to answer multiple questions in an async manner, even come back and continue answering the next day.<p>There are many prompt level features I want too - orchestrate with subagents, but only the tasks I select - how do I select when there is no checkbox. Or maybe delegate a subagent to dig into (read only) one portion of the chat response. Maybe codify (write) only one task in a list of tasks. So many many other small things.<p>As a full-time user of coding agents, the TUI barely works for me. I think splitting text, searching in text, merging text are more important in agent driven development than ever before. It is all text, all the way. This is what I am building myself, with my own gui framework.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>julesrms</em>:</p>
+<blockquote>You&#x27;re not alone - I also revolted against the TUI crowd and created my own GUI-centric harness juggler (<a href="https:&#x2F;&#x2F;github.com&#x2F;juggler-ai&#x2F;juggler" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;juggler-ai&#x2F;juggler</a>). Might be up your street. If you&#x27;re not too involved in your own project, maybe help out on mine :)<p>Honestly, I just don&#x27;t get the TUI obsession, other than the fact that people are multiplexing many remote sessions over ssh. So my aim with juggler was to have an architecture that could do all the multi-client remote sessions with a GUI&#x2F;websockets&#x2F;Y.js sync etc.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>atombender</em>:</p>
+<blockquote>Hi, I tried Juggler a few months back, and while it&#x27;s technically impressive as a one-person product, I found it super stressful to use. It emits <i>so</i> much output and activity, in various nested forms.<p>Where Claude Code and Codex have made progress recently, I feel, is with sharpening the interactivity. For example, Codex will emit a lightweight ream of &quot;thinking&quot;, then on completion it will erase this and only show the final, coherent answer. It doesn&#x27;t show much detail about which commands it runs, either. You can still drill into that, but it&#x27;s usually the least important thing. Claude also does sub&#x2F;side-sessions that can talk to the other sessions. So if a session finds an unrelated, pre-existing bug, it can start an adjacent session for the bug fix, and keep abreast on when the fix lands. If you start a side session to do research, it can message the other session with new findings.<p>I don&#x27;t know if Juggler is still like it was, but I strongly recommend making it less verbose. I just couldn&#x27;t deal with the noise.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>0xcafefood</em>:</p>
+<blockquote>His GUI looks like it&#x27;s inspired at least in part by Google&#x27;s Antigravity 2 (<a href="https:&#x2F;&#x2F;antigravity.google&#x2F;product&#x2F;antigravity-2" rel="nofollow">https:&#x2F;&#x2F;antigravity.google&#x2F;product&#x2F;antigravity-2</a>).</blockquote>
+<p>↳ reply 3 — <em>34679</em>:</p>
+<blockquote>I recently switched from the OpenCode GUI to OpenChamber, which still uses the OpenCode backend. It&#x27;s pretty great. One of the features is the ability to select a portion of an agent&#x27;s response and add a comment to it. Comments are sent along with the next prompt. It&#x27;s also much better at handling subagents. With a proper plan in place, it will send out swarms in waves.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>julesrms</em>:</p>
+<blockquote>Great to see what you&#x27;re doing there, but speaking as a 30-year hardcore C++ veteran (to the extent of creating my own C++ GUI framework: <a href="https:&#x2F;&#x2F;juce.com" rel="nofollow">https:&#x2F;&#x2F;juce.com</a>)... When I was writing a code agent (<a href="https:&#x2F;&#x2F;github.com&#x2F;juggler-ai&#x2F;juggler" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;juggler-ai&#x2F;juggler</a>), there&#x27;s no way I&#x27;d have used C++ for an agent GUI!<p>Agent UIs are all markdown, HTML, big scrolling lists, text flow, unicode chars, and all the other stuff that C++ frameworks are terrible at, but which is a doddle in HTML&#x2F;CSS&#x2F;JS.. You are a brave man!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nico</em>:</p>
+<blockquote>&gt; and all the other stuff that C++ frameworks are terrible at, but which is a doddle in HTML&#x2F;CSS&#x2F;JS<p>This is very interesting. I know that coding string-related stuff with C&#x2F;C++ can be incredibly tedious and error prone (even hard security-wise). But all the stuff in the web-related stacks&#x2F;libraries in other languages, is either already somehow being transcompiled to C to execute, or could be relatively easily ported&#x2F;reused by directing an LLM&#x2F;agent to do it<p>Do you think that could work to make C&#x2F;C++ better at this? What things would you import&#x2F;copy from elsewhere?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>julesrms</em>:</p>
+<blockquote>Strings are trivial in C++. Drawing 2D graphics is fine, many libraries do it. Creating old-fashioned component frameworks (like Qt, JUCE, etc) is easy. I implemented all those things on my own, decades before AI.<p>The hard bit is when you have complex, responsive layouts involving text. (And styling it)<p>Something seemingly trivial like an agent-style chat containing markdown text blocks, where it&#x27;s expandable and smoothly scrollable is insanely difficult. The only frameworks that do this well are browsers, and the amount of horrible, horrible logic hidden inside them to make it look easy is hard to believe.<p>And since in many agents you&#x27;re also going to want to display actual HTML, unless you&#x27;re going to embed a browser engine in your C++ library, that&#x27;s just not doable.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>nico</em>:</p>
+<blockquote>Thank you for the insightful explanation<p>&gt; And since in many agents you&#x27;re also going to want to display actual HTML, unless you&#x27;re going to embed a browser engine in your C++ library, that&#x27;s just not doable.<p>I guess this is the main issue. Either you end up reimplementing a browser (which will def have a ton of issues), or you embed a browser and you end up with bloat anyway</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ia</em>:</p>
+<blockquote>This thread caused me to check out juggler. A couple hours later, I&#x27;m playing with it. This is awesome, really great work.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>nico</em>:</p>
+<blockquote>Nitpicks about CLI coding agents:<p>Many times, while they are doing something, I’ll be typing a prompt, and then all of a sudden I get a question with Y&#x2F;N options, and by accident, I’ll type Y&#x2F;N as part of a word thus “answering the question”, many times either steering in the wrong direction or stopping the agent<p>Neither Claude code nor Codex solve this. The only way I’ve found to prevent it is to type somewhere else and then paste, but it’s super annoying<p>Edit: ^^ the above is especially annoying now that Codex popups the prompts&#x2F;questions within other agents&#x27; sessions<p>Also, when I want two agents in different sessions to talk to each other, it’s kinda janky, I have to talk to both and act as a messenger for a couple of turns before they properly coordinate. I wish I could just sort of click somewhere, and link unlink two or more sessions<p>Does Próspero solve the things above?<p>Any pans for “swarm”&#x2F;group control of agents?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>conception</em>:</p>
+<blockquote>I think agy has a “questions pending “ pattern for waiting questions rather than popups. I don’t like it but sounds like they were solving your issue</blockquote>
+<p>↳ reply 2 — <em>contingencies</em>:</p>
+<blockquote>I can heartily recommend switching to private local speech to text voice input with Handy. <a href="https:&#x2F;&#x2F;handy.computer&#x2F;about" rel="nofollow">https:&#x2F;&#x2F;handy.computer&#x2F;about</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Do the math: How we took over ChatGPT accounts</title>
+      <link>https://www.parameter.ai/labs/we-found-a-gap-at-openai</link>
+      <guid isPermaLink="false">hn3-50314699</guid>
+      <pubDate>Sat, 31 Oct 2026 10:30:11 +0000</pubDate>
+      <description>290 points, 141 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.parameter.ai/labs/we-found-a-gap-at-openai"><strong>→ Article</strong></a> <small>(parameter.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50314699">→ HN comments</a> &nbsp;·&nbsp; 290 points &nbsp;·&nbsp; 141 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>yellow_lead</em>:</p>
+<blockquote>&gt; OpenAI confirmed both frontends rejected the reported messages, resolved the issue, and awarded a total bounty of $5,000.<p>It requires the user to click a link. But I still find this bounty very low. Others may not report them if such a small bounty is given.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ibaikov</em>:</p>
+<blockquote>I took over user accounts in Microsoft Copilot (there are caveats but still), and they asked me to provide additional information of the exploit (they wanted a video) and before I sent it they fixed the vulnerability, didn&#x27;t pay me a cent. Fair? Idk.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pvtmert</em>:</p>
+<blockquote>Typical $MSFT behavior, I can see why NightmareEclipse (ie. YellowKey zero-day exploit) got released without prior fix.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dgellow</em>:</p>
+<blockquote>That’s so low. That’s the level of bounty I awarded researchers when I was managing the bug bounty program at a small startup, it’s just ridiculous coming from a large company like OpenAI</blockquote>
+<p>↳ reply 3 — <em>kamban</em>:</p>
+<blockquote>They have just announced free API credits for Pro plan users up to $500 per month. Irony.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>lxgr</em>:</p>
+<blockquote>Oof. Together with the fact that it&#x27;s possible to remotely access the file system (!) of computers ever having started a &quot;Work&quot; chat in the ChatGPT desktop app [1], this seems pretty bad.<p>[1] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50078284">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50078284</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>albert_e</em>:</p>
+<blockquote>Claude Code terminal has &quot;remote control&quot; option activated via &#x2F;rc command. -- somewhat similar in that it still runs the session on the PC&#x2F;Mac but allows the Claude authenticated user to access the session via internet &#x2F; app<p>I am guessing this ChatGPT functionality is a similar Codex feature?<p>But this session is disconnected when the conversation is &#x2F;exit ed</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>lxgr</em>:</p>
+<blockquote>Sounds similar, but the problem is exactly that I don’t think there’s any way to disconnect such a session, nor to even see that it is connected to my computer in the first place. There’s a small notice when initially starting it on the mac, that’s it.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Kuyawa</em>:</p>
+<blockquote>$5000 is a joke. They pay millions to their top devs and still have more holes than a colander so a nice guy shows you a huge opening in your platform and all you can give him is a pat on the shoulder? Did you fire your top devs and hire that guy for a million bucks plus options? Did you sue the security firm you paid millions to audit the issues?<p>I really hope they get hacked and crash down burning in flames like the Hindenburg</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>cbsks</em>:</p>
+<blockquote>I wonder if the new economics of finding bugs means that they pay the amount they think the tokens cost to find it.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>stavros</em>:</p>
+<blockquote>Over the probability that you&#x27;ll find something.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tsunamifury</em>:</p>
+<blockquote>I think you know that the mentality of a company like this is “security is a risk but not a reward and whoever captures the reward kills everyone else”</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Molly (Signal fork) has not been updated since 3 months and is vulnerable</title>
       <link>https://piefed.world/post/1503394</link>
@@ -3588,132 +3710,6 @@ Ye Olde:<p><pre><code>    Height: 1.55 cm (0.61 inch)
 <p>↳ reply — <em>SwellJoe</em>:</p>
 <blockquote>I don&#x27;t like it when unrelated projects squat on the name of some existing project. Trademark isn&#x27;t just a commercially useful thing, it helps users understand what they&#x27;re getting and who they&#x27;re getting it from.<p>It&#x27;s shitty for a new project to ride on the coattails of a trusted project with years of reputation. It misleads and confuses folks.<p>Take inspiration anywhere you like, borrow the code all you like, but don&#x27;t steal the damned name.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Agent SDK</title>
-      <link>https://cursor.com/blog/agent-sdk</link>
-      <guid isPermaLink="false">hn3-50273731</guid>
-      <pubDate>Wed, 28 Oct 2026 14:02:20 +0000</pubDate>
-      <description>126 points, 123 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://cursor.com/blog/agent-sdk"><strong>→ Article</strong></a> <small>(cursor.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50273731">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 123 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bob1029</em>:</p>
-<blockquote>I&#x27;m still waiting for one of these companies to provide the actual hard part.<p>The web front end (chat UI) that the business actually interacts with often needs to be adapted to the domain. We have tried to use the various chat UIs out of the box with customization on top and all of this has failed spectacularly. There are cases where we need to pop into an inline approval flow with custom elements and controller actions. How do you hook the existing platforms for this? There zero path. MCP can give you an information channel, but it does not enforce the required UI&#x2F;UX flow for certain tool calls. We could either compromise on UX or rebuild chatgpt.com from scratch. We ultimately went with the latter.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ea016</em>:</p>
-<blockquote>I&#x27;ve been using Tanstack AI (<a href="https:&#x2F;&#x2F;tanstack.com&#x2F;ai" rel="nofollow">https:&#x2F;&#x2F;tanstack.com&#x2F;ai</a>) for this. It&#x27;s been really easy to setup and sturdy. They offer the foundation for tool calling, handle reconnects, persistence, computer use, voice and more. If you&#x27;re on the web I really recommend it</blockquote>
-<p>↳ reply 2 — <em>asilis</em>:</p>
-<blockquote>Is it something similar to <a href="https:&#x2F;&#x2F;www.openui.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.openui.com&#x2F;</a> or something more deterministic?</blockquote>
-<p>↳ reply 3 — <em>dbbk</em>:</p>
-<blockquote>Did you try Claude mods?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>h0rv</em>:</p>
-<blockquote>Why would you not use an open-source harness in October 2026? I am generally curious - what is the alpha?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>chrisvalleybay</em>:</p>
-<blockquote>Well, I&#x27;d love to use an open-source harness! My issue is that Opus 5.5 &#x2F; Fable 5.1 has been the best model for me to work with, and it&#x27;s way cheaper to use it with the subscription to Claude Code Max. I won&#x27;t pay more just to use an open-source harness. I&#x27;d rather just wait it out and stay on Claude Code not having to constantly jump around &#x2F; switch tools as the industry matures.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>julesrms</em>:</p>
-<blockquote>You can use your claude subscription just fine in open harnesses!<p>I make one (<a href="https:&#x2F;&#x2F;github.com&#x2F;juggler-ai&#x2F;juggler" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;juggler-ai&#x2F;juggler</a>) and it&#x27;ll auto-detect and use your claude CLI. I use that claude plan for 90% of my work, plus a bit of GPT, I just prefer to do it inside a nicer, less locked-in environment than claude.<p>There&#x27;s really no moat around proprietary closed harnesses, it&#x27;s trivial to jump between them, but people need to be aware that it&#x27;s possible!</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>aenis</em>:</p>
-<blockquote>Locked in? I routinely switch between claude and codex, same codebases, same skills, and even shared &quot;memories&quot; with maybe 5 minute effort to set it up. There is no lock in whatsoever.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>csallen</em>:</p>
-<blockquote>1. A lot of people already have Claude Code set up, and it&#x27;s easier to keep using that than to install something new.<p>2. Lots of people are used to Claude Code&#x27;s interface&#x2F;commands&#x2F;etc. and don&#x27;t feel like paying the cost of learning something new. The benefits would have to outweigh those switching costs, and it&#x27;s unclear that they do.<p>3. Claude Code already works with your Claude MAX subscription[0], which gives you an incredible amount of usage of the top-tier models for cheap, which can&#x27;t be matched by any open-source options. And most people won&#x27;t exhaust this usage, so they have no real need to use open-source models.<p>4. Although it&#x27;s hard to 100% confirm this, there&#x27;s reason to believe that Claude itself works better with Claude Code than with other harnesses.<p>5. There&#x27;s no real lock-in. If tomorrow you decide you don&#x27;t want to use Claude Code, you can just switch to something else ezpz. So there&#x27;s no reason to worry that you&#x27;re digging a hole and locking yourself in. Thus, there&#x27;s no urgency to switch away.<p>[0] Yes, open-source harnesses can use your Claude MAX subscription, but does this &quot;benefit&quot; of open-source harnesses really outweigh the costs of #1, #2, and #4 above?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>scosman</em>:</p>
-<blockquote>Open AI and Anthropic already have &quot;Agent SDK&quot; brands. Vercel is &quot;AI SDK&quot;. I wish folks would come up with some good names for new projects.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Raed667</em>:</p>
-<blockquote>And Google has ADK (Agent Development Kit)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>giovannibonetti</em>:</p>
-<blockquote>Temporal workflows are my main building block for supporting agents working in multiple steps.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Kentucky man becomes the first humanist granted religious exemption from AI</title>
-      <link>https://religionnews.com/2026/10/26/in-a-first-a-humanist-granted-a-religious-exemption-from-using-ai/</link>
-      <guid isPermaLink="false">hn3-50273396</guid>
-      <pubDate>Wed, 28 Oct 2026 13:41:30 +0000</pubDate>
-      <description>402 points, 448 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://religionnews.com/2026/10/26/in-a-first-a-humanist-granted-a-religious-exemption-from-using-ai/"><strong>→ Article</strong></a> <small>(religionnews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50273396">→ HN comments</a> &nbsp;·&nbsp; 402 points &nbsp;·&nbsp; 448 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>ahmedfromtunis</em>:</p>
-<blockquote>This is very interesting. As someone who thinks AI is an amazing tool, I am very well interested in seeing how will people refusing to use AI fare both in professional settings and day-to-day life.<p>A new Amish-like lifestyle may be developing before our eyes in real-time and that&#x27;s very interesting to follow and observe (from a distance).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>_fat_santa</em>:</p>
-<blockquote>One thing I&#x27;ve seen with AI is AI as used by software developers is quickly diverging from AI that&#x27;s used by knowledge workers.<p>Knowledge workers use it primarily to &quot;augment&quot; their work, answer questions with AI, get it to create documents, etc. But it&#x27;s usually 1 individual to 1-2 conversation threads.<p>Meanwhile in software development were running fleets of agents. At work we have it setup where firing off one agent request will eventually lead to like 10-20 AI calls at different parts of the process.<p>I make this distinctions because it changes how each group thinks about AI. For software devs it just feels like &quot;moving up the stack&quot;. Yeah you&#x27;re not writing code anymore but there is still plenty of work to do and problems to solve within your &quot;software factory&quot;. Contrast that with knowledge workers that feel like the AI is making all of their decisions for them.<p>I almost think of this as a factory worker versus an artisan. The software devs are &quot;factory workers&quot; where we used to be on the floor but now we&#x27;re managing the machines that took over the work. There are still tons of interesting problems at that stage and you still feel like you have worth. Contrast that with a knowledge worker that&#x27;s more of an artisan in this analogy. For them they aren&#x27;t running a factory but instead watching a robot do the work they used to do while they sit idle and watch it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Scubabear68</em>:</p>
-<blockquote>&quot;Contrast that with a knowledge worker that&#x27;s more of an artisan in this analogy. For them they aren&#x27;t running a factory but instead watching a robot do the work they used to do while they sit idle and watch it&quot;.<p>I think your general thesis about how AI is used of agents vs. the general chat interface is true, but not the rest.<p>Your knowledge worker example is where people fail when using AI, and it is usually very obvious.<p>Knowledge workers who know what they&#x27;re doing recognized very quickly that AI often goes down very bad rabbit holes, often cites incorrect sources, makes up sources, or will use a random Facebook source or Reddit post as an authority on some topic. In legal circles you have to fight it to understand what venue(s) apply and to get it to stick to the right ones, in medical research it will sometimes pull in crackpot papers from left field and intermix them with well defined research.<p>People in the knowledge realm caught on very quickly that you have to use AI iteratively and constantly back check what you get and correct it. Let it run on its own and it will give you a legal theory based on some weird case in Kentucky that has no bearing to your issue with a court in Vermont.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jacquesm</em>:</p>
-<blockquote>This is not that much different in programming, it just takes longer to find out.<p>Using AI is like using adaptive cruise control: you&#x27;re still in charge of where the vehicle will ultimately end up and if you decide to go take a nap you will wake up in the hospital or end up in the morgue.<p>It&#x27;s true though that the &#x27;time between interventions&#x27; is lengthening steadily.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Aurornis</em>:</p>
-<blockquote>&gt; A new Amish-like lifestyle may be developing before our eyes in real-time and that&#x27;s very interesting to follow and observe (from a distance).<p>I’m just old enough to remember some older adults in my life who refused to use email. They would only talk to coworkers in person or on the phone.<p>It did not work out very well, unless they could afford to retire at that point. When your career evolves, the only way to keep participating is to evolve with it.</blockquote>
-<p>↳ reply 3 — <em>layer8</em>:</p>
-<blockquote>I think there’s a wide space between refusing any AI use, and refusing AI use requirements imposed by an employer. For example, one might find AI valuable for search, research, and getting a second opinion, but refuse it for primary generation of content.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>smag</em>:</p>
-<blockquote>The revenge effects of technologies are well known: email was great! It was faster and much cheaper than mailing letters. But it gave rise to spam and many types of fraud. The mobile phone is awesome. A powerful computer in your pocket. But now people, including teenagers, spend 12-16 hours each day staring into their mobile phones, doomscrolling towards Babylon. In 2006 people memorized dozens of phone numbers. Today? Maybe you remember 1-2 numbers.<p>What will be the revenge effects of LLMs and diffusion models? I sense that the revenge effects from these technologies will be much more substantial.</blockquote>
-<blockquote>
-<p>↳ reply — <em>sobellian</em>:</p>
-<blockquote>I get plenty of spam in the snail mail. And from what I gather, fraud through mail occurred all the time.<p>ETA: some of these companies are chopping down a whole god damn forest to send me furniture catalogs. Please stop!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>6gvONxR4sf7o</em>:</p>
-<blockquote>It&#x27;s interesting to think about this expanded view of religion and how it interacts with nondiscrimination laws. The guy&#x27;s beliefs (at least in the quotes in the article) seem like a good combination of well reasoned and sensible and core faith-like beliefs, so I&#x27;m glad they&#x27;re protected. At the same time, I can imagine plenty of beliefs that would make me not want to hire someone. I know this one didn&#x27;t go to court, but I wonder what tests courts use to draw the lines. What deeply held beliefs am I allowed to say make someone an idiot or jerk I don&#x27;t want to hire, and what deeply held beliefs am I allowed to hold and want the state to protect?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>wildzzz</em>:</p>
-<blockquote>There is a thing called Bona Fide Occupational Qualifications where an employer could discriminate against protected classes because the job description is so specific. Like if a church wanted to hire a new pastor, the job description requires the applicant to be Christian and likely a specific denomination, and any non-christian would be disqualified from the position. BFOQs must be spelled out in the job description to make it absolutely clear that the qualifications are necessary for the job. Also age, sex, and gender can be BFOQs like if the job description is for an acting role of a specific character. Race could potentially apply to something like an acting job too but that&#x27;s a lot more of a dicey subject, like it would need to be absolutely critical to the production that a character is a specific race.</blockquote>
-<p>↳ reply 2 — <em>cvoss</em>:</p>
-<blockquote>His beliefs are not currently protected. He filed a Title VII request, which was ultimately granted by his employer voluntarily. Because no court ruled that the employer had to grant the request, it is an open question whether Title VII protects them.<p>I would be shocked if, had the university declined, the courts ultimately ruled that it was protected. Congress is free to write laws protecting people against discrimination for various beliefs. But they law they have on the books now shouldn&#x27;t be stretched to cover this.<p>It&#x27;s worth understanding why sincerely held religious beliefs are such a big deal and in a different league from &quot;strong personal convictions&quot;. It&#x27;s because people who hold them generally are under and bound by two authorities: their state law and their church law (which might take many forms). If a person is in a position where they simply cannot abide both laws simultaneously, the state must yield. Otherwise the state is no protector of freedom.<p>A humanist may have strong, sincerely held beliefs, but he is not under any authority that compels those beliefs, so they aren&#x27;t &quot;religious&quot;. He is permitted by all his authorities to use AI. He just doesn&#x27;t want to out of a private belief that it is somehow &quot;wrong&quot;.<p>If your employer orders you to do something you believe is wrong, but you are not <i>required</i> to believe it is wrong by a higher authority, then your employment should terminate. Same as if you just didn&#x27;t want to do your job, your employment would terminate. Title VII just isn&#x27;t about that stuff.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Emacs Turns 50</title>
-      <link>https://www.technologyreview.com/2026/10/20/1145399/emacs-turns-50/</link>
-      <guid isPermaLink="false">hn3-50273171</guid>
-      <pubDate>Wed, 28 Oct 2026 13:25:11 +0000</pubDate>
-      <description>384 points, 163 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.technologyreview.com/2026/10/20/1145399/emacs-turns-50/"><strong>→ Article</strong></a> <small>(technologyreview.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50273171">→ HN comments</a> &nbsp;·&nbsp; 384 points &nbsp;·&nbsp; 163 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jwr</em>:</p>
-<blockquote>I have been using Emacs for more than 30 years now. Other editors have come and gone, Emacs stayed. Parts of my configuration are more than 30 years old.<p>There were better and worse times in Emacs history. Recent times, however, are really good. Emacs is maintained and developed actively and there are many external packages which are impressive. Magit and ghostel are good examples of packages that I use on a daily basis to get my work done.<p>Recently, AI completely changed how I use Emacs, and in a very good way. I now treat AI as a fairy that can fulfill any wish. I describe how I want my editor to work, and boom! it works that way.<p>Examples: window and tab management, difftastic integration, markdown previews with beautifully rendered tables, markdown previews as PDFs, and many more.<p>What is most important, however, goes back to Stallman&#x27;s original ideas. I am in control of my editor and my environment. I decide how it will look and behave. No corporation decides for me. No corporation builds in a new AI assistant. Nobody introduces ads or tracking. This is something I&#x27;ve learned to appreciate over the years.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>gpderetta</em>:</p>
-<blockquote>It is is unreal how I can ask claude, from within emacs, to implement an extension for me on the fly, inject it into the running process, have it observe the results, and quickly iterate to a working solution.<p>Claude, the ultimate REPL.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tetraodonpuffer</em>:</p>
-<blockquote>I am also a member of the 30+ year emacs club (with a detour to jetbrains some years back due to java) and it has been crazy how good claude is at implementing&#x2F;debugging emacs extensions, I have it set up so it has emacs in its container and it is able to basically use it headless to debug whatever.<p>Saying &quot;I want my editor to do X&quot; and have it happen basically realtime on an editor I fully control is incredible. I have written elisp in the past, but it&#x27;s definitely one of my weakest languages, so being able to leverage claude to do this is great.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>LoganDark</em>:</p>
-<blockquote>Curious, is elisp particularly good at that (editing a process while it&#x27;s running)? I&#x27;ve never experienced a system like that before, so I&#x27;m curious.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>fmajid</em>:</p>
-<blockquote>35 years in my case, thanks to Jean-Jacques Lévy of INRIA. But Emacs was started by James Gosling, not Stallman.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>iLemming</em>:</p>
-<blockquote>50 years old and feels more modern than any of the crap folks try to sell you &quot;as the editor of the future&quot;. Emacs is the true editor of the past, present and distant future.<p>Modal editing was supposed to pull users away - Evil mode made vimming better. LSPs were supposed to kill it - only made it better. Electron-based crap was supposed to make terminal-native editors look ancient with a built-in terminal, extensions, and a polished UI. Emacs got vterm, eat, and ghostel. GitKraken-like GUIs were supposed to make the git CLI unnecessary. Magit is widely considered better than any git client that exists, GUI or not. Tree-sitter was supposed to require a &quot;real&quot; language server architecture to get accurate parsing. Emacs 29 absorbed it natively, and font-lock, indentation, and structural navigation across major modes got noticeably better. Obsidian and Notion keep trying to overcome it - Org-mode just keeps getting better. AI was supposed to make it outdated - only enhanced it.<p>For half a century, humanity has been searching for an Emacs-killer. All the while, Emacs has been a killer app all along.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>noctuid</em>:</p>
-<blockquote>I like it infinitely more than anything, but it also still feels like a comparably slow, crufty pos that will probably die because of how anti-AI half the core community is. Regardless of how good magit is, it&#x27;s slow.<p>I also can&#x27;t understand how people like eca and agent-shell so much unless they&#x27;ve never actually used any decent harness. Neither seems to really fit with emacs. Acp is the exact opposite of extensible, and eca isn&#x27;t <i>really</i> extensible either.</blockquote>
-<p>↳ reply 2 — <em>Y_Y</em>:</p>
-<blockquote>According to `git blame` the oldest surviving code in GNU emacs is:<p><pre><code>    lisp&#x2F;play&#x2F;studly.el
-</code></pre>
-being unchanged since 1986-09-12.<p>(It is said the Stallman maybe have kept some of Gosling&#x27;s older code but I haven&#x27;t gone back that far.)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>RedCinnabar</em>:</p>
-<blockquote>I programmed in Emacs in a myriad of different languages, I used it to write my thesis, to write my homework and later to grade them. I’ve used it to publish countless blog articles, wiki pages and technical documents.<p>I read that I was hired at my first job from en email received inside Emacs, I’ve used it to send countless emails to colleagues, employers and business partners. I planned both my personal and professional life inside it, I’ve used it to track the time spent doing a certain task when no such software was yet available.<p>Most of the time I’ve spent in front of a computer over the last 20 years, was inside Emacs. Happy Birthday, Emacs! You’re the best thing that happened in the computing world.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
