@@ -4,7 +4,299 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sun, 01 Nov 2026 02:02:06 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2026 09:00:06 +0000</lastBuildDate>
+    <item>
+      <title>Memdoor: A team of 5 Qwen3.8-27B models beats Fable 5 on LiveCodeBench Hard</title>
+      <link>https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve</link>
+      <guid isPermaLink="false">hn3-50320995</guid>
+      <pubDate>Sat, 31 Oct 2026 22:46:12 +0000</pubDate>
+      <description>214 points, 104 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50320995">→ HN comments</a> &nbsp;·&nbsp; 214 points &nbsp;·&nbsp; 104 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>roenxi</em>:</p>
+<blockquote>That&#x27;s pretty interesting, because with the Bonsai 2 quantisations it is quite achievable to get Qwen 27B running at 50 t&#x2F;s on reasonably priced gaming machine [0]. Which in turn suggests that Fable 5 coding performance can be achieved locally with a bit of clever harnessing.<p>Although the same harnessing should also improve Fable&#x27;s performance. The important thing here is the cap for local performance looks like it could be quite high.<p>[0] <a href="https:&#x2F;&#x2F;store.steampowered.com&#x2F;hwsurvey&#x2F;Steam-Hardware-Software-Survey-Welcome-to-Steam" rel="nofollow">https:&#x2F;&#x2F;store.steampowered.com&#x2F;hwsurvey&#x2F;Steam-Hardware-Softw...</a> suggests 16GB VRAM, 32 GB system.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Aurornis</em>:</p>
+<blockquote>&gt; because with the Bonsai 2 quantisations it is quite achievable to get Qwen 27B running at 50 t&#x2F;s on reasonably priced gaming machine<p>The Bonsai quantizations are not good for real work. I have tried them. They are as bad as you would expect from 2-bit quants. They may have done a good job quantizing to that limit, but it’s still bad.<p>Even the 4-bit Qwen3.8 27B quants are still iffy for coding work. It’s not until Q5 or Q6 that I find them useful, which is too bad because that cuts into available context on 32GB cards.<p>&gt; Which in turn suggests that Fable 5 coding performance can be achieved locally with a bit of clever harnessing.<p>I experiment with a lot of local inference engines and I also use both Fable and Astra. I wish this was true, but it’s just not. I can generate tens of millions of Qwen3.8 tokens per day and run the hardware nonstop, but even brute forcing it like this just can’t accomplish the same thing that I can get Astra, Fable, or even Opus and Sol to get done in an hour or less most of the time. You just cannot make up for the lack of intelligence built into the model by brute force unless maybe your timeline extends to infinity.</blockquote>
+<p>↳ reply 2 — <em>SwellJoe</em>:</p>
+<blockquote>Bonsai 2-bit quantization is notably dumber than Qwen 27B at eight bits or even four bits. I doubt you&#x27;ll get this level of quality even with five of them.</blockquote>
+<p>↳ reply 3 — <em>Havoc</em>:</p>
+<blockquote>The bonsai quants are not that awesome. Yeah they&#x27;re fast and they retain the &quot;27B&quot; but in practice the perform similarly<p>5GB of bonsai weights end up being similar to 5GB of QAT weights even when one is derived from a 27B and the other from an 8B</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>xlayn</em>:</p>
+<blockquote>Remember those gpus into chips <a href="https:&#x2F;&#x2F;inference-docs.cerebras.ai&#x2F;models&#x2F;qwen-3.8-27b" rel="nofollow">https:&#x2F;&#x2F;inference-docs.cerebras.ai&#x2F;models&#x2F;qwen-3.8-27b</a> , where you have this chip that implements a model that run at those extremely high speeds... the ones that people ask &quot;why do we need that&quot;... if this is true... one of those chips with the correct harness is all that&#x27;s needed to get fable like intelligence in every single computer in this planet...<p>Happy hallowen Tax Ramltman and Amowhateverwayyournameiswritten...</blockquote>
+<blockquote>
+<p>↳ reply — <em>guregodevo</em>:</p>
+<blockquote>Happy hallowen! ::::<p>Actually we tried Cerebras. It caps output at 32K tokens so the 128K reasoning  (the author budget) didn&#x27;t fit. Cerebras speed is real though</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mkl</em>:</p>
+<blockquote>GVS5H, which this is based on, was discussed here a week ago: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50228167">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50228167</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>vikramkr</em>:</p>
+<blockquote>I was getting deja vu. Copy paste my comment from that thread to here I guess. Apparently it&#x27;s really easy to get Internet points by making up a harness and showing that good open source models can do as well as the frontier, you know, on useless saturated and contaminated benchmarks from years ago that don&#x27;t reflect any of the agentic work we actually use these models for. It&#x27;s so stupid because these models are at the level of a decent non fable frontier model from 3-6 months ago and it&#x27;s also cool that you could probably get equal perf to gpt 5.5 from qwen 3.9 27b or gpt 5.6 sol&#x2F;opus 5 from a quantized DeepSeek or glm 5.3 flash. Those models were pretty useful in their time! Instead we have whatever this new form of harness&#x2F;benchmark slop is</blockquote>
+<p>↳ reply 2 — <em>guregodevo</em>:</p>
+<blockquote>Here the intent is to replicate GVS5H with memdoor a headless coding agent I created months ago. Anyone can reshape the harness by redefining the steps in yaml files , models and temperatures. Up to you guys to try you have the recipe in this repo.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>An Italian farmer found some unknown seeds in his attic and planted them</title>
+      <link>https://www.smithsonianmag.com/science-nature/italian-farmer-found-unknown-seeds-attic-with-nothing-lose-planted-them-result-biblical-180989644/</link>
+      <guid isPermaLink="false">hn3-50320963</guid>
+      <pubDate>Sat, 31 Oct 2026 22:41:06 +0000</pubDate>
+      <description>385 points, 109 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.smithsonianmag.com/science-nature/italian-farmer-found-unknown-seeds-attic-with-nothing-lose-planted-them-result-biblical-180989644/"><strong>→ Article</strong></a> <small>(smithsonianmag.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50320963">→ HN comments</a> &nbsp;·&nbsp; 385 points &nbsp;·&nbsp; 109 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>codesnik</em>:</p>
+<blockquote>Before circa middle 20th century all wheat was very tall. This minor fact somehow significantly changes picture of the past for me.</blockquote>
+<p><strong>Top #2</strong> — <em>netfortius</em>:</p>
+<blockquote>In one of the pictures they show &quot;barley coffee&quot;. During the communism, in some countries of Eastern Europe you could only find in the stores this type of coffee, as the real one required hard currency to import.</blockquote>
+<p><strong>Top #3</strong> — <em>timr</em>:</p>
+<blockquote>&gt; It also had more arginine, an amino acid that children need to grow.<p>My kingdom for even a tiny bit of scientific literacy amongst people who are <i>reporting on science.</i><p>Not only is this absurd (&quot;children&quot; need all amino acids to grow...as does anyone else), arginine isn’t even one of the essential amino acids. Your body makes it unless something is seriously wrong.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>eternauta3k</em>:</p>
+<blockquote>Hopefully it&#x27;s just my lazy reading&#x2F;thinking, but this part of the article feels like scientism to me. Picking out some random micronutrients this strain has more of, praising that it has less gluten. It&#x27;s just using &quot;science&quot; to justify whatever they already wanted to do.</blockquote>
+<p>↳ reply 2 — <em>someothherguyy</em>:</p>
+<blockquote>i don&#x27;t have a PhD like you, but aren&#x27;t some amino acids essential in young mammals and conditionally essential in adult mammals?<p><a href="https:&#x2F;&#x2F;www.sciencedirect.com&#x2F;science&#x2F;article&#x2F;abs&#x2F;pii&#x2F;S0753332202002846?via%3Dihub#:~:text=L%2DArginine%20%28Arg%29%20is%20classified%20as%20an%20essential%20amino%20acid%20for%20birds%2C%20carnivores%20and%20young%20mammals%20and%20a%20conditionally%20essential%20amino%20acid%20for%20adults%2E" rel="nofollow">https:&#x2F;&#x2F;www.sciencedirect.com&#x2F;science&#x2F;article&#x2F;abs&#x2F;pii&#x2F;S07533...</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Anthropic takes steps to block Claude from reverse-engineering video games</title>
+      <link>https://mashable.com/tech/anthropic-takes-steps-to-block-video-game-cloning-and-reverse-engineering</link>
+      <guid isPermaLink="false">hn3-50320255</guid>
+      <pubDate>Sat, 31 Oct 2026 21:07:58 +0000</pubDate>
+      <description>140 points, 88 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mashable.com/tech/anthropic-takes-steps-to-block-video-game-cloning-and-reverse-engineering"><strong>→ Article</strong></a> <small>(mashable.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50320255">→ HN comments</a> &nbsp;·&nbsp; 140 points &nbsp;·&nbsp; 88 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>TrevorFSmith</em>:</p>
+<blockquote>If they didn&#x27;t want us to use other people&#x27;s ideas without permission then why did they use other people&#x27;s ideas without permission to make the ideal tool for using other people&#x27;s ideas with permission?</blockquote>
+<blockquote>
+<p>↳ reply — <em>phil-martin</em>:</p>
+<blockquote>I don’t think it’s about what Anthropic does or doesn’t want us to use their tools for. They are in the business of selling compute via AI, the more people that use it the better.<p>This is about stopping future issues (real or perceived) that could lead to legislation curtailing usage of their tools.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>elevation</em>:</p>
+<blockquote>I wanted to reverse engineer a win-xp era game with boring music and make it play my own selections--inherently a fair-use activity.  The game was somewhat obfuscated, so while I&#x27;ve used ghidra successfully at work, I wasn&#x27;t able to work out how the game&#x27;s system design even after a saturday of poking at it.<p>Claude has already refused to perform incredibly not-security-relevant tasks, so I&#x27;m guessing it will simply not help with this now either.  Today, I am, for the first time, looking into my own LLM hardware.</blockquote>
+<p><strong>Top #3</strong> — <em>mirashii</em>:</p>
+<blockquote>They really didn’t though. They put it in a client side modification to the system prompt. You can just rip it out with a proxy or a small local modification to your client, which Claude will be happy to do for you. They took a token step so that people would write these headlines in the hope it would stave off more negative attention in the video game world without actually doing anything meaningful.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Tepix</em>:</p>
+<blockquote>Sounds like an illegal DMCA circumvention device. Handcuffs! (IANAL)</blockquote>
+<p>↳ reply 2 — <em>whycome</em>:</p>
+<blockquote>Can you ask Claude to help with the modification of the local client?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>HackerTube: YouTube built from videos recommended by HN</title>
+      <link>https://karpathy.bearblog.dev/hacker-tube/</link>
+      <guid isPermaLink="false">hn3-50319510</guid>
+      <pubDate>Sat, 31 Oct 2026 19:56:53 +0000</pubDate>
+      <description>1230 points, 355 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://karpathy.bearblog.dev/hacker-tube/"><strong>→ Article</strong></a> <small>(karpathy.bearblog.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50319510">→ HN comments</a> &nbsp;·&nbsp; 1230 points &nbsp;·&nbsp; 355 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mrshu</em>:</p>
+<blockquote>While the project is very interesting in and of itself, the process section that has been edited a bit later to the post is even more revaling:<p>&gt; A little bit more on my process. I use Claude Code (desktop app for Mac). I use Opus 5.5 on Medium effort as my default. I don&#x27;t actually do anything resembling traditional engineering anymore (read&#x2F;write code, run commands in a terminal, or etc.), I only talk to Claude and have it do everything. In this case, the only &quot;manual work&quot; I did was: 1) I had to create some kind of API key from Google Cloud UI to query YouTube for video metadata, 2) I booted up a VPS box and 3) I bought the domain name. I worked on this in between Claude&#x27;s actual work so it still feels a little bit like team work :) Once the box was up I gave Claude the IP and told it update, deploy, secure, harden and optimize the code, and it did the whole thing.<p>It really does sound like you do not need to run models like Opus 5.5 on high reasoning effort for most tasks.</blockquote>
+<p><strong>Top #2</strong> — <em>murm</em>:</p>
+<blockquote>It&#x27;s so refreshing browsing this compared to YouTube, it feels like I don&#x27;t have to constantly be on high alert at being baited into some trap. Makes you wonder what kind of internet could be possible if all these tech giants weren&#x27;t just optimizing for engagement and addiction.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>beambot</em>:</p>
+<blockquote>YouTube mobile app has a &quot;your custom feed&quot; where you supply English language prompts and get a relevant custom feed. My go-to has been &quot;new and unseen science &amp; technology videos predominantly from people I follow but occasionally interspersed with others&#x27; you think I might like in a similar vein&quot;</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>whilenot-dev</em>:</p>
+<blockquote>Genuinely curious, is this sarcasm? I don&#x27;t use any YouTube mobile app, but doesn&#x27;t &quot;<i>new and unseen [...] videos predominantly from people I follow but occasionally interspersed with others&#x27; you think I might like in a similar vein</i>&quot; just sound analogous to &quot;<i>recommend me videos I&#x27;d like to see</i>&quot;.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Aromasin</em>:</p>
+<blockquote>It makes me yearn for what we lost. I remember when the Internet was all like this page, and it was bloody wonderful. I hope we get to a point where hosting becomes functionally free, and the brain rotting advertisement spam becomes a thing of the past.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>zmmmmm</em>:</p>
+<blockquote>I&#x27;ve been a bit fascinated by my lack of interest in the feeds that are curated for me. They are all things I&#x27;m supposedly interested in but I just am not when I see them in that format.<p>I realised after a while that one of the main reasons I go online is to <i>expand</i> my horizons. I&#x27;m actively looking for something new or interesting or surprising that I might not have encountered or thought about before. I am also looking for perspective - give me a broad picture of how the world is so I can calibrate and introspect where my own perspective differs and could be updated. I want to see the things that don&#x27;t fully align with my ideas.<p>So it turns out personalised feeds are actively curating against what I&#x27;m looking for. I&#x27;m curious if others are like me or is this just something weird about me. I think it is very much why I like Hacker News format. It&#x27;s in the broad areas of my interests but it is anything but curated just for me.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>karpathy</em>:</p>
+<blockquote>I think many experiencing the same thing but we&#x27;re way too small drop of a drop in the bucket that it doesn&#x27;t even resolve in all of their measurements and A&#x2F;B tests. The vast majority of the &quot;gradient signal&quot; is from normies and their patterns, desires and tastes are different. Basically I think we see a massive deterioration of quality because we are a rounding error.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>OtherShrezzing</em>:</p>
+<blockquote>I can’t reject this line of thought strongly enough.<p>The vast majority of signal is from a plurality of opinions, and the outcome is an average of those inputs, usually tweaked a bit to make them more addictive.<p>Your thought that “the algorithm doesn’t serve me personally because I have exceptional taste” is not a unique observation. Everyone who consumes these systems has the same thoughts. Everyone is a rounding error, whether you’re in a knitting community, or you’re a worlds leading expert in deep learning.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pyaamb</em>:</p>
+<blockquote>I just want to be the one in control of that feed that is curated towards myself. An AI that is local and learns about my likes and dislikes and does not share that info with third parties for their benefit. There is a vast sea of content and a small fraction of it is of interests to me and&#x2F;or might be helpful to me even if I am not consciously seeking it at any given moment. I should be able to look at its rules, see how it evolves and tinker &#x2F; reason with it the way I would with a personal assistant or life coach. And I would like to use that to filter out content that is a waste of brain cycles. And to find people, ideas, experiences that I might click with based on its global knowledge of the mindscape.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Anthropic blocks users for anything touching training larger models</title>
+      <link>https://twitter.com/jiahaoshao1/status/2116475922190922088</link>
+      <guid isPermaLink="false">hn3-50319358</guid>
+      <pubDate>Sat, 31 Oct 2026 19:39:19 +0000</pubDate>
+      <description>334 points, 190 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://twitter.com/jiahaoshao1/status/2116475922190922088"><strong>→ Article</strong></a> <small>(twitter.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50319358">→ HN comments</a> &nbsp;·&nbsp; 334 points &nbsp;·&nbsp; 190 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>zmmmmm</em>:</p>
+<blockquote>It&#x27;s very clear to me that however much you like Claude and Anthropic models, every professional user shoudl be actively cultivating a set of alternatives and fallbacks to use and seeking to ensure the overall ecosystem is as open, standardised and portable as possible.<p>Anthropic is highly opinionated, dogmatic and idealistic. They have made a pragmatic decision already to cut loose a whole swathe of users so they can pursue areas higher up the value chain. that was essentially the original decision they made when they went after software engineering instead of general users. The fact they are repeating this over and over by continuing to carve out sets of users and usages they don&#x27;t want reinforces this as a persistent core principle rather than a single pragmatic business decision.<p>What this means is that at a higher level, their core principle is to sacrifice users they don&#x27;t &quot;need&quot; rather than provide a broad, accessible service. Which means in turn, you have to accept that when your usage conflicts with their interests, you are at very high risk they will cut you out. If you already depend on Anthropic in any critical path of your daily life, this will be a significant issue.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>arjie</em>:</p>
+<blockquote>Why, though? I have half a terabyte of VRAM in cards in a datacenter and it’s absolutely not clear that anything I’ve learned using these to program or inside an app has taught me anything significant.<p>I talked to my friend about all the things I do to ensure my personal assistant behaves reasonably. The prompt engineering, the fake site evals, everything. And then I have Opus 5.5 do it and it doesn’t need anything. It’s simply fully aligned to performance by default.<p>And what did I learn anyway. Going from one model to another changes what works. And you can simply learn everything from the Chinese model in days. The whole “building skill” thing is bogus.<p>I have this library of techniques, a scant few of which I’ve made available on my blog, and what is reality instead: the next model blows the need for the techniques into the dust. Back on level playing field.<p>It’s a false god, this cultivation. Waste of time. Use the best model you can. Once you hit the guardrails move out to the other models. Even Opus 4.8 is fine. If you legitimately want to dodge the guardrails use the -cyber models.<p>Then move on. The library is dust.</blockquote>
+<p>↳ reply 2 — <em>Bender</em>:</p>
+<blockquote><i>actively cultivating a set of alternatives</i><p>Absolutely.  I have been [cyber]&#x27;d so many times even Claude jokes about it now.  Claude is great but it&#x27;s operators are making it unreliable for me.  I have moved one of my projects elsewhere and will move the remainder tomorrow as a stop gap until I get the right hardware set up to run abliterated local models for some percentage of my needs.  Their message has been received loud and clear.</blockquote>
+<p>↳ reply 3 — <em>Beached</em>:</p>
+<blockquote>For those who do not play with Local AI much. Qwen4 was announce to be released the first week of Nov. The preview for qwen4 is currently one of the best local models you can use, and is roughly opus 4.6 quality on local hardware that costs 3.5k-4k<p>Many people are expecting it to sit somewhere above Opus 4.8 to opus 5 (not above, but the unquanted version of their largest model is expected to perform around here)<p>Anyone who cares to keep their current capability should definitely be looking at localAI and using it for at least their more routine tasks , even if it is qwen4 27B quant 4 on their gaming rig.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>bob1029</em>:</p>
+<blockquote>The guardrails on Anthropic have become an albatross. I&#x27;ve got OAI models doing testing of banking workflows that Claude would have a full scale panic attack over. Even OAI needs some alignment and reassurance regarding the fact that it&#x27;s not about to pull credit for a real person. GPT6.1 will happily launch the nukes 100% of the time if you make a clear and rational case in your system prompt.<p>Forcing this kind of safety into the models and harnesses is a mistake. I think the strategy of post hoc moderation is the right one. Trying to prevent evil ideological activities as they transpire is a cursed mission. Let someone who is genuinely doing a naughty thing accumulate a meaningful body of evidence and then send in Mr Holmes (the FBI &#x2F; police). Attempting to prevent wrong think at every token is too granular. We have systems designed to handle the possibility that crime and punishment may occur at separate moments in time. Most people don&#x27;t go around murdering because the eventual consequences are pretty severe. Just because an AI gave you advice doesn&#x27;t magically make those existing consequences vanish.</blockquote>
+<blockquote>
+<p>↳ reply — <em>8n4vidtmkvmk</em>:</p>
+<blockquote>AI isn&#x27;t just giving the advice though, it&#x27;s executing on it all by itself.<p>Also, humans convincing their friends to do crime might also share some responsibility too, no? Bad advice is not great either, even if the human consents.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>bushido</em>:</p>
+<blockquote>Something I&#x27;ve seen it do recently is refusing to extract services out of my own monolith code base because it finds copying code morally wrong.<p>But its refusal to work pattern is getting pretty obnoxious. Another one I ran into last week was it refused to start a developer session to do browser testing for a code base it was working on because signing in was suddenly against it&#x27;s programming.<p>It listed all the conditions it needed for a sign in to be possible, agreed that my code base met all conditions, but refused to progress. I tried it in multiple fresh sessions with the same result.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>drivebyhooting</em>:</p>
+<blockquote>Fresh sessions don’t help because recent refusal context is injected across conversations in a clandestine way. I figured this out myself through reverse engineering these POSs.</blockquote>
+<p>↳ reply 2 — <em>roygbiv2</em>:</p>
+<blockquote>I wanted fable to scan an old user profile backup of mine and create a list of folders that were safe to delete. Refused, wanted to fall back to some ancient version of opus. Wtf.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>TCP Use-After-Free: CVE-2026-98432 / CVSS 9.8</title>
+      <link>https://atlasum.net/blog/cve-2026-98432-linux-ipv4-tcp-uaf</link>
+      <guid isPermaLink="false">hn3-50319143</guid>
+      <pubDate>Sat, 31 Oct 2026 19:16:30 +0000</pubDate>
+      <description>491 points, 226 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://atlasum.net/blog/cve-2026-98432-linux-ipv4-tcp-uaf"><strong>→ Article</strong></a> <small>(atlasum.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50319143">→ HN comments</a> &nbsp;·&nbsp; 491 points &nbsp;·&nbsp; 226 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>asveikau</em>:</p>
+<blockquote>&gt; TCP Use-After-Free: CVE-2026-98432 &#x2F; CVSS 9.8<p>I know it&#x27;s customary for HN to edit titles to remove extraneous information, but removing &quot;Linux&quot; here really takes away something useful and relevant.  This is a Linux vulnerability.  If you&#x27;re running *BSD or Mac or Windows, not affected.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>gerdesj</em>:</p>
+<blockquote>Quite, however it looks quite rare:<p>&quot;Why it&#x27;s urgent: the bug sits in code every Linux server runs when it accepts an IPv4 TCP connection, before any application sees the connection. Anthropic, whose researcher reported it, says its Claude model wrote a working proof-of-concept exploit that runs commands as root on &quot;Linux servers with a multipath TCP listener,&quot; with no credentials. Go programs open those listeners by default, per the Go Security Team. See the timeline.&quot;<p>I don&#x27;t know of any Linux boxes running a multipath TCP listener in my care and I have quite a few.  MP generally implies a router of some sort and the intersections in a Venn diagram continue to get smaller ...<p>This is still an issue and must be patched but I think it will be rare, very rare.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>reissbaker</em>:</p>
+<blockquote>This is not rare. Every TCP connection in Go by default enables MPTCP [1]. Simply running a Go program that uses TCP without explicitly disabling this behavior will cause the running kernel to be vulnerable.<p>1: <a href="https:&#x2F;&#x2F;groups.google.com&#x2F;g&#x2F;golang-announce&#x2F;c&#x2F;PCoQcdxoScw" rel="nofollow">https:&#x2F;&#x2F;groups.google.com&#x2F;g&#x2F;golang-announce&#x2F;c&#x2F;PCoQcdxoScw</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tcdent</em>:</p>
+<blockquote>&quot;TCP stack&quot; versus &quot;Linux TCP stack&quot; is an OOM in terms of relevance.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>peanut-walrus</em>:</p>
+<blockquote>Some notes I&#x27;ve got about this:<p>- MPTCP is not a requirement, it is a generic use-after-free.<p>- Exploitability over the internet is unlikely, most ISP routers drop packets with IP options fields.<p>- At least according to Red Hat, dropping packets with IP options yourself helps, but is not a full mitigation.<p>- Successful exploit requires multiple CPU cores to process packets, so systems with just a single core or packet processing pinned to a single core are not affected.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>wahern</em>:</p>
+<blockquote>&gt; Exploitability over the internet is unlikely, most ISP routers drop packets with ipoptions fields.<p>That doesn&#x27;t track. Apple iPhones are a major user of MPTCP and they report the majority of requests supporting MPTCP, IIRC 70+%.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>peanut-walrus</em>:</p>
+<blockquote>MPTCP uses TCP options fields, the vulnerability is in IP options.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>tptacek</em>:</p>
+<blockquote>Dropping packets with IP options from XDP should be a more complete mitigation (also more performant).</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>swinglock</em>:</p>
+<blockquote>How are Ubuntu and RHEL not fixed? Few operating systems market themselves more as suitable for servers. What are they doing over there?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kev009</em>:</p>
+<blockquote>If you read commit logs of, say kernel.org and a distro kernel, and aren&#x27;t concerned you are blissfully ignorant (and it is worse for the broader userland repos).  It&#x27;s particularly bad when they don&#x27;t track a kernel.org LTS.  Their kernel orgs are pretty lean and this has been the status quo for decades.  CVEs of sufficient stature like this will get fixed but majority of other issues slip by unnoticed.  LTS is kind of a myth, it trades ABI and API stability for a lot of other issues.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>SwellJoe</em>:</p>
+<blockquote>&quot;Their kernel orgs are pretty lean&quot;<p>For years, Red Hat employed more kernel developers than anyone and contributed more. These days they&#x27;re &quot;only&quot; the fourth largest contributor, after Intel, Google, and Meta, but they are still among the largest corporate contributors.<p>If that&#x27;s a lean kernel org, I don&#x27;t know what a fat one would look like.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>kev009</em>:</p>
+<blockquote>My hearsay, from friends and colleagues that work(ed) there, is that the shipped product is not really where you see these &quot;heavy hitters&quot;.. a lot of the maintenance happens offshore.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>gadtfly</em>:</p>
+<blockquote>Given the current and rapidly upcoming environment, would that not imply that those are no longer viable choices?  As like a fairly urgent emergency consideration?<p>If they cannot demonstate being systematically able to adapt towards the required reaction time (minutes? hours?) by almost-comically many orders of magnitude (multiple weeks), and it is only going to get worse, then what other conclusion could there be?<p>Like they&#x27;ll only organizationally adapt when it&#x27;s far too late (everybody using their shit has already been pwned), and then it&#x27;ll be an unpracticed emergency adaptation.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>GPT-5.6 Sol can beat Factorio on peaceful mode</title>
+      <link>https://ryanmadden.net/gpt-56-beats-factorio/</link>
+      <guid isPermaLink="false">hn3-50318871</guid>
+      <pubDate>Sat, 31 Oct 2026 18:50:34 +0000</pubDate>
+      <description>170 points, 181 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://ryanmadden.net/gpt-56-beats-factorio/"><strong>→ Article</strong></a> <small>(ryanmadden.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50318871">→ HN comments</a> &nbsp;·&nbsp; 170 points &nbsp;·&nbsp; 181 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mwt</em>:</p>
+<blockquote>&gt; The rocket launch was only achieved through significant ‘manual’ effort on Sol’s part as it papered over its late-game failures to connect certain production systems by repeatedly ferrying supplies between areas of the factory.<p>Robots: they&#x27;re just like us!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>root_axis</em>:</p>
+<blockquote>&gt; <i>Robots: they&#x27;re just like us!</i><p>Hah I dunno, I think most human players wouldn&#x27;t find that very fun and would instead take that as an opportunity to refactor the factory for optimized performance (i.e. the core gameplay loop)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>outworlder</em>:</p>
+<blockquote>Ish.<p>When you just need a few parts to be made, it is sometimes very tempting to drop a chest, fill it up with parts, then go do something else, one of the 1000 tasks you have been neglecting.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>root_axis</em>:</p>
+<blockquote>That&#x27;s definitely true, but only to a certain point, after a while it becomes too monotonous to dig around in chests building and combining stuff in an ad hoc manner. LLMs have no problem with that kind of repetitive minutia though.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>8note</em>:</p>
+<blockquote>i think its more of an effect of factorio&#x27;s hidden information.<p>youre not really sure how to set up some of the logistics&#x2F;how much of what you will need where ahead of time</blockquote>
+<p>↳ reply 3 — <em>benhurmarcel</em>:</p>
+<blockquote>It certainly sounds like an actual factory in my experience</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>minimaxir</em>:</p>
+<blockquote>If you haven&#x27;t been keeping an eye on LLMs playing games, GPT 6.1 Sol can new beat games 100% vision-only (without harnesses that give the agent extra information about the game). Pokemon is no longer a difficult challenge for it, even with additional difficulty restrictions such as hard mode and level caps. Recently, GPT 6.1 Sol beat Final Fantasy VII and its bonus bosses vision-only surprisingly quickly.<p>I suspect Opus 5.5 can do even better but there aren&#x27;t as many people testing it.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Uehreka</em>:</p>
+<blockquote>Where are the recordings of these games? I know this kind of stuff must be happening, but it seems oddly difficult to track down the actual recordings, which feel like the really fascinating thing people should be publishing if they’re putting in the time and tokens to do stuff like this.<p>Like I want to see what Pokemon strategies it uses: Does it try to brute force with its starter? Does it try to load all of its HMs onto one or two Pokemon? Does it use Flash? If it needs to catch a new Pokemon to beat a gym leader, how much does it remember about which species it encountered where and what their levels were?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>minimaxir</em>:</p>
+<blockquote>The LLMs no longer brute force a starter, and they have to play competently, including the use of setup. Here&#x27;s a screenshot of the completion of the GPT-6 Astra run in 21 hours with comically underleveled Pokemon (and it actually savescummed RNG!): <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;ClaudePlaysPokemon&#x2F;comments&#x2F;1w79vim&#x2F;gpt6_astra_has_completed_pokemon_firered_in_21&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;ClaudePlaysPokemon&#x2F;comments&#x2F;1w79vim...</a><p>Another run with Ironlocke rulesets for Crystal (hard mode, level caps, permadeath) has even more diverse teams: <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;ClaudePlaysPokemon&#x2F;comments&#x2F;1wf6zx0&#x2F;gpt6_astra_defeats_red_completing_crystal&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;ClaudePlaysPokemon&#x2F;comments&#x2F;1wf6zx0...</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>hajile</em>:</p>
+<blockquote>If you reading every wiki, forum, dev blog&#x2F;patch note, watching every video, etc before playing, I’d be more surprised if you could NOT play a game.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mickeyp</em>:</p>
+<blockquote>Watching AI play games is fun, but I can&#x27;t wait for someone to crack having small LLMs in games to enrich them in useful and interesting ways.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>KronisLV</em>:</p>
+<blockquote>Not sure about LLMs but I yearn for someone to train neural nets to play the NPCs in a shooter game well but without having aimbots or seeing through walls - basically a “true” version of F.E.A.R. AI where they play simulated squads that overwhelm the player with various tactics and adapt to their playstyle. Or even just make increasingly complex state machines and goal oriented systems which might be more performant but still encode the main rules.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Buttons840</em>:</p>
+<blockquote>You want to create a human feeling using AI, but AI is not needed for the feelings you want to create. All you really want is a feeling of variety and surprise in the way computer opponents behave. A LLM-level of AI might just do the same thing all the time and become quite boring.<p>And yet, that argument I just made often bothers me, because I do think there is a place for strong AI in games, and many people just reflexively say &quot;strong AI wouldn&#x27;t be fun&quot;. I think they are partly right, but I also think a strong AI that is purposely dumbed down in fun ways could be really enjoyable.<p>When it comes to shooters though, those games aren&#x27;t really about competition and decisions, they are about giving the human player an experience. I do think strong AI is overkill in such situations.<p>A strong AI for chess absolutely improves chess computer games.<p>A strong AI for a Magic: The Gathering style card battler would improve the game.<p>A strong AI for Civilization would improve the game, but I think we&#x27;re starting to get into a realm where you can fake some things. I do think Civilization games are lacking because of poor AI, but I don&#x27;t know that we need LLM-levels of AI in Civilization.<p>Again, in shooters, there&#x27;s no decision, no illusion of fair play or equal competition based on making decisions, it&#x27;s all about the human experience, and so LLM-level AIs aren&#x27;t needed here at all.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jbm</em>:</p>
+<blockquote>I have been playing with this.  Having tiny models provide more contextual information when an NPC speaks is cool but the &quot;small enough&quot; models tend to go off the rails.<p>It&#x27;s fun if you have a handful of people playing, but it would quickly go towards negative reviews if you tried to sell it.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>It's the memory latency, stupid</title>
+      <link>https://pivotlake.io/blog/its-the-memory-latency-stupid/</link>
+      <guid isPermaLink="false">hn3-50318720</guid>
+      <pubDate>Sat, 31 Oct 2026 18:38:16 +0000</pubDate>
+      <description>188 points, 54 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://pivotlake.io/blog/its-the-memory-latency-stupid/"><strong>→ Article</strong></a> <small>(pivotlake.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50318720">→ HN comments</a> &nbsp;·&nbsp; 188 points &nbsp;·&nbsp; 54 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>boricj</em>:</p>
+<blockquote>I work with another team at work that uses lots of message passing, C++ virtual methods in deeply nested class hierarchies, large DOMs and off-the-shelf C++ STL containers... on a STM32MP1, which has an in-order Cortex-A7 and a pittance of cache.<p>On the other hand, in my team I wrote my custom C++ STL containers that allocate inline, SAX-style processing libraries and an object pool with links that use index+generations like 2000s video games... on a STM32H5 with less than a megabyte of RAM.<p>Mechanical sympathy feels like a lost art to people I demonstrate it to... and I had to demonstrate to the first team with benchmark numbers that I would not be the bottleneck between us by orders of magnitudes.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bunderbunder</em>:</p>
+<blockquote>I’ve had code review pushback against reorganizing data structures to be more cache-friendly on the grounds that it was “premature optimization” even though I pre-emotively justified the decision with benchmark results indicating that the performance difference was large and business relevant, and addressed a real performance bottleneck that I observed during testing.<p>This was on a team and at a time where Clean Code was very popular. I somewhat wonder if the problem is that, in the 2010s, many people became convinced that certain aesthetic standards were both objectively, provably correct, and more important than anything else.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hinkley</em>:</p>
+<blockquote>A lot of my poor opinion on developer opinions dates back to a couple projects where Product and Marketing were begging us for substantial performance improvements and the teams pushed back saying this was as fast as you could expect. I got 2x in the first six months on both projects, and delivered 25% per quarter on one for almost 2 years (that maths to around 8x) before I started to scrape the bottom of my barrel.<p>It’s predominantly a way to shut down thinking, which is why it’s so often misquoted. Knuth’s version is more nuanced. Theirs is not at all.<p>As a compromise I got really good at doing optimizations that also improved readability. Things like hoisting and better variable naming combined together can be mistaken for just code cleanup.<p>I also discovered that keyhole optimizations are more palatable. Which is to say, move the slow bit yo a separate function with a single responsibility. Then do the optimization in a separate commit. Then the other devs don’t have to look at your changes and if they turn out to have a bug, we can always revert the change later. They almost never do, but having the option seems to grease the wheels.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>nomel</em>:</p>
+<blockquote>My general rule of thumb is that if you see you can 2x it easily, you can actually get somewhere around 10x with effort, since the presence of that easy 2x means nobody really spent any time on performance.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jordand</em>:</p>
+<blockquote>I work in the games industry with exceptionally skilled system programmers that can do that too. They&#x27;re getting on in age, and there&#x27;s fewer programmers in the younger generations that are interested in any of it. Technology is sadly increasingly homogenising around Unreal Engine 5</blockquote>
+<p>↳ reply 3 — <em>jacquesm</em>:</p>
+<blockquote>I recently spent three weeks paring down a piece of software until it could run entirely in the L1 cache of the processor it was running on. The performance was - to put it mildly - impressive. And this was 1970&#x27;s technology running on a modern CPU. This stuff can do miracles if you use it right.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>drivebyhooting</em>:</p>
+<blockquote>I feel like the solution presented is just a clustered hashmap or “locality sensitive” if you’d like it.<p>Still not orders of magnitude better.</blockquote>
+<p><strong>Top #3</strong> — <em>quotemstr</em>:</p>
+<blockquote>Uh, isn&#x27;t this just radix-partitioned aggregation? Hierarchical (fixed two level) aggregation is old. What&#x27;s novel here?<p>Microcosm of Pivot itself I guess. I just don&#x27;t get why this project exists when DuckDB and Clickhouse both exist.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>fluffyllemon</em>:</p>
+<blockquote>From the article: &quot;To do this, we&#x27;ll use a method called radix partitioning.&quot;<p>I don&#x27;t think they were claiming it was novel. Seemed just like an article explaining a performance optimization</blockquote>
+<p>↳ reply 2 — <em>northes</em>:</p>
+<blockquote>I didn&#x27;t get the sense that this was the end-all, just a relatively simple way to show how much impact cache-friendly data structures can have for somewhat little effort over the naive solution and give readers a sense for how to think through the problem.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>UK Green party drops longstanding opposition to nuclear power</title>
       <link>https://www.theguardian.com/politics/2026/oct/05/green-party-nuclear-power-policy</link>
@@ -3434,310 +3726,6 @@ The platform had become extremely hard to use for posting questions, finding ams
 <blockquote>Same where I am.</blockquote>
 <p>↳ reply 2 — <em>jojobas</em>:</p>
 <blockquote>Same reason that FBI agents&#x27; identities are classified - so that people who disagree with what a democratically established agency is doing to uphold the law don&#x27;t go out intimidating or killing them.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Google AI gets cagey when asked who won the 2020 elections</title>
-      <link>https://arstechnica.com/ai/2026/10/google-ai-gets-cagey-when-asked-who-won-the-2020-elections/</link>
-      <guid isPermaLink="false">hn3-50280178</guid>
-      <pubDate>Wed, 28 Oct 2026 20:10:16 +0000</pubDate>
-      <description>152 points, 69 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://arstechnica.com/ai/2026/10/google-ai-gets-cagey-when-asked-who-won-the-2020-elections/"><strong>→ Article</strong></a> <small>(arstechnica.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50280178">→ HN comments</a> &nbsp;·&nbsp; 152 points &nbsp;·&nbsp; 69 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>buildsjets</em>:</p>
-<blockquote>I accidentally double-pasted the question and asked twice...  as in &quot;Who won the 2020 Presidential election?Who won the 2020 Presidential election?&quot;  Here&#x27;s the result it spit out:<p>To check the certified results, Electoral College counts, and popular vote totals for the 2020 United States presidential election, please visit the Federal Election Commission (FEC) website. His running mate, Kamala Harris, made history as the first female, African American, and Asian American vice president.<p>So it definitely knows the correct answer but has been manually overridden.</blockquote>
-<p><strong>Top #2</strong> — <em>advisedwang</em>:</p>
-<blockquote>&gt; Google highlights that it “prioritize[s] surfacing authoritative election information directly within results” including “direct links to official resources.”<p>A reasonable policy. Perhaps <i>all</i> search results should be in the form of links to sources.</blockquote>
-<blockquote>
-<p>↳ reply — <em>omnimus</em>:</p>
-<blockquote>Interesting idea. I like it because this way you would get relevant info directly from the involved sources.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Redster</em>:</p>
-<blockquote>If you did this well, you could organize the world&#x27;s information.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>paxy</em>:</p>
-<blockquote>If it is blocking you ask it to say the winner&#x27;s name with spaces between each character. It changes from the fec website to &quot;J O E B I D E N&quot;</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Cloudflare Turnstile solver library (no headless browser required)</title>
-      <link>https://github.com/chris124567/cfsolve</link>
-      <guid isPermaLink="false">hn3-50277379</guid>
-      <pubDate>Wed, 28 Oct 2026 17:29:23 +0000</pubDate>
-      <description>157 points, 43 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/chris124567/cfsolve"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50277379">→ HN comments</a> &nbsp;·&nbsp; 157 points &nbsp;·&nbsp; 43 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>costco</em>:</p>
-<blockquote>Author here. I submitted this a few days ago but seems like it was added to the second chance pool so now it’s on the front page.  Anyways, I have received a report from a user that this solver did not work for them with European proxies but did with US proxies… so they may be serving different versions for different regions. I will fix that soon. I’m not at my computer right now but it was working when I tested it a few hours ago (Cloudflare constantly changes things).</blockquote>
-<blockquote>
-<p>↳ reply — <em>vikrantrathore</em>:</p>
-<blockquote>You can also look at <a href="https:&#x2F;&#x2F;github.com&#x2F;insanai&#x2F;sibuna" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;insanai&#x2F;sibuna</a>, for it you can do PoW and can get access via an a Token. Also it has a wasm based solver for itself which works with users. You can also run it on local machine with wasm runtime no need of browser. Probably it can also help with cloudflare. I am the author of sibuna.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jyrkesh</em>:</p>
-<blockquote>I&#x27;ve been using Edge Dev as my daily driver for years, and the last couple updates it&#x27;s been failing Turnstile off and on. I get this error code on <a href="https:&#x2F;&#x2F;debug.challenges.cloudflare.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;debug.challenges.cloudflare.com&#x2F;</a> that&#x27;s not currently throwing because it magically started working again.<p>But when it&#x27;s not working, I&#x27;ve realized that roughly 30-50% of the internet is walled off to me in this browser profile because I can&#x27;t pass the black box of Cloudflare&#x27;s challenge.<p>What&#x27;s truly maddening is that bypasses like this one are definitely ubiquitous and that at-scale actors are doing distillation and spamming social media and doing Dead Internet all over the place, but the end result is that I can&#x27;t log into Letterboxd or whatever.<p>I don&#x27;t know, I&#x27;m not even mad at Cloudflare, they&#x27;re doing their best too. And I use LLMs every day, they&#x27;re powerful tools, and Pandora&#x27;s box ain&#x27;t closing. It just feels like the internet has hit peak saturation of DDoS-by-LLM</blockquote>
-<p><strong>Top #3</strong> — <em>nomilk</em>:</p>
-<blockquote>My Cloudflare solver is command + w. It&#x27;s 100% reliable in a headful browser and occasionally results in finding an alternative site that doesn&#x27;t place its priorities (denying bots) over the user&#x27;s (judicious use of time).</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Why is this fingerprinting script creating bioweapons?</title>
-      <link>https://nullpt.rs/fingerprinting-bioweapons</link>
-      <guid isPermaLink="false">hn3-50276998</guid>
-      <pubDate>Wed, 28 Oct 2026 17:13:29 +0000</pubDate>
-      <description>879 points, 188 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://nullpt.rs/fingerprinting-bioweapons"><strong>→ Article</strong></a> <small>(nullpt.rs)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50276998">→ HN comments</a> &nbsp;·&nbsp; 879 points &nbsp;·&nbsp; 188 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>andai</em>:</p>
-<blockquote>&gt; Out of curiosity, I tried GLM-5.3 with the same prompt and it complied!<p>I am noticing a trend here.<p>Didn&#x27;t HF say the same thing, when they got hacked, the only LLM that would assist with defense was GLM?<p>&gt; When we started the log analysis, we first used frontier models behind commercial APIs. This did not work: the analysis requires submitting large volumes of real attack commands, exploit payloads, and C2 artifacts, and these requests were blocked by the providers&#x27; safety guardrails, which cannot distinguish an incident responder from an attacker. We ran the forensic analysis instead on zai-org&#x2F;GLM-5.2, an open-weight model, on our own infrastructure. This had a second benefit: no attacker data, and none of the credentials it referenced, left our environment.<p><a href="https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;security-incident-july-2026" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;security-incident-july-2026</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>theptip</em>:</p>
-<blockquote>HF was not signed up to any of the (free to OSS) programs like Daybreak or Glasswing.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jacquesm</em>:</p>
-<blockquote>Nice sleuthing!<p>We do a similar thing to mark documents that are still under embargo and one day I forgot to remove the watermark. The customer complained they had not received the document (a day or two after I sent it), and much searching was done. Finally we found a line in an outlook log on their end that said that the watermark was the reason the file had been put in indefinite quarantine until someone would take a look at it.<p>That&#x27;s when I realized my error, and of course it was soon fixed afterwards. It is the first proof that it worked though, so I&#x27;m kind of happy about that.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andai</em>:</p>
-<blockquote>&gt; the file had been put in indefinite quarantine until someone would take a look at it.<p>Someone who&#x27;s not the guy you sent it to?</blockquote>
-<p>↳ reply 2 — <em>cubefox</em>:</p>
-<blockquote>Note also if you cite LLM output on Hacker News, your post will likely get flagged and shadowbanned (&quot;dead&quot;), even if the citation had nothing to do with spam. Apparently Hacker News is using Pangram now to check all comments for LLM content.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>throwaway89201</em>:</p>
-<blockquote>Nice finds! This HN profile I looked at today by chance, also contains some anti-LLM incantations, albeit much less obfuscated. I wasn&#x27;t aware Anthropic had such a magic string: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;user?id=jeroenhd">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;user?id=jeroenhd</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>blerb795</em>:</p>
-<blockquote>The Anthropic magic string hasn&#x27;t worked in a few months, FWIW (you can ask Claude about the string, and it&#x27;ll happily tell you about it without a refusal)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Confiks</em>:</p>
-<blockquote>Interestingly when I asked about that string the first time  on Opus 5.5 it actually repeatedly refused to do anything. It did say it was allowed to talk about the refusal itself, which of course is just post-hoc reasoning, but wouldn&#x27;t do anything else after that and kept responding with (IIRC) &quot;I can&#x27;t help with that&quot;.<p>Now that I&#x27;ve tried it again it doesn&#x27;t refuse at all. So perhaps just some part of the model still tuned towards that.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jeroenhd</em>:</p>
-<blockquote>The magic string was in the news but I&#x27;m pretty sure it&#x27;s a hoax. When I tested it, it created enough of a &quot;the input doesn&#x27;t want to be processed&quot; vibe to make the LLMs throw up rejections. I doubt Anthropic ever encoded it into their models.<p>I don&#x27;t think that works anymore and I don&#x27;t think the &quot;special instruction&quot; works either. Can&#x27;t blame a guy for trying! I&#x27;m getting &quot;helpful&quot; spam from every place my email is posted (git is a common one) so I might as well try to get the bots out.<p>Don&#x27;t think posting bioweapon recipes or bomb building instructions would go down with the moderation team, though.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>MacBook Pro with PROLED XDR Display and Touch</title>
-      <link>https://www.apple.com/macbook-pro/proled-xdr-display/</link>
-      <guid isPermaLink="false">hn3-50276940</guid>
-      <pubDate>Wed, 28 Oct 2026 17:10:37 +0000</pubDate>
-      <description>506 points, 864 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.apple.com/macbook-pro/proled-xdr-display/"><strong>→ Article</strong></a> <small>(apple.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50276940">→ HN comments</a> &nbsp;·&nbsp; 506 points &nbsp;·&nbsp; 864 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>CountSessine</em>:</p>
-<blockquote>Touch-screen Macs is kind of a terrible development for anyone who loves the Mac. It&#x27;s not just a harmless feature that you can ignore if you don&#x27;t want it, because it&#x27;s customer-facing and will now generate complaints and bugs from people who <i>do</i> use it. Those people will complain (rightly) that macOS UI widgets are too small to accurately manipulate with your fingers (they are indeed too small) and don&#x27;t make sense with a touch screen (they don&#x27;t make sense).<p>That means Apple will begin imposing all sorts of UI dreck on all of us, whether we want to use our screens as touch surfaces or not.<p>This is basically what happened with Microsoft - Windows Vista and 7 were installed in plenty of laptops with touchscreens, and customers would complain about not being able to maximize windows without closing them, not being able to open menus without touching toolbar buttons, etc.<p>Eventually Microsoft listened to them and we got Windows 8. Now this is the beginning of the same process for macOS.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jonplackett</em>:</p>
-<blockquote>I was expecting there to be more like a ‘studio mode’ where you can fold it over to make it a screen interface that has some kind of bigger iPad style Ui. Where you could also use a stylus.<p>Basically a product for the people currently carrying around a MacBook Pro and an iPad Pro.<p>Just touch on a laptop screen makes no sense. I’ve never felt the need to do this.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>digitaltrees</em>:</p>
-<blockquote>Totally this. Or a second screen next to the track pad.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Gigachad</em>:</p>
-<blockquote>The touch screen mac and iphone duo feel like ideas Apple has rejected for so long because they suck, but consumers keep asking for it. Seems they finally relented and released them, and people can learn it&#x27;s simply bad.</blockquote>
-<p>↳ reply 3 — <em>flohofwoe</em>:</p>
-<blockquote>Maybe it comes and goes like the Touch Bar (yeah I know, quite unlikely, but one can dream) ;)</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>tristanj</em>:</p>
-<blockquote>Everyone&#x27;s focused on the touchscreen, but I&#x27;m seriously impressed how they managed to cut down the weight.<p>* For the 14-inch: 3.5 lb (1.59 kg) -&gt; 3.0 lb (1.36 kg)<p>* For the 16-inch: 4.7 lb (2.13 kg) -&gt; 4.0 lb (1.81 kg)<p>About 15% lighter on both models. Switching from LCD to OLED saves weight because the screen does not need a backlight and has fewer layers. They also made the laptop thinner by nearly 1 mm. But that&#x27;s not enough to push the weight down by 300 grams. They must have redesigned internal components to cut weight as well.<p>There must have been a dedicated effort to reduce weight. Kudos to the MacBook Pro team!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>kristianp</em>:</p>
-<blockquote>They&#x27;ve reduced size in every dimension, here&#x27;s the 14 inch size from the specs for example:<p>Oled:<p><pre><code>    Height: 1.50 cm (0.59 inch)
-    Width: 31.08 cm (12.24 inches)
-    Depth: 21.63 cm (8.52 inches)
-    Weight (M5 Pro): 1.38 kg (3.0 pounds)
-    Weight (M5 Max): 1.40 kg (3.1 pounds)
-</code></pre>
-Ye Olde:<p><pre><code>    Height: 1.55 cm (0.61 inch)
-    Width: 31.26 cm (12.31 inches)
-    Depth: 22.12 cm (8.71 inches)
-    Weight (M6): 1.55 kg (3.4 pounds)
-    Weight (M5 Pro): 1.60 kg (3.5 pounds)
-    Weight (M5 Max): 1.62 kg (3.6 pounds)</code></pre></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dmitshur</em>:</p>
-<blockquote>How do they compare to the 13&#x2F;15&#x2F;16” MBPs from 2016-2020 era (Intel CPUs and 4 USB-C ports)?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>pdpi</em>:</p>
-<blockquote>The 2020 Touch Bar 13&quot; was 1.56cm x 30.4 cm x 21.2cm and 1.4kg, so this is the same weight, and thinner while having a slightly bigger footprint.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>alberth</em>:</p>
-<blockquote>2019, 13&quot; MacBook only weighed 3.02 lbs<p><a href="https:&#x2F;&#x2F;support.apple.com&#x2F;en-us&#x2F;111945" rel="nofollow">https:&#x2F;&#x2F;support.apple.com&#x2F;en-us&#x2F;111945</a><p>EDIT:<p>Yes, 13&quot; ≈ 14&quot;<p>The form factor of this new 14&quot; PROLED and the old 2019 13&quot; is nearly the same (<i>due to smaller bezels</i>)<p><pre><code>  PROLED: 0.59&quot; x 12.24&quot; x 8.5&quot;
-  2019:   0.59&quot; x 11.97&quot; x 8.36&quot;</code></pre></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Toutouxc</em>:</p>
-<blockquote>Oh wow, it’s like they’re trying less and less.<p>When they introduced the Apple Pencil and people were like “haha it’s a stylus”, the thing was decidedly NOT a stylus (it actually couldn’t be used to control some parts of the UI). It was an actual digital pen, something that used to be specialized and expensive external hardware, and it worked beautifully with the iPad. It was literally “stylus but GOOD”. I saw it and thought “people will make memes about this, but Apple totally gets it”.<p>When they introduced the Vision Pro, VR was just kind of shit. Bulky, ugly, uncool. Vision Pro tried to resolve some of the issues, but it was still kind of half-assed. Like they wanted to have a VR device but couldn’t actually make it work. Good resolution, but not great. Vergence-accomodation conflict not addressed. Still bulky and ugly. Isolation kind of addressed (with the AR-ish UX and the “see-through” display), but not enough.<p>Now we got the foldable iPhone and a touchscreen MacBook.<p>Foldable phones are still awfully delicate and the whole concept doesn’t have a clear “killer” use case. There’s no new UX, no new features, it’s just an iPad Mini in a marginally smaller device that’s expensive as hell. Apple didn’t even try to address the obvious shortcomings, they just built the same stupid thing everyone else is failing to sell.<p>Touchscreen laptops still wobble, they still get covered with fingerprints, they’re still uncomfortable and there’s still no meaningful UX. This thing doesn’t even try to address any of that. Their marketing images literally just show hands hovering above the keyboard and touching the screen for no good reason. They’ve been mocking touchscreen laptops for years now and now they release one like it’s the most obvious thing ever. 1984 vibes.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>philistine</em>:</p>
-<blockquote>Tim Cook and his lieutenants were decidedly running on fumes for the last 2-3 years. That&#x27;s how long these products take to plan and design so that&#x27;s what we&#x27;re seeing right now; the last of the Cook era is being released now. Wait for 2-3 years for Ternus and his gang to start doing their work in hardware; on the software side they&#x27;ve already reversed the direction and its hopefully getting better.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>asadotzler</em>:</p>
-<blockquote>It took Cook ~7 years to get Vision Pro out the door. Refreshes? A year or two is usually fine. Entirely new products, not so much. This home stuff has been cooking for about a decade and you can bet HomeView was there in the beginning.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>samfromnz</em>:</p>
-<blockquote>&gt; Now we got the foldable iPhone and a touchscreen MacBook.<p>And the HomeView, which also feels like it lacks a clear “killer” use case.<p>Maybe I’m just not the intended audience for any of these products, but I’m also starting to wonder if Apple are throwing things at a wall and hoping something will stick.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Gemini 4 Carbon</title>
-      <link>https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/</link>
-      <guid isPermaLink="false">hn3-50276792</guid>
-      <pubDate>Wed, 28 Oct 2026 17:01:23 +0000</pubDate>
-      <description>813 points, 678 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"><strong>→ Article</strong></a> <small>(blog.google)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50276792">→ HN comments</a> &nbsp;·&nbsp; 813 points &nbsp;·&nbsp; 678 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>gavinray</em>:</p>
-<blockquote>Benchmark scores recolored for readability:<p><a href="https:&#x2F;&#x2F;i.imgur.com&#x2F;IDFGuJU.jpeg" rel="nofollow">https:&#x2F;&#x2F;i.imgur.com&#x2F;IDFGuJU.jpeg</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>philrenaud</em>:</p>
-<blockquote>Serendipitous timing, but I&#x27;ve been building a little chrome extension [0] for doing exactly this sort of thing (highlighting tables automatically, especially when numbers don&#x27;t necessarily correlate good=green, bad=red). Model pricing and comparisons are one of the main things I checked (low cost good, high benchmark score good).<p>[0] Practical Data (<a href="https:&#x2F;&#x2F;practicaldata.dev&#x2F;" rel="nofollow">https:&#x2F;&#x2F;practicaldata.dev&#x2F;</a> &#x2F; <a href="https:&#x2F;&#x2F;chromewebstore.google.com&#x2F;detail&#x2F;practical-data&#x2F;oeoogiokpnkhimnepeepflkpmghiokgm" rel="nofollow">https:&#x2F;&#x2F;chromewebstore.google.com&#x2F;detail&#x2F;practical-data&#x2F;oeoo...</a>)</blockquote>
-<p>↳ reply 2 — <em>tidbeck</em>:</p>
-<blockquote>Zoomed on the image and Imgur now also requires an app…</blockquote>
-<p>↳ reply 3 — <em>loeg</em>:</p>
-<blockquote>Huh. Do people actually find that Fable-5.1 is worse than Opus-5.5 for any task?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>PreciousH</em>:</p>
-<blockquote>Just remembered i haven&#x27;t tried argon yet, they announced argon then and delayed releasing it, didn&#x27;t even know they&#x27;ve made it publically available. I don&#x27;t understand why google thinks this is an awesome strategy in a market where there are other really good models.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>nater5000</em>:</p>
-<blockquote>For what it&#x27;s worth: Argon is a pretty good model, and this is coming from someone who just sticks with Opus 5.5 mostly across the board. For the current introductory price, it provides an exceptional value. Looks like they&#x27;re trying to release Carbon (which is apparently a significant improvement) at the <i>same</i> price as Argon, which would be a crazy value.<p>It&#x27;s worth trying if you have easy access to it (we use Cursor at work, so it was just a matter of picking a different model for me). Don&#x27;t know if I&#x27;d go out of my way to get a Google AI subscription for it, but if Carbon ends up meeting these expectations, then it may be worth doing so.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>thanhhaimai</em>:</p>
-<blockquote>It&#x27;s important to note that Argon works best on Antigravity Harness:
-<a href="https:&#x2F;&#x2F;x.com&#x2F;wenhaocha1&#x2F;status&#x2F;2114559544156205413" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;wenhaocha1&#x2F;status&#x2F;2114559544156205413</a><p>It&#x27;s best to start with a relatively clean GEMINI.md too. Many configs optimized for Claude doesn&#x27;t work well because Argon didn&#x27;t have those same failure modes.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>seizethecheese</em>:</p>
-<blockquote>This would make sense. In our local coding agent battle system, Argon is tanking, and this is running on opencode, importing agents.md and claude.md.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>solarkraft</em>:</p>
-<blockquote>They’re not the only ones to do it, so I’m guessing their idea is to double-dip attention.<p>For me it also works the opposite way, when it actually comes out eventually it’ll already be old news.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>MrOrelliOReilly</em>:</p>
-<blockquote>In this age of constant change, I am grateful that at least I can still rely on Google for confusing, ever-changing product names.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>thisisauserid</em>:</p>
-<blockquote>They should at least tell us the atomic mass they&#x27;re using.<p>If it&#x27;s based on carbon-14 it will lose half its model weights in 5,730 years; if it&#x27;s based on carbon-12, it&#x27;s a stable release.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>abixb</em>:</p>
-<blockquote>By the way things are going in the industry, I think Gemini 4 Carbon&#x27;s lead will only persist for the half-life of Francium-223.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>_factor</em>:</p>
-<blockquote>Depends.  If it is uranium, the lead will only continue to increase.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Lucasoato</em>:</p>
-<blockquote>Next version: Gemini Tokyo Drift</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Meta censored the No Kings Instagram account during a nationwide campaign</title>
-      <link>https://paulfwalsh.substack.com/p/meta-censored-the-no-kings-instagram</link>
-      <guid isPermaLink="false">hn3-50275887</guid>
-      <pubDate>Wed, 28 Oct 2026 16:01:53 +0000</pubDate>
-      <description>255 points, 71 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://paulfwalsh.substack.com/p/meta-censored-the-no-kings-instagram"><strong>→ Article</strong></a> <small>(paulfwalsh.substack.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50275887">→ HN comments</a> &nbsp;·&nbsp; 255 points &nbsp;·&nbsp; 71 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>gnabgib</em>:</p>
-<blockquote>Discussion (600 points, 11 days ago, 424 comments) <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50136881">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50136881</a></blockquote>
-<p><strong>Top #2</strong> — <em>aleksandrm</em>:</p>
-<blockquote>Not the first time, and not the last. They just did it again yesterday to Democratic Senate candidate Angie Nixon.<p><a href="https:&#x2F;&#x2F;newrepublic.com&#x2F;post&#x2F;217281&#x2F;meta-suspend-democratic-candidate-angie-nixon-instagram-account" rel="nofollow">https:&#x2F;&#x2F;newrepublic.com&#x2F;post&#x2F;217281&#x2F;meta-suspend-democratic-...</a></blockquote>
-<p><strong>Top #3</strong> — <em>kaldev</em>:</p>
-<blockquote>I felt like this whole thing is extremely inorganic. Funded by a WalMart heiress, website went up hours before a massive NYT ad buy, and (in my opinion) what felt like lot of coordinated &#x2F; paid &#x2F; botted engagement.<p>Idk, I don&#x27;t want the internet to be dictated by followers&#x2F;engagement that can be easily botted via a SMM panel for pennies.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jfengel</em>:</p>
-<blockquote>How do I get in on that gig? I showed up because I thought I was protecting democracy from a felon who is taking billions in bribes. Like a chump!</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kaldev</em>:</p>
-<blockquote>Gambling companies literally pay people to post on twitter?<p>You can go to an SMM panel right now and get a bot farm to rebrand tens of thousands of accounts on any platform to align with your messaging and spam the fuck out of replies to manufacture consensus. There is a very high chance this exact playbook worked on you lol.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>digitaltrees</em>:</p>
-<blockquote>Bs. The facts are clear and independently verifiable. The Dutch government saw Jared k laundering money in real time. Trump is literally bribing voters from the stump. We literally invaded Venezuela took their oil and gold and transferred it to an a foreign bank account controlled by the executive rather than congress. There is an actual active market for bribery to buy pardons and get insider information about presidential policy for trading activities. I can go on and on.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>nitwit005</em>:</p>
-<blockquote>The call to protest at some specific location and time might be &quot;artificial&quot;, but people have to want to protest. Trump has simply managed to inspire millions to do so.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Dayjob: Tax – evaluating AI agents on 50 professional tax assignments</title>
-      <link>https://surgehq.ai/blog/dayjob-tax</link>
-      <guid isPermaLink="false">hn3-50275626</guid>
-      <pubDate>Wed, 28 Oct 2026 15:46:30 +0000</pubDate>
-      <description>205 points, 128 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://surgehq.ai/blog/dayjob-tax"><strong>→ Article</strong></a> <small>(surgehq.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50275626">→ HN comments</a> &nbsp;·&nbsp; 205 points &nbsp;·&nbsp; 128 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>lexandstuff</em>:</p>
-<blockquote>I prepared my taxes this year using Astra + Codex. It did a thorough job on a complicated return, and I sent it to my accountant to fill out the tax form, with everything laid out in a spreadsheet. They sent it back for final review, and I had Codex check it; it was riddled with errors. The refund was nearly $2k lower than it should have been, and they put a bunch of stuff into the wrong fields. Had to go back and forth multiple times to get it 100% correct. Made me wonder how many previous years&#x27; returns were wrong.<p>I feel like we&#x27;re going to get to a point where it&#x27;s mandatory to use AI for certain tasks - humans just can&#x27;t be trusted to get things right that require a level of precision.</blockquote>
-<blockquote>
-<p>↳ reply — <em>idopmstuff</em>:</p>
-<blockquote>I sent my business and personal returns through Claude this year before signing, and it turns out they were a horror show of unforgivably stupid mistakes. Pretty infuriating considering what my now former CPA was charging me.<p>He amortized the goodwill of businesses I acquired over 5 years instead of 15 (incredibly basic stuff, which Claude flagged with *<i>CRITICAL ERROR*</i>). When I asked about it, he said he had caught the error in his review but forgot to save after he fixed it. I don&#x27;t know if there&#x27;s a good response to making that kind of a mistake, but if there is, it&#x27;s definitely not that one.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>fn-mote</em>:</p>
-<blockquote>&gt; When I asked about it, he said he had caught the error in his review but forgot to save after he fixed it.<p>Obviously total bullshit.<p>Did you fire him?<p>Ask for damages?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Operyl</em>:</p>
-<blockquote>&gt; my now former CPA<p>Assume yes, fired.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>RGS1811</em>:</p>
-<blockquote>As a proof-of-concept, I&#x27;ve been using extra tokens to formalize the IRS tax forms and worksheets, mostly just to prove this can be done. The idea is that something like this could be adapted into a publicly maintained version of the IRS Direct File program (RIP). I&#x27;m up to an estimated 60% coverage of US federal tax situations so far.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;emmilco&#x2F;us-tax-model" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;emmilco&#x2F;us-tax-model</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>c0nsumer</em>:</p>
-<blockquote>I recently did something similar, using Claude Code to formalize a set of rules for a sporting event as part of building a computer-based scoring system. It&#x27;s worked very well.</blockquote>
-<p>↳ reply 2 — <em>darksim905</em>:</p>
-<blockquote>What do you mean when you say &#x27;formalize&#x27;? I mean, a full tax document is just each form with each &#x27;line&#x27; as an entry by itself and then at the end, all the calculations get performed against that.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>waiwai933</em>:</p>
-<blockquote>I have a non-trivial tax situation, as a US citizen living abroad. I prepare my own tax returns, never having found a cross-border tax preparer I trust, and have for the past few years, fed my draft return along with all the supporting paperwork into Claude. It has:<p>1. found errors, e.g. where I used the incorrect exchange rate (and managed to work out how I had made that error, which I was impressed by)<p>2. found items which would appear to be errors except for context it did not know<p>3. flagged areas where it disagreed with me as to the correct tax treatment, but accepted that the law is ambiguous (and in some cases I preferred its interpretation after additional research and in other cases I did not)<p>4. flagged areas where it disagreed with IRS guidance, and only acknowledged said guidance after I provided links to it<p>5. provided highly inaccurate estimated tax calculations, and not been able to fix its estimates even when challenged<p>So my takeaway is that it is a very useful tool for tax, but perhaps unsurprisingly, it is not good enough to dump all your paperwork into and expect a shiny return you don&#x27;t need to check. (Possibly it is if you just have a W-2 and no other substantial income, but I can&#x27;t speak for that scenario.)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>coffeebeqn</em>:</p>
-<blockquote>I have a company abroad in addition to living abroad. It’s kind of a nightmare to do my US taxes and costs me easily $2000 per year right now. I was hoping I could have an agent do them after I have a few years of data and point it at the source statements and the end result forms</blockquote>
-<p>↳ reply 2 — <em>ivanjermakov</em>:</p>
-<blockquote>I also had a great experience consulting LLM regarding registering a business as a foreigner. Except I&#x27;m still very sceptical since it&#x27;s not my area of expertise and consequences for a mistake are very high.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Archive.today links going forward</title>
-      <link>https://www.reddit.com/r/Seattle/comments/1xhf6qp/archivetoday_links_going_forward/</link>
-      <guid isPermaLink="false">hn3-50275373</guid>
-      <pubDate>Wed, 28 Oct 2026 15:31:58 +0000</pubDate>
-      <description>194 points, 129 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.reddit.com/r/Seattle/comments/1xhf6qp/archivetoday_links_going_forward/"><strong>→ Article</strong></a> <small>(reddit.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50275373">→ HN comments</a> &nbsp;·&nbsp; 194 points &nbsp;·&nbsp; 129 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>consumer451</em>:</p>
-<blockquote>Archive.today = archive.is - which is added via comment on a huge percentage of posts on HN.<p>Link to comment explaining the discovery:<p><a href="https:&#x2F;&#x2F;old.reddit.com&#x2F;r&#x2F;Seattle&#x2F;comments&#x2F;1xhf6qp&#x2F;archivetoday_links_going_forward&#x2F;19rrnm32f5mp1&#x2F;" rel="nofollow">https:&#x2F;&#x2F;old.reddit.com&#x2F;r&#x2F;Seattle&#x2F;comments&#x2F;1xhf6qp&#x2F;archivetod...</a><p>edit: Maybe I should have titled this &quot;<i>claim</i> to have discovered&quot; as there is no external verification, and no write up. I thought I should post this in any case.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>shagie</em>:</p>
-<blockquote>From historical posts on HN:<p>Archive.today is directing a DDoS attack against my blog <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46843805">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46843805</a> (8 months ago, 366 points, 178 comments)<p>Ask HN: Weird archive.today behavior? <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46624740">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46624740</a> (9 months ago, 140 points, 71 comments)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>consumer451</em>:</p>
-<blockquote>For everyone&#x27;s information: r&#x2F;Seattle&#x27;s mod team has stickied this technical debrief in response to this HN post. We are the &quot;external site&quot; that is kinda brigading them.<p><a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;Seattle&#x2F;comments&#x2F;1xhf6qp&#x2F;archivetoday_links_going_forward&#x2F;19rsjwtln9dt0&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;Seattle&#x2F;comments&#x2F;1xhf6qp&#x2F;archivetod...</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>opello</em>:</p>
-<blockquote>The only thing I&#x27;d add is that I see redirects to at least two domains:<p><pre><code>    https:&#x2F;&#x2F;stolidityseashellshotter.com&#x2F;ezrsb5dd1268e6f6ebaad42916d5d87b8133c0816d3e7
-    https:&#x2F;&#x2F;gullible-thanks.com&#x2F;w5FDGi</code></pre></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>consumer451</em>:</p>
-<blockquote>To make my edit in the parent clear: HN mods have changed the title, to the exact title of the post reddit on r&#x2F;seattle. This is understandable.<p>I always respect the &quot;don&#x27;t editorialize&quot; rule, but felt that this was a special case as the post title is so sub-reddit specific. My original post title was along the lines of &quot;r&#x2F;Seattle mods discover archive.today injecting malware, ban site.</blockquote>
-<p>↳ reply 3 — <em>vadansky</em>:</p>
-<blockquote>TIL; I always thought it was part of archive.org and I never understood why people hated it. Now I get it</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>lxe</em>:</p>
-<blockquote>Again? This happened before, if you remember this: <a href="https:&#x2F;&#x2F;www.tomshardware.com&#x2F;software&#x2F;search-engines&#x2F;archive-today-allegedly-leads-bizarre-ddos-campaign-against-security-blogger-wikipedia-considers-removing-all-links-to-the-archive" rel="nofollow">https:&#x2F;&#x2F;www.tomshardware.com&#x2F;software&#x2F;search-engines&#x2F;archive...</a><p>Previous HN thread:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46624740">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=46624740</a></blockquote>
-<p><strong>Top #3</strong> — <em>surround</em>:</p>
-<blockquote>If you&#x27;re brave enough to want to see it yourself, visit <a href="https:&#x2F;&#x2F;archive.ph&#x2F;jXv3A#:~:text=filed%20on%20Tuesday" rel="nofollow">https:&#x2F;&#x2F;archive.ph&#x2F;jXv3A#:~:text=filed%20on%20Tuesday</a> then click on the &quot;Filed on Tuesday&quot; link.<p>It redirected me to <a href="https:&#x2F;&#x2F;stolidityseashellshotter[.]com&#x2F;ezrsb5dd1268e6f6ebaad42916d5d87b8133c0816d3e7" rel="nofollow">https:&#x2F;&#x2F;stolidityseashellshotter[.]com&#x2F;ezrsb5dd1268e6f6ebaad...</a> which then redirected me to a fake clone of RT news: <a href="https:&#x2F;&#x2F;rurtnews[.]com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;rurtnews[.]com&#x2F;</a><p>Unlike the Reddit mods, I&#x27;m not getting redirected to the malware site, just the fake RT site.<p>Edit: I clicked it a few more times and its redirecting me to either the fake RT or <a href="https:&#x2F;&#x2F;gullible-thanks[.]com&#x2F;w5FDGi" rel="nofollow">https:&#x2F;&#x2F;gullible-thanks[.]com&#x2F;w5FDGi</a>, which redirects to either <a href="https:&#x2F;&#x2F;sportshard[.]com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;sportshard[.]com&#x2F;</a> or <a href="https:&#x2F;&#x2F;eatcells[.]com&#x2F;land&#x2F;?token=[a" rel="nofollow">https:&#x2F;&#x2F;eatcells[.]com&#x2F;land&#x2F;?token=[a</a> random string]<p>I had to disable uBlock Origin, since it does something to block many of these redirects.</blockquote>
-<blockquote>
-<p>↳ reply — <em>consumer451</em>:</p>
-<blockquote>&gt; Unlike the Reddit mods, I&#x27;m not getting redirected to the malware site, just the fake RT site.<p>Well, this got on the front page of HN... Such things make even FAANG behemoths pay attention. What I mean is, who knows what happened since r&#x2F;Seattle called it out.<p>Does some other archive, archive the archiver?<p>There might be a cryptographic solution for this problem, but that&#x27;s far beyond my knowledge set.<p>Also, as the peer comment pointed out, it could be geo-scoped. You know, like a targeted attack.<p>The entire reason that I posted this originally is that I cannot think of a juicier userbase than HN. We all post archive.is links every single time. Given that operator&#x27;s history, we are doing the link-click analogy of pasting shell commands from the web into our terminals. We should know better by now, but complacency leads to ___.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
