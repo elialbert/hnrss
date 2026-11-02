@@ -4,7 +4,283 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Mon, 02 Nov 2026 07:32:04 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 18:07:57 +0000</lastBuildDate>
+    <item>
+      <title>Show HN: I've updated my Linux System Call website and API</title>
+      <link>https://syscall.sh/</link>
+      <guid isPermaLink="false">hn3-50334704</guid>
+      <pubDate>Mon, 02 Nov 2026 09:29:16 +0000</pubDate>
+      <description>166 points, 47 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://syscall.sh/"><strong>→ Article</strong></a> <small>(syscall.sh)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50334704">→ HN comments</a> &nbsp;·&nbsp; 166 points &nbsp;·&nbsp; 47 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>db48x</em>:</p>
+<blockquote>It’s a side issue, but I’ve long thought that the kernel should duplicate every existing syscall that takes a null–terminated string by pointer with an otherwise identical syscall that takes the string by pointer, capacity, and length instead. It would be a huge boon to programs written in modern languages. I keep meaning to search the kernel mailing lists to see if the idea has been proposed before, but I never quite find the time.</blockquote>
+<p><strong>Top #2</strong> — <em>ozgrakkurt</em>:</p>
+<blockquote>Would also recommend using commands like:<p>echo &#x27;#include &lt;sys&#x2F;syscall.h&gt;&#x27; | gcc -E -dM -xc - | grep -i &quot;read&quot;<p>To get the real values on your PC to make sure.<p>I had LLMs give wrong numbers or constant definitions several times but getting it to generate a command like this and seeing it for myself works every time.<p>Also chromium docs has a table:<p><a href="https:&#x2F;&#x2F;www.chromium.org&#x2F;chromium-os&#x2F;developer-library&#x2F;reference&#x2F;linux-constants&#x2F;syscalls&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.chromium.org&#x2F;chromium-os&#x2F;developer-library&#x2F;refer...</a><p>It would be very useful to just make this website directly link to the syscall number.</blockquote>
+<blockquote>
+<p>↳ reply — <em>guitmz</em>:</p>
+<blockquote>The website content comes directly from Kernel sources so should be accurate. The chromium page is what I used to use until I made this website in 2020 but it&#x27;s very outdated I think</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>bkallus</em>:</p>
+<blockquote>On x86_64 and x32, the syscall number goes in eax, not rax. The upper 32 bits of rax are ignored and can be anything.</blockquote>
+<blockquote>
+<p>↳ reply — <em>guitmz</em>:</p>
+<blockquote>Good catch, thanks! Since 5.14 (I think?) the kernel only reads eax (before that it used all of rax and returned ENOSYS if the upper half wasn&#x27;t zero), so I&#x27;m adding a note about it to the x64 and x32 conventions</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>bkallus</em>:</p>
+<blockquote>According to [1], the kernel has flip-flopped a few times on this, but the original behavior was to ignore the upper 32 bits.<p>[1] <a href="https:&#x2F;&#x2F;lore.kernel.org&#x2F;all&#x2F;20210518191303.4135296-5-hpa@zytor.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;lore.kernel.org&#x2F;all&#x2F;20210518191303.4135296-5-hpa@zyt...</a></blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>China's First Frontier AI Export Controls: Mofcom Announcement No. 48</title>
+      <link>https://labs.cloudsecurityalliance.org/research/csa-research-note-china-ai-export-controls-announcement-48-2/</link>
+      <guid isPermaLink="false">hn3-50334038</guid>
+      <pubDate>Mon, 02 Nov 2026 07:27:28 +0000</pubDate>
+      <description>146 points, 78 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://labs.cloudsecurityalliance.org/research/csa-research-note-china-ai-export-controls-announcement-48-2/"><strong>→ Article</strong></a> <small>(labs.cloudsecurityalliance.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50334038">→ HN comments</a> &nbsp;·&nbsp; 146 points &nbsp;·&nbsp; 78 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>byzantinegene</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;www.mofcom.gov.cn&#x2F;xwfb&#x2F;xwfyrth&#x2F;art&#x2F;2026&#x2F;art_d7661dbf62794345a221404f82a25959.html" rel="nofollow">https:&#x2F;&#x2F;www.mofcom.gov.cn&#x2F;xwfb&#x2F;xwfyrth&#x2F;art&#x2F;2026&#x2F;art_d7661dbf...</a><p>&quot;Second, we encourage open source, open collaboration, and resource sharing. The Chinese government is committed to making artificial intelligence a significant driving force for promoting common prosperity and safeguarding common security. To support the construction of an open source innovation ecosystem for artificial intelligence, convenient measures such as automatic licensing will be applied to technology exports involving open source AI technologies, Chinese companies building and operating their own computing centers overseas, conducting chip fabrication overseas, utilizing overseas resources for joint research and development, and participating in the formulation of international standards, basically achieving &quot;immediate reporting and export.&quot; Technologies that have already entered the public domain through open source or published academic papers will not be included in the export management scope, creating a favorable environment for international exchange and cooperation in artificial intelligence technology.&quot;<p>their official stance suggests they remain in support of open-weights</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>RobotToaster</em>:</p>
+<blockquote>Interesting way to encourage open weights models.  It sounds like anyone wanting to export closed AI will have to apply for a licence.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>yorwba</em>:</p>
+<blockquote>Companies making closed-weight models typically don&#x27;t export them at all, but sell access to them as a service. (Which doesn&#x27;t count as an export of the model.) So it&#x27;s primarily companies releasing open weights (if they pass the thresholds for the restricted category), or that host their models in datacenters outside China that will need to apply for an export license.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>siva7</em>:</p>
+<blockquote>&gt; Which doesn&#x27;t count as an export of the model.<p>Says who?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>usrnm</em>:</p>
+<blockquote>What governments do is, generally, much more important than what they say. And what they&#x27;re doing here is moving in the direction of restriction</blockquote>
+<p>↳ reply 3 — <em>themgt</em>:</p>
+<blockquote><i>We have no eternal allies, and we have no perpetual enemies. Our interests are eternal and perpetual, and those interests it is our duty to follow</i></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>swiftcoder</em>:</p>
+<blockquote>These rules are not new, right? They appear to match the previous guidance (restrictions on top-10 models, exemption for open-source collaboration)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tristanj</em>:</p>
+<blockquote>Yes, this happened weeks ago and was never discussed on HN.<p>Part of the problem is that there are too many major stories happen back-to-back nowadays, and important stories like this one never get discussed. HN only shows 30 stories on the front page, which limits discussion.</blockquote>
+<p>↳ reply 2 — <em>satvikpendem</em>:</p>
+<blockquote>Correct, this news just hasn&#x27;t gotten traction until now on HN it seems, as I&#x27;ve already seen this news on r&#x2F;LocalLlama and thought it was another piece of newer news.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>petcat</em>:</p>
+<blockquote>The risk is that USA and China will come together on a joint &quot;AI non-proliferation&quot; agreement in the same way that nuclear technology became restricted by the countries that already had the capability. This will lead to a de facto techno-colonization of the rest of the world just between themselves.<p>This was a topic of discussion at Trump and Xi&#x27;s AI summit just last month.  We&#x27;re now starting to see the export controls coming into place.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: HackerHack – HackerBooks but for Posts Posted on HN</title>
+      <link>https://news.ycombinator.com/</link>
+      <guid isPermaLink="false">hn3-50333877</guid>
+      <pubDate>Mon, 02 Nov 2026 06:59:40 +0000</pubDate>
+      <description>179 points, 25 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/"><strong>→ Article</strong></a> <small>(news.ycombinator.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50333877">→ HN comments</a> &nbsp;·&nbsp; 179 points &nbsp;·&nbsp; 25 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>moretti</em>:</p>
+<blockquote>Can someone build this?<p>Show HN: HackerHype - an aggregator for every Hacker* aggregator<p><pre><code>  HackerHype
+  ├── HackerTube → videos recommended on HN
+  ├── HackerBooks → books mentioned on HN
+  ├── Wikihack → Wikipedia articles mentioned on HN
+  ├── HackerHack → posts posted on HN
+  └── ...</code></pre></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>yewenjie</em>:</p>
+<blockquote>Here you go:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50339488">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50339488</a></blockquote>
+<p>↳ reply 2 — <em>MadameMinty</em>:</p>
+<blockquote>We could even aggregate all of it in one fell swoop.<p>We could call it Hacker News.</blockquote>
+<p>↳ reply 3 — <em>brador</em>:</p>
+<blockquote>And the Ouroboros is complete.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tiarafawn</em>:</p>
+<blockquote>duplicate: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;</a></blockquote>
+<p><strong>Top #3</strong> — <em>grzracz</em>:</p>
+<blockquote>Love the seamless integration with HackerNews</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: Wikihack – HackerTube, but for Wikipedia articles mentioned on HN</title>
+      <link>https://wikihack.netlify.app</link>
+      <guid isPermaLink="false">hn3-50333339</guid>
+      <pubDate>Mon, 02 Nov 2026 05:06:30 +0000</pubDate>
+      <description>324 points, 99 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://wikihack.netlify.app"><strong>→ Article</strong></a> <small>(wikihack.netlify.app)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50333339">→ HN comments</a> &nbsp;·&nbsp; 324 points &nbsp;·&nbsp; 99 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>comboy</em>:</p>
+<blockquote>I&#x27;ll skip you guys some time, hackerstuff - all media links, entities and people mentioned on HN, weighted by posters karma.<p>We could even display them together sorted by the newest one, maybe with some associated comments.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jenkinstrigger</em>:</p>
+<blockquote>on top of that we can build hackertropes, cliches used by hn users</blockquote>
+<p>↳ reply 2 — <em>Rapzid</em>:</p>
+<blockquote>&quot;HackerBait&quot;</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Hackbraten</em>:</p>
+<blockquote>Cool project!<p>I’d appreciate if the site didn’t hijack my scroll wheel though. It currently doesn’t let me scroll through the page at my own speed, which is super annoying, plus it hides any scroll bar (which would have served as my escape hatch for scrolling).</blockquote>
+<blockquote>
+<p>↳ reply — <em>joquarky</em>:</p>
+<blockquote>Remember when the web was just documents?<p>Most browsers have a &quot;stop loading&quot; button.<p>Why don&#x27;t we have a &quot;stop JavaScript&quot; button?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>freakynit</em>:</p>
+<blockquote>We have a continuously updated, publicly accessible hackernews database in BigQuery, in case more of you folks are interested in building similar projects:<p><a href="https:&#x2F;&#x2F;console.cloud.google.com&#x2F;marketplace&#x2F;product&#x2F;y-combinator&#x2F;hacker-news" rel="nofollow">https:&#x2F;&#x2F;console.cloud.google.com&#x2F;marketplace&#x2F;product&#x2F;y-combi...</a><p>Clickhouse equivalent, updated in real-time: <a href="https:&#x2F;&#x2F;play.clickhouse.com&#x2F;play?user=play#U0VMRUNUIG1heCh0aW1lKSBGUk9NIGhhY2tlcm5ld3NfaGlzdG9yeQ==" rel="nofollow">https:&#x2F;&#x2F;play.clickhouse.com&#x2F;play?user=play#U0VMRUNUIG1heCh0a...</a><p>Relevant post: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40644563">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=40644563</a><p>What&#x27;s missing are entity-level extracted data, and embeddings.</blockquote>
+<blockquote>
+<p>↳ reply — <em>vincnetas</em>:</p>
+<blockquote>imagine having this open data for major social networks.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>freakynit</em>:</p>
+<blockquote>We used to have.. at least it was not so heavily restricted.. and then AI happened, and everyone closed those down.<p>Such a sad state of affairs.. holding end user&#x27;s data hostage.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>F/OSS Comics #13: BSD Unix, Part 3 – The Beginning of BSD Unix</title>
+      <link>https://fosscomics.com/posts/13.%20BSD%20Unix%20Part%203%20-%20The%20Beginning%20of%20BSD%20Unix/</link>
+      <guid isPermaLink="false">hn3-50332163</guid>
+      <pubDate>Mon, 02 Nov 2026 01:59:38 +0000</pubDate>
+      <description>197 points, 27 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://fosscomics.com/posts/13.%20BSD%20Unix%20Part%203%20-%20The%20Beginning%20of%20BSD%20Unix/"><strong>→ Article</strong></a> <small>(fosscomics.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50332163">→ HN comments</a> &nbsp;·&nbsp; 197 points &nbsp;·&nbsp; 27 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>kps</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;fosscomics.com&#x2F;posts&#x2F;12.%20BSD%20Unix%20Part%202%20-%20The%20Birth%20of%20the%20vi%20Editor&#x2F;#comic-panel-visual-mode" rel="nofollow">https:&#x2F;&#x2F;fosscomics.com&#x2F;posts&#x2F;12.%20BSD%20Unix%20Part%202%20-...</a><p>You do <i>not</i> want visual mode on a Tek 4014¹. It&#x27;s a storage tube and can&#x27;t modify text on screen.<p>Should have drawn an ADM-3A².<p>¹ <a href="https:&#x2F;&#x2F;w140.com&#x2F;tekwiki&#x2F;wiki&#x2F;4014" rel="nofollow">https:&#x2F;&#x2F;w140.com&#x2F;tekwiki&#x2F;wiki&#x2F;4014</a><p>² <a href="https:&#x2F;&#x2F;terminals-wiki.org&#x2F;wiki&#x2F;index.php&#x2F;File:Lear_Siegler_ADM-3A-2.jpg" rel="nofollow">https:&#x2F;&#x2F;terminals-wiki.org&#x2F;wiki&#x2F;index.php&#x2F;File:Lear_Siegler_...</a></blockquote>
+<p><strong>Top #2</strong> — <em>JdeBP</em>:</p>
+<blockquote>Marshall Kirk McKusick, mentioned in this comic, was still committing changes to FreeBSD as of last August:<p>* <a href="https:&#x2F;&#x2F;cgit.freebsd.org&#x2F;src&#x2F;commit&#x2F;sbin&#x2F;restore?id=2cefae4cf34e7d39fc3b27358d7d66a96b3b0056" rel="nofollow">https:&#x2F;&#x2F;cgit.freebsd.org&#x2F;src&#x2F;commit&#x2F;sbin&#x2F;restore?id=2cefae4c...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>drewg123</em>:</p>
+<blockquote>He regularly attends BSD conferences like BSDCan and EuroBSD.  
+He&#x27;s one of the nicest guys I&#x27;ve ever met.  Its always nice when you meet your heroes and they are amazing people.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pengaru</em>:</p>
+<blockquote>If you&#x27;re a McKusick fan, there&#x27;s a series of recordings from his classroom lectures about operating systems.  I saw some on VHS ages ago in a group setting.  They were quite amusing from what I recall, for such an otherwise dry subject.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>alexfortin</em>:</p>
+<blockquote>Looks nice, too bad though it doesn&#x27;t expose any sort of RSS&#x2F;Atom feed, if I can&#x27;t add it to my feed reader I&#x27;ll soon forget about it.</blockquote>
+<blockquote>
+<p>↳ reply — <em>benrutter</em>:</p>
+<blockquote>Ah, that&#x27;s a shame! I was about to look for the RSS feed too - especially since the cross-over of people who&#x27;d be into this comic series <i>and</i> rss&#x2F;atom is probably pretty large.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pbronez</em>:</p>
+<blockquote>Sent a PR for this. Vibecoded, we&#x27;ll see if the author finds that helpful or insulting...<p><a href="https:&#x2F;&#x2F;github.com&#x2F;joone&#x2F;fossbook&#x2F;pull&#x2F;8" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;joone&#x2F;fossbook&#x2F;pull&#x2F;8</a></blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Bones may release proteins that slow aging and extend life span</title>
+      <link>https://www.science.org/content/article/bones-may-release-proteins-slow-aging-and-extend-life-span</link>
+      <guid isPermaLink="false">hn3-50331957</guid>
+      <pubDate>Mon, 02 Nov 2026 01:31:07 +0000</pubDate>
+      <description>269 points, 99 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.science.org/content/article/bones-may-release-proteins-slow-aging-and-extend-life-span"><strong>→ Article</strong></a> <small>(science.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50331957">→ HN comments</a> &nbsp;·&nbsp; 269 points &nbsp;·&nbsp; 99 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>armcat</em>:</p>
+<blockquote>&gt; the findings are not “a demonstration of a new antiaging treatment for people,”<p>Regardless, every other study shows only positives of lifting and regular exercise, so just do it!</blockquote>
+<p><strong>Top #2</strong> — <em>thisisauserid</em>:</p>
+<blockquote>Soon we will have the technology to become mice and take advantage of the infinite wonders of these discoveries.</blockquote>
+<blockquote>
+<p>↳ reply — <em>lumost</em>:</p>
+<blockquote>If these all actually worked, I&#x27;d presume that there would have been a study on the miraculously healthy 80 year old mice. As it stands I have to assume that most of these mouse studies are fundamentally flawed to begin with and we simply don&#x27;t check for adverse reactions&#x2F;overlapping mechanisms&#x2F;long-term maladies.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mgh2</em>:</p>
+<blockquote>Most medicines we take for granted were first tested on biological models like fruit flies, mouse, dogs, monkeys, pigs, before reaching humans.<p>Logic reminds me of: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;-XAXwIOC3po" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;shorts&#x2F;-XAXwIOC3po</a></blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Qem</em>:</p>
+<blockquote>It&#x27;s said cats purr to strenghten their bones. Perhaps the mechanism is related. It would be interesting to see if besides exercise, vibration can trigger it in humans as well, perhaps checking people that worked with pneumatic hammers or other vibration exposed workplaces.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>stevenwoo</em>:</p>
+<blockquote>The feline purring for healing is in Margaret Atwood’s MaddAddam trilogy and I just blew it off as too fantastical, but I’m prepared to eat my words metaphorically speaking.</blockquote>
+<p>↳ reply 2 — <em>dotancohen</em>:</p>
+<blockquote>After a broken foot, my mother was prescribed a vibrating Bone Healing machine. I thought it might be placebo, maybe not.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Trigger.dev customer environment variables exposed</title>
+      <link>https://trigger.dev/blog/security-incident-nov-2026</link>
+      <guid isPermaLink="false">hn3-50331784</guid>
+      <pubDate>Mon, 02 Nov 2026 01:09:16 +0000</pubDate>
+      <description>156 points, 84 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://trigger.dev/blog/security-incident-nov-2026"><strong>→ Article</strong></a> <small>(trigger.dev)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50331784">→ HN comments</a> &nbsp;·&nbsp; 156 points &nbsp;·&nbsp; 84 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>dangoodmanUT</em>:</p>
+<blockquote>As I mentioned in the Northflank breach post:<p>Unfortunately for infra startups, I think we&#x27;re going to see a convergence back to hyperscalers as a result of incidents like this and railway.<p>There&#x27;s no amount of &quot;nicer to use&quot; that can replace security, at least certainly when selling to enterprises<p>Also, a trick i&#x27;ve started doing is encrypting my env vars, then hard-code the decryption key in the code</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>willio58</em>:</p>
+<blockquote>Is your implication that hyperscalers (big companies) will always do better at this than smaller companies?<p>Just becuase a company has more money doesn’t mean they direct that money well, and even money directed well at the wrong people will result in failures.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mbb70</em>:</p>
+<blockquote>No one ever got fired for putting creds in AWS Secrets Manager. I&#x27;d take the hyperscaler every time because even if something happens, it is a very defensible decision.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>bitlad</em>:</p>
+<blockquote>It is probably safer if you enable HSM.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sebmellen</em>:</p>
+<blockquote>Yes, I’d say any infra provider that can&#x27;t afford to have their own hardware security module should probably not be storing sensitive customer data.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>theturtletalks</em>:</p>
+<blockquote>The biggest case for building bespoke software is that you drop your attack surface area and it’s not as lucrative to hack one person. Don’t even expose it to the internet if you don’t need to and just run Tailscale.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>seanw265</em>:</p>
+<blockquote>I don&#x27;t see bespoke software as a viable alternative because probing for vulnerabilities is both getting cheaper by the day, and also massively parallelizable.<p>Someone will inevitably spin up a large swath of agents running an abliterated pareto curve model and point them at the internet.<p>Not to mention your bespoke tool is likely way less hardened than the existing player in the space.</blockquote>
+<p>↳ reply 2 — <em>bitlad</em>:</p>
+<blockquote>Or do onprem or selfhosted. Surface area reduces drastically.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>castis</em>:</p>
+<blockquote>As far as my personal life is concerned, I honestly don&#x27;t think I&#x27;m going to &#x27;build and deploy&#x27; anything to any SaaS that isn&#x27;t directly in my control for a while.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>OccupySaaS</title>
+      <link>https://occupysaas.com/</link>
+      <guid isPermaLink="false">hn3-50331402</guid>
+      <pubDate>Mon, 02 Nov 2026 00:17:27 +0000</pubDate>
+      <description>463 points, 288 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://occupysaas.com/"><strong>→ Article</strong></a> <small>(occupysaas.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50331402">→ HN comments</a> &nbsp;·&nbsp; 463 points &nbsp;·&nbsp; 288 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>MonkeyClub</em>:</p>
+<blockquote>It upsets me somewhat that they’re protesting things like lock-in only after being laid off, while beforehand they were the ones implementing them.<p>I do like the paradox (oxymoron?) of being made redundant with AI, so they’re using AI to render their former companies redundant.<p>But in the end it pushes for more AI software; I’m not sure who wins.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>swiftcoder</em>:</p>
+<blockquote>&gt; It upsets me somewhat that they’re protesting things like lock-in only after being laid off<p>One of the keys to a successful revolution is not purging all your allies by means of purity tests.<p>We can cheer someone on when they strike back at the establishment, regardless of how recently they may have joined the cause.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>nlitened</em>:</p>
+<blockquote>&gt; One of the keys to a successful revolution is not purging all your allies by means of purity tests.<p>Yep, that usually happens only _after_ the successful revolution</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>hashmap</em>:</p>
+<blockquote>&gt; It upsets me somewhat that they’re protesting things like lock-in only after being laid off &lt;<p>This is the nature of people. It is a <i>good</i> thing to realize the leopards are bad, even if it takes getting your own face eaten to notice. Look at the positive a little!</blockquote>
+<p>↳ reply 3 — <em>rkuodys</em>:</p>
+<blockquote>&gt; It upsets me somewhat that they’re protesting things like lock-in only after being laid off<p>I would say it is even more ironic. Many years before, SaaS companies and IT in general were the ones making people fired. New software reduces the need for manual labour, hence less people are hired and somebody is fired as well. Accounting, marketing, retail managers, taxi drivers - list goes on. Now SW devs joined the club of those receiving their own medicine.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>baubino</em>:</p>
+<blockquote>This seems like it’s trying to reinvent the idea of FOSS. There’s already tons of FOSS alternatives to big tech SaaS and there’s lots of tech coops and other venues for tech activism. Why not support one of those ventures or build a platform to help amplify them?<p>Also odd to advocate for control of tech only to cede the entire project to AI.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ivanmontillam</em>:</p>
+<blockquote>Because it feels good to <i>start something</i> rather than joining an <i>existing someone</i> at the <i>exact</i> same mission.<p>It&#x27;s all just performative.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>epicureanideal</em>:</p>
+<blockquote>Perhaps let&#x27;s brainstorm ways to solve this.  How can we incentivize joiners to projects?  How can we both appreciate the founders and starters, and the later joiners who are necessary for the project?  Perhaps if we encourage our own community (tech) to give serious weight and appreciation to all contributors, that will move things in the right direction.<p>Also, the creators of projects can do their part by sharing the praise their projects receive with their contributors.<p>What other ideas do folks have to encourage joining rather than starting?<p>Maybe assigning specific &quot;ownership&quot; (responsibility for, overall credit for) of some portion of the project to long time contributors over time?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ivanmontillam</em>:</p>
+<blockquote>I&#x27;m not sure the issue is getting credit for contributions, or as you suggest: giving ownership of areas of a project. After all, that&#x27;s a problem already solved: CLAs for open source. With CLAs in place, developers get credited for their efforts (git blames!), as well as part of the IP of their implemented solution if accepted.<p>My argument goes more about the lines of: Some people want to be the <i>starter</i> of a project, disregarding existing, often advanced efforts about the same problem.<p>Take for example, the bajillion expenses tracker apps. The most reinvented wheel. Do we need yet another one?<p>To me, it&#x27;s an ego-driven thing.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>andsoitis</em>:</p>
+<blockquote>&gt; Why not support one of those ventures or build a platform to help amplify them?<p>Because then you can&#x27;t collect donations. And you have first prove yourself to be able to contribute to those projects. Because you want to make a name for yourself. Because you want to cast a big umbrella over unrelated software, except for the fact that they got started by this &quot;movement&quot;.<p>Don&#x27;t fall for it.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>rpigab</em>:</p>
+<blockquote>My first impression when reading the landing page is that this was made by one guy, but on Github, I can see two contributors: one guy and Claude.<p>Why use plural (&quot;us&quot;, &quot;Laid-off engineers&quot;) when this is just one guy&#x27;s idea and none of the questions are about a group of people, there does not even seem to be a plan for others to join? Thousands marched for Occupy Wall Street, which this is referring to.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>AdmiralAsshat</em>:</p>
+<blockquote>More to the point...did we get any meaningful change out of Occupy Wall Street?<p>Thousands marched, the media was happy to dismiss them as loafers and losers, and...nothing happened.</blockquote>
+<p>↳ reply 2 — <em>lemagedurage</em>:</p>
+<blockquote>&gt; Why<p>They hope this goes viral and many join.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>U.S. workers took home their smallest share of capital since at least 1947</title>
       <link>https://fortune.com/article/why-did-us-workers-just-take-home-smallest-share-of-capital-since-1947-lowest-ever-recorded/</link>
@@ -583,6 +859,44 @@ A good method if you want to damage your reputation.<p>[1] <a href="https:&#x2F;
 <blockquote>One more use of the classic secure password &quot;123456&quot; for a hidden account :-)</blockquote>
 </blockquote>
 </blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Novellas with Groff</title>
+      <link>https://movq.de/blog/postings/2026-10-31/0/POSTING-en.html</link>
+      <guid isPermaLink="false">hn3-50325694</guid>
+      <pubDate>Sun, 01 Nov 2026 13:51:41 +0000</pubDate>
+      <description>128 points, 52 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://movq.de/blog/postings/2026-10-31/0/POSTING-en.html"><strong>→ Article</strong></a> <small>(movq.de)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50325694">→ HN comments</a> &nbsp;·&nbsp; 128 points &nbsp;·&nbsp; 52 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tmoertel</em>:</p>
+<blockquote>I think it’s fascinating to see all the different ways that techfolk who write fiction set up their writing pipelines. Some people go with a bare-bones coding editor like Vim; others use “pro” tools Scrivener. And then there’s the typesetting pipeline. Using troff is pretty out there.<p>When I started writing fiction, here’s what I came up with. I write in Google Docs because it’s lightweight, works everywhere, and can easily export to Markdown format. From there, I manage the Markdown source in Git and Emacs. For typesetting—I cannot abide crappy word-processor output—I used to use Pandoc to generate LaTeX markup and run LuaLaTeX to produce PDFs. But that took several seconds. Now, I use Typst to go straight from Markdown to PDF files. It’s pretty much instant.<p>If you want to see what the output looks like, here’s the first chapter of my current project:<p><a href="https:&#x2F;&#x2F;drive.google.com&#x2F;file&#x2F;d&#x2F;1Wl4k_rdYGFZp-r5nq864r5CNzD1eewnU&#x2F;" rel="nofollow">https:&#x2F;&#x2F;drive.google.com&#x2F;file&#x2F;d&#x2F;1Wl4k_rdYGFZp-r5nq864r5CNzD1...</a><p>(Notice: This is a <i>typesetting</i> sample, not a writing sample. It’s my W40k-adjacent fanfic, so you have been warned.)<p>It’s set in 12pt Erewhon, which is an enhanced version of Andrey V. Panov’s Heuristica font family, which extends Robert Slimbach’s Utopia font family. Slimbach is a sublime type designer—he created Minion—and Utopia is one of his early works that is especially spirited.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pmdr</em>:</p>
+<blockquote>&gt; techfolk who write fiction set up their writing pipelines<p>And perhaps infinitely procrastinating on the actual writing itself...</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tmoertel</em>:</p>
+<blockquote>Indeed. One irresistible temptation for coders who go into writing is to bikeshed their pipeline. I know I have spent many hours tweaking my writing pipeline when I should have been writing. I mean, why just write when you can create a Containerfile to build a hermetically sealed image that houses your typesetting system and a dozen carefully chosen fonts, and then you can write scripts managed by a Makefile to launch containers from the image and inject into them your source text and extract from them the typeset PDFs? I mean, surely all of that is essential work on the critical path to getting your writing done. Right?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>marttt</em>:</p>
+<blockquote>I remember a quote by Pandoc creator slash professor of philosophy John MacFarlane: &quot;I would like to think that the time I’ve spent developing tools to make writing more efficient has been repaid by the time I’ve saved using these tools, but I’m pretty sure it hasn’t.&quot;<p>Reference: <a href="https:&#x2F;&#x2F;usesthis.com&#x2F;interviews&#x2F;john.macfarlane&#x2F;" rel="nofollow">https:&#x2F;&#x2F;usesthis.com&#x2F;interviews&#x2F;john.macfarlane&#x2F;</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sloum</em>:</p>
+<blockquote>Agreed, it seems writers that also code have all kinds of different workflows. I end up using (x)html and doing print stylesheets and rendering pdf for print using weasyprint (works really well, and they have sample stylesheets on their website that are a good starting point).<p>I like Erewhon. Nice font.</blockquote>
+<p>↳ reply 3 — <em>kragen</em>:</p>
+<blockquote>troff is no longer fashionable, and it&#x27;s not what you want for top-quality typesetting,  but I don&#x27;t think of it as &quot;out there&quot;. My non-technical mother was using an HDOS program called TEXT.ABS, which is similar to a limited nroff, to format the articles she wrote in the 01980s.  It wasn&#x27;t as easy to use as something like MacWrite, but it was a lot easier than a typewriter.  The text editor she used was called PIE.ABS, and from my point of view, the usability distance from a typewriter to PIE was bigger than from PIE to MacWrite.<p>She didn&#x27;t have much choice of fonts on the pre-Graftrax Epson MX-80 she used.  I think it was Pica or Elite.<p>Typesetting is certainly very satisfying, but it&#x27;s not essential to writing.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tmoertel</em>:</p>
+<blockquote>One potential weakness with using groff for professional publishing is that, according to its current mission statement (2014), its line-layout algorithm is limited and well behind the times:<p><i>Groff currently uses a greedy algorithm to format paragraphs one line at a time, but the Knuth-Plass algorithm, implemented in TeX, Heirloom troff and elsewhere, optimizes linebreaks throughout whole paragraphs and achieves a more uniform typographic grey. One of the most exciting challenges facing groff will be implementing an improved formatting algorithm, the most likely candidate being Knuth-Plass. It’s a big job, but with groff’s clean codebase and helpful community of experts, it is hoped additional developers will step forward and contribute their programming skills.</i><p><i>Equally important will be instituting native support for TrueType, Open Type, and other non-Type1 PostScript fonts, and improving Unicode support.</i><p>Source: <a href="https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;groff&#x2F;groff-mission-statement.html" rel="nofollow">https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;groff&#x2F;groff-mission-statement.h...</a></blockquote>
+<p><strong>Top #3</strong> — <em>fweimer</em>:</p>
+<blockquote>O&#x27;Reilly used to typeset their books using troff&#x2F;groff: <a href="http:&#x2F;&#x2F;www.lemis.com&#x2F;grog&#x2F;Documentation&#x2F;PUS&#x2F;tmac.Gbignuts.G" rel="nofollow">http:&#x2F;&#x2F;www.lemis.com&#x2F;grog&#x2F;Documentation&#x2F;PUS&#x2F;tmac.Gbignuts.G</a> (“O&#x27;Reilly &amp; Associates book macros by Steve Talbott, Lenny Muellner”)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>2b3a51</em>:</p>
+<blockquote>Might be worth mentioning that Tim O&#x27;Reilly himself co-wrote a book about typesetting with troff. <i>Unix Text Processing</i> by Dale Dougherty and Tim O&#x27;Reilly, Hayden Books, 1987. This text was subsequently provided free under the Open Books Project.<p>Larry Kollar has provided a recreated source code repository at<p><a href="https:&#x2F;&#x2F;github.com&#x2F;larrykollar&#x2F;Unix-Text-Processing" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;larrykollar&#x2F;Unix-Text-Processing</a><p>I recollect compiling the source from the github account having only to sort out one font path issue.</blockquote>
+<p>↳ reply 2 — <em>tmoertel</em>:</p>
+<blockquote>That&#x27;s right. From the colophon of 1989&#x27;s Nutshell Handbook on <i>Using C on the UNIX System</i>:<p>&gt; The text of this book is set in Times Roman; headings are Helvetica; examples are Courier. Text was prepared using the <i>troff</i> text formatter and the <i>devps</i> PostScript filter. Figures are produced with a Macintosh. Printing is done on an Apple LaserWriter.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -1477,6 +1791,45 @@ patience limited only by your budget.<p>[1] <a href="https:&#x2F;&#x2F;www.itnew
 <blockquote>I think agy has a “questions pending “ pattern for waiting questions rather than popups. I don’t like it but sounds like they were solving your issue</blockquote>
 <p>↳ reply 2 — <em>contingencies</em>:</p>
 <blockquote>I can heartily recommend switching to private local speech to text voice input with Handy. <a href="https:&#x2F;&#x2F;handy.computer&#x2F;about" rel="nofollow">https:&#x2F;&#x2F;handy.computer&#x2F;about</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Mystery of 60-Second Fluctuations in Power Grids Solved</title>
+      <link>https://www.fz-juelich.de/en/news/archive/press-release/2026/mystery-of-60-second-fluctuations-in-power-grids-solved</link>
+      <guid isPermaLink="false">hn3-50315217</guid>
+      <pubDate>Sat, 31 Oct 2026 11:53:47 +0000</pubDate>
+      <description>236 points, 104 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.fz-juelich.de/en/news/archive/press-release/2026/mystery-of-60-second-fluctuations-in-power-grids-solved"><strong>→ Article</strong></a> <small>(fz-juelich.de)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50315217">→ HN comments</a> &nbsp;·&nbsp; 236 points &nbsp;·&nbsp; 104 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>andrelaszlo</em>:</p>
+<blockquote>Funny, similar patterns are super common in API traffic. A large spike at midnight UTC, a smaller one every hour, even smaller ones every 15 minutes, and a little bump every minute if your metrics have enough resolution.
+Of course, if someone calls your API every minute you should probably consider some kind of streaming, or at least include make the request cheap by requiring a cursor of some kind.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nottorp</em>:</p>
+<blockquote>I&#x27;ve just convinced my team to be nice and add a random delay for all those periodic checks in our software last week :)<p>Yes of course, there was the check at 2 am local time before ...</blockquote>
+<p>↳ reply 2 — <em>cortesoft</em>:</p>
+<blockquote>Yeah, adding &#x27;jitter&#x27; for periodic tasks that make remote requests was standard procedure when I worked for a large CDN. Every cron entry on every server would run with a delay of between 0 and 59 seconds, based on a hash of the server name. You basically 60x your internal infrastructure capacity by doing this (depending on how long the request takes to serve, of course, as well as a few other factors)<p>That, exponential backoffs, and local cache for external resources needed to operate the CDN (such as configuration) were the foundation of running a large network reliably.</blockquote>
+<p>↳ reply 3 — <em>sehugg</em>:</p>
+<blockquote>Even more important if your devices are dialing into a modem bank. We spent a lot of time designing retry schedules and such when I worked on these (ironically for energy storage&#x2F;demand management devices)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>manarth</em>:</p>
+<blockquote>The paper has more details: <a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41560-026-02144-0" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41560-026-02144-0</a></blockquote>
+<p><strong>Top #3</strong> — <em>schobi</em>:</p>
+<blockquote>The press release is rather light on details. They found that it is every 60seconds (duh!) and generators (or such). So what exactly is it? (Make and model?)<p>Seems like they did not find the exact manufacturer or the exact devices and were not able to change firmware then?</blockquote>
+<blockquote>
+<p>↳ reply — <em>manarth</em>:</p>
+<blockquote>The paper has a little more details:<p><pre><code>  &quot;following our communication with the manufacturer, a software update was issued that removed the strict periodicity of the current peaks in one battery block of the investigated UPS system&quot;
+</code></pre>
+<a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41560-026-02144-0" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41560-026-02144-0</a><p>Given the issue is so widespread (international, affecting pretty much every grid), it&#x27;s likely that multiple manufacturers use similar approaches.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>hyperman1</em>:</p>
+<blockquote>You see the same thing with e.g. cron jobs, where everyone schedules on xx:00 or xx:30.  No communication needed, it&#x27;s just natural.  More senior people recognize this and add randomness to their start times or skew a bit.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>tetha</em>:</p>
+<blockquote>I always recommend to use weird numbers for different tasks. That way, you can see &quot;oh my system is under severe load at *:13 (or 17, 23, 42, ...). That must be this cron job&quot;</blockquote>
+</blockquote>
+</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3431,371 +3784,6 @@ No less anxiety (often chronic and severe) and unnecessary procedures that are i
 <blockquote>
 <p>↳ reply — <em>gumby</em>:</p>
 <blockquote>A lot of Bay Area folks thought they were immune</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>We ran AI agent swarms in Minecraft and Mindustry</title>
-      <link>https://labs.ycombinator.com/projects/games/index.html</link>
-      <guid isPermaLink="false">hn3-50296486</guid>
-      <pubDate>Thu, 29 Oct 2026 21:40:28 +0000</pubDate>
-      <description>265 points, 91 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://labs.ycombinator.com/projects/games/index.html"><strong>→ Article</strong></a> <small>(labs.ycombinator.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50296486">→ HN comments</a> &nbsp;·&nbsp; 265 points &nbsp;·&nbsp; 91 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Kiboneu</em>:</p>
-<blockquote>If you want to do a version of this yourself quickly --<p>Install Luanti with Minetest (open source minecraft), and instruct your agent to write a mod that gives it network access to the game&#x27;s Lua interpreter. The agent can then do anything from modifying the world state directly to controlling NPCs.<p>I had it build giant bases similar to black mesa in half life with power distribution mods. It would write solvers to optimally place the power cables &#x2F; repeaters in accordance to the spacial dimensions of the rooms that it would build (lol). I guess this is how I discovered vibe gaming.<p>I suppose you can have multiple agents interact with each other through that, provided an adapter to proxy agent player navigation and perception to get real information asymmetry between them. Or just emulate &#x2F; hook the client and do away without a remote Lua mod entirely.</blockquote>
-<p><strong>Top #2</strong> — <em>ansipunk</em>:</p>
-<blockquote>It is impressive, but it is also a display that LLMs are simply not suited for this, there&#x27;s way too much latency. Obviously, a more specialized neural network would be much better, but would you believe this:<p>In 2017, OpenAI presented the first version of their program that plays Dota 2, a very complex, fast MOBA with endless mechanics and defeated one of the world champions in a one-on-one match. Next year, they showed the world OpenAI Five, a version of the program, that runs a full five player team of those bots and they managed to defeat a full team of world champions in 2019. They ran an event where the bots would play for 4 days straight and they won 99.4% of 42,729 matches.<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenAI_Five" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;OpenAI_Five</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jackgolding</em>:</p>
-<blockquote>What some people do on the rs-sdk runescape server is Jev + deterministic scripts + orchestrating with Astra</blockquote>
-<p>↳ reply 2 — <em>armchairhacker</em>:</p>
-<blockquote>And CNN for image recognition? It’s (similar to) what the human brain uses.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>grenoire</em>:</p>
-<blockquote>Interesting setups, I found the Minecraft agents to work in an almost turn-based manner, which makes me think that the three hours and open format did not really give them sufficient incentives to play in a more lively or reactive manner. On the other hand, they also behave similarly in Bed Wars, which should have incentivised it. A bit disappointed...<p>I&#x27;m also wondering if the article itself was generated by agents too, in a &quot;here are the logs, clip interesting moments thx&quot; manner by the authors. It&#x27;s got a certain disinterested and distracted style to it.</blockquote>
-<blockquote>
-<p>↳ reply — <em>mplappert</em>:</p>
-<blockquote>If you watch the live stream for a bit it’s also obvious that the harness makes it very cumbersome for them to do anything. They spend lots of time just coordinating hand-offs and seem to have delayed inventory access etc.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Binance-hacker-1029 – $5.6B stolen from Binance</title>
-      <link>https://arkm.com/explorer/entity/21a94755-f604-45e5-9501-6542e23005e8</link>
-      <guid isPermaLink="false">hn3-50296470</guid>
-      <pubDate>Thu, 29 Oct 2026 21:38:59 +0000</pubDate>
-      <description>1235 points, 761 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://arkm.com/explorer/entity/21a94755-f604-45e5-9501-6542e23005e8"><strong>→ Article</strong></a> <small>(arkm.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50296470">→ HN comments</a> &nbsp;·&nbsp; 1235 points &nbsp;·&nbsp; 761 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Tiberium</em>:</p>
-<blockquote>About $2.4 billion out of this is already frozen by Circle and Tether. Some of the big ones:<p>- 971.15M USDT (Ethereum): <a href="https:&#x2F;&#x2F;etherscan.io&#x2F;tx&#x2F;0x7baba482077843514d9c72bac0110ba0916b0814288a72917e2c3bb27a9d8659" rel="nofollow">https:&#x2F;&#x2F;etherscan.io&#x2F;tx&#x2F;0x7baba482077843514d9c72bac0110ba091...</a><p>- 823M USDC (Ethereum): <a href="https:&#x2F;&#x2F;etherscan.io&#x2F;tx&#x2F;0xc954c86f118e8e410e6a3eb9e3b38ff4a95fbdae9d2d58e13166afb7a1f4fc5f" rel="nofollow">https:&#x2F;&#x2F;etherscan.io&#x2F;tx&#x2F;0xc954c86f118e8e410e6a3eb9e3b38ff4a9...</a><p>- 312.73M USDT (Tron): <a href="https:&#x2F;&#x2F;tronscan.org&#x2F;#&#x2F;transaction&#x2F;71b0ec0fe873fe820c37cc3ecbab4e83087f87e833d191012a0a4027d20594e1" rel="nofollow">https:&#x2F;&#x2F;tronscan.org&#x2F;#&#x2F;transaction&#x2F;71b0ec0fe873fe820c37cc3ec...</a><p>- 175M USDT (Ethereum): <a href="https:&#x2F;&#x2F;etherscan.io&#x2F;tx&#x2F;0x0c07a5e428ce233a3bcb40f257ad899594421341d63ce94016822063362707bf" rel="nofollow">https:&#x2F;&#x2F;etherscan.io&#x2F;tx&#x2F;0x0c07a5e428ce233a3bcb40f257ad899594...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>codedokode</em>:</p>
-<blockquote>Probably not everyone knows, but USDT has a &quot;black list&quot;, and admins can prevent any address holding USDT from spending. The black list is implemented in USDT contract.<p>So USDT is not truly decentralized and your money can be frozen for any reason or no reason at all.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rich_sasha</em>:</p>
-<blockquote>So USDT is a great amazing decentralized censorship-free drop in replacement to USD except:<p>- much more awkward to use<p>- more liable to hacks<p>- deposits are not insured<p>- fewer legal protections<p>- doesn’t pay interest (or not easily anyway)<p>- and as I find out, bannable by a central institution with lower legal oversight than the Fed<p>I’ll keep a mental note of this.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>dgellow</em>:</p>
-<blockquote>Tether isn’t decentralized or censorship free in any way</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>giwook</em>:</p>
-<blockquote>So they got “only” ~$3 billion</blockquote>
-<p>↳ reply 3 — <em>getcrunk</em>:</p>
-<blockquote>Interesting I didn’t know you can block&#x2F;cancel transactions. Does this have to happen before the new block is minted.  or it can happen after, that’s what I’m inclined to think just based off of the word block</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>madradavid</em>:</p>
-<blockquote>Looks like a DevOps guy is going to take the blame for this: &quot;Binance&#x27;s initial investigation suggests that the security incident may involve a compromised DevOps engineer’s laptop, which allowed an attacker to gain access to a service container and submit unauthorized withdrawal transactions.&quot;  <a href="https:&#x2F;&#x2F;x.com&#x2F;binance&#x2F;status&#x2F;2115993361517891592" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;binance&#x2F;status&#x2F;2115993361517891592</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>echoangle</em>:</p>
-<blockquote>If a compromised laptop was the entry point and that allowed someone to steal 6 billion dollars, it’s not really the engineers fault, right?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Ekaros</em>:</p>
-<blockquote>Well it is engineers fault. But not that engineers. Some engineer designed a system without extreme oversight that should be involved in the process.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>matt3210</em>:</p>
-<blockquote>This kind of low bar reminds me of FTX</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thecopy</em>:</p>
-<blockquote>I recommend everyone to move your plantext secrets from ~&#x2F;.kube&#x2F;config, ~&#x2F;.ssh etc into a password-manager. You can tell Claude to adjust the config files to get the secrets from 1Password when they are needed with TouchID requirements etc.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>cryptoz</em>:</p>
-<blockquote>Some of the old Mt Gox threads are an interesting read today:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7203051">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7203051</a><p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7294762">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7294762</a><p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7369879">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=7369879</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>ElementaryUI – Swift, in the Browser</title>
-      <link>https://elementary.codes</link>
-      <guid isPermaLink="false">hn3-50295821</guid>
-      <pubDate>Thu, 29 Oct 2026 20:56:39 +0000</pubDate>
-      <description>125 points, 37 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://elementary.codes"><strong>→ Article</strong></a> <small>(elementary.codes)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50295821">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 37 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>adrusi</em>:</p>
-<blockquote>Reminiscent of the now 18-year-old Cappuccino project <a href="https:&#x2F;&#x2F;www.cappuccino.dev&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.cappuccino.dev&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>frizlab</em>:</p>
-<blockquote>Project that is still alive, amazingly.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>jdminhbg</em>:</p>
-<blockquote>The last release and blog post are from 2018, is it actually alive?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>joelkesler</em>:</p>
-<blockquote>Yep! If you look at the GitHub repo, there is commits added in the last 5 days:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;cappuccino&#x2F;cappuccino&#x2F;commits&#x2F;main&#x2F;" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;cappuccino&#x2F;cappuccino&#x2F;commits&#x2F;main&#x2F;</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>pipeline_peak</em>:</p>
-<blockquote>I’d say this is closer to Blazor</blockquote>
-<p>↳ reply 3 — <em>larodi</em>:</p>
-<blockquote>cause there was Coffee Script, also, right?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>pjmlp</em>:</p>
-<blockquote>Bit by bit, we are having our beloved browser plugins back, at least for some of us.</blockquote>
-<p><strong>Top #3</strong> — <em>leecommamichael</em>:</p>
-<blockquote>Fun project, an aside; Apple please fix the Swift compiler. It is so slow. It is so very slow.</blockquote>
-<blockquote>
-<p>↳ reply — <em>Someone</em>:</p>
-<blockquote>I’m not sure the compiler is to blame there. The extremely flexible type inference means compilers have to do a lot of work.<p>(Examples at <a href="https:&#x2F;&#x2F;www.swiftbysundell.com&#x2F;basics&#x2F;type-inference&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.swiftbysundell.com&#x2F;basics&#x2F;type-inference&#x2F;</a>)</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A tiny world model running games on a Raspberry Pi Pico 2 W</title>
-      <link>https://github.com/SheepSeb/tinyworldformer</link>
-      <guid isPermaLink="false">hn3-50295450</guid>
-      <pubDate>Thu, 29 Oct 2026 20:32:28 +0000</pubDate>
-      <description>195 points, 13 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/SheepSeb/tinyworldformer"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50295450">→ HN comments</a> &nbsp;·&nbsp; 195 points &nbsp;·&nbsp; 13 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>boustrophedon</em>:</p>
-<blockquote>I might have missed it in the readme, but what hardware did the training take place on? This is really neat.</blockquote>
-<p><strong>Top #2</strong> — <em>dannyw</em>:</p>
-<blockquote>This is incredibly cool! Fascinating to see looped transformers be necessary for mini-Doom, but not for simpler games.</blockquote>
-<p><strong>Top #3</strong> — <em>andai</em>:</p>
-<blockquote>Very cool. I didn&#x27;t know NNs were capable of such determinism, that&#x27;s very interesting. Is this a similar effect to overfitting? Also, it&#x27;s the same model for all the games, right?</blockquote>
-<blockquote>
-<p>↳ reply — <em>svantana</em>:</p>
-<blockquote>&gt; Also, it&#x27;s the same model for all the games, right<p>It&#x27;s a bit unclear but it looks like different models, since they all have different parameter and MAC counts. It would be much more impressive with a single world model that could maybe dream up new games inbetween the games in the training set.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Patrick Stewart has died</title>
-      <link>https://www.nytimes.com/2026/10/29/arts/television/patrick-stewart-dead.html</link>
-      <guid isPermaLink="false">hn3-50294702</guid>
-      <pubDate>Thu, 29 Oct 2026 19:41:39 +0000</pubDate>
-      <description>2874 points, 611 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.nytimes.com/2026/10/29/arts/television/patrick-stewart-dead.html"><strong>→ Article</strong></a> <small>(nytimes.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50294702">→ HN comments</a> &nbsp;·&nbsp; 2874 points &nbsp;·&nbsp; 611 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>halflife</em>:</p>
-<blockquote>Watching him in Star Trek TNG made me reevaluate how management of people should be done, his character was assertive but compassionate. High morals coupled with grounded reason.<p>I also want to mention his hilarious role as bullock in American dad, the way he takes a role both so seriously and ridiculously makes him so fantastically hilarious.<p>I love him and will miss him.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>stuxnet79</em>:</p>
-<blockquote>Star Trek TNG as a whole was a masterclass on how to effectively manage a high performance team. It&#x27;s a favorite watch in tech leadership circles for this reason. Every now and then I re-watch this clip of Data taking over the enterprise and the inevitable hiccups he runs into [1].<p>Really high quality writing for its time.<p>[1] <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=nlnZKTXKidU" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=nlnZKTXKidU</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>WalterBright</em>:</p>
-<blockquote>Keep in mind that Star Trek is a <i>fictional</i> utopia. When writing a script, one can make anything work out well.<p>The original Star Trek was Roddenberry&#x27;s vision of utopia. The benevolent dictator always makes the right decisions. He&#x27;s surrounded by his loyal band of perfect lieutenants, who apparently have zero desire to advance, and have no flaws at all. Any and all of them are willing to sacrifice themselves for the others. None do anything bad (unless it&#x27;s a plot device with an explanation that absolves them).<p>Don&#x27;t get me wrong, I&#x27;ve enjoyed watching ST very much. Just keep in mind that that it&#x27;s a fiction.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>outworlder</em>:</p>
-<blockquote>&gt; The benevolent dictator always makes the right decisions. He&#x27;s surrounded by his loyal band of perfect lieutenants, who apparently have zero desire to advance, and have no flaws at all. Any and all of them are willing to sacrifice themselves for the others. None do anything bad (unless it&#x27;s a plot device with an explanation that absolves them).<p>That is an oversimplification and simply not true at face value.<p>&#x27;The original Star Trek&#x27;, even less so! Very morally questionable at times. In TNG, you are watching the flagship of Starfleet, it&#x27;s the most coveted starship. The crew are the best they have to offer. It&#x27;s obvious that they would be the most professional. Even then, they make mistakes, often serious. Sacrificing themselves - if needed - is part of their job too.<p>Riker does spend a long time on the Enterprise, even after being offered command a few times. He does eventually move on.<p>Maybe they are a little too perfect, but I&#x27;d argue that&#x27;s for the best. The moments where there&#x27;s friction within the crew are much more memorable because of it.<p>Thats in contrast with some newer Trek which have more conflicts than Stargate Universe characters and would be considered way too unprofessional even if they were Lower Decks characters.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>LeoPanthera</em>:</p>
-<blockquote>TNG is a fine example of &quot;competency porn&quot;, where everyone knows what they&#x27;re doing and usually makes the best available choices. In today&#x27;s world, that&#x27;s even more compelling than it used to be.</blockquote>
-<p>↳ reply 3 — <em>rapatel0</em>:</p>
-<blockquote>Picard was a model of ethics, integrity, and competence especially when the moments are dire and there are no good answers.<p>Patrick Stewart modeled how a good man should behave and you could tell that he acted from a place of wisdom he understood through experience.<p>Wonderful contribution to humanity and truly saddened by this loss.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>maxcan</em>:</p>
-<blockquote>One thing that doesn&#x27;t get enough attention - when COVID lockdowns started, he just made reels reading Shakespeare&#x27;s sonnets. It was such a lovely break from everything else on social media.  Really loved those.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>shagie</em>:</p>
-<blockquote>Remember the ice bucket challenges?  <a href="https:&#x2F;&#x2F;youtu.be&#x2F;Ty6-Ug1wk-0" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;Ty6-Ug1wk-0</a><p>Incidentally, this is one of those times when the comment section of YouTube becomes the most wholesome place on the net.</blockquote>
-<p>↳ reply 2 — <em>adzm</em>:</p>
-<blockquote>He did all of the sonnets!</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>tempestn</em>:</p>
-<blockquote>Like everyone else here, Patrick Stewart as Captain Picard was a foundational part of my childhood. As it happens, I&#x27;m currently on bag 27&#x2F;30 of the Lego Enterprise D right now. I&#x27;ve actually had the thought a couple of times over the past few years that this day had to be coming, and that it&#x27;d likely hit me hard when it did, especially after my dad&#x27;s passing in 2024. (They&#x27;re not particularly alike, aside from the hairline, but there&#x27;s still a strong association in my mind, as my dad also loved TNG and was the one who got me into it.)<p>Anyway, it&#x27;s a sad day, but I do appreciate that both his work and the influence he&#x27;s had on people like me live on.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>pimeys</em>:</p>
-<blockquote>It&#x27;s interesting how he was part of everybody&#x27;s childhood. I watched TNG for the first time when I was over 40. And that series became something really special in our family and we all love Stewart, Frakes, Spiner and the gang.<p>Some of the best television ever made if you ask me.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rbanffy</em>:</p>
-<blockquote>&gt; and we all love Stewart, Frakes, Spiner and the gang.<p>I think I’m at that point the characters and their actors feel like dear friends I have grown up with. Sir Patrick will be missed. I’m glad we had a chance to say goodbye to Picard on his own series.<p>To me, I’ll repeat to myself he was just recruited into Section 31.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>thomassmith65</em>:</p>
-<blockquote>People too young to remember the 1990&#x27;s might not know that Patrick Stewart&#x27;s Picard was a sex symbol.<p>I was surprised by how many of my friends considered the character &#x27;hot&#x27;; on paper, one would expect young people to write him off as a balding goody-two-shoes.<p>To have a character whose main traits included compassion and reason was a good influence on my generation of men.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: Auto Dismiss Mac OS "Allow &lt;app&gt; to find devices on local networks?"</title>
-      <link>https://github.com/johncassil/dontallow</link>
-      <guid isPermaLink="false">hn3-50294506</guid>
-      <pubDate>Thu, 29 Oct 2026 19:27:44 +0000</pubDate>
-      <description>131 points, 97 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/johncassil/dontallow"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50294506">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 97 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>skissane</em>:</p>
-<blockquote>The big problem with these permission dialogs, is their lack of technical detail about what the app is actually trying to do which triggers them.<p>How do I know whether to say &quot;Allow&quot; or &quot;Disallow&quot; when it gives me no idea what either option actually means in concrete?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>joshuat</em>:</p>
-<blockquote>This also happened on iOS when they began to prompt users before apps could access the clipboard. I built an app that would handle the inbound redirect automatically if you had a relevant URL in your clipboard - did this for years with many users happy with the feature.<p>Then it started prompting users before allowing them to paste, and then the claims of privacy violations began to come in.<p>If instead I were able to specify what was happening in the prompt rather than iOS giving users an ambiguous statement, or even provide a detection pattern, it wouldn&#x27;t have been nearly as bad.<p>I feel like this really harms security and privacy awareness by flooding the field with unimportant prompts&#x2F;warnings to the degree that a real issue is similarly ignored because it is assumed to just be noise.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ryandrake</em>:</p>
-<blockquote>I think the visibility of these dialogs serves as a warning to the user--but they should do a better job directing the user&#x27;s attention to where the threat is. If the user is getting annoyed at all these pop-ups, he should direct this annoyance at the developer who is (in all likelihood) asking for access to more of the user&#x27;s computer than he needs.<p>The fact that there are so many popups <i>should</i> mean apps are reaching for access to your system way beyond what they should be. It shouldn&#x27;t mean Apple needs to get rid of the pop-ups.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>mook</em>:</p>
-<blockquote>I get the pop-up semi-frequently from Chrome. I don&#x27;t think complaining to Google has ever helped with anything; but then it&#x27;s not like complaining to Apple has a better track record.<p>Yes, I don&#x27;t know why the OS isn&#x27;t tracking the pop-up by bundle id or anything. It&#x27;s not like I changed my mind the last dozen times…</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>joshribakoff</em>:</p>
-<blockquote>From the perspective of the simple dialog, its a problem with the consumer app who calls the api to open the dialogue without context, without informing the user or obtaining user consent prior to doing so. Plenty of apps get this right, eg. Have a screen with buttons in the on-boarding flow that opens the dialogue next to the “maybe later” option, and use that page to explain or “sell” the benefits of enabling the permission.<p>Maybe the dialogs api should be treated like autoplaying videos with sound on the web, just disable the api if it is called outside of a click event handler, and let the consumer app break. That would be a breaking change for OSs tho. It wouldn’t prevent malicious UI patterns from triggering annoying permission prompts, but it would minimize accidental bad ux eg calling it in the main method on load</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jshier</em>:</p>
-<blockquote>I&#x27;d rather something tell me exactly why this popped up in the first place, as every new OS version seems to introduce more triggers. I have apps that now pop this up when I quit, which doesn&#x27;t make much sense.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ryandrake</em>:</p>
-<blockquote>Ideally, every API to call a function that provides the developer &quot;dangerous&quot; access to your system, should give the developer a text string argument to explain&#x2F;justify to the user why it&#x27;s needed. Then, instead of a confusing &quot;Do you want this app to use Bluetooth?&quot; pop-up with zero context, you let the developer convince the user.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>thiht</em>:</p>
-<blockquote>Agree with that, I like the idea of permissions for specific things like this but it’s way to hard to know what’s actually being asked and why.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>anonzzzies</em>:</p>
-<blockquote>Can’t we not have some OS level thing which suppresses all intrusive dialog and puts them in a nice inbox so I can decide which I want to answer or ignore in bulk…</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Alleged Chinese spy had 'close relationship' with Nvidia boss Jensen Huang</title>
-      <link>https://nypost.com/2026/10/29/business/alleged-chinese-spy-had-close-relationship-with-nvidia-boss-jensen-huang-report/</link>
-      <guid isPermaLink="false">hn3-50293047</guid>
-      <pubDate>Thu, 29 Oct 2026 17:43:48 +0000</pubDate>
-      <description>286 points, 199 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://nypost.com/2026/10/29/business/alleged-chinese-spy-had-close-relationship-with-nvidia-boss-jensen-huang-report/"><strong>→ Article</strong></a> <small>(nypost.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50293047">→ HN comments</a> &nbsp;·&nbsp; 286 points &nbsp;·&nbsp; 199 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>janalsncm</em>:</p>
-<blockquote>A couple of questions after reading this article. The Post is not exactly top notch journalism.<p>First, does her activity actually fit the definition of “espionage”?<p><i>Espionage is the act of secretly gathering confidential, classified, or proprietary information without the owner&#x27;s permission</i><p>The most important question is what she actually sent and how secret it was. Most companies have levels of secrecy ranging from non public to highly sensitive. For example, schematics of their chip would be concerning.<p>Also, this seems pretty different from setting up a mic behind a TV.<p>Second, although the article tries very hard to imply there was some kind of infidelity, adding irrelevant details about Jensen’s family, I don’t know that any of that happened.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>walrus01</em>:</p>
-<blockquote>&gt; The Post is not exactly top notch journalism.<p>I&#x27;ll go as far as to say it&#x27;s a right wing agitation propaganda rag. But the story first appeared in the NY Times, as another commenter has linked here,, so it&#x27;s possible that the story may be accurate (though undoubtedly the nypost has sensationalized it, as that&#x27;s their specialty), but both things can be true simultaneously. The NY Post can be trash <i>and</i> this series of events might have really happened.</blockquote>
-<p>↳ reply 2 — <em>aurareturn</em>:</p>
-<blockquote>There is absolutely no doubt in my mind that this is just a hit piece - IE, they were looking to paint Nvidia and Jensen in some bad light and found a vague lead. Didn&#x27;t matter if the evidence isn&#x27;t substantial. Just publish and smear first.</blockquote>
-<p>↳ reply 3 — <em>giantg2</em>:</p>
-<blockquote>Nothing has to be collected. All they need to show is that she has some link to foreign government intelligence and attempted to do anything. Good chance she was an unregistered agent which is a violation.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>zetazzed</em>:</p>
-<blockquote>Super weird that the only relationship documented in this article is two &quot;dinners with AI executives in Asia.&quot; Does that count as a close relationship? I get invited to AI dinners in the Bay Area nonstop, and I understand they are always transactional (people wanting to sell me stuff), not actual relations with people who just happen to enjoy my presence...</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ummonk</em>:</p>
-<blockquote>This. They seem to be making a mountain out of a molehill that seems to consist of a couple of normal business meetings.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>9dev</em>:</p>
-<blockquote>It’s the NY Post. Did anyone really expect serious journalism..?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jimbob45</em>:</p>
-<blockquote>Great reporting can come from unlikely sources. If you told anyone from 2013 that TMZ would be a semi-respected publication in 2026, you’d have been laughed out of the room.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>everdrive</em>:</p>
-<blockquote>Are you a CEO? Those invites might work a bit differently.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>markus_zhang</em>:</p>
-<blockquote>I doubt Jensen is completely out of the scheme TBH.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Claude Duet is the first personal-assistant-type harness that feels useful</title>
-      <link>https://fig.blue/posts/duet-is-the-future/</link>
-      <guid isPermaLink="false">hn3-50292727</guid>
-      <pubDate>Thu, 29 Oct 2026 17:24:25 +0000</pubDate>
-      <description>125 points, 139 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://fig.blue/posts/duet-is-the-future/"><strong>→ Article</strong></a> <small>(fig.blue)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50292727">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 139 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mbesto</em>:</p>
-<blockquote>Am I missing something, how is there any sort value in these assistants acting as agents on your behalf when they are basically a black box? Like if it can&#x27;t use my drivers license or my phone number or my credit card, it can&#x27;t do 75% of things people claim it can do without being massive security issues. What am I missing?<p>For the record I use OpenClaw but it has its own services (gmail address, phone number, etc.) and I don&#x27;t give it any of mine, which inherently limits its capabilities.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>andai</em>:</p>
-<blockquote>Yeah, that&#x27;s the core of the issue:<p><a href="https:&#x2F;&#x2F;simonwillison.net&#x2F;2025&#x2F;Jun&#x2F;16&#x2F;the-lethal-trifecta&#x2F;" rel="nofollow">https:&#x2F;&#x2F;simonwillison.net&#x2F;2025&#x2F;Jun&#x2F;16&#x2F;the-lethal-trifecta&#x2F;</a><p>The &quot;lethal trifecta&quot;: To be useful, an agent needs internet access, untrusted inputs, and your private information.<p>So it can get prompt injected and exfiltrate your data. (Indeed I read that Claude Code puts your email address into HTTP requests it makes to random servers?)<p>My solution here was to just not give it anything, but that does preclude the &quot;my claw bought a car!&quot; result everyone&#x27;s excited about.<p>My way of thinking here is &quot;blast radius&quot;. Assume it <i>will</i> get prompt injected. What goes wrong? Then design the setup so that scenario is not bad. e.g. it has my keys but they&#x27;ve got $5 of credit on them. It has access to the filesystem, but only on its own Linux account. (Ok I set this up last year before they could communicate thru the bloody CPU cache, might need an update :)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>simonw</em>:</p>
-<blockquote>I&#x27;ve recently talked to people at Anthropic who are <i>very</i> confident that they have effectively solved the prompt injection risks that cause lethal trifecta attacks with their latest models.<p>The open challenge is how to prove it!</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>epicureanideal</em>:</p>
-<blockquote>&gt; The open challenge is how to prove it!<p>It could be proven by Anthropic backed credit cards with terms that protect users if it’s leaked or an agent misuses it.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>BryantD</em>:</p>
-<blockquote>FWIW, my biggest use case for agents like this is ongoing research. I.e.: check Humble Bundle weekly and tell me if there’s a book bundle I might be interested in. Has the Music Box announced a film series I might want to visit Chicago for? That sort of thing; I want filters for the firehose.</blockquote>
-<p>↳ reply 3 — <em>threecheese</em>:</p>
-<blockquote>I&#x27;m on your side wrt sensitive data, but there are other use cases. I use the OpenAI one: Dot, and this is why I&#x27;ve found it valuable:<p>- it uses a very fast model for normal responses, but also does reasoning and all the agent things. It responds within a second or two.
-- it feels like it has multiple threads internally- it can respond to your messages and questions immediately, but also do thinking and web search like a normal thread.
-- it can communicate with other agent threads, as an orchestrator (although this isn&#x27;t unique to it).
-- it has dedicated persistent compute already, with a desktop that you control, and so gives you a UI surface area that the agent can use.<p>And so the value for me is an always-on agent conversation, where you can tell it to perform tasks and ask it questions, and it just does all of it immediately. Those tasks can be software development instead of like ordering dinner.<p>It has SMS &#x2F; phone comm channels also, but I don&#x27;t use that.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>aliasxneo</em>:</p>
-<blockquote>I have to agree. I&#x27;ve been using it for a few days now after coming from GrokBot, then Muse, then Dots. None really clicked for me within the first day. Duet seems different. I haven&#x27;t quite pegged it, but off the top of my hand:<p>1. Yes, channels really are useful<p>2. It does seem to be using Opus 5.5 behind the scenes because, shockingly, it&#x27;s not screwing everything up like the others usually did<p>3. Agree that the answers are short and to the point. If you want more info, you just pop open whatever task (separate from channels) it started and you can see what it&#x27;s doing.<p>Seems like more time in the oven might have paid off here.<p>Also, to be clear, this is purely used as a personal assistant by me. I still use omp+Paseo for all of my day to day work. I find the separation of concerns kind of nice.</blockquote>
-<blockquote>
-<p>↳ reply — <em>james_marks</em>:</p>
-<blockquote>I’ve hacked together my own version of this, basically a Swift app to manage secure access so I control the thing that has full disk access.<p>And then run a coding agent to manage calendar, emails, research projects against my work history, etc, with TouchID for the sensitive pieces.<p>It’s incredible, I hope to never put a flight on my calendar by hand again, and soon I won’t be buying them, either.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dmoose</em>:</p>
-<blockquote>Would you mind fleshing this out a bit?  I&#x27;m not following how it identifies the sensitive pieces without sending to a model, or do you mean letting the model see messages, calendar, email, etc. but not able to go beyond those?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>james_marks</em>:</p>
-<blockquote>It’s similar to MCP, where in the Swift app I’ve got a catalog of actions eg, SearchEmail, AddToCalendar. I’ve got them bucketed by sensitivity so I have to approve (some of) them with TouchID.<p>So the model can see the results, but the access is whitelisted and temporary.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ActionHank</em>:</p>
-<blockquote>I dunno, Hermes has been real hard to beat lately.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Tomáš Mikolov awarded the Medal of Merit by the President of the Czech Republic</title>
-      <link>https://www.vut.cz/en/but/news-f19528/two-but-graduates-received-state-honors-from-the-president-of-the-republic-d378468</link>
-      <guid isPermaLink="false">hn3-50292233</guid>
-      <pubDate>Thu, 29 Oct 2026 16:56:54 +0000</pubDate>
-      <description>162 points, 17 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.vut.cz/en/but/news-f19528/two-but-graduates-received-state-honors-from-the-president-of-the-republic-d378468"><strong>→ Article</strong></a> <small>(vut.cz)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50292233">→ HN comments</a> &nbsp;·&nbsp; 162 points &nbsp;·&nbsp; 17 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>samrus</em>:</p>
-<blockquote>Deserved. word2vec is a beautiful peice of science. The hypothesis behind it was so amazing. I kinda feel like everything else in LLMs (including the attention mechanism itself) is just engineering around the representation learning breakthrough that word2vec demonstrated</blockquote>
-<blockquote>
-<p>↳ reply — <em>jacquesm</em>:</p>
-<blockquote>And with applications far outside the original scope, which I think is one of the hallmarks of foundational discoveries. As soon as you have that one puzzle piece a whole lot of other stuff comes into focus.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>microtonal</em>:</p>
-<blockquote>Well-deserved. Even though more complex language models won in the end, his stripping down of word embedding training from RNNs&#x2F;convolution models to a simple linear model was the thing that was needed for compute at the time and completely dominated the field for five years or so. I do miss the times a little where you could train a cutting-edge model with a reasonable CPU (for training embeddings with word2vec) and a single GPU (some BiLSTM or transformers before BERT).<p>If I remember correctly, I read somewhere he initially had a hard time getting the word2vec paper accepted at a conference.</blockquote>
-<p><strong>Top #3</strong> — <em>BOOSTERHIDROGEN</em>:</p>
-<blockquote>I still in awe how could someone understand well in math, is it pure nature or nurture. Could any average possible to grasp the beauty of math, starting from high school level math understanding.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Google Search is now less than half of Alphabet’s revenue</title>
-      <link>https://www.kadoa.com/companies/insights/google-search-below-half</link>
-      <guid isPermaLink="false">hn3-50291945</guid>
-      <pubDate>Thu, 29 Oct 2026 16:42:17 +0000</pubDate>
-      <description>394 points, 329 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.kadoa.com/companies/insights/google-search-below-half"><strong>→ Article</strong></a> <small>(kadoa.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50291945">→ HN comments</a> &nbsp;·&nbsp; 394 points &nbsp;·&nbsp; 329 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>jonas21</em>:</p>
-<blockquote>I get what they&#x27;re trying to say, but it still seems a bit unconventional to have a line chart where the y-axis is a share percentage.<p>Here&#x27;s a graph with revenue in dollars by segment:<p><a href="https:&#x2F;&#x2F;www.pasteboard.co&#x2F;DwvXdQj2LXpk.png" rel="nofollow">https:&#x2F;&#x2F;www.pasteboard.co&#x2F;DwvXdQj2LXpk.png</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>hinkley</em>:</p>
-<blockquote>This graph invites some pertinent questions. For instance, it suggests that their search revenue growth went linear sometime in 2020 and might be going asymptotic as of the last year. So I want to know what happens there over the next several quarters. Is the current quarter anomalous, or do deferred payments always make it look like that?<p>Second, is the geometric growth of Cloud cannibalizing their search teams, leading to less effort being put into sales. And so it’s not so much that demand is tapering off as that supply is being constrained as an opportunity cost. That $1m in salary nets more profit from Cloud than from Search.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>FloorEgg</em>:</p>
-<blockquote>As a power user of Google search for decades, I find myself using it less and less (maybe now 5% of my historical peak usage). There are several reasons, but the main one is because they have gradually traded search quality for ad revenue with the direct consequence being wasting my time.<p>If I type in the name of a company so that I can navigate to their website, and I have to scroll past my whole viewport of other companies bidding to be placed above where I&#x27;m trying to go, I learn it&#x27;s faster for me to just type the website address into the bar instead of going via Google.<p>They designed a UX that made my life easier and caused me to form a habit, and then broke that UX for money causing me to form a new habit.<p>It&#x27;s just one example of dozens, but the consequence is that I see 95% fewer Google ads than I used to. My guess I am on the leading edge (along with many others on this forum) of a wave of change of user behavior that spells pessimism for Google search revenue.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>hinkley</em>:</p>
-<blockquote>It is unfortunate and only sometimes sustainable to alienate a third of your user base to extract 2x as much money from the rest for a net 30% increase in short term revenue. It’s not repeatable usually.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>andrewguy9</em>:</p>
-<blockquote>Thank you for showing the actually useful chart.</blockquote>
-<p>↳ reply 3 — <em>usefulcat</em>:</p>
-<blockquote>Notice how for both &quot;search&quot; and &quot;everything else&quot; there&#x27;s a peak at almost every year boundary. Trying to juice the EOY numbers, I guess?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>kinj28</em>:</p>
-<blockquote>Pre-AI, we used to spend upwards of $60K a year on Google Ads to keep our inbound pipeline running.<p>In the post-AI world, that spend dropped to $0. Not because Google Search suddenly stopped working, but because our segment (low-code platforms) was one of those that AI was going to disrupt significantly. We had to rethink and adapt our offering to the AI world before doubling down on marketing.<p>Now that we’ve repositioned and adapted our product, our marketing team has started experimenting with OpenAI as a channel, but we haven’t switched Google Ads back on.<p>There’s also something I find interesting about this shift. Google Ads always felt a bit like a mafia tax. When we stopped paying, our organic traffic seemed to take a disproportionate hit too. We could never quite figure out why. Maybe it was coincidence, maybe something else, but it left us questioning how independent organic search traffic really was from paid search.</blockquote>
-<p><strong>Top #3</strong> — <em>1970-01-01</em>:</p>
-<blockquote>A few days ago a Google found me something I was searching for, but via ads and not search. In the middle of searching raw part numbers, the ad became 100% relevant. It was a weird experience clicking on the ad; something I never ever do. So maybe this is a bit of good news? Yardinflatables.com if you&#x27;re curious.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Xenoamorphous</em>:</p>
-<blockquote>I’ve always wondered what % of ad clicks are just misclicks.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>netcoyote</em>:</p>
-<blockquote>When we created battle.net at Blizzard for Diablo, there was a bug where the game would launch in full-screen mode and hang, and the only way to escape back to the Win95 desktop was to click the ad displayed by battle.net.<p>We weren’t aware of this.<p>The ad company we used notified us of this issue and gave us three days to fix it. Afterwards our click-through rate went from something like 3% to .25%.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Gareth321</em>:</p>
-<blockquote>That&#x27;s hilarious. I miss the old Battle.net.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>cobbzilla</em>:</p>
-<blockquote>Fascinating; they must be bidding on the part numbers as search keywords.<p>Now I wonder what the median CPC is for part numbers (I’d guess very cheap), and which one is the most expensive (no idea, super curious).</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
