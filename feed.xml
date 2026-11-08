@@ -4,7 +4,255 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 07 Nov 2026 22:37:30 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2026 02:14:25 +0000</lastBuildDate>
+    <item>
+      <title>What I run on my $10 USD OpenStick homelab</title>
+      <link>https://blog.bosscher.ch/posts/openstick/</link>
+      <guid isPermaLink="false">hn3-50406670</guid>
+      <pubDate>Sat, 07 Nov 2026 18:12:12 +0000</pubDate>
+      <description>348 points, 84 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.bosscher.ch/posts/openstick/"><strong>→ Article</strong></a> <small>(blog.bosscher.ch)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50406670">→ HN comments</a> &nbsp;·&nbsp; 348 points &nbsp;·&nbsp; 84 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>LaurensBER</em>:</p>
+<blockquote>I&#x27;ve had a lot of fun with this little gadget and it&#x27;s pretty cool to see how much you can host on a cheap gadget if you pick the right software! Given how expensive RAM is these days, I figured, this might be a good option for other people to get started with self-hosting as well!<p>Happy to answer any question and take suggestions as to what other software would be a good addition!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>NortySpock</em>:</p>
+<blockquote>Nice list, I&#x27;ll have to try a few! I&#x27;ve been having fun squeezing things into a Raspberry Pi 4 (4GB) and a thin client acting as a server (16GB), there&#x27;s something about passively cooled compute that feels &quot;free&quot;...<p>Possibly of note from my services list:<p>victoria-metrics : currently at 230 MB ram because I send it all kinds of metrics<p>victoria-logs : 114 MB ram -- log aggregator<p>vl-agent : 25 MB ram (log forwarder for above)<p>ntp : 2 MB ram<p>librespeed : 16 MB ram (LAN speed testing, useful for wifi &#x2F; quick ethernet checks)<p>corentinth&#x2F;it-tools : 5 MB ram<p>mqtt mosquitto : 5 MB ram (message broker)<p>smokeping : 52 MB ram (latency history)<p><a href="https:&#x2F;&#x2F;github.com&#x2F;apenwarr&#x2F;blip" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;apenwarr&#x2F;blip</a> : 2 MB (live DNS latency checker)<p>lighttpd : 2 MB (static web server serving a single homepage)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>rcarmo</em>:</p>
+<blockquote>How much telemetry do you have in victoria-metrics? I&#x27;ve stuck to graphite but have been considering moving to it.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>NortySpock</em>:</p>
+<blockquote>lol last time I crowed about VictoriaMetrics someone accused me of being a bot <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48192183">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48192183</a><p>But anyways, a fun test I ran was &quot;load 4.5 million samples of Beijing hourly air quality data (ozone, S02, PM2.5, etc) from May 2013 to May 2017.&quot; (using Bento to turn the csv into json to fire at the API, with some batching and 4 http connections to Victoriametrics )<p>VictoriaMetrics accepts all of this in 54 seconds, network traffic shows between 9 and 14MB per second , and the data is available several seconds later (it&#x27;s definitely a noticeable delay for me before it shows up in the VictoriaMetrics UI). Server is an old passively cooled thin client with a quad core AMD GX-415GA (circa 2013) and DDR3 ram.<p>So, 4.5M data points, 11 timeseries.  Docker volume says it&#x27;s under 14MB in size.<p>In my regular day-to-day telemetry (separate container) the volume is 99MB in size, it has 11,747 timeseries, 18,689 total samples, but I only keep a few days of data retention.<p>I think VictoriaMetrics is great, and I have found their documentation is extensive and easy to follow.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>msephton</em>:</p>
+<blockquote>This is really cool. I enjoyed the way your post was written. I’m thinking FreshRSS would be a good candidate - it looks hideous - but acts as a fetcher&#x2F;cache&#x2F;proxy for RSS reader apps on your phone or computer, so that when they launch there’s no time consuming wait for feeds to refresh.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>rbanffy</em>:</p>
+<blockquote>It’s more powerful than the RPi Zeros I use on my cluster - kind of same as a Zero 2.<p>What I’d love to see is a stick that plugs into an Ethernet switch with PoE so you assemble a cluster just by literally plugging nodes to a cluster. For that to work, the best form factor would be a vertical board with a male Ethernet connector on one side so that it’d fit on the horizontal RJ45 on the switch and not be limited by the RJ45’s width.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ssl-3</em>:</p>
+<blockquote>That&#x27;d be elegant.  But.  :)<p>It involves a lot of custom kit (like male right-angle PC-mount 8P8C connectors are contrary to the natural order and don&#x27;t seem to exist at all), and it misses the mark on the main advantage of adopting the complexity of 802.3af PoE:  Useful amounts of reliable power alongside data over inexpensive wiring, at long (~100 meter) distances.<p>And we&#x27;re talking about a cluster of, what, a few nodes?<p>There&#x27;s got to be a better way  :)</blockquote>
+<p>↳ reply 2 — <em>justsomehnguy</em>:</p>
+<blockquote>It would be too hot and too expensive. You can skip the copper media and go for an SFP&#x2F;SFP+ pluggable directly - a full blown computer in the SFP module is yesteryear news. But at this point if you are assembling a cluster of sticks in SFP switch... you can just take some 5 y.o. USDT&#x2F;Tiny and have a full blown x64 computer with all the power and virtualization you need.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>rcarmo</em>:</p>
+<blockquote>Fusion is quite interesting. I forked miniflux into <a href="https:&#x2F;&#x2F;github.com&#x2F;rcarmo&#x2F;picoflux" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;rcarmo&#x2F;picoflux</a> because I wanted something lighter, but I like Fusion&#x27;s screenshots better than the mini&#x2F;picoflux web UI, so I will be looking at that ASAP.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The end of Microsoft Research's AI Frontiers group</title>
+      <link>https://hunch.net/?p=13764006</link>
+      <guid isPermaLink="false">hn3-50406563</guid>
+      <pubDate>Sat, 07 Nov 2026 18:02:17 +0000</pubDate>
+      <description>394 points, 230 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://hunch.net/?p=13764006"><strong>→ Article</strong></a> <small>(hunch.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50406563">→ HN comments</a> &nbsp;·&nbsp; 394 points &nbsp;·&nbsp; 230 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>AnotherGoodName</em>:</p>
+<blockquote>This is true in every large company right now.<p>The transformer based approach is seen as a highway to race down in terms of training and building better models with minimal organizational distractions allowed while every company puts its foot down on this highway. Exploratory research into other AI methods is highly discouraged for now and organizations are encouraging transformer based scale out and iteration as a top priority.<p>As an example Meta literally fired it&#x27;s previously head of AI who held views that transformers won&#x27;t scale. He wanted to veer off the highway and heavily fund exploratory new types of models. They got someone willing to scale the current method out. Essentially the messaging it &quot;Foot down, there&#x27;s a straight highway ahead don&#x27;t divert&quot;.<p>I have the view this makes sense too. Current top models are mere (mere in big datacenter terms) trillions of parameters right now. We definitely haven&#x27;t hit the ceiling and everyone&#x27;s noticing &quot;Hey this Opus 5.5 with the increased parameters seems much better than the last one&quot;. Well that&#x27;s a trillion parameter model. We&#x27;ll soon start hitting 10&#x27;s of trillions and 100&#x27;s of trillions of parameter models. Unless there&#x27;s a ceiling which nobody expects they should keep scaling just as they have been. I really do agree that it&#x27;d be insane to veer off this highway with exploratory research at this particular point in time. Foot down, get to 10 trillion parameters, see if the scaling holds, if so off to 100 trillion parameters. If the scaling continues to hold we&#x27;ll be asking the AI to do the exploratory research for us soon enough.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>redox99</em>:</p>
+<blockquote>&gt; As an example Meta literally fired it&#x27;s previously head of AI who held views that transformers won&#x27;t scale. He wanted to veer off the highway and heavily fund exploratory new types of models.<p>Almost all statements Yann LeCun made back then (LLMs won&#x27;t be able to do this or that) turned out to be wrong. They were right to fire him.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Animats</em>:</p>
+<blockquote>Historically, that happens now and then. Examples include color television cameras and fluorescent lamp ballasts.<p>RCA developed the first good color TV cameras. They were monsters. Originally, electronic TV (as opposed to mechanical scanning) used Zworykin&#x27;s iconoscope. This needed huge amounts of light. It didn&#x27;t have a photo-multiplier stage                              to boost sensitivity, but it did accumulate charge from light over the whole frame time. There was an alternative approach, Farnsworth&#x27;s image dissector, which also needed huge amounts of light. It had a photo-multiplier stage but only the light from the dot currently being scanned by the scanning beam mattered.<p>So RCA threw money at the problem. They developed the image orthicon camera tube. It combined the advantages of both approaches, integration over a full frame and a photo-multiplier stage. It was insanely expensive, costing thousands of dollars in the 1950s. It needed about twenty different voltages and multiple independent power supplies. It worked reasonably well.<p>Then came color. That took three image orthicons (RGB) inside a box the size of a small refrigerator, along with optics to split the incoming image into three colors. Plus 
+a rack of analog electronics per camera, connected through a large cable. Plus an alignment problem from hell, with a huge number of adjustment knobs.[1]<p>Scaling worked! From the 1950s to the 1970s, color TV broadcasting was powered by those monsters.<p>Now, independent of this, other people were working on other approaches. Vidicons, silicon detectors inside camera tubes, and finally fully solid state image sensors. Eventually, in 
+1983, after thirty years of image orthicon monsters, RCA produced a usable solid state camera. Today, a cell phone camera costs about US$10 in bulk, and it&#x27;s far better than the monsters.<p>It took thirty years of low-priority development to get past the giant image orthicon cameras.<p>Electronic fluorescent lamp ballasts had a different problem. That was a suppressed invention.
+The magnetic ballast industry was dominated by Magnetek. Someone invented a solid state replacement, which was smaller and cheaper, and licensed their patent to Magnetek for royalties. Magnetek just sat on it, not wanting to gut their core market. The inventor hired Townsend, Townsend and Crew in Palo Alto and sued. (Read this in the law firm&#x27;s brag book in their office.) Eventually, the inventor got a hundred million or so, solid state ballasts went into production, and Magnetek seems to be gone. (The company called Magnetek today, which makes crane controls, is an offshoot of a Litton unit, and seems to be unrelated.)<p>There are also parallels from the steam locomotive industry, the Baldwin Locomotive Works being the best known. Baldwin actually built the first Diesel locomotive. They made a few half-hearted tries at Diesels over several decades, then gave up and went back to steam. Baldwin ceased all locomotive production in 1956. The corporation lingered on for a while, not doing much.<p>[1] <a href="https:&#x2F;&#x2F;www.tvcameramuseum.org&#x2F;rca&#x2F;tk40a&#x2F;pix&#x2F;rcatk40aart.pdf" rel="nofollow">https:&#x2F;&#x2F;www.tvcameramuseum.org&#x2F;rca&#x2F;tk40a&#x2F;pix&#x2F;rcatk40aart.pdf</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>leoc</em>:</p>
+<blockquote>(So it must be those Orthicon cameras which cause the distinctive weirdnesses of early TV images like the reflections from highly-polished surfaces (such as the bells of brass instruments and saxophones) which gleam <i>black</i>? <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2uTQQKU6ge0&amp;t=111s" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2uTQQKU6ge0&amp;t=111s</a> )</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>MantisShrimp90</em>:</p>
+<blockquote>That depends on your definition of scale. Yes! We were to literally convert the whole world and its resources into data centers.<p>But the whole problem is that these things aren&#x27;t acting like other technological revolutions like the internet or Google where lots of profit comes from relatively little spend. They scale linearly maybe if you are super smart and good about your design.<p>Meanwhile, citizens all over the world are fighting data centers tooth and nail because we are hitting a scaling limit in terms of the resources people will allow to be put into this highway project and its equally unwise and untethered from reality to pretend this doesn&#x27;t matter in a strategic sense.</blockquote>
+<p>↳ reply 3 — <em>mrandish</em>:</p>
+<blockquote>&gt;  there&#x27;s a straight highway ahead<p>Which many credible, AI researchers believe is already starting up an increasingly steep scaling wall of diminishing returns that eventually ends at a brick wall.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>smokel</em>:</p>
+<blockquote>This refers specifically to &quot;AI Frontiers&quot;, a research group within Microsoft Research that focuses on fundamental advances in AI.  There is no end in sight to real AI frontiers.<p>Perhaps &quot;The End of Microsoft Research&#x27;s AI Frontiers Group&quot;
+would be a less ambiguous title.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dang</em>:</p>
+<blockquote>Ok we&#x27;ll use that above. Thanks!</blockquote>
+<p>↳ reply 2 — <em>sheepscreek</em>:</p>
+<blockquote>Yeah, I went down the rabbit hole scratching my head the whole time. This is about the group at Microsoft Research that was disbanded or reorged into what is now Microsoft Research.<p>To the author: 100% need this kind of thinking. It’s a balancing act. Historically though, dedicated labs haven’t had the best track record at commercializing their tech. The skillset differs vastly from running a product-focused business.<p>That said, even within this narrow scope - there are areas ripe for research.<p>Some of my particular interests include:<p>(1) Latent thinking&#x2F;reasoning, which could arguably be more efficient but also opaque is one<p>(2) Separation of “intelligence” from knowledge - ie. keep the ability to reason like a frontier model and make tool calls (calling the ‘oracle’ or searching the web) but remove all parameters associated with niche knowledge&#x2F;facts.<p>These are a couple off the top of my head that are very much aligned to scaling.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>rhyperior</em>:</p>
+<blockquote>&gt; there’s a breakdown of the basic deal in MSR: do good work and good things happen<p>This really hit home for me. This is the contract that held for a *long* time at Microsoft and has been broken and rebroken with current leadership. It’s culture-destroying.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Show HN: Coldframe, a honeypot that poses as a supermarket fridge controller</title>
+      <link>https://github.com/hedgerow-dev/coldframe</link>
+      <guid isPermaLink="false">hn3-50406292</guid>
+      <pubDate>Sat, 07 Nov 2026 17:27:30 +0000</pubDate>
+      <description>193 points, 40 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/hedgerow-dev/coldframe"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50406292">→ HN comments</a> &nbsp;·&nbsp; 193 points &nbsp;·&nbsp; 40 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>supriyo-biswas</em>:</p>
+<blockquote>I would be very skeptical of anyone relying on Shodan data. At one point I was trying to write honeypots myself by replicating wifi cameras, but almost all the ones on the internet I found were honeypots of some sort, and the ones that weren&#x27;t were already hacked and had their web pages replaced. In retrospect it would have probably been better to get a vulnerable device myself and probe it.<p>If I were you, I would probably ensure that the fridges you used have residential or commercial (aka non-DC) IP addresses. Maybe Shodan uses this data for their &quot;honeypot&quot; label, my experience was some time ago so no idea though.</blockquote>
+<p><strong>Top #2</strong> — <em>amelius</em>:</p>
+<blockquote>The interesting aspect of these attacks was that they seemed to have been done per country.</blockquote>
+<p><strong>Top #3</strong> — <em>xrd</em>:</p>
+<blockquote>Wait, I recall reading the threads about someone speculating there was a hack. Some people suggested it could just be that a large percentage of refrigeration units received a software update at the same time which resembled a hack.<p>Is there a definitive story that someone actually did hack these units on a grand scale?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>eterm</em>:</p>
+<blockquote>There have been (at least) two separate waves to this now, which makes the &quot;innocent broken update&quot; speculation much less likely?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>msephton</em>:</p>
+<blockquote>Unless they push updates in waves, which is what most big rollouts do.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>raizer88</em>:</p>
+<blockquote>This type of attack lasted few days in different countries,  quite hard to believe the fridge manufacturer could keep pushing these updates after all the news around.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>MaxxBench – "Nice DeepSWE score. But is it true?"</title>
+      <link>https://maxxbench.unlap.ai/research/why-maxxbench/</link>
+      <guid isPermaLink="false">hn3-50406222</guid>
+      <pubDate>Sat, 07 Nov 2026 17:19:00 +0000</pubDate>
+      <description>206 points, 63 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://maxxbench.unlap.ai/research/why-maxxbench/"><strong>→ Article</strong></a> <small>(maxxbench.unlap.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50406222">→ HN comments</a> &nbsp;·&nbsp; 206 points &nbsp;·&nbsp; 63 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>kqr</em>:</p>
+<blockquote>This is a great example of how to test how well a benchmark score generalises. The first order approximation is not complicated: just vary a parameter and see how much the score changes.<p>Which parameter to vary depends on the result of the test, but the MaxxBench route of varying the task spec seems like a good default, though not always the most informative.<p>In one of my private benchmarks I realised many of the less capable models didn&#x27;t fail because they submitted the wrong answer, but because they exceeded their budget for number of tool calls they were allowed. The more capable models never got close to the tool call limit because they tended toward combining tool calls (e.g. chaining multiple shell commands in one Bash tool call).<p>Was my benchmark actually measuring ability to combine tool calls rather than reasoning ability on the problem at hand? Well, easy enough to find out: re-run under a different tool call budget and see how much the scores change.<p>(Next problem: is ability to combine tool calls a useful thing to measure, i.e. <i>should</i> it confer an advantage in the benchmark? It could be if it is a sign of planning multiple steps ahead.)</blockquote>
+<p><strong>Top #2</strong> — <em>kqr</em>:</p>
+<blockquote>I&#x27;m surprised by four things:<p>(1) An established framework for model evaluation runs the inference call with API key <i>inside</i> the isolated envionment the agent harness has full access to. Especially when it&#x27;s intended to be an offline environment, that seems kinda... dumb. The language model itself is not dangerous -- it&#x27;s only text. Inference is fine to do outside the isolated environment. It&#x27;s only the harness&#x27; tools that can have effects on the enironment, so <i>those</i> need to be sent to the sandbox.<p>(2) Only a small set of language models exploited this! I run private benchmarks a lot and I know how much the language models try to anticipate grader behaviour when the task is bechmark-shaped. I would have thought more of them would request the answer from the web.<p>(3) It takes someone else to mutate the task specification. When I&#x27;m looking at an older iteration of one of my private benchmarks, the first thing I do is add a small twist to it to see how much of a passing grade is learned&#x2F;anticipated. Seems like a cheap and easy coalmine canary that&#x27;s in the interest of the evaluator.<p>(4) MaxxBench did not try to dress some DeepSWE tasks in clothes that make them look less benchmarky. Their purpose seems to be answering &quot;how well does DeepSWE enchmark scores generalise?&quot; Part of the generalisation error is memorised solutions, yes, but another part is that models emit different behaviour when they suspect they are in a benchmark. By being careful to not leak the benchmark nature of the task, models spend a lot less time reasoning about the behaviour of the grader and this is likely to produce different performance on the mutated task. It would be interesting to know in what direction that effect points, because that is the performance people get out of the model in real situations. (In my experience, hiding the benchmark nature of the task can produce improved performance on both the original and the mutated task, but particularly the latter.)</blockquote>
+<blockquote>
+<p>↳ reply — <em>rbehrends</em>:</p>
+<blockquote>&gt; I run private benchmarks a lot and I know how much the language models try to anticipate grader behaviour when the task is bechmark-shaped. I would have thought more of them would request the answer from the web.<p>This is something I was thinking about, too. More than once I&#x27;ve observed a model note in a reasoning trace something along the lines of &quot;this looks like a coding test&quot; (could possibly also refer to leetcode style problems, but same difference). Models often also seem to behave differently in response to one-shot prompts.<p>On occasions where I let a model do autonomous work, I usually don&#x27;t just give it a prompt for this reason. I write a CONCEPT.md file, then refine that interactively into a SPEC.md file to find and resolve ambitaskguities (and possibly also create an ARCHITECTURE.md file, if it isn&#x27;t a one-off ). At this point, most models seem to no longer see it as a benchmark or competitive programming problem, but a proper software engineering task and are less prone to reward hacking (with the caveat that these are very subjective and unfalsifiable impressions).</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>antirez</em>:</p>
+<blockquote>I bet we will find this is mostly that smaller models have issues to go against: 1. strong priors that are inverted here in the changes of the benchmarks. 2. underspecified specs for which hidden tests test things not clearly stated, but that very large models can guess knowing they are tested.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Apple’s grey list: Words and phrases your iPhone won’t help you spell</title>
+      <link>https://www.theguardian.com/technology/2026/nov/06/struggling-to-spell-male-chauvinist-pig-apple-grey-list-means-your-iphone-wont-help-you</link>
+      <guid isPermaLink="false">hn3-50406111</guid>
+      <pubDate>Sat, 07 Nov 2026 17:06:36 +0000</pubDate>
+      <description>367 points, 245 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theguardian.com/technology/2026/nov/06/struggling-to-spell-male-chauvinist-pig-apple-grey-list-means-your-iphone-wont-help-you"><strong>→ Article</strong></a> <small>(theguardian.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50406111">→ HN comments</a> &nbsp;·&nbsp; 367 points &nbsp;·&nbsp; 245 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tavavex</em>:</p>
+<blockquote>I wonder what the boardroom meeting for this was like. Despite the outcome, I doubt the devs were pitching censorship as the reason for implementing this.<p>To the shocking number of people here who are justifying this or explaining how it only affect swipe input as if that makes it better: soft coercion is still coercion. If I made a physical keyboard that stops keys from working when you&#x27;re about to finish typing something I don&#x27;t want you to type, but you can still circumvent it, I still made a censorship keyboard. It&#x27;s a sign of the times with how used tech companies are to &#x27;softly&#x27; moderating societal trends by unilaterally tweaking the software that everyone uses.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Arnt</em>:</p>
+<blockquote>I wrote something like this a long time ago. The customer&#x27;s request was: &quot;don&#x27;t make this software produce swear words on its own&quot;. Note: on its own.<p>Producing &quot;trump is …&quot; when a user wants that is one thing. Producing that when the user wants something else could be construed as coming from the software itself, and we all know that people looking for a shitstorm will seize the opportunity.<p>So probabilistic software like a swipe interpreter will often be written to avoid some guesses, to lessen the chance of a shitstorm. Users who want that output have to use a dependable input method instead of one based on probabilities and guesswork.<p>IMO this avoidance isn&#x27;t among the ten worst consequences of shitstorms.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>scratcheee</em>:</p>
+<blockquote>An even more generous interpretation (not saying this is the case and a complete excuse, but might explain some of the choices) is that there are some phrases people do not want to type by accident.<p>“Male chauvinist pig” is something many would be very upset to send to their boss by accident. So it’s perhaps understandable some such phrases are not excluded from the guesswork.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ryandrake</em>:</p>
+<blockquote>What I don&#x27;t understand is how you can type something that is close enough to “Male chauvinist pig” that an uncensored autocorrect will guess it, without intending to type “Male chauvinist pig”. That phrase and others like it, even if one or two letters are wrong or swiped through incorrectly, is unambiguous.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>conradev</em>:</p>
+<blockquote>Apple is choosing between two outcomes:<p>- There is a chance, quantified by some metric, where a person is suggested a word that is offensive to them or their culture because a probabilistic model made the wrong decision.<p>- There is no chance that the above happens.<p>Apple will choose the latter, time and time again, because they are risk averse and freedom is not particularly high on their values list. We’re talking about the company that doesn’t let you type the Taiwanese flag in China, or the pride flag in Russia. It’s no surprise you’re not allowed to swipe “fuck” in the United States. I used to work at Apple.</blockquote>
+<p>↳ reply 3 — <em>kragen</em>:</p>
+<blockquote>I&#x27;m guessing that somebody tried to swipe &quot;Halas&quot; or &quot;Hamid&quot; and it came out &quot;Hamas&quot;, or &quot;Tibetan obedience&quot; and ended up with &quot;Tibetan independence&quot;, which was followed by a visit from the police or being blacklisted from PayPal.  Or &quot;I want to question your artsy friend about the gallery&quot; came out as &quot;I want to question your sexuality, friend about the gallery&quot;.<p>There are cases like <a href="https:&#x2F;&#x2F;gizmodo.com&#x2F;a-cellphones-missing-dot-kills-two-people-puts-three-m-382026" rel="nofollow">https:&#x2F;&#x2F;gizmodo.com&#x2F;a-cellphones-missing-dot-kills-two-peopl...</a> where, in 02008, Ramazan Çalçoban texted his estranged wife in Turkish, &quot;you change the topic every time you run out of arguments&quot;, but the lack of the Turkish dotless &quot;i&quot; on his cellphone turned &quot;sıkısınca&quot; into &quot;sikisinca&quot;, which looks more like a misspelling of &quot;sikisince&quot;.  So he ended up texting her, &quot;You change the topic every time they are fucking you.&quot;<p>Long story short, his father-in-law murdered him for thus insulting his daughter&#x27;s fidelity, following which he murdered the daughter in question, and the father-in-law committed suicide in prison.<p>So there might be certain words and phrases that it&#x27;s best for your computers to not send to other people on your behalf unless they&#x27;re <i>really</i> sure you mean them.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Someone1234</em>:</p>
+<blockquote>And that&#x27;s just the tip of the iceberg for the iOS Keyboard&#x27;s issues. They&#x27;ve tried to fix it multiple times, and while it is undeniably better than its lowest point - it is still staggeringly worse than Google&#x27;s native offering on the Pixel range. Swiping is just so painful, and Microsoft&#x27;s Swiftkey keyboard is on life support.<p>Considering arguably the keyboard itself is one of the most common &quot;touch surfaces&quot; on iOS, the level of neglect and level of overall quality is staggering. There&#x27;s some serious incentive problems at Apple if nobody is tasked with making one of the best digital keyboards in the world.<p>PS - Whoever came up with the concept, on swipe-style touch keyboards, of the &quot;Tap Map&quot;&#x2F;Heatmap wherein keys visible location doesn&#x27;t match their touch area - so that BY DESIGN it always provides an inconsistent user experience needs to be fired into the sun. You literally cannot disable it on most mobile keyboards. It is on iOS&#x27;s native keyboard AND Microsoft&#x27;s Swiftkey.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>noitpmeder</em>:</p>
+<blockquote>This isn&#x27;t a &quot;bug&quot; with the iOS keyboard, this is directed and intentional censorship.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Someone1234</em>:</p>
+<blockquote>Of course; but my point is just add it to the giant pile of problems with iOS&#x27;s keyboard. Every part of it has bugs, broken stuff, or annoyances like this, it isn&#x27;t fit for purpose, and needs significant work.<p>The fact Apple aren&#x27;t embarrassed by the iOS keyboard is very surprising and disappointing.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bbarn</em>:</p>
+<blockquote>I&#x27;d argue iPhone got ahead of the game then just stopped getting at all better.  Siri AI is straight garbage, they won&#x27;t let the interface be anything but what they want it to be, and the app store lock in&#x2F;lack of ad blockers on browsers has made it basically just a phone for me.  I have no intention of upgrading beyond my 12, and when it finally dies, I&#x27;m probably moving back to some kind of android phone if there&#x27;s not a viable open source model out there by then (viable for everything, banking, etc).  I only moved to apple because the watch was leagues better at the time than samsung&#x27;s offering, but now I can&#x27;t even claim that (and quit wearing it years ago)</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>scosman</em>:</p>
+<blockquote>Not predicting to something controversial when doing predictive text isn&#x27;t censorship. You can still type any of these things. When I swing my finger around wildly it&#x27;s making a best guess; not jumping to a phrase that makes me look bad or get arrested (in some countries) isn&#x27;t an awful design choice.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>user_7832</em>:</p>
+<blockquote>I&#x27;m not sure you get what&#x27;s exactly happening. It&#x27;s not <i>only</i> not predicting, it&#x27;s also &quot;typing something else&quot;.<p>Swipe &quot;Ireland&quot; alone, works. &quot;United&quot; alone, works.<p><i>Same</i> swipes but back to back, and now it&#x27;s suddenly &quot;United Iceland&quot;.<p>There&#x27;s no predictive text involved here, this starts going into the willful territory.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pj1115</em>:</p>
+<blockquote>I&#x27;m a pretty quick and accurate swipe typer, and it&#x27;s so frustrating to repeatedly get the wrong result and get NO signal that it&#x27;s not my error, meaning I usually try one or two more times.<p>Picked at random: &quot;right wing propaganda&quot; isn&#x27;t severe enough a phrase that I  instinctively know I&#x27;m hitting a swear filter. After swiping the last word iOS goes back and changes the second word to &quot;Wong&quot;. In order to understand what was happening and then fix it, I had to backspace (deleting the whole phrase), re-swipe both words, backspace, re-swipe both words again, double tap the incorrect word, backspace, type the word, tap to return to the end of the sentence, and hit space. All to fix one letter.<p>If this was really about protecting people from accidentally typing these that might land them in hot water, why wouldn&#x27;t iOS at least offer the word it knew I wanted in the suggestion bar?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ryandrake</em>:</p>
+<blockquote>Just because one mode of input is not censored doesn&#x27;t mean that the other modes are not censored.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>How Long Can Life Wait?</title>
+      <link>https://mceglowski.substack.com/p/how-long-can-life-wait</link>
+      <guid isPermaLink="false">hn3-50405789</guid>
+      <pubDate>Sat, 07 Nov 2026 16:22:59 +0000</pubDate>
+      <description>129 points, 79 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://mceglowski.substack.com/p/how-long-can-life-wait"><strong>→ Article</strong></a> <small>(mceglowski.substack.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50405789">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 79 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>andrewflnr</em>:</p>
+<blockquote>&gt; Temperature is a bigger factory<p>Since the author is here: stray &#x27;y&#x27; there, probably. Fun read, though, especially mere hours after finishing <i>Project Hail Mary</i>.</blockquote>
+<p><strong>Top #2</strong> — <em>themanmaran</em>:</p>
+<blockquote>&gt; But if 2-9-3 really had been isolated from its relative for a quarter billion years, enough random mutations in the rDNA should have accumulated for there to be a difference of at least 50 base pairs<p>Occams razor definitely points to this just being a sterilization problem. But it would be funny if the bacteria was just way more stable than people expect.</blockquote>
+<blockquote>
+<p>↳ reply — <em>dekhn</em>:</p>
+<blockquote>Ribosomal DNA is extremely highly conserved and normal random mutation models do not predict it&#x27;s changes well at all.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>idlewords</em>:</p>
+<blockquote>The model I cite in the article is calibrated to rDNA specifically.</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>schiffern</em>:</p>
+<blockquote>One thing about panspermia math: why assume <i>current</i> travel conditions between the stars?<p>Today the Sun is very far from other stars, but early in star formation (within nebula) the stars are<p>1. <i>much</i> closer together<p>2. have a higher rate of material ejection (mass exchange)<p>3. likely have more benign radiation environments unless near a star, due to GCR shielding by nebula gas<p>4. likely have higher equilibrium temperature in interstellar&#x2F;interplanetary space<p>Combined, these factors yield orders of magnitude improvement in panspermia efficiency vs the Sun.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>idlewords</em>:</p>
+<blockquote>This has occurred to people! But if you run the numbers, they are still not good enough in that early (~100 My) window when stars in the parent nebula are close together, you get something like 1 chance in 1000 of possible panspermia events (based on modeling lumps of rock flying back and forth). Not terrible odds, but nothing like the Mars -&gt; Earth odds.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>w1</em>:</p>
+<blockquote>A more extreme version of this is the idea of panspermia in the early universe, when the cosmic microwave background radiation was warm enough to keep water liquid: <a href="https:&#x2F;&#x2F;lweb.cfa.harvard.edu&#x2F;~loeb&#x2F;habitable.pdf" rel="nofollow">https:&#x2F;&#x2F;lweb.cfa.harvard.edu&#x2F;~loeb&#x2F;habitable.pdf</a></blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pfdietz</em>:</p>
+<blockquote>Yes indeed, I&#x27;ve thought panspermia in the Sun&#x27;s natal cluster is an interesting idea.  What could make it even more interesting is that small bodies in our Solar System (and likely its sister systems) were warm enough for liquid water to exist for some millions of years then, so there would be an enormous volume of material in which Origin of Life might have occurred (and, if it did, to then spread after the parent body froze and then fragmented.)<p>It would make a fine science fictional scenario that could get around the Fermi problem:  those 10,000 or so systems could have life, but the rest of the universe not have life.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>They don't make 'em like that any more: Borland Turbo Pascal 7</title>
+      <link>https://kevinboone.me/tpwin.html</link>
+      <guid isPermaLink="false">hn3-50405678</guid>
+      <pubDate>Sat, 07 Nov 2026 16:06:27 +0000</pubDate>
+      <description>189 points, 105 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://kevinboone.me/tpwin.html"><strong>→ Article</strong></a> <small>(kevinboone.me)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50405678">→ HN comments</a> &nbsp;·&nbsp; 189 points &nbsp;·&nbsp; 105 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>bdamm</em>:</p>
+<blockquote>Turbo Pascal was a glorious tool for my imaginative 15-year-old brain. The first programs I sold were all written in Turbo Pascal. I had the Turbo Pascal reference books near my bedside, and I wish I still had them because they were dog-eared, post-it noted, margin-scribbled, and it&#x27;s kind of strange but those books guided my future almost more than any other written text.<p>One distinct memory stands out. I could not wrap my mind around the Object-Oriented extensions on Pascal. I read, re-read, and re-re-read the section of the book describing what polymorhpism is and how it worked, probably at least a dozen times. Somehow it seemed really important and I kept coming back to it. I worked the examples. And then one day the ah-hah moment arrived. I remember it felt like a shock, why it was useful and what I could do with it. I promptly used my knowledge to write a new game using OOP principles to guide the rudimentary &quot;characters&quot; of various geometric shapes at the core of the game.<p>Fun times, and very formative to me!</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jasomill</em>:</p>
+<blockquote>MacApp provided me with an crash course in Object Pascal, just in time for Apple to throw it all away in favor of C++. Fortunately I was a voracious reader of programming language books at the time, so I was already familiar with OO concepts from learning about languages like Smalltalk that I never had a chance to use at the time.</blockquote>
+<p>↳ reply 2 — <em>malux85</em>:</p>
+<blockquote>me too, with pointers in C, I would have been about 10 at the time, 1995 with DJGPP in DOS!  I still remember that feeling when it clicked</blockquote>
+<p>↳ reply 3 — <em>nurettin</em>:</p>
+<blockquote>Similar experience here. I&#x27;d try to understand a concept in the help file, give up, try again the next year and suddenly it clicks. Maybe that&#x27;s just how the human brain develops.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>throwaway81523</em>:</p>
+<blockquote>Required reading, &quot;Things Turbo Pascal is Smaller Than&quot;, <a href="https:&#x2F;&#x2F;prog21.dadgum.com&#x2F;116.html" rel="nofollow">https:&#x2F;&#x2F;prog21.dadgum.com&#x2F;116.html</a><p>And: &quot;A Personal History of Compilation Speed, Part 2&quot; <a href="https:&#x2F;&#x2F;prog21.dadgum.com&#x2F;47.html" rel="nofollow">https:&#x2F;&#x2F;prog21.dadgum.com&#x2F;47.html</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>BruceEel</em>:</p>
+<blockquote>I miss James Hague&#x27;s posts - prog21 was really something else.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>mapontosevenths</em>:</p>
+<blockquote>&gt; &quot;That almost nobody has the skills these days to implement something like TP is something we could eventually come to regret – or, rather, our grandchildren could. Software development is becoming a semi-skilled industry, and I doubt that the rise of AI will entirely compensate for this.&quot;<p>I agree, but AI also there is hope!<p>For many years I&#x27;ve worried about the ever-growing depth of abstraction in computing. There are few alive now who actually understand all of the layers on abstraction involved in modern computing, and who can debug the truly strange edge case bugs and vulnerabilities introduced by the interoperation of these many complex layers.<p>For a time I imagined it to be an unsolvable problem, and that there would always be only a special class of neurodivergent hyper-specialists who still mostly had to work in large teams to even come close to understanding a stack in full. We&#x27;re reaching the point where a single human lifespan just isn&#x27;t enough to learn it all, even for those of us with what Dilbert called &quot;The Knack&quot;. By the time you&#x27;re proficient in all of it - you&#x27;re dead.<p>Now there is a new kind of intelligence. One that CAN fit it all in a single mind, and one that will outlive us all and continue to learn long after our meat has gone bad.<p>As long as the AI&#x27;s stay aligned, and we find ways to build them more efficiently there&#x27;s a non-zero chance that they actually make it all better instead of worse. Genuinely long-term planning and the ability to TRULY grasp the full stack COULD actually happen. At least if we use these new systems in service of the greater good, and not just to play silly games on the stock market.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mike_hearn</em>:</p>
+<blockquote>AI isn&#x27;t fundamentally different to us and it does benefit from abstractions. So, I don&#x27;t think that&#x27;s going to happen.<p>Besides, it&#x27;s an exaggeration. I&#x27;ve been programming for 35 years, and Turbo Pascal was one of my first languages. I wrote OWL code! Seeing that splash screen brought back memories. But I can understand and debug problems that cross almost any layer of the software stack. Anything from some ReactJS library to kernel code to UEFI. I&#x27;m now 42 so the idea nobody can understand or debug interactions across layers before they die is for the birds. The stack isn&#x27;t <i>that</i> deep.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>enneff</em>:</p>
+<blockquote>I think it’s easier for us to say when we grew up with the stack. In the old days you could pretty much understand everything on your computer in a relatively short period of time. So as a learner it was all so accessible. These days it’s hard to even know where to start.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>herf</em>:</p>
+<blockquote>AI is not trending towards small, minimal code with nice abstractions. It is faster at replicating &quot;big team&quot; code, but the code from a small team or a few authors still wins for elegance and simplicity.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>The $8 Linux Computer (2022)</title>
       <link>http://thelittleengineerthatcould.blogspot.com/2022/12/the-8-linux-computer.html</link>
@@ -3620,263 +3868,6 @@ Recently some other big brand occupied the space, in a couple of months besides 
 </blockquote>
 <p><strong>Top #3</strong> — <em>nickdothutton</em>:</p>
 <blockquote>UK high streets have been in some kind of decline (IMO) for decades now. Long before online shopping, COVID and its repercussions, and the current wave of street crime (phones, watches) and front businesses (vape and phone repair shops hiring dozens of &quot;skilled&quot; workers on visas... to work in a tiny cupboard unit with implausible turnover). Even when a new &quot;luxury&quot; apartment block is constructed, the retail units often remain vacant for years before being occupied by a constantly changing list of tenants, none of which seem to be able to make a success of it. The nursery becomes a dojo, which becomes a social enterprise cafe, which eventually becomes an estate agent, which then closes.<p>Rents are high, parking difficult, the products undifferentiated (carbon copy list of the same 15-20 chain franchises), not unique. After all of that, I&#x27;ll assume prices are no better and may be worse than online retail.<p>I&#x27;m not sure what the answer is, as retail is not my area of expertise. However I think that if there is a solution it will have something to do with people, community, and offering a specifically local experience. Not one which is purely a chore, and I think it will involve much more than just &quot;convenience&quot;.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>AMD expects to outsell Intel in Q4 for the first time in history</title>
-      <link>https://www.tomshardware.com/pc-components/cpus/amd-expects-to-outsell-intel-in-q4-for-the-first-time-in-history-usd17b-guidance-would-exceed-intels-projections</link>
-      <guid isPermaLink="false">hn3-50367125</guid>
-      <pubDate>Wed, 04 Nov 2026 15:38:34 +0000</pubDate>
-      <description>475 points, 174 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.tomshardware.com/pc-components/cpus/amd-expects-to-outsell-intel-in-q4-for-the-first-time-in-history-usd17b-guidance-would-exceed-intels-projections"><strong>→ Article</strong></a> <small>(tomshardware.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50367125">→ HN comments</a> &nbsp;·&nbsp; 475 points &nbsp;·&nbsp; 174 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>mickeyp</em>:</p>
-<blockquote>That says more about Intel&#x27;s shambolic efforts than it does about AMD&#x27;s road to damascus moment.<p>Honestly both of them have demonstrated that they have little interest in AI. Intel gave up on Optane right as (a much-improved successor) would&#x27;ve helped with MoE offsetting or even as a highly durable drive for KV caching.<p>AMD have... turned out some decent gaming graphics cards and fine server CPUs but little else.<p>People are out there solding SMDs on old Nvidia mining rig GPUs to use them for inference; their hardware is not depreciating at the normal rate you&#x27;d expect from GPUs. DGX spark is finally useful now that AI can write multi-machine inference tooling optimised to it. Where&#x27;s AMD in all of this? Nowhere.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>zdw</em>:</p>
-<blockquote>AMD has their Strix&#x2F;Gorgon Halo as a competitor to DGX Spark, which is at least in the ballpark in terms of bandwidth, and being x86 has some compatibility benefits.<p>If you wanted a GPU with 32GB of memory for AI tasks, the AMD AI Pro R9700 was (up until about a month ago) reasonably priced at ~$1300.   It&#x27;s not a RTX 5090 in terms of bandwidth and compute, but for the price and being actually purchasable it&#x27;s a reasonable pick.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mickeyp</em>:</p>
-<blockquote>I like to think that if there are wins to be had, the market will price that in.<p>Those cards are cheap because they&#x27;re not really that amazing.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>wmf</em>:</p>
-<blockquote>This is somewhat true. A lot of AMD hardware is underpriced at launch because ROCm doesn&#x27;t work yet. Then once ROCm is working the price moves up to what it should be.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Twirrim</em>:</p>
-<blockquote>For what it&#x27;s worth, AMD is very actively pushing GPU hardware, particularly towards the hyperscalers.  From what I&#x27;ve seen, they&#x27;re really focusing in on the large quantity end users (your OpenAI, Meta, etc. types), presumably because they&#x27;ll have the technical expertise and willingness to collaborate with them on issues as long as the GPUs are cheap enough.</blockquote>
-<p>↳ reply 3 — <em>mort96</em>:</p>
-<blockquote>I never understood why some fraction of technologists seem convinced that Optane was this amazing thing that would&#x27;ve been awesome if only Intel hadn&#x27;t killed it.<p>It never made sense. It&#x27;s slower than RAM, and what do I get for it? Persistence? I don&#x27;t <i>want</i> persistent RAM, I like the ability to reboot to solve problems, and storing stuff on a non-volatile mediums has all sorts of legal implications which it&#x27;s easier to avoid.<p>It&#x27;s more expensive and has less storage than SSDs, even though the main downside of SSDs is their high price per gigabyte and relatively low capacities.<p>It&#x27;s going in the wrong direction for both use cases. I guess it could have a very niche use case as a super fast persistent caching layer in front of spinning rust but that&#x27;s kinda it.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>davoneus</em>:</p>
-<blockquote>Having strong competition between the CPU vendors is always a good thing. AMD has made mistakes, but it&#x27;s hard to argue they don&#x27;t deserve to outsell Intel for a change.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>deepsquirrelnet</em>:</p>
-<blockquote>I have reservations about AMD due to repeatedly poor Linux support. My 8700GE APU has display freezes and can&#x27;t recover 1-2 times a week. For a chip that was released 2.5y ago, that&#x27;s nuts.</blockquote>
-<p>↳ reply 2 — <em>theandrewbailey</em>:</p>
-<blockquote>I hope they use much of this windfall to invest in improved products in the future. It&#x27;s unlikely to impossible that Radeon or Instinct will ever be more popular or faster than its competition, but it shouldn&#x27;t languish, and the Zen series should keep running circles around Intel.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>p1necone</em>:</p>
-<blockquote>The vibes I&#x27;m getting are that x86 is on its way out - apple switched, and mainstream laptops are releasing with <i>fast</i> snapdragon chips - I&#x27;m thinking both Intel <i>and</i> AMD risk becoming obsolete if they keep focusing on x86 chips.<p>Anyone with insight into the industry know how much institutional knowledge would be relevant still with an ISA switch?</blockquote>
-<blockquote>
-<p>↳ reply — <em>layer8</em>:</p>
-<blockquote>Windows-on-ARM market share seems to be stagnating at a low-ish single-digit percentage, I don’t see it overtaking x86 anytime soon.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Kimi K3.1 Pro model weights are out</title>
-      <link>https://huggingface.co/moonshotai/Kimi-K3.1-Pro</link>
-      <guid isPermaLink="false">hn3-50366999</guid>
-      <pubDate>Wed, 04 Nov 2026 15:30:30 +0000</pubDate>
-      <description>384 points, 102 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://huggingface.co/moonshotai/Kimi-K3.1-Pro"><strong>→ Article</strong></a> <small>(huggingface.co)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50366999">→ HN comments</a> &nbsp;·&nbsp; 384 points &nbsp;·&nbsp; 102 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>__jf__</em>:</p>
-<blockquote>Subtle quote from their website:<p>&gt; Advancing the Frontier of Open Intelligence.<p>Too bad you probably need something like an 8x B300 node to run this. Black Friday is coming soon though, but I fear this open intelligence will be pacing anyone&#x27;s liquidity frontier so I&#x27;ll probably keep trailing the frontier for a while with nvidia&#x2F;qwen3.8-27B-NVFP4 on dual RTX PRO 4000 in TP=2. I can <i>almost</i> fit 450k context in there.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bityard</em>:</p>
-<blockquote>Models this size aren&#x27;t targeting hobbyists running models in their bedrooms on gaming&#x2F;surplus hardware bought with disposable income.<p>This model is for researchers who already have racks of equipment, inference providers who sell access to models, and for businesses who must (or choose to) use on-prem models. All of which have to pay to use the model if their revenue rises beyond certain thresholds: <a href="https:&#x2F;&#x2F;huggingface.co&#x2F;moonshotai&#x2F;Kimi-K3.1-Pro&#x2F;blob&#x2F;main&#x2F;LICENSE" rel="nofollow">https:&#x2F;&#x2F;huggingface.co&#x2F;moonshotai&#x2F;Kimi-K3.1-Pro&#x2F;blob&#x2F;main&#x2F;LI...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>SR2Z</em>:</p>
-<blockquote>Considering the likelihood of Moonshot being able to collect a judgement for violating these terms in an American court is basically zero, and the relative ease of finding the weights without the licensing agreement, &quot;have to pay&quot; seems very generous.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>largbae</em>:</p>
-<blockquote>Most enterprises capable of running that much gear won&#x27;t take that risk even if it is unenforceable. Oracle has made a great living threatening audits of companies who download its updates.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>FuriouslyAdrift</em>:</p>
-<blockquote>We&#x27;re running Kimi 2.8 on a 4x AMD MI300A single server on-premise that cost about $110k.<p>We will break even from our old Claude spend in about 2 weeks.<p>It services 30-40 analysts and staff concurrently and is faster than any of the SaaS out there for us.</blockquote>
-<p>↳ reply 3 — <em>joecot</em>:</p>
-<blockquote>The benefit is that you can use these models on a variety of different providers. You&#x27;re not stuck with a single proprietary provider. Aggregators like OpenCode Zen and OpenCode Go can shop around providers on these. OpenRouter shows you the costs of a bunch of the providers, and you can route to the cheapest ones.<p>I regularly use together.ai with models like this, where they&#x27;re fully self hosting them and I can turn off all data retention, at a fraction of the cost of proprietary models. I recently discovered abliterated models (models edited to not refuse to work on security stuff) and hosts for them like refuseless.com, and that&#x27;s an option for open source models, not for proprietary ones.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>segmondy</em>:</p>
-<blockquote>Doesn&#x27;t seem to outpace DeepSeekV4.1-Flash by much.  Hy4 also announced their models and they have tons of internal benchmark, and K3.1 doesn&#x27;t score that high on those benchmarks whereas Opus5.5 does, so it seems K3.1 is benchmaxxed.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>reissbaker</em>:</p>
-<blockquote>If you use it day-to-day you can definitely feel that K3 (and K3.1) are much stronger than DS4.1-Flash-1017. There&#x27;s something the benchmarks don&#x27;t capture. DS4.1-Flash-1017 is an amazing model for the price, but it&#x27;s not a very large model in comparison.<p>I wouldn&#x27;t over-weight internal benchmarks from a competitor that claim benchmaxxing TBH. Kimi K3 has been at the top of Design Arena for open-weight models for a long long time, and I suspect K3.1 will be there for a long time too. It&#x27;s pretty hard to fake that one since it&#x27;s actual human preferences for the artifacts produced.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>seizethecheese</em>:</p>
-<blockquote>Speaking of arena comparisons of K3.1 and DS4.1-Flash, we&#x27;re spinning one up that&#x27;s more relevant than design, I think: <a href="https:&#x2F;&#x2F;agentduel.com&#x2F;leaderboard" rel="nofollow">https:&#x2F;&#x2F;agentduel.com&#x2F;leaderboard</a><p>Here, DS4.1-Flash and K3.1 are basically tied, with K3.1 being slower and more expensive. Big error bars, though.<p>Even with error bars, DS4.1-flash is clearly an impressive model.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>reissbaker</em>:</p>
-<blockquote>If your benchmark puts DS4.1-Flash at the same tier as K3 or K3.1, I&#x27;m sorry to say your benchmark is broken. It really isn&#x27;t, as much as I wish it was.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>zozbot234</em>:</p>
-<blockquote>For reference, Hy4 Preview was a 770B model (49B active) + 10B MTP (0.7B active).  Not nearly the same potential as Kimi K3 (which is 2.8T) wrt. real-world knowledge - which matters at the new frontier of advanced research and scholarly tasks.  Coding benchmarks are pretty much universally saturated by now which is why newer intelligence indexes have chosen to weigh tasks quite differently.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>dmckinno</em>:</p>
-<blockquote>Lots of chatter about how this model is benchmaxxed, but didn’t observe this in our testing.<p>Very strong open model release that is a bit off the frontier but totally amazing for most use-cases.<p><a href="https:&#x2F;&#x2F;x.com&#x2F;danielmckinn0n&#x2F;status&#x2F;2115213822957117535?a=fOnT23O3ybHYeBwR1xU&amp;s=46" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;danielmckinn0n&#x2F;status&#x2F;2115213822957117535?a=fO...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>OpenAI to acquire Pierre Computer Company</title>
-      <link>https://openai.com/index/openai-to-acquire-pierre/</link>
-      <guid isPermaLink="false">hn3-50366863</guid>
-      <pubDate>Wed, 04 Nov 2026 15:21:21 +0000</pubDate>
-      <description>185 points, 62 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://openai.com/index/openai-to-acquire-pierre/"><strong>→ Article</strong></a> <small>(openai.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50366863">→ HN comments</a> &nbsp;·&nbsp; 185 points &nbsp;·&nbsp; 62 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tiffanyh</em>:</p>
-<blockquote>I have to imagine this is related to: <a href="https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;scaling-git-at-openai&#x2F;" rel="nofollow">https:&#x2F;&#x2F;openai.com&#x2F;index&#x2F;scaling-git-at-openai&#x2F;</a><p>And you&#x27;ll see that mitchellh is a big fan of Pierre (and I think investor)<p><a href="https:&#x2F;&#x2F;x.com&#x2F;mitchellh&#x2F;status&#x2F;2036855931569651884?lang=en" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;mitchellh&#x2F;status&#x2F;2036855931569651884?lang=en</a><p>For those who don&#x27;t know Pierce, here&#x27;s a demo from mitchellh:<p><a href="https:&#x2F;&#x2F;x.com&#x2F;mitchellh&#x2F;status&#x2F;2057229385963618787" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;mitchellh&#x2F;status&#x2F;2057229385963618787</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lalitmaganti</em>:</p>
-<blockquote>He is a minor investor. He commented on the acquisition at <a href="https:&#x2F;&#x2F;x.com&#x2F;mitchellh&#x2F;status&#x2F;2118012675582280038" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;mitchellh&#x2F;status&#x2F;2118012675582280038</a></blockquote>
-<p>↳ reply 2 — <em>mi_lk</em>:</p>
-<blockquote>tangent: I think mitchellh was talking about moving Ghostty off GitHub? Any update?</blockquote>
-<p>↳ reply 3 — <em>MangoCoffee</em>:</p>
-<blockquote>i found Mitchell&#x27;s answer to someone&#x27;s question regarding why buy a open source software company, very interesting.<p><a href="https:&#x2F;&#x2F;x.com&#x2F;mitchellh&#x2F;status&#x2F;2118017893921436019?a=bCZdMwCIC5HCVe44Jqc&amp;s=20" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;mitchellh&#x2F;status&#x2F;2118017893921436019?a=bCZdMwC...</a><p>code&#x2F;coding isn&#x27;t valuable. the problem solving skill is what set a good and bad engineer apart.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>paxy</em>:</p>
-<blockquote>We need a term for an acquisition where you buy an entire company because it would be cheaper than paying a monthly subscription fee to use their product.</blockquote>
-<blockquote>
-<p>↳ reply — <em>newsclues</em>:</p>
-<blockquote>SubSkip acquisition</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Ralfp</em>:</p>
-<blockquote>Cool. Pierre Computer is a company founded by original Bootstrap devs: Jacob Thornton and Mark Otto</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A wave of plastic-free coffee pods and machines</title>
-      <link>https://www.cnn.com/2026/11/02/food/coffee-machine-plastic-free</link>
-      <guid isPermaLink="false">hn3-50366853</guid>
-      <pubDate>Wed, 04 Nov 2026 15:20:49 +0000</pubDate>
-      <description>132 points, 155 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.cnn.com/2026/11/02/food/coffee-machine-plastic-free"><strong>→ Article</strong></a> <small>(cnn.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50366853">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 155 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>troyvit</em>:</p>
-<blockquote>Huh, cool. If you want to save a few bucks you can go with a stainless steel French press or a mason jar if you&#x27;re into cold brews. You&#x27;re symbolizing a different kind of status though.<p>This summer was sunny and hot in Colorado, so every morning I&#x27;d make a jar of sun coffee. I&#x27;d leave it out through the day and overnight. The next morning I&#x27;d pull it in, filter it, refill it with grounds and water and take it outside again. It was cool enough to enjoy and really smooth.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>throwaway81523</em>:</p>
-<blockquote>French press coffee isn&#x27;t so healthy either because of stuff like cafestols in the fines (small diameter grounds) that slip through the french press screen.  To get rid of those you want a brewing scheme with a paper filter.  The simplest no-plastic approach is a Chemex.  They have a history and they also look cool as heck.  Unfortunately, since they are made of glass, they can break if you&#x27;re not careful.  <a href="https:&#x2F;&#x2F;chemexcoffeemaker.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;chemexcoffeemaker.com&#x2F;</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>seatac76</em>:</p>
-<blockquote>The Chemex filter do tend filter out more of the subtle coffee flavor. I find V60 to be the right balance in flavor and ease of use.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>hedora</em>:</p>
-<blockquote>If you want to save fewer bucks, get to zero plastic and get better espresso, you can buy one of these and a burr grinder:<p><a href="https:&#x2F;&#x2F;flairespresso.com&#x2F;products&#x2F;the-flair-classic" rel="nofollow">https:&#x2F;&#x2F;flairespresso.com&#x2F;products&#x2F;the-flair-classic</a><p>I&#x27;ve had one for about a decade.  It reliably produces better espresso than &gt;99% of Bay Area coffee shops.  (&gt;95% if you exclude national chains).<p>If I were buying one today, I&#x27;d toss the flow control head, silicon sleeve on the cylinder and the pressure gauge, but those come with it for free now, so to each their own, I guess.<p>The trick is to boil the stainless steel cylinder in your kettle (PID at sea level, conventional above ~ 2000 ft elevation) with the water so that you get the temperature dialed in within a degree C or so, like a conventional (lead-filled, unlike the flair) Italian machine.  I use a pair of tongs to pick up the stainless steel cylinder, so I don&#x27;t need the sleeve.  (Check the boiling point of water at your elevation -- unlike a steam machine, this can&#x27;t exceed that temperature, so stuff might start to run kinda cool at 3000 ft or so).<p>Flair doesn&#x27;t sell a &quot;true&quot; classic anymore, but I bet they could get the bare bones variant I use to &lt; $100 if they tried.  Maybe someone else will when any patents run out.  My only other complaint is that the two-in-one bottomless porta-filter I have runs the espresso across plastic when in non-bottomless mode.<p>Note that the thing I linked has a plastic plunger.  They make a stainless steel one as an upgrade.  At that point, you&#x27;re down to one silcone o-ring in the water &#x2F; coffee path.  Everything else is stainless, so no lead.  The next thing to worry about is nickel, but that only matters if you&#x27;re allergic.  I used to use the SS plunger, but then you need to boil it too if you want to dial in the water temperature.</blockquote>
-<p>↳ reply 3 — <em>asdff</em>:</p>
-<blockquote>When I broke my french press I got by fine with just throwing grounds in a pot of boiled water and decanting it off after a few minutes steep. Basically all the press does anyhow just less convenient.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>seemaze</em>:</p>
-<blockquote>Hate to be the bearer of bad news, but even the $10k slayer espresso machine has a plastic water resevoir. Granted the brewing assembly is mostly plastic free.<p>While I sympathize with the sentiment to eliminate plastic from the transport chain for anything ingestible, it&#x27;s practically impossible in the modern world.<p>Simple is usually best; glass or ceramic pour over, stainless press, or even the traditional South American coffee sock[0]<p>[0]<a href="https:&#x2F;&#x2F;perfectdailygrind.com&#x2F;2016&#x2F;01&#x2F;coffee-sock-old-school-filters-that-save-the-planet&#x2F;" rel="nofollow">https:&#x2F;&#x2F;perfectdailygrind.com&#x2F;2016&#x2F;01&#x2F;coffee-sock-old-school...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>benrutter</em>:</p>
-<blockquote>&gt; While I sympathize with the sentiment to eliminate plastic from the transport chain for anything ingestible, it&#x27;s practically impossible in the modern world.<p>I think the argument is pretty simple:<p>- Plastic is bad (environment, microplastics, etc)
-- We should minimize it<p>That doesn&#x27;t necessitate a &quot;all the way to zero or don&#x27;t bother&quot; logic, which what you&#x27;re saying reads as.<p>Coffee pods machines have been an environmental nightmare, great to see a growing trend that addresses this.</blockquote>
-<p>↳ reply 2 — <em>Kirby64</em>:</p>
-<blockquote>&gt; Hate to be the bearer of bad news, but even the $10k slayer espresso machine has a plastic water resevoir. Granted the brewing assembly is mostly plastic free.<p>There&#x27;s some people that care about no plastic at all anywhere (which... is pretty unrealistic considering water pipes are plastic), but usually the primary concern is plastic in the heated water portions. Water tanks on espresso machines are not typically heated.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>mikeweiss</em>:</p>
-<blockquote>I like Moka pots. Zero plastic<p>But seriously it&#x27;s a shame how hard it is to find products like coffee makers and electric kettles with no plastic. Heat and plastic don&#x27;t mix</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>asdff</em>:</p>
-<blockquote>Took me forever to find a french press that was all glass and stainless steel. Most of them the little filter at the cap (which vintage ones lack entirely fwiw) is some black plastic, but I found a bodum off crate and barrel a couple years ago that was stainless for that part too.</blockquote>
-<p>↳ reply 2 — <em>pengaru</em>:</p>
-<blockquote>&gt; Heat and plastic don&#x27;t mix<p>actually they do, and that&#x27;s the problem</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Debian apt security update (man-in-the-middle)</title>
-      <link>https://lists.debian.org/debian-security-announce/2026/msg00526.html?pow_referer=</link>
-      <guid isPermaLink="false">hn3-50366575</guid>
-      <pubDate>Wed, 04 Nov 2026 15:04:14 +0000</pubDate>
-      <description>136 points, 29 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://lists.debian.org/debian-security-announce/2026/msg00526.html?pow_referer="><strong>→ Article</strong></a> <small>(lists.debian.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50366575">→ HN comments</a> &nbsp;·&nbsp; 136 points &nbsp;·&nbsp; 29 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>justicz</em>:</p>
-<blockquote>I found this! I posted a semi-click-bait-ey tweet about it here [0], I think it’s important for people know how easy these bugs are to find now. It’s becoming borderline irresponsible not to audit your internet-facing code with modern AI tools.<p>[0] <a href="https:&#x2F;&#x2F;x.com&#x2F;just1cz&#x2F;status&#x2F;2118009777922228361" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;just1cz&#x2F;status&#x2F;2118009777922228361</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>vesinisa</em>:</p>
-<blockquote>Looks like you also found a similarly critical apt bug in 2019: <a href="https:&#x2F;&#x2F;lists.debian.org&#x2F;debian-security-announce&#x2F;2019&#x2F;msg00010.html" rel="nofollow">https:&#x2F;&#x2F;lists.debian.org&#x2F;debian-security-announce&#x2F;2019&#x2F;msg00...</a><p>Do you think there might be even more still lurking out there?<p>And what is your take on HTTPS for apt? I assume the MitM scenario for this and the previous bug could have been avoided by the use of HTTPS by default?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>justicz</em>:</p>
-<blockquote>HTTPS would have mitigated this particular bug but it feels like rearranging deck chairs on the titanic to fight over that right now. We need to audit everything with powerful AI like, yesterday.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>justicz</em>:</p>
-<blockquote>Speaking of which… if any of y’all work on security at OpenAI I have some questions for you about Daybreak! Please email me</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>linsomniac</em>:</p>
-<blockquote>For those of you not familiar, apt-cacher-ultra is fairly new (~9 months old), and it can reduce your exposure to this.  It uses a completely different mechanism for verifying signatures, and does validate signatures, so if your apt clients grab the packages from the cache, it shouldn&#x27;t be open to this bug.<p>The next version is going to include TLS and ACME support for the client-&gt;cache connection.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;linsomniac&#x2F;apt-cacher-ultra" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;linsomniac&#x2F;apt-cacher-ultra</a></blockquote>
-<p><strong>Top #3</strong> — <em>thewisenerd</em>:</p>
-<blockquote>dupe (2h ago): <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50364814">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50364814</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Guerrilla bike lanes: San Francisco makes illicit infrastructure permanent (2016)</title>
-      <link>https://99percentinvisible.org/article/guerrilla-bike-lanes-san-francisco-makes-illicit-infrastructure-permanent/</link>
-      <guid isPermaLink="false">hn3-50366522</guid>
-      <pubDate>Wed, 04 Nov 2026 15:01:44 +0000</pubDate>
-      <description>261 points, 190 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://99percentinvisible.org/article/guerrilla-bike-lanes-san-francisco-makes-illicit-infrastructure-permanent/"><strong>→ Article</strong></a> <small>(99percentinvisible.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50366522">→ HN comments</a> &nbsp;·&nbsp; 261 points &nbsp;·&nbsp; 190 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>chmod775</em>:</p>
-<blockquote>Students at my university in Berlin need to cross a busy road to travel between campus areas, which meant jaywalking or a long trip to a crossing with traffic lights down the road. A steady stream of students late to their next class sprinting across a six lane road is not great.<p>At some point students started painting their own crosswalk, which would be removed again and again by authorities, until the city eventually got the hint and installed a permanent crosswalk with a traffic light and a pedestrian island.<p>Sometimes the way to get something is fixed is by demonstrating the fix.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>michaelt</em>:</p>
-<blockquote>One such report (in German): <a href="https:&#x2F;&#x2F;www.rbb24.de&#x2F;politik&#x2F;beitrag&#x2F;2025&#x2F;10&#x2F;zebrastreifen-eberswalde-schmiererei-strassenverkehr-polizei-feuerwehr-barnim.html" rel="nofollow">https:&#x2F;&#x2F;www.rbb24.de&#x2F;politik&#x2F;beitrag&#x2F;2025&#x2F;10&#x2F;zebrastreifen-e...</a> in Eberswalde; apparently firefighters were called in to remove the paint but were unsuccessful in their attempts to wash away the white stripes, and police  launched an investigation into suspected interference with road traffic.<p>And another in Dresden: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=cQUpQZAeA3w" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=cQUpQZAeA3w</a> <a href="https:&#x2F;&#x2F;www.diesachsen.de&#x2F;en&#x2F;politics&#x2F;a-zebra-crossing-in-dresden-that-was-once-hand-painted-is-now-real-3196591" rel="nofollow">https:&#x2F;&#x2F;www.diesachsen.de&#x2F;en&#x2F;politics&#x2F;a-zebra-crossing-in-dr...</a> &quot;In the summer of 2025, unknown individuals painted a crosswalk on the roadway along the busy street in Neustadt to provide safe access to the Heinrich Schütz Conservatory. The city promptly blocked off the crossing with warning cones [...] stating that unauthorized crosswalks constitute not only property damage but also a dangerous interference with traffic. Furthermore, traffic signs installed without authorization constitute an administrative offense under the Road Traffic Code.&quot;<p>In Los Angeles <a href="https:&#x2F;&#x2F;www.latimes.com&#x2F;california&#x2F;story&#x2F;2026-10-16&#x2F;risking-arrest-he-paints-illicit-crosswalks-in-la-we-cant-wait" rel="nofollow">https:&#x2F;&#x2F;www.latimes.com&#x2F;california&#x2F;story&#x2F;2026-10-16&#x2F;risking-...</a> &quot;Risking arrest, he paints illicit crosswalks across L.A. ‘We can’t wait any longer’&quot; (initially repainting faded crosswalks, rather than creating new ones)<p>And an example in Saskatoon, visible only in the 2015 street view image <a href="https:&#x2F;&#x2F;maps.app.goo.gl&#x2F;3zWAkjtSEATswcWm8" rel="nofollow">https:&#x2F;&#x2F;maps.app.goo.gl&#x2F;3zWAkjtSEATswcWm8</a></blockquote>
-<p>↳ reply 2 — <em>keiferski</em>:</p>
-<blockquote>That&#x27;s essentially a desire path, in crosswalk form:<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Desire_path" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Desire_path</a></blockquote>
-<p>↳ reply 3 — <em>gobdovan</em>:</p>
-<blockquote>Dangerous game. In Romania at least, even fixing a pothole would get you a fine, possible jail time and requirement to unfix it.<p>[0] <a href="https:&#x2F;&#x2F;stirileprotv.ro&#x2F;stiri&#x2F;actualitate&#x2F;comuna-unde-fostul-primar-s-a-apucat-sa-astupe-gropile-dar-s-a-ales-cu-dosar-penal-in-loc-sa-ajute-au-chemat-politia.html" rel="nofollow">https:&#x2F;&#x2F;stirileprotv.ro&#x2F;stiri&#x2F;actualitate&#x2F;comuna-unde-fostul...</a><p>[1] <a href="https:&#x2F;&#x2F;stirileprotv.ro&#x2F;stiri&#x2F;actualitate&#x2F;situatie-absurda-in-bacau-un-angajat-de-la-drumuri-a-asfaltat-o-groapa-cu-materialul-de-prisos-si-risca-inchisoarea.html" rel="nofollow">https:&#x2F;&#x2F;stirileprotv.ro&#x2F;stiri&#x2F;actualitate&#x2F;situatie-absurda-i...</a><p>[2] <a href="https:&#x2F;&#x2F;www.antena3.ro&#x2F;actualitate&#x2F;locale&#x2F;satul-sa-astepte-dupa-reparatiile-primariei-un-barbat-din-timis-a-astupat-singur-cu-asfalt-gropile-de-pe-un-drum-de-pamant-733752.html" rel="nofollow">https:&#x2F;&#x2F;www.antena3.ro&#x2F;actualitate&#x2F;locale&#x2F;satul-sa-astepte-d...</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>darkstar999</em>:</p>
-<blockquote>It reminds me of The Guerrilla Artist Who Fixed L.A.&#x27;s Worst Freeway Sign<p><a href="https:&#x2F;&#x2F;thelandmag.com&#x2F;richard-ankrom-guerrilla-public-service-los-angeles-free&#x2F;" rel="nofollow">https:&#x2F;&#x2F;thelandmag.com&#x2F;richard-ankrom-guerrilla-public-servi...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>shagie</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;www.thedrive.com&#x2F;news&#x2F;how-an-artist-helped-millions-of-drivers-with-a-counterfeit-highway-sign" rel="nofollow">https:&#x2F;&#x2F;www.thedrive.com&#x2F;news&#x2F;how-an-artist-helped-millions-...</a><p>&gt; And then…nothing. Caltrans didn’t notice. Passing motorists were thrilled but figured the improvement had taken place at the direction of Caltrans. It wasn’t until Ankrom leaked his actions to the press that the true story was known.<p>&gt; The original sign with Ankrom’s artwork remained until 2009 when the whole thing was replaced by Caltrans. The paint had faded, but the message remained with a lasting impact. The replacement sign erected by the Department of Transportation proudly sports the 5 North placard exactly where Ankrom had put it nearly a decade prior, and it remains there to this day to help motorists that would otherwise be just as confused as he was.<p>And an update from 2023:<p>&gt; In 2001, artist Richard Ankrom posted a &quot;5 North&quot; sign on the 110 N. in DTLA to alert drivers to get in the left lane for the 5 turnoff. His work was so impeccable (and helpful), Caltrans at first didn&#x27;t notice, then allowed it to stay. &quot;5 North&quot; is now part of permanent signage.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>hinkley</em>:</p>
-<blockquote>I’ve been a semi autonomous employee at a number of places and I wonder how much that was “Caltrans” and how much it was George the sign maker just making a sign to replace the old one with all the same information as the current sign.<p>Sometimes you just do things and dare the bosses to say something about it. If they had their way they might have changed it back. But it’s already made and it’s not worth the grief to do anything about it. Too many people like or need George.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>shagie</em>:</p>
-<blockquote>Boss: Next on the list is the I5 overpass sign at mile marker {something}.<p>George: The info in the book doesn&#x27;t match what&#x27;s shown in the asset management photograph.<p>Boss: Update the book to whatever is on the road and go from there.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>cosmojg</em>:</p>
-<blockquote>The short film he and his friends made about the process is definitely worth a watch: <a href="https:&#x2F;&#x2F;youtu.be&#x2F;Clgl63CWOkM" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;Clgl63CWOkM</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>regentbowerbird</em>:</p>
-<blockquote>In Geneva, activists painted bike lanes in three streets in 2023, causing about 2000 swiss francs in damages (or improvements, depending on your view).<p>The Swiss police under prosecutor Walther Cimino proceeded to investigate as if they were a crime syndicate, gathering forensics but also identifying 96 sympathizers and putting them under heavy surveillance, which included  requesting total records from their banks, employers, phone companies, email providers (Google through the US DoJ), and even CCTV and purchases from their local supermarket.<p>I&#x27;m afraid of the possibility that what used to be &quot;grassroots civil disobedience&quot; will now be labeled &quot;eco-terrorism&quot; and prosecuted accordingly.</blockquote>
-<blockquote>
-<p>↳ reply — <em>tough</em>:</p>
-<blockquote>Someone&#x27;s eco-terrorist is someone else&#x27;s eco-freedom fighter</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>lifty</em>:</p>
-<blockquote>You can remove eco.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>tough</em>:</p>
-<blockquote>well yes, that&#x27;s the original quote.</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Ask HN: What's your current AI agentic setup?</title>
-      <link>https://news.ycombinator.com/item?id=50366117</link>
-      <guid isPermaLink="false">hn3-50366117</guid>
-      <pubDate>Wed, 04 Nov 2026 14:37:22 +0000</pubDate>
-      <description>338 points, 376 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=50366117"><strong>→ Article</strong></a></p>
-<p><a href="https://news.ycombinator.com/item?id=50366117">→ HN comments</a> &nbsp;·&nbsp; 338 points &nbsp;·&nbsp; 376 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>tomburgs</em>:</p>
-<blockquote>1.) None anymore. They&#x27;re all turning into increasingly poor value for (my) money. I need AI on my own schedule and don&#x27;t want to be paying for compute I don&#x27;t need and end up waiting for limits to reset when I do need it. If I was to use one though it&#x27;d probably be Opencode Go.<p>2.) Yes, I&#x27;m currently using OpenRouter. It&#x27;s good for quickly switching around and trying different models, but I currently have it constrained to just 3 models and 1 provider. Truthfully I could just use that provider directly, but I like retaining some flexibility.<p>3.) I&#x27;ve been using OpenCode for over a year. I think it&#x27;s an incredible tool and its wide support is a massive boon. It&#x27;s really easy to pull in skills, tag the skills, and switch providers. Their more recent changes into turning the CLI into more of a GUI has been quite annoying (wdym I have to tap an X in my CLI to close a tab), but not enough for me to (yet) look elsewhere.<p>4.) Nope, no idea what those are but thanks for teaching me about something new.<p>5.) In EU (DK) so we don&#x27;t get access to Dots or Muse like everyone else. I have used Grok Bot and I really like it. It&#x27;s super helpful and I&#x27;m using it as a personal assistant. I delegate tasks to it that I just can&#x27;t be bothered doing manually or can&#x27;t figure out easily (e.g using some accounting tools, figuring out cryptic documentation, etc.). I&#x27;ve also used Hermes Agent, but I didn&#x27;t like it as much. It&#x27;s great intent but the UI&#x2F;UX is really not it. It looks like it was taken out of a 90s hacker movie and I&#x27;m sure some people like it, but I prefer tools that look polished and focused. I might switch back to it though if something was to happen to Grok Bot.<p>P.S the models I primarily use are DeepSeek V4.1 Flash 1017 and GLM 5.3 Flash. If you use skills to their full potential they feel SotA to me (my reference point for SotA being OpenAI models we use at work, since we have an enterprise agreement).</blockquote>
-<p><strong>Top #2</strong> — <em>jvidalv</em>:</p>
-<blockquote>At work I main Opus 5.5 on Claude Desktop app. I have joined my current job 2 months ago and I literally never opened any IDE.<p>Personally I own a Ultra plan on Claude and a 200 plan on Codex (400 dollars month).<p>I run them from their native desktop apps, no longer I use any terminal app to run them.<p>I have not opened a IDE for months now, any diff I need to check I use the Github PR.<p>In the personal level I use the agents for everything, basically the only thing that I still do on my computer outside of agents is consuming content like HackerNews, random forums, reddit or youtube. All the rest: sending emails, reading them, filling forms, configuring apis, submitting apps to stores ( run a couple of successful mobile apps), building them... Is all done by the agents on my behalf.<p>Crazy world we live in eh?</blockquote>
-<p><strong>Top #3</strong> — <em>Animats</em>:</p>
-<blockquote>Embarrassingly, I don&#x27;t have one yet. I&#x27;m mostly still writing code one keystroke at a time. I&#x27;ve used Github Copilot to translate between languages and look things up, but haven&#x27;t trusted it to write new code or fix anything.<p>Claude Fable is now good enough that I should be using it. The latest Claude version is said to be comparable to a mid-career graphics programmer, which is about what I need. Six months ago it wasn&#x27;t good enough to use for such work, and probably would have made a hash of my code. 
-There&#x27;s been progress.<p>But Anthropic&#x27;s business practices are scary. They have a reputation for cancelling accounts for random reasons, offer rather bad terms, and have no customer support. I have a strong aversion
-to services with a reputation for cancelling services arbitrarily. They will apparently cancel based on their system&#x27;s guesses as to what you&#x27;re working on. Sometimes they guess wrong. What I&#x27;m doing (metaverse clients) is so far out of the mainstream they may guess wrong.<p>I&#x27;m currently stalled signing up for Claude because their verification email system can&#x27;t get to my inbox. (Some problem with their using Constant Contact, a spam system, to send transactional emails to my own domain, which, long ago, I had blocked at the Constant Contact end. I think. The verification email never touches the inbound mail server.) It&#x27;s very important to Anthropic that you sign up with the &quot;right&quot; email address, and it may not be possible to change it, so using some disposable address is not a good idea.<p>Suggestions?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ChrisRR</em>:</p>
-<blockquote>You don&#x27;t even need to start off with Fable. Give Opus 5.5 a try first and then then try Fable if you feel like you need to push it further</blockquote>
-<p>↳ reply 2 — <em>computomatic</em>:</p>
-<blockquote>You can access Claude models through any number of providers - OpenRouter, AWS Bedrock, etc. and as far as I know, Claude Code can be used with any of them. The only real benefit to going direct through Anthropic is the subscriptions. It’s worth the risk for the discount, but if you get locked out, there’s other (pricy) options to get unblocked.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
