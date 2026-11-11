@@ -4,7 +4,217 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 11 Nov 2026 02:42:55 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 10:38:43 +0000</lastBuildDate>
+    <item>
+      <title>A great old-timey game-programming hack (2013)</title>
+      <link>https://blog.moertel.com/posts/2013-12-14-great-old-timey-game-programming-hack.html</link>
+      <guid isPermaLink="false">hn3-50448921</guid>
+      <pubDate>Wed, 11 Nov 2026 01:56:31 +0000</pubDate>
+      <description>171 points, 34 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://blog.moertel.com/posts/2013-12-14-great-old-timey-game-programming-hack.html"><strong>→ Article</strong></a> <small>(blog.moertel.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50448921">→ HN comments</a> &nbsp;·&nbsp; 171 points &nbsp;·&nbsp; 34 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>sehugg</em>:</p>
+<blockquote>The 6502 has a more narrow and diabolical version of the 6809&#x27;s PSHS trick. The BRK instruction pushes the PC and status register to the stack in three consecutive cycles, and is pretty much the only non-interrupt instruction that writes more than twice.<p>The Atari 2600 has horizontal object counters that you can&#x27;t set directly, but they latch when you write to them, and they set the corresponding object to the X position of the beam at that cycle. Pole Position requires three of these objects to draw the left&#x2F;right side of the road and center line, and they are supposed to meet at the horizon.<p>But the beam moves to the right 3 pixels for every CPU cycle, and writing with STA would result in each being separated by 9 pixels. What&#x27;s the fix? Move the stack pointer to where the object pointers live (the 2600 maps the stack to zero page, where the RAM and registers live) and invoke BRK, making sure the BRK vector returns you to the next instruction. The object pointers are adjacent, so BRK writes to each object pointer on successive cycles, and now each of them is 1 cycle = 3 pixels apart.</blockquote>
+<p><strong>Top #2</strong> — <em>mikewarot</em>:</p>
+<blockquote>Back in the MS-DOS days, my friend Ward Christensen worked at IBM in Technical Sales Support. They had a file informally maintained that listed every single product they had for sale, in a format that could be read on a PC. He was really good at searching it with his text editor, but he wanted a MS-DOS based stand alone program to make it easy to search for his co-workers. Thus was born, PCxREF which was a Turbo Pascal based program I wrote, that included search.<p>My first pass at it was a naïve search using the built in string matching. Because of the size of the file, and the speed of PCs, it would sometimes take more than 30 seconds to do a search.  Ward wanted it faster, <i>much</i> faster.<p>I eventually came up with an algorithm that took the text you wanted to search for, and changed it into a special kind of bit mask, table. It was a table 256 bytes long, initialized to zeros.  If the first character of the string you wanted to search for was a D, then the first bit of the $44 and $64 mask would be set, to handle case sensitivity.  A wildcard * was only 1 character long, but would set all bits for that character.  I then used the 8088 XLAT instruction and a very small loop ingest a character of the text being searched, use that as an index into the mask table, and AND that with the existing flag in a different register, then shifted it, checking for CARRY (a match!) and looping if not zero.<p>It took search down to less than 3 seconds if the whole file was loaded in RAM. The thing we used as a benchmark was searching for &quot;DOS TECH REF&quot;, the IBM DOS Technical Reference Manual.<p>I can&#x27;t find the code, lost it over the years, but it was one of my coolest hacks.</blockquote>
+<blockquote>
+<p>↳ reply — <em>gchamonlive</em>:</p>
+<blockquote>These kinds of things are still important these days. In my previous employment we had to create security guardrails for content distribution resources in AWS (API gateways, s3 buckets, instances and cloudfront distros) for a standalone CDN. For cloudfront you&#x27;d be right to question why put a CDN behind a CDN and the answer is technical debt, so we had to deal with it.<p>The problem is that cloudfront functions are very limited in code size and execution cycles, and the list of cidr blocks from the external CDN was so long it meant we couldn&#x27;t do a simple comparison, so we did something similar, representing all cidr blocks and the incoming source IP to a binary representation and used binary search to see if the source IP matched any cidr block range. It&#x27;s also very hard to estimate correctly if the resulting function would in fact fit the compute budget, because AWS isn&#x27;t very clear about what a cf function cycle is in practice, so we tested it extensively, with real and synthetic cases to simulate worse conditions.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>taspeotis</em>:</p>
+<blockquote>Somewhat related [1]:<p>&gt; Years ago, I was working at Video Seven, a now-vanished video adapter manufacturer, helping to develop a VGA clone. The fellow who was designing Video Seven’s VGA chip, Tom Wilson, had worked around the clock for months to make his VGA run as fast as possible, and was confident he had pretty much maxed out its performance. As Tom was putting the finishing touches on his chip design, however, news came fourth-hand that a competitor, Paradise, had juiced up the performance of the clone they were developing by putting in a FIFO.<p>&gt; That was all he knew; there was no information about what sort of FIFO, or how much it helped, or anything else. Nonetheless, Tom, normally an affable, laid-back sort, took on the wide-awake, haunted look of a man with too much caffeine in him and no answers to show for it, as he tried to figure out, from hopelessly thin information, what Paradise had done. Finally, he concluded that Paradise must have put a write FIFO between the system bus and the VGA, so that when the CPU wrote to video memory, the write immediately went into the FIFO, allowing the CPU to keep on processing instead of stalling each time it wrote to display memory.<p>&gt; Tom couldn’t spare the gates or the time to do a full FIFO, but he could implement a one-deep FIFO, allowing the CPU to get one write ahead of the VGA. He wasn’t sure how well it would work, but it was all he could do, so he put it in and taped out the chip.<p>&gt; The one-deep FIFO turned out to work astonishingly well; for a time, Video Seven’s VGAs were the fastest around, a testament to Tom’s ingenuity and creativity under pressure. However, the truly remarkable part of this story is that Paradise’s FIFO design turned out to bear not the slightest resemblance to Tom’s, and didn’t work as well. Paradise had stuck a read FIFO between display memory and the video output stage of the VGA, allowing the video output to read ahead, so that when the CPU wanted to access display memory, pixels could come from the FIFO while the CPU was serviced immediately. That did indeed help performance—but not as much as Tom’s write FIFO.<p>[1] <a href="https:&#x2F;&#x2F;www.jagregory.com&#x2F;abrash-black-book&#x2F;#the-challenge-of-separating-all-things-seen-from-all-things-unseen" rel="nofollow">https:&#x2F;&#x2F;www.jagregory.com&#x2F;abrash-black-book&#x2F;#the-challenge-o...</a></blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Tracking Anthropic-discovered vulnerabilities</title>
+      <link>https://www.vulncheck.com/blog/anthropic-glasswing-november-update</link>
+      <guid isPermaLink="false">hn3-50447074</guid>
+      <pubDate>Tue, 10 Nov 2026 22:17:56 +0000</pubDate>
+      <description>401 points, 192 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.vulncheck.com/blog/anthropic-glasswing-november-update"><strong>→ Article</strong></a> <small>(vulncheck.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50447074">→ HN comments</a> &nbsp;·&nbsp; 401 points &nbsp;·&nbsp; 192 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>pizlonator</em>:</p>
+<blockquote>I received 9 reports of Fil-C issues from Anthropic<p>All of them were real bugs. None of them were false positives.<p>The quality of the reports was exceptional. (My baseline is doing security defense on a browser engine, so my baseline has a large sample count and is probably representative of what experts are capable of.)<p>The quality of the proposed fixes was alright. I took some of the fixes verbatim. I used most of the fixes as significant inspiration for doing it my way.<p>The quality of the test cases was exceptional.<p>Maybe I’m special somehow! But I just want to call out the enormous chasm between what I saw of anthropic’s capability and what TFA says</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pron</em>:</p>
+<blockquote>A simple reason could be the age of the codebase. New code contains more serious bugs, and younger projects are made up of more new code than more mature projects. In older code, especially well-used older code, many serious issues have already been found and fixed.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pizlonator</em>:</p>
+<blockquote>It’s not a reason for the wide chasm though.<p>If you told me that some significant number of Ant findings were duds, then I could reconcile that with what I saw first hand.<p>But TFA is making a more extreme statement</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>viraptor</em>:</p>
+<blockquote>One thing I should&#x27;ve expected in those reports but didn&#x27;t is that some maintainers end up nitpicking the reports instead of just doing the best to address the issues. When discussing the LLM code reviews, one author was arguing the security reports are really bad - it turned out that I completely disagree on the judgement they made. Instead of accepting that something can be improved, they argued how unlikely something is, how the project doesn&#x27;t make this kind of guarantee, how that&#x27;s an API user error... instead of saying:<p>- Yeah, we could check the parameter here. Currently we don&#x27;t return any result so let&#x27;s add a success&#x2F;failure response rather than silently failing.<p>- This is a highly unlikely situation, but let&#x27;s harden it anyway in case things change and it bites us in the future.<p>I don&#x27;t know how many end up in that situation, but it was a whole category of people claiming the LLM reviews are bad, that I haven&#x27;t really considered before.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dwohnitmok</em>:</p>
+<blockquote>That&#x27;s interesting. While the curl maintainer seems to have been underwhelmed with Mythos 5 in particular, it looks like he also backs up your account of high-quality AI reports (although unclear if these come from Glasswing or elsewhere) at this point.<p>&gt; The slop is gone<p>&gt; A sizeable portion of users seem to still believe we still suffer from a lot of made up and hallucinated reports by these AIs. We really don’t.<p>&gt; Almost all the stupidity and lies we saw in the vulnerability reports made by AIs in the past have ceased. Since spring 2026 the slop reports are practically gone. Our current challenge is much harder: high volume, high quality.<p><a href="https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2026&#x2F;10&#x2F;22&#x2F;ignore-the-slop&#x2F;" rel="nofollow">https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2026&#x2F;10&#x2F;22&#x2F;ignore-the-slop&#x2F;</a></blockquote>
+<p>↳ reply 3 — <em>sashank_1509</em>:</p>
+<blockquote>Linux maintainer is extremely unhappy with the high false positive rate from Mythos vuln: <a href="https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=NnV_cWeoo5Q&amp;pp=0gcJCVgCo7VqN5tD&amp;ra=m" rel="nofollow">https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=NnV_cWeoo5Q&amp;pp=0gcJCVgCo7VqN5t...</a><p>I think someone who likes AI thinks it’s good, someone who doesn’t, doesn’t think it’s anything impressive, and concretely nothing of any significance has happened to the world, certainly nothing like the crowdstrike shutdown so I don’t find the capabilities to be anything impressive.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>snowwrestler</em>:</p>
+<blockquote>The PHP2Shell vulnerability ended up being paradoxically comforting for me.<p>They turned frontier models loose on PHP, and the big one they found was based on a previously known logic flaw that was extremely difficult to exploit. Which makes sense: hence the need for frontier models.<p>And in the wild, while there have been many attempts and a few simple demo successes, the practical impact has seemed to be small, seemingly constrained by the length of the chain and the diversity of PHP configs.<p>In short, it was indeed a major vulnerability, but not magic (in the Arthur C Clarke sense).<p>I think ultimately the fear comes down to: do you believe that code can be secured. I recognize that there is probably no objective way to deductively prove it because of the Halting Problem etc. But if one believes code can be constructed to operate to spec, then there must be a limit to the damage an LLM can do, even a very smart one.<p>I think we are going through a phase where a lot of known triaged code shortcomings will get exposed and hopefully fixed. Sucks while it is happening. But not actually the first round of this type of evolution. And ultimately I think as before, we will come out the other side with more secure and durable technology.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Paracompact</em>:</p>
+<blockquote>&gt; I recognize that there is probably no objective way to deductively prove it because of the Halting Problem etc.<p>There is. But it will only be reliable if every transitive dependency of your codebase, all the way down to the hardware level, has been formally verified. Failing that, you have to rely on opaque contracts at the boundaries, and those are just promises that may be mistaken.<p>The Halting problem, Rice&#x27;s theorem, etc. only apply if your goal is to automatically and completely deduce properties or their violations for arbitrary programs. If your goal is simply to prove security and correctness properties for well-understood classes of programs in industry, then there are no fundamental obstructions.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>xelxebar</em>:</p>
+<blockquote>Formal verification is not magic. It can execute deductive proofs, but the relevance and utility of those results is a question of human values. Spec bugs are a thing. Bad design is a thing. Out-of-scope usage is a thing. Even a halting oracle won&#x27;t help with those.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>soulofmischief</em>:</p>
+<blockquote>I think the more fundamental question than &quot;can code be secured&quot; is something along the lines of &quot;can we properly measure the security of the various components of a sufficiently codebase&quot;. Security consultants have workflows but ultimately everything is ad-hoc and suffers from cominatorial explosion, and what&#x27;s missing is the security equivalent of Lean, a real formalized effort to prove security. There have been many attempts, of course. One of the great problems of our era.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>rurcliped</em>:</p>
+<blockquote>The blog is misleading because it tries to characterize Project Glasswing&#x27;s effectiveness through use of a tangentially related data source. A Project Glasswing vulnerability discovery most often occurs when a Glasswing partner points a Mythos-class model at its own, often proprietary, software. The data source (aka &quot;ledger&quot;) is only for the Anthropic coordinated vulnerability disclosure program for open source software: in other words, Anthropic itself pointing a Mythos-class model at an OSS package, and then notifying the maintainer afterward that it had done this, and had findings to share. This OSS work is certainly useful, but the number of fixes reflects - in part - limited time availability by volunteer OSS maintainers, and Anthropic sometimes working without knowledge of the OSS project&#x27;s threat model (the threat model is explicitly requested in the newer oss-scanner effort). Percentage fixed is often much higher for use of Glasswing with proprietary software, e.g., <a href="https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;cyber-frontier-models&#x2F;" rel="nofollow">https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;cyber-frontier-models&#x2F;</a> &quot;Our research with Mythos Preview was conducted in a controlled environment against our own code; every vulnerability surfaced through this work was triaged, validated, and remediated where action was needed under Cloudflare&#x27;s formal vulnerability management process.&quot;</blockquote>
+<blockquote>
+<p>↳ reply — <em>geraneum</em>:</p>
+<blockquote>&gt; tangentially related data source<p>The used curl project as source which’s received mythos reports directly. What’s “tangential” about it?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Apple has new Mac app coming to make running local AI models easy</title>
+      <link>https://9to5mac.com/2026/11/10/apple-has-new-mac-app-coming-to-make-running-local-ai-models-easy/</link>
+      <guid isPermaLink="false">hn3-50446520</guid>
+      <pubDate>Tue, 10 Nov 2026 21:25:03 +0000</pubDate>
+      <description>264 points, 223 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://9to5mac.com/2026/11/10/apple-has-new-mac-app-coming-to-make-running-local-ai-models-easy/"><strong>→ Article</strong></a> <small>(9to5mac.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50446520">→ HN comments</a> &nbsp;·&nbsp; 264 points &nbsp;·&nbsp; 223 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>gehsty</em>:</p>
+<blockquote>As models improve and hardware becomes more capable Apple are definitely well positioned.<p>I am super interested to see what the Apple silicon team can deliver when their full attention is turned to local LLM acceleration.</blockquote>
+<p><strong>Top #2</strong> — <em>pen2l</em>:</p>
+<blockquote>Apple, to me, is the winner in the end of this AI chapter.<p>Distillation works: we can get models leaner, have better performance with lesser and lesser parameters, more efficient, running locally. Apple gets this and we&#x27;ll see the result with M7 Max&#x2F;ultra chips and I reckon this will be one of the titular apps when M7 line of chips are introduced.<p>I guess it explains the haste Anthropic and OpenAI are in to IPO, cash out and leave the the retail investor holding the bag.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>aurareturn</em>:</p>
+<blockquote><p><pre><code>  Apple, to me, is the winner in the end of this AI chapter.
+</code></pre>
+I might be one of only few people who think Apple is a loser in the AI chapter.<p>I don&#x27;t think it shows yet but I think the dominance of the App Store will end. I think a ton of iOS apps will be replaced by ChatGPT&#x2F;Claude. I think there is a big opening for a company to redesign the phone from the ground up purely around an AI assistant instead of apps.<p>I think AI will severely weaken iOS, App Store, and the iPhone in the next few years. It was nearly impossible to compete against iOS and Android until recently because no one is going to redesign their apps for your new phone. Today, that&#x27;s different. Many productivity apps are just being replaced by GenAI&#x2F;ChatGPT&#x2F;etc and services are making it easy for AI agents to access directly without an app.<p>Not to mention higher chip prices will eat into hardware margins.</blockquote>
+<p>↳ reply 2 — <em>michelb</em>:</p>
+<blockquote>&gt;Apple, to me, is the winner in the end of this AI chapter.<p>Could be the winner, in your opinion. They are extremely well positioned with hardware, devices, ecosystem, privacy, brand value &amp; trust, and a significant active base. So far, they have not yet delivered on any useful AI application. There are so many opportunities in both MacOS and iOS, I guess they just need a new software VP.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>simonw</em>:</p>
+<blockquote>&quot;Harbor is currently in a private preview under Apple’s Claris brand&quot;<p>There&#x27;s a name I haven&#x27;t heard in a long time! Claris (always an Apple subsidiary, since being founded in 1987) renamed themselves to FileMaker in 1998, but apparently they rebranded back to Claris in 2019.<p>Looks like they&#x27;ve mostly just released annual upgrades to FileMaker for the past decade, but they did add MCP to it last year: <a href="https:&#x2F;&#x2F;www.claris.com&#x2F;blog&#x2F;2025&#x2F;why-mcp-matters-for-claris-filemaker-developers" rel="nofollow">https:&#x2F;&#x2F;www.claris.com&#x2F;blog&#x2F;2025&#x2F;why-mcp-matters-for-claris-...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>oidar</em>:</p>
+<blockquote>If they keep Harbor under the Claris umbrella, that is a nudge that they are doing it for SMB market instead of the consumer market and it will likely be a onerous subscription to use it.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Six Math Essentials</title>
+      <link>https://teorth.github.io/tao-web/six-math-essentials.html</link>
+      <guid isPermaLink="false">hn3-50446246</guid>
+      <pubDate>Tue, 10 Nov 2026 20:58:44 +0000</pubDate>
+      <description>253 points, 44 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://teorth.github.io/tao-web/six-math-essentials.html"><strong>→ Article</strong></a> <small>(teorth.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50446246">→ HN comments</a> &nbsp;·&nbsp; 253 points &nbsp;·&nbsp; 44 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>tveita</em>:</p>
+<blockquote>I quite liked this interview:<p>Terence Tao explains 6 essential mathematical concepts: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=OOMx2BHHWtE" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=OOMx2BHHWtE</a></blockquote>
+<p><strong>Top #2</strong> — <em>flowerlad</em>:</p>
+<blockquote>The amazon preview [1] does not even show the contents page. How am I supposed to check if I might be interested in this book?<p>[1] <a href="https:&#x2F;&#x2F;www.amazon.com&#x2F;dp&#x2F;0374621799?tag=macmillan-20" rel="nofollow">https:&#x2F;&#x2F;www.amazon.com&#x2F;dp&#x2F;0374621799?tag=macmillan-20</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>kirubakaran</em>:</p>
+<blockquote>The above page has the ToC:<p>1. numbers as the gateway to quantitative thinking<p>2. algebra as the gateway to abstraction<p>3. geometry as a way to calculate beyond what we can see<p>4. probability as a tool to navigate uncertainty with rigorous thinking<p>5. analysis as a means to tame the very large or the very small<p>6. dynamics as the mathematics of change</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>otabdeveloper4</em>:</p>
+<blockquote>&gt; numbers as the gateway to quantitative thinking<p>That&#x27;s a historical artifcat, not an innate property. (Math was first invented in the Bronze Age for accounting and architecture.)<p>There&#x27;s a theoretical parallel universe with a mathematics where numbers aren&#x27;t first on the ladder but down there around number five. (Ironically computers are an example of that. Figuring out how to do numbers when all you have is finite sequences from an alphabet is advanced CS.)</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>seanhunter</em>:</p>
+<blockquote>Firstly are you so very sure he claimed that is an innate property? That numbers are a gateway to quantitative reasoning seems a perfectly reasonable claim either way.<p>Secondly there are lots of mathematical objects that significantly predate the bronze age (eg <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Ishango_bone" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Ishango_bone</a> but there are others) and because these objects are so old we have no idea why math was first invented.<p>Thirdly I have no idea the relevance of the theoretical “late numbers “ parallel universe but this thread is about a book in this one.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>softbuilder</em>:</p>
+<blockquote>Amazon isn&#x27;t even trying these days. They seem to no longer care about the shopping experience, especially for media.<p>That said, you can switch to the Kindle version and request a sample. The kindle samples usually have a ToC.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>prideout</em>:</p>
+<blockquote>I heard he was writing a book about the Cosmic Distance Ladder.  I was looking forward to that, I hope this isn&#x27;t what it evolved into.</blockquote>
+<blockquote>
+<p>↳ reply — <em>losvedir</em>:</p>
+<blockquote>He did a great collaboration with 3Blue1Brown on it: <a href="https:&#x2F;&#x2F;youtu.be&#x2F;YdOXS_9_P4U" rel="nofollow">https:&#x2F;&#x2F;youtu.be&#x2F;YdOXS_9_P4U</a> . Didn&#x27;t realize there a book coming, cool!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Scion is back and is going to sell a kei truck in America</title>
+      <link>https://www.theautopian.com/scion-is-back-and-its-going-to-sell-a-freaking-kei-truck-in-america/</link>
+      <guid isPermaLink="false">hn3-50445401</guid>
+      <pubDate>Tue, 10 Nov 2026 19:50:46 +0000</pubDate>
+      <description>478 points, 315 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.theautopian.com/scion-is-back-and-its-going-to-sell-a-freaking-kei-truck-in-america/"><strong>→ Article</strong></a> <small>(theautopian.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50445401">→ HN comments</a> &nbsp;·&nbsp; 478 points &nbsp;·&nbsp; 315 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>freetime2</em>:</p>
+<blockquote>I use a kei truck for farming. They are incredibly pragmatic little vehicles. They are very capable driving around on dirt&#x2F;gravel agricultural roads with 4WD, and they are inexpensive and robust enough that you can really beat them up and use them as a tool without worry. Repairs and replacement parts are ubiquitous and inexpensive. Having the <i>sides</i> of bed fold down is also really useful.<p>They aren&#x27;t comfortable to drive at all (although just having A&#x2F;C at all on a hot summer day in the field is a godsend), and I wouldn&#x27;t want to do longer trips in one - although you certainly could in a pinch.<p>It seems like Toyota&#x2F;Scion is just testing the waters here, and I&#x27;m not sure how successful they&#x27;ll be. But I hope there is a future for kei trucks in the US.</blockquote>
+<blockquote>
+<p>↳ reply — <em>SOLAR_FIELDS</em>:</p>
+<blockquote>I&#x27;ve been driving a 2 seater manual Ford Ranger for the past 15 years and it definitely feels like the next level up of the kei philosophy. I&#x27;ll probably drive it for the rest of my life at this point. It has crank windows, it&#x27;s indestructible, and it climbs stuff like a little buggy - I&#x27;ve taken it places where sometimes even Jeeps struggle. It&#x27;s not the car you take on a long road trip, but maybe different tools for different jobs.<p>It&#x27;s a shame they don&#x27;t really make them anymore. If I could buy a modern vehicle in the States that had the following properties:<p>- 2 seater<p>- Pickup truck<p>- Manual transmission<p>- Minimum 6 foot bed<p>I&#x27;d probably do it in a heartbeat. But even these somewhat weak constraints fail every vehicle in the USA market.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gopalv</em>:</p>
+<blockquote>&gt; - Manual transmission<p>The Toyota eCVT is an engineering marvel[1].<p>The hybrid power train is simpler than a regular transmission and made of more durable parts.<p>The clutch itself might not have to disappear for more fine grained power delivery, the new Ferrari clutch-by-wire[2] is a similar bit of a few hall sensors talking to the ECU.<p>You can build a simulacrum of a manual low-mode transmission without needing to use it constantly in stop-go traffic or while sliding backwards on loose dirt.<p>[1] - <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=r2L5VOtf47Y" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=r2L5VOtf47Y</a><p>[2] - <a href="https:&#x2F;&#x2F;www.ferrari.com&#x2F;en-EN&#x2F;corporate&#x2F;articles&#x2F;ferrari-12cilindri-manuale" rel="nofollow">https:&#x2F;&#x2F;www.ferrari.com&#x2F;en-EN&#x2F;corporate&#x2F;articles&#x2F;ferrari-12c...</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>freetime2</em>:</p>
+<blockquote>In kei trucks I think the manual transmission is mainly just about cost of ownership. A new 4WD kei truck with MT costs ¥1,226,500 ($7,727 USD) compared to ¥1,303,500 ($8,212) for an automatic transmission - about 6% less [1]. And longer term repairs&#x2F;replacement of a manual transmission tend to be less costly than an automatic transmission. Not a huge difference - but the applications where these trucks tend to be used are not exactly high margin, either.<p>I don&#x27;t think we&#x27;re likely to see a Toyota hybrid system or Ferarri-style drive-by-wire clutch at that price point. Although maybe in the future we could see EV kei trucks at a comparable price [2].<p>Personally I think it&#x27;s worth spending slightly more for the convenience of a manual transmission (and my license doesn&#x27;t actually permit me to drive a manual on public roads) - although some of my buddies laughed at me for buying an automatic kei truck. I think at this point though automatic transmission sales probably exceed manual transmission sales.<p>[1] <a href="https:&#x2F;&#x2F;www.daihatsu.co.jp&#x2F;lineup&#x2F;truck&#x2F;02_grade.htm?item=6" rel="nofollow">https:&#x2F;&#x2F;www.daihatsu.co.jp&#x2F;lineup&#x2F;truck&#x2F;02_grade.htm?item=6</a><p>[2] <a href="https:&#x2F;&#x2F;electrek.co&#x2F;2026&#x2F;11&#x2F;01&#x2F;i-imported-a-2000-electric-truck-from-china-five-years-later-heres-the-truth&#x2F;" rel="nofollow">https:&#x2F;&#x2F;electrek.co&#x2F;2026&#x2F;11&#x2F;01&#x2F;i-imported-a-2000-electric-tr...</a></blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ilamont</em>:</p>
+<blockquote>25 mph works for golf courses, resort, or island use. In rural areas on the mainland, roads connecting towns often have 45 or 55 mph speed limits so unless you plan on staying on the farm I don&#x27;t think these are practical for trips to go shopping, dumping, hauling, etc.<p>As for the imports, I saw one of these 90s-era right-hand drive kei trucks at a parking lot a few months ago and talked with the owner. He was a young guy who lived in Boston, said it was super easy to park. Speed maxed out at 70 mph, which is fine for local trips but maybe not for long highway trips.<p>For people in jurisdictions that allow 30 year old truck imports, and are interested in getting one, there are other countries that use such trucks and have left-hand drive. Taiwan has models from CMC and Suzuki, and I believe South Korea also makes them.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ryukoposting</em>:</p>
+<blockquote>I think that&#x27;s exactly what Toyota envisions: it&#x27;s a farm&#x2F;groundskeeping truck. That&#x27;s why tons of them already get imported to the US. These aren&#x27;t competing with cars, they&#x27;re competing with Gators [1]<p>I know a kid who drove his tractor to school once in a while, it topped out at ~20. If dad had the truck and mom had the car, what else was he gonna do? Using a low-speed vehicle in a pinch is not a new idea to these trucks&#x27; target customers. Having such a vehicle but with A&#x2F;C and airbags is probably a huge selling point, actually.<p>[1]: <a href="https:&#x2F;&#x2F;www.deere.com&#x2F;en-us&#x2F;products-and-solutions&#x2F;gator-utility-vehicles" rel="nofollow">https:&#x2F;&#x2F;www.deere.com&#x2F;en-us&#x2F;products-and-solutions&#x2F;gator-uti...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>_heimdall</em>:</p>
+<blockquote>We have an old Kei truck on our farm, with HVAC though no airbags. The only reason I picked it over a UTV or similar is because it is still street legal here and does around 50mph. I can comfortably take it into town around 10 miles away, pick up supplies, and drive back with a tag on the back and keeping up with traffic.<p>If Scion limits the top speed to 25mph it&#x27;d be useless to me for our farm. I&#x27;d still rather buy an imported Honda Acty or Suzuki Carry for the price, if I&#x27;m lucky I&#x27;d find one with a hydrolic dump bed and still be cheaper than what Scion will likely be able to sell this for.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>ryukoposting</em>:</p>
+<blockquote>I suspect the price is gonna limit the retail appeal moreso than the speed. Used import trucks will probably cost less, and they&#x27;re gonna do the same thing with no speed governor. An official manufacturer relationship will be appealing to fleet buyers, though.<p>I have zero concerns about the speed governor. That&#x27;s gonna end up being a flash mod you can do yourself in your garage, I guarantee it. Worst case scenario, someone will start selling ECUs on eBay or something.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>milkytron</em>:</p>
+<blockquote>Kei cars are designed for cities. These will likely be fine in dense areas on local surface streets where traffic is high.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>6DM</em>:</p>
+<blockquote>With a built in 25mph limiter, that eliminates &quot;city&quot; driving too unfortunately. Most roads around me are 35 mph.<p>There&#x27;s sizeable demand for people who want to be able to do runs to the bigbox stores for garden and DIY renovation supplies and store it the rest of the time.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bryanlarsen</em>:</p>
+<blockquote>You need to complain to your congressman, not to Toyota.   The 25mph limit is set by the Low Speed Vehicle standards.</blockquote>
+<p>↳ reply 2 — <em>schiffern</em>:</p>
+<blockquote>Note that LSVs are allowed on roads with a posted speed limit of 35 mph or less.<p>Whether you feel safe doing so is a separate question, of course.<p><a href="https:&#x2F;&#x2F;afdc.energy.gov&#x2F;laws&#x2F;5954" rel="nofollow">https:&#x2F;&#x2F;afdc.energy.gov&#x2F;laws&#x2F;5954</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>What objective is reasoning solving?</title>
+      <link>https://alexwang.ai/posts/reasoning-as-pathfinding/</link>
+      <guid isPermaLink="false">hn3-50445013</guid>
+      <pubDate>Tue, 10 Nov 2026 19:25:14 +0000</pubDate>
+      <description>147 points, 67 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://alexwang.ai/posts/reasoning-as-pathfinding/"><strong>→ Article</strong></a> <small>(alexwang.ai)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50445013">→ HN comments</a> &nbsp;·&nbsp; 147 points &nbsp;·&nbsp; 67 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>htrp</em>:</p>
+<blockquote>&gt;I&#x27;m a researcher based in San Francisco. I like to imagine where the world is headed, and what it takes to get there.<p>&gt;I did my PhD in computer science at Stanford, where I designed long-context architectures for sequence modeling and memory. Before that, I studied math &amp; physics at Cornell. Most recently, I was a research scientist at Cartesia, working on in-context tokenization and novel architectures (HNets).<p>Not the MSL Alex Wang</blockquote>
+<p><strong>Top #2</strong> — <em>derefr</em>:</p>
+<blockquote>It solves for the same thing a &quot;train of thought&quot; (internal vocalization) solves for in the human brain: there&#x27;s a lot of stuff you &quot;know&quot; as episodic memories of words you&#x27;ve heard&#x2F;read, but haven&#x27;t yet internalized via practice into reflex reactions. It&#x27;s a lot faster and cheaper to acquire a memory of some words, than it is to acquire an entire new skill, so you end up picking up far more memories-of-words than concrete skills from a given training corpus.<p>Reasoning (i.e. bubbling those remembered words up into your mental context, and then using a special &quot;trigger effectively arbitrary synaptic activations dependent on the content of the attention-masked context and an ongoing state&quot; bridging reflex on them, a.k.a. &quot;system-2 thinking&quot;) is how you leverage memories-of-words into useful behavior. Rather than executing native skills embedded into your synaptic weights, you&#x27;re running a single very fancy native skill that acts as an interpreter for word-memory data, slowly and strenuously turning words you&#x27;re holding in mind into more words (synthesis), or into associations to other memories (word-memories or otherwise), or into actions&#x2F;outputs, etc.<p>(An especially useful &quot;trick&quot; of this system is <i>planning</i>, i.e. chaining the interpreter through &quot;mere words&quot; that conjure more &quot;mere words&quot; to mind until you end up at words that form a declaration of what you&#x27;re about to do. You can then rely on a special part of the bridging reflex, namely the &quot;instruction-following&quot; reflex, to react in a way where your actions are constrained by the plan you&#x27;ve generated.)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bwestergard</em>:</p>
+<blockquote>Can you explain why your view, which is the opposite of the OP&#x27;s, is correct?<p>&quot;RL training directly raises the success probability , by spending a lot of compute on searching for successful paths and then training the model to reproduce them. The gains we credit to “thinking longer” come from the search we paid for during training, rather than at inference.&quot;</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>raincole</em>:</p>
+<blockquote>Not mutually exclusive. LLMs are kind of like a self-fulfilling prophecy. Once some technique is discovered, it&#x27;d be part of the training process and becomes more efficient.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dist-epoch</em>:</p>
+<blockquote>I think it also addresses the issue that there is a finite amount of computation you can do in one pass.<p>So you use one pass to compute one relevant word, let&#x27;s say you are working on a sound analysis task, and you output &quot;FFT&quot;.<p>Now in the second pass, FFT is right there at the input, so you can push that idea forward more until you are out of layers again and then you use the output token to prime the next pass.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>piker</em>:</p>
+<blockquote>&gt; Consider the problem: “what’s 1 +2 +3 +⋯ +10”? One solution is to add the numbers one at a time: 1, 3, 6, 10, and so on up to 55. Another way is to pair them from the outside in: 1 +10, 2 +9, 3 +8, 4 +7 and 5 +6 each make 11, and five pairs of 11 make 55. Both of these paths land on the correct answer, 55.<p>Watching my son work through difficult math problems has forced me into this realization. In my head there is one &quot;correct&quot; path, and I often have to stop myself from interrupting his chain of thought. He often is just getting there a different way.</blockquote>
+<blockquote>
+<p>↳ reply — <em>zmgsabst</em>:</p>
+<blockquote>We might even formalize that concept and study how many different ways we can prove a claim, what they have in common, if two paths are mostly the same or very different, etc.<p>Much of modern foundations is about categorizing reasoning structures by such paths!</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Buttons840</em>:</p>
+<blockquote>I&#x27;ve wondered if there&#x27;s some kind of &quot;universal shape&quot; that can combine efficiently to express all possible algorithms.<p>NAND gates I guess? Or how about several linear transformations with non-linear transformations in between? (To those who might not get the joke here, this is what neural networks are.)<p>Neutral networks are built of such basic &quot;shapes&quot;, but I wonder if we&#x27;ll ever notice that &quot;oh, all the big LLM models have neurons that, when combined, form X shape, and these over here form Y shape, and so maybe we should be building neural networks from X and Y shapes implemented in hardware&quot;.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Starlink Mini 2</title>
       <link>https://starlink.com/mini-2</link>
@@ -393,6 +603,48 @@ bought them. They can also be difficult to move between providers.<p>Unfortunate
 </blockquote>
 <p>↳ reply 2 — <em>faccacta</em>:</p>
 <blockquote>That&#x27;s awesome. Will models be pelican-maxed from now on?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Announcing .NET 11</title>
+      <link>https://devblogs.microsoft.com/dotnet/announcing-dotnet-11/</link>
+      <guid isPermaLink="false">hn3-50442225</guid>
+      <pubDate>Tue, 10 Nov 2026 16:01:27 +0000</pubDate>
+      <description>194 points, 246 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://devblogs.microsoft.com/dotnet/announcing-dotnet-11/"><strong>→ Article</strong></a> <small>(devblogs.microsoft.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50442225">→ HN comments</a> &nbsp;·&nbsp; 194 points &nbsp;·&nbsp; 246 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>orng</em>:</p>
+<blockquote>Microsoft is doing great things with C# and .NET but I feel like the OSS community is struggling with its culture and identity a bit. 
+There has been a lot of rug pulling by some of the most popular open source packages in the .NET world in recent years.<p>First it was Identity Server, which Microsoft even recommend using in the official documentation (or at least did a year ago), which went closed source and switched names. Then there were others like MediatR and MassTransit who recently went commercial. And now, most recently, several packages are leaning into the &quot;Open Source Maintenance Fee&quot; model which is technically still open source but problematic for any who updates their nuget dependencies without reading all the documents included in the package. I think it hurts extra much because in many of these cases they were very much embraced not only by the community but also by Microsoft just like Identity Server. Like Polly is actually used as a dependency by official Microsoft packages after Microsoft decided to embrace it rather than replace it with their own implementation. Similarly MassTransit and other similar projects objected loudly a few years back when Microsoft were proposing their own messaging&#x2F;eventing framework and Microsoft backed off.<p>I&#x27;m not saying that OSS maintainers and projects don&#x27;t deserve to get paid, but none of these projects would have become nearly as popular had they started out commercial. And I feel like this type of thing is happening a lot more in the .NET community recently than in others (although I will concede that I am not as involved in others). 
+Perhaps it is the fact that Microsoft as a big enterprise entity is very much in the driver&#x27;s seat of the stack or the fact that it is used in a lot of enterprise software or just cultural baggage from 20 years ago where you paid for every library. In any case it feels like there is quite an Enterprise-y sentiment within the entire .NET community. Unfortunately.</blockquote>
+<p><strong>Top #2</strong> — <em>CharlieDigital</em>:</p>
+<blockquote>In my experience, C# and .NET are both &quot;underappreciated&quot; in a large part based on the legacy.<p>Some folks out there still think .NET is Windows only.  Some folks out there haven&#x27;t looked at C# since the .NET Framework days.  Some folks out there are still salty about some of Microsoft&#x27;s decision around OSS (debugger, hot reload fiasco, etc.)<p>But day to day working with C# and .NET for backends?  It&#x27;s really fantastic.  AI seems to like it a lot and a lot of tools for agents to go HAM.  Roslyn analyzer, source generators, workable hot reload (for a compiled language), tons of really good docs from Microsoft, generally low variance and high consistency from codebase to codebase (e.g. encountering Drizzle vs Prisma vs TypeORM vs Kysely vs ... in Node land).<p>My previous team switched from TS to C# and F#[0][1] and it was a blessing; a lot of the platform ops have been simplified.  It&#x27;s just one very solid tool chain and packages are generally stable (a lot less effort on maintaining platform config&#x2F;tooling and more focus on just building).  First party packages get consistent security updates and C# doesn&#x27;t have nearly the same level of exposure to transitive packages that one encounters with JS&#x2F;TS ecosystem.<p>C# feels like a really solid choice in the age of AI coding because of it&#x27;s general stability, strong static analyzer, insistence on types, and really good tooling.  Not right for all use cases (e.g. CLI, serverless functions), but <i>fantastic</i> for backend APIs.<p>If you&#x27;re looking to do AI with&#x2F;on C#, I wrote about some of my experience with making codebases successful for AI[2].<p>[0] <a href="https:&#x2F;&#x2F;engineering.usemotion.com&#x2F;moving-off-of-typescript-e7bb1f3ad091" rel="nofollow">https:&#x2F;&#x2F;engineering.usemotion.com&#x2F;moving-off-of-typescript-e...</a><p>[1] <a href="https:&#x2F;&#x2F;typescript-is-like-csharp.chrlschn.dev&#x2F;" rel="nofollow">https:&#x2F;&#x2F;typescript-is-like-csharp.chrlschn.dev&#x2F;</a><p>[2] <a href="https:&#x2F;&#x2F;chrlschn.dev&#x2F;blog&#x2F;2026&#x2F;08&#x2F;the-unexpected-ai-stack-csharp-dotnet-part-1&#x2F;" rel="nofollow">https:&#x2F;&#x2F;chrlschn.dev&#x2F;blog&#x2F;2026&#x2F;08&#x2F;the-unexpected-ai-stack-cs...</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>raincole</em>:</p>
+<blockquote>Being a Microsoft product is such a heavy baggage. Last time I checked the official debugger was still not open sourced and that alone was enough to make many people think twice. The fact that MSFT chose golang instead of C# for Typescript compiler, the state of Windows native GUI app dev... all erode C#&#x27;s reputation.<p>It&#x27;s a good language though. The latest trend of hating OOP is unjustified&#x2F;overreaction. I do write Rust too and I am not really convinced that traits are better than shallow inheritance + interface-oriented classes.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>to11mtm</em>:</p>
+<blockquote>Well, there&#x27;s a lot of sides of it.<p>On the historical (And semi-current-ish) downside we had&#x2F;have;<p>- lots of &#x27;flash in the pan&#x27; stuff between 2008-2012ish (Silverlight comes to mind here)<p>- Anemic Entity Framework in pre-core, and the weird stuff EF Core had going on early in it&#x27;s life.<p>- That constant worry as to whether you need to add .ConfigureAwait(false) to every async call in a library you want to open source.<p>- The thing where trying to do &#x27;traits&#x27; in NetCore (Now that you can mostly mimic the behavior) has had some side-effects on performance, mostly resolved but still something you have to consider as far as impact. (To be clear tho, thank god, needed that...)<p>- WTF was that UWP workflow?<p>- Why can&#x27;t we get a proper designer? I don&#x27;t think it would be that hard especially given I can do nice things around workflow designers today. Speaking of workflows...<p>- The complete (what I probably guess was MS groups eating their own tail) thing where Workflow Foundation was almost truly productive, SSMS had a thing based on it that was surprisingly productive, and it has been murdered instead of getting the TLC it needed to really disrupt. This one is extra loud because it is so similar to the &#x27;low code&#x27; platforms so many orgs have sank money into.<p>- Less impactful as far as people eating the lunch microsoft left on the table, but WCF.<p>The upshot is;<p>- If you&#x27;re willing to do some looking there are great options out there. lazy example, linq2db is basically a DSL that is close enough to EFCore as far as &#x27;how you compose&#x27; that you can teach it to a group of WITCH devs in 30 minutes or less.<p>- It really is easy to do all sorts of stuff. It&#x27;s just productive.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>cm2187</em>:</p>
+<blockquote>Also they dropped any pretence of doing any long term support, which is going to create all sort of interesting CVE over the long run given that it is mostly used now for backend.<p>And I am still not over the many breaking changes when they dumped full framework. Have to support a large code base, I think only now with AI will it be economical to redevelop it for .net core.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>christophilus</em>:</p>
+<blockquote>I love C# and F#, but every .NET shop I worked for was full of MS cool aid drinkers and enterprisey nonsense. I don’t miss the culture at all. The languages are excellent, though.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>giancarlostoro</em>:</p>
+<blockquote>C# was my 2nd programming language after VB6. I remember in the early 2000s when I was 12, using my best friends computer to try and download VB .NET (he had faster internet) just because it was free, then being extremely disappointed when I couldnt just run my VB6 projects I wanted to run on it... Some years later, during 2007 ~ 2009 I tried out C# and that was life changing.<p>I wound up going to college after working retail at Disney, then after college, my first job was supposed to be C# but they didn&#x27;t have the project approved, so I got my first exposure to Python - which I loved, then JavaScript - which I hated but have a love-hate with to this day, and finally C#, but it wasn&#x27;t .NET 3.5 no, they started using .NET Core, which was... something else, lots of teeth pulling during the original .NET Core days.<p>So many wonderful projects made with .NET my only complaint is I wish Microsoft would make a cross-platform GUI stack they&#x27;d actually stick to, and make it work on Linux too. ;)<p>I know there&#x27;s alternatives but nothing beats telling your coworkers &quot;lets just use the built-in&quot; when choosing a GUI stack.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>HeckFeck</em>:</p>
+<blockquote>&gt;I wish Microsoft would make a cross-platform GUI stack<p>I know this may as well be beseeched of the King of Nod, but if they just made WPF cross platform I&#x27;d be delighted beyond words.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>giancarlostoro</em>:</p>
+<blockquote>I&#x27;d be okay with this, I&#x27;d also be okay with MAUI (which... is a whole behemoth of how to make UIs), but anything, hell I would take them porting WinForms somehow into a cross-platform .NET thing that runs everywhere (Mono used to!), I just want anything at this point.<p>XAML was supposed to become an open spec, not sure why they have so many teams making so many different ways to make UIs. Then there&#x27;s those &quot;Windows 8&quot; apps, or the &quot;Universal Windows Apps&quot; which are poorly named, you cannot run any of them on previous versions of Windows, if anything Win32 apps are universal apps.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>anthk</em>:</p>
+<blockquote>VB6 clone written in Rust:<p><a href="https:&#x2F;&#x2F;github.com&#x2F;iBobX&#x2F;RapidR" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;iBobX&#x2F;RapidR</a><p>Not compatible, but you can use it in a cross-platform way.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -3650,259 +3902,6 @@ If there was an adequately reliable way of detecting LLM text i&#x27;d build a b
 <blockquote>Downloading the podcast via a computer or vpn in a low income country will remove almost all dynamic adverts (which is most podcast advertising)<p>I lived in Tanzania for a few years and most podcasts wouldn&#x27;t play adverts while I was there.</blockquote>
 <p>↳ reply 2 — <em>mgrandl</em>:</p>
 <blockquote>Crowdsourcing doesn’t work for Podcasts because most providers cut in ad segments based on your location. Those differ in length so the sponsorblock approach would not work. I slopped up a small go app that uses whisper API to transcribe and then uses Jev-compatible API to classify ad segments. Works great and costs like $0.01 per episode.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Goodbye Claude, hello Pi</title>
-      <link>https://caleb.software/posts/claude-to-pi.html</link>
-      <guid isPermaLink="false">hn3-50410107</guid>
-      <pubDate>Sun, 08 Nov 2026 03:11:48 +0000</pubDate>
-      <description>530 points, 342 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://caleb.software/posts/claude-to-pi.html"><strong>→ Article</strong></a> <small>(caleb.software)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50410107">→ HN comments</a> &nbsp;·&nbsp; 530 points &nbsp;·&nbsp; 342 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bottlepalm</em>:</p>
-<blockquote>I used to use ChatGPT&#x2F;Claude in the TUI up until like 3 months ago, but my usage of LLMs has exploded - many sessions across many projects. I feel like I outgrew the TUI and now I&#x27;m using ChatGPT&#x2F;Claude desktop. VS Code has become a code review tool and place where I manage git if need be.<p>The GUI is less verbose with the nitty gritty hidden in expandable sections, which makes history easier and cleaner to scroll through, also no scrolling bugs, rich text is easier to read with tables, and images integrated into the chat, resources like browsers in the context of the session. Drag and drop session organization (pins), scheduled tasks, etc.. all that in the side bar.<p>Usually a TUI would be open in VS Code and scoped to whatever repo I&#x27;m working with so 10 projects, 10 VS Code instances open, not super scalable. With the GUI desktop app it&#x27;s one app, and I can start sessions in an repo and switch between them easily, no need to open VS Code for each. I don&#x27;t see what could make me want to go back to using a TUI.<p>Who else is just using the GUI nowadays, or are you still on the TUI, and why, have you tried the GUI interfaces?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jnordt</em>:</p>
-<blockquote>I went from TUI and tested several GUIs that can also support a &quot;TUI&quot; view.<p>After testing several options at the moment I&#x27;m using Orca IDE as my daily driver - effectively as a layer on top anthropic &#x2F; openai<p>- Supports both anthropic and openai with subscriptions and can you swithc easily between those two + other LLms<p>- Its a bit hidden &#x2F; non intuitive to setup but it does support running everything on  remove host -&gt; I run (95%) of my jobs on remote hosts that I can both access from my laptop + their native app via a wirguard vpn<p>- You can switch between chatview + TUI on the same conversation - very useful if you move e.g. from desktop session to mobile view.<p>- For repeating LLM tasks Orca also suports a kind of scheduler - but I prefer currently to have the agent set things up via chronjobs on the remote machine (not super happy with this ...)<p>Key reason I dont want to go fully ChatGPT&#x2F;Claude is also I dont want to build a super strong dependency on those mega players and remain the ability to switch to other interefernce providers &#x2F; models.<p>As LLM usage is already a core workflow in our company - a sudden unavailability of one or a massive price increase - makes it absolutely necessary to build out alternatives.<p>We all know the downsides of SAAS Lock in too well from the 2010s. In that sense Fool me once, fool me twice..</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>meetingthrower</em>:</p>
-<blockquote>+1 on the Orca and remote machine. I&#x27;ve basically turned it into my own Claw machine. It does super well at letting me remote in across 3 computers and phone and hitting all the same sessions. I have one master session that is always kept alive as my main &quot;agent&quot;, and spin out other full sessions from that.<p>It solves the crappy user experience of the CLI vs using an SSH terminal in VS code. (Easy copy pasting, everything formatted correctly, etc.) I created my own version of artifact hosting with a simple &quot;mailbox&quot; page on the box - every session can drop it&#x27;s html reports off there nicely.<p>Completely agree on being able to flex out to different models. I&#x27;m using Claude Code as daily driver given the insane subsidies we are getting. But want something where I can switch easily onto the open weights, etc.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Daviey</em>:</p>
-<blockquote>I find TUI scales <i>better</i> for multiple concurrent agents across the same and different codebases, especially using tools such as herdr.  I can fire off an agent, which runs sub-agents.  Then check-in periodically to re-steer as needed or be interrupt driven for completions of tasks.  I can&#x27;t see how vscode&#x2F;GUI is <i>better</i> for this?</blockquote>
-<p>↳ reply 3 — <em>LinXitoW</em>:</p>
-<blockquote>I graduated from Claude Code to Herdr to now T3Code.<p>T3Code can do anything I might need such a tool to. It supports a bunch of different harnesses, therefore also subscriptions. It supports running agents on different servers, from the same GUI. Mobile app that works well. Orchestration that allows any agent to orchestrate others in T3Code directly.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>gvkhna</em>:</p>
-<blockquote>Pi is without contest the best harness. Because it’s yours, the total control is the only way to move from driving agents to orchestrating them.<p>My interruptions and frustration with llms has gone down a cliff. It’s amazing to see what just a few lines of system prompt really can do to keep agents doing the correct thing much more often.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mark_l_watson</em>:</p>
-<blockquote>I tend to agree with you. I wrote 4 separate coding harnesses of my own earlier this year (in different programming languages, great learning experience), but pi running good local models like qwen 3.8 next flash, or a deepseek flash API from a vendor with decent privacy assurances is really the bedrock of my workflow. There are always exceptions: running pool harness with Laguna XS 2.1 6bit is a really nice local dev experience for code maintenance and quicker sessions. Also, I very occasionally really enjoy DeepSeek Harness with deepseek flash, CC with Opus 5.5 and agy with the latest Gemini Argon.<p>So there are many wonderful dev experiences, but generally relying on something relatively simple like pi makes a lot of sense, for my use cases.</blockquote>
-<p>↳ reply 2 — <em>neop1x</em>:</p>
-<blockquote>Exactlty. I love that it works the way I want it to work. I can install and write extensions I want.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>B4uler5</em>:</p>
-<blockquote>I’ve been using Pi since April. I switched from using copilot CLI which definitely isn’t the most frontier harness going but was more “feature rich” at the time than the stripped down feature set you get with Pi out the box.<p>The bit I was instantly drawn to was how much access you are given to change every part of it. Its similar to the text buffer in emacs where every cell in the buffer is fully accessible to any edits you need to make. My configurations are fairly minimal, but for instance I match the accept cli calls that could be destructive and edits to files in the same way copilot is set up.<p>Currently my pi config turns it into a tutor. It no longer makes edits, just advises and is designed to teach. I make all the code edits by hand. Use deepseek flash with it because its stupid cheap. It works for me, but honestly you can set up pi in any way you want which is why I personally think its the best harness by virtue of anything being possible as long as you can dream it up!</blockquote>
-<blockquote>
-<p>↳ reply — <em>morotter</em>:</p>
-<blockquote>Could you share your setup? is it skill-based? I like the idea of using the model as a tutor&#x2F;pair programmer so that I stay more grounded rather than delegating too much of the coding to it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>B4uler5</em>:</p>
-<blockquote>Its mostly just in the SYSTEM.md file. Its quite strict honestly, the rules have been built up to better curb my laziness, and also respond with statements that are better designed to teach than provide an answer.<p>Repo: <a href="https:&#x2F;&#x2F;github.com&#x2F;MauriceElliott&#x2F;PiCal" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;MauriceElliott&#x2F;PiCal</a><p>System.md: <a href="https:&#x2F;&#x2F;github.com&#x2F;MauriceElliott&#x2F;PiCal&#x2F;blob&#x2F;main&#x2F;agent&#x2F;SYSTEM.md" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;MauriceElliott&#x2F;PiCal&#x2F;blob&#x2F;main&#x2F;agent&#x2F;SYST...</a><p>It has a break out phrase for when I have a deadline but its pretty useful in the normal mode so I’ve only had to use it a hand full of times.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>GitHub New pull request overview page in public preview</title>
-      <link>https://github.blog/changelog/2026-11-05-new-pull-request-overview-page-in-public-preview/</link>
-      <guid isPermaLink="false">hn3-50408931</guid>
-      <pubDate>Sat, 07 Nov 2026 23:09:40 +0000</pubDate>
-      <description>141 points, 92 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.blog/changelog/2026-11-05-new-pull-request-overview-page-in-public-preview/"><strong>→ Article</strong></a> <small>(github.blog)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50408931">→ HN comments</a> &nbsp;·&nbsp; 141 points &nbsp;·&nbsp; 92 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>capevace</em>:</p>
-<blockquote>We’ve been building our own Review Pipeline, including automated review guides, risk detection and much more.<p>There’s SO much to be done around Code Review, I’m very surprised GitHub isn’t doing more.<p>They have the reach already, they have years of real review data. And yet, the PR itself is not using any of the newly available methods for more efficient review.<p>Agents are hammering PRs out left and right, and yet here I am still staring at the raw diff of 35 PRs and end up being called the bottleneck.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bob1029</em>:</p>
-<blockquote>I don&#x27;t get all the people who complain about reviewing PRs. To me being a critic is much less stressful than being the author. Perhaps so much so that it becomes borderline enjoyable.<p>35 PRs on my client&#x27;s codebase would be no big deal because I took a lot of time to understand the fundamentals of the business around it. I can recognize within seconds if a PR is an easy merge or a 5 minute phone call.<p>If you are struggling with PR reviews, this is a sign that something is wrong with the coal mine, not with your birds.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>ncruces</em>:</p>
-<blockquote>&gt; I can recognize within seconds if a PR is an easy merge or a 5 minute phone call.<p>I&#x27;m glad you can.<p>Even before agents, I&#x27;m pulled to work on at least a couple different projects a year, the successful ones with teams of 10s of people working on them. If I stay longer than a couple of months, I eventually become the expert on some of the things I did, so I get pulled years later to review something I haven&#x27;t touched in ages, which has changed requirements, and grown a bunch of dependents.<p>That was the reality of working on a team with hundreds of people and dozens of related products.<p>Now agents are helping people increase complexity and velocity N-fold.<p>You can call it a problem in the coal mine, but there&#x27;s no going back. GitHub simply has no choice but to handle this new scale.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>ivanjermakov</em>:</p>
-<blockquote>Code review process is the worst part of LLM-assisted SDLC at the moment, probably because nobody knows how to do it well yet.</blockquote>
-<p>↳ reply 3 — <em>sdevonoes</em>:</p>
-<blockquote>I wish I was paid what im being paid for only reviewing PRs</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>gz09</em>:</p>
-<blockquote>I wish they would instead focus on fixing the regressions with PRs first...
-For example: There is a nasty bug that got introduced recently where you click &quot;Merge when ready&quot; but your chances of things actually going to the merge queue seem to be only at about 60-70%. When it happens the way you usually find out if things still aren&#x27;t merged the next day.<p>Their support has acknowledged the issue to us over a month ago but no fix as of now.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>twhitmore</em>:</p>
-<blockquote>Github PR viewer UX is just horrible. The UI is bloated, slow and very very difficult to use. (For example, commenting on a Copilot comment frequently takes 5-8s to the UI to submit and update.)<p>Why not fix the garbage UI first?<p>If we could just see unresolved comments and CI status in a page that take 100ms to load and 1 second to scroll to the bottom, everything would be fine.<p>The problem is that it the PR Conversation page takes 20-25 seconds to load a scroll through; and is full of outdated reports from Copilot&#x2F; Devin that don&#x27;t go away of themselves, and don&#x27;t have a good UI to be dismissed, once they&#x27;re irrelevant.<p>I&#x27;m outside the US so poor UI &lt;-&gt; server network interaction may be magnified. But for something that could be simple and reasonable, it&#x27;s just overloaded with garbage and an appalling experience.<p>Fix the basics first. I&#x27;d fire the entire team and every single Product Manager&#x2F; UX Lead involved. Anybody from Github listening?</blockquote>
-<p>↳ reply 2 — <em>losvedir</em>:</p>
-<blockquote>A bug that&#x27;s been driving me crazy lately is the file list in the sidebar doesn&#x27;t reliably link you to the right file when you click on a filename. I find myself clicking it several times while the code on the right jumps around until it finally lands on the right file.<p>Anyone else experience this?<p>On topic, regarding these changes. I&#x27;m not sure what all changed, but I like having the status checks and merge button at the top of the page now.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>habosa</em>:</p>
-<blockquote>This is a major improvement and still not great. I made CodeApprove (<a href="https:&#x2F;&#x2F;codeapprove.com" rel="nofollow">https:&#x2F;&#x2F;codeapprove.com</a>) 6+ years ago just because the PR page on GitHub is so bad and I felt the urge to make it better.<p>IMO the correct design is pretty simple:
- - Everything on one page, information dense
- - Focus on code and unresolved discussions, maybe CI checks
- - Keyboard navigation<p>Graphite gets pretty close! But it&#x27;s become cluttered over the years. CodeApprove is far from perfect too (it&#x27;s been a while since I worked on the UX much) but I&#x27;d hope GitHub could do a little better.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>mroche</em>:</p>
-<blockquote>I have very little experience with the tools, but from the landing page my first reaction was that it structurally reminded me a bit of Gerrit. Was it a source of inspiration for CodeApprove?</blockquote>
-<p>↳ reply 2 — <em>csomar</em>:</p>
-<blockquote>hey Sam! Glad to see you are still at it.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Making any integer with four 2s (2025)</title>
-      <link>https://eli.thegreenplace.net/2025/making-any-integer-with-four-2s/</link>
-      <guid isPermaLink="false">hn3-50408713</guid>
-      <pubDate>Sat, 07 Nov 2026 22:38:58 +0000</pubDate>
-      <description>141 points, 32 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://eli.thegreenplace.net/2025/making-any-integer-with-four-2s/"><strong>→ Article</strong></a> <small>(eli.thegreenplace.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50408713">→ HN comments</a> &nbsp;·&nbsp; 141 points &nbsp;·&nbsp; 32 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>hahajk</em>:</p>
-<blockquote>i know everyone plays with their own rules, but from my perspective, a square root spends a 2 - it&#x27;s not an operator like + or ! . there&#x27;s an implicit &quot;2&quot; since you could also take the cube root or fourth root</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>JumpCrisscross</em>:</p>
-<blockquote>&gt; <i>it&#x27;s not an operator like + or !</i><p>Squaring is to multiplication as is the latter to addition. If roots are invalid then so should be multiplications.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>penteract</em>:</p>
-<blockquote>Exponentiation is to multiplication as multiplication is to addition. Squaring is to multiplication as doubling is to addition.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jolmg</em>:</p>
-<blockquote>&gt; Squaring is to multiplication as doubling is to addition.<p>as halving is to addition.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>SideQuark</em>:</p>
-<blockquote>Alternatively, one can claim sqrt is a single symbol, and there are extensions requiring a digit. Log, ln, also have hidden bases, but they’re also valid symbols. Cos&#x2F;sin may be in radians or degrees, both in common use, and no real place to denote it.<p>One could even claim division is raising to the -1 power, thereby disqualifying it in exactly the same manner you disqualify sqrt. I’ve never seen sqrt with a 2 index; power -1 is seen quite often for division.<p>Go figure….</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>adas0693</em>:</p>
-<blockquote>there is a related problem (inspired by an interview questions from ITA software, a part of Google now) that asks to find the smallest positive integer that cannot be expressed using a digit K (in [2,9]) N times in an expression that involves the four basic arithmetic operations and the parentheses: +, -, *, &#x2F;, (, and ).<p>to make the problem more interesting, the list of operations can be extended to include exponentiation and concatenation.<p>for example, using the four basic operations for N=4, and K in [2,9], we get:<p>7 cannot be computed in 4 2s; 
-11 cannot be computed in 4 3s; 
-10 cannot be computed in 4 4s; 
-8 cannot be computed in 4 5s; 
-9 cannot be computed in 4 6s; 
-4 cannot be computed in 4 7s; 
-5 cannot be computed in 4 8s; 
-4 cannot be computed in 4 9s;</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>catlifeonmars</em>:</p>
-<blockquote>This feels very suspiciously like a finite field problem.</blockquote>
-<p>↳ reply 2 — <em>genter</em>:</p>
-<blockquote>Are you allowed to brute force it?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>gnabgib</em>:</p>
-<blockquote>Popular last year (368 points, 165 comments) <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=43145753">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=43145753</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Claude Code's "Don't Ask Again" exposes passwords in 1,122 public GitHub files</title>
-      <link>https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again</link>
-      <guid isPermaLink="false">hn3-50407882</guid>
-      <pubDate>Sat, 07 Nov 2026 20:45:32 +0000</pubDate>
-      <description>393 points, 270 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again"><strong>→ Article</strong></a> <small>(apiiro.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50407882">→ HN comments</a> &nbsp;·&nbsp; 393 points &nbsp;·&nbsp; 270 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>bcherny</em>:</p>
-<blockquote>Boris from the Claude Code team here. Historically Claude Code has not done secret scrubbing (there are many good tools for that), but we are looking into what we can do to prevent this.<p>That said, a few thoughts:<p>1. .claude&#x2F;settings.local.json is meant to stay local. This is not a file you should check into source control. We automatically gitignore it when Claude creates the file, so in this case the files were manually created and checked in (docs: <a href="https:&#x2F;&#x2F;code.claude.com&#x2F;docs&#x2F;en&#x2F;settings" rel="nofollow">https:&#x2F;&#x2F;code.claude.com&#x2F;docs&#x2F;en&#x2F;settings</a>)<p>2. Permission rules are old hat. Everyone should be using auto mode instead. It is safer and also does not require manually maintaining finicky allow&#x2F;deny lists. Auto mode is enabled by default and is included for free in all plans.<p>3. Regardless of what agent you use, you should have secret scanning enabled. GitHub and other source control hosts offer it. There are many threat models that it protects against and you should absolutely use it if you can. (see <a href="https:&#x2F;&#x2F;github.com&#x2F;security&#x2F;plans" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;security&#x2F;plans</a>)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>futhey</em>:</p>
-<blockquote>I&#x27;m not here to be critical, but the hoops you have to jump through to get Claude out of .env is more than it should be. You basically need an agent to write it if it&#x27;s anything complicated, like, allow .env.example but not .env.*.<p>Whereas that should probably be default on instead, and this should apply to other known sensitive folders. A simpler system like .agentignore would be even better.<p>I like auto mode but &quot;the agent supervises itself&quot; is a bad compliance&#x2F;safety answer on its own.</blockquote>
-<p>↳ reply 2 — <em>eddy162</em>:</p>
-<blockquote>Saying the answer is auto mode almost feels insulting as a developer. Claude loves showing me the most obscure bash commands where it hides its edits to numerous files and runs who knows what that there&#x27;s barely a time where I don&#x27;t have to ask it to use edit mode and to show human-readable bash commands. Using Claude has become a fight in maintaining control over how my codebase works so that I&#x27;m not dependent on Claude to do literally anything.</blockquote>
-<p>↳ reply 3 — <em>markasoftware</em>:</p>
-<blockquote>Auto mode cannot be considered safer than anything because it does not even attempt to guarantee any sort of security. The threat model is not even defined. It cannot be quantified or compared with any other approach other than &quot;full access&quot;</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>Aurornis</em>:</p>
-<blockquote>Confusing headline. They scanned for repos where people had committed their .claude&#x2F; folder and local settings and then scanned those files for commands which contained keys or passwords.<p>So pressing “Don’t Ask Again” by itself doesn’t expose passwords by itself. If you commit your local Claude settings and in those settings you have manually approved commands containing secrets directly in the command and then you publish the repo, that’s exposed.</blockquote>
-<p><strong>Top #3</strong> — <em>tsergiu</em>:</p>
-<blockquote>I&#x27;m super paranoid about the level of access AI agents have. At the same time, I want them to take away the tedium of a bunch of tasks I&#x27;m required to do, and it sucks to have to micromanage them.<p>The best solution I&#x27;ve been able to come up is using an ephemeral vm (on an isolated network) per task, using --dangerously-skip-permissions so it doesn&#x27;t bother me. I couple that with an API proxy that lets me restrict the permissions it has to external services. So e.g. where a quickbooks API key gives the holder &quot;god mode&quot; access, the proxy lets the agent do certain read commands without confirmation, but all write endpoints except uploading receipts require confirmation on my phone before they&#x27;ll be allowed to hit the quickbooks servers. I no longer need to trust that the agent will interpret my readonly wishes correctly.<p>Tooting my own horn here, but this setup works incredibly well! I&#x27;ve been able to connect dozens of services safely where I absolutely do not trust giving raw, overpowered credentials or oauth integration to the agent directly. I actually just released the API proxy today at <a href="https:&#x2F;&#x2F;keycontain.com" rel="nofollow">https:&#x2F;&#x2F;keycontain.com</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>What I run on my $10 USD OpenStick homelab</title>
-      <link>https://blog.bosscher.ch/posts/openstick/</link>
-      <guid isPermaLink="false">hn3-50406670</guid>
-      <pubDate>Sat, 07 Nov 2026 18:12:12 +0000</pubDate>
-      <description>348 points, 84 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.bosscher.ch/posts/openstick/"><strong>→ Article</strong></a> <small>(blog.bosscher.ch)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50406670">→ HN comments</a> &nbsp;·&nbsp; 348 points &nbsp;·&nbsp; 84 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>LaurensBER</em>:</p>
-<blockquote>I&#x27;ve had a lot of fun with this little gadget and it&#x27;s pretty cool to see how much you can host on a cheap gadget if you pick the right software! Given how expensive RAM is these days, I figured, this might be a good option for other people to get started with self-hosting as well!<p>Happy to answer any question and take suggestions as to what other software would be a good addition!</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>NortySpock</em>:</p>
-<blockquote>Nice list, I&#x27;ll have to try a few! I&#x27;ve been having fun squeezing things into a Raspberry Pi 4 (4GB) and a thin client acting as a server (16GB), there&#x27;s something about passively cooled compute that feels &quot;free&quot;...<p>Possibly of note from my services list:<p>victoria-metrics : currently at 230 MB ram because I send it all kinds of metrics<p>victoria-logs : 114 MB ram -- log aggregator<p>vl-agent : 25 MB ram (log forwarder for above)<p>ntp : 2 MB ram<p>librespeed : 16 MB ram (LAN speed testing, useful for wifi &#x2F; quick ethernet checks)<p>corentinth&#x2F;it-tools : 5 MB ram<p>mqtt mosquitto : 5 MB ram (message broker)<p>smokeping : 52 MB ram (latency history)<p><a href="https:&#x2F;&#x2F;github.com&#x2F;apenwarr&#x2F;blip" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;apenwarr&#x2F;blip</a> : 2 MB (live DNS latency checker)<p>lighttpd : 2 MB (static web server serving a single homepage)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>rcarmo</em>:</p>
-<blockquote>How much telemetry do you have in victoria-metrics? I&#x27;ve stuck to graphite but have been considering moving to it.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>NortySpock</em>:</p>
-<blockquote>lol last time I crowed about VictoriaMetrics someone accused me of being a bot <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48192183">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=48192183</a><p>But anyways, a fun test I ran was &quot;load 4.5 million samples of Beijing hourly air quality data (ozone, S02, PM2.5, etc) from May 2013 to May 2017.&quot; (using Bento to turn the csv into json to fire at the API, with some batching and 4 http connections to Victoriametrics )<p>VictoriaMetrics accepts all of this in 54 seconds, network traffic shows between 9 and 14MB per second , and the data is available several seconds later (it&#x27;s definitely a noticeable delay for me before it shows up in the VictoriaMetrics UI). Server is an old passively cooled thin client with a quad core AMD GX-415GA (circa 2013) and DDR3 ram.<p>So, 4.5M data points, 11 timeseries.  Docker volume says it&#x27;s under 14MB in size.<p>In my regular day-to-day telemetry (separate container) the volume is 99MB in size, it has 11,747 timeseries, 18,689 total samples, but I only keep a few days of data retention.<p>I think VictoriaMetrics is great, and I have found their documentation is extensive and easy to follow.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>msephton</em>:</p>
-<blockquote>This is really cool. I enjoyed the way your post was written. I’m thinking FreshRSS would be a good candidate - it looks hideous - but acts as a fetcher&#x2F;cache&#x2F;proxy for RSS reader apps on your phone or computer, so that when they launch there’s no time consuming wait for feeds to refresh.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>rbanffy</em>:</p>
-<blockquote>It’s more powerful than the RPi Zeros I use on my cluster - kind of same as a Zero 2.<p>What I’d love to see is a stick that plugs into an Ethernet switch with PoE so you assemble a cluster just by literally plugging nodes to a cluster. For that to work, the best form factor would be a vertical board with a male Ethernet connector on one side so that it’d fit on the horizontal RJ45 on the switch and not be limited by the RJ45’s width.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ssl-3</em>:</p>
-<blockquote>That&#x27;d be elegant.  But.  :)<p>It involves a lot of custom kit (like male right-angle PC-mount 8P8C connectors are contrary to the natural order and don&#x27;t seem to exist at all), and it misses the mark on the main advantage of adopting the complexity of 802.3af PoE:  Useful amounts of reliable power alongside data over inexpensive wiring, at long (~100 meter) distances.<p>And we&#x27;re talking about a cluster of, what, a few nodes?<p>There&#x27;s got to be a better way  :)</blockquote>
-<p>↳ reply 2 — <em>justsomehnguy</em>:</p>
-<blockquote>It would be too hot and too expensive. You can skip the copper media and go for an SFP&#x2F;SFP+ pluggable directly - a full blown computer in the SFP module is yesteryear news. But at this point if you are assembling a cluster of sticks in SFP switch... you can just take some 5 y.o. USDT&#x2F;Tiny and have a full blown x64 computer with all the power and virtualization you need.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>rcarmo</em>:</p>
-<blockquote>Fusion is quite interesting. I forked miniflux into <a href="https:&#x2F;&#x2F;github.com&#x2F;rcarmo&#x2F;picoflux" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;rcarmo&#x2F;picoflux</a> because I wanted something lighter, but I like Fusion&#x27;s screenshots better than the mini&#x2F;picoflux web UI, so I will be looking at that ASAP.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The end of Microsoft Research's AI Frontiers group</title>
-      <link>https://hunch.net/?p=13764006</link>
-      <guid isPermaLink="false">hn3-50406563</guid>
-      <pubDate>Sat, 07 Nov 2026 18:02:17 +0000</pubDate>
-      <description>394 points, 230 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://hunch.net/?p=13764006"><strong>→ Article</strong></a> <small>(hunch.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50406563">→ HN comments</a> &nbsp;·&nbsp; 394 points &nbsp;·&nbsp; 230 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>AnotherGoodName</em>:</p>
-<blockquote>This is true in every large company right now.<p>The transformer based approach is seen as a highway to race down in terms of training and building better models with minimal organizational distractions allowed while every company puts its foot down on this highway. Exploratory research into other AI methods is highly discouraged for now and organizations are encouraging transformer based scale out and iteration as a top priority.<p>As an example Meta literally fired it&#x27;s previously head of AI who held views that transformers won&#x27;t scale. He wanted to veer off the highway and heavily fund exploratory new types of models. They got someone willing to scale the current method out. Essentially the messaging it &quot;Foot down, there&#x27;s a straight highway ahead don&#x27;t divert&quot;.<p>I have the view this makes sense too. Current top models are mere (mere in big datacenter terms) trillions of parameters right now. We definitely haven&#x27;t hit the ceiling and everyone&#x27;s noticing &quot;Hey this Opus 5.5 with the increased parameters seems much better than the last one&quot;. Well that&#x27;s a trillion parameter model. We&#x27;ll soon start hitting 10&#x27;s of trillions and 100&#x27;s of trillions of parameter models. Unless there&#x27;s a ceiling which nobody expects they should keep scaling just as they have been. I really do agree that it&#x27;d be insane to veer off this highway with exploratory research at this particular point in time. Foot down, get to 10 trillion parameters, see if the scaling holds, if so off to 100 trillion parameters. If the scaling continues to hold we&#x27;ll be asking the AI to do the exploratory research for us soon enough.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>redox99</em>:</p>
-<blockquote>&gt; As an example Meta literally fired it&#x27;s previously head of AI who held views that transformers won&#x27;t scale. He wanted to veer off the highway and heavily fund exploratory new types of models.<p>Almost all statements Yann LeCun made back then (LLMs won&#x27;t be able to do this or that) turned out to be wrong. They were right to fire him.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Animats</em>:</p>
-<blockquote>Historically, that happens now and then. Examples include color television cameras and fluorescent lamp ballasts.<p>RCA developed the first good color TV cameras. They were monsters. Originally, electronic TV (as opposed to mechanical scanning) used Zworykin&#x27;s iconoscope. This needed huge amounts of light. It didn&#x27;t have a photo-multiplier stage                              to boost sensitivity, but it did accumulate charge from light over the whole frame time. There was an alternative approach, Farnsworth&#x27;s image dissector, which also needed huge amounts of light. It had a photo-multiplier stage but only the light from the dot currently being scanned by the scanning beam mattered.<p>So RCA threw money at the problem. They developed the image orthicon camera tube. It combined the advantages of both approaches, integration over a full frame and a photo-multiplier stage. It was insanely expensive, costing thousands of dollars in the 1950s. It needed about twenty different voltages and multiple independent power supplies. It worked reasonably well.<p>Then came color. That took three image orthicons (RGB) inside a box the size of a small refrigerator, along with optics to split the incoming image into three colors. Plus 
-a rack of analog electronics per camera, connected through a large cable. Plus an alignment problem from hell, with a huge number of adjustment knobs.[1]<p>Scaling worked! From the 1950s to the 1970s, color TV broadcasting was powered by those monsters.<p>Now, independent of this, other people were working on other approaches. Vidicons, silicon detectors inside camera tubes, and finally fully solid state image sensors. Eventually, in 
-1983, after thirty years of image orthicon monsters, RCA produced a usable solid state camera. Today, a cell phone camera costs about US$10 in bulk, and it&#x27;s far better than the monsters.<p>It took thirty years of low-priority development to get past the giant image orthicon cameras.<p>Electronic fluorescent lamp ballasts had a different problem. That was a suppressed invention.
-The magnetic ballast industry was dominated by Magnetek. Someone invented a solid state replacement, which was smaller and cheaper, and licensed their patent to Magnetek for royalties. Magnetek just sat on it, not wanting to gut their core market. The inventor hired Townsend, Townsend and Crew in Palo Alto and sued. (Read this in the law firm&#x27;s brag book in their office.) Eventually, the inventor got a hundred million or so, solid state ballasts went into production, and Magnetek seems to be gone. (The company called Magnetek today, which makes crane controls, is an offshoot of a Litton unit, and seems to be unrelated.)<p>There are also parallels from the steam locomotive industry, the Baldwin Locomotive Works being the best known. Baldwin actually built the first Diesel locomotive. They made a few half-hearted tries at Diesels over several decades, then gave up and went back to steam. Baldwin ceased all locomotive production in 1956. The corporation lingered on for a while, not doing much.<p>[1] <a href="https:&#x2F;&#x2F;www.tvcameramuseum.org&#x2F;rca&#x2F;tk40a&#x2F;pix&#x2F;rcatk40aart.pdf" rel="nofollow">https:&#x2F;&#x2F;www.tvcameramuseum.org&#x2F;rca&#x2F;tk40a&#x2F;pix&#x2F;rcatk40aart.pdf</a></blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>leoc</em>:</p>
-<blockquote>(So it must be those Orthicon cameras which cause the distinctive weirdnesses of early TV images like the reflections from highly-polished surfaces (such as the bells of brass instruments and saxophones) which gleam <i>black</i>? <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2uTQQKU6ge0&amp;t=111s" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=2uTQQKU6ge0&amp;t=111s</a> )</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>MantisShrimp90</em>:</p>
-<blockquote>That depends on your definition of scale. Yes! We were to literally convert the whole world and its resources into data centers.<p>But the whole problem is that these things aren&#x27;t acting like other technological revolutions like the internet or Google where lots of profit comes from relatively little spend. They scale linearly maybe if you are super smart and good about your design.<p>Meanwhile, citizens all over the world are fighting data centers tooth and nail because we are hitting a scaling limit in terms of the resources people will allow to be put into this highway project and its equally unwise and untethered from reality to pretend this doesn&#x27;t matter in a strategic sense.</blockquote>
-<p>↳ reply 3 — <em>mrandish</em>:</p>
-<blockquote>&gt;  there&#x27;s a straight highway ahead<p>Which many credible, AI researchers believe is already starting up an increasingly steep scaling wall of diminishing returns that eventually ends at a brick wall.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>smokel</em>:</p>
-<blockquote>This refers specifically to &quot;AI Frontiers&quot;, a research group within Microsoft Research that focuses on fundamental advances in AI.  There is no end in sight to real AI frontiers.<p>Perhaps &quot;The End of Microsoft Research&#x27;s AI Frontiers Group&quot;
-would be a less ambiguous title.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>dang</em>:</p>
-<blockquote>Ok we&#x27;ll use that above. Thanks!</blockquote>
-<p>↳ reply 2 — <em>sheepscreek</em>:</p>
-<blockquote>Yeah, I went down the rabbit hole scratching my head the whole time. This is about the group at Microsoft Research that was disbanded or reorged into what is now Microsoft Research.<p>To the author: 100% need this kind of thinking. It’s a balancing act. Historically though, dedicated labs haven’t had the best track record at commercializing their tech. The skillset differs vastly from running a product-focused business.<p>That said, even within this narrow scope - there are areas ripe for research.<p>Some of my particular interests include:<p>(1) Latent thinking&#x2F;reasoning, which could arguably be more efficient but also opaque is one<p>(2) Separation of “intelligence” from knowledge - ie. keep the ability to reason like a frontier model and make tool calls (calling the ‘oracle’ or searching the web) but remove all parameters associated with niche knowledge&#x2F;facts.<p>These are a couple off the top of my head that are very much aligned to scaling.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>rhyperior</em>:</p>
-<blockquote>&gt; there’s a breakdown of the basic deal in MSR: do good work and good things happen<p>This really hit home for me. This is the contract that held for a *long* time at Microsoft and has been broken and rebroken with current leadership. It’s culture-destroying.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Five memorable books about programming (2008)</title>
-      <link>https://prog21.dadgum.com/19.html</link>
-      <guid isPermaLink="false">hn3-50406319</guid>
-      <pubDate>Sat, 07 Nov 2026 17:30:49 +0000</pubDate>
-      <description>126 points, 82 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://prog21.dadgum.com/19.html"><strong>→ Article</strong></a> <small>(prog21.dadgum.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50406319">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 82 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>so-cal-schemer</em>:</p>
-<blockquote>How about <i>Higher-Order Perl</i> by Mark Jason Dominus?<p><a href="https:&#x2F;&#x2F;hop.perl.plover.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;hop.perl.plover.com&#x2F;</a><p>Some other great low flying titles:<p><i>The Computational Beauty of Nature</i> by Gary William Flake<p><a href="https:&#x2F;&#x2F;mitpress.mit.edu&#x2F;9780262561273&#x2F;the-computational-beauty-of-nature&#x2F;" rel="nofollow">https:&#x2F;&#x2F;mitpress.mit.edu&#x2F;9780262561273&#x2F;the-computational-bea...</a><p><i>The Nature of Computation</i> by Cristopher Moore and Stephan Mertens.<p><a href="https:&#x2F;&#x2F;nature-of-computation.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;nature-of-computation.org&#x2F;</a><p><i>Algorithms</i> by S. Dasgupta, C.H. Papadimitriou, and U.V. Vazirani<p><a href="https:&#x2F;&#x2F;cseweb.ucsd.edu&#x2F;~dasgupta&#x2F;book&#x2F;index.html" rel="nofollow">https:&#x2F;&#x2F;cseweb.ucsd.edu&#x2F;~dasgupta&#x2F;book&#x2F;index.html</a><p>and <i>On Lisp</i>, of course:<p><a href="https:&#x2F;&#x2F;www.paulgraham.com&#x2F;onlisp.html" rel="nofollow">https:&#x2F;&#x2F;www.paulgraham.com&#x2F;onlisp.html</a></blockquote>
-<p><strong>Top #2</strong> — <em>rbanffy</em>:</p>
-<blockquote>For me, the blue Smalltalk book by Adele Goldberg was deeply formative. It was computing done right and from first principles.<p>The other two formative experiences for me were using Cincom’s Mantis on the 3278 and Dataflex 2. Both made it obvious how quickly one could go from screen to persisted data, CRUD, application logic, and reporting with the right level of abstraction. Much later I described Dataflex as “Rails for the VT100”. Sadly, Cincom will not provide a hobby license to run it on an emulated 4381, and won’t even give away free manuals, and the company behind Dataflex (I don’t remember their name right now) seems to not even have any versions from that time. When I read Paul Graham’s Beating the Averages, it all clicked perfectly.</blockquote>
-<p><strong>Top #3</strong> — <em>jrmg</em>:</p>
-<blockquote>Programmers at work: I bought a used copy of it - probably after reading this the first time it was posted. Great book, if you can find it.<p><i>Code</i>, by Charles Petzold should be on any programmer’s list - and the list of anyone with curiosity about how the modern world works. It somehow manages the amazing trick of being readable for the novice, but also containing nuggets of insight for the expert all at the same time. Such a well written book.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>so-cal-schemer</em>:</p>
-<blockquote><i>Code</i> and <i>Elements of Computing Systems</i> are two of the most recommended books (top 20) on HN according to a now defunct scraping site.<p><i>The Elements of Computing Systems: Building a Modern Computer from First Principles</i><p>by Noam Nisan and Shimon Schocken<p><a href="https:&#x2F;&#x2F;openlibrary.org&#x2F;works&#x2F;OL21015000W&#x2F;Elements_of_Computing_Systems" rel="nofollow">https:&#x2F;&#x2F;openlibrary.org&#x2F;works&#x2F;OL21015000W&#x2F;Elements_of_Comput...</a></blockquote>
-<p>↳ reply 2 — <em>rbanffy</em>:</p>
-<blockquote>If, for nothing else, <i>Programmers At Work</i> has Bill Gates talking about dumpster diving for program listings.<p>The book is great - I love how Gary (IIRC) describes the centrality of data structures and how code kind of emerges from there.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
   </channel>
