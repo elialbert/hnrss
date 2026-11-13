@@ -58,6 +58,8 @@ stories (`tags=comment,(author_…),(story_…)`). For each hit that isn't alrea
 in the tree, up to `MAX_NOTABLE_PER_STORY` (3) per story:
 
 1. Walk `parent` links up to the story to get the chain leading to the comment.
+   Comments nested deeper than `MAX_NOTABLE_DEPTH` (5, top-level = 1) are
+   skipped. Past that, the context chain swamps the item.
 2. Merge that chain into the tree. If an ancestor is already shown, the comment
    is threaded in under it. Otherwise the chain is appended as an **Also**
    top-level entry. Ancestors are shown even if they fail the account-age
@@ -93,6 +95,7 @@ MAX_KIDS_TO_SCAN = 30            # per parent, how far down kids[] to look
 TREE_SHAPE = [...]               # see "Comment tree"
 NOTABLE_AUTHORS = ["tptacek", "patio11", "simonw", "tosh"]
 MAX_NOTABLE_PER_STORY = 3
+MAX_NOTABLE_DEPTH = 5
 ```
 
 Rendered HTML is cached per item in `state.json`, so changes affect **new items

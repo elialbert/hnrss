@@ -51,6 +51,7 @@ TREE_SHAPE = [
 # Commenters worth surfacing even when they're not in the top-ranked tree.
 NOTABLE_AUTHORS = ["tptacek", "patio11", "simonw", "tosh"]
 MAX_NOTABLE_PER_STORY = 3  # cap on threaded-in notable comments per story
+MAX_NOTABLE_DEPTH = 5  # skip notable comments nested deeper (top-level = 1)
 
 STATE_FILE = Path("state.json")
 FEED_FILE = Path("feed.xml")
@@ -249,7 +250,9 @@ def add_notable_comments(tree, story_id, hits, cache, threshold_ts):
         if not is_live_comment(comment):
             continue
         chain = ancestor_chain(comment, story_id)
-        if not chain or not all(is_live_comment(c) for c in chain):
+        if not chain or len(chain) > MAX_NOTABLE_DEPTH:
+            continue
+        if not all(is_live_comment(c) for c in chain):
             continue
         node = thread_in(tree, chain)
         if not node["replies"]:
