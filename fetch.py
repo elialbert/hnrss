@@ -49,7 +49,17 @@ TREE_SHAPE = [
 ]
 
 # Commenters worth surfacing even when they're not in the top-ranked tree.
-NOTABLE_AUTHORS = ["tptacek", "patio11", "simonw", "tosh"]
+NOTABLE_AUTHORS = [
+    "tptacek", "patio11", "simonw", "tosh",
+    # AI lab people with self-disclosed affiliations (checked 2026-11-13)
+    "tedsanders",       # OpenAI
+    "karpathy",         # ex-OpenAI, independent
+    "hauntsaninja",     # OpenAI
+    "neonbjb",          # OpenAI
+    "changoplatanero",  # OpenAI
+    "eschluntz",        # Anthropic
+    "bcherny",          # Anthropic, Claude Code
+]
 MAX_NOTABLE_PER_STORY = 3  # cap on threaded-in notable comments per story
 MAX_NOTABLE_DEPTH = 5  # skip notable comments nested deeper (top-level = 1)
 

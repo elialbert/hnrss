@@ -5,7 +5,7 @@ An RSS feed of Hacker News stories that:
 - crossed a **score threshold** (default `125`),
 - have aged at least **N hours** (default `8`, so top comments have settled), and
 - include a **small tree of top comments** inline (see [Comment tree](#comment-tree)), skipping commenters whose HN accounts are under 3 years old, and
-- thread in any comments by a short list of **notable commenters** (tptacek, patio11, simonw, tosh) that the top tree missed.
+- thread in any comments by a short list of **notable commenters** (tptacek, patio11, simonw, tosh, plus a few OpenAI/Anthropic people who've disclosed their affiliation on HN — see `fetch.py`) that the top tree missed.
 
 Feed URL: <https://elialbert.com/hnrss/feed.xml> (also `https://elialbert.github.io/hnrss/feed.xml`).
 
@@ -93,7 +93,7 @@ GUID_PREFIX     = "hn3"          # bump to make readers re-ingest every item
 MIN_ACCOUNT_AGE_DAYS = 3 * 365   # skip commenters with younger accounts
 MAX_KIDS_TO_SCAN = 30            # per parent, how far down kids[] to look
 TREE_SHAPE = [...]               # see "Comment tree"
-NOTABLE_AUTHORS = ["tptacek", "patio11", "simonw", "tosh"]
+NOTABLE_AUTHORS = ["tptacek", "patio11", "simonw", "tosh", "tedsanders", ...]
 MAX_NOTABLE_PER_STORY = 3
 MAX_NOTABLE_DEPTH = 5
 ```
