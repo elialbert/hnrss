@@ -60,7 +60,7 @@ NOTABLE_AUTHORS = [
     "eschluntz",        # Anthropic
     "bcherny",          # Anthropic, Claude Code
 ]
-MAX_NOTABLE_PER_STORY = 3  # cap on threaded-in notable comments per story
+MAX_NOTABLE_PER_STORY = 6  # cap on threaded-in notable comments per story
 MAX_NOTABLE_DEPTH = 5  # skip notable comments nested deeper (top-level = 1)
 
 STATE_FILE = Path("state.json")

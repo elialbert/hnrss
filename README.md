@@ -55,7 +55,7 @@ walk keeps going down `kids[]` until it finds enough that qualify, up to
 `NOTABLE_AUTHORS` is a list of HN usernames worth reading wherever they show up.
 Each run makes **one** Algolia request for their comments on that run's new
 stories (`tags=comment,(author_…),(story_…)`). For each hit that isn't already
-in the tree, up to `MAX_NOTABLE_PER_STORY` (3) per story:
+in the tree, up to `MAX_NOTABLE_PER_STORY` (6) per story:
 
 1. Walk `parent` links up to the story to get the chain leading to the comment.
    Comments nested deeper than `MAX_NOTABLE_DEPTH` (5, top-level = 1) are
@@ -94,7 +94,7 @@ MIN_ACCOUNT_AGE_DAYS = 3 * 365   # skip commenters with younger accounts
 MAX_KIDS_TO_SCAN = 30            # per parent, how far down kids[] to look
 TREE_SHAPE = [...]               # see "Comment tree"
 NOTABLE_AUTHORS = ["tptacek", "patio11", "simonw", "tosh", "tedsanders", ...]
-MAX_NOTABLE_PER_STORY = 3
+MAX_NOTABLE_PER_STORY = 6
 MAX_NOTABLE_DEPTH = 5
 ```
 
