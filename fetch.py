@@ -10,6 +10,11 @@ Commenters whose HN accounts are younger than MIN_ACCOUNT_AGE_DAYS are skipped
 MAX_KIDS_TO_SCAN so a story full of new accounts doesn't blow up the request
 budget. Account-age lookups are cached in state.json across runs.
 
+Notable commenters (NOTABLE_AUTHORS): one Algolia query per run finds any of
+their comments on the new stories. Each one not already shown is threaded into
+the tree along with its ancestor chain (shown regardless of the age filter, as
+context) plus its top reply. Notable authors are starred wherever they appear.
+
 Story discovery uses Algolia's search API. Comment selection and account-age
 lookups use HN's Firebase API. Algolia's children[] is creation-time order;
 Firebase's kids[] is HN display order (HN's ranking), which is what we want
@@ -43,6 +48,10 @@ TREE_SHAPE = [
     {"direct": 2, "spine_extra": 2},
 ]
 
+# Commenters worth surfacing even when they're not in the top-ranked tree.
+NOTABLE_AUTHORS = ["tptacek", "patio11", "simonw", "tosh"]
+MAX_NOTABLE_PER_STORY = 3  # cap on threaded-in notable comments per story
+
 STATE_FILE = Path("state.json")
 FEED_FILE = Path("feed.xml")
 
@@ -50,6 +59,8 @@ ALGOLIA_SEARCH = "https://hn.algolia.com/api/v1/search"
 HN_FIREBASE_ITEM = "https://hacker-news.firebaseio.com/v0/item/{id}.json"
 HN_FIREBASE_USER = "https://hacker-news.firebaseio.com/v0/user/{name}.json"
 HN_ITEM_URL = "https://news.ycombinator.com/item?id={id}"
+
+_item_cache = {}  # per-run Firebase item cache; ancestor walks revisit tree items
 
 
 def fetch_json(url):
@@ -77,7 +88,10 @@ def find_candidate_stories():
 
 
 def fetch_hn_item(item_id):
-    return fetch_json(HN_FIREBASE_ITEM.format(id=item_id))
+    item_id = int(item_id)
+    if item_id not in _item_cache:
+        _item_cache[item_id] = fetch_json(HN_FIREBASE_ITEM.format(id=item_id))
+    return _item_cache[item_id]
 
 
 def fetch_user_created(username, cache):
@@ -155,6 +169,98 @@ def build_tree(story_id, cache, threshold_ts):
     return tree
 
 
+def find_notable_comments(story_ids):
+    """One Algolia query for comments by NOTABLE_AUTHORS on any of `story_ids`.
+    Returns {story_id: [hit, ...]}. Best-effort: on error returns {}."""
+    if not NOTABLE_AUTHORS or not story_ids:
+        return {}
+    tags = ",".join([
+        "comment",
+        "(" + ",".join(f"author_{a}" for a in NOTABLE_AUTHORS) + ")",
+        "(" + ",".join(f"story_{sid}" for sid in story_ids) + ")",
+    ])
+    params = {"tags": tags, "hitsPerPage": 1000}
+    try:
+        hits = fetch_json(
+            f"{ALGOLIA_SEARCH}_by_date?{urllib.parse.urlencode(params)}"
+        ).get("hits", [])
+    except Exception as e:
+        print(f"notable-author search failed: {e}")
+        return {}
+    by_story = {}
+    for h in hits:
+        by_story.setdefault(str(h.get("story_id")), []).append(h)
+    return by_story
+
+
+def tree_ids(nodes):
+    ids = set()
+    for node in nodes:
+        ids.add(node["comment"]["id"])
+        ids |= tree_ids(node["replies"])
+    return ids
+
+
+def ancestor_chain(comment, story_id):
+    """[top-level, ..., comment] following parent links up to the story.
+    None if the chain is broken (deleted/missing item, or wrong story)."""
+    chain = [comment]
+    item = comment
+    for _ in range(50):  # HN threads don't nest this deep; guards against loops
+        parent_id = item.get("parent")
+        if parent_id is None:
+            return None
+        if str(parent_id) == str(story_id):
+            return list(reversed(chain))
+        item = fetch_hn_item(parent_id)
+        if not item:
+            return None
+        chain.append(item)
+    return None
+
+
+def thread_in(tree, chain):
+    """Merge chain (top-level → target) into tree, reusing nodes already present."""
+    nodes = tree
+    for comment in chain:
+        node = next((n for n in nodes if n["comment"]["id"] == comment["id"]), None)
+        if node is None:
+            node = {"comment": comment, "replies": []}
+            nodes.append(node)
+        nodes = node["replies"]
+    return node
+
+
+def add_notable_comments(tree, story_id, hits, cache, threshold_ts):
+    """Thread up to MAX_NOTABLE_PER_STORY notable comments (not already shown)
+    into `tree`, each with its ancestors and its top reply."""
+    # Shallowest first (direct replies to the story), then oldest — earlier
+    # comments are the ones the thread formed around.
+    hits = sorted(hits, key=lambda h: (str(h.get("parent_id")) != str(story_id),
+                                       h.get("created_at_i") or 0))
+    added = 0
+    for h in hits:
+        if added >= MAX_NOTABLE_PER_STORY:
+            break
+        cid = int(h["objectID"])
+        if cid in tree_ids(tree):
+            continue
+        comment = fetch_hn_item(cid)
+        if not is_live_comment(comment):
+            continue
+        chain = ancestor_chain(comment, story_id)
+        if not chain or not all(is_live_comment(c) for c in chain):
+            continue
+        node = thread_in(tree, chain)
+        if not node["replies"]:
+            node["replies"] = [
+                {"comment": r, "replies": []}
+                for r in collect_filtered_kids(comment, 1, cache, threshold_ts)
+            ]
+        added += 1
+    return added
+
+
 def article_host(url):
     """e.g. 'https://www.foo.com/x' → 'foo.com'; empty string for unparseable / non-http."""
     if not url:
@@ -167,7 +273,10 @@ def article_host(url):
 
 
 def render_comment_html(comment, label):
-    author = html.escape(comment.get("by") or "?")
+    by = comment.get("by") or "?"
+    author = html.escape(by)
+    if by in NOTABLE_AUTHORS:
+        author = f"★ <strong>{author}</strong>"
     body = comment.get("text") or ""  # already HTML from Firebase
     return (
         f'<p>{label} — <em>{author}</em>:</p>\n'
@@ -189,10 +298,12 @@ def render_replies(replies, depth):
     return "\n".join(parts)
 
 
-def render_tree(tree):
+def render_tree(tree, num_top):
     parts = []
     for i, node in enumerate(tree, start=1):
-        parts.append(render_comment_html(node["comment"], f"<strong>Top #{i}</strong>"))
+        # Nodes past the TREE_SHAPE slots were threaded in for a notable author.
+        label = f"<strong>Top #{i}</strong>" if i <= num_top else "<strong>Also</strong>"
+        parts.append(render_comment_html(node["comment"], label))
         if node["replies"]:
             parts.append("<blockquote>")
             parts.append(render_replies(node["replies"], 1))
@@ -200,7 +311,7 @@ def render_tree(tree):
     return "\n".join(parts)
 
 
-def build_html(story, tree):
+def build_html(story, tree, num_top):
     sid = story["objectID"]
     article_url = story.get("url") or HN_ITEM_URL.format(id=sid)
     hn_url = HN_ITEM_URL.format(id=sid)
@@ -213,7 +324,7 @@ def build_html(story, tree):
         f'<p><a href="{html.escape(hn_url, quote=True)}">→ HN comments</a> '
         f"&nbsp;·&nbsp; {points} points &nbsp;·&nbsp; {num_comments} comments</p>",
         "<hr>",
-        render_tree(tree),
+        render_tree(tree, num_top),
     ]
     return "\n".join(parts)
 
@@ -280,20 +391,23 @@ def main():
     cache = state["authors"]
     threshold_ts = int(time.time()) - MIN_ACCOUNT_AGE_DAYS * 86400
 
-    candidates = find_candidate_stories()
-    added = 0
+    candidates = [s for s in find_candidate_stories() if s["objectID"] not in seen]
+    notable = find_notable_comments([s["objectID"] for s in candidates])
+    added = notable_added = 0
     for story in candidates:
         sid = story["objectID"]
-        if sid in seen:
-            continue
         tree = build_tree(sid, cache, threshold_ts)
+        num_top = len(tree)
+        notable_added += add_notable_comments(
+            tree, sid, notable.get(sid, []), cache, threshold_ts
+        )
         state["items"].append({
             "id": sid,
             "title": story.get("title") or "(no title)",
             "created_at_i": story["created_at_i"],
             "article_url": story.get("url") or HN_ITEM_URL.format(id=sid),
             "summary": short_summary(story),
-            "html": build_html(story, tree),
+            "html": build_html(story, tree, num_top),
         })
         added += 1
 
@@ -303,7 +417,7 @@ def main():
     save_state(state)
     write_feed(state["items"])
     print(
-        f"Added {added} new items; feed has {len(state['items'])} total; "
+        f"Added {added} new items ({notable_added} notable comments threaded in); feed has {len(state['items'])} total; "
         f"author cache: {len(cache)} entries"
     )
 
