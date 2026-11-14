@@ -289,10 +289,13 @@ def render_comment_html(comment, label):
     by = comment.get("by") or "?"
     author = html.escape(by)
     if by in NOTABLE_AUTHORS:
-        author = f"★ <strong>{author}</strong>"
+        # Bold, starred and not italic, so it stands out from ordinary names.
+        author = f"<strong>★ {author}</strong>"
+    else:
+        author = f"<em>{author}</em>"
     body = comment.get("text") or ""  # already HTML from Firebase
     return (
-        f'<p>{label} — <em>{author}</em>:</p>\n'
+        f'<p>{label} — {author}:</p>\n'
         f"<blockquote>{body}</blockquote>"
     )
 
@@ -324,6 +327,19 @@ def render_tree(tree, num_top):
     return "\n".join(parts)
 
 
+def notable_in_tree(nodes):
+    """Notable authors appearing anywhere in the tree, in first-seen order."""
+    seen = []
+    for node in nodes:
+        by = node["comment"].get("by")
+        if by in NOTABLE_AUTHORS and by not in seen:
+            seen.append(by)
+        for by in notable_in_tree(node["replies"]):
+            if by not in seen:
+                seen.append(by)
+    return seen
+
+
 def build_html(story, tree, num_top):
     sid = story["objectID"]
     article_url = story.get("url") or HN_ITEM_URL.format(id=sid)
@@ -336,6 +352,12 @@ def build_html(story, tree, num_top):
         f'<p><a href="{html.escape(article_url, quote=True)}"><strong>→ Article</strong></a>{host_tag}</p>',
         f'<p><a href="{html.escape(hn_url, quote=True)}">→ HN comments</a> '
         f"&nbsp;·&nbsp; {points} points &nbsp;·&nbsp; {num_comments} comments</p>",
+    ]
+    notable = notable_in_tree(tree)
+    if notable:
+        names = ", ".join(html.escape(n) for n in notable)
+        parts.append(f"<p><strong>★ Comments from: {names}</strong></p>")
+    parts += [
         "<hr>",
         render_tree(tree, num_top),
     ]

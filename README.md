@@ -67,8 +67,9 @@ in the tree, up to `MAX_NOTABLE_PER_STORY` (6) per story:
 3. Add the notable comment's top reply (account-age filter applies).
 
 Direct replies to the story are taken first, then the oldest. Notable authors are
-shown as **★ name** everywhere in the tree, including when they were
-already in the top tree. If the Algolia query fails, the feed builds without
+shown bold as **★ name** (other names are italic) everywhere in the tree,
+including when they were already in the top tree, and a bold
+**★ Comments from: …** line under the HN link lists them at the top of the item. If the Algolia query fails, the feed builds without
 them.
 
 ## Files
