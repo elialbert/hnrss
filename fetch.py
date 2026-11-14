@@ -35,6 +35,11 @@ SCORE_THRESHOLD = 125
 MIN_AGE_HOURS = 8
 LOOKBACK_HOURS = 72
 MAX_ITEMS = 100
+# Re-render an item's comment tree when it reaches each of these ages, so late
+# comments (often from notable authors) show up. Readers that update entries in
+# place (Miniflux does, keeping read state) pick up the new content; readers
+# that don't simply keep the first version.
+REFRESH_AT_HOURS = [24, 48]
 GUID_PREFIX = "hn3"  # bump when item rendering changes to force readers to re-ingest
 
 MIN_ACCOUNT_AGE_DAYS = 3 * 365  # filter out commenters with accounts younger than this
@@ -340,7 +345,7 @@ def notable_in_tree(nodes):
     return seen
 
 
-def build_html(story, tree, num_top):
+def build_html(story, tree, num_top, snapshot_hours=None):
     sid = story["objectID"]
     article_url = story.get("url") or HN_ITEM_URL.format(id=sid)
     hn_url = HN_ITEM_URL.format(id=sid)
@@ -351,7 +356,9 @@ def build_html(story, tree, num_top):
     parts = [
         f'<p><a href="{html.escape(article_url, quote=True)}"><strong>→ Article</strong></a>{host_tag}</p>',
         f'<p><a href="{html.escape(hn_url, quote=True)}">→ HN comments</a> '
-        f"&nbsp;·&nbsp; {points} points &nbsp;·&nbsp; {num_comments} comments</p>",
+        f"&nbsp;·&nbsp; {points} points &nbsp;·&nbsp; {num_comments} comments"
+        + (f" &nbsp;·&nbsp; <small>comments as of {snapshot_hours}h</small>" if snapshot_hours else "")
+        + "</p>",
     ]
     notable = notable_in_tree(tree)
     if notable:
@@ -369,6 +376,42 @@ def short_summary(story):
         f'{story.get("points", 0)} points, {story.get("num_comments", 0)} comments. '
         f"See description for top comments."
     )
+
+
+def refresh_stage(age_seconds):
+    """How many REFRESH_AT_HOURS marks an item of this age has passed."""
+    return sum(1 for h in REFRESH_AT_HOURS if age_seconds >= h * 3600)
+
+
+def refresh_due(item, now):
+    age = now - item["created_at_i"]
+    if age > LOOKBACK_HOURS * 3600:
+        return False
+    # Items from before refreshes existed have no "refreshed"; treat as stage 0.
+    return refresh_stage(age) > item.get("refreshed", 0)
+
+
+def refresh_item(item, notable_hits, cache, threshold_ts, now):
+    """Rebuild one item's tree and HTML from current HN data. Returns 1 on success."""
+    sid = item["id"]
+    hn = fetch_hn_item(sid)
+    if not hn or hn.get("dead") or hn.get("deleted"):
+        item["refreshed"] = refresh_stage(now - item["created_at_i"])  # don't retry
+        return 0
+    story = {
+        "objectID": sid,
+        "url": hn.get("url"),  # None for Ask/Show HN text posts
+        "points": hn.get("score", 0),
+        "num_comments": hn.get("descendants", 0),
+    }
+    tree = build_tree(sid, cache, threshold_ts)
+    num_top = len(tree)
+    add_notable_comments(tree, sid, notable_hits, cache, threshold_ts)
+    hours = (now - item["created_at_i"]) // 3600
+    item["html"] = build_html(story, tree, num_top, snapshot_hours=hours)
+    item["summary"] = short_summary(story)
+    item["refreshed"] = refresh_stage(now - item["created_at_i"])
+    return 1
 
 
 def load_state():
@@ -427,7 +470,11 @@ def main():
     threshold_ts = int(time.time()) - MIN_ACCOUNT_AGE_DAYS * 86400
 
     candidates = [s for s in find_candidate_stories() if s["objectID"] not in seen]
-    notable = find_notable_comments([s["objectID"] for s in candidates])
+    now = int(time.time())
+    to_refresh = [it for it in state["items"] if refresh_due(it, now)]
+    notable = find_notable_comments(
+        [s["objectID"] for s in candidates] + [it["id"] for it in to_refresh]
+    )
     added = notable_added = 0
     for story in candidates:
         sid = story["objectID"]
@@ -443,8 +490,16 @@ def main():
             "article_url": story.get("url") or HN_ITEM_URL.format(id=sid),
             "summary": short_summary(story),
             "html": build_html(story, tree, num_top),
+            "refreshed": refresh_stage(now - story["created_at_i"]),
         })
         added += 1
+
+    refreshed = 0
+    for it in to_refresh:
+        try:
+            refreshed += refresh_item(it, notable.get(it["id"], []), cache, threshold_ts, now)
+        except Exception as e:  # keep the old render; try again next run
+            print(f"refresh of {it['id']} failed: {e}")
 
     state["items"].sort(key=lambda x: x["created_at_i"], reverse=True)
     state["items"] = state["items"][:MAX_ITEMS]
@@ -452,7 +507,8 @@ def main():
     save_state(state)
     write_feed(state["items"])
     print(
-        f"Added {added} new items ({notable_added} notable comments threaded in); feed has {len(state['items'])} total; "
+        f"Added {added} new items ({notable_added} notable comments threaded in), "
+        f"refreshed {refreshed}; feed has {len(state['items'])} total; "
         f"author cache: {len(cache)} entries"
     )
 

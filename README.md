@@ -72,6 +72,19 @@ including when they were already in the top tree, and a bold
 **★ Comments from: …** line under the HN link lists them at the top of the item. If the Algolia query fails, the feed builds without
 them.
 
+## Refreshes
+
+An item is first rendered when it's about 8 hours old, and comments keep coming
+after that. So each item is **re-rendered at 24h and 48h**
+(`REFRESH_AT_HOURS`): tree rebuilt, notable comments re-threaded, points and
+comment counts updated. A refreshed item's stats line ends in "comments as of
+24h" (or 48h). The `guid` and `pubDate` don't change, so readers see it as the
+same entry. Miniflux updates the entry's content in place and leaves read/unread
+state alone. That means an item you haven't read yet shows the newer thread. This
+doesn't happen if "Fetch original content" or "Ignore entry updates" is on for the
+feed. Per-item progress is `refreshed` in `state.json`. If a refresh fails, the
+old render stays and it's retried on the next run.
+
 ## Files
 
 | File | Purpose |
