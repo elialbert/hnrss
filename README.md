@@ -75,10 +75,10 @@ them.
 ## Refreshes
 
 An item is first rendered when it's about 8 hours old, and comments keep coming
-after that. So each item is **re-rendered at 24h and 48h**
+after that. So each item is **re-rendered at 12h and 16h**
 (`REFRESH_AT_HOURS`): tree rebuilt, notable comments re-threaded, points and
 comment counts updated. A refreshed item's stats line ends in "comments as of
-24h" (or 48h). The `guid` and `pubDate` don't change, so readers see it as the
+12h" (or 16h). The `guid` and `pubDate` don't change, so readers see it as the
 same entry. Miniflux updates the entry's content in place and leaves read/unread
 state alone. That means an item you haven't read yet shows the newer thread. This
 doesn't happen if "Fetch original content" or "Ignore entry updates" is on for the
@@ -101,7 +101,7 @@ Constants at the top of `fetch.py`:
 ```python
 SCORE_THRESHOLD = 125            # min HN points
 MIN_AGE_HOURS   = 8              # stories must be at least this old (lets top comments settle)
-LOOKBACK_HOURS  = 72             # how far back to scan for candidates
+LOOKBACK_HOURS  = 48             # how far back to scan for candidates
 MAX_ITEMS       = 100            # how many to retain in feed
 GUID_PREFIX     = "hn3"          # bump to make readers re-ingest every item
 MIN_ACCOUNT_AGE_DAYS = 3 * 365   # skip commenters with younger accounts

@@ -33,13 +33,13 @@ from xml.sax.saxutils import escape as xml_escape
 
 SCORE_THRESHOLD = 125
 MIN_AGE_HOURS = 8
-LOOKBACK_HOURS = 72
+LOOKBACK_HOURS = 48
 MAX_ITEMS = 100
 # Re-render an item's comment tree when it reaches each of these ages, so late
 # comments (often from notable authors) show up. Readers that update entries in
 # place (Miniflux does, keeping read state) pick up the new content; readers
 # that don't simply keep the first version.
-REFRESH_AT_HOURS = [24, 48]
+REFRESH_AT_HOURS = [12, 16]  # ages to re-render at; must be < LOOKBACK_HOURS
 GUID_PREFIX = "hn3"  # bump when item rendering changes to force readers to re-ingest
 
 MIN_ACCOUNT_AGE_DAYS = 3 * 365  # filter out commenters with accounts younger than this
