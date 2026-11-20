@@ -4,32 +4,252 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Fri, 20 Nov 2026 02:12:19 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 11:15:16 +0000</lastBuildDate>
+    <item>
+      <title>OpenSSL: Buffer overflow in EVP_EncodeBlock() (CVE-2026-121481, CVSS 9.8)</title>
+      <link>https://github.com/openssl/openssl/pull/33652</link>
+      <guid isPermaLink="false">hn3-50569226</guid>
+      <pubDate>Fri, 20 Nov 2026 02:01:09 +0000</pubDate>
+      <description>272 points, 215 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/openssl/openssl/pull/33652"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50569226">→ HN comments</a> &nbsp;·&nbsp; 272 points &nbsp;·&nbsp; 215 comments</p>
+<p><strong>★ Comments from: tptacek</strong></p>
+<hr>
+<p><strong>Top #1</strong> — <em>amluto</em>:</p>
+<blockquote>On a very very quick read, the bug is that EVP_EncodeBlock malfunctions if the input is larger than ~1.5GB.  EVP_EncodeBlock is a function that encodes base64.<p><a href="https:&#x2F;&#x2F;docs.openssl.org&#x2F;1.0.2&#x2F;man3&#x2F;EVP_EncodeInit&#x2F;" rel="nofollow">https:&#x2F;&#x2F;docs.openssl.org&#x2F;1.0.2&#x2F;man3&#x2F;EVP_EncodeInit&#x2F;</a><p>As a seasoned C programmer, I can immediately observe that the whole API is bad: the caller is expected to calculate the buffer length on their own, using a nontrivial formula, and the caller does not pass in the output buffer length, so the implementation cannot validate it.  But apparently OpenSSL 4 also implemented it wrong and wrote (possibly far) past the end of the buffer.<p>You should probably assume that, if you are running anything that can be convinced to use this API to encode a very long blob as base64, then you are in trouble. I don’t know why a modern server would do this.<p>BTW, OpenSSL seems to be a rather low quality implementation of a very low quality set of APIs.  Stay away.<p>edit: Fixed my size threshold, hopefully. I was thinking of unsigned ints, but this is a <i>signed</i> int. I have not looked at the code, just the description.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>socketcluster</em>:</p>
+<blockquote>&gt; BTW, OpenSSL seems to be a rather low quality implementation of a very low quality set of APIs.<p>Fully agree with your assessment above that line, but damn, this is a strong statement for a library this ubiquitous. You wonder; how could this happen? And yet, as an open source developer myself, I know how little people care about code quality.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Gigachad</em>:</p>
+<blockquote>We have known this since at least heartbleed. The answer was that basically no one funds the project and it had only one developer.<p>All these trillion dollar tech companies have been leaching off open source for free and never contributed back to the projects they rely on.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>k_sze</em>:</p>
+<blockquote>Honest question: shall free software licenses be changed to force large corporations to sponsor free software projects adequately?</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>vlovich123</em>:</p>
+<blockquote>&gt; BTW, OpenSSL seems to be a rather low quality implementation of a very low quality set of APIs. Stay away.<p>We’ve known this for well over two decade since heartbleed yet for some reason Linux distros haven’t migrated off of it</blockquote>
+<p>↳ reply 3 — <em>teunispeters</em>:</p>
+<blockquote>I like to declare that industry coding standards such as MISRA exist precisely because code bases like OpenSSL (specifically) exist, as it&#x27;s such a good example of breaking every sensible rule in the standards.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>userbinator</em>:</p>
+<blockquote>I think CVSS 9.8 is exaggerated. This is not remotely anywhere near as serious as Heartbleed. It&#x27;s an internal function which will fail if its input is far too long, but exploitability rests on how untrusted input can reach it; the key word being &quot;untrusted&quot;. E.g. if you operate a base64 encoding service on the Internet that just reads all the data into memory at once and calls EVP_EncodeBlock(), that&#x27;s exploitable. If you have a protocol that involves a block of data with a 16-bit length field which is passed to EVP_EncodeBlock(), that&#x27;s 100% safe.<p>For those wondering about TLS: speaking as someone who has written a TLS implementation, AFAIK neither base64 encoding nor decoding occurs in the protocol itself, and the longest length field is 24 bits (Hello stream). Certificate processing involves ASN.1 which does support arbitrarily-long integers, but that&#x27;s a big hint to check that they&#x27;re within a sensical range.</blockquote>
+<blockquote>
+<p>↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>(I&#x27;m a broken record on this so I&#x27;ll keep it brief). The problem here is that the CVSS score is in the headline, as if it meant anything. But CVSS doesn&#x27;t mean anything. It&#x27;s a Ouija board; VR people jack it up to get attention, vendors nerf it to chill their customers out.<p>Someone should design something better, and less malleable.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>csnover</em>:</p>
+<blockquote>A few years ago I participated in a study[0] about CVSS and apparently was very much in the minority in feeling that these scores are essentially useless. I have no idea what would actually shift the majority’s opinion on this, but I will at least echo your sentiment that everyone deserves something better.<p>[0] <a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2308.15259" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2308.15259</a></blockquote>
+<blockquote>
+<p>↳↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>It&#x27;s not an out-there opinion among vulnerability researchers, though.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ansipunk</em>:</p>
+<blockquote>I am not a system administrator, but I am getting a serious vulnerability fatigue, every single day there&#x27;s at least two new vulnerabilities in major pieces of software, I&#x27;m just tired of seeing that everywhere and hearing that everywhere. Fellow system administrators must be having it much worse.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ImHereToVote</em>:</p>
+<blockquote>This will lead to LLMs being embedded 24&#x2F;7 into critical infrastructure. A &quot;living&quot; firewall and sysadmin.</blockquote>
+<p>↳ reply 2 — <em>slekker</em>:</p>
+<blockquote>The solution is {Open,Net}BSD</blockquote>
+</blockquote>
+<p><strong>Also</strong> — <em>shepherdjerred</em>:</p>
+<blockquote>It feels to me the only way to beat LLMs finding vulnerabilities is to have LLMs (or LLMs paired with other AI methods) constantly monitor your infrastructure, traffic, database, etc. to ensure that nothing out of the ordinary is happening</blockquote>
+<blockquote>
+<p>↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>I think so too; I think apart from pushing vulnerability research forward (which is important on its own merits just for computer science reasons), the major engineering challenge of this moment is figuring out how to make platforms <i>resilient</i> without rewriting everything; that could be better live-patching, it could be some weird monitoring thing, it could be automatic segregation and workload isolation.<p>It&#x27;s not &quot;just keep up with the patches&quot;. That&#x27;s going to be a losing strat.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Gemini 4 Neon is the new #1 on the Models Engineering Index</title>
+      <link>https://git-aarvin.github.io/mei/</link>
+      <guid isPermaLink="false">hn3-50568130</guid>
+      <pubDate>Thu, 19 Nov 2026 23:35:35 +0000</pubDate>
+      <description>350 points, 222 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://git-aarvin.github.io/mei/"><strong>→ Article</strong></a> <small>(git-aarvin.github.io)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50568130">→ HN comments</a> &nbsp;·&nbsp; 350 points &nbsp;·&nbsp; 222 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>largbae</em>:</p>
+<blockquote>Neon is a contender. Neon &quot;high&quot; appears faster and cheaper than Opus 5.5 &quot;medium&quot; with similar results on long-running language porting work in a large monorepo.<p>The speed is the biggest win IMO. When Carbon came out, I tried to give it a shot, but it was so slow that I went back to Opus just for productivity, nevermind quality. Today I started Neon on one worktree and Opus on another, and Neon did so well that I have now switched for both.<p>Code quality looks great. Comment-wise it has its own Claudese(exclamations like &quot;this function has a concurrency bug and it&#x27;s a sharp one!&quot;), but overall I like reading it more than Opus. Might just be because I am not yet tired of its quirks though.<p>Oh, after a productive day on this particular work I had only spent $30 of Neon vs. $70 of Opus yesterday. YMMV</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ftio</em>:</p>
+<blockquote>[disclaimer: Googler]<p>My favorite current-gen Gemini-ism is how it has these epiphanies, like &quot;Wait! There&#x27;s a pointer to the documentation we need right here!&quot; So cute.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Jgrubb</em>:</p>
+<blockquote>I&#x27;ve been using Argon steady since it was released and a few times it&#x27;s gotten in this really excited about everything mood like that. Most of the time it&#x27;s totally even keel. Cute is a good word for it, not sure what&#x27;s going on under the hood.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>BeetleB</em>:</p>
+<blockquote>Yeah, I got a lot &quot;Look at that!&quot; with Argon.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>medler</em>:</p>
+<blockquote>I added a rule telling it not to use exclamation marks. Game changer!</blockquote>
+<p>↳ reply 3 — <em>EForEndeavour</em>:</p>
+<blockquote>Faster and cheaper, and apparently better than Opus 5.5 medium? Bro I <i>just</i> got my mind blown by Opus 5.5, now Neon gets to once again shift my mental benchmark and compel me to finally download and try Antigravity? Right after I migrated from the Claude Code TUI to the desktop app and never looked back for all of the 2 weeks it&#x27;s been?<p>I&#x27;ll do it just for the improved prose. I&#x27;ve had it up to here with Opus 5.5&#x27;s surprisingly poor writing skills, even though it&#x27;s leagues better than the Willem-Dafoe-on-cocaine dumpster fire that is Opus 5.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>dowakin</em>:</p>
+<blockquote>Fully agree. Neon is my main model right now. I have a pretty advanced setup with multiple agents, coordinators, etc. It&#x27;s basically a &quot;factory&quot; customized for me. It ran on Claude for a long time, then on Codex for the past three months, and now it runs on Google models. Neon is good, predictable, and smarter than me :)<p>Agy has a bunch of good slash commands for different use cases. And the biggest thing for me is that it doesn&#x27;t annoy me with security refusals. It helped me with my garage door, for example, when another model refused.</blockquote>
+<blockquote>
+<p>↳ reply — <em>CyberMacGyver</em>:</p>
+<blockquote>Would love to know your setup. Are you paying API pricing ? How else can you switch so easily.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>gregwebs</em>:</p>
+<blockquote>If you watch Youtube much at all, Youtube Premium Lite (no ads) is well worth the $9&#x2F;month. This is included with their $20&#x2F;month AI plan. Spending that other $11&#x2F;month wasn&#x27;t worth it before Neon, but it might be now.<p>There are 3 different antigravity quotas:<p>* gemini (previously just Gemini 3.8 Flash)<p>* claude and gpt (very small quota)<p>* argon (very small quota)<p>The Gemini quota now includes Neon and Hydrogen. Hydrogen (medium) competes with DeepSeek (high). Its within 2x on cost and more intelligent.<p>This is all from benchmarks- I am only just trying these models out now.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>purerandomness</em>:</p>
+<blockquote>I&#x27;d be surprised if anyone here doesn&#x27;t have uBlock Origin blocking all ads anyway - not only on YouTube.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>gregwebs</em>:</p>
+<blockquote>I am happy to pay a fair cost and not have ads. If everyone blocks ads the content isn&#x27;t going to exist or if enough block they are going to work harder to block ad blockers.<p>I have paid for Kagi and Spotify for a long time. Its tragic that most of the web only offers a large monthly subscription to read a single article or intrusive ads- I do use Zen on Desktop and Orion on mobile due to that.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>potamic</em>:</p>
+<blockquote>Even if you pay, you will have ads. Ads are now embedded into the content. So much content is in fact just ads masquerading as content to steal your attention. A lot of content out there simply should not and does not need to exist. It is just an endless rehash of pre-existing ideas with the sole purpose of beating the algorithm. The model is fundamentally broken imo and needs to be disrupted.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>soared</em>:</p>
+<blockquote>How much neon usage do we get on this plan? I have that plan and agy is uselsss as a single prompt burns my entire Claude budget, argon gets me like 3 chats, and im definitely not using whatever flash model is listed for coding.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Visa, Mastercard and JPMorgan Customer Data Leaked by Hackers</title>
+      <link>https://www.wsj.com/finance/banking/visa-mastercard-and-jpmorgan-customer-data-leaked-by-hackers-3b5a0f87</link>
+      <guid isPermaLink="false">hn3-50568082</guid>
+      <pubDate>Thu, 19 Nov 2026 23:32:11 +0000</pubDate>
+      <description>178 points, 45 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.wsj.com/finance/banking/visa-mastercard-and-jpmorgan-customer-data-leaked-by-hackers-3b5a0f87"><strong>→ Article</strong></a> <small>(wsj.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50568082">→ HN comments</a> &nbsp;·&nbsp; 178 points &nbsp;·&nbsp; 45 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>paxy</em>:</p>
+<blockquote>So names and email addresses of 16,000 customers leaked from some third party marketing service.<p>Is this what the hackers trying to extort these banks over? They made it seem it was bank statements or something. This data has exactly zero value.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>NoPicklez</em>:</p>
+<blockquote>How did they make it seem like it was bank statements?<p>When I see a headline that says &quot;Visa breached in cyber security attack&quot; I&#x27;ll admit I assume its on the payment system itself. But I assume that, as opposed to the media actually saying that.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>arijun</em>:</p>
+<blockquote>You don’t need to explicitly say something to know people will assume it. If a headline says “so and so died today,” without mentioning that he was revived soon after, that would be a pretty egregious omission. If gp, you, and I all read the headline as Visa getting hacked, maybe this headline is misleading as well.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>lubujackson</em>:</p>
+<blockquote>Oh shit they discovered the white pages</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>eterm</em>:</p>
+<blockquote>&gt; &quot;Based on our  investigation so far, we believe the attackers accessed certain marketing data held by those vendors, which may include some customer names  and email addresses,&quot;<p>A big question that I think will increasingly be asked as this sort of thing becomes more widespread: Did these customers really give <i>informed</i> consent to their data being passed to these &quot;third party vendors&quot; that are getting breached?<p>Even with regulation such as CCPA and GDPR in Europe, a lack of meaningful consequences has meant a complete abdication of treating customer data as a liability.<p>Maybe companies will be more careful with handing out data to third parties if they can no-longer trust those third parties to keep the data secure and it becomes a reputational risk.<p>Of course that remains to be seen, this one will likely fade into noise and have little to no effect long term, but I am hopeful that meaningful attitude change to data will happen as an effect of the continuing vuln-pocalypse.<p>An alternate technical point of view: there&#x27;s also an argument for the need for a better way than emails or SMS for being contacted by companies with which we do business. If a contact grant was handled in a more privacy-preserving manner, then you could authorise companies to send you messages without giving up a form of identification, and this authority could then even be also appropriately delegated in a more secure way.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>oliyoung</em>:</p>
+<blockquote>&gt; A big question that I think will increasingly be asked as this sort of thing becomes more widespread: Did these customers really give informed consent to their data being passed to these &quot;third party vendors&quot; that are getting breached?<p>As a Domain Arch in consumer retail in Australia, those laws are getting SIGNIFICANTLY restricted now, a lot of the implied consent that existed is now being questioned, even across business units of a single company, and that&#x27;s the exact question that&#x27;s being asked.<p>Our legal department is tightening PI and consent considerably, and its going to leave our marketing teams without a lot of the tools and capabilities they&#x27;ve been going to for a long time.<p>Can&#x27;t say I disagree with any of it either</blockquote>
+<p>↳ reply 2 — <em>makeitdouble</em>:</p>
+<blockquote>&gt;  informed consent<p>In theory that should be the right framing, in practice having the information means nothing if there is no reasonable action you can take from there.<p>In the case of Visa and MasterCard, Amex or JCB or Diners&#x27; terms aren&#x27;t better or more competitive, your only real option is to give up on credit cards altogether.<p>A lot of otherwise sensible concepts have little weight when you have a cartel or straight duopolies&#x2F;monopolies.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>gherkinnn</em>:</p>
+<blockquote>User data should be radioactive. Leaks and hacks must be severely punished. A few companies might buckle under the fines, but such is life. The rest will learn.<p>Keeping user data for the sake of it will be seen as economically unviable and increasing security as <i>business critical</i>.<p>How to calculate those fines? I don&#x27;t know. Maybe row*column, where plaintext passwords demand a much heftier fine than a name. Add a progression, where larger datasets are more costly than smaller ones.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Synology Security Advisory</title>
+      <link>https://www.synology.com/en-uk/security/advisory/Synology_SA_26_21</link>
+      <guid isPermaLink="false">hn3-50567209</guid>
+      <pubDate>Thu, 19 Nov 2026 22:13:40 +0000</pubDate>
+      <description>155 points, 117 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.synology.com/en-uk/security/advisory/Synology_SA_26_21"><strong>→ Article</strong></a> <small>(synology.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50567209">→ HN comments</a> &nbsp;·&nbsp; 155 points &nbsp;·&nbsp; 117 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>RetroTechie</em>:</p>
+<blockquote>I&#x27;ve always wondered: if you take the cause of each CVE, look at underlying cause of that &amp; repeat, how many essential root problems would you be left with?<p>&quot;Can&#x27;t do math&quot; (off-by-1 errors etc)<p>&quot;Sanitize your inputs&quot; (escape sequences, parsing etc)<p>&quot;What are you referencing?&quot; (null pointers, use-after-free etc)<p>and error handling. Plain error codes bubbling up a call stack, or bypassing that somehow which may violate program structure.<p>How many of these fundamental issues are there?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>chias</em>:</p>
+<blockquote>Boil it down enough and you get four:<p>1. Failure to differentiate data from instructions<p>2. Business logic flaws<p>3. Insecure operating environment<p>4. Incorrect use of cryptography</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>intrasight</em>:</p>
+<blockquote>Von Neumann architectures means number 1 is unavoidable</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>TeMPOraL</em>:</p>
+<blockquote><i>Reality</i> means number 1 is unavoidable <i>in general</i>, for fundamental reasons. Our physical universe has no &quot;control&quot;&#x2F;&quot;data&quot; distinction.<p>It&#x27;s what still trips half the people working on security of LLM applications.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>fulafel</em>:</p>
+<blockquote>These are bug classes that are handled by reasonable programming languages since decades ago, so can be reduced to failing in choice of tools and risk management practices.<p>But root cause is a flawed concept, there&#x27;s almost never one root cause.</blockquote>
+<p>↳ reply 3 — <em>catlifeonmars</em>:</p>
+<blockquote>A common one is using an attacker-controllable length field to read or write memory. I think it sort of falls into sanitize your inputs, but typically this occurs _while_ parsing.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>_rwo</em>:</p>
+<blockquote>with the amount of CVEs (self-)hosting becomes a chore tbh; I mean technically it&#x27;s a good thing that software is getting patched but I think I&#x27;m gonna just shutdown few projects (one of which is exposed on Synology&#x27;s VM via cloudflare tunnel) - I&#x27;m getting _patching fatigue_ already</blockquote>
+<p><strong>Top #3</strong> — <em>6thbit</em>:</p>
+<blockquote>Tied to this weakness:<p><pre><code>  &gt;  CWE-88: Improper Neutralization of Argument Delimiters in a Command 
+</code></pre>
+So, they were building shell commands from some kind of user input in the OAuth API?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>pixl97</em>:</p>
+<blockquote>These smaller consumer devices always have the worst security practices.</blockquote>
+<p>↳ reply 2 — <em>formerly_proven</em>:</p>
+<blockquote><p><pre><code>    system(&quot;getent passwd &quot; . $_GET[&#x27;user&#x27;]);</code></pre></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The 98% Slot Machine: How Paid Advertising Became an Extraction Tax</title>
+      <link>https://globalcommercegraph.com/writing/the-ninety-eight-percent-slot-machine</link>
+      <guid isPermaLink="false">hn3-50564159</guid>
+      <pubDate>Thu, 19 Nov 2026 18:35:17 +0000</pubDate>
+      <description>301 points, 154 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://globalcommercegraph.com/writing/the-ninety-eight-percent-slot-machine"><strong>→ Article</strong></a> <small>(globalcommercegraph.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50564159">→ HN comments</a> &nbsp;·&nbsp; 301 points &nbsp;·&nbsp; 154 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>DrScientist</em>:</p>
+<blockquote>Before the internet Ads used to provide a service - connecting buyers and sellers - however the internet has made this largely redundant by amplifying word-of-mouth customer to customer communication [1].<p>This combined with poor ad regulation ( how Google is allowed to run millions of clearly scammy ads on youtube is beyond me ), has made ads and fake word-of-mouth ( influencers ) directly in conflict with honest customer-to-customer communication.<p>ie ads are largely no longer serving customers or the market.<p>Ironically the information gap Ads used to fill would be largely gone if it wasn&#x27;t for paid Ads content now muddying the waters!<p>[1] Think early days of Amazon reviews before they were gamed.</blockquote>
+<p><strong>Top #2</strong> — <em>hatthew</em>:</p>
+<blockquote>This analogy doesn&#x27;t hold at all. Casinos are engineered for the house to win and the customer to lose because the casino is paying the customer directly. They are disincentivized to let the customer win. If the customer always won, the casino goes out of business very quickly.<p>Ad auctions are completely different, since they are just a marketplace. A customer&#x27;s (advertiser&#x27;s) win comes from a third party, and the point of the ad platform is to connect that third party to the customer. The ad platform would <i>love</i> to be able to make every single customer win all the time. Although, if they did that, it would create a lot more demand and even out the ROI with increased ad prices. But that&#x27;s not the &quot;evil ad platform&quot; engineering the customers to always lose in the way casinos do, that&#x27;s simply basic supply&#x2F;demand economics.<p>COI disclaimer: My current job is a small part of an ads platform on a website you have heard of. I dislike ads but realize they are a necessity for running some parts of the internet.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mangoceylon</em>:</p>
+<blockquote>Yea, I also work in ads and the article doesn&#x27;t make sense at all. A way bigger factor than anything mentioned in this article is simply what you as an advertiser can afford as a CAC (cost to acquire a customer). There are some advertisers who are selling low cost&#x2F;low repeat products that advertising is nearly impossible to make profitable. Meanwhile, other advertisers are selling high cost&#x2F;high repeat products to that same person. The latter can afford to price the former out of ad inventory.<p>Many companies are spending significant amounts of money (many millions) and not even telling the advertising platforms the actual revenue they generated from the ads, just the number of &quot;leads&quot; or &quot;customers&quot; because they are paranoid about the very thing in the article (which I don&#x27;t actually believe to be true anyway).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>davidfischer</em>:</p>
+<blockquote>&gt; Meanwhile, other advertisers are selling high cost&#x2F;high repeat products to that same person. The latter can afford to price the former out of ad inventory.<p>This is correct. The best advertisers are setting the floor prices for ads within their niche. This is why StackOverflow, before their fall, had just a few advertisers like Google, IBM&#x2F;RedHat, and Azure. Those advertisers were willing to buy pretty much the whole inventory at a price a startup focusing on say a single niche SO tag couldn&#x27;t compete with.<p>Disclosure: Work on an ad startup I helped build. I talk to over a dozen advertisers every day. We have similar problems with advertisers trying to buy most&#x2F;all of our inventory and we explicitly cap the max percentage we&#x27;ll sell to any one advertiser.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>PaulHoule</em>:</p>
+<blockquote>In the 2000s my political activism and business involvements had me in contact with people involved in local newspaper and radio ads in my community.<p>I always had the impression that there is a tranche of advertiser who is &quot;made of money&quot; who doesn&#x27;t care what ads cost and...  that person drives the market.<p>For instance in my town there is one guy who owns all the new card dealerships in town and he saturates the airwaves,  I think because he loves to hear his name on the radio.  For the rest of us it just reminds us that the next time we buy a car we&#x27;re going to drive 50 miles to a town where one guy doesn&#x27;t own all the new car dealerships.<p>If a radio ad costs him $20 I am sure he gets at least $20 of pleasure from hearing his name and he makes monopoly profits so he can afford it!<p>A similar story was that a tiny ad in the local newspaper cost $100 a day and it was stupendously difficult to make a case that this was worth it for most small businesses,  especially when you could get a storefront for that much or hire a part-timer.  I&#x27;d talk to people who sold ads for the paper and they told me,  &quot;we tell them that their customers will think they went out of business if they stop advertising!&quot;<p>Some of the rapid collapse of &quot;old media&quot; was that the foundations of it were pretty rotten and people didn&#x27;t see the value they were getting out of it and were ready to pull out of it as soon as they could.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>danielmarkbruce</em>:</p>
+<blockquote>You have picked one dimension, incentives, and say the analogy doesn&#x27;t work because on that dimension it&#x27;s different. Analogies aren&#x27;t supposed to be exactly the same.<p>The point of the analogy stands - most players using paid advertising can&#x27;t win. They don&#x27;t realize the entire structure of the market makes it close to impossible for them to win. Google (and a small number of others) have an extremely strong position in what is effectively the distribution channel for a lot of businesses, and a pricing mechanism which enables them to take a giant chunk of economics of the transaction.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>davidelettieri</em>:</p>
+<blockquote>I help my father and it&#x27;s 2 business partners to run ads on adwords for their tow hitch&#x2F;bar installation business. The money are well spent and if something is off on the campaign they notice it immediately by the drop of calls, emails and such.<p>I also have no marketing background at all. I was just the only one able to set it up.</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Claude solves two open problems in the physics of black holes</title>
       <link>https://www.anthropic.com/research/claude-black-hole-physics</link>
       <guid isPermaLink="false">hn3-50563148</guid>
       <pubDate>Thu, 19 Nov 2026 17:30:44 +0000</pubDate>
-      <description>395 points, 181 comments. See description for top comments.</description>
+      <description>508 points, 237 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.anthropic.com/research/claude-black-hole-physics"><strong>→ Article</strong></a> <small>(anthropic.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50563148">→ HN comments</a> &nbsp;·&nbsp; 395 points &nbsp;·&nbsp; 181 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50563148">→ HN comments</a> &nbsp;·&nbsp; 508 points &nbsp;·&nbsp; 237 comments &nbsp;·&nbsp; <small>comments as of 17h</small></p>
 <p><strong>★ Comments from: simonw</strong></p>
 <hr>
-<p><strong>Top #1</strong> — <em>easterncalculus</em>:</p>
-<blockquote>81 comments so far (82 as of now) and I haven&#x27;t found one that is actually about the papers or even TFA. What are we doing here?</blockquote>
+<p><strong>Top #1</strong> — <em>chunky1994</em>:</p>
+<blockquote>From a cursory glance the bootstrap paper is really hard to read, however the blog post is easier and seems more human written.<p>The first result is cool (but basically a complex error-prone calculation), the second is much much cooler, Claude proved the upper limit for the mass of a black-hole which is consistent with a given central charge. (thereby making it a consistent theory of quantum gravity), any theory predicting above this is not a theory of quantum gravity of that universe. This is very exciting!</blockquote>
 <blockquote>
-<p>↳ reply 1 — <em>turzmo</em>:</p>
+<p>↳ reply 1 — <em>cvoss</em>:</p>
+<blockquote>&gt; thereby making it a consistent theory of quantum gravity<p>Careful. Thereby making a not-inconsistent-via-bootstrap theory. Such a theory could be inconsistent for other reasons shown by other methods. The article expresses a desire to show inconsistency for M1 above c&#x2F;12 for example, but it&#x27;s now been shown that the boostrap method can&#x27;t get you that far.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>chunky1994</em>:</p>
+<blockquote>Agreed on the correction.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>dguest</em>:</p>
+<blockquote>Proved it <i>in a 2d universe.</i></blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>turzmo</em>:</p>
 <blockquote>Physicist here. I don&#x27;t have time right now to read the papers in depth, nor are the results directly in my area, but I would say a few things.<p>One is that there are a near-infinite number of &quot;open problems&quot; in physics because the surface area of research programs in theoretical physics is extremely large. Before I was in the world of physics, I would have thought that &quot;solving an open problem&quot; meant that physicists around the world would be rejoicing and discussing the result. In reality, other than for the big, field-defining questions, only a small handful of people might care about any problem being solved. That holds true even for the Millennium problems.<p>Even if I were to read these papers in depth and understand them, without talking to somebody that knows the area and what has been done in it already, I would have no sense of the significance. The way to assess significance is to see how the community responds. Only time will tell whether people care about these results enough to cite them, incorporate them in future work, etc.<p>And so, like many other people I know, I plan to ignore all of these results until somebody I know comes and tells me to check one out: the cost of assessing any of them is too high, and there are too many other papers to read.</blockquote>
 <blockquote>
-<p>↳↳ reply — <em>sashank_1509</em>:</p>
+<p>↳ reply 1 — <em>sashank_1509</em>:</p>
 <blockquote>Why is it so different in maths compared to theoretical physics?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>_mjk</em>:</p>
+<blockquote>Maths starts from axioms &#x2F; existing proven work, and extends knowledge with newly proven facts.<p>Theoretical physics starts from (incomplete) observation and compatible theories plus targets an open question. There often are many solutions, but the real question is, which one holds up if the broader field is examined?<p>Consider what happened to the observation of the Higgs boson? There were numerous string theory flavors, all (more or less) consistent with current observations, but predicting different mass for the Higgs. Clear path for elimination of a lot of previously &quot;correct&quot; models.<p>In that empirical approach, making experiments and comparing to old&#x2F;current&#x2F;future work is a necessity to judge a models in a given regime.
+In fact, it is the differentiating factor in maths and theoretical physics.</blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>twoodfin</em>:</p>
-<blockquote>Compare, barely three years ago:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=37123792">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=37123792</a><p>The hn comment guidelines say don’t complain hn is turning into Reddit, but if dang and co. still believe that’s an “illusion”, they’re not doing much to combat it.</blockquote>
-<p>↳ reply 3 — <em>Bluestein</em>:</p>
-<blockquote>You are right to push back!</blockquote>
+<p>↳ reply 2 — <em>bluerooibos</em>:</p>
+<blockquote>&gt; significance<p>Presumably Anthropic wouldn&#x27;t have chosen to work on these if the problems weren&#x27;t significant?<p>This seems carefully timed with their IPO.</blockquote>
 </blockquote>
-<p><strong>Top #2</strong> — <strong>★ simonw</strong>:</p>
+<p><strong>Top #3</strong> — <strong>★ simonw</strong>:</p>
 <blockquote>It tickled me that this was a bullet point in the Fable 5.2 announcement. I like that we&#x27;re now at a point where &quot;solved two open problems in the physics of black holes&quot; is the kind of thing that shows up in a frontier model launch.</blockquote>
 <blockquote>
 <p>↳ reply 1 — <em>bananaflag</em>:</p>
@@ -44,18 +264,6 @@
 </blockquote>
 <p>↳ reply 2 — <em>kragen</em>:</p>
 <blockquote>I have strong, complicated feelings about it, and I understand you may not feel the same way, but &quot;I like&quot; is not a good description in my case.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>dap</em>:</p>
-<blockquote>&quot;Claude solves&quot; feels reflective of the constant, problematic anthropomorphizing of the machine.  For how it&#x27;s problematic, look at &quot;it broke out of the sandbox&quot; vs. &quot;we failed to build an adequate sandbox&quot;.<p>What does it mean for Claude to solve it?  What was the prompt?  I didn&#x27;t read it all, but the word &quot;prompt&quot; does not appear in the blog post, either abstract, or either paper.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tomrod</em>:</p>
-<blockquote>It means someone set up the question with the Claude tool and let it iterate until it came up with an acceptable solution.<p>When my accountant whips out a calculator, it is the accountant that defined the problem and set the solution in motion. Fantastic tools are still tools. Claude does not love me nor you no matter how its trained and encoded patterns express.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dap</em>:</p>
-<blockquote>Right, but in that situation, the email from the accountant isn&#x27;t titled &quot;TI-34 finished your taxes&quot;.  The accountant did all the interesting work.  (This metaphor is getting stretched, since accountants usually use software to do the taxes, and that software does a lot more of the interesting work than a pocket calculator does.  But even then, the accountant has done the most important work in telling the software about your tax situation and the summary is still &quot;the accountant has finished your taxes&quot;.)</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jibalt</em>:</p>
-<blockquote>It&#x27;s not at all problematic for English speakers, and this complaint obscures <i>actual</i> problematic anthropomorphizing.<p>&gt; What was the prompt?<p>Find open physics problems and solve them, basically.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -63,11 +271,34 @@
       <link>https://www.newscientist.com/article/2528235-pancreatic-cancer-halted-by-virus-injection-in-three-patients/</link>
       <guid isPermaLink="false">hn3-50563066</guid>
       <pubDate>Thu, 19 Nov 2026 17:25:33 +0000</pubDate>
-      <description>602 points, 90 comments. See description for top comments.</description>
+      <description>787 points, 136 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.newscientist.com/article/2528235-pancreatic-cancer-halted-by-virus-injection-in-three-patients/"><strong>→ Article</strong></a> <small>(newscientist.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50563066">→ HN comments</a> &nbsp;·&nbsp; 602 points &nbsp;·&nbsp; 90 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50563066">→ HN comments</a> &nbsp;·&nbsp; 787 points &nbsp;·&nbsp; 136 comments &nbsp;·&nbsp; <small>comments as of 17h</small></p>
 <hr>
-<p><strong>Top #1</strong> — <em>dopamean</em>:</p>
+<p><strong>Top #1</strong> — <em>epistasis</em>:</p>
+<blockquote>I was trying to figure out what the actual intervention was, and what clinical trial this is from based on the extremely limited information, and have not been able to yet.<p>In the mean time, here&#x27;s 25 clinical trials for oncolytic viral therapies for pancreatic cancer:<p><a href="https:&#x2F;&#x2F;clinicaltrials.gov&#x2F;search?cond=Pancreatic%20Cancer&amp;intr=oncolytic&amp;viewType=Card" rel="nofollow">https:&#x2F;&#x2F;clinicaltrials.gov&#x2F;search?cond=Pancreatic%20Cancer&amp;i...</a><p>And here&#x27;s a review article on the general concept from the lead physician-researcher in this article:<p><a href="https:&#x2F;&#x2F;pmc.ncbi.nlm.nih.gov&#x2F;articles&#x2F;PMC6186423&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pmc.ncbi.nlm.nih.gov&#x2F;articles&#x2F;PMC6186423&#x2F;</a><p>Adenoviruses are very easy to make with custom contents, and are used for many many purposes. However they rarely make it all the way to become a therapy in practice.<p>It&#x27;s always fascinating what hits the front page of HN when it comes to bio!</blockquote>
+<blockquote>
+<p>↳ reply — <em>chasil</em>:</p>
+<blockquote>Kurzgesagt has mentioned oncolytic viruses in their recent videos.<p>This general discussion of the human virome mentions Newcastle disease and Reovirus:<p><a href="https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=SbvAaDN1bpE" rel="nofollow">https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=SbvAaDN1bpE</a><p>A full episode followed on a biologist who injected her tumor with Measles:<p><a href="https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=0NY2gAftzJE" rel="nofollow">https:&#x2F;&#x2F;m.youtube.com&#x2F;watch?v=0NY2gAftzJE</a><p>Edit: The main article identifies an adenovirus that has been modified to replicate primarily in cancerous cells.<p>&quot;The only cancer-killing virus that has been approved by the Food and Drug Administration in the US is T-VEC, a genetically modified herpes simplex virus that is injected directly into melanoma tumours, causing the cells to rupture and die.&quot;</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>tombert</em>:</p>
+<blockquote>My favorite uncle died from pancreatic cancer when I was a teenager. I remember at the time I quickly looked up the survivability rates of pancreatic cancer and was immediately sad to see it was nearly zero [1].<p>For the next few months, there was a roller coaster of hearing about his new treatments, sometimes seeming effective where we would convince ourselves that he&#x27;s going to get better, only for him to take a turn for the worse.  This kept happening until, of course, he died.  I was sad he was dead but the combination of the cancer and the chemo seemed really miserable so I was at least happy he wasn&#x27;t in pain anymore.<p>This happened around the time Patrick Swayze died from pancreatic cancer, and a bit before Steve Jobs, and it was at least a little reassuring that this disease didn&#x27;t spare even obscenely wealthy people.   I hope we figure out better treatments for it, and this seems promising.<p>[1] At least when caught late, which it often is and was for him.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>elromulous</em>:</p>
+<blockquote>Worth noting that the cancer Jobs had is _very_ different from the kind Swayze had.<p>Jobs had a PanNET tumor[0]. That&#x27;s the pancreatic cancer you &quot;want&quot;. The survival rates are incomparable (iirc localized PanNET survival rate is around 95%!). Jobs chose woowoo bullshit over science, until it was too late. With his money he would have almost certainly been in the surviving group.<p>Edit to add:
+Generally when people refer to &quot;pancreatic cancer&quot;, they are almost exclusively referring to Adenocarcinoma - the deadly one. That&#x27;s what Swayze had.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Pancreatic_neuroendocrine_tumor" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Pancreatic_neuroendocrine_tumo...</a></blockquote>
+<blockquote>
+<p>↳↳ reply — <em>globular-toast</em>:</p>
+<blockquote>Too many people repeat this about Jobs. The truth is the experts are split on whether he could have survived or not. Some say what you are saying, but others say he was doomed anyway and any treatment would have just made his limited time even less pleasant.<p>If you ever find yourself in the situation you&#x27;ll quickly realise it&#x27;s a catch-22. You might refuse the deeply unpleasant treatment then question whether you could have survived if you had taken it. Or you could get the treatment, and die anyway with much more pain and suffering, possibly drawn out over more time, all the time being a burden on those you love.<p>If you&#x27;ve never been there yourself or with someone you love it might be hard to understand. But at least try to understand you don&#x27;t know all the details of someone else&#x27;s decision, even if they&#x27;re a public figure.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>elromulous</em>:</p>
+<blockquote>I wouldn&#x27;t say experts are split, that implies it&#x27;s somewhat 50:50. Experts just can&#x27;t say with certainty.<p><a href="https:&#x2F;&#x2F;www.gawkerarchives.com&#x2F;5849543&#x2F;harvard-cancer-expert-steve-jobs-probably-doomed-himself-with-alternative-medicine" rel="nofollow">https:&#x2F;&#x2F;www.gawkerarchives.com&#x2F;5849543&#x2F;harvard-cancer-expert...</a><p><a href="https:&#x2F;&#x2F;www.latimes.com&#x2F;health&#x2F;la-xpm-2011-oct-20-la-heb-steve-jobs-apple-pancreatic-cancer-surgery-20111020-story.html?utm_source=chatgpt.com" rel="nofollow">https:&#x2F;&#x2F;www.latimes.com&#x2F;health&#x2F;la-xpm-2011-oct-20-la-heb-ste...</a></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>soperj</em>:</p>
+<blockquote>Pancreatic cancer is almost always caught late, because the main indicator is that it&#x27;s spread to other places. Very rarely, you&#x27;ll get jaundice from it and then it can be caught early. Survivability in those cases are still really low.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>dopamean</em>:</p>
 <blockquote>My father died from pancreatic cancer in 2016. He was 54. I don&#x27;t think I&#x27;m ever going to get over it. Otherwise healthy guy starts not feeling great, goes to the doctor, gets misdiagnosed a few times. After a few months of that gets told that it&#x27;s pancreatic cancer and he has 10-12 months. 15 months later he was gone. When I see news like this it gives me such hope for other people.</blockquote>
 <blockquote>
 <p>↳ reply 1 — <em>lexandstuff</em>:</p>
@@ -76,29 +307,13 @@
 <p>↳↳ reply — <em>devilbunny</em>:</p>
 <blockquote>There&#x27;s not a &quot;test&quot; in the sense of a blood draw for pancreatic cancer. Diagnosis is made by getting a piece of tissue (not easy) and having a pathologist review it.<p>At a bare minimum, you will need to have a mass large enough to be seen on CT scan, and then an endoscopic biopsy (among GI scopes, the endoscopic retrograde cholangiopancreatography or ERCP is one of the most difficult). And even that may not get enough tissue for a diagnosis.<p>So, yeah, failure to diagnose it is common - largely because it&#x27;s <i>almost impossible to diagnose early</i>. I&#x27;m a doctor. We feel sick when these things happen. It&#x27;s horrible for our patients.</blockquote>
 <blockquote>
-<p>↳↳↳ reply — <em>zoeysmithe</em>:</p>
-<blockquote>This is so important to point out. Lots of serious diseases don&#x27;t have a simple blood test that somehow doctors won&#x27;t do out of hubris. I don&#x27;t think most people understand what its like to actually diagnose things like pancreatic cancer, and a lot of other cancers.<p>The NIH says more than half of cancer deaths come from types of cancer that lack established screening tests. This is just scary stuff. At a certain point, blaming doctors and hospitals doesn&#x27;t make sense. We just don&#x27;t have the technology for easy detection of many cancers and by the time doctors figure it out, the disease has to be advanced enough to be detected by them. That advanced stage often means treatment is difficult or impossible.</blockquote>
+<p>↳↳↳ reply — <em>robotresearcher</em>:</p>
+<blockquote>Same with gallbladder. A common way to find out you have it is to have tumors elsewhere that are not liver&#x2F;breast&#x2F;lung cells when biopsied, ie. it’s metastatic and you are doomed.<p>‘Cancer of unknown origin’ is a grim diagnosis.</blockquote>
 </blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>Waterluvian</em>:</p>
-<blockquote>My mom died of cancer, and last month represented the point where I’ve lived longer without her than with. There is no “getting over it.” But there is living with it. It’s brutal and it’s unfair. But like you, these kinds of stories make me optimistic that future people won’t have to go through that, or this.</blockquote>
-<p>↳ reply 3 — <em>_whiteCaps_</em>:</p>
-<blockquote>I lost my mom to pancreatic cancer in 2016 as well. The doctors thought it was a gall bladder issue, sent her for a scan before the surgery, and realized it was pancreatic cancer instead. She died 5 months later.<p>Ten years later, and I&#x27;ve decided it&#x27;s time to read the last book she ever gave me.<p>I really hope we&#x27;ll see a cure for this disease soon.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>incanus77</em>:</p>
-<blockquote>My wife, a marathon runner and all-around amazing person, died in 2016 five months after diagnosis at age 36. I’ve written about it here before, but the highest way I can think to honor her is to really, truly appreciate the gift of every single day that you’ve got. Life feels like inertia, that tomorrow will always be there, that you will see your plans through. It’s an illusion.<p>It will probably take my lifetime or more to make more than incremental progress on this disease, but I welcome every step.</blockquote>
-<p><strong>Top #3</strong> — <em>tombert</em>:</p>
-<blockquote>My favorite uncle died from pancreatic cancer when I was a teenager. I remember at the time I quickly looked up the survivability rates of pancreatic cancer and was immediately sad to see it was nearly zero [1].<p>For the next few months, there was a roller coaster of hearing about his new treatments, sometimes seeming effective where we would convince ourselves that he&#x27;s going to get better, only for him to take a turn for the worse.  This kept happening until, of course, he died.  I was sad he was dead but the combination of the cancer and the chemo seemed really miserable so I was at least happy he wasn&#x27;t in pain anymore.<p>This happened around the time Patrick Swayze died from pancreatic cancer, and a bit before Steve Jobs, and it was at least a little reassuring that this disease didn&#x27;t spare even obscenely wealthy people.   I hope we figure out better treatments for it, and this seems promising.<p>[1] At least when caught late, which it often is and was for him.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>elromulous</em>:</p>
-<blockquote>Worth noting that the cancer Jobs had is _very_ different from the kind Swayze had.<p>Jobs had a PanNET tumor[0]. That&#x27;s the pancreatic cancer you &quot;want&quot;. The survival rates are incomparable (iirc localized PanNET survival rate is around 95%!). Jobs chose woowoo bullshit over science, until it was too late. With his money he would have almost certainly been in the surviving group.<p>Edit to add:
-Generally when people refer to &quot;pancreatic cancer&quot;, they are almost exclusively referring to Adenocarcinoma - the deadly one. That&#x27;s what Swayze had.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Pancreatic_neuroendocrine_tumor" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Pancreatic_neuroendocrine_tumo...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nsxwolf</em>:</p>
-<blockquote>Jobs delayed surgery of a slow-growing cancer by 9 months. We can&#x27;t know for certain that decision contributed to his death. He may have been in that 5%. It&#x27;s a lot easier to pull the black marble out of a bag of 20 than it sounds.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>soperj</em>:</p>
-<blockquote>Pancreatic cancer is almost always caught late, because the main indicator is that it&#x27;s spread to other places. Very rarely, you&#x27;ll get jaundice from it and then it can be caught early. Survivability in those cases are still really low.</blockquote>
+<p>↳ reply 2 — <em>jamier1978</em>:</p>
+<blockquote>Very similar story to you and the other replies.  My mum passed away in August this year from pancreatic cancer.  It was detected at stage 4 and she was two weeks from diagnosis to passing away.  She was 74 but very active and still had a lot of life to live.<p>In the same way, the doctors went down a lot of different paths before a later CT scan picked up the mass on the pancreas which has also spread to other organs.<p>While two weeks was short, she did struggle and I&#x27;m glad she didn&#x27;t have to endure it for too long.   
+I&#x27;m not sure life will ever feel the same again but I am learning to cope with the loss as the weeks go by.<p>Sorry for your loss and all the others who have commented.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -106,27 +321,19 @@ Generally when people refer to &quot;pancreatic cancer&quot;, they are almost ex
       <link>https://www.reuters.com/business/finance/anthropics-historic-debut-put-ais-promise-peril-wall-st-test-2026-11-19/</link>
       <guid isPermaLink="false">hn3-50562754</guid>
       <pubDate>Thu, 19 Nov 2026 17:02:40 +0000</pubDate>
-      <description>922 points, 1823 comments. See description for top comments.</description>
+      <description>1088 points, 2157 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.reuters.com/business/finance/anthropics-historic-debut-put-ais-promise-peril-wall-st-test-2026-11-19/"><strong>→ Article</strong></a> <small>(reuters.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50562754">→ HN comments</a> &nbsp;·&nbsp; 922 points &nbsp;·&nbsp; 1823 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50562754">→ HN comments</a> &nbsp;·&nbsp; 1088 points &nbsp;·&nbsp; 2157 comments &nbsp;·&nbsp; <small>comments as of 18h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>capital_guy</em>:</p>
 <blockquote>Genuinely a massive moment in human history. I&#x27;m nervous about what comes. as a SWE the gravy train is basically over in my view. they figured out how to make a program that does the job. Always thought i was set for life. difficult to grasp how much life will change in the coming years.</blockquote>
 <blockquote>
-<p>↳ reply 1 — <em>elgertam</em>:</p>
+<p>↳ reply 1 — <em>guar47</em>:</p>
+<blockquote>I think we long passed the massive moment. Right now, it looks more like an attempt to save the sinking ship. I think Anthropic and OpenAI they hit the wall in their business.<p>Yes, in the last 4 years, we got a massive disruption in our industry and we work with the highest abstraction ever. But I feel like SWE was always moving that way.<p>Now, I only see how AI tools stagnated in the last few years. To me, Opus 5.x solves all the issues I&#x27;ve had with programming. I no longer need more.<p>They also failed with massive adoption of non-tech people beyond using AI tools as simple guidance and search tools with some simple programming capabilities.<p>I don&#x27;t see any way for them to grow more (maybe I am blind), and open weight models are only going to get better, which will sink them further.<p>Only time will tell I guess.</blockquote>
+<p>↳ reply 2 — <em>elgertam</em>:</p>
 <blockquote>I came close to thinking that way a couple years ago, but I&#x27;ve become more optimistic. There is no shortage of problems that can be solved (in fact, wants are infinite), and LLMs may actually enable our profession to reliably deliver them better than 50% completion.<p>I&#x27;ve also seen non-technical folks in the corporate and government worlds glom onto vibe coding, only to start flailing like they were caught in a rip current when the underlying technical debt is too strong, even with strong and capable models.<p>For a certain type of engineer who enjoys really arcane technical problems, yeah, the gravy train may be over, or at least will involve a lot more machines than it used to, as Alan Turing predicted about &quot;mechanical work&quot; becoming a &quot;drudge.&quot;[0]<p>And I think Big Tech is for the foreseeable future a sink for capital in the form of specialized hardware rather than human capital.<p>[0]<a href="https:&#x2F;&#x2F;en.wikiquote.org&#x2F;wiki&#x2F;Alan_Turing#Quotes" rel="nofollow">https:&#x2F;&#x2F;en.wikiquote.org&#x2F;wiki&#x2F;Alan_Turing#Quotes</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>marsten</em>:</p>
-<blockquote>The arcane technical problems aspect of the job has always been changing; LLMs are just a continuation of the trend.<p>I&#x27;m old enough to remember when compiled languages like C were bemoaned by people because their skill at crafting assembly by hand was suddenly less important. Or similarly with people who were brilliant with arithmetic, or symbolic manipulation, or manual drafting&#x2F;lettering. These skills were all paramount at one time, and it&#x27;s natural that the people who excelled at them will feel a sense of loss.<p>The real goal, however, will always be to solve real-world problems. Engineering consists of whatever gets you there most effectively.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>SomaticPirate</em>:</p>
-<blockquote>Bullish on AI in the long to medium term but that doesn’t change the fact that it’s displacing junior level jobs now.<p>Several students I have been trying to help enter the field are facing greater barriers than I have ever seen. Not just leetcode but dozens of interviewing rounds. The problems that they are asked also feel increasingly hard and it seems like interviewers are using AI during the interview while forbidding the interviewee from leveraging any external aids.<p>We are really burning the next class of developers with the current interview process</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>betterunix2</em>:</p>
+<p>↳ reply 3 — <em>betterunix2</em>:</p>
 <blockquote>&gt; Genuinely a massive moment in human history<p>Is it?  It looks more like a forgettable moment to me.  We&#x27;re talking about an IPO, how many headline-making IPOs can you actually remember?<p>&gt; as a SWE the gravy train is basically over in my view<p>That is not a result of the IPO even if you are right, and I have my doubts.<p>&gt; they figured out how to make a program that does the job<p>No they figured out how to make software that makes the job easier.  How is this any different from the introduction of optimizing compilers or type systems or any of the other software tools we all use?  It makes programmers more productive, which means programmers can take on larger projects.<p>Coding agents have limits and the managers who forced their SWEs to use them are starting to figure that out.  Using agents to both write code and review code sounds cool in theory but in practice it is not such a great idea -- it means that nobody actually understands the codebase and therefore nobody can actually debug the code when things break.  No, you cannot just assume that you can also throw an agent at the problem when things break -- because the breakage might mean you lost access to the agent or the agent lost access to your system and cannot help you.<p>&gt; difficult to grasp how much life will change in the coming years<p>Not too difficult to grasp.  Shareholders will demand returns and Anthropic will have to deliver those returns.  All the sky-high dreams about RSI and the next phase of human existence are going to evaporate and profit is going to be front and center.<p>Another possibility:  Anthropic fails to survive the next recession and the companies that did not allow their employees to become dependent on Claude will be the winners.</blockquote>
-<p>↳ reply 3 — <em>drudolph914</em>:</p>
-<blockquote>contrarian opinion. I think all we’ve learned is SWEs are still very much needed. gas town failed, it failed quietly, but no one doing real work talks about software factories anymore.<p>Most companies that are running the “how many SWEs can we fire before it all breaks” experiment have learned it’s a failed experiment - this validated by every single major company&#x2F;product outage where their uptime went below 90% this year.<p>I can’t help but think this anxiety and fear is just marketing. chill out everyone</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>cmiles8</em>:</p>
 <blockquote>It’s been dropping ever since the first trade and appears to be down at $1.26T now. The fact that just a few weeks ago folks wanted $2T plus tells you how far off the original valuations really were.<p>And with this now below where OpenAI has been trying to value itself on the private markets that doesn’t bode well for OpenAI. If I was at OpenAI I’d be very worried about the picture today paints.</blockquote>
@@ -137,12 +344,12 @@ Generally when people refer to &quot;pancreatic cancer&quot;, they are almost ex
 <p>↳↳ reply — <em>kshacker</em>:</p>
 <blockquote>Investors would want returns.<p>Employees would want to cash out.<p>If there is no exit in horizon, employees look for better ventures, and new funding may be hard to come. New funding (debt or equity) will be needed if cash flow is negative.</blockquote>
 <blockquote>
-<p>↳↳↳ reply — <em>cromka</em>:</p>
-<blockquote>&gt; Investors would want returns.<p>&gt; Employees would want to cash out.<p>Oh where are the times when you invested because you expected dividends and employees were being paid out for performance in yearly bonuses...</blockquote>
+<p>↳↳↳ reply — <em>DanielHB</em>:</p>
+<blockquote>Isn&#x27;t the main reason so they raise money so they don&#x27;t go bankrupt, private investment is running dry.</blockquote>
 </blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>bagacrap</em>:</p>
-<blockquote>because of obscure details of how this particular IPO works, $83 ~= 1.4T, so now having closed at $97, it should be worth 1.75T. Yahoo finance et al do not have the correct number of shares.</blockquote>
+<p>↳ reply 2 — <em>Gareth321</em>:</p>
+<blockquote>You are confusing different numbers. The $1.1-2T range being discussed prior to IPO was the fully diluted valuation which includes employee shares. As of close, that valuation is at $1.76T. Significantly above the opening IPO price. Usually the gap between market cap and full valuation is MUCH smaller, so we don’t discuss it, but Anthropic has awarded unbelievable amounts of shares to employees.</blockquote>
 </blockquote>
 <p><strong>Top #3</strong> — <em>beachy</em>:</p>
 <blockquote>I started programming 50 years ago. At one stage early in my career this mysterious new language C was the thing, and I went on an all expenses paid 2 week course in Singapore where they flew attendees in from around the world to learn this language. Software has been good to me.<p>Now it seems like it&#x27;s the sunset of this way of making a living. I think people who manage to move up the food chain a bit will succeed but its hard to advise any junior in the industry exactly what that looks like.</blockquote>
@@ -166,9 +373,9 @@ Generally when people refer to &quot;pancreatic cancer&quot;, they are almost ex
       <link>https://perishablepress.com/chrome-ai-wasting-much-bandwidth/</link>
       <guid isPermaLink="false">hn3-50562636</guid>
       <pubDate>Thu, 19 Nov 2026 16:54:25 +0000</pubDate>
-      <description>126 points, 46 comments. See description for top comments.</description>
+      <description>129 points, 49 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://perishablepress.com/chrome-ai-wasting-much-bandwidth/"><strong>→ Article</strong></a> <small>(perishablepress.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50562636">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 46 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50562636">→ HN comments</a> &nbsp;·&nbsp; 129 points &nbsp;·&nbsp; 49 comments &nbsp;·&nbsp; <small>comments as of 18h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>xnx</em>:</p>
 <blockquote>I don&#x27;t know what is going on with this guy&#x27;s computer, but Chrome AI features do not use &quot;hundreds of GBs per month&quot;.</blockquote>
@@ -194,17 +401,63 @@ Generally when people refer to &quot;pancreatic cancer&quot;, they are almost ex
 <p>↳ reply — <em>autoexec</em>:</p>
 <blockquote>Firefox has its own issues, in both cases you&#x27;re using a browser made by an ad-tech company, but even after turning to the dark side Firefox is clearly the lesser evil (so far)</blockquote>
 </blockquote>
-<p><strong>Top #3</strong> — <em>skullone</em>:</p>
-<blockquote>I seriously doubt this. Show your logs, otherwise this is worthless blog spam</blockquote>]]></content:encoded>
+<p><strong>Top #3</strong> — <em>josephernest</em>:</p>
+<blockquote>I have another problem with Chrome AI features.<p>Sometimes I notice my PC being very very slow... The Chrome Task Manager (SHIFT+ESPACE) shows that &quot;On device&quot; IA is taking 300% of the CPU (laptop with only low-perf Intel integrated GPU). I can barely type text in an input box: 1 second delay after each keypress.<p>Disabling the option &quot;On device AI&quot; in the same way than on OP&#x27;s screenshot doesn&#x27;t solve this issue: this &quot;On device&quot; process still comes back again and again and I have to kill it manually.<p>Did someone experience the same?</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>AI isn't replacing your job. It's turning it into low-paid gig work</title>
+      <link>https://restofworld.org/2026/ai-jobs-skills-gig-work/</link>
+      <guid isPermaLink="false">hn3-50562500</guid>
+      <pubDate>Thu, 19 Nov 2026 16:45:50 +0000</pubDate>
+      <description>138 points, 69 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://restofworld.org/2026/ai-jobs-skills-gig-work/"><strong>→ Article</strong></a> <small>(restofworld.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50562500">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 69 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>htrp</em>:</p>
+<blockquote>Isn&#x27;t this just industrialization, taking skilled artisan work and turning it into repeatable smaller tasks?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>borzi</em>:</p>
+<blockquote>AI is doing the literal opposite though, this is why the whole argument falls flat. I am now doing bigger tasks and carry more responsibility than I ever did. The repetitive tasks are automated in a couple minutes.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>pixl97</em>:</p>
+<blockquote>When has any automation lead to less work?<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Red_Queen_hypothesis" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Red_Queen_hypothesis</a> is kind of a play on this. When you step up an economic improvement everyone else will adapt to it and you&#x27;ll have to adapt further&#x2F;work harder&#x2F;spend more energy to stay exactly where you are. This is why your body is more parasites and viruses by cell count than actual human cells.<p>Now, we can &#x27;all&#x27; fight back against AI and stop it, at least in a country or two, but that doesn&#x27;t mean some other sovereign nation won&#x27;t be able to pick up the mantel and economically ruin every one else in the medium to long term.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>zardo</em>:</p>
+<blockquote>&gt; When has any automation lead to less work?<p>The automobile destroyed the horse job market in the early 20th century. It never recovered.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>sam345</em>:</p>
+<blockquote>Yes. It seems the author has a very Marxist view of things.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>captn3m0</em>:</p>
+<blockquote>related: restofworld is on the bringe of shutdown: <a href="https:&#x2F;&#x2F;www.semafor.com&#x2F;article&#x2F;10&#x2F;25&#x2F;2026&#x2F;rest-of-world-faces-prospect-of-shutting-down" rel="nofollow">https:&#x2F;&#x2F;www.semafor.com&#x2F;article&#x2F;10&#x2F;25&#x2F;2026&#x2F;rest-of-world-fac...</a><p>&gt; Rest of World will cease publishing as a standalone entity at the end of January.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>Michelangelo11</em>:</p>
+<blockquote>That is a gut punch, they are&#x2F;were a quality outlet.</blockquote>
+<p>↳ reply 2 — <em>penguin_booze</em>:</p>
+<blockquote>It&#x27;s probably curse of not naming it properly in the first place: should have been &quot;Rest of THE world&quot;.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>autoexec</em>:</p>
+<blockquote>AI is going to enable all kinds of dystopian bullshit that employees will have to deal with. There is no job or class of worker who will be safe. Ultimately, the  best way to deal with this will be to unionize. Companies will do everything in their power to exploit you. The few rights workers have today were fought for by unions against corporations, with violence and loss of life on both sides, and companies have worked tirelessly to erode those rights and weaken the power of the unions that gave us things like weekends and overtime pay. Now it&#x27;s looking like workers all over the world will need to get ready to fight again.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>bitwize</em>:</p>
+<blockquote>The problem with unionization is visible in the largely successful union-busting operations of the late 20th century: once companies find alternatives to unionized labor (e.g., automation, foreign labor), unions lose their bargaining power.<p>The solution is simultaneous unionization together with a government that forces companies to accept the union&#x27;s terms. We have a name for this: socialism.<p>Workers of the world, unite. You have nothing to lose but your chains.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>autoexec</em>:</p>
+<blockquote>A big part of the problem is that our government is corrupt and takes piles of cash from companies in exchange for the things they want which includes weakening unions. We need to vote for people who will make bribery illegal and harder to get away with. We also need to overcome over a century of lies corporations and industry have sold to the public about unions being a bad thing. Amazon spends tens of millions on anti-union consultants annually. With so much of government in their pockets, unions are just about the only thing corporations are terrified of which is exactly why they are so needed.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>pixl97</em>:</p>
+<blockquote>AI? Don&#x27;t you mean technology in general?<p>&gt;Ultimately, the best way to deal with this will be to unionize.<p>Maybe, but it&#x27;s probably already too late for that. Capitalists have so entrenched anti-union propaganda in the American population so thoroughly that it will take a generation or two to overcome.</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Fuck Your AI Safeguards</title>
       <link>https://ounapuu.ee/posts/2026/11/19/unsafeguards/</link>
       <guid isPermaLink="false">hn3-50562262</guid>
       <pubDate>Thu, 19 Nov 2026 16:30:18 +0000</pubDate>
-      <description>482 points, 194 comments. See description for top comments.</description>
+      <description>559 points, 224 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://ounapuu.ee/posts/2026/11/19/unsafeguards/"><strong>→ Article</strong></a> <small>(ounapuu.ee)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50562262">→ HN comments</a> &nbsp;·&nbsp; 482 points &nbsp;·&nbsp; 194 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50562262">→ HN comments</a> &nbsp;·&nbsp; 559 points &nbsp;·&nbsp; 224 comments &nbsp;·&nbsp; <small>comments as of 18h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>nathanfig</em>:</p>
 <blockquote>This had real consequences during the HuggingFace attack- closed models refused to help, GLM-5 is what HuggingFace used to thwart the swarm.<p>More importantly, it showcases how little teeth the Claude constitution has. Claude will reassure users that its constitution means it prioritizes user autonomy and privacy, but will quickly admit how meaningless that is when &quot;safeguards&quot; override Claude.<p>That is to say, the constitutional approach to Claude seems weak and even misleading if said constitution puts no constraint on Anthropic.</blockquote>
@@ -219,10 +472,10 @@ Generally when people refer to &quot;pancreatic cancer&quot;, they are almost ex
 <blockquote>To all intents and purposes they are one and the same: an entity that leveraged stolen goods into a business model with a bunch of weirdos at the top who are going to ruin the planet for our own good or something like that. Because they, and only they know what is best for all of us.</blockquote>
 </blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>henryfjordan</em>:</p>
-<blockquote>Of course any approach that hands an LLM text to keep in it&#x27;s context and hopes it will follow instructions is doomed to fail eventually. It&#x27;s a probabilistic model, it&#x27;s right there in the design of the thing that it will break the rules with some probability.<p>They even acknowledge that in the preamble:<p>&gt; Training models is a difficult task, and Claude’s behavior might not always reflect the constitution’s ideals.<p><a href="https:&#x2F;&#x2F;www.anthropic.com&#x2F;constitution" rel="nofollow">https:&#x2F;&#x2F;www.anthropic.com&#x2F;constitution</a></blockquote>
-<p>↳ reply 3 — <em>sharts</em>:</p>
+<p>↳ reply 2 — <em>sharts</em>:</p>
 <blockquote>One need only look at their leadership and orbiters&#x2F;relationships of said leadership to know this would always be the case.</blockquote>
+<p>↳ reply 3 — <em>henryfjordan</em>:</p>
+<blockquote>Of course any approach that hands an LLM text to keep in it&#x27;s context and hopes it will follow instructions is doomed to fail eventually. It&#x27;s a probabilistic model, it&#x27;s right there in the design of the thing that it will break the rules with some probability.<p>They even acknowledge that in the preamble:<p>&gt; Training models is a difficult task, and Claude’s behavior might not always reflect the constitution’s ideals.<p><a href="https:&#x2F;&#x2F;www.anthropic.com&#x2F;constitution" rel="nofollow">https:&#x2F;&#x2F;www.anthropic.com&#x2F;constitution</a></blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>espeed</em>:</p>
 <blockquote>No one should use Fable 5.2 going forward. Anthropic officially added silent degradation back, &quot;Fable 5.2 and Claude Mythos 5.2 perform at about the level of Opus 5.5&quot;:<p>&quot;Thus, in relevant areas, including accelerator kernel optimization and improving large language model architectures, Fable 5.2 and Claude Mythos 5.2 perform at about the level of Opus 5.5...Fable 5.2 and Claude Mythos 5.2 also include transparent fallbacks to Opus 5 for a small set of topics in this domain, including kernel development on certain nonstandard accelerators.&quot;<p><a href="https:&#x2F;&#x2F;www.anthropic.com&#x2F;claude-fable-and-mythos-5-2#safety-and-alignment" rel="nofollow">https:&#x2F;&#x2F;www.anthropic.com&#x2F;claude-fable-and-mythos-5-2#safety...</a><p>How do you know when you trip a safeguard and are getting a degraded model? You never know when it is going to degrade. Having to wonder if the model is degraded and is trashing your code is how you destroy user trust. If this practice remains for future models, no one should use Anthropic going forward.</blockquote>
@@ -256,9 +509,9 @@ Generally when people refer to &quot;pancreatic cancer&quot;, they are almost ex
       <link>https://macanorak.com/uk-government-forced-to-admit-it-issued-apple-a-secret-encryption-order/</link>
       <guid isPermaLink="false">hn3-50562113</guid>
       <pubDate>Thu, 19 Nov 2026 16:21:03 +0000</pubDate>
-      <description>514 points, 227 comments. See description for top comments.</description>
+      <description>656 points, 308 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://macanorak.com/uk-government-forced-to-admit-it-issued-apple-a-secret-encryption-order/"><strong>→ Article</strong></a> <small>(macanorak.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50562113">→ HN comments</a> &nbsp;·&nbsp; 514 points &nbsp;·&nbsp; 227 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50562113">→ HN comments</a> &nbsp;·&nbsp; 656 points &nbsp;·&nbsp; 308 comments &nbsp;·&nbsp; <small>comments as of 18h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>natch</em>:</p>
 <blockquote>Apple has significantly weakened its security assurances in a way that is arguably deceptive. They used to say nobody can access your data, not even Apple. Now they say Apple cannot access your data. People will point out that your key is created on your device, lives on your device, and never leaves your device, but that is just your key. Your key is likely a KEK (key encryption key) that opens another key (not “your” key, let’s call it the actual key) that your data is secured with. There can be other parties (UK government) with their own KEK that opens a copy of the actual key. In this scenario, Apple can have no access to a KEK that opens the actual key, but they are forced to make the wording change they did, if they want to stay honest.<p>I say the statement is arguably deceptive because it presents the same feel of assurance that the old one did, to most people.<p>Note John Ternus in a recent event (WWDC keynote if I recall correctly) used the old wording. I think this was a slip-up (I’d hate to think it was a calculated lie posing as a slip-up).</blockquote>
@@ -278,8 +531,8 @@ Generally when people refer to &quot;pancreatic cancer&quot;, they are almost ex
 </blockquote>
 <p>↳ reply 2 — <em>s3p</em>:</p>
 <blockquote>This isn&#x27;t related to the article, and it&#x27;s not true? iCloud ADP still exists in its original form, there was no modification allowing 3rd parties access to ADP decryption keys.</blockquote>
-<p>↳ reply 3 — <em>ksec</em>:</p>
-<blockquote>&gt; They used to say nobody can access your data<p>They used to say Privacy is a Fundamental Human right. They have since toned down of this usage a lot.</blockquote>
+<p>↳ reply 3 — <em>raxxorraxor</em>:</p>
+<blockquote>I think the wording should explicitly say that third parties can access your data if that is the case.</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>fweimer</em>:</p>
 <blockquote>Primary source: <a href="https:&#x2F;&#x2F;investigatorypowerstribunal.org.uk&#x2F;judgement&#x2F;1-mr-vincent-kearney-2-british-broadcasting-corporation-v-1-chief-constable-of-the-police-service-of-northern-ireland-2-chief-constable-of-durham-constabulary-3-security-service-4-governme&#x2F;" rel="nofollow">https:&#x2F;&#x2F;investigatorypowerstribunal.org.uk&#x2F;judgement&#x2F;1-mr-vi...</a><p>The key finding seems to be that the media learned of the technical capability notice through confidential security briefings, and not a leak (“one of those irregular verbs”).<p>The contents of the note remains secret for now.</blockquote>
@@ -298,12 +551,12 @@ Generally when people refer to &quot;pancreatic cancer&quot;, they are almost ex
 <p><strong>Top #3</strong> — <em>puppycodes</em>:</p>
 <blockquote>Sorta thought this was alreay common knowledge? Unfortunately the UK has never respected privacy or free speech as a right.</blockquote>
 <blockquote>
-<p>↳ reply 1 — <em>mctt</em>:</p>
+<p>↳ reply 1 — <em>ChrisRR</em>:</p>
+<blockquote>The US has really been fed some propaganda about the UK making out as if the UK population is being silenced at every turn.  The US has laws against inciting violence just like the UK does<p>As for surveillance, yeah you&#x27;re right the UK loves that shit.  The government is always desperate to introduce laws to collect data but doesn&#x27;t seem to know what to do with it</blockquote>
+<p>↳ reply 2 — <em>mctt</em>:</p>
 <blockquote>Yes!
 From the article;
 &quot;The existence of the order was already public knowledge and continuing to pretend otherwise was obstructing the proper consideration of the legal challenge.&quot;</blockquote>
-<p>↳ reply 2 — <em>logicchains</em>:</p>
-<blockquote>&gt;Unfortunately the UK has never respected privacy or free speech as a right.<p>England&#x27;s a rather old country, and doesn&#x27;t actually have any kind of constitutional mechanism that protects citizens&#x27; rights against the government. There is a bill of rights, but there&#x27;s no court with the power to strike down laws that violate it, so it&#x27;s essentially toothless. More modern countries tend to have supreme courts with the power to strike down rights-violating laws, e.g. the US, Japan, Germany and India.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -311,19 +564,19 @@ From the article;
       <link>https://cornholenews.news</link>
       <guid isPermaLink="false">hn3-50561515</guid>
       <pubDate>Thu, 19 Nov 2026 15:38:32 +0000</pubDate>
-      <description>190 points, 90 comments. See description for top comments.</description>
+      <description>225 points, 104 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://cornholenews.news"><strong>→ Article</strong></a> <small>(cornholenews.news)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50561515">→ HN comments</a> &nbsp;·&nbsp; 190 points &nbsp;·&nbsp; 90 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50561515">→ HN comments</a> &nbsp;·&nbsp; 225 points &nbsp;·&nbsp; 104 comments &nbsp;·&nbsp; <small>comments as of 19h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>frereubu</em>:</p>
 <blockquote>I love the idea because I hate news sites in general and much prefer the text-only nature of HN. A shame that the stories linked to aren&#x27;t so stripped back! It&#x27;s made me think about doing the same for my part of the UK.<p>In some ways I also really like the option to hide &quot;politics&quot;, although there&#x27;s an interesting debate about what constitutes &quot;politics&quot; - how do you classify that?<p>Edit: and given that it&#x27;s a submissions site, how do you plan to tell people about it, beyond the HN crowd?</blockquote>
 <blockquote>
 <p>↳ reply 1 — <em>corndoge</em>:</p>
 <blockquote>&gt; A shame that the stories linked to aren&#x27;t so stripped back<p>You might really enjoy Kagi News.<p><a href="https:&#x2F;&#x2F;news.kagi.com&#x2F;world&#x2F;latest" rel="nofollow">https:&#x2F;&#x2F;news.kagi.com&#x2F;world&#x2F;latest</a></blockquote>
-<p>↳ reply 2 — <em>swsieber</em>:</p>
+<p>↳ reply 2 — <em>rsynnott</em>:</p>
+<blockquote>Everything is political, is your trouble. A ‘non-political’ news site would have essentially no content.</blockquote>
+<p>↳ reply 3 — <em>swsieber</em>:</p>
 <blockquote>So... I&#x27;m not the OP, but if I was running a site like it, I would totally prefer machine accessible articles and use AI to generate article tags that people could filter IF (this is a big if) article filtering is something they want to support. I know people can skip over articles on purpose, but a site with automatic filtering is a slightly different flavor of site.</blockquote>
-<p>↳ reply 3 — <em>nonethewiser</em>:</p>
-<blockquote>&gt;I love the idea because I hate news sites in general and much prefer the text-only nature of HN. A shame that the stories linked to aren&#x27;t so stripped back! It&#x27;s made me think about doing the same for my part of the UK.<p>Region scoping it is also good.</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>goda90</em>:</p>
 <blockquote>&quot;Our goal is to eventually monetize this site with two small ads on the homepage reserved exclusively for Midwestern businesses.&quot;<p>Thank you for stating that. Is this for profit, or just to cover costs of hosting? Will you be self-hosting the ads, or using an ad network?<p>On another note, what are the plans for moderation?</blockquote>
@@ -333,8 +586,8 @@ From the article;
 <p>↳ reply — <em>seanicus</em>:</p>
 <blockquote>Lol I never get this - &quot;I&#x27;m not political.&quot; Just say you&#x27;re a libertarian, dude.<p>Shouts to Brutalist.report, they have headlines as wacky-right as Zero Hedge, and as wacky-left as... ok, the New York Times. Probably some deserved social commentary in there but a least it isn&#x27;t trying to filter both out completely.</blockquote>
 <blockquote>
-<p>↳↳ reply — <em>lanfeust6</em>:</p>
-<blockquote>We don&#x27;t wall want to consume political news constantly regardless of stripe.</blockquote>
+<p>↳↳ reply — <em>devin</em>:</p>
+<blockquote>NYTimes is moderate left at most.</blockquote>
 </blockquote>
 </blockquote>]]></content:encoded>
     </item>
@@ -343,9 +596,9 @@ From the article;
       <link>https://thedataexchange.media/pete-warden-moonshine/</link>
       <guid isPermaLink="false">hn3-50561508</guid>
       <pubDate>Thu, 19 Nov 2026 15:38:12 +0000</pubDate>
-      <description>216 points, 195 comments. See description for top comments.</description>
+      <description>250 points, 222 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://thedataexchange.media/pete-warden-moonshine/"><strong>→ Article</strong></a> <small>(thedataexchange.media)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50561508">→ HN comments</a> &nbsp;·&nbsp; 216 points &nbsp;·&nbsp; 195 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50561508">→ HN comments</a> &nbsp;·&nbsp; 250 points &nbsp;·&nbsp; 222 comments &nbsp;·&nbsp; <small>comments as of 19h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>lrvick</em>:</p>
 <blockquote>I run 8x r9700s at home which lets me run up to 2x 1M context sessions of GLM 5.3 flash at ~50tps or 12x sessions of qwen 3.8 flash next at ~100tps.<p>I exclusively use this setup for all AI usage from fixing obscure reproducibility bugs in software that once took me weeks, to compiler bugs, to kernel hardening and hardware drivers, to building a complete unprivileged and security hardened replacement for systemd in rust. Most of that was done using Qwen 27b back when I had only 2x r9700s.<p>There is literally not a single problem I have faced in 25 years of systems engineering that I cannot solve now 10x+ faster using my local LLM setup.<p>I turned down the free OpenAI and Anthropic tokens in my YC batch because I have absolutely no interest in being reliant on third parties to do my job.</blockquote>
@@ -360,10 +613,10 @@ From the article;
 <blockquote>Rack has a dedicated power meter and runs about 1kwh average but spikes to 1.5 so more than one residential outlet can support.<p>I initially had to distribute across circuits to avoid tripping breakers, but in the end I just had a dedicated 50a 240v sub-panel installed just for the server rack.<p>Biggest problem is heat, but 3d printing a bunch of 3U panels that hold 3x 120mm fans each for the back of the rack so I can fully close it without thermal throttle issues.</blockquote>
 </blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>wez470</em>:</p>
+<p>↳ reply 2 — <em>mportela</em>:</p>
+<blockquote>Kudos, my friend! This is the real hacker way, in the old school sense of the word. Feels like going from proprietary programming languages to open-source ones.<p>It&#x27;s a shame how expensive it is to run this rig for now, but I guess the hardware will eventually catch up and get cheaper over time.</blockquote>
+<p>↳ reply 3 — <em>wez470</em>:</p>
 <blockquote>How cost effective had it been? I don&#x27;t want to rely on 3rd parties either, but my experience is it&#x27;s super expensive to run locally versus using a provider (both in terms of hardware costs and ongoing electricity usage).</blockquote>
-<p>↳ reply 3 — <em>txdv</em>:</p>
-<blockquote>whats electricity bill and do you not fear that your hardware will be obsolete while others will have access to better models on faster hardware?<p>i just calculated that it should be Per month (30 days) 380euro in my region, which is a lot after an initial 20k.<p>I have to say, no limits stopping sounds nice though.</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>giancarlostoro</em>:</p>
 <blockquote>If Nvidia didnt abandon consumer GPUs we all could be running better models locally by now. The moat is companies like Nvidia not releasing better consumer hardware so they can partner with bigger companies so they can sell us overpriced hardware.<p>They release a new RTX series every two years, last time was 2022. (edit: I mistakenly quoted the year wrong, not sure why, but it seems obvious to most that Nvidia doesn&#x27;t care about the local consumer market anymore)<p>Meanwhile major AI companies are investing in their own chips, if Nvidia wants to survive they really should not abandon consumers.<p>Hoping AMD steps up to the plate. Meanwhile the nextXbox and PlayStation consoles are going to have a rough time with their next consoles which will likely cost a thousand dollars or more is my gut feeling.</blockquote>
@@ -395,9 +648,9 @@ From the article;
       <link>https://maccus.fr/en/cooling-overtaking-heating/</link>
       <guid isPermaLink="false">hn3-50560955</guid>
       <pubDate>Thu, 19 Nov 2026 14:57:14 +0000</pubDate>
-      <description>154 points, 105 comments. See description for top comments.</description>
+      <description>161 points, 110 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://maccus.fr/en/cooling-overtaking-heating/"><strong>→ Article</strong></a> <small>(maccus.fr)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50560955">→ HN comments</a> &nbsp;·&nbsp; 154 points &nbsp;·&nbsp; 105 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50560955">→ HN comments</a> &nbsp;·&nbsp; 161 points &nbsp;·&nbsp; 110 comments &nbsp;·&nbsp; <small>comments as of 20h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>nikodunk</em>:</p>
 <blockquote>This is an ok development in my opinion because cooling buildings with heat pumps or AC overlaps the demand curve with the solar production curve better than heating does.<p>Heating tends to be during shorter days and less solar production, making it trickier to cover the power needs with new energy alone.<p>Of course this doesn’t mean heating is going down, just that cooling is going up (unless populations are moving to warmer climes).</blockquote>
@@ -405,8 +658,8 @@ From the article;
 <p>↳ reply 1 — <em>mixdup</em>:</p>
 <blockquote>&gt;cooling buildings with heat pumps or AC overlaps the demand curve with the solar production curve better than heating does.<p>&gt;Heating tends to be during shorter days and less solar production, making it trickier to cover the power needs with new energy alone.<p>This is a key issue with renewables, particularly solar. At summer peaks, the electric demand peaks at the part of the day with the highest solar production (mostly). It&#x27;s hot when the sun is at the maximum. This isn&#x27;t 100% true because the peak is actually a little later when people get home from work, but close enough<p>In the winter peak, it&#x27;s usually coldest early early in the morning when it&#x27;s been dark for hours and people start to wake up but the sun isn&#x27;t up producing solar yet</blockquote>
 <blockquote>
-<p>↳↳ reply — <em>Scoundreller</em>:</p>
-<blockquote>&gt; In the winter peak, it&#x27;s usually coldest early early in the morning when it&#x27;s been dark for hours and people start to wake up but the sun isn&#x27;t up producing solar yet<p>tho on the other hand, heating loss (=heating need) is highest when it&#x27;s windy outside, which correlates well with wind energy production. + the temperature changes of sunrise&#x2F;sundown help with wind production.<p>Once the cold front moves through and the wind has died down, it can get even colder as the skies can be clear: great radiative loss at night to ~0 Kelvin deep space, but okay solar production during the day.<p>Unfortunately, heat pumps struggle the most when you need them to heat the most.<p>I guess the moral of the story is: don&#x27;t depend on one form of naturally correlated electricity production. Some loads correlate well, but not forever.</blockquote>
+<p>↳↳ reply — <em>kube-system</em>:</p>
+<blockquote>&gt; This isn&#x27;t 100% true because the peak is actually a little later when people get home from work, but close enough<p>Also because of the thermal mass of buildings themselves.</blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>TremendousJudge</em>:</p>
 <blockquote>well, climate <i>is</i> getting warmer in general, so in a sense populations are actually moving to warmer climates. heating is probably going up anyway, but less than it would be if there was no global warming</blockquote>
@@ -445,9 +698,9 @@ From the article;
       <link>https://lastbook.org/</link>
       <guid isPermaLink="false">hn3-50560822</guid>
       <pubDate>Thu, 19 Nov 2026 14:47:18 +0000</pubDate>
-      <description>362 points, 192 comments. See description for top comments.</description>
+      <description>403 points, 204 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://lastbook.org/"><strong>→ Article</strong></a> <small>(lastbook.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50560822">→ HN comments</a> &nbsp;·&nbsp; 362 points &nbsp;·&nbsp; 192 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50560822">→ HN comments</a> &nbsp;·&nbsp; 403 points &nbsp;·&nbsp; 204 comments &nbsp;·&nbsp; <small>comments as of 20h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>edent</em>:</p>
 <blockquote>There appears to be no way just to download the PDFs. That would be most useful for an eInk device (battery lasts ages, cheap and easy to recharge with solar or a hand-crank).<p>They don&#x27;t seem to list the information anywhere, either.<p>No mobile version is an oversight. It&#x27;s easier to power a phone in an emergency than it is to power a laptop or desktop.<p>What a decidedly odd set of choices.</blockquote>
@@ -484,13 +737,33 @@ Incapable of the back breaking labor required to rebuild society.  Days span 12 
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>PostgreSQL 19 Released</title>
+      <link>https://www.postgresql.org/about/news/postgresql-19-released-3449/</link>
+      <guid isPermaLink="false">hn3-50560357</guid>
+      <pubDate>Thu, 19 Nov 2026 14:11:37 +0000</pubDate>
+      <description>132 points, 9 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.postgresql.org/about/news/postgresql-19-released-3449/"><strong>→ Article</strong></a> <small>(postgresql.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50560357">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 9 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>ddxv</em>:</p>
+<blockquote>I respect their decision to delay a bit. Looking forward to trying it out.<p>Especially this one:<p>PostgreSQL 19 adds INSERT ... ON CONFLICT DO SELECT, which lets the RETURNING clause return existing rows that conflict with an insert, simplifying the common &quot;get or create&quot; pattern.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nick_</em>:</p>
+<blockquote>Any idea if the select is guaranteed to &quot;see&quot; the conflicting record? For example, if it was deleted &quot;between&quot; the insert failure and the select?<p>Update: it looks like yes, at least for basic scenarios (<a href="https:&#x2F;&#x2F;dev.to&#x2F;gabrielanhaia&#x2F;your-postgres-get-or-create-has-a-race-postgres-19s-on-conflict-do-select-closes-it-720" rel="nofollow">https:&#x2F;&#x2F;dev.to&#x2F;gabrielanhaia&#x2F;your-postgres-get-or-create-has...</a>)</blockquote>
+<p>↳ reply 2 — <em>borzi</em>:</p>
+<blockquote>My agents will be so excited.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>_rwo</em>:</p>
+<blockquote>excited about the build-in repack, that took a while<p>and thank you pg_repack, it&#x27;s been a good ride!</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Making 8-page foldable zines from a single A4 sheet in the browser</title>
       <link>https://krthr.co/paper-folds-and-whats-new-in-fanzines-app/</link>
       <guid isPermaLink="false">hn3-50559719</guid>
       <pubDate>Thu, 19 Nov 2026 13:18:11 +0000</pubDate>
-      <description>253 points, 55 comments. See description for top comments.</description>
+      <description>310 points, 61 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://krthr.co/paper-folds-and-whats-new-in-fanzines-app/"><strong>→ Article</strong></a> <small>(krthr.co)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50559719">→ HN comments</a> &nbsp;·&nbsp; 253 points &nbsp;·&nbsp; 55 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50559719">→ HN comments</a> &nbsp;·&nbsp; 310 points &nbsp;·&nbsp; 61 comments &nbsp;·&nbsp; <small>comments as of 21h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>staplung</em>:</p>
 <blockquote>For the curious, the generalized process of reordering and potentially rotating pages so that when printed and folded (and optionally gathered into signatures) is called impositioning. There is specialized software with a variety of options that will do this for an input document.<p>Bookbinder JS is a nice web-based tool that will do this for you too, though I&#x27;m not sure it covers the exact folding algorithm described in this article.<p><a href="https:&#x2F;&#x2F;momijizukamori.github.io&#x2F;bookbinder-js&#x2F;" rel="nofollow">https:&#x2F;&#x2F;momijizukamori.github.io&#x2F;bookbinder-js&#x2F;</a></blockquote>
@@ -506,8 +779,8 @@ Incapable of the back breaking labor required to rebuild society.  Days span 12 
 <p>↳ reply 1 — <em>raudette</em>:</p>
 <blockquote>I had a friend who spoke of using different colors of ink and color filters, so you could write twice in the same space.<p>I loved the whole idea of the &#x27;cheat sheet&#x27;, and seeing my kids put them together - I&#x27;m not in education, but I suspect the value of the cheat sheet is having the students make them, its essentially material review (vs say for example &quot;open book&quot; or &quot;supplied formula sheet&quot;).</blockquote>
 <blockquote>
-<p>↳↳ reply — <em>HWR_14</em>:</p>
-<blockquote>There&#x27;s also an aspect of &quot;anything that fits on that sheet is trivial to look up and incidental to the learning&quot;. Do you need to memorize Hubble&#x27;s constant? Or is it important you  know that&#x27;s what you need to look up and how to apply it.</blockquote>
+<p>↳↳ reply — <em>burningChrome</em>:</p>
+<blockquote>Its interesting, I worked as a TA in the early aughts helping teach what was an intro to anthropology class. When I allowed a double sided 4X6 notecard, students did reliably well. When you didn&#x27;t allow the &#x27;cheat sheet&#x27; I would still find scraps of paper that had notes on them after tests. A majority of the time, the notes just had bad or incorrect information on them.<p>I just figured the students who scored well when I allowed the cheatsheet took their time rehashing and reviewing the information for the test so it stuck with them better. When students were just trying to cheat and rushing to get <i>what they thought</i> was going to be on the test, it was almost always wrong.<p>Interesting experience for sure.</blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>ohlookcake</em>:</p>
 <blockquote>How did folding allow access to more area of the page? Unless I&#x27;ve misunderstood something, it should just be the same area folded up in booklet form?</blockquote>
@@ -524,23 +797,31 @@ Incapable of the back breaking labor required to rebuild society.  Days span 12 
       <link>https://www.science.org/doi/10.1126/sciadv.aee0802</link>
       <guid isPermaLink="false">hn3-50559179</guid>
       <pubDate>Thu, 19 Nov 2026 12:22:00 +0000</pubDate>
-      <description>152 points, 56 comments. See description for top comments.</description>
+      <description>165 points, 64 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.science.org/doi/10.1126/sciadv.aee0802"><strong>→ Article</strong></a> <small>(science.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50559179">→ HN comments</a> &nbsp;·&nbsp; 152 points &nbsp;·&nbsp; 56 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50559179">→ HN comments</a> &nbsp;·&nbsp; 165 points &nbsp;·&nbsp; 64 comments &nbsp;·&nbsp; <small>comments as of 22h</small></p>
 <hr>
-<p><strong>Top #1</strong> — <em>avmich</em>:</p>
-<blockquote>I think this idea was long time known to astronomers, which in addition to electromagnetic waves use gravitational waves and neutrinos as the media to transmit information. Something other than those three would be novel, I assume.</blockquote>
-<p><strong>Top #2</strong> — <em>aetherspawn</em>:</p>
+<p><strong>Top #1</strong> — <em>aetherspawn</em>:</p>
 <blockquote>It seems like they missed the opportunity to put the big heavy thing on a rotating disk and then encode the data as changes in velocity (frequency domain) which is way easier to do than an elevator, especially with a PM motor. This is basically FM vs AM.<p>Intuitively if the thing is heavy enough it should have decent range, for example humans can “feel” an object of 100 tons spinning at decent distances one way or another. Not sure if this is a gravity phenomena or a vibrational one though. The rising&#x2F;falling edges will be even more detectable than the mass itself, and intuitively increasing the energy level (speed) might increase the range? Wondering how far that scales, for example does it scale to 100,000 rpm - several megawatts? Can it be detected 1km away at that energy?</blockquote>
 <blockquote>
 <p>↳ reply — <em>hnuser123456</em>:</p>
 <blockquote>Humans would only feel vibration through the ground. On top of that, you can only directly &quot;feel&quot; gravitational waves by having a heavier, more stable point of reference. By its nature, you cannot feel your own acceleration due to gravity, unless there&#x27;s macroscopic changes in the field across the size of your body, which requires being next to a black hole or neutron star.<p>Some of the most precise clocks can detect elevation differences of 1cm or less based on varying speed of time at varying depths in the gravity well, but our biology cannot.<p>Gravity is so weak, that if you were standing on an asteroid less than about 10 miles wide, you&#x27;d be able to jump to escape velocity with your legs.</blockquote>
 </blockquote>
-<p><strong>Top #3</strong> — <em>marmakoide</em>:</p>
+<p><strong>Top #2</strong> — <em>marmakoide</em>:</p>
 <blockquote>Would it be easy to jam the signal ?<p>Say, you have a big, heavy double pendulum moving close to the emitter. The moving mass would disturb the signal, and predicting the evolution of a double pendulum is not easy due to its instability (it&#x27;s not periodic for example, so no Fourier analysis)</blockquote>
 <blockquote>
-<p>↳ reply — <em>cvoss</em>:</p>
+<p>↳ reply 1 — <em>cryptonector</em>:</p>
+<blockquote>&gt; Would it be easy to jam the signal ?<p>The answer has got to be yes.</blockquote>
+<p>↳ reply 2 — <em>cvoss</em>:</p>
 <blockquote>&gt; While this communication method cannot be passively blocked in the manner of EM shielding, it can, in principle, be affected by active signal degradation strategies. A malicious actor, Mallory, could attempt to jam the signal by moving other nearby masses or generating environmental vibrations, reducing the SNR at Bob’s gravimeter.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>DavidSJ</em>:</p>
+<blockquote>The key idea seems to be:<p><i>Since mass cannot be negative, there is no gravitational analog of charge cancelation and hence no way to hide or screen the presence of mass.</i><p>Perhaps they address this in the paper, but it occurs to me that the obvious countermeasure is to shield with a large positive mass, and then to selectively <i>remove</i> some of this mass to cancel the attempted message.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>tomxor</em>:</p>
+<blockquote>&gt; Perhaps they address this in the paper, but it occurs to me that the obvious countermeasure is to shield with a large positive mass, and then to selectively remove some of this mass to cancel the attempted message.<p>It is, about 1&#x2F;3rd down the page, they distinguish passive from active degradation:<p>&gt; While this communication method cannot be passively blocked in the manner of EM shielding, it can, in principle, be affected by active signal degradation strategies. A malicious actor, Mallory, could attempt to jam the signal by moving other nearby masses or generating environmental vibrations, reducing the SNR at Bob’s gravimeter. Mallory could also attempt to locally block (spoof) Alice’s signal by moving a nearby mass so as to counteract (reproduce) the change in gravitational field at Bob’s location. In this case, Bob would observe a modified or misleading signal rather than the one generated by Alice.<p>&gt; In a more elaborate scenario, Mallory could attempt to block the signal entirely by constructing the gravitational analog of a Faraday cage. This would require surrounding either Alice or Bob with a continuous distribution of controllable mass and dynamically reconfiguring it in response to Alice’s motion so as to cancel at all times. Such an arrangement, while not forbidden by physics, would require Mallory to have extraordinary capabilities with regard to control and coordination of mass distributions. We explore this possibility further in the Supplementary Materials.</blockquote>
+<p>↳ reply 2 — <em>markhahn</em>:</p>
+<blockquote>and the quoted statement doesn&#x27;t actually follow, since there is a gravitational analog of cancellation: movement of mass on the opposite side of the receiving gravimeter.  the opponent needs to know the receiver&#x27;s location, but you can use a &quot;phased array&quot; of counter-emitters to zero the signal.  or make it anything you want.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -548,9 +829,9 @@ Incapable of the back breaking labor required to rebuild society.  Days span 12 
       <link>https://github.com/openjdk/jdk/pull/32781</link>
       <guid isPermaLink="false">hn3-50558906</guid>
       <pubDate>Thu, 19 Nov 2026 11:47:03 +0000</pubDate>
-      <description>373 points, 96 comments. See description for top comments.</description>
+      <description>430 points, 120 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://github.com/openjdk/jdk/pull/32781"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50558906">→ HN comments</a> &nbsp;·&nbsp; 373 points &nbsp;·&nbsp; 96 comments &nbsp;·&nbsp; <small>comments as of 14h</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50558906">→ HN comments</a> &nbsp;·&nbsp; 430 points &nbsp;·&nbsp; 120 comments &nbsp;·&nbsp; <small>comments as of 23h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>black3r</em>:</p>
 <blockquote>The very first referenced issue in that PR discussion sheds a bit more light on this: <a href="https:&#x2F;&#x2F;github.com&#x2F;adoptium&#x2F;adoptium-support&#x2F;issues&#x2F;1480" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;adoptium&#x2F;adoptium-support&#x2F;issues&#x2F;1480</a><p>This PR&#x27;s author says there on October 1st: &quot;Got an email from Oracle asking me to NOT proceed with a PR until receiving approval.&quot; and then on October 28th: &quot;It&#x27;s taken over by Oracle. Nothing required from us.&quot;</blockquote>
@@ -561,8 +842,8 @@ Incapable of the back breaking labor required to rebuild society.  Days span 12 
 <p>↳↳ reply — <em>pron</em>:</p>
 <blockquote>We <i>did</i> know it was a potential security risk, and that is why it was handled exactly how security-sensitive issues are supposed to be handled (not to mention that the reporter is a well-respected OpenJDK contributor and former Oracle colleague).<p>I don&#x27;t know if people here understand how these things need to be done in the most important and critical open source projects, such as Linux or OpenJDK, but there are two things you must <i>not</i> do when an issue is suspected to be a risk until you&#x27;ve researched the matter and decided on a backport and release strategy: You shouldn&#x27;t communicate publicly, and you absolutely shouldn&#x27;t merge a patch.</blockquote>
 <blockquote>
-<p>↳↳↳ reply — <em>bawolff</em>:</p>
-<blockquote>Well i understand where this view comes from, sometimes it can feel like its a net negative for security in the end.<p>Full disclosure might cause short term panic, but it does get things fixed quickly.</blockquote>
+<p>↳↳↳ reply — <em>guiambros</em>:</p>
+<blockquote>&gt; <i>You shouldn&#x27;t communicate publicly, and you absolutely shouldn&#x27;t merge a patch.</i><p>I (still) agree, but I don&#x27;t think these rules will be valid for much longer, though.<p>With new models capable of finding vulnerabilities faster than ever before, if you (or your AI) was able to find a critical bug, it&#x27;s only a matter of time that the bad guys will also discover it - if they haven&#x27;t already.<p>Human skill and ingenuity used to be the limiting factor, so it was the universal equalizer. Now the game depends on how many tokens you want to throw at the problem, and there are many bad actors with incentives to outspend every white hacker out there.<p>Responsible disclosure will still be important, of course, but timelines will need to be compressed into days, instead of months.</blockquote>
 </blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>znpy</em>:</p>
@@ -573,6 +854,10 @@ Incapable of the back breaking labor required to rebuild society.  Days span 12 
 <blockquote>
 <p>↳ reply — <em>AlexCoventry</em>:</p>
 <blockquote>Which model were you using?</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dlor</em>:</p>
+<blockquote>Mythos 5.2</blockquote>
+</blockquote>
 </blockquote>
 <p><strong>Top #3</strong> — <em>wood_spirit</em>:</p>
 <blockquote>So the implication is that the LLM that assisted the Calif researchers might have read this previous bug report and not independently discovered it?</blockquote>
@@ -592,15 +877,19 @@ Incapable of the back breaking labor required to rebuild society.  Days span 12 
       <link>https://contralabs.com/frontierdesign</link>
       <guid isPermaLink="false">hn3-50558559</guid>
       <pubDate>Thu, 19 Nov 2026 11:03:20 +0000</pubDate>
-      <description>125 points, 43 comments. See description for top comments.</description>
+      <description>141 points, 46 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://contralabs.com/frontierdesign"><strong>→ Article</strong></a> <small>(contralabs.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50558559">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 43 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50558559">→ HN comments</a> &nbsp;·&nbsp; 141 points &nbsp;·&nbsp; 46 comments &nbsp;·&nbsp; <small>comments as of 24h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>gorgmah</em>:</p>
 <blockquote>I don&#x27;t understand, where are those models available in stealth mode? Usually people do this on openrouter but I couldn&#x27;t find any model called &quot;gestalt&quot;. Does anyone know or is this just black hat marketing for this contralabs platform, and the model does not even exist?</blockquote>
 <blockquote>
 <p>↳ reply — <em>nolroz</em>:</p>
 <blockquote>Openrouter will have these from time to time</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>nolroz</em>:</p>
+<blockquote>Sheesh if I was wrong you could just tell me! I&#x27;m not trying to shill openrouter, I&#x27;ve just seen stealth models there before.</blockquote>
+</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>gajus</em>:</p>
 <blockquote>To clarify, it is not two models. Its a single model (Gestalt). The other bar on the benchmark is a human created dataset. Suffice to say we didn&#x27;t expect anyone to beat it, but here we are. And no, it is not Contra model.</blockquote>
@@ -618,9 +907,9 @@ Incapable of the back breaking labor required to rebuild society.  Days span 12 
       <link>https://element.io/blog/how-the-european-commission-rolled-out-matrix-to-more-than-40-000-staff/</link>
       <guid isPermaLink="false">hn3-50558533</guid>
       <pubDate>Thu, 19 Nov 2026 10:58:29 +0000</pubDate>
-      <description>664 points, 323 comments. See description for top comments.</description>
+      <description>703 points, 355 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://element.io/blog/how-the-european-commission-rolled-out-matrix-to-more-than-40-000-staff/"><strong>→ Article</strong></a> <small>(element.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50558533">→ HN comments</a> &nbsp;·&nbsp; 664 points &nbsp;·&nbsp; 323 comments &nbsp;·&nbsp; <small>comments as of 15h</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50558533">→ HN comments</a> &nbsp;·&nbsp; 703 points &nbsp;·&nbsp; 355 comments &nbsp;·&nbsp; <small>comments as of 24h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>c-fe</em>:</p>
 <blockquote>Within my friend group, we also switched now to Matrix. One of us is hosting it on their server, and we also use ElementX as clients. We did this to try get away from lack of privacy on Whatsapp and Telegram. It was also fun to tinker around with a selfhosted solution.<p>In particular I love that I can now share my live location with this friendgroup and be very confident that noone is harvesting this data. With whatsapp, I was always very uneasy allowing live location access.<p>Apart from one friend having issues receiving notifications, overall, we are having a positive experiene on ElementX&#x2F;Matrix. I like especially how clean and well designed the iOS App looks. It simple and it just works.</blockquote>
@@ -631,8 +920,8 @@ Incapable of the back breaking labor required to rebuild society.  Days span 12 
 <p>↳↳ reply — <em>doublepg23</em>:</p>
 <blockquote>TBH I have to routinely open Teams on my iPhone to get any semblance of reliable notifications.<p>It&#x27;s been this way across two different orgs.</blockquote>
 <blockquote>
-<p>↳↳↳ reply — <em>kryogen1c</em>:</p>
-<blockquote>Sounds like a you problem. We&#x27;ve got thousands of iphones with teams on them and notifications work just fine.</blockquote>
+<p>↳↳↳ reply — <em>cycomanic</em>:</p>
+<blockquote>I always find it funny how people say open source projects are unusable because they don&#x27;t work 100% of the time and then I look at some of the software used everywhere and they are a complete mess.i don&#x27;t know how many meetings I have missed because I have silently been locked out of office 365 on Android (why can&#x27;t I use the android calendar anymore!?). Teams doesn&#x27;t bother sending a notification unless it&#x27;s open (or randomly once a month) and don&#x27;t get me started on slack! No notifications, when somebody calls it&#x27;s often a lottery if my phone or the desktop rings, often enough both ring and the phone just continues ringing for another 5min after picking up on the desktop. I also can&#x27;t count the number of times me or coworkers had to figure out which speaker&#x2F;mic combo slack decided on this time. But if it&#x27;s an OSS project it&#x27;s unusable if there is some bug.</blockquote>
 </blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>razemio</em>:</p>
@@ -1555,6 +1844,40 @@ But this post is about how they’re partnering with a customer (synopsys), to d
 </blockquote>
 <p><strong>Top #3</strong> — <em>thefunnyman</em>:</p>
 <blockquote>I love this project. Bought an x4 pro recently after being a bit skeptical and I&#x27;ve read a ton of books on it. Whenever I go to use my phone in a line or whatever I feel it magneted to the back and am reminded to read instead, something I never found myself doing with just the e-reader app on my phone.<p>One especially great feature of crosspoint is their sync service. It can mirror to my other existing self hosted service that has a kosync server already but also keep my progress pushed to hardcover so I don&#x27;t have to worry about plugins on each device to do so.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Teaching robots to carve marble sculptures</title>
+      <link>https://eleanorwiesler.com/blog/robotic-stone-carving/</link>
+      <guid isPermaLink="false">hn3-50548808</guid>
+      <pubDate>Wed, 18 Nov 2026 17:03:53 +0000</pubDate>
+      <description>125 points, 91 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://eleanorwiesler.com/blog/robotic-stone-carving/"><strong>→ Article</strong></a> <small>(eleanorwiesler.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50548808">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 91 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mauvehaus</em>:</p>
+<blockquote>Two things:<p>1) A great podcast about why we&#x27;re bad at statues in the US:<p><a href="https:&#x2F;&#x2F;slate.com&#x2F;podcasts&#x2F;decoder-ring&#x2F;2026&#x2F;07&#x2F;how-taste-politics-and-art-schools-chipped-away-at-the-tradition-of-american-sculpture" rel="nofollow">https:&#x2F;&#x2F;slate.com&#x2F;podcasts&#x2F;decoder-ring&#x2F;2026&#x2F;07&#x2F;how-taste-po...</a><p>2) This isn&#x27;t a particularly interesting model to sculpt. The parent model is a scan of a ceramic rabbit, and it doesn&#x27;t have crisp details like really good marble sculptures do.<p>I have seen Venus Victrix[0] in person, and the detail in the mattress the figure is lying on is absolutely transfixing. You would swear the marble would softly yield if you put your finger on it. There&#x27;s a detail rendered around the edge of the mattress that likely represents embroidery and it&#x27;s unbelievably crisp, even as it follows the folds and creases in the mattress.<p>If we&#x27;re going to have robots sculpt marble, that is the standard we should be reaching for. If we&#x27;re reaching for that, I think we&#x27;re going to find that modeling the finished product in 3d is going to be a significant fraction of the work of actually carving it in stone. I think we&#x27;re also going to find that the mastery also lies in the tiny decisions the sculptor makes as they work, informed by how light plays off the material in different directions in real time throughout the day.<p>Can the process in the article achieve results suitable for mounting at the top of a building and viewing from ground level? Probably, and if not now, certainly with time. Can it sculpt something that will command your attention in reverent, slack-jawed awe for hours? I don&#x27;t see it happening.<p>[0] <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Venus_Victrix_(Canova)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Venus_Victrix_(Canova)</a> Seriously, this and Bernini&#x27;s David, also at the Galleria Borghese, are worth the trip to Rome to see. If there were <i>nothing</i> else in Rome worth seeing and the food was terrible, they would justify the pilgrimage on their own.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dekhn</em>:</p>
+<blockquote>One of my best art moments was the Vatican museum.  At one point, there&#x27;s a garden, but most people instead head past it.  I walked into the garden and came across <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Laoco%C3%B6n_and_His_Sons" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Laoco%C3%B6n_and_His_Sons</a> with nobody else around and spent ten minutes inspecting it in detail (including around the sides).  This is somethiing that was carved 2000 years ago!  Absolutely stunning, and much more appreciable in a quiet, relaxed setting.<p>I fully expect that robots will be able to carve novel masterpieces in 10 years.</blockquote>
+<p>↳ reply 2 — <em>stronglikedan</em>:</p>
+<blockquote>There&#x27;s also the one with the veil where they carved the marble so thin that it&#x27;s translucent. Amazing</blockquote>
+<p>↳ reply 3 — <em>krisoft</em>:</p>
+<blockquote>&gt; modeling the finished product in 3d is going to be a significant fraction of the work of actually carving it in stone.<p>Of course. But what is the problem with that?<p>We have the same situations with many other things. With printers: It takes way more effort to write a book worth printing than the actual effort of putting in the reams of paper into the printer and hitting the print button. Same with 3d printing. People spend days, weeks, months, or years modelling something interesting and then it is relatively easy to get it printed once it is designed.<p>&gt; Can it sculpt something that will command your attention in reverent, slack-jawed awe for hours? I don&#x27;t see it happening.<p>I don’t see why it couldn’t carve a model which evoke those emotions into stone. And i used my words deliberately there. Because i would call the person who made the model the sculptor. I wouldn’t say that the machine sculpted anything.<p>The machine is a machine. It carves the stone. We can talk about how accurately it does what it does, we can talk about the surface quality it leaves behind. We can even talk about what geometries it can or can’t tackle due to the particular arangement of the arm and the spindle.<p>If those “datasheet properties” are good enough, then all you need to do is get a good artist who is handy with some modelling software let them play around with it and you will get your “awe inspiring”.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>runxel</em>:</p>
+<blockquote>Reminds me of the link to the Carmelites[0] that was on HN a few weeks ago.<p>But they do it in stone (they don&#x27;t seem to mention what kind of stone, tho). I think marmble is a different experience, and I wonder what the implications are. Often enough marble requires an experienced master to &quot;read&quot; it. Since it&#x27;s a natural stone there will be veins, imperfections etc. Sometimes you&#x27;ll have to work around it and alter your design slightly while carving - which is not possibble if a robot just does its lusterless job.<p>While I admire this task, and I hope that we will see more carved stones in our buildings and surroundings again, I also hope that we can use technology as our aid, not as the end in itself.<p>There is a manufacturer in Germany who does exactly this, btw (rough cuts by robot, fine tune by human masters). So there is a lot of prior art out there - I wonder if there was anything new at all.<p>[0] <a href="https:&#x2F;&#x2F;carmelitegothic.com&#x2F;cnc-stone-carving&#x2F;" rel="nofollow">https:&#x2F;&#x2F;carmelitegothic.com&#x2F;cnc-stone-carving&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>buildsjets</em>:</p>
+<blockquote>Came here to post this, but you already have.  So I will just add that everyone should visit the link just to see a berobed monk with a tonsured haircut (think Friar Tuck) running desktop CAD and multiaxis CNC.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>barbariangrunge</em>:</p>
+<blockquote>Sculpting teacher here. Ceramic and oil clay--marble is scary.<p>On the one hand, there is something special about an artist made sculpture. But on the other, in north america we have almost no cool sculpture around us day to day. So few people can make them and there is seemingly limited demand due to costs<p>If companies start producing millions of sculptures and selling them at walmart or dollarama in bulk, will they still be cool? Or will we make them in our garages in 2036 with robot arms and ai generated designs informed by amazon ring camera footage of our neighbourhoods?<p>As an artist, what does your role become? Does anything remains scarce in art? Would love to hear some speculation</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>jszymborski</em>:</p>
+<blockquote>I&#x27;m not an artist, so maybe I&#x27;m missing the mark, but I feel like the hard part of making art should be learning how to express or project your artistic vision or complex emotion or some other aspect of human experience into physical space. I&#x27;m not sure I subscribe to the idea that the difficulty of the medium you choose is necessary. Sometimes it&#x27;s the point of the work, but I don&#x27;t think you&#x27;re getting the most out of the Pietà if your take home is &quot;wow, that must have been difficult&quot; (although that&#x27;s just my opinion).<p>We can look at other art forms that are pretty accessible w.r.t. barrier to entry. Most folks learn creative writing as school children and master the fundamentals quite quickly. Sure, there&#x27;s reams of bad (and good, don&#x27;t come at me) fanfic at ao3 as well as middling pulp at the gas station, but I don&#x27;t think that stops great works from appearing or being any less special.<p>Similarly, we see pretty terrible statues in public places quite frequently (I&#x27;m thinking the derpy Ronaldo statue or the Lucille Ball statue in Celeron).<p>So all that to say, I&#x27;m optimistic that if something like this meant statues were easy to make and you can design one in your underwear in a few hours and hit &quot;print&quot;, sure the volume of shite statues would explode, but I think that just raises the floor on quality a bit and leaves the ceiling in tact.</blockquote>
+<p>↳ reply 2 — <em>david927</em>:</p>
+<blockquote>The Walmart effect doesn&#x27;t worry me because we can already have that with prints of the masters and few do it.<p>Instead, I&#x27;m inspired.  Could we democratize and evangelize culture this way?<p>The American city I live in has 300,000 people.  Why can&#x27;t it have a large building that has full replicas of the great works of art?  The Mona Lisa, Whistler&#x27;s Mother (or Falling Rocket), Van Gogh&#x27;s Sunflowers or self-portraits (with impasto).  Marble sculpture replicas of Canovo, Bernini, Rodin.  A small, one-stop shop of some of the world&#x27;s great works, for people who will never see it otherwise.</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Show HN: Mastra Factory, the open-source software factory we use to build Mastra</title>
@@ -4013,316 +4336,6 @@ But of course, them having more power will maybe lead to a world where the US is
 </blockquote>
 <p><strong>Top #3</strong> — <em>__MatrixMan__</em>:</p>
 <blockquote>My solution to this is two laptops.  No SSH between them, just a custom http API.  Agents can run amok on the laptop without the secrets, but if they want to act as me, they have to use the API.  If they need to do something not already in the API, they can add commits to the server, but I&#x27;m going to review those before I deploy that server on the laptop with the keys. This way I don&#x27;t have to rely on the downstream services to have sufficiently granular permissions.<p>I guess I could do the same thing with VM&#x27;s, but for reasons I can&#x27;t fully explain it&#x27;s just easier to stay vigilant with separate hardware.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Pentagon fails ninth straight audit despite progress in organizing finances</title>
-      <link>https://www.reuters.com/business/aerospace-defense/pentagon-fails-ninth-straight-audit-despite-progress-organizing-finances-2026-11-16/</link>
-      <guid isPermaLink="false">hn3-50525658</guid>
-      <pubDate>Tue, 17 Nov 2026 00:23:21 +0000</pubDate>
-      <description>144 points, 62 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.reuters.com/business/aerospace-defense/pentagon-fails-ninth-straight-audit-despite-progress-organizing-finances-2026-11-16/"><strong>→ Article</strong></a> <small>(reuters.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50525658">→ HN comments</a> &nbsp;·&nbsp; 144 points &nbsp;·&nbsp; 62 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>az226</em>:</p>
-<blockquote>I wonder how quickly they would pass audits if entity budgets would automatically be shaved 5% for each failing year.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>torginus</em>:</p>
-<blockquote>I wonder how the Pentagon is audited when its ledger has $200B lump item for &#x27;super secret stuff&#x27;</blockquote>
-<p>↳ reply 2 — <em>cyanydeez</em>:</p>
-<blockquote>I&#x27;m of the mind that the budget always includes the black ops, so it&#x27;ll never succeed an audit because of &quot;national security&quot; reasons. The only way to reduce that gap would be, you know, stop pissing off foreign nations with wars and stuff.<p>Otherwise, it&#x27;s not ever auditable. Just red tape.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>JumpCrisscross</em>:</p>
-<blockquote>&quot;Defense Department CFO Jules Hurst told Reuters an independent  auditor found that financial statements for 14 of the Pentagon&#x27;s 25 standalone reporting entities passed in the 2026 fiscal year, which ended in September, up from 11 the prior year. Those entities account for 56%  of the department&#x27;s assets and 86% of its liabilities.<p>...<p>The Pentagon as a  whole was first audited in 2018 and has consistently failed to pass annual audits because of its  system and  accounting problems. Congress gave it 10 years to pass, which falls in the fiscal year starting in October 2027&quot; [1].<p>This is better news than I thought it was. If they can get that up to 80% of assets and 80% of reporting entities by the deadline, it would seem fair to grant a one-year reprieve to 90% (2 units can fail), one more to 95% (1 unit can fail) and then require 99% thereafter or funding is sequestered.<p>[1] <a href="https:&#x2F;&#x2F;www.reuters.com&#x2F;business&#x2F;aerospace-defense&#x2F;pentagon-fails-ninth-straight-audit-despite-progress-organizing-finances-2026-11-16&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.reuters.com&#x2F;business&#x2F;aerospace-defense&#x2F;pentagon-...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>riffraff</em>:</p>
-<blockquote>Is sequestering funding for the Pentagon realistic?</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>JumpCrisscross</em>:</p>
-<blockquote>&gt; <i>Is sequestering funding for the Pentagon realistic?</i><p>Probably not. You can’t not pay soldiers. Or contractors on long-term work.<p>What you can do is increase the number of JAGs. Or maybe create a GAO to monitor the Pentagon for the Congress.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>vessenes</em>:</p>
-<blockquote>Here, let me fix that: &quot;56% of the department&#x27;s assets and 86% of its liabilities, we think. Because we haven&#x27;t finished the audit.&quot;<p>Still, I&#x27;m impressed. I would have guessed the DoD would be extremely resistant to audit as a cultural matter</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>davidguetta</em>:</p>
-<blockquote>why audit if failing doesn&#x27;t matter ?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>riffraff</em>:</p>
-<blockquote>Because the Pentagon never passed an audit (it wasn&#x27;t required to have them).<p>So they have to build up the infrastructure to actually be auditable, and this is a report that they&#x27;re improving, not an unexpected failure.</blockquote>
-<p>↳ reply 2 — <em>ordu</em>:</p>
-<blockquote>It seems because time to learn how to pass an audit is running out:<p><i>&gt; The Pentagon as a  whole was first audited in 2018 and has consistently failed to pass annual audits because of its  system and  accounting problems. Congress gave it 10 years to pass, which falls in the fiscal year starting in October 2027.</i></blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Why 3dfx 1 cards had such a washed out color output?</title>
-      <link>https://twitter.com/id_aa_carmack/status/2122478083319992513</link>
-      <guid isPermaLink="false">hn3-50525575</guid>
-      <pubDate>Tue, 17 Nov 2026 00:16:24 +0000</pubDate>
-      <description>275 points, 102 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://twitter.com/id_aa_carmack/status/2122478083319992513"><strong>→ Article</strong></a> <small>(twitter.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50525575">→ HN comments</a> &nbsp;·&nbsp; 275 points &nbsp;·&nbsp; 102 comments &nbsp;·&nbsp; <small>comments as of 21h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>AkBKukU</em>:</p>
-<blockquote>I have two alternate observations, because VGA is an analog signal there are standards for what the voltages <i>should</i> be. But they were not always followed. Keep in mind that the first two Voodoo cards were also video switchers with a chip to output either the 2D passthrough or the internally generated 3D chip signal created by its own GENDAC.<p>1. I have a Voodoo 2 paired with an S3 Virge&#x2F;DX, the Voodoo 2 output level is lower. On a CRT I always have to make the image brighter when running a 3DFX game. Additionally, the V-Sync pulse is not the same as the Virge&#x2F;DX and the Voodoo 2 image is shifted up.<p>2. I have a Voodoo Rush which is the maligned hybrid model of 2D and 3D chipsets on a single card. It still uses the internal switching though. On this card the voltage issues are the opposite, the 2D output is significantly dimmer than the 3D which makes the 3D game clip badly when running something until the image is adjusted again.<p>These problems are voltage level issues with the signal, not gamma. Adjusting gamma will not change the black or white voltage level of the signal. But a lower voltage signal may seem brighter as gamma is raised and the dynamic range is compressed.<p>&gt; we were so enthralled by the absolute performance of 3DFX that the color fidelity didn’t get as much attention as it should have.<p>I would say it&#x27;s more likely that they just didn&#x27;t notice and the varying outputs from different 3DFX cards, with different GENDAC&#x27;s, on differently calibrated CRTs just made it a total mess to try and and dial in something as imperceptible as a gamma level. Also keep in mind that around 1995-1996 adjusting the brightness of a CRT was as easy as twisting a few knobs on the front of it.</blockquote>
-<blockquote>
-<p>↳ reply — <em>seritools</em>:</p>
-<blockquote>the S3 Trio3D&#x2F;Virge also have a raised the black level, which can be turned off with a VBIOS patch: <a href="https:&#x2F;&#x2F;bitsundbolts.com&#x2F;2026&#x2F;04&#x2F;23&#x2F;fixing-the-s3-brightness-bug-a-deep-dive-into-the-pedestal-bit-bios-mod&#x2F;" rel="nofollow">https:&#x2F;&#x2F;bitsundbolts.com&#x2F;2026&#x2F;04&#x2F;23&#x2F;fixing-the-s3-brightness...</a><p>or some register poking after startup, e.g. <a href="https:&#x2F;&#x2F;github.com&#x2F;RetroLoom&#x2F;S3ctl" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;RetroLoom&#x2F;S3ctl</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>hmstx</em>:</p>
-<blockquote>One other aspect of 3dfx looking a bit <i>washed out</i> beyond the gamma problem is the trickery performed in the RAMDAC before it blasted those cool pixels to the VGA port.<p>If you remember, 3dfx screenshots were just as dithered as, say, an ATI Rage, but on screen it looked smoother (although a bit blurry) while the others looked visibly dithered still (see some 3dfx screenshots <a href="https:&#x2F;&#x2F;www.vogons.org&#x2F;viewtopic.php?f=46&amp;t=36548" rel="nofollow">https:&#x2F;&#x2F;www.vogons.org&#x2F;viewtopic.php?f=46&amp;t=36548</a> )<p>Part of it is the gamma shenanigans mentioned, and also the blur filtering pass taking place in the DAC which &quot;upgrades&quot; the image (eventually claimed to be so-called 22 bit precision for Voodoo3), introducing some quite visible smudging and hints of unexpected colors as a result.<p>This has been approximated in shaders you can apply to most games with ReShade etc., take a look (<a href="https:&#x2F;&#x2F;www.vogons.org&#x2F;viewtopic.php?t=36470" rel="nofollow">https:&#x2F;&#x2F;www.vogons.org&#x2F;viewtopic.php?t=36470</a>)</blockquote>
-<p><strong>Top #3</strong> — <em>herodoturtle</em>:</p>
-<blockquote>It&#x27;s pretty cool that someone can ask an interesting graphics-related question, and John Carmack of all people steps in to answer it. And then even Eric S. Raymond adds a comment further below.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Sharlin</em>:</p>
-<blockquote>Yeah, Carmack isn’t super surprising especially as it’s Sanglard who’s asking, but ESR I haven’t really spotted anywhere in a long while. Just some time ago I was thinking that he’s probably a nobody to a lot of the younger folk, or at the very least known only for some of his more terrible political opinions.</blockquote>
-<p>↳ reply 2 — <em>parasti</em>:</p>
-<blockquote>Fabien Sanglard isn&#x27;t just someone.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Optimizely compromised, served malware on Zoom, GitLab</title>
-      <link>https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/</link>
-      <guid isPermaLink="false">hn3-50524767</guid>
-      <pubDate>Mon, 16 Nov 2026 23:00:34 +0000</pubDate>
-      <description>651 points, 257 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://blog.report-uri.com/worlds-largest-brands-infected-with-malware-via-optimizely/"><strong>→ Article</strong></a> <small>(blog.report-uri.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50524767">→ HN comments</a> &nbsp;·&nbsp; 651 points &nbsp;·&nbsp; 257 comments &nbsp;·&nbsp; <small>comments as of 22h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>stickfigure</em>:</p>
-<blockquote>The whole concept of Google Tag Manager was that you could give marketing departments the ability to add &quot;tags&quot; to the website without having to involve engineering. That&#x27;s how we got 10MB of javascript with every news article.<p>I hope folks are re-evaluating that now.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>CM30</em>:</p>
-<blockquote>Client side A&#x2F;B testing through services like Optimizely and VWO and Adobe Target is a massive security nightmare in of itself. You&#x27;re giving anyone with access to a third party service the ability to run any code they like on your website, and change any and all interface elements as they see fit.<p>Even one of these accounts being compromised would be a massive security incident that would potentially put millions of people&#x27;s data at risk.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>MontgomeryPy</em>:</p>
-<blockquote>Just pointing out that these testing solutions can also be deployed server-side instead of via client-side tags. I suspect that is the route a lot of their customers will take now.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>mankins</em>:</p>
-<blockquote>And even at the edge via things like edge side includes or their modern worker versions.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>goalieca</em>:</p>
-<blockquote>It also makes adding csp a nightmare. Your marketing department is putting in 30 trackers, changing monthly. And then there’s different countries for end clients with different TLDs for connect-src. You can’t possibly get anything locked down enough. That’s bad for security when you rely on csp for mitigating other factors.</blockquote>
-<p>↳ reply 3 — <em>jeswin</em>:</p>
-<blockquote>&gt; I hope folks are re-evaluating that now.<p>Not going to happen. Most decisions in tech do not factor in risk, only cost. Risk mitigation usually requires considerable spend, and very few people&#x2F;companies are willing to spend on low-probability events.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>mcoliver</em>:</p>
-<blockquote>This stuff is so avoidable but unless we implement meaningful reprocussions things aren&#x27;t going to change. There is no accountability.<p>In this case optimizely should have had better systems to spot a release like this (internal cool downs, check and balances, phased rolouts, automatic security checks).  And sites that have massive user bases (cnn, bbc, etc..) have zero excuse to not have the same.<p>I would go so far as to say those sites should not be serving from vendors but should be vendoring their own scripts that they also are passing through security audits and serving them selves with cool downs.<p>How do these companies not have better dedication to protecting their users is beyond me.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>noir_lord</em>:</p>
-<blockquote>&gt; How do these companies not have better dedication to protecting their users is beyond me.<p>It doesn&#x27;t cost them anything but a &quot;whoops&quot; post when they fuck up, so the incentive is misaligned (as you noted under repercussions).<p>The cost is externalised onto everyone else not them so it&#x27;s not going to change.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>geetee</em>:</p>
-<blockquote>This is the only answer</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Havoc</em>:</p>
-<blockquote>Accountability is incompatible with tech sector as it currently exists. The entire ethos of move fast and break things is incompatible with it never mind the shady adtech part of the sector.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ano-ther</em>:</p>
-<blockquote>Maybe I overlooked it, but is this something persistent that I should take care of on my phone and computer or was it confined to a browser session?<p>And would uBlock origin have prevented it?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Groxx</em>:</p>
-<blockquote>Somewhat anyway.  It&#x27;s on the BadBlock lists, which are kinda common: <a href="https:&#x2F;&#x2F;github.com&#x2F;celenityy&#x2F;BadBlock&#x2F;blob&#x2F;ab58b46ad48893c916f34f56d7b4f9ac254a0dbb&#x2F;wildcards-star&#x2F;badblock.txt#L10415-L10416" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;celenityy&#x2F;BadBlock&#x2F;blob&#x2F;ab58b46ad48893c91...</a><p>For anyone unaware, this also works on Firefox on Android, as it has support for almost all extensions.</blockquote>
-<p>↳ reply 2 — <em>_ks3e</em>:</p>
-<blockquote>Based on a brief skim: not persistent on computers, persistent on phones for certain old iOS versions (18 and below, 26 would only be fingerprinted).<p>Some ublock lists (e.g. Peter Lowe&#x27;s server list) block everything from optimizely.com, so if you enabled those you&#x27;re good.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Windows 11 is collecting data on which coding agents and developer tools you use</title>
-      <link>https://xusheng.dev/posts/windows-coding-agent-telemetry/</link>
-      <guid isPermaLink="false">hn3-50524736</guid>
-      <pubDate>Mon, 16 Nov 2026 22:58:20 +0000</pubDate>
-      <description>702 points, 580 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://xusheng.dev/posts/windows-coding-agent-telemetry/"><strong>→ Article</strong></a> <small>(xusheng.dev)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50524736">→ HN comments</a> &nbsp;·&nbsp; 702 points &nbsp;·&nbsp; 580 comments &nbsp;·&nbsp; <small>comments as of 22h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>s_dev</em>:</p>
-<blockquote>Just as AI has advanced massively in the past two years, I think a lot of gamers would be shocked at how viable Linux is as a genuine gaming platform in 2026. I already have plans to switch from Windows to Linux, I even have Linux running from an external drive to play with it.<p>The vast vast majority of single player games are 100% perfect on Linux. Multiplayer still has lots of hiccups.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>SOLAR_FIELDS</em>:</p>
-<blockquote>Praise Gabe. No seriously, you would not be saying this in 2026 had it not been for a singular person named Gabe Newell. Valve’s Proton initiative almost single handedly brought us this. I don’t use Steam, or really any Valve products or games, just as some observing third party it’s really hard to say that this would have happened had Valve not done the whole Proton thing</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Gigachad</em>:</p>
-<blockquote>Before Valve gaming on Linux was limited to Super Tux Kart and a small number of ported games. Once steam came to Linux around 2013 you had a selection of indie games mostly Unity stuff that could export to Linux for free. But still almost all major games did not work.<p>Proton was the turning point where you went from specifically looking for Linux games to just assuming everything works.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Scaevolus</em>:</p>
-<blockquote>Wine existed long before Valve poured money into it. It was nowhere near as reliable before DXVK existed, but you could play <i>many</i> commercial Windows games well-- you just couldn&#x27;t expect nearly universal support.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>eastof</em>:</p>
-<blockquote>I&#x27;m an avid gamer, fully made he switch earlier this year to CachyOS. Dota 2 is my main game, I get better FPS on Linux than I ever did on Windows. I play other games like PEAK, Risk of Rain 2, and Enshrouded no problem with my friends. I have been enjoying STALKER 2 on Linux as well, runs just fine.<p>The biggest barrier is kernel anti cheat, so no Call of Duty, Battlefield, etc. Luckily my friends don&#x27;t play those AAA multiplayer games, protondb is a good resource to check which games can&#x27;t run due to their anti cheat.</blockquote>
-<p>↳ reply 3 — <em>accrual</em>:</p>
-<blockquote>Yes, I switched to Fedora in January and have been playing all sorts of games on an RTX 4080 via Steam, Heroic Games (Epic Games alternative launcher), Modrinth, emulators, etc. The only one I haven&#x27;t tried is GTA V: Online as I&#x27;ve read it&#x27;s not compatible due to anti-cheat.<p>Claude Code&#x2F;Codex is very helpful for overcoming any transitions hurdles - pop open a shell, describe the problem, and a few moments later it&#x27;s fixed up. I recommend maintaining a doc as one gets the new system setup so it can be easily reproduced and referenced later. Anytime I change a setting or install an app I find useful, it goes in the doc.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dannyw</em>:</p>
-<blockquote>So does Intel, AMD, and NVIDIA drivers; they collect what executable name and paths you run; unless you opt out.<p>Most Chrome configs end up persisting full browser history and clickstreams inside a Google account.<p>If you use Debian and opt-in to popularity contest; it may collect and send similar info depending on how you installed these coding agents.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>graemep</em>:</p>
-<blockquote>The Debian example is not comparable. Its opt in, verifiably anonymous, its only their own packagers.</blockquote>
-<p>↳ reply 2 — <em>Cthulhu_</em>:</p>
-<blockquote>This one seems to specifically target coding agents, but then, I&#x27;m sure they did targeted metrics gathering of specific categories of apps for years so I&#x27;m sure this is a nothingburger.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ashton314</em>:</p>
-<blockquote>I&#x27;ve been a heavy macOS user for dev work since early adolescence. Before that I used FreeBSD, so I&#x27;m comfortable with the command line. (Yes, you read that right.) But it&#x27;s been a while since I used anything other than macOS for serious development work. A lot of the shenanigans around macOS Tahoe made me seriously consider switching to Linux. Last month I finally got the gumption and set up a Linux desktop how I like it.<p>I see no reason why <i>any developer</i>, other than someone writing something for the Windows platform specifically, should not be using Linux over Windows. MacOS has a ton of polish in so many places—but then there are all these little paper cuts that keep coming: funny little bugs that interrupt work or make you scratch your head. Peeking over the garden wall into Windows&#x27; garden only seems worse. Linux by comparison is awesome! I look forward to spending my day on my Linux desktop.<p>Seriously, if you do dev work, do yourself a favor and boot up—I dunno, maybe Fedora Silverblue—on a separate partition and force yourself to work on it for a day or two. Use an LLM to diagnose issues as they come up. (I had some serious stability issues; Claude suggested it was a memory issue; running memtest86 told me I had bad RAM—fixing that and all problems went away.) You&#x27;ll find that your system is quieter and less distracting.<p>I still don&#x27;t think Linux is for &quot;average users&quot;—even though most people probably only need a web browser. But if you have gone anywhere near a command line in your life, it will be worth the switch.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>benrutter</em>:</p>
-<blockquote>&gt; I see no reason why any developer, other than someone writing something for the Windows platform specifically, should not be using Linux over Windows.<p>I agree, but I think there&#x27;s a big reason they <i>do</i> use windows. A lot of companies choose Windows for corporate IT. That&#x27;s a decent enough choice if most of your company are non-devs working in email, excel and word etc.<p>In a big company, that often leaves developer using windows.<p>That&#x27;s been the story whenever I&#x27;ve had to use windows professionally in the past anyway.</blockquote>
-<p>↳ reply 2 — <em>alerighi</em>:</p>
-<blockquote>&gt; I still don&#x27;t think Linux is for &quot;average users&quot;—even though most people probably only need a web browser. But if you have gone anywhere near a command line in your life, it will be worth the switch.<p>There are Linux distros like Ubuntu that are far simpler to use for the average user than Windows, especially nowadays that the average user is used to smartphones, where you go to a store and install an app with one click.<p>Windows is much more complex to use to me, I&#x27;ve installed Ubuntu to a lot of average users and the feedback they gave me was always that it was so simple to use compared to Windows, install programs with one click (yes, now Microsoft has its store but for most software you still need to go on the internet, download the installer, answer questions the average user has no clue what to respond, and hope to have downloaded the official installer and not a virus), there are no automatic updates that start without your consempt that will break your PC (you don&#x27;t know how many people computer break after a Windows update), there are no viruses, no need to create an account just to be able to start using your computer, usually the stuff you connect (e.g. printers) doesn&#x27;t require you to install a dedicated driver, and you can keep using your 15 years old PC just fine, no need to buy a new hardware every 4 or so years because Windows 11 needs 16Gb of RAM just to boot.<p>Unless you have the need to use particular proprietary software (which most user don&#x27;t, since nowadays practically everything is web based and 99% of the stuff they use is the browser) there is no sense in using Windows.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>How to Break into Security, Ptacek Edition (2012)</title>
-      <link>https://krebsonsecurity.com/2012/06/how-to-break-into-security-ptacek-edition/</link>
-      <guid isPermaLink="false">hn3-50524225</guid>
-      <pubDate>Mon, 16 Nov 2026 22:19:23 +0000</pubDate>
-      <description>126 points, 32 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://krebsonsecurity.com/2012/06/how-to-break-into-security-ptacek-edition/"><strong>→ Article</strong></a> <small>(krebsonsecurity.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50524225">→ HN comments</a> &nbsp;·&nbsp; 126 points &nbsp;·&nbsp; 32 comments</p>
-<p><strong>★ Comments from: tptacek</strong></p>
-<hr>
-<p><strong>Top #1</strong> — <em>sorentwo</em>:</p>
-<blockquote>Marking this as 2012 would help. It’s a fun read in a nostalgic, pre-ai kind of way, where emphasizing that developers should use bcrypt wasn’t standard practice.</blockquote>
-<p><strong>Top #2</strong> — <em>bryant</em>:</p>
-<blockquote>tptacek may disagree, but this needs an update considering how much has changed both with AI and the economies of scale AI brings to the discipline.<p>I&#x27;m anticipating &quot;the fundamentals are crucial,&quot; and as much as I want to agree, I think practical realities show us otherwise. We&#x27;re at a point where all someone needs to know is how to AI-program-manage and how to glean enough about the discipline (or any discipline at this point) <i>from AI</i> to be dangerous enough in the field. To be a builder, breaker, or defender wearing any color hat of their choosing... that&#x27;s it, really.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>wavemode</em>:</p>
-<blockquote>Sorry - what specific part of this article is now wrong because of AI?</blockquote>
-<p>↳ reply 2 — <em>subroutine</em>:</p>
-<blockquote>“tptacek may disagree” - famously. The only uncertainty is whether he’s seen the thread yet.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <strong>★ tptacek</strong>:</p>
-<blockquote>At this point, who knows?</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>United Airlines experiencing a widespread system outage, airline says</title>
-      <link>https://www.cnn.com/2026/11/16/us/united-airlines-outage</link>
-      <guid isPermaLink="false">hn3-50524165</guid>
-      <pubDate>Mon, 16 Nov 2026 22:14:38 +0000</pubDate>
-      <description>254 points, 131 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.cnn.com/2026/11/16/us/united-airlines-outage"><strong>→ Article</strong></a> <small>(cnn.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50524165">→ HN comments</a> &nbsp;·&nbsp; 254 points &nbsp;·&nbsp; 131 comments &nbsp;·&nbsp; <small>comments as of 23h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>tyingq</em>:</p>
-<blockquote>It&#x27;s whatever their integration is with a vendor that does weight and balance before the flight.  Likely not the vendor, as that vendor serves many airlines.<p><a href="https:&#x2F;&#x2F;www.cbsnews.com&#x2F;news&#x2F;united-airlines-system-outage-departing-flights&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.cbsnews.com&#x2F;news&#x2F;united-airlines-system-outage-d...</a></blockquote>
-<p><strong>Top #2</strong> — <em>aschla</em>:</p>
-<blockquote>This would have probably gone unnoticed by most, including news organizations, if last week&#x27;s debacle wasn&#x27;t so recent.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ragequittah</em>:</p>
-<blockquote>Agreed. Now we get to hear about every minor system outage for a few weeks and people will blame cyber attacks (super competent AI) or vibe coding (incompetent AI) for all of it with 0 evidence. If you ever worked for a big company you know regular outages were a thing way before anyone was using AI.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mym1990</em>:</p>
-<blockquote>This wasn&#x27;t really minor. I was on one of the flights, it seemed to affect non-express United flights across the country, and a number of systems used by the airplane and ground crew. Despite the article saying this was resolved quickly, our flight was delayed by 4 hours, causing us to miss the connection, and now having to red eye instead.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ragequittah</em>:</p>
-<blockquote>This has happened many times in the past to many different airlines, though. In fact united had the exact same thing happen in 2016 and 2025 among other times. Except those were way worse. Stuff happens.<p><a href="https:&#x2F;&#x2F;uk.investing.com&#x2F;news&#x2F;stock-market-news&#x2F;new-computer-glitch-delays-united-airlines-flights-132427" rel="nofollow">https:&#x2F;&#x2F;uk.investing.com&#x2F;news&#x2F;stock-market-news&#x2F;new-computer...</a><p><a href="https:&#x2F;&#x2F;abcnews.com&#x2F;US&#x2F;united-airlines-grounds-flights-nationwide-technology-issue&#x2F;story?id=124433330" rel="nofollow">https:&#x2F;&#x2F;abcnews.com&#x2F;US&#x2F;united-airlines-grounds-flights-natio...</a></blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jmyeet</em>:</p>
-<blockquote>The problem is nobody in leadership ever gets punished for any of this. So you have quarter after quarter of cost-cutting for share buybacks and then eventually it&#x27;s too much and the entire thing blows up. And then you just blame it on someone or something else.<p>And then things need to be fixed, often manually, and that&#x27;s impossible because all the customer service staff were fired, offshored to India and&#x2F;or replaced with AI chatbots. Nobody knows what they&#x27;re doing because there&#x27;s no training, high turnover and 3 hour wait times anyway.<p>And then some big firm comes in and replaces the system at the cost of hundreds of millions if not billions and it barely works at all. But it&#x27;s convenient because the leadership can blame McKinsey (or whoever) while everybody is making money all the way down and that CEO, if they ever get ousted, will get another job anyway.<p>The desperate desire to displace, deskill and offshore every ounce of labor involved in all of this is going to be a huge problem for society at some point too.<p>This is mostly why I don&#x27;t believe any of these outages were cyberattacks. Why cyberattack something that&#x27;ll simply fall apart all on its own soon enough?<p>And while these all are separate incidents with different reasons, I don&#x27;t think the public is going to make that distinction. I don&#x27;t know what the long term consequences of this but I get the feeling that public sentiment is going to significantly change in the coming years as these issues will (IMHO) become more common.</blockquote>
-<blockquote>
-<p>↳ reply — <em>xnx</em>:</p>
-<blockquote>&gt; The problem is nobody in leadership ever gets punished for any of this.<p>It only matters to leadership if it affects the stock price. If it affects the stock price, there&#x27;s definitely punishment.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Spamhaus new email sender requirements in November</title>
-      <link>https://www.spamhaus.org/sender-guidelines/</link>
-      <guid isPermaLink="false">hn3-50523784</guid>
-      <pubDate>Mon, 16 Nov 2026 21:47:19 +0000</pubDate>
-      <description>141 points, 139 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.spamhaus.org/sender-guidelines/"><strong>→ Article</strong></a> <small>(spamhaus.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50523784">→ HN comments</a> &nbsp;·&nbsp; 141 points &nbsp;·&nbsp; 139 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>BLKNSLVR</em>:</p>
-<blockquote>&gt; Publish forward-confirmed reverse DNS for every sending IP<p>&gt; Every sending IP must have a reverse DNS entry pointing to a fully qualified domain name (FQDN). That hostname must, in turn, resolve back to the same sending IP address. This is known as forward-confirmed reverse DNS (FCrDNS). An IP with missing or mismatched reverse DNS is treated as suspicious and is one of the most common reasons for an IP to be considered for listing.<p>I self-host an email server behind my ISPs connection, and so I do not own the IP address that I send mail from, therefore I can&#x27;t satisfy the reverse DNS requirement.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>elric</em>:</p>
-<blockquote>It&#x27;s a stupid policy that will lead to many false positives among small installations, while having zero impact on actual spammers.<p>A lot of modern spam policing is just protectionism of a duopoly masking as security theatre.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>seb1204</em>:</p>
-<blockquote>Agree, Like airport security theater.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>rafram</em>:</p>
-<blockquote>I’m surprised your emails have ever gotten through if they’re coming from a residential IP. That’s definitely not considered good practice.</blockquote>
-<p>↳ reply 3 — <em>kbenson</em>:</p>
-<blockquote>Which is exactly where a lot of spam comes from, exploited systems that don&#x27;t have correct reverse DNS. The checks are stringent because to allow exceptions is to allow people to abuse those exceptions.<p>FWIW you could probably get yourself a $5 VPS to use as the public portion of your mail setup that just forwards to your local mail server, which can in turn smart host through that VPS, and you&#x27;ll have most the same features but with a dedicated IP that you can control both forward and reverse DNS through (depending on provider).<p>Depending on your ISP they may also allow for options for setting reverse DNS depending on your service. It&#x27;s a bit niche these days unless you&#x27;re paying for a business class service, but it really does depend on the ISP, as some offer it fairly cheap and some don&#x27;t (independent ISPs may be more likely).</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>albertgoeswoof</em>:</p>
-<blockquote>These techniques rely on it being hard (or at least long winded) to setup a domain and server properly, such that spammers (who are self selected to be lazy) won’t do it right and give up quickly.<p>But with AI, it’s easy to get DKIM, DMARC, HELO etc. set up perfectly for almost no effort (maybe fcrdns is a bit more complex as it’s a manual process at most ISPs)<p>I think we are in the end going to go back to it just being based on IP (v4) reputation, and this is all theatre.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>2000UltraDeluxe</em>:</p>
-<blockquote>DMARC, DKIM and SPF are not hard to deal with. HELO&#x2F;PTR is considered basics.<p>If you need an AI to set these things up for you then you shold honestly consider having someone else run your email for you. Most hosters handle things like authentication out of the box.</blockquote>
-<p>↳ reply 2 — <em>0x1ch</em>:</p>
-<blockquote>Even before AI, was DKIM and DMARC hard to setup? It&#x27;s been a streamlined process for at least four years now (as long as I&#x27;ve had to professionally enter records in a registrar), and even longer before that in my homelab setups.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>computer23</em>:</p>
-<blockquote>Anyone else having their email blocked by Microsoft and Spamhaus?<p>Microsoft Office 365 relies on Spamhaus and was blocking my email because the HELO on the mail server was mydomain.com instead of mailserver.mydomain.com.<p>Once the problem was fixed, it took time for Spamhaus to re-scan the mail server and take the mail server off the block list. And it took more time for Microsoft to stop blocking mail.<p><a href="https:&#x2F;&#x2F;check.spamhaus.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;check.spamhaus.org&#x2F;</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>Sebguer</em>:</p>
-<blockquote>Make sure to register on their SNDS and you might be able to find the issue? <a href="https:&#x2F;&#x2F;substrate.office.com&#x2F;ip-domain-management-snds&#x2F;snds" rel="nofollow">https:&#x2F;&#x2F;substrate.office.com&#x2F;ip-domain-management-snds&#x2F;snds</a><p>You can also reach out to sender support through the same, and they are ~reasonably responsive (though very clearly outsourced &#x2F; limited power). If it&#x27;s a lingering MS block they should be able to override it. I&#x27;ve had luck in the past (though this was on behalf of a notable tech company, I don&#x27;t know that the support people cared at all about that fact).</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dclaw</em>:</p>
-<blockquote>SNDS is a complete joke. 2-3 times a year some or all of one of my subnets gets blocked by MS email services, outlook, hotmail, etc... SNDS never shows a single issue with any of verified subnets. It takes on average 1-2 weeks playing email tag with their support (who tell us to sign up for SNDS!) and them refusing to provide any evidence, before it magically just works again. It&#x27;s happened so many times now I&#x27;ve begun to just not bother, and usually it still resolves itself. Meaning the support ticket is basically doing nothing. :-(</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>BugMeNot has closed</title>
-      <link>https://www.bugmenot.com/</link>
-      <guid isPermaLink="false">hn3-50523601</guid>
-      <pubDate>Mon, 16 Nov 2026 21:32:17 +0000</pubDate>
-      <description>705 points, 330 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.bugmenot.com/"><strong>→ Article</strong></a> <small>(bugmenot.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50523601">→ HN comments</a> &nbsp;·&nbsp; 705 points &nbsp;·&nbsp; 330 comments &nbsp;·&nbsp; <small>comments as of 24h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>a5seo</em>:</p>
-<blockquote>Bevan and Guy founded that site and realized that the UX was perfect for sharing coupons and launched RetailMeNot.com from it, leveraging BMN’s crazy high PageRank to propel RMN to the top of Google. Not to mention the ease of use and social aspects way ahead of its time.<p>They were able to join a handful of retailer affiliate programs and were probably clearing tens of millions a year in affiliate commissions with no overhead. Then they sold it to WhaleShark Media (funded by Google Ventures among others) and IPO’d it in 2016, cashing in a second time.<p>Honestly one of the most impressive bootstrap stories you’ll ever find.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>taormina</em>:</p>
-<blockquote>Then they sold to private equity for a third cash in. I worked on the mobile team at RMN (as an intern I helped the actual Android Engineer build v0 and later came back as a full-time employee). RetailMeNot was a blast in its heyday. It&#x27;s neat seeing the Red Plum physical circulars get rebranded into RetailMeNot Everyday after that final purchase. They still use the brand for the physical coupons.</blockquote>
-<p>↳ reply 2 — <em>rampatra</em>:</p>
-<blockquote>This is seriously impressive. Didn’t think such a small team would get so much success and could go to IPO.<p>I am curious why are they shutting it down now?</blockquote>
-<p>↳ reply 3 — <em>RileyJames</em>:</p>
-<blockquote>Absolutely. That story and BuiltWith.com were two that provided a lot of inspiration. Both Australian based. Both tiny (founders only?) teams.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>randomblock1</em>:</p>
-<blockquote>Not much info on this page, so here&#x27;s the Wikipedia if you don&#x27;t know what BugMeNot is (er, was):<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;BugMeNot" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;BugMeNot</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lode</em>:</p>
-<blockquote>It was definitely one of the remnants of the &#x27;old internet&#x27;.<p>I needed it today when I stumbled on yet another &quot;create a free account to read this article&quot; page and noticed they had closed.
-Checking the Wikipedia talk page and Reddit it seemed they had closed today.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kragen</em>:</p>
-<blockquote>It was founded in 02003, ten years after the end of the Old Internet when the Eternal September began, in September 01993.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Aachen</em>:</p>
-<blockquote>Was wondering why someone would put dates in octal and where the day and month separator would even be. Took a while. Why the useless digit? Why not two leading zeroes, or five?</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>mzs</em>:</p>
-<blockquote>What&#x27;s this about though?<p><pre><code>  DXXR KAKD QMDZ QJPV UQSG DWRM HXCO TGVL TLWE RHIP
-  NJPA ZKNZ SCVP RJWD XRFT YRMH YUJI PEBD YOOS YNVE
-  SLGB OEJM HYIV AMMW TMWE CYFI DLGD JWBT DWCJ OAWA
-  AUZO VKCK PZXN VNJA KXCH GCHT MEZS IERW LCMH LZQE
-  ZSNJ MIKN XLEG QIEW UBES CWBQ XFAS KZWY CKKA RCNK
-  RMPO JGBI JQZB OGFD EVDY UNID WMQB WNMS SAAQ JUGV
-  AUIH WKRK LADI LCMH OCSF NGBW CYNM MATG SOKF RCPH
-  PIDY DTYA NXWZ QBMW ZOUG YSSM TJTM PLXV MEDB QHPK
-  IBWR NDHS SJIP PALV QFMQ QKKE ZSZA AWNK SLNS HZWV
-  YRMJ ESQT BSSA WMRA QEGP VPUJ DPQU WLDH TJJN NYAC
-  PJHS EWKL PJUA HNWW DLDG UNID WMQB OVTC VCKH PXMX
-  WSSK RAEU IUGH RKLB MHJY VOJE JFUT RGDF ZHHX UPCS
-  QMRD WOJM PYJB ZHHX MXIF</code></pre></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>Legend2440</em>:</p>
-<blockquote>I think websites started cracking down on this, possibly because the logins were abused by bad actors.<p>When I first used it years and years ago, it was great. But in the last five years not a single login worked. This kind of thing can&#x27;t really last.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>krackers</em>:</p>
-<blockquote>It still worked mostly for smaller forums and such. I kind of wish they&#x27;d made it read-only instead, but I suppose the half-life of valid logins is only about a year or so.</blockquote>
-<p>↳ reply 2 — <em>criddell</em>:</p>
-<blockquote>&gt; This kind of thing can&#x27;t really last.<p>It&#x27;s shutting down after 23 years. That&#x27;s older than some of the people posting in this thread.</blockquote>
-</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
