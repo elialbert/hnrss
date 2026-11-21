@@ -4,31 +4,145 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Sat, 21 Nov 2026 09:31:58 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 17:17:11 +0000</lastBuildDate>
+    <item>
+      <title>RCE in Gnupg</title>
+      <link>https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html</link>
+      <guid isPermaLink="false">hn3-50587208</guid>
+      <pubDate>Sat, 21 Nov 2026 08:32:58 +0000</pubDate>
+      <description>155 points, 51 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html"><strong>→ Article</strong></a> <small>(lists.gnupg.org)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50587208">→ HN comments</a> &nbsp;·&nbsp; 155 points &nbsp;·&nbsp; 51 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>miduil</em>:</p>
+<blockquote><p><pre><code>       This vulnerability was discovered by Johan Carlsson and we were informed by GitLab on 2026-11-12.
+       Initially we set 2026-11-25 for a coordinated disclosure;
+       due to the new Ruby2Shell bug GitLab had to update earlier
+       and thus we also disclosed the GPGME bug on 2026-11-20.
+</code></pre>
+I guess pretty important for GitLab since it supports signed commits, code execution in that path is pretty bad.<p>You can find the GitLab Omnibus related patch here: <a href="https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;omnibus-gitlab&#x2F;-&#x2F;commit&#x2F;279ac3357875ad6a163cf1aa06e7f24babdf6333" rel="nofollow">https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;omnibus-gitlab&#x2F;-&#x2F;commit&#x2F;279ac3...</a></blockquote>
+<p><strong>Top #2</strong> — <em>mik1998</em>:</p>
+<blockquote>It&#x27;s a double free bug, not an RCE chain. Are these vulnerability reports intentionally overstated?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mhluongo</em>:</p>
+<blockquote>Today&#x27;s LLMs can often escalate to RCE, so it makes sense to assume the worst.</blockquote>
+<p>↳ reply 2 — <em>gdgghhhhh</em>:</p>
+<blockquote>Sending somebody a signed message and trigger a double free is a prime example for RCE</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>usr1106</em>:</p>
+<blockquote>What are practical attack vectors for Linux workstations and servers?<p>The masses of internet users don&#x27;t know what GPG is. I&#x27;d caim the majority of software developers don&#x27;t have a GPG key and never explicitly verify any signature.<p>But packages of many distros are verified using GPG. Is the vulnerable component involved or not?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>firesteelrain</em>:</p>
+<blockquote>It’s used a lot in commercial for code signing. We use it with Thales HSMs (there are other things in the middle)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>usr1106</em>:</p>
+<blockquote>Are you sure? (I am not) The announcement says gpgme. Is that the same thing used for basic signatures?</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>OJFord</em>:</p>
+<blockquote>Potentially package update&#x2F;installation? A lot of people use gpg without knowing it.<p>It&#x27;s specifically in &#x27;GPGME&#x27; though, so more limited scope I think.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>ClawDOS – An AI coding agent for DOS</title>
+      <link>http://ricapar.net/ClawDOS/</link>
+      <guid isPermaLink="false">hn3-50586292</guid>
+      <pubDate>Sat, 21 Nov 2026 05:38:01 +0000</pubDate>
+      <description>131 points, 42 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="http://ricapar.net/ClawDOS/"><strong>→ Article</strong></a> <small>(ricapar.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50586292">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 42 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>fsiefken</em>:</p>
+<blockquote>I&#x27;d like a freepascal, zig or odin coding agent that can run natively on a pentium3 with 1G ram natively on either cpu or gpu - on dos, freebsd or linux at &gt; 10 t&#x2F;s. 
+can this conceivably be done and how?
+Gemini says it can be done.<p>I also think the ai compression algorithms focus on PPM, BWT or CM as these take less cpu and memory then Tr and LSTM
+<a href="https:&#x2F;&#x2F;mattmahoney.net&#x2F;dc&#x2F;text.html" rel="nofollow">https:&#x2F;&#x2F;mattmahoney.net&#x2F;dc&#x2F;text.html</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>anthk</em>:</p>
+<blockquote>Solo-c running under an Atom netbook with 1.5GB of RAM (zram). Just use bubblewrap to sandbox it but better if you run it under another user under a TTY with no $DISPLAY exported at all.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jnpnj</em>:</p>
+<blockquote>I wonder how far people could take DOS with today&#x27;s knowledge.</blockquote>
+<p><strong>Top #3</strong> — <em>Tiberium</em>:</p>
+<blockquote>It feels very cute and mischievous to start agents in unusual environments (DOS, Linux running on a feature phone, Windows 95, etc) and see how they react :)</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>unleaded</em>:</p>
+<blockquote>Yep, I&#x27;ve made one in win32 earlier this month for that exact reason. It&#x27;s always amusing seeing DeepSeek&#x27;s CoT realise it&#x27;s running inside NT 4.0 once it does a directory listing. It handles it pretty well too, I gave it a intentionally broad prompt to &quot;write a 3d shooter game&quot; pretty much, and it went and found the DirectX SDK that comes with VS6 and oneshotted it.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>egeozcan</em>:</p>
+<blockquote>DeepSeek is also wonderful for salvaging old phones for creating personal dashboard or silly handheld gaming machines.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>xhevahir</em>:</p>
+<blockquote>Put one inside Red Star OS and watch it take out the power grid!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Backblaze Notice at Collection and Privacy Policy</title>
+      <link>https://www.backblaze.com/company/policy/privacy</link>
+      <guid isPermaLink="false">hn3-50585593</guid>
+      <pubDate>Sat, 21 Nov 2026 03:23:16 +0000</pubDate>
+      <description>213 points, 77 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.backblaze.com/company/policy/privacy"><strong>→ Article</strong></a> <small>(backblaze.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50585593">→ HN comments</a> &nbsp;·&nbsp; 213 points &nbsp;·&nbsp; 77 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>instagib</em>:</p>
+<blockquote>Forcing Opt out instead of opt in is annoying. Link:<p><a href="https:&#x2F;&#x2F;preferences.backblaze.com&#x2F;form&#x2F;opt_out" rel="nofollow">https:&#x2F;&#x2F;preferences.backblaze.com&#x2F;form&#x2F;opt_out</a><p>Can also follow link at top to delete information, access it, etc.<p>Then delete your account and find a new provider or only upload self encrypted folders and hard drives.</blockquote>
+<p><strong>Top #2</strong> — <em>olalonde</em>:</p>
+<blockquote>I know it sucks but it&#x27;s worth pointing out that Backblaze explicitly distinguishes personal information from the files customers upload. Their CCPA FAQ[0] says that uploaded files are not included in the definition of personal information and that they do not sell or share those files.<p>[0] <a href="https:&#x2F;&#x2F;help.backblaze.com&#x2F;hc&#x2F;en-us&#x2F;articles&#x2F;360040703654-California-Consumer-Privacy-Act-CCPA-FAQ" rel="nofollow">https:&#x2F;&#x2F;help.backblaze.com&#x2F;hc&#x2F;en-us&#x2F;articles&#x2F;360040703654-Ca...</a></blockquote>
+<p><strong>Top #3</strong> — <em>cjboco</em>:</p>
+<blockquote>You can opt out of most of everything here. Sure, it appears to be a dark pattern opt out process. Sucks, been using these guys for years, hate to see them go this route.<p><a href="https:&#x2F;&#x2F;preferences.backblaze.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;preferences.backblaze.com&#x2F;</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>MBCook</em>:</p>
+<blockquote>I’ve not been happy with their increasing prices, and I don’t like I can’t back up my NAS as easily as my desktop (I only have 2-3 TB) with a fixed plan.<p>But I haven’t moved yet. I’m unaware of good options. I don’t want to end up in roll-your-own land.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Gigachad</em>:</p>
+<blockquote>How do you expect them to offer a fixed price for a potentially unlimited amount of storage? They can do it for normal consumer PCs because those tend to have a limited amount of storage, but a nas could have a hundred terabytes.<p>And they offer a very reasonable per gb pricing for this use case.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>MBCook</em>:</p>
+<blockquote>I don’t. I know there are data hoarders with 200+ TB and that’s not reasonable.<p>But Apple sells laptops with 8 TB. And they would happily back that up for their normal fixed rate. Because it’s a computer.<p>Because my NAS is a NAS I have to use B2(?) and it’s billed totally differently. The interface is totally different. Everything is totally different.<p>But I have like a quarter of what that laptop does. So how about you just let me use a normal computer plan on my NAS, only it’s not unlimited? Give me some sane reasonable limit, and I will be quite happy.<p>I just want to be able to pay for the ease of how things are done on the desktop. The plan I have to use for my NAS is very clearly targeted at companies. In fact, not long after signing up a sales person contacted me to see what else they could do for me. I had to reply with an email that says it’s my DVD backups and I’m just some guy, I don’t need any enterprise services, sorry.<p>Make a home NAS plan. Make the billing easier. That’s all I want.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>glitchcrab</em>:</p>
+<blockquote>Thanks for this, I&#x27;ve opted out but I think it&#x27;s time to move away. Does anyone have any good suggestions as to where to store approx 1tb at a sensible price? It&#x27;s cold storage for my photos so never accessed (fingers crossed)</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Clojure will affect the way you think about programming (2017)</title>
+      <link>https://eli.thegreenplace.net/2017/clojure-the-perfect-language-to-expand-your-brain/</link>
+      <guid isPermaLink="false">hn3-50585376</guid>
+      <pubDate>Sat, 21 Nov 2026 02:40:39 +0000</pubDate>
+      <description>164 points, 75 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://eli.thegreenplace.net/2017/clojure-the-perfect-language-to-expand-your-brain/"><strong>→ Article</strong></a> <small>(eli.thegreenplace.net)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50585376">→ HN comments</a> &nbsp;·&nbsp; 164 points &nbsp;·&nbsp; 75 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>mlmonkey</em>:</p>
+<blockquote>Each of these 4 families of languages: Prolog, Lisp, ML, C&#x2F;C++ will affect how you think about programming, each in their own different way. Most of us do imperative programming (C&#x2F;C++) and are content with that; but if you really want to expand your thinking, try languages like Prolog and Lisp.</blockquote>
+<p><strong>Top #2</strong> — <em>ertucetin</em>:</p>
+<blockquote>Lisp is something people just can&#x27;t seem to kill. It refuses to die. I know it&#x27;s a niche language, and it will probably stay that way. But if you look closely, Lisp posts frequently make it to the front page, especially Clojure posts. They&#x27;re always popping up now and then, attracting lots of comments, just like this thread.<p>I&#x27;ve been a Clojure developer for over 10 years now, and this still surprises and thrills me.</blockquote>
+<p><strong>Top #3</strong> — <em>TN1ck</em>:</p>
+<blockquote>There was a time in university where I started my days with doing some 4clojure puzzles. I became so obsessed, I managed to solve almost all of them. It&#x27;s wild what an impact these few weeks had on my programming abilities. It&#x27;s a beautifully designed language that makes you think in data structures and their transformations.<p>As a side note: I code Clojure in Lightroom. It was so cool to see your code instantly evaluate and trace through your functions.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>sdeframond</em>:</p>
+<blockquote>Is lighttable still alive?</blockquote>
+<p>↳ reply 2 — <em>xinuc</em>:</p>
+<blockquote>&gt; As a side note: I code Clojure in Lightroom. It was so cool to see your code instantly evaluate and trace through your functions.<p>do you mean lighttable? or you really code in adobe&#x27;s photo editor.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>Re: Riemann</title>
       <link>https://borretti.me/article/re-riemann</link>
       <guid isPermaLink="false">hn3-50583982</guid>
       <pubDate>Fri, 20 Nov 2026 23:42:44 +0000</pubDate>
-      <description>197 points, 196 comments. See description for top comments.</description>
+      <description>207 points, 210 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://borretti.me/article/re-riemann"><strong>→ Article</strong></a> <small>(borretti.me)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50583982">→ HN comments</a> &nbsp;·&nbsp; 197 points &nbsp;·&nbsp; 196 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50583982">→ HN comments</a> &nbsp;·&nbsp; 207 points &nbsp;·&nbsp; 210 comments &nbsp;·&nbsp; <small>comments as of 17h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>Kuyawa</em>:</p>
 <blockquote>I could not have solved GRH with Claude, openAI, DeepSeek or any other AI. Neither could 99.99% of you. AI is a tool, like a calculator that helped mathematicians long time ago calculate sine and cosine faster than we could, then computers, then the internet, now AI. Somebody has to use the tool and input the right parameters to get the right results. AI only searched for all the knowledge that exists and tried them all as directed, but that director is the one who deserves the credit, not me, not you, not the calculator, not claude<p>Until the day AI starts directing itself creating knowledge that doesn&#x27;t exist yet with no one at the wheel. Anxiously waiting that day...</blockquote>
 <blockquote>
-<p>↳ reply 1 — <em>svnt</em>:</p>
-<blockquote>Why does this keep getting repeated? The source for this proof was, according to Anthropic’s own account, a non-mathematician employed by anthropic working with treed agent swarms. He told claude to “take a stab” at the hypothesis and then told it repeatedly to “keep going” and to “believe in yourself.”<p>Only once it had done the work, and the non-mathematician had had independent agents re-derive it a few times, did they bring in mathematicians to dig into it.<p>Literally anyone could have done this. Vouch for it with any credibility, well that is only for people who can employ mathematicians.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>krackers</em>:</p>
-<blockquote>Where did you hear that? The only canonical recount seems to be <a href="https:&#x2F;&#x2F;alpo.ge&#x2F;remark.pdf" rel="nofollow">https:&#x2F;&#x2F;alpo.ge&#x2F;remark.pdf</a> and it doesn&#x27;t mention anything of the sort there</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>svnt</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;www.anthropic.com&#x2F;research&#x2F;riemann-zeta" rel="nofollow">https:&#x2F;&#x2F;www.anthropic.com&#x2F;research&#x2F;riemann-zeta</a></blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>reasonableklout</em>:</p>
+<p>↳ reply 1 — <em>reasonableklout</em>:</p>
 <blockquote>Ok, but this is much less true for the 400 open problems that OpenAI solved with an agent swarm. That effort had far less human knowledge and input involved (being the successful subset of a scattershot at a much larger number of open problems), and the result was rightfully credited to the models, not the humans prompting them.</blockquote>
+<p>↳ reply 2 — <em>svnt</em>:</p>
+<blockquote>Why does this keep getting repeated? The source for this proof was, according to Anthropic’s own account, a non-mathematician employed by anthropic working with treed agent swarms. He told claude to “take a stab” at the hypothesis and then told it repeatedly to “keep going” and to “believe in yourself.”<p>Only once it had done the work, and the non-mathematician had had independent agents re-derive it a few times, did they bring in mathematicians to dig into it.<p>Literally anyone could have done this. Vouch for it with any credibility, well that is only for people who can employ mathematicians.</blockquote>
 <p>↳ reply 3 — <em>dumbmrblah</em>:</p>
 <blockquote>Many people struggle if they aren&#x27;t completing a task that someone else already framed&#x2F;defined.  Execution isn&#x27;t the bottleneck anymore, specification + verification is.</blockquote>
 </blockquote>
@@ -40,12 +154,8 @@ But mostly, I just enjoy learning about math and science, and delight in the sma
 <p>↳ reply 1 — <em>HAL3000</em>:</p>
 <blockquote>&gt; I&#x27;ll never be the next Euler or von Neumann or Einstein<p>Reading that, I had a sad realization, if we keep progressing the way we are, there will be no more Einsteins and von Neumanns in humanity&#x27;s future, only Claudes, Geminis, and Astras.</blockquote>
 <blockquote>
-<p>↳↳ reply — <em>tomrod</em>:</p>
-<blockquote>Sure there will. They will express in different fields and with different tools.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>ExciteByte</em>:</p>
-<blockquote>The claudes, gemini, and astras will surely express in those fields also.</blockquote>
-</blockquote>
+<p>↳↳ reply — <em>dralley</em>:</p>
+<blockquote>I think realistically we already hit that point decades ago. Einstein and Von Neumann are notable for the sheer scale and impact of their discoveries.  Nowadays we&#x27;re just playing around in the margins, decades of work may only result in a minor revision to a small portion of known science&#x2F;physics whereas a century ago revolutionary discoveries were happening every other month.</blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>citizenpaul</em>:</p>
 <blockquote>While that is true you are missing the point others are lamenting.  Its also saying that increasingly even if you achieve 99% proficiency in a complex field you are still less hire-able&#x2F;worth less than AI.  Essentially there is no reason to even try much less excel now. The above average person can now only expect to be a low paid poorly treated meat proxy that can easily be interchanged with another, and eventually that will be replaced with AI as well.<p>C&#x27;est la Vie is something that only ever seems to come from those whom are already set to those caught in the meat grinder. Though I don&#x27;t know your situation.</blockquote>
@@ -58,42 +168,99 @@ But mostly, I just enjoy learning about math and science, and delight in the sma
 </blockquote>]]></content:encoded>
     </item>
     <item>
+      <title>Serious cyberattack thought backed by wealthy operators</title>
+      <link>https://www.ruv.is/english/2026-11-20-serious-cyberattack-thought-backed-by-wealthy-operators-493411</link>
+      <guid isPermaLink="false">hn3-50583856</guid>
+      <pubDate>Fri, 20 Nov 2026 23:29:30 +0000</pubDate>
+      <description>132 points, 71 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.ruv.is/english/2026-11-20-serious-cyberattack-thought-backed-by-wealthy-operators-493411"><strong>→ Article</strong></a> <small>(ruv.is)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50583856">→ HN comments</a> &nbsp;·&nbsp; 132 points &nbsp;·&nbsp; 71 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>giancarlostoro</em>:</p>
+<blockquote>Funny I mentioned having concerns about this on LinkedIn earlier in the year (about AI making it way too easy to hack, it will empower skiddies at a whole other level), it is only going to get worse. The question is do we really have any good options to protect all systems? Its almost like we need harshly hardened OS’ and programming languages.<p>I dont think you need to be hyper wealthy to pull off hacks, just enough private AI.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>resonious</em>:</p>
+<blockquote>Oddly enough, I think security by obscurity works well against AI attackers. At least for now.<p>I&#x27;ve seen a real attack recently and the attackers are mostly just scanning for access to well-understood systems. They won&#x27;t dig too far into your bespoke stuff. But if they find a Zendesk API key, your Zendesk gets dumped instantly.<p>So my thinking is: the more of it is unfamiliar, the less thorough the simplistic attackers will be with it. For advanced attackers, dunno what to say.</blockquote>
+<p>↳ reply 2 — <em>mingus88</em>:</p>
+<blockquote>We are going to see more systems just go offline or air-gapped<p>The era of the open internet is over. We’ve had our systems on public networks for decades and the next era is going to look a lot more like Russia and China’s approach to the internet, but IMO more severe</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>coldblues</em>:</p>
+<blockquote>This hack also supposedly affected a high volume crypto swap service <a href="https:&#x2F;&#x2F;x.com&#x2F;PerpetualCow&#x2F;status&#x2F;2123760480061718801" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;PerpetualCow&#x2F;status&#x2F;2123760480061718801</a></blockquote>
+<p><strong>Top #3</strong> — <em>bordercontrol</em>:</p>
+<blockquote>I have been working on web applications for 15+ years and work in IT security. I am also a long-term user of 1984. I host my domains there and promote their service.<p>What most likely happened here is that they didn&#x27;t have their software up to date. I highly doubt there was an undisclosed 0-click RCE involved in any of this. I have recently seen quite a few services I personally used that ran outdated versions of popular software and were vulnerable to some publicly disclosed RCE. I immediately notice these things, as I am auditing these types of services all the time. There is currently at least one major company in Switzerland that takes weeks to update their front end. They are vulnerable to RCEs all the time. This is nothing special currently.<p>Also, the talk of massive costs makes no sense. It&#x27;s something they have not seen in Iceland, maybe, but it&#x27;s normal, and the costs are extremely low, not millions. Probably just someone with a single Chinese AI subscription. Seeing complex attacks carried out extremely fast or with a huge number of requests doesn&#x27;t indicate high costs by any means.<p>I have personally also recently developed such an exploit in this challenge (and won): [<a href="https:&#x2F;&#x2F;brotli2bitcoin.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;brotli2bitcoin.com&#x2F;</a>](<a href="https:&#x2F;&#x2F;brotli2bitcoin.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;brotli2bitcoin.com&#x2F;</a>). It did take expertise to set up the agents (basically letting them do the exact same thing I would have done, using the same approach), but ultimately, it took 37 minutes and, I think, would have cost me around 11 USD in tokens if billed at the API rate. I could have sped it up to maybe 5–10 minutes if I had been very dedicated and split the work further between agents. As I have a subscription, the effective cost was closer to a few cents.<p>I can&#x27;t say if they are willingly or unwillingly trying to deflect responsibility away from themselves, but until they prove that they were hit by an undisclosed RCE, this is just poor maintenance on their part. We need to start holding companies responsible for not updating their software on time. They shouldn&#x27;t be allowed to always play victim. The journalist should ask about their CI and when they last patched their software. That&#x27;s what would let us judge them.</blockquote>
+<blockquote>
+<p>↳ reply — <em>shakna</em>:</p>
+<blockquote>&gt; and the costs are extremely low, not millions.<p>Millions in Krona, not USD.<p>1USD is about 125 Icelandic Krona.<p>15,000 USD would be 2mil over on the other side. Which makes that a much more likely story.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Sir Brian May adds new dimension to Hera asteroid</title>
+      <link>https://www.esa.int/articles/about-us/directorates/operations/space-safety/hera/sir-brian-may-adds-new-dimension-to-hera-asteroid</link>
+      <guid isPermaLink="false">hn3-50583768</guid>
+      <pubDate>Fri, 20 Nov 2026 23:19:44 +0000</pubDate>
+      <description>144 points, 33 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.esa.int/articles/about-us/directorates/operations/space-safety/hera/sir-brian-may-adds-new-dimension-to-hera-asteroid"><strong>→ Article</strong></a> <small>(esa.int)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50583768">→ HN comments</a> &nbsp;·&nbsp; 144 points &nbsp;·&nbsp; 33 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>oersted</em>:</p>
+<blockquote>&gt; Hera science team member, astrophysicist and Queen guitarist Sir Brian May<p>A life well lived. Badass!</blockquote>
+<p><strong>Top #2</strong> — <em>Overdrivr</em>:</p>
+<blockquote>Rock star and astrophysicist that&#x27;s awesome</blockquote>
+<blockquote>
+<p>↳ reply — <em>close04</em>:</p>
+<blockquote>Space rock star! The astrophysicist references just write themselves.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>ingvay7</em>:</p>
+<blockquote>Had no idea he had designed that cool OWL stereoscope <a href="https:&#x2F;&#x2F;shop.londonstereo.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;shop.londonstereo.com&#x2F;</a><p>&quot;For many a lonely day sailed across the milky seas
+Ne&#x27;er looked back, never feared, never cried&quot;</blockquote>]]></content:encoded>
+    </item>
+    <item>
       <title>Ask HN: I have been unemployed for 2y. 15 years of experience, US. What to do?</title>
       <link>https://news.ycombinator.com/item?id=50583761</link>
       <guid isPermaLink="false">hn3-50583761</guid>
       <pubDate>Fri, 20 Nov 2026 23:18:32 +0000</pubDate>
-      <description>163 points, 137 comments. See description for top comments.</description>
+      <description>420 points, 449 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://news.ycombinator.com/item?id=50583761"><strong>→ Article</strong></a></p>
-<p><a href="https://news.ycombinator.com/item?id=50583761">→ HN comments</a> &nbsp;·&nbsp; 163 points &nbsp;·&nbsp; 137 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50583761">→ HN comments</a> &nbsp;·&nbsp; 420 points &nbsp;·&nbsp; 449 comments &nbsp;·&nbsp; <small>comments as of 17h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>taurath</em>:</p>
 <blockquote>I had to get back into the industry last year after <i>4</i> years off for mental health and caregiving. I was able to get back in - 2 years isn’t that much.<p>But the problem is the front door in hiring is broken. Entirely. I didn’t receive almost ANY replies from hundreds of sent out resumes - I have household names and big public high scale launches and wins on my resume, but no FAANG and no degree.<p>I got 2 job offers. One was through a manager from 8 years prior who was working at a place. One was a recruiter who found me on LinkedIn. I got engagement when someone physically actually knew me, they were actually hiring,  and my skills overlapped.<p>My honest advice is to apply places and try that dance, get yourself in front of people, real people, and mainly 1-1. Work everyone you have ever worked with. If you’ve reviewed their PR, they need to know that you need a job. Be kind and genuinely catch up with them if you want to, but they are your PRIMARY resource to get a job and you can’t let shame get in your way.<p>Corporations in general are BROKEN right now in massive ways and the industry is going through a crisis. It will likely become better but whatever you have to do to survive do it.<p>Finally, it seems like solutions architects seem in demand lately, anyone who can help customers with solutions - SWEs can tend to do well if you have some people skills.</blockquote>
 <blockquote>
-<p>↳ reply 1 — <em>jeffrallen</em>:</p>
-<blockquote>Meet ups still happen, they are a cheap and local way to be face to face.<p>Also, maybe local small business? In the same way that you found the pizzeria, is there maybe a local chain of dentist offices or veterinarians or something? Corporate hiring is totally broken, but &quot;finding good people&quot; is still a top problem, especially for medium sized business (50-100 employees, 5-10 locations, across 2-3 states).<p>Can you get a shitty IT ops job that can beat the pizzeria salary? And help repair your resume hole?<p>Best wishes.</blockquote>
+<p>↳ reply 1 — <em>bawolff</em>:</p>
+<blockquote>Its sad though - the hiring system is essentially running on nepotism. Its not very meritocratic.<p>And i suppose if you are shy, well then i guess you are just screwed.</blockquote>
 <blockquote>
-<p>↳↳ reply — <em>reilly3000</em>:</p>
-<blockquote>Or consulting. SMBs can’t always afford a full-time software engineer, but you could come in and help 5-20 companies with monthly rates for project work and support. It is a great time to be a generalist and know people.</blockquote>
+<p>↳↳ reply — <em>throwawayffffas</em>:</p>
+<blockquote>It&#x27;s not really nepotism, it&#x27;s looking for trust.<p>You have two options:<p>A) Display you are trustworthy by having a consistent employment history and a degree (what it really proves is you showed up at a university for 4 years and crossed your Ts and dotted your Is).<p>B) Rely on personal connections that already know you are trustworthy or are willing to take a chance of you.<p>The third case is having a random person deciding to take a chance at you. Which feels the riskiest one of all for the person doing the hiring.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>QuiEgo</em>:</p>
+<blockquote>Strong agree. Whatever information you can learn in a few hours of interviews with someone pales in comparison to what you learn by having worked with someone for years.  If hiring is restricted and you get very few reqs, of course you are going to lean to hiring a known quantity over taking a risk on a stranger.<p>I don&#x27;t think of it as nepotism - if I know someone sucks from working with them, you better believe I&#x27;m making sure I warn everyone if I see them in the pipeline. It&#x27;s not about pulling friends, it&#x27;s about pulling people you know are good.</blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>donbox</em>:</p>
+</blockquote>
+<p>↳ reply 2 — <em>jeffrallen</em>:</p>
+<blockquote>Meet ups still happen, they are a cheap and local way to be face to face.<p>Also, maybe local small business? In the same way that you found the pizzeria, is there maybe a local chain of dentist offices or veterinarians or something? Corporate hiring is totally broken, but &quot;finding good people&quot; is still a top problem, especially for medium sized business (50-100 employees, 5-10 locations, across 2-3 states).<p>Can you get a shitty IT ops job that can beat the pizzeria salary? And help repair your resume hole?<p>Best wishes.</blockquote>
+<p>↳ reply 3 — <em>donbox</em>:</p>
 <blockquote>I agree. 
 I worked for 14 years (2005–2019) at a large corporation in India before moving to Canada in 2019. Since moving to Toronto, I have not received a single offer through the local job market. The only opportunities I have managed to secure interviews for, or employment through, all remote with companies based outside of Canada, have come via referrals from my former colleagues. And honestly, I expect it to be much the same even if I move back to India.</blockquote>
-<p>↳ reply 3 — <em>badpun</em>:</p>
-<blockquote>&gt; But the problem is the front door in hiring is broken.<p>Is it really broken? I haven&#x27;t heard about companies having trouble with filling positions with people they are largely happy with, so hiring seems to work as intented.<p>If by &quot;broken&quot; you mean &quot;frustrating for cadidates&quot;, then it&#x27;s a different matter. But, it could be argued that the job itself (cushy, high-paying, low stress office SWE job) is more than enough compensation for the frustrations required to get it. Similarly (but much more extreme), Navy Seal candidates go through recruitment process that is actively built for breaking their will. But, those who perservere, get rewarded with an elite and prestigious posting.</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>marcus_holmes</em>:</p>
 <blockquote>This is still the best article I&#x27;ve found on this subject: <a href="https:&#x2F;&#x2F;ludic.mataroa.blog&#x2F;blog&#x2F;ludics-guide-to-getting-software-engineering-jobs&#x2F;" rel="nofollow">https:&#x2F;&#x2F;ludic.mataroa.blog&#x2F;blog&#x2F;ludics-guide-to-getting-soft...</a><p>from one of my favourite bloggers, his other stuff is very worth reading.<p>My take on it: the standard recruitment process is completely broken. Don&#x27;t even start doing that. Sending applications to a job advert is an exercise in futility and will destroy your mental health.<p>It&#x27;s always about who you know. You have to go find people who are in a position to employ you, and impress them. This isn&#x27;t difficult. They don&#x27;t want to interview the stream of idiots that HR have approved any more than you want to jump through the hoops HR think are relevant. They want to employ someone who they know and like. So go to meetups, small business networking events, tech conventions, anything that will attract the kind of boss that you want to have. Talk to people. If you can, present something.</blockquote>
-<p><strong>Top #3</strong> — <em>o_m</em>:</p>
-<blockquote>Say you are highly motivated about getting back into programming after getting into agentic programming and using AI. Recruiters might not care about it, but they know it sounds good when they report back up in the org.<p>After working a decade I took a year of to travel, and I got a normal day job about a year ago. I switched jobs again a month ago. The AI hype is still a thing, lean into it.</blockquote>]]></content:encoded>
+<blockquote>
+<p>↳ reply 1 — <em>blain</em>:</p>
+<blockquote>The article is really good, thank you for posting. I will just mention its written from Australian POV, there might differences in EU&#x2F;US but nevertheless very good article.</blockquote>
+<p>↳ reply 2 — <em>p0w3n3d</em>:</p>
+<blockquote>This sounds as difficult as trying to get into TV&#x2F;cinema acting in Hollywood... Only networking and impressions</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Myrmornis</em>:</p>
+<blockquote>Try to avoid 3rd party &#x2F; independent recruiters; go straight to companies. Send a brief cover letter to hiring managers if possible. Your #1 aim is to get interviews; once you do that, recruiters are largely irrelevant.<p>Don&#x27;t obsess over resume gaps. Never sound apologetic or insecure about it. Just confidently say you took time off to work on startup ideas and personal projects because you found the era of AI-generated code so exciting. Your (tacit) attitude should basically be &quot;What&#x27;s your problem? You&#x27;re looking for engineers who aren&#x27;t interested in personal projects and startup ideas? I work when I want and take time off when I want&quot;.<p>Work on two things: coding exercises and your &quot;How I use AI&quot; explanation. Do not do complicated coding algorithms like &quot;dynamic programming&quot;. Just do things that allow you to practice coding fluently in your favorite interview language (C# it sounds like). Coding interviews might of course start to tail off next year but they&#x27;re still here for now.<p>Start working on your &quot;How I use AI&quot;. Write the first version of a one page explanation containing your high-level approach as an intro and then concrete steps. Don&#x27;t make it complicated -- this must be something you can explain clearly in 5 minutes. But do iterate on it; try to think through the full software&#x2F;product development lifecycle and how you <i>really</i> think it should be done with AI. Feel free to lie; you don&#x27;t have to have actually put all this into practice in a job. But try to make your practice get close to what you are recommending in your &quot;How I use AI&quot;.<p>If you will have system design interviews then prepare for those as well; ask AI to help you repeat practices on some basic common patterns. Don&#x27;t go crazy thinking you need to know loads of fancy stuff. Ask AI for a small number of common high-level patterns that cover most questions likely to be asked in your area. Your aim to get confident giving a clear explanation of the basics -- e.g. some sort of system that puts jobs into a queue and has workers; that sort of thing. Interviewers are looking for confidence and clarity on the basics, not esoteric knowledge about trendy technology. They want to believe that you actually could build these things yourself ideally.<p>Good luck!</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>NINLIVE: The Nine Inch Nails live archive</title>
       <link>https://ninlive.com/</link>
       <guid isPermaLink="false">hn3-50583274</guid>
       <pubDate>Fri, 20 Nov 2026 22:30:47 +0000</pubDate>
-      <description>253 points, 64 comments. See description for top comments.</description>
+      <description>323 points, 83 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://ninlive.com/"><strong>→ Article</strong></a> <small>(ninlive.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50583274">→ HN comments</a> &nbsp;·&nbsp; 253 points &nbsp;·&nbsp; 64 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50583274">→ HN comments</a> &nbsp;·&nbsp; 323 points &nbsp;·&nbsp; 83 comments &nbsp;·&nbsp; <small>comments as of 18h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>alsetmusic</em>:</p>
 <blockquote>Trent Reznor really wants his fans to get a high quality show out of the performance. The sound quality is always top notch and when there&#x27;s a multimedia component, it&#x27;s used to great effect. For example, alongside video footage with a mass surveillance theme, hidden cameras were pointed at sections of the audience and were streamed on stage. It was a delightful touch.</blockquote>
@@ -101,25 +268,19 @@ I worked for 14 years (2005–2019) at a large corporation in India before movin
 <p>↳ reply — <em>nylonstrung</em>:</p>
 <blockquote>In the Year Zero era when other bands were cracking down on bootlegs he gave fans HD camcorders so they could capture and distribute the performances<p>Every time I&#x27;ve seen them the live experience is wonderfully theatrical and the production is incredible. I think its one of the ways he built on the legacy of his hero and influence Gary Numan, who kind of invented the light show&#x2F;multimedia live performance thing in his Living Ornaments &#x27;79 tour</blockquote>
 </blockquote>
-<p><strong>Top #2</strong> — <em>olivierestsage</em>:</p>
+<p><strong>Top #2</strong> — <em>cmg</em>:</p>
+<blockquote>Wow, I feel really lucky to have been that the May 9, 2000 at Madison Square Garden, where A Perfect Circle opened. This is apparently the only time that they had Marilyn Manson come out and perform Starfuckers, Inc and The Beautiful People together.<p>Going through these recordings is bringing back a lot of memories!<p><a href="https:&#x2F;&#x2F;ninlive.com&#x2F;artists&#x2F;nin&#x2F;concerts&#x2F;2000-5-9-madison-square-garden" rel="nofollow">https:&#x2F;&#x2F;ninlive.com&#x2F;artists&#x2F;nin&#x2F;concerts&#x2F;2000-5-9-madison-sq...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>aceazzameen</em>:</p>
+<blockquote>I had tickets to the May 10th show. It was canceled because he threw his voice out from the night before. Was pretty bummed at the time.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>olivierestsage</em>:</p>
 <blockquote>NIN is one of the artists I didn’t expect to stand the test of time, but the quality of Reznor’s (and now Ross’s) output has just increased with time as far as I’m concerned. Very rewarding to be a fan of this band.</blockquote>
 <blockquote>
 <p>↳ reply 1 — <em>nylonstrung</em>:</p>
 <blockquote>I think a lot of it owes to the fact that Reznor is unusually independent and started out as his own producer and engineer in addition to recording everything except the drums<p>The other peers in his cohort who were more collaborative largely fractured from financial and interpersonal disagreements<p>It&#x27;s similar to the reasons a solo-founder startup has a lot of advantages for longevity despite YC being generally opposed to them</blockquote>
-<p>↳ reply 2 — <em>tombert</em>:</p>
-<blockquote>Downward Spiral and Fragile are masterpieces, but honestly I do think there was a significant drop in quality after Reznor sobered up.<p>With Teeth was fine, but I thought Year Zero and Hesitation Marks were kind of meh.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>stevefan1999</em>:</p>
-<blockquote>I only have exposure to NIN via Quake: <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Quake_(soundtrack)" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Quake_(soundtrack)</a><p>It sounds like industral metal and early indie rock to me back then. I never knew it is a big shit until 20 years later.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>gregsadetsky</em>:</p>
-<blockquote>&quot;The Downward Spiral&quot; is really, really worth a listen from the first to the last track, nonstop.<p><a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=htofkr4Fh3Q" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=htofkr4Fh3Q</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>derblitzmann</em>:</p>
-<blockquote>It definitely is. I remember listening to this album a ton back when CD players were the primary way to listen to music before streaming.<p>It&#x27;s a great album, from start to finish just as you said.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>hauget</em>:</p>
-<blockquote>The Fragile, is one hell of a double album to listen to: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;playlist?list=PLxzSZG7g8c8yD9cChhhsV" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;playlist?list=PLxzSZG7g8c8yD9cChhhsV</a>...</blockquote>
+<p>↳ reply 2 — <em>rakejake</em>:</p>
+<blockquote>Reznor&#x27;s film soundtracks with Atticus Ross, primarily for David Fincher movies, are all fantastic. The Social Network, Gone Girl, The Killer.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -127,9 +288,9 @@ I worked for 14 years (2005–2019) at a large corporation in India before movin
       <link>https://www.cnbc.com/2026/11/19/stock-market-today-live-updates.html</link>
       <guid isPermaLink="false">hn3-50583254</guid>
       <pubDate>Fri, 20 Nov 2026 22:29:06 +0000</pubDate>
-      <description>130 points, 2 comments. See description for top comments.</description>
+      <description>131 points, 2 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.cnbc.com/2026/11/19/stock-market-today-live-updates.html"><strong>→ Article</strong></a> <small>(cnbc.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50583254">→ HN comments</a> &nbsp;·&nbsp; 130 points &nbsp;·&nbsp; 2 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50583254">→ HN comments</a> &nbsp;·&nbsp; 131 points &nbsp;·&nbsp; 2 comments &nbsp;·&nbsp; <small>comments as of 18h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>r721</em>:</p>
 <blockquote>Previously:<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50578794">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50578794</a> (186 comments)<p><a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50574383">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50574383</a> (233 comments)</blockquote>
@@ -143,9 +304,9 @@ I worked for 14 years (2005–2019) at a large corporation in India before movin
       <link>https://www.marketscreener.com/news/us-sec-s-nvidia-probe-is-examining-potential-accounting-issues-sources-say-ce785ed3dd8ff627</link>
       <guid isPermaLink="false">hn3-50581438</guid>
       <pubDate>Fri, 20 Nov 2026 20:22:41 +0000</pubDate>
-      <description>282 points, 151 comments. See description for top comments.</description>
+      <description>295 points, 160 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.marketscreener.com/news/us-sec-s-nvidia-probe-is-examining-potential-accounting-issues-sources-say-ce785ed3dd8ff627"><strong>→ Article</strong></a> <small>(marketscreener.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50581438">→ HN comments</a> &nbsp;·&nbsp; 282 points &nbsp;·&nbsp; 151 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50581438">→ HN comments</a> &nbsp;·&nbsp; 295 points &nbsp;·&nbsp; 160 comments &nbsp;·&nbsp; <small>comments as of 20h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>ralph84</em>:</p>
 <blockquote>If the board thought there were accounting issues why did they make the CFO the interim CEO?</blockquote>
@@ -187,9 +348,9 @@ I worked for 14 years (2005–2019) at a large corporation in India before movin
       <link>https://thinkingmachines.ai/news/inkling-2-mini/</link>
       <guid isPermaLink="false">hn3-50581260</guid>
       <pubDate>Fri, 20 Nov 2026 20:12:19 +0000</pubDate>
-      <description>968 points, 181 comments. See description for top comments.</description>
+      <description>1221 points, 237 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://thinkingmachines.ai/news/inkling-2-mini/"><strong>→ Article</strong></a> <small>(thinkingmachines.ai)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50581260">→ HN comments</a> &nbsp;·&nbsp; 968 points &nbsp;·&nbsp; 181 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50581260">→ HN comments</a> &nbsp;·&nbsp; 1221 points &nbsp;·&nbsp; 237 comments &nbsp;·&nbsp; <small>comments as of 21h</small></p>
 <p><strong>★ Comments from: simonw</strong></p>
 <hr>
 <p><strong>Top #1</strong> — <em>montroser</em>:</p>
@@ -203,8 +364,8 @@ I worked for 14 years (2005–2019) at a large corporation in India before movin
 </blockquote>
 <p>↳ reply 2 — <em>ycui7</em>:</p>
 <blockquote>why do people need to even quantize this model? it is already in nvfp4.</blockquote>
-<p>↳ reply 3 — <em>stavros</em>:</p>
-<blockquote>&gt; This is bonkers good if these benchmarks hold up in real-world scenarios.<p>To me, this means they probably won&#x27;t.</blockquote>
+<p>↳ reply 3 — <em>Jackson__</em>:</p>
+<blockquote>To beat a 27B model with a new architecture and 26.7B parameters, 3.5 months after said 27B model was released is not quite the flex you make it out to be.</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>hedgehog</em>:</p>
 <blockquote>Seems pretty promising in a few quick coding tests. 27 tokens&#x2F;s decode on Ryzen 395 and llama.cpp Vulkan. Besides the obvious unmerged PRs (32694, 32657, 32429, 32704) you&#x27;ll want below tiny patch for about 30% speed boost.<p>Also, if anyone from the team is reading, if you have access for researchers I&#x27;d be interested in doing some higher volume tests &amp; harness tuning than I have hardware for personally.<p><pre><code>    --- a&#x2F;src&#x2F;llama-graph.cpp
@@ -225,11 +386,13 @@ I worked for 14 years (2005–2019) at a large corporation in India before movin
                          cur = ggml_mul(ctx0, act, up);
                          cb(cur, &quot;ffn_moe_situ&quot;, il);</code></pre></blockquote>
 <blockquote>
-<p>↳ reply — <em>porkloin</em>:</p>
+<p>↳ reply 1 — <em>porkloin</em>:</p>
 <blockquote>Tested on a 7900xtx, I got a similar (~35%) improvement. Thanks for sharing!</blockquote>
+<p>↳ reply 2 — <em>simfoo</em>:</p>
+<blockquote>Tried it on my 9070XT and got 58% improvement (22.4 -&gt; 35.5 tok&#x2F;s). Nice!</blockquote>
 </blockquote>
-<p><strong>Top #3</strong> — <em>chriddyp</em>:</p>
-<blockquote>Very, very excited about models of this size. Small enough to run on a Mac Mini!<p>Ran my 43 question data analytics exam on it against OpenRouter &amp; my M4 Pro 64GB Mac Mini via llama. It scored a &quot;B&quot; on the exam [1], same score as DeepSeek V4.1 Flash and Sonnet 5.<p>The main limitation that I saw was a &quot;runaway loop&quot; when asked to find a issues in a dataset: it worked for over 3 hours on my Mac Mini, taking over 180 tool calls to answer the question before I cut it off.<p>It&#x27;s the most accurate U.S. open weight model that fits on a Mac mini that I&#x27;ve tested (other two are Muse Glimmer 30B and Gemma 4 31B). Against other models its size, the only model that got a better score was Qwen 3.8 27B(it got a B+).<p>On my Mac Mini, each question takes between 4min-30min to answer. On OpenRouter, the median was ~70s. So ~4x slower on desktop software. That should get faster when mlx support comes available.<p>For memory usage, Llama was taking about 29GB on my Mac Mini.<p>Very exciting overall!<p>[1] <a href="https:&#x2F;&#x2F;plotly.com&#x2F;blog&#x2F;inkling-2-mini-plotly-data-analytics-bench&#x2F;" rel="nofollow">https:&#x2F;&#x2F;plotly.com&#x2F;blog&#x2F;inkling-2-mini-plotly-data-analytics...</a></blockquote>
+<p><strong>Top #3</strong> — <em>ramshanker</em>:</p>
+<blockquote>I am getting Stable Diffusion level of breakthrough vibe here. And such looped transformer SMALL models are best suited to embed directly into silicon&#x2F;transistor. So you get better than ASIC performance by just looping over the hard-coded silicon. Just like we had a breakthrough with &quot;deep&quot; neural network, soon we may have something similar with &quot;deep&quot; loop over the same set of weights. Imaging transistor level looping 128 times. Extreme power efficient, and god knows what level of intelligence is achievable. I could very well foresee purchasing USB Intelligence Devices with some standardised driver protocol. You just buy one off Amazon, throw away the old one and get an Intelligence Upgrade.</blockquote>
 <p><strong>Also</strong> — <strong>★ simonw</strong>:</p>
 <blockquote>Pelicans aren&#x27;t terrible (for the model size): <a href="https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Fb264d7524e46f1a2d1bf78ad5441e2c4" rel="nofollow">https:&#x2F;&#x2F;tools.simonwillison.net&#x2F;markdown-svg-renderer?url=ht...</a><p>Generated with Inkling-2-Mini-IQ4_NL.gguf and llama.cpp on a M5 MacBook Pro.</blockquote>]]></content:encoded>
     </item>
@@ -238,34 +401,28 @@ I worked for 14 years (2005–2019) at a large corporation in India before movin
       <link>https://signoregalilei.com/2026/11/20/and-yet-it-moves/</link>
       <guid isPermaLink="false">hn3-50581177</guid>
       <pubDate>Fri, 20 Nov 2026 20:07:55 +0000</pubDate>
-      <description>147 points, 90 comments. See description for top comments.</description>
+      <description>161 points, 108 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://signoregalilei.com/2026/11/20/and-yet-it-moves/"><strong>→ Article</strong></a> <small>(signoregalilei.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50581177">→ HN comments</a> &nbsp;·&nbsp; 147 points &nbsp;·&nbsp; 90 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50581177">→ HN comments</a> &nbsp;·&nbsp; 161 points &nbsp;·&nbsp; 108 comments &nbsp;·&nbsp; <small>comments as of 21h</small></p>
 <p><strong>★ Comments from: simonw</strong></p>
 <hr>
-<p><strong>Top #1</strong> — <em>MinimalAction</em>:</p>
-<blockquote>During the earlier days of AI boom in knowledge domains (say mid 2025), I had a sombre chat with friends. The gist was that I was feeling the existential crisis brought by the realization of how machines are going to leave no corner of independent inquiry to (average) humans. They all said, &quot;well, life moves on one way or the other and people will be fine.&quot; That wasn&#x27;t as comforting and to confront that reality in such short time is completely unexpected.<p>It moves, but why does it not bring the same kinda joy?</blockquote>
-<p><strong>Top #2</strong> — <em>terabytest</em>:</p>
+<p><strong>Top #1</strong> — <em>beej71</em>:</p>
+<blockquote>I&#x27;m largely aligned with the author. But when I want to be more upbeat, I think of some of the reactions to AlphaGo.<p>Shi Yue, 9 Dan: “Like nothing I’ve ever seen before—they’re how I imagine games from far in the future.”<p>Gu Li, 9 Dan: “AlphaGo’s self play games are incredible—we can learn many things from them.”<p>Ke Jie, 9 Dan: “AlphaGo is changing our original perception of Go…no move can’t be played.”<p>I don&#x27;t think math has an end; we have to keep exploring. Just like with Go.</blockquote>
+<p><strong>Top #2</strong> — <em>andrewflnr</em>:</p>
+<blockquote>&gt; Maybe we could have solved this one ourselves, but instead we gave up and checked the answer at the back of the book.<p>This is the closest I&#x27;ve heard anyone come to expressing why AI &quot;math&quot; is so depressing.</blockquote>
+<p><strong>Top #3</strong> — <em>terabytest</em>:</p>
 <blockquote>Even though I’m also feeling the somber mood, I’m not able to feel this change as a loss. Long term, it will probably lead to more discovery rather than less.<p>The worry that I have, and I haven’t seen this talked about enough, is that humanity will stop understanding how things actually work. If we delegate all scientific work to the machine, we’re not incentivized to actually understand why things are the way they are. Those who spend their time intimately studying processes and phenomena will consequently be the ones that contribute the least to progress because their work will inherently be slower and limited by their own mind’s throughput.<p>Losing our knowledge of how things work can be truly catastrophic and set us back heavily (or possibly end civilization) if for some reason AI stops working or goes out of our control.</blockquote>
 <blockquote>
 <p>↳ reply — <em>anon-3988</em>:</p>
 <blockquote>&gt; The worry that I have, and I haven’t seen this talked about enough, is that humanity will stop understanding how things actually work. If we delegate all scientific work to the machine, we’re not incentivized to actually understand why things are the way they are. Those who spend their time intimately studying processes and phenomena will consequently be the ones that contribute the least to progress because their work will inherently be slower and limited by their own mind’s throughput.<p>This is already the case? I don&#x27;t think there&#x27;s any one person that actually understand how a chip is made. We all have a very small fragment of how it all comes together.<p>At the rate of technological and scientific progress that we have been making prior to LLM, we could already see that individual person is going to understand less and less of what is going on around them.</blockquote>
 <blockquote>
-<p>↳↳ reply — <em>terabytest</em>:</p>
-<blockquote>Yes, that’s true, but we’d still be going from few knowing how things work to almost nobody. And what knowledge remains would be stored digitally, so in the event of a cataclysm we’d lose access to it.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>jpitz</em>:</p>
-<blockquote>Ditch diggers do not lament a shovel. Astronauts cannot circle the world without reliance on a host of industries, machines, computers, and software they could barely enumerate much less replace.<p>Why is this lever different?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ggreer</em>:</p>
-<blockquote>Machines such as excavators substitute for human labor. The more excavators you have, the fewer ditch diggers you want. But machines are also complements to labor. The more excavators you have, the more excavator operators you want. That&#x27;s how, despite machines making earlier jobs obsolete, people have still managed to collect wages from their labor.<p>Machine intelligence is different because it fully substitutes for human cognition. Similar to chess engines, at some point AI will get good enough that any human input is just adding noise. And the cost to run such machines will be much lower than the cost to feed, clothe, shelter, and educate a human. This means that almost everyone will be forced to retire, and they&#x27;ll have to live off investments, or get government welfare from taxes on machines.<p>On the bright side, if economic growth is no longer limited by the number of people and their capabilities, we should see very high economic growth rates. That means it won&#x27;t take much investment for a person to be able to afford a high quality of life indefinitely. Though all of this assumes that the machines will care about people (or at least obey laws made by people). If that&#x27;s not the case, then humanity would most likely go extinct.</blockquote>
-<blockquote>
 <p>↳↳ reply — <em>Yoric</em>:</p>
-<blockquote>&gt; This means that almost everyone will be forced to retire, and they&#x27;ll have to live off investments, or get government welfare from taxes on machines.<p>You&#x27;re assuming a form of utopia with unlimited resources.<p>At the other end of the spectrum, we can just as well imagine governments (human or automatized) deciding that some categories of people are obsolete and should be simply... phased away.</blockquote>
+<blockquote>You make a point.<p>However, so far, we have a continuous and understandable chain of knowledge from basic calculus to astrophysics, quantum mechanics, logics, mathematics, ...<p>What we risk is breaking this chain.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>beej71</em>:</p>
+<blockquote>I&#x27;ve had this exact thought. Another way to phrase it is with the question: how fucked are we if LLMs evaporate today?<p>Today the answer is that we&#x27;d make it fine. Enough people have enough knowledge. 10 years from now? Not so sure. And 20 years is looking grim.</blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>riffraff</em>:</p>
-<blockquote>Ditch diggers do not generally enjoy ditch digging?<p>In general, if you did X for the outcomes, AI is nice. If you liked X for the process, AI sucks.</blockquote>
+</blockquote>
 </blockquote>
 <p><strong>Also</strong> — <em>aaron_m04</em>:</p>
 <blockquote>We don&#x27;t have to resign ourselves to this. We can use every means in our power to stop &quot;AI&quot;.</blockquote>
@@ -283,15 +440,21 @@ I worked for 14 years (2005–2019) at a large corporation in India before movin
       <link>https://www.masteringemacs.org/article/announcing-dreamcoder</link>
       <guid isPermaLink="false">hn3-50581110</guid>
       <pubDate>Fri, 20 Nov 2026 20:03:59 +0000</pubDate>
-      <description>208 points, 57 comments. See description for top comments.</description>
+      <description>260 points, 107 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.masteringemacs.org/article/announcing-dreamcoder"><strong>→ Article</strong></a> <small>(masteringemacs.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50581110">→ HN comments</a> &nbsp;·&nbsp; 208 points &nbsp;·&nbsp; 57 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50581110">→ HN comments</a> &nbsp;·&nbsp; 260 points &nbsp;·&nbsp; 107 comments &nbsp;·&nbsp; <small>comments as of 21h</small></p>
 <hr>
-<p><strong>Top #1</strong> — <em>pimeys</em>:</p>
-<blockquote>Very interesting. I&#x27;ll give it a go. I found out that just running a multiplexer with agents in separate workspaces is not enough to do my work, and I very often need to start a separate editor to read and investigate changes. I like to use Gram to read and navigate the code. Now if you have multiple things going on, switching the editor to a different project is a mental context switch that takes too much time and is not very easy to do anymore with more than three projects.<p>So I&#x27;ve been using just Gram, with a remote session to our development server, and keep multiple windows open.<p>DreamCoder could really be the best harness for me, if it keeps the whole context easy to navigate, but also provides me excellent code navigation and diffing tools. My way of working is to read and iterate on code with the agent, I&#x27;m never only vibecoding. So if I can open the code and the diff in the workspace that would simplify my work a lot.<p>Another important part would be to forward local ports. If I start the system I&#x27;m implementing in DreamCoder, and I could then access the page I&#x27;m developing from the harness or if the harness could forward a port or path for me, this would remove the step of remembering to open ssh port forwards in another terminal. Now split the workspaces to separate paths maybe and you can open the different projects in your browser without needing to turn off and on the stacks all the time.<p>If you could make switching the mental context easy with this, I&#x27;d start to pay for you immediately for the product.<p>Edit: oh, and nix derivation and AUR package are probably just a matter of time. But very much needed :)</blockquote>
-<p><strong>Top #2</strong> — <em>FailMore</em>:</p>
-<blockquote>I built <a href="https:&#x2F;&#x2F;smalldocs.org" rel="nofollow">https:&#x2F;&#x2F;smalldocs.org</a> &#x2F; <a href="https:&#x2F;&#x2F;github.com&#x2F;espressoplease&#x2F;smalldocs" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;espressoplease&#x2F;smalldocs</a> to handle some of the problems Mickey is trying to solve. It&#x27;s a cli your agent can call to open up a markdown file in the browser with richer-than-normal formatting options.<p>Here&#x27;s an example SmallDoc that has a few formatting examples (mermaid diagrams, charts, etc.): <a href="https:&#x2F;&#x2F;smalldocs.org&#x2F;s&#x2F;bLV9Fe2RemM7ipvCy01NXo#k=U9yFaCKp1onQJRoEbAictn2PIi_M_K1fpcQ3Ug7v84k" rel="nofollow">https:&#x2F;&#x2F;smalldocs.org&#x2F;s&#x2F;bLV9Fe2RemM7ipvCy01NXo#k=U9yFaCKp1on...</a><p>I&#x27;m a so-so programmer, and often the agent can come up with ideas which I need to be broken down to fully grasp. I ask my agent &quot;produce a sdoc on this [architecture&#x2F;bug&#x2F;flow]&quot;, or &quot;walk me through every db interaction with sample tables as we save this record given our approach to permissions in a sdoc&quot;, etc. And then the agent can pop me open a document in the browser for me to understand in a richer visual space.<p>The current version on my site is cloud based (I&#x27;ve been experimenting with turning it into a business), but there is also a local first verion where the document lives in the url fragment. If you want that, point your agent at my codebase and they will sort that out for you.</blockquote>
-<p><strong>Top #3</strong> — <em>everforward</em>:</p>
+<p><strong>Top #1</strong> — <em>mjdiloreto</em>:</p>
+<blockquote>&gt; DreamCoder is not an Emacs-related application. The reason is unfortunately one of economics and access: I want to build an AI coding harness for everyone.<p>I think this is an enormous mistake, and it will completely stop me from using this project. Being emacs compatible software would give this project a shared base of decades of composable interoperable software, and he ditched it. Now DreamCoder is completely indistinguishable from any other vibe coded bullshit IDE.<p>If the author is lurking, I implore you to re-port DreamCoder back to emacs. I share a similar vision, but I took another approach.<p>The problem is not emacs itself (one could simply customize emacs to be more palatable), but distribution. If emacs was web software, then it _would_ be &quot;for everyone&quot;. That&#x27;s why I built emacswasm (<a href="https:&#x2F;&#x2F;codeberg.org&#x2F;emacswasm&#x2F;" rel="nofollow">https:&#x2F;&#x2F;codeberg.org&#x2F;emacswasm&#x2F;</a>, <a href="https:&#x2F;&#x2F;emacswasm.org" rel="nofollow">https:&#x2F;&#x2F;emacswasm.org</a>) - it&#x27;s also vibe coded bullshit, but it does port the emacs lisp interpreter and PTY interface to Web assembly, and lets Emacs lisp call JavaScript synchronously, and lets JavaScript call emacs lisp asynchronously.<p>I will take a more thorough look at DreamCoder, and see if I can port a sufficient amount of features myself, because &quot;an emacs that edits itself with AI better than I ever could manually&quot; is my absolute dream.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mickeyp</em>:</p>
+<blockquote>It will not run in Emacs. Emacs is great, but it&#x27;s fundamentally unsuited, today, in its current shape -- and by Emacs I mean GNU Emacs specifically -- to a high-fidelity, asynchronous and highly parallel agent workflow engine.<p>I wish it did fit the mould --- it does not. Not for what I want.<p>By all means avail yourself of DreamCoder&#x27;s features and port them yourself though.</blockquote>
+<p>↳ reply 2 — <em>torben-friis</em>:</p>
+<blockquote>The weird thing is that, as a non emacs user, the UI feels too emacs-coded for my liking.</blockquote>
+<p>↳ reply 3 — <em>fock</em>:</p>
+<blockquote>emacs is fundamentally broken for todays world, evene before &quot;AI&quot; (look at the CVEs they have). Maybe once this all burned down, we can create something better. (Linux is burning already and all the people renting us computers have very much decided to stoke the fire to support their case of monopolizing compute)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>everforward</em>:</p>
 <blockquote>It&#x27;s interesting (and probably correct) how much this focuses on the UI.<p>I also looked (&#x2F;am looking) at Lisp and AI, but I went with Clojure and zero-ed in on the REPL driven development.  The high level idea is that a session maps to a namespace in Clojure.  When you create a new session, it makes a new namespace, injects tools that are bound to that session into it, and then swaps you into that namespace.  So I can do something like:<p><pre><code>    (new!)
     (prompt! &quot;Write me a script that does ....&quot;)
 </code></pre>
@@ -299,6 +462,20 @@ The agent configuration, tools it has, etc, etc are all bound to the namespace s
 <blockquote>
 <p>↳ reply — <em>maxwelljoslyn</em>:</p>
 <blockquote>&gt; The high level idea is that a session maps to a namespace in Clojure. When you create a new session, it makes a new namespace, injects tools that are bound to that session into it, and then swaps you into that namespace.<p>Oh, that&#x27;s a <i>fascinating</i> idea. Well done.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>spockz</em>:</p>
+<blockquote>I just read the whole announcement and boy I wish more text was written like this. Full of history, facts, and reasoning. Beautifully written. (I recognise it is a <i>tad</i> long of you just want to get cracking with it.) A very nice refresher in this age.<p>I’ll be trying it out soon. Hopefully it does sandboxing and dealing with antigravity and codex well.</blockquote>
+<blockquote>
+<p>↳ reply — <em>mickeyp</em>:</p>
+<blockquote>Thank you for your feedback. It took me weeks to write this; dozens of hours. Yes it is a bit long: my achilles&#x27; heel.<p>It can sandbox if you run it in docker; you can hook shell commands and `bwrap` them but there is no built-in sandboxing. It works great with a codex sub.<p>Antigravity&#x27;s TOS prohibit third-party harnesses, and the last thing I want is to get people&#x27;s google accounts banned, so that sadly does not work. (But I hear scuttlebutt on Twitter from the Gemini team they&#x27;re trying to loosen that restriction.)</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>spockz</em>:</p>
+<blockquote>I haven’t checked it very deeply. Is it allowed to use agy-cli as a proxy instead of doing the api calls yourself? I also that some things like exact prompt syntax would work best from the bespoke harness. The same for Codex.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>mickeyp</em>:</p>
+<blockquote>I don&#x27;t know about proxying, to be honest, but honestly I&#x27;d just be careful given the table stakes of Google nuking from orbit anything tied to it.</blockquote>
+</blockquote>
+</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -306,38 +483,44 @@ The agent configuration, tools it has, etc, etc are all bound to the namespace s
       <link>https://scottaaronson.blog/?p=10344</link>
       <guid isPermaLink="false">hn3-50581084</guid>
       <pubDate>Fri, 20 Nov 2026 20:03:07 +0000</pubDate>
-      <description>285 points, 249 comments. See description for top comments.</description>
+      <description>326 points, 298 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://scottaaronson.blog/?p=10344"><strong>→ Article</strong></a> <small>(scottaaronson.blog)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50581084">→ HN comments</a> &nbsp;·&nbsp; 285 points &nbsp;·&nbsp; 249 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50581084">→ HN comments</a> &nbsp;·&nbsp; 326 points &nbsp;·&nbsp; 298 comments &nbsp;·&nbsp; <small>comments as of 21h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>Mikhail_Edoshin</em>:</p>
 <blockquote>There&#x27;s a book, &quot;Impro&quot;, about a theatric studio that practiced improvised sketches. One thing they struggled with was a normal conversation. People have them all the time yet somehow artists could not find the right approach.<p>One day the head of the studio (the book author) had an insight. She asked the actors to drive the conversation so that they always bump the status of themselves or the other party in any direction, but only a little.<p>This did the magic. Not only the actors understood her perfectly, the conversation started to flow and could go endlessly while staying amusing and captivating for spectators. (Look up the book for examples.)<p>After they discovered that secret they started seeing the pattern (status games) everywhere up to the point they asked themselves whether there is anything else in human communication.<p>This was a British studio, the sketches were mostly comedy.</blockquote>
 <blockquote>
-<p>↳ reply — <em>dgan</em>:</p>
+<p>↳ reply 1 — <em>dgan</em>:</p>
 <blockquote>i have read your comment in full, multiple times, and I still don&#x27;t understand what you re saying. 
 &gt; that they always bump the status of themselves or the other party in any direction.<p>what? English non native so that might be the reason</blockquote>
 <blockquote>
 <p>↳↳ reply — <em>armchairhacker</em>:</p>
 <blockquote>Every point they add makes themselves or allies look better (sometimes just more interesting, sometimes more humble) or their enemies look worse. Usually themselves better, at least me; it’s inevitable, even explaining this I notice I’m doing it.<p>The key for the improv actors is doing it with intention. To decide “what is the next thing I should say in this conversation” they think “how do I make my fictional self look better, or my fictional conversational partner look worse, to the audience”? And that gets them to natural-sounding phrases.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>pseidemann</em>:</p>
+<blockquote>Is that some fundamental behavior of humans confirmed by psychology? I&#x27;ve never heard of this before and most people I encounter don&#x27;t do this. Of course there is selfishness and altruism, but it seems this is referring to something else?</blockquote>
 </blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>RhysU</em>:</p>
+<blockquote><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Impro:_Improvisation_and_the_Theatre" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Impro:_Improvisation_and_the_T...</a> is an interesting, and at times strange, read.</blockquote>
+<p>↳ reply 3 — <em>xg15</em>:</p>
+<blockquote>I like how the book author bumped their own status with that anecdote as well...<p>(I&#x27;d still like to see some concrete examples here)</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>esjeon</em>:</p>
 <blockquote>Lean + Stochastic predictor = Brute-force theorem solver<p>P.S: AlphaGo was pretty much the same in the spirit btw.</blockquote>
-<p><strong>Top #3</strong> — <em>hansvm</em>:</p>
-<blockquote>Derailing slightly, a variety of HN posts (the blogs&#x2F;sites they reference) have started banning me with a 403 page from nginx, including this author. My IP reputation is supposedly fine. Does anyone have any ideas where I should look next?</blockquote>
+<p><strong>Top #3</strong> — <em>sc077y</em>:</p>
+<blockquote>If this isn&#x27;t intelligence, then I don&#x27;t know what is</blockquote>
 <blockquote>
-<p>↳ reply 1 — <em>hansvm</em>:</p>
-<blockquote>Responding to other comments here:<p>- Mobile internet (IP 172.56.47.136)<p>- The haveibeenproxied link indicates my IP is shared (expected)<p>- This is stock android&#x2F;chrome with a DNS blocklist of advertising domains and some invasive Samsung the things I can&#x27;t fix on the device (I doubt that&#x27;s the culprit given that this is a new behavior I&#x27;m observing in the outside world after 8yrs with those settings and also because it&#x27;s be strange for nginx to be the thing to immediately report that trackers have to load for me to get a glimpse of the main page, especially as something I&#x27;m seeing across multiple sites, but that&#x27;s not impossible).<p>- No VPN<p>- I&#x27;m a &quot;normie&quot; internet user. Anything remotely questionable to even the cheapest and least aligned of LLM judges and executioners happens on non-home networks.<p>- I see it with other devices on the same network (Chrome, Linux, MacOS, Safari, Qutebrowser, etc), which suggests to me that somehow my IP or some other shared network property is the issue. I&#x27;m curious mostly about the commonality in separate nginx installations returning a 403. That suggests there exists a common blocklist or whatnot I can inspect and fix, either because of my IP or because something in the loop is forcing ipv6-only or who knows what.</blockquote>
+<p>↳ reply — <em>threatripper</em>:</p>
+<blockquote>Maybe we don&#x27;t need real intelligence or consciousness to be effective.</blockquote>
 <blockquote>
-<p>↳↳ reply — <em>dannyw</em>:</p>
-<blockquote>Along the motif of &quot;LLM is ruining everything&quot;, someone on your CGNAT is probably running scrapers for datasets. Maybe even some mobile phone farm.</blockquote>
+<p>↳↳ reply — <em>pseidemann</em>:</p>
+<blockquote>Nobody knows what intelligence actually is. Psychology and neuroscience have no answer, and especially not computer science.</blockquote>
 <blockquote>
-<p>↳↳↳ reply — <em>sam_lowry_</em>:</p>
-<blockquote>Some TV on their CGNAT :-)</blockquote>
+<p>↳↳↳ reply — <em>morpheos137</em>:</p>
+<blockquote>Intelligence like consciousness is a word to describe patterns of processes tending to optimize toward some goal set under the constraints of environment and with sensory feedback. Humans goal is to reproduce. Llms goal is to predict best next token. Human feedback is sensory mediated. Llm feedback is prompting on outputs including from tools such as lean. If RH was provable it is not surprising either such system could prove it in principle. If a sound proof required an intricate path or vast contextual memory to assemble it is not surprising a machine proved it before a human. However I don&#x27;t think this is generalizable. I don&#x27;t think intelligence is a scalar in that the proof shows the machine is more intelligent than the human. Rather it is qualitative. The machine was structured so that the path was attainable to it. This is intelligence in the particular case but not general intelligence if such a thing exists. Now what would point more toward general intelligence is a machine that can compress proofs or truths better than humans. If we start seeing short proofs of FLT or RH then that will be interesting. I am skeptical with the current technology. The tendency of LLMs seems to be to explode complexity not condense things to essential elements or minimal description lengths.</blockquote>
 </blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>RIMR</em>:</p>
-<blockquote>Check if something on your network is running malware. You might be part of a DDoS botnet, and other services might be running something like fail2ban.</blockquote>
 </blockquote>]]></content:encoded>
     </item>
     <item>
@@ -345,9 +528,9 @@ The agent configuration, tools it has, etc, etc are all bound to the namespace s
       <link>https://winedroid.soham.sh/demo/</link>
       <guid isPermaLink="false">hn3-50580536</guid>
       <pubDate>Fri, 20 Nov 2026 19:30:16 +0000</pubDate>
-      <description>135 points, 42 comments. See description for top comments.</description>
+      <description>173 points, 46 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://winedroid.soham.sh/demo/"><strong>→ Article</strong></a> <small>(winedroid.soham.sh)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50580536">→ HN comments</a> &nbsp;·&nbsp; 135 points &nbsp;·&nbsp; 42 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50580536">→ HN comments</a> &nbsp;·&nbsp; 173 points &nbsp;·&nbsp; 46 comments &nbsp;·&nbsp; <small>comments as of 21h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>__aru</em>:</p>
 <blockquote>Someone compiled an x86 port of Valve&#x27;s Lepton compatibility layer, its still a work in progress but is working for a few Android utility apps that I wanted on Linux.<p>I&#x27;d argue Lepton is potentially better than waydroid due to:<p>- podman containers, so no root required<p>- no awkward file permission issues<p>- per-app lepton containers are possible, for additional sandboxing<p>Its definitely still a WIP though, needs more refinement and improvements before I&#x27;d consider recommending it to regular nontechnical users.<p><a href="https:&#x2F;&#x2F;github.com&#x2F;pjohno&#x2F;lepton-x86_64" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;pjohno&#x2F;lepton-x86_64</a></blockquote>
@@ -361,19 +544,19 @@ The agent configuration, tools it has, etc, etc are all bound to the namespace s
 <p>↳ reply 2 — <em>tomrod</em>:</p>
 <blockquote>I&#x27;ve been running with Waydroid. Full compatibility so far!</blockquote>
 </blockquote>
-<p><strong>Top #2</strong> — <em>ajasmin</em>:</p>
-<blockquote>How does this work? Does it have NDK and Linux syscall support or only the Dalvik (Java) part?</blockquote>
-<p><strong>Top #3</strong> — <em>ivanjermakov</em>:</p>
-<blockquote>Winedroid name would be more suited for a compatibility layer to run Windows programs on Android, not the other way around.</blockquote>]]></content:encoded>
+<p><strong>Top #2</strong> — <em>ivanjermakov</em>:</p>
+<blockquote>Winedroid name would be more suited for a compatibility layer to run Windows programs on Android, not the other way around.</blockquote>
+<p><strong>Top #3</strong> — <em>yjftsjthsd-h</em>:</p>
+<blockquote>I&#x27;d be interested in a comparison with waydroid and <a href="https:&#x2F;&#x2F;gitlab.com&#x2F;android_translation_layer&#x2F;android_translation_layer" rel="nofollow">https:&#x2F;&#x2F;gitlab.com&#x2F;android_translation_layer&#x2F;android_transla...</a> (which this seems to somewhat resemble in approach)</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Hurried Announcement: Alessandro Masullo GRH</title>
       <link>https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/</link>
       <guid isPermaLink="false">hn3-50579568</guid>
       <pubDate>Fri, 20 Nov 2026 18:33:14 +0000</pubDate>
-      <description>2024 points, 937 comments. See description for top comments.</description>
+      <description>2301 points, 1094 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://math216.wordpress.com/2026/11/20/hurried-announcement-alessandro-masullo-grh/"><strong>→ Article</strong></a> <small>(math216.wordpress.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50579568">→ HN comments</a> &nbsp;·&nbsp; 2024 points &nbsp;·&nbsp; 937 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50579568">→ HN comments</a> &nbsp;·&nbsp; 2301 points &nbsp;·&nbsp; 1094 comments &nbsp;·&nbsp; <small>comments as of 22h</small></p>
 <p><strong>★ Comments from: simonw</strong></p>
 <hr>
 <p><strong>Top #1</strong> — <em>Aurornis</em>:</p>
@@ -385,8 +568,8 @@ The agent configuration, tools it has, etc, etc are all bound to the namespace s
 <p>↳↳ reply — <em>amluto</em>:</p>
 <blockquote>&gt; Try to formalize it yourself? You can&#x27;t, because that would cost millions of dollars at this scale.<p>Would it?  Tokens are not that expensive, and there are quite a few models that might be able to pull it off given a valid human readable proof.<p>An interesting strategy might have been to partner with one of the startups working on formal methods with AI.</blockquote>
 <blockquote>
-<p>↳↳↳ reply — <em>nilkn</em>:</p>
-<blockquote>&gt; An interesting strategy might have been to partner with one of the startups working on formal methods with AI.<p>I hadn&#x27;t thought of that, and I agree. That would&#x27;ve been a very smart idea, at least if we assume those smaller startups are less interested in scooping researchers than the big labs.</blockquote>
+<p>↳↳↳ reply — <em>palata</em>:</p>
+<blockquote>&gt; An interesting strategy<p>Is it, though?<p>As a developer, before AI, I took pride in solving challenging problems. I could show them and say: &quot;this was hard, but I persisted and I solved it&quot;. Not that they would change the world, but it was obvious that they were challenging.<p>AI completely changed that: even if I now solved such a problem &quot;manually&quot;, people will just assume that it wasn&#x27;t that hard now that we have AI. Do I want to be the guy who really insists on saying that &quot;no, no, I promise, I solved it on my own&quot;? Then others will just think &quot;yeah you wasted time, you could have used AI&quot;.<p>I believe it may be the same for Masullo: he worked on that for 12 years. If now he partners with an AI company, people will just think &quot;sure, he failed at it for 12 years, and now AI solved it for him&quot;. I think he&#x27;s screwed anyway: even if his current proof is correct (or almost correct), people can assume he quickly finished it with AI. I have never worked on a challenging problem for 12 years, I can only imagine how hard it would be to have it destroyed by AI.<p>I don&#x27;t think anyone can &quot;discover&quot; anything today and get the same kind of credit they would have 5 years ago. AI broke that, period.</blockquote>
 </blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>ChuckMcM</em>:</p>
@@ -394,26 +577,19 @@ The agent configuration, tools it has, etc, etc are all bound to the namespace s
 <p>↳ reply 3 — <em>mofeien</em>:</p>
 <blockquote>Worth keeping in mind that over the past century there have been hundreds of (human) attempts that led nowhere.<p>And even if there was training-data leak, that wouldn&#x27;t explain a proof by a different method anyway.<p>- Masullo: functional analysis on the idele class group (Tate&#x27;s thesis, adelic theta functions, a trace formula in Connes&#x27; line). This is from his contents pages, pp. 11–14 and 32–34 of 940.<p>- Alpöge and Claude: arithmetic. The note calls it &quot;a descendant of Stepanov&#x27;s&quot; argument, with chains of about √x theta lifts, Galois representations and a &quot;weakening of Vandiver&quot;. Tao says it &quot;appears to use the full power of modern developments on the Langlands program and arithmetic geometry&quot;.</blockquote>
 </blockquote>
-<p><strong>Top #2</strong> — <em>rlt</em>:</p>
-<blockquote>Mathematicians should start regularly posting hashes of their in-progress work with verifiable timestamps to at least claim partial credit when AI solves the problem they&#x27;ve been working on.</blockquote>
+<p><strong>Top #2</strong> — <em>caidan</em>:</p>
+<blockquote>So many people in this thread are sure that they have economic value when their strength, brains, and knowledge are worthless.  This is going to be a century of rude awakenings for all!</blockquote>
 <blockquote>
-<p>↳ reply 1 — <em>1970-01-01</em>:</p>
-<blockquote>Better to publish it fully encrypted and keep the keys with someone else you trust. Then just release the key and poof, instant and verified credibility.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dboreham</em>:</p>
-<blockquote>The hash scheme above achieves the same result.<p>Except for papers about hash function collisions...</blockquote>
+<p>↳ reply — <em>softwaredoug</em>:</p>
+<blockquote>Well the current economy is built on people building photo sharing apps and other silly bits of questionable objective economic value. I’m doubtful the economy collapses if agents do all the work that requires the most intelligence.</blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>codethief</em>:</p>
-<blockquote>That&#x27;d be some real proof of work. :)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>pbkompasz</em>:</p>
-<blockquote>900 pages vs 250,000 pages
-Compression is intelligence</blockquote>
+<p><strong>Top #3</strong> — <em>Anon84</em>:</p>
+<blockquote>There seems to already be a counter example that invalidates this proof<p><a href="https:&#x2F;&#x2F;philarchive.org&#x2F;rec&#x2F;NIEIOM" rel="nofollow">https:&#x2F;&#x2F;philarchive.org&#x2F;rec&#x2F;NIEIOM</a></blockquote>
 <blockquote>
-<p>↳ reply 1 — <em>killerstorm</em>:</p>
-<blockquote>Alpoge&#x27;s summary of a proof fits on two pages.</blockquote>
-<p>↳ reply 2 — <em>WithinReason</em>:</p>
-<blockquote>On that note: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=qbsb9DpdZ6s" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=qbsb9DpdZ6s</a></blockquote>
+<p>↳ reply 1 — <em>JDEW</em>:</p>
+<blockquote>And the same author also flagged an issue with the alpöge proof<p><a href="https:&#x2F;&#x2F;philarchive.org&#x2F;rec&#x2F;NIEIOT-2" rel="nofollow">https:&#x2F;&#x2F;philarchive.org&#x2F;rec&#x2F;NIEIOT-2</a><p>Edit: I looked up the author and not quite sure I’d give her claims all too much merit.</blockquote>
+<p>↳ reply 2 — <em>themeiguoren</em>:</p>
+<blockquote>Proofs are often patched, it’s unclear to me if the issues being raised are actually fatal. This was a year-early draft after all. On the flip side, there are many graveyards of claimed proofs that have not held up. Who knows where this one will land.</blockquote>
 </blockquote>
 <p><strong>Also</strong> — <em>prometheus1992</em>:</p>
 <blockquote>Is it possible that brian conrad somehow uploaded the proof to anthropic to cross check something and then the anthropic guys got the proof?<p>- it doesn&#x27;t have to be the full proof - even if portions were uploaded, that should also be enough or at least calls for a thorough check on ants side. the human proof has been in the works for 12 years, who knows when something was uploaded somewhere or some info just stayed on a google drive which was later sold.</blockquote>
@@ -435,9 +611,9 @@ Compression is intelligence</blockquote>
       <link>https://manidoraisamy.com/developer-to-architect.html</link>
       <guid isPermaLink="false">hn3-50579331</guid>
       <pubDate>Fri, 20 Nov 2026 18:17:51 +0000</pubDate>
-      <description>422 points, 234 comments. See description for top comments.</description>
+      <description>530 points, 289 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://manidoraisamy.com/developer-to-architect.html"><strong>→ Article</strong></a> <small>(manidoraisamy.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50579331">→ HN comments</a> &nbsp;·&nbsp; 422 points &nbsp;·&nbsp; 234 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50579331">→ HN comments</a> &nbsp;·&nbsp; 530 points &nbsp;·&nbsp; 289 comments &nbsp;·&nbsp; <small>comments as of 22h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>whycombinetor</em>:</p>
 <blockquote>Am I an outlier in that every SWE job I&#x27;ve had has expected you to push back on requirements and design the data model for tickets you are handed? Even when the org was large to have an architect, they just were just a figurehead and designed the original system, and ongoing decisions were made by the dev who picks up the ticket.<p>From that perspective, engineers are still engineers, just without the hands-on-keyboard coding. If that&#x27;s all your job was, hands-on-keyboard coding with no decision making, yeah you&#x27;re cooked and need to reskill.</blockquote>
@@ -451,14 +627,14 @@ Additionally, architects often report to non-technical folks fairly high up the 
 <p>↳↳ reply — <em>spiralpolitik</em>:</p>
 <blockquote>Good architects delegate down and are there to ensure the big picture remains consistent while leaving the teams to sweat the details because they are closer to the problem.<p>Bad architects try to micromanage and those are the cases where you end up with systems that are slow and unworkable with processes that have too much ceremony.</blockquote>
 <blockquote>
-<p>↳↳↳ reply — <em>lokar</em>:</p>
-<blockquote>When in that role I focus on supporting the team.  Mentoring, resolving disagreements, providing broader context, suggesting more options to consider (often stuff we could copy from older systems), etc.<p>The main area where I spend influence on really shape the outcome is on process and team culture, not any specific technical decision.</blockquote>
+<p>↳↳↳ reply — <em>mordae</em>:</p>
+<blockquote>Truly horrible architects tour conferences, make their orgs purchase unnecessary proprietary tech stacks sold at those conferences and then force new projects to utilize them, adding busywork both while adding support and then ripping it out once it is clear that 90% of the stack won&#x27;t even support that cringe proprietary tech that&#x27;s out of fashion the next year.<p>They also say stuff like &quot;Dont&#x27;t even joke about using PG. We&#x27;ve just sunken $xM into Oracle licenses and HW and it would make us (me) look bad.&quot;</blockquote>
 </blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>Fourier864</em>:</p>
 <blockquote>It took me several years to realize this wasn&#x27;t the default. Once I was senior enough to start getting people under me, I would assign tickets like &quot;Scientist Bob would like a better method to view missing data, work with him to develop that over the next 2 weeks&quot;, and assume that they, like me, would enjoy the flexibility and the ownership. I didn&#x27;t care what they came up with; email notifications, enhancing the web tool we have, putting coverage data in our opensearch to query, etc.<p>After getting complaints, I started getting narrower and narrower in my ticket writing, until I realized many newer software engineers literally want tickets like &quot;modify function x_y_z() in python_file.py so that it <i>also</i> returns...&quot;</blockquote>
-<p>↳ reply 3 — <em>hinkley</em>:</p>
-<blockquote>I would say that I expect senior engineers to have autonomy, and autonomy means not doing strictly what you are told. So if you’re not being told exactly what to do, that means you have to figure it out for yourself. Which leads to steering task direction, which leads to pushback on requirements.<p>And that’s why junior engineers are fucked at companies that can afford to send all their proprietary information to Anthropic. But since they are public now, they will violate that trust as soon as major shareholders learn to word it so that it sounds like a stranded asset that any responsible C Corp would be expected to rescue. And then everybody’s fucked.</blockquote>
+<p>↳ reply 3 — <em>alibarber</em>:</p>
+<blockquote>Reading this thread has been music to my ears because I really have almost been having a crisis of late with people forever banging on about &quot;AI is doing all the software and whatever&quot;, and I have always been of the opinion that the software isn&#x27;t really the core part. Sure it&#x27;s important to do it right and have pride in your craft, but actual work for me has always been, &#x27;go and find people with interesting problems and help them solve this problem and make our company money in doing so&#x27;.<p>I&#x27;ve literally worked in feature film production, spacecraft, and now optics and medical device industries. My education was in straight computer science - but my opinion is that it behooves you to basically be learning from other people all the time and bringing your ideas to the table, and you&#x27;re paid to help the company succeed at a high level. I always called myself a software engineer because that&#x27;s what I felt most formally confident at, but honestly I don&#x27;t think my day-to-day matches what other people mean by it.</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>nixpulvis</em>:</p>
 <blockquote>I strongly believe good software teams (very rare) require members to play many roles. Sometimes you&#x27;re a PM, sometimes you&#x27;re an architect, sometimes you&#x27;re the systems engineer. Enough people have enough context on the bigger picture that it&#x27;s stable and there&#x27;s a shared vision.<p>More often than not, one person does the majority of this, and does their best to break up the responsibilities. A good CTO does that at the top, and it flows down through the ranks depending on how big the org is. Perhaps it&#x27;s just a CTO and 5 engineers, perhaps it&#x27;s a CTO with 5 divisions, each with 10 groups, with many teams.<p>Flatter structures of engaged members works best from what I&#x27;ve seen, but you need to have a critical mass of people not only willing to take initiative, but empowered by leadership.</blockquote>
@@ -466,8 +642,12 @@ Additionally, architects often report to non-technical folks fairly high up the 
 <p>↳ reply — <em>markus_zhang</em>:</p>
 <blockquote>Some people are not interested in some roles. I feel so disgusted trying to get the exact requirements from a stakeholder that I really hate my job. I’d argue it’s also a very bad use of my ability. It’s a lot easier to train someone who vaguely knows what they want to clarify what they want, then someone who doesn’t know what others want to clarify what others want.<p>I don’t hate the PM role but some stakeholders are so…ah don’t want HR to find me here, right?<p>The more I play this game the more I want to squeeze into lower level programming careers where stakeholders are more technical.</blockquote>
 <blockquote>
-<p>↳↳ reply — <em>toenail</em>:</p>
-<blockquote>Have you told any of this to your manager, or are you just suffering in silence?</blockquote>
+<p>↳↳ reply — <em>Gareth321</em>:</p>
+<blockquote>I greatly sympathise, but I caution you that I think coding only roles are disappearing. Increasingly, time with stakeholders to translate requirements and help with change management and onboarding is becoming the valuable technical skill. I think we’re about to see a lot of very unhappy developers in the near future.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>markus_zhang</em>:</p>
+<blockquote>I do agree with you. Honestly I’m doing OK despite my reply above. Everyone is friendly so as long as I can deep breathe and explain things face to face, it’s good enough. Plus the pay is better than average. I consider myself lucky. But if the revenue doesn’t turn around, they are going to lay off a lot of people next people AfAIK.</blockquote>
+</blockquote>
 </blockquote>
 </blockquote>
 <p><strong>Top #3</strong> — <em>bikeshaving</em>:</p>
@@ -492,9 +672,9 @@ Additionally, architects often report to non-technical folks fairly high up the 
       <link>https://ankitg.me/blog/vibecoding-inference-chip/</link>
       <guid isPermaLink="false">hn3-50579297</guid>
       <pubDate>Fri, 20 Nov 2026 18:15:16 +0000</pubDate>
-      <description>144 points, 61 comments. See description for top comments.</description>
+      <description>166 points, 68 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://ankitg.me/blog/vibecoding-inference-chip/"><strong>→ Article</strong></a> <small>(ankitg.me)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50579297">→ HN comments</a> &nbsp;·&nbsp; 144 points &nbsp;·&nbsp; 61 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50579297">→ HN comments</a> &nbsp;·&nbsp; 166 points &nbsp;·&nbsp; 68 comments &nbsp;·&nbsp; <small>comments as of 23h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>itissid</em>:</p>
 <blockquote>Someone mentioned that FPGAs though amazing to create bespoke chips that are fast, run into a fab capacity issue. Someone explained briefly to me that even if you could make an fpga that could do inference better than current GPUs it was economically possible to make them at scale. I can&#x27;t recall whether that was for technology related issues or just because fab capacity is completely filled up.</blockquote>
@@ -524,9 +704,9 @@ Additionally, architects often report to non-technical folks fairly high up the 
       <link>https://www.nbcnews.com/business/markets/anthropic-shares-markets-selloff-nasdaq-rcna610394</link>
       <guid isPermaLink="false">hn3-50578794</guid>
       <pubDate>Fri, 20 Nov 2026 17:44:01 +0000</pubDate>
-      <description>191 points, 1 comments. See description for top comments.</description>
+      <description>195 points, 1 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.nbcnews.com/business/markets/anthropic-shares-markets-selloff-nasdaq-rcna610394"><strong>→ Article</strong></a> <small>(nbcnews.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50578794">→ HN comments</a> &nbsp;·&nbsp; 191 points &nbsp;·&nbsp; 1 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50578794">→ HN comments</a> &nbsp;·&nbsp; 195 points &nbsp;·&nbsp; 1 comments &nbsp;·&nbsp; <small>comments as of 23h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>dang</em>:</p>
 <blockquote>Comments moved to <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50574383">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50574383</a>.</blockquote>]]></content:encoded>
@@ -1671,6 +1851,22 @@ This is only useful for the newcomers.<p>So this is saying core devs already kno
 <p>↳ reply — <em>jibalt</em>:</p>
 <blockquote>When I worked for the UCLA CompSci dept in 1969 I dressed like a hippie (as did Jon Postel and many others), but Vint always wore a 3-piece suit and carried a briefcase. (His bud Steve Crocker was more a pocket protector engineer type.)</blockquote>
 </blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>ChatGPT for SNES</title>
+      <link>https://www.bxfoundry.com/chatgpt_snes/</link>
+      <guid isPermaLink="false">hn3-50568548</guid>
+      <pubDate>Fri, 20 Nov 2026 00:25:59 +0000</pubDate>
+      <description>125 points, 41 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.bxfoundry.com/chatgpt_snes/"><strong>→ Article</strong></a> <small>(bxfoundry.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50568548">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 41 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>soulofmischief</em>:</p>
+<blockquote>That&#x27;s a great project, thanks for sharing.</blockquote>
+<p><strong>Top #2</strong> — <em>matt3210</em>:</p>
+<blockquote>you beat me to it</blockquote>
+<p><strong>Top #3</strong> — <em>lanewinfield</em>:</p>
+<blockquote>&quot;How many &#x27;r&#x27;s are there in the word strawberry?&quot;<p>&gt; 1. The opposite of strawberries<p>AGI achieved</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Gemini 4 Neon is the new #1 on the Models Engineering Index</title>
@@ -3961,329 +4157,6 @@ I guess the average SaaS does not install hardware boxes for each tenant separat
 <p>↳ reply 2 — <em>probably_wrong</em>:</p>
 <blockquote>No one else mentioned protecting whistleblowers, so I will:<p>We all know that our printers carry tracking dots, and similarly there&#x27;s a good chance that all kind of fingerprinting shenanigans are going on inside these big companies. Or maybe there&#x27;s a file that only five people are supposed to have and everybody knows who the other four are. Every time you release an original document you risk it being traced back to the leaker.<p>This is not theoretical, BTW, this is (as far as we know) how Reality Winner was identified:<p><a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Reality_Winner#Role_of_The_Intercept" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Reality_Winner#Role_of_The_Int...</a></blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>F-22 Next-Generation micro–Data Transfer Cartridge (mDTC)</title>
-      <link>https://sam.gov/workspace/contract/opp/8948e8601e964c6aba9c801eee16b1be/view</link>
-      <guid isPermaLink="false">hn3-50547583</guid>
-      <pubDate>Wed, 18 Nov 2026 15:35:44 +0000</pubDate>
-      <description>183 points, 118 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://sam.gov/workspace/contract/opp/8948e8601e964c6aba9c801eee16b1be/view"><strong>→ Article</strong></a> <small>(sam.gov)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50547583">→ HN comments</a> &nbsp;·&nbsp; 183 points &nbsp;·&nbsp; 118 comments &nbsp;·&nbsp; <small>comments as of 19h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>jotux</em>:</p>
-<blockquote>Cool coincidence. In a past job, I specifically made replacement PCMCIA cards for these (and other) planes. Instead of making cards with a controller and onboard storage, we made cards with an FPGA&#x2F;microcontroller and a microSD card soldered to the PCB. We did this specifically because these aircraft use (at least partially) broken implementations of the PCMCIA protocol, and we&#x27;d update the bus protocol per aircraft to work around the limitations. None of these planes can just go buy stuff off the street because some large portion just doesn&#x27;t work because their protocol isn&#x27;t fully implemented and isn&#x27;t flexible to deal with variance in timing&#x2F;speed&#x2F;etc.<p>A fun story: Our cards had whatever industrial-spec microSD card we could find (16GB, 32GB, etc.), and we&#x27;d internally limit the disk size to whatever the platform needed. Almost every aircraft had some specific number of MB they wanted because all of their CONOPS listed it, and they didn&#x27;t want to update documentation or software to put a different number there. We had a plane that could only use EXACTLY 128MB, but they were currently using 256MB cards and partitioning them to 128MB. We updated the disk size to present as 128MB so they could skip this step, and they specifically told us to put it back to 256MB because they didn&#x27;t want to update the commissioning process to remove the partitioning step.<p>It was rewarding work, and the card we designed was cheap (~$500 each, which is literally nothing for major platforms like this) and 100% US-designed and made (with the exception of ICs manufactured in the usual places). Still, the procedural and cultural practices of these program offices made it a real struggle to get traction and deploy them widely. Government acquisition is just generally designed around funding primes for current development and then paying through the nose for sustainment later. It was hard to design something for widespread sustainment use because by the time you were done and ready for production, a bunch of parts would be obsolete. Then you&#x27;d have to rev the design over and over. We were never allowed to stockpile anything, even if it was trivially cheap, to facilitate production later.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>jotux</em>:</p>
-<blockquote>Another story:<p>PO came to me and asked if our card would work on their plane. We ship them a prototype and it doesn&#x27;t work. They ship it back and send along a card that does work in the plane. We test it, and the card is just faster. We get the designer of the data box (works at the prime) on the phone and talk to him. Explain that our card works within timing specs but isn&#x27;t working in the plane reader. He says something along these lines: &quot;Oh, our reader implements the communication specification just fine, but only for fast cards. When we designed the box we wanted to hit a certain read&#x2F;write speed, so we went out and bought a bunch and found the fastest cards and wrote our VHDL to talk to those cards.&quot; After we collected our jaws from the floor we updated our card to run a little faster and it started working. They had a lot of trouble finding commercial cards that worked.<p>And another:<p>One of the hardest parts to find for a PCMCIA card is stamped sheet metal cases. When we made prototypes, we bought case kits where the PCB just dropped in if you followed the PCB outline and used the right 68 pin connector. Around 2020 the companies that made them started to discontinue them, sent out a notice to offer final production batch ordering to do final lifetime buys. I BEGGED a bunch of groups to go order a few thousand, or tens of thousands and just put them in a closet somewhere (they were like $9&#x2F;each). No one could make the decision in time, they went obsolete. We ended up designing a new machined aluminum case with super tight tolerances and features and it was like 80% of the total $500 cost.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>CobaltFire</em>:</p>
-<blockquote>I would have killed to be able to use the machined aluminum case.<p>The number one reason we had to retire PCMCIA cards on the flight line was the stamped steel case getting caught on something and bending one too many times. We could fix it a few times, but they wouldn&#x27;t fit in the aircraft after a while (tighter tolerances than the laptops).</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>jotux</em>:</p>
-<blockquote>When we designed the prototypes with stainless steel cases we potted the internals (and case) with thermal epoxy to make them more rugged. It made them super strong and durable. We had a lot of issues with machined aluminum cases not fitting well in a bunch of readers because of the tight tolerances.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>RogerL</em>:</p>
-<blockquote>Cool. I was in the game during the period when DTMs were still being used, and ended up doing sw mods to support the PCMCIA replacements, which was a real hair puller because of lack of documentation and difficulty in getting Windows to work with the cards (a lot of work was more on the pc side - planners&#x2F;loaders).<p>for others - the DTM was a solid black &quot;brick&quot; that weighed a few pounds and was maybe 128MB of solid state memory. About the size of a brick, but half as thick. Very expensive (I think we were paying ~6K at the time), with long lead times. The SCSI devices we used to read&#x2F;write from the PC were even harder to acquire; you had to get a spot on the manufacturing schedule, and we were a small defense contractor, so no real way to get moved up the list. Made for difficult contract deliveries, and of course absurdly expensive bids due to all of this.<p>Everyone was really excited to the change to PCMCIA, except the ones of us implementing it!<p>edit: i may be conflating a few memories, I do remember fighting with microSDs as well, I think. Trying to remember; I think the DTM &#x27;bricks&#x27; had a version that accepted a PCMCIA or micro card as the memory, so the interface hardware&#x2F;sw didn&#x27;t need to change. I have no idea if the DTMs are in use anymore.</blockquote>
-<p>↳ reply 3 — <em>inamberclad</em>:</p>
-<blockquote>Cool coincidence, since I&#x27;m writing a storage driver for an airplane at the moment! Software reuse is very difficult in aerospace since the hardware and software were both qualified in a very specific combination, in the context of an aircraft program, and any change or adaptation is a huge effort.<p>That means lots of &#x27;clean sheet&#x27; driver rewrites from a spec document for your specific environment and hardware, and lots of hand rolled drivers that work well enough, but not great, because the burden of certification is too much to justify incorporating fancy features, like driver interrupts or multiple speeds. Just hard-code exactly the settings you need for your project, you&#x27;ll save weeks of extra V&amp;V effort.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>spicyjpeg</em>:</p>
-<blockquote>It&#x27;s worth pointing out that there are actually <i>two</i> main types of PCMCIA memory cards. The most common by far are the ATA cards mentioned here, which are basically CF cards in a different form factor (equivalent to a CF card in a CF-to-PCMCIA adapter) and work by emulating either an IDE hard drive or an ISA IDE controller depending on wiring. While uncommon at this point, CF controller chips are still available and some specialized suppliers do manufacture these cards brand new using modern NAND flash.<p>The much more problematic ones to find a replacement for in 2026 are the so-called &quot;linear&quot; memory-mapped cards, consisting of one or more banks of raw parallel NOR flash with no controller IC. Linear cards were never standardized and the protocol used to interface to parallel flash can vary greatly across chip families, so the vast majority of devices that use them are hardcoded to only accept cards with a specific manufacturer and device ID. Many NOR flash manufacturers from the turn of the century have long discontinued their products and emulating parallel flash using modern FPGAs and microcontrollers is also non-trivial due to their memory-mapped nature, so owners of legacy telecom equipment and original Dance Dance Revolution arcade cabinets [1] are left with pretty much no viable replacement option once the stock cards fail.<p>[1] <a href="https:&#x2F;&#x2F;psx-spx.consoledev.net&#x2F;konamisystem573&#x2F;#flash-chips-and-pcmcia-cards" rel="nofollow">https:&#x2F;&#x2F;psx-spx.consoledev.net&#x2F;konamisystem573&#x2F;#flash-chips-...</a></blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>Waterluvian</em>:</p>
-<blockquote>Oh! I have one of these. Except it’s only 2MB and my Newton is currently using it.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>andyfilms1</em>:</p>
-<blockquote>When you get a chance, you should throw it in an F35 and see if it works!</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>Waterluvian</em>:</p>
-<blockquote>I see no PCMCIA port in my F-35.  And I’m fresh out of F-22s.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Melatonic</em>:</p>
-<blockquote>So your saying that Dance Dance Revolution and Fighter Jets might be competing for the same stock of legacy hardware?</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>CobaltFire</em>:</p>
-<blockquote>For anyone wondering what these are used for:<p>All current US military aircraft (at least up through the F-35) use CF cards to take mission planning from the laptops in the SCIF (or whatever unclass space they are using) to the aircraft.<p>As an aside, LCACs (among other platforms) also use these systems and cards. So this is a pretty widespread use case.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>happosai</em>:</p>
-<blockquote>I heard recently The F-16 updates are known as &quot;tapes&quot;. So like &quot;M6 tape brought this and that feature  but there was a serious issue so had make a M6.2 tape&quot;. The source did not clarify if the fighters literally load software from tapes and I was too afraid to ask...</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Animats</em>:</p>
-<blockquote>The F-16 also uses PCMCIA cards.<p>It&#x27;s the right size for the job. It&#x27;s small enough to be easily carried around, and big enough that it can be handled while wearing heavy gloves.
-They&#x27;re big enough to have labels on them. 
-The drive encloses and supports a PCMCIA card on five sides, and locks it into place, so it stays seated while fighter planes do fighter plane things.<p>PCMCIA cards were an excellent choice for military purposes.
-MicroSD cards are too tiny to handle with gloves or outdoors.
-In this application, you want a visible label on the device, since the card contains mission specific data and there are other similar cards around.
-USB drives supported only by their own connector are not well supported against G loads and vibration.<p>So they had a great solution. It just became obsolete because everybody wanted tiny laptops and phones.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>0_____0</em>:</p>
-<blockquote>I concur with this, and it&#x27;s the same reason I&#x27;ve standardized around the Samsung external SSDs. Come to think of it, they&#x27;re kind of a similar volume to PCMCIA cards, albeit not as long, and I have each of mine labeled. I also know, positively, where they all are, which I can&#x27;t say about <i>any</i> of my microSD cards.<p>Make Data Big Again</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>andyfilms1</em>:</p>
-<blockquote>&quot;128MB of mission targets ought to be enough for anybody&quot;</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Unauthenticated remote code execution in Nginx</title>
-      <link>https://www.wiz.io/blog/nginx-http2-rce-vulnerabilities</link>
-      <guid isPermaLink="false">hn3-50547374</guid>
-      <pubDate>Wed, 18 Nov 2026 15:19:55 +0000</pubDate>
-      <description>1406 points, 604 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.wiz.io/blog/nginx-http2-rce-vulnerabilities"><strong>→ Article</strong></a> <small>(wiz.io)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50547374">→ HN comments</a> &nbsp;·&nbsp; 1406 points &nbsp;·&nbsp; 604 comments &nbsp;·&nbsp; <small>comments as of 20h</small></p>
-<p><strong>★ Comments from: tptacek</strong></p>
-<hr>
-<p><strong>Top #1</strong> — <em>black3r</em>:</p>
-<blockquote>The bug was apparently fixed in open source repo a week earlier, this could&#x27;ve been abused by anyone smart enough to monitor repos like this for exploitable bugfixes for a week (the commit message even included &quot;Reported by Xint.io&quot; and I&#x27;m guessing skilled black hats would know about Xint)<p>Given that in this case the workaround is as simple as disabling http2, there is honestly no reason why F5&#x2F;Nginx or any of the reporting teams couldn&#x27;t at least put out a PSA to disable http2 for the time being before basically telling the whole wide world this exists and how to exploit it.<p>Especially for software like Nginx which powers a huge part of the internet.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>verst</em>:</p>
-<blockquote>Disabling http2 can be a big deal. My service is primarily made up of gRPC APIs. Not an option for me to disable http2.
-Luckily I&#x27;m not using nginx at the moment - but I easily could have been.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>weitendorf</em>:</p>
-<blockquote>If you&#x27;re using grpc, http2, etc you&#x27;re so much better off using Envoy proxy<p>You basically get to piggyback off of a large chunk of big tech&#x27;s infrastructure and security work. Obviously everything has the risk of security flaws (and I kind of hate that default Envoy builds ship with half-baked filter impls) but it&#x27;s a generally more mature ecosystem than projects with a lot of smaller&#x2F;legacy users like nginx</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>trey-jones</em>:</p>
-<blockquote>I&#x27;m not 100% informed on this, but it seems very unbelievable to me that Envoy could be considered more robust or widely used than nginx at any point in history including today.  I started using ConnectRPC instead of GRPC almost entirely because it didn&#x27;t leave me subject to (what I consider to be) an unnecessary dependency in Envoy.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>brunoborges</em>:</p>
-<blockquote>&gt; this could&#x27;ve been abused by anyone smart enough to monitor repos like this for exploitable bugfixes for a week<p>And here lies the risk of AI agents in cybersecurity: the speed of processing for monitoring, scanning, identifying security fixes in open source, writing exploits for affected versions, and attempting infiltration, is a matter of minutes now.<p>It is not &quot;by anyone smart enough&quot;. It is by &quot;anyone ill intentioned enough&quot;. They don&#x27;t need to be super smart anymore.</blockquote>
-<p>↳ reply 3 — <em>SubiculumCode</em>:</p>
-<blockquote>How bad are these CVEs?
-Could any of these be related to some of the recent outages (not claiming, asking) in the last week, coinciding with when this bug was fixed in the repo? Monitoring such repos seems a given for nation states.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>fduran</em>:</p>
-<blockquote>Small consolation but HTTP&#x2F;2 is not enabled by default in Nginx and &quot;only&quot; 12% of servers run it (still huge at Internet scale) <a href="https:&#x2F;&#x2F;w3techs.com&#x2F;technologies&#x2F;segmentation&#x2F;ce-http2&#x2F;web_server" rel="nofollow">https:&#x2F;&#x2F;w3techs.com&#x2F;technologies&#x2F;segmentation&#x2F;ce-http2&#x2F;web_s...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>jonenst</em>:</p>
-<blockquote>Not enabled by default in upstream nginx yes, neither in most prepackaged nginx (e.g. debian), but enabled by default in some, for example kubernetes community ingress-nginx (the popular but deprecated one)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>kuschku</em>:</p>
-<blockquote>I still hate that they deprecated it, just because it gives anyone with write access to the cluster write access to the cluster.<p>Chainguard still updates their fork, by letting AI try to apply and backport the nginx patches, and I&#x27;m using that at the moment while switching to gateway API, but I&#x27;d have preferred if ingress-nginx was still maintained (the one by F5&#x2F;nginxinc for example is still being maintained, just not entirely compatible).</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>malikNF</em>:</p>
-<blockquote>Hey so, does anyone know of a good tutorial on getting in to woodwork?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cfn</em>:</p>
-<blockquote>I tried, didn&#x27;t succeed so I am back.</blockquote>
-<p>↳ reply 2 — <em>hi41</em>:</p>
-<blockquote>I felt your post was off topic. But maybe it was on purpose because we are getting bored of so many vulnerabilities being discovered by AI security tools. So your post is important because of that.<p>I see a lot of interest in woodworking on HN. Is that because Jesus was a carpenter and HN folks are interested in woodwork because of the larger context and history shaped by Christianity? What is your motivation for woodwork? Is that because we see a concrete finished project instead of vague intellectual stuff which has no seeable boundaries?</blockquote>
-</blockquote>
-<p><strong>Also</strong> — <em>fn-mote</em>:</p>
-<blockquote>AI is burning down the internet. This is insane.<p>Are we going to discover in a year that every server online this month had a rootkit installed? There’s got to be thousands who are too small time to wipe and reinstall.</blockquote>
-<blockquote>
-<p>↳ reply — <em>codedokode</em>:</p>
-<blockquote>Not AI but poorly designed programming languages ignoring integer overflows.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>vlovich123</em>:</p>
-<blockquote>I don’t know any systems programming language that doesn’t ignore integer overflow&#x2F;underflow in release builds. IMHO this is a CPU design flaw - integer operations should carry a flag indicating if the operation is allowed to wrap or if it should generate a trap. Then there wouldn’t be a performance penalty for this and languages like Rust could have it be trapped by default.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <strong>★ tptacek</strong>:</p>
-<blockquote>No. Memory safe languages still have integer handling issues, but the consequences are different. In a memory-unsafe language, integer mishandling often nets out to bad copies and memory corruption.</blockquote>
-<blockquote>
-<p>↳↳↳↳ reply — <em>vlovich123</em>:</p>
-<blockquote>I wouldn’t be sure that a Rust equivalent would be immune because it’s not hard to imagine an underflow&#x2F;overflow from reaching an unsafe block that’s used for performance (the implicated TLS path would be a hotspot worthy of such a choice).</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Russia reportedly planned mass-casualty attack in Poland to be blamed on Ukraine</title>
-      <link>https://www.yahoo.com/news/world/articles/russia-reportedly-planned-mass-casualty-090500574.html</link>
-      <guid isPermaLink="false">hn3-50547344</guid>
-      <pubDate>Wed, 18 Nov 2026 15:18:30 +0000</pubDate>
-      <description>367 points, 179 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.yahoo.com/news/world/articles/russia-reportedly-planned-mass-casualty-090500574.html"><strong>→ Article</strong></a> <small>(yahoo.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50547344">→ HN comments</a> &nbsp;·&nbsp; 367 points &nbsp;·&nbsp; 179 comments &nbsp;·&nbsp; <small>comments as of 20h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>jcfrei</em>:</p>
-<blockquote>I traveled through the baltics in the beginning of october and also crossed the suwalki gap to check out the border tripoint in Vištytis  (between russia, poland and lithuania). even though it&#x27;s in the middle of nowhere and on the edge of some large forests there was a surprising number of polish border patrols.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>buckwheatmilk</em>:</p>
-<blockquote>I live in a small town in the Suwalki gap. It&#x27;s not a garrison but military presence is definitely increased.<p>I find it bizarre that Russia would try to do something that could escalate to a second front even though it&#x27;s clear that EU is nowhere near the readiness of Ukraine. When a shahed type drone crosses our airspace we don&#x27;t have nothing adequate to shoot it down so F16&#x27;s are used to shoot em down with rockets that cost 20x as drone does.<p>Also the idea that Ukraine somehow organised some attack on Polish or Baltic states soil would never be bought by the local population and all the fingers would be pointed at Russia.<p>Not sure what their calculus is but it doesn&#x27;t seem sound. Fight in Ukraine has bogged down, and there are reports that Russia is losing more ground than it is gaining. The stated goal to capture remaining Donbas areas by the end of the year is unrealistic.<p>So the real question is is what is the point of these operations.<p>Another point is that they can stage as many of these operations as they want and at some point somewhere it will work.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>newprint</em>:</p>
-<blockquote>&gt; I find it bizarre that Russia would try to do something that could escalate to a second front
-&gt; Not sure what their calculus is but it doesn&#x27;t seem sound.<p>Calculus is very simple: they are 100% sure that Europe and Poland will not escalate. Poland will not get into a conflict without involving NATO.
-RU is escalating the conflicts the same way: Someone&#x2F;Something did something, they look stateless, it your problem. As long as this can be reformulated as attack with plausible deniability, they will act with immunity.<p>Stateless &quot;Green Men&quot; showed-up in my former homecountry, Moldova, in early 90s and started a conflicts. Same group of men, showed-up in Donbass in Ukraine during the first conflict and took down the passenger airplane. Same group of men is&#x2F;was involved in the current conflict.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>buckwheatmilk</em>:</p>
-<blockquote>&gt; they are 100% sure that Europe and Poland will not escalate.<p>I do agree on that point that they will not try to escalate by attacking military targets in Kaliningrad but direct attack against NATO state would open so many possibilities. There could be a strong response in a form of new capabilities given to Ukraine, money that is frozen right now in Belgium could be taken. Both sides have room to escalate I just don&#x27;t see the upside for Russia in doing so.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jacquesm</em>:</p>
-<blockquote>That whole area is effectively a garrison.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>pingou</em>:</p>
-<blockquote>That doesn&#x27;t seem to make much sense. Why would Ukraine attack Poland?
-There may be some tensions between Poland and Ukraine, but there need to be some degree of plausibility to a false flag operation.<p>If that was real it would probably make Poland support Ukraine even more or even declare war on Russia.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>avgDev</em>:</p>
-<blockquote>I have been to Poland just over a year ago, there are people who definitely are upset about Ukrainians in the country. I&#x27;ve heard complaints that country is giving them money, they are taking jobs and the women are stealing men. An attack might be hard to believe for an outsider, however, if you already have a negative view, it might further drive your opinion that helping Ukraine is bad.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>onemoresoop</em>:</p>
-<blockquote>&gt; ave been to Poland just over a year ago, there are people who definitely are upset about Ukrainians in the country. I&#x27;ve heard complaints that country is giving them money, they are taking jobs and the women are stealing men<p>There&#x27;s similar sentiment in other Easter Eurpean countries and that is mainly caused by Moscow influences and social media propaganda.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>red-iron-pine</em>:</p>
-<blockquote>why dance around it:  Russia is aggressively funding and propagandizing the European right wing.  They pay the AfD, Marine le Pen in France, the recently removed Hungarian asshole, etc.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>rdtsc</em>:</p>
-<blockquote>&gt; Why would Ukraine attack Poland?<p>They were not historically as friendly as you may imagine <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Volhynian_Bloody_Sunday" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Volhynian_Bloody_Sunday</a><p>In light of the war with Russia, Ukrainian govt has been leaning more into bolstering various individuals from the past who have had nationalistic leanings (you can read that in any flavor you&#x27;d like).<p>(from <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Ukrainian_Insurgent_Army" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Ukrainian_Insurgent_Army</a>)<p>&gt; On 20 October 2026, local deputies of the Lviv Regional Council supported a resolution to designate 2027 as the Year of the Ukrainian Insurgent Army (UPA) and its commander-in-chief, Roman Shukhevych.<p>It&#x27;s kind of a sensitive topic, certainly, and the Russians will not fail to take advantage of this crack and try to &quot;widen&quot; it a bit, if you will. A false flag attack is a pretty bold move. Don&#x27;t know if it means they are desperate.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>oska</em>:</p>
-<blockquote>Quoting the Guidelines :<p>&gt; Off-Topic: Most stories about politics, or crime, or sports, or celebrities, unless they&#x27;re evidence of some interesting new phenomenon. If they&#x27;d cover it on TV news, it&#x27;s probably off-topic.<p>If the readership of HN continues to allow (i.e. not flag) and even upvote stories on military conflicts which are <i>highly</i> politicised and propagandised then the utility of HN will diminish</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>tim333</em>:</p>
-<blockquote>It&#x27;s a somewhat interesting phenomenon. The Telegraph reports it a bit differently that the Russians were planning to kill Russian civilians in Kaliningrad and blame it on the Poles. <a href="https:&#x2F;&#x2F;www.telegraph.co.uk&#x2F;world-news&#x2F;2026&#x2F;11&#x2F;18&#x2F;russia-planned-to-kill-own-civilians-in-false-flag-attack&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.telegraph.co.uk&#x2F;world-news&#x2F;2026&#x2F;11&#x2F;18&#x2F;russia-pla...</a><p>Don&#x27;t know if there&#x27;s been much Russians killing Russians to blame someone for politics since Putin had the KGB blow up Russian flats to get elected when he first came to power?</blockquote>
-<p>↳ reply 2 — <em>_DeadFred_</em>:</p>
-<blockquote>HN management officially opened the door with IP discussion and making it a special official exception&#x2F;exemption. HN users normalizing the exception and&#x2F;or ignorong &#x27;special&#x2F;preferred conflicts only&#x27; says something.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Nintendo takes Picofly firmware down from GitHub [video]</title>
-      <link>https://www.youtube.com/watch?v=-TLCGUpoD6c</link>
-      <guid isPermaLink="false">hn3-50547048</guid>
-      <pubDate>Wed, 18 Nov 2026 14:56:04 +0000</pubDate>
-      <description>217 points, 79 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.youtube.com/watch?v=-TLCGUpoD6c"><strong>→ Article</strong></a> <small>(youtube.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50547048">→ HN comments</a> &nbsp;·&nbsp; 217 points &nbsp;·&nbsp; 79 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>judge2020</em>:</p>
-<blockquote>Isn&#x27;t it the case that DMCA takedowns are a mechanism of 17 USC 512, and thus takedowns submitted for 17 USC 1201 therefore aren&#x27;t legal takedown notices?<p>Nintendo only cites section 1201 in their DMCA takedown request: <a href="https:&#x2F;&#x2F;github.com&#x2F;github&#x2F;dmca&#x2F;blob&#x2F;master&#x2F;2026&#x2F;11&#x2F;2026-11-06-nintendo-2.md" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;github&#x2F;dmca&#x2F;blob&#x2F;master&#x2F;2026&#x2F;11&#x2F;2026-11-0...</a><p>Same thing seems to have happened with Take Two submitting takedown requests yesterday[0] for software projects that enabled you to run GTA 5 on Apple hardware if you bring your own copy, although this is a much less legal-looking takedown.<p>0: <a href="https:&#x2F;&#x2F;github.com&#x2F;github&#x2F;dmca&#x2F;blob&#x2F;master&#x2F;2026&#x2F;11&#x2F;2026-11-18-take-two.md" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;github&#x2F;dmca&#x2F;blob&#x2F;master&#x2F;2026&#x2F;11&#x2F;2026-11-1...</a><p>&gt; We adamantly request that GitHub disable the repositories and all associated forks from the platform. We emphasize that “bring your own files” disclaimer does not automatically shield the user from secondary copyright infringement through clear intent to facilitate the act.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>judge2020</em>:</p>
-<blockquote>Going to reply to myself here that apparently there is Universal City Studios v. Reimerdes, 82 F. Supp. 2d 211, 217 (S.D.N.Y. 2000)<p>&gt; Section 512(c) provides protection only from liability for copyright infringement. Plaintiffs seek to hold defendants liable not for copyright infringement, but for a violation of Section 1201(a)(2), which applies only to circumvention products and technologies. Section 512(c) thus does not apply here.<p>So in essence taking down a repository would not absolve GH of liability for the &#x27;trafficking&#x27; of said circumvention technology.<p>Although it looks like GitHub has their own policy for handling circumvention claims: <a href="https:&#x2F;&#x2F;docs.github.com&#x2F;en&#x2F;site-policy&#x2F;content-removal-policies&#x2F;dmca-takedown-policy" rel="nofollow">https:&#x2F;&#x2F;docs.github.com&#x2F;en&#x2F;site-policy&#x2F;content-removal-polic...</a><p>I do wonder if this extra circumvention review was undertaken by GitHub though, given I haven&#x27;t seem any evidence of the extra process happening (giving the repository owner a chance to respond or modify their repo &#x2F; referring the developer to legal consultation via GitHub’s Developer Defense Fund).</blockquote>
-<p>↳ reply 2 — <em>ndiddy</em>:</p>
-<blockquote>AFAIK Github voluntarily chooses to process 1201 claims as a risk mitigation strategy. The DMCA prohibits trafficking in circumvention mechanisms and doesn&#x27;t include a &quot;safe harbor&quot; provision for them, so Github could conceivably also be named in a lawsuit if they chose to wait for a court order to take them down.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>haunter</em>:</p>
-<blockquote>Or did they? The main repo is still untouched and available on Github and it&#x27;s up since 2023.<p>They took down a fork which had a lot more than the firmware itself.</blockquote>
-<blockquote>
-<p>↳ reply — <em>abirch</em>:</p>
-<blockquote>Do you have a link to the main repo? I see this when I google picofly github <a href="https:&#x2F;&#x2F;github.com&#x2F;Ansem-SoD&#x2F;Picofly&#x2F;blob&#x2F;main&#x2F;README.md" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;Ansem-SoD&#x2F;Picofly&#x2F;blob&#x2F;main&#x2F;README.md</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>haunter</em>:</p>
-<blockquote><a href="https:&#x2F;&#x2F;github.com&#x2F;rehius&#x2F;usk" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;rehius&#x2F;usk</a></blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>NegativeLatency</em>:</p>
-<blockquote>Would be cool to see projects start using more resilient tools <a href="https:&#x2F;&#x2F;radicle.dev&#x2F;" rel="nofollow">https:&#x2F;&#x2F;radicle.dev&#x2F;</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The x86 CPU: From 4004 to 486</title>
-      <link>https://pikuma.com/blog/history-of-x86-4004-to-486</link>
-      <guid isPermaLink="false">hn3-50546967</guid>
-      <pubDate>Wed, 18 Nov 2026 14:47:53 +0000</pubDate>
-      <description>170 points, 57 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://pikuma.com/blog/history-of-x86-4004-to-486"><strong>→ Article</strong></a> <small>(pikuma.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50546967">→ HN comments</a> &nbsp;·&nbsp; 170 points &nbsp;·&nbsp; 57 comments &nbsp;·&nbsp; <small>comments as of 20h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>jgord</em>:</p>
-<blockquote>Learned to program on an 8088 machine with Hercules mono graphics card, first in GW-Basic which was godawful, then in A86 assembler and finally Turbo Pascal which was a pinnacle of human engineering, a portal into a wonderful future ahead.<p>There was great excitement and relief when the 80386 came out with its 32bit address linear memory model.  Everything suddenly became possible - serious compute on the desktop.<p>Also remember fondly the workhorse that was the Core2Duo and the i4700k beast, and Mike Abrashes Black book on game programming.<p>LLM-style AI doesn&#x27;t yet seem to be the growth technology we need to bring back the economic prosperity of the 80s-90s - but if RL can figure out a stable plasma fusion configuration and layout chips for much better data-flow, then we might see the level of prosperity and innovation we saw in those decades when Moores Law held sway.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>lproven</em>:</p>
-<blockquote>&gt; serious compute on the desktop.<p>The late great Guy Kewney wrote, I think in his original review of the IBM PC&#x2F;AT in 1984 or 1985 (so roughly when I was doing my &#x27;A&#x27; levels), something along the lines of...<p>&quot;I got this sudden feeling that sitting there right in front of me was... Raw. Computer. <i>Power.&quot;</i><p>The caps were his. The phrase has lived in my memory for 40 years.<p>He also had a wonderful description of WordPerfect 5, that went something like...<p>&quot;I can only imagine the conversation at WP head office, when they sat down and tried to work out what they could do to top Wordperfect 4.2. And somehow, what came out of the meeting was: &#x27;so, what we have here is the world&#x27;s greatest bicycle. We know it, everyone says it. So what we&#x27;re going to do is: we&#x27;re going to put 11 more wheels on it.&quot;<p>These days WP 5.1 for DOS is held up as The Greatest DOS Word Processor Ever.<p>It was much more usable, because it had CUA menus. So if you didn&#x27;t have all the f-key combinations memorised, you could just use the menus.<p>But that meant 3 complete UIs. At the time, it was seen as a bloated mess to existing WP users.<p>WP 4.2 was the sweet spot and ran from one 360kB floppy on an 8086. WP 5.1 needed a 286 with a hard disk.<p>But that&#x27;s sort of my point...<p>At one point, if you were used to CP&#x2F;M, an IBM PC with an 8086 and two 360kB floppies was a powerful computer.<p>Then came the PC&#x2F;AT... 1.2MB on a floppy and anyway a hard disk as standard! It could take a meg of RAM, if you were insanely wealthy, and amazing multi-colour EGA graphics!<p>Raw Computer Power indeed!<p>Then the 386. I remember that era. Insane unimaginable power, in the MS-DOS era. 2 or 4MB of RAM! DOS 3.3 or 4.0 had no useful way to use all that. You could have a disk cache, and EMS as well, and it was still wasted.<p>These were computers so powerful one could stick 2 more serial ports in the back on an ISA card, and it was instantly a multiuser UNIX minicomputer serving 4 dumb terminals as well as the console. A £5000 PC that could replace a £250,000 minicomputer.<p>What could 1 person do with all that power? Nothing useful.<p>Then, in 3 years, came Windows 3.0, and suddenly this departmental-scale powerhouse wasn&#x27;t fast enough any more... and you needed more RAM and a better graphics card and a bigger faster hard disk...</blockquote>
-<p>↳ reply 2 — <em>bartread</em>:</p>
-<blockquote>&gt; 80386 came out with its 32bit address linear memory model. Everything suddenly became possible - serious compute on the desktop.<p>I wasn&#x27;t really in the PC world at the time but I do remember this. I remember the first time using a 386 and feeling that, finally, PCs were genuinely powerful machines capable of genuinely impressive feats of computing.</blockquote>
-<p>↳ reply 3 — <em>bananaboy</em>:</p>
-<blockquote>I used A86! That was a great little assembler!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>petercooper</em>:</p>
-<blockquote>This is a neat history. However, going to be a bit nitpicky since they put this in bold re the 8008: <i>&quot;Intel did not design the instruction set of this chip&quot;</i> .. kinda true in a broad sense, but Intel engineers including Stan Mazor <i>did</i> change and enhance it, like adding increment and decrement operations and some other stuff mentioned in <a href="https:&#x2F;&#x2F;archive.computerhistory.org&#x2F;resources&#x2F;text&#x2F;Oral_History&#x2F;Intel_8008&#x2F;Intel_8008_1.oral_history.2006.102657982.pdf#page=5" rel="nofollow">https:&#x2F;&#x2F;archive.computerhistory.org&#x2F;resources&#x2F;text&#x2F;Oral_Hist...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>adrian_b</em>:</p>
-<blockquote>The increment and decrement instructions were the only enhancements, according to what is said at your link.<p>They removed from the ISA a branch-on-bit instruction and reduced the address size from 16 bits to 14 bits, because at that time Intel could not use bigger integrated circuit packages, with enough pins for a complete address.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>wk_end</em>:</p>
-<blockquote>The link describes increment&#x2F;decrement as “<i>one of</i> the enhancements we made” (emphasis mine). The other things rattled off there aren’t necessarily “enhancements”, so I don’t think it’s clear that Mazor is giving an exhaustive list of changes or enhancements.</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>kens</em>:</p>
-<blockquote>One thing I&#x27;d emphasize is that the 4004 is not related to the 8008 at all, except that many of the same people worked on both chips.</blockquote>
-<blockquote>
-<p>↳ reply — <em>adrian_b</em>:</p>
-<blockquote>Yes, the only relationship between 4004 and x86 is that the team which designed 4004 practically learned on it how to design PMOS logic circuits and by the end of the project they had a methodology of how to design such logic circuits in a more efficient way, which then they applied in their next project, which became Intel 8008.<p>In my opinion, not only 4004 is completely unrelated to 8008 and x86, but it also does not deserve to be called a &quot;microprocessor&quot;, which is intended to mean &quot;monolithic computer CPU&quot;, while it can be argued that the 4004 chip set was neither monolithic nor usable as a general-purpose computer CPU.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>nwallin</em>:</p>
-<blockquote>&gt; In my opinion, [...] it also does not deserve to be called a &quot;microprocessor&quot;, which is intended to mean &quot;monolithic computer CPU&quot;, while it can be argued that the 4004 chip set was neither monolithic nor usable as a general-purpose computer CPU.<p>Somebody wrote a MIPS emulator in 4004 and used the emulated system to run linux. (it took a week to boot) I&#x27;d argue that if it runs linux it is a general purpose computer CPU.<p>I agree that it is not monolithic; you can&#x27;t do anything without the associated ROM+IO chip. But I&#x27;d argue that&#x27;s largely semantics. You can&#x27;t use a modern x86 CPU without a motherboard full of associated chips either. Although it&#x27;s not the Platonic ideal of a single monolithic IC, 2 chips to run programs is good enough.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lproven</em>:</p>
-<blockquote>&gt; Somebody wrote a MIPS emulator in 4004<p>[[citation needed]]</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>A Primer on Fourier Series (2025)</title>
-      <link>https://arxiv.org/abs/2510.18203</link>
-      <guid isPermaLink="false">hn3-50546922</guid>
-      <pubDate>Wed, 18 Nov 2026 14:44:33 +0000</pubDate>
-      <description>125 points, 34 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://arxiv.org/abs/2510.18203"><strong>→ Article</strong></a> <small>(arxiv.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50546922">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 34 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>knappa</em>:</p>
-<blockquote>&quot;SD &amp; EV have removed their affiliations from this work as a form of civil protest.&quot;<p>Does anyone know the story here?</blockquote>
-<p><strong>Top #2</strong> — <em>tarheels100</em>:</p>
-<blockquote>The absolute Bible of Fourier transforms is Bracewell&#x27;s book, &quot;The Fourier transform and its applications&quot;. It has an amazing visual &quot;dictionary&quot; of Fourier transform pairs.</blockquote>
-<p><strong>Top #3</strong> — <em>chollida1</em>:</p>
-<blockquote>side note, how do people pronounce this site.<p>I&#x27;ve heard everything from &quot;archive&quot; to &quot;arvix&quot;.<p>I&#x27;ve never heard anyone pronounce it as &quot;arziv&quot; which would be the phonetic pronunciation. like xylophone.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>1-more</em>:</p>
-<blockquote>&gt; like xylophone<p>So xylophone means &quot;wooden sound instrument&quot; from the Ancient Greek ξύλον meaning &quot;wood.&quot; But the pronunciation of ξύλον apparently starts with a &#x2F;ks&#x2F; sound. Of course, if you start saying &quot;ksilophone&quot; you&#x27;ll sound like a lunatic.   <a href="https:&#x2F;&#x2F;en.wiktionary.org&#x2F;wiki&#x2F;%CE%BE%CF%8D%CE%BB%CE%BF%CE%BD#Ancient_Greek" rel="nofollow">https:&#x2F;&#x2F;en.wiktionary.org&#x2F;wiki&#x2F;%CE%BE%CF%8D%CE%BB%CE%BF%CE%B...</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>voxelghost</em>:</p>
-<blockquote>&gt;Of course, if you start saying &quot;ksilophone&quot; you&#x27;ll sound like a lunatic.<p>Now you tell me?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>lioeters</em>:</p>
-<blockquote>Lunatic or a foreigner. I&#x27;m both.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>chas</em>:</p>
-<blockquote>“Archive” The “X” is a chi.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Cambridge Dictionary has named ‘human’ as the Word of the Year 2026</title>
-      <link>https://www.cam.ac.uk/news/cambridge-dictionary-reveals-word-of-the-year-2026</link>
-      <guid isPermaLink="false">hn3-50546914</guid>
-      <pubDate>Wed, 18 Nov 2026 14:43:52 +0000</pubDate>
-      <description>281 points, 214 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.cam.ac.uk/news/cambridge-dictionary-reveals-word-of-the-year-2026"><strong>→ Article</strong></a> <small>(cam.ac.uk)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50546914">→ HN comments</a> &nbsp;·&nbsp; 281 points &nbsp;·&nbsp; 214 comments &nbsp;·&nbsp; <small>comments as of 20h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>thimabi</em>:</p>
-<blockquote>&gt; Bill Gates, Chair of the Gates Foundation, made the case for “human reserved jobs”, such as caregivers, that should never be taken by machines<p>If only it were that simple to define what a job is and which jobs are “worthy” or not of being reserved to humans.<p>I’m against dreamy proposals like this one because they miss the forest for the trees. Like previous technologies, AI can do lots of things that humans don’t really care about automating. But deciding which things won’t be subject to AI hinges on personal preferences, class interests, and even market pressures. It’s not something that can be reasoned about on a global scale, and trying to push this agenda might sow even more division among humans than we’d think at first glance.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cassonmars</em>:</p>
-<blockquote>As someone who has seen many caregivers of elder family – both family members serving as caregivers, and hired caregivers – as well as a caregiver to my spouse with a lifelong physical disability, Gates is so wrong for this. Caregiver burnout and fatigue is a thing. And sometimes it can be exactly these human circumstances that something is missed, or someone is injured – if we had caregiver robots that could serve at peak human caregiver capacity at all times, we should do everything in our power to make them as affordable and accessible as possible.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Rebuff5007</em>:</p>
-<blockquote>The fact that caregivers burnout under the current economic model of funding care is completely orthogonal to the idea that caregiving should be a human reserved job.<p>IMO, a more reasonable argument against reserving caregiving for humans is that robotic caregiving can actually empower those that need the help.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>Finbel</em>:</p>
-<blockquote>Plus, personally. When I’m old, if AI and robotics is really good I might truly prefer being taken cared of by a robot that takes gentle care of my crippled body while carrying stimulating conversations and remembering everything I’ve said.<p>Compared to the, sadly too common, current hellscape of some underpaid and over worked person who comes by and does the bare minimum (if that) in a rush before hurrying off to their next client.</blockquote>
-<p>↳ reply 3 — <em>relyks</em>:</p>
-<blockquote>I disagree with Bill Gates. If future androids can take care of people in their old age, they absolutely should. I&#x27;m hoping this will be the case. I was a caregiver for my grandfather. It can be very stressful. If androids can take care of my future aging family members, that will allow me and younger family members to keep them in our places of residence rather than having to move them to an assisted living facility or nursing home. That is great. There is also the bonus that humans won&#x27;t have to wipe 100-year-old butts and change diapers.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>trentnix</em>:</p>
-<blockquote>The use of &quot;human&quot; instead of <i>people</i> or <i>person</i> is a peeve of mine. When someone says &quot;he&#x2F;she is such a good human&quot; or &quot;one of my favorite humans&quot;, it sounds (to me) impersonal and demeaning. A person is 3-dimensional. A person has agency. A person has purpose.<p>A human is just a person-shaped clump of cells.<p>I know I&#x27;m a bit ridiculous with my over-analysis. I know people say &quot;human&quot; mostly because it&#x27;s a trope. But it <i>grinds my gears</i> nonetheless.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>devindotcom</em>:</p>
-<blockquote>I would say this construction works in a context where one is comparing (overtly or not) with _inhuman_, which has its own connotations but could imply alien, machine, sub-human, etc.<p>Cambridge&#x27;s highlighting of the word is clearly setting it in opposition to machine, or imitation humanity. To be human is a different matter than to be a person - the former is broader and a designation, the latter more, well, personal and descriptive.<p>But these fine distinctions do matter and attending to them makes us more conscious of how we use language.</blockquote>
-<p>↳ reply 2 — <em>moffkalast</em>:</p>
-<blockquote>People and person also includes aliens and sentient machines though if you count how it&#x27;s used throughout scifi anyway, so it may  not be accurate enough for the situation. Human is very specific.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ourmandave</em>:</p>
-<blockquote>Of my friend, I can only say this: of all the souls I have encountered in my travels, his was the most... human.<p>Adm James T Kirk</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
