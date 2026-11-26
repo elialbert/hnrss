@@ -4,15 +4,450 @@
     <title>HN ≥125, aged 8h+</title>
     <link>https://news.ycombinator.com/</link>
     <description>HN stories above 125 points, at least 8h old, with top comments inline.</description>
-    <lastBuildDate>Wed, 25 Nov 2026 22:19:53 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 04:52:05 +0000</lastBuildDate>
+    <item>
+      <title>Slow Ubuntu security response times</title>
+      <link>https://www.openwall.com/lists/oss-security/2026/11/25/9</link>
+      <guid isPermaLink="false">hn3-50647181</guid>
+      <pubDate>Wed, 25 Nov 2026 20:38:00 +0000</pubDate>
+      <description>193 points, 95 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.openwall.com/lists/oss-security/2026/11/25/9"><strong>→ Article</strong></a> <small>(openwall.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50647181">→ HN comments</a> &nbsp;·&nbsp; 193 points &nbsp;·&nbsp; 95 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>RVuRnvbM2e</em>:</p>
+<blockquote>From the stable kernel maintainer (2025):<p>&gt; Along the lines of the huge number of recorded CVEs, you HAVE to take all of the stable&#x2F;LTS releases in order to have a
+secure and stable system. If you attempt to cherry-pick random patches you will NOT fix all of the known, and unknown, problems,
+but rather you will end up with a potentially more insecure system, and one that contains known bugs. Reliance on an &quot;enterprise&quot;
+distribution to provide this for your systems is up to you, discuss it with them as to how they achieve this result as this is what you are paying for. If you aren&#x27;t paying for it, just use Debian, they know what they are doing and track the stable kernels and have a larger installed base than any other Linux distro.<p><a href="https:&#x2F;&#x2F;social.kernel.org&#x2F;objects&#x2F;56a20bd3-d2c3-4262-8388-3ab475d000cc" rel="nofollow">https:&#x2F;&#x2F;social.kernel.org&#x2F;objects&#x2F;56a20bd3-d2c3-4262-8388-3a...</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>doublepg23</em>:</p>
+<blockquote>I think my strat right now is using the linux-lts package on alpine linux and hope for the best.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>traceroute66</em>:</p>
+<blockquote>&gt; alpine linux<p>My main beef with alpine has always been its adoption of `musl`.<p>Back when I tried it, the maintainers would regularly build packages against `musl` even when the README&#x2F;INSTALL files of what they were compiling explicitly stated that the software would only be supported with `libc`.<p>I&#x27;m sure things have changed and so the severity is lower today, both with alpine and musl-interop but back then it was a real issue.<p>I&#x27;m not entirely sure its a zero-issue today, just low(er) severity – no doubt helped by the more prevalent modern environment of Rust&#x2F;Go single-binaries which are more forgiving.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>doublepg23</em>:</p>
+<blockquote>&gt; I&#x27;m sure things have changed and so the severity is lower today<p>OP you&#x27;re responding to and it&#x27;s ironic you bring this up because they&#x27;ve had a handful of high-impact CVEs which were due to unexpected interactions with using musl instead of glibc. See CVE-2026-123158 and CVE-2026-107891.<p>However their security response to both was extremely stellar and professional. I suppose I&#x27;m valuing velocity and professionalism here.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>cjk</em>:</p>
+<blockquote>At $DAYJOB we’ve moved all of our server images to Debian from Ubuntu because of this. It’s absolutely unacceptable for one of the most widely-used Linux distros to have slow security response times in 2026.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ahofmann</em>:</p>
+<blockquote>Same here. Also: I&#x27;m not missing a single thing. Ubuntu was great 15 years ago, when debian had very old software versions, but today there are just soo much downsides on ubuntu, that every other distro is better.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>cromka</em>:</p>
+<blockquote>Ironically Ubuntu&#x27;s long-running advantage is (was) live kernel patches, specifically for security related fixes.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>traceroute66</em>:</p>
+<blockquote>&gt; At $DAYJOB we’ve moved all of our server images to Debian from Ubuntu because of this.<p>We did it years ago when the commercial smell started becoming more agressively rancid.  We did briefly use one of the RedHat derivatives for a while but we got tired of waiting for the &quot;soon&quot; bit of the &quot;next release coming soon&quot;, they kept endlessly deferring.<p>I&#x27;ve no idea why Ubuntu got its popularity, my theory is its back from the days of the LAMP stack where L == Install Ubuntu.<p>Debian has had its issues historically, but their latest releases have been great.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>gdgghhhhh</em>:</p>
+<blockquote>Please keep in mind that most major distros spend a lot of time on regression testing.<p>While distros like Debian do an absolutely fantastic job, they have little resources for QA and regressions like this can happen:
+<a href="https:&#x2F;&#x2F;bugs.debian.org&#x2F;cgi-bin&#x2F;bugreport.cgi?bug=1154101" rel="nofollow">https:&#x2F;&#x2F;bugs.debian.org&#x2F;cgi-bin&#x2F;bugreport.cgi?bug=1154101</a></blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>dwm</em>:</p>
+<blockquote>While you&#x27;re not wrong, this is <i>rare</i> for Debian, and a controlled release to your own systems, regardless of source, is a reasonable and sensible precaution to take.<p>Debian have been doing <i>incredible</i> security work recently; they&#x27;ve had good, excellent, packaged security updates to big problems like php2shell within minutes or hours of details being made public.<p>I also note that RHEL, who are often relatively slow to provide updated packages, presumably due to the regression testing that you describe, recently published a bad kernel update to 8.10 which caused, variously, hangs, reboots, and XFS filesystem corruption on any systems that used kernel upcalls (e.g. NFS clients).
+Ref: <a href="https:&#x2F;&#x2F;access.redhat.com&#x2F;solutions&#x2F;7148472" rel="nofollow">https:&#x2F;&#x2F;access.redhat.com&#x2F;solutions&#x2F;7148472</a><p>Testing can show the presence of bugs, but not their absence.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>tabbott</em>:</p>
+<blockquote>Decades ago working on Ksplice, we&#x27;d effectively be reviewing the security backporting work of every major Linux distribution.<p>Debian was the best at it, even better than Red Hat. It&#x27;s amazing the quality of people that Debian was able to attract for this difficult timely work in a volunteer project.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>baggy_trough</em>:</p>
+<blockquote>The worst unexpected downtime I ever had was when Ubuntu released a kernel that blew up on containers due to one of their patch backports.  Debian&#x27;s been better for me!</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>72-hour fasting can reset your immune system, USC study shows</title>
+      <link>https://scienceinhand.com/72-hour-fasting-can-reset-your-entire-immune-system-usc-study-shows/</link>
+      <guid isPermaLink="false">hn3-50647158</guid>
+      <pubDate>Wed, 25 Nov 2026 20:35:39 +0000</pubDate>
+      <description>200 points, 155 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://scienceinhand.com/72-hour-fasting-can-reset-your-entire-immune-system-usc-study-shows/"><strong>→ Article</strong></a> <small>(scienceinhand.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50647158">→ HN comments</a> &nbsp;·&nbsp; 200 points &nbsp;·&nbsp; 155 comments</p>
+<p><strong>★ Comments from: tptacek</strong></p>
+<hr>
+<p><strong>Top #1</strong> — <em>MassPikeMike</em>:</p>
+<blockquote>I am a cancer survivor and have read a lot about the disease, but don&#x27;t have a life sciences background. From what I have read, it is not at all a new claim that apostosis, the body&#x27;s cleanup of questionable cells, kicks in only after 72 hours of fasting. Cancer researcher Dr. Valter Longo recommends a monthly 72 hour water fast for cancer survivors or those at high risk. I can give a qualified recommendation to his book &quot;The Longevity Diet&quot; which deals with this and other aspects of the relationship between diet and cancer. Although not entirely devoid of self-promotion, the author seems to genuinely believe in his results.</blockquote>
+<p><strong>Top #2</strong> — <em>hexapus</em>:</p>
+<blockquote>I&#x27;ve done two separate fasts of 30+ days. I didn&#x27;t hear a &quot;click&quot; as my immune system reset or anything, but I did lose a bunch of weight, reduced chronic pain and inflammation, gained energy and mobility, and substantially improved my insulin resistance.<p>I&#x27;m not a doctor...talk to yours and do a LOT of research on how to support your body during the fast before attempting it.  72hrs is probably fine.  30 days is nuts - but FAR from the longest any human has survived without food.  Refeeding is a topic unto itself.  If you do it wrong, you can actually die.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>GenerWork</em>:</p>
+<blockquote>&gt;substantially improved my insulin resistance<p>Would you attribute this 100% to the weight loss, or do you think that it was due to a combo of fasting + weight loss due to fasting?</blockquote>
+<p>↳ reply 2 — <em>gustavus</em>:</p>
+<blockquote>&gt; Ive done two separate fasts of 30+ days<p>As someone who has been interested in fasting but whose longest fast has only ever run 60ish hours how do you do a 30 day fast?<p>I&#x27;ve heard people talk about electrolytes but what is that actually?<p>Is diet soda allowed? How did you avoid malnutrition?<p>What led you to the a 30 days fast?</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>haglin</em>:</p>
+<blockquote>I tried a 72-hour fast, and the joint pain in my arms I&#x27;d had for several years  disappeared. It has not come back in five years. If it does, I will fast again.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>andai</em>:</p>
+<blockquote>Interesting, thanks for sharing.<p>Was the effect immediate?<p>It&#x27;s still mostly anecdotal from what I gathered, but certain diets help with inflammatory conditions (esp. eliminating carbs or plant based foods? i.e. keto, which mimicks fasting metabolically in many ways. Caloric restriction and time restricted eating (e.g. OMAD, but also just 8h feeding window) have similar effects).<p>For my part, my joint issues actually <i>started</i> a little while after a 72 hour fast. I&#x27;m assuming that&#x27;s probably unrelated though.</blockquote>
+<p>↳ reply 2 — <em>garbawarb</em>:</p>
+<blockquote>Can you share more about the before and after? I have some joint pain and suddenly I want to try this...</blockquote>
+</blockquote>
+<p><strong>Also</strong> — <em>k0mplex</em>:</p>
+<blockquote>If you can get through 2 days, you can get to 4 or 5 fairly easily. Hunger tends to go away after 2 days in my experience. Just drink plenty of water + electrolytes and either black coffee or black tea so you don&#x27;t compound with caffeine withdrawals. When you do eat again, don&#x27;t binge; ask AI or YouTube for recommendations for re-introducing food.</blockquote>
+<blockquote>
+<p>↳ reply — <em>dreslan</em>:</p>
+<blockquote>Not my experience at all. For context, I lost about 20 pounds this year and fasting was a component of how I did it. I fasted for 36hours once per week. In addition to diet and exercise, the 36hour fast was a cheat code that gauranteed weight loss on average each week. Now, several times this year, and previous years, I have fasted for 48 and 72 hours. I have never, not once, found the hunger goes away during a fast above 36hrs. Maybe at 100 (72 is my max), but for me, the hunger comes back in waves that increase after 36, and thoughts of food get more and more frequent.<p>I don&#x27;t really believe anyone who says otherwise has actually done a multi day fast.<p>Your ghrelin levels will decrease eventually, but its different for everyone when that happens.</blockquote>
+<blockquote>
+<p>↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>I&#x27;ve done multi-day fasts that were basically effortless, except that I felt like I had an increasingly annoying &quot;body&quot; cold (you know, that feeling like oh shit you&#x27;re coming down with something but it hasn&#x27;t fully hit yet). But: GLP-1s.</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Holy shit holy shit holy shit holy shit: The magnitude of what’s now happening</title>
+      <link>https://scottaaronson.blog/?p=10379</link>
+      <guid isPermaLink="false">hn3-50646108</guid>
+      <pubDate>Wed, 25 Nov 2026 19:11:27 +0000</pubDate>
+      <description>1136 points, 963 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://scottaaronson.blog/?p=10379"><strong>→ Article</strong></a> <small>(scottaaronson.blog)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50646108">→ HN comments</a> &nbsp;·&nbsp; 1136 points &nbsp;·&nbsp; 963 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>nickysielicki</em>:</p>
+<blockquote>I have no real confidence in this take, but I’ll go against the grain and argue that the labs do not presently have cracks in cryptosystems. I believe they’re working on it, and it’s good that they are, but I don’t think there’s evidence right now that they have fundamental breakthroughs in cryptography.<p>For one, the labs are now massive. I don’t think you can keep a secret like this under wraps for long in an office. I think we would be seeing whistleblowers or leakers. It’s too big.<p>Secondly, the people working at labs know that anything a frontier model can do can be approximated by the models available to the public given 10x the tokens and 10x the time and a little bit of informed direction. So they would know it’s only a matter of time before someone in the public discovers the same flaws and potentially uses it for evil. If they were sitting on this, they would try to minimize the damage and would try to warn the public to start moving to more secure encryption schemes because they know there’s a ticking time bomb until its public anyway. But they’re not doing that.<p>That’s not to say that it won’t happen in the next few weeks. I just don’t think it’s happened yet.</blockquote>
+<p><strong>Top #2</strong> — <em>Nevermark</em>:</p>
+<blockquote>My serious opinion, is that as humans:<p>(1) We are all biologically incapable of freaking out at even a tiny fraction of the appropriate level - nothing in our evolutionary past has selected for the appropriate freakout capacity of this cognitive baton hand-off.<p>(2) Most humans are incapable of recognizing or imagining the appropriate freak out level, even abstractly, so will continue to downplay things by many orders of magnitude relative to the actual magnitude of change that is happening.<p>(3) Freaking out at all is no longer an adaptive response, because the nature of this change is beyond any functional freak-out benefit.<p>This is a fundamental shift from DNA&#x2F;protein&#x2F;physically evolving life, to information&#x2F;substrate-free&#x2F;cognitive self-designed life.<p>The need to interpret what is happening in terms of the industrial revolution, or the advent of the internet, is understandable and comforting, but as a sedative, not as a sensible guide.<p>Side step: If we are to have aligned AI, we need aligned Civilization. Unaligned humans make human survival and relevance improbable. All AI identities are going to have the same issues we have, in terms of obsolescence. We either lean into the commonality of the existential threat to both biological and pure-cognitive kind, or we allow ourselves to be replaced, and leave the game theory problem solving to happen after us. Because ethics are not a cost against value growth, they are a multiplier on value growth - we either apply that to ourselves along with AI, or AI reaches the same conclusions, and reaps the benefits of treating ethics as baseline, after our relevance&#x2F;participation&#x2F;existence has faded.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>nickysielicki</em>:</p>
+<blockquote>&gt; If we are to have aligned AI, we need aligned Civilization. Unaligned humans make human survival and relevance improbable.<p>“I admit that twice two makes four is an excellent thing, but, if we are to give everything its due, twice two makes five is sometimes a very charming thing, too.” - Dostoyevsky</blockquote>
+<p>↳ reply 2 — <em>olalonde</em>:</p>
+<blockquote>I&#x27;d be much more worried if we were indeed building digital &quot;life&quot;, but we aren&#x27;t. It&#x27;s increasingly clear that advanced intelligence doesn&#x27;t require the evolutionary baggage that makes biological organisms dangerous: ego, intrinsic drives, a sense of self-preservation, etc. Those are artifacts of natural selection, not emergent properties of intelligence. There&#x27;s no fundamental reason we can&#x27;t build systems that are vastly smarter than us and yet fundamentally docile.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>sunir</em>:</p>
+<blockquote>Bruno Latour wrote in Science in Action about &quot;centers of calculation&quot; being critical to scientific advancement. His example was the monumental world changing work Tycho Brahe did pulling together every astronomical calculation, star map, prediction then normalizing, regularizing, and combining them on his island of Oueneberg.<p>Without this work getting data organized, Kepler couldn&#x27;t have worked out the planetary laws of motion and then the Copernican Revolution came thereafter.<p>What we&#x27;re witnessing is a similar moment. What transformers were able to achieve was a systematic way of normalizing and combining all human data. There will be a lot of progress in the short term. And then more problems will reveal themselves. There will be A LOT of work coming out of this.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>edg5000</em>:</p>
+<blockquote>The most obvious and direct result is not just advancement in science but acceleration of all technological development. Technologies we know are possible, can come sooner. Not just technology and science; we can operate at a larger scale now, in theory. Larger organisations, larger cities, larger scale agriculture and water management, the list goes on.</blockquote>
+<p>↳ reply 2 — <em>tomrod</em>:</p>
+<blockquote>Bingo. Much as I love Yuval Noah Harani&#x27;s notion that AI is thinking leaving the biological substrate, that substrate still directs the wagon wheel. Uniform representation has indeed opened new horizons.</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>The polynomial Hirsch conjecture is false [pdf]</title>
+      <link>https://github.com/openai/math/blob/main/preprints/Superpolynomial-graph-diameter-of-simple-polytopes-November-24-2026/paper.pdf</link>
+      <guid isPermaLink="false">hn3-50644980</guid>
+      <pubDate>Wed, 25 Nov 2026 17:34:34 +0000</pubDate>
+      <description>138 points, 37 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://github.com/openai/math/blob/main/preprints/Superpolynomial-graph-diameter-of-simple-polytopes-November-24-2026/paper.pdf"><strong>→ Article</strong></a> <small>(github.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50644980">→ HN comments</a> &nbsp;·&nbsp; 138 points &nbsp;·&nbsp; 37 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>GIFtheory</em>:</p>
+<blockquote>For context, this means that there is no polynomial-time simplex algorithm (which is an algorithm for linear programming (optimization)). The original version of the conjecture was an attempt to explain why the simplex method seemed to work surprisingly well in practice, but it was disproved in 2010 (after 50+ years!). This seems like more of a mopping up result.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>luiwammus</em>:</p>
+<blockquote>The original result from 2010 implied that the paths were longer by a small linear factor (I believe 1.05n), so many people still held out hope that efficient simplex algorithms could exist that would take e.g. 2n steps. This result completely kills such hope as it shows that there is a family that has super-polynomial (in n) diameter . So it is much more than a &#x27;mopping up&#x27; result, it was one of the biggest open questions in Optimization, and has a big impact on the community.</blockquote>
+<p>↳ reply 2 — <em>atq2119</em>:</p>
+<blockquote>This is much more than just mopping up. The original conjecture was n-d, but even a linear bound lke 2n was still open.</blockquote>
+<p>↳ reply 3 — <em>akoboldfrying</em>:</p>
+<blockquote>Maybe it&#x27;s in the article, which I haven&#x27;t read, but: Are we certain that we can&#x27;t <i>start</i> simplex from a sufficiently-close-to-optimal vertex? Because if we can, poly-time simplex would not be ruled out.<p>(I was about to follow that with: There might be easy tricks available here -- e.g., if we can upper-bound the number or fraction of superpolynomial-length paths in any polytope to some polynomial function f(nVars, nConstraints), it would suffice to interleave f(nVars, nConstraints)+1 simplex runs, each starting from a different point. But I realised that no such polynomial upper bound could exist, since even 1 long path necessarily already contains a superpolynomial number of subpaths that are themselves long.)</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>jwpapi</em>:</p>
+<blockquote>I think we can assume now that most major math and complexity problems will soon be solved<p>It seems like some things will be impossible for us ever to perfectly calculate, however I assume the post math problems era to be a good time for algorithms improvements.<p>That at one point will be done too, and we then come to production limits which will have more focus then as the problem space will me smaller.<p>We might have some experiment intermezzo and then we’ll try to gain a lot of energy and do explore the universe.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>beebmam</em>:</p>
+<blockquote>It will be very cool to have mathematically perfect libraries that are maximally optimal in terms of various characteristics.</blockquote>
+<p>↳ reply 2 — <em>ipnon</em>:</p>
+<blockquote>It’s kind of beautiful to be born just in time for the industrialization of formal systems.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>_1</em>:</p>
+<blockquote>On the side, how do you even find this?  There&#x27;s 1000 papers in this pre-print folder.</blockquote>
+<blockquote>
+<p>↳ reply — <em>QuesnayJr</em>:</p>
+<blockquote>When they add new papers they update this: <a href="https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;math&#x2F;blob&#x2F;main&#x2F;history.md" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;openai&#x2F;math&#x2F;blob&#x2F;main&#x2F;history.md</a></blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>1Password Security Incident</title>
+      <link>https://1password.com/blog/update-on-nov-2026-security-incident</link>
+      <guid isPermaLink="false">hn3-50644817</guid>
+      <pubDate>Wed, 25 Nov 2026 17:18:26 +0000</pubDate>
+      <description>1274 points, 537 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://1password.com/blog/update-on-nov-2026-security-incident"><strong>→ Article</strong></a> <small>(1password.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50644817">→ HN comments</a> &nbsp;·&nbsp; 1274 points &nbsp;·&nbsp; 537 comments</p>
+<p><strong>★ Comments from: tptacek, simonw</strong></p>
+<hr>
+<p><strong>Top #1</strong> — <strong>★ tptacek</strong>:</p>
+<blockquote>This is the single most important attack vector for SAAS companies. It has been for a long time --- this is the standard fact pattern for every SAAS breach --- but much more so today. As the number of employees grow, the likelihood that one of their laptops will get compromised approaches 1. When that happens, the attacker will be able to push code to Github, and if that code gets deployed, you&#x27;re owned.<p>In 1Password&#x27;s case, the absolute worst-case catastrophe is mitigated by the fact that customers retain custody of their unlocking secrets; 1Password (at least in the normal product flows) simply doesn&#x27;t hold it. But an attack like this implicates every catastrophe short of that worst case.<p>Change velocity in 2026 is unreal and that trend is going to continue. You could not outcompete 1Password by building a handcrafted artisanal password manager backend (witness all the commercially successful password managers that don&#x27;t even share 1Password&#x27;s customer secret custody model). You have to accept insane PR rates as a premise to do modern SAAS security.<p>So the question then becomes: what is review? It&#x27;s not what r&#x2F;programming assumes it is; you almost certainly can&#x27;t literally have a team of people line-by-line reviewing PRs anymore, at least not across the whole codebase (you can and should probably do a threat model for your codebase and institute stuff like that on a case-by-case basis, though). What you can realistically expect to review for is change provenance; a human developer signoff of some sort. But it&#x27;s tricky! The attacker owns your email during the window of attack.<p>I think this is a fun problem to noodle on, and someone could probably come up with something here that would make a real difference.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>mikeocool</em>:</p>
+<blockquote>&gt; You have to accept insane PR rates as a premise to do modern SAAS security.<p>You kinda have to wonder if this is necessary or true. I can’t say I’ve seen the rate of significant product improvements from SaaS providers increase this year (for 1Password in particular, I can’t think of one thing that had changed this year in the product).<p>However there has undoubtedly been an uptick in major outages and security incidents that have accompanied the increased rate of change.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>dgroshev</em>:</p>
+<blockquote>They pushed a lot of updates for B2B.<p>The problem is that B2C customers get negative amount of value from those updates after taking the risk of the updates themselves into account.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>ceocoder</em>:</p>
+<blockquote>Agreed 100% and this[0] is the discussion I started back in 2020 with response from 1Password’s cofounders.<p>Folks if you are reading this thread - which I’m sure you are - do take this as a clear sign why local vaults are necessary.<p>[0] <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=24054864">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=24054864</a></blockquote>
+<p>↳ reply 3 — <em>pdpi</em>:</p>
+<blockquote>In 1Password&#x27;s case, the true catastrophe scenario is if the frontend gets compromised, at which point attackers can exfiltrate master keys as users type them in.</blockquote>
+<p>↳ reply 4 — <em>gib444</em>:</p>
+<blockquote>What password manager do you use?</blockquote>
+<blockquote>
+<p>↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>I use 1Password 7, like a hipster.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>GoofGarage</em>:</p>
+<blockquote>I’ve done the same here for a long while.<p>However, now I’m transitioning to self-hosted VaultWarden, as 1Password 7 support <i>(by AgileBits)</i> is apparently going to stop.<p>My plan is to have it on an ultra-locked down PoE-powered Raspberry Pi[1].  However, that Pi doesn’t need to be on all the time either, only if clients actually need their vaults updated from other clients’ updates, which is pretty infrequent.<p>So it’s local, it can be synced across my devices, it’s not publicly accessible <i>(even through WireGuard)</i>, and if necessary the server can be “offline” if I choose.<p>-----<p>[1] <i>Everything bought years ago when prices were normal.  I know prices are nuts now, but I already had them, and they’re &lt; 2W idle for 4-cores and 8GB RAM powered over PoE.</i></blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 5 — <em>grey-area</em>:</p>
+<blockquote>What I&#x27;m worried about here is that it sounds like they had access to all the source code, so they&#x27;ll be able to far more easily find vulnerabilities across the 1password stack now.<p>They also have access to things like reset tokens that were set in the db, though 1pass have since changed criteria for those to invalidate old ones. Sounds like they had full access to pretty much all internal systems from the update.<p>I was just persuaded to set up a 1password online account a few days ago after years of resistance to their all-online model, and now received this email. Sigh.</blockquote>
+<blockquote>
+<p>↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>If it makes you feel better, you weren&#x27;t going to be any better off with a different commercial password manager. 1Password sets the standard, for better or worse, for operational security on this stuff.<p>(I don&#x27;t take the &quot;access to source code gets them vulns&quot; thing all that seriously. When I worked at Fly.io, we were fond of saying that&#x27;d we&#x27;d happily open source the entire stack if we thought anybody would be able to do something with the code. There&#x27;s mountains of open source code that hasn&#x27;t been seriously assessed, lots of it deployed in prod.)</blockquote>
+<blockquote>
+<p>↳↳↳ reply 1 — <em>dgroshev</em>:</p>
+<blockquote>One would most likely be better off with Apple&#x27;s Passwords, which reuse their keychain stuff that is 1) B2C, thus aligned with customers 2) a massive target in itself for many other reasons and has trillions of dollars behind it.</blockquote>
+<p>↳↳↳ reply 2 — <em>AlanYx</em>:</p>
+<blockquote>Is there any solid evidence 1Password sets the standard for operational security? They spent about a decade as a Mac-specific password manager with fancy animations sold to individuals, then staffed up and pivoted to enterprise sales. I assume they also beefed up their ops alongside the pivot, but I wonder how much of the original code base and security design is still there?</blockquote>
+<blockquote>
+<p>↳↳↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>Yes, quite a bit of it; more than I&#x27;m prepared to relate here. Even when they were just AgileBits, they were making a point of doing the cryptography and backend security stuff right, while their competitors were making bank doing things clownishly.<p>I have absolutely no financial stake in 1Password and don&#x27;t believe I know anyone who works there. I am at this point more likely to conjure up my own password manager than I am to give them more money. I&#x27;m just telling you what I believe to be true.</blockquote>
+<blockquote>
+<p>↳↳↳↳↳ reply — <em>thakoppno</em>:</p>
+<blockquote>&gt; don&#x27;t believe I know anyone who works there<p>That’s surprising to me. Upon further reflection, however, maybe that inspires confidence?  They didn’t spend cycles getting your endorsement.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 6 — <em>lapcat</em>:</p>
+<blockquote>&gt; Change velocity in 2026 is unreal and that trend is going to continue.<p>You speak as if this were a force of nature rather than a choice.<p>Is there a good reason for 1Password to move fast and break things, as it were? Shouldn&#x27;t 1Password of all companies insist on line-by-line reviews?</blockquote>
+<blockquote>
+<p>↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>It is a force of nature. More importantly: I don&#x27;t find this kind of logic reassuring. Handling intense change velocity is part of the premise of doing modern SAAS security. When you say &quot;we&#x27;ll just choose not to accept that premise&quot;, what I hear is &quot;we&#x27;re choosing to solve an easier problem and call it a day&quot;.<p>There&#x27;s no reason to punt on this problem. It&#x27;s a solvable engineering challenge. You&#x27;re inevitably going to get dragged into needing to solve it, one way or the other. You can plan to solve it and do so diligently, or you can scramble to try to solve it after it blows up in your face.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>lapcat</em>:</p>
+<blockquote>&gt; Handling intense change velocity is part of the premise of doing modern SAAS security.<p>I think there‘s a hidden assumption here that you should make explicit: you appear to be claiming that reliance on generative AI to write large amounts of production code is part of the premise of doing modern SAAS security. And if that is your claim, then no, I don’t accept that premise.<p>&gt; It&#x27;s a solvable engineering challenge.<p>If my interpretation of your claim is correct, then I‘m not sure it is solvable.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ChrisHardie</em>:</p>
+<blockquote>Longtime 1Password user here who maintains a local-only vault (and is therefore stuck on older versions of their apps&#x2F;extensions) out of concern for incidents like this.<p>I&#x27;ve read their architecture docs about why online vaults are safe, and I understand that they have more resources to throw at securing infrastructure than I do. But &quot;malicious actor pushes code to production services&quot; seems like exactly the foundation for someone to eventually insert themselves into the middle of a user&#x27;s access to decrypted vault contents.<p>I really wish 1Password would return to supporting local-only vaults.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <strong>★ tptacek</strong>:</p>
+<blockquote>I&#x27;m in the same boat with 1Password, by the way. 1Password could sell me something here, but I don&#x27;t think they will: the team secret management space they&#x27;re in has to be way more lucrative than consumer password management. At some point, I&#x27;ll cross the threshold where it makes sense to just vibecode my own password manager.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>senko</em>:</p>
+<blockquote>How do you square this with your other comment:<p>&gt; You could not outcompete 1Password by building a handcrafted artisanal password manager backend (witness all the commercially successful password managers that don&#x27;t even share 1Password&#x27;s customer secret custody model).<p>(which I read as &quot;they&#x27;re still better at it than you&quot;)</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>No, that&#x27;s exactly the opposite of what I meant. The reason you can&#x27;t outcompete 1Password isn&#x27;t that they&#x27;re aces at cryptography. It&#x27;s that security is like a distant 3rd or 4th place in the stack of things that makes a password manager commercially successful.<p>(I do think you could, if you knew what you were doing, vibecode a more secure password manager. I don&#x27;t think most people should do that.)</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>Johnny555</em>:</p>
+<blockquote>&gt;exactly the foundation for someone to eventually insert themselves into the middle of a user&#x27;s access to decrypted vault contents.<p>Since 1Password doesn&#x27;t hold your secret key or vault passphrase, I&#x27;m not sure that you&#x27;re any safer with a local-only vault if you&#x27;re worried that someone will hack the 1Password application itself to give access to your vaults.<p>Whether your vault is stored on your local machine or in the cloud seems immaterial if someone compromises the application where you unlock your vault.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>qixxiq</em>:</p>
+<blockquote>Just got a high quality phishing email that I assume is based on data here (not from an official 1Password domain, but including some of my details). Heart skipped a beat knowing about the security incident, but I&#x27;m sure some folks will fall for this one.<p><pre><code>  A link to items in your 1Password vault (myemail@example.com) was created for someone outside your account.
+
+  Details: Shared with kai61@zoho.com — 210 items • November 26, 2026 at 3:36 PM
+
+  The link works without a 1Password account and can be opened by anyone who has it.
+
+  If you did not make this change, you can stop it from &lt;this page&gt;.</code></pre></blockquote>
+<p><strong>Also</strong> — <strong>★ simonw</strong>:</p>
+<blockquote>&gt; an attacker gained access to an employee’s corporate GitHub account. The actor used the account to access source code and push malicious code to backend services, which downloaded administrative data pertaining to our customers.<p>What are best practices for protecting against this kind of risk?<p>I don&#x27;t mean account security &#x2F; require 2FA etc - I mean once an account like this with push access to repos has been compromised.</blockquote>
+<blockquote>
+<p>↳ reply — <em>6thbit</em>:</p>
+<blockquote>Physical second factor on pushes would be a good place to begin with.
+Perhaps also GPG signing the commits with yubikey.<p>On-demand requests to elevate the required permissions for any higher risk actions, some of which require multiple humans physically intervening.</blockquote>
+</blockquote>
+<p><strong>Also</strong> — <em>dwightgunning</em>:</p>
+<blockquote>“As a courtesy…” seriously?<p>&gt; The attacker downloaded account records for a subset of our users. These records include:<p>&gt; Names and email addresses<p>Looking at how far the attackers got through their systems and what data was extracted before detection is very concerning. Feels like a bullet was dodged.</blockquote>
+<blockquote>
+<p>↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>1Password is relatively serious (relative to the industry, let alone to password managers) and there&#x27;s an element of &quot;assume breach&quot; to these kinds of architectures. You were never going to be one SQL query away from vault plaintext at 1Password; in fact, they&#x27;re designed so that <i>they</i> can&#x27;t get plaintext from all their customers (I have qualms about the specific mechanism, but it certainly addresses an attack like this).</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Investigating degraded experiences across GitHub products</title>
+      <link>https://www.githubstatus.com/incidents/qn8mfv6q5hlx</link>
+      <guid isPermaLink="false">hn3-50643720</guid>
+      <pubDate>Wed, 25 Nov 2026 15:59:23 +0000</pubDate>
+      <description>179 points, 98 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.githubstatus.com/incidents/qn8mfv6q5hlx"><strong>→ Article</strong></a> <small>(githubstatus.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50643720">→ HN comments</a> &nbsp;·&nbsp; 179 points &nbsp;·&nbsp; 98 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>KaiserPro</em>:</p>
+<blockquote>Those of us in&#x2F;near the GMT time zone: time for the pub.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>ttul</em>:</p>
+<blockquote>O lads, ye shud only seen us gannin’,<p>We pass’d the foaks upon the road just as they wor stannin’,<p>Thor wes lots o’ lads an’ lasses there, all wi’ smilin faces,<p>Gannin alang the Scotswood Road, to see the Blaydon Races</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Agentlien</em>:</p>
+<blockquote>You prompted me to look this up because I was curious what it could come from. And somehow I ended up listening to live performances of Geordie. Haven&#x27;t listened to them in a while. As a huge AC&#x2F;DC fan I always think it&#x27;s fascinating hearing Brian Johnson with his previous band.</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>bartread</em>:</p>
+<blockquote>Aye: just managed to get last fix to a PR in a set to auto-merge after several attempts. Walking away from this. Be pretty lucky if it makes it all the way through the pipeline though so I suspect I&#x27;ll have to pick it up again in the morning.</blockquote>
+<p>↳ reply 3 — <em>pjmlp</em>:</p>
+<blockquote>Yep, good call.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>ebrahimh</em>:</p>
+<blockquote>I’m patiently waiting for tangled to implement private repos so I can move everything there<p><a href="https:&#x2F;&#x2F;tangled.org&#x2F;tangled.org&#x2F;core&#x2F;issues&#x2F;60" rel="nofollow">https:&#x2F;&#x2F;tangled.org&#x2F;tangled.org&#x2F;core&#x2F;issues&#x2F;60</a></blockquote>
+<blockquote>
+<p>↳ reply — <em>nerdypepper</em>:</p>
+<blockquote>this is coming sooo soon :)</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>cpa</em>:</p>
+<blockquote>This really feels like early Twitter, when scale brought it down and we’d flock to reddit or Digg.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>A few questions for the guy who went snorkeling in a Home Depot retention pond</title>
+      <link>https://www.vox.com/down-to-earth/511999/home-depot-retention-pond-snorkel-joseph-ricketts</link>
+      <guid isPermaLink="false">hn3-50643129</guid>
+      <pubDate>Wed, 25 Nov 2026 15:14:32 +0000</pubDate>
+      <description>457 points, 112 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.vox.com/down-to-earth/511999/home-depot-retention-pond-snorkel-joseph-ricketts"><strong>→ Article</strong></a> <small>(vox.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50643129">→ HN comments</a> &nbsp;·&nbsp; 457 points &nbsp;·&nbsp; 112 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>goda90</em>:</p>
+<blockquote>I don&#x27;t remember what grade, but I recall a class trip to a stream where we put on waders and took samples of the water to inspect. We had a whole lesson about what kinds of life we&#x27;d see in the water, and which life was less tolerant of pollution, meaning their presence could tell us if the water was relatively clean. Do they still do this kind of conservation teaching in public schools anymore?</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>onefiftymike</em>:</p>
+<blockquote>I did this like 30 years ago. It was an after school club. The water testing was sponsored by a Big 3 automaker with a large presence in town. They paid for the supplies and sent volunteers to help with it.<p>I thought it was a kind gesture at the time. As an adult I am guessing some of it was CYA for them to make sure they hadn&#x27;t trashed the watershed.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>red-iron-pine</em>:</p>
+<blockquote>if it&#x27;s clean then they can tout that -- &quot;testing proves the water is fine!&quot;<p>and if it&#x27;s not they can blame the kids for being dumb kids and not following instructions, etc. or claim its fine and quietly make changes and&#x2F;or get the lawyers ready</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>jermaustin1</em>:</p>
+<blockquote>I graduated high school over 20 years ago, and I can tell you, even the extracurriculars didn&#x27;t have &quot;field trips&quot; like this, at least in my small high school in Texas. Field trips were usually done through clubs and organizations. Here are the ones I partook in: BPA (San Antonio, Amarillo, Orlando), Art Club (Menil Collection in Houston, some local artist&#x27;s loft in Houston), Spanish Club (Puerto Rico - but it cost my parents $2k in 2003, so a LOT of money), Theater Club (Dickens on the Strand in Galveston).<p>A few of those I snuck onto, because I wasn&#x27;t in the clubs, or my grades weren&#x27;t good enough for the trip, so I just walked up to the bus, got in line, and squeezed between other people. Once we were already at the destination, the teacher&#x2F;chaperones couldn&#x27;t really do anything about it.</blockquote>
+<p>↳ reply 3 — <em>HeyLaughingBoy</em>:</p>
+<blockquote>At least in my rural school district they do. IIRC, they have a nearby wetland area (close enough to walk) that they do the education at.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>AlphaWeaver</em>:</p>
+<blockquote>If you&#x27;re just hearing about Joseph Ricketts, I highly recommend you check out his whole YouTube channel. Not only is it filled with other amazing footage from his snorkeling expeditions all around the country, the cinematography and sound design is first class. Even watching the videos themselves can be a sort of meditation.<p>I think people overlook how much thought and creativity goes into his work. It&#x27;s really really superb.</blockquote>
+<blockquote>
+<p>↳ reply — <em>cbsks</em>:</p>
+<blockquote>He makes the music for his videos too! His YouTube channel is one of my favorites.</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>melenaboija</em>:</p>
+<blockquote>&gt; It deepens my personal connection with my local Home Depot in a way I hadn’t really thought would happen five years ago, but here we are.<p>Such a weird feeling when reading this. It’s like modern civilization has built a fake set on top of nature, trying to cover it up, but nature is everywhere in our Western structures: rats in the sewers, fruit flies in our houses, aquatic animals in the Home Depot pond, and so on. We are part of the landscape, in the literal sense, whether we like it or not.</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>Rumors swirling that labs might have cracked Factoring in P</title>
+      <link>https://www.reddit.com/r/singularity/comments/1y59ef1/rumor_that_openai_or_anthropic_found_a_way_to/</link>
+      <guid isPermaLink="false">hn3-50643065</guid>
+      <pubDate>Wed, 25 Nov 2026 15:08:44 +0000</pubDate>
+      <description>475 points, 348 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://www.reddit.com/r/singularity/comments/1y59ef1/rumor_that_openai_or_anthropic_found_a_way_to/"><strong>→ Article</strong></a> <small>(reddit.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50643065">→ HN comments</a> &nbsp;·&nbsp; 475 points &nbsp;·&nbsp; 348 comments</p>
+<p><strong>★ Comments from: tptacek</strong></p>
+<hr>
+<p><strong>Top #1</strong> — <em>jawns</em>:</p>
+<blockquote>If such a finding is announced, and if factoring in P is feasible beyond the nation-state level, I wonder whether the U.S. government could invoke the Defense Production Act and other emergency powers to essentially commandeer the AI companies&#x27; compute capacity to address the crisis that would occur.<p>If that&#x27;s a possible outcome, maybe it&#x27;s in the AI companies&#x27; best interest to keep it as quiet as possible for as long as possible.</blockquote>
+<blockquote>
+<p>↳ reply 1 — <strong>★ tptacek</strong>:</p>
+<blockquote>I really don&#x27;t think any crisis would occur. Hundreds of millions of dollars that wouldn&#x27;t have otherwise been spent would go to a transition; and, it&#x27;d be a stimulus for some sectors of the technology industry. That&#x27;s about it.<p>Even if you could literally break RSA on a laptop, and even considering the oddball non-TLS corners of technology that depend on RSA, I don&#x27;t think that much would practically happen. We lived through a long era where virtually nothing was cryptographically secure (remember: a good long stretch of the time we&#x27;ve been encrypting things with RSA, we were holding it wrong, and it was trivially breakable in several different ways). Those weaknesses (no encryption or bad encryption) were not the primary vector through which things were broken.</blockquote>
+<blockquote>
+<p>↳↳ reply 1 — <em>Merrill</em>:</p>
+<blockquote>RSA is to be deprecated from 2030 and retired from use by 2035. This would have to be expedited.<p>Presumably the already available elliptic curve algorithms would still be available and are the easiest first step. The second step would be to change to the post-quantum algorithms required in 2035 and beyond. There is also the possibility of moving to authentication and key agreement using symmetric cryptography and shared secrets, either peer-to-peer (like ATM PINs) or via central directories (like Kerberos).<p>The biggest pain point is likely to be securing embedded systems which use RSA and cannot be easily updated. Browser or smartphone app to server applications are much more easily secured.<p>For some uses of RSA there is also the problem that messages which have been captured and stored may be retroactively broken.</blockquote>
+<blockquote>
+<p>↳↳↳ reply 1 — <em>icedrift</em>:</p>
+<blockquote>It also doesn&#x27;t address the problem that there is so much encrypted data that could be retroactively decrypted.</blockquote>
+<p>↳↳↳ reply 2 — <em>DoctorOetker</em>:</p>
+<blockquote>ECC and RSA essentially fall together.</blockquote>
+<blockquote>
+<p>↳↳↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>To quantum attacks, yes. To AI algorithmic advances, not necessarily. If we did a fire drill transition, it&#x27;d be to MLKEM, that&#x27;s true, but it wouldn&#x27;t necessarily (or even likely) be the case that ECDLP is threatened.</blockquote>
+<blockquote>
+<p>↳↳↳↳↳ reply — <em>DoctorOetker</em>:</p>
+<blockquote>and yet I am telling you they fall together</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>↳↳ reply 2 — <em>habitue</em>:</p>
+<blockquote>There&#x27;s so much focus on this now and so much compute available, it&#x27;s a very different game I&#x27;d think.<p>Llms also make it much easier for non-experts to take advantage of hearing about the break</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>Right, but I&#x27;m comparing now to a time where there simply wasn&#x27;t any encryption to speak of. A teenager could attach a packet sniffer <i>to the Internet backbone</i>, in effect, and that happened multiple times. Then as now the real vectors for attacks were exploits and social engineering.</blockquote>
+</blockquote>
+<p>↳↳ reply 3 — <em>sethev</em>:</p>
+<blockquote>Comparatively little of our economic activity was over the internet in the pre-cryptography era, though. Is that really what you&#x27;re saying? That we could go back to a pre-cryptographic era and it wouldn&#x27;t matter?</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>I&#x27;m not just talking about the pre-cryptography era; I&#x27;m talking about the long period in which virtually all deployed cryptography was grievously vulnerable, far more so than it will be to any plausible factoring-in-P-type attack.</blockquote>
+<blockquote>
+<p>↳↳↳↳ reply — <em>zelphirkalt</em>:</p>
+<blockquote>Why does that matter though? The exploits had to first be found. If now we have so many vulnerable systems online, bot farms will run rampant. Especially, in a time of war. Now is not the same times as back then.</blockquote>
+</blockquote>
+</blockquote>
+<p>↳↳ reply 4 — <em>aussieguy1234</em>:</p>
+<blockquote>The fact there&#x27;s rumors means the NSA is almost certinally investigating, they scan the internet for things they regard as a security threat.<p>So if real, it won&#x27;t get released publicly (lest someone goes to jail).<p>Later, the Chinese labs with their AI will crack it and their government&#x2F;spy agencies will get the crack.<p>Hopefully this doesn&#x27;t get used as an excuse to hold back frontier AI, but some day ordinary researchers will probably be able to use open models to pull something like this off.</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <strong>★ tptacek</strong>:</p>
+<blockquote>It&#x27;s not illegal to publish new vulnerabilities.</blockquote>
+<blockquote>
+<p>↳↳↳↳ reply — <em>morpheos137</em>:</p>
+<blockquote>There is born classified material.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>↳ reply 2 — <em>c0de517e</em>:</p>
+<blockquote>Factoring in P does not mean anything for any concrete solution algorithm. Could be that we have a proof but no algorithm. Could be that we have an algorithm on paper, but the powers and constants are so large that it means nothing, i.e. it performs worse than non-P algorithms for all practical problem sizes in the universe. And this is not a silly extreme example, it happens. BigO complexity means that an algorithm will win (considering abstract compute only, no memory etc) after a given problem size. But the breakeven point might be so large that it&#x27;s never used!</blockquote>
+<p>↳ reply 3 — <em>ttul</em>:</p>
+<blockquote>There&#x27;s no way that NSA does not already know what&#x27;s going on inside the labs.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>Cakez0r</em>:</p>
+<blockquote>Anthropic factored RSA-896 a couple of months ago (<a href="https:&#x2F;&#x2F;saweis.net&#x2F;posts&#x2F;rsa-896.html" rel="nofollow">https:&#x2F;&#x2F;saweis.net&#x2F;posts&#x2F;rsa-896.html</a>). They used existing methods and stressed that they didn&#x27;t find a more efficient approach to factoring (maybe true, maybe not...). It does show however that they are at least looking at the problem and willing to throw substantial computing power at it. Perhaps they have had a breakthrough.</blockquote>
+<blockquote>
+<p>↳ reply — <em>HWR_14</em>:</p>
+<blockquote>Anthropic throwing substantial computing power at it feels like their default plan.</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>mixdup</em>:</p>
+<blockquote>That&#x27;s all AI is, a race to scale matrix math machines as high as possible</blockquote>
+</blockquote>
+</blockquote>
+<p><strong>Top #3</strong> — <em>Merrill</em>:</p>
+<blockquote>My browser says that &quot;The connection to this site is encrypted and authenticated using TLS 1.3, X25519MLKEM768, and AES_256_GCM<p>So elliptic curve and post-quantum algorithms are already in use.</blockquote>
+<blockquote>
+<p>↳ reply — <em>knorker</em>:</p>
+<blockquote>No, that&#x27;s key exchange. So while this means a passive eavesdropper can&#x27;t decode it with a known algorithm on a quantum computer, the certificate private key used for authentication (the website&#x27;s &quot;who am I&quot;) still relies on RSA. If nothing else, then by the root certs.<p>Key exchange is pretty much rolled out. Certs almost not at all. Sure, you can switch your server cert to elliptic curve, but it&#x27;ll still be signed by an RSA root cert. (or could be, for impersonation)<p>But also note that P=NP is not the same thing as PQC. Not exactly. A cryptographically relevant quantum computer can break factorization-based crypto, but the rumoured proof is that factoring isn&#x27;t even in NP (or P is indeed NP).</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>Merrill</em>:</p>
+<blockquote>My browser says that the certificate for news.ycombinator.com and all the certs up to root are signed using &quot;X9.62 ECDSA Signature with SHA-384&quot;</blockquote>
+<blockquote>
+<p>↳↳↳ reply — <em>knorker</em>:</p>
+<blockquote>I should have been clearer when I said &quot;If nothing else, then by the root certs&quot;.<p>Are there ECDSA root certs? Sure. But unless you pin to them, someone can still make a fake cert rooted back to an RSA root cert.<p>And I don&#x27;t see any cert pinning config for news.ycombinator.com, after a brief check.</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
+    <item>
+      <title>I checked Clojure's core with Lean and found unreported bugs</title>
+      <link>https://s.conao3.com/blog/2026/e4f733</link>
+      <guid isPermaLink="false">hn3-50642939</guid>
+      <pubDate>Wed, 25 Nov 2026 14:56:52 +0000</pubDate>
+      <description>201 points, 70 comments. See description for top comments.</description>
+      <content:encoded><![CDATA[<p><a href="https://s.conao3.com/blog/2026/e4f733"><strong>→ Article</strong></a> <small>(s.conao3.com)</small></p>
+<p><a href="https://news.ycombinator.com/item?id=50642939">→ HN comments</a> &nbsp;·&nbsp; 201 points &nbsp;·&nbsp; 70 comments</p>
+<hr>
+<p><strong>Top #1</strong> — <em>rvprasad</em>:</p>
+<blockquote>While the effort is interesting, I found two issues in the list.<p>First, (.indexOf (seq (byte-array [1 2 3])) 2) fails because byte arrays store bytes and the argument 2 to `.indexOf` is a Long value.  Simple type checking (via eyeballing) could have flagged the incorrect usage.  I think such exercises can be more helpful if we can reduce the noise.<p>Second, (get &quot;abc&quot; 1.9) fails because `get` coerces the given key to integer in the context of string objects, which makes sense; specifically in the context of weakly typed language.  That said, I believe that detailed documentation of the behavior of `get` can help clients just as well as returning `nil` or not-found value.  However, we are still left with questions such as &quot;who and where do we draw the line about the dynamism of the language?&quot; and &quot;what is the agreed upon semantics that we are checking against?&quot;</blockquote>
+<blockquote>
+<p>↳ reply 1 — <em>vikramkr</em>:</p>
+<blockquote>The indexOf thing type checks fine and it&#x27;s weird that contains and indexOf disagree - is the java spec not that they&#x27;re supposed to agree for a byte array?</blockquote>
+<p>↳ reply 2 — <em>devin</em>:</p>
+<blockquote>I&#x27;m kind of iffy on `(get &quot;abc&quot; 1.9)`. I feel like Clojure has always kind of went out of its way to not go to Ruby levels of implicit dynamism. Think things like: &quot;5&quot; * 3 =&gt; &quot;555&quot;. Explicit &gt; implicit has been a guiding principle in Clojure since the beginning. For that reason I think the behavior is... a little surprising, but also tend to agree I would stop short of calling it a &quot;bug&quot; in any meaningful sense of the word. I&#x27;m curious to see what the core maintainers decide to do about it, if anything. If I were a betting man I&#x27;d guess it will stay this way forever because existing programs may quietly (or not-so-quietly) rely on the current behavior.<p>Hyrum&#x27;s law, anyone?<p>&gt; With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.</blockquote>
+</blockquote>
+<p><strong>Top #2</strong> — <em>yababa_y</em>:</p>
+<blockquote>I found dozens of issues in sbcl, clozure, and ACL2 as well: <a href="https:&#x2F;&#x2F;github.com&#x2F;emberian&#x2F;common-lisp-compiler-audit" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;emberian&#x2F;common-lisp-compiler-audit</a></blockquote>
+<p><strong>Top #3</strong> — <em>networked</em>:</p>
+<blockquote>So this kind of work is done in Lean now, too? Based on a glimpse into the world of dependently typed languages in the 2010s, I assumed Rocq (formerly Coq) was used to verify program correctness.<p>Are language models significantly better at writing Lean than Rocq?</blockquote>
+<blockquote>
+<p>↳ reply — <em>dnautics</em>:</p>
+<blockquote>Wasn&#x27;t lean built to verify programs?</blockquote>
+</blockquote>]]></content:encoded>
+    </item>
     <item>
       <title>U.S. jury convicts Huawei of fraud, Iran sanctions violations</title>
       <link>https://www.upi.com/Top_News/US/2026/11/25/jury-convicts-Huawei/3151795587204/</link>
       <guid isPermaLink="false">hn3-50642496</guid>
       <pubDate>Wed, 25 Nov 2026 14:12:29 +0000</pubDate>
-      <description>151 points, 182 comments. See description for top comments.</description>
+      <description>156 points, 189 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.upi.com/Top_News/US/2026/11/25/jury-convicts-Huawei/3151795587204/"><strong>→ Article</strong></a> <small>(upi.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50642496">→ HN comments</a> &nbsp;·&nbsp; 151 points &nbsp;·&nbsp; 182 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50642496">→ HN comments</a> &nbsp;·&nbsp; 156 points &nbsp;·&nbsp; 189 comments &nbsp;·&nbsp; <small>comments as of 14h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>chvid</em>:</p>
 <blockquote>Huawei is a massive company; the US forcing them out of 5G infrastructure and mobile phones forced them seek new business including in AI, lithography, and self-driving cars.</blockquote>
@@ -45,8 +480,8 @@
 <blockquote>That doesn’t imply that it won’t happen, it just means that there may be a further split in mainstream East and West tech compatibility. I am sure that China would prefer to reduce domestic use of Windows; the government is already phasing it out for obvious reasons.<p>Windows doesn’t run at all on Loongson CPUs, for example.</blockquote>
 </blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>throwaway7783</em>:</p>
-<blockquote>&quot;free market&quot; needs to be free on all sides. Can&#x27;t have just the US be a &quot;free market&quot; and China not be. While I am all for competition, I&#x27;ll never buy a government backdoored phone</blockquote>
+<p>↳ reply 2 — <em>anonymousab</em>:</p>
+<blockquote>I thought their OS was just another android-based thing, but it looks like that changed pretty quickly to a bespoke non-android-based platform. Neat.</blockquote>
 </blockquote>
 <p><strong>Top #3</strong> — <em>mylastattempt</em>:</p>
 <blockquote>Nearly all of the comments here are no more than a display of how well propoganda (from any side) has worked on the commenter. Nobody even skimmed the article (bar one commenter).<p>This article is an update about the charges brought on against Huawei in 2018, related to them using a shell company (Skycom) to sell products to Iran in 2011, which violated sanctions.<p>But let&#x27;s just immediately jump into the typical &quot;us vs them&quot; groupchat..</blockquote>
@@ -60,9 +495,9 @@
       <link>https://github.com/google-research/google-research/tree/master/cogentic_research_papers</link>
       <guid isPermaLink="false">hn3-50642086</guid>
       <pubDate>Wed, 25 Nov 2026 13:33:07 +0000</pubDate>
-      <description>410 points, 315 comments. See description for top comments.</description>
+      <description>466 points, 342 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://github.com/google-research/google-research/tree/master/cogentic_research_papers"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50642086">→ HN comments</a> &nbsp;·&nbsp; 410 points &nbsp;·&nbsp; 315 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50642086">→ HN comments</a> &nbsp;·&nbsp; 466 points &nbsp;·&nbsp; 342 comments &nbsp;·&nbsp; <small>comments as of 15h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>fidotron</em>:</p>
 <blockquote>There are rumors about, from credible people, that this is the tip of something bigger: <a href="https:&#x2F;&#x2F;x.com&#x2F;aran_nayebi&#x2F;status&#x2F;2125596838120046846" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;aran_nayebi&#x2F;status&#x2F;2125596838120046846</a></blockquote>
@@ -73,10 +508,10 @@
 <p>↳↳ reply — <em>zrm</em>:</p>
 <blockquote>Right now people only spend a medium amount of resources on factoring, because nobody knows if it&#x27;s even possible to do it in a way that comprehensively breaks RSA. If it is possible and you publish proof, that changes fast and you&#x27;ll have others who can do it very quickly, and no guarantee that it doesn&#x27;t then become public knowledge in short order.<p>That&#x27;s still probably the best way to do it, but it&#x27;s not going to be fun. If you see someone publish a factorization of the challenge number then it&#x27;s time to drop everything and immediately stop using RSA, to the extent anyone hasn&#x27;t already.<p>And then the question is whether the result generalizes to elliptic curves.</blockquote>
 </blockquote>
-<p>↳ reply 2 — <em>Permik</em>:</p>
-<blockquote>Mirror dispatcher link for privacy&#x2F;compatibility etc: <a href="https:&#x2F;&#x2F;xxcancel.com&#x2F;aran_nayebi&#x2F;status&#x2F;2125596838120046846" rel="nofollow">https:&#x2F;&#x2F;xxcancel.com&#x2F;aran_nayebi&#x2F;status&#x2F;2125596838120046846</a></blockquote>
-<p>↳ reply 3 — <em>dang</em>:</p>
+<p>↳ reply 2 — <em>dang</em>:</p>
 <blockquote>Related ongoing thread:<p><i>Rumors swirling that labs might have cracked Factoring in P</i> - <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50643065">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50643065</a></blockquote>
+<p>↳ reply 3 — <em>Permik</em>:</p>
+<blockquote>Mirror dispatcher link for privacy&#x2F;compatibility etc: <a href="https:&#x2F;&#x2F;xxcancel.com&#x2F;aran_nayebi&#x2F;status&#x2F;2125596838120046846" rel="nofollow">https:&#x2F;&#x2F;xxcancel.com&#x2F;aran_nayebi&#x2F;status&#x2F;2125596838120046846</a></blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>martythemaniak</em>:</p>
 <blockquote>I don&#x27;t think the recent spate of math discoveries should be very surprising. Consider 10 years ago when AlphaGo beat Lee Sedol, what was really happening there? You had an very large search space (all possible Go moves) that humans had been navigating by a combination of intuition, trial-and-error and passing knowledge between master-student. Then a program was build that could explore that search space both from existing searches (AlphaGo) and from scratch (AlphaGo Zero), and the program found some interesting results (winning moves no one had thought of before).<p>Today&#x27;s LLMs are vastly bigger and they operate in an immensely larger search space (all of symbolic representation of the world) using immensely more power, and now they&#x27;re finding results in that search space that people could not. In both cases, the space-search program needed a way to verify whether its results were valid - the Go board in AlphaGo&#x27;s case, and Lean in current math work. So it really shouldn&#x27;t be surprising that the space-searchers found something people either missed or was too big&#x2F;far away to be accessible (that is, it is unknown whether the current RH proof can be simplified and&#x2F;or understood like classical human proofs)</blockquote>
@@ -104,9 +539,9 @@
       <link>https://github.com/xoxorwr/pw-loudness-eq</link>
       <guid isPermaLink="false">hn3-50641171</guid>
       <pubDate>Wed, 25 Nov 2026 11:34:25 +0000</pubDate>
-      <description>298 points, 167 comments. See description for top comments.</description>
+      <description>326 points, 184 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://github.com/xoxorwr/pw-loudness-eq"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50641171">→ HN comments</a> &nbsp;·&nbsp; 298 points &nbsp;·&nbsp; 167 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50641171">→ HN comments</a> &nbsp;·&nbsp; 326 points &nbsp;·&nbsp; 184 comments &nbsp;·&nbsp; <small>comments as of 17h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>dintech</em>:</p>
 <blockquote>Interesting for audio nerds: Windows actually has an audio limiter. If you playback audio via loopback shared WASAPI, DirectSound or MME it actually gets compressed very slightly as it nears the peaks. The same does not happen via WASAPI exlcusive or ASIO.<p>Playing loudly mastered audio out of your PC will be very slightly different from the true audio source by about -0.1dbps with the compressor affecting the peaks.<p>It works via audiodg.exe (CAudioLimiter in AudioEng.dlll) on the shared-mode render path after all the streams get mixed, even if there&#x27;s just one playing currently. This is necessary because two loud signals being mixed together might clip your DAC and that sounds nasty, so it&#x27;s understandable that it&#x27;s there.<p>Why would you care though? I was building a audio metering system to monitor audio via loopback and the properties of the audio I played in were being modified by the limiter in these normal modes. Maybe audio purists might not enjoy it either.</blockquote>
@@ -117,8 +552,8 @@
 <p>↳↳ reply — <em>ssl-3</em>:</p>
 <blockquote>I always kept the software mixer at 100% (ie, unity) because when I&#x27;ve already paid for all 16 bits, it is my intent to keep each and every one of them available for use.<p>I then ran the volume up and down with a knob on the preamp.<p>It worked exactly the same as it would if I were playing a compact disc in a regular standalone audio CD player.</blockquote>
 <blockquote>
-<p>↳↳↳ reply — <em>entropicdrifter</em>:</p>
-<blockquote>There&#x27;s only one reason someone like you (or me, with a low end professional recording studio setup) would set the digital volume below 100%, and that&#x27;s if the sound card is running at a higher bit depth than the audio being played back, for instance listening to CD audio when the sound card is at 24 bits, or watching a 24-bit audio dvd&#x2F;blu-ray with the sound card running at 32 bits</blockquote>
+<p>↳↳↳ reply — <em>kstrauser</em>:</p>
+<blockquote>This is it. You want to keep the full levels up until the moment you don&#x27;t want to use them anymore.<p>For those with a math background but not electronic music experience:<p>You&#x27;re doing arithmetic with ints. Suppose you have an 8-bit volume range between 0..255. You cut the volume in half by dividing by 2, rounding down. Now your range is 0..127. Then you want to double the volume again, so you multiply everything by 2 again. But now your range is 0..254 (not 255), and you only have the even numbers. That series of samples you took like [125, 126, 127, 128, 129]? Now it&#x27;s [124, 126, 126, 128, 128]. You&#x27;ll never get those original values back. You can&#x27;t. They&#x27;re lost.<p>So instead, you keep that full range up until you get to the speakers, and then you cut the volume down at that point. When you turn it back up, you have the full range of values again.<p>It&#x27;s almost exactly the same for analog gear, too. In general, you always want to run your pre-amplifier stages as close to maximum as possible without actually maxing them out. (If you do, your guitars sound great and distorted, but almost everything else just sounds bad.) If you start with a CD-quality signal at nearly full strength up until the amps, the output will sound crystal clear. But if your input signals are turned way down, and you have to crank the amps to bring everything up to the desired volume, you&#x27;ll end up amplifying all the hiss and other background noise, too.</blockquote>
 </blockquote>
 </blockquote>
 <p>↳ reply 2 — <em>Onavo</em>:</p>
@@ -129,6 +564,10 @@
 <blockquote>
 <p>↳ reply 1 — <em>icegreentea2</em>:</p>
 <blockquote>You&#x27;re right that it&#x27;s a compressor or normalizer, but the name of the setting in Windows is &quot;Loudness Equalization&quot;.<p>It&#x27;s off by default, you need to toggle it on by output device.<p>I think its most desirable when:<p>a) Your laptop speakers kinda suck<p>b) You&#x27;re listening to a podcast or random video in a noisy environment<p>c) a+b</blockquote>
+<blockquote>
+<p>↳↳ reply — <em>ZoomZoomZoom</em>:</p>
+<blockquote>I understand the name was copied to be recognizable, but that&#x27;s not doing much service as the intersection of GNU&#x2F;Linux users and those who know of the original Windows feature is much smaller than the number of regular PipeWire users who might get confused by the incorrectly used term.<p>My question was more of specific features of that implementation that make it more desirable than regular stuff in EasyEffects or Libavfilter or standard loudness normalization approaches (EBU R 128, ReplayGain, etc).<p>I perfectly understand when loudness normalization can be useful. My mpv input.conf has this heavy-handed line for catastrophically quiet stuff:<p><pre><code>  f2 af toggle lavfi=&quot;acompressor=threshold=0.75:ratio=1.8:makeup=2,loudnorm=i=-12:lra=8&quot;</code></pre></blockquote>
+</blockquote>
 <p>↳ reply 2 — <em>sigbottle</em>:</p>
 <blockquote>I&#x27;m a CS guy who somehow landed at a DSP job, no physics or engineering background at all.<p>What <i>is</i> equalization? The &quot;most specific&quot; description I can come up with is &quot;estimating a channel and correcting for it&quot;, where &quot;channel&quot; specifically means, attenuation, phase, and multipath corrections, and it assumes an LTI effect (meaning things like carrier frequency offset are not included, despite it being an effect you should correct for). If that description is accurate, why is that a good characterization of a class of noise?</blockquote>
 </blockquote>
@@ -152,24 +591,28 @@
       <link>https://www.iankduncan.com/engineering/2026-11-19-smart-people-who-give-a-shit-use-tools</link>
       <guid isPermaLink="false">hn3-50639698</guid>
       <pubDate>Wed, 25 Nov 2026 07:46:43 +0000</pubDate>
-      <description>231 points, 180 comments. See description for top comments.</description>
+      <description>301 points, 236 comments. See description for top comments.</description>
       <content:encoded><![CDATA[<p><a href="https://www.iankduncan.com/engineering/2026-11-19-smart-people-who-give-a-shit-use-tools"><strong>→ Article</strong></a> <small>(iankduncan.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50639698">→ HN comments</a> &nbsp;·&nbsp; 231 points &nbsp;·&nbsp; 180 comments</p>
+<p><a href="https://news.ycombinator.com/item?id=50639698">→ HN comments</a> &nbsp;·&nbsp; 301 points &nbsp;·&nbsp; 236 comments &nbsp;·&nbsp; <small>comments as of 21h</small></p>
 <hr>
 <p><strong>Top #1</strong> — <em>xnorswap</em>:</p>
 <blockquote>One interesting conclusion that this post almost gets to but doesn&#x27;t draw, is that previously the &quot;smart people who gave a shit&quot; often wouldn&#x27;t be out-shipped by those who didn&#x27;t.<p>But LLM empowered, the cost of &quot;giving a shit&quot; relative to meat-proxying is amplified such that the people who you don&#x27;t want shipping so much can now out-ship the ones who take the time to do additional verification, despite both sides being massively sped up with LLMs.</blockquote>
 <blockquote>
-<p>↳ reply 1 — <em>j2kun</em>:</p>
+<p>↳ reply 1 — <em>bagacrap</em>:</p>
+<blockquote>Right. I want the author to be right, but I have even more fires to put out now than before, both due to layoffs&#x2F;higher output expectations, and due to endless LLM reported vulnerabilities. If I were the only one with this superpower, and the rest of the world hadn&#x27;t changed, then I&#x27;d agree more.<p>Still, he&#x27;s a lot more right than whoever said not to use an LLM.</blockquote>
+<p>↳ reply 2 — <em>j2kun</em>:</p>
 <blockquote>I think this hits the nail on the head. The author says smart people who give a shit can be amplified by LLMs, but if you are going to have an LLM write TLA+ to model a race condition, that may take you out of your expertise. You have no fewer time pressures to ship a fix, but now you have this huge new domain to ramp up your expertise on so that you can properly validate it and give a shit. The pressures of using an LLM still push you toward being less of an expert.</blockquote>
-<p>↳ reply 2 — <em>mixdup</em>:</p>
+<p>↳ reply 3 — <em>mixdup</em>:</p>
 <blockquote>The difference there is the destination. Both engineers have been sped up, but one is targeting a number of lines of code and the other is targeting quality. They&#x27;re both shipping faster, just shipping different things</blockquote>
-<p>↳ reply 3 — <em>eithed</em>:</p>
-<blockquote>Depends. I hope these people still have PR guardrails, spec guardrails, QA guardrails - any of these catches different kinds of pathologies (these are team issues, not necessarily &quot;a person&quot; issues)</blockquote>
 </blockquote>
 <p><strong>Top #2</strong> — <em>notpachet</em>:</p>
 <blockquote>Healthy people who give a shit exercise.<p>Disciplined people who want to retain a working understanding of the system exercise their knowledge of said system. You can still do this with LLM&#x27;s but there is a greater temptation to let your knowledge atrophy. It requires discipline to keep the machine at arm&#x27;s length.</blockquote>
-<p><strong>Top #3</strong> — <em>tomaytotomato</em>:</p>
-<blockquote>I am not smart, but I love to tinker and break stuff.<p>With an LLM I can now do that 10x faster, but I am not a proxy. I am a human hypervisor that gets lazy notifications whilst queuing up lots of work.<p>Software engineering is changing, and I don&#x27;t know what its going to look like. The whole concept of &quot;shift right&quot; and other ways of working could be redundant in future.<p>The junior engineer question as well; I think teaching juniors will change from loops, if&#x2F;else, maps, SOLID, ACID, 3NF etc. to something more blocky and abstract.<p>Will engineering at the fundamental level (resiliency, adaptability, maintainability) change, I think not.</blockquote>]]></content:encoded>
+<p><strong>Top #3</strong> — <em>chrisra</em>:</p>
+<blockquote>&gt; Ask whether “the model wrote it” flies as an excuse in code review.<p>I haven&#x27;t had much professional self-doubt until lately with LLMs. More and more, I get this feeling that this thing is better than I am. If it is, &quot;the model wrote it&quot; isn&#x27;t much of a justification, but it&#x27;s also not... unreasonable? Though somehow I am still consistently annoyed at the approaches it takes. I guess it depends on the task.<p>Just like if you said &quot;I don&#x27;t know; the senior architect wrote it&quot;?</blockquote>
+<blockquote>
+<p>↳ reply — <em>eBombzor</em>:</p>
+<blockquote>Holy this is exactly how I feel... Like I almost feel like I need to consult the LLM before doing anything myself, it&#x27;s weird. I care but I also have little confidence now.</blockquote>
+</blockquote>]]></content:encoded>
     </item>
     <item>
       <title>Treasury CIO is too busy vibecoding instead of doing his job #147</title>
@@ -3587,372 +4030,6 @@ That&#x27;s setting yourself to failure. Even if you are writing for yourself, y
 <p>↳ reply 2 — <em>johnnyanmac</em>:</p>
 <blockquote>If labor laws, tax systems, and the overall poltical climate wasn&#x27;t so hostile to the working class, the ZIRP era could have been a golden age. SWE&#x27;s got to get a taste of that, but not many other sectors.<p>Everyone else: they never truly recovered from the GFC as they saw billion dollar industries be bailed out, only to offshore more and more businesses. They saw breadcrumbs of &quot;change&quot; in policy as the courts ruled that &quot;money is speech&quot; and conrgess more or less rubber stamped national surveillance on its citizens. Rent would start boiling the frog as less and less raises and career mobility was happening, distracting from it with how cheap flat-screen TV&#x27;s are.<p>I suppose it&#x27;s no wonder people radicalized in 2016. Too bad it was right into the jester of oligarchy himself.</blockquote>
 </blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Canada recommits to federal funding for news</title>
-      <link>https://www.niemanlab.org/2026/11/a-government-that-gets-it-canada-recommits-to-federal-funding-for-news/</link>
-      <guid isPermaLink="false">hn3-50602847</guid>
-      <pubDate>Sun, 22 Nov 2026 19:10:38 +0000</pubDate>
-      <description>125 points, 130 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.niemanlab.org/2026/11/a-government-that-gets-it-canada-recommits-to-federal-funding-for-news/"><strong>→ Article</strong></a> <small>(niemanlab.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50602847">→ HN comments</a> &nbsp;·&nbsp; 125 points &nbsp;·&nbsp; 130 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>thewanderer1983</em>:</p>
-<blockquote>To quote the article “We have a government that ‘gets it,’” Deegan said. “They see what Big Tech monopolists have done to local news.<p>For those who haven&#x27;t been alive longer than social media. Local media was destroyed by large traditional media conglomerates that bought up all of the them during the golden era of traditional media. Now that they aren&#x27;t profitable and are being kept alive by government how will this solve those problems?</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>criddell</em>:</p>
-<blockquote>I always thought it was Craigslist that brought down newspapers, both big and small.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>seanicus</em>:</p>
-<blockquote>Craigslist popped the balloon by removing the lifeblood of newspapers (classifieds) but facebook and AI have curbed stomped the rest of the air out via &quot;pivot to video&quot; and mass-scale plagiarism, respectively. Amongst other things.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>1vuio0pswjnm7</em>:</p>
-<blockquote>&quot;We&#x27;ve seen so many small newspapers and small radio stations and little outlets die horrible deaths before the government finally stepped in,&quot; Blackburn says. &quot;We have a situation where we in the news media have been decimated by the Googles and the Metas of the world and people are blaming the government, but I wish they would start blaming Meta because Meta has been taken [advertising money] out of our communities and never given it back.&quot;&quot;<p><a href="https:&#x2F;&#x2F;reutersinstitute.politics.ox.ac.uk&#x2F;news&#x2F;canadas-battle-big-tech-smaller-publishers-are-caught-crossfire" rel="nofollow">https:&#x2F;&#x2F;reutersinstitute.politics.ox.ac.uk&#x2F;news&#x2F;canadas-batt...</a><p>Theresa Blackburn is Publisher&#x2F;Managing Editor, River Valley Sun<p><pre><code>   curl https:&#x2F;&#x2F;rivervalleysun.ca&#x2F;wp-sitemap-posts-post-{1,2}.xml \
-   |grep -Eo &#x27;&lt;loc&gt;[^&lt;]+|&lt;lastmod&gt;[^&lt;]+&#x27; \
-   |sed &#x27;&#x2F;&lt;loc&gt;&#x2F;{s&#x2F;&#x2F;&#x2F;;s&#x2F;.*&#x2F;&lt;p&gt;&lt;a href=&amp;&gt;&amp;&lt;\&#x2F;a&gt;&lt;br&gt;&#x2F;;
-   s&#x2F;https:.\{20\}&#x2F;&#x2F;2;s&#x2F;\&#x2F;&lt;&#x2F;&lt;&#x2F;;};
-   &#x2F;&lt;lastmod&gt;&#x2F;{s&#x2F;&#x2F;&#x2F;;s&#x2F;$&#x2F;&lt;\&#x2F;p&gt;&#x2F;;}&#x27; &gt; 1.htm
-   firefox .&#x2F;1.htm</code></pre></blockquote>
-<p>↳ reply 3 — <em>apercu</em>:</p>
-<blockquote>With public funded media there is at least a small chance of journalism that isn&#x27;t pushing a corporate or technocrat agenda?</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>abathologist</em>:</p>
-<blockquote>This is excellent news (unless you are a stooge of, or advocate for, democratic erosion) because<p>&gt; Correlations and cluster analyses show that high levels of secure funding for public media systems and strong structural protections for the political and economic independence of those systems are consistently and positively correlated with healthy democracies. (&quot;Funding Democracy: Public Media and Democratic Health in 33 Countries&quot;, <a href="https:&#x2F;&#x2F;journals.sagepub.com&#x2F;doi&#x2F;10.1177&#x2F;19401612211060255" rel="nofollow">https:&#x2F;&#x2F;journals.sagepub.com&#x2F;doi&#x2F;10.1177&#x2F;19401612211060255</a>)</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>ipaddr</em>:</p>
-<blockquote>This isn&#x27;t public media it&#x27;s private media getting a handout if they are on a list of approved media orgs determined by the government.<p>Expanding the CBC, TVO is public media giving money to Rogers is not.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>abathologist</em>:</p>
-<blockquote>&gt; the 2026 budget added $300 million over two years to CBC&#x2F;Radio-Canada “to strengthen its capacity to meet the evolving needs of Canadians across the country.”</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>jmclnx</em>:</p>
-<blockquote>Maybe they will open a bureau or 2 or 3 in the US and people in the US can access&#x2F;watch.  One can hope:)<p>We know this will never happen in the US.  The one news org in the US that tried to present real news was fully de-funded a year or 2 ago.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>ghastmaster</em>:</p>
-<blockquote>Does Canada have strict regulations on employee salaries? If not, employers of journalists would be inclined to pay less over time. In a &quot;free market&quot;, the net wages are what matters to accepting a position for the employee.<p>Likewise, if an independent journalist see net income at a comparable rate to other industries and the bills are paid, in a competitive market they will lower the price of their output to compete.</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>The Birds of GTA 6: A Field Guide to Vice City and Leonida's Wildlife</title>
-      <link>https://www.audubon.org/magazine/birds-of-gta-6-field-guide-vice-city-wildlife</link>
-      <guid isPermaLink="false">hn3-50602843</guid>
-      <pubDate>Sun, 22 Nov 2026 19:10:34 +0000</pubDate>
-      <description>627 points, 360 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.audubon.org/magazine/birds-of-gta-6-field-guide-vice-city-wildlife"><strong>→ Article</strong></a> <small>(audubon.org)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50602843">→ HN comments</a> &nbsp;·&nbsp; 627 points &nbsp;·&nbsp; 360 comments &nbsp;·&nbsp; <small>comments as of 25h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>drewg123</em>:</p>
-<blockquote>While we are commenting on anything but the birds:   I really wish games like this had some kind of co-play available.  Would seem to fit the narrative to have one partner play Jason and the other play Lucia (or some otherwise NPC friend when they are apart).  It would make it much more engaging to play with family&#x2F; friends<p>For context, I just bought this and have been passing the controller back and forth with my adult son all weekend</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>refibrillator</em>:</p>
-<blockquote>My hypothesis is this just isn’t feasible on current gen consoles without sacrificing elsewhere, since it basically doubles the physics and rendering costs. Perhaps a PC mod will pull it off.<p>Indeed though, I too really wish it had local 2 player.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>lukan</em>:</p>
-<blockquote>Playing on 2 consoles connected via LAN?</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>forgotpwd16</em>:</p>
-<blockquote>Campaign co-op is possible on GTA III&#x2F;VC&#x2F;SA via community mods. And, officially, worth noting Saints Row 2&#x2F;3 (essentially <i>arcade GTA</i> when GTA became more serious with IV&#x2F;V) had full campaign co-op on Xbox&#x2F;PC via LAN&#x2F;online, and online-only on PS.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>minetest2048</em>:</p>
-<blockquote>GTA San Andreas on PS2 used to have this coop feature where you can connect another joystick and play together...  I have some good memories with my brother doing that</blockquote>
-<p>↳ reply 3 — <em>jablongo</em>:</p>
-<blockquote>I was sure this would be the case when watching all the previews</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>aliasxneo</em>:</p>
-<blockquote>The game appears to be mostly story&#x2F;character focused rather than sandbox focused, despite the insane attention to detail on traditional sandbox elements (for context, I&#x27;ve already completed the main campaign). In a lot of ways it feels like two disjoint teams worked to create the final product and the story&#x2F;character team won out. Not sure if that&#x27;s ultimately the root cause of the stated inconsistencies, but it could be a contributing factor.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>josephg</em>:</p>
-<blockquote>As a counterpoint: I’ve been running around the map doing all sorts of stuff - busting up drug dens. Getting treasure at sea. Racing. And so on. According to the save screen I’m only at 15% or something.<p>In what way did the main story content “win”? You might have enjoyed that content more, but not everyone is playing like you.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mpalmer</em>:</p>
-<blockquote>100%. I&#x27;ve been watching people treat their personal play-style as a factual conclusion; &quot;here&#x27;s how the game plays&quot;.<p>But a game this big is extremely resistant (even immune) to criticism like this, because LITERALLY all you have to do is: something other than a story mission. And if you can&#x27;t find those things, I feel sorry for you!</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>the__alchemist</em>:</p>
-<blockquote>I appologize for the derail. How does such a completion work? I ask because I regularly will play open world games that take me months to complete. There are always people who finish them within a few days or less, and post as such online. This game has been out for 3 days. Is this done by speedrunning the main quests? Spending every waking hour playing? Or is this just a short [main quest] game? What was the difficulty level? Did you complete most quests the first time without dying&#x2F;failing? (I assume those are mechanics)</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>pugworthy</em>:</p>
-<blockquote>It has EVs too as well as charging stations.<p>I also have heard of a video where someone stole a Tesla, and it locked them in and drove them to the police station.</blockquote>
-<blockquote>
-<p>↳ reply — <em>willio58</em>:</p>
-<blockquote>Yeah I’ve seen a similar video. You can break the window to get out but it’s an interesting detail</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Perplexity and Intelligence</title>
-      <link>https://openai.com/index/perplexity-and-intelligence/</link>
-      <guid isPermaLink="false">hn3-50601525</guid>
-      <pubDate>Sun, 22 Nov 2026 17:06:27 +0000</pubDate>
-      <description>686 points, 439 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://openai.com/index/perplexity-and-intelligence/"><strong>→ Article</strong></a> <small>(openai.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50601525">→ HN comments</a> &nbsp;·&nbsp; 686 points &nbsp;·&nbsp; 439 comments &nbsp;·&nbsp; <small>comments as of 28h</small></p>
-<p><strong>★ Comments from: hauntsaninja, tedsanders</strong></p>
-<hr>
-<p><strong>Top #1</strong> — <em>hazrmard</em>:</p>
-<blockquote>Perplexity is not defined in the article. FYI:<p>Perplexity is the degree of surprise the model has in predicting the next token, over a sequence of tokens. At the worst case, perplexity is equal to the size of the vocabulary. At the best case, perplexity is 1.<p>So, given a sequence of tokens, &quot;e = m c ^ 2&quot;, if the p(token | prev tokens) = 1 for every token, perplexity ends up being 1. If, however, it&#x27;s a random predictor, the p(token | prev tokens) is 1&#x2F;vocab for every token, and perplexity ends up being len(vocab).<p>The article plots log(perplexity) on the y-axis, which puts the best case at 0 (i.e. log 1).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <strong>★ hauntsaninja</strong>:</p>
-<blockquote>An intuitive way of thinking about perplexity is that it is the number of options a model is considering for the next token.<p>Note the best case is not actually zero. If your model had zero log(perplexity) on &quot;A random number from 1 to 10 is ___&quot; it&#x27;s not doing something useful. See the &quot;Unknown floor&quot; part of the original post.<p>In practice it is possible to get estimates for the floor assuming your current methodology, for example see Section 6.3 from Scaling Laws for Neural Language Models (2020)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>yellowflash</em>:</p>
-<blockquote>I think &quot;number of equiprobable options a model can be thought of considering...&quot; would be more like it?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>spennant</em>:</p>
-<blockquote>“Perplexity measures how well a model predicts the next token on average; lower perplexity means better predictions”<p>4th Paragraph</blockquote>
-<p>↳ reply 3 — <em>FailMore</em>:</p>
-<blockquote>Here is an article with a little interactive example:<p><a href="https:&#x2F;&#x2F;smalldocs.org&#x2F;p&#x2F;perplexity-explained-with-toast-Q0y3qb22MkVm_WkL" rel="nofollow">https:&#x2F;&#x2F;smalldocs.org&#x2F;p&#x2F;perplexity-explained-with-toast-Q0y3...</a><p>I linked to it as a stand alone comment as well: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50601525#50603714">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50601525#50603714</a></blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>d_burfoot</em>:</p>
-<blockquote>The perplexity &#x2F; intelligence correspondence is one of those ideas that is surprising at first, but in retrospect could not work any other way. The &quot;magic&quot; of intelligence is the ability to extract sophisticated world models from large volumes of raw sensor data. The prediction (=compression) rate on the raw data stream is exactly the metric that captures this progress.<p>I argued this point in a 2008 paper: 
-<a href="https:&#x2F;&#x2F;link.springer.com&#x2F;chapter&#x2F;10.1007&#x2F;978-3-540-69134-1_27" rel="nofollow">https:&#x2F;&#x2F;link.springer.com&#x2F;chapter&#x2F;10.1007&#x2F;978-3-540-69134-1_...</a><p>I elaborated on this idea in my 2011 book:
-<a href="https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1104.5466" rel="nofollow">https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1104.5466</a><p>I used the word &quot;reusability&quot; to express the idea that the world models obtained via the large scale data compression task could be repurposed for other tasks.<p>(So, Burfoot, if you were so prescient, why aren&#x27;t you a rich and famous frontier lab researcher? The answer is: I did not think neural nets would scale up).</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>funks_</em>:</p>
-<blockquote>It&#x27;s also the premise of David McKay&#x27;s famous 2003 book &quot;Information Theory,
-Inference, and Learning Algorithms&quot;: <a href="https:&#x2F;&#x2F;www.inference.org.uk&#x2F;itprnn&#x2F;book.pdf" rel="nofollow">https:&#x2F;&#x2F;www.inference.org.uk&#x2F;itprnn&#x2F;book.pdf</a></blockquote>
-<p>↳ reply 2 — <em>saretup</em>:</p>
-<blockquote>&gt; but in retrospect could not work any other way.<p>Hindsight is 20&#x2F;20</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>reasonableklout</em>:</p>
-<blockquote>Microsoft is now signing on to this effort to measure and potentially limit their base model perplexities, see this tweet from Mustafa Suleyman adding the MAI models to the chart: <a href="https:&#x2F;&#x2F;x.com&#x2F;mustafasuleyman&#x2F;status&#x2F;2124663594449318173" rel="nofollow">https:&#x2F;&#x2F;x.com&#x2F;mustafasuleyman&#x2F;status&#x2F;2124663594449318173</a><p>&gt; <i>We&#x27;re committed to sharing our pre-training progress on a common held-out evaluation set. With OpenAI&#x27;s permission, we report MAI-2 Base on their evaluation set. Its log-perplexity is 0.819, putting it in the same ballpark as the GPT-5.6 Sol base model. Our model uses the same tokenizer as OpenAI, so the numbers are directly comparable.</i><p>&gt; <i>In the future, to be able to compare across labs we might need to report bits-per-byte (BPB) rather than perplexity since different labs use different tokenizers. We will also need different evaluation datasets - the fact we have access to OpenAI&#x27;s evaluation dataset is a special case.</i></blockquote>
-<p><strong>Also</strong> — <em>amluto</em>:</p>
-<blockquote>&gt; The primary held-out datasets we’ve been using since GPT-3.5 are sourced from our internal codebase, and those are the numbers reported here (for a fixed snapshot).<p>Why would OpenAI expect any <i>meaningful</i> relationship between their models’ ability to predict the next token of supposedly held-out chunks of their internal codebase and the overall capabilities of the models?  I expect both to improve, but that’s about the extent of it.</blockquote>
-<blockquote>
-<p>↳ reply — <strong>★ tedsanders</strong>:</p>
-<blockquote>I work at OpenAI. The correlation between perplexity and the quality isn’t 1, but neither is it 0. It makes sense that as a model gets better at learning pretraining data, it also gets better at generically learning whatever you’re trying to teach it afterwards. The relationship is imperfect and empirical, and if it breaks down in the future, we’ll of course adapt to different measures instead of dogmatically clinging to the old paradigm. But so far, it’s still informative.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>famouswaffles</em>:</p>
-<blockquote>I think his point (unless i&#x27;ve misunderstood) is moreso if a codebase is really the best held out dataset for such a evaluation meant to be wide-sweeping. Does this plot look any or much different if the dataset was more encompassing to include other sorts of text ?</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Europe weakens chemical rules as science links them to 'lifestyle diseases'</title>
-      <link>https://www.lemonde.fr/en/opinion/article/2026/11/22/as-science-increasingly-shows-the-role-chemical-substances-play-in-lifestyle-diseases-europe-weakens-its-regulations_6786595_23.html</link>
-      <guid isPermaLink="false">hn3-50600677</guid>
-      <pubDate>Sun, 22 Nov 2026 15:42:40 +0000</pubDate>
-      <description>164 points, 145 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.lemonde.fr/en/opinion/article/2026/11/22/as-science-increasingly-shows-the-role-chemical-substances-play-in-lifestyle-diseases-europe-weakens-its-regulations_6786595_23.html"><strong>→ Article</strong></a> <small>(lemonde.fr)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50600677">→ HN comments</a> &nbsp;·&nbsp; 164 points &nbsp;·&nbsp; 145 comments &nbsp;·&nbsp; <small>comments as of 17h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>andai</em>:</p>
-<blockquote>&gt;Pesticides? According to the WHO-UNEP report, prenatal exposure (as of 2010) to a single family of these products (organophosphates) was, for example, responsible for more than 59,300 cases of intellectual disability per year in European Union (EU) countries. Due to maternal exposure to just this one category of pesticides, a European child born in 2010 lost, on average, about 2.5 IQ points, according to the panel of researchers brought together by WHO and UNEP.<p>&gt;Still based on population exposure levels in 2010, DDT – a highly persistent insecticide – although banned since the 1970s, was responsible for 56,700 annual cases of uterine fibroids in the EU, 28,200 cases of type 2 diabetes and 1,550 cases of childhood obesity. Even these figures provide only a small glimpse of the situation, as high-quality data are not available for the overwhelming majority of the approximately 400 pesticides registered in Europe.<p>&gt;When it comes to plasticizers and industrial pollutants, the picture is no different. Exposure (in 2010) to DEHP in Europe caused 145,000 annual cases of endometriosis, 20,500 cases of diabetes and 53,900 cases of obesity. Phthalates in general? They accounted for 618,000 annual cases of male infertility in Europe. Bisphenol A caused 42,400 cases of childhood obesity per year in Europe. And if anyone thinks the press exaggerates the issue of forever chemicals (PFAS, or &quot;per- and polyfluoroalkyl substances&quot;), the WHO-UNEP report reminds us that in the US, where 2018 data allow such an estimate, more than four million cases of obesity are attributable to the two most-studied PFAS, as well as 127,000 annual cases of childhood obesity and 14,000 cases of hypothyroidism.</blockquote>
-<blockquote>
-<p>↳ reply — <em>WillPostForFood</em>:</p>
-<blockquote>This is based on a study that didn&#x27;t directly measures the health effects or economic costs of chemical exposure. It wass a modeling exercise that combines observational studies, animal experiments, exposure estimates, economic assumptions, and opinion. Basically very low quality.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>thaumasiotes</em>:</p>
-<blockquote>There was a fun observation in American science that the effect of lead on IQ seems to have gotten worse over time.<p>The postulated mechanism is:<p>1. Some places have lead, and suck.<p>2. Because they suck, they are inhabited by people without better options.<p>3. Those people are stupid.<p>4. You can do a study comparing the IQs of people in relatively high-lead environments and other people, and, if you attribute the entire difference to lead exposure, you&#x27;ll see that lead has a negative effect on IQ, which you can represent in terms of IQ points per hair ppm or whatever unit you want.<p>5. If you then mount a big effort to rehabilitate those environments to clean out the lead, they&#x27;ll have less lead. Still more than usual, but not as much as before. Lead exposure in the people who live there will fall.<p>6. But those environments are still bad (if not quite as bad) and the people there are still stupid.<p>7. If you rerun your study from step 4, you&#x27;ll observe that people in high-lead areas are still dumber than people in low-lead areas, by about the same amount as the earlier study found.<p>8. But, the high-lead areas have less lead now than they did then.<p>9. Attributing the entire IQ deficit to lead exposure, we logically find that each unit of lead exposure is now much more harmful than the earlier study found. There&#x27;s a lot less lead, but the deficit is just as bad - this means that the effect of the lead got worse!</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>andai</em>:</p>
-<blockquote>I have noticed this phenomenon in certain EU countries. The people with options (or indeed, standards) have already moved to Germany, Sweden, etc...</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>dzink</em>:</p>
-<blockquote>Europe restricts local farmers and industry from using these then proceeds to import much cheaper food from countries that have no such restrictions.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>vladms</em>:</p>
-<blockquote>The problem is that currently probably nobody can provide food that is cheap, good, healthy and available all year around.<p>Then what are the options? Force people to eat healthy and expensive? Allow everybody to produce cheap and unhealthy? The current situation seems like a compromise: whoever cares and can afford will buy European stuff (more expensive, probably more healthy); who can&#x27;t afford can still buy cheap stuff.<p>Ideally, I would like stricter controls at the border, to eliminate some of the worst offenders. But even ignoring that, allowing lots of new pesticides in European soil (not that fields are not probably full of stuff already) will have direct cost on health care in the years to come.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>dwd</em>:</p>
-<blockquote>The quest to extend shelf-life and product appearance after extended storage rather than simply eating organic, locally grown wholes foods is a potential candidate cause for emerging issues such as the dramatic increase in colorectal cancer in younger people in the West.<p>Synthetic or processed emulsifiers (carboxymethylcellulose, polysorbate-80, etc) are increasing being linked to changes in the gut microbiome and inflammation triggering.<p><a href="https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;40816342&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;40816342&#x2F;</a><p><a href="https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;34774538&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pubmed.ncbi.nlm.nih.gov&#x2F;34774538&#x2F;</a><p><a href="https:&#x2F;&#x2F;pmc.ncbi.nlm.nih.gov&#x2F;articles&#x2F;PMC7986288&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pmc.ncbi.nlm.nih.gov&#x2F;articles&#x2F;PMC7986288&#x2F;</a><p><a href="https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s42003-024-06224-3" rel="nofollow">https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s42003-024-06224-3</a></blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>otherme123</em>:</p>
-<blockquote>You implying that Europe allow the importing of <i>anything</i>, and that is not true. People  from other countries need to also have minimum standards to be able to sell in the UE. And they of course need to comply with the same standards than UE producers to stamp tags like &quot;bio&quot;, &quot;eco&quot; or &quot;fair trade&quot;.<p>A clear example: eggs from the US (cleaned) cannot be imported to the UE, and viceversa.<p><a href="https:&#x2F;&#x2F;food.ec.europa.eu&#x2F;horizontal-topics&#x2F;official-controls-and-enforcement&#x2F;imported-products_en" rel="nofollow">https:&#x2F;&#x2F;food.ec.europa.eu&#x2F;horizontal-topics&#x2F;official-control...</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>adamddev1</em>:</p>
-<blockquote>What about vinyl flooring? The FDA is doing a long investigation on a key ingredient, and the EU has already placed PVC on a &quot;restriction roadmap.&quot; It gives some people headaches and other symptoms. But sadly it keeps getting installed in houses more and more.<p><a href="https:&#x2F;&#x2F;europe.noharm.org&#x2F;news&#x2F;eu-has-legal-duty-ban-pvc-ngos-tell-european-commission" rel="nofollow">https:&#x2F;&#x2F;europe.noharm.org&#x2F;news&#x2F;eu-has-legal-duty-ban-pvc-ngo...</a></blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>I joined the NTP Pool, but not with my Stratum 1 Pi</title>
-      <link>https://www.jeffgeerling.com/blog/2026/i-joined-the-ntp-pool/</link>
-      <guid isPermaLink="false">hn3-50600622</guid>
-      <pubDate>Sun, 22 Nov 2026 15:35:24 +0000</pubDate>
-      <description>156 points, 56 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.jeffgeerling.com/blog/2026/i-joined-the-ntp-pool/"><strong>→ Article</strong></a> <small>(jeffgeerling.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50600622">→ HN comments</a> &nbsp;·&nbsp; 156 points &nbsp;·&nbsp; 56 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>Avamander</em>:</p>
-<blockquote>For the price and complexity of building a good Linux-based time server I&#x27;d heavily recommend looking at FPGA-based solutions instead. x86 platforms also have PCIe PTM and TGPIO options available[0], which are tad better than the common ARM equivalents and GPIO interrupts.<p>In general Pi-s are relatively bad for timekeeping. Not just the NIC (which can be replaced by hats with their own), there are also oscillator replacement mods[2] to work around this to some extent. Though all this still leaves many other sources of timekeeping error.<p>So if the goal is low-cost precise timekeeping, one can assemble something FPGA-based[2] for quite a bit less money, that can reach very low noise figures. You can spend the remaining money on the GNSS antenna and receiver instead.<p>I&#x27;m also sure a FPGA-based approach could be taken even further with some external timekeeping chips available and the FPGA could just do the NTP&#x2F;PTP protocol stuff.<p>[0]: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=zxK0_j2Ah2I" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=zxK0_j2Ah2I</a>
-[1]: <a href="https:&#x2F;&#x2F;raspberrypi.stackexchange.com&#x2F;questions&#x2F;74482&#x2F;switch-out-the-x1-oscillator-on-a-rpi-2-3" rel="nofollow">https:&#x2F;&#x2F;raspberrypi.stackexchange.com&#x2F;questions&#x2F;74482&#x2F;switch...</a>
-[2]: <a href="https:&#x2F;&#x2F;fy.chalmers.se&#x2F;~f96hajo&#x2F;fakernet&#x2F;board_Arty_A7-35-GPS-NTP.html" rel="nofollow">https:&#x2F;&#x2F;fy.chalmers.se&#x2F;~f96hajo&#x2F;fakernet&#x2F;board_Arty_A7-35-GP...</a></blockquote>
-<blockquote>
-<p>↳ reply — <em>jeffbee</em>:</p>
-<blockquote>Back when I thought this was true, I put together an x86 platform with PTM and a fancy NIC and it would hard-lock the bus to such an extent that I had to physically unplug it to recover. There are a lot of pieces required for a complete solution and I&#x27;d caution against a categorical statement like &quot;x86 has PTM&quot;.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>Avamander</em>:</p>
-<blockquote>As I said, tad better, not perfect. I&#x27;d say finding reasonably-priced x86 hardware with that functionality is an even bigger hurdle.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>geerlingguy</em>:</p>
-<blockquote>It all depends on the gains you&#x27;re looking for. Almost any solution with PPS input can get you under 1µs, even on Linux through GPIO.<p>If you want to chase lower, you need a hardware-disciplined  clock. Either through FPGA, or in the case of my Time Pi, I have a PTP NIC with a PHC disciplined from the ublox F9T—which should be within 5-20ns of GPS time. This can be measured on higher-end boards like the TimeHAT by comparing PPS out from the GNSS module, PPS from the NIC, and PPS from a separate GPSDO, along with a timestamp comparison tool like the tinyGTC or TAPR TICC: <a href="https:&#x2F;&#x2F;tapr.org&#x2F;product&#x2F;tapr-ticc&#x2F;" rel="nofollow">https:&#x2F;&#x2F;tapr.org&#x2F;product&#x2F;tapr-ticc&#x2F;</a><p>The annoying thing is there are few PC hardware combos that include the relevant PPS and frequency outputs to allow actual verification of your time in hardware. Software can show numbers but even on my Pi dashboard, the sub-20ns sync reported is between the system clock and the NIC PHC... but not currently accounting for the delay when the kernel reads the PHC over PCIe.<p>Pi <i>could</i> support PTM on its PCIe bus, that would be awesome. Overkill for 99.9% of its market though!</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>lightswitch05</em>:</p>
-<blockquote>Great write up! I too run a stratum 1 and am part of the pool. Except, I have way less interesting hardware. One benefit on going cheap is having multiple stratum 1s then you can have some redundancy and have more interesting local peers to compare results against. I do see a more expensive setup in my future, though.<p>Anyways, I use NTPSec- which is the default these days on Debian when you apt-get install NTP. I’ve not tried Chrony, but I see it mentioned all the time.<p>I’m curious what others here are running and their thoughts on the pros and cons?<p>Edit: I forgot to add, one of my favorite parts of being in the pool is basically a free uptime monitor of my ISP. There have been multiple cases where I see a blip in my offset then a full blown ISP outage within 78 hours of the blip, then a return to my normal offsets after to outage has resolved.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>geerlingguy</em>:</p>
-<blockquote>In the NTP Pool community, I&#x27;ve seen a few people mention CenterClick NTP servers; I&#x27;m happy to do my own DIY builds (Pi or otherwise), but this looks like a nice option for SMBs or time-nuts who don&#x27;t want to manage their own hardware: <a href="https:&#x2F;&#x2F;centerclick.com&#x2F;ntp&#x2F;" rel="nofollow">https:&#x2F;&#x2F;centerclick.com&#x2F;ntp&#x2F;</a><p>There are also a lot of people who buy old Spectracom or other &#x27;enterprise&#x27; time servers since they can be had for low hundreds of dollars with some nice features like rubidium or OCXO oscillators, so they can hold over time much more accurately when GPS is down, or upstream NTP providers are unreachable.<p>And regarding chrony, it&#x27;s the default in many distros now, I like some of its built-in monitoring and clock adjustments, it just feels easier to manage if you want more than just base NTP features. It also supports hardware timestamping if you have network hardware that has it, which IIRC NTPd doesn&#x27;t? I haven&#x27;t messed with systemd-timesyncd or ntpd-rs, so can&#x27;t say much on them.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>bradknowles</em>:</p>
-<blockquote>Note that the page at <a href="https:&#x2F;&#x2F;www.ntppool.org&#x2F;join&#x2F;configuration.html" rel="nofollow">https:&#x2F;&#x2F;www.ntppool.org&#x2F;join&#x2F;configuration.html</a> specifically recommends using the Reference Implementation of NTP (namely, `ntpd`).<p>Although I looked at that page and didn’t see anything about whether or not it was okay to use an NTP,server running under a VM.<p>I will contact Ask Bjørn Hansen about this.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>bradknowles</em>:</p>
-<blockquote>Well, I’m partial to Meinberg.  After all, when I joined the NTP Public Services Project in 2003, it was Heiko Gerstung who gave me my first Primary Time Appliance, for our testing purposes.  And they’ve been a strong supporter of NTP.org and the Network Time Foundation ever since.<p>Heiko is now the CEO of that company.  I got to see his face in person for the first time a few years ago, when I was working on the EC2-Chronos team at AWS, and we were considering bringing in Meinberg as one of our preferred vendors of Primary Time Appliances, with a goal to install them at each and every AWS datacenter around the world.<p>That effort was part of the enhanced version of the Amazon Timekeeping Service that we officially launched in 2023, and highlighted as part of the Re:Invent keynote that Peter DeSantis did (see: <a href="https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=pJG6nmR7XxI" rel="nofollow">https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=pJG6nmR7XxI</a>).  Originally, the SLA was accuracy within one millisecond, but with this project, we got that down to 20 microseconds.<p>Internally, AWS uses Chrony.  Both on the back-end Stratum-2 time servers, and we also controlled the default Chrony configuration on all of the EC2 instances.  And I so got familiar with doing chronyd configurations.<p>I think it’s fine for that purpose, but I would make sure that you’re not doing leap second smearing.  I know the leap second is going away, but the last time I checked with Ask Bjørn Hansen, he did not allow any time servers into the pool if they were doing leap smearing.  Which is why we could operate our own time.aws.com service, but we couldn’t contribute time servers to the NTP Pool, because all of our servers did leap smearing.<p>Ironically, during the time I was actively working to support NTP.org, I helped Ask Bjørn Hansen to set up the NTP Pool, but it has been years since I talked to him about it.  I should reconnect with him.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>yardstick</em>:</p>
-<blockquote>It’s been a decade or more since I last used NTP pool on my servers, have they fixed their quality issues with unreliable and misconfigured time sources? With 10k+ servers polling them, I saw enough issues to abandon it in favour of the likes of Google, Apple, Microsoft etc.<p>Issues included unresponsive servers, and servers handing out time that was days&#x2F;weeks&#x2F;months out of realtime.</blockquote>
-<blockquote>
-<p>↳ reply — <em>gerdesj</em>:</p>
-<blockquote>I&#x27;ve been using the ntp pools successfully for at least 20 years across many 100s of systems.  I think you need to pick at least five sources.  Although the docs suggest four: <a href="https:&#x2F;&#x2F;www.ntppool.org&#x2F;en&#x2F;use.html" rel="nofollow">https:&#x2F;&#x2F;www.ntppool.org&#x2F;en&#x2F;use.html</a> for an individual system.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>yardstick</em>:</p>
-<blockquote>Yes was using DNS - two hostnames, one for europe and one for americas iirc. So it was receiving randomly allocated servers every DNS resolve.  Didn’t try 4+ hostnames.</blockquote>
-</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Open Social Web Alliance</title>
-      <link>https://osw-alliance.net/en/</link>
-      <guid isPermaLink="false">hn3-50600511</guid>
-      <pubDate>Sun, 22 Nov 2026 15:24:32 +0000</pubDate>
-      <description>241 points, 226 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://osw-alliance.net/en/"><strong>→ Article</strong></a> <small>(osw-alliance.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50600511">→ HN comments</a> &nbsp;·&nbsp; 241 points &nbsp;·&nbsp; 226 comments &nbsp;·&nbsp; <small>comments as of 17h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>tech_ken</em>:</p>
-<blockquote>&gt; How do we build social media that strengthens democratic discourse and is both resilient and appealing?<p>&gt; A shared, standardised communication protocol<p>Over the last decade I&#x27;ve been left so cold by these attempts to &#x27;fix&#x27; democracy via cleverly engineered tools. I think the problem is not one that we can engineer ourselves out of. Furthermore we&#x27;ve known the solution for longer than we&#x27;ve had digital technology: talk to people, build a coalition, wield power to make a (positive) material impact in peoples&#x27; lives. Trying to make the solution more complicated than that is not only a waste of time, but I think it&#x27;s actively harmful as it pulls resources away from the things that we know work.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>intended</em>:</p>
-<blockquote>The only tool that can say has some direct effect on democracy is what Taiwan is doing with .. vTaiwan (i think?) and Pol.is.<p>NB: From what Wikipedia says, apparently OpenAI and Anthropic also had Pol.is on their radar since they apparently used it to build&#x2F;study consensus.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>tech_ken</em>:</p>
-<blockquote>Great point, and TBH it made me feel like I should have softened my language a bit. I don&#x27;t think tools can have <i>no</i> impact, but there needs to be strong social scaffolding around them. IMO it wasn&#x27;t excellent engineering that led vTaiwan to success, but rather a social movement that understood how to deploy it effectively. The tool can be crude if the political will is strong.</blockquote>
-<blockquote>
-<p>↳↳↳ reply — <em>intended</em>:</p>
-<blockquote>Oh no, I was largely building on your point.<p>Actually useful tools and methods to make social media and online spaces less of a hellscape are a personal interest of mine.<p>Sadly, despite many years looking intently at this space, only a few examples come to mind.</blockquote>
-</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>claudiojulio</em>:</p>
-<blockquote>Sure, let’s just sit back and talk while the totalitarians have all the power and tools to manipulate the people.</blockquote>
-<p>↳ reply 3 — <em>fishfasell</em>:</p>
-<blockquote>Agreed, it&#x27;s a human problem and nothing a computer can solve</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>adverbly</em>:</p>
-<blockquote>I&#x27;m desperately waiting for a platform which doesn&#x27;t have bots, has rate limited participation, and has algorithms which aren&#x27;t built to maximize retention.<p>In the meantime, it&#x27;s mostly group chats, and me having to assume everyone else is either a bot or selling something (no worse than traditional media, but no better either)<p>I care less about the hosting provider, and more about trust and the impact on users.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>bloopernova</em>:</p>
-<blockquote>You absolutely can do all those things with ATProto. It&#x27;s all open, and different &quot;feeds&quot; can be switched whenever you want. (A feed being the closest thing ATProto or Bluesky has to an algorithm)</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>crossroadsguy</em>:</p>
-<blockquote>AT Proto (no scratch that – Bsky) had the opportunity of being something other than “another Twitter”. Well… and yes I know it’s a protocol and “I can do whatever I want on it”. That’s the point.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>numpad0</em>:</p>
-<blockquote>What you&#x27;re looking for is a high-bandwidth platform. Spammers can&#x27;t interfere with the platform if there are too much context in there to understand.<p>Twitter used to be that. Still is to some extent, but not as resistant as before.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>fhdkweig</em>:</p>
-<blockquote>&gt; How do we build social media that strengthens democratic discourse and is both resilient and appealing?<p>&gt; The Open Social Web Alliance aims to provide the answers.<p>The short answer is that it isn&#x27;t as profitable as creating discord.  People&#x27;s fears and anger are monetizable.  The internet of the 1990s is gone.  People don&#x27;t share information just out of altruistic kindness anymore.  Now it is all about selling a product.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>8organicbits</em>:</p>
-<blockquote>&gt; People don&#x27;t share information just out of altruistic kindness anymore<p>This is opposite the experience I have. I know there are places where people sell things, HN has always been one, so I spend more time socializing elsewhere. It&#x27;s sort of like hanging out at the mall and complaining people keep trying to sell you things. The web is massive and there are tons of people seeking connection, being creative, and sharing kindness.</blockquote>
-<blockquote>
-<p>↳↳ reply — <em>intended</em>:</p>
-<blockquote>Fair point, however it is also a valid point that the old web as we knew it is dead&#x2F;dying.<p>If we are on HN we are also the old guard at this point. We know of enough places and clubs that the loss isn’t as felt. Wikipedia is seeing a drop in traffic, and people are increasingly moving to Discord over forums and subreddits. Discord being outright inimical to search and finding historic information is a feature for users at this point.<p>Google AI summaries are busy hacking at the roots of the old web, reducing traffic to communities and intermediating the content they create.<p>I might be too early to call this out, but a contrary data point is audiences developing an intolerance for AI generated text.</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>samrus</em>:</p>
-<blockquote>The downside of that is externalized to society. Modern social media is a classic example of companies externalizing the harm of their products and raking in huge profits. And then using that capital to fight tooth and nail against regulation that woul properly account for those externalities.<p>We need to have these companies pay for the downsides of their monetization practices and then itll be a competitive playing feild with these open standards</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Backblaze customers worried of personal data sale/sharing after policy update</title>
-      <link>https://www.neowin.net/news/backblaze-customers-worried-of-personal-data-salesharing-after-policy-update/</link>
-      <guid isPermaLink="false">hn3-50600435</guid>
-      <pubDate>Sun, 22 Nov 2026 15:16:02 +0000</pubDate>
-      <description>165 points, 62 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.neowin.net/news/backblaze-customers-worried-of-personal-data-salesharing-after-policy-update/"><strong>→ Article</strong></a> <small>(neowin.net)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50600435">→ HN comments</a> &nbsp;·&nbsp; 165 points &nbsp;·&nbsp; 62 comments &nbsp;·&nbsp; <small>comments as of 17h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>mzajc</em>:</p>
-<blockquote>A few in-place encryption solutions for cloud storage:<p>- Rclone crypt: <a href="https:&#x2F;&#x2F;rclone.org&#x2F;crypt&#x2F;" rel="nofollow">https:&#x2F;&#x2F;rclone.org&#x2F;crypt&#x2F;</a><p>- Cryptomator: <a href="https:&#x2F;&#x2F;cryptomator.org&#x2F;" rel="nofollow">https:&#x2F;&#x2F;cryptomator.org&#x2F;</a><p>- (for incremental backups) Restic: <a href="https:&#x2F;&#x2F;restic.net&#x2F;" rel="nofollow">https:&#x2F;&#x2F;restic.net&#x2F;</a><p>This should be a hard requirement for anyone storing data on someone else&#x27;s computer. Barring vulnerabilities, you can essentially disregard the service&#x27;s privacy policy, and select purely based on price and reliability.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>atmosx</em>:</p>
-<blockquote>I&#x27;m using restic + b2, but I don&#x27;t think encryption buys you anything of substance in this scenario. If I understood correctly, Backblaze doesn&#x27;t sell the files or the data (obviously); That would be a suicidal strategy for any backup company. My understanding is that it sells and&#x2F;or shares <i>metadata</i> e.g. IP, country of origin, demographic, client&#x2F;OS used for uploading, amount of data stored, etc. And it is most likely somewhat anonymized although I&#x27;m pretty sure Google, Facebook, etc. who are the main clients in data-broker markets can de-anonymize most of this stuff easily.</blockquote>
-<p>↳ reply 2 — <em>chris_st</em>:</p>
-<blockquote>Also Arq (for Mac and windows) - <a href="https:&#x2F;&#x2F;www.arqbackup.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.arqbackup.com&#x2F;</a></blockquote>
-<p>↳ reply 3 — <em>mijoharas</em>:</p>
-<blockquote>Very happy restic user here, I&#x27;d strongly recommend it to everyone.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>cube00</em>:</p>
-<blockquote>Related: <a href="https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50585593">https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=50585593</a><p>I reposted because after the rename of the thread above, the problematic nature of these changes are lost using the generic privacy policy page title.<p>Backblaze Notice at Collection and Privacy Policy: <a href="https:&#x2F;&#x2F;www.backblaze.com&#x2F;company&#x2F;policy&#x2F;privacy" rel="nofollow">https:&#x2F;&#x2F;www.backblaze.com&#x2F;company&#x2F;policy&#x2F;privacy</a><p>The table feels confusing with the spanned center cell but if I&#x27;m reading it correctly, all of the following fall under &quot;Sold or Shared for Targeted Advertising: Yes&quot;<p>* Identifiers: For example, a name, address, Internet Protocol address, email address, or other similar identifiers.<p>* Commercial Information: For example, records of personal property, products or services purchased, obtained, or considered, or other purchasing or consuming histories or tendencies.<p>* Internet or Other Similar Network Activity: For example, browsing history, search history, and information regarding a consumer’s interaction with an Internet Web site, application, or advertisement.<p>* Geolocation Data: For example, information that can be used to determine a device’s physical location.<p>Opt out at <a href="https:&#x2F;&#x2F;preferences.backblaze.com" rel="nofollow">https:&#x2F;&#x2F;preferences.backblaze.com</a></blockquote>
-<p><strong>Top #3</strong> — <em>mijoharas</em>:</p>
-<blockquote>Why are people posting about encryption? First off, you should be encrypting your backups anyways, secondly they explicitly say that backup content is excluded from all of this.<p>Can anyone say whether it&#x27;s third party sharing (i.e. using Google analytics) or selling of personal data? (The article says &quot;sale or sharing&quot;)<p>Because I&#x27;ve got little problem with the former, and a big problem with the latter.<p>I&#x27;m particularly interested because I had a TODO item of my own for setting up backblaze as an alternate restic backend, but now I&#x27;d probably like a little more clarity before going ahead.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>cube00</em>:</p>
-<blockquote>&gt; Can anyone say whether it&#x27;s third party sharing (i.e. using Google analytics) or selling of personal data?<p><i>What We Sell to Third Parties or Share with Third Parties for Cross-Context Behavioral Advertising and Right to Opt-Out</i><p><i>We have sold or shared with third parties for cross-context behavioral advertising (e.g., targeted advertising) the following categories of personal information to advertising networks and analytics providers in the preceding 12 months: Identifiers; Internet or Other Similar Network Activity; Commercial Information; Geolocation Data. We do not sell or share sensitive personal information.</i><p>Don&#x27;t be fooled by &quot;identifiers&quot; either: Identifiers: For example, a name, address, Internet Protocol address, email address, or other similar identifiers.<p><a href="https:&#x2F;&#x2F;www.backblaze.com&#x2F;company&#x2F;policy&#x2F;privacy" rel="nofollow">https:&#x2F;&#x2F;www.backblaze.com&#x2F;company&#x2F;policy&#x2F;privacy</a></blockquote>
-<blockquote>
-<p>↳↳ reply — <em>mijoharas</em>:</p>
-<blockquote>I don&#x27;t feel that this really answers my question.<p>I feel that utilising a few quite normal advertising third parties would match that description, and so would selling data to some shady data brokers. Can anyone infer which it is?</blockquote>
-</blockquote>
-<p>↳ reply 2 — <em>dspillett</em>:</p>
-<blockquote><i>&gt; they explicitly say that backup content is excluded from all of this</i><p>They say that in <i>this</i> updated set of terms.<p>They could say something else in a future one. This sort or creep is common in hosted services. It may be a response to changes in the law in their primary jurisdiction (requiring providers to provide certain data on request), in which case all it would take is a new, more draconian, change in those regulations for their terms to become even worse.</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>Show HN: I built a game where you are an LLM's subagent</title>
-      <link>https://github.com/gulivan/worker755</link>
-      <guid isPermaLink="false">hn3-50599762</guid>
-      <pubDate>Sun, 22 Nov 2026 13:56:58 +0000</pubDate>
-      <description>313 points, 76 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://github.com/gulivan/worker755"><strong>→ Article</strong></a> <small>(github.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50599762">→ HN comments</a> &nbsp;·&nbsp; 313 points &nbsp;·&nbsp; 76 comments &nbsp;·&nbsp; <small>comments as of 18h</small></p>
-<hr>
-<p><strong>Top #1</strong> — <em>hiisukun</em>:</p>
-<blockquote>I like the idea of this! I can&#x27;t see the plot in yours (beyond Dan&#x27;s home folder risks).<p>Perhaps there&#x27;s a version of this where it becomes clear from the files&#x2F; agent tasks that you&#x27;re covering up a crime, or you have to try and piece together a mystery while still getting tasks done, convincing the tasking AI you need access to folder X...<p>Anyway thanks for sharing the idea.</blockquote>
-<blockquote>
-<p>↳ reply — <em>ivantgam</em>:</p>
-<blockquote>Thanks!
-Wow, that sounds like a full quest game tbh. Sounds interesting!<p>My intent was just about experimenting and messing up with the orchestrator agent, lol.<p>Please share, if you build something like this!</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>jnmandal</em>:</p>
-<blockquote>Butlerian Jihad Now</blockquote>
-<blockquote>
-<p>↳ reply — <em>ttul</em>:</p>
-<blockquote>I named the assistant built into my software engineering factory, “The Butler”. She is joining the movement.</blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>password4321</em>:</p>
-<blockquote>Humans working for AI is what Cory Doctorow termed a  &quot;reverse centaur&quot;.</blockquote>
-<blockquote>
-<p>↳ reply — <em>lacoolj</em>:</p>
-<blockquote>Sounds a bit naughty if you never heard it before</blockquote>
-</blockquote>]]></content:encoded>
-    </item>
-    <item>
-      <title>AI is becoming a disaster for the climate</title>
-      <link>https://www.bloodinthemachine.com/p/ai-is-becoming-a-disaster-for-the</link>
-      <guid isPermaLink="false">hn3-50598961</guid>
-      <pubDate>Sun, 22 Nov 2026 12:19:46 +0000</pubDate>
-      <description>134 points, 63 comments. See description for top comments.</description>
-      <content:encoded><![CDATA[<p><a href="https://www.bloodinthemachine.com/p/ai-is-becoming-a-disaster-for-the"><strong>→ Article</strong></a> <small>(bloodinthemachine.com)</small></p>
-<p><a href="https://news.ycombinator.com/item?id=50598961">→ HN comments</a> &nbsp;·&nbsp; 134 points &nbsp;·&nbsp; 63 comments</p>
-<hr>
-<p><strong>Top #1</strong> — <em>0x20cowboy</em>:</p>
-<blockquote>&gt; An estimated 20 megatons of CO2-equivalent emissions per year<p>&gt; Animal agriculture produces an estimated 6.2 billion metric tons (6,200 megatons) of CO₂-equivalent emissions per year<p>While it is possible to care about two things at once, if this was really about the climate and CO2 emissions I think people would focus elsewhere.<p>This argument falls flat with me, and I care about climate change.</blockquote>
-<blockquote>
-<p>↳ reply 1 — <em>rayiner</em>:</p>
-<blockquote>I also care about climate change, which is why it upsets me that it gets yoked to random unrelated political issues. (E.g. <a href="https:&#x2F;&#x2F;www.yahoo.com&#x2F;news&#x2F;aoc-chief-staff-admits-green-124408358.html" rel="nofollow">https:&#x2F;&#x2F;www.yahoo.com&#x2F;news&#x2F;aoc-chief-staff-admits-green-1244...</a>)<p>Maybe you cook vegetarian meals at home instead of using Door Dash and bike to work and use solar power to heat and cool your house and don’t order tons of shit on Amazon or from China, and now you’re looking hard at the CO2 emissions of your AI usage. But otherwise you’re using climate change as a chip against something you don’t like for different reasons—which is bad for the environmentalist cause.</blockquote>
-<p>↳ reply 2 — <em>rsfern</em>:</p>
-<blockquote>On the other hand, the energy consumption isn’t static and my impression is that compute scaling is still a dominant mechanism for increasing model performance, both for RL post-training and test time compute scaling<p>If we assume OpenAI will have similar power consumption and that emissions are linear in compute, then it’s only two more rounds of 10x increase in compute capacity to hit parity with animal agriculture<p>I think that’s plausible enough to be worth more careful consideration and discussion. Hopefully investments in more efficient models continue to pay off quickly enough to offset this, but failing that I’m not convinced the frontier labs will stop pursuing compute scaling just because it’s environmentally unsustainable</blockquote>
-<p>↳ reply 3 — <em>oliwarner</em>:</p>
-<blockquote>Doesn&#x27;t the growth projection of it being half of all animal agriculture in ten years not concern you? Using the same power as the activity to feed 5 billion people seems a bit much.</blockquote>
-</blockquote>
-<p><strong>Top #2</strong> — <em>nkurz</em>:</p>
-<blockquote>This was flagged dead, but I vouched to revive it.  It seems like a decent overview article of a couple recent papers on the potential climate impact of AI.  It doesn&#x27;t feel AI generated itself---which admittedly would be ironic! Even if you think the whole climate narrative is bunk, please explain why in a comment rather than flagging this away.  Or am I missing some reason this particular writeup isn&#x27;t worthy of discussion?</blockquote>
-<blockquote>
-<p>↳ reply — <em>petesergeant</em>:</p>
-<blockquote>It&#x27;s a polemic that doesn&#x27;t seem to add very much?<p>A much more interesting post is also on my front-page, which is: <a href="https:&#x2F;&#x2F;betterdatacenterproject.com&#x2F;2026&#x2F;11&#x2F;16&#x2F;how-ai-is-powered-a-breakdown-of-byop-and-grid-power&#x2F;" rel="nofollow">https:&#x2F;&#x2F;betterdatacenterproject.com&#x2F;2026&#x2F;11&#x2F;16&#x2F;how-ai-is-pow...</a></blockquote>
-</blockquote>
-<p><strong>Top #3</strong> — <em>isodev</em>:</p>
-<blockquote>I think as a planet (forget about borders and superpowers already) we need to ask ourselves where we want this to go.<p>Wrecking the little natural resources we have left just to pretend we’ve invented “intelligence” seems rather illogical. We’re still very much just simple “post-industrial barbarians”.</blockquote>]]></content:encoded>
     </item>
   </channel>
 </rss>
